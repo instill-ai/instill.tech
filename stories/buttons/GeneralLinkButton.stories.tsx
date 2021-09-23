@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof GeneralLinkButton> = (args) => <GeneralLin
 
 export const light = Template.bind({});
 
-light.args({
-  children: "View roles",
-  href: "#open-roles"
-})
+light.args = {
+  title: "View roles",
+  href: "/open-roles"
+}
