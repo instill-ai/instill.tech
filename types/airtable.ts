@@ -1,4 +1,5 @@
-export interface AirtableCareer {
+export interface InstillPosition {
+  slug: string;
   title: string;
   working_time: string;
   status: string;
@@ -8,4 +9,10 @@ export interface AirtableCareer {
   intro: string;
   your_responsibility: string;
   our_criteria: string;
+}
+
+export interface AirtablePositionRecord {
+  id: string;
+  fields: InstillPosition,
+  createdTime: string;
 }
