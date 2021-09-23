@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SimpleNavBar from '../components/SimpleNavBar';
 
 export default {
-  title: 'Components/Layout/Simple navbar',
+  title: 'Components/Simple navbar',
   component: SimpleNavBar,
 } as ComponentMeta<typeof SimpleNavBar>;
 
