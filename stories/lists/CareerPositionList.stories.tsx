@@ -4,14 +4,14 @@ import CareerPositionList from '../../components/lists/CareerPositionList';
 
 
 export default {
-  title: 'Components/Layout/PositionDetailLayout',
+  title: 'Components/List/CareerPositionList',
   component: CareerPositionList,
 } as ComponentMeta<typeof CareerPositionList>;
 
 const Template: ComponentStory<typeof CareerPositionList> = (args) => <CareerPositionList {...args} />;
 
-export const Light = Template.bind({});
-Light.args = {
+export const light = Template.bind({});
+light.args = {
   positions: [
     {
       fields: {

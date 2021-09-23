@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import PositionDetailLayout from '../../components/layouts/PositionDetailLayout';
 import CareerPage from '../../pages/career';
 
 export default {
