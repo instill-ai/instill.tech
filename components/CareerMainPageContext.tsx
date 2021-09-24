@@ -29,7 +29,7 @@ const CareerMainPageContext: FC<Props> = () => {
       </div>
       <h2 className="text-3xl mb-4">Who You Are</h2>
       <p className="text-lg mb-12">For us, the keys to success are genuine passion, startup spirit and shared vision. If you love building real-world products around computer vision and are willing to embrace risk, come and join us!</p>
-      <h2 className="text-3xl mb-4">Open roles</h2>
+      <h2 className="text-3xl mb-4" id="open-roles">Open roles</h2>
     </div>
   );
 };

@@ -4,6 +4,10 @@ import CareerMainPageLayout from '../../components/CareerMainPageContext';
 import CareerPositionList from '../../components/lists/CareerPositionList';
 import { getInstillOpenPositions } from '../../lib/airtable';
 import { AirtablePositionRecord } from '../../types/airtable';
+import BaseContainer from '../../components/BaseContainer';
+import SectionContainer from '../../components/SectionContainer';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
 interface Props {
   positions: AirtablePositionRecord[];
@@ -11,10 +15,16 @@ interface Props {
 
 const CareerPage: FC<Props> = ({ positions }) => {
   return (
-    <div className="flex flex-col">
-      <CareerMainPageLayout />
-      <CareerPositionList positions={positions} />
-    </div>
+    <BaseContainer>
+      <SectionContainer>
+        <div className="flex flex-col">
+          <NavBar />
+          <CareerMainPageLayout />
+          <CareerPositionList positions={positions} />
+          <Footer />
+        </div>
+      </SectionContainer>
+    </BaseContainer>
   );
 };
 

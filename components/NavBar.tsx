@@ -6,7 +6,7 @@ interface Props {}
 
 const NavBar: FC<Props> = () => {
   return (
-    <div className="sticky top-0 z-50 flex flex-row w-full h-20 px-6">
+    <div className="sticky top-0 z-50 flex flex-row w-full h-20 mb-36 bg-white">
       <div className="mr-auto my-auto">
         <InstillLogo />
       </div>

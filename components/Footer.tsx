@@ -5,7 +5,7 @@ interface Props {}
 
 const Footer: FC<Props> = () => {
   return (
-    <div className="flex flex-row h-20 px-6 font-sans font-normal text-gray-700">
+    <div className="flex flex-row h-20 font-sans font-normal text-gray-700 mt-36">
       <div className="flex flex-row gap-x-4 mr-auto my-auto">
         <CustomLink href={'/privacy'}>
           <div>Privacy</div>
