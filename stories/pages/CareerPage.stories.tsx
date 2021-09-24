@@ -1,10 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import CareerPage from '../../pages/career';
+import ContextWrapper from '../../contexts/ContextWrapper';
 
 export default {
   title: 'Pages/Career/index',
   component: CareerPage,
+
 } as ComponentMeta<typeof CareerPage>;
 
 const Template: ComponentStory<typeof CareerPage> = (args) => <CareerPage {...args} />;

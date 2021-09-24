@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import CustomLink from '../../components/CustomLink';
-import CareerMainPageLayout from '../../components/CareerMainPageContext';
+import CareerMainPageContext from '../../components/CareerMainPageContext';
 import CareerPositionList from '../../components/lists/CareerPositionList';
 import { getInstillOpenPositions } from '../../lib/airtable';
 import { AirtablePositionRecord } from '../../types/airtable';
@@ -19,7 +18,7 @@ const CareerPage: FC<Props> = ({ positions }) => {
       <SectionContainer>
         <div className="flex flex-col">
           <NavBar />
-          <CareerMainPageLayout />
+          <CareerMainPageContext />
           <CareerPositionList positions={positions} />
           <Footer />
         </div>
