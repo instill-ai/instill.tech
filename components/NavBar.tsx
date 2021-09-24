@@ -4,7 +4,7 @@ import InstillLogo from './InstillLogo';
 
 interface Props {}
 
-const SimpleNavBar: FC<Props> = () => {
+const NavBar: FC<Props> = () => {
   return (
     <div className="sticky top-0 z-50 flex flex-row w-full h-20 px-6">
       <div className="mr-auto my-auto">
@@ -19,4 +19,4 @@ const SimpleNavBar: FC<Props> = () => {
   );
 };
 
-export default SimpleNavBar;
+export default NavBar;
