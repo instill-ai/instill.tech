@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { getInstillOpenPositions } from '../../lib/airtable';
 import { AirtablePositionRecord } from '../../types/airtable';
 import { GetServerSideProps } from 'next';

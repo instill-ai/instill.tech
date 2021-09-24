@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css';
+import ContextWrapper from '../contexts/ContextWrapper';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,3 +10,11 @@ export const parameters = {
     },
   },
 }
+
+// export const decorators = [
+//   (Story) => (
+//     <ContextWrapper>
+//       <Story />
+//     </ContextWrapper>
+//   ),
+// ];

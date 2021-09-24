@@ -1,14 +1,10 @@
-import { FC } from "react";
-import CareerPositionsContext from "./CareerPositionsContext";
+import { FC } from 'react';
+import CareerPositionsProvider from './CareerPositionsContext';
 
 interface Props {}
 
 const ContextWrapper: FC<Props> = ({ children }) => {
-  return (
-    <CareerPositionsContext>
-      {children}
-    </CareerPositionsContext>
-  )
-}
+  return <CareerPositionsProvider>{children}</CareerPositionsProvider>;
+};
 
-export default ContextWrapper
+export default ContextWrapper;

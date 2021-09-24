@@ -1,12 +1,7 @@
-import 'tailwindcss/tailwind.css'
-import ContextWrapper from "../contexts/ContextWrapper"
+import 'tailwindcss/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ContextWrapper>
-      <Component {...pageProps} />
-    </ContextWrapper>
-  )
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
