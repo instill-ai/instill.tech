@@ -5,10 +5,16 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
+
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
     "axios": "^0.21.4",
+    "cross-env": "^7.0.3",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
