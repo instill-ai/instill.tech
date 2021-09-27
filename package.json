@@ -10,10 +10,10 @@
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
-
   },
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.2",
+    "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.21.4",
     "cross-env": "^7.0.3",
     "next": "latest",
