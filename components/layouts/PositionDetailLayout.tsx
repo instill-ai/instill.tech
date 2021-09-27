@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { AirtablePositionRecord } from '../../types/airtable';
+import ReactMarkdown from 'react-markdown';
 
 interface Props {
   position: AirtablePositionRecord;
@@ -16,7 +17,9 @@ const PositionDetailLayout: FC<Props> = ({ position }) => {
       </div>
       <div className="text-base mb-8">{position.fields.intro}</div>
       <h3 className="text-2xl font-semibold mb-2">What you'll be doing</h3>
-      <div className="text-base mb-8">{position.fields.your_responsibility}</div>
+      <div className="text-base mb-8">
+        <ReactMarkdown>{position.fields.your_responsibility}</ReactMarkdown>
+      </div>
       <h3 className="text-2xl font-semibold mb-2">Things we'd love to see</h3>
       <div className="text-base mb-8">{position.fields.our_criteria}</div>
       <h3 className="text-2xl font-semibold mb-2">Package</h3>
