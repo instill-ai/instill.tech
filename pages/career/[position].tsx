@@ -56,8 +56,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: slugs,
     fallback: false,
   }
-
-
 }
 
 export default Career;
