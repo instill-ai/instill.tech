@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { FC } from 'react';
 import { getInstillOpenPositions } from '../../lib/airtable';
 import { AirtablePositionRecord } from '../../types/airtable';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import PositionDetailLayout from '../../components/layouts/PositionDetailLayout';
@@ -29,7 +28,8 @@ const Career: FC<Props> = ({ position }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  // We duplicate the request, if we want to solve this problem, we can cache data at local file.
   const positions: AirtablePositionRecord[] = await getInstillOpenPositions();
   const positionSlug = context.params.position;
   const index = positions.findIndex((e) => e.fields.slug === positionSlug);
@@ -40,5 +40,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const positions: AirtablePositionRecord[] = await getInstillOpenPositions();
+  let slugs = [];
+  positions.map((position) => {
+    slugs.push({
+      params: {
+        position: position.fields.slug
+      }
+    })
+  })
+
+  return {
+    paths: slugs,
+    fallback: false,
+  }
+
+
+}
 
 export default Career;

@@ -7,22 +7,12 @@ import BaseContainer from '../../components/BaseContainer';
 import SectionContainer from '../../components/SectionContainer';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
-import { CareerPositionsContext } from '../../contexts/CareerPositionsContext';
 
 interface Props {
   positions: AirtablePositionRecord[];
 }
 
 const CareerPage: FC<Props> = ({ positions }) => {
-  const { setPositions } = useContext(CareerPositionsContext);
-  useEffect(() => {
-    if (positions.length === 0) {
-      return;
-    }
-
-    setPositions(positions);
-  }, []);
-
   return (
     <BaseContainer>
       <SectionContainer>
@@ -37,7 +27,7 @@ const CareerPage: FC<Props> = ({ positions }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const positions = await getInstillOpenPositions();
   return {
     props: {
