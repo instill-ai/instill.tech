@@ -1,0 +1,70 @@
+name: cd-deploy-staging
+
+on:
+  push:
+    branches:
+      - 'staging'
+
+jobs:
+  deploy-staging:
+    # skip if the event is triggered by the release-please-bot pushing branch (for opening a PR to main)
+    if: ${{ !contains(github.ref, 'release') }}
+
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Import Vault secrets
+        id: secrets
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          secrets: |
+            secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
+
+      # - name: Capture Vercel preview URL
+      #  id: vercel_preview_url
+      #  uses: aaimio/vercel-preview-url-action@v1
+      #  with:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Slack starting
+        if: always()
+        id: slack # IMPORTANT: reference this step ID value in future Slack steps
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          channel: msg-github-action
+          status: STARTING
+          color: warning
+
+      - name: Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: msg-github-action
+          status: SUCCESS
+          color: good
+
+      - name: Notify Slack failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: msg-github-action
+          status: FAILED
+          color: danger
