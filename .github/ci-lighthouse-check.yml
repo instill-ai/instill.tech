@@ -1,0 +1,67 @@
+name: ci-lighthouse-check
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  lighthouse-check:
+    # skip if the event is triggered by the release-please-bot opening a PR to main
+    if: ${{ !contains(github.head_ref, 'release') }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Import Vault secrets
+        id: secrets
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          secrets: |
+            secret/data/devops/slack/github-action/lighthouse-check webhook-url | LIGHTHOUSE_SLACK_WEBHOOK_URL ;
+            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
+
+      - name: Checkout
+        uses: actions/checkout@main
+
+      #- name: Create temporary folder for artifacts
+      #  run: mkdir /tmp/artifacts
+      
+      - name: Run Lighthouse
+        id: lighthouseCheck
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          extraHeaders: '{ "CF-Access-Client-Id": "${{ secrets.cfAccessClientId }}", "CF-Access-Client-Secret": "${{ secrets.cfAccessClientSecret }}" }'
+          accessToken: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          author: ${{ github.actor }}
+          branch: ${{ github.ref }}
+          outputDirectory: /tmp/artifacts
+          emulatedFormFactor: 'all'
+          urls: 'https://instill-inc.tech,https://instill.tech'
+          sha: ${{ github.sha }}
+          slackWebhookUrl: ${{ steps.secrets.outputs.LIGHTHOUSE_SLACK_WEBHOOK_URL }}
+
+      #- name: Upload artifacts
+      #  uses: actions/upload-artifact@master
+      #  with:
+      #    name: Lighthouse reports
+      #    path: /tmp/artifacts
+
+      - name: Handle Lighthouse Check results
+        uses: foo-software/lighthouse-check-status-action@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: '80'
+          minBestPracticesScore: '50'
+          minPerformanceScore: '50'
+          minProgressiveWebAppScore: '10'
+          minSeoScore: '50'
+      
