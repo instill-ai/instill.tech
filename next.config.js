@@ -1,5 +1,18 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
+module.exports = {
+  webpack: (config, { isServer }) => {
+    // if (isServer) {
+    //   require("./lib/generate-sitemap");
+    // }
 
-module.exports = withBundleAnalyzer({})
+    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+    config.plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+        generateStatsFile: true,
+        reportFilename: isServer ? '../analyze/server.json' : './analyze/client.json',
+      })
+    );
+
+    return config;
+  },
+}
