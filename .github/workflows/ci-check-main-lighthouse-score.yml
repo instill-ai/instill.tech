@@ -1,4 +1,4 @@
-name: ci-lighthouse-check
+name: ci-check-main-lighthouse-score
 
 on:
   pull_request:
@@ -6,12 +6,9 @@ on:
       - 'main'
 
 jobs:
-  lighthouse-check:
-    # skip if the event is triggered by the release-please-bot opening a PR to main
-    if: ${{ !contains(github.head_ref, 'release') }}
-
+  check-main-lighthouse-score:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Import Vault secrets
         id: secrets
@@ -27,33 +24,47 @@ jobs:
             CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
           secrets: |
             secret/data/devops/slack/github-action/lighthouse-check webhook-url | LIGHTHOUSE_SLACK_WEBHOOK_URL ;
+            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
+            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
+            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
             secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
 
       - name: Checkout
         uses: actions/checkout@main
 
-      #- name: Create temporary folder for artifacts
-      #  run: mkdir /tmp/artifacts
+      - name: deploy main to vercel
+        id: deployMainToVercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
+          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
+          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          github-comment: false
+
+      - name: Create temporary folder for artifacts
+        run: mkdir /tmp/artifacts
       
-      - name: Run Lighthouse
+      - name: examine-lighthouse
         id: lighthouseCheck
         uses: foo-software/lighthouse-check-action@master
         with:
-          extraHeaders: '{ "CF-Access-Client-Id": "${{ secrets.cfAccessClientId }}", "CF-Access-Client-Secret": "${{ secrets.cfAccessClientSecret }}" }'
           accessToken: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
           author: ${{ github.actor }}
           branch: ${{ github.ref }}
+          prCommentEnabled: true
           outputDirectory: /tmp/artifacts
           emulatedFormFactor: 'all'
-          urls: 'https://instill-inc.tech,https://instill.tech'
+          urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           sha: ${{ github.sha }}
           slackWebhookUrl: ${{ steps.secrets.outputs.LIGHTHOUSE_SLACK_WEBHOOK_URL }}
-
-      #- name: Upload artifacts
-      #  uses: actions/upload-artifact@master
-      #  with:
-      #    name: Lighthouse reports
-      #    path: /tmp/artifacts
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
 
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
