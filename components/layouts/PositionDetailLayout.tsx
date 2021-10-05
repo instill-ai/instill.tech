@@ -17,11 +17,11 @@ const PositionDetailLayout: FC<Props> = ({ position }) => {
         <div>{position.fields.location}</div>
       </div>
       <div className="text-base mb-8">{position.fields.intro}</div>
-      <h3 className="text-2xl font-semibold mb-2">What you'll be doing</h3>
+      <h3 className="text-2xl font-semibold mb-2">What you&apos;ll be doing</h3>
       <div className="text-base mb-8">
         <ReactMarkdownWrapper content={position.fields.your_responsibility} />
       </div>
-      <h3 className="text-2xl font-semibold mb-2">Things we'd love to see</h3>
+      <h3 className="text-2xl font-semibold mb-2">Things we&apos;d love to see</h3>
       <div className="text-base mb-8">
         <ReactMarkdownWrapper content={position.fields.our_criteria} />
       </div>
