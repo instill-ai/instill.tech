@@ -44,6 +44,14 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: start deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: preview
 
       - name: deploy-to-vercel-staging
         id: deployToVercelStaging
@@ -55,6 +63,15 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           scope: ${{ secrets.VERCEL_ORG_ID }}
           github-comment: false
+        
+      - name: update deployment status
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
       - name: Notify slack success
         if: success()
