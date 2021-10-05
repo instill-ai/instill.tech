@@ -1,7 +1,10 @@
-## CI/CD process
+## CI Workflow
 
-1. Staging: PR -> Trigger slack bot deliver announcement -> Build -> Trigger slack bot to deliver result
-2. unit test
-3. integration test
-4. end-to-end test(optional)
-5. Prod: PR -> Trigger slack bot deliver announcement -> Build -> Lighthouse -> Trigger slack bot to deliver result
+1. When push to any branch except main, do unit test (ci-unit-test)
+2. Before PR into staging, check webpack bundle size difference (ci-webpack-stats-diff)
+3. Before PR into main, deploy to preview and check lighthouse score
+
+## CD Worflow
+
+1. When PR into staging, deploy to staging preview (cd-staging-deploy)
+2. When PR release into main, deploy to production (cd-prod-deploy)
