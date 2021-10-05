@@ -1,0 +1,76 @@
+name: cd-prod-deploy
+
+on:
+  release:
+    types: [published, deleted]
+
+jobs:
+  deploy-prod:
+    # skipping if the event is triggered by prerelease
+    if: '!github.event.release.prerelease'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Import Vault secrets
+        id: secrets
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          secrets: |
+            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
+            secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
+            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
+            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
+            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
+
+      - id: latestRelease
+        uses: thebritican/fetch-latest-release@v1.0.3
+        with:
+          github_token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+        with:
+          ref: ${{ steps.latestRelease.outputs.tag_name }}
+
+      - name: deploy-to-vercel-prod
+        id: deployToVercelProd
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
+          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
+          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+
+      - name: examine-lighthouse
+        id: lighthouseCheck
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          accessToken: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          author: ${{ github.actor }}
+          branch: ${{ github.ref }}
+          prCommentEnabled: true
+          outputDirectory: /tmp/artifacts
+          emulatedFormFactor: 'all'
+          urls: ${{ steps.deployToVercelProd.outputs.preview-url }}
+          sha: ${{ github.sha }}
+
+      - name: Handle Lighthouse Check results
+        uses: foo-software/lighthouse-check-status-action@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: '80'
+          minBestPracticesScore: '50'
+          minPerformanceScore: '50'
+          minProgressiveWebAppScore: '10'
+          minSeoScore: '50'
