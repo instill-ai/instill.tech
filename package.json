@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "next lint",
     "start": "next start",
     "export": "next export",
     "storybook": "start-storybook -p 6006",
