@@ -27,12 +27,9 @@ jobs:
             CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
           secrets: |
             secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
-
-      # - name: Capture Vercel preview URL
-      #  id: vercel_preview_url
-      #  uses: aaimio/vercel-preview-url-action@v1
-      #  with:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            secret/data/devops/vercel/github-action/product-website-id | PRODUCT_WEBSITE_ID ;
+            secret/data/devops/vercel/github-action/vercel-org-id | VERCEL_ORG_ID ; 
+            secret/data/devops/vercel/github-action/vercel-token | VERCEL_TOKEN ;
 
       - name: Notify Slack starting
         if: always()
@@ -44,6 +41,20 @@ jobs:
           channel: msg-github-action
           status: STARTING
           color: warning
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: deploy-to-vercel-staging
+        id: deployToVercelStaging
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}} #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          github-comment: false
 
       - name: Notify slack success
         if: success()
