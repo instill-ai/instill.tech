@@ -8,7 +8,7 @@ const CareerMainPageContext: FC<Props> = () => {
     <div className="flex flex-col font-sans">
       <h1 className="text-4xl mb-2">Instill AI Careers</h1>
       <p className="text-lg mb-4">
-        We’re on a mission to make Vision AI highly accessible to everyone. Join us and make a dent
+        We&apos;re on a mission to make Vision AI highly accessible to everyone. Join us and make a dent
         in the universe!
       </p>
       <GeneralLinkButton href="#open-roles" title="View roles" className={'mb-24'} />
@@ -21,7 +21,7 @@ const CareerMainPageContext: FC<Props> = () => {
       <p className="text-lg mb-4">
         Our private beta was launched in June 2021 and we are working closely with several our early
         adopters. The two co-founders are from academia (Imperial College London and University
-        College London) with many years' startup experience. You can find more about us on GitHub:
+        College London) with many years&apos; startup experience. You can find more about us on GitHub:
       </p>
       <div className="flex flex-row gap-x-6 mb-12">
         <GeneralLinkButton href="https://github.com/pinglin" title="Ping-Lin Chang" />
