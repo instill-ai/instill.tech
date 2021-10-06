@@ -13,5 +13,23 @@ const Template: ComponentStory<typeof HeaderButtonGroup> = (args) => <HeaderButt
 export const Default = Template.bind({});
 
 Default.args = {
-  gap: 8
+  buttons: [
+    {
+      name: "Home",
+      withChevon: false
+    },
+    {
+      name: "Products",
+      withChevon: true
+    },
+    {
+      name: "Resources",
+      withChevon: true
+    },
+    {
+      name: "Pricing",
+      withChevon: false
+    }
+  ],
+  gapStyle: "gap-x-8"
 }
