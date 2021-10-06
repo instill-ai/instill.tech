@@ -1,5 +1,5 @@
-import { FC } from "react";
-import HeroAnimation from "../components/animations/HeroAnimation";
+import { FC } from 'react';
+import HeroAnimation from '../components/animations/HeroAnimation';
 
 interface Props {}
 
@@ -8,7 +8,7 @@ const Home: FC<Props> = () => {
     <div className="bg-[#063477]">
       <HeroAnimation />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
