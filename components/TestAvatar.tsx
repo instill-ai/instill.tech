@@ -3,11 +3,10 @@ import Image from 'next/image';
 import Avatar from '../assets/image/test-avatar.png';
 
 interface Props {
-  size: number;
+  sizeStyle: string;
 }
 
-const TestAvatar: FC<Props> = ({ size }) => {
-  const sizeStyle = `w-${size} h-${size}`
+const TestAvatar: FC<Props> = ({ sizeStyle }) => {
   return (
     <div className={"relative " + sizeStyle}>
       <Image
