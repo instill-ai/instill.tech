@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC } from 'react';
 import MagicBallSVG from '../../assets/animation/hero-animation-magic-ball.svg';
 
 interface Props {}
 
 const HeroAnimationMagicBall: FC<Props> = () => {
   return (
-    <div style={{ gridArea: "1/1", zIndex: 3 }}>
+    <div style={{ gridArea: '1/1', zIndex: 3 }}>
       <MagicBallSVG />
       <style global jsx>{`
         .MagicBall {
@@ -37,7 +37,7 @@ const HeroAnimationMagicBall: FC<Props> = () => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default HeroAnimationMagicBall
+export default HeroAnimationMagicBall;
