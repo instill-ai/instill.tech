@@ -12,6 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # In order to build with some env, we have to create it, but don't commit it
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with: 
+          envkey_AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          envkey_AIRTABLE_CAREER_BASE_ID: ${{ secrets.AIRTABLE_CAREER_BASE_ID }}
+          envkey_AIRTABLE_CRREER_TABLE_TITLE: ${{ secrets.AIRTABLE_CRREER_TABLE_TITLE }}
+          file_name: .env.local
+
       - name: Install dependencies
         run: npm ci
 
@@ -32,6 +41,15 @@ jobs:
         with:
           ## Here we do not checkout the current branch, but we checkout the base branch.
           ref: ${{ github.base_ref }}
+          
+      # In order to build with some env, we have to create it, but don't commit it
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with: 
+          envkey_AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          envkey_AIRTABLE_CAREER_BASE_ID: ${{ secrets.AIRTABLE_CAREER_BASE_ID }}
+          envkey_AIRTABLE_CRREER_TABLE_TITLE: ${{ secrets.AIRTABLE_CRREER_TABLE_TITLE }}
+          file_name: .env.local
 
       - name: Install dependencies
         run: npm ci
