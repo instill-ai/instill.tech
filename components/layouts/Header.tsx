@@ -29,7 +29,7 @@ const defaultButtons = [
 
 const Header: FC<Props> = ({ buttons=defaultButtons }) => {
   return (
-    <div className="flex flex-row px-28 h-20 mb-24">
+    <div className="flex flex-row h-20 mb-24">
       <div className="flex flex-row mr-auto my-auto">
         <InstillLogo className={'mr-10 my-auto'} />
         <HeaderButtonGroup buttons={buttons} gapStyle={'gap-x-8'} />
