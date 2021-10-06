@@ -1,14 +1,18 @@
-import { FC } from "react";
-import MainSVG from '../../assets/animation/hero-animation-main.svg';
+import { FC } from 'react';
+import HeroAnimationFishDrip from './HeroAnimationFishDrip';
+import HeroAnimationMagicBall from './HeroAnimationMagicBall';
+import HeroAnimationMain from './HeroAnimationMain';
 
 interface Props {}
 
 const HeroAnimation: FC<Props> = () => {
   return (
-    <div style={{ gridArea: "1/1", zIndex: 2 }}>
-      <MainSVG />
+    <div style={{ display: 'grid' }}>
+      <HeroAnimationFishDrip />
+      <HeroAnimationMain />
+      <HeroAnimationMagicBall />
     </div>
-  )
-}
+  );
+};
 
-export default HeroAnimation
+export default HeroAnimation;
