@@ -3,7 +3,7 @@ import MainSVG from '../../assets/animation/hero-animation-main.svg';
 
 interface Props {}
 
-const HeroAnimationMain: FC<Props> = () => {
+const HeroAnimation: FC<Props> = () => {
   return (
     <div style={{ gridArea: "1/1", zIndex: 2 }}>
       <MainSVG />
@@ -11,4 +11,4 @@ const HeroAnimationMain: FC<Props> = () => {
   )
 }
 
-export default HeroAnimationMain
+export default HeroAnimation
