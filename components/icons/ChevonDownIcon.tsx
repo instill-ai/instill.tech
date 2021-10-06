@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ChevonDownIcon: FC<Props> = ({ className }) => {
-  const iconStyle = `fill-current m-auto ${className}`;
+  const iconStyle = `fill-current my-auto ${className}`;
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className={iconStyle}>
