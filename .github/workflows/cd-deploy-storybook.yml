@@ -50,6 +50,7 @@ jobs:
           vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
           vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
           scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-args: '--prod'
           github-comment: true
 
       - name: update deployment status
