@@ -1,19 +1,19 @@
 import { FC } from 'react';
+import { HeaderButtonType } from '../../types/buttons';
 import HeaderButton from '../buttons/HeaderButton';
 
 interface Props {
-  gap: number;
+  gapStyle: string;
+  buttons: HeaderButtonType[];
 }
 
-const HeaderButtonGroup: FC<Props> = ({ gap }) => {
-  const gapStyle = `gap-x-${gap}`;
+const HeaderButtonGroup: FC<Props> = ({ gapStyle, buttons }) => {
 
   return (
     <div className={'flex flex-row my-auto ' + gapStyle}>
-      <HeaderButton withChevon={false} name={'Home'} />
-      <HeaderButton withChevon={true} name={'Products'} />
-      <HeaderButton withChevon={true} name={'Resources'} />
-      <HeaderButton withChevon={false} name={'Pricing'} />
+      {buttons.map((button) => (
+        <HeaderButton key={button.name} withChevon={button.withChevon} name={button.name} />
+      ))}
     </div>
   );
 };
