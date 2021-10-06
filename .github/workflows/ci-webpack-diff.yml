@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v2
 
       # In order to build with some env, we have to create it, but don't commit it
+      # This will occur a warning: Warning: Unexpected input(s)
+      # This is because Github is expecing all the potential input variables to be defined by the Action's definition.
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with: 
@@ -41,7 +43,7 @@ jobs:
         with:
           ## Here we do not checkout the current branch, but we checkout the base branch.
           ref: ${{ github.base_ref }}
-          
+
       # In order to build with some env, we have to create it, but don't commit it
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
