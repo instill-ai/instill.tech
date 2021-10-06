@@ -12,7 +12,7 @@ const TestAvatar: FC<Props> = ({ sizeStyle }) => {
       <Image
         className="rounded-full object-contain"
         alt="test avatar"
-        src="/image/test-avatar.png"
+        src="/images/test-avatar.png"
         layout="fill"
       />
     </div>
