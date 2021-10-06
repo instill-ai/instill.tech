@@ -31,7 +31,7 @@ jobs:
             secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
 
       - name: Checkout
-          uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v2.3.3
       
       - name: start deployment
         uses: bobheadxi/deployments@v0.4.3
