@@ -1,10 +1,12 @@
 import { FC } from 'react';
 
-interface Props {}
+interface Props {
+  className?: string
+}
 
-const InstillLogo: FC<Props> = () => {
+const InstillLogo: FC<Props> = ({ className="" }) => {
   return (
-    <div className="m-auto">
+    <div className={"m-auto " + className}>
       <svg
         width="96"
         height="20"
