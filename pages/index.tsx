@@ -5,7 +5,7 @@ interface Props {}
 
 const Home: FC<Props> = () => {
   return (
-    <div>
+    <div className="bg-[#063477]">
       <HeroAnimation />
     </div>
   )
