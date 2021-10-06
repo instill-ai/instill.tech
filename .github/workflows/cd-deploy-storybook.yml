@@ -24,7 +24,7 @@ jobs:
             CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
             CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
           secrets: |
-            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
+            secret/data/devops/vercel/github-action product-webasite-storybook-id | PRODUCT_WEBSITE_STORYBOOK_ID ;
             secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
             secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
             secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
@@ -48,7 +48,7 @@ jobs:
           vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
           github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
           vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
+          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_STORYBOOK_ID}}
           scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
           vercel-args: '--prod'
           github-comment: true
