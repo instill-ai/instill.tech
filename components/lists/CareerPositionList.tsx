@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { AirtablePositionRecord } from '../../types/airtable';
-import CustomLink from '../CustomLink';
+import { FC } from "react";
+import { AirtablePositionRecord } from "../../types/airtable";
+import CustomLink from "../CustomLink";
 
 interface Props {
   positions: AirtablePositionRecord[];
 }
 
-const CareerPositionList: FC<Props> = ({ positions }) => {
+export const CareerPositionList: FC<Props> = ({ positions }) => {
   return (
     <div className="flex flex-col gap-y-4">
       {positions.map((position) => (
@@ -23,5 +23,3 @@ const CareerPositionList: FC<Props> = ({ positions }) => {
     </div>
   );
 };
-
-export default CareerPositionList;
