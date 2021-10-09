@@ -1,10 +1,9 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import NewFeatureBanner from '../components/NewFeatureBanner';
-
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { NewFeatureBanner } from "../components/NewFeatureBanner";
 
 export default {
-  title: 'Components/NewFeatureBanner',
+  title: "Components/NewFeatureBanner",
   component: NewFeatureBanner,
 } as ComponentMeta<typeof NewFeatureBanner>;
 
@@ -13,5 +12,5 @@ const Template: ComponentStory<typeof NewFeatureBanner> = (args) => <NewFeatureB
 export const Default = Template.bind({});
 
 Default.args = {
-  featureName: "Check out the team dashboard"
-}
+  featureName: "Check out the team dashboard",
+};

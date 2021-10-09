@@ -7,7 +7,7 @@ interface Props {
   buttons: HeaderButtonType[];
 }
 
-const HeaderButtonGroup: FC<Props> = ({ gapStyle, buttons }) => {
+export const HeaderButtonGroup: FC<Props> = ({ gapStyle, buttons }) => {
   return (
     <div className={"flex flex-row my-auto " + gapStyle}>
       {buttons.map((button) => (
@@ -16,5 +16,3 @@ const HeaderButtonGroup: FC<Props> = ({ gapStyle, buttons }) => {
     </div>
   );
 };
-
-export default HeaderButtonGroup;

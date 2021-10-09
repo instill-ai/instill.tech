@@ -1,10 +1,9 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import InstillLogo from '../components/InstillLogo';
-
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { InstillLogo } from "../components/InstillLogo";
 
 export default {
-  title: 'Components/Logo',
+  title: "Components/Logo",
   component: InstillLogo,
 } as ComponentMeta<typeof InstillLogo>;
 
