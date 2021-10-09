@@ -1,18 +1,17 @@
 import { FC } from "react";
 import CTAPlayDemoButton from "../buttons/CTAPlayDemoButton";
 import CTASignUpButton from "../buttons/CTASignUpButton";
+import * as classNames from "classnames";
 
 interface Props {
-  className?: string
+  styleName?: string;
 }
 
-const HeadCTAGroup: FC<Props> = ({ className="" }) => {
+export const HeadCTAGroup: FC<Props> = ({ styleName }) => {
   return (
-    <div className={"flex flex-row mx-auto gap-x-3 " + className}>
+    <div className={classNames.default("flex flex-row mx-auto gap-x-3", styleName)}>
       <CTAPlayDemoButton />
       <CTASignUpButton />
     </div>
-  )
-}
-
-export default HeadCTAGroup
+  );
+};
