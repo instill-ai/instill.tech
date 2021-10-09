@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC } from "react";
 
 interface Props {
-  className: string;
+  styleName: string;
 }
 
-const ArrowRightShortIcon: FC<Props> = ({ className }) => {
-  const iconStyle = `fill-current my-auto ${className}`;
+export const ArrowRightShortIcon: FC<Props> = ({ styleName }) => {
+  const iconStyle = `fill-current my-auto ${styleName}`;
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className={iconStyle}>
       <path
@@ -15,5 +15,3 @@ const ArrowRightShortIcon: FC<Props> = ({ className }) => {
     </svg>
   );
 };
-
-export default ArrowRightShortIcon;
