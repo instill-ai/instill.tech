@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC } from "react";
 
 interface Props {}
 
-const PlayIcon: FC<Props> = () => {
+export const PlayIcon: FC<Props> = () => {
   return (
     <svg
       className="my-auto"
@@ -29,5 +29,3 @@ const PlayIcon: FC<Props> = () => {
     </svg>
   );
 };
-
-export default PlayIcon;
