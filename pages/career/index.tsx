@@ -1,11 +1,11 @@
 import { FC } from "react";
-import CareerMainPageContext from "../../components/CareerMainPageContext";
+import { CareerMainPageContext } from "../../components/CareerMainPageContext";
 import { CareerPositionList } from "../../components/lists/CareerPositionList";
 import { getInstillOpenPositions } from "../../lib/airtable";
 import { AirtablePositionRecord } from "../../types/airtable";
 import { BaseContainer } from "../../components/BaseContainer";
 import { SectionContainer } from "../../components/SectionContainer";
-import NavBar from "../../components/NavBar";
+import { NavBar } from "../../components/NavBar";
 import { Footer } from "../../components/Footer";
 
 interface Props {
