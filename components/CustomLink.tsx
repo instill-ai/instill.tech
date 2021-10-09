@@ -1,17 +1,17 @@
 import Link from "next/link";
-import { FC } from 'react';
+import { FC } from "react";
 
 interface Props {
   href: string;
 }
 
-const CustomLink: FC<Props> = ({ href, children, ...props }) => {
+export const CustomLink: FC<Props> = ({ href, children, ...props }) => {
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternalLink) {
     return (
       <Link href={href} {...props}>
-        {children} 
+        {children}
       </Link>
     );
   }
@@ -22,5 +22,3 @@ const CustomLink: FC<Props> = ({ href, children, ...props }) => {
     </a>
   );
 };
-
-export default CustomLink;

@@ -1,12 +1,13 @@
-import { FC } from 'react';
+import { FC } from "react";
+import * as classNames from "classnames";
 
 interface Props {
-  className?: string
+  styleName?: string;
 }
 
-const InstillLogo: FC<Props> = ({ className="" }) => {
+export const InstillLogo: FC<Props> = ({ styleName }) => {
   return (
-    <div className={"m-auto " + className}>
+    <div className={classNames.default("m-auto", styleName)}>
       <svg
         width="96"
         height="20"
@@ -196,5 +197,3 @@ const InstillLogo: FC<Props> = ({ className="" }) => {
     </div>
   );
 };
-
-export default InstillLogo;
