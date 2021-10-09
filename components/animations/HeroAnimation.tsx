@@ -1,18 +1,16 @@
-import { FC } from 'react';
-import HeroAnimationFishDrip from './HeroAnimationFishDrip';
-import HeroAnimationMagicBall from './HeroAnimationMagicBall';
-import HeroAnimationMain from './HeroAnimationMain';
+import { FC } from "react";
+import { HeroAnimationFishDrip } from "./HeroAnimationFishDrip";
+import { HeroAnimationMagicBall } from "./HeroAnimationMagicBall";
+import { HeroAnimationMain } from "./HeroAnimationMain";
 
 interface Props {}
 
-const HeroAnimation: FC<Props> = () => {
+export const HeroAnimation: FC<Props> = () => {
   return (
-    <div style={{ display: 'grid' }}>
+    <div style={{ display: "grid" }}>
       <HeroAnimationFishDrip />
       <HeroAnimationMain />
       <HeroAnimationMagicBall />
     </div>
   );
 };
-
-export default HeroAnimation;
