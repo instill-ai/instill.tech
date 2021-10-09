@@ -1,22 +1,26 @@
-import { FC } from 'react';
-import CustomLink from '../CustomLink';
+import { FC } from "react";
+import CustomLink from "../CustomLink";
+import * as classNames from "classnames";
 
 interface Props {
   href: string;
   title: string;
-  className?: string | null;
+  styleName?: string;
 }
 
-const GeneralLinkButton: FC<Props> = ({ href, title, className=null }) => {
+export const GeneralLinkButton: FC<Props> = ({ href, title, styleName }) => {
   return (
     <CustomLink href={href}>
       <div className="flex">
-        <div className={"px-6 py-2 border border-gray-700 rounded-md cursor-pointer hover:bg-gray-200 " + className}>
+        <div
+          className={classNames.default(
+            "px-6 py-2 border border-gray-700 rounded-md cursor-pointer hover:bg-gray-200",
+            styleName
+          )}
+        >
           {title}
         </div>
       </div>
     </CustomLink>
   );
 };
-
-export default GeneralLinkButton;

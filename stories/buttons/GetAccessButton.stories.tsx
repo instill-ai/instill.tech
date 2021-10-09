@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import GetAccessButton from '../../components/buttons/GetAccessButton';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { GetAccessButton } from "../../components/buttons/GetAccessButton";
 
 export default {
-  title: 'Components/Button/GetAccessButton',
+  title: "Components/Button/GetAccessButton",
   component: GetAccessButton,
 } as ComponentMeta<typeof GetAccessButton>;
 
