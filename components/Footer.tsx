@@ -1,5 +1,5 @@
 import { FC } from "react";
-import CustomLink from "./CustomLink";
+import { CustomLink } from "./CustomLink";
 
 interface Props {}
 
