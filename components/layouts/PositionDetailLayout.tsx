@@ -1,13 +1,12 @@
-import { FC } from 'react';
-import { AirtablePositionRecord } from '../../types/airtable';
-import ReactMarkdown from 'react-markdown';
-import ReactMarkdownWrapper from '../ReactMarkdownWrapper';
+import { FC } from "react";
+import { AirtablePositionRecord } from "../../types/airtable";
+import { ReactMarkdownWrapper } from "../ReactMarkdownWrapper";
 
 interface Props {
   position: AirtablePositionRecord;
 }
 
-const PositionDetailLayout: FC<Props> = ({ position }) => {
+export const PositionDetailLayout: FC<Props> = ({ position }) => {
   return (
     <div className="flex flex-col font-sans">
       <h2 className="text-3xl font-semibold mb-2">{position.fields.title}</h2>
@@ -33,5 +32,3 @@ const PositionDetailLayout: FC<Props> = ({ position }) => {
     </div>
   );
 };
-
-export default PositionDetailLayout;
