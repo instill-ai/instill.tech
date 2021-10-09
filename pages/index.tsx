@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import HeroAnimation from '../components/animations/HeroAnimation';
-import TestAvatar from '../components/TestAvatar';
+import { FC } from "react";
+import { HeroAnimation } from "../components/animations/HeroAnimation";
+import { TestAvatar } from "../components/TestAvatar";
 
 interface Props {}
 

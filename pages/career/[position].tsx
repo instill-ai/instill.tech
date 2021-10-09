@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { getInstillOpenPositions } from '../../lib/airtable';
-import { AirtablePositionRecord } from '../../types/airtable';
-import { GetStaticProps, GetStaticPaths } from 'next';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
-import PositionDetailLayout from '../../components/layouts/PositionDetailLayout';
-import BaseContainer from '../../components/BaseContainer';
-import SectionContainer from '../../components/SectionContainer';
+import { FC } from "react";
+import { getInstillOpenPositions } from "../../lib/airtable";
+import { AirtablePositionRecord } from "../../types/airtable";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { NavBar } from "../../components/NavBar";
+import { Footer } from "../../components/Footer";
+import { PositionDetailLayout } from "../../components/layouts/PositionDetailLayout";
+import { BaseContainer } from "../../components/BaseContainer";
+import { SectionContainer } from "../../components/SectionContainer";
 
 interface Props {
   position: AirtablePositionRecord;
@@ -47,15 +47,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   positions.map((position) => {
     slugs.push({
       params: {
-        position: position.fields.slug
-      }
-    })
-  })
+        position: position.fields.slug,
+      },
+    });
+  });
 
   return {
     paths: slugs,
     fallback: false,
-  }
-}
+  };
+};
 
 export default Career;
