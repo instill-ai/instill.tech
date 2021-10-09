@@ -1,11 +1,11 @@
-import { FC } from 'react';
-import FishDripSVG from '../../assets/animation/hero-animation-fish-drip.svg';
+import { FC } from "react";
+import FishDripSVG from "../../assets/animation/hero-animation-fish-drip.svg";
 
 interface Props {}
 
-const HeroAnimationFishDrip: FC<Props> = () => {
+export const HeroAnimationFishDrip: FC<Props> = () => {
   return (
-    <div style={{ gridArea: '1/1', zIndex: 1 }}>
+    <div style={{ gridArea: "1/1", zIndex: 1 }}>
       <FishDripSVG />
       <style global jsx>
         {`
@@ -457,5 +457,3 @@ const HeroAnimationFishDrip: FC<Props> = () => {
     </div>
   );
 };
-
-export default HeroAnimationFishDrip;
