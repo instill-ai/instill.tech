@@ -1,16 +1,20 @@
 import { FC } from "react";
+import * as classNames from "classnames";
 
 interface Props {
   headlineText: string;
-  className?: string;
+  styleName?: string;
 }
 
-const Headline: FC<Props> = ({ headlineText, className="" }) => {
+export const Headline: FC<Props> = ({ headlineText, styleName }) => {
   return (
-    <h1 className={"font-sans text-center text-black font-semibold text-6xl " + className}>
-      { headlineText }
+    <h1
+      className={classNames.default(
+        "font-sans text-center text-black font-semibold text-6xl",
+        styleName
+      )}
+    >
+      {headlineText}
     </h1>
-  )
-}
-
-export default Headline
+  );
+};

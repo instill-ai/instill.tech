@@ -1,16 +1,20 @@
 import { FC } from 'react';
+import * as classNames from 'classnames';
 
 interface Props {
   subHeadlineText: string;
-  className?: string;
+  styleName?: string;
 }
 
-const SubHeadline: FC<Props> = ({ subHeadlineText, className = '' }) => {
+export const SubHeadline: FC<Props> = ({ subHeadlineText, styleName }) => {
   return (
-    <h2 className={"mx-auto font-sans font-normal text-center text-xl text-[#667085] max-w-3xl " + className }>
+    <h2
+      className={classNames.default(
+        'mx-auto font-sans font-normal text-center text-xl text-[#667085] max-w-3xl',
+        styleName
+      )}
+    >
       {subHeadlineText}
     </h2>
   );
 };
-
-export default SubHeadline;
