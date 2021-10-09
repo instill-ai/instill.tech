@@ -8,9 +8,8 @@ interface Props {
 
 const TestAvatar: FC<Props> = ({ sizeStyle }) => {
   return (
-    <div className={"relative " + sizeStyle}>
+    <div className={"relative rounded-full object-contain " + sizeStyle}>
       <Image
-        className="rounded-full object-contain"
         alt="test avatar"
         src="/images/test-avatar.png"
         layout="fill"

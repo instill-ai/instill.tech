@@ -1,24 +1,23 @@
-import { FC } from 'react';
-import ArrowRightShortIcon from './icons/ArrowRightShortIcon';
+import { FC } from "react";
+import * as classNames from "classnames";
+import ArrowRightShortIcon from "./icons/ArrowRightShortIcon";
 
 interface Props {
   featureName: string;
-  className: string;
+  styleName: string;
 }
 
-const NewFeatureBanner: FC<Props> = ({ featureName, className = '' }) => {
+export const NewFeatureBanner: FC<Props> = ({ featureName, styleName }) => {
   return (
     <button
-      className={
-        'mx-auto rounded-full p-1 flex flex-row bg-[#063FD1] bg-opacity-[13%] font-sans font-normal ' +
-        className
-      }
+      className={classNames.default(
+        "mx-auto rounded-full p-1 flex flex-row bg-[#063FD1] bg-opacity-[13%] font-sans font-normal",
+        styleName
+      )}
     >
       <span className="rounded-full px-2 bg-white mr-4">New feature</span>
       <p className="mr-1">{featureName}</p>
-      <ArrowRightShortIcon className={'w-6 h-6 text-[#063FD1]'} />
+      <ArrowRightShortIcon className={"w-6 h-6 text-[#063FD1]"} />
     </button>
   );
 };
-
-export default NewFeatureBanner;
