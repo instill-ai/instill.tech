@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { CareerPage } from "../../pages/career";
-import ContextWrapper from "../../contexts/ContextWrapper";
+import CareerPage from "../../pages/career";
 
 export default {
   title: "Pages/Career/index",

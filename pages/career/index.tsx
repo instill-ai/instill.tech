@@ -12,7 +12,7 @@ interface Props {
   positions: AirtablePositionRecord[];
 }
 
-export const CareerPage: FC<Props> = ({ positions }) => {
+const CareerPage: FC<Props> = ({ positions }) => {
   return (
     <BaseContainer>
       <SectionContainer>
@@ -26,6 +26,8 @@ export const CareerPage: FC<Props> = ({ positions }) => {
     </BaseContainer>
   );
 };
+
+export default CareerPage;
 
 export const getStaticProps = async () => {
   const positions = await getInstillOpenPositions();

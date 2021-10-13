@@ -28,6 +28,8 @@ const Career: FC<Props> = ({ position }) => {
   );
 };
 
+export default Career;
+
 export const getStaticProps: GetStaticProps = async (context) => {
   // We duplicate the request, if we want to solve this problem, we can cache data at local file.
   const positions: AirtablePositionRecord[] = await getInstillOpenPositions();
@@ -58,4 +60,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Career;
+
