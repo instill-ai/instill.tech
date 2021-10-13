@@ -3,9 +3,13 @@ import { FC, useEffect } from "react";
 interface Props {}
 
 const blockSize = 200;
+const blockTypeAmount = 5;
 const baseStrokeColor = "#000000";
 const baseStrokeWidth = 4;
 const colorNum = 6;
+const rowSize = 3;
+const columnSize = 3;
+
 
 const color = {
   yellowSun: "#FFFF1A",
@@ -22,6 +26,8 @@ export const RectBlock: FC<Props> = () => {
   useEffect(() => {
     const canvas: HTMLCanvasElement = getCanvasElementById("generator-canvas");
 
+    console.log(generateTargetMetric(rowSize, columnSize))
+
     canvas.width = 610;
     canvas.height = 610;
 
@@ -35,11 +41,11 @@ export const RectBlock: FC<Props> = () => {
     x = newPoint.x;
     y = newPoint.y;
 
-    const newpoint2 = constructHorizontalRectBlock(ctx, x, y)
-    x = newpoint2.x
-    y = newpoint2.y
-    
-    constructBackslashTriangleBlock(ctx, x, y)
+    const newpoint2 = constructHorizontalRectBlock(ctx, x, y);
+    x = newpoint2.x;
+    y = newpoint2.y;
+
+    constructBackslashTriangleBlock(ctx, x, y);
 
     // ctx.fillStyle = colorArray[randNum];
     // console.log(colorArray[randNum]);
@@ -95,13 +101,14 @@ const getCanvasRendering2DContext = (canvas: HTMLCanvasElement): CanvasRendering
 };
 
 const getRandomInt = (max: number): number => {
+  // If max = 2, it will return 0 or 1
   return Math.floor(Math.random() * max);
 };
 
 const constructVerticalRectBlock = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
   const width = blockSize / 2;
   const height = blockSize;
-  
+
   // Build fillRect first to make sure stroke won't cover by fillRect
   let randNum: number = getRandomInt(colorNum - 1);
   ctx.fillStyle = colorArray[randNum];
@@ -149,14 +156,14 @@ const constructHorizontalRectBlock = (ctx: CanvasRenderingContext2D, x: number, 
 
   return {
     x: x + blockSize,
-    y: y
-  }
+    y: y,
+  };
 };
 
 const constructBackslashTriangleBlock = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
   const width = blockSize;
   const height = blockSize;
-  
+
   // In order to avoid fillrect cover stroke, we draw fillRect then strokeRect
 
   let randNum: number = getRandomInt(colorNum - 1);
@@ -178,7 +185,7 @@ const constructBackslashTriangleBlock = (ctx: CanvasRenderingContext2D, x: numbe
   ctx.lineWidth = baseStrokeWidth;
   ctx.strokeStyle = baseStrokeColor;
   ctx.beginPath();
-  ctx.lineJoin = "round"
+  ctx.lineJoin = "round";
   ctx.moveTo(x, y);
   ctx.lineTo(x, y + height);
   ctx.lineTo(x + width, y + height);
@@ -188,7 +195,7 @@ const constructBackslashTriangleBlock = (ctx: CanvasRenderingContext2D, x: numbe
   ctx.lineWidth = baseStrokeWidth;
   ctx.strokeStyle = baseStrokeColor;
   ctx.beginPath();
-  ctx.lineJoin = "round"
+  ctx.lineJoin = "round";
   ctx.moveTo(x, y);
   ctx.lineTo(x + width, y);
   ctx.lineTo(x + width, y + height);
@@ -219,7 +226,7 @@ const constructSlashTriangleBlock = (ctx: CanvasRenderingContext2D, x: number, y
   ctx.lineWidth = baseStrokeWidth;
   ctx.strokeStyle = baseStrokeColor;
   ctx.beginPath();
-  ctx.lineJoin = "round"
+  ctx.lineJoin = "round";
   ctx.moveTo(x, y);
   ctx.lineTo(x, y + height);
   ctx.lineTo(x + width, y);
@@ -229,7 +236,7 @@ const constructSlashTriangleBlock = (ctx: CanvasRenderingContext2D, x: number, y
   ctx.lineWidth = baseStrokeWidth;
   ctx.strokeStyle = baseStrokeColor;
   ctx.beginPath();
-  ctx.lineJoin = "round"
+  ctx.lineJoin = "round";
   ctx.moveTo(x, y + height);
   ctx.lineTo(x + width, y + height);
   ctx.lineTo(x + width, y);
@@ -238,9 +245,9 @@ const constructSlashTriangleBlock = (ctx: CanvasRenderingContext2D, x: number, y
 
   return {
     x: x + blockSize,
-    y: y
-  }
-}
+    y: y,
+  };
+};
 
 const constructBlankBLock = (ctx: CanvasRenderingContext2D, x: number, y: number) => {
   const width = blockSize;
@@ -256,6 +263,18 @@ const constructBlankBLock = (ctx: CanvasRenderingContext2D, x: number, y: number
 
   return {
     x: x + blockSize,
-    y: y
+    y: y,
+  };
+};
+
+const generateTargetMetric = (rowSize: number, columnSize: number) => {
+  let row = [];
+  for (let i = 0; i < rowSize; i++) {
+    let column = [];
+    for (let j = 0; j < columnSize; j++) {
+      column[j] = getRandomInt(blockTypeAmount);
+    }
+    row[i] = column;
   }
-}
+  return row
+};
