@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { HeroAnimation } from "../../components/animations/HeroAnimation";
+import { HeroAnimation } from "../../components/ui/animations/HeroAnimation";
 
 export default {
   title: "Components/Animation/HeroAnimation",

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import * as classNames from "classnames";
-import { ArrowRightShortIcon } from "./icons/ArrowRightShortIcon";
+import { ArrowRightShortIcon } from "./ui/icons/ArrowRightShortIcon";
 
 interface Props {
   featureName: string;

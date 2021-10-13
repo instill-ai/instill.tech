@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Footer } from "../components/Footer";
+import { Footer } from "../components/ui/common/Footer";
 import { Headline } from "../components/ui/texts/Headline";
 import { HeadCTAGroup } from "../components/layouts/HeadCTAGroup";
-import { Header } from "../components/layouts/Header";
+import { Header } from "../components/ui/common/Header";
 import { NewFeatureBanner } from "../components/NewFeatureBanner";
-import { SectionContainer } from "../components/SectionContainer";
+import { SectionContainer } from "../components/layouts/SectionContainer";
 import { SubHeadline } from "../components/ui/texts/SubHeadline";
 import { TestMainScreenMockup } from "../components/TestMainScreenMockup";
 

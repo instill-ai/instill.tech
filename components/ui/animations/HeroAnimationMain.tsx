@@ -1,5 +1,5 @@
 import { FC } from "react";
-import MainSVG from "../../assets/animation/hero-animation-main.svg";
+import MainSVG from "../../../assets/animation/hero-animation-main.svg";
 
 interface Props {}
 

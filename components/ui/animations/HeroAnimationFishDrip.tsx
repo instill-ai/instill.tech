@@ -1,5 +1,5 @@
 import { FC } from "react";
-import FishDripSVG from "../../assets/animation/hero-animation-fish-drip.svg";
+import FishDripSVG from "../../../assets/animation/hero-animation-fish-drip.svg";
 
 interface Props {}
 

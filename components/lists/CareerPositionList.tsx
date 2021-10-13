@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AirtablePositionRecord } from "../../types/airtable";
-import { CustomLink } from "../CustomLink";
+import { CustomLink } from "../ui/common/CustomLink";
 
 interface Props {
   positions: AirtablePositionRecord[];
