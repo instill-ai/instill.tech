@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { CTAPlayDemoButton } from "../buttons/CTAPlayDemoButton";
-import { CTASignUpButton } from "../buttons/CTASignUpButton";
+import { CTAPlayDemoButton } from "../ui/buttons/CTAPlayDemoButton";
+import { CTASignUpButton } from "../ui/buttons/CTASignUpButton";
 import * as classNames from "classnames";
 
 interface Props {

@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { CTAPlayDemoButton } from "../../components/buttons/CTAPlayDemoButton";
+import { CTAPlayDemoButton } from "../../components/ui/buttons/CTAPlayDemoButton";
 
 export default {
   title: "Components/Button/CTAPlayDemoButton",
