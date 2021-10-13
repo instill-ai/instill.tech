@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CareerMainPageContext } from "../../components/CareerMainPageContext";
+import { CareerMainPageContext } from "../../components/ui/texts/CareerMainPageContext";
 import { CareerPositionList } from "../../components/lists/CareerPositionList";
 import { getInstillOpenPositions } from "../../lib/airtable";
 import { AirtablePositionRecord } from "../../types/airtable";
