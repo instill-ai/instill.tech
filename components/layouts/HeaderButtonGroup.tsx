@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { HeaderButtonType } from "../../types/buttons";
-import { HeaderButton } from "../buttons/HeaderButton";
+import { HeaderButton } from "../ui/buttons/HeaderButton";
 
 interface Props {
   gapStyle: string;

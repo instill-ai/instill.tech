@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevonDownIcon } from "../icons/ChevonDownIcon";
+import { ChevonDownIcon } from "../../icons/ChevonDownIcon";
 
 interface Props {
   withChevon: boolean;

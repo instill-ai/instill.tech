@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GeneralLinkButton } from "./buttons/GeneralLinkButton";
+import { GeneralLinkButton } from "./ui/buttons/GeneralLinkButton";
 
 interface Props {}
 

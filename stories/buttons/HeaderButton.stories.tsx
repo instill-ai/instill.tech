@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { HeaderButton } from "../../components/buttons/HeaderButton";
+import { HeaderButton } from "../../components/ui/buttons/HeaderButton";
 
 export default {
   title: "Components/Button/HeaderButton",

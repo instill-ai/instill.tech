@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PlayIcon } from "../icons/PlayIcon";
+import { PlayIcon } from "../../icons/PlayIcon";
 
 interface Props {}
 
