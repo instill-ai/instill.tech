@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { GeneralLinkButton } from "../../components/ui/buttons/GeneralLinkButton";
+import { GeneralLinkButton } from "../../../components/ui/buttons/GeneralLinkButton";
 
 export default {
   title: "Components/Button/GeneralLinkButton",
