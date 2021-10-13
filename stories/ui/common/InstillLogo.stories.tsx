@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { InstillLogo } from "../components/ui/common/InstillLogo";
+import { InstillLogo } from "../../../components/ui/common/InstillLogo";
 
 export default {
   title: "Components/Logo",
