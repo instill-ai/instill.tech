@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SubHeadline } from "../components/ui/texts/SubHeadline";
+import { SubHeadline } from "../../../components/ui/texts/SubHeadline";
 
 export default {
   title: "Components/SubHeadline",
