@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { GetAccessButton } from "./ui/buttons/GetAccessButton";
-import { InstillLogo } from "./InstillLogo";
+import { InstillLogo } from "./ui/common/InstillLogo";
 
 interface Props {}
 

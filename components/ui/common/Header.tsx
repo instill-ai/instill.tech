@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { HeaderButtonType } from "../../types/buttons";
-import { InstillLogo } from "../InstillLogo";
-import { TestAvatar } from "../TestAvatar";
-import { HeaderButtonGroup } from "./HeaderButtonGroup";
+import { HeaderButtonType } from "../../../types/buttons";
+import { InstillLogo } from "./InstillLogo";
+import { TestAvatar } from "../../TestAvatar";
+import { HeaderButtonGroup } from "../../layouts/HeaderButtonGroup";
 
 export interface Props {
   buttons?: HeaderButtonType[];

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { HeroAnimation } from "../components/animations/HeroAnimation";
+import { HeroAnimation } from "../components/ui/animations/HeroAnimation";
 import { TestAvatar } from "../components/TestAvatar";
 
 interface Props {}
