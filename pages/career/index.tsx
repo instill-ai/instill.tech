@@ -3,10 +3,10 @@ import { CareerMainPageContext } from "../../components/ui/texts/CareerMainPageC
 import { CareerPositionList } from "../../components/lists/CareerPositionList";
 import { getInstillOpenPositions } from "../../lib/airtable";
 import { AirtablePositionRecord } from "../../types/airtable";
-import { BaseContainer } from "../../components/BaseContainer";
-import { SectionContainer } from "../../components/SectionContainer";
+import { BaseContainer } from "../../components/layouts/BaseContainer";
+import { SectionContainer } from "../../components/layouts/SectionContainer";
 import { NavBar } from "../../components/NavBar";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../../components/ui/common/Footer";
 
 interface Props {
   positions: AirtablePositionRecord[];

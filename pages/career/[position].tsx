@@ -3,10 +3,10 @@ import { getInstillOpenPositions } from "../../lib/airtable";
 import { AirtablePositionRecord } from "../../types/airtable";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { NavBar } from "../../components/NavBar";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../../components/ui/common/Footer";
 import { PositionDetailLayout } from "../../components/layouts/PositionDetailLayout";
-import { BaseContainer } from "../../components/BaseContainer";
-import { SectionContainer } from "../../components/SectionContainer";
+import { BaseContainer } from "../../components/layouts/BaseContainer";
+import { SectionContainer } from "../../components/layouts/SectionContainer";
 
 interface Props {
   position: AirtablePositionRecord;

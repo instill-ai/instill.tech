@@ -1,5 +1,5 @@
 import { FC } from "react";
-import MagicBallSVG from "../../assets/animation/hero-animation-magic-ball.svg";
+import MagicBallSVG from "../../../assets/animation/hero-animation-magic-ball.svg";
 
 interface Props {}
 
