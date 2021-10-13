@@ -3,7 +3,7 @@
   "rules": {
     // We have to check this won't affect object iteral
     "no-multi-spaces": "warn",
-    
+
     // We don't accept using js or ts file extensions for React component
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
@@ -95,6 +95,9 @@
         "component": true,
         "html": true
       }
-    ]
+    ],
+    // Declaring only one component per file improves readability and reusability of components.
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
+    "react/no-multi-comp": ["error", { "ignoreStateless": false }]
   }
 }
