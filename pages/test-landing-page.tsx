@@ -10,7 +10,7 @@ import { TestMainScreenMockup } from "../components/TestMainScreenMockup";
 
 interface Props {}
 
-export const TestLandingPage: FC<Props> = () => {
+const TestLandingPage: FC<Props> = () => {
   return (
     <SectionContainer>
       <div className="flex flex-col">
@@ -30,3 +30,5 @@ export const TestLandingPage: FC<Props> = () => {
     </SectionContainer>
   );
 };
+
+export default TestLandingPage;
