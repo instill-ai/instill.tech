@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import {
-  prepateCanvas,
+  prepareCanvas,
   switchBlockConstructor,
 } from "../../lib/generator/rect-block-generator";
 import { RectGeneratorInfo } from "../../types/generator";
@@ -27,9 +27,9 @@ export const rectGeneratorColor = {
   heliotrope: "#C65AFF",
 };
 
-export const RectBlock: FC<Props> = () => {
+export const RectGenerator: FC<Props> = () => {
   useEffect(() => {
-    const { ctx, metric } = prepateCanvas("generator-canvas", rectGeneratorInfo);
+    const { ctx, metric } = prepareCanvas("generator-canvas", rectGeneratorInfo);
 
     for (let i = 0; i < metric.length; i++) {
       const row = metric[i];
