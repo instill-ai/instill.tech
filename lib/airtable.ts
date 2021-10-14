@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AirtablePositionRecord } from "../../types/airtable";
+import { AirtablePositionRecord } from "../types/airtable";
 
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 const AIRTABLE_CAREER_BASE_ID = process.env.AIRTABLE_CAREER_BASE_ID;
