@@ -1,5 +1,6 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import {
+  generateTargetMetric,
   prepareCanvas,
   switchBlockConstructor,
 } from "../../lib/generator/rect-block-generator";
@@ -28,9 +29,16 @@ export const rectGeneratorColor = {
 };
 
 export const RectGenerator: FC<Props> = () => {
-  useEffect(() => {
-    const { ctx, metric } = prepareCanvas("generator-canvas", rectGeneratorInfo);
+  const newMetric = generateTargetMetric(rectGeneratorInfo);
+  const [metric, setMetric] = useState<number[][]>(newMetric);
 
+  const generateMetric = () => {
+    const newMetric = generateTargetMetric(rectGeneratorInfo);
+    setMetric(newMetric);
+  };
+
+  const generateDiagram = () => {
+    const { ctx } = prepareCanvas("generator-canvas", rectGeneratorInfo);
     for (let i = 0; i < metric.length; i++) {
       const row = metric[i];
       let x = rectGeneratorInfo.canvasPadding;
@@ -42,7 +50,24 @@ export const RectGenerator: FC<Props> = () => {
         }
       }
     }
-  }, []);
+  };
 
-  return <canvas id="generator-canvas"></canvas>;
+  useEffect(() => {
+    generateDiagram();
+  }, [metric]);
+
+  const refresh = () => {
+    generateMetric();
+  };
+
+  return (
+    <div className="flex flex-col">
+      <div className="px-[10px]">
+        <button className="px-2 border border-gray-600 text-sm" onClick={refresh}>refresh-diagram</button>
+      </div>
+      <div>
+        <canvas id="generator-canvas"></canvas>
+      </div>
+    </div>
+  );
 };
