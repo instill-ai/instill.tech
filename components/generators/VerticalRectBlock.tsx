@@ -19,5 +19,5 @@ export const VerticalRectBlock: FC<Props> = () => {
     );
   }, []);
 
-  return <canvas id={id}></canvas>;
+  return <canvas id={id} />;
 };

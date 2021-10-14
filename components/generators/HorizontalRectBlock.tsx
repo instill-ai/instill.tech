@@ -19,5 +19,5 @@ export const HorizontalRectBlock: FC<Props> = () => {
     );
   }, []);
 
-  return <canvas id={id}></canvas>;
+  return <canvas id={id} />;
 };
