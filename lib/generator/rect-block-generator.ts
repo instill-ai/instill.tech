@@ -97,7 +97,7 @@ export const switchBlockConstructor = (
       };
     }
     case 4: {
-      const newPosition = constructBlankBLock(ctx, x, y, rectGeneratorInfo);
+      const newPosition = constructBlankBlock(ctx, x, y, rectGeneratorInfo);
       return {
         x: newPosition.x,
         y: newPosition.y,
@@ -111,7 +111,7 @@ export const switchBlockConstructor = (
   }
 };
 
-export const constructBlankBLock = (
+export const constructBlankBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -181,6 +181,10 @@ export const constructSlashTriangleBlock = (
   ctx.lineTo(x, y + height);
   ctx.stroke();
 
+  ctx.lineWidth = rectGeneratorInfo.baseStrokeWidth;
+  ctx.strokeStyle = rectGeneratorInfo.baseStrokeColor;
+  ctx.strokeRect(x, y, width, height);
+  
   return {
     x: x + rectGeneratorInfo.blockSize,
     y: y,
@@ -234,6 +238,10 @@ export const constructBackslashTriangleBlock = (
   ctx.lineTo(x + width, y + height);
   ctx.moveTo(x, y);
   ctx.stroke();
+
+  ctx.lineWidth = rectGeneratorInfo.baseStrokeWidth;
+  ctx.strokeStyle = rectGeneratorInfo.baseStrokeColor;
+  ctx.strokeRect(x, y, width, height);
 
   return {
     x: x + rectGeneratorInfo.blockSize,
