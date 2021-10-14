@@ -1,11 +1,11 @@
 import { RectGeneratorInfo } from "../../types/generator";
 import { getRandomInt } from "../utilities";
 
-export const prepateCanvas = (
+export const prepareCanvas = (
   id: string,
   rectGeneratorInfo: RectGeneratorInfo
 ): { canvas: HTMLCanvasElement; metric: number[][]; ctx: CanvasRenderingContext2D } => {
-  const canvas: HTMLCanvasElement = getCanvasElementById("generator-canvas");
+  const canvas: HTMLCanvasElement = getCanvasElementById(id);
   const metric = generateTargetMetric(rectGeneratorInfo);
 
   canvas.width =
