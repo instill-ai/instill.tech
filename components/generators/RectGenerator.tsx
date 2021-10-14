@@ -1,15 +1,13 @@
 import { FC, useEffect } from "react";
 import {
-  generateTargetMetric,
-  getCanvasElementById,
-  getCanvasRendering2DContext,
+  prepateCanvas,
   switchBlockConstructor,
 } from "../../lib/generator/rect-block-generator";
 import { RectGeneratorInfo } from "../../types/generator";
 
 interface Props {}
 
-const rectGeneratorInfo: RectGeneratorInfo = {
+export const rectGeneratorInfo: RectGeneratorInfo = {
   blockSize: 200,
   blockTypeCount: 5,
   baseStrokeColor: "#000000",
@@ -20,7 +18,7 @@ const rectGeneratorInfo: RectGeneratorInfo = {
   colorArray: ["#FFFF1A", "#FCB21B", "#27FC86", "#3EEDFF", "#F75FFF", "#C65AFF"],
 };
 
-export const RectGeneratorColor = {
+export const rectGeneratorColor = {
   yellowSun: "#FFFF1A",
   brightYellow: "#FCB21B",
   guppieGreen: "#27FC86",
@@ -31,16 +29,7 @@ export const RectGeneratorColor = {
 
 export const RectBlock: FC<Props> = () => {
   useEffect(() => {
-    const canvas: HTMLCanvasElement = getCanvasElementById("generator-canvas");
-    const metric = generateTargetMetric(rectGeneratorInfo);
-    canvas.width =
-      rectGeneratorInfo.blockSize * rectGeneratorInfo.columnCount +
-      rectGeneratorInfo.canvasPadding * 2;
-    canvas.height =
-      rectGeneratorInfo.blockSize * rectGeneratorInfo.rowCount +
-      rectGeneratorInfo.canvasPadding * 2;
-
-    const ctx: CanvasRenderingContext2D = getCanvasRendering2DContext(canvas);
+    const { ctx, metric } = prepateCanvas("generator-canvas", rectGeneratorInfo);
 
     for (let i = 0; i < metric.length; i++) {
       const row = metric[i];
