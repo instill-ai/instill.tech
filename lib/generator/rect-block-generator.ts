@@ -1,5 +1,5 @@
 import { RectGeneratorInfo } from "../../types/generator";
-import { getRandomInt } from "../utilities";
+import { getNonDuplicatedRandomInt, getRandomInt } from "../utilities";
 
 export const prepareCanvas = (
   id: string,
@@ -144,8 +144,8 @@ export const constructSlashTriangleBlock = (
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize;
   const colorLength = rectGeneratorInfo.colorArray.length - 1;
+  
   let randNum: number = getRandomInt(colorLength);
-
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.beginPath();
   ctx.moveTo(x, y);
@@ -153,7 +153,7 @@ export const constructSlashTriangleBlock = (
   ctx.lineTo(x + width, y);
   ctx.fill();
 
-  randNum = getRandomInt(colorLength);
+  randNum = getNonDuplicatedRandomInt(colorLength, randNum);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.beginPath();
   ctx.moveTo(x, y + height);
@@ -211,7 +211,7 @@ export const constructBackslashTriangleBlock = (
   ctx.lineTo(x + width, y + height);
   ctx.fill();
 
-  randNum = getRandomInt(colorLength);
+  randNum = getNonDuplicatedRandomInt(colorLength, randNum);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.beginPath();
   ctx.moveTo(x, y);
@@ -249,7 +249,7 @@ export const constructBackslashTriangleBlock = (
   };
 };
 
-const constructVerticalRectBlock = (
+export const constructVerticalRectBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -264,7 +264,7 @@ const constructVerticalRectBlock = (
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.fillRect(x, y, width, height);
 
-  randNum = getRandomInt(colorLength);
+  randNum = getNonDuplicatedRandomInt(colorLength, randNum);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.fillRect(x + width, y, width, height);
 
@@ -284,7 +284,7 @@ const constructVerticalRectBlock = (
   };
 };
 
-const constructHorizontalRectBlock = (
+export const constructHorizontalRectBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -293,12 +293,12 @@ const constructHorizontalRectBlock = (
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize / 2;
   const colorLength = rectGeneratorInfo.colorArray.length - 1;
-  let randNum: number = getRandomInt(colorLength);
 
+  let randNum: number = getRandomInt(colorLength);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.fillRect(x, y, width, height);
 
-  randNum = getRandomInt(colorLength);
+  randNum = getNonDuplicatedRandomInt(colorLength, randNum);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.fillRect(x, y + height, width, height);
 
