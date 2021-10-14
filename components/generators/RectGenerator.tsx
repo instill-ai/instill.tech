@@ -1,3 +1,4 @@
+import { useCallback } from "@storybook/addons";
 import { FC, useEffect, useState } from "react";
 import {
   generateTargetMetric,
@@ -37,7 +38,7 @@ export const RectGenerator: FC<Props> = () => {
     setMetric(newMetric);
   };
 
-  const generateDiagram = () => {
+  const generateDiagram = useCallback(() => {
     const { ctx } = prepareCanvas("generator-canvas", rectGeneratorInfo);
     for (let i = 0; i < metric.length; i++) {
       const row = metric[i];
@@ -50,11 +51,11 @@ export const RectGenerator: FC<Props> = () => {
         }
       }
     }
-  };
+  }, [metric]);
 
   useEffect(() => {
     generateDiagram();
-  }, [metric]);
+  }, [generateDiagram]);
 
   const refresh = () => {
     generateMetric();
@@ -66,7 +67,7 @@ export const RectGenerator: FC<Props> = () => {
         <button className="px-2 border border-gray-600 text-sm" onClick={refresh}>refresh-diagram</button>
       </div>
       <div>
-        <canvas id="generator-canvas"></canvas>
+        <canvas id="generator-canvas" />
       </div>
     </div>
   );

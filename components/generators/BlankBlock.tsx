@@ -16,5 +16,5 @@ export const BlankBlock: FC<Props> = () => {
     );
   }, []);
 
-  return <canvas id={id}></canvas>;
+  return <canvas id={id} />;
 };
