@@ -1,5 +1,4 @@
-import { useCallback } from "@storybook/addons";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useCallback } from "react";
 import {
   generateTargetMetric,
   prepareCanvas,
