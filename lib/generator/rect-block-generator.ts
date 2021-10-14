@@ -4,9 +4,8 @@ import { getNonDuplicatedRandomInt, getRandomInt } from "../utilities";
 export const prepareCanvas = (
   id: string,
   rectGeneratorInfo: RectGeneratorInfo
-): { canvas: HTMLCanvasElement; metric: number[][]; ctx: CanvasRenderingContext2D } => {
+): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } => {
   const canvas: HTMLCanvasElement = getCanvasElementById(id);
-  const metric = generateTargetMetric(rectGeneratorInfo);
 
   canvas.width =
     rectGeneratorInfo.blockSize * rectGeneratorInfo.columnCount +
@@ -19,7 +18,6 @@ export const prepareCanvas = (
 
   return {
     canvas,
-    metric,
     ctx,
   };
 };
