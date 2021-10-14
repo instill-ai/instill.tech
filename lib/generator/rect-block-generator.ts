@@ -1,6 +1,29 @@
 import { RectGeneratorInfo } from "../../types/generator";
 import { getRandomInt } from "../utilities";
 
+export const prepateCanvas = (
+  id: string,
+  rectGeneratorInfo: RectGeneratorInfo
+): { canvas: HTMLCanvasElement; metric: number[][]; ctx: CanvasRenderingContext2D } => {
+  const canvas: HTMLCanvasElement = getCanvasElementById("generator-canvas");
+  const metric = generateTargetMetric(rectGeneratorInfo);
+
+  canvas.width =
+    rectGeneratorInfo.blockSize * rectGeneratorInfo.columnCount +
+    rectGeneratorInfo.canvasPadding * 2;
+
+  canvas.height =
+    rectGeneratorInfo.blockSize * rectGeneratorInfo.rowCount + rectGeneratorInfo.canvasPadding * 2;
+
+  const ctx: CanvasRenderingContext2D = getCanvasRendering2DContext(canvas);
+
+  return {
+    canvas,
+    metric,
+    ctx,
+  };
+};
+
 export const getCanvasElementById = (id: string): HTMLCanvasElement => {
   const canvas = document.getElementById(id);
 
@@ -25,9 +48,7 @@ export const getCanvasRendering2DContext = (
   return context;
 };
 
-export const generateTargetMetric = (
-  rectGeneratorInfo: RectGeneratorInfo
-): number[][] => {
+export const generateTargetMetric = (rectGeneratorInfo: RectGeneratorInfo): number[][] => {
   let row = [];
   for (let i = 0; i < rectGeneratorInfo.rowCount; i++) {
     let column = [];
