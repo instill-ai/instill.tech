@@ -8,8 +8,9 @@ import { rectGeneratorInfo } from "./RectGenerator";
 interface Props {}
 
 export const SlashBlock: FC<Props> = () => {
+  const id = "generator-canvas-slash-block"
   useEffect(() => {
-    const { ctx } = prepareCanvas("generator-canvas-slash-block", rectGeneratorInfo);
+    const { ctx } = prepareCanvas(id, rectGeneratorInfo);
     constructSlashTriangleBlock(
       ctx,
       rectGeneratorInfo.canvasPadding,
@@ -19,5 +20,5 @@ export const SlashBlock: FC<Props> = () => {
   }, []);
 
   
-  return <canvas id="generator-canvas-slash-block"></canvas>;
+  return <canvas id={id}></canvas>;
 };
