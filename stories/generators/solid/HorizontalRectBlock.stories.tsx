@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { HorizontalRectBlock } from "../../components/generators/solid/HorizontalRectBlock";
+import { HorizontalRectBlock } from "../../../components/generators/solid/HorizontalRectBlock";
 
 export default {
   title: "Components/generator/HorizontalRectBlock",
