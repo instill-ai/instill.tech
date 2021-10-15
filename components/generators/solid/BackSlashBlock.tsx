@@ -1,17 +1,18 @@
 import { FC, useEffect } from "react";
 import {
-  constructHorizontalRectBlock,
+  constructBackslashTriangleBlock,
   prepareCanvas,
-} from "../../lib/generator/rect-block-generator";
+} from "../../../lib/generator/rect-block-generator";
 import { rectGeneratorInfo } from "./RectGenerator";
 
 interface Props {}
 
-export const HorizontalRectBlock: FC<Props> = () => {
-  const id = "generator-canvas-horizontal-rect-block";
+export const BackSlashBlock: FC<Props> = () => {
+  const id = "generator-canvas-back-slash-block";
+
   useEffect(() => {
     const { ctx } = prepareCanvas(id, rectGeneratorInfo);
-    constructHorizontalRectBlock(
+    constructBackslashTriangleBlock(
       ctx,
       rectGeneratorInfo.canvasPadding,
       rectGeneratorInfo.canvasPadding,
