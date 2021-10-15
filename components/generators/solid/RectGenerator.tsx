@@ -3,8 +3,8 @@ import {
   generateTargetMetric,
   prepareCanvas,
   switchBlockConstructor,
-} from "../../lib/generator/rect-block-generator";
-import { RectGeneratorInfo } from "../../types/generator";
+} from "../../../lib/generator/rect-block-generator";
+import { RectGeneratorInfo } from "../../../types/generator";
 
 interface Props {}
 

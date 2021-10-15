@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { SlashBlock } from "../../components/generators/SlashBlock";
+import { SlashBlock } from "../../components/generators/solid/SlashBlock";
 
 export default {
   title: "Components/generator/SlashBlock",

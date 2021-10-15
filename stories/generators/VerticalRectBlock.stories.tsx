@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { VerticalRectBlock } from "../../components/generators/VerticalRectBlock";
+import { VerticalRectBlock } from "../../components/generators/solid/VerticalRectBlock";
 
 export default {
   title: "Components/generator/VerticalRectBlock",
