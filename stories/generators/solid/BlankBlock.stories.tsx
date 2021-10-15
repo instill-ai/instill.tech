@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { BlankBlock } from "../../components/generators/solid/BlankBlock";
+import { BlankBlock } from "../../../components/generators/solid/BlankBlock";
 
 export default {
   title: "Components/generator/BlankBlock",
