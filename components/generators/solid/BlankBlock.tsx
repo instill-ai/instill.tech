@@ -1,17 +1,14 @@
 import { FC, useEffect } from "react";
-import {
-  constructSlashTriangleBlock,
-  prepareCanvas,
-} from "../../lib/generator/rect-block-generator";
+import { constructBlankBlock, prepareCanvas } from "../../../lib/generator/rect-block-generator";
 import { rectGeneratorInfo } from "./RectGenerator";
 
 interface Props {}
 
-export const SlashBlock: FC<Props> = () => {
-  const id = "generator-canvas-slash-block"
+export const BlankBlock: FC<Props> = () => {
+  const id = "generator-canvas-blank-block";
   useEffect(() => {
     const { ctx } = prepareCanvas(id, rectGeneratorInfo);
-    constructSlashTriangleBlock(
+    constructBlankBlock(
       ctx,
       rectGeneratorInfo.canvasPadding,
       rectGeneratorInfo.canvasPadding,
@@ -19,6 +16,5 @@ export const SlashBlock: FC<Props> = () => {
     );
   }, []);
 
-  
   return <canvas id={id} />;
 };

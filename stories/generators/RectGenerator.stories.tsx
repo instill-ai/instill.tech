@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { RectGenerator } from "../../components/generators/RectGenerator";
+import { RectGenerator } from "../../components/generators/solid/RectGenerator";
 
 export default {
   title: "Components/generator/RectGenerator",

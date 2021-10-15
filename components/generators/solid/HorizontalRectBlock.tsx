@@ -1,14 +1,17 @@
 import { FC, useEffect } from "react";
-import { constructBlankBlock, prepareCanvas } from "../../lib/generator/rect-block-generator";
+import {
+  constructHorizontalRectBlock,
+  prepareCanvas,
+} from "../../../lib/generator/rect-block-generator";
 import { rectGeneratorInfo } from "./RectGenerator";
 
 interface Props {}
 
-export const BlankBlock: FC<Props> = () => {
-  const id = "generator-canvas-blank-block";
+export const HorizontalRectBlock: FC<Props> = () => {
+  const id = "generator-canvas-horizontal-rect-block";
   useEffect(() => {
     const { ctx } = prepareCanvas(id, rectGeneratorInfo);
-    constructBlankBlock(
+    constructHorizontalRectBlock(
       ctx,
       rectGeneratorInfo.canvasPadding,
       rectGeneratorInfo.canvasPadding,
