@@ -11,7 +11,9 @@
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier:fix": "prettier --write",
+    "prettier:check": "prettier --check"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.2",
@@ -41,10 +43,17 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "husky": "^7.0.0",
+    "lint-staged": "^11.2.3",
     "postcss": "^8.3.5",
     "prettier": "2.4.1",
     "tailwindcss": "^2.2.4",
     "typescript": "^4.4.3",
     "webpack-bundle-analyzer": "^4.3.0"
+  },
+  "lint-staged": {
+    "*.ts|tsx": [
+      "npm run prettier:fix",
+      "npm run lint"
+    ]
   }
 }
