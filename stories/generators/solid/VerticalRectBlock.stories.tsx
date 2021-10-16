@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { VerticalRectBlock } from "../../../components/generators/solid/VerticalRectBlock";
 
 export default {
-  title: "Components/generator/VerticalRectBlock",
+  title: "Components/generator/solid/VerticalRectBlock",
   component: VerticalRectBlock,
 } as ComponentMeta<typeof VerticalRectBlock>;
 
