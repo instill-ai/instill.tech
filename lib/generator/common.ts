@@ -1,3 +1,4 @@
+import { generatorInfo } from "../../components/generators/pixel/DiagramGenerator";
 import { GeneratorInfo } from "../../types/generator";
 
 export const prepareCanvas = (
@@ -8,10 +9,13 @@ export const prepareCanvas = (
 
   canvas.width =
     rectGeneratorInfo.blockSize * rectGeneratorInfo.columnCount +
-    rectGeneratorInfo.canvasPadding * 2;
+    rectGeneratorInfo.canvasPadding * 2 +
+    generatorInfo.baseStrokeWidth * 4;
 
   canvas.height =
-    rectGeneratorInfo.blockSize * rectGeneratorInfo.rowCount + rectGeneratorInfo.canvasPadding * 2;
+    rectGeneratorInfo.blockSize * rectGeneratorInfo.rowCount +
+    rectGeneratorInfo.canvasPadding * 2 +
+    generatorInfo.baseStrokeWidth * 4;
 
   const ctx: CanvasRenderingContext2D = getCanvasRendering2DContext(canvas);
 
