@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { prepareCanvas } from "../../../lib/generator/common";
 import { constructOptimizePixelDiagram } from "../../../lib/generator/pixel-block-generator";
-import { GeneratorInfo } from "../../../types/generator";
+import { PixelGeneratorInfo } from "../../../types/generator";
 
 interface Props {}
 
-export const generatorInfo: GeneratorInfo = {
+export const generatorInfo: PixelGeneratorInfo = {
   blockSize: 300,
   blockTypeCount: 5,
   baseStrokeColor: "#000000",
