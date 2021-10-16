@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { BlankBlock } from "../../../components/generators/solid/BlankBlock";
 
 export default {
-  title: "Components/generator/BlankBlock",
+  title: "Components/generator/solid/BlankBlock",
   component: BlankBlock,
 } as ComponentMeta<typeof BlankBlock>;
 

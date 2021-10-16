@@ -1,7 +1,6 @@
 import { FC, useEffect } from "react";
 import { prepareCanvas } from "../../../lib/generator/common";
 import { constructPixelBaseBlockAllRandom } from "../../../lib/generator/pixel-block-generator";
-import { getRandomInt } from "../../../lib/utilities";
 import { GeneratorInfo } from "../../../types/generator";
 
 interface Props {}

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { BaseBlock } from "../../../components/generators/pixel/BaseBlock";
 
 export default {
-  title: "Components/generator/BaseBlock",
+  title: "Components/generator/pixel/BaseBlock",
   component: BaseBlock,
 } as ComponentMeta<typeof BaseBlock>;
 
