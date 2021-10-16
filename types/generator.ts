@@ -1,4 +1,4 @@
-export interface RectGeneratorInfo {
+export interface GeneratorInfo {
   baseStrokeWidth: number;
   baseStrokeColor: string;
   colorArray: string[];
