@@ -1,4 +1,4 @@
-import { GeneratorInfo } from "../../types/generator";
+import { PixelGeneratorInfo } from "../../types/generator";
 import { getRandomInt } from "../utilities";
 
 // Method: choose how many pixel a block have -> choose the position
@@ -15,7 +15,7 @@ export const generateRandomPixelMetric = () => {
 export const constructPixelBaseBlock = (
   metric: number[],
   ctx: CanvasRenderingContext2D,
-  generatorInfo: GeneratorInfo,
+  generatorInfo: PixelGeneratorInfo,
   currentX: number,
   currentY: number
 ): void => {
@@ -36,7 +36,7 @@ export const constructPixelBaseBlock = (
 
 export const constructPixelBlockOutline = (
   ctx: CanvasRenderingContext2D,
-  generatorInfo: GeneratorInfo,
+  generatorInfo: PixelGeneratorInfo,
   currentX: number,
   currentY: number
 ): void => {
@@ -52,7 +52,7 @@ export const constructPixelBlockOutline = (
 
 export const constructPixelDiagram = (
   ctx: CanvasRenderingContext2D,
-  generatorInfo: GeneratorInfo
+  generatorInfo: PixelGeneratorInfo
 ): void => {
   let x: number;
   let y: number;
@@ -70,7 +70,7 @@ export const constructPixelDiagram = (
 
 export const constructOptimizePixelDiagram = (
   ctx: CanvasRenderingContext2D,
-  generatorInfo: GeneratorInfo
+  generatorInfo: PixelGeneratorInfo
 ): void => {
   for (let i = 1; i <= 9; i++) {
     const row = Math.ceil(i / 3);

@@ -7,5 +7,8 @@ export interface GeneratorInfo {
   rowCount: number;
   columnCount: number;
   canvasPadding: number;
-  blockBaseColor?: string;
+}
+
+export interface PixelGeneratorInfo extends GeneratorInfo {
+  blockBaseColor: string;
 }
