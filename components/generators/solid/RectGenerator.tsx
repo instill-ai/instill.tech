@@ -4,11 +4,11 @@ import {
   prepareCanvas,
   switchBlockConstructor,
 } from "../../../lib/generator/rect-block-generator";
-import { RectGeneratorInfo } from "../../../types/generator";
+import { GeneratorInfo } from "../../../types/generator";
 
 interface Props {}
 
-export const rectGeneratorInfo: RectGeneratorInfo = {
+export const rectGeneratorInfo: GeneratorInfo = {
   blockSize: 200,
   blockTypeCount: 5,
   baseStrokeColor: "#000000",

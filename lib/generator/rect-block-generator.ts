@@ -1,9 +1,9 @@
-import { RectGeneratorInfo } from "../../types/generator";
+import { GeneratorInfo } from "../../types/generator";
 import { getNonDuplicatedRandomInt, getRandomInt } from "../utilities";
 
 export const prepareCanvas = (
   id: string,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } => {
   const canvas: HTMLCanvasElement = getCanvasElementById(id);
 
@@ -46,7 +46,7 @@ export const getCanvasRendering2DContext = (
   return context;
 };
 
-export const generateTargetMetric = (rectGeneratorInfo: RectGeneratorInfo): number[][] => {
+export const generateTargetMetric = (rectGeneratorInfo: GeneratorInfo): number[][] => {
   let row = [];
   for (let i = 0; i < rectGeneratorInfo.rowCount; i++) {
     let column = [];
@@ -63,7 +63,7 @@ export const switchBlockConstructor = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   switch (typeNum) {
     case 0: {
@@ -113,7 +113,7 @@ export const constructBlankBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize;
@@ -137,12 +137,12 @@ export const constructSlashTriangleBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize;
   const colorLength = rectGeneratorInfo.colorArray.length - 1;
-  
+
   let randNum: number = getRandomInt(colorLength);
   ctx.fillStyle = rectGeneratorInfo.colorArray[randNum];
   ctx.beginPath();
@@ -182,7 +182,7 @@ export const constructSlashTriangleBlock = (
   ctx.lineWidth = rectGeneratorInfo.baseStrokeWidth;
   ctx.strokeStyle = rectGeneratorInfo.baseStrokeColor;
   ctx.strokeRect(x, y, width, height);
-  
+
   return {
     x: x + rectGeneratorInfo.blockSize,
     y: y,
@@ -193,7 +193,7 @@ export const constructBackslashTriangleBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize;
@@ -251,7 +251,7 @@ export const constructVerticalRectBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   const width = rectGeneratorInfo.blockSize / 2;
   const height = rectGeneratorInfo.blockSize;
@@ -286,7 +286,7 @@ export const constructHorizontalRectBlock = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rectGeneratorInfo: RectGeneratorInfo
+  rectGeneratorInfo: GeneratorInfo
 ) => {
   const width = rectGeneratorInfo.blockSize;
   const height = rectGeneratorInfo.blockSize / 2;
