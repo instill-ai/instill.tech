@@ -1,6 +1,6 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { prepareCanvas } from "../../../lib/generator/common";
-import { constructPixelDiagram } from "../../../lib/generator/pixel-block-generator";
+import { constructOptimizePixelDiagram } from "../../../lib/generator/pixel-block-generator";
 import { GeneratorInfo } from "../../../types/generator";
 
 interface Props {}
@@ -18,14 +18,27 @@ export const generatorInfo: GeneratorInfo = {
 };
 
 export const DiagramGenerator: FC<Props> = () => {
+  const [state, updateState] = useState(0);
   const id = "pixel-block-diagram-generator";
+  const forceUpdate = () => {
+    updateState(state + 1);
+  };
+
   useEffect(() => {
     const { ctx } = prepareCanvas(id, generatorInfo);
-    constructPixelDiagram(ctx, generatorInfo);
-  }, []);
+    constructOptimizePixelDiagram(ctx, generatorInfo);
+  }, [state]);
+
   return (
-    <div>
-      <canvas id={id} />
+    <div className="flex flex-col gap-y-2">
+      <div className="px-[10px]">
+        <button className="px-2 border border-gray-600 text-sm" onClick={forceUpdate}>
+          refresh-diagram
+        </button>
+      </div>
+      <div>
+        <canvas id={id} />
+      </div>
     </div>
   );
 };
