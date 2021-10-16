@@ -52,9 +52,9 @@
     "webpack-bundle-analyzer": "^4.3.0"
   },
   "lint-staged": {
-    "*.ts|tsx": [
+    "{*.ts|tsx, *.stories.ts|tsx}": [
       "npm run prettier:fix",
-      "npm run lint"
+      "eslint --fix"
     ]
   }
 }
