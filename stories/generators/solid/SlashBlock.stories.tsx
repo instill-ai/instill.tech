@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { SlashBlock } from "../../../components/generators/solid/SlashBlock";
 
 export default {
-  title: "Components/generator/SlashBlock",
+  title: "Components/generator/solid/SlashBlock",
   component: SlashBlock,
 } as ComponentMeta<typeof SlashBlock>;
 
