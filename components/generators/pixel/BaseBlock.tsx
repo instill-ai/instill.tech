@@ -1,11 +1,13 @@
 import { FC, useEffect } from "react";
 import { prepareCanvas } from "../../../lib/generator/common";
+import { constructPixelBaseBlockAllRandom } from "../../../lib/generator/pixel-block-generator";
+import { getRandomInt } from "../../../lib/utilities";
 import { GeneratorInfo } from "../../../types/generator";
 
 interface Props {}
 
 const generatorInfo: GeneratorInfo = {
-  blockSize: 200,
+  blockSize: 300,
   blockTypeCount: 5,
   baseStrokeColor: "#000000",
   baseStrokeWidth: 4,
@@ -20,6 +22,8 @@ export const BaseBlock: FC<Props> = () => {
 
   useEffect(() => {
     const { ctx } = prepareCanvas(id, generatorInfo);
+
+    constructPixelBaseBlockAllRandom(ctx, generatorInfo);
   }, []);
 
   return (
