@@ -7,4 +7,5 @@ export interface GeneratorInfo {
   rowCount: number;
   columnCount: number;
   canvasPadding: number;
+  blockBaseColor?: string;
 }
