@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { BackSlashBlock } from "../../components/generators/solid/BackSlashBlock";
+import { BackSlashBlock } from "../../../components/generators/solid/BackSlashBlock";
 
 export default {
   title: "Components/generator/BackSlashBlock",
