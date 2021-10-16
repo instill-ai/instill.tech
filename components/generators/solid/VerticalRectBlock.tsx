@@ -1,8 +1,6 @@
 import { FC, useEffect } from "react";
-import {
-  constructVerticalRectBlock,
-  prepareCanvas,
-} from "../../../lib/generator/rect-block-generator";
+import { prepareCanvas } from "../../../lib/generator/common";
+import { constructVerticalRectBlock } from "../../../lib/generator/rect-block-generator";
 import { rectGeneratorInfo } from "./RectGenerator";
 
 interface Props {}

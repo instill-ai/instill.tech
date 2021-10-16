@@ -1,7 +1,7 @@
 import { FC, useEffect, useState, useCallback } from "react";
+import { prepareCanvas } from "../../../lib/generator/common";
 import {
   generateTargetMetric,
-  prepareCanvas,
   switchBlockConstructor,
 } from "../../../lib/generator/rect-block-generator";
 import { GeneratorInfo } from "../../../types/generator";
@@ -63,7 +63,9 @@ export const RectGenerator: FC<Props> = () => {
   return (
     <div className="flex flex-col">
       <div className="px-[10px]">
-        <button className="px-2 border border-gray-600 text-sm" onClick={refresh}>refresh-diagram</button>
+        <button className="px-2 border border-gray-600 text-sm" onClick={refresh}>
+          refresh-diagram
+        </button>
       </div>
       <div>
         <canvas id="generator-canvas" />
