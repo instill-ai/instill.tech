@@ -48,3 +48,12 @@ export const getCanvasRendering2DContext = (
 
   return context;
 };
+
+export const shuffleArray = (array: any[]): any[] => {
+  let shuffled = array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+
+  return shuffled;
+};
