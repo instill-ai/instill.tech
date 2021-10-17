@@ -15,6 +15,7 @@ export const generatorInfo: PixelGeneratorInfo = {
   columnCount: 3,
   canvasPadding: 10,
   colorArray: ["#FFFF1A", "#FCB21B", "#27FC86", "#3EEDFF", "#F75FFF", "#C65AFF"],
+  metricType: "FullRandom",
 };
 
 export const DiagramGenerator: FC<Props> = () => {
