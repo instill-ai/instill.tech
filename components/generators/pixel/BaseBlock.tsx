@@ -5,7 +5,7 @@ import {
   constructPixelBaseBlock,
   generateTwoLayerRandomPixelMetric,
 } from "../../../lib/generator/pixel-block-generator";
-import { generatorInfo } from "./DiagramGenerator";
+import { initGeneratorInfo } from "./DiagramGenerator";
 
 interface Props {}
 
@@ -13,10 +13,10 @@ export const BaseBlock: FC<Props> = () => {
   const id = "pixel-base-block";
 
   useEffect(() => {
-    const { ctx } = prepareCanvas(id, generatorInfo);
+    const { ctx } = prepareCanvas(id, initGeneratorInfo);
     const metric = generateTwoLayerRandomPixelMetric();
-    constructPixelBaseBlock(metric, ctx, generatorInfo, 10, 10);
-    constructPixelBlockOutline(ctx, generatorInfo, 10, 10);
+    constructPixelBaseBlock(metric, ctx, initGeneratorInfo, 10, 10);
+    constructPixelBlockOutline(ctx, initGeneratorInfo, 10, 10);
   }, []);
 
   return (
