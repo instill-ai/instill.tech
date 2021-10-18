@@ -92,9 +92,3 @@ const Template = ({
 };
 
 export const Default = Template.bind({});
-
-Default.args = {
-  generatorInfo: {
-    blockSize: 600,
-  },
-};
