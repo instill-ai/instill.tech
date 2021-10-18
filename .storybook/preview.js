@@ -15,6 +15,12 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+    presetColors: [
+      {
+        color: "#000000",
+        title: "black"
+      }
+    ]
   },
 }
 
