@@ -3,9 +3,11 @@ import { prepareCanvas } from "../../../lib/generator/common";
 import { constructOptimizePixelDiagram } from "../../../lib/generator/pixel-block-generator";
 import { PixelGeneratorInfo } from "../../../types/generator";
 
-interface Props {}
+interface Props {
+  generatorInfo: PixelGeneratorInfo;
+}
 
-export const generatorInfo: PixelGeneratorInfo = {
+export const initGeneratorInfo: PixelGeneratorInfo = {
   blockSize: 300,
   blockTypeCount: 5,
   baseStrokeColor: "#000000",
@@ -18,7 +20,7 @@ export const generatorInfo: PixelGeneratorInfo = {
   metricType: "FullRandom",
 };
 
-export const DiagramGenerator: FC<Props> = () => {
+export const DiagramGenerator: FC<Props> = ({ generatorInfo = initGeneratorInfo }) => {
   const [state, updateState] = useState(0);
   const id = "pixel-block-diagram-generator";
   const forceUpdate = () => {
