@@ -1,20 +1,19 @@
-import { generatorInfo } from "../../components/generators/pixel/DiagramGenerator";
 import { GeneratorInfo } from "../../types/generator";
 
 export const prepareCanvas = (
   id: string,
-  rectGeneratorInfo: GeneratorInfo
+  generatorInfo: GeneratorInfo
 ): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } => {
   const canvas: HTMLCanvasElement = getCanvasElementById(id);
 
   canvas.width =
-    rectGeneratorInfo.blockSize * rectGeneratorInfo.columnCount +
-    rectGeneratorInfo.canvasPadding * 2 +
+    generatorInfo.blockSize * generatorInfo.columnCount +
+    generatorInfo.canvasPadding * 2 +
     generatorInfo.baseStrokeWidth * 4;
 
   canvas.height =
-    rectGeneratorInfo.blockSize * rectGeneratorInfo.rowCount +
-    rectGeneratorInfo.canvasPadding * 2 +
+    generatorInfo.blockSize * generatorInfo.rowCount +
+    generatorInfo.canvasPadding * 2 +
     generatorInfo.baseStrokeWidth * 4;
 
   const ctx: CanvasRenderingContext2D = getCanvasRendering2DContext(canvas);
