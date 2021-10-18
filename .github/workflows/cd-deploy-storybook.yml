@@ -1,4 +1,4 @@
-name: cd-deploy-staging-storybook
+name: cd-deploy-storybook
 
 on:
   pull_request:
