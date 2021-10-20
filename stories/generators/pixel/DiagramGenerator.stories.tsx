@@ -61,6 +61,10 @@ export default {
       options: ["FullRandom", "TwoLayerRandom"],
       control: { type: "radio" },
     },
+    downloadImage: {
+      defaultValue: false,
+      control: { type: "boolean" },
+    },
   },
 } as ComponentMeta<typeof DiagramGenerator>;
 
@@ -69,11 +73,9 @@ const Template = ({
   blockBaseColor,
   baseStrokeColor,
   baseStrokeWidth,
-  rowCount,
-  columnCount,
   canvasPadding,
   metricType,
-  args,
+  downloadImage,
 }) => {
   const generatorInfo: PixelGeneratorInfo = {
     blockSize: blockSize,
@@ -86,6 +88,7 @@ const Template = ({
     colorArray: initGeneratorInfo.colorArray,
     metricType: metricType,
     blockTypeCount: initGeneratorInfo.blockTypeCount,
+    downloadWhenGenerate: downloadImage,
   };
 
   return <DiagramGenerator generatorInfo={generatorInfo} />;

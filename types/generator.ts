@@ -12,4 +12,5 @@ export interface GeneratorInfo {
 export interface PixelGeneratorInfo extends GeneratorInfo {
   blockBaseColor: string;
   metricType: "FullRandom" | "TwoLayerRandom";
+  downloadWhenGenerate: boolean;
 }
