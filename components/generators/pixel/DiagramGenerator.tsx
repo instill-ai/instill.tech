@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { prepareCanvas } from "../../../lib/generator/common";
+import { getCanvasElementById, prepareCanvas } from "../../../lib/generator/common";
 import { constructOptimizePixelDiagram } from "../../../lib/generator/pixel-block-generator";
 import { PixelGeneratorInfo } from "../../../types/generator";
 
@@ -18,6 +18,7 @@ export const initGeneratorInfo: PixelGeneratorInfo = {
   canvasPadding: 10,
   colorArray: ["#FFFF1A", "#FCB21B", "#27FC86", "#3EEDFF", "#F75FFF", "#C65AFF"],
   metricType: "FullRandom",
+  downloadWhenGenerate: false,
 };
 
 export const DiagramGenerator: FC<Props> = ({ generatorInfo = initGeneratorInfo }) => {
@@ -28,8 +29,17 @@ export const DiagramGenerator: FC<Props> = ({ generatorInfo = initGeneratorInfo 
   };
 
   useEffect(() => {
-    const { ctx } = prepareCanvas(id, generatorInfo);
+    const { canvas, ctx } = prepareCanvas(id, generatorInfo);
     constructOptimizePixelDiagram(ctx, generatorInfo);
+    if (generatorInfo.downloadWhenGenerate) {
+      let url = canvas.toDataURL("image/png");
+      let link = document.createElement("a");
+      link.download = `branding-diagram-${Date.now()}`;
+      link.href = url;
+      link.click();
+
+      console.log(link);
+    }
   }, [state]);
 
   return (
