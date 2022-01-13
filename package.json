@@ -14,7 +14,9 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "prepare": "husky install",
     "prettier:fix": "prettier --write",
-    "prettier:check": "prettier --check"
+    "prettier:check": "prettier --check",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.2",
