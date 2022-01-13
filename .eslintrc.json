@@ -1,15 +1,12 @@
 {
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"],
   "rules": {
     // We have to check this won't affect object iteral
     "no-multi-spaces": "warn",
 
     // We don't accept using js or ts file extensions for React component
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-    "react/jsx-filename-extension": [
-      "error",
-      { "extensions": [".tsx", ".jsx"] }
-    ],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
 
     // Enforces coding style that user-defined JSX components are defined and referenced in PascalCase.
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
@@ -39,19 +36,12 @@
 
     // Need to find best practice around this rule
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md
-    "react/forbid-component-props": [
-      "error",
-      { "forbid": ["className", "style"] }
-    ],
+    "react/forbid-component-props": ["error", { "forbid": ["className", "style"] }],
 
     // Will extend when needed
     // global and jax is for inline style css
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-    "react/jsx-boolean-value": [
-      "error",
-      "always",
-      { "never": ["global", "jsx"] }
-    ],
+    "react/jsx-boolean-value": ["error", "always", { "never": ["global", "jsx"] }],
 
     // This is a little complex, please go to its docu to learn how to build around this rule
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/alt-text.md
@@ -114,10 +104,7 @@
   "overrides": [
     // Only uses Testing Library lint rules in test files
     {
-      "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
-      ],
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
     }
   ]
