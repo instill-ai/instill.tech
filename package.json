@@ -2,7 +2,7 @@
   "name": "product-website",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev -H 127.0.0.1 -p 3001",
     "build": "next build",
     "lint": "next lint",
     "start": "next start",
