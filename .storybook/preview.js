@@ -1,9 +1,9 @@
-import 'tailwindcss/tailwind.css';
-
-import * as NextImage from 'next/image';
+import "tailwindcss/tailwind.css";
+import * as NextImage from "next/image";
+import { RouterContext } from "next/dist/shared/lib/router-context";
 
 const OriginalNextImage = NextImage.default;
-Object.defineProperty(NextImage, 'default', {
+Object.defineProperty(NextImage, "default", {
   configurable: true,
   value: (props) => <OriginalNextImage {...props} unoptimized />,
 });
@@ -15,14 +15,12 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-    presetColors: [
-      {
-        color: "#000000",
-        title: "black"
-      }
-    ]
   },
-}
+  nextRouter: {
+    isReady: true,
+    Provider: RouterContext.Provider,
+  },
+};
 
 // export const decorators = [
 //   (Story) => (
