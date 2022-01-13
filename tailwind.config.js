@@ -1,93 +1,61 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./stories/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme("colors.black"),
-            h1: {
-              fontWeight: "800",
-              letterSpacing: theme("letterSpacing.wide"),
-              color: theme("colors.brblack"),
-            },
-            h2: {
-              fontWeight: "700",
-              letterSpacing: theme("letterSpacing.wide"),
-              color: theme("colors.brblack"),
-            },
-            h3: {
-              fontWeight: "700",
-              color: theme("colors.brblack"),
-            },
-            "h4, h5, h6": {
-              fontWeight: "500",
-              color: theme("colors.black")
-            },
-            ol: {
-              li: {
-                '&:before': { color: theme('colors.black') },
-              }
-            },
-            ul: {
-              li: {
-                '&:before': { backgroundColor: theme('colors.black') },
-              },
-            },
-            strong: {
-              fontWeight: 800,
-              color: theme("colors.black"),
-            },
-            code: {
-              fontSize: theme("fontSize.base"),
-              fontWeight: 600,
-              color: theme("colors.black"),
-              backgroundColor: theme("colors.green.300"),
-              borderRadius: "0.5rem",
-              paddingLeft: "0.5rem",
-              paddingRight: "0.5rem",
-              paddingTop: "0.125rem",
-              paddingBottom: "0.125rem",
-              wordBreak: "break-word",
-            },
-            a: {
-              color: theme("colors.indigo.800"),
-              fontWeight: 600,
-            },
-            pre: {
-              color: theme("colors.white"),
-              backgroundColor: theme("colors.black"),
-              code: {
-                fontWeight: 300,
-                color: theme("colors.white"),
-                backgroundColor: theme("colors.black"),
-                paddingLeft: "0rem",
-                paddingRight: "0rem",
-                paddingTop: "0rem",
-                paddingBottom: "0rem",
-              }
-            },
-            blockquote: {
-              color: theme("colors.brblack"),
-              borderLeftColor: theme("colors.black"),
-              backgroundColor: theme("colors.white"),
-              paddingBottom: "1px",
-              paddingTop: "1px"
-            },
-            hr: {
-              borderColor: theme("colors.gray"),
-            }
-          },
-        },
-      })
+      colors: {
+        primary_colour_light_blue: "#40A8F5",
+        secondary_colour_black: "#1A1A1A",
+        highlight_colour_blue: "#0000FF",
+        colour_light_grey: "#F6F6F5",
+        dark_blue: "#002357",
+        instill_green: "#28F67E",
+        instill_gray: "#A5A5A5",
+        instill_red: "#FF5353",
+        instill_yellow: "#FFDF3A",
+        instill_light_blue: "#F4FBFF",
+        instill_light_yellow: "#FFFCEB",
+        instillGray95: "#1A1A1A",
+        instillGray80: "#5c5c5c",
+        instillGray70: "#8C8A8A",
+        instillGray50: "#A5A5A5",
+        instillGray30: "#C0C0C0",
+        instillGray05: "#F6F6F6",
+        instillBlue: "#0000FF",
+        instillBlue30: "#40A8F5",
+        instillBlue10: "#F4FBFF",
+        instillYellow: "#FFDF3A",
+        instillYellow10: "#FFFCEB",
+        instillRed: "#FF5353",
+        instillGreen: "#28F67E",
+      },
+      fontFamily: {
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
+        instill: ["instill", "IBM Plex Mono"],
+      },
+      margin: {
+        15: "60px",
+      },
+      flex: {
+        "33%": "0 0 33%",
+      },
+      boxShadow: {
+        instillMd: "0px 0px 12px rgba(0, 0, 255, 0.22)",
+        instillRound: "4px 4px 8px rgba(129, 129, 129, 0.22);",
+      },
+      screens: {
+        xx: "320px",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
-}
+  plugins: [],
+};
