@@ -40,7 +40,7 @@ export const DiagramGenerator: FC<Props> = ({ generatorInfo = initGeneratorInfo 
 
       console.log(link);
     }
-  }, [state]);
+  }, [state, generatorInfo]);
 
   return (
     <div className="flex flex-col gap-y-2">
