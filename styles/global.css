@@ -1,0 +1,29 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+  .instill-text-h1 {
+    @apply font-sans font-semibold text-[32px];
+  }
+  .instill-text-h2 {
+    @apply font-mono font-semibold text-[20px] tracking-[-1px];
+  }
+  .instill-text-h3 {
+    @apply font-mono font-normal text-base leading-[20px];
+  }
+  .instill-text-body {
+    @apply font-sans font-normal text-sm;
+  }
+  .instill-text-body-bold {
+    @apply font-sans font-semibold text-sm;
+  }
+  .instill-text-small {
+    @apply font-mono font-normal text-xs;
+  }
+  .instill-input-highlight {
+    @apply border border-instillGray70 focus:outline-none focus:ring-0 focus:ring-white focus:border-instillBlue
+  }
+}
