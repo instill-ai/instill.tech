@@ -9,7 +9,7 @@ export const SubHeadline: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "font-sans font-light text-2xl text-instillGray05 mx-auto text-center",
+        "font-sans font-light text-lg sm:text-2xl text-instillGray05 mx-auto text-center",
         styleName
       )}
     >
