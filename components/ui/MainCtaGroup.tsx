@@ -13,7 +13,7 @@ export const MainCtaGroup: FC<Props> = ({ styleName }) => {
       className={classNames.default("flex flex-row gap-x-5 mx-auto", styleName)}
     >
       <JoinDiscordButton />
-      <GetEarlyAccessButton />
+      {/* <GetEarlyAccessButton /> */}
     </div>
   );
 };
