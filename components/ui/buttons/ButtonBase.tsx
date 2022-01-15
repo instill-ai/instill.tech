@@ -22,7 +22,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (variant) {
     case "contained": {
-      buttonStyle = "px-[17px] py-[7px]";
+      buttonStyle = "px-[17px] py-2.5";
     }
     case "outlined": {
     }
