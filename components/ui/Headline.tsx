@@ -7,13 +7,13 @@ interface Props {
 
 export const Headline: FC<Props> = ({ styleName }) => {
   return (
-    <div
+    <h1
       className={classNames.default(
-        "font-mono font-semibold text-[64px] leading-[83.2px] mx-auto text-center text-instillGray05",
+        "font-mono instill-text-h1 mx-auto text-center text-instillGray05",
         styleName
       )}
     >
       Where vision Ai made for all
-    </div>
+    </h1>
   );
 };
