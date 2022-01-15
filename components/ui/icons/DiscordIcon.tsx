@@ -2,7 +2,7 @@ import { FC } from "react";
 import { IconBase } from "./IconBase";
 
 interface Props {
-  styleName: string;
+  styleName?: string;
 }
 
 export const DiscordIcon: FC<Props> = ({ styleName }) => {
