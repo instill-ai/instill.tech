@@ -11,15 +11,21 @@ export const Footer: FC<Props> = () => {
   return (
     <div className="py-5 px-[30px] flex flex-col mt-auto">
       <SimpleHorizontalLine styleName="mb-5 border-instillGray70" />
-      <div className="flex flex-col gap-y-10">
+      <div className="flex flex-col gap-y-[60px] sm:gap-y-10">
         <div>
           <InstillAiLogo type="logoOnlyWhite" width={30} />
         </div>
-        <div className="grid grid-cols-3">
+        <div className="flex flex-col-reverse gap-y-[30px] sm:gap-y-0 sm:grid sm:grid-cols-3">
           <CopyRightText />
-          <SocialLinksGroup />
-          <div className="flex flex-row justify-end">
-            <PrivacyPolicyLink />
+          <div className="flex flex-col gap-y-[60px] sm:hidden">
+            <SocialLinksGroup styleName="sm:justify-center" />
+            <div className="flex flex-row sm:justify-end">
+              <PrivacyPolicyLink href="/privacy-policy" />
+            </div>
+          </div>
+          <SocialLinksGroup styleName="hidden sm:flex sm:justify-center" />
+          <div className="hidden sm:flex sm:flex-row sm:justify-end">
+            <PrivacyPolicyLink href="/privacy-policy" />
           </div>
         </div>
       </div>
