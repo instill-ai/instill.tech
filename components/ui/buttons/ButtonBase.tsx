@@ -2,9 +2,9 @@ import { FC, ReactElement } from "react";
 import * as classNames from "classnames";
 
 interface Props {
-  variant: "text" | "contained" | "outlined";
+  variant: "text" | "contained" | "outlined" | "icon" | "link";
   styleName?: string;
-  color: "primary" | "secondary" | "error" | "success" | "white";
+  color: "primary" | "secondary" | "error" | "success" | "white" | "lightWhite";
   startIcon?: ReactElement;
   endIcon?: ReactElement;
 }
@@ -22,11 +22,18 @@ export const ButtonBase: FC<Props> = ({
 
   switch (variant) {
     case "contained": {
-      buttonStyle = "px-[17px] py-2.5";
+      buttonStyle = "px-[17px] py-2.5 bg-instillBlue10";
+      break;
     }
     case "outlined": {
+      break;
     }
-    case "outlined": {
+    case "text": {
+      buttonStyle = "hover:text-instillBlue70";
+      break;
+    }
+    case "icon": {
+      buttonStyle = "";
     }
   }
 
@@ -36,7 +43,12 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "white": {
-      buttonColor = "bg-instillBlue10 text-instillBlue70";
+      buttonColor = "text-instillBlue70";
+      break;
+    }
+    case "lightWhite": {
+      buttonColor = "text-instillBlue30";
+      break;
     }
     case "secondary": {
     }
