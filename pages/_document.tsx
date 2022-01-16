@@ -41,11 +41,11 @@ export const Document: FC<Props> = () => {
         />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.svg`}
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.png`}
         />
         <meta
           property="twitter:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.svg`}
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.png`}
         />
         {/* Global Site Tag (gtag.js) - Google Analytics */}
         <script
