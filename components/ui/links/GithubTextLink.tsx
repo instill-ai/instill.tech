@@ -8,7 +8,9 @@ interface Props {
 }
 
 export const GithubTextLink: FC<Props> = ({ styleName }) => {
-  const style = styleName ? styleName : "instill-text-body text-white";
+  const style = styleName
+    ? styleName
+    : "instill-text-body text-instillGray30 hover:text-instillGray05";
 
   return (
     <LinkBase
