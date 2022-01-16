@@ -1,0 +1,224 @@
+# 1. Introduction
+
+### 1.1. Important information and who we are
+
+Welcome to Instill AI Ltd's Privacy and Data Protection Policy ("**Privacy Policy**").
+
+At Instill AI Ltd ("**we**", "**us**", or "**our**") we are committed to protecting and respecting your privacy and Personal Data in compliance with the law and guidelines of the EU General Data Protection Regulation ("**GDPR**").
+
+This Privacy Policy explains how we collect, process and keep your data safe. The Privacy Policy will tell you about your privacy rights, how the law protects you, and inform our employees and staff members of all their obligations and protocols when processing data.
+
+The individuals from which we may gather and use data can include Users, suppliers, business contacts, employees and/or staff members of our Users, users of our Users' websites and any other people that the organisation has a relationship with or may need to contact.
+
+This Privacy Policy applies to all our employees and staff members and all Personal Data processed at any time by us.
+
+Please use the Glossary at the bottom of this policy to understand the meaning of some of the terms used in this Privacy Policy.
+
+### 1.2. Who is Your Data Controller and Data Protection Officer
+
+Instill AI Ltd is your Data Controller and responsible for your Personal Data.
+
+We have appointed a data protection officer ("**DPO**") who is responsible for overseeing questions in relation to this Privacy Policy. If you have any questions about this Privacy Policy, including any requests to exercise your legal rights surrounding your Personal Data please contact the Data Protection Officer at privacy@instill.tech or postal address: 85 Great Portland Street, First Floor, London, W1W 7LT, United Kingdom
+
+You have the right to contact the Information Commissioner's Office (ICO), the UK supervisory authority for data protection issues (www.ico.org.uk). We would, however, appreciate the chance to deal with your concerns before you approach the ICO so please contact us in the first instance.
+
+### 1.3. Processing data on Behalf of a Controller and Processors' responsibility to you
+
+In discharging our responsibilities as a Data Controller we have employees who will deal with your data on our behalf (known as "**Processors**"). Therefore, the responsibilities described below may be assigned to an individual, or may be taken to apply to the organisation as a whole. The Data Controller and our Processors have the following responsibilities:
+
+- Ensure that all processing of Personal Data is governed by one of the legal bases laid out in the GDPR (see 2.2 below for more information on those bases);
+- Ensure that Processors authorised to process Personal Data have committed themselves to confidentiality or are under an appropriate statutory obligation of confidentiality;
+- Implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk associated with the processing of Personal Data;
+- Obtain the prior specific or general authorisation of the Controller before engaging another Processor;
+- Assist the Controller in the fulfilment of the Controller's obligation to respond to requests for exercising the data subject's rights;
+- Make available to the Controller all information necessary to demonstrate compliance with the obligations laid down in the GDPR and allow for and contribute to audits, including inspections, conducted by the Controller or another auditor mandated by the Controller;
+- Maintain a record of all categories of processing activities carried out on behalf of a Controller;
+- Cooperate, on request, with the supervisory authority in the performance of its tasks;
+- Ensure that any person acting under the authority of the Processor who has access to Personal Data does not process Personal Data except on instructions from the Controller;
+- Notify the Controller without undue delay after becoming aware of a Personal Data Breach;
+- Designate a data protection officer where required by the GDPR, publish their details and communicate them to the supervisory authority; and
+- Support the data protection officer in performing their tasks by providing resources necessary to carry out those tasks and access to Personal Data and processing operations, and to maintain their expert knowledge;
+
+## 2. Legal basis for Data collection
+
+### 2.1. Types of Data / Privacy Policy scope
+
+"**Personal Data**" means any information about an individual from which that person can be identified. It does not include data where the identity has been removed (anonymous data).
+
+We may collect, use, store and transfer different kinds of Personal Data about you which we have grouped together below. Not all of the following types of data will necessarily be collected from you but this is the full scope of data that we collect and when we collect it from you:
+
+- **Profile/Identity Data**: This is data relating to your first name, last name, gender, date of birth.
+- **Contact Data**: This is data relating to your phone number, addresses, email addresses, phone numbers.
+- **Communications Data**: This is your preferences in receiving marketing information and other information from us.
+- **Technical Data**: internet protocol (IP) address, browser type and version, time zone setting and location, operating system and platform, and other technology on the devices you use to access this website.
+- **Customer Support Data** includes any communications between you and us (e.g., feedback and survey responses) and any information and materials that you decide to post on our websites (e.g., the discussion forum, or other). If you have done a webchat or contacted us by email or on live-chat we will retain a record of that conversation.
+- **Usage Data** includes information about how you use our website, products and services.
+- **Visual Data for AI**: This includes images and video clips sent to our Vision AI for processing.
+- **Payment Data**: debit/credit card holder information (name/billing address) of whoever is subscribed to a paid plan of Instill AI services
+
+We also collect, use and share **Aggregated Data** to help you to make data-driven funding decisions. For example, we could indicate that e.g. "Participating Preferences are selected 23% of the time." Aggregated Data could be derived from your Personal Data but is not considered Personal Data in law as this data will not directly or indirectly reveal your identity. However, if we combine or connect Aggregated Data with your Personal Data so that it can directly or indirectly identify you, we treat the combined data as Personal Data which will be used in accordance with this Privacy Policy.
+
+Further, we may use anonymous data collected from Instill AI Ltd for site administration, analytics, advertising and promotional purposes, and we may share such information with other entities (such as service providers) for such purposes. We may also aggregate data to enable research or analysis so that we can better understand and serve you and others. For example, we may conduct research on your demographics and usage. Although this aggregated data may be based in part on Personal Data, it does not identify you personally. Instill AI may share this type of anonymous data with others, including service providers, our affiliates, agents and current and prospective business partners.
+
+We may use your anonymous data outside of Instill AI to improve third party marketing or use your data in combination with third party data to improve your experiences both in and outside Instill AI. We may retain your IP address and/or other device-identifying data in order to help us diagnose problems with our servers, to administer Instill AI including personalizing content or links relevant to your geographic area or device-type, to verify that your account is not being used by others, to gather broad anonymous demographic data (such as the number of visitors from a geographic area), to enforce compliance with our Terms of Service or otherwise in order to protect our services, Site, Platform, Users, or other third parties. We use analysis tools including Google Analytics and/or others. These provide us with information about how our users use the Site or Platform.
+
+We do not collect any **Special Categories of Personal Data** about you (this includes details about your race or ethnicity, religious or philosophical beliefs, sex life, sexual orientation, political opinions, trade union membership, information about your health, and genetic and biometric data). Nor do we collect any information about criminal convictions and offences.
+
+### 2.2. The Legal basis for collecting that Data
+
+There are a number of justifiable reasons under the GDPR that allow collection and processing of Personal Data. The main avenues we rely on are:
+
+- "**Consent**": Certain situations allow us to collect your Personal Data, such as when you tick a box that confirms you are happy to receive email newsletters from us, or 'opt in' to a service.
+- "**Contractual Obligations**": We may require certain information from you in order to fulfil our contractual obligations and provide you with the promised service.
+- "**Legal Compliance**": We're required by law to collect and process certain types of data, such as fraudulent activity or other illegal actions.
+- "**Legitimate Interest**": We might need to collect certain information from you to be able to meet our legitimate interests - this covers aspects that can be reasonably expected as part of running our business, that will not have a material impact on your rights, freedom or interests. Examples could be your address, so that we know where to deliver something to, or your name, so that we have a record of who to contact moving forwards.
+
+## 3. How is your Personal Data collected?
+
+### 3.1. Direct interactions
+
+You may give us your identity, contact and financial data by filling in forms or by corresponding with us by phone, email or otherwise. This includes Personal Data you provide when you:
+
+- Inquire about or purchase our products or services and go on to use them
+- Speak to our support team using our live-chat support
+- Create an account on our Platform
+- Request marketing to be sent to you
+- Give us feedback or contact us
+
+### 3.2. Automated technologies or interactions
+
+As you interact with our Site or Platform, we will automatically collect Technical Data about your equipment, browsing actions and patterns. We collect this Personal Data by using cookies and other similar technologies. Please see our [Cookie Policy](https://instill.tech/cookie) for more information.
+
+### 3.3 Third-parties or publicly available sources
+
+We will receive Personal Data about you from various third parties including:
+
+- Analytics providers such as Google
+- Advertising networks such as LinkedIn and Google
+- Marketing platforms such as Mailchimp
+- Financial and Transaction Data from providers of payment and delivery services such as Stripe
+
+## 4. How we use your personal data
+
+### 4.1. Our uses
+
+We will only use your Personal Data when the law allows us to. Set out below is a table containing the different types of Personal Data we collect and the lawful basis for processing that data. Please refer to section 2.2 for more information on the lawful basis listed in the table below.
+
+Examples provided in the table below are indicative in nature and the purposes for which we use your data may be broader than described but we will never process your data without a legal basis for doing so and it is for a related purpose. For further inquiries please contact our Data Protection Officer.
+
+| Activity                                                                                                                                   | Types of data                                                                                                             | Lawful basis for processing                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| When a user visits our website | <ul><li>Technical</li><li>Usage</li></ul>  | **Legitimate Interest**<br/> Understand user demographics, diagnose, prevent and troubleshoot potential issues, keep our service relevant and updated, and understand how users use our services to improve and optimize them.|
+| When a non-registered user signs up and creates an account | <ul><li>Profile/Identity</li><li>Contact</li><li>Communications</li><li>Technical</li><li>Usage</li><li>Payment</li></ul> | **Consent** <br/>To link the service usage to the user's identity and inform users about our services.<br/>**Contractual Obligations**<br/>Information required to form the contract outlined by our Terms of Service.<br/>**Legitimate interests**<br/>Understand user demographics, diagnose, prevent and troubleshoot potential issues, keep our service relevant and updated, and understand how users use our services to improve and optimise them. |
+| When a registered or non-registered user requests information about a service or product by email or through a call with our staff members | <ul><li>Profile/Identity</li><li>Contact</li><li>Customer Support</li></ul> | **Consent** <br/>Contact details and potentially identity/profile data are collected to facilitate communication with user and connect the conversation history to an individual. |
+| To efficiently support users when using a specific service or product	| <ul><li>Profile/Identity</li><li>Contact</li><li>Usage</li><li>Customer Support</li></ul> | **Consent** <br/> Additional contact details may be necessary to communicate in a way that ensures the best support for the user.<br/> <br/>**Legitimate interests**<br/>Record of usage and customer support data to quickly understand the user's situation and provide support and troubleshooting in the most efficient way. |
+| To administer and protect our business, including troubleshooting, data analysis, testing, system maintenance, support, reporting and hosting of data	| <ul><li>Profile/Identity</li><li>Contact</li><li>Usage</li><li>Technical</li><li>Customer Support</li></ul> | **Legitimate interests**<br/> Run our business, provision administration and IT services, enhance network security and prevent fraud. <br/> **Contractual Obligations**<br/>To be able to comply with all legal obligations surrounding data collection, processing and retention. |
+| To use data analytics to improve our website, products/services, marketing, customer relationships and experiences | <ul><li>Technical</li><li>Usage</li></ul> | **Legitimate interests**<br/> Understand user demographics, diagnose, prevent and troubleshoot potential issues, keep our service relevant and updated, and understand how users use our services to improve and optimise them. |
+| When a user requests AI inference on submitted visual data | <ul><li>Visual Data for AI</li><li>Profile/Identity</li></ul> | **Contractual Obligations**<br/> Visual data is collected to be able to provide the service as outlined in our Terms of Service, i.e. inference on visual data using Vision AI. The Vision AI can aim to classify images in specific pre-defined categories, detect objects of specific pre-defined categories or detect the pose of humans. Each request is linked to the identity of the user to be able to comply with all legal obligations surrounding data collection, processing and retention. |
+| To continuously improve the user experience and the performance of our Vision AI | <ul><li>Visual Data for AI</li><li>Profile/Identity</li></ul> | **Legitimate interests**<br/> Visual data submitted to our Vision AI is continuously collected to continuously improve the performance of our Vision AI by training it with updated data that is relevant to each user. It is also collected to support the user and troubleshoot inference results. |
+
+### 4.2. Marketing and content updates
+
+You will receive marketing and new content communications from us if you have subscribed to our services or mailing lists, and, by doing so, opt into receiving those communications. From time to time we may make suggestions and recommendations to you about goods or services that may be of interest to you.
+
+### 4.3. Change of purpose
+
+We will only use your Personal Data for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason and that reason is compatible with the original purpose. If you wish to get an explanation as to how the processing for the new purpose is compatible with the original purpose, please contact our Data Protection Officer.
+
+If we need to use your Personal Data for an unrelated purpose, we will notify you and we will explain the legal basis which allows us to do so.
+
+Please note that we may process your Personal Data without your knowledge or consent, in compliance with the above rules, where this is required or permitted by law.
+
+## 5. Your rights and how you are protected by us
+
+### 5.1. What control do I have over Instill AI Ltd's use Of my Personal Data?
+
+You may delete your account at any time - this will remove your account page from our systems and our related software.
+
+We do not guarantee the ability to delete all stored data. If you would like us to delete/correct personally identifiable data, let us know and we will action your request as soon as practicable.
+
+Your account information will be protected by a password for your privacy and security. You need to prevent unauthorized access to your account and personal information by selecting and protecting your password appropriately and limiting access to your computer or device and by signing off after you have finished accessing your account.
+
+You can access information associated with your account by logging into your account you created with us.
+
+Your account information will be protected by a password for your privacy and security. You need to prevent unauthorized access to your account and personal information by selecting and protecting your password appropriately and limiting access to your computer or device and by signing off after you have finished accessing your account.
+
+_California Privacy Rights: Under California Civil Code sections 1798.83-1798.84, California residents are entitled to ask us for a notice identifying the categories of personal customer information which we share with our affiliates and/or third parties for marketing purposes, and providing contact information for such affiliates and/or third parties. If you are a California resident and would like a copy of this notice, please submit a written request to privacy@instill.tech._
+
+### 5.2. How does Instill AI Ltd protect customers' Personal Data?
+
+We are concerned with keeping your data secure and protecting it from inappropriate disclosure. We implement a variety of security measures to ensure the security of your Personal Data on our systems, including the adoption of encrypted communication via HTTPS through SSL/TLS, and layered security defence with DDOS protection, web application firewall (WAF) and rate-limiting. Any Personal Data collected by us is only accessible by a limited number of employees who have special access rights to such systems and are bound by obligations of confidentiality. If and when we use subcontractors to store your data, we will not relinquish control of your Personal Data or expose it to security risks that would not have arisen had the data remained in our possession. However, unfortunately no transmission of data over the internet is guaranteed to be completely secure. It may be possible for third parties not under the control of Instill AI Ltd to intercept or access transmissions or private communications unlawfully. While we strive to protect your Personal Data, we cannot ensure or warrant the security of any Personal Data you transmit to us. Any such transmission is done at your own risk. If you believe that your interaction with us is no longer secure, please contact us.
+
+### 5.3. Opting out Of marketing promotions
+
+You can ask us to stop sending you marketing messages at any time by adjusting your marketing preferences or by contacting us at any time.
+
+Where you opt out of receiving these marketing messages, we will continue to retain other Personal Data provided to us as a result of interactions with us not related to your marketing preferences.
+
+### 5.4. How to request your Data and the process for obtaining it
+
+You will not have to pay a fee to access your Personal Data (or to exercise any of the other rights). However, if your request is clearly unfounded, we could refuse to comply with your request.
+
+We may need to request specific information from you to help us confirm your identity and ensure you have the right to access your Personal Data (or to exercise any of your other rights). This is a security measure to ensure that Personal Data is not disclosed to any person who has no right to receive it. We may also contact you to ask you for further information in relation to your request to speed up our response.
+
+## 6. Your data and third parties
+
+### 6.1. Will we share your Data With third parties?
+
+We may share non-Personal Data with third parties to, for example (but not by way of limitation), improve Instill AI and to enable data aggregation as described above.
+
+We may share your Personal Data with subcontractors (only when necessary and with your consent) or affiliates (subject to confidentiality obligations to use it only for the purposes for which we disclose it to them and pursuant to our instructions).
+
+We may also share Personal Data with interested parties in the event that Instill AI Ltd anticipates a change in control or the acquisition of all or part of our business or assets or with interested parties in connection with the licensing of our technology.
+
+If Instill AI Ltd is sold or makes a sale or transfer, we may, in our sole discretion, transfer, sell or assign your Personal Data to a third party as part of or in connection with that transaction. Upon such transfer, the Privacy Policy of the acquiring entity may govern the further use of your Personal Data. In all other situations your data will still remain protected in accordance with this Privacy Policy (as amended from time to time).
+
+We may share your Personal Data at any time if required for legal reasons or in order to enforce our terms or this Privacy Policy.
+
+### 6.2. Third-party Links
+
+This Site may include links to third-party websites, plug-ins and applications. Clicking on those links or enabling those connections may allow third parties to collect or share data about you. We do not control these third-party websites and are not responsible for their privacy statements. When you leave our Site, we encourage you to read the privacy policy of every website you visit.
+
+## 7. How long we will retain your data for?
+
+We will only retain your Personal Data for as long as reasonably necessary to fulfil the purposes we collected it for. We may retain your Personal Data for a longer period than usual in the event of a complaint or if we reasonably believe there is a prospect of litigation in respect to our relationship with you.
+
+## 8. Age limits for our users
+
+You must not use Instill AI Ltd unless you are aged 16 or older. If you are under 16 and you access Instill AI Ltd by lying about your age, you must immediately stop using Instill AI Ltd.
+
+This website is not intended for children and we do not knowingly collect data relating to children.
+
+## 9. International transfer of data
+
+Your information may be stored and processed in the US or other countries or jurisdictions outside the US where Instill AI Ltd has facilities. We are currently storing data in the EU and so, by using Instill AI Ltd, you are permitting and consenting to the transfer of information, including Personal Data, outside of the US.
+
+## 10. Notification of changes and acceptance of policy
+
+We keep our Privacy Policy under review and will place any updates on this webpage. We encourage visitors to frequently check this page for any changes to its Privacy Policy. If we make changes, we will notify you by revising the change log below, and, in some cases, we may provide additional notice. This version is dated 16 Jan 2022. By using Instill AI Ltd, you consent to the collection and use of data by us as set out in this Privacy Policy. Continued access or use of Instill AI Ltd will constitute your express acceptance of any modifications to this Privacy Policy.
+
+## 11. Interpretation
+
+All uses of the word "including" mean "including but not limited to" and the enumerated examples are not intended to in any way limit the term which they serve to illustrate. Any email addresses set out in this policy may be used solely for the purpose for which they are stated to be provided, and any unrelated correspondence will be ignored. Unless otherwise required by law, we reserve the right to not respond to emails, even if they relate to a legitimate subject matter for which we have provided an email address. As a matter of common sense, you are more likely to get a reply if your request or question is polite, reasonable and there is no relatively obvious other way to deal with or answer your concern or question (e.g. FAQs, other areas of our website etc.).
+
+Our staff are not authorised to contract on behalf of Instill AI Ltd, waive rights or make representations (whether contractual or otherwise). If anything contained in an email from an Instill AI Ltd address contradicts anything in this policy, our terms or any official public announcement on our website, or is inconsistent with or amounts to a waiver of any Instill AI Ltd rights, the email content will be read down to grant precedence to the latter. The only exception to this is genuine correspondence expressed to be from the Instill AI Ltd legal department.
+
+## 12. Glossary
+
+- **GDPR** The General Data Protection Regulation (EU) 2016/679 (GDPR)
+- **Users**: Any individual who either browses the public website, engages with our chat support feature, speaks with our employees and staff members, creates a profile or uses our Platform as a signed-up user.
+- **Personal Data**: Information relating to an individual who can be directly identified from the information. Personal Data includes factual information as well as expressions of opinion or intentions.
+- **Data Controller / Controller**: The organisation that determines the manner and purposes for which Personal Data is to be processed. In our case, Instill AI Ltd.
+- **DPO**: The Data Protection Officer.
+- **Personal Data Breach**: Loss, theft or unauthorised access, use or disclosure of Personal Data.
+- **Privacy Policy**: Our Privacy and Data Protection Policy
+- **Aggregated Data**: Statistical or demographic data derived from your personal data but not consider personal data in law as the data will not directly or indirectly reveal your identity.
+- **Processors**: Employees of Instill AI Limited authorised to discharge the responsibilities of the Data Controller.
+
+If you have any other questions about the interpretation of this Privacy Policy please get in contact with our DPO using the contact information above.
+
+## 13. Change log
+
+- _21 June 2021:_ Updated the DPO contact information. Added the "Change log" section and updated the "Notification of changes and acceptance of policy" section to reflect the changes.
+- _29 July 2021:_ Updated the "Marketing and content updates" section, added the marketing platform information.
+- _16 Jan 2021: Added the "How is your personal data collected?" and "Glossary" sections. Updated the "Legal basis for data collection" section to add payment data type and third party analysis tool information. Move the marketing platform information from the "Marketing and content updates" section to the "How is your personal data collected?" section._
