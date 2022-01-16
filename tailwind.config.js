@@ -59,19 +59,19 @@ module.exports = {
           css: {
             color: theme("colors.instillGray30"),
             h1: {
-              fontFamily: theme("fontFamily.mono"),
+              fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "600",
               letterSpacing: theme("letterSpacing.wide"),
               color: theme("colors.instillGray15"),
             },
             h2: {
-              fontFamily: theme("fontFamily.mono"),
+              fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "500",
               letterSpacing: theme("letterSpacing.wide"),
               color: theme("colors.instillGray15"),
             },
             h3: {
-              fontFamily: theme("fontFamily.mono"),
+              fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "400",
               color: theme("colors.instillGray15"),
             },
@@ -128,7 +128,6 @@ module.exports = {
             hr: {
               borderColor: theme("colors.gray"),
             },
-            
           },
         },
       }),
