@@ -128,6 +128,10 @@ module.exports = {
             hr: {
               borderColor: theme("colors.gray"),
             },
+            th: {
+              color: theme("colors.instillGray15"),
+              fontWeight: 600,
+            },
           },
         },
       }),
