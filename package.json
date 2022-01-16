@@ -76,5 +76,6 @@
       "npm run prettier:fix",
       "eslint --fix"
     ]
-  }
+  },
+  "version": "1.0.0"
 }
