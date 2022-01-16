@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { CookiePolicyLink } from "../links/CookiePolicyLink";
 import { PrivacyPolicyLink } from "../links/PrivacyPolicyLink";
 import { SocialLinksGroup } from "../SocialLinksGroup";
 import { CopyRightText } from "./CopyRightText";
@@ -19,13 +20,17 @@ export const Footer: FC<Props> = () => {
           <CopyRightText />
           <div className="flex flex-col gap-y-[60px] sm:hidden">
             <SocialLinksGroup styleName="sm:justify-center" />
-            <div className="flex flex-row sm:justify-end">
-              <PrivacyPolicyLink href="/privacy-policy" />
+            <div className="flex flex-row sm:justify-end gap-x-1.5">
+              <CookiePolicyLink />
+              <div className="border-r border-instillGray15 my-1.5" />
+              <PrivacyPolicyLink />
             </div>
           </div>
           <SocialLinksGroup styleName="hidden sm:flex sm:justify-center" />
-          <div className="hidden sm:flex sm:flex-row sm:justify-end">
-            <PrivacyPolicyLink href="/privacy-policy" />
+          <div className="hidden sm:flex sm:flex-row sm:justify-end gap-x-1.5">
+            <CookiePolicyLink />
+            <div className="border-r border-instillGray15 my-1.5" />
+            <PrivacyPolicyLink />
           </div>
         </div>
       </div>
