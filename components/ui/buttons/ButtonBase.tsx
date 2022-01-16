@@ -26,7 +26,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (variant) {
     case "contained": {
-      buttonStyle = "px-[17px] py-2.5 bg-instillBlue10";
+      buttonStyle = "px-[17px] py-2.5 bg-instillBlue10 hover:bg-opacity-90";
       break;
     }
     case "outlined": {
