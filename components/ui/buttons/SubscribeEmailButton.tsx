@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ButtonBase } from "./ButtonBase";
 
 interface Props {
-  onClick: () => void;
+  onClick?: () => void;
   styleName?: string;
 }
 
