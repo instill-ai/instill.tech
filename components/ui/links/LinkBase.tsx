@@ -17,7 +17,7 @@ export const LinkBase: FC<Props> = ({
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} {...props} passHref={true}>
         <div className={classNames.default("cursor-pointer", styleName)}>
           {children}
         </div>
