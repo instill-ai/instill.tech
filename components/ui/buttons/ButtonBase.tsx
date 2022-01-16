@@ -1,12 +1,14 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, HTMLAttributes } from "react";
 import * as classNames from "classnames";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLButtonElement> {
   variant: "text" | "contained" | "outlined" | "icon" | "link";
   styleName?: string;
   color: "primary" | "secondary" | "error" | "success" | "white" | "lightWhite";
   startIcon?: ReactElement;
   endIcon?: ReactElement;
+  onClick?: () => void;
+  type?: "button" | "reset" | "submit";
 }
 
 export const ButtonBase: FC<Props> = ({
@@ -16,6 +18,8 @@ export const ButtonBase: FC<Props> = ({
   color,
   startIcon,
   endIcon,
+  onClick,
+  ...props
 }) => {
   let buttonStyle: string;
   let buttonColor: string;
@@ -39,7 +43,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (color) {
     case "primary": {
-      buttonColor = "bg-instillBlue30 text-instillGray05";
+      buttonColor = "bg-instillBlue30 text-instillGray05 hover:bg-[#1393F2]";
       break;
     }
     case "white": {
@@ -62,6 +66,8 @@ export const ButtonBase: FC<Props> = ({
         buttonColor,
         styleName
       )}
+      onClick={onClick}
+      {...props}
     >
       {startIcon}
       {children}
