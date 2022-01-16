@@ -14,9 +14,12 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    await mailchimp.lists.addListMember(process.env.MAILCHIMP_LIST_ID, {
-      email_address: email,
-    });
+    await mailchimp.lists.addListMember(
+      process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID,
+      {
+        email_address: email,
+      }
+    );
 
     return res.status(201).json({ error: "" });
   } catch (error) {
