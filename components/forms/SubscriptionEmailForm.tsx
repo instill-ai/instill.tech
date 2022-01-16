@@ -2,6 +2,7 @@ import { FC, FormEvent, useRef, useState } from "react";
 import { SubscribeEmailButton } from "../ui/buttons/SubscribeEmailButton";
 import * as classNames from "classnames";
 import { addMemberIntoMailchimpList } from "../../lib/mailchimp";
+import * as ga from "../../lib/google-analytic";
 
 interface Props {
   styleName?: string;
@@ -26,6 +27,7 @@ export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
     try {
       await addMemberIntoMailchimpList(email.current.value);
       setSuccess(true);
+      ga.eventHelpers.engagement("join_newsletter");
       setMessage("Cheers! Welcome aboard.");
     } catch (err) {
       if (err === "MemberExists") {
