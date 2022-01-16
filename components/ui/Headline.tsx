@@ -13,7 +13,7 @@ export const Headline: FC<Props> = ({ styleName }) => {
         styleName
       )}
     >
-      Where vision Ai made for all
+      Where visual data preparation made for all
     </h1>
   );
 };
