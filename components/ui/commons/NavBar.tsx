@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BlogLink } from "../links/BlogLink";
-import { GithubLink } from "../links/GithubLink";
+import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
 import { InstillAiLogo } from "./InstillAiLogo";
 
@@ -16,10 +16,7 @@ export const NavBar: FC<Props> = () => {
 
         <div className="flex flex-row justify-end gap-x-[60px]">
           <BlogLink href="https://blog.instill.tech" />
-          <GithubLink
-            styleName="w-5 text-instillGray05"
-            href="https://github.com/instill-ai"
-          />
+          <GithubTextLink styleName="w-5 text-instillGray05" />
         </div>
       </div>
     </div>
