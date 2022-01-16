@@ -15,10 +15,7 @@ export const SocialLinksGroup: FC<Props> = ({ styleName }) => {
         styleName="w-6 sm:w-4 text-instillGray30"
         href="https://github.com/instill-ai"
       />
-      <DiscordLink
-        styleName="w-6 sm:w-4 text-instillGray30"
-        href="https://discord.gg/Rnn58CebTK"
-      />
+      <DiscordLink styleName="w-6 sm:w-4 text-instillGray30" />
       <MediumLink styleName="w-6 sm:w-4 text-instillGray30" href="" />
     </div>
   );
