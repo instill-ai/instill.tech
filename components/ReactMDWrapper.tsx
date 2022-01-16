@@ -1,5 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import * as classNames from "classnames";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 import { FC } from "react";
 
@@ -13,7 +15,13 @@ export const ReactMDWrapper: FC<Props> = ({ content, styleName }) => {
     <article
       className={classNames.default("prose prose-sm md:prose-lg", styleName)}
     >
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown
+        skipHtml={false}
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+      >
+        {content}
+      </ReactMarkdown>
     </article>
   );
 };
