@@ -1,7 +1,5 @@
 import { FC } from "react";
-import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import { BlogLink } from "../links/BlogLink";
-import { DiscordLink } from "../links/DiscordLink";
 import { GithubLink } from "../links/GithubLink";
 import { LinkBase } from "../links/LinkBase";
 import { InstillAiLogo } from "./InstillAiLogo";
