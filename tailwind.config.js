@@ -54,10 +54,88 @@ module.exports = {
       screens: {
         xx: "320px",
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme("colors.instillGray30"),
+            h1: {
+              fontFamily: theme("fontFamily.mono"),
+              fontWeight: "600",
+              letterSpacing: theme("letterSpacing.wide"),
+              color: theme("colors.instillGray15"),
+            },
+            h2: {
+              fontFamily: theme("fontFamily.mono"),
+              fontWeight: "500",
+              letterSpacing: theme("letterSpacing.wide"),
+              color: theme("colors.instillGray15"),
+            },
+            h3: {
+              fontFamily: theme("fontFamily.mono"),
+              fontWeight: "400",
+              color: theme("colors.instillGray15"),
+            },
+            ol: {
+              li: {
+                "&:before": { color: theme("colors.black") },
+              },
+            },
+            ul: {
+              li: {
+                "&:before": { backgroundColor: theme("colors.black") },
+              },
+            },
+            strong: {
+              fontWeight: 800,
+              color: theme("colors.black"),
+            },
+            code: {
+              fontSize: theme("fontSize.base"),
+              fontWeight: 600,
+              color: theme("colors.black"),
+              backgroundColor: theme("colors.green.300"),
+              borderRadius: "0.5rem",
+              paddingLeft: "0.5rem",
+              paddingRight: "0.5rem",
+              paddingTop: "0.125rem",
+              paddingBottom: "0.125rem",
+              wordBreak: "break-word",
+            },
+            a: {
+              color: theme("colors.indigo.800"),
+              fontWeight: 600,
+            },
+            pre: {
+              color: theme("colors.white"),
+              backgroundColor: theme("colors.black"),
+              code: {
+                fontWeight: 300,
+                color: theme("colors.white"),
+                backgroundColor: theme("colors.black"),
+                paddingLeft: "0rem",
+                paddingRight: "0rem",
+                paddingTop: "0rem",
+                paddingBottom: "0rem",
+              },
+            },
+            blockquote: {
+              color: theme("colors.brblack"),
+              borderLeftColor: theme("colors.black"),
+              backgroundColor: theme("colors.white"),
+              paddingBottom: "1px",
+              paddingTop: "1px",
+            },
+            hr: {
+              borderColor: theme("colors.gray"),
+            },
+            
+          },
+        },
+      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
