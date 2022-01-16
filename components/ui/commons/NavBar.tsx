@@ -14,9 +14,9 @@ export const NavBar: FC<Props> = () => {
           <InstillAiLogo type="fullWhite" width={159} />
         </LinkBase>
 
-        <div className="flex flex-row justify-end gap-x-[60px]">
+        <div className="flex flex-row gap-x-[60px] justify-end">
           <BlogLink href="https://blog.instill.tech" />
-          <GithubTextLink styleName="w-5 text-instillGray05" />
+          <GithubTextLink styleName="text-instillGray05" />
         </div>
       </div>
     </div>
