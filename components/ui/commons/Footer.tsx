@@ -29,7 +29,7 @@ export const Footer: FC<Props> = () => {
           <SocialLinksGroup styleName="hidden sm:flex sm:justify-center" />
           <div className="hidden sm:flex sm:flex-row sm:justify-end gap-x-2 md:gap-x-5">
             <CookiePolicyLink />
-            <div className="border-r border-instillGray15 my-1.5" />
+            <div className="border-r border-instillGray15 my-1.5 max-h-[16px]" />
             <PrivacyPolicyLink />
           </div>
         </div>

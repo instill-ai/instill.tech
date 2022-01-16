@@ -5,6 +5,7 @@ import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
 import { InstillAiLogo } from "./InstillAiLogo";
 import { CrossIcon } from "../icons/CrossIcon";
+import { DiscordIcon } from "../icons/DiscordIcon";
 
 interface Props {}
 
