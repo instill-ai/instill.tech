@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
+import * as classNames from "classnames";
 
 interface Props {
   href: string;
@@ -17,14 +18,16 @@ export const LinkBase: FC<Props> = ({
   if (isInternalLink) {
     return (
       <Link href={href} {...props}>
-        <div className={styleName}>{children}</div>
+        <div className={classNames.default("cursor-pointer", styleName)}>
+          {children}
+        </div>
       </Link>
     );
   }
 
   return (
     <a
-      className={styleName}
+      className={classNames.default("cursor-pointer", styleName)}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
