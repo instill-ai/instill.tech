@@ -1,0 +1,214 @@
+name: cd-build-test-staging
+
+on:
+  pull_request:
+    branches:
+      - "staging"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache build
+        uses: actions/cache@v2
+        id: cache-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Restore build cache
+        uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+
+      - name: Lint
+        run: npm run lint
+
+  testUnit:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Restore build cache
+        uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+
+      - name: Run unit test
+        run: npm run test
+
+  deployToStaging:
+    if: ${{ !contains(github.ref, 'release') }}
+    runs-on: ubuntu-latest
+    needs: [lint, testUnit]
+    steps:
+      - name: Import Vault secrets
+        id: secrets
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          secrets: |
+            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
+            secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
+            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
+            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
+            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
+
+      - name: Notify Slack channel deployment begin
+        if: always()
+        id: slack # IMPORTANT: reference this step ID value in future Slack steps
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          channel: msg-github-actions
+          status: STARTING
+          color: warning
+
+      - name: Activate deployment status
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          env: preview
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+
+      - name: Deploy to staging
+        id: deployToVercelStaging
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
+          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
+          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          github-comment: false
+          alias-domains: |
+            www.instill-inc.tech
+
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: msg-github-actions
+          status: SUCCESS
+          color: good
+
+      - name: Notify Slack failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: msg-github-actions
+          status: FAILED
+          color: danger
+
+  deployToStorybook:
+    if: ${{ !contains(github.ref, 'release') }}
+    runs-on: ubuntu-latest
+    needs: [lint, testUnit]
+    steps:
+      - name: Import Vault secrets
+        id: secrets
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          secrets: |
+            secret/data/devops/vercel/github-action product-webasite-storybook-id | PRODUCT_WEBSITE_STORYBOOK_ID ;
+            secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
+            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
+            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
+            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+
+      - name: start deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          env: preview
+
+      - name: Deploy storybook to vercel
+        id: deployStorybookToVercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
+          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_STORYBOOK_ID}}
+          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-args: "--prod"
+          github-comment: true
+
+      - name: update deployment status
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
