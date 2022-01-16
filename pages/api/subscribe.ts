@@ -18,6 +18,7 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID,
       {
         email_address: email,
+        status: mailchimp.Status.subscribed,
       }
     );
 
