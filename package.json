@@ -41,6 +41,7 @@
     "@storybook/react": "^6.4.12",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@types/gtag.js": "^0.0.8",
     "@types/mailchimp__mailchimp_marketing": "^3.0.2",
     "@types/node": "^16.9.6",
     "@types/react": "^17.0.24",
