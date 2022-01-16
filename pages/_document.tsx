@@ -39,6 +39,14 @@ export const Document: FC<Props> = () => {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.svg`}
+        />
+        <meta
+          property="twitter:image"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-open-graph.svg`}
+        />
         {/* Global Site Tag (gtag.js) - Google Analytics */}
         <script
           async={true}
