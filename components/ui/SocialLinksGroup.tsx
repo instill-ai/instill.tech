@@ -11,9 +11,9 @@ interface Props {
 export const SocialLinksGroup: FC<Props> = ({ styleName }) => {
   return (
     <div className={classNames.default("flex flex-row gap-x-5", styleName)}>
-      <GithubIconLink styleName="w-6 sm:w-4 text-instillGray30" />
-      <DiscordLink styleName="w-6 sm:w-4 text-instillGray30" />
-      <MediumLink styleName="w-6 sm:w-4 text-instillGray30" />
+      <GithubIconLink styleName="w-6 sm:w-4 text-instillGray30 hover:text-instillGray05" />
+      <DiscordLink styleName="w-6 sm:w-4 text-instillGray30 hover:text-instillGray05" />
+      <MediumLink styleName="w-6 sm:w-4 text-instillGray30 hover:text-instillGray05" />
     </div>
   );
 };
