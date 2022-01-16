@@ -22,7 +22,7 @@ const Home: FC<Props> & {
     >
       <Headline styleName="mb-5 px-[18px] md:px-0 lg:w-10/12" />
       <SubHeadline styleName="mb-10 px-[18px] md:px-0 md:w-8/12 lg:w-6/12" />
-      <MainCtaGroup styleName="mb-[100px] sm:mb-[300px]" />
+      <MainCtaGroup styleName="mb-[100px] sm:mb-[320px]" />
       <SubscriptionEmailForm styleName="mb-[60px]" />
     </PageHead>
   );
