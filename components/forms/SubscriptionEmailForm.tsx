@@ -1,7 +1,6 @@
 import { FC, FormEvent, useRef, useState } from "react";
 import { SubscribeEmailButton } from "../ui/buttons/SubscribeEmailButton";
 import * as classNames from "classnames";
-import { addMemberIntoMailchimpList } from "../../lib/mailchimp";
 import * as ga from "../../lib/google-analytic";
 
 interface Props {
@@ -24,21 +23,33 @@ export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
       return;
     }
 
-    try {
-      await addMemberIntoMailchimpList(email.current.value);
-      setSuccess(true);
-      ga.eventHelpers.engagement("join_newsletter");
-      setMessage("Cheers! Welcome aboard.");
-    } catch (err) {
-      if (err === "MemberExists") {
+    const res = await fetch("/api/subscribe", {
+      body: JSON.stringify({
+        email: email.current.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+
+    if (error) {
+      if (error === "MemberExists") {
         setWarn(true);
         setMessage("You already subscribed to Instill Ai newsletter.");
       } else {
-        console.error(err);
+        console.log(error);
         setWarn(true);
         setMessage("Something went wrong, please contact us");
       }
+      return;
     }
+
+    setSuccess(true);
+    ga.eventHelpers.engagement("join_newsletter");
+    setMessage("Cheers! Welcome aboard.");
   };
 
   return (
