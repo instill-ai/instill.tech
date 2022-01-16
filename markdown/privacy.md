@@ -1,4 +1,6 @@
-# 1. Introduction
+# Privacy policy
+
+## 1. Introduction
 
 ### 1.1. Important information and who we are
 
