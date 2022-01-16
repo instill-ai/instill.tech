@@ -3,6 +3,7 @@ import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import { BlogLink } from "../links/BlogLink";
 import { DiscordLink } from "../links/DiscordLink";
 import { GithubLink } from "../links/GithubLink";
+import { LinkBase } from "../links/LinkBase";
 import { InstillAiLogo } from "./InstillAiLogo";
 
 interface Props {}
@@ -11,7 +12,10 @@ export const NavBar: FC<Props> = () => {
   return (
     <div className="flex w-full mb-[160px]">
       <div className="w-full grid grid-cols-2 px-5 md:px-10 py-5 content-center">
-        <InstillAiLogo type="fullWhite" width={159} />
+        <LinkBase href="/">
+          <InstillAiLogo type="fullWhite" width={159} />
+        </LinkBase>
+
         <div className="flex flex-row justify-end gap-x-[60px]">
           <BlogLink href="https://blog.instill.tech" />
           <GithubLink
