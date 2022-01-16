@@ -86,8 +86,8 @@ module.exports = {
               },
             },
             strong: {
-              fontWeight: 800,
-              color: theme("colors.black"),
+              fontWeight: 600,
+              color: theme("colors.instillGray15"),
             },
             code: {
               fontSize: theme("fontSize.base"),
@@ -102,7 +102,7 @@ module.exports = {
               wordBreak: "break-word",
             },
             a: {
-              color: theme("colors.indigo.800"),
+              color: theme("colors.instillBlue30"),
               fontWeight: 600,
             },
             pre: {
