@@ -13,7 +13,7 @@ export const NavBar: FC<Props> = () => {
 
   return (
     <div className="flex w-full mb-[120px] md:mb-[320px]">
-      <div className="hidden sm:grid w-full sm:grid-cols-2 px-5 md:px-10 py-5 content-center">
+      <div className="hidden sm:grid w-full sm:grid-cols-2 p-5 content-center">
         <LinkBase href="/">
           <InstillAiLogo type="ColourLogoWhiteType" width={159} />
         </LinkBase>
