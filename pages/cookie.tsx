@@ -21,7 +21,10 @@ const PrivacyPage: FC<Props> & {
       pageTitle="Cookie policy | Instill AI"
       pageDescription="Instill AI's privacy policy."
     >
-      <ReactMDWrapper styleName="mx-5 md:mx-0 mb-[60px]" content={content} />
+      <ReactMDWrapper
+        styleName="mx-5 md:mx-0 mt-[180px] mb-[60px]"
+        content={content}
+      />
     </PageHead>
   );
 };
