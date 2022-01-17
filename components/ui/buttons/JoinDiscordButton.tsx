@@ -15,10 +15,10 @@ export const JoinDiscordButton: FC<Props> = () => {
       startIcon={<DiscordIcon styleName="w-5" />}
       onClick={() => {
         ga.eventHelpers.engagement("join_discord");
-        router.push("https://discord.gg/jqmkb42FUK");
+        router.push("https://discord.gg/Juas75UP7p");
       }}
     >
-      Join our Discord
+      Join our Community
     </ButtonBase>
   );
 };
