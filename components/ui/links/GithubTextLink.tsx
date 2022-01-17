@@ -17,7 +17,7 @@ export const GithubTextLink: FC<Props> = ({ styleName }) => {
       styleName={classNames.default("flex", style)}
       href="https://github.com/instill-ai"
     >
-      <p className="my-auto">Github</p>
+      <p className="my-auto">GitHub</p>
     </LinkBase>
   );
 };
