@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import { FC, ReactElement } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
-import { ReactMDWrapper } from "../components/ReactMDWrapper";
+import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
 import { getMDFileContent } from "../lib/file";
 
 interface Props {
@@ -21,10 +21,7 @@ const PrivacyPage: FC<Props> & {
       pageTitle="Cookie policy | Instill AI"
       pageDescription="Instill AI's privacy policy."
     >
-      <ReactMDWrapper
-        styleName="mx-5 md:mx-0 mt-[180px] mb-[60px]"
-        content={content}
-      />
+      <PolicyPageLayout content={content} />
     </PageHead>
   );
 };
