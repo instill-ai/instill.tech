@@ -13,7 +13,7 @@ export const DiscordLink: FC<Props> = ({ iconStyle }) => {
   return (
     <LinkBase
       styleName={classNames.default("flex")}
-      href="https://discord.gg/Juas75UP7p"
+      href={process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK}
     >
       <DiscordIcon styleName={style} />
     </LinkBase>
