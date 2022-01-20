@@ -40,12 +40,14 @@ export const NavBar: FC<Props> = () => {
             )}
           </button>
         </div>
-        {open && (
-          <div className="flex flex-col gap-y-10">
-            <BlogLink />
-            <GithubTextLink />
-          </div>
-        )}
+        <div className="relative">
+          {open && (
+            <div className="absolute top-0 w-full flex flex-col gap-y-10 z-50">
+              <BlogLink />
+              <GithubTextLink />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
