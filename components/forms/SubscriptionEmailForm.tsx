@@ -56,7 +56,7 @@ export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
     <form
       onSubmit={subscribe}
       className={classNames.default(
-        "flex flex-col gap-y-[30px] sm:flex-row sm:gap-y-0 sm:gap-x-8 md:gap-x-16 lg:gap-x-28 px-4 sm:grid-cols-2",
+        "grid grid-cols-1 gap-y-[30px] sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 md:gap-x-16 lg:gap-x-28 px-4",
         styleName
       )}
     >
@@ -66,15 +66,15 @@ export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
           Join our mailing list for the latest news and updates.
         </p>
       </div>
-      <div className="flex flex-col flex-grow gap-y-1 my-auto sm:ml-auto">
-        <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col w-full gap-y-1 my-auto sm:ml-auto">
+        <div className="flex flex-col gap-y-2 sm:gap-y-0">
           <div className="flex flex-row gap-x-2.5 justify-end">
             <input
               aria-label="Email for newsletter"
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="flex flex-grow my-auto h-12 px-5 bg-instillBlue85 instill-text-small text-instillGray15"
+              className="w-full flex flex-grow my-auto h-12 px-5 bg-instillBlue85 instill-text-small text-instillGray15"
             />
             <SubscribeEmailButton styleName="instill-text-body" />
           </div>
