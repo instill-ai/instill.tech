@@ -6,7 +6,7 @@ interface Props {
   styleName?: string;
 }
 
-export const VisualDataPreparationFeatureSvg: FC<Props> = ({ styleName }) => {
+export const FeatureVisualDataPreparationSvg: FC<Props> = ({ styleName }) => {
   return (
     <SvgBase viewBox="0 0 304 299" styleName={styleName}>
       <path
