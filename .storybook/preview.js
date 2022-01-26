@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import "../styles/global.css"
 import * as NextImage from "next/image";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
