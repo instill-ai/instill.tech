@@ -3,6 +3,7 @@ import { PageHead } from "../components/layouts/PageHead";
 import * as classNames from "classnames";
 import { PageBase } from "../components/layouts/PageBase";
 import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
+import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
 
 interface Props {}
 
@@ -24,13 +25,18 @@ const GetEarlyAccessPage: FC<Props> & {
         )}
       >
         <div className="flex flex-col max-w-[450px]">
-          <h2 className="instill-text-h2 text-instillGray05">
-            Get Early Access
-          </h2>
-          <p className="instill-text-body text-instillGray05">
-            We&#39;re now in private alpha. Join and see first-hand how Instill
-            AI can help adopt Vision AI in your company.
-          </p>
+          <div className="flex flex-col gap-y-5 mb-[60px]">
+            <h2 className="instill-text-h2 text-instillGray05">
+              Get Early Access
+            </h2>
+            <p className="instill-text-body text-instillGray05">
+              We&#39;re now in private alpha. Join and see first-hand how
+              Instill AI can help adopt Vision AI in your company.
+            </p>
+          </div>
+          <div>
+            <AlphaBadgeSvg styleName="max-w-[355px]" />
+          </div>
         </div>
         <div>
           <MailchimpSignupForm />
