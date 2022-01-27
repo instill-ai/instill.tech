@@ -14,9 +14,9 @@ export const NavBar: FC<Props> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex w-full absolute top-0 z-50">
+    <div className="flex w-full sm:absolute sm:top-0 sm:z-50">
       <div className="hidden sm:grid w-full sm:grid-cols-2 p-5 content-center">
-        <LinkBase href="/">
+        <LinkBase styleName="my-auto mr-auto" href="/">
           <InstillAiLogo type="ColourLogoWhiteType" width={159} />
         </LinkBase>
 
