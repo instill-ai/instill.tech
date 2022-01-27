@@ -27,7 +27,7 @@ const PrivacyPage: FC<Props> & {
 };
 
 PrivacyPage.getLayout = (page) => {
-  return <PageBase>{page}</PageBase>;
+  return <PageBase withMaxWidth={true}>{page}</PageBase>;
 };
 
 export default PrivacyPage;
