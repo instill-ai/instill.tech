@@ -3,7 +3,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import * as classNames from "classnames";
-import { SubscriptionEmailForm } from "../components/forms/SubscriptionEmailForm";
+import { SubscribeNewsletterForm } from "../components/forms/SubscribeNewsletterForm";
 
 interface GetLayOutProps {
   page: ReactElement;
@@ -81,7 +81,7 @@ const AboutPage: FC<Props> & {
           </div>
         </div>
         <div className={elementMaxWidth}>
-          <SubscriptionEmailForm />
+          <SubscribeNewsletterForm />
         </div>
       </div>
     </PageHead>

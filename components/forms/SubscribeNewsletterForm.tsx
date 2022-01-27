@@ -7,7 +7,7 @@ interface Props {
   styleName?: string;
 }
 
-export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
+export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
   const email = useRef<HTMLInputElement | null>(null);
   const [success, setSuccess] = useState(false);
   const [warn, setWarn] = useState(false);

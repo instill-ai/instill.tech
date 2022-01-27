@@ -1,5 +1,4 @@
 import { FC, ReactElement } from "react";
-import { SubscriptionEmailForm } from "../components/forms/SubscriptionEmailForm";
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
@@ -7,6 +6,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { FeatureBlockGroup } from "../components/ui/groups/FeatureBlockGroup";
 import * as classNames from "classnames";
+import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 
 interface Props {}
 
@@ -37,8 +37,7 @@ const Home: FC<Props> & {
         </div>
       </div>
       <FeatureBlockGroup styleName="mb-[152px]" />
-
-      <SubscriptionEmailForm
+      <StayInTheLoopBlock
         styleName={classNames.default("mb-[60px]", elementMaxWidth)}
       />
     </PageHead>
