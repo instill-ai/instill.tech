@@ -37,7 +37,7 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "outlined": {
-      buttonStyle = "px-[17px] flex border border-instillBlue30";
+      buttonStyle = "px-[17px] py-2.5 flex border border-instillBlue30";
       break;
     }
     case "text": {
@@ -72,7 +72,7 @@ export const ButtonBase: FC<Props> = ({
   return (
     <button
       className={classNames.default(
-        "flex flex-row gap-x-3 rounded-[3px]",
+        "flex flex-row gap-x-3 rounded-[3px] justify-center",
         buttonStyle,
         buttonColor,
         styleName
