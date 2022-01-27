@@ -10,10 +10,13 @@ interface Props {
 export const MainCtaGroup: FC<Props> = ({ styleName }) => {
   return (
     <div
-      className={classNames.default("flex flex-row gap-x-5 mx-auto", styleName)}
+      className={classNames.default(
+        "flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0 mx-auto",
+        styleName
+      )}
     >
       <JoinDiscordButton />
-      {/* <GetEarlyAccessButton /> */}
+      <GetEarlyAccessButton />
     </div>
   );
 };
