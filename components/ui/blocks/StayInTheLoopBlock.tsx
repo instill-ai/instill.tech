@@ -1,6 +1,6 @@
 import { FC } from "react";
 import * as classNames from "classnames";
-import { SubscriptionEmailForm } from "../../forms/SubscriptionEmailForm";
+import { SubscribeNewsletterForm } from "../../forms/SubscribeNewsletterForm";
 
 interface Props {
   styleName?: string;
@@ -20,7 +20,7 @@ export const StayInTheLoopBlock: FC<Props> = ({ styleName }) => {
           Join our mailing list for the latest news and updates.
         </p>
       </div>
-      <SubscriptionEmailForm />
+      <SubscribeNewsletterForm />
     </div>
   );
 };
