@@ -13,7 +13,13 @@ export const Footer: FC<Props> = () => {
     <div className="py-5 px-4 flex flex-col mt-auto">
       <SimpleHorizontalLine styleName="mb-5 border-instillGray70" />
       <div className="flex flex-col gap-y-[60px] sm:gap-y-10">
-        <div>
+        <div className="flex flex-col">
+          <h3 className="instill-text-h3 text-instillGray05">
+            Where Vision Date Preparation
+          </h3>
+          <h3 className="instill-text-h3 text-instillGray05 mb-5">
+            Made for All
+          </h3>
           <InstillAiLogo type="logoOnlyWhite" width={30} />
         </div>
         <div className="flex flex-col-reverse gap-y-[30px] sm:gap-y-0 sm:grid sm:grid-cols-3">
