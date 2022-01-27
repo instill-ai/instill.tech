@@ -19,7 +19,7 @@ export const SubscribeEmailButton: FC<Props> = ({ onClick, styleName }) => {
         <RightArrowIcon styleName="w-[14px] h-[14px] text-instillBlue30" />
       }
     >
-      Subscribe
+      <p className="my-auto">Subscribe</p>
     </ButtonBase>
   );
 };
