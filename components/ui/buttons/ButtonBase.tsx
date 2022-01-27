@@ -37,6 +37,7 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "outlined": {
+      buttonStyle = "px-[17px] flex border border-instillBlue30";
       break;
     }
     case "text": {
@@ -54,7 +55,7 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "white": {
-      buttonColor = "text-instillBlue70";
+      buttonColor = "text-instillBlue30";
       break;
     }
     case "lightWhite": {
