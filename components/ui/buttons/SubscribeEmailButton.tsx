@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { RightArrowIcon } from "../icons/RightArrowIcon";
 import { ButtonBase } from "./ButtonBase";
 
 interface Props {
@@ -13,7 +14,10 @@ export const SubscribeEmailButton: FC<Props> = ({ onClick, styleName }) => {
       styleName={styleName}
       type="submit"
       variant="contained"
-      color="primary"
+      color="transparant"
+      endIcon={
+        <RightArrowIcon styleName="w-[14px] h-[14px] text-instillBlue30" />
+      }
     >
       Subscribe
     </ButtonBase>

@@ -56,13 +56,13 @@ export const SubscriptionEmailForm: FC<Props> = ({ styleName }) => {
     <form onSubmit={subscribe}>
       <div className="flex flex-col w-full gap-y-1 my-auto sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="flex flex-row gap-x-2.5 justify-end">
+          <div className="flex flex-row gap-x-2.5 justify-end border border-instillGray05 mb-1.5">
             <input
               aria-label="Email for newsletter"
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="w-full flex flex-grow my-auto h-12 px-5 bg-instillBlue85 instill-text-small text-instillGray15"
+              className="w-full flex flex-grow my-auto h-12 px-5 bg-instillGray95 instill-text-small text-instillGray15"
             />
             <SubscribeEmailButton styleName="instill-text-body" />
           </div>
