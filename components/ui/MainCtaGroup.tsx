@@ -11,7 +11,7 @@ export const MainCtaGroup: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0 mx-auto",
+        "flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0",
         styleName
       )}
     >
