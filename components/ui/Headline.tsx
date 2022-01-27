@@ -9,7 +9,7 @@ export const Headline: FC<Props> = ({ styleName }) => {
   return (
     <h1
       className={classNames.default(
-        "font-mono instill-text-h1 mx-auto text-center text-instillGray05",
+        "font-mono instill-text-h1 text-instillGray05",
         styleName
       )}
     >

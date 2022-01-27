@@ -30,9 +30,9 @@ const Home: FC<Props> & {
           elementMaxWidth
         )}
       >
-        <div className="flex flex-col my-auto">
-          <Headline styleName="mb-5 px-[18px] md:px-0 lg:w-10/12 mt-[60px]" />
-          <SubHeadline styleName="mb-10 px-[18px] md:px-0 md:w-8/12 lg:w-6/12" />
+        <div className="flex flex-col my-auto max-w-[750px]">
+          <Headline styleName="mb-5 px-[18px] md:px-0 lg:w-10/12 mt-[60px] text-left" />
+          <SubHeadline styleName="mb-10 px-[18px] md:px-0 md:w-8/12 lg:w-6/12  text-left" />
           <MainCtaGroup styleName="" />
         </div>
       </div>
