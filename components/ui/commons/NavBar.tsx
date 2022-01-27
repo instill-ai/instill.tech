@@ -6,6 +6,8 @@ import { LinkBase } from "../links/LinkBase";
 import { InstillAiLogo } from "./InstillAiLogo";
 import { CrossIcon } from "../icons/CrossIcon";
 import { DiscordIcon } from "../icons/DiscordIcon";
+import { AboutPageLink } from "../links/AboutPageLink";
+import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 
 interface Props {}
 
@@ -20,8 +22,10 @@ export const NavBar: FC<Props> = () => {
         </LinkBase>
 
         <div className="flex flex-row gap-x-[60px] justify-end">
+          <AboutPageLink />
           <BlogLink />
           <GithubTextLink />
+          <GetEarlyAccessButton />
         </div>
       </div>
       <div className="flex flex-col w-full p-5 sm:hidden">
@@ -43,6 +47,7 @@ export const NavBar: FC<Props> = () => {
         <div className="relative">
           {open && (
             <div className="absolute top-0 w-full flex flex-col gap-y-10 z-50">
+              <AboutPageLink />
               <BlogLink />
               <GithubTextLink />
             </div>
