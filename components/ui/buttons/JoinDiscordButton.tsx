@@ -10,7 +10,7 @@ export const JoinDiscordButton: FC<Props> = () => {
   const router = useRouter();
   return (
     <ButtonBase
-      variant="contained"
+      variant="outlined"
       color="white"
       startIcon={<DiscordIcon styleName="w-5" />}
       onClick={() => {
@@ -18,7 +18,7 @@ export const JoinDiscordButton: FC<Props> = () => {
         router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK);
       }}
     >
-      Join our Community
+      <p className="my-auto">Join our Community</p>
     </ButtonBase>
   );
 };
