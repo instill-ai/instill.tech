@@ -3,12 +3,15 @@ import { FeatureBlock } from "../blocks/FeatureBlock";
 import { FeatureOpenSourceSvg } from "../svgs/FeatureOpenSourceSvg";
 import { FeatureVersatileInterfaceSvg } from "../svgs/FeatureVersatileInterfaceSvg";
 import { FeatureVisualDataPreparationSvg } from "../svgs/FeatureVisualDataPreparationSvg";
+import * as classNames from "classnames";
 
-interface Props {}
+interface Props {
+  styleName?: string;
+}
 
-export const FeatureBlockGroup: FC<Props> = () => {
+export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
   return (
-    <div className="flex flex-col">
+    <div className={classNames.default("flex flex-col", styleName)}>
       <FeatureBlock
         label="VISUAL DATA PREPARATION"
         title="Integrate Vision AI into existing data stack in minutes"
@@ -26,7 +29,7 @@ export const FeatureBlockGroup: FC<Props> = () => {
         image={<FeatureOpenSourceSvg styleName="w-[386px] h-[352px] mx-auto" />}
       />
       <FeatureBlock
-        label="BUILD WITH GOOD TOOL"
+        label="API-FIRST SDK, CLI AND CONSOLE"
         title="Versatile and Developer Friendly Interface"
         description="Set up your visual data pipelines using SDKs and CLI tools built for developers, or via console without writing any code."
         imagePosition="left"
