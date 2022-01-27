@@ -14,11 +14,8 @@ export const Footer: FC<Props> = () => {
       <SimpleHorizontalLine styleName="mb-5 border-instillGray70" />
       <div className="flex flex-col gap-y-[60px] sm:gap-y-10">
         <div className="flex flex-col">
-          <h3 className="instill-text-h3 text-instillGray05">
-            Where Vision Date Preparation
-          </h3>
           <h3 className="instill-text-h3 text-instillGray05 mb-5">
-            Made for All
+            Where Vision Date Preparation Made for All
           </h3>
           <InstillAiLogo type="logoOnlyWhite" width={30} />
         </div>
