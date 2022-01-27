@@ -4,7 +4,14 @@ import * as classNames from "classnames";
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   variant: "text" | "contained" | "outlined" | "icon" | "link";
   styleName?: string;
-  color: "primary" | "secondary" | "error" | "success" | "white" | "lightWhite";
+  color:
+    | "primary"
+    | "secondary"
+    | "error"
+    | "success"
+    | "white"
+    | "lightWhite"
+    | "transparant";
   startIcon?: ReactElement;
   endIcon?: ReactElement;
   onClick?: () => void;
@@ -26,7 +33,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (variant) {
     case "contained": {
-      buttonStyle = "px-[17px] py-2.5 bg-instillBlue10 hover:bg-opacity-90";
+      buttonStyle = "px-[17px] py-2.5 hover:bg-opacity-90";
       break;
     }
     case "outlined": {
@@ -55,6 +62,9 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "secondary": {
+    }
+    case "transparant": {
+      buttonColor = "text-instillBlue30";
     }
   }
 
