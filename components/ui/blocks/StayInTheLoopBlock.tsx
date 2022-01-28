@@ -10,7 +10,7 @@ export const StayInTheLoopBlock: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "grid grid-cols-1 gap-y-[30px] py-6 sm:py-[60px] sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 md:gap-x-16 lg:gap-x-28 px-4",
+        "grid grid-cols-1 md:w-full gap-y-[30px] py-6 sm:py-[60px] sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 md:gap-x-16 lg:gap-x-28",
         styleName
       )}
     >
