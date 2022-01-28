@@ -12,7 +12,10 @@ interface Props {
 
 export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
   return (
-    <div className={classNames.default("flex flex-col", styleName)}>
+    <div
+      id="feature-block-group"
+      className={classNames.default("flex flex-col", styleName)}
+    >
       <FeatureBlock
         label="VISUAL DATA PREPARATION"
         title="Integrate Vision AI into existing data stack in minutes"

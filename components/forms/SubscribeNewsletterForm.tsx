@@ -62,7 +62,7 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="w-full flex flex-grow my-auto h-12 px-5 bg-instillGray95 instill-text-small text-instillGray15"
+              className="w-full flex flex-grow rounded-[1px] my-auto h-12 px-5 bg-instillGray95 instill-text-small text-instillGray15"
             />
             <SubscribeEmailButton styleName="instill-text-body" />
           </div>
