@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { MenuIcon } from "../icons/MenuIcon";
 import { BlogLink } from "../links/BlogLink";
 import { GithubTextLink } from "../links/GithubTextLink";
@@ -8,11 +8,23 @@ import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
 import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
+import { useRouter } from "next/router";
 
 interface Props {}
 
 export const NavBar: FC<Props> = () => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    if (open) {
+      setOpen(false);
+    }
+  }, [router]);
 
   return (
     <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
