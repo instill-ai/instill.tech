@@ -59,7 +59,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               className={classNames.default(inputStyle, "required")}
             />
           </div>
-          <div className="grid grid-cols-2 gap-x-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5">
             <div className="mc-field-group flex flex-col gap-y-2">
               <label htmlFor="mce-FNAME" className={fieldTitleStyle}>
                 First Name<span>*</span>
@@ -151,6 +151,20 @@ export const MailchimpSignupForm: FC<Props> = () => {
               className={classNames.default(inputStyle, "required")}
             />
           </div>
+          <div className="mc-field-group hidden">
+            <label htmlFor="mce-group[87613]">Form source </label>
+            <select
+              name="group[87613]"
+              className="REQ_CSS"
+              id="mce-group[87613]"
+            >
+              <option value="" />
+              <option value="8">Newsletter</option>
+              <option selected={true} value="16">
+                Early access
+              </option>
+            </select>
+          </div>
           <div id="mce-responses" className="clear">
             <div
               id="mce-error-response"
@@ -163,6 +177,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               style={{ display: "none" }}
             />
           </div>
+
           {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
           <div
             style={{ position: "absolute", left: "-5000px" }}
