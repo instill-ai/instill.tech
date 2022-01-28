@@ -7,6 +7,9 @@ import { PageHead } from "../components/layouts/PageHead";
 import { FeatureBlockGroup } from "../components/ui/groups/FeatureBlockGroup";
 import * as classNames from "classnames";
 import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
+import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
+import { ExplorePleaseButton } from "../components/ui/buttons/ExplorePleaseButton";
+import Image from "next/image";
 
 interface Props {}
 
@@ -17,7 +20,7 @@ interface GetLayOutProps {
 const Home: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const elementMaxWidth = "max-w-[1440px] md:w-10/12 md:mx-auto";
+  const elementMaxWidth = "max-w-[1440px] md:mx-auto";
 
   return (
     <PageHead
@@ -26,19 +29,33 @@ const Home: FC<Props> & {
     >
       <div
         className={classNames.default(
-          "min-h-screen flex flex-col content-center px-4 md:px-0",
+          "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 mb-[60px] md:mb-20 px-4 lg:px-0 justify-center md:pt-[84px]",
           elementMaxWidth
         )}
       >
-        <div className="flex flex-col my-auto">
-          <Headline styleName="mb-5 px-[18px] md:px-0 lg:w-10/12 mt-[60px] text-left max-w-[752px]" />
-          <SubHeadline styleName="mb-10 px-[18px] md:px-0 text-left max-w-[652px]" />
-          <MainCtaGroup styleName="" />
+        <div className="flex flex-col-reverse lg:flex-row">
+          <div className="flex flex-col md:my-auto lg:w-[57%]">
+            <Headline styleName="mb-5 text-left" />
+            <SubHeadline styleName="mb-10 md:px-0 text-left" />
+            <MainCtaGroup />
+          </div>
+          <div className="flex lg:w-[43%]">
+            <img
+              className="m-auto md:w-[475px]"
+              src="/gifs/cube-composition-animation.gif"
+              alt="main-hero-animation"
+            />
+          </div>
         </div>
+        <ExplorePleaseButton styleName="mt-20 mb-10 mx-auto" />
       </div>
-      <FeatureBlockGroup styleName="mb-[152px]" />
+
+      <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
+      <SecureYourSpotBlock styleName="mb-[60px] max-w-[1440px] mx-4 md:mx-auto md:w-10/12" />
       <StayInTheLoopBlock
-        styleName={classNames.default("mb-[60px]", elementMaxWidth)}
+        styleName={classNames.default(
+          "mb-[60px] max-w-[1440px] mx-4 md:mx-auto md:w-10/12"
+        )}
       />
     </PageHead>
   );
