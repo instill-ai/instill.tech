@@ -20,7 +20,7 @@ export const SubscribeEmailButton: FC<Props> = ({ onClick, styleName }) => {
       }
       itemDirection="horizontal"
     >
-      <p className="my-auto">Subscribe</p>
+      <p className="my-auto mr-5">Subscribe</p>
     </ButtonBase>
   );
 };

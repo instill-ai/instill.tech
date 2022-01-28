@@ -11,7 +11,7 @@ export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex bg-white p-10 rounded-[7px] md:rounded-none",
+        "flex bg-white p-10 rounded-[1px]",
         styleName
       )}
     >

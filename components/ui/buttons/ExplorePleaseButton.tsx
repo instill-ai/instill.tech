@@ -17,7 +17,7 @@ export const ExplorePleaseButton: FC<Props> = ({ styleName }) => {
       color="lightWhite"
       styleName={styleName}
     >
-      Explore
+      <p className="mx-auto">Explore</p>
     </ButtonBase>
   );
 };
