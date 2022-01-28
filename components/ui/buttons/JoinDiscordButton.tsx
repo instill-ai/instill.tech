@@ -12,7 +12,7 @@ export const JoinDiscordButton: FC<Props> = () => {
     <ButtonBase
       variant="outlined"
       color="white"
-      startIcon={<DiscordIcon styleName="w-5" />}
+      startIcon={<DiscordIcon styleName="w-5 mr-3" />}
       onClick={() => {
         ga.eventHelpers.engagement("join_discord");
         router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK);
