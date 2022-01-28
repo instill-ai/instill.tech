@@ -16,6 +16,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   endIcon?: ReactElement;
   onClick?: () => void;
   type?: "button" | "reset" | "submit";
+  itemDirection?: "horizontal" | "vertical";
 }
 
 export const ButtonBase: FC<Props> = ({
@@ -26,6 +27,7 @@ export const ButtonBase: FC<Props> = ({
   startIcon,
   endIcon,
   onClick,
+  itemDirection,
   ...props
 }) => {
   let buttonStyle: string;
@@ -72,10 +74,11 @@ export const ButtonBase: FC<Props> = ({
   return (
     <button
       className={classNames.default(
-        "flex flex-row rounded-[3px] justify-center",
+        "flex rounded-[3px] justify-center",
         buttonStyle,
         buttonColor,
-        styleName
+        styleName,
+        itemDirection === "horizontal" ? "flex-row" : "flex-col"
       )}
       onClick={onClick}
       {...props}
