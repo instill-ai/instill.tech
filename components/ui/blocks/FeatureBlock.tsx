@@ -48,8 +48,8 @@ export const FeatureBlock: FC<Props> = ({
   return (
     <div
       className={classNames.default(
-        "flex w-full px-4 py-[30px] sm:h-[560px] sm:p-0",
-        imagePosition === "left" ? "bg-instillGray05" : "bg-white"
+        "flex w-full px-4 py-[30px] sm:h-[560px] sm:p-0 bg-white"
+        //imagePosition === "left" ? "bg-instillGray05" : "bg-white"
       )}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 m-auto">{gridItems}</div>
