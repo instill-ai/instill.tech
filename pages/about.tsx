@@ -3,7 +3,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import * as classNames from "classnames";
-import { SubscribeNewsletterForm } from "../components/forms/SubscribeNewsletterForm";
+import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 
 interface GetLayOutProps {
   page: ReactElement;
@@ -21,15 +21,15 @@ const AboutPage: FC<Props> & {
       pageTitle="About us | Instill Ai"
       pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
     >
-      <div className="flex flex-col">
-        <div className="flex w-full sm:h-[500px]">
+      <div className="flex flex-col max-w-[1440px] md:w-10/12 md:mx-auto">
+        <div className="flex w-full sm:h-[584px]">
           <h1 className="m-auto instill-text-h1 text-instillGray05 max-w-[934px] text-center">
             Make Vision AI Accessible to Everyone
           </h1>
         </div>
         <div
           className={classNames.default(
-            "grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 md:gap-x-6 md:gap-y-6 mb-[84px]",
+            "grid grid-cols-1 gap-y-12 md:grid-rows-2 md:grid-cols-2 md:gap-x-6 md:gap-y-6 mb-[84px]",
             elementMaxWidth
           )}
         >
@@ -81,7 +81,7 @@ const AboutPage: FC<Props> & {
           </div>
         </div>
         <div className={elementMaxWidth}>
-          <SubscribeNewsletterForm />
+          <StayInTheLoopBlock />
         </div>
       </div>
     </PageHead>
