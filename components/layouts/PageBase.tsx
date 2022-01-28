@@ -3,7 +3,7 @@ import { Footer } from "../ui/commons/Footer";
 import { NavBar } from "../ui/commons/NavBar";
 import { BaseContainer } from "./BaseContainer";
 import { SectionContainer } from "./SectionContainer";
-import { SectionContainerWoWidth } from "./SectionContainerWoWidth";
+import { SectionContainerFull } from "./SectionContainerFull";
 
 interface Props {
   currentPage?: string;
@@ -22,7 +22,7 @@ export const PageBase: FC<Props> = ({
       {withMaxWidth ? (
         <SectionContainer>{children}</SectionContainer>
       ) : (
-        <SectionContainerWoWidth>{children}</SectionContainerWoWidth>
+        <SectionContainerFull>{children}</SectionContainerFull>
       )}
       <Footer />
     </BaseContainer>
