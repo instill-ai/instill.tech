@@ -7,6 +7,7 @@ import { InstillAiLogo } from "./InstillAiLogo";
 import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
 import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
+import * as classNames from "classnames";
 
 interface Props {}
 
@@ -28,7 +29,12 @@ export const NavBar: FC<Props> = () => {
             <GetEarlyAccessButton />
           </div>
         </div>
-        <div className="flex flex-col w-full lg:hidden">
+        <div
+          className={classNames.default(
+            "w-full h-full flex flex-col lg:hidden",
+            open ? "bg-instillGray95 fixed z-50 top-0 left-0" : ""
+          )}
+        >
           <div className="flex flex-row w-full lg:mb-[60px] p-5">
             <LinkBase styleName="flex" href="/">
               <InstillAiLogo type="ColourLogoWhiteType" width={159} />
@@ -46,10 +52,11 @@ export const NavBar: FC<Props> = () => {
           </div>
           <div className="relative w-full">
             {open && (
-              <div className="absolute top-0 left-0 b w-full flex flex-col gap-y-10 z-50 bg-instillGray95">
+              <div className="absolute top-0 left-0 py-[50px] px-4 w-full flex flex-col gap-y-[50px] bg-instillGray95">
                 <AboutPageLink />
                 <BlogLink />
                 <GithubTextLink />
+                <GetEarlyAccessButton />
               </div>
             )}
           </div>
