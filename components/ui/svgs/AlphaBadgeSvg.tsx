@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { SvgBase } from "./SvgBase";
 
-interface Props {}
+interface Props {
+  styleName?: string;
+}
 
-export const AlphaBadgeSvg: FC<Props> = () => {
+export const AlphaBadgeSvg: FC<Props> = ({ styleName }) => {
   return (
-    <SvgBase viewBox="0 0 355 146">
+    <SvgBase styleName={styleName} viewBox="0 0 355 146">
       <g clipPath="url(#clip0_499_10060)">
         <path
           d="M354.434 111.232V128.41L339.688 136.998V119.821L354.434 111.232Z"

@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import { AlphaBadgeSvg } from "../svgs/AlphaBadgeSvg";
+import * as classNames from "classnames";
 
-interface Props {}
+interface Props {
+  styleName: string;
+}
 
-export const SecureYourSpotBlock: FC<Props> = () => {
+export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
   return (
-    <div className="flex bg-white p-10">
+    <div className={classNames.default("flex bg-white p-10", styleName)}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
         <div className="flex w-full h-full md:col-start-2">
           <AlphaBadgeSvg styleName="sm:w-[355px] m-auto" />
