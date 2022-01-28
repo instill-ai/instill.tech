@@ -72,7 +72,7 @@ export const ButtonBase: FC<Props> = ({
   return (
     <button
       className={classNames.default(
-        "flex flex-row gap-x-3 rounded-[3px] justify-center",
+        "flex flex-row rounded-[3px] justify-center",
         buttonStyle,
         buttonColor,
         styleName
