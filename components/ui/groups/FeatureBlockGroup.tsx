@@ -4,6 +4,7 @@ import { FeatureOpenSourceSvg } from "../svgs/FeatureOpenSourceSvg";
 import { FeatureVersatileInterfaceSvg } from "../svgs/FeatureVersatileInterfaceSvg";
 import { FeatureVisualDataPreparationSvg } from "../svgs/FeatureVisualDataPreparationSvg";
 import * as classNames from "classnames";
+import { GithubCtaButton } from "../buttons/GitHubCtaButton";
 
 interface Props {
   styleName?: string;
@@ -27,6 +28,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
         description="Get started with our open source projects to explore Vision AI models powered by our community, set up a visual data pipeline and start processing your visual data right away. "
         imagePosition="right"
         image={<FeatureOpenSourceSvg styleName="w-[260px] h-[238px] mx-auto" />}
+        featureCta={<GithubCtaButton />}
       />
       <FeatureBlock
         label="API-FIRST SDK, CLI AND CONSOLE"
