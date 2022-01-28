@@ -29,11 +29,11 @@ const Home: FC<Props> & {
     >
       <div
         className={classNames.default(
-          "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center md:pt-[84px]",
+          "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
           elementMaxWidth
         )}
       >
-        <div className="flex flex-col-reverse lg:flex-row">
+        <div className="flex flex-col-reverse lg:flex-row max:w-10/12 max:mx-auto">
           <div className="flex flex-col md:my-auto lg:w-[57%]">
             <Headline styleName="mb-5 text-left" />
             <SubHeadline styleName="mb-10 md:px-0 text-left" />
@@ -47,16 +47,15 @@ const Home: FC<Props> & {
             />
           </div>
         </div>
-        <ExplorePleaseButton styleName="mt-20 mb-10 mx-auto" />
+        <ExplorePleaseButton styleName="mt-20 mb-10 max:w-10/12 max:mx-auto" />
       </div>
-
       <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
-      <SecureYourSpotBlock styleName="mb-[60px] max-w-[1440px] mx-4 md:mx-auto md:w-10/12" />
-      <StayInTheLoopBlock
-        styleName={classNames.default(
-          "mb-[60px] max-w-[1440px] mx-4 md:mx-auto md:w-10/12"
-        )}
-      />
+      <div className="flex max-w-[1440px] md:w-10/12 md:mx-auto">
+        <div className="flex flex-col max:mx-auto max:w-10/12">
+          <SecureYourSpotBlock styleName="mb-[60px]" />
+          <StayInTheLoopBlock styleName={classNames.default("mb-[60px]")} />
+        </div>
+      </div>
     </PageHead>
   );
 };
