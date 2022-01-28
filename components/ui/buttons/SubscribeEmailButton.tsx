@@ -16,11 +16,11 @@ export const SubscribeEmailButton: FC<Props> = ({ onClick, styleName }) => {
       variant="contained"
       color="transparant"
       endIcon={
-        <RightArrowIcon styleName="w-[14px] h-[14px] text-instillBlue30" />
+        <RightArrowIcon styleName="w-[14px] h-[14px] text-instillBlue30 group-hover:text-[#236698]" />
       }
       itemDirection="horizontal"
     >
-      <p className="my-auto mr-5">Subscribe</p>
+      <p className="my-auto mr-5 group-hover:text-[#236698]">Subscribe</p>
     </ButtonBase>
   );
 };
