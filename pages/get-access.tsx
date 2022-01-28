@@ -20,11 +20,11 @@ const GetEarlyAccessPage: FC<Props> & {
     <PageHead pageTitle="Get early access | Instill Ai" pageDescription="">
       <div
         className={classNames.default(
-          "grid grid-cols-1 md:grid-cols-2 py-40 my-auto",
+          "grid grid-cols-1 lg:grid-cols-2 py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0",
           elementMaxWidth
         )}
       >
-        <div className="flex flex-col max-w-[450px]">
+        <div className="flex flex-col max-w-[450px] mb-20 lg:mb-0">
           <div className="flex flex-col gap-y-5 mb-[60px]">
             <h2 className="instill-text-h2 text-instillGray05">
               Get Early Access
@@ -34,7 +34,7 @@ const GetEarlyAccessPage: FC<Props> & {
               Instill AI can help adopt Vision AI in your company.
             </p>
           </div>
-          <div>
+          <div className="flex w-full">
             <AlphaBadgeSvg styleName="max-w-[355px]" />
           </div>
         </div>
