@@ -18,7 +18,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
         description="Instill visual data pipeline can extract visual image and video data with pre-built connectors, convert them with ready-to-use Vision AI models to structured representation, sent to any destination for future analysis, without managing infrastructure."
         imagePosition="left"
         image={
-          <FeatureVisualDataPreparationSvg styleName="w-[304px] h-[299px] mx-auto" />
+          <FeatureVisualDataPreparationSvg styleName="w-[289px] h-[183px] mx-auto" />
         }
       />
       <FeatureBlock
@@ -26,7 +26,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
         title="Fetch, Deploy and Share with the Community"
         description="Get started with our open source projects to explore Vision AI models powered by our community, set up a visual data pipeline and start processing your visual data right away. "
         imagePosition="right"
-        image={<FeatureOpenSourceSvg styleName="w-[386px] h-[352px] mx-auto" />}
+        image={<FeatureOpenSourceSvg styleName="w-[260px] h-[238px] mx-auto" />}
       />
       <FeatureBlock
         label="API-FIRST SDK, CLI AND CONSOLE"
@@ -34,7 +34,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
         description="Set up your visual data pipelines using SDKs and CLI tools built for developers, or via console without writing any code."
         imagePosition="left"
         image={
-          <FeatureVersatileInterfaceSvg styleName="w-[411px] h-[364px] mx-auto" />
+          <FeatureVersatileInterfaceSvg styleName="w-[263px] h-[233px] mx-auto" />
         }
       />
     </div>
