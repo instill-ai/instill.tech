@@ -7,6 +7,7 @@ interface Props {
   description: string;
   label: string;
   image: ReactNode;
+  featureCta?: ReactNode;
 }
 
 export const FeatureBlock: FC<Props> = ({
@@ -15,6 +16,7 @@ export const FeatureBlock: FC<Props> = ({
   title,
   description,
   image,
+  featureCta,
 }) => {
   const copyBlock = (
     <div className="flex flex-col my-auto w-full h-full">
@@ -28,19 +30,20 @@ export const FeatureBlock: FC<Props> = ({
     <>
       <div
         className={classNames.default(
-          "flex sm:h-[400px] sm:w-[455px]",
-          imagePosition === "left" ? "" : "sm:col-start-2"
+          "flex lg:h-[400px] lg:w-[455px]",
+          imagePosition === "left" ? "" : "lg:col-start-2"
         )}
       >
         {image}
       </div>
       <div
         className={classNames.default(
-          "flex sm:h-[400px] sm:w-[455px]",
-          imagePosition === "left" ? "" : "sm:row-start-1"
+          "flex flex-col lg:h-[400px] lg:w-[455px]",
+          imagePosition === "left" ? "" : "lg:row-start-1"
         )}
       >
-        {copyBlock}
+        <div className="max-w-[456px] mb-[45px] lg:mb-auto">{copyBlock}</div>
+        {featureCta && <div className="lg:mt-auto">{featureCta}</div>}
       </div>
     </>
   );
@@ -48,11 +51,13 @@ export const FeatureBlock: FC<Props> = ({
   return (
     <div
       className={classNames.default(
-        "flex w-full px-4 py-[30px] sm:h-[560px] sm:p-0 bg-white"
+        "flex w-full px-4 py-10 lg:h-[480px] md:px-0 bg-white"
         //imagePosition === "left" ? "bg-instillGray05" : "bg-white"
       )}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 m-auto">{gridItems}</div>
+      <div className="grid grid-cols-1 gap-y-10 lg:gap-y-0 lg:grid-cols-2 m-auto">
+        {gridItems}
+      </div>
     </div>
   );
 };
