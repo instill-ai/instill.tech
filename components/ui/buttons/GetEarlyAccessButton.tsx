@@ -10,7 +10,7 @@ export const GetEarlyAccessButton: FC<Props> = ({ styleName }) => {
   const router = useRouter();
 
   const handleClick = useCallback(() => {
-    router.push("/get-early-access");
+    router.push("/get-access");
   }, [router]);
 
   return (

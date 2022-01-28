@@ -8,7 +8,7 @@ interface Props {}
 export const GithubCtaButton: FC<Props> = () => {
   const router = useRouter();
   const handleClick = useCallback(() => {
-    router.push("/get-early-access");
+    router.push("https://github.com/instill-ai");
   }, [router]);
 
   return (
