@@ -77,7 +77,7 @@ const AboutPage: FC<Props> & {
               <SecureYourSpotBlock />
             </div>
           </div>
-          <div className={elementMaxWidth}>
+          <div>
             <StayInTheLoopBlock />
           </div>
         </div>
