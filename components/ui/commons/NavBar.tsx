@@ -14,9 +14,9 @@ export const NavBar: FC<Props> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex w-full sm:absolute sm:top-0 sm:z-50">
+    <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
       <div className="flex w-full max-w-[1440px] mx-auto">
-        <div className="hidden sm:grid w-full sm:grid-cols-2 p-5 content-center">
+        <div className="hidden lg:grid w-full lg:grid-cols-2 p-5 content-center">
           <LinkBase styleName="my-auto mr-auto" href="/">
             <InstillAiLogo type="ColourLogoWhiteType" width={159} />
           </LinkBase>
@@ -28,7 +28,7 @@ export const NavBar: FC<Props> = () => {
             <GetEarlyAccessButton />
           </div>
         </div>
-        <div className="flex flex-col w-full p-5 sm:hidden">
+        <div className="flex flex-col w-full p-5 lg:hidden">
           <div className="flex flex-row w-full mb-[60px]">
             <LinkBase href="/">
               <InstillAiLogo type="ColourLogoWhiteType" width={159} />
