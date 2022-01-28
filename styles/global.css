@@ -27,3 +27,7 @@
     @apply border border-instillGray70 focus:outline-none focus:ring-0 focus:ring-white focus:border-instillBlue;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
