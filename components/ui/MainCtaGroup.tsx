@@ -15,8 +15,8 @@ export const MainCtaGroup: FC<Props> = ({ styleName }) => {
         styleName
       )}
     >
-      <JoinDiscordButton />
       <GetEarlyAccessButton />
+      <JoinDiscordButton />
     </div>
   );
 };
