@@ -19,7 +19,7 @@ export const JoinDiscordButton: FC<Props> = () => {
       }}
       itemDirection="horizontal"
     >
-      <p className="my-auto">Join our Community</p>
+      <p className="my-auto">Join Our Community</p>
     </ButtonBase>
   );
 };

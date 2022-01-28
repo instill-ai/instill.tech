@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { FC, useCallback } from "react";
+import { DiscordIcon } from "../icons/DiscordIcon";
 import { ButtonBase } from "./ButtonBase";
 
 interface Props {
@@ -20,7 +21,7 @@ export const GetEarlyAccessButton: FC<Props> = ({ styleName }) => {
       variant="contained"
       color="primary"
     >
-      Get early access
+      <p className="mx-auto">Get early access</p>
     </ButtonBase>
   );
 };
