@@ -157,12 +157,11 @@ export const MailchimpSignupForm: FC<Props> = () => {
               name="group[87613]"
               className="REQ_CSS"
               id="mce-group[87613]"
+              defaultValue={16}
             >
               <option value="" />
               <option value="8">Newsletter</option>
-              <option selected={true} value="16">
-                Early access
-              </option>
+              <option value="16">Early access</option>
             </select>
           </div>
           <div id="mce-responses" className="clear">
