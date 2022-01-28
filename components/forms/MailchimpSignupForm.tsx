@@ -194,7 +194,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               type="submit"
               value="Submit"
               name="subscribe"
-              className="button text-base cursor-pointer flex-grow py-3 text-instillGray05 bg-instillBlue30 hover:bg-instillBlue70"
+              className="button text-base cursor-pointer flex-grow py-3 text-instillGray05 bg-instillBlue30 hover:bg-[#236698]"
             />
           </div>
         </div>
