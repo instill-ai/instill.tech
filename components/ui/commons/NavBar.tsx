@@ -28,9 +28,9 @@ export const NavBar: FC<Props> = () => {
             <GetEarlyAccessButton />
           </div>
         </div>
-        <div className="flex flex-col w-full p-5 lg:hidden">
-          <div className="flex flex-row w-full mb-[60px]">
-            <LinkBase href="/">
+        <div className="flex flex-col w-full lg:hidden">
+          <div className="flex flex-row w-full lg:mb-[60px] p-5">
+            <LinkBase styleName="flex" href="/">
               <InstillAiLogo type="ColourLogoWhiteType" width={159} />
             </LinkBase>
             <button
@@ -44,9 +44,9 @@ export const NavBar: FC<Props> = () => {
               )}
             </button>
           </div>
-          <div className="relative">
+          <div className="relative w-full">
             {open && (
-              <div className="absolute top-0 w-full flex flex-col gap-y-10 z-50">
+              <div className="absolute top-0 left-0 b w-full flex flex-col gap-y-10 z-50 bg-instillGray95">
                 <AboutPageLink />
                 <BlogLink />
                 <GithubTextLink />
