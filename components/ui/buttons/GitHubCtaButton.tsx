@@ -17,6 +17,7 @@ export const GithubCtaButton: FC<Props> = () => {
       variant="text"
       color="lightWhite"
       onClick={handleClick}
+      itemDirection="horizontal"
     >
       See on Github
     </ButtonBase>

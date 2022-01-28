@@ -17,6 +17,7 @@ export const JoinDiscordButton: FC<Props> = () => {
         ga.eventHelpers.engagement("join_discord");
         router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK);
       }}
+      itemDirection="horizontal"
     >
       <p className="my-auto">Join our Community</p>
     </ButtonBase>
