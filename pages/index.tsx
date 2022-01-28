@@ -24,7 +24,7 @@ const Home: FC<Props> & {
 
   return (
     <PageHead
-      pageTitle="Where visual data preparation made for all | Instill AI"
+      pageTitle="Instill AI"
       pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
     >
       <div
@@ -50,7 +50,7 @@ const Home: FC<Props> & {
         <ExplorePleaseButton styleName="mt-20 mb-10 max:w-10/12 max:mx-auto" />
       </div>
       <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
-      <div className="flex max-w-[1440px] md:w-10/12 md:mx-auto">
+      <div className="flex max-w-[1440px] px-4 md:px-0 md:w-10/12 md:mx-auto">
         <div className="flex flex-col max:mx-auto max:w-10/12">
           <SecureYourSpotBlock styleName="mb-[60px]" />
           <StayInTheLoopBlock styleName={classNames.default("mb-[60px]")} />
