@@ -35,15 +35,16 @@ export const ButtonBase: FC<Props> = ({
 
   switch (variant) {
     case "contained": {
-      buttonStyle = "px-[17px] py-2.5 hover:bg-opacity-90";
+      buttonStyle = "px-[17px] py-2.5";
       break;
     }
     case "outlined": {
-      buttonStyle = "px-[17px] py-2.5 flex border border-instillBlue30";
+      buttonStyle =
+        "px-[17px] py-2.5 flex border border-instillBlue30 hover:bg-[#3C3C3C]";
       break;
     }
     case "text": {
-      buttonStyle = "hover:text-instillBlue70";
+      buttonStyle = "";
       break;
     }
     case "icon": {
@@ -53,7 +54,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (color) {
     case "primary": {
-      buttonColor = "bg-instillBlue30 text-instillGray05 hover:bg-[#1393F2]";
+      buttonColor = "bg-instillBlue30 text-instillGray05 hover:bg-[#236698]";
       break;
     }
     case "white": {
@@ -61,7 +62,7 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "lightWhite": {
-      buttonColor = "text-instillBlue30";
+      buttonColor = "text-instillBlue30 hover:text-[#236698]";
       break;
     }
     case "secondary": {
@@ -74,7 +75,7 @@ export const ButtonBase: FC<Props> = ({
   return (
     <button
       className={classNames.default(
-        "flex rounded-[3px] justify-center",
+        "flex rounded-[1px] justify-center group",
         buttonStyle,
         buttonColor,
         styleName,

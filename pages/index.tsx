@@ -8,7 +8,7 @@ import { FeatureBlockGroup } from "../components/ui/groups/FeatureBlockGroup";
 import * as classNames from "classnames";
 import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
-import { ExplorePleaseButton } from "../components/ui/buttons/ExplorePleaseButton";
+import { ExplorePleaseLink } from "../components/ui/links/ExplorePleaseLink";
 import Image from "next/image";
 
 interface Props {}
@@ -47,7 +47,7 @@ const Home: FC<Props> & {
             />
           </div>
         </div>
-        <ExplorePleaseButton styleName="mt-20 mb-10 max:w-10/12 max:mx-auto" />
+        <ExplorePleaseLink styleName="my-20 max:mx-auto" />
       </div>
       <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
       <div className="flex max-w-[1440px] px-4 md:px-0 md:w-10/12 md:mx-auto">
