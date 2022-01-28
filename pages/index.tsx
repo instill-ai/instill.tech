@@ -29,7 +29,7 @@ const Home: FC<Props> & {
     >
       <div
         className={classNames.default(
-          "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 mb-[60px] md:mb-20 px-4 lg:px-0 justify-center md:pt-[84px]",
+          "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center md:pt-[84px]",
           elementMaxWidth
         )}
       >
