@@ -19,7 +19,7 @@ export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
         <div className="flex w-full h-full md:col-start-2">
           <AlphaBadgeSvg styleName="w-full m:w-[355px] m-auto" />
         </div>
-        <div className="flex flex-col md:row-start-1">
+        <div className="flex flex-col md:row-start-1 pt-20 md:pt-0">
           <div className="flex flex-col mb-20 sm:mb-[111px]">
             <h3 className="instill-text-h3 text-instillGray95 mb-2.5">
               Secure Your Spot
