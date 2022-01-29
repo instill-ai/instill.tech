@@ -17,7 +17,7 @@ export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
         <div className="flex w-full h-full md:col-start-2">
-          <AlphaBadgeSvg styleName="sm:w-[355px] m-auto" />
+          <AlphaBadgeSvg styleName="w-full m:w-[355px] m-auto" />
         </div>
         <div className="flex flex-col md:row-start-1">
           <div className="flex flex-col mb-20 sm:mb-[111px]">
