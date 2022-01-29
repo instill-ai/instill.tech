@@ -28,7 +28,7 @@ const AboutPage: FC<Props> & {
               Make Vision AI Accessible to Everyone
             </h1>
           </div>
-          <div className="grid grid-cols-1 px-4 lg:px-0 gap-y-6 lg:grid-rows-2 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6 mb-[84px]">
+          <div className="grid grid-cols-1 gap-y-6 lg:grid-rows-2 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6">
             <div className="flex flex-col p-10 gap-y-5 bg-white rounded-[1px]">
               <h2 className="instill-text-h2 text-instillGray95 mb-1">
                 Our Company
