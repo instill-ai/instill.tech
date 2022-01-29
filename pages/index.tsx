@@ -41,13 +41,13 @@ const Home: FC<Props> & {
           </div>
           <div className="flex lg:w-[43%]">
             <img
-              className="m-auto md:w-[475px]"
+              className="m-auto w-full max:w-[475px]"
               src="/gifs/cube-composition-animation.gif"
               alt="main-hero-animation"
             />
           </div>
         </div>
-        <ExplorePleaseLink styleName="my-20 max:mx-auto" />
+        <ExplorePleaseLink styleName="my-[60px] max:mx-auto" />
       </div>
       <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
       <div className="flex max-w-[1440px] px-4 md:px-0 md:w-10/12 md:mx-auto">
