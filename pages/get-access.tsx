@@ -17,7 +17,11 @@ const GetEarlyAccessPage: FC<Props> & {
   const elementMaxWidth = "max-w-[1440px] md:w-10/12 md:mx-auto";
 
   return (
-    <PageHead pageTitle="Get early access | Instill Ai" pageDescription="">
+    <PageHead
+      pageTitle="Get early access | Instill Ai"
+      pageDescription=" We're now in private alpha. Join and see first-hand how
+    Instill AI can help adopt Vision AI in your company."
+    >
       <div className={elementMaxWidth}>
         <div className="grid grid-cols-1 lg:grid-cols-2 py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max:mx-auto max:w-10/12">
           <div className="flex flex-col max-w-[450px] mb-20 lg:mb-0">
@@ -31,7 +35,7 @@ const GetEarlyAccessPage: FC<Props> & {
               </p>
             </div>
             <div className="flex w-full">
-              <AlphaBadgeSvg styleName="max-w-[355px]" />
+              <AlphaBadgeSvg styleName="max-w-[355px] w-full" />
             </div>
           </div>
           <div>
