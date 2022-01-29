@@ -38,7 +38,7 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
     if (error) {
       if (error === "MemberExists") {
         setWarn(true);
-        setMessage("You already subscribed to Instill Ai newsletter.");
+        setMessage("You already subscribed to Instill AI newsletter.");
       } else {
         console.log(error);
         setWarn(true);
