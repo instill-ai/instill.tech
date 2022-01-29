@@ -56,9 +56,9 @@ const AboutPage: FC<Props> & {
                   User obsession
                 </h3>
                 <p className="instill-text-body text-instillGray95">
-                  We succeed only when our customers succeed. Learning what can
-                  really help our customers and delivering the value they need
-                  will always be Instill&#39;s highest interest.
+                  We succeed only when our users succeed. Learning what can
+                  really help our users and delivering the value they need will
+                  always be Instill&#39;s highest interest.
                 </p>
               </div>
               <div className="flex flex-col">
