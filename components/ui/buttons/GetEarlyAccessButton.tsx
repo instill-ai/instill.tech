@@ -21,7 +21,7 @@ export const GetEarlyAccessButton: FC<Props> = ({ styleName }) => {
       variant="contained"
       color="primary"
     >
-      <p className="mx-auto">Get early access</p>
+      <p className="mx-auto">Get Early Access</p>
     </ButtonBase>
   );
 };
