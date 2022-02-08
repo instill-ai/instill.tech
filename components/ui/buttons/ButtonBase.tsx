@@ -65,10 +65,9 @@ export const ButtonBase: FC<Props> = ({
       buttonColor = "text-instillBlue30 hover:text-[#236698]";
       break;
     }
-    case "secondary": {
-    }
     case "transparant": {
       buttonColor = "text-instillBlue30";
+      break;
     }
   }
 
