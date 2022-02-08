@@ -19,7 +19,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
       <FeatureBlock
         label="VISUAL DATA PREPARATION"
         title="Integrate Vision AI into existing data stack in minutes"
-        description="Instill visual data pipeline can extract visual image and video data with pre-built connectors, convert them with ready-to-use Vision AI models to structured representation, sent to any destination for future analysis, without managing infrastructure."
+        description="Visual data preparation can extract visual image and video data with pre-built connectors, convert them with ready-to-use Vision AI models to structured representation, sent to any destination for future analysis, without managing infrastructure."
         imagePosition="left"
         image={
           <FeatureVisualDataPreparationSvg styleName="w-[289px] h-[183px] mx-auto" />
@@ -28,7 +28,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
       <FeatureBlock
         label="OPEN SOURCE"
         title="Fetch, Deploy and Share with the Community"
-        description="Get started with our open source projects to explore Vision AI models powered by our community, set up a visual data pipeline and start processing your visual data right away. "
+        description="Get started with our open source projects to explore Vision AI models powered by our community, set up visual data preparation and start processing your visual data right away. "
         imagePosition="right"
         image={<FeatureOpenSourceSvg styleName="w-[260px] h-[238px] mx-auto" />}
         featureCta={<GithubCtaButton />}
@@ -36,7 +36,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
       <FeatureBlock
         label="API-FIRST SDK, CLI AND CONSOLE"
         title="Versatile and Developer Friendly Interface"
-        description="Set up your visual data pipelines using SDKs and CLI tools built for developers, or via console without writing any code."
+        description="Set up visual data preparation using SDKs and CLI tools built for developers, or via console without writing any code."
         imagePosition="left"
         image={
           <FeatureVersatileInterfaceSvg styleName="w-[263px] h-[233px] mx-auto" />
