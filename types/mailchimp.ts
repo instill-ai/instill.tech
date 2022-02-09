@@ -136,3 +136,15 @@ export interface Campaign {
     schema: string;
   };
 }
+
+export interface ListCampaignsResponse {
+  campaigns: Campaign[];
+  total_items: number;
+  _links: {
+    rel: string;
+    href: string;
+    method: string;
+    targetSchema: string;
+    schema: string;
+  };
+}
