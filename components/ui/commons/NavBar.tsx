@@ -24,7 +24,7 @@ export const NavBar: FC<Props> = () => {
     if (open) {
       setOpen(false);
     }
-  }, [router]);
+  }, [router, open]);
 
   return (
     <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
