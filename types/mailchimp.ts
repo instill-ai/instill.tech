@@ -148,3 +148,21 @@ export interface ListCampaignsResponse {
     schema: string;
   };
 }
+
+export interface GetCampaignContentResponse {
+  variate_contents: {
+    content_label: string;
+    plain_text: string;
+    html: string;
+  };
+  plain_text: string;
+  html: string;
+  archive_html: string;
+  _links: {
+    rel: string;
+    href: string;
+    method: string;
+    targetSchema: string;
+    schema: string;
+  };
+}
