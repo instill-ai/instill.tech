@@ -8,7 +8,6 @@ import {
 } from "../types/mailchimp";
 import matter from "gray-matter";
 import { ReactMDWrapper } from "../components/ReactMDWrapper";
-//import * as mailchimp from "@mailchimp/mailchimp_marketing";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 type TPublicCampaign =
@@ -126,8 +125,4 @@ const removePlaceholderAndFooterWords = (content: string): string => {
   return content.replace(re, () => {
     return "";
   });
-};
-
-const escapeRegExp = (string: string): string => {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 };
