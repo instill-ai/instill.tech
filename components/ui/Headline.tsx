@@ -13,7 +13,7 @@ export const Headline: FC<Props> = ({ styleName }) => {
         styleName
       )}
     >
-      Where Visual Data Preparation Made for All
+      Visual Data Preparation Made for All
     </h1>
   );
 };

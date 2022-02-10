@@ -2,7 +2,6 @@ import { FC, ReactElement } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
-import * as classNames from "classnames";
 import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 
 interface GetLayOutProps {
