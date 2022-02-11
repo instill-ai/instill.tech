@@ -9,6 +9,7 @@ import {
 import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
+import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeader";
 
 type TPublicCampaign =
   | {
@@ -36,23 +37,26 @@ const NewsletterArchivePage: FC<Props> & {
       pageTitle="Newsletter Archive | Instill Ai"
       pageDescription="Instill AI newsletter archive"
     >
-      <div className="flex flex-col py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
-        {campaigns.map((campaign) => (
-          <>
-            <div className="mx-auto my-10 text-instillGray15">
-              {`Issued on ${new Date(campaigns[0].sendTime)
-                .toDateString()
-                .split(" ")
-                .slice(1)
-                .join(" ")}`}
-            </div>
-            <div
-              key={campaign.id}
-              className="mailchimp-archive mx-auto"
-              dangerouslySetInnerHTML={{ __html: campaign.html }}
-            />
-          </>
-        ))}
+      <div className="flex flex-col w-full lg:mt-20">
+        <NewsletterArchiveHeader />
+        <div className="flex flex-col px-5 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
+          {campaigns.map((campaign) => (
+            <>
+              <div className="border-t border-b border-instillGray70 py-2.5 text-instillGray15 max-w-[800px] w-full mx-auto mb-[60px]">
+                {`Issued on ${new Date(campaigns[0].sendTime)
+                  .toDateString()
+                  .split(" ")
+                  .slice(1)
+                  .join(" ")}`}
+              </div>
+              <div
+                key={campaign.id}
+                className="mailchimp-archive mx-auto mb-[120px]"
+                dangerouslySetInnerHTML={{ __html: campaign.html }}
+              />
+            </>
+          ))}
+        </div>
       </div>
     </PageHead>
   );
