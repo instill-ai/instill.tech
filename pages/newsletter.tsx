@@ -7,15 +7,16 @@ import {
   ListCampaignsResponse,
 } from "../types/mailchimp";
 import matter from "gray-matter";
-import { ReactMDWrapper } from "../components/ReactMDWrapper";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+import { parse } from "node-html-parser";
 
 type TPublicCampaign =
   | {
       title: string;
       id: string;
       sendTime: string;
-      content: string;
+      plainText: string;
+      html: string;
     }
   | undefined;
 
@@ -30,16 +31,17 @@ interface GetLayOutProps {
 const NewsletterArchivePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ campaigns }) => {
-  console.log(campaigns);
-
   return (
-    <PageHead pageTitle="Newsletter Archive | Instill Ai" pageDescription="">
+    <PageHead
+      pageTitle="Newsletter Archive | Instill Ai"
+      pageDescription="Instill AI newsletter archive"
+    >
       <div className="flex py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
         {campaigns.map((campaign) => (
-          <ReactMDWrapper
-            styleName="mx-auto"
+          <div
             key={campaign.id}
-            content={campaign.content}
+            className="mailchimp-archive mx-auto"
+            dangerouslySetInnerHTML={{ __html: campaign.html }}
           />
         ))}
       </div>
@@ -76,13 +78,77 @@ export const getStaticProps: GetStaticProps = async () => {
         const response: GetCampaignContentResponse =
           await mailchimp.campaigns.getContent(campaign.id);
 
+        // Parse plain text to markdown using grey-matter
         const { content } = matter(response.plain_text.trim());
+
+        // Parse html string to Dom using node-html-parser
+        const root = parse(response.html);
+
+        // Mailchimp has meta, title and style tag, we need to remove it to avoid polluting our
+        // website
+        root.querySelectorAll("meta").forEach((e) => e.remove());
+        root.querySelectorAll("title").forEach((e) => e.remove());
+        root.querySelectorAll("link").forEach((e) => e.remove());
+        root.querySelectorAll("style").forEach((e) => e.remove());
+
+        // Remove mailchimp Footer
+        root.querySelectorAll("#templateFooter").forEach((e) => e.remove());
+
+        // Remove mailchimp h3 inline color style
+        root.querySelectorAll("h3").forEach((e) => {
+          let styleList = e.attributes.style.split(";");
+          styleList = styleList.filter((style) => {
+            return !style.includes("color:");
+          });
+          e.setAttribute("style", styleList.join(";"));
+        });
+
+        // Remove mailchimp h4 inline color style
+        root.querySelectorAll("h4").forEach((e) => {
+          let styleList = e.attributes.style.split(";");
+          styleList = styleList.filter((style) => {
+            return !style.includes("color:");
+          });
+          e.setAttribute("style", styleList.join(";"));
+        });
+
+        // Remove mailchimp p inline color style
+        root.querySelectorAll("p").forEach((e) => {
+          let styleList = e.attributes.style.split(";");
+          styleList = styleList.filter((style) => {
+            return !style.includes("color:");
+          });
+          e.setAttribute("style", styleList.join(";"));
+        });
+
+        // Remove mailchimp content divider
+        root.querySelectorAll(".mcnDividerContent").forEach((e) => {
+          let styleList = e.attributes.style.split(";");
+          styleList = styleList.filter((style) => {
+            return !style.includes("border-top:");
+          });
+          e.setAttribute("style", styleList.join(";"));
+        });
+
+        // Remove mailchimp content image fixed width
+        root.querySelectorAll(".mcnImage").forEach((e) => {
+          e.removeAttribute("width");
+          let styleList = e.attributes.style.split(";");
+          styleList = styleList.filter((style) => {
+            return !style.includes("max-width:");
+          });
+          e.setAttribute("style", styleList.join(";"));
+
+          e.classList.add("mx-auto");
+          e.classList.add("md:max-w-[600px]");
+        });
 
         publicCampaigns.push({
           id: campaign.id,
           title: campaign.settings.title,
           sendTime: campaign.send_time,
-          content: removePlaceholderAndFooterWords(content),
+          plainText: removePlaceholderAndFooterWords(content),
+          html: removePlaceholderAndFooterWords(root.toString()),
         });
       }
     }
@@ -101,6 +167,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const removePlaceholderAndFooterWords = (content: string): string => {
+  // Mailchimp's plain text has lots of template literal, we have to remove that
   let removeWords = [
     "\\*\\|FNAME\\|\\*",
     "\\*\\|MC_PREVIEW_TEXT\\|\\*",
@@ -121,7 +188,6 @@ const removePlaceholderAndFooterWords = (content: string): string => {
   ];
 
   let re = new RegExp(removeWords.join("|"), "gi");
-  console.log(re);
   return content.replace(re, () => {
     return "";
   });
