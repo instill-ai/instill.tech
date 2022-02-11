@@ -36,13 +36,22 @@ const NewsletterArchivePage: FC<Props> & {
       pageTitle="Newsletter Archive | Instill Ai"
       pageDescription="Instill AI newsletter archive"
     >
-      <div className="flex py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
+      <div className="flex flex-col py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
         {campaigns.map((campaign) => (
-          <div
-            key={campaign.id}
-            className="mailchimp-archive mx-auto"
-            dangerouslySetInnerHTML={{ __html: campaign.html }}
-          />
+          <>
+            <div className="mx-auto my-10 text-instillGray15">
+              {`Issued on ${new Date(campaigns[0].sendTime)
+                .toDateString()
+                .split(" ")
+                .slice(1)
+                .join(" ")}`}
+            </div>
+            <div
+              key={campaign.id}
+              className="mailchimp-archive mx-auto"
+              dangerouslySetInnerHTML={{ __html: campaign.html }}
+            />
+          </>
         ))}
       </div>
     </PageHead>
@@ -142,6 +151,9 @@ export const getStaticProps: GetStaticProps = async () => {
           e.classList.add("mx-auto");
           e.classList.add("md:max-w-[600px]");
         });
+
+        // Remove mailchimp Header logo image
+        root.querySelectorAll("#templateHeader").forEach((e) => e.remove());
 
         publicCampaigns.push({
           id: campaign.id,
