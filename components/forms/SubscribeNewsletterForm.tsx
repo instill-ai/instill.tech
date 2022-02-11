@@ -23,6 +23,8 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
       return;
     }
 
+    // Fetch api endpoint for subscribing, Mailchimp's API doesn't have CORS enabled,
+    // So it can't receive request from browser.
     const res = await fetch("/api/subscribe", {
       body: JSON.stringify({
         email: email.current.value,
@@ -53,7 +55,7 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
   };
 
   return (
-    <form onSubmit={subscribe}>
+    <form onSubmit={subscribe} className={styleName}>
       <div className="flex flex-col w-full gap-y-1 my-auto sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
           <div className="flex flex-row gap-x-2.5 justify-end border border-instillGray05 mb-1.5">
