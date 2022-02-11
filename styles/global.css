@@ -31,3 +31,30 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* For mailchimp nesletter archive style */
+
+.mcnTextContent {
+  color: #f6f6f6 !important;
+}
+
+h3.null {
+  color: #f6f6f6 !important;
+}
+
+.mcnTextContent > p,
+h3,
+h4,
+li {
+  color: #f6f6f6;
+}
+
+.mcnTextContent > ul > li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mcnTextContent > ul {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
