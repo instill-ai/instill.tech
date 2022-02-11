@@ -9,6 +9,7 @@ import { AboutPageLink } from "../links/AboutPageLink";
 import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
+import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 
 interface Props {}
 
@@ -37,6 +38,7 @@ export const NavBar: FC<Props> = () => {
           <div className="flex flex-row gap-x-[60px] justify-end">
             <AboutPageLink />
             <BlogLink />
+            <NewsletterArchivePageLink />
             <GithubTextLink />
             <GetEarlyAccessButton />
           </div>
@@ -67,6 +69,7 @@ export const NavBar: FC<Props> = () => {
               <div className="absolute top-0 left-0 py-[50px] px-4 w-full flex flex-col gap-y-[50px] bg-instillGray95">
                 <AboutPageLink />
                 <BlogLink />
+                <NewsletterArchivePageLink />
                 <GithubTextLink />
                 <GetEarlyAccessButton />
               </div>
