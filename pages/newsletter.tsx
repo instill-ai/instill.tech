@@ -34,7 +34,7 @@ const NewsletterArchivePage: FC<Props> & {
 } = ({ campaigns }) => {
   return (
     <PageHead
-      pageTitle="Newsletter Archive | Instill Ai"
+      pageTitle="Newsletter Archive | Instill AI"
       pageDescription="Instill AI newsletter archive"
     >
       <div className="flex flex-col w-full lg:mt-20">

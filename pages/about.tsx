@@ -17,7 +17,7 @@ const AboutPage: FC<Props> & {
 
   return (
     <PageHead
-      pageTitle="About us | Instill Ai"
+      pageTitle="About us | Instill AI"
       pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
     >
       <div className="max-w-[1440px] md:w-10/12 md:mx-auto">
