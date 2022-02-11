@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, Fragment } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { GetStaticProps } from "next";
@@ -41,7 +41,7 @@ const NewsletterArchivePage: FC<Props> & {
         <NewsletterArchiveHeader />
         <div className="flex flex-col px-5 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
           {campaigns.map((campaign) => (
-            <>
+            <Fragment key={campaign.id}>
               <div className="border-t border-b border-instillGray70 py-2.5 text-instillGray15 max-w-[800px] w-full mx-auto mb-[60px]">
                 {`Issued on ${new Date(campaigns[0].sendTime)
                   .toDateString()
@@ -50,11 +50,10 @@ const NewsletterArchivePage: FC<Props> & {
                   .join(" ")}`}
               </div>
               <div
-                key={campaign.id}
                 className="mailchimp-archive mx-auto mb-[120px]"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
