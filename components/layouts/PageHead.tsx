@@ -20,6 +20,12 @@ export const PageHead: FC<Props> = ({
     pageTitle,
     pageDescription,
   };
+
+  let canonicalURL =
+    router.asPath === "/"
+      ? `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`
+      : `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}` + "/";
+
   return (
     <>
       <Head>
@@ -27,14 +33,8 @@ export const PageHead: FC<Props> = ({
         {meta.pageDescription && (
           <meta content={meta.pageDescription} name="description" />
         )}
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
-        />
-        <link
-          rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
-        />
+        <meta property="og:url" content={canonicalURL} />
+        <link rel="canonical" href={canonicalURL} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={meta.siteName} />
         <meta property="og:description" content={meta.pageDescription} />

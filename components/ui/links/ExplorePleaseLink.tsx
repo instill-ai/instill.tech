@@ -11,7 +11,7 @@ interface Props {
 export const ExplorePleaseLink: FC<Props> = ({ styleName }) => {
   return (
     <LinkBase
-      href="#feature-block-group"
+      href="#landing-page-banner"
       styleName={classNames.default("flex flex-col group", styleName)}
     >
       <p className="mx-auto text-instillBlue30 group-hover:text-[#236698]">

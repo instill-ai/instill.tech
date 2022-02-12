@@ -18,7 +18,7 @@ const GetEarlyAccessPage: FC<Props> & {
 
   return (
     <PageHead
-      pageTitle="Get early access | Instill Ai"
+      pageTitle="Get early access | Instill AI"
       pageDescription=" We're now in private alpha. Join and see first-hand how
     Instill AI can help adopt Vision AI in your company."
     >

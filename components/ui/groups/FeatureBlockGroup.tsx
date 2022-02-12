@@ -19,7 +19,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
       <FeatureBlock
         label="VISUAL DATA PREPARATION"
         title="Integrate Vision AI into existing data stack in minutes"
-        description="Visual data preparation can extract visual image and video data with pre-built connectors, convert them with ready-to-use Vision AI models to structured representation, sent to any destination for future analysis, without managing infrastructure."
+        description="Visual data preparation brings seamless data access and faster POC to Production for Vision AI. It unleashes the power of Vision AI in the modern data stack, so the current tooling can process image and video data more effectively."
         imagePosition="left"
         image={
           <FeatureVisualDataPreparationSvg styleName="w-[289px] h-[183px] mx-auto" />
@@ -27,7 +27,7 @@ export const FeatureBlockGroup: FC<Props> = ({ styleName }) => {
       />
       <FeatureBlock
         label="OPEN SOURCE"
-        title="Fetch, Deploy and Share with the Community"
+        title="Fetch, Deploy, and Share with the Community"
         description="Get started with our open source projects to explore Vision AI models powered by our community, set up visual data preparation and start processing your visual data right away. "
         imagePosition="right"
         image={<FeatureOpenSourceSvg styleName="w-[260px] h-[238px] mx-auto" />}
