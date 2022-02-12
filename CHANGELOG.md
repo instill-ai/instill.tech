@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/instill-ai/product-website/compare/v1.1.0...v1.2.0) (2022-02-12)
+
+
+### Features
+
+* release landing page banner version ([#53](https://www.github.com/instill-ai/product-website/issues/53)) ([5774c7f](https://www.github.com/instill-ai/product-website/commit/5774c7fcab9d4e09ce876c08e346679f9956abe2)), closes [#46](https://www.github.com/instill-ai/product-website/issues/46) [#48](https://www.github.com/instill-ai/product-website/issues/48) [#50](https://www.github.com/instill-ai/product-website/issues/50) [#52](https://www.github.com/instill-ai/product-website/issues/52)
+
 ## [1.1.0](https://www.github.com/instill-ai/product-website/compare/v1.0.0...v1.1.0) (2022-02-08)
 
 
