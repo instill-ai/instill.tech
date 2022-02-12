@@ -5,7 +5,7 @@ interface Props {
   styleName?: string;
 }
 
-export const LandingBannerTop: FC<Props> = ({ styleName }) => {
+export const LandingBannerTopSvg: FC<Props> = ({ styleName }) => {
   return (
     <SvgBase viewBox="0 0 291 330" styleName={styleName}>
       <g clipPath="url(#clip0_866_5383)">
