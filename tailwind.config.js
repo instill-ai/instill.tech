@@ -53,6 +53,7 @@ module.exports = {
       },
       screens: {
         xx: "320px",
+        xs: "480px",
         max: "1440px",
       },
       typography: (theme) => ({
