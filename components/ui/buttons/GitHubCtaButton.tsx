@@ -19,7 +19,7 @@ export const GithubCtaButton: FC<Props> = () => {
       onClick={handleClick}
       itemDirection="horizontal"
     >
-      See on Github
+      See on GitHub
     </ButtonBase>
   );
 };
