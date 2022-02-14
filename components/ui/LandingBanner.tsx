@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import { LandingBannerDownSvg } from "./svgs/LandingBannerDownSvg";
+import { LandingBannerKernelAnimateSvg } from "./svgs/LandingBannerKernelAnimateSvg";
 import { LandingBannerTopSvg } from "./svgs/LandingBannerTopSvg";
 
 interface Props {}
@@ -39,14 +40,15 @@ export const LandingBanner: FC<Props> = () => {
     >
       <div className="flex flex-col">
         <LandingBannerTopSvg styleName="w-[175px] xs:w-[291px] h-[198px] xs:h-[330px] mx-auto translate-y-6 xs:translate-y-10 z-50" />
-        <div className="relative w-[90px] xs:w-[150px] h-[79px] xs:h-[131px] mx-auto z-30">
+        {/* <div className="relative w-[90px] xs:w-[150px] h-[79px] xs:h-[131px] mx-auto z-30">
           <Image
             src="/gifs/landing-banner-kernel.gif"
             objectFit="contain"
             layout="fill"
             alt="landing-banner-kernel-animation"
           />
-        </div>
+        </div> */}
+        <LandingBannerKernelAnimateSvg styleName="w-[90px] xs:w-[150px] h-[79px] xs:h-[131px] mx-auto z-30 pr-0.5" />
         <LandingBannerDownSvg styleName="w-[272px] xs:w-[442px] h-[200px] xs:h-[334px] mx-auto -translate-y-6 xs:-translate-y-10" />
       </div>
       <div className="lg:py-10 lg:h-[795px] md:my-auto hidden lg:grid lg:grid-rows-3">
