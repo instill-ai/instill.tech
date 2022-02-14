@@ -8,566 +8,567 @@ interface Props {
 export const LandingBannerKernelAnimateSvg: FC<Props> = ({ styleName }) => {
   return (
     <SvgBase viewBox="0 0 138 121" styleName={styleName}>
-      <style global jsx>{`
-        #Vector_159,
-        #Vector_183,
-        #Vector_182 {
-          animation: fillColor-1 4s step-start infinite;
-        }
+      <style global jsx>
+        {`
+          #Vector_159,
+          #Vector_183,
+          #Vector_182 {
+            animation: fillColor-1 2s step-start infinite;
+          }
 
-        #Vector_170 {
-          animation: fillColor-1-2 4s step-start infinite;
-        }
+          #Vector_170 {
+            animation: fillColor-1-2 2s step-start infinite;
+          }
 
-        #Vector_176 {
-          animation: fillColor-1-2-4-5 4s step-start infinite;
-        }
+          #Vector_176 {
+            animation: fillColor-1-2-4-5 2s step-start infinite;
+          }
 
-        #Vector_165,
-        #Vector_188,
-        #Vector_189 {
-          animation: fillColor-1-4 4s step-start infinite;
-        }
+          #Vector_165,
+          #Vector_188,
+          #Vector_189 {
+            animation: fillColor-1-4 2s step-start infinite;
+          }
 
-        #Vector_86 {
-          animation: fillColor-2-3 4s step-start infinite;
-        }
+          #Vector_86 {
+            animation: fillColor-2-3 2s step-start infinite;
+          }
 
-        #Vector_92 {
-          animation: fillColor-2-3-5-6 4s step-start infinite;
-        }
+          #Vector_92 {
+            animation: fillColor-2-3-5-6 2s step-start infinite;
+          }
 
-        #Vector_74 {
-          animation: fillColor-3 4s step-start infinite;
-        }
+          #Vector_74 {
+            animation: fillColor-3 2s step-start infinite;
+          }
 
-        #Vector_80 {
-          animation: fillColor-3-6 4s step-start infinite;
-        }
+          #Vector_80 {
+            animation: fillColor-3-6 2s step-start infinite;
+          }
 
-        #Vector_207,
-        #Vector_230,
-        #Vector_231 {
-          animation: fillColor-4-7 4s step-start infinite;
-        }
+          #Vector_207,
+          #Vector_230,
+          #Vector_231 {
+            animation: fillColor-4-7 2s step-start infinite;
+          }
 
-        #Vector_218 {
-          animation: fillColor-4-5-7-8 4s step-start infinite;
-        }
+          #Vector_218 {
+            animation: fillColor-4-5-7-8 2s step-start infinite;
+          }
 
-        #Vector_134 {
-          animation: fillColor-5-6-8-9 4s step-start infinite;
-        }
+          #Vector_134 {
+            animation: fillColor-5-6-8-9 2s step-start infinite;
+          }
 
-        #Vector_122 {
-          animation: fillColor-6-9 4s step-start infinite;
-        }
+          #Vector_122 {
+            animation: fillColor-6-9 2s step-start infinite;
+          }
 
-        #Vector_211,
-        #Vector_213,
-        #Vector_235,
-        #Vector_236,
-        #Vector_237 {
-          animation: fillColor-7 4s step-start infinite;
-        }
+          #Vector_211,
+          #Vector_213,
+          #Vector_235,
+          #Vector_236,
+          #Vector_237 {
+            animation: fillColor-7 2s step-start infinite;
+          }
 
-        #Vector_199,
-        #Vector_223,
-        #Vector_224 {
-          animation: fillColor-7-8 4s step-start infinite;
-        }
+          #Vector_199,
+          #Vector_223,
+          #Vector_224 {
+            animation: fillColor-7-8 2s step-start infinite;
+          }
 
-        #Vector_115,
-        #Vector_139,
-        #Vector_140 {
-          animation: fillColor-8-9 4s step-start infinite;
-        }
+          #Vector_115,
+          #Vector_139,
+          #Vector_140 {
+            animation: fillColor-8-9 2s step-start infinite;
+          }
 
-        #Vector_103,
-        #Vector_127,
-        #Vector_128 {
-          animation: fillColor-9 4s step-start infinite;
-        }
+          #Vector_103,
+          #Vector_127,
+          #Vector_128 {
+            animation: fillColor-9 2s step-start infinite;
+          }
 
-        @keyframes fillColor-1 {
-          11% {
-            fill: #b4fcd2;
+          @keyframes fillColor-1 {
+            11% {
+              fill: #b4fcd2;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-1-2 {
-          11% {
-            fill: #b4fcd2;
+          @keyframes fillColor-1-2 {
+            11% {
+              fill: #b4fcd2;
+            }
+            22% {
+              fill: #b4fcd2;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #b4fcd2;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-1-2-4-5 {
-          11% {
-            fill: #b4fcd2;
+          @keyframes fillColor-1-2-4-5 {
+            11% {
+              fill: #b4fcd2;
+            }
+            22% {
+              fill: #b4fcd2;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #b4fcd2;
+            }
+            55% {
+              fill: #b4fcd2;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #b4fcd2;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #b4fcd2;
-          }
-          55% {
-            fill: #b4fcd2;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-1-4 {
-          11% {
-            fill: #b4fcd2;
+          @keyframes fillColor-1-4 {
+            11% {
+              fill: #b4fcd2;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #b4fcd2;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #b4fcd2;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-2-3 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-2-3 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #b4fcd2;
+            }
+            33% {
+              fill: #b4fcd2;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #b4fcd2;
-          }
-          33% {
-            fill: #b4fcd2;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-2-3-5-6 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-2-3-5-6 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #b4fcd2;
+            }
+            33% {
+              fill: #b4fcd2;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #b4fcd2;
+            }
+            66% {
+              fill: #b4fcd2;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #b4fcd2;
-          }
-          33% {
-            fill: #b4fcd2;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #b4fcd2;
-          }
-          66% {
-            fill: #b4fcd2;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-3 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-3 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #b4fcd2;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #b4fcd2;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-3-6 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-3-6 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #b4fcd2;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #b4fcd2;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #b4fcd2;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #b4fcd2;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-4-7 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-4-7 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #b4fcd2;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #b4fcd2;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #b4fcd2;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #b4fcd2;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-4-5-7-8 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-4-5-7-8 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #b4fcd2;
+            }
+            55% {
+              fill: #b4fcd2;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #b4fcd2;
+            }
+            88% {
+              fill: #b4fcd2;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #b4fcd2;
-          }
-          55% {
-            fill: #b4fcd2;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #b4fcd2;
-          }
-          88% {
-            fill: #b4fcd2;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-5-6-8-9 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-5-6-8-9 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #b4fcd2;
+            }
+            66% {
+              fill: #b4fcd2;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #b4fcd2;
+            }
+            99% {
+              fill: #b4fcd2;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #b4fcd2;
-          }
-          66% {
-            fill: #b4fcd2;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #b4fcd2;
-          }
-          99% {
-            fill: #b4fcd2;
-          }
-        }
 
-        @keyframes fillColor-6-9 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-6-9 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #b4fcd2;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #b4fcd2;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #b4fcd2;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #b4fcd2;
-          }
-        }
 
-        @keyframes fillColor-7 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-7 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #b4fcd2;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #b4fcd2;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
 
-        @keyframes fillColor-7-8 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-7-8 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #b4fcd2;
+            }
+            88% {
+              fill: #b4fcd2;
+            }
+            99% {
+              fill: #f6f6f6;
+            }
           }
-          22% {
-            fill: #f6f6f6;
+          @keyframes fillColor-8-9 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #b4fcd2;
+            }
+            99% {
+              fill: #b4fcd2;
+            }
           }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #b4fcd2;
-          }
-          88% {
-            fill: #b4fcd2;
-          }
-          99% {
-            fill: #f6f6f6;
-          }
-        }
-        @keyframes fillColor-8-9 {
-          11% {
-            fill: #f6f6f6;
-          }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #b4fcd2;
-          }
-          99% {
-            fill: #b4fcd2;
-          }
-        }
 
-        @keyframes fillColor-9 {
-          11% {
-            fill: #f6f6f6;
+          @keyframes fillColor-9 {
+            11% {
+              fill: #f6f6f6;
+            }
+            22% {
+              fill: #f6f6f6;
+            }
+            33% {
+              fill: #f6f6f6;
+            }
+            44% {
+              fill: #f6f6f6;
+            }
+            55% {
+              fill: #f6f6f6;
+            }
+            66% {
+              fill: #f6f6f6;
+            }
+            77% {
+              fill: #f6f6f6;
+            }
+            88% {
+              fill: #f6f6f6;
+            }
+            99% {
+              fill: #b4fcd2;
+            }
           }
-          22% {
-            fill: #f6f6f6;
-          }
-          33% {
-            fill: #f6f6f6;
-          }
-          44% {
-            fill: #f6f6f6;
-          }
-          55% {
-            fill: #f6f6f6;
-          }
-          66% {
-            fill: #f6f6f6;
-          }
-          77% {
-            fill: #f6f6f6;
-          }
-          88% {
-            fill: #f6f6f6;
-          }
-          99% {
-            fill: #b4fcd2;
-          }
-        }
-      `}
+        `}
       </style>
       <g id="landing-banner-kernel">
         <path
