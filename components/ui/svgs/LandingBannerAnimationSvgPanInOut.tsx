@@ -312,27 +312,6 @@ export const LandingBannerAnimationSvgPanInOut: FC<Props> = ({ styleName }) => {
                 fill="#1A1A1A"
               />
             </g>
-            <g id="data_source_1" opacity="0.1" clipPath="url(#clip4_359_66)">
-              <path
-                id="Vector 2_4"
-                d="M182.085 133.102L182.086 115.102L176.89 112.102L166.498 118.103L166.497 142.103L182.085 133.102Z"
-                fill="#F2CF1A"
-                stroke="#1A1A1A"
-              />
-              <path
-                id="Union_4"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M175.158 134.102L180.354 131.102L176.025 126.602L173.328 132.518L171.694 131.103L168.23 138.103L171.694 136.103L175.158 134.102Z"
-                fill="#1A1A1A"
-              />
-              <circle
-                id="Ellipse 2_4"
-                r="1.5"
-                transform="matrix(0.866007 -0.500033 -3.76274e-05 1 170.395 127.353)"
-                fill="#1A1A1A"
-              />
-            </g>
             <g id="data_source_2" clipPath="url(#clip5_359_66)">
               <path
                 id="Vector 2_5"
@@ -349,6 +328,27 @@ export const LandingBannerAnimationSvgPanInOut: FC<Props> = ({ styleName }) => {
               />
               <circle
                 id="Ellipse 2_5"
+                r="1.5"
+                transform="matrix(0.866007 -0.500033 -3.76274e-05 1 170.395 127.353)"
+                fill="#1A1A1A"
+              />
+            </g>
+            <g id="data_source_1" opacity="0.1" clipPath="url(#clip4_359_66)">
+              <path
+                id="Vector 2_4"
+                d="M182.085 133.102L182.086 115.102L176.89 112.102L166.498 118.103L166.497 142.103L182.085 133.102Z"
+                fill="#F2CF1A"
+                stroke="#1A1A1A"
+              />
+              <path
+                id="Union_4"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M175.158 134.102L180.354 131.102L176.025 126.602L173.328 132.518L171.694 131.103L168.23 138.103L171.694 136.103L175.158 134.102Z"
+                fill="#1A1A1A"
+              />
+              <circle
+                id="Ellipse 2_4"
                 r="1.5"
                 transform="matrix(0.866007 -0.500033 -3.76274e-05 1 170.395 127.353)"
                 fill="#1A1A1A"
