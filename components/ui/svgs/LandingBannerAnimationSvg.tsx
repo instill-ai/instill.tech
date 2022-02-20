@@ -11,12 +11,12 @@ export const LandingBannerAnimationSvg: FC<Props> = ({ styleName }) => {
       <style global jsx>
         {`
           #bottom_line path {
-            stroke-dasharray: 20;
+            stroke-dasharray: 30 10;
             animation: dash 12s linear infinite;
           }
 
           #top_line path {
-            stroke-dasharray: 20;
+            stroke-dasharray: 30;
             animation: dash-reverse 12s linear infinite;
           }
 
