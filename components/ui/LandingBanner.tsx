@@ -3,6 +3,7 @@ import { FC } from "react";
 import { LandingBannerDownSvg } from "./svgs/LandingBannerDownSvg";
 import { LandingBannerKernelAnimateSvg } from "./svgs/LandingBannerKernelAnimateSvg";
 import { LandingBannerTopSvg } from "./svgs/LandingBannerTopSvg";
+import { MagicFlowFull } from "./svgs/MagicFlowFull";
 
 interface Props {}
 
@@ -39,19 +40,9 @@ export const LandingBanner: FC<Props> = () => {
       className="grid grid-cols-1 lg:grid-cols-2 max-w-[1440px] lg:w-11/12 lg:mx-auto mb-8"
     >
       <div className="flex flex-col">
-        <LandingBannerTopSvg styleName="w-[175px] xs:w-[291px] h-[198px] xs:h-[330px] mx-auto translate-y-6 xs:translate-y-10 z-50" />
-        {/* <div className="relative w-[90px] xs:w-[150px] h-[79px] xs:h-[131px] mx-auto z-30">
-          <Image
-            src="/gifs/landing-banner-kernel.gif"
-            objectFit="contain"
-            layout="fill"
-            alt="landing-banner-kernel-animation"
-          />
-        </div> */}
-        <LandingBannerKernelAnimateSvg styleName="w-[90px] xs:w-[150px] h-[79px] xs:h-[131px] mx-auto z-30 pr-0.5" />
-        <LandingBannerDownSvg styleName="w-[272px] xs:w-[442px] h-[200px] xs:h-[334px] mx-auto -translate-y-6 xs:-translate-y-10" />
+        <MagicFlowFull styleName="mx-auto w-[446px] h-[1021px]" />
       </div>
-      <div className="lg:py-10 lg:h-[795px] md:my-auto hidden lg:grid lg:grid-rows-3">
+      <div className="lg:h-[900px] md:my-auto hidden lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
           <div
             key={copy.id}
