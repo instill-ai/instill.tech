@@ -10,6 +10,7 @@ import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import { ExplorePleaseLink } from "../components/ui/links/ExplorePleaseLink";
 import { LandingBanner } from "../components/ui/LandingBanner";
+import { HeroAnimationSvg } from "../components/ui/svgs/HeroAnimationSvg";
 
 interface Props {}
 
@@ -41,11 +42,7 @@ const Home: FC<Props> & {
               <MainCtaGroup />
             </div>
             <div className="flex lg:w-[43%]">
-              <img
-                className="m-auto w-full max:w-[475px]"
-                src="/gifs/cube-composition-animation.gif"
-                alt="main-hero-animation"
-              />
+              <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
             </div>
           </div>
           <ExplorePleaseLink styleName="my-[60px] max:mx-auto" />
