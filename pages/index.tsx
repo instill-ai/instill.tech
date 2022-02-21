@@ -30,7 +30,7 @@ const Home: FC<Props> & {
       <div className="flex flex-col">
         <div
           className={classNames.default(
-            "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
+            "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
             elementMaxWidth
           )}
         >
