@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 import { MagicFlowDestinationIcon } from "./icons/MagicFlowDestinationIcon";
 import { MagicFlowKernelIcon } from "./icons/MagicFlowKernelIcon";
 import { MagicFlowSourceIcon } from "./icons/MagicFlowSourceIcon";
-import { MagicFlowFull } from "./svgs/animations/MagicFlowFull";
+import { MagicFlow } from "./svgs/animations/MagicFlow";
 
 interface Props {}
 
@@ -45,7 +45,7 @@ export const LandingBanner: FC<Props> = () => {
       className="grid grid-cols-1 lg:grid-cols-2 max-w-[1440px] lg:w-11/12 lg:mx-auto mb-8"
     >
       <div className="flex flex-col">
-        <MagicFlowFull styleName="mx-auto w-[446px] h-[1021px]" />
+        <MagicFlow styleName="mx-auto w-[446px] h-[1021px]" />
       </div>
       <div className="lg:h-[1000px] md:my-auto hidden lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
