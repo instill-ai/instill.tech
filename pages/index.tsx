@@ -45,7 +45,7 @@ const Home: FC<Props> & {
               <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
             </div>
           </div>
-          <ExplorePleaseLink styleName="my-[60px] max:mx-auto" />
+          <ExplorePleaseLink styleName="max:my-[60px] max:mx-auto" />
         </div>
         <LandingBanner />
         <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
