@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/instill-ai/product-website/compare/v1.2.0...v1.3.0) (2022-02-22)
+
+
+### Features
+
+* add SVG animation ([#62](https://www.github.com/instill-ai/product-website/issues/62)) ([76c8b91](https://www.github.com/instill-ai/product-website/commit/76c8b91992ee21e7547c2195d23ae7fcf20a2dd4))
+
 ## [1.2.0](https://www.github.com/instill-ai/product-website/compare/v1.1.0...v1.2.0) (2022-02-12)
 
 
