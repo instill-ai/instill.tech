@@ -11,6 +11,7 @@ import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { ToGitHubButton } from "../buttons/ToGithubButton";
+import { ToBlogButton } from "../buttons/ToBlogButton";
 
 interface Props {}
 
@@ -36,7 +37,7 @@ export const NavBar: FC<Props> = () => {
 
           <div className="flex flex-row gap-x-[60px] justify-end lg:ml-auto">
             <AboutPageLink />
-            <BlogLink />
+            <ToBlogButton />
             <NewsletterArchivePageLink />
             <ToGitHubButton />
             <GetEarlyAccessButton />
@@ -67,7 +68,7 @@ export const NavBar: FC<Props> = () => {
             {open && (
               <div className="absolute top-0 left-0 py-[50px] px-4 w-full flex flex-col gap-y-[50px] bg-instillGray95">
                 <AboutPageLink />
-                <BlogLink />
+                <ToBlogButton />
                 <NewsletterArchivePageLink />
                 <ToGitHubButton />
                 <GetEarlyAccessButton />
