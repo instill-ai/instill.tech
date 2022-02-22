@@ -10,7 +10,7 @@ import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import { ExplorePleaseLink } from "../components/ui/links/ExplorePleaseLink";
 import { LandingBanner } from "../components/ui/LandingBanner";
-import { HeroAnimationSvg } from "../components/ui/svgs/HeroAnimationSvg";
+import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 
 interface Props {}
 

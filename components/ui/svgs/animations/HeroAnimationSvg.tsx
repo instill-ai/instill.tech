@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from "react";
-import { SvgBase } from "./SvgBase";
+import { SvgBase } from "../SvgBase";
 import { gsap } from "gsap";
 
 interface Props {

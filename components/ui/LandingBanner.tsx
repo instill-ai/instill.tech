@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 import { MagicFlowDestinationIcon } from "./icons/MagicFlowDestinationIcon";
 import { MagicFlowKernelIcon } from "./icons/MagicFlowKernelIcon";
 import { MagicFlowSourceIcon } from "./icons/MagicFlowSourceIcon";
-import { MagicFlowFull } from "./svgs/MagicFlowFull";
+import { MagicFlowFull } from "./svgs/animations/MagicFlowFull";
 
 interface Props {}
 

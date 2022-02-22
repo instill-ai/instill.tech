@@ -1,10 +1,6 @@
 import { FC } from "react";
-import { HeroAnimationSvg } from "../components/ui/svgs/HeroAnimationSvg";
-import { LandingBannerAnimationSvg } from "../components/ui/svgs/LandingBannerAnimationSvg";
-import { LandingBannerAnimationSvgPan } from "../components/ui/svgs/LandingBannerAnimationSvgPan";
-import { LandingBannerAnimationSvgPanIn } from "../components/ui/svgs/LandingBannerAnimationSvgPanIn";
-import { LandingBannerAnimationSvgPanInOut } from "../components/ui/svgs/LandingBannerAnimationSvgPanInOut";
-import { MagicFlowFull } from "../components/ui/svgs/MagicFlowFull";
+import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
+import { MagicFlowFull } from "../components/ui/svgs/animations/MagicFlowFull";
 
 interface Props {}
 
