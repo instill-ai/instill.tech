@@ -3,7 +3,6 @@ import { DiscordLink } from "./links/DiscordLink";
 import { GithubIconLink } from "./links/GithubIconLink";
 import { MediumLink } from "./links/MediumLink";
 import * as classNames from "classnames";
-import { ToMediumButton } from "./buttons/ToMediumButton";
 
 interface Props {
   styleName?: string;
@@ -25,7 +24,7 @@ export const SocialLinksGroup: FC<Props> = ({ styleName }) => {
     <div className={classNames.default("flex flex-row gap-x-5", styleName)}>
       <GithubIconLink iconStyle={style} />
       <DiscordLink iconStyle={style} />
-      <ToMediumButton />
+      <MediumLink iconStyle={style} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { ButtonBase } from "./ButtonBase";
 
 interface Props {}
 
-export const ToGitHubButton: FC<Props> = () => {
+export const ToGitHubTextButton: FC<Props> = () => {
   const handleClick = useCallback(() => {
     sendAmplitudeData("to_github", { type: "navigation" });
     window.open("https://github.com/instill-ai", "_blank");

@@ -5,7 +5,7 @@ import { ButtonBase } from "./ButtonBase";
 
 interface Props {}
 
-export const ToMediumButton: FC<Props> = () => {
+export const ToMediumIconButton: FC<Props> = () => {
   const handleClick = useCallback(() => {
     sendAmplitudeData("to_medium", { type: "navigation" });
     window.open("https://medium.com/instill-ai", "_blank");
