@@ -19,21 +19,23 @@ export const LandingBanner: FC<Props> = () => {
       id: "banner-copy-1",
       title: "UNSTRUCTURED VISUAL DATA",
       description: "Ingest image and video data with pre-built data connectors",
-      icon: <MagicFlowKernelIcon styleName="w-[65px] h-[42px]" />,
+      icon: <MagicFlowSourceIcon styleName="w-[60px] h-[63px]" />,
     },
     {
       id: "banner-copy-2",
       title: "VISION AI PROCESSOR",
       description:
         "Transform unstructured data into structured insights with ready-to-use Vision AI models",
-      icon: <MagicFlowDestinationIcon styleName="w-[60px] h-[63px]" />,
+
+      icon: <MagicFlowKernelIcon styleName="w-[65px] h-[42px]" />,
     },
     {
       id: "banner-copy-3",
       title: "STRUCTURED DATA",
       description:
         "Send structured insights to data warehouses and applications for future analysis or workflow automation",
-      icon: <MagicFlowSourceIcon styleName="w-[60px] h-[63px]" />,
+
+      icon: <MagicFlowDestinationIcon styleName="w-[60px] h-[63px]" />,
     },
   ];
 
