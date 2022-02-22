@@ -14,7 +14,7 @@ export const SubscribeEmailButton: FC<Props> = ({ onClick, styleName }) => {
       styleName={styleName}
       type="submit"
       variant="contained"
-      color="transparant"
+      color="transparent"
       endIcon={
         <RightArrowIcon styleName="w-[14px] h-[14px] text-instillBlue30 group-hover:text-[#236698]" />
       }

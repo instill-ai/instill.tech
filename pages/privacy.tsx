@@ -1,8 +1,10 @@
 import { GetStaticProps } from "next";
-import { FC, ReactElement } from "react";
+import { useRouter } from "next/router";
+import { FC, ReactElement, useEffect } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
+import { sendAmplitudeData } from "../lib/amplitude";
 import { getMDFileContent } from "../lib/file";
 
 interface Props {
@@ -16,6 +18,14 @@ interface GetLayOutProps {
 const CookiePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ content }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_privacy_policy_page", { type: "navigation" });
+    }
+  }, [router.isReady]);
+
   return (
     <PageHead
       pageTitle="Privacy policy | Instill AI"

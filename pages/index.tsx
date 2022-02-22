@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
@@ -10,6 +10,9 @@ import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import { ExplorePleaseLink } from "../components/ui/links/ExplorePleaseLink";
 import { LandingBanner } from "../components/ui/LandingBanner";
+import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
+import { useRouter } from "next/router";
+import { sendAmplitudeData } from "../lib/amplitude";
 
 interface Props {}
 
@@ -21,6 +24,13 @@ const Home: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:mx-auto";
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_main_page", { type: "navigation" });
+    }
+  }, [router.isReady]);
 
   return (
     <PageHead
@@ -30,25 +40,21 @@ const Home: FC<Props> & {
       <div className="flex flex-col">
         <div
           className={classNames.default(
-            "md:min-h-screen flex flex-col max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
+            "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
             elementMaxWidth
           )}
         >
-          <div className="flex flex-col-reverse lg:flex-row max:w-10/12 max:mx-auto">
+          <div className="flex flex-col-reverse lg:gap-y-0 lg:flex-row max:w-10/12 max:mx-auto">
             <div className="flex flex-col md:my-auto lg:w-[57%]">
               <Headline styleName="mb-5 text-left" />
               <SubHeadline styleName="mb-10 md:px-0 text-left" />
               <MainCtaGroup />
             </div>
-            <div className="flex lg:w-[43%]">
-              <img
-                className="m-auto w-full max:w-[475px]"
-                src="/gifs/cube-composition-animation.gif"
-                alt="main-hero-animation"
-              />
+            <div className="lg:w-[43%] mb-5 lg:mb-0">
+              <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
             </div>
           </div>
-          <ExplorePleaseLink styleName="my-[60px] max:mx-auto" />
+          <ExplorePleaseLink styleName="max:my-[60px] max:mx-auto" />
         </div>
         <LandingBanner />
         <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />

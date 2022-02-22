@@ -32,6 +32,15 @@ html {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: "instill";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/instillFont-Regular.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("/fonts/instillFont-Regular.woff")
+      format("woff");
+}
+
 /* For mailchimp nesletter archive style */
 
 .mcnTextContent {

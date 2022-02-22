@@ -1,9 +1,11 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { PageHead } from "../components/layouts/PageHead";
 import * as classNames from "classnames";
 import { PageBase } from "../components/layouts/PageBase";
 import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
 import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
+import { useRouter } from "next/router";
+import { sendAmplitudeData } from "../lib/amplitude";
 
 interface Props {}
 
@@ -15,6 +17,14 @@ const GetEarlyAccessPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:w-10/12 md:mx-auto";
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_get_early_access_page", { type: "navigation" });
+    }
+  }, [router.isReady]);
 
   return (
     <PageHead
