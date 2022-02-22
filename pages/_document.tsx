@@ -20,6 +20,18 @@ export const Document: FC<Props> = () => {
           crossOrigin=""
         />
         <link
+          rel="prefetch"
+          href="/fonts/instillFont-Regular.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="prefetch"
+          href="/fonts/instillFont-Regular.woff"
+          as="font"
+          crossOrigin=""
+        />
+        <link
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
