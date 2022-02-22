@@ -6,10 +6,18 @@ interface Props {
   styleName?: string;
 }
 
+/**
+ *
+ * @param styleName - specific the width and the height with Tailwind format
+ * @returns React function component
+ */
+
 export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
+  // Init the gsap selector and react reference
   const cube = useRef();
   const q = gsap.utils.selector(cube);
 
+  // This record the translating of every block
   useEffect(() => {
     const blocks = [
       {
@@ -334,6 +342,9 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
       },
     ];
 
+    // The blocks will spend 50% of the time to construct as a cube, and spend 30% to
+    // transform opacity 100% to 0%
+
     const getGSAPMovingAnimation = (id: string, endX: string, endY: string) => {
       return gsap.to(q(id), {
         keyframes: {
@@ -348,16 +359,6 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
             y: 0,
           },
           "50%": {
-            opacity: 1,
-            x: endX,
-            y: endY,
-          },
-          "80%": {
-            opacity: 1,
-            x: endX,
-            y: endY,
-          },
-          "100%": {
             opacity: 1,
             x: endX,
             y: endY,
@@ -381,7 +382,7 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
         "50%": {
           opacity: 1,
         },
-        "80%": {
+        "70%": {
           opacity: 1,
         },
         "100%": {
