@@ -21,6 +21,7 @@
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.72",
     "@next/bundle-analyzer": "^11.1.2",
+    "amplitude-js": "^8.17.0",
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
@@ -47,6 +48,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@types/amplitude-js": "^8.9.6",
     "@types/gtag.js": "^0.0.8",
     "@types/mailchimp__mailchimp_marketing": "^3.0.2",
     "@types/node": "^16.9.6",
