@@ -1,12 +1,19 @@
 import { useRouter } from "next/router";
 import { FC, useCallback } from "react";
 import { sendAmplitudeData } from "../../../lib/amplitude";
-import { DiscordIcon } from "../icons/DiscordIcon";
 import { ButtonBase } from "./ButtonBase";
 
 interface Props {
   styleName?: string;
 }
+
+/**
+ *
+ * @param styleName - tailwind format style
+ * @returns react function component
+ * - The style of button and text are fixed.
+ * - Use styleName to change position only.
+ */
 
 export const GetEarlyAccessButton: FC<Props> = ({ styleName }) => {
   const router = useRouter();
