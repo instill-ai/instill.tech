@@ -34,6 +34,7 @@ const TestPage: FC<Props> = () => {
   */}
       <HeroAnimationSvg styleName="w-[838px] y-[638px]" />
       {/* <MagicFlowFull styleName="mx-auto w-[446px] h-[1021px]" /> */}
+      <MagicFlowFull styleName="mx-auto w-[207px] h-[945px]" />
     </div>
   );
 };
