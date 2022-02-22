@@ -22,20 +22,18 @@ export const NavBar: FC<Props> = () => {
       return;
     }
 
-    if (open) {
-      setOpen(false);
-    }
-  }, [router, open]);
+    setOpen(false);
+  }, [router]);
 
   return (
     <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
       <div className="flex w-full max-w-[1440px] mx-auto">
-        <div className="hidden lg:grid w-full lg:grid-cols-2 p-4 content-center">
+        <div className="hidden lg:flex lg:flex-row xl:grid w-full xl:grid-cols-2 p-4 content-center">
           <LinkBase styleName="my-auto mr-auto" href="/">
             <InstillAiLogo type="ColourLogoWhiteType" width={159} />
           </LinkBase>
 
-          <div className="flex flex-row gap-x-[60px] justify-end">
+          <div className="flex flex-row gap-x-[60px] justify-end lg:ml-auto">
             <AboutPageLink />
             <BlogLink />
             <NewsletterArchivePageLink />

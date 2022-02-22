@@ -1,4 +1,4 @@
-import { FC, ReactElement, Fragment } from "react";
+import { FC, ReactElement, Fragment, useEffect } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { GetStaticProps } from "next";
@@ -10,6 +10,8 @@ import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
 import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeader";
+import { useRouter } from "next/router";
+import { sendAmplitudeData } from "../lib/amplitude";
 
 type TPublicCampaign =
   | {
@@ -32,6 +34,14 @@ interface GetLayOutProps {
 const NewsletterArchivePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ campaigns }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_newsletter_archive", { type: "navigation" });
+    }
+  }, [router.isReady]);
+
   return (
     <PageHead
       pageTitle="Newsletter Archive | Instill AI"

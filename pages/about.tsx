@@ -1,8 +1,10 @@
-import { FC, ReactElement } from "react";
+import { useRouter } from "next/router";
+import { FC, ReactElement, useEffect } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
 import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
+import { sendAmplitudeData } from "../lib/amplitude";
 
 interface GetLayOutProps {
   page: ReactElement;
@@ -13,7 +15,13 @@ interface Props {}
 const AboutPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const elementMaxWidth = "max-w-[1440px] md:w-10/12 md:mx-auto";
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_about_page", { type: "navigation" });
+    }
+  }, [router.isReady]);
 
   return (
     <PageHead

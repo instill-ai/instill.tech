@@ -1,6 +1,8 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
-import { ReactElement, ReactNode } from "react";
+import { useRouter } from "next/router";
+import { ReactElement, ReactNode, useEffect } from "react";
+import { initAmplitude, sendAmplitudeData } from "../lib/amplitude";
 import "../styles/global.css";
 
 type NextPageWithLayout = NextPage & {
@@ -12,6 +14,13 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const router = useRouter();
+  useEffect(() => {
+    if (router.isReady) {
+      initAmplitude();
+    }
+  }, [router.isReady]);
+
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return <>{getLayout(<Component {...pageProps} />)}</>;
