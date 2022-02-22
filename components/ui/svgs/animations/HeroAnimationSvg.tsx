@@ -10,6 +10,7 @@ interface Props {
  *
  * @param styleName - specific the width and the height with Tailwind format
  * @returns React function component
+ * - This animation has viewbox 0 0 838 638
  */
 
 export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
@@ -17,7 +18,7 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
   const cube = useRef();
   const q = gsap.utils.selector(cube);
 
-  // This record the translating of every block
+  // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
     const blocks = [
       {

@@ -15,10 +15,18 @@ type AnimationTarget = {
   endY: number;
 };
 
+/**
+ *
+ * @param styleName - specific width and height with tailwind format
+ * @returns react function component
+ * - This animation has viwebox 0 0 207 945
+ */
+
 export const MagicFlow: FC<Props> = ({ styleName }) => {
   const aiCube = useRef();
   const q = gsap.utils.selector(aiCube);
 
+  // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
     const dataSourceTargets: AnimationTarget[] = [
       {
@@ -110,6 +118,9 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
       },
     ];
 
+    // Near the end of the animation we let every item go further and decrease its opacity
+    // to emphasize the feeling of emerging into cube.
+    // The data destination items had similar but opposite effect.
     const getSourceAnimation = (target: AnimationTarget) => {
       let keyframes: { [key: string]: any };
 
