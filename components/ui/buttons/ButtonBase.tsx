@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
     | "success"
     | "white"
     | "lightWhite"
-    | "transparant";
+    | "transparent";
   startIcon?: ReactElement;
   endIcon?: ReactElement;
   onClick?: () => void;
@@ -65,7 +65,7 @@ export const ButtonBase: FC<Props> = ({
       buttonColor = "text-instillBlue30 hover:text-[#236698]";
       break;
     }
-    case "transparant": {
+    case "transparent": {
       buttonColor = "text-instillBlue30";
       break;
     }
