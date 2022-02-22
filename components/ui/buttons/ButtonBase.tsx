@@ -11,7 +11,8 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
     | "success"
     | "white"
     | "lightWhite"
-    | "transparent";
+    | "transparent"
+    | "gray";
   startIcon?: ReactElement;
   endIcon?: ReactElement;
   onClick?: () => void;
@@ -69,12 +70,16 @@ export const ButtonBase: FC<Props> = ({
       buttonColor = "text-instillBlue30";
       break;
     }
+    case "gray": {
+      buttonColor = "text-instillGray30 hover:text-instillGray05";
+      break;
+    }
   }
 
   return (
     <button
       className={classNames.default(
-        "flex rounded-[1px] justify-center group",
+        "flex rounded-[1px] justify-center group instill-text-body",
         buttonStyle,
         buttonColor,
         styleName,

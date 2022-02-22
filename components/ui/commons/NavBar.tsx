@@ -10,6 +10,7 @@ import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
+import { ToGitHubButton } from "../buttons/ToGithubButton";
 
 interface Props {}
 
@@ -37,7 +38,7 @@ export const NavBar: FC<Props> = () => {
             <AboutPageLink />
             <BlogLink />
             <NewsletterArchivePageLink />
-            <GithubTextLink />
+            <ToGitHubButton />
             <GetEarlyAccessButton />
           </div>
         </div>
@@ -68,7 +69,7 @@ export const NavBar: FC<Props> = () => {
                 <AboutPageLink />
                 <BlogLink />
                 <NewsletterArchivePageLink />
-                <GithubTextLink />
+                <ToGitHubButton />
                 <GetEarlyAccessButton />
               </div>
             )}
