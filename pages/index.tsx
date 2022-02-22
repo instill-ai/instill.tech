@@ -44,13 +44,13 @@ const Home: FC<Props> & {
             elementMaxWidth
           )}
         >
-          <div className="flex flex-col-reverse lg:flex-row max:w-10/12 max:mx-auto">
+          <div className="flex flex-col-reverse lg:gap-y-0 lg:flex-row max:w-10/12 max:mx-auto">
             <div className="flex flex-col md:my-auto lg:w-[57%]">
               <Headline styleName="mb-5 text-left" />
               <SubHeadline styleName="mb-10 md:px-0 text-left" />
               <MainCtaGroup />
             </div>
-            <div className="flex lg:w-[43%]">
+            <div className="lg:w-[43%] mb-5 lg:mb-0">
               <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
             </div>
           </div>
