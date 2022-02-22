@@ -354,7 +354,7 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
             x: 0,
             y: 0,
           },
-          "10%": {
+          "1%": {
             opacity: 1,
             x: 0,
             y: 0,
