@@ -15,7 +15,7 @@ type AnimationTarget = {
   endY: number;
 };
 
-export const MagicFlowFull: FC<Props> = ({ styleName }) => {
+export const MagicFlow: FC<Props> = ({ styleName }) => {
   const aiCube = useRef();
   const q = gsap.utils.selector(aiCube);
 
