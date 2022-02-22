@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
@@ -11,6 +11,8 @@ import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock
 import { ExplorePleaseLink } from "../components/ui/links/ExplorePleaseLink";
 import { LandingBanner } from "../components/ui/LandingBanner";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
+import { useRouter } from "next/router";
+import { sendAmplitudeData } from "../lib/amplitude";
 
 interface Props {}
 
@@ -22,6 +24,13 @@ const Home: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:mx-auto";
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      sendAmplitudeData("hit_main_page", { type: "navigation" });
+    }
+  }, [router.isReady]);
 
   return (
     <PageHead

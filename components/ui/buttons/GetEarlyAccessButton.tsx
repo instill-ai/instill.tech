@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { FC, useCallback } from "react";
-import { sendAmplitudeData } from "../../../lib/amplitude";
 import { ButtonBase } from "./ButtonBase";
 
 interface Props {
@@ -19,7 +18,6 @@ export const GetEarlyAccessButton: FC<Props> = ({ styleName }) => {
   const router = useRouter();
 
   const handleClick = useCallback(() => {
-    sendAmplitudeData("hit_get_early_access_page", { type: "navigation" });
     router.push("/get-access");
   }, [router]);
 
