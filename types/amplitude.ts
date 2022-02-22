@@ -11,6 +11,7 @@ export type Event =
   | "hit_cookie_policy_page"
   | "hit_privacy_policy_page"
   | "to_github"
+  | "to_medium"
   | "to_blog";
 
 export type EventProperties = {
