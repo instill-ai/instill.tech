@@ -10,8 +10,6 @@ import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
-import { ToGitHubTextButton } from "../buttons/ToGitHubTextButton";
-import { ToBlogButton } from "../buttons/ToBlogButton";
 
 interface Props {}
 

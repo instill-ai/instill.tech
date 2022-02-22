@@ -5,12 +5,14 @@ import * as classNames from "classnames";
 interface Props {
   href: string;
   styleName?: string;
+  onClick?: () => void;
 }
 
 export const LinkBase: FC<Props> = ({
   href,
   children,
   styleName,
+  onClick,
   ...props
 }) => {
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
@@ -18,7 +20,10 @@ export const LinkBase: FC<Props> = ({
   if (isInternalLink) {
     return (
       <Link href={href} {...props} passHref={true}>
-        <div className={classNames.default("cursor-pointer", styleName)}>
+        <div
+          onClick={onClick && onClick}
+          className={classNames.default("cursor-pointer", styleName)}
+        >
           {children}
         </div>
       </Link>
@@ -32,6 +37,7 @@ export const LinkBase: FC<Props> = ({
       target="_blank"
       rel="noopener noreferrer"
       {...props}
+      onClick={onClick && onClick}
     >
       {children}
     </a>
