@@ -15,11 +15,10 @@ interface Props {}
  */
 
 export const GithubCtaButton: FC<Props> = () => {
-  const router = useRouter();
   const handleClick = useCallback(() => {
     sendAmplitudeData("to_github", { type: "navigation" });
-    router.push("https://github.com/instill-ai");
-  }, [router]);
+    window.open("https://github.com/instill-ai/vdp", "_blank");
+  }, []);
 
   return (
     <ButtonBase
