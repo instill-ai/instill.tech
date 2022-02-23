@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/instill-ai/product-website/compare/v1.3.0...v1.3.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* fix github cta link ([#65](https://www.github.com/instill-ai/product-website/issues/65)) ([#66](https://www.github.com/instill-ai/product-website/issues/66)) ([8b3c533](https://www.github.com/instill-ai/product-website/commit/8b3c53329c2a2f0372429ff4f6fc3934fd09f429))
+
 ## [1.3.0](https://www.github.com/instill-ai/product-website/compare/v1.2.0...v1.3.0) (2022-02-22)
 
 
