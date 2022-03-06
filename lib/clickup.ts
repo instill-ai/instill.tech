@@ -22,18 +22,25 @@ export const getClickUpListQuery = async (listId: string) => {
   }
 };
 
-type ClickUpTask = {
-  id: string;
-  custom_id: string;
-};
-
-export const listClickupTasksInListQuery = async (listId: string) => {
+export const listClickUpTasksInListQuery = async (listId: string) => {
   try {
     const client = createClickUpApiClient();
     const res = await client.get<TGetClickUpTasksQueryResponse>(
       `/list/${listId}/task`
     );
     return Promise.resolve(res.data.tasks);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const getClickUpTaskQuery = async (
+  taskId: string
+): Promise<IClickUpTask> => {
+  try {
+    const client = createClickUpApiClient();
+    const res = await client.get<IClickUpTask>(`/task/${taskId}`);
+    return Promise.resolve(res.data);
   } catch (err) {
     return Promise.reject(err);
   }
