@@ -27,8 +27,15 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
 
         const workType = position.custom_fields[workTypeIndex];
 
+        const slugIndex = position.custom_fields.findIndex(
+          (field) => field.name === "slug"
+        );
+
+        const slug = position.custom_fields[slugIndex].value;
+
         return (
           <OpenPositionListUnit
+            link={`/career/${slug}`}
             unitIsPlaceholder={false}
             name={position.name}
             location={location.type_config.options[location.value].name}
@@ -39,6 +46,7 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
         );
       })}
       <OpenPositionListUnit
+        link=""
         unitIsPlaceholder={true}
         name="Open Position"
         location="Remote"
