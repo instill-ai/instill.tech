@@ -11,11 +11,17 @@
   .instill-text-h2 {
     @apply font-mono font-medium text-[23px] leading-[30px] sm:text-[36px] sm:leading-[47px];
   }
+  .instill-text-h2-fixed {
+    @apply font-mono font-medium text-[36px] leading-[47px];
+  }
   .instill-text-h3 {
     @apply font-mono font-medium text-lg leading-[27px] sm:text-2xl sm:leading-[31px];
   }
   .instill-text-h3-light {
     @apply font-mono font-light text-lg leading-[27px] sm:text-2xl sm:leading-[41px];
+  }
+  .instill-text-body-fixed {
+    @apply font-sans font-normal text-base leading-[28px];
   }
   .instill-text-body {
     @apply font-sans font-normal text-sm leading-[24px] sm:text-base sm:leading-[28px];
