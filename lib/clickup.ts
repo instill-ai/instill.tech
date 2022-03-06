@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IClickUpTask } from "../types/click";
+import { TGetClickUpTasksQueryResponse, IClickUpTask } from "../types/clickUp";
 
 export const createClickUpApiClient = () => {
   return axios.create({
@@ -30,8 +30,10 @@ type ClickUpTask = {
 export const listClickupTasksInListQuery = async (listId: string) => {
   try {
     const client = createClickUpApiClient();
-    const res = await client.get<IClickUpTask[]>(`/list/${listId}/task`);
-    return Promise.resolve(res.data);
+    const res = await client.get<TGetClickUpTasksQueryResponse>(
+      `/list/${listId}/task`
+    );
+    return Promise.resolve(res.data.tasks);
   } catch (err) {
     return Promise.reject(err);
   }
