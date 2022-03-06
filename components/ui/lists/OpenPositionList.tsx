@@ -35,7 +35,7 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
 
         return (
           <OpenPositionListUnit
-            link={`/career/${slug}`}
+            link={`/career/${position.id}-${slug}`}
             unitIsPlaceholder={false}
             name={position.name}
             location={location.type_config.options[location.value].name}
