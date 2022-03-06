@@ -1,13 +1,13 @@
 import { GetServerSideProps } from "next";
 import { FC, ReactElement } from "react";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
-import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
-import { CareerGeneralIntro } from "../components/ui/CareerGeneralIntro";
-import { CareerHero } from "../components/ui/CareerHero";
-import { CareerOpenPositionsSection } from "../components/ui/CareerOpenPositionsSection";
-import { listClickupTasksInListQuery } from "../lib/clickup";
-import { IClickUpTask } from "../types/clickup";
+import { PageBase } from "../../components/layouts/PageBase";
+import { PageHead } from "../../components/layouts/PageHead";
+import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBlock";
+import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
+import { CareerHero } from "../../components/ui/CareerHero";
+import { CareerOpenPositionsSection } from "../../components/ui/CareerOpenPositionsSection";
+import { listClickupTasksInListQuery } from "../../lib/clickup";
+import { IClickUpTask } from "../../types/clickup";
 
 interface Props {
   content: string;
