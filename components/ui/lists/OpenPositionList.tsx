@@ -29,6 +29,7 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
 
         return (
           <OpenPositionListUnit
+            unitIsPlaceholder={false}
             name={position.name}
             location={location.type_config.options[location.value].name}
             workType={workType.type_config.options[workType.value].name}
@@ -37,6 +38,13 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
           />
         );
       })}
+      <OpenPositionListUnit
+        unitIsPlaceholder={true}
+        name="Open Position"
+        location="Remote"
+        workType="Full time"
+        createdAt=""
+      />
     </div>
   );
 };

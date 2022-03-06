@@ -21,8 +21,8 @@ export const CareerOpenPositionsSection: FC<Props> = ({
         styleName
       )}
     >
-      <div className="flex flex-col gap-y-5 mb-10">
-        <h2 className="mx-auto instill-text-h2 text-instillGray95">
+      <div className="flex flex-col gap-y-5 mb-10 px-4 md:px-0">
+        <h2 className="mx-auto instill-text-h2-no-responsive text-instillGray95">
           Open Roles
         </h2>
         <p className="mx-auto text-cneter instill-text-body text-instillGray95">

@@ -11,11 +11,11 @@ export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex flex-col md:flex-row w-full gap-x-20 py-[100px]",
+        "flex flex-col md:flex-row w-full gap-x-20 py-[100px] px-4 md:px-0",
         styleName
       )}
     >
-      <InstillAiBadge styleName="w-full md:w-[402px] md:h-[177px] flex-shrink-0" />
+      <InstillAiBadge styleName="w-full md:w-[201px] md:h-[88.5px] lg:w-[402px] lg:h-[177px] flex-shrink-0" />
       <div className="flex flex-col gap-y-5">
         <p className="instill-text-body text-instillGray05">
           We&#39;re looking for passionate and dedicated early members to build

@@ -8,6 +8,8 @@ interface Props {
 }
 
 export const CareerHero: FC<Props> = ({ styleName }) => {
+  const subHeaderStyle =
+    "instill-text-h3-light text-instillGray05 mx-auto md:font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
     <div
       className={classNames.default(
@@ -19,10 +21,8 @@ export const CareerHero: FC<Props> = ({ styleName }) => {
         Come together
       </h1>
       <div className="flex flex-col w-full">
-        <p className="text-instillGray05 mx-auto font-sans font-light text-2xl leading-10">
-          We can&#39;t build our vision alone.
-        </p>
-        <p className="text-instillGray05 mx-auto font-sans font-light text-2xl leading-10">
+        <p className={subHeaderStyle}>We can&#39;t build our vision alone.</p>
+        <p className={subHeaderStyle}>
           Take a look below for your new favorite job.
         </p>
       </div>
