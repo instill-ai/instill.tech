@@ -1,3 +1,7 @@
+export type TGetClickUpTasksQueryResponse = {
+  tasks: IClickUpTask[];
+};
+
 export interface IClickUpTask {
   id: string;
   custom_id?: null;
