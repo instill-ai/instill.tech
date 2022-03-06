@@ -9,7 +9,7 @@ interface Props {
   /** Indicate whether the list unit is placeholder or not */
   unitIsPlaceholder: boolean;
 
-  /** Position full nane */
+  /** Position full name */
   name: string;
 
   /** Position detail page's link */
