@@ -32,7 +32,7 @@ const CareerPositionPage: FC<Props> & {
   return (
     <PageHead
       pageTitle={`${position.name} | Instill AI`}
-      pageDescription="We are making visual data preparation accessible to everyone and we want you to help."
+      pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
     >
       <div className="flex flex-col pt-[100px] lg:pt-[180px] pb-10">
         <div className="flex mb-10">
