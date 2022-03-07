@@ -14,10 +14,12 @@ export const BackToPreviousPageLink: FC<Props> = ({ styleName, url }) => {
   return (
     <LinkBase
       href={url}
-      styleName={classNames.default("flex flex-row gap-x-5", styleName)}
+      styleName={classNames.default("flex flex-row gap-x-5 group", styleName)}
     >
-      <LeftArrowIcon styleName="my-auto w-[15px] h-[15px] text-instillGray30" />
-      <p className="instill-text-body text-instillGray30">Back</p>
+      <LeftArrowIcon styleName="my-auto w-[15px] h-[15px] text-instillGray30 group-hover:text-instillGray05" />
+      <p className="instill-text-body text-instillGray30 group-hover:text-instillGray05">
+        Back
+      </p>
     </LinkBase>
   );
 };
