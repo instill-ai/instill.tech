@@ -6,5 +6,5 @@ export type TPositionDetails = {
   location: string;
   stockOptions: string;
   packageUK: string;
-  packageOthers: string;
+  packageTW: string;
 };
