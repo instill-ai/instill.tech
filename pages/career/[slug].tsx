@@ -35,7 +35,7 @@ const CareerPositionPage: FC<Props> & {
       pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
     >
       <div className="flex flex-col pt-[100px] lg:pt-[180px] pb-10">
-        <div className="flex mb-10">
+        <div className="flex mb-10 px-4 md:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
 
@@ -110,6 +110,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     (field) => field.name === "package_tw"
   );
 
+  const postDateIndex = task.custom_fields.findIndex(
+    (field) => field.name === "post_date"
+  );
+
   const position: TPositionDetails = {
     id: task.id,
     name: task.name,
@@ -119,6 +123,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     stockOptions: task.custom_fields[stockOptionsIndex].value.toString(),
     packageUK: task.custom_fields[packageUKIndex].value.toString(),
     packageTW: task.custom_fields[packageTWIndex].value.toString(),
+    postDate: task.custom_fields[postDateIndex].value.toString(),
   };
 
   return {
