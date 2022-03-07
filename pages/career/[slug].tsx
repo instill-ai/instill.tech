@@ -13,7 +13,6 @@ import { IClickUpTask } from "../../types/clickup";
 import { TPositionDetails } from "../../types/instill";
 
 interface Props {
-  content: string;
   position: TPositionDetails;
 }
 
@@ -23,7 +22,7 @@ interface GetLayOutProps {
 
 const CareerPositionPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ content, position }) => {
+} = ({ position }) => {
   const router = useRouter();
 
   if (!position) {
@@ -32,7 +31,7 @@ const CareerPositionPage: FC<Props> & {
 
   return (
     <PageHead
-      pageTitle=" | Instill AI"
+      pageTitle={`${position.name} | Instill AI`}
       pageDescription="We are making visual data preparation accessible to everyone and we want you to help."
     >
       <div className="flex flex-col pt-[100px] lg:pt-[180px] pb-10">
