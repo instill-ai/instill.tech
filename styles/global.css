@@ -34,10 +34,6 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 @font-face {
   font-family: "instill";
   font-style: normal;
@@ -46,8 +42,6 @@ html {
     /* Super Modern Browsers */ url("/fonts/instillFont-Regular.woff")
       format("woff");
 }
-
-/* For mailchimp nesletter archive style */
 
 .mcnTextContent {
   color: #f6f6f6 !important;
@@ -58,9 +52,9 @@ h3.null {
 }
 
 .mcnTextContent > p,
-h3,
-h4,
-li {
+.mcnTextContent > h3,
+.mcnTextContent > h4,
+.mcnTextContent > li {
   color: #f6f6f6;
 }
 
