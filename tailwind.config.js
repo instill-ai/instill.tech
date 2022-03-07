@@ -105,6 +105,12 @@ module.exports = {
             th: {
               fontWeight: 600,
             },
+            ul: {
+              li: {
+                marginTop: "20px",
+                marginBottom: "20px"
+              }
+            }
           },
         },
         black: {
