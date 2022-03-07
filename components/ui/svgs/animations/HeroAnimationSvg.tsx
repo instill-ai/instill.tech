@@ -16,10 +16,10 @@ interface Props {
 export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
   // Init the gsap selector and react reference
   const cube = useRef();
-  const q = gsap.utils.selector(cube);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(cube);
     const blocks = [
       {
         id: "#cube_a_1",
