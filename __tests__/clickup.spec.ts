@@ -188,4 +188,5 @@ test("This should transform clickUp task into position details", () => {
   expect(positionDetails.postDate).toBe("1646078400000");
   expect(positionDetails.stockOptions).toBe("0.1% - 0.3%");
   expect(positionDetails.workType).toBe("Full time");
+  expect(positionDetails.slug).toBe("full-stack-ai-engineer");
 });

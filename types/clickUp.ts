@@ -67,6 +67,7 @@ interface TypeConfig {
   default?: number | null;
   placeholder?: null;
   options?: OptionsEntity[] | null;
+  new_drop_down?: boolean | null;
 }
 
 interface OptionsEntity {
