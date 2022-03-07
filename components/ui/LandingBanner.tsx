@@ -1,10 +1,12 @@
-import { FC, ReactElement } from "react";
+import { FC, forwardRef, ReactElement } from "react";
 import { MagicFlowDestinationIcon } from "./icons/MagicFlowDestinationIcon";
 import { MagicFlowKernelIcon } from "./icons/MagicFlowKernelIcon";
 import { MagicFlowSourceIcon } from "./icons/MagicFlowSourceIcon";
 import { MagicFlow } from "./svgs/animations/MagicFlow";
 
 interface Props {}
+
+type Ref = HTMLDivElement;
 
 type BannerCopy = {
   id: string;
@@ -13,7 +15,7 @@ type BannerCopy = {
   icon: ReactElement;
 };
 
-export const LandingBanner: FC<Props> = () => {
+export const LandingBanner = forwardRef<Ref, Props>(({}, ref) => {
   const bannerCopy: BannerCopy[] = [
     {
       id: "banner-copy-1",
@@ -41,6 +43,7 @@ export const LandingBanner: FC<Props> = () => {
 
   return (
     <div
+      ref={ref}
       id="landing-page-banner"
       className="grid grid-cols-1 lg:grid-cols-2 max-w-[1440px] lg:w-11/12 lg:mx-auto mb-8 max-h-screen"
     >
@@ -65,4 +68,4 @@ export const LandingBanner: FC<Props> = () => {
       </div>
     </div>
   );
-};
+});
