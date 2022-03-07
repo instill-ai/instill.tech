@@ -17,7 +17,7 @@ export const ShareToFbLink: FC<Props> = ({ url, styleName }) => {
       styleName={classNames.default("flex", styleName)}
       href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
     >
-      <FacebookIcon styleName="w-[15px] h-[15px] text-instillGray30" />
+      <FacebookIcon styleName="w-[15px] h-[15px] text-instillGray30 hover:text-instillGray05" />
     </LinkBase>
   );
 };

@@ -18,7 +18,7 @@ export const ShareToLinkedInLink: FC<Props> = ({ url, styleName }) => {
       styleName={classNames.default("flex", styleName)}
       href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
     >
-      <LinkedInIcon styleName="w-[15px] h-[15px] text-instillGray30" />
+      <LinkedInIcon styleName="w-[15px] h-[15px] text-instillGray30 hover:text-instillGray05" />
     </LinkBase>
   );
 };
