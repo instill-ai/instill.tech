@@ -28,7 +28,10 @@ export const CareerHero: FC<Props> = ({ styleName, viewJobsScrollHandler }) => {
     "instill-text-h3-light text-instillGray05 mx-auto md:font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
     <div
-      className={classNames.default("flex flex-col w-full gap-y-10", styleName)}
+      className={classNames.default(
+        "flex flex-col w-full gap-y-10 px-4 md:px-0",
+        styleName
+      )}
     >
       <h1 className="w-full instill-text-h1 text-instillGray05 text-center">
         Come together

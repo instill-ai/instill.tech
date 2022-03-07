@@ -27,7 +27,7 @@ export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
         );
       })}
       <OpenPositionListUnit
-        link=""
+        link="https://forms.clickup.com/f/2e88k-1856/90J2JKV7NTVLYD6M1J"
         unitIsPlaceholder={true}
         name="Open Position"
         location="Remote"

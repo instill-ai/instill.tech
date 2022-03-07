@@ -11,7 +11,7 @@ export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex flex-col md:flex-row w-full gap-x-20 py-[100px] px-4 md:px-0",
+        "flex flex-col md:flex-row w-full gap-y-20 md:gap-y-0 gap-x-20 py-[100px] px-4 md:px-0",
         styleName
       )}
     >
