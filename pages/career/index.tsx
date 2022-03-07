@@ -6,12 +6,16 @@ import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBloc
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
 import CareerOpenPositionsSection from "../../components/ui/CareerOpenPositionsSection";
-import { listClickUpTasksInListQuery } from "../../lib/clickUp";
+import {
+  listClickUpTasksInListQuery,
+  transformClickUpTaskToPositionDetails,
+} from "../../lib/clickUp";
 import { IClickUpTask } from "../../types/clickUp";
+import { TPositionDetails } from "../../types/instill";
 
 interface Props {
   content: string;
-  positions: IClickUpTask[];
+  positions: TPositionDetails[];
 }
 
 interface GetLayOutProps {
@@ -22,7 +26,6 @@ const CareerPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
   const openPositionsRef = useRef<HTMLDivElement>();
-
   const scrollHandler = useCallback(() => {
     openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -55,9 +58,15 @@ export default CareerPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   let tasks: IClickUpTask[];
+  let positions: TPositionDetails[] = [];
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");
+
+    for (const task of tasks) {
+      const position = transformClickUpTaskToPositionDetails(task);
+      positions.push(position);
+    }
   } catch (err) {
     console.error(
       "Something went wrong when retrieve open position on Clickup",
@@ -67,7 +76,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      positions: tasks,
+      positions,
     },
   };
 };

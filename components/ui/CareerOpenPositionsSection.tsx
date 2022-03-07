@@ -1,12 +1,12 @@
 import { FC, forwardRef } from "react";
-import { IClickUpTask } from "../../types/clickUp";
 import { OpenPositionList } from "./lists/OpenPositionList";
 import * as classNames from "classnames";
+import { TPositionDetails } from "../../types/instill";
 
 type Ref = HTMLDivElement;
 
 interface Props {
-  positions: IClickUpTask[];
+  positions: TPositionDetails[];
 
   /** <Tailwind config> - position and width */
   styleName?: string;

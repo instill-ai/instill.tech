@@ -2,7 +2,6 @@ import { FC } from "react";
 import * as classNames from "classnames";
 import { LocationIcon } from "../icons/LocationIcon";
 import { WorkTypeIcon } from "../icons/WorkTypeIcon";
-import Link from "next/link";
 import { LinkBase } from "../links/LinkBase";
 
 interface Props {
@@ -22,7 +21,7 @@ interface Props {
   workType: string;
 
   /** Position create time */
-  createdAt: string;
+  postDate: string;
 
   /** <Tailwind config> - position */
   styleName?: string;
@@ -32,12 +31,13 @@ export const OpenPositionListUnit: FC<Props> = ({
   name,
   location,
   workType,
-  createdAt,
+  postDate,
   styleName,
   unitIsPlaceholder,
   link,
 }) => {
-  const daysAgo = 10;
+  const now = Date.now();
+  const daysAgo = Math.round(Math.abs(parseInt(postDate) - now) / 86400000);
 
   return (
     <LinkBase href={link} scroll={true}>
