@@ -5,7 +5,7 @@ import { PageHead } from "../../components/layouts/PageHead";
 import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBlock";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
-import { CareerOpenPositionsSection } from "../../components/ui/CareerOpenPositionsSection";
+import CareerOpenPositionsSection from "../../components/ui/CareerOpenPositionsSection";
 import { listClickUpTasksInListQuery } from "../../lib/clickup";
 import { IClickUpTask } from "../../types/clickup";
 

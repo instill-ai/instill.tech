@@ -28,7 +28,7 @@ export const ExploreMoreScrollButton: FC<Props> = ({
     <ButtonBase
       onClick={scrollHandler}
       variant="text"
-      color="primary"
+      color="transparent"
       styleName={classNames.default("flex flex-col group", styleName)}
     >
       <p className="mx-auto text-instillBlue30 group-hover:text-[#236698]">

@@ -8,7 +8,7 @@ import { FeatureBlockGroup } from "../components/ui/groups/FeatureBlockGroup";
 import * as classNames from "classnames";
 import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
-import { LandingBanner } from "../components/ui/LandingBanner";
+import LandingBanner from "../components/ui/LandingBanner";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
