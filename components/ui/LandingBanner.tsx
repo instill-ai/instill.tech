@@ -15,7 +15,7 @@ type BannerCopy = {
   icon: ReactElement;
 };
 
-export const LandingBanner = forwardRef<Ref, Props>(({}, ref) => {
+const LandingBanner = forwardRef<Ref, Props>(({}, ref) => {
   const bannerCopy: BannerCopy[] = [
     {
       id: "banner-copy-1",
@@ -69,3 +69,7 @@ export const LandingBanner = forwardRef<Ref, Props>(({}, ref) => {
     </div>
   );
 });
+
+LandingBanner.displayName = "LandingBanner";
+
+export default LandingBanner;

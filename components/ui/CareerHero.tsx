@@ -1,13 +1,29 @@
 import { FC } from "react";
-import { ViewJobsButton } from "./buttons/ViewJobsButton";
+import { ViewJobsScrollButton } from "./buttons/ViewJobsScrollButton";
 import * as classNames from "classnames";
 
 interface Props {
+  /** Because we have ViewJobsScrollButton under this component, we have to provide related
+   * Scroll handler.
+   * 
+   * This function will scroll pageView to targetRef 
+   * 
+   *  @Example
+   * 
+   *  ```
+   *  const handleScroll = useCallback(() => {
+        ref.current.scrollIntoView({ behavior: "smooth" });
+      }, []);
+      ```
+   * 
+  */
+  viewJobsScrollHandler: () => void;
+
   /** <Tailwind format> - position and width */
   styleName?: string;
 }
 
-export const CareerHero: FC<Props> = ({ styleName }) => {
+export const CareerHero: FC<Props> = ({ styleName, viewJobsScrollHandler }) => {
   const subHeaderStyle =
     "instill-text-h3-light text-instillGray05 mx-auto md:font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
@@ -23,7 +39,10 @@ export const CareerHero: FC<Props> = ({ styleName }) => {
           Take a look below for your new favorite job.
         </p>
       </div>
-      <ViewJobsButton styleName="mx-auto" />
+      <ViewJobsScrollButton
+        scrollHandler={viewJobsScrollHandler}
+        styleName="mx-auto"
+      />
     </div>
   );
 };

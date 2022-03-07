@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useCallback, useRef } from "react";
 import { PageBase } from "../../components/layouts/PageBase";
 import { PageHead } from "../../components/layouts/PageHead";
 import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBlock";
@@ -20,16 +20,25 @@ interface GetLayOutProps {
 
 const CareerPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ content, positions }) => {
-  console.log(positions);
+} = ({ positions }) => {
+  const openPositionsRef = useRef<HTMLDivElement>();
+
+  const scrollHandler = useCallback(() => {
+    openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
     <PageHead
       pageTitle="Career | Instill AI"
       pageDescription="We are making visual data preparation accessible to everyone and we want you to help."
     >
-      <CareerHero styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10" />
+      <CareerHero
+        viewJobsScrollHandler={scrollHandler}
+        styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10"
+      />
       <CareerGeneralIntro styleName="max-w-[1440px] md:w-10/12 md:mx-auto" />
       <CareerOpenPositionsSection
+        ref={openPositionsRef}
         styleName="mb-[100px]"
         positions={positions}
       />
