@@ -54,7 +54,7 @@ module.exports = {
       screens: {
         xx: "320px",
         xs: "480px",
-        max: "1440px",
+        max: "1450px", // We have 10px buffer
       },
       typography: (theme) => ({
         DEFAULT: {
