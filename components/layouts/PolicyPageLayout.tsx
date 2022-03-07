@@ -9,7 +9,7 @@ export const PolicyPageLayout: FC<Props> = ({ content }) => {
   return (
     <div className="md:grid md:grid-cols-3">
       <ReactMDWrapper
-        styleName="mx-5 md:mx-0 mt-[180px] mb-[60px] col-span-2"
+        styleName="prose-white mx-5 md:mx-0 mt-[180px] mb-[60px] col-span-2"
         content={content}
       />
       <div className="col-span-1 mt-[180px]">

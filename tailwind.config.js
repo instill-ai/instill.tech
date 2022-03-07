@@ -59,43 +59,26 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.instillGray30"),
             h1: {
               fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "600",
               letterSpacing: theme("letterSpacing.wide"),
-              color: theme("colors.instillGray15"),
             },
             h2: {
               fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "500",
               letterSpacing: theme("letterSpacing.wide"),
-              color: theme("colors.instillGray15"),
             },
             h3: {
               fontFamily: theme("fontFamily.mono")[0],
               fontWeight: "400",
-              color: theme("colors.instillGray15"),
-            },
-            ol: {
-              li: {
-                "&:before": { color: theme("colors.black") },
-              },
-            },
-            ul: {
-              li: {
-                "&:before": { backgroundColor: theme("colors.black") },
-              },
             },
             strong: {
               fontWeight: 600,
-              color: theme("colors.instillGray15"),
             },
             code: {
               fontSize: theme("fontSize.base"),
               fontWeight: 600,
-              color: theme("colors.black"),
-              backgroundColor: theme("colors.green.300"),
               borderRadius: "0.5rem",
               paddingLeft: "0.5rem",
               paddingRight: "0.5rem",
@@ -104,16 +87,11 @@ module.exports = {
               wordBreak: "break-word",
             },
             a: {
-              color: theme("colors.instillBlue30"),
               fontWeight: 600,
             },
             pre: {
-              color: theme("colors.white"),
-              backgroundColor: theme("colors.black"),
               code: {
                 fontWeight: 300,
-                color: theme("colors.white"),
-                backgroundColor: theme("colors.black"),
                 paddingLeft: "0rem",
                 paddingRight: "0rem",
                 paddingTop: "0rem",
@@ -121,19 +99,52 @@ module.exports = {
               },
             },
             blockquote: {
-              color: theme("colors.brblack"),
-              borderLeftColor: theme("colors.black"),
-              backgroundColor: theme("colors.white"),
               paddingBottom: "1px",
               paddingTop: "1px",
             },
-            hr: {
-              borderColor: theme("colors.gray"),
-            },
             th: {
-              color: theme("colors.instillGray15"),
               fontWeight: 600,
             },
+          },
+        },
+        black: {
+          css: {
+            "--tw-prose-body": theme("colors.instillGray95"),
+            "--tw-prose-headings": theme("colors.instillGray95"),
+            "--tw-prose-lead": theme("colors.instillGray95"),
+            "--tw-prose-links": theme("colors.instillBlue30"),
+            "--tw-prose-bold": theme("colors.instillGray95"),
+            "--tw-prose-counters": theme("colors.instillGray95"),
+            "--tw-prose-bullets": theme("colors.instillGray95"),
+            "--tw-prose-hr": theme("colors.instillGray30"),
+            "--tw-prose-quotes": theme("colors.instillGray95"),
+            "--tw-prose-quote-borders": theme("colors.instillGray30"),
+            "--tw-prose-captions": theme("colors.instillGray80"),
+            "--tw-prose-code": theme("colors.instillGray95"),
+            "--tw-prose-pre-code": theme("colors.instillGray15"),
+            "--tw-prose-pre-bg": theme("colors.instillGray95"),
+            "--tw-prose-th-borders": theme("colors.instillGray30"),
+            "--tw-prose-td-borders": theme("colors.instillGray30"),
+          },
+        },
+        white: {
+          css: {
+            "--tw-prose-body": theme("colors.instillGray15"),
+            "--tw-prose-headings": theme("colors.instillGray15"),
+            "--tw-prose-lead": theme("colors.instillGray15"),
+            "--tw-prose-links": theme("colors.instillBlue30"),
+            "--tw-prose-bold": theme("colors.instillGray15"),
+            "--tw-prose-counters": theme("colors.instillGray15"),
+            "--tw-prose-bullets": theme("colors.instillGray15"),
+            "--tw-prose-hr": theme("colors.instillGray30"),
+            "--tw-prose-quotes": theme("colors.instillGray15"),
+            "--tw-prose-quote-borders": theme("colors.instillGray15"),
+            "--tw-prose-captions": theme("colors.instillGray30"),
+            "--tw-prose-code": theme("colors.instillGray15"),
+            "--tw-prose-pre-code": theme("colors.instillGray95"),
+            "--tw-prose-pre-bg": theme("colors.instillGray15"),
+            "--tw-prose-th-borders": theme("colors.instillGray30"),
+            "--tw-prose-td-borders": theme("colors.instillGray30"),
           },
         },
       }),
