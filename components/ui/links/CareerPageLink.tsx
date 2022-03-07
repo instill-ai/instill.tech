@@ -3,7 +3,7 @@ import { LinkBase } from "./LinkBase";
 import * as classNames from "classnames";
 
 interface Props {
-  /** <Tailwind format> - textSize and color, default: instill-text-body text-instillGray30 hover:text-instillGray05 */
+  /** <Tailwind format> - textSize and color */
   styleName?: string;
 
   /** Whether we are hiring */
@@ -11,16 +11,18 @@ interface Props {
 }
 
 export const CareerPageLink: FC<Props> = ({ styleName, hiring }) => {
-  const style = styleName
-    ? styleName
-    : "instill-text-body text-instillGray30 hover:text-instillGray05";
   return (
-    <LinkBase href="/career" styleName={classNames.default("flex", style)}>
+    <LinkBase
+      href="/career"
+      styleName={classNames.default("flex group", styleName)}
+    >
       <div className="flex flex-row py-1.5 gap-x-[5px]">
-        <p className="my-auto">Career</p>
+        <p className="my-auto text-instillGray30 group-hover:text-instillGray05">
+          Career
+        </p>
         {hiring && (
           <div>
-            <p className="border rounded-full px-2.5 py-[2px] border-instillYellow font-mono font-normal text-[10px] leading-[14px]">
+            <p className="border rounded-full px-2.5 py-[2px] text-instillGray30 group-hover:text-instillYellow border-instillYellow font-mono font-normal text-[10px] leading-[14px]">
               hiring
             </p>
           </div>
