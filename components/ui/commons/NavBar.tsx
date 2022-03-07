@@ -10,6 +10,7 @@ import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
+import { CareerPageLink } from "../links/CareerPageLink";
 
 interface Props {}
 
@@ -25,20 +26,27 @@ export const NavBar: FC<Props> = () => {
     setOpen(false);
   }, [router]);
 
+  const navbarLinkGroup = (
+    <>
+      <AboutPageLink />
+      <BlogLink />
+      <CareerPageLink hiring={true} />
+      <NewsletterArchivePageLink />
+      <GithubTextLink />
+      <GetEarlyAccessButton />
+    </>
+  );
+
   return (
     <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
       <div className="flex w-full max-w-[1440px] mx-auto">
-        <div className="hidden lg:flex lg:flex-row xl:grid w-full xl:grid-cols-2 p-4 content-center">
+        <div className="hidden lg:flex lg:flex-row w-full p-4 content-center">
           <LinkBase styleName="my-auto mr-auto" href="/">
             <InstillAiLogo type="ColourLogoWhiteType" width={159} />
           </LinkBase>
 
           <div className="flex flex-row gap-x-[60px] justify-end lg:ml-auto">
-            <AboutPageLink />
-            <BlogLink />
-            <NewsletterArchivePageLink />
-            <GithubTextLink />
-            <GetEarlyAccessButton />
+            {navbarLinkGroup}
           </div>
         </div>
         <div
@@ -65,11 +73,7 @@ export const NavBar: FC<Props> = () => {
           <div className="relative w-full">
             {open && (
               <div className="absolute top-0 left-0 py-[50px] px-4 w-full flex flex-col gap-y-[50px] bg-instillGray95">
-                <AboutPageLink />
-                <BlogLink />
-                <NewsletterArchivePageLink />
-                <GithubTextLink />
-                <GetEarlyAccessButton />
+                {navbarLinkGroup}
               </div>
             )}
           </div>

@@ -5,17 +5,17 @@ interface Props {
   styleName: string;
 }
 
-export const RightArrowIcon: FC<Props> = ({ styleName }) => {
+export const LeftArrowIcon: FC<Props> = ({ styleName }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
+      viewBox="0 0 15 16"
       className={classNames.default("fill-current", styleName)}
     >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M11.5303 3.46966L11 2.93933L9.93934 3.99999L10.4697 4.53032L15.1893 9.24999H4H3.25V10.75H4H15.1893L10.4697 15.4697L9.93934 16L11 17.0607L11.5303 16.5303L17.5303 10.5303V9.46966L11.5303 3.46966Z"
+        d="M6.46967 1.46978L7 0.939453L8.06066 2.00011L7.53033 2.53044L2.81066 7.25011H14H14.75V8.75011H14H2.81066L7.53033 13.4698L8.06066 14.0001L7 15.0608L6.46967 14.5304L0.469669 8.53044V7.46978L6.46967 1.46978Z"
       />
     </svg>
   );
