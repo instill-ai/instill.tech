@@ -45,7 +45,7 @@
     "@storybook/addon-links": "^6.4.12",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.12",
-    "@tailwindcss/typography": "^0.5.0",
+    "@tailwindcss/typography": "^0.5.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@types/amplitude-js": "^8.9.6",
