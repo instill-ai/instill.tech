@@ -1,5 +1,5 @@
 import { FC, forwardRef } from "react";
-import { IClickUpTask } from "../../types/clickup";
+import { IClickUpTask } from "../../types/clickUp";
 import { OpenPositionList } from "./lists/OpenPositionList";
 import * as classNames from "classnames";
 

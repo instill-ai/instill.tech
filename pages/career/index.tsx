@@ -6,8 +6,8 @@ import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBloc
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
 import CareerOpenPositionsSection from "../../components/ui/CareerOpenPositionsSection";
-import { listClickUpTasksInListQuery } from "../../lib/clickup";
-import { IClickUpTask } from "../../types/clickup";
+import { listClickUpTasksInListQuery } from "../../lib/clickUp";
+import { IClickUpTask } from "../../types/clickUp";
 
 interface Props {
   content: string;

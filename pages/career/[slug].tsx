@@ -7,9 +7,9 @@ import { CareerPositionDescriptionBlock } from "../../components/ui/blocks/Caree
 import { CareerPostionDetailsBlock } from "../../components/ui/blocks/CareerPostionDetailsBlock";
 import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBlock";
 import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
-import { getClickUpTaskQuery } from "../../lib/clickup";
+import { getClickUpTaskQuery } from "../../lib/clickUp";
 import { handle } from "../../lib/utilities";
-import { IClickUpTask } from "../../types/clickup";
+import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 
 interface Props {
