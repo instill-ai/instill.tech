@@ -23,7 +23,12 @@ export const LinkBase: FC<Props> = ({
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...props} passHref={true} scroll={scroll}>
+      <Link
+        href={href}
+        {...props}
+        passHref={true}
+        scroll={scroll ? scroll : true}
+      >
         <div
           onClick={onClick && onClick}
           className={classNames.default("cursor-pointer", styleName)}

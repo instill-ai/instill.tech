@@ -40,10 +40,10 @@ export const OpenPositionListUnit: FC<Props> = ({
   const daysAgo = 10;
 
   return (
-    <LinkBase href={link}>
+    <LinkBase href={link} scroll={true}>
       <div
         className={classNames.default(
-          "flex flex-col md:grid md:grid-cols-2 md:py-5",
+          "flex flex-col md:grid md:grid-cols-2 md:px-5 md:py-5 hover:bg-instillGray05",
           styleName
         )}
       >
