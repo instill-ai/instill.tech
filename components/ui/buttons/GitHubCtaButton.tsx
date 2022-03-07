@@ -22,7 +22,7 @@ export const GithubCtaButton: FC<Props> = () => {
 
   return (
     <ButtonBase
-      endIcon={<RightArrowIcon styleName="ml-6 w-[15px] h-[15px]" />}
+      endIcon={<RightArrowIcon styleName="ml-6 w-[15px] h-[15px] my-auto" />}
       variant="text"
       color="lightWhite"
       onClick={handleClick}

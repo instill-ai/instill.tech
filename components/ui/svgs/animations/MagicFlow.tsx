@@ -24,10 +24,10 @@ type AnimationTarget = {
 
 export const MagicFlow: FC<Props> = ({ styleName }) => {
   const aiCube = useRef();
-  const q = gsap.utils.selector(aiCube);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(aiCube);
     const dataSourceTargets: AnimationTarget[] = [
       {
         id: "#data_source_5",
