@@ -25,7 +25,7 @@ interface Props {
 
 export const CareerHero: FC<Props> = ({ styleName, viewJobsScrollHandler }) => {
   const subHeaderStyle =
-    "instill-text-h3-light text-instillGray05 mx-auto md:font-sans md:font-light md:text-2xl md:leading-10 text-center";
+    "text-lg leading-[27px] text-instillGray05 mx-auto font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
     <div
       className={classNames.default(
@@ -36,7 +36,13 @@ export const CareerHero: FC<Props> = ({ styleName, viewJobsScrollHandler }) => {
       <h1 className="w-full instill-text-h1 text-instillGray05 text-center">
         Come together
       </h1>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full md:hidden">
+        <p className={subHeaderStyle}>
+          We can&#39;t build our vision alone. Take a look below for your new
+          favorite job.
+        </p>
+      </div>
+      <div className="hidden md:flex md:flex-col w-full ">
         <p className={subHeaderStyle}>We can&#39;t build our vision alone.</p>
         <p className={subHeaderStyle}>
           Take a look below for your new favorite job.
