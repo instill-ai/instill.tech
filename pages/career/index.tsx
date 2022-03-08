@@ -1,17 +1,27 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import { FC, ReactElement, useCallback, useRef } from "react";
 import { PageBase } from "../../components/layouts/PageBase";
 import { PageHead } from "../../components/layouts/PageHead";
-import { StayInTheLoopBlock } from "../../components/ui/blocks/StayInTheLoopBlock";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
-import CareerOpenPositionsSection from "../../components/ui/CareerOpenPositionsSection";
+import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "../../lib/clickUp";
 import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
+
+const CareerOpenPositionsSection = dynamic(
+  () => import("../../components/ui/CareerOpenPositionsSection")
+);
+
+const StayInTheLoopBlock = dynamic(() =>
+  import("../../components/ui/blocks/StayInTheLoopBlock").then(
+    (mod) => mod.StayInTheLoopBlock
+  )
+);
 
 interface Props {
   content: string;
@@ -25,7 +35,14 @@ interface GetLayOutProps {
 const CareerPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
+  // lazy load openPositionList
   const openPositionsRef = useRef<HTMLDivElement>();
+  const openPositionIsOnscreen = useOnScreen(openPositionsRef);
+
+  // lazy load stayInTheLoop
+  const stayInTheLoopRef = useRef<HTMLDivElement>();
+  const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
+
   const scrollHandler = useCallback(() => {
     openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -40,12 +57,19 @@ const CareerPage: FC<Props> & {
         styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10"
       />
       <CareerGeneralIntro styleName="max-w-[1440px] md:w-10/12 md:mx-auto" />
-      <CareerOpenPositionsSection
-        ref={openPositionsRef}
-        styleName="mb-[100px]"
-        positions={positions}
-      />
-      <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
+      <div className="flex" ref={openPositionsRef}>
+        {openPositionIsOnscreen && (
+          <CareerOpenPositionsSection
+            styleName="mb-[100px]"
+            positions={positions}
+          />
+        )}
+      </div>
+      <div className="flex" ref={stayInTheLoopRef}>
+        {stayInTheLoopIsOnScreen && (
+          <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
+        )}
+      </div>
     </PageHead>
   );
 };
@@ -56,7 +80,7 @@ CareerPage.getLayout = (page) => {
 
 export default CareerPage;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let tasks: IClickUpTask[];
   let positions: TPositionDetails[] = [];
 
@@ -78,5 +102,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       positions,
     },
+
+    // This page is using ISR
+    revalidate: 10,
   };
 };
