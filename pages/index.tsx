@@ -1,18 +1,38 @@
 import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+import * as classNames from "classnames";
+import { useRouter } from "next/router";
+import { sendAmplitudeData } from "../lib/amplitude";
+
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
-import { FeatureBlockGroup } from "../components/ui/groups/FeatureBlockGroup";
-import * as classNames from "classnames";
-import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
-import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
-import LandingBanner from "../components/ui/LandingBanner";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
-import { useRouter } from "next/router";
-import { sendAmplitudeData } from "../lib/amplitude";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
+
+const LandingBanner = dynamic(() =>
+  import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
+);
+
+const StayInTheLoopBlock = dynamic(() =>
+  import("../components/ui/blocks/StayInTheLoopBlock").then(
+    (mod) => mod.StayInTheLoopBlock
+  )
+);
+
+const SecureYourSpotBlock = dynamic(() =>
+  import("../components/ui/blocks/SecureYourSpotBlock").then(
+    (mod) => mod.SecureYourSpotBlock
+  )
+);
+
+const FeatureBlockGroup = dynamic(() =>
+  import("../components/ui/groups/FeatureBlockGroup").then(
+    (mod) => mod.FeatureBlockGroup
+  )
+);
 
 interface Props {}
 
@@ -25,6 +45,7 @@ const Home: FC<Props> & {
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:mx-auto";
   const router = useRouter();
+
   const landingBannerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -45,7 +66,7 @@ const Home: FC<Props> & {
       <div className="flex flex-col">
         <div
           className={classNames.default(
-            "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px]",
+            "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px] mb-1",
             elementMaxWidth
           )}
         >
@@ -64,8 +85,12 @@ const Home: FC<Props> & {
             styleName="max:my-[60px] max:mx-auto"
           />
         </div>
-        <LandingBanner ref={landingBannerRef} />
+        <div ref={landingBannerRef}>
+          <LandingBanner />
+        </div>
+
         <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
+
         <div className="flex max-w-[1440px] px-4 md:px-0 md:w-10/12 md:mx-auto">
           <div className="flex flex-col max:mx-auto max:w-10/12">
             <SecureYourSpotBlock styleName="mb-[60px]" />
