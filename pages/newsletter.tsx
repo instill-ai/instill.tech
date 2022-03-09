@@ -12,6 +12,7 @@ import { parse } from "node-html-parser";
 import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeader";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
+import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
 
 type TPublicCampaign =
   | {
@@ -188,32 +189,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       campaigns: publicCampaigns,
     },
+    revalidate: 10,
   };
-};
-
-const removePlaceholderAndFooterWords = (content: string): string => {
-  // Mailchimp's plain text has lots of template literal, we have to remove that
-  let removeWords = [
-    "\\*\\|FNAME\\|\\*",
-    "\\*\\|MC_PREVIEW_TEXT\\|\\*",
-    "============================================================",
-    "\\*\\* GitHub \\(https://github.com/instill-ai\\)",
-    "\\*\\* Blog \\(https://blog.instill.tech/\\)",
-    "\\*\\* Facebook \\(https://www.facebook.com/instilltech\\)",
-    "\\*\\* Twitter \\(https://twitter.com/instill_tech\\)",
-    "Copyright © \\*\\|CURRENT_YEAR\\|\\* \\*\\|LIST:COMPANY\\|\\*, All rights reserved.",
-    "\\*\\|IFNOT:ARCHIVE_PAGE\\|\\* \\*\\|LIST:DESCRIPTION\\|\\*",
-    "Our mailing address is:",
-    "\\*\\|LIST_ADDRESS\\|\\* \\*\\|END:IF\\|\\*",
-    "Want to change how you receive these emails\\?",
-    "You can \\*\\* update your preferences \\(\\*\\|UPDATE_PROFILE\\|\\*\\)",
-    "or \\*\\* unsubscribe from this list \\(\\*\\|UNSUB\\|\\*\\)",
-    "\\*\\|IF:REWARDS\\|\\* \\*\\|REWARDS_TEXT\\|\\* \\*\\|END:IF\\|\\*",
-    "\\*\\*",
-  ];
-
-  let re = new RegExp(removeWords.join("|"), "gi");
-  return content.replace(re, () => {
-    return "";
-  });
 };
