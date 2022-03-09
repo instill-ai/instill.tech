@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
-import { FC, ReactNode, useRef } from "react";
-import { useOnScreen } from "../../hooks/useOnScreen";
+import { FC } from "react";
 import { NavBar } from "../ui/commons/NavBar";
 import { BaseContainer } from "./BaseContainer";
 import { SectionContainer } from "./SectionContainer";
@@ -16,9 +15,6 @@ interface Props {
 }
 
 export const PageBase: FC<Props> = ({ withMaxWidth, children }) => {
-  const footerRef = useRef<HTMLDivElement>();
-  const footerIsOnScreen = useOnScreen(footerRef);
-
   return (
     <BaseContainer>
       <NavBar />
@@ -27,9 +23,7 @@ export const PageBase: FC<Props> = ({ withMaxWidth, children }) => {
       ) : (
         <SectionContainerFull>{children}</SectionContainerFull>
       )}
-      <div className="flex" ref={footerRef}>
-        {footerIsOnScreen && <Footer />}
-      </div>
+      <Footer />
     </BaseContainer>
   );
 };
