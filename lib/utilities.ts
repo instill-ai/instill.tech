@@ -27,7 +27,14 @@ export const handle = async <T>(
 // Based on discussion:
 // https://stackoverflow.com/questions/5598743/finding-elements-position-relative-to-the-document
 
-export const getElementPosition = (element: HTMLElement) => {
+export type ElementPosition = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+export const getElementPosition = (element: HTMLElement): ElementPosition => {
   const box = element.getBoundingClientRect();
 
   const body = document.body;
