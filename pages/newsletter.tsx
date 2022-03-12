@@ -54,7 +54,7 @@ const NewsletterArchivePage: FC<Props> & {
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
               <div className="border-t border-b border-instillGray70 py-2.5 text-instillGray15 max-w-[800px] w-full mx-auto mb-[60px]">
-                {`Issued on ${new Date(campaigns[0].sendTime)
+                {`Issued on ${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
                   .slice(1)
