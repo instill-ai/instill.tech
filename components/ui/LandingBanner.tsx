@@ -40,28 +40,27 @@ export const LandingBanner: FC<Props> = () => {
   ];
 
   return (
-    <div
-      id="landing-page-banner"
-      className="grid grid-cols-1 lg:grid-cols-2 max-w-[1440px] lg:w-11/12 lg:mx-auto mb-8 max-h-screen"
-    >
-      <div className="flex flex-col max-h-screen py-5">
-        <MagicFlow styleName="mx-auto w-full md:w-[446px] h-[1021px]" />
-      </div>
-      <div className="max-h-screen md:my-auto hidden lg:grid lg:grid-rows-3">
-        {bannerCopy.map((copy) => (
-          <div
-            key={copy.id}
-            className="flex flex-col pt-5 pb-5 pr-5 gap-y-5 justify-center max-w-[456px]"
-          >
-            <div>{copy.icon}</div>
-            <h2 className="text-instillGray05 font-instill text-4xl">
-              {copy.title}
-            </h2>
-            <p className="text-instillGray05 instill-text-body">
-              {copy.description}
-            </p>
-          </div>
-        ))}
+    <div id="landing-page-banner" className="flex w-full bg-instillGray95">
+      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-[1440px] lg:w-11/12 lg:mx-auto mb-8 max-h-screen">
+        <div className="flex flex-col max-h-screen py-5">
+          <MagicFlow styleName="mx-auto w-full md:w-[446px] h-[1021px]" />
+        </div>
+        <div className="max-h-screen md:my-auto hidden lg:grid lg:grid-rows-3">
+          {bannerCopy.map((copy) => (
+            <div
+              key={copy.id}
+              className="flex flex-col pt-5 pb-5 pr-5 gap-y-5 justify-center max-w-[456px]"
+            >
+              <div>{copy.icon}</div>
+              <h2 className="text-instillGray05 font-instill text-4xl">
+                {copy.title}
+              </h2>
+              <p className="text-instillGray05 instill-text-body">
+                {copy.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
