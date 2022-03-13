@@ -16,7 +16,7 @@ interface Props {
   /** T */
   styleName?: string;
 
-  children: ReactElement;
+  targetChildren: ReactElement;
 
   /** sapnRatio * height = when the scroll position reach the new height, action is finished */
   spanRatio: number;
@@ -25,6 +25,7 @@ interface Props {
 export const StickyScrollLayout: FC<Props> = ({
   height,
   styleName,
+  targetChildren,
   children,
   spanRatio,
 }) => {
@@ -100,9 +101,10 @@ export const StickyScrollLayout: FC<Props> = ({
       >
         <div
           ref={scrollChildRef}
-          className={`flex h-[${height / 5}px] sticky top-0`}
+          className={`flex flex-col h-[${height / 5}px] sticky top-0`}
         >
-          {cloneElement(children, { proportion })}
+          {cloneElement(targetChildren, { proportion })}
+          {children}
         </div>
       </div>
     </div>
