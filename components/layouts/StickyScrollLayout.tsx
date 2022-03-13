@@ -98,7 +98,10 @@ export const StickyScrollLayout: FC<Props> = ({
         ref={scrollContainerRef}
         style={{ height }}
       >
-        <div ref={scrollChildRef} className="flex h-[400px] sticky top-0">
+        <div
+          ref={scrollChildRef}
+          className={`flex h-[${height / 5}px] sticky top-0`}
+        >
           {cloneElement(children, { proportion })}
         </div>
       </div>
