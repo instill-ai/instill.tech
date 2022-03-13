@@ -11,7 +11,7 @@ export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex flex-col py-[100px] px-10 rounded-[1px] z-50 max-w-[889px] md:w-8/12 md:mx-auto",
+        "flex flex-col py-[100px] px-10 rounded-[1px] z-50",
         styleName
       )}
     >
