@@ -7,7 +7,7 @@ import { ElementPosition, getElementPosition } from "../lib/utilities";
 
 export type ScrollPositionWhenObserve = {
   isObserving: boolean;
-  scrollY: number;
+  scrollTop: number;
 };
 
 export const useScrollPositionWhenObserve = (
@@ -15,11 +15,16 @@ export const useScrollPositionWhenObserve = (
   rootMargin: number
 ): ScrollPositionWhenObserve => {
   const [isObserving, setIsObserving] = useState(false);
-  const [scrollY, setScrollY] = useState<number>();
+  const [scrollTop, setScrollTop] = useState<number>();
 
   useEffect(() => {
     const onScroll = () => {
-      setScrollY(document.documentElement.scrollTop);
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+
+      setScrollTop(scrollTop);
     };
 
     const observer = new IntersectionObserver(
@@ -40,13 +45,13 @@ export const useScrollPositionWhenObserve = (
     }
 
     return () => {
-      setScrollY(null);
+      setScrollTop(null);
       setIsObserving(false);
     };
   }, [ref]);
 
   return {
-    scrollY,
+    scrollTop,
     isObserving,
   };
 };
