@@ -14,14 +14,14 @@ export const InstillCloudSection: FC<Props> = () => {
         spanRatio={0.5}
         height={3000}
       >
-        <div className="flex flex-col max-w-[1440px] md:w-10/12 md:mx-auto bg-instillGray95 p-10 z-50">
+        <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10 z-50">
           <p className="text-center instill-text-body text-instillBlue30 mb-5">
             INSTILL CLOUD
           </p>
           <h2 className="text-center instill-text-h2 text-instillGray05 mb-10">
             Visual Data Preparation without Managing Infrastructure
           </h2>
-          <p className="text-center instill-text-body text-instillGray05 md:px-36">
+          <p className="text-center instill-text-body text-instillGray05 md:px-28">
             Instill Cloud provides production-ready visual data preparation
             services — hustle-free setup and Vision AI model serving with
             ready-to-use and custom models. We help you save your time and you
