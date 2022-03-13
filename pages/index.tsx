@@ -11,6 +11,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
+import { InstillCloudSection } from "../components/ui/InstillCloudSection";
 
 const LandingBanner = dynamic(() =>
   import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
@@ -64,38 +65,41 @@ const Home: FC<Props> & {
       pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
     >
       <div className="flex flex-col">
-        <div
-          className={classNames.default(
-            "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px] mb-1",
-            elementMaxWidth
-          )}
-        >
-          <div className="flex flex-col-reverse lg:gap-y-0 lg:flex-row max:w-10/12 max:mx-auto">
-            <div className="flex flex-col md:my-auto lg:w-[57%]">
-              <Headline styleName="mb-5 text-left" />
-              <SubHeadline styleName="mb-10 md:px-0 text-left" />
-              <MainCtaGroup />
+        <div className="flex w-full bg-instillGray95">
+          <div
+            className={classNames.default(
+              "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px] mb-1",
+              elementMaxWidth
+            )}
+          >
+            <div className="flex flex-col-reverse lg:gap-y-0 lg:flex-row max:w-10/12 max:mx-auto">
+              <div className="flex flex-col md:my-auto lg:w-[57%]">
+                <Headline styleName="mb-5 text-left" />
+                <SubHeadline styleName="mb-10 md:px-0 text-left" />
+                <MainCtaGroup />
+              </div>
+              <div className="lg:w-[43%] mb-5 lg:mb-0">
+                <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
+              </div>
             </div>
-            <div className="lg:w-[43%] mb-5 lg:mb-0">
-              <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
-            </div>
+            <ExploreMoreScrollButton
+              scrollHandler={scrollHandler}
+              styleName="max:my-[60px] max:mx-auto"
+            />
           </div>
-          <ExploreMoreScrollButton
-            scrollHandler={scrollHandler}
-            styleName="max:my-[60px] max:mx-auto"
-          />
         </div>
-        <div ref={landingBannerRef}>
+
+        <div className="flex w-full bg-instillGray95" ref={landingBannerRef}>
           <LandingBanner />
         </div>
 
-        <FeatureBlockGroup styleName="mb-4 md:py-10 md:mb-[152px] bg-white" />
+        <FeatureBlockGroup styleName="md:py-10" />
 
-        <div className="flex max-w-[1440px] px-4 md:px-0 md:w-10/12 md:mx-auto">
-          <div className="flex flex-col max:mx-auto max:w-10/12">
-            <SecureYourSpotBlock styleName="mb-[60px]" />
-            <StayInTheLoopBlock styleName={classNames.default("mb-[60px]")} />
-          </div>
+        <InstillCloudSection />
+
+        <div className="flex flex-col bg-instillGray95">
+          <SecureYourSpotBlock styleName="max-w-[889px] md:w-8/12 md:mx-auto mb-40" />
+          <StayInTheLoopBlock styleName="max-w-[889px] md:w-8/12 md:mx-auto mb-40" />
         </div>
       </div>
     </PageHead>
