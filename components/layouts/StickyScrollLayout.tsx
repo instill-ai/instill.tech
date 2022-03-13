@@ -10,16 +10,20 @@ import * as classNames from "classnames";
 import { getElementPosition } from "../../lib/utilities";
 
 interface Props {
-  /** The height of scroll parent */
+  /** The height of scroll container */
   height: number;
 
-  /** T */
+  /** ScrollContainer style */
   styleName?: string;
 
+  /** Main scroll item that will take proportion as one of the props */
   targetChildren: ReactElement;
 
   /** sapnRatio * height = when the scroll position reach the new height, action is finished */
   spanRatio: number;
+
+  /** Other childrens which will be set to the bottom of scroll container that will display as a push in effect */
+  children: ReactElement;
 }
 
 export const StickyScrollLayout: FC<Props> = ({
@@ -36,6 +40,10 @@ export const StickyScrollLayout: FC<Props> = ({
 
   if (spanRatio > 1) {
     throw new Error("Maximum SpanRatio is 1");
+  }
+
+  if (spanRatio <= 0) {
+    throw new Error("SpanRatio should not be less than or equal to 0");
   }
 
   const onScroll = () => {
@@ -79,9 +87,9 @@ export const StickyScrollLayout: FC<Props> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          window.addEventListener("scroll", onScroll);
+          window.addEventListener("optimizedScroll", onScroll);
         } else {
-          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("optimizedScroll", onScroll);
         }
       },
       { rootMargin: "0px" }
@@ -95,17 +103,17 @@ export const StickyScrollLayout: FC<Props> = ({
   return (
     <div ref={scrollViewRef}>
       <div
-        className={classNames.default(styleName, "relative")}
+        className={classNames.default(styleName, "relative flex flex-col")}
         ref={scrollContainerRef}
         style={{ height }}
       >
         <div
           ref={scrollChildRef}
-          className={`flex flex-col h-[${height / 5}px] sticky top-0`}
+          className={`flex flex-col h-[${height / 8}px] sticky top-0 mb-auto`}
         >
           {cloneElement(targetChildren, { proportion })}
-          {children}
         </div>
+        {children}
       </div>
     </div>
   );
