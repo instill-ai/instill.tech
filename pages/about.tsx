@@ -1,10 +1,23 @@
 import { useRouter } from "next/router";
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
-import { SecureYourSpotBlock } from "../components/ui/blocks/SecureYourSpotBlock";
-import { StayInTheLoopBlock } from "../components/ui/blocks/StayInTheLoopBlock";
 import { sendAmplitudeData } from "../lib/amplitude";
+import { useOnScreen } from "../hooks/useOnScreen";
+
+const SecureYourSpotBlock = dynamic(() =>
+  import("../components/ui/blocks/SecureYourSpotBlock").then(
+    (mod) => mod.SecureYourSpotBlock
+  )
+);
+
+const StayInTheLoopBlock = dynamic(() =>
+  import("../components/ui/blocks/StayInTheLoopBlock").then(
+    (mod) => mod.StayInTheLoopBlock
+  )
+);
 
 interface GetLayOutProps {
   page: ReactElement;
@@ -22,6 +35,36 @@ const AboutPage: FC<Props> & {
       sendAmplitudeData("hit_about_page", { type: "navigation" });
     }
   }, [router.isReady]);
+
+  // Lazy loading SecureYourSpotBlock
+  const secureYourSpotBlockRef = useRef<HTMLDivElement>();
+  const [loadSecureYourSpotBlock, setLoadSecureYourSpotBlock] = useState(false);
+  const secureYourSpotBlockOnScreen = useOnScreen(
+    secureYourSpotBlockRef,
+    "100px"
+  );
+
+  useEffect(() => {
+    if (!loadSecureYourSpotBlock && secureYourSpotBlockOnScreen) {
+      setLoadSecureYourSpotBlock(true);
+      return;
+    }
+  }, [secureYourSpotBlockOnScreen]);
+
+  // Lazy loading StayInTheLoopBlock
+  const stayInTheLoopBlockRef = useRef<HTMLDivElement>();
+  const [loadStayInTheLoopBlock, setloadStayInTheLoopBlock] = useState(false);
+  const stayInTheLoopBlockOnScreen = useOnScreen(
+    secureYourSpotBlockRef,
+    "100px"
+  );
+
+  useEffect(() => {
+    if (!loadStayInTheLoopBlock && stayInTheLoopBlockOnScreen) {
+      setloadStayInTheLoopBlock(true);
+      return;
+    }
+  }, [stayInTheLoopBlockOnScreen]);
 
   return (
     <PageHead
@@ -83,11 +126,11 @@ const AboutPage: FC<Props> & {
                 </div>
               </div>
             </div>
-            <div>
-              <SecureYourSpotBlock />
+            <div ref={secureYourSpotBlockRef}>
+              {loadSecureYourSpotBlock && <SecureYourSpotBlock />}
             </div>
-            <div>
-              <StayInTheLoopBlock />
+            <div ref={stayInTheLoopBlockRef}>
+              {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
             </div>
           </div>
         </div>
