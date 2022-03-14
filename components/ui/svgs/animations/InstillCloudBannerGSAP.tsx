@@ -136,7 +136,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
 
             #instill-cloud-main-structure {
               transform: translateY(262px);
-              opacity: 20%;
+              opacity: 0.3;
             }
           `}
         </style>
