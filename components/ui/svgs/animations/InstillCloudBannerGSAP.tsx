@@ -54,7 +54,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
       end: "+=450",
       scrub: true,
       animation: tl.current,
-      markers: true,
+      markers: false,
     });
   }, []);
 

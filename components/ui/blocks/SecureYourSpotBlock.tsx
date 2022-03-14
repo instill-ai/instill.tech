@@ -11,16 +11,16 @@ export const SecureYourSpotBlock: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "flex flex-col py-[100px] px-10 rounded-[1px] z-50",
+        "flex flex-col py-[100px] px-10 rounded-[1px]",
         styleName
       )}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 mb-20">
-        <div className="flex w-full h-full md:col-start-2">
-          <AlphaBadgeSvg styleName="w-full m:w-[355px] m-auto" />
+        <div className="flex md:col-start-2">
+          <AlphaBadgeSvg styleName="w-full md:w-[355px] mx-auto my-0" />
         </div>
         <div className="flex flex-col md:row-start-1 pt-20 md:pt-0">
-          <div className="flex flex-col my-auto">
+          <div className="flex flex-col">
             <h3 className="instill-text-h3 text-instillGray05 mb-2.5">
               Secure Your Spot
             </h3>
