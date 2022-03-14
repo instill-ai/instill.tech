@@ -48,7 +48,7 @@ const NewsletterArchivePage: FC<Props> & {
       pageTitle="Newsletter Archive | Instill AI"
       pageDescription="Instill AI newsletter archive"
     >
-      <div className="flex flex-col w-full lg:mt-20">
+      <div className="flex flex-col w-full lg:mt-20 bg-instillGray95">
         <NewsletterArchiveHeader />
         <div className="flex flex-col px-5 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
           {campaigns.map((campaign) => (
