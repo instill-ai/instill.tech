@@ -122,12 +122,12 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
 
             #instill-cloud-headline-below {
               transform: translateY(100px);
-              opacity: 0;
+              opacity: 0.5;
             }
 
             #instill-cloud-headline-upon {
               transform: translateY(100px);
-              opacity: 0;
+              opacity: 0.5;
             }
 
             #instill-cloud-main-container {
@@ -136,7 +136,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
 
             #instill-cloud-main-structure {
               transform: translateY(262px);
-              opacity: 0.3;
+              opacity: 0.5;
             }
           `}
         </style>
@@ -6496,7 +6496,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
         </defs>
       </svg>
       <InstillCloudBannerMobile styleName="w-full md:hidden" />
-      <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10">
+      <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10 z-50">
         <p className="text-center instill-text-body text-instillBlue30 mb-5">
           INSTILL CLOUD
         </p>
@@ -6510,6 +6510,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
           focus on the core business.
         </p>
       </div>
+      <span className="inline-block w-full bg-instillGray95 h-36 absolute bottom-0" />
     </div>
   );
 };
