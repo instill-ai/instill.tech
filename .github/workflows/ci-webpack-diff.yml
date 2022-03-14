@@ -24,10 +24,10 @@ jobs:
           file_name: .env.local
 
       - name: Install dependencies
-        run: npm ci
+        run: rm -rf node_modules && yarn install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2
@@ -54,10 +54,10 @@ jobs:
           file_name: .env.local
 
       - name: Install dependencies
-        run: npm ci
+        run: rm -rf node_modules && yarn install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2
