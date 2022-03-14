@@ -9,9 +9,9 @@ interface Props {
 
 export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
   gsap.registerPlugin(ScrollTrigger);
-  const target = useRef();
+  const animateTarget = useRef();
   const stickyContainer = useRef();
-  const q = gsap.utils.selector(target);
+  const q = gsap.utils.selector(animateTarget);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
@@ -73,7 +73,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
             : "mt-auto w-full max-w-[1440px] mx-auto h-[997px] sticky top-0 -z-50"
         }
         viewBox="0 0 1440 997"
-        ref={target}
+        ref={animateTarget}
       >
         <style jsx>
           {`
@@ -128,7 +128,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
             }
 
             #instill-cloud-main-container {
-              transform: translateY(-120px);
+              transform: translateY(-80px);
             }
 
             #instill-cloud-main-structure {

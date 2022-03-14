@@ -20,65 +20,66 @@ export const InstillCloudBanner: FC<Props> = ({ styleName, proportion }) => {
       className={styleName ? styleName : "w-[1440px] h-[997px]"}
       viewBox="0 0 1440 997"
     >
-      <style jsx>{`
-        #pillar-1 {
-          transform: translateY(574px);
-          opacity: 0;
-        }
+      <style jsx>
+        {`
+          #pillar-1 {
+            transform: translateY(574px);
+            opacity: 0;
+          }
 
-        #pillar-2 {
-          transform: translateY(355px);
-          opacity: 0;
-        }
+          #pillar-2 {
+            transform: translateY(355px);
+            opacity: 0;
+          }
 
-        #pillar-3 {
-          transform: translateY(630px);
-          opacity: 0;
-        }
+          #pillar-3 {
+            transform: translateY(630px);
+            opacity: 0;
+          }
 
-        #pillar-4 {
-          transform: translateY(231px);
-          opacity: 0;
-        }
+          #pillar-4 {
+            transform: translateY(231px);
+            opacity: 0;
+          }
 
-        #pillar-5 {
-          transform: translateY(568px);
-          opacity: 0;
-        }
+          #pillar-5 {
+            transform: translateY(568px);
+            opacity: 0;
+          }
 
-        #pillar-6 {
-          transform: translateY(623px);
-          opacity: 0;
-        }
+          #pillar-6 {
+            transform: translateY(623px);
+            opacity: 0;
+          }
 
-        #pillar-7 {
-          transform: translateY(280px);
-          opacity: 0;
-        }
+          #pillar-7 {
+            transform: translateY(280px);
+            opacity: 0;
+          }
 
-        #pillar-8 {
-          transform: translateY(425px);
-          opacity: 0;
-        }
+          #pillar-8 {
+            transform: translateY(425px);
+            opacity: 0;
+          }
 
-        #instill-cloud-headline-below {
-          transform: translateY(100px);
-          opacity: 0;
-        }
+          #instill-cloud-headline-below {
+            transform: translateY(100px);
+            opacity: 0;
+          }
 
-        #instill-cloud-headline-upon {
-          transform: translateY(100px);
-          opacity: 0;
-        }
+          #instill-cloud-headline-upon {
+            transform: translateY(100px);
+            opacity: 0;
+          }
 
-        #instill-cloud-main-container {
-        }
+          #instill-cloud-main-container {
+          }
 
-        #instill-cloud-main-structure {
-          transform: translateY(262px);
-          opacity: 20%;
-        }
-      `}
+          #instill-cloud-main-structure {
+            transform: translateY(262px);
+            opacity: 20%;
+          }
+        `}
       </style>
       <g clipPath="url(#clip0_693_44363)" id="instill-cloud-main-container">
         <rect width="1440" height="1024" fill="white" />
