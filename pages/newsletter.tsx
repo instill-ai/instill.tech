@@ -12,6 +12,7 @@ import { parse } from "node-html-parser";
 import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeader";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
+import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
 
 type TPublicCampaign =
   | {
@@ -47,13 +48,13 @@ const NewsletterArchivePage: FC<Props> & {
       pageTitle="Newsletter Archive | Instill AI"
       pageDescription="Instill AI newsletter archive"
     >
-      <div className="flex flex-col w-full lg:mt-20">
+      <div className="flex flex-col w-full lg:mt-20 bg-instillGray95">
         <NewsletterArchiveHeader />
         <div className="flex flex-col px-5 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
               <div className="border-t border-b border-instillGray70 py-2.5 text-instillGray15 max-w-[800px] w-full mx-auto mb-[60px]">
-                {`Issued on ${new Date(campaigns[0].sendTime)
+                {`Issued on ${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
                   .slice(1)
@@ -188,32 +189,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       campaigns: publicCampaigns,
     },
+    revalidate: 10,
   };
-};
-
-const removePlaceholderAndFooterWords = (content: string): string => {
-  // Mailchimp's plain text has lots of template literal, we have to remove that
-  let removeWords = [
-    "\\*\\|FNAME\\|\\*",
-    "\\*\\|MC_PREVIEW_TEXT\\|\\*",
-    "============================================================",
-    "\\*\\* GitHub \\(https://github.com/instill-ai\\)",
-    "\\*\\* Blog \\(https://blog.instill.tech/\\)",
-    "\\*\\* Facebook \\(https://www.facebook.com/instilltech\\)",
-    "\\*\\* Twitter \\(https://twitter.com/instill_tech\\)",
-    "Copyright © \\*\\|CURRENT_YEAR\\|\\* \\*\\|LIST:COMPANY\\|\\*, All rights reserved.",
-    "\\*\\|IFNOT:ARCHIVE_PAGE\\|\\* \\*\\|LIST:DESCRIPTION\\|\\*",
-    "Our mailing address is:",
-    "\\*\\|LIST_ADDRESS\\|\\* \\*\\|END:IF\\|\\*",
-    "Want to change how you receive these emails\\?",
-    "You can \\*\\* update your preferences \\(\\*\\|UPDATE_PROFILE\\|\\*\\)",
-    "or \\*\\* unsubscribe from this list \\(\\*\\|UNSUB\\|\\*\\)",
-    "\\*\\|IF:REWARDS\\|\\* \\*\\|REWARDS_TEXT\\|\\* \\*\\|END:IF\\|\\*",
-    "\\*\\*",
-  ];
-
-  let re = new RegExp(removeWords.join("|"), "gi");
-  return content.replace(re, () => {
-    return "";
-  });
 };

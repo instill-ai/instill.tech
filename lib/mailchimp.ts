@@ -27,3 +27,54 @@ export const addMemberIntoMailchimpList = async (email: string) => {
     return Promise.reject(error.message || error.toString());
   }
 };
+
+/**
+ *
+ * This function will remove following string
+ *
+ * - `*|FNAME|*`
+ * - `*|MC_PREVIEW_TEXT|*`
+ * - `** GitHub (https://github.com/instill-ai)`
+ * - `** Blog (https://blog.instill.tech/)`
+ * - `** Facebook (https://www.facebook.com/instilltech)`
+ * - `** Twitter (https://twitter.com/instill_tech)`
+ * - `Copyright © *|CURRENT_YEAR\\|* *|LIST:COMPANY|*, All rights reserved.`
+ * - `*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*`
+ * - `Our mailing address is:`
+ * - `*|LIST_ADDRESS|* *|END:IF|*`
+ * - `Want to change how you receive these emails?`
+ * - `You can ** update your preferences (*|UPDATE_PROFILE|*)`
+ * - `or ** unsubscribe from this list (*|UNSUB|*)`
+ * - `*|IF:REWARDS|* *|REWARDS_TEXT|* *|END:IF|*`
+ * - `**`
+ *
+ * @param content - mailchimp plain-text or html string
+ * @returns
+ */
+
+export const removePlaceholderAndFooterWords = (content: string): string => {
+  // Mailchimp's plain text has lots of template literal, we have to remove that
+  let removeWords = [
+    "\\*\\|FNAME\\|\\*",
+    "\\*\\|MC_PREVIEW_TEXT\\|\\*",
+    "============================================================",
+    "\\*\\* GitHub \\(https://github.com/instill-ai\\)",
+    "\\*\\* Blog \\(https://blog.instill.tech/\\)",
+    "\\*\\* Facebook \\(https://www.facebook.com/instilltech\\)",
+    "\\*\\* Twitter \\(https://twitter.com/instill_tech\\)",
+    "Copyright © \\*\\|CURRENT_YEAR\\|\\* \\*\\|LIST:COMPANY\\|\\*, All rights reserved.",
+    "\\*\\|IFNOT:ARCHIVE_PAGE\\|\\* \\*\\|LIST:DESCRIPTION\\|\\*",
+    "Our mailing address is:",
+    "\\*\\|LIST_ADDRESS\\|\\* \\*\\|END:IF\\|\\*",
+    "Want to change how you receive these emails\\?",
+    "You can \\*\\* update your preferences \\(\\*\\|UPDATE_PROFILE\\|\\*\\)",
+    "or \\*\\* unsubscribe from this list \\(\\*\\|UNSUB\\|\\*\\)",
+    "\\*\\|IF:REWARDS\\|\\* \\*\\|REWARDS_TEXT\\|\\* \\*\\|END:IF\\|\\*",
+    "\\*\\*",
+  ];
+
+  let re = new RegExp(removeWords.join("|"), "gi");
+  return content.replace(re, () => {
+    return "";
+  });
+};

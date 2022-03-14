@@ -1,26 +1,97 @@
-import { FC } from "react";
-import { SvgBase } from "../SvgBase";
-
+import { FC, useEffect } from "react";
 interface Props {
   /** Tailwind formate - specific width and height of the svg. viewbox="0 0 1440 732" */
   styleName?: string;
+
+  proportion?: number;
 }
 
-export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
+type ShiftingElement = {
+  id: string;
+  type: "pillar" | "headline";
+  shift: number;
+};
+
+export const InstillCloudBanner: FC<Props> = ({ styleName, proportion }) => {
   return (
-    <SvgBase
-      styleName={styleName ? styleName : "w-[1440px] h-[997px]"}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      className={styleName ? styleName : "w-[1440px] h-[997px]"}
       viewBox="0 0 1440 997"
     >
-      <svg
-        width="1440"
-        height="1024"
-        viewBox="0 0 1440 1024"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g clipPath="url(#clip0_693_44363)">
-          <rect width="1440" height="1024" fill="white" />
+      <style jsx>
+        {`
+          #pillar-1 {
+            transform: translateY(574px);
+            opacity: 0;
+          }
+
+          #pillar-2 {
+            transform: translateY(355px);
+            opacity: 0;
+          }
+
+          #pillar-3 {
+            transform: translateY(630px);
+            opacity: 0;
+          }
+
+          #pillar-4 {
+            transform: translateY(231px);
+            opacity: 0;
+          }
+
+          #pillar-5 {
+            transform: translateY(568px);
+            opacity: 0;
+          }
+
+          #pillar-6 {
+            transform: translateY(623px);
+            opacity: 0;
+          }
+
+          #pillar-7 {
+            transform: translateY(280px);
+            opacity: 0;
+          }
+
+          #pillar-8 {
+            transform: translateY(425px);
+            opacity: 0;
+          }
+
+          #instill-cloud-headline-below {
+            transform: translateY(100px);
+            opacity: 0;
+          }
+
+          #instill-cloud-headline-upon {
+            transform: translateY(100px);
+            opacity: 0;
+          }
+
+          #instill-cloud-main-container {
+          }
+
+          #instill-cloud-main-structure {
+            transform: translateY(262px);
+            opacity: 20%;
+          }
+        `}
+      </style>
+      <g clipPath="url(#clip0_693_44363)" id="instill-cloud-main-container">
+        <rect width="1440" height="1024" fill="white" />
+        <g
+          id="instill-cloud-headline-below"
+          style={{
+            transform: `translate3d(0, ${
+              100 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${10 + 90 * proportion}%`,
+          }}
+        >
           <path
             d="M184 132H128V150.467H146.667V206.533H128V225H184V206.533H165.2V150.467H184V132Z"
             fill="#40A8F5"
@@ -89,6 +160,16 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             d="M1292.4 150.6V132H1218V225H1292.4V206.4H1236.6V150.6H1292.4ZM1292.4 206.4H1311V150.6H1292.4V206.4Z"
             fill="#40A8F5"
           />
+        </g>
+        <g
+          id="pillar-3"
+          style={{
+            transform: `translate3d(0, ${
+              630 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip1_693_44363)">
             <path
               d="M434.403 401.738V444.481L397.875 465.853V423.11L434.403 401.738Z"
@@ -189,124 +270,143 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M397.393 243.941L434.484 222.527C434.611 222.454 434.714 222.513 434.714 222.659L434.713 227.657L397.622 249.072C397.495 249.145 397.393 249.085 397.393 248.939L397.393 243.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M397.382 243.93L360.231 222.48C360.104 222.407 360.002 222.466 360.002 222.613L360.002 227.612L397.153 249.061C397.28 249.135 397.383 249.075 397.383 248.929L397.382 243.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M378.675 211.719L369.345 217.079L378.675 222.438L388.011 217.03L378.675 211.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M397.342 211.719L388.012 217.079L397.342 222.438L406.678 217.03L397.342 211.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M416.008 211.721L406.678 217.081L416.008 222.44L425.344 217.032L416.008 211.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M388.011 217.08L378.676 222.44L388.011 227.8L397.342 222.391L388.011 217.08Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M406.676 217.078L397.341 222.438L406.676 227.798L416.007 222.389L406.676 217.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M425.343 217.078L416.008 222.438L425.343 227.798L434.674 222.389L425.343 217.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M397.342 222.439L388.011 227.799L397.342 233.155L406.677 227.75L397.342 222.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M416.009 222.439L406.679 227.799L416.009 233.155L425.345 227.75L416.009 222.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M406.677 227.799L397.342 233.154L406.677 238.514L416.008 233.11L406.677 227.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M369.345 217.08L360.01 222.44L369.345 227.8L378.676 222.391L369.345 217.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M378.675 222.438L369.344 227.797L378.675 233.153L388.01 227.748L378.675 222.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M388.01 227.797L378.675 233.152L388.01 238.512L397.341 233.108L388.01 227.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M397.342 233.154L388.011 238.514L397.342 243.874L406.677 238.47L397.342 233.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M406.677 217.079L416.008 211.719L406.677 206.359L397.342 211.764L406.677 217.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M388.011 217.079L397.342 211.719L388.011 206.359L378.676 211.764L388.011 217.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M397.341 211.718L406.676 206.358L397.341 200.998L388.01 206.402L397.341 211.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
             x="296"
             y="249"
             width="188"
             height="246"
             fill="url(#paint4_linear_693_44363)"
+          />
+          <g id="pillar-3-kernel-1">
+            <path
+              d="M397.393 243.941L434.484 222.527C434.611 222.454 434.714 222.513 434.714 222.659L434.713 227.657L397.622 249.072C397.495 249.145 397.393 249.085 397.393 248.939L397.393 243.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M397.382 243.93L360.231 222.48C360.104 222.407 360.002 222.466 360.002 222.613L360.002 227.612L397.153 249.061C397.28 249.135 397.383 249.075 397.383 248.929L397.382 243.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M378.675 211.719L369.345 217.079L378.675 222.438L388.011 217.03L378.675 211.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M397.342 211.719L388.012 217.079L397.342 222.438L406.678 217.03L397.342 211.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M416.008 211.721L406.678 217.081L416.008 222.44L425.344 217.032L416.008 211.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M388.011 217.08L378.676 222.44L388.011 227.8L397.342 222.391L388.011 217.08Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M406.676 217.078L397.341 222.438L406.676 227.798L416.007 222.389L406.676 217.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M425.343 217.078L416.008 222.438L425.343 227.798L434.674 222.389L425.343 217.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M397.342 222.439L388.011 227.799L397.342 233.155L406.677 227.75L397.342 222.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M416.009 222.439L406.679 227.799L416.009 233.155L425.345 227.75L416.009 222.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M406.677 227.799L397.342 233.154L406.677 238.514L416.008 233.11L406.677 227.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M369.345 217.08L360.01 222.44L369.345 227.8L378.676 222.391L369.345 217.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M378.675 222.438L369.344 227.797L378.675 233.153L388.01 227.748L378.675 222.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M388.01 227.797L378.675 233.152L388.01 238.512L397.341 233.108L388.01 227.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M397.342 233.154L388.011 238.514L397.342 243.874L406.677 238.47L397.342 233.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M406.677 217.079L416.008 211.719L406.677 206.359L397.342 211.764L406.677 217.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M388.011 217.079L397.342 211.719L388.011 206.359L378.676 211.764L388.011 217.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M397.341 211.718L406.676 206.358L397.341 200.998L388.01 206.402L397.341 211.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-1"
+          style={{
+            transform: `translate3d(0, ${
+              574 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
+          <rect
+            x="69"
+            y="350"
+            width="140"
+            height="489"
+            fill="url(#paint5_linear_693_44363)"
           />
           <g clipPath="url(#clip6_693_44363)">
             <path
@@ -468,118 +568,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M150.393 299.941L187.484 278.527C187.611 278.454 187.714 278.513 187.714 278.659L187.713 283.657L150.622 305.072C150.495 305.145 150.393 305.085 150.393 304.939L150.393 299.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M150.382 299.93L113.231 278.48C113.104 278.407 113.002 278.466 113.002 278.613L113.002 283.612L150.153 305.061C150.28 305.135 150.383 305.075 150.383 304.929L150.382 299.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M131.675 267.719L122.345 273.079L131.675 278.438L141.011 273.03L131.675 267.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M150.342 267.719L141.012 273.079L150.342 278.438L159.678 273.03L150.342 267.719Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M169.008 267.721L159.678 273.081L169.008 278.44L178.344 273.032L169.008 267.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M141.011 273.08L131.676 278.44L141.011 283.8L150.342 278.391L141.011 273.08Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M159.676 273.078L150.341 278.438L159.676 283.798L169.007 278.389L159.676 273.078Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M178.343 273.078L169.008 278.438L178.343 283.798L187.674 278.389L178.343 273.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M150.342 278.439L141.011 283.799L150.342 289.155L159.677 283.75L150.342 278.439Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M169.009 278.439L159.679 283.799L169.009 289.155L178.345 283.75L169.009 278.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M159.677 283.799L150.342 289.154L159.677 294.514L169.008 289.11L159.677 283.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M122.345 273.08L113.01 278.44L122.345 283.8L131.676 278.391L122.345 273.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M131.675 278.438L122.344 283.797L131.675 289.153L141.01 283.748L131.675 278.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M141.01 283.797L131.675 289.152L141.01 294.512L150.341 289.108L141.01 283.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M150.342 289.154L141.011 294.514L150.342 299.874L159.677 294.47L150.342 289.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M159.677 273.079L169.008 267.719L159.677 262.359L150.342 267.764L159.677 273.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M141.011 273.079L150.342 267.719L141.011 262.359L131.676 267.764L141.011 273.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M150.341 267.718L159.676 262.358L150.341 256.998L141.01 262.402L150.341 267.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <g clipPath="url(#clip14_693_44363)">
             <path
               d="M150.403 442.738V485.481L113.875 506.853V464.11L150.403 442.738Z"
@@ -600,13 +588,130 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <rect
-            x="69"
-            y="350"
-            width="140"
-            height="489"
-            fill="url(#paint5_linear_693_44363)"
-          />
+          <g id="pillar-1-kernel">
+            <path
+              d="M150.393 299.941L187.484 278.527C187.611 278.454 187.714 278.513 187.714 278.659L187.713 283.657L150.622 305.072C150.495 305.145 150.393 305.085 150.393 304.939L150.393 299.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M150.382 299.93L113.231 278.48C113.104 278.407 113.002 278.466 113.002 278.613L113.002 283.612L150.153 305.061C150.28 305.135 150.383 305.075 150.383 304.929L150.382 299.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M131.675 267.719L122.345 273.079L131.675 278.438L141.011 273.03L131.675 267.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M150.342 267.719L141.012 273.079L150.342 278.438L159.678 273.03L150.342 267.719Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M169.008 267.721L159.678 273.081L169.008 278.44L178.344 273.032L169.008 267.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M141.011 273.08L131.676 278.44L141.011 283.8L150.342 278.391L141.011 273.08Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M159.676 273.078L150.341 278.438L159.676 283.798L169.007 278.389L159.676 273.078Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M178.343 273.078L169.008 278.438L178.343 283.798L187.674 278.389L178.343 273.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M150.342 278.439L141.011 283.799L150.342 289.155L159.677 283.75L150.342 278.439Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M169.009 278.439L159.679 283.799L169.009 289.155L178.345 283.75L169.009 278.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M159.677 283.799L150.342 289.154L159.677 294.514L169.008 289.11L159.677 283.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M122.345 273.08L113.01 278.44L122.345 283.8L131.676 278.391L122.345 273.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M131.675 278.438L122.344 283.797L131.675 289.153L141.01 283.748L131.675 278.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M141.01 283.797L131.675 289.152L141.01 294.512L150.341 289.108L141.01 283.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M150.342 289.154L141.011 294.514L150.342 299.874L159.677 294.47L150.342 289.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M159.677 273.079L169.008 267.719L159.677 262.359L150.342 267.764L159.677 273.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M141.011 273.079L150.342 267.719L141.011 262.359L131.676 267.764L141.011 273.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M150.341 267.718L159.676 262.358L150.341 256.998L141.01 262.402L150.341 267.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-6"
+          style={{
+            transform: `translate3d(0, ${
+              623 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip15_693_44363)">
             <path
               d="M1048.4 534.738V577.481L1011.88 598.853V556.11L1048.4 534.738Z"
@@ -787,230 +892,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M1049.39 350.941L1086.48 329.527C1086.61 329.454 1086.71 329.513 1086.71 329.659L1086.71 334.657L1049.62 356.072C1049.5 356.145 1049.39 356.085 1049.39 355.939L1049.39 350.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1049.38 350.93L1012.23 329.48C1012.1 329.407 1012 329.466 1012 329.613L1012 334.612L1049.15 356.061C1049.28 356.135 1049.38 356.075 1049.38 355.929L1049.38 350.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1030.68 318.719L1021.34 324.079L1030.68 329.438L1040.01 324.03L1030.68 318.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1049.34 318.719L1040.01 324.079L1049.34 329.438L1058.68 324.03L1049.34 318.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1068.01 318.721L1058.68 324.081L1068.01 329.44L1077.34 324.032L1068.01 318.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1040.01 324.08L1030.68 329.44L1040.01 334.8L1049.34 329.391L1040.01 324.08Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1058.68 324.078L1049.34 329.438L1058.68 334.798L1068.01 329.389L1058.68 324.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1077.34 324.078L1068.01 329.438L1077.34 334.798L1086.67 329.389L1077.34 324.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1049.34 329.439L1040.01 334.799L1049.34 340.155L1058.68 334.75L1049.34 329.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1068.01 329.439L1058.68 334.799L1068.01 340.155L1077.34 334.75L1068.01 329.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1058.68 334.799L1049.34 340.154L1058.68 345.514L1068.01 340.11L1058.68 334.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1021.35 324.08L1012.01 329.44L1021.35 334.8L1030.68 329.391L1021.35 324.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1030.67 329.438L1021.34 334.797L1030.67 340.153L1040.01 334.748L1030.67 329.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1040.01 334.797L1030.68 340.152L1040.01 345.512L1049.34 340.108L1040.01 334.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1049.34 340.154L1040.01 345.514L1049.34 350.874L1058.68 345.47L1049.34 340.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1058.68 324.079L1068.01 318.719L1058.68 313.359L1049.34 318.764L1058.68 324.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1040.01 324.079L1049.34 318.719L1040.01 313.359L1030.68 318.764L1040.01 324.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1049.34 318.718L1058.68 313.358L1049.34 307.998L1040.01 313.402L1049.34 318.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1012.39 250.941L1049.48 229.527C1049.61 229.454 1049.71 229.513 1049.71 229.659L1049.71 234.657L1012.62 256.072C1012.5 256.145 1012.39 256.085 1012.39 255.939L1012.39 250.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1012.38 250.93L975.231 229.48C975.104 229.407 975.002 229.466 975.002 229.613L975.002 234.612L1012.15 256.061C1012.28 256.135 1012.38 256.075 1012.38 255.929L1012.38 250.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M993.675 218.719L984.345 224.079L993.675 229.438L1003.01 224.03L993.675 218.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1012.34 218.719L1003.01 224.079L1012.34 229.438L1021.68 224.03L1012.34 218.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1031.01 218.721L1021.68 224.081L1031.01 229.44L1040.34 224.032L1031.01 218.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1003.01 224.08L993.676 229.44L1003.01 234.8L1012.34 229.391L1003.01 224.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1021.68 224.078L1012.34 229.438L1021.68 234.798L1031.01 229.389L1021.68 224.078Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1040.34 224.078L1031.01 229.438L1040.34 234.798L1049.67 229.389L1040.34 224.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1012.34 229.439L1003.01 234.799L1012.34 240.155L1021.68 234.75L1012.34 229.439Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1031.01 229.439L1021.68 234.799L1031.01 240.155L1040.34 234.75L1031.01 229.439Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1021.68 234.799L1012.34 240.154L1021.68 245.514L1031.01 240.11L1021.68 234.799Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M984.345 224.08L975.01 229.44L984.345 234.8L993.676 229.391L984.345 224.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M993.675 229.438L984.344 234.797L993.675 240.153L1003.01 234.748L993.675 229.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1003.01 234.797L993.675 240.152L1003.01 245.512L1012.34 240.108L1003.01 234.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1012.34 240.154L1003.01 245.514L1012.34 250.874L1021.68 245.47L1012.34 240.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1021.68 224.079L1031.01 218.719L1021.68 213.359L1012.34 218.764L1021.68 224.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1003.01 224.079L1012.34 218.719L1003.01 213.359L993.676 218.764L1003.01 224.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1012.34 218.718L1021.68 213.358L1012.34 207.998L1003.01 213.402L1012.34 218.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
             x="975"
             y="308"
@@ -1018,6 +899,244 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             height="390"
             fill="url(#paint6_linear_693_44363)"
           />
+          <g id="pillar-6-kernel-1">
+            <path
+              d="M1012.39 250.941L1049.48 229.527C1049.61 229.454 1049.71 229.513 1049.71 229.659L1049.71 234.657L1012.62 256.072C1012.5 256.145 1012.39 256.085 1012.39 255.939L1012.39 250.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1012.38 250.93L975.231 229.48C975.104 229.407 975.002 229.466 975.002 229.613L975.002 234.612L1012.15 256.061C1012.28 256.135 1012.38 256.075 1012.38 255.929L1012.38 250.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M993.675 218.719L984.345 224.079L993.675 229.438L1003.01 224.03L993.675 218.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1012.34 218.719L1003.01 224.079L1012.34 229.438L1021.68 224.03L1012.34 218.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1031.01 218.721L1021.68 224.081L1031.01 229.44L1040.34 224.032L1031.01 218.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1003.01 224.08L993.676 229.44L1003.01 234.8L1012.34 229.391L1003.01 224.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1021.68 224.078L1012.34 229.438L1021.68 234.798L1031.01 229.389L1021.68 224.078Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1040.34 224.078L1031.01 229.438L1040.34 234.798L1049.67 229.389L1040.34 224.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1012.34 229.439L1003.01 234.799L1012.34 240.155L1021.68 234.75L1012.34 229.439Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1031.01 229.439L1021.68 234.799L1031.01 240.155L1040.34 234.75L1031.01 229.439Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1021.68 234.799L1012.34 240.154L1021.68 245.514L1031.01 240.11L1021.68 234.799Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M984.345 224.08L975.01 229.44L984.345 234.8L993.676 229.391L984.345 224.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M993.675 229.438L984.344 234.797L993.675 240.153L1003.01 234.748L993.675 229.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1003.01 234.797L993.675 240.152L1003.01 245.512L1012.34 240.108L1003.01 234.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1012.34 240.154L1003.01 245.514L1012.34 250.874L1021.68 245.47L1012.34 240.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1021.68 224.079L1031.01 218.719L1021.68 213.359L1012.34 218.764L1021.68 224.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1003.01 224.079L1012.34 218.719L1003.01 213.359L993.676 218.764L1003.01 224.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1012.34 218.718L1021.68 213.358L1012.34 207.998L1003.01 213.402L1012.34 218.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+          <g id="pillar-6-kernel-2">
+            <path
+              d="M1049.39 350.941L1086.48 329.527C1086.61 329.454 1086.71 329.513 1086.71 329.659L1086.71 334.657L1049.62 356.072C1049.5 356.145 1049.39 356.085 1049.39 355.939L1049.39 350.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1049.38 350.93L1012.23 329.48C1012.1 329.407 1012 329.466 1012 329.613L1012 334.612L1049.15 356.061C1049.28 356.135 1049.38 356.075 1049.38 355.929L1049.38 350.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1030.68 318.719L1021.34 324.079L1030.68 329.438L1040.01 324.03L1030.68 318.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1049.34 318.719L1040.01 324.079L1049.34 329.438L1058.68 324.03L1049.34 318.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1068.01 318.721L1058.68 324.081L1068.01 329.44L1077.34 324.032L1068.01 318.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1040.01 324.08L1030.68 329.44L1040.01 334.8L1049.34 329.391L1040.01 324.08Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1058.68 324.078L1049.34 329.438L1058.68 334.798L1068.01 329.389L1058.68 324.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1077.34 324.078L1068.01 329.438L1077.34 334.798L1086.67 329.389L1077.34 324.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1049.34 329.439L1040.01 334.799L1049.34 340.155L1058.68 334.75L1049.34 329.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1068.01 329.439L1058.68 334.799L1068.01 340.155L1077.34 334.75L1068.01 329.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1058.68 334.799L1049.34 340.154L1058.68 345.514L1068.01 340.11L1058.68 334.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1021.35 324.08L1012.01 329.44L1021.35 334.8L1030.68 329.391L1021.35 324.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1030.67 329.438L1021.34 334.797L1030.67 340.153L1040.01 334.748L1030.67 329.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1040.01 334.797L1030.68 340.152L1040.01 345.512L1049.34 340.108L1040.01 334.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1049.34 340.154L1040.01 345.514L1049.34 350.874L1058.68 345.47L1049.34 340.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1058.68 324.079L1068.01 318.719L1058.68 313.359L1049.34 318.764L1058.68 324.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1040.01 324.079L1049.34 318.719L1040.01 313.359L1030.68 318.764L1040.01 324.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1049.34 318.718L1058.68 313.358L1049.34 307.998L1040.01 313.402L1049.34 318.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-5"
+          style={{
+            transform: `translate3d(0, ${
+              568 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip24_693_44363)">
             <path
               d="M593.403 599.738V642.481L556.875 663.853V621.11L593.403 599.738Z"
@@ -1178,118 +1297,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M557.393 305.941L594.484 284.527C594.611 284.454 594.714 284.513 594.714 284.659L594.713 289.657L557.622 311.072C557.495 311.145 557.393 311.085 557.393 310.939L557.393 305.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M557.382 305.93L520.231 284.48C520.104 284.407 520.002 284.466 520.002 284.613L520.002 289.612L557.153 311.061C557.28 311.135 557.383 311.075 557.383 310.929L557.382 305.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M538.675 273.719L529.345 279.079L538.675 284.438L548.011 279.03L538.675 273.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M557.342 273.719L548.012 279.079L557.342 284.438L566.678 279.03L557.342 273.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M576.008 273.721L566.678 279.081L576.008 284.44L585.344 279.032L576.008 273.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M548.011 279.08L538.676 284.44L548.011 289.8L557.342 284.391L548.011 279.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M566.676 279.078L557.341 284.438L566.676 289.798L576.007 284.389L566.676 279.078Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M585.343 279.078L576.008 284.438L585.343 289.798L594.674 284.389L585.343 279.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M557.342 284.439L548.011 289.799L557.342 295.155L566.677 289.75L557.342 284.439Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M576.009 284.439L566.679 289.799L576.009 295.155L585.345 289.75L576.009 284.439Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M566.677 289.799L557.342 295.154L566.677 300.514L576.008 295.11L566.677 289.799Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M529.345 279.08L520.01 284.44L529.345 289.8L538.676 284.391L529.345 279.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M538.675 284.438L529.344 289.797L538.675 295.153L548.01 289.748L538.675 284.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M548.01 289.797L538.675 295.152L548.01 300.512L557.341 295.108L548.01 289.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M557.342 295.154L548.011 300.514L557.342 305.874L566.677 300.47L557.342 295.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M566.677 279.079L576.008 273.719L566.677 268.359L557.342 273.764L566.677 279.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M548.011 279.079L557.342 273.719L548.011 268.359L538.676 273.764L548.011 279.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M557.341 273.718L566.676 268.358L557.341 262.998L548.01 268.402L557.341 273.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <g clipPath="url(#clip32_693_44363)">
             <path
               d="M556.403 411.738V454.481L519.875 475.853V433.11L556.403 411.738Z"
@@ -1317,6 +1324,131 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             height="552"
             fill="url(#paint7_linear_693_44363)"
           />
+          <g id="pillar-5-kernel-1">
+            <path
+              d="M557.393 305.941L594.484 284.527C594.611 284.454 594.714 284.513 594.714 284.659L594.713 289.657L557.622 311.072C557.495 311.145 557.393 311.085 557.393 310.939L557.393 305.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M557.382 305.93L520.231 284.48C520.104 284.407 520.002 284.466 520.002 284.613L520.002 289.612L557.153 311.061C557.28 311.135 557.383 311.075 557.383 310.929L557.382 305.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M538.675 273.719L529.345 279.079L538.675 284.438L548.011 279.03L538.675 273.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M557.342 273.719L548.012 279.079L557.342 284.438L566.678 279.03L557.342 273.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M576.008 273.721L566.678 279.081L576.008 284.44L585.344 279.032L576.008 273.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M548.011 279.08L538.676 284.44L548.011 289.8L557.342 284.391L548.011 279.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M566.676 279.078L557.341 284.438L566.676 289.798L576.007 284.389L566.676 279.078Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M585.343 279.078L576.008 284.438L585.343 289.798L594.674 284.389L585.343 279.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M557.342 284.439L548.011 289.799L557.342 295.155L566.677 289.75L557.342 284.439Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M576.009 284.439L566.679 289.799L576.009 295.155L585.345 289.75L576.009 284.439Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M566.677 289.799L557.342 295.154L566.677 300.514L576.008 295.11L566.677 289.799Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M529.345 279.08L520.01 284.44L529.345 289.8L538.676 284.391L529.345 279.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M538.675 284.438L529.344 289.797L538.675 295.153L548.01 289.748L538.675 284.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M548.01 289.797L538.675 295.152L548.01 300.512L557.341 295.108L548.01 289.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M557.342 295.154L548.011 300.514L557.342 305.874L566.677 300.47L557.342 295.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M566.677 279.079L576.008 273.719L566.677 268.359L557.342 273.764L566.677 279.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M548.011 279.079L557.342 273.719L548.011 268.359L538.676 273.764L548.011 279.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M557.341 273.718L566.676 268.358L557.341 262.998L548.01 268.402L557.341 273.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+
+        <g
+          id="instill-cloud-main-structure"
+          style={{
+            transform: `translate3d(0, ${
+              262 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <path
             d="M690.478 550.941L653.387 529.527C653.26 529.454 653.158 529.513 653.158 529.659L653.158 534.657L690.249 556.072C690.376 556.145 690.478 556.085 690.478 555.939L690.478 550.941Z"
             fill="white"
@@ -4062,6 +4194,16 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             height="104"
             fill="url(#paint13_linear_693_44363)"
           />
+        </g>
+        <g
+          id="pillar-2"
+          style={{
+            transform: `translate3d(0, ${
+              355 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip58_693_44363)">
             <path
               d="M250.403 588.738V631.481L213.875 652.853V610.11L250.403 588.738Z"
@@ -4242,118 +4384,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M250.393 518.941L287.484 497.527C287.611 497.454 287.714 497.513 287.714 497.659L287.713 502.657L250.622 524.072C250.495 524.145 250.393 524.085 250.393 523.939L250.393 518.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M250.382 518.93L213.231 497.48C213.104 497.407 213.002 497.466 213.002 497.613L213.002 502.612L250.153 524.061C250.28 524.135 250.383 524.075 250.383 523.929L250.382 518.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M231.675 486.719L222.345 492.079L231.675 497.438L241.011 492.03L231.675 486.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M250.342 486.719L241.012 492.079L250.342 497.438L259.678 492.03L250.342 486.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M269.008 486.721L259.678 492.081L269.008 497.44L278.344 492.032L269.008 486.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M241.011 492.08L231.676 497.44L241.011 502.8L250.342 497.391L241.011 492.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M259.676 492.078L250.341 497.438L259.676 502.798L269.007 497.389L259.676 492.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M278.343 492.078L269.008 497.438L278.343 502.798L287.674 497.389L278.343 492.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M250.342 497.439L241.011 502.799L250.342 508.155L259.677 502.75L250.342 497.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M269.009 497.439L259.679 502.799L269.009 508.155L278.345 502.75L269.009 497.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M259.677 502.799L250.342 508.154L259.677 513.514L269.008 508.11L259.677 502.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M222.345 492.08L213.01 497.44L222.345 502.8L231.676 497.391L222.345 492.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M231.675 497.438L222.344 502.797L231.675 508.153L241.01 502.748L231.675 497.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M241.01 502.797L231.675 508.152L241.01 513.512L250.341 508.108L241.01 502.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M250.342 508.154L241.011 513.514L250.342 518.874L259.677 513.47L250.342 508.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M259.677 492.079L269.008 486.719L259.677 481.359L250.342 486.764L259.677 492.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M241.011 492.079L250.342 486.719L241.011 481.359L231.676 486.764L241.011 492.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M250.341 486.718L259.676 481.358L250.341 475.998L241.01 481.402L250.341 486.718Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <g clipPath="url(#clip67_693_44363)">
             <path
               d="M213.403 609.738V652.481L176.875 673.853V631.11L213.403 609.738Z"
@@ -4374,118 +4404,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M177.393 616.941L214.484 595.527C214.611 595.454 214.714 595.513 214.714 595.659L214.713 600.657L177.622 622.072C177.495 622.145 177.393 622.085 177.393 621.939L177.393 616.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M177.382 616.93L140.231 595.48C140.104 595.407 140.002 595.466 140.002 595.613L140.002 600.612L177.153 622.061C177.28 622.135 177.383 622.075 177.383 621.929L177.382 616.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M158.675 584.719L149.345 590.079L158.675 595.438L168.011 590.03L158.675 584.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M177.342 584.719L168.012 590.079L177.342 595.438L186.678 590.03L177.342 584.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M196.008 584.721L186.678 590.081L196.008 595.44L205.344 590.032L196.008 584.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M168.011 590.08L158.676 595.44L168.011 600.8L177.342 595.391L168.011 590.08Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M186.676 590.078L177.341 595.438L186.676 600.798L196.007 595.389L186.676 590.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M205.343 590.078L196.008 595.438L205.343 600.798L214.674 595.389L205.343 590.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M177.342 595.439L168.011 600.799L177.342 606.155L186.677 600.75L177.342 595.439Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M196.009 595.439L186.679 600.799L196.009 606.155L205.345 600.75L196.009 595.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M186.677 600.799L177.342 606.154L186.677 611.514L196.008 606.11L186.677 600.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M149.345 590.08L140.01 595.44L149.345 600.8L158.676 595.391L149.345 590.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M158.675 595.438L149.344 600.797L158.675 606.153L168.01 600.748L158.675 595.438Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M168.01 600.797L158.675 606.152L168.01 611.512L177.341 606.108L168.01 600.797Z"
-            fill="#28F77E"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M177.342 606.154L168.011 611.514L177.342 616.874L186.677 611.47L177.342 606.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M186.677 590.079L196.008 584.719L186.677 579.359L177.342 584.764L186.677 590.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M168.011 590.079L177.342 584.719L168.011 579.359L158.676 584.764L168.011 590.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M177.341 584.718L186.676 579.358L177.341 573.998L168.01 579.402L177.341 584.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
             x="50"
             y="595"
@@ -4493,6 +4411,244 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             height="228"
             fill="url(#paint14_linear_693_44363)"
           />
+          <g id="pillar-2-kernel-1">
+            <path
+              d="M250.393 518.941L287.484 497.527C287.611 497.454 287.714 497.513 287.714 497.659L287.713 502.657L250.622 524.072C250.495 524.145 250.393 524.085 250.393 523.939L250.393 518.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M250.382 518.93L213.231 497.48C213.104 497.407 213.002 497.466 213.002 497.613L213.002 502.612L250.153 524.061C250.28 524.135 250.383 524.075 250.383 523.929L250.382 518.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M231.675 486.719L222.345 492.079L231.675 497.438L241.011 492.03L231.675 486.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M250.342 486.719L241.012 492.079L250.342 497.438L259.678 492.03L250.342 486.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M269.008 486.721L259.678 492.081L269.008 497.44L278.344 492.032L269.008 486.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M241.011 492.08L231.676 497.44L241.011 502.8L250.342 497.391L241.011 492.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M259.676 492.078L250.341 497.438L259.676 502.798L269.007 497.389L259.676 492.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M278.343 492.078L269.008 497.438L278.343 502.798L287.674 497.389L278.343 492.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M250.342 497.439L241.011 502.799L250.342 508.155L259.677 502.75L250.342 497.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M269.009 497.439L259.679 502.799L269.009 508.155L278.345 502.75L269.009 497.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M259.677 502.799L250.342 508.154L259.677 513.514L269.008 508.11L259.677 502.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M222.345 492.08L213.01 497.44L222.345 502.8L231.676 497.391L222.345 492.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M231.675 497.438L222.344 502.797L231.675 508.153L241.01 502.748L231.675 497.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M241.01 502.797L231.675 508.152L241.01 513.512L250.341 508.108L241.01 502.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M250.342 508.154L241.011 513.514L250.342 518.874L259.677 513.47L250.342 508.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M259.677 492.079L269.008 486.719L259.677 481.359L250.342 486.764L259.677 492.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M241.011 492.079L250.342 486.719L241.011 481.359L231.676 486.764L241.011 492.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M250.341 486.718L259.676 481.358L250.341 475.998L241.01 481.402L250.341 486.718Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+          <g id="pillar-2-kernel-2">
+            <path
+              d="M177.393 616.941L214.484 595.527C214.611 595.454 214.714 595.513 214.714 595.659L214.713 600.657L177.622 622.072C177.495 622.145 177.393 622.085 177.393 621.939L177.393 616.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M177.382 616.93L140.231 595.48C140.104 595.407 140.002 595.466 140.002 595.613L140.002 600.612L177.153 622.061C177.28 622.135 177.383 622.075 177.383 621.929L177.382 616.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M158.675 584.719L149.345 590.079L158.675 595.438L168.011 590.03L158.675 584.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M177.342 584.719L168.012 590.079L177.342 595.438L186.678 590.03L177.342 584.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M196.008 584.721L186.678 590.081L196.008 595.44L205.344 590.032L196.008 584.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M168.011 590.08L158.676 595.44L168.011 600.8L177.342 595.391L168.011 590.08Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M186.676 590.078L177.341 595.438L186.676 600.798L196.007 595.389L186.676 590.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M205.343 590.078L196.008 595.438L205.343 600.798L214.674 595.389L205.343 590.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M177.342 595.439L168.011 600.799L177.342 606.155L186.677 600.75L177.342 595.439Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M196.009 595.439L186.679 600.799L196.009 606.155L205.345 600.75L196.009 595.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M186.677 600.799L177.342 606.154L186.677 611.514L196.008 606.11L186.677 600.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M149.345 590.08L140.01 595.44L149.345 600.8L158.676 595.391L149.345 590.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M158.675 595.438L149.344 600.797L158.675 606.153L168.01 600.748L158.675 595.438Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M168.01 600.797L158.675 606.152L168.01 611.512L177.341 606.108L168.01 600.797Z"
+              fill="#28F77E"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M177.342 606.154L168.011 611.514L177.342 616.874L186.677 611.47L177.342 606.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M186.677 590.079L196.008 584.719L186.677 579.359L177.342 584.764L186.677 590.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M168.011 590.079L177.342 584.719L168.011 579.359L158.676 584.764L168.011 590.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M177.341 584.718L186.676 579.358L177.341 573.998L168.01 579.402L177.341 584.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-8"
+          style={{
+            transform: `translate3d(0, ${
+              425 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip68_693_44363)">
             <path
               d="M1337.4 652.738V695.481L1300.88 716.853V674.11L1337.4 652.738Z"
@@ -4635,8 +4791,8 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
           </g>
           <g clipPath="url(#clip75_693_44363)">
             <path
-              d="M1337.4 441.738V484.481L1300.88 505.853V463.11L1337.4 441.738Z"
               fill="#57FF9D"
+              d="M1337.4 441.738V484.481L1300.88 505.853V463.11L1337.4 441.738Z"
             />
             <path
               d="M1337.4 441.737L1300.88 463.108L1264.35 441.737L1300.88 420.352L1337.4 441.737Z"
@@ -4653,125 +4809,138 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M1301.39 448.941L1338.48 427.527C1338.61 427.454 1338.71 427.513 1338.71 427.659L1338.71 432.657L1301.62 454.072C1301.5 454.145 1301.39 454.085 1301.39 453.939L1301.39 448.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1301.38 448.93L1264.23 427.48C1264.1 427.407 1264 427.466 1264 427.613L1264 432.612L1301.15 454.061C1301.28 454.135 1301.38 454.075 1301.38 453.929L1301.38 448.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1282.68 416.719L1273.34 422.079L1282.68 427.438L1292.01 422.03L1282.68 416.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1301.34 416.719L1292.01 422.079L1301.34 427.438L1310.68 422.03L1301.34 416.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1320.01 416.721L1310.68 422.081L1320.01 427.44L1329.34 422.032L1320.01 416.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1292.01 422.08L1282.68 427.44L1292.01 432.8L1301.34 427.391L1292.01 422.08Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1310.68 422.078L1301.34 427.438L1310.68 432.798L1320.01 427.389L1310.68 422.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1329.34 422.078L1320.01 427.438L1329.34 432.798L1338.67 427.389L1329.34 422.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1301.34 427.439L1292.01 432.799L1301.34 438.155L1310.68 432.75L1301.34 427.439Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1320.01 427.439L1310.68 432.799L1320.01 438.155L1329.34 432.75L1320.01 427.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1310.68 432.799L1301.34 438.154L1310.68 443.514L1320.01 438.11L1310.68 432.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1273.35 422.08L1264.01 427.44L1273.35 432.8L1282.68 427.391L1273.35 422.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1282.67 427.438L1273.34 432.797L1282.67 438.153L1292.01 432.748L1282.67 427.438Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1292.01 432.797L1282.68 438.152L1292.01 443.512L1301.34 438.108L1292.01 432.797Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1301.34 438.154L1292.01 443.514L1301.34 448.874L1310.68 443.47L1301.34 438.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1310.68 422.079L1320.01 416.719L1310.68 411.359L1301.34 416.764L1310.68 422.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1292.01 422.079L1301.34 416.719L1292.01 411.359L1282.68 416.764L1292.01 422.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1301.34 416.718L1310.68 411.358L1301.34 405.998L1292.01 411.402L1301.34 416.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
+            id="pillar-8-mask"
             x="1212"
             y="484"
             width="202"
             height="323"
             fill="url(#paint15_linear_693_44363)"
           />
+          <g id="pillar-8-kernel-1">
+            <path
+              d="M1301.39 448.941L1338.48 427.527C1338.61 427.454 1338.71 427.513 1338.71 427.659L1338.71 432.657L1301.62 454.072C1301.5 454.145 1301.39 454.085 1301.39 453.939L1301.39 448.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1301.38 448.93L1264.23 427.48C1264.1 427.407 1264 427.466 1264 427.613L1264 432.612L1301.15 454.061C1301.28 454.135 1301.38 454.075 1301.38 453.929L1301.38 448.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1282.68 416.719L1273.34 422.079L1282.68 427.438L1292.01 422.03L1282.68 416.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1301.34 416.719L1292.01 422.079L1301.34 427.438L1310.68 422.03L1301.34 416.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1320.01 416.721L1310.68 422.081L1320.01 427.44L1329.34 422.032L1320.01 416.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1292.01 422.08L1282.68 427.44L1292.01 432.8L1301.34 427.391L1292.01 422.08Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1310.68 422.078L1301.34 427.438L1310.68 432.798L1320.01 427.389L1310.68 422.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1329.34 422.078L1320.01 427.438L1329.34 432.798L1338.67 427.389L1329.34 422.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1301.34 427.439L1292.01 432.799L1301.34 438.155L1310.68 432.75L1301.34 427.439Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1320.01 427.439L1310.68 432.799L1320.01 438.155L1329.34 432.75L1320.01 427.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1310.68 432.799L1301.34 438.154L1310.68 443.514L1320.01 438.11L1310.68 432.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1273.35 422.08L1264.01 427.44L1273.35 432.8L1282.68 427.391L1273.35 422.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1282.67 427.438L1273.34 432.797L1282.67 438.153L1292.01 432.748L1282.67 427.438Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1292.01 432.797L1282.68 438.152L1292.01 443.512L1301.34 438.108L1292.01 432.797Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1301.34 438.154L1292.01 443.514L1301.34 448.874L1310.68 443.47L1301.34 438.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1310.68 422.079L1320.01 416.719L1310.68 411.359L1301.34 416.764L1310.68 422.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1292.01 422.079L1301.34 416.719L1292.01 411.359L1282.68 416.764L1292.01 422.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1301.34 416.718L1310.68 411.358L1301.34 405.998L1292.01 411.402L1301.34 416.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-7"
+          style={{
+            transform: `translate3d(0, ${
+              280 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip76_693_44363)">
             <path
               d="M1095.4 663.738V706.481L1058.88 727.853V685.11L1095.4 663.738Z"
@@ -4932,125 +5101,138 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M1095.39 593.941L1132.48 572.527C1132.61 572.454 1132.71 572.513 1132.71 572.659L1132.71 577.657L1095.62 599.072C1095.5 599.145 1095.39 599.085 1095.39 598.939L1095.39 593.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1095.38 593.93L1058.23 572.48C1058.1 572.407 1058 572.466 1058 572.613L1058 577.612L1095.15 599.061C1095.28 599.135 1095.38 599.075 1095.38 598.929L1095.38 593.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1076.68 561.719L1067.34 567.079L1076.68 572.438L1086.01 567.03L1076.68 561.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1095.34 561.719L1086.01 567.079L1095.34 572.438L1104.68 567.03L1095.34 561.719Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1114.01 561.721L1104.68 567.081L1114.01 572.44L1123.34 567.032L1114.01 561.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1086.01 567.08L1076.68 572.44L1086.01 577.8L1095.34 572.391L1086.01 567.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1104.68 567.078L1095.34 572.438L1104.68 577.798L1114.01 572.389L1104.68 567.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1123.34 567.078L1114.01 572.438L1123.34 577.798L1132.67 572.389L1123.34 567.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1095.34 572.439L1086.01 577.799L1095.34 583.155L1104.68 577.75L1095.34 572.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1114.01 572.439L1104.68 577.799L1114.01 583.155L1123.34 577.75L1114.01 572.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1104.68 577.799L1095.34 583.154L1104.68 588.514L1114.01 583.11L1104.68 577.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1067.35 567.08L1058.01 572.44L1067.35 577.8L1076.68 572.391L1067.35 567.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1076.67 572.438L1067.34 577.797L1076.67 583.153L1086.01 577.748L1076.67 572.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1086.01 577.797L1076.68 583.152L1086.01 588.512L1095.34 583.108L1086.01 577.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1095.34 583.154L1086.01 588.514L1095.34 593.874L1104.68 588.47L1095.34 583.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M1104.68 567.079L1114.01 561.719L1104.68 556.359L1095.34 561.764L1104.68 567.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1086.01 567.079L1095.34 561.719L1086.01 556.359L1076.68 561.764L1086.01 567.079Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M1095.34 561.718L1104.68 556.358L1095.34 550.998L1086.01 556.402L1095.34 561.718Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
+            id="pillar-7-mask"
             x="1013"
             y="608"
             width="177"
             height="277"
             fill="url(#paint16_linear_693_44363)"
           />
+          <g id="pillar-7-kernel-1">
+            <path
+              d="M1095.39 593.941L1132.48 572.527C1132.61 572.454 1132.71 572.513 1132.71 572.659L1132.71 577.657L1095.62 599.072C1095.5 599.145 1095.39 599.085 1095.39 598.939L1095.39 593.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1095.38 593.93L1058.23 572.48C1058.1 572.407 1058 572.466 1058 572.613L1058 577.612L1095.15 599.061C1095.28 599.135 1095.38 599.075 1095.38 598.929L1095.38 593.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1076.68 561.719L1067.34 567.079L1076.68 572.438L1086.01 567.03L1076.68 561.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1095.34 561.719L1086.01 567.079L1095.34 572.438L1104.68 567.03L1095.34 561.719Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1114.01 561.721L1104.68 567.081L1114.01 572.44L1123.34 567.032L1114.01 561.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1086.01 567.08L1076.68 572.44L1086.01 577.8L1095.34 572.391L1086.01 567.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1104.68 567.078L1095.34 572.438L1104.68 577.798L1114.01 572.389L1104.68 567.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1123.34 567.078L1114.01 572.438L1123.34 577.798L1132.67 572.389L1123.34 567.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1095.34 572.439L1086.01 577.799L1095.34 583.155L1104.68 577.75L1095.34 572.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1114.01 572.439L1104.68 577.799L1114.01 583.155L1123.34 577.75L1114.01 572.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1104.68 577.799L1095.34 583.154L1104.68 588.514L1114.01 583.11L1104.68 577.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1067.35 567.08L1058.01 572.44L1067.35 577.8L1076.68 572.391L1067.35 567.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1076.67 572.438L1067.34 577.797L1076.67 583.153L1086.01 577.748L1076.67 572.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1086.01 577.797L1076.68 583.152L1086.01 588.512L1095.34 583.108L1086.01 577.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1095.34 583.154L1086.01 588.514L1095.34 593.874L1104.68 588.47L1095.34 583.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M1104.68 567.079L1114.01 561.719L1104.68 556.359L1095.34 561.764L1104.68 567.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1086.01 567.079L1095.34 561.719L1086.01 556.359L1076.68 561.764L1086.01 567.079Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M1095.34 561.718L1104.68 556.358L1095.34 550.998L1086.01 556.402L1095.34 561.718Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="pillar-4"
+          style={{
+            transform: `translate3d(0, ${
+              231 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${25 + 75 * proportion}%`,
+          }}
+        >
           <g clipPath="url(#clip84_693_44363)">
             <path
               d="M478.403 800.738V843.481L441.875 864.853V822.11L478.403 800.738Z"
@@ -5171,230 +5353,6 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
               fill="#1A1A1A"
             />
           </g>
-          <path
-            d="M478.393 740.941L515.484 719.527C515.611 719.454 515.714 719.513 515.714 719.659L515.713 724.657L478.622 746.072C478.495 746.145 478.393 746.085 478.393 745.939L478.393 740.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M478.382 740.93L441.231 719.48C441.104 719.407 441.002 719.466 441.002 719.613L441.002 724.612L478.153 746.061C478.28 746.135 478.383 746.075 478.383 745.929L478.382 740.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M459.675 708.719L450.345 714.079L459.675 719.438L469.011 714.03L459.675 708.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M478.342 708.719L469.012 714.079L478.342 719.438L487.678 714.03L478.342 708.719Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M497.008 708.721L487.678 714.081L497.008 719.44L506.344 714.032L497.008 708.721Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M469.011 714.08L459.676 719.44L469.011 724.8L478.342 719.391L469.011 714.08Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M487.676 714.078L478.341 719.438L487.676 724.798L497.007 719.389L487.676 714.078Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M506.343 714.078L497.008 719.438L506.343 724.798L515.674 719.389L506.343 714.078Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M478.342 719.439L469.011 724.799L478.342 730.155L487.677 724.75L478.342 719.439Z"
-            fill="#FFDF3A"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M497.009 719.439L487.679 724.799L497.009 730.155L506.345 724.75L497.009 719.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M487.677 724.799L478.342 730.154L487.677 735.514L497.008 730.11L487.677 724.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M450.345 714.08L441.01 719.44L450.345 724.8L459.676 719.391L450.345 714.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M459.675 719.438L450.344 724.797L459.675 730.153L469.01 724.748L459.675 719.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M469.01 724.797L459.675 730.152L469.01 735.512L478.341 730.108L469.01 724.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M478.342 730.154L469.011 735.514L478.342 740.874L487.677 735.47L478.342 730.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M487.677 714.079L497.008 708.719L487.677 703.359L478.342 708.764L487.677 714.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M469.011 714.079L478.342 708.719L469.011 703.359L459.676 708.764L469.011 714.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M478.341 708.718L487.676 703.358L478.341 697.998L469.01 703.402L478.341 708.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M441.393 642.941L478.484 621.527C478.611 621.454 478.714 621.513 478.714 621.659L478.713 626.657L441.622 648.072C441.495 648.145 441.393 648.085 441.393 647.939L441.393 642.941Z"
-            fill="#C0C0C0"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M441.382 642.93L404.231 621.48C404.104 621.407 404.002 621.466 404.002 621.613L404.002 626.612L441.153 648.061C441.28 648.135 441.383 648.075 441.383 647.929L441.382 642.93Z"
-            fill="#E8E8E8"
-            stroke="#1A1A1A"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M422.675 610.719L413.345 616.079L422.675 621.438L432.011 616.03L422.675 610.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M441.342 610.719L432.012 616.079L441.342 621.438L450.678 616.03L441.342 610.719Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M460.008 610.721L450.678 616.081L460.008 621.44L469.344 616.032L460.008 610.721Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M432.011 616.08L422.676 621.44L432.011 626.8L441.342 621.391L432.011 616.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M450.676 616.078L441.341 621.438L450.676 626.798L460.007 621.389L450.676 616.078Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M469.343 616.078L460.008 621.438L469.343 626.798L478.674 621.389L469.343 616.078Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M441.342 621.439L432.011 626.799L441.342 632.155L450.677 626.75L441.342 621.439Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M460.009 621.439L450.679 626.799L460.009 632.155L469.345 626.75L460.009 621.439Z"
-            fill="#40A8F5"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M450.677 626.799L441.342 632.154L450.677 637.514L460.008 632.11L450.677 626.799Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M413.345 616.08L404.01 621.44L413.345 626.8L422.676 621.391L413.345 616.08Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M422.675 621.438L413.344 626.797L422.675 632.153L432.01 626.748L422.675 621.438Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M432.01 626.797L422.675 632.152L432.01 637.512L441.341 632.108L432.01 626.797Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M441.342 632.154L432.011 637.514L441.342 642.874L450.677 637.47L441.342 632.154Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M450.677 616.079L460.008 610.719L450.677 605.359L441.342 610.764L450.677 616.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M432.011 616.079L441.342 610.719L432.011 605.359L422.676 610.764L432.011 616.079Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-          />
-          <path
-            d="M441.341 610.718L450.676 605.358L441.341 599.998L432.01 605.402L441.341 610.718Z"
-            fill="#F7F7F7"
-            stroke="#1A1A1A"
-            strokeMiterlimit="10"
-            strokeLinejoin="round"
-          />
           <rect
             x="351"
             y="674"
@@ -5402,6 +5360,244 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             height="232"
             fill="url(#paint17_linear_693_44363)"
           />
+          <g id="pillar-4-kernel-1">
+            <path
+              d="M441.393 642.941L478.484 621.527C478.611 621.454 478.714 621.513 478.714 621.659L478.713 626.657L441.622 648.072C441.495 648.145 441.393 648.085 441.393 647.939L441.393 642.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M441.382 642.93L404.231 621.48C404.104 621.407 404.002 621.466 404.002 621.613L404.002 626.612L441.153 648.061C441.28 648.135 441.383 648.075 441.383 647.929L441.382 642.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M422.675 610.719L413.345 616.079L422.675 621.438L432.011 616.03L422.675 610.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M441.342 610.719L432.012 616.079L441.342 621.438L450.678 616.03L441.342 610.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M460.008 610.721L450.678 616.081L460.008 621.44L469.344 616.032L460.008 610.721Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M432.011 616.08L422.676 621.44L432.011 626.8L441.342 621.391L432.011 616.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M450.676 616.078L441.341 621.438L450.676 626.798L460.007 621.389L450.676 616.078Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M469.343 616.078L460.008 621.438L469.343 626.798L478.674 621.389L469.343 616.078Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M441.342 621.439L432.011 626.799L441.342 632.155L450.677 626.75L441.342 621.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M460.009 621.439L450.679 626.799L460.009 632.155L469.345 626.75L460.009 621.439Z"
+              fill="#40A8F5"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M450.677 626.799L441.342 632.154L450.677 637.514L460.008 632.11L450.677 626.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M413.345 616.08L404.01 621.44L413.345 626.8L422.676 621.391L413.345 616.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M422.675 621.438L413.344 626.797L422.675 632.153L432.01 626.748L422.675 621.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M432.01 626.797L422.675 632.152L432.01 637.512L441.341 632.108L432.01 626.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M441.342 632.154L432.011 637.514L441.342 642.874L450.677 637.47L441.342 632.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M450.677 616.079L460.008 610.719L450.677 605.359L441.342 610.764L450.677 616.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M432.011 616.079L441.342 610.719L432.011 605.359L422.676 610.764L432.011 616.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M441.341 610.718L450.676 605.358L441.341 599.998L432.01 605.402L441.341 610.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+          <g id="pillar-4-kernel-2">
+            <path
+              d="M478.393 740.941L515.484 719.527C515.611 719.454 515.714 719.513 515.714 719.659L515.713 724.657L478.622 746.072C478.495 746.145 478.393 746.085 478.393 745.939L478.393 740.941Z"
+              fill="#C0C0C0"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M478.382 740.93L441.231 719.48C441.104 719.407 441.002 719.466 441.002 719.613L441.002 724.612L478.153 746.061C478.28 746.135 478.383 746.075 478.383 745.929L478.382 740.93Z"
+              fill="#E8E8E8"
+              stroke="#1A1A1A"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M459.675 708.719L450.345 714.079L459.675 719.438L469.011 714.03L459.675 708.719Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M478.342 708.719L469.012 714.079L478.342 719.438L487.678 714.03L478.342 708.719Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M497.008 708.721L487.678 714.081L497.008 719.44L506.344 714.032L497.008 708.721Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M469.011 714.08L459.676 719.44L469.011 724.8L478.342 719.391L469.011 714.08Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M487.676 714.078L478.341 719.438L487.676 724.798L497.007 719.389L487.676 714.078Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M506.343 714.078L497.008 719.438L506.343 724.798L515.674 719.389L506.343 714.078Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M478.342 719.439L469.011 724.799L478.342 730.155L487.677 724.75L478.342 719.439Z"
+              fill="#FFDF3A"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M497.009 719.439L487.679 724.799L497.009 730.155L506.345 724.75L497.009 719.439Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M487.677 724.799L478.342 730.154L487.677 735.514L497.008 730.11L487.677 724.799Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M450.345 714.08L441.01 719.44L450.345 724.8L459.676 719.391L450.345 714.08Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M459.675 719.438L450.344 724.797L459.675 730.153L469.01 724.748L459.675 719.438Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M469.01 724.797L459.675 730.152L469.01 735.512L478.341 730.108L469.01 724.797Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M478.342 730.154L469.011 735.514L478.342 740.874L487.677 735.47L478.342 730.154Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M487.677 714.079L497.008 708.719L487.677 703.359L478.342 708.764L487.677 714.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M469.011 714.079L478.342 708.719L469.011 703.359L459.676 708.764L469.011 714.079Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+            />
+            <path
+              d="M478.341 708.718L487.676 703.358L478.341 697.998L469.01 703.402L478.341 708.718Z"
+              fill="#F7F7F7"
+              stroke="#1A1A1A"
+              strokeMiterlimit="10"
+              strokeLinejoin="round"
+            />
+          </g>
+        </g>
+        <g
+          id="instill-cloud-headline-upon"
+          style={{
+            transform: `translate3d(0, ${
+              100 * Math.min(1, 1 - proportion)
+            }px, 0)`,
+            opacity: `${10 + 90 * proportion}%`,
+          }}
+        >
           <path
             d="M479 132H386V150.6H423.2V225H441.8V150.6H479V132Z"
             fill="#40A8F5"
@@ -5411,922 +5607,922 @@ export const InstillCloudBanner: FC<Props> = ({ styleName }) => {
             fill="#40A8F5"
           />
         </g>
-        <defs>
-          <linearGradient
-            id="paint0_linear_693_44363"
-            x1="156.522"
-            y1="225.407"
-            x2="156.522"
-            y2="61.2378"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.572917" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint1_linear_693_44363"
-            x1="694.035"
-            y1="240.067"
-            x2="694.035"
-            y2="61.943"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.572917" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint2_linear_693_44363"
-            x1="1057.04"
-            y1="368.868"
-            x2="1057.04"
-            y2="69.259"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.708333" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint3_linear_693_44363"
-            x1="347.035"
-            y1="259.764"
-            x2="347.035"
-            y2="102.982"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.661458" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint4_linear_693_44363"
-            x1="390.061"
-            y1="393.989"
-            x2="390.061"
-            y2="231.01"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="1" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint5_linear_693_44363"
-            x1="139.046"
-            y1="656.621"
-            x2="139.046"
-            y2="255.226"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint6_linear_693_44363"
-            x1="1029.54"
-            y1="552.544"
-            x2="1029.54"
-            y2="232.414"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint7_linear_693_44363"
-            x1="539.547"
-            y1="652.124"
-            x2="539.547"
-            y2="199.016"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint8_linear_693_44363"
-            x1="715.525"
-            y1="489.88"
-            x2="718.76"
-            y2="495.483"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#263238" stopOpacity="0.2" />
-            <stop offset="1" stopColor="#263238" stopOpacity="0.02" />
-          </linearGradient>
-          <radialGradient
-            id="paint9_radial_693_44363"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(699.636 490.824) rotate(-30) scale(37.238 32.834)"
-          >
-            <stop stopColor="white" stopOpacity="0.1" />
-            <stop offset="1" stopColor="white" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient
-            id="paint10_linear_693_44363"
-            x1="671.681"
-            y1="406.46"
-            x2="661.236"
-            y2="424.552"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#4387FD" />
-            <stop offset="1" stopColor="#4683EA" />
-          </linearGradient>
-          <linearGradient
-            id="paint11_linear_693_44363"
-            x1="746.278"
-            y1="469.769"
-            x2="757.19"
-            y2="488.668"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#4387FD" />
-            <stop offset="1" stopColor="#4683EA" />
-          </linearGradient>
-          <linearGradient
-            id="paint12_linear_693_44363"
-            x1="990.051"
-            y1="554.731"
-            x2="990.051"
-            y2="411.083"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint13_linear_693_44363"
-            x1="762.804"
-            y1="560.972"
-            x2="762.511"
-            y2="484.844"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" stopOpacity="0.94" />
-            <stop offset="0.723958" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint14_linear_693_44363"
-            x1="197.596"
-            y1="737.964"
-            x2="197.596"
-            y2="550.811"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint15_linear_693_44363"
-            x1="1313.07"
-            y1="686.533"
-            x2="1313.07"
-            y2="421.399"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint16_linear_693_44363"
-            x1="1101.56"
-            y1="781.689"
-            x2="1101.56"
-            y2="554.314"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="paint17_linear_693_44363"
-            x1="439.558"
-            y1="819.472"
-            x2="439.558"
-            y2="629.036"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="white" />
-            <stop offset="0.858899" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          <clipPath id="clip0_693_44363">
-            <rect width="1440" height="1024" fill="white" />
-          </clipPath>
-          <clipPath id="clip1_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(361 380)"
-            />
-          </clipPath>
-          <clipPath id="clip2_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(361 337)"
-            />
-          </clipPath>
-          <clipPath id="clip3_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(361 295)"
-            />
-          </clipPath>
-          <clipPath id="clip4_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(361 253)"
-            />
-          </clipPath>
-          <clipPath id="clip5_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(361 211)"
-            />
-          </clipPath>
-          <clipPath id="clip6_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 567)"
-            />
-          </clipPath>
-          <clipPath id="clip7_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 525)"
-            />
-          </clipPath>
-          <clipPath id="clip8_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 483)"
-            />
-          </clipPath>
-          <clipPath id="clip9_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 441)"
-            />
-          </clipPath>
-          <clipPath id="clip10_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 399)"
-            />
-          </clipPath>
-          <clipPath id="clip11_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 357)"
-            />
-          </clipPath>
-          <clipPath id="clip12_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 315)"
-            />
-          </clipPath>
-          <clipPath id="clip13_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(113 273)"
-            />
-          </clipPath>
-          <clipPath id="clip14_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(77 421)"
-            />
-          </clipPath>
-          <clipPath id="clip15_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 513)"
-            />
-          </clipPath>
-          <clipPath id="clip16_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 471)"
-            />
-          </clipPath>
-          <clipPath id="clip17_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 429)"
-            />
-          </clipPath>
-          <clipPath id="clip18_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 387)"
-            />
-          </clipPath>
-          <clipPath id="clip19_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 345)"
-            />
-          </clipPath>
-          <clipPath id="clip20_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 303)"
-            />
-          </clipPath>
-          <clipPath id="clip21_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1011 324)"
-            />
-          </clipPath>
-          <clipPath id="clip22_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 261)"
-            />
-          </clipPath>
-          <clipPath id="clip23_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(975 219)"
-            />
-          </clipPath>
-          <clipPath id="clip24_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 578)"
-            />
-          </clipPath>
-          <clipPath id="clip25_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 536)"
-            />
-          </clipPath>
-          <clipPath id="clip26_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 494)"
-            />
-          </clipPath>
-          <clipPath id="clip27_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 452)"
-            />
-          </clipPath>
-          <clipPath id="clip28_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 410)"
-            />
-          </clipPath>
-          <clipPath id="clip29_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 368)"
-            />
-          </clipPath>
-          <clipPath id="clip30_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 326)"
-            />
-          </clipPath>
-          <clipPath id="clip31_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(520 284)"
-            />
-          </clipPath>
-          <clipPath id="clip32_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(483 390)"
-            />
-          </clipPath>
-          <clipPath id="clip33_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(653.752 450.42)"
-            />
-          </clipPath>
-          <clipPath id="clip34_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(727.504 449.461)"
-            />
-          </clipPath>
-          <clipPath id="clip35_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(616.398 387.246)"
-            />
-          </clipPath>
-          <clipPath id="clip36_693_44363">
-            <rect
-              width="22.2712"
-              height="25.8505"
-              fill="white"
-              transform="matrix(-0.866026 0.5 0.866063 0.499935 654 393)"
-            />
-          </clipPath>
-          <clipPath id="clip37_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(653.754 365.174)"
-            />
-          </clipPath>
-          <clipPath id="clip38_693_44363">
-            <rect
-              width="33.5685"
-              height="33.5685"
-              fill="white"
-              transform="matrix(0.866025 -0.5 0.866063 0.499935 662 386.785)"
-            />
-          </clipPath>
-          <clipPath id="clip39_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(580 407.318)"
-            />
-          </clipPath>
-          <clipPath id="clip40_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(616.398 428.391)"
-            />
-          </clipPath>
-          <clipPath id="clip41_693_44363">
-            <rect
-              width="28.8396"
-              height="25.5301"
-              fill="white"
-              transform="matrix(0.866025 -0.5 0.866063 0.499935 629 450.42)"
-            />
-          </clipPath>
-          <clipPath id="clip42_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(800.298 449.461)"
-            />
-          </clipPath>
-          <clipPath id="clip43_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(763.902 470.535)"
-            />
-          </clipPath>
-          <clipPath id="clip44_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(874.008 407.318)"
-            />
-          </clipPath>
-          <clipPath id="clip45_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(909.449 428.391)"
-            />
-          </clipPath>
-          <clipPath id="clip46_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(837.652 428.391)"
-            />
-          </clipPath>
-          <clipPath id="clip47_693_44363">
-            <rect
-              width="31.1745"
-              height="21.5824"
-              fill="white"
-              transform="matrix(0.866025 0.5 7.54471e-05 1 843 466)"
-            />
-          </clipPath>
-          <clipPath id="clip48_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(763.902 428.391)"
-            />
-          </clipPath>
-          <clipPath id="clip49_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(690.148 428.391)"
-            />
-          </clipPath>
-          <clipPath id="clip50_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(763.901 301)"
-            />
-          </clipPath>
-          <clipPath id="clip51_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(727 365.217)"
-            />
-          </clipPath>
-          <clipPath id="clip52_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(727 322.072)"
-            />
-          </clipPath>
-          <clipPath id="clip53_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(800.297 322.072)"
-            />
-          </clipPath>
-          <clipPath id="clip54_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(837.652 386.246)"
-            />
-          </clipPath>
-          <clipPath id="clip55_693_44363">
-            <rect
-              width="74.7099"
-              height="86.2037"
-              fill="white"
-              transform="translate(763.902 386.246)"
-            />
-          </clipPath>
-          <clipPath id="clip56_693_44363">
-            <rect
-              width="24.4651"
-              height="29.6188"
-              fill="white"
-              transform="matrix(-0.866025 -0.5 0.866063 -0.499935 800.188 421.039)"
-            />
-          </clipPath>
-          <clipPath id="clip57_693_44363">
-            <rect
-              width="24.5455"
-              height="25"
-              fill="white"
-              transform="matrix(0.866025 0.5 7.53359e-05 1 772 421)"
-            />
-          </clipPath>
-          <clipPath id="clip58_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(177 567)"
-            />
-          </clipPath>
-          <clipPath id="clip59_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 713)"
-            />
-          </clipPath>
-          <clipPath id="clip60_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 671)"
-            />
-          </clipPath>
-          <clipPath id="clip61_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 629)"
-            />
-          </clipPath>
-          <clipPath id="clip62_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(249 691)"
-            />
-          </clipPath>
-          <clipPath id="clip63_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(249 649)"
-            />
-          </clipPath>
-          <clipPath id="clip64_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 587)"
-            />
-          </clipPath>
-          <clipPath id="clip65_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 545)"
-            />
-          </clipPath>
-          <clipPath id="clip66_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(213 503)"
-            />
-          </clipPath>
-          <clipPath id="clip67_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(140 588)"
-            />
-          </clipPath>
-          <clipPath id="clip68_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 631)"
-            />
-          </clipPath>
-          <clipPath id="clip69_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 589)"
-            />
-          </clipPath>
-          <clipPath id="clip70_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 547)"
-            />
-          </clipPath>
-          <clipPath id="clip71_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1300 567)"
-            />
-          </clipPath>
-          <clipPath id="clip72_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 504)"
-            />
-          </clipPath>
-          <clipPath id="clip73_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 462)"
-            />
-          </clipPath>
-          <clipPath id="clip74_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1228 483)"
-            />
-          </clipPath>
-          <clipPath id="clip75_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1264 420)"
-            />
-          </clipPath>
-          <clipPath id="clip76_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1022 642)"
-            />
-          </clipPath>
-          <clipPath id="clip77_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1058 746)"
-            />
-          </clipPath>
-          <clipPath id="clip78_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1058 704)"
-            />
-          </clipPath>
-          <clipPath id="clip79_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1094 766)"
-            />
-          </clipPath>
-          <clipPath id="clip80_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1094 724)"
-            />
-          </clipPath>
-          <clipPath id="clip81_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1058 662)"
-            />
-          </clipPath>
-          <clipPath id="clip82_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1058 620)"
-            />
-          </clipPath>
-          <clipPath id="clip83_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(1058 578)"
-            />
-          </clipPath>
-          <clipPath id="clip84_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(405 779)"
-            />
-          </clipPath>
-          <clipPath id="clip85_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(405 736)"
-            />
-          </clipPath>
-          <clipPath id="clip86_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(405 694)"
-            />
-          </clipPath>
-          <clipPath id="clip87_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(441 715)"
-            />
-          </clipPath>
-          <clipPath id="clip88_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(405 652)"
-            />
-          </clipPath>
-          <clipPath id="clip89_693_44363">
-            <rect
-              width="73.752"
-              height="86.2037"
-              fill="white"
-              transform="translate(405 610)"
-            />
-          </clipPath>
-        </defs>
-      </svg>
-    </SvgBase>
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_693_44363"
+          x1="156.522"
+          y1="225.407"
+          x2="156.522"
+          y2="61.2378"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.572917" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_693_44363"
+          x1="694.035"
+          y1="240.067"
+          x2="694.035"
+          y2="61.943"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.572917" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_693_44363"
+          x1="1057.04"
+          y1="368.868"
+          x2="1057.04"
+          y2="69.259"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.708333" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_693_44363"
+          x1="347.035"
+          y1="259.764"
+          x2="347.035"
+          y2="102.982"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.661458" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_693_44363"
+          x1="390.061"
+          y1="393.989"
+          x2="390.061"
+          y2="231.01"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_693_44363"
+          x1="139.046"
+          y1="656.621"
+          x2="139.046"
+          y2="255.226"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint6_linear_693_44363"
+          x1="1029.54"
+          y1="552.544"
+          x2="1029.54"
+          y2="232.414"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint7_linear_693_44363"
+          x1="539.547"
+          y1="652.124"
+          x2="539.547"
+          y2="199.016"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint8_linear_693_44363"
+          x1="715.525"
+          y1="489.88"
+          x2="718.76"
+          y2="495.483"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#263238" stopOpacity="0.2" />
+          <stop offset="1" stopColor="#263238" stopOpacity="0.02" />
+        </linearGradient>
+        <radialGradient
+          id="paint9_radial_693_44363"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(699.636 490.824) rotate(-30) scale(37.238 32.834)"
+        >
+          <stop stopColor="white" stopOpacity="0.1" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient
+          id="paint10_linear_693_44363"
+          x1="671.681"
+          y1="406.46"
+          x2="661.236"
+          y2="424.552"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#4387FD" />
+          <stop offset="1" stopColor="#4683EA" />
+        </linearGradient>
+        <linearGradient
+          id="paint11_linear_693_44363"
+          x1="746.278"
+          y1="469.769"
+          x2="757.19"
+          y2="488.668"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#4387FD" />
+          <stop offset="1" stopColor="#4683EA" />
+        </linearGradient>
+        <linearGradient
+          id="paint12_linear_693_44363"
+          x1="990.051"
+          y1="554.731"
+          x2="990.051"
+          y2="411.083"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint13_linear_693_44363"
+          x1="762.804"
+          y1="560.972"
+          x2="762.511"
+          y2="484.844"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" stopOpacity="0.94" />
+          <stop offset="0.723958" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint14_linear_693_44363"
+          x1="197.596"
+          y1="737.964"
+          x2="197.596"
+          y2="550.811"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint15_linear_693_44363"
+          x1="1313.07"
+          y1="686.533"
+          x2="1313.07"
+          y2="421.399"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint16_linear_693_44363"
+          x1="1101.56"
+          y1="781.689"
+          x2="1101.56"
+          y2="554.314"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint17_linear_693_44363"
+          x1="439.558"
+          y1="819.472"
+          x2="439.558"
+          y2="629.036"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="0.858899" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <clipPath id="clip0_693_44363">
+          <rect width="1440" height="1024" fill="white" />
+        </clipPath>
+        <clipPath id="clip1_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(361 380)"
+          />
+        </clipPath>
+        <clipPath id="clip2_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(361 337)"
+          />
+        </clipPath>
+        <clipPath id="clip3_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(361 295)"
+          />
+        </clipPath>
+        <clipPath id="clip4_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(361 253)"
+          />
+        </clipPath>
+        <clipPath id="clip5_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(361 211)"
+          />
+        </clipPath>
+        <clipPath id="clip6_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 567)"
+          />
+        </clipPath>
+        <clipPath id="clip7_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 525)"
+          />
+        </clipPath>
+        <clipPath id="clip8_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 483)"
+          />
+        </clipPath>
+        <clipPath id="clip9_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 441)"
+          />
+        </clipPath>
+        <clipPath id="clip10_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 399)"
+          />
+        </clipPath>
+        <clipPath id="clip11_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 357)"
+          />
+        </clipPath>
+        <clipPath id="clip12_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 315)"
+          />
+        </clipPath>
+        <clipPath id="clip13_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(113 273)"
+          />
+        </clipPath>
+        <clipPath id="clip14_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(77 421)"
+          />
+        </clipPath>
+        <clipPath id="clip15_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 513)"
+          />
+        </clipPath>
+        <clipPath id="clip16_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 471)"
+          />
+        </clipPath>
+        <clipPath id="clip17_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 429)"
+          />
+        </clipPath>
+        <clipPath id="clip18_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 387)"
+          />
+        </clipPath>
+        <clipPath id="clip19_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 345)"
+          />
+        </clipPath>
+        <clipPath id="clip20_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 303)"
+          />
+        </clipPath>
+        <clipPath id="clip21_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1011 324)"
+          />
+        </clipPath>
+        <clipPath id="clip22_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 261)"
+          />
+        </clipPath>
+        <clipPath id="clip23_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(975 219)"
+          />
+        </clipPath>
+        <clipPath id="clip24_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 578)"
+          />
+        </clipPath>
+        <clipPath id="clip25_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 536)"
+          />
+        </clipPath>
+        <clipPath id="clip26_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 494)"
+          />
+        </clipPath>
+        <clipPath id="clip27_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 452)"
+          />
+        </clipPath>
+        <clipPath id="clip28_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 410)"
+          />
+        </clipPath>
+        <clipPath id="clip29_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 368)"
+          />
+        </clipPath>
+        <clipPath id="clip30_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 326)"
+          />
+        </clipPath>
+        <clipPath id="clip31_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(520 284)"
+          />
+        </clipPath>
+        <clipPath id="clip32_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(483 390)"
+          />
+        </clipPath>
+        <clipPath id="clip33_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(653.752 450.42)"
+          />
+        </clipPath>
+        <clipPath id="clip34_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(727.504 449.461)"
+          />
+        </clipPath>
+        <clipPath id="clip35_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(616.398 387.246)"
+          />
+        </clipPath>
+        <clipPath id="clip36_693_44363">
+          <rect
+            width="22.2712"
+            height="25.8505"
+            fill="white"
+            transform="matrix(-0.866026 0.5 0.866063 0.499935 654 393)"
+          />
+        </clipPath>
+        <clipPath id="clip37_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(653.754 365.174)"
+          />
+        </clipPath>
+        <clipPath id="clip38_693_44363">
+          <rect
+            width="33.5685"
+            height="33.5685"
+            fill="white"
+            transform="matrix(0.866025 -0.5 0.866063 0.499935 662 386.785)"
+          />
+        </clipPath>
+        <clipPath id="clip39_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(580 407.318)"
+          />
+        </clipPath>
+        <clipPath id="clip40_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(616.398 428.391)"
+          />
+        </clipPath>
+        <clipPath id="clip41_693_44363">
+          <rect
+            width="28.8396"
+            height="25.5301"
+            fill="white"
+            transform="matrix(0.866025 -0.5 0.866063 0.499935 629 450.42)"
+          />
+        </clipPath>
+        <clipPath id="clip42_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(800.298 449.461)"
+          />
+        </clipPath>
+        <clipPath id="clip43_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(763.902 470.535)"
+          />
+        </clipPath>
+        <clipPath id="clip44_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(874.008 407.318)"
+          />
+        </clipPath>
+        <clipPath id="clip45_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(909.449 428.391)"
+          />
+        </clipPath>
+        <clipPath id="clip46_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(837.652 428.391)"
+          />
+        </clipPath>
+        <clipPath id="clip47_693_44363">
+          <rect
+            width="31.1745"
+            height="21.5824"
+            fill="white"
+            transform="matrix(0.866025 0.5 7.54471e-05 1 843 466)"
+          />
+        </clipPath>
+        <clipPath id="clip48_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(763.902 428.391)"
+          />
+        </clipPath>
+        <clipPath id="clip49_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(690.148 428.391)"
+          />
+        </clipPath>
+        <clipPath id="clip50_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(763.901 301)"
+          />
+        </clipPath>
+        <clipPath id="clip51_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(727 365.217)"
+          />
+        </clipPath>
+        <clipPath id="clip52_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(727 322.072)"
+          />
+        </clipPath>
+        <clipPath id="clip53_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(800.297 322.072)"
+          />
+        </clipPath>
+        <clipPath id="clip54_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(837.652 386.246)"
+          />
+        </clipPath>
+        <clipPath id="clip55_693_44363">
+          <rect
+            width="74.7099"
+            height="86.2037"
+            fill="white"
+            transform="translate(763.902 386.246)"
+          />
+        </clipPath>
+        <clipPath id="clip56_693_44363">
+          <rect
+            width="24.4651"
+            height="29.6188"
+            fill="white"
+            transform="matrix(-0.866025 -0.5 0.866063 -0.499935 800.188 421.039)"
+          />
+        </clipPath>
+        <clipPath id="clip57_693_44363">
+          <rect
+            width="24.5455"
+            height="25"
+            fill="white"
+            transform="matrix(0.866025 0.5 7.53359e-05 1 772 421)"
+          />
+        </clipPath>
+        <clipPath id="clip58_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(177 567)"
+          />
+        </clipPath>
+        <clipPath id="clip59_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 713)"
+          />
+        </clipPath>
+        <clipPath id="clip60_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 671)"
+          />
+        </clipPath>
+        <clipPath id="clip61_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 629)"
+          />
+        </clipPath>
+        <clipPath id="clip62_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(249 691)"
+          />
+        </clipPath>
+        <clipPath id="clip63_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(249 649)"
+          />
+        </clipPath>
+        <clipPath id="clip64_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 587)"
+          />
+        </clipPath>
+        <clipPath id="clip65_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 545)"
+          />
+        </clipPath>
+        <clipPath id="clip66_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(213 503)"
+          />
+        </clipPath>
+        <clipPath id="clip67_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(140 588)"
+          />
+        </clipPath>
+        <clipPath id="clip68_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 631)"
+          />
+        </clipPath>
+        <clipPath id="clip69_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 589)"
+          />
+        </clipPath>
+        <clipPath id="clip70_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 547)"
+          />
+        </clipPath>
+        <clipPath id="clip71_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1300 567)"
+          />
+        </clipPath>
+        <clipPath id="clip72_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 504)"
+          />
+        </clipPath>
+        <clipPath id="clip73_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 462)"
+          />
+        </clipPath>
+        <clipPath id="clip74_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1228 483)"
+          />
+        </clipPath>
+        <clipPath id="clip75_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1264 420)"
+          />
+        </clipPath>
+        <clipPath id="clip76_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1022 642)"
+          />
+        </clipPath>
+        <clipPath id="clip77_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1058 746)"
+          />
+        </clipPath>
+        <clipPath id="clip78_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1058 704)"
+          />
+        </clipPath>
+        <clipPath id="clip79_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1094 766)"
+          />
+        </clipPath>
+        <clipPath id="clip80_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1094 724)"
+          />
+        </clipPath>
+        <clipPath id="clip81_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1058 662)"
+          />
+        </clipPath>
+        <clipPath id="clip82_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1058 620)"
+          />
+        </clipPath>
+        <clipPath id="clip83_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(1058 578)"
+          />
+        </clipPath>
+        <clipPath id="clip84_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(405 779)"
+          />
+        </clipPath>
+        <clipPath id="clip85_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(405 736)"
+          />
+        </clipPath>
+        <clipPath id="clip86_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(405 694)"
+          />
+        </clipPath>
+        <clipPath id="clip87_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(441 715)"
+          />
+        </clipPath>
+        <clipPath id="clip88_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(405 652)"
+          />
+        </clipPath>
+        <clipPath id="clip89_693_44363">
+          <rect
+            width="73.752"
+            height="86.2037"
+            fill="white"
+            transform="translate(405 610)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
   );
 };

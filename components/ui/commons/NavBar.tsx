@@ -38,7 +38,7 @@ export const NavBar: FC<Props> = () => {
   );
 
   return (
-    <div className="flex w-full lg:absolute lg:top-0 lg:z-50">
+    <div className="flex w-full lg:absolute lg:top-0 lg:z-50 bg-instillGray95">
       <div className="flex w-full max-w-[1440px] mx-auto">
         <div className="hidden lg:flex lg:flex-row w-full p-4 content-center">
           <LinkBase styleName="my-auto mr-auto" href="/">
