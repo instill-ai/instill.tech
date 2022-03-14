@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://www.github.com/instill-ai/product-website/compare/v1.3.1...v1.4.0) (2022-03-14)
+
+
+### Features
+
+* Implement instill cloud section ([#79](https://www.github.com/instill-ai/product-website/issues/79)) ([#80](https://www.github.com/instill-ai/product-website/issues/80)) ([ecc6355](https://www.github.com/instill-ai/product-website/commit/ecc6355ce563f11a4b91555db1aa5106edfd1db8))
+
 ### [1.3.1](https://www.github.com/instill-ai/product-website/compare/v1.3.0...v1.3.1) (2022-02-23)
 
 
