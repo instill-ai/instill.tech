@@ -99,7 +99,7 @@ const Home: FC<Props> & {
 
         <div className="flex flex-col bg-instillGray95">
           <SecureYourSpotBlock styleName="max-w-[889px] md:w-8/12 md:mx-auto mb-40" />
-          <StayInTheLoopBlock styleName="max-w-[889px] md:w-8/12 md:mx-auto mb-40" />
+          <StayInTheLoopBlock styleName="max-w-[889px] px-4 md:px-0 md:w-8/12 md:mx-auto mb-40" />
         </div>
       </div>
     </PageHead>
