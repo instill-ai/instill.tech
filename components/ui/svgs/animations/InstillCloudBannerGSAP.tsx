@@ -73,7 +73,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         className={
-          "hidden md:flex mt-auto w-full max-w-[1440px] mx-auto h-[997px] md:sticky md:top-0 -z-50"
+          "hidden md:flex mb-auto w-full max-w-[1440px] mx-auto h-[997px] md:sticky md:top-0 -z-50"
         }
         viewBox="0 0 1440 997"
         ref={animateTarget}
@@ -436,13 +436,6 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
             </g>
           </g>
           <g id="pillar-1">
-            <rect
-              x="69"
-              y="350"
-              width="140"
-              height="489"
-              fill="url(#paint5_linear_693_44363)"
-            />
             <g clipPath="url(#clip6_693_44363)">
               <path
                 d="M186.403 588.738V631.481L149.875 652.853V610.11L186.403 588.738Z"
@@ -737,6 +730,13 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
                 strokeLinejoin="round"
               />
             </g>
+            <rect
+              x="69"
+              y="350"
+              width="140"
+              height="489"
+              fill="url(#paint5_linear_693_44363)"
+            />
           </g>
           <g id="pillar-6">
             <g clipPath="url(#clip15_693_44363)">
