@@ -93,7 +93,7 @@ const Home: FC<Props> & {
           <LandingBanner />
         </div>
 
-        <FeatureBlockGroup styleName="md:py-10" />
+        <FeatureBlockGroup styleName="md:pt-10" />
 
         <InstillCloudSection />
 

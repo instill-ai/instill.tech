@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
@@ -10,6 +10,7 @@ import { CareerPostionDetailsBlock } from "../../components/ui/blocks/CareerPost
 import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
 import {
   getClickUpTaskQuery,
+  listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "../../lib/clickUp";
 import { handle } from "../../lib/utilities";
@@ -89,12 +90,10 @@ CareerPositionPage.getLayout = (page) => {
 
 export default CareerPositionPage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   let tasks: IClickUpTask[];
 
-  const { slug } = context.query;
-
-  const taskId = slug.toString().split("-")[0];
+  const taskId = params.slug.toString().split("-")[0];
 
   const [error, task] = await handle(getClickUpTaskQuery(taskId));
 
@@ -116,5 +115,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       position: positionDetails,
     },
+    revalidate: 10,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  let tasks: IClickUpTask[];
+  let paths = [];
+
+  try {
+    tasks = await listClickUpTasksInListQuery("175663624");
+
+    for (const task of tasks) {
+      const position = transformClickUpTaskToPositionDetails(task);
+      paths.push({
+        params: {
+          slug: `${position.id}-${position.slug}`,
+        },
+      });
+    }
+  } catch (err) {
+    console.error(
+      "Something went wrong when retrieve open position on Clickup",
+      err
+    );
+  }
+
+  return {
+    paths,
+    fallback: false,
   };
 };
