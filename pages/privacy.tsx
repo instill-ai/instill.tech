@@ -37,7 +37,7 @@ const CookiePage: FC<Props> & {
 };
 
 CookiePage.getLayout = (page) => {
-  return <PageBase withMaxWidth={true}>{page}</PageBase>;
+  return <PageBase withMaxWidth={false}>{page}</PageBase>;
 };
 
 export default CookiePage;

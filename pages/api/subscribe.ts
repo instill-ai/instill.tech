@@ -10,7 +10,9 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email } = req.body;
 
   if (!email) {
-    return res.status(500).json({ error: "Email is required" });
+    return res
+      .status(500)
+      .json({ status: "error", error: "Email is required" });
   }
 
   try {
@@ -18,17 +20,19 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID,
       {
         email_address: email,
-        status: "subscribed" as Status.subscribed,
+        status: "subscribed" as Status,
       }
     );
 
-    return res.status(201).json({ error: "" });
+    return res.status(201).json({ status: "success", error: "" });
   } catch (error) {
     console.log(error);
     if (error.response && error.response.body.title === "Member Exists") {
-      return res.status(500).json({ error: "MemberExists" });
+      return res.status(500).json({ status: "error", error: "MemberExists" });
     }
-    return res.status(500).json({ error: error.message || error.toString() });
+    return res
+      .status(500)
+      .json({ status: "error", error: error.message || error.toString() });
   }
 };
 

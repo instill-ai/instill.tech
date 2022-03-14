@@ -2,8 +2,9 @@ import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { ReactElement, ReactNode, useEffect } from "react";
-import { initAmplitude, sendAmplitudeData } from "../lib/amplitude";
+import { initAmplitude } from "../lib/amplitude";
 import "../styles/global.css";
+import "intersection-observer";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
