@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { StickyScrollLayout } from "../layouts/StickyScrollLayout";
-import { InstillCloudBanner } from "./svgs/images/InstillCloudBanner";
+import { InstillCloudBannerGSAP } from "./svgs/animations/InstillCloudBannerGSAP";
 
 interface Props {}
 
 export const InstillCloudSection: FC<Props> = () => {
   return (
     <div className="flex flex-col">
-      <StickyScrollLayout
+      {/* <StickyScrollLayout
         targetChildren={
-          <InstillCloudBanner styleName="w-full mx-auto max:w-[1440px] max:h-[997px]" />
+          <InstillCloudBanner styleName="w-full mx-auto max:w-[1440px] max:h-[997px] -z-50" />
         }
         spanRatio={0.5}
         height={3000}
       >
-        <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10 z-50">
+        <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10">
           <p className="text-center instill-text-body text-instillBlue30 mb-5">
             INSTILL CLOUD
           </p>
@@ -28,7 +27,8 @@ export const InstillCloudSection: FC<Props> = () => {
             focus on the core business.
           </p>
         </div>
-      </StickyScrollLayout>
+      </StickyScrollLayout> */}
+      <InstillCloudBannerGSAP />
     </div>
   );
 };
