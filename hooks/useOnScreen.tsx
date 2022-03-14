@@ -16,6 +16,6 @@ export const useOnScreen = (ref: RefObject<HTMLDivElement>): boolean => {
       observer.observe(ref.current);
     }
     return () => setIntersecting(false);
-  }, [ref]);
+  }, [ref.current]);
   return isIntersecting;
 };
