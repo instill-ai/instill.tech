@@ -1,6 +1,13 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import { FC, ReactElement, useCallback, useRef } from "react";
+import {
+  FC,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { PageBase } from "../../components/layouts/PageBase";
 import { PageHead } from "../../components/layouts/PageHead";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
@@ -38,10 +45,24 @@ const CareerPage: FC<Props> & {
   // lazy load openPositionList
   const openPositionsRef = useRef<HTMLDivElement>();
   const openPositionIsOnscreen = useOnScreen(openPositionsRef);
+  const [loadOpenPositions, setLoadOpenPositions] = useState(false);
+
+  useEffect(() => {
+    if (openPositionIsOnscreen && !loadOpenPositions) {
+      setLoadOpenPositions(true);
+    }
+  }, [openPositionIsOnscreen]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
   const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
+  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+
+  useEffect(() => {
+    if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
+      setLoadStayInTheLoop(true);
+    }
+  }, [stayInTheLoopIsOnScreen]);
 
   const scrollHandler = useCallback(() => {
     openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -52,23 +73,25 @@ const CareerPage: FC<Props> & {
       pageTitle="Career | Instill AI"
       pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
     >
-      <CareerHero
-        viewJobsScrollHandler={scrollHandler}
-        styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10"
-      />
-      <CareerGeneralIntro styleName="max-w-[1440px] md:w-10/12 md:mx-auto" />
-      <div className="flex" ref={openPositionsRef}>
-        {openPositionIsOnscreen && (
-          <CareerOpenPositionsSection
-            styleName="mb-[100px]"
-            positions={positions}
-          />
-        )}
-      </div>
-      <div className="flex" ref={stayInTheLoopRef}>
-        {stayInTheLoopIsOnScreen && (
-          <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
-        )}
+      <div className="flex flex-col bg-instillGray95">
+        <CareerHero
+          viewJobsScrollHandler={scrollHandler}
+          styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10"
+        />
+        <CareerGeneralIntro styleName="max-w-[1440px] md:w-10/12 md:mx-auto" />
+        <div className="flex" ref={openPositionsRef}>
+          {loadOpenPositions && (
+            <CareerOpenPositionsSection
+              styleName="mb-[100px]"
+              positions={positions}
+            />
+          )}
+        </div>
+        <div className="flex" ref={stayInTheLoopRef}>
+          {loadStayInTheLoop && (
+            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
+          )}
+        </div>
       </div>
     </PageHead>
   );
