@@ -47,7 +47,6 @@ const AboutPage: FC<Props> & {
   useEffect(() => {
     if (!loadSecureYourSpotBlock && secureYourSpotBlockOnScreen) {
       setLoadSecureYourSpotBlock(true);
-      return;
     }
   }, [secureYourSpotBlockOnScreen]);
 
@@ -62,7 +61,6 @@ const AboutPage: FC<Props> & {
   useEffect(() => {
     if (!loadStayInTheLoopBlock && stayInTheLoopBlockOnScreen) {
       setloadStayInTheLoopBlock(true);
-      return;
     }
   }, [stayInTheLoopBlockOnScreen]);
 
@@ -126,10 +124,10 @@ const AboutPage: FC<Props> & {
                 </div>
               </div>
             </div>
-            <div ref={secureYourSpotBlockRef}>
+            <div className="flex" ref={secureYourSpotBlockRef}>
               {loadSecureYourSpotBlock && <SecureYourSpotBlock />}
             </div>
-            <div ref={stayInTheLoopBlockRef}>
+            <div className="flex mb-40" ref={stayInTheLoopBlockRef}>
               {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
             </div>
           </div>
