@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { InstillCloudBannerMobile } from "../images/InstillCloudBannerMobile";
 
 interface Props {
   /** <Tailwind formate> - specific width and height of the svg. viewbox="0 0 1440 732" */
@@ -17,44 +18,48 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
   const tl = useRef<GSAPTimeline>();
 
   useEffect(() => {
-    tl.current = gsap.timeline();
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": () => {
+        console.log("hi");
+        tl.current = gsap.timeline({
+          scrollTrigger: {
+            trigger: stickyContainer.current,
+            start: "top top",
+            end: "+=450",
+            scrub: true,
+            markers: false,
+          },
+        });
 
-    const animationElementsList = [
-      "#pillar-1",
-      "#pillar-2",
-      "#pillar-3",
-      "#pillar-4",
-      "#pillar-5",
-      "#pillar-6",
-      "#pillar-7",
-      "#pillar-8",
-      "#instill-cloud-headline-below",
-      "#instill-cloud-headline-upon",
-      "#instill-cloud-main-structure",
-    ];
+        const animationElementsList = [
+          "#pillar-1",
+          "#pillar-2",
+          "#pillar-3",
+          "#pillar-4",
+          "#pillar-5",
+          "#pillar-6",
+          "#pillar-7",
+          "#pillar-8",
+          "#instill-cloud-headline-below",
+          "#instill-cloud-headline-upon",
+          "#instill-cloud-main-structure",
+        ];
 
-    const addAnimationIntoTl = (id: string) => {
-      tl.current.to(
-        q(id),
-        {
-          transform: "translate3d(0, 0, 0)",
-          opacity: 1,
-        },
-        "instill-cloud"
-      );
-    };
+        const addAnimationIntoTl = (id: string) => {
+          tl.current.to(
+            q(id),
+            {
+              transform: "translate3d(0, 0, 0)",
+              opacity: 1,
+            },
+            "instill-cloud"
+          );
+        };
 
-    animationElementsList.forEach((e) => {
-      addAnimationIntoTl(e);
-    });
-
-    ScrollTrigger.create({
-      trigger: stickyContainer.current,
-      start: "top top",
-      end: "+=450",
-      scrub: true,
-      animation: tl.current,
-      markers: false,
+        animationElementsList.forEach((e) => {
+          addAnimationIntoTl(e);
+        });
+      },
     });
   }, []);
 
@@ -62,15 +67,13 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
     <div
       ref={stickyContainer}
       id="sticky-scroll-container"
-      className="flex flex-col h-[1500px] relative"
+      className="flex flex-col md:h-[1500px] relative"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         className={
-          styleName
-            ? styleName
-            : "mt-auto w-full max-w-[1440px] mx-auto h-[997px] sticky top-0 -z-50"
+          "hidden md:flex mt-auto w-full max-w-[1440px] mx-auto h-[997px] md:sticky md:top-0 -z-50"
         }
         viewBox="0 0 1440 997"
         ref={animateTarget}
@@ -6492,6 +6495,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
           </clipPath>
         </defs>
       </svg>
+      <InstillCloudBannerMobile styleName="w-full md:hidden" />
       <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10">
         <p className="text-center instill-text-body text-instillBlue30 mb-5">
           INSTILL CLOUD
