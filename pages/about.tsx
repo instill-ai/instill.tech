@@ -6,6 +6,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { useOnScreen } from "../hooks/useOnScreen";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 
 const SecureYourSpotBlock = dynamic(() =>
   import("../components/ui/blocks/SecureYourSpotBlock").then(
@@ -29,12 +30,13 @@ const AboutPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_about_page", { type: "navigation" });
     }
-  }, [router.isReady]);
+  }, [router.isReady, amplitudeIsInit]);
 
   // Lazy loading SecureYourSpotBlock
   const secureYourSpotBlockRef = useRef<HTMLDivElement>();

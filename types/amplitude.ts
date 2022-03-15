@@ -10,10 +10,13 @@ export type Event =
   | "hit_main_page"
   | "hit_cookie_policy_page"
   | "hit_privacy_policy_page"
+  | "hit_career_index_page"
+  | "hit_career_detail_page"
   | "to_github"
   | "to_medium"
   | "to_blog";
 
 export type EventProperties = {
   type: "navigation" | "critical_action";
+  career_position?: string;
 };

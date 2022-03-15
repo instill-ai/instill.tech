@@ -13,6 +13,7 @@ import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeade
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 
 type TPublicCampaign =
   | {
@@ -36,12 +37,13 @@ const NewsletterArchivePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ campaigns }) => {
   const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_newsletter_archive", { type: "navigation" });
     }
-  }, [router.isReady]);
+  }, [router.isReady, amplitudeIsInit]);
 
   return (
     <PageHead
