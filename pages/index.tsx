@@ -67,7 +67,7 @@ const Home: FC<Props> & {
       pageTitle="Instill AI"
       pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
     >
-      <div className="flex h-full flex-col">
+      <div className="flex flex-col">
         <div className="flex w-full bg-instillGray95">
           <div
             className={classNames.default(
@@ -93,7 +93,7 @@ const Home: FC<Props> & {
         </div>
 
         <div
-          className="flex h-full w-full bg-instillGray95"
+          className="flex h-screen w-full bg-instillGray95"
           ref={landingBannerRef}
         >
           <LandingBanner />
