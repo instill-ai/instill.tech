@@ -81,7 +81,7 @@ const Home: FC<Props> & {
                 <SubHeadline styleName="mb-10 md:px-0 text-left" />
                 <MainCtaGroup />
               </div>
-              <div className="mb-5 lg:mb-0 lg:w-[43%]">
+              <div className="mb-5 lg:my-auto lg:w-[43%]">
                 <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
               </div>
             </div>

@@ -12,7 +12,7 @@ export const SvgBase: FC<Props> = ({ viewBox, styleName, children }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox={viewBox}
       fill="none"
-      className={classNames.default("my-auto", styleName)}
+      className={styleName}
     >
       {children}
     </svg>
