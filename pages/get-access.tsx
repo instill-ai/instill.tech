@@ -5,6 +5,7 @@ import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
 import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 
 interface Props {}
 
@@ -16,12 +17,13 @@ const GetEarlyAccessPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_get_early_access_page", { type: "navigation" });
     }
-  }, [router.isReady]);
+  }, [router.isReady, amplitudeIsInit]);
 
   return (
     <PageHead

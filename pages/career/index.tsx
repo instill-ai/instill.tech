@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import {
   FC,
   ReactElement,
@@ -12,7 +13,9 @@ import { PageBase } from "../../components/layouts/PageBase";
 import { PageHead } from "../../components/layouts/PageHead";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
+import { useAmplitudeCtx } from "../../context/AmplitudeContext";
 import { useOnScreen } from "../../hooks/useOnScreen";
+import { sendAmplitudeData } from "../../lib/amplitude";
 import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
@@ -42,6 +45,15 @@ interface GetLayOutProps {
 const CareerPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
+  // Send amplitude data
+  const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
+  useEffect(() => {
+    if (router.isReady && amplitudeIsInit) {
+      sendAmplitudeData("hit_career_index_page", { type: "navigation" });
+    }
+  }, [router.isReady, amplitudeIsInit]);
+
   // lazy load openPositionList
   const openPositionsRef = useRef<HTMLDivElement>();
   const openPositionIsOnscreen = useOnScreen(openPositionsRef);

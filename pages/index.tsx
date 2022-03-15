@@ -12,6 +12,7 @@ import { PageHead } from "../components/layouts/PageHead";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
 import { InstillCloudSection } from "../components/ui/InstillCloudSection";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
   import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
@@ -46,14 +47,16 @@ const Home: FC<Props> & {
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:mx-auto";
   const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
 
   const landingBannerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    if (router.isReady) {
+    console.log(amplitudeIsInit);
+    if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_main_page", { type: "navigation" });
     }
-  }, [router.isReady]);
+  }, [router.isReady, amplitudeIsInit]);
 
   const scrollHandler = useCallback(() => {
     landingBannerRef.current.scrollIntoView({ behavior: "smooth" });
