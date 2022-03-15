@@ -20,7 +20,6 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
   useEffect(() => {
     ScrollTrigger.matchMedia({
       "(min-width: 768px)": () => {
-        console.log("hi");
         tl.current = gsap.timeline({
           scrollTrigger: {
             trigger: stickyContainer.current,
