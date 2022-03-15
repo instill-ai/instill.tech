@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.1](https://www.github.com/instill-ai/product-website/compare/v1.4.0...v1.4.1) (2022-03-15)
+
+
+### Bug Fixes
+
+* fix magic flow and amplitude tracking issue ([#87](https://www.github.com/instill-ai/product-website/issues/87)) ([e0f0f3e](https://www.github.com/instill-ai/product-website/commit/e0f0f3e46224153e906e098e9d6b1789c4561735))
+
 ## [1.4.0](https://www.github.com/instill-ai/product-website/compare/v1.3.1...v1.4.0) (2022-03-14)
 
 
