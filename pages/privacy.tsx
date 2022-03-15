@@ -4,6 +4,7 @@ import { FC, ReactElement, useEffect } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { getMDFileContent } from "../lib/file";
 
@@ -19,12 +20,13 @@ const CookiePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ content }) => {
   const router = useRouter();
+  const { amplitudeIsInit } = useAmplitudeCtx();
 
   useEffect(() => {
-    if (router.isReady) {
+    if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_privacy_policy_page", { type: "navigation" });
     }
-  }, [router.isReady]);
+  }, [router.isReady, amplitudeIsInit]);
 
   return (
     <PageHead
