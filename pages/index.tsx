@@ -67,21 +67,21 @@ const Home: FC<Props> & {
       pageTitle="Instill AI"
       pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
     >
-      <div className="flex flex-col">
+      <div className="flex h-full flex-col">
         <div className="flex w-full bg-instillGray95">
           <div
             className={classNames.default(
-              "md:min-h-screen flex flex-col gap-y-10 max-w-[1440px] md:w-10/12 px-4 lg:px-0 justify-center pt-20 md:pt-[84px] mb-1",
+              "mb-1 flex max-w-[1440px] flex-col justify-center gap-y-10 px-4 pt-20 md:min-h-screen md:w-10/12 md:pt-[84px] lg:px-0",
               elementMaxWidth
             )}
           >
-            <div className="flex flex-col-reverse lg:gap-y-0 lg:flex-row max:w-10/12 max:mx-auto">
+            <div className="flex flex-col-reverse lg:flex-row lg:gap-y-0 max:mx-auto max:w-10/12">
               <div className="flex flex-col md:my-auto lg:w-[57%]">
                 <Headline styleName="mb-5 text-left" />
                 <SubHeadline styleName="mb-10 md:px-0 text-left" />
                 <MainCtaGroup />
               </div>
-              <div className="lg:w-[43%] mb-5 lg:mb-0">
+              <div className="mb-5 lg:mb-0 lg:w-[43%]">
                 <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
               </div>
             </div>
@@ -92,7 +92,10 @@ const Home: FC<Props> & {
           </div>
         </div>
 
-        <div className="flex w-full bg-instillGray95" ref={landingBannerRef}>
+        <div
+          className="flex h-full w-full bg-instillGray95"
+          ref={landingBannerRef}
+        >
           <LandingBanner />
         </div>
 
