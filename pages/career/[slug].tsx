@@ -71,12 +71,12 @@ const CareerPositionPage: FC<Props> & {
       pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
     >
       <div className="flex bg-instillGray95">
-        <div className="flex flex-col pt-[100px] lg:pt-[180px] pb-10 max-w-[1440px] md:mx-auto md:w-10/12 ">
-          <div className="flex mb-10 px-4 md:px-0">
+        <div className="flex max-w-[1440px] flex-col pt-[100px] pb-10 md:mx-auto md:w-10/12 lg:pt-[180px] ">
+          <div className="mb-10 flex px-4 md:px-0">
             <BackToPreviousPageLink url="/career" />
           </div>
 
-          <div className="flex flex-col gap-y-20 md:gap-y-0 md:flex-row md:gap-x-6 mb-[100px]">
+          <div className="mb-[100px] flex flex-col gap-y-20 md:flex-row md:gap-y-0 md:gap-x-6">
             <CareerPostionDetailsBlock
               styleName="px-4 md:px-0 md:w-4/12"
               position={position}
@@ -98,7 +98,7 @@ const CareerPositionPage: FC<Props> & {
 };
 
 CareerPositionPage.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+  return <PageBase>{page}</PageBase>;
 };
 
 export default CareerPositionPage;

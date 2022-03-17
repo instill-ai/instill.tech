@@ -50,12 +50,12 @@ const NewsletterArchivePage: FC<Props> & {
       pageTitle="Newsletter Archive | Instill AI"
       pageDescription="Instill AI newsletter archive"
     >
-      <div className="flex flex-col w-full lg:mt-20 bg-instillGray95">
+      <div className="flex w-full flex-col bg-instillGray95 lg:mt-20">
         <NewsletterArchiveHeader />
-        <div className="flex flex-col px-5 md:px-0 max:mx-auto max:w-10/12 max-w-[1440px]">
+        <div className="flex max-w-[1440px] flex-col px-5 md:px-0 max:mx-auto max:w-10/12">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="border-t border-b border-instillGray70 py-2.5 text-instillGray15 max-w-[800px] w-full mx-auto mb-[60px]">
+              <div className="mx-auto mb-[60px] w-full max-w-[800px] border-t border-b border-instillGray70 py-2.5 text-instillGray15">
                 {`Issued on ${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
@@ -75,7 +75,7 @@ const NewsletterArchivePage: FC<Props> & {
 };
 
 NewsletterArchivePage.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+  return <PageBase>{page}</PageBase>;
 };
 
 export default NewsletterArchivePage;

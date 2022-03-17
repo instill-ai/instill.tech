@@ -9,20 +9,13 @@ const Footer = dynamic(() =>
   import("../ui/commons/Footer").then((mod) => mod.Footer)
 );
 
-interface Props {
-  /** with max width = max-w-[1440px] md:w-10/12 md:mx-auto */
-  withMaxWidth: boolean;
-}
+interface Props {}
 
-export const PageBase: FC<Props> = ({ withMaxWidth, children }) => {
+export const PageBase: FC<Props> = ({ children }) => {
   return (
     <BaseContainer>
       <NavBar />
-      {withMaxWidth ? (
-        <SectionContainer>{children}</SectionContainer>
-      ) : (
-        <SectionContainerFull>{children}</SectionContainerFull>
-      )}
+      <SectionContainerFull>{children}</SectionContainerFull>
       <Footer />
     </BaseContainer>
   );

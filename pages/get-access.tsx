@@ -32,13 +32,13 @@ const GetEarlyAccessPage: FC<Props> & {
     Instill AI can help adopt Vision AI in your company."
     >
       <div className="flex w-full bg-instillGray95">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 py-[60px] lg:pt-[244px] lg:pb-[60px] px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto">
-          <div className="flex flex-col mx-auto md:mx-0  max-w-[450px] mb-20 lg:mb-0">
-            <div className="flex flex-col gap-y-5 mb-[60px]">
-              <h2 className="mx-auto md:mx-0 instill-text-h2 text-instillGray05">
+        <div className="grid w-full max-w-[1440px] grid-cols-1 py-[60px] px-4 md:mx-auto md:w-10/12 md:px-0 lg:grid-cols-2 lg:pt-[244px] lg:pb-[60px]">
+          <div className="mx-auto mb-20 flex max-w-[450px]  flex-col md:mx-0 lg:mb-0">
+            <div className="mb-[60px] flex flex-col gap-y-5">
+              <h2 className="instill-text-h2 mx-auto text-instillGray05 md:mx-0">
                 Get Early Access
               </h2>
-              <p className="mx-auto md:mx-0 instill-text-body text-instillGray05">
+              <p className="instill-text-body mx-auto text-instillGray05 md:mx-0">
                 We&#39;re now in private alpha. Join and see first-hand how
                 Instill AI can help adopt Vision AI in your company.
               </p>
@@ -57,7 +57,7 @@ const GetEarlyAccessPage: FC<Props> & {
 };
 
 GetEarlyAccessPage.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+  return <PageBase>{page}</PageBase>;
 };
 
 export default GetEarlyAccessPage;
