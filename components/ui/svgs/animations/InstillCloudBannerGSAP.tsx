@@ -66,13 +66,13 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
     <div
       ref={stickyContainer}
       id="sticky-scroll-container"
-      className="flex flex-col md:h-[1500px] relative"
+      className="relative flex flex-col md:h-[1500px]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         className={
-          "hidden md:flex mb-auto w-full max-w-[1440px] mx-auto h-[997px] md:sticky md:top-0 -z-50"
+          "-z-50 mx-auto mb-auto hidden h-[997px] w-full max-w-[1440px] pt-20 md:sticky md:top-0 md:flex"
         }
         viewBox="0 0 1440 997"
         ref={animateTarget}
@@ -6495,21 +6495,21 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
         </defs>
       </svg>
       <InstillCloudBannerMobile styleName="w-full md:hidden" />
-      <div className="flex flex-col max-w-[889px] md:w-10/12 md:mx-auto bg-instillGray95 p-10 z-50">
-        <p className="text-center instill-text-body text-instillBlue30 mb-5">
+      <div className="z-50 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
+        <p className="instill-text-body mb-5 text-center text-instillBlue30">
           INSTILL CLOUD
         </p>
-        <h2 className="text-center instill-text-h2 text-instillGray05 mb-10">
+        <h2 className="instill-text-h2 mb-10 text-center text-instillGray05">
           Visual Data Preparation without Managing Infrastructure
         </h2>
-        <p className="text-center instill-text-body text-instillGray05 md:px-28">
+        <p className="instill-text-body text-center text-instillGray05 md:px-28">
           Instill Cloud provides production-ready visual data preparation
           services — hustle-free setup and Vision AI model serving with
           ready-to-use and custom models. We help you save your time and you
           focus on the core business.
         </p>
       </div>
-      <span className="inline-block w-full bg-instillGray95 h-36 absolute bottom-0" />
+      <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGray95" />
     </div>
   );
 };
