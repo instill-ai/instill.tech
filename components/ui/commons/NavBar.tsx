@@ -45,15 +45,16 @@ export const NavBar: FC<Props> = () => {
     <div className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50">
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p>
-            Get five minutes? Participate our Data + Vision AI survey 2022.
+          <p className="text-instillGray95">
+            Get five minutes? Participate our Data + Vision AI survey
+            2022.&nbsp;
             <a
               onClick={() => {
                 sendAmplitudeData("to_survey2022", {
                   type: "navigation",
                 });
               }}
-              className="underline"
+              className="mr-1.5 underline"
               target="_blank"
               rel="noreferrer noopener"
               href="https://dkuwzh3w0h3.typeform.com/to/wQcfIXal?utm_source=product_website&utm_medium=banner&utm_campaign=survey2022"
