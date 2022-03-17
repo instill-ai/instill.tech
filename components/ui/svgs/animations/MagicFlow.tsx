@@ -233,7 +233,7 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
 
   return (
     <div
-      className="magic-flow-observer flex w-full h-full"
+      className="magic-flow-observer flex h-full w-full"
       ref={magicFlowObserver}
     >
       <SvgBase viewBox="0 0 207 945" styleName={styleName}>

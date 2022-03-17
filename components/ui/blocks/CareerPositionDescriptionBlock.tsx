@@ -17,12 +17,13 @@ export const CareerPositionDescriptionBlock: FC<Props> = ({
 }) => {
   return (
     <div className={classNames.default("bg-instillGray05 p-10", styleName)}>
-      <style jsx global>{`
-        .career-position-description > ul {
-          list-style: url("${process.env
-            .NEXT_PUBLIC_BASE_URL}/images/arrow-right.svg") !important;
-        }
-      `}
+      <style jsx global>
+        {`
+          .career-position-description > ul {
+            list-style: url("${process.env
+              .NEXT_PUBLIC_BASE_URL}/images/arrow-right.svg") !important;
+          }
+        `}
       </style>
       <ReactMDWrapper
         content={description}
