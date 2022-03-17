@@ -11,6 +11,7 @@ import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { CareerPageLink } from "../links/CareerPageLink";
+import { AnnouncementBar } from "./AnnouncementBar";
 
 interface Props {}
 
@@ -38,7 +39,8 @@ export const NavBar: FC<Props> = () => {
   );
 
   return (
-    <div className="flex w-full bg-instillGray95 lg:sticky lg:top-0 lg:z-50">
+    <div className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50">
+      <AnnouncementBar>hi</AnnouncementBar>
       <div className="mx-auto flex w-full max-w-[1440px]">
         <div className="hidden w-full content-center p-4 lg:flex lg:flex-row">
           <LinkBase styleName="my-auto mr-auto" href="/">

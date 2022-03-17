@@ -2,6 +2,7 @@ import { FC, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { InstillCloudBannerMobile } from "../images/InstillCloudBannerMobile";
+import * as classNames from "classnames";
 
 interface Props {
   /** <Tailwind formate> - specific width and height of the svg. viewbox="0 0 1440 732" */
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
+  const navAndAnnouncementBarHeight = "32";
+
   gsap.registerPlugin(ScrollTrigger);
   const animateTarget = useRef();
   const stickyContainer = useRef();
@@ -71,9 +74,10 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
-        className={
-          "-z-50 mx-auto mb-auto hidden h-[997px] w-full max-w-[1440px] pt-20 md:sticky md:top-0 md:flex"
-        }
+        className={classNames.default(
+          "-z-50 mx-auto mb-auto hidden h-[997px] w-full max-w-[1440px] pt-20 md:sticky md:top-0 md:flex",
+          `pt-${navAndAnnouncementBarHeight}`
+        )}
         viewBox="0 0 1440 997"
         ref={animateTarget}
       >
