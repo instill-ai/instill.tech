@@ -2,6 +2,8 @@ import { NextRouter } from "next/router";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { render } from "@testing-library/react";
 import { AnnouncementBarCtxProvider } from "../context/AnnouncementBarContext";
+import { NextPage } from "next";
+import { PageBase } from "../components/layouts/PageBase";
 
 export function createMockRouter(router: Partial<NextRouter>): NextRouter {
   return {
@@ -58,4 +60,8 @@ export const mockWindowHref = (href: string) => {
       href,
     },
   });
+};
+
+export const withPageBase = (page: NextPage) => {
+  return <PageBase>{page}</PageBase>;
 };
