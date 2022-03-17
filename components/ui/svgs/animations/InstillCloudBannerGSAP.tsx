@@ -6499,7 +6499,7 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
         </defs>
       </svg>
       <InstillCloudBannerMobile styleName="w-full md:hidden" />
-      <div className="z-50 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
+      <div className="z-30 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
         <p className="instill-text-body mb-5 text-center text-instillBlue30">
           INSTILL CLOUD
         </p>
