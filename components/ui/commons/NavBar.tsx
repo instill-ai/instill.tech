@@ -12,12 +12,15 @@ import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "./AnnouncementBar";
+import { useAnnouncementBarCtx } from "../../../context/AnnouncementBarContext";
+import { sendAmplitudeData } from "../../../lib/amplitude";
 
 interface Props {}
 
 export const NavBar: FC<Props> = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
   useEffect(() => {
     if (!router.isReady) {
@@ -40,7 +43,26 @@ export const NavBar: FC<Props> = () => {
 
   return (
     <div className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50">
-      <AnnouncementBar>hi</AnnouncementBar>
+      {enableAnnouncementBar && (
+        <AnnouncementBar>
+          <p>
+            Get five minutes? Participate our Data + Vision AI survey 2022.
+            <a
+              onClick={() => {
+                sendAmplitudeData("to_survey2022", {
+                  type: "navigation",
+                });
+              }}
+              className="underline"
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://dkuwzh3w0h3.typeform.com/to/wQcfIXal?utm_source=product_website&utm_medium=banner&utm_campaign=survey2022"
+            >
+              Learn more
+            </a>
+          </p>
+        </AnnouncementBar>
+      )}
       <div className="mx-auto flex w-full max-w-[1440px]">
         <div className="hidden w-full content-center p-4 lg:flex lg:flex-row">
           <LinkBase styleName="my-auto mr-auto" href="/">
@@ -57,7 +79,7 @@ export const NavBar: FC<Props> = () => {
             open ? "fixed top-0 left-0 z-50 bg-instillGray95" : ""
           )}
         >
-          <div className="flex w-full flex-row p-5 lg:mb-[60px]">
+          <div className="flex w-full flex-row p-4 lg:mb-[60px]">
             <LinkBase styleName="flex" href="/">
               <InstillAiLogo type="ColourLogoWhiteType" width={159} />
             </LinkBase>
