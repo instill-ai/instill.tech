@@ -46,7 +46,7 @@ export const NavBar: FC<Props> = () => {
       {enableAnnouncementBar && (
         <AnnouncementBar>
           <p className="text-instillGray95">
-            Get five minutes? Participate our Data + Vision AI survey
+            Got five minutes? Participate our Data + Vision AI survey
             2022.&nbsp;
             <a
               onClick={() => {
