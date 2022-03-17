@@ -52,7 +52,6 @@ const Home: FC<Props> & {
   const landingBannerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    console.log(amplitudeIsInit);
     if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_main_page", { type: "navigation" });
     }
