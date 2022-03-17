@@ -16,6 +16,7 @@ export const AnnouncementBar: FC<Props> = ({ children }) => {
       <div className="mx-auto flex">{children}</div>
       <div
         onClick={handleClick}
+        data-testid="close-announcement-bar"
         className="my-auto flex hover:cursor-pointer hover:bg-instillGray15"
       >
         <CrossIcon styleName="my-auto w-5 h-5 text-instillGray95" />
