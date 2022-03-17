@@ -3,13 +3,11 @@ import "../__mocks__/matchMedia";
 
 import { renderWithContext, withPageBase } from "../lib/testUtils";
 import HomePage from "../pages/index";
-import { act, waitFor, screen, prettyDOM } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useAnnouncementBarCtx } from "../context/AnnouncementBarContext";
-import { useState } from "react";
 
 test("should display announcement bar", async () => {
-  renderWithContext(withPageBase(HomePage), {});
+  renderWithContext(withPageBase(<HomePage />), {});
   await screen.findByText(/Visual Data Preparation Made for All/i);
 
   expect(
@@ -20,7 +18,7 @@ test("should display announcement bar", async () => {
 });
 
 test("should close announcement bar", async () => {
-  renderWithContext(withPageBase(HomePage), {});
+  renderWithContext(withPageBase(<HomePage />), {});
   await screen.findByText(
     /get five minutes\? participate our data \+ vision ai survey 2022\./i
   );

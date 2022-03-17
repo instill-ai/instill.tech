@@ -4,6 +4,8 @@ import { render } from "@testing-library/react";
 import { AnnouncementBarCtxProvider } from "../context/AnnouncementBarContext";
 import { NextPage } from "next";
 import { PageBase } from "../components/layouts/PageBase";
+import { Component, ComponentType } from "react";
+import { ReactElement } from "react-markdown/lib/react-markdown";
 
 export function createMockRouter(router: Partial<NextRouter>): NextRouter {
   return {
@@ -14,7 +16,11 @@ export function createMockRouter(router: Partial<NextRouter>): NextRouter {
     asPath: "/",
     back: jest.fn(),
     beforePopState: jest.fn(),
-    prefetch: jest.fn(),
+
+    // This one fixed Error: Uncaught [TypeError: Cannot read property 'catch' of undefined]
+    // ref: https://github.com/vercel/next.js/issues/16864#issuecomment-734333738
+
+    prefetch: jest.fn().mockResolvedValue(undefined),
     push: jest.fn(),
     reload: jest.fn(),
     replace: jest.fn(),
@@ -62,6 +68,6 @@ export const mockWindowHref = (href: string) => {
   });
 };
 
-export const withPageBase = (page: NextPage) => {
+export const withPageBase = (page: ReactElement) => {
   return <PageBase>{page}</PageBase>;
 };
