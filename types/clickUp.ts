@@ -101,7 +101,7 @@ interface Space {
   id: string;
 }
 
-export interface IClickUpAttatchmentValue {
+export interface IClickUpImageAttatchmentValue {
   id: string;
   date: string;
   title: string;
