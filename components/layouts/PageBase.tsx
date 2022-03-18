@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { FC } from "react";
 import { NavBar } from "../ui/commons/NavBar";
 import { BaseContainer } from "./BaseContainer";
-import { SectionContainer } from "./SectionContainer";
 import { SectionContainerFull } from "./SectionContainerFull";
 
 const Footer = dynamic(() =>
