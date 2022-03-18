@@ -9,7 +9,7 @@ interface Props {
 
 export const MemberKernelSvg: FC<Props> = ({ styleName }) => {
   return (
-    <SvgBase viewBox="0 0 364 364" styleName={classNames.default(styleName)}>
+    <SvgBase viewBox="0 0 362 362" styleName={classNames.default(styleName)}>
       <g id="Frame 788">
         <g id="Kernel">
           <path
