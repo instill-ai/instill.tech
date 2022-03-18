@@ -17,7 +17,7 @@ export const InstillCloudBanner: FC<Props> = ({ styleName, proportion }) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      className={styleName ? styleName : "w-[1440px] h-[997px]"}
+      className={styleName ? styleName : "h-[997px] w-[1440px]"}
       viewBox="0 0 1440 997"
     >
       <style jsx>

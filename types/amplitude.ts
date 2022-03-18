@@ -14,6 +14,7 @@ export type Event =
   | "hit_career_detail_page"
   | "to_github"
   | "to_medium"
+  | "to_survey2022"
   | "to_blog";
 
 export type EventProperties = {
