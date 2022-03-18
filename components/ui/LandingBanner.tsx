@@ -47,7 +47,7 @@ export const LandingBanner: FC<Props> = () => {
       <div className="flex h-full max-h-screen flex-col py-5">
         <MagicFlow styleName="h-full w-full mx-auto" />
       </div>
-      <div className="hidden max-h-screen md:my-auto lg:grid lg:grid-rows-3">
+      <div className="hidden h-full max-h-screen md:my-auto lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
           <div
             key={copy.id}
