@@ -55,6 +55,8 @@ module.exports = {
         xx: "320px",
         xs: "480px",
         max: "1450px", // We have 10px buffer
+        tall: { raw: "(min-height: 800px)" },
+        short: { raw: "(min-height: 600px)"}
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -108,9 +110,9 @@ module.exports = {
             ul: {
               li: {
                 marginTop: "20px",
-                marginBottom: "20px"
-              }
-            }
+                marginBottom: "20px",
+              },
+            },
           },
         },
         black: {
