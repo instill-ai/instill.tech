@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://www.github.com/instill-ai/product-website/compare/v1.4.1...v1.5.0) (2022-03-18)
+
+
+### Features
+
+* add announcement bar and fix magic-flow title overflow issue ([#91](https://www.github.com/instill-ai/product-website/issues/91)) ([509560d](https://www.github.com/instill-ai/product-website/commit/509560dab473c5703629c12e245c81c11889a29a))
+
 ### [1.4.1](https://www.github.com/instill-ai/product-website/compare/v1.4.0...v1.4.1) (2022-03-15)
 
 
