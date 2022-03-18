@@ -1,6 +1,10 @@
 import axios from "axios";
-import { TGetClickUpTasksQueryResponse, IClickUpTask } from "../types/clickUp";
-import { TPositionDetails } from "../types/instill";
+import {
+  TGetClickUpTasksQueryResponse,
+  IClickUpTask,
+  IClickUpImageAttatchmentValue,
+} from "../types/clickUp";
+import { TMemberDetails, TPositionDetails } from "../types/instill";
 
 export const createClickUpApiClient = () => {
   return axios.create({
@@ -47,13 +51,16 @@ export const getClickUpTaskQuery = async (
   }
 };
 
+/**
+ * This function will transform clickup task object to our desired data structure for Career position.
+ *
+ * @param task clickup api return object
+ * @returns
+ */
+
 export const transformClickUpTaskToPositionDetails = (
   task: IClickUpTask
 ): TPositionDetails => {
-  const descriptionIndex = task.custom_fields.findIndex(
-    (e) => e.name === "description_markdown"
-  );
-
   const workTypeIndex = task.custom_fields.findIndex(
     (e) => e.name === "work_type"
   );
@@ -66,36 +73,77 @@ export const transformClickUpTaskToPositionDetails = (
 
   const location = task.custom_fields[locationIndex];
 
-  const stockOptionsIndex = task.custom_fields.findIndex(
-    (field) => field.name === "stock_options"
-  );
+  return {
+    id: task.id,
+    slug: getCustomTextFieldValue("slug", task),
+    name: task.name,
+    description: getCustomTextFieldValue("description_markdown", task),
+    workType: workType.type_config.options[workType.value.toString()].name,
+    location: location.type_config.options[location.value.toString()].name,
+    stockOptions: getCustomTextFieldValue("stock_options", task),
+    packageUK: getCustomTextFieldValue("package_uk", task),
+    packageTW: getCustomTextFieldValue("package_tw", task),
+    postDate: getCustomTextFieldValue("post_date", task),
+  };
+};
 
-  const packageUKIndex = task.custom_fields.findIndex(
-    (field) => field.name === "package_uk"
-  );
-
-  const packageTWIndex = task.custom_fields.findIndex(
-    (field) => field.name === "package_tw"
-  );
-
-  const postDateIndex = task.custom_fields.findIndex(
-    (field) => field.name === "post_date"
-  );
-
-  const slugIndex = task.custom_fields.findIndex(
-    (field) => field.name === "slug"
+export const transformClickUpTaskToMemberDetails = (
+  task: IClickUpTask
+): TMemberDetails => {
+  const titles = getCustomTextFieldValue("titles", task);
+  const kernelColorCubeLocation = getCustomTextFieldValue(
+    "kernel_color_cube_location",
+    task
   );
 
   return {
     id: task.id,
-    slug: task.custom_fields[slugIndex].value.toString(),
     name: task.name,
-    description: task.custom_fields[descriptionIndex].value.toString(),
-    workType: workType.type_config.options[workType.value].name,
-    location: location.type_config.options[location.value].name,
-    stockOptions: task.custom_fields[stockOptionsIndex].value.toString(),
-    packageUK: task.custom_fields[packageUKIndex].value.toString(),
-    packageTW: task.custom_fields[packageTWIndex].value.toString(),
-    postDate: task.custom_fields[postDateIndex].value.toString(),
+    linkedinLink: getCustomTextFieldValue("linkedin_link", task),
+    githubLink: getCustomTextFieldValue("github_link", task),
+    titles: titles.split(","),
+    kernelColorCubeLocation: kernelColorCubeLocation.split(","),
+    kernelColor: getCustomTextFieldValue("kernel_color", task),
+    avatarDesktop: getCustomAttatchmentImageFieldValue(
+      "avatar_image_desktop",
+      task
+    )[0].thumbnail_large,
+    avatarWithFrameDesktop: getCustomAttatchmentImageFieldValue(
+      "avatar_image_with_frame_desktop",
+      task
+    )[0].thumbnail_large,
+    avatarWithFrameMobile: getCustomAttatchmentImageFieldValue(
+      "avatar_image_with_frame_mobile",
+      task
+    )[0].thumbnail_large,
   };
+};
+
+const getCustomTextFieldValue = (key: string, task: IClickUpTask): string => {
+  const index = task.custom_fields.findIndex((e) => e.name === key);
+
+  if (index === -1) {
+    throw new Error("Custom field not found");
+  }
+
+  return task.custom_fields[index].value.toString();
+};
+
+const getCustomAttatchmentImageFieldValue = (
+  key: string,
+  task: IClickUpTask
+): IClickUpImageAttatchmentValue[] => {
+  const index = task.custom_fields.findIndex((e) => e.name === key);
+
+  if (index === -1) {
+    throw new Error("Custom field not found");
+  }
+
+  const images = task.custom_fields[index].value;
+
+  if (typeof images !== "object") {
+    throw new Error("Custom image attatchment field is not desired object");
+  }
+
+  return images;
 };
