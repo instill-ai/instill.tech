@@ -1,10 +1,9 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FeatureBlockGroup } from "../../../components/ui/groups/FeatureBlockGroup";
-import { MemberKernelSvg } from "../../../components/ui/svgs/images/MemberKernel";
+import { MemberKernelSvg } from "../../../components/ui/svgs/images/MemberKernelSvg";
 
 export default {
-  title: "Components/Ui/Svg/MemberKernel",
+  title: "Components/Ui/Svg/MemberKernelSvg",
   component: MemberKernelSvg,
 } as ComponentMeta<typeof MemberKernelSvg>;
 
