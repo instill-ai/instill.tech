@@ -72,16 +72,16 @@ const AboutPage: FC<Props> & {
       pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
     >
       <div className="flex bg-instillGray95">
-        <div className="max-w-[1440px] md:w-10/12 md:mx-auto">
-          <div className="flex flex-col px-4 md:px-0 max:w-10/12 max:mx-auto">
-            <div className="flex w-full pt-[87px] pb-[152px] sm:py-0 sm:h-[584px]">
-              <h1 className="m-auto instill-text-h1 text-instillGray05 max-w-[934px] text-center">
+        <div className="max-w-[1440px] md:mx-auto md:w-10/12">
+          <div className="flex flex-col px-4 md:px-0 max:mx-auto max:w-10/12">
+            <div className="flex w-full pt-[87px] pb-[152px] sm:h-[584px] sm:py-0">
+              <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGray05">
                 Make Vision AI Accessible to Everyone
               </h1>
             </div>
             <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6">
-              <div className="flex flex-col p-10 gap-y-5 bg-white rounded-[1px]">
-                <h2 className="instill-text-h2 text-instillGray95 mb-1">
+              <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
+                <h2 className="instill-text-h2 mb-1 text-instillGray95">
                   Our Company
                 </h2>
                 <p className="instill-text-body text-instillGray95">
@@ -100,7 +100,7 @@ const AboutPage: FC<Props> & {
                   and deliver to the highest standard.
                 </p>
               </div>
-              <div className="flex flex-col gap-y-5 bg-white p-10 rounded-[1px]">
+              <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
                 <h2 className="instill-text-h2 text-instillGray95">
                   Our Value
                 </h2>
@@ -129,7 +129,7 @@ const AboutPage: FC<Props> & {
             <div className="flex" ref={secureYourSpotBlockRef}>
               {loadSecureYourSpotBlock && <SecureYourSpotBlock />}
             </div>
-            <div className="flex mb-40" ref={stayInTheLoopBlockRef}>
+            <div className="mb-40 flex" ref={stayInTheLoopBlockRef}>
               {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
             </div>
           </div>
@@ -140,7 +140,7 @@ const AboutPage: FC<Props> & {
 };
 
 AboutPage.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+  return <PageBase>{page}</PageBase>;
 };
 
 export default AboutPage;

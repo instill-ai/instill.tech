@@ -8,13 +8,13 @@ interface Props {
 export const PolicyPageLayout: FC<Props> = ({ content }) => {
   return (
     <div className="flex w-full bg-instillGray95">
-      <div className="md:grid md:grid-cols-3 md:w-10/12 max-w-[1440px] md:mx-auto">
+      <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">
         <ReactMDWrapper
           styleName="prose-white mx-5 md:mx-0 mt-[180px] mb-[60px] md:col-span-2"
           content={content}
         />
-        <div className="md:col-span-1 md:mt-[180px]">
-          <div className="md:sticky flex flex-col mb-40 md:mb-0 md:top-0 py-4 md:py-20 px-4 md:px-16 gap-y-2">
+        <div className="relative md:col-span-1 md:mt-[180px]">
+          <div className="mb-40 flex flex-col gap-y-2 px-4 pt-40 md:sticky md:top-0 md:mb-0 md:px-16">
             <p className="text-instillGray05">
               We&apos;re happy to hear from you. Get in touch at
             </p>

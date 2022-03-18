@@ -6,6 +6,7 @@ import { initAmplitude } from "../lib/amplitude";
 import "../styles/global.css";
 import "intersection-observer";
 import { amplitudeCtx } from "../context/AmplitudeContext";
+import { AnnouncementBarCtxProvider } from "../context/AnnouncementBarContext";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -30,7 +31,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <amplitudeCtx.Provider value={{ amplitudeIsInit, setAmplitudeIsInit }}>
-      {getLayout(<Component {...pageProps} />)}
+      <AnnouncementBarCtxProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </AnnouncementBarCtxProvider>
     </amplitudeCtx.Provider>
   );
 }

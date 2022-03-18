@@ -42,7 +42,7 @@ interface GetLayOutProps {
   page: ReactElement;
 }
 
-const Home: FC<Props> & {
+const HomePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const elementMaxWidth = "max-w-[1440px] md:mx-auto";
@@ -52,7 +52,6 @@ const Home: FC<Props> & {
   const landingBannerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    console.log(amplitudeIsInit);
     if (router.isReady && amplitudeIsInit) {
       sendAmplitudeData("hit_main_page", { type: "navigation" });
     }
@@ -112,8 +111,8 @@ const Home: FC<Props> & {
   );
 };
 
-Home.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+HomePage.getLayout = (page) => {
+  return <PageBase>{page}</PageBase>;
 };
 
-export default Home;
+export default HomePage;

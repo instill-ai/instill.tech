@@ -110,7 +110,7 @@ const CareerPage: FC<Props> & {
 };
 
 CareerPage.getLayout = (page) => {
-  return <PageBase withMaxWidth={false}>{page}</PageBase>;
+  return <PageBase>{page}</PageBase>;
 };
 
 export default CareerPage;
