@@ -129,7 +129,7 @@ const AboutPage: FC<Props> & {
             <div className="flex" ref={secureYourSpotBlockRef}>
               {loadSecureYourSpotBlock && <SecureYourSpotBlock />}
             </div>
-            <div className="mb-40 flex" ref={stayInTheLoopBlockRef}>
+            <div className="mb-20 flex" ref={stayInTheLoopBlockRef}>
               {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
             </div>
           </div>

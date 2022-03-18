@@ -101,7 +101,7 @@ const CareerPage: FC<Props> & {
         </div>
         <div className="flex" ref={stayInTheLoopRef}>
           {loadStayInTheLoop && (
-            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
+            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto mb-20" />
           )}
         </div>
       </div>
