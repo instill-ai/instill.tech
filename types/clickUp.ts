@@ -59,7 +59,7 @@ interface CustomFieldsEntity {
   type_config: TypeConfig;
   date_created: string;
   hide_from_guests: boolean;
-  value: string | number;
+  value: string | number | IClickUpImageAttatchmentValue[];
   required: boolean;
 }
 
