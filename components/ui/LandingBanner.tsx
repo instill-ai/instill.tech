@@ -47,14 +47,14 @@ export const LandingBanner: FC<Props> = () => {
       <div className="flex h-full max-h-screen flex-col py-5">
         <MagicFlow styleName="h-full w-full mx-auto" />
       </div>
-      <div className="hidden md:my-auto lg:grid lg:grid-rows-3">
+      <div className="hidden max-h-screen md:my-auto lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
           <div
             key={copy.id}
             className="flex h-full max-w-[456px] flex-col justify-center gap-y-5 pt-5 pb-5 pr-5"
           >
             <div>{copy.icon}</div>
-            <h2 className="font-instill text-4xl text-instillGray05">
+            <h2 className="font-instill text-xl text-instillGray05 tall:text-4xl short:text-2xl">
               {copy.title}
             </h2>
             <p className="instill-text-body text-instillGray05">
