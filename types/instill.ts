@@ -21,5 +21,5 @@ export type TMemberDetails = {
   avatarWithFrameMobile: string;
   titles: string[];
   kernelColor: string;
-  kernelColorCubeLocation: number[];
+  kernelColorCubeLocation: string[];
 };
