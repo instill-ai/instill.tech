@@ -22,4 +22,5 @@ export type TMemberDetails = {
   titles: string[];
   kernelColor: string;
   kernelColorCubeLocation: string[];
+  order: number;
 };
