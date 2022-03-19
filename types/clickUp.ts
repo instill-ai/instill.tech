@@ -6,8 +6,8 @@ export interface IClickUpTask {
   id: string;
   custom_id?: null;
   name: string;
-  text_content?: null;
-  description?: null;
+  text_content?: null | string;
+  description?: null | string;
   status: Status;
   orderindex: string;
   date_created: string;
@@ -59,7 +59,7 @@ interface CustomFieldsEntity {
   type_config: TypeConfig;
   date_created: string;
   hide_from_guests: boolean;
-  value: string | number | IClickUpImageAttatchmentValue[];
+  value?: string | number | IClickUpImageAttatchmentValue[];
   required: boolean;
 }
 
