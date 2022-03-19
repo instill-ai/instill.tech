@@ -101,8 +101,10 @@ export const transformClickUpTaskToMemberDetails = (
     name: task.name,
     linkedinLink: getCustomTextFieldValue("linkedin_link", task),
     githubLink: getCustomTextFieldValue("github_link", task),
-    titles: titles.split(","),
-    kernelColorCubeLocation: kernelColorCubeLocation.split(","),
+    titles: titles.split(",").map((item) => item.trim()),
+    kernelColorCubeLocation: kernelColorCubeLocation
+      .split(",")
+      .map((item) => item.trim()),
     kernelColor: getCustomTextFieldValue("kernel_color", task),
     avatarDesktop: getCustomAttatchmentImageFieldValue(
       "avatar_image_desktop",
@@ -116,6 +118,7 @@ export const transformClickUpTaskToMemberDetails = (
       "avatar_image_with_frame_mobile",
       task
     )[0].thumbnail_large,
+    order: parseInt(getCustomTextFieldValue("order", task)),
   };
 };
 
@@ -126,7 +129,13 @@ const getCustomTextFieldValue = (key: string, task: IClickUpTask): string => {
     throw new Error("Custom field not found");
   }
 
-  return task.custom_fields[index].value.toString();
+  const value = task.custom_fields[index].value;
+
+  if (typeof value === "undefined") {
+    throw new Error(`Can't find the value of ${key}`);
+  }
+
+  return value.toString();
 };
 
 const getCustomAttatchmentImageFieldValue = (
