@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.5.1](https://www.github.com/instill-ai/product-website/compare/v1.5.0...v1.5.1) (2022-03-19)
+
+
+### Bug Fixes
+
+* fix newsletter display issue  ([395058f](https://www.github.com/instill-ai/product-website/commit/395058f795ec2726a69495961eea9dc956f13aa4))
+
 ## [1.5.0](https://www.github.com/instill-ai/product-website/compare/v1.4.1...v1.5.0) (2022-03-18)
 
 
