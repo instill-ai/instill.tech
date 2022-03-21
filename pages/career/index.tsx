@@ -63,7 +63,7 @@ const CareerPage: FC<Props> & {
     if (openPositionIsOnscreen && !loadOpenPositions) {
       setLoadOpenPositions(true);
     }
-  }, [openPositionIsOnscreen]);
+  }, [openPositionIsOnscreen, loadOpenPositions]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
@@ -74,7 +74,7 @@ const CareerPage: FC<Props> & {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
       setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopIsOnScreen]);
+  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
   const scrollHandler = useCallback(() => {
     openPositionsRef.current.scrollIntoView({ behavior: "smooth" });

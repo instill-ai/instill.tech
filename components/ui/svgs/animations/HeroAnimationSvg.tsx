@@ -11,7 +11,6 @@ interface Props {
 export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
   // Init the gsap selector and react reference
   const cube = useRef();
-  const q = gsap.utils.selector(cube);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
@@ -22,6 +21,7 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(cube);
     tl.current = gsap.timeline({ repeat: -1 });
 
     // This array represent the movement of every blocks in the animation

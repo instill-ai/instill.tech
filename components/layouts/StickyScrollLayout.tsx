@@ -98,7 +98,7 @@ export const StickyScrollLayout: FC<Props> = ({
     if (scrollContainerRef.current) {
       observer.observe(scrollContainerRef.current);
     }
-  }, [scrollContainerRef]);
+  }, [scrollContainerRef, height, spanRatio]);
 
   return (
     <div ref={scrollViewRef}>

@@ -52,7 +52,7 @@ const CareerPositionPage: FC<Props> & {
         career_position: position.name,
       });
     }
-  }, [router.isReady, amplitudeIsInit]);
+  }, [router.isReady, amplitudeIsInit, position.name]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
@@ -63,7 +63,7 @@ const CareerPositionPage: FC<Props> & {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
       setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopIsOnScreen]);
+  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
   return (
     <PageHead
