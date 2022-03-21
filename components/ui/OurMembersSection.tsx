@@ -132,8 +132,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
       <div className="mb-10 flex flex-col">
         <h2 className="instill-text-h2 mb-5 text-instillGray05">Our Member</h2>
         <h3 className="instill-text-body text-instillGray05">
-          Hovering on the moving kernel to reveal the member&#39;s information,
-          or
+          Click on the feature map to reveal the member&#39;s information, or
           <span
             className="cursor-pointer text-instillBlue30"
             onClick={handleKernel}
