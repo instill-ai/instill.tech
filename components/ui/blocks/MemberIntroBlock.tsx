@@ -60,6 +60,7 @@ interface Props {
 export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
     let textColor: string;
+    let bgColor: string;
     const defaultTextColor = "text-instillGray05";
     const defaultFont = "font-mono";
     const defaultFontSize = "instill-text-small";
@@ -68,18 +69,21 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       switch (member.kernelColor) {
         case "#40A8F5": {
           textColor = "text-[#40A8F5]";
+          bgColor = "bg-[#40A8F5]";
           break;
         }
         case "#FFDF3A": {
           textColor = "text-[#FFDF3A]";
+          bgColor = "bg-[#FFDF3A]";
           break;
         }
         case "#28F67E": {
           textColor = "text-[#28F67E]";
+          bgColor = "bg-[#28F67E]";
           break;
         }
         default: {
-          throw new Error("Text color not found");
+          throw new Error("Color not found");
         }
       }
     } else {
@@ -293,6 +297,25 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       );
     };
 
+    const getOpenRoleMission = () => {
+      return (
+        <>
+          <div className="text-instillRed">{`{`}</div>
+          <div className={classNames.default(indent, "mb-4")}>
+            <pre className="whitespace-pre-wrap break-all">
+              <span className={defaultTextColor}>{`"mission": `}</span>
+              <span className={defaultTextColor}>{`"`}</span>
+              <span className={textColor}>
+                Make Vision Al highly accessbile to everyone. Join us and make a
+                dent in the universe!
+              </span>
+              <span className={defaultTextColor}>{`"`}</span>
+            </pre>
+          </div>
+        </>
+      );
+    };
+
     return (
       <div
         ref={ref}
@@ -302,7 +325,12 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
         )}
       >
         <div className="flex flex-col md:sticky md:top-[164px]">
-          <div className="flex flex-row bg-instillGray30 px-5 py-2.5">
+          <div
+            className={classNames.default(
+              "flex flex-row px-5 py-2.5",
+              member ? bgColor : "bg-instillGray30"
+            )}
+          >
             <div className="text-instill-body mr-auto text-instillGray95">
               Detection result
             </div>
@@ -330,18 +358,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               member.type === "open_role" ? (
                 <>
                   {getMemberName(member)}
-                  <div className="text-instillRed">{`{`}</div>
-                  <div className={classNames.default(indent, "mb-4")}>
-                    <pre className="whitespace-pre-wrap break-all">
-                      <span className={defaultTextColor}>{`"mission": `}</span>
-                      <span className={defaultTextColor}>{`"`}</span>
-                      <span className={textColor}>
-                        Make Vision Al highly accessbile to everyone. Join us
-                        and make a dent in the universe!
-                      </span>
-                      <span className={defaultTextColor}>{`"`}</span>
-                    </pre>
-                  </div>
+                  {getOpenRoleMission()}
                   {getOpenRoleDetailsContainer(member)}
                   <div className="text-instillRed">{`}`}</div>
                 </>
