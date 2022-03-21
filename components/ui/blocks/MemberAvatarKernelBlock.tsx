@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { debounce } from "../../../lib/utilities";
 import { MemberKernelSvg } from "../svgs/images/MemberKernelSvg";
+import * as classNames from "classnames";
 
 interface Props {
   id: string;
@@ -12,6 +13,9 @@ interface Props {
   avatarWithFrameMobile: string;
   onMouseEnterHandler: (memberId: string) => void;
   onMouseLeaveHandler: () => void;
+
+  /** Every avatar's default will be covered by kernel, this props will turn kernel's opacity to 0 */
+  openKernel: boolean;
 }
 
 export const MemberAvatarKernelBlock: FC<Props> = ({
@@ -20,6 +24,7 @@ export const MemberAvatarKernelBlock: FC<Props> = ({
   avatarWithFrameMobile,
   onMouseEnterHandler,
   onMouseLeaveHandler,
+  openKernel,
   id,
 }) => {
   return (
@@ -28,7 +33,11 @@ export const MemberAvatarKernelBlock: FC<Props> = ({
       onMouseEnter={() => onMouseEnterHandler(id)}
       onMouseLeave={() => onMouseLeaveHandler()}
     >
-      <MemberKernelSvg styleName="w-full h-full hover:opacity-0 z-20" />
+      <MemberKernelSvg
+        styleName={classNames.default("w-full h-full hover:opacity-0 z-20", {
+          "opacity-0": openKernel,
+        })}
+      />
       <div className="absolute top-0 bottom-0 right-0 left-0 block">
         <Image
           alt={avatarAlt}
