@@ -2,18 +2,16 @@ import Image from "next/image";
 import { FC, forwardRef } from "react";
 import { MemberKernelSvg } from "../svgs/images/MemberKernelSvg";
 import * as classNames from "classnames";
-import { debounce } from "../../../lib/utilities";
 import { useWindowDimension } from "../../../useWindowDimension";
 
 interface Props {
   id: string;
+  targetMemberId: string;
   kernelColorRectLocation: string[];
   kernelColor: string;
   avatarAlt: string;
   avatarWithFrameDesktop: string;
   avatarWithFrameMobile: string;
-  onMouseEnterHandler: (memberId: string) => void;
-  onMouseLeaveHandler: () => void;
   onClickHandler: (memberId: string) => void;
 
   /** Every avatar's default will be covered by kernel, this props will turn kernel's opacity to 0 */
@@ -26,13 +24,12 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
       avatarAlt,
       avatarWithFrameDesktop,
       avatarWithFrameMobile,
-      onMouseEnterHandler,
-      onMouseLeaveHandler,
       onClickHandler,
       openKernel,
       kernelColorRectLocation,
       kernelColor,
       id,
+      targetMemberId,
     },
     ref
   ) => {
@@ -41,14 +38,13 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
     return (
       <div
         className="relative flex w-full max-w-[360px]"
-        onMouseEnter={() => debounce(onMouseEnterHandler(id), 150)}
-        onMouseLeave={() => debounce(onMouseLeaveHandler(), 150)}
         onClick={() => onClickHandler(id)}
         ref={ref}
       >
         <MemberKernelSvg
           styleName={classNames.default("w-full z-20 opacity-0 mb-auto", {
             "md:opacity-100": !openKernel,
+            "md:invisible": id === targetMemberId,
           })}
           kernelColorRectLocation={kernelColorRectLocation}
           kernelColor={kernelColor}
