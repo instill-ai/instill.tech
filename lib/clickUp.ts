@@ -91,8 +91,8 @@ export const transformClickUpTaskToMemberDetails = (
   task: IClickUpTask
 ): TMemberDetails => {
   const titles = getCustomTextFieldValue("titles", task);
-  const kernelColorCubeLocation = getCustomTextFieldValue(
-    "kernel_color_cube_location",
+  const kernelColorRectLocation = getCustomTextFieldValue(
+    "kernel_color_rect_location",
     task
   );
 
@@ -102,7 +102,7 @@ export const transformClickUpTaskToMemberDetails = (
     linkedinLink: getCustomTextFieldValue("linkedin_link", task),
     githubLink: getCustomTextFieldValue("github_link", task),
     titles: titles.split(",").map((item) => item.trim()),
-    kernelColorCubeLocation: kernelColorCubeLocation
+    kernelColorRectLocation: kernelColorRectLocation
       .split(",")
       .map((item) => item.trim()),
     kernelColor: getCustomTextFieldValue("kernel_color", task),

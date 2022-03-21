@@ -217,7 +217,7 @@ export const mockClickUpTask: IClickUpTask = {
     },
     {
       id: "26251cb8-3aee-48f8-a453-71c31b38b572",
-      name: "kernel_color_cube_location",
+      name: "kernel_color_rect_location",
       type: "short_text",
       type_config: {},
       date_created: "1647581841429",
@@ -290,7 +290,7 @@ test("should transform clickUp task to members", () => {
   expect(member.name).toBe("Ping-Lin Chang");
   expect(member.order).toBe(1);
   expect(member.titles).toStrictEqual(["CEO", "Guitarist", "Builder"]);
-  expect(member.kernelColorCubeLocation).toStrictEqual(["2", "3", "7", "8"]);
+  expect(member.kernelColorRectLocation).toStrictEqual(["2", "3", "7", "8"]);
   expect(member.kernelColor).toBe("#40A8F5");
   expect(member.githubLink).toBe("https://github.com/pinglin");
   expect(member.linkedinLink).toBe("https://www.linkedin.com/in/pinglin");

@@ -59,7 +59,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
               key={member.id}
               id={member.id}
               kernelColor={member.kernelColor}
-              kernelColorCubeLocation={member.kernelColorCubeLocation}
+              kernelColorRectLocation={member.kernelColorRectLocation}
               avatarAlt={`Instill member - ${member.name}'s avatar with detection frame`}
               avatarWithFrameDesktop={member.avatarWithFrameDesktop}
               avatarWithFrameMobile={member.avatarWithFrameMobile}
