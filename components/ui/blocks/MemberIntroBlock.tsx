@@ -110,7 +110,9 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               <div>
                 <span className={defaultTextColor}>{`"score": `}</span>
                 <span className={m ? textColor : "text-instillGray30"}>
-                  {`${0.993}`}
+                  {m
+                    ? `${(Math.random() * (0.999 - 0.95) + 0.95).toFixed(3)}`
+                    : "--"}
                 </span>
               </div>
             </pre>
@@ -163,9 +165,18 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
           <pre className="whitespace-pre-wrap break-all">
             <span className={defaultTextColor}>{`"linkedin": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
-            <span className={m ? textColor : "text-instillGray30"}>
-              {`${m ? m.linkedinLink : "https://www.linkedin.com/in/???"}`}
-            </span>
+            {m ? (
+              <a
+                href={m.linkedinLink}
+                target="_blank"
+                rel="noreferrer noopener"
+                className={classNames.default(textColor, "underline")}
+              >
+                {`"${m.linkedinLink}"`}
+              </a>
+            ) : (
+              <span className="text-instillGray30">{`"https://www.linkedin.com/in/???"`}</span>
+            )}
             <span className={defaultTextColor}>{`"`}</span>
             <div />
           </pre>
@@ -179,9 +190,18 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
           <pre className="whitespace-pre-wrap break-all">
             <span className={defaultTextColor}>{`"github": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
-            <span className={m ? textColor : "text-instillGray30"}>
-              {`${m ? m.githubLink : "https://github.com/???"}`}
-            </span>
+            {m ? (
+              <a
+                href={m.githubLink}
+                target="_blank"
+                rel="noreferrer noopener"
+                className={classNames.default(textColor, "underline")}
+              >
+                {`"${m.githubLink}"`}
+              </a>
+            ) : (
+              <span className="text-instillGray30">{`"https://github.com/???"`}</span>
+            )}
             <span className={defaultTextColor}>{`"`}</span>
           </pre>
         </div>
@@ -206,7 +226,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       <div
         ref={ref}
         className={classNames.default(
-          "flex flex-col border-2 border-instillGray95",
+          "flex w-full flex-col border-2 border-instillGray95",
           styleName
         )}
       >
