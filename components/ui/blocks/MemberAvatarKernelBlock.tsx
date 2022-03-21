@@ -3,6 +3,7 @@ import { FC, forwardRef } from "react";
 import { MemberKernelSvg } from "../svgs/images/MemberKernelSvg";
 import * as classNames from "classnames";
 import { debounce } from "../../../lib/utilities";
+import { useWindowDimension } from "../../../useWindowDimension";
 
 interface Props {
   id: string;
@@ -35,6 +36,8 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
+    const windowDimenstion = useWindowDimension();
+
     return (
       <div
         className="relative flex w-full max-w-[360px]"
@@ -60,7 +63,11 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
             width={360}
             height={360}
             layout="responsive"
-            src={avatarWithFrameDesktop}
+            src={
+              windowDimenstion && windowDimenstion.width > 768
+                ? avatarWithFrameDesktop
+                : avatarWithFrameMobile
+            }
           />
         </div>
       </div>
