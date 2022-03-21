@@ -3,11 +3,13 @@ import { TMemberDetails } from "../../../types/instill";
 import * as classNames from "classnames";
 import Image from "next/image";
 import { MemberAvatarSkeletonSvg } from "../svgs/images/MemberAvatarSkeletonSvg";
+import { CrossIcon } from "../icons/CrossIcon";
 
 interface Props {
   member: TMemberDetails;
   indent: string;
   styleName?: string;
+  onCancelHandler: () => void;
 }
 
 // This code is pretty messy because we use <pre> to format the text.
@@ -55,7 +57,12 @@ interface Props {
 //   );
 // };
 
-export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
+export const MemberIntroBlock: FC<Props> = ({
+  member,
+  indent,
+  styleName,
+  onCancelHandler,
+}) => {
   let textColor: string;
   const defaultTextColor = "text-instillGray70";
   const defaultFont = "font-mono";
@@ -187,7 +194,7 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
 
   const getAvatar = (m: TMemberDetails) => {
     return (
-      <div className="w-full max-w-[360px]">
+      <div className="w-full">
         <Image
           alt={`Instill member - ${m.name}'s avatar`}
           width={360}
@@ -206,14 +213,20 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
         styleName
       )}
     >
-      <div className="text-instill-body bg-instillGray30 px-5 py-2.5 text-instillGray95">
-        Detection result
+      <div className="flex flex-row bg-instillGray30 px-5 py-2.5">
+        <div className="text-instill-body mr-auto text-instillGray95">
+          Detection result
+        </div>
+        <button className="ml-auto" onClick={onCancelHandler}>
+          <CrossIcon styleName="w-6 h-6 text-instillGray95" />
+        </button>
       </div>
+
       <div className="border-t-2 border-instillGray95">
         {member ? (
           getAvatar(member)
         ) : (
-          <MemberAvatarSkeletonSvg styleName="w-full max-w-[360px]" />
+          <MemberAvatarSkeletonSvg styleName="w-full" />
         )}
       </div>
 
