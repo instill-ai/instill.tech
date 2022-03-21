@@ -60,7 +60,7 @@ interface Props {
 export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
     let textColor: string;
-    const defaultTextColor = "text-instillGray70";
+    const defaultTextColor = "text-instillGray05";
     const defaultFont = "font-mono";
     const defaultFontSize = "instill-text-small";
 
@@ -153,10 +153,72 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       );
     };
 
-    const getMemberName = (m: TMemberDetails) => {
+    const getOpenRoleDetails = (m: TMemberDetails) => {
+      const details = [
+        { key: "title", value: m.openRoleTitle },
+        { key: "location", value: m.openRoleLocation },
+        { key: "type", value: m.openRoleType },
+        { key: "link", value: m.openRoleLink },
+      ];
       return (
-        <div className={defaultTextColor}>{m ? m.name : "No Detection"}</div>
+        <div className={classNames.default("flex flex-col", indent)}>
+          <div className="text-instillRed">{`{`}</div>
+          <div className={(classNames.default("flex flex-col"), indent)}>
+            <pre className="whitespace-pre-wrap break-all">
+              {details.map((e, i) => (
+                <div
+                  className={i !== details.length - 1 && "mb-4"}
+                  key={`${m.id}-${e.key}`}
+                >
+                  <span className={defaultTextColor}>{`"${e.key}": `}</span>
+                  <span className={defaultTextColor}>{`"`}</span>
+                  {e.key === "link" ? (
+                    <a
+                      href={e.value}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={classNames.default(textColor, "underline")}
+                    >
+                      {e.value}
+                    </a>
+                  ) : (
+                    <span className={textColor}>{`${e.value}`}</span>
+                  )}
+                  <span className={defaultTextColor}>{`"`}</span>
+                </div>
+              ))}
+            </pre>
+          </div>
+          <div className="text-instillRed">{`}`}</div>
+        </div>
       );
+    };
+
+    const getOpenRoleDetailsContainer = (m: TMemberDetails) => {
+      return (
+        <div className={classNames.default("flex flex-col", indent)}>
+          <pre>
+            <div>
+              <span className={defaultTextColor}>{`open_role: `}</span>
+              <span className="text-instillRed">{`[`}</span>
+            </div>
+          </pre>
+          {getOpenRoleDetails(m)}
+          <pre>
+            <div className="text-instillRed">{`]`}</div>
+          </pre>
+        </div>
+      );
+    };
+
+    const getMemberName = (m: TMemberDetails) => {
+      const name = m
+        ? m.type === "open_role"
+          ? "Open Roles"
+          : m.name
+        : "No Detection";
+
+      return <div className={defaultTextColor}>{name}</div>;
     };
 
     const getLinkedinLink = (m: TMemberDetails) => {
@@ -166,14 +228,18 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
             <span className={defaultTextColor}>{`"linkedin": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
             {m ? (
-              <a
-                href={m.linkedinLink}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={classNames.default(textColor, "underline")}
-              >
-                {`"${m.linkedinLink}"`}
-              </a>
+              m.linkedinLink !== "N/A" ? (
+                <a
+                  href={m.linkedinLink}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className={classNames.default(textColor, "underline")}
+                >
+                  {`"${m.linkedinLink}"`}
+                </a>
+              ) : (
+                <span className={textColor}>{m.linkedinLink}</span>
+              )
             ) : (
               <span className="text-instillGray30">{`"https://www.linkedin.com/in/???"`}</span>
             )}
@@ -191,18 +257,23 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
             <span className={defaultTextColor}>{`"github": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
             {m ? (
-              <a
-                href={m.githubLink}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={classNames.default(textColor, "underline")}
-              >
-                {`"${m.githubLink}"`}
-              </a>
+              m.githubLink !== "N/A" ? (
+                <a
+                  href={m.githubLink}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className={classNames.default(textColor, "underline")}
+                >
+                  {`"${m.githubLink}"`}
+                </a>
+              ) : (
+                <span className={textColor}>{m.githubLink}</span>
+              )
             ) : (
-              <span className="text-instillGray30">{`"https://github.com/???"`}</span>
+              <span className="text-instillGray30">{`"https://www.linkedin.com/in/???"`}</span>
             )}
             <span className={defaultTextColor}>{`"`}</span>
+            <div />
           </pre>
         </div>
       );
@@ -255,12 +326,45 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               defaultFontSize
             )}
           >
-            {getMemberName(member)}
-            <div className="text-instillRed">{`{`}</div>
-            {getTitlesContainer(member)}
-            {getLinkedinLink(member)}
-            {getGithubLink(member)}
-            <div className="text-instillRed">{`}`}</div>
+            {member ? (
+              member.type === "open_role" ? (
+                <>
+                  {getMemberName(member)}
+                  <div className="text-instillRed">{`{`}</div>
+                  <div className={classNames.default(indent, "mb-4")}>
+                    <pre className="whitespace-pre-wrap break-all">
+                      <span className={defaultTextColor}>{`"mission": `}</span>
+                      <span className={defaultTextColor}>{`"`}</span>
+                      <span className={textColor}>
+                        Make Vision Al highly accessbile to everyone. Join us
+                        and make a dent in the universe!
+                      </span>
+                      <span className={defaultTextColor}>{`"`}</span>
+                    </pre>
+                  </div>
+                  {getOpenRoleDetailsContainer(member)}
+                  <div className="text-instillRed">{`}`}</div>
+                </>
+              ) : (
+                <>
+                  {getMemberName(member)}
+                  <div className="text-instillRed">{`{`}</div>
+                  {getTitlesContainer(member)}
+                  {getLinkedinLink(member)}
+                  {getGithubLink(member)}
+                  <div className="text-instillRed">{`}`}</div>
+                </>
+              )
+            ) : (
+              <>
+                {getMemberName(member)}
+                <div className="text-instillRed">{`{`}</div>
+                {getTitlesContainer(member)}
+                {getLinkedinLink(member)}
+                {getGithubLink(member)}
+                <div className="text-instillRed">{`}`}</div>
+              </>
+            )}
           </div>
         </div>
       </div>

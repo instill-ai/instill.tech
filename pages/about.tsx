@@ -162,7 +162,7 @@ const AboutPage: FC<Props> & {
           )}
         </div>
         <div
-          className="mb-20 flex max-w-[1440px] md:mx-auto md:w-10/12"
+          className="mb-20 flex max-w-[1440px] px-4 md:mx-auto md:w-10/12 md:px-0"
           ref={stayInTheLoopBlockRef}
         >
           {loadStayInTheLoopBlock && (
