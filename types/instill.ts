@@ -23,4 +23,5 @@ export type TMemberDetails = {
   kernelColor: string;
   kernelColorRectLocation: string[];
   order: number;
+  type: string;
 };
