@@ -56,8 +56,12 @@ const CareerPositionPage: FC<Props> & {
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
+
   const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopIsOnScreen = useOnScreen(
+    stayInTheLoopRef,
+    !loadStayInTheLoop
+  );
 
   useEffect(() => {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {

@@ -56,8 +56,11 @@ const CareerPage: FC<Props> & {
 
   // lazy load openPositionList
   const openPositionsRef = useRef<HTMLDivElement>();
-  const openPositionIsOnscreen = useOnScreen(openPositionsRef);
   const [loadOpenPositions, setLoadOpenPositions] = useState(false);
+  const openPositionIsOnscreen = useOnScreen(
+    openPositionsRef,
+    !loadOpenPositions
+  );
 
   useEffect(() => {
     if (openPositionIsOnscreen && !loadOpenPositions) {
@@ -67,8 +70,11 @@ const CareerPage: FC<Props> & {
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
   const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopIsOnScreen = useOnScreen(
+    stayInTheLoopRef,
+    !loadStayInTheLoop
+  );
 
   useEffect(() => {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {

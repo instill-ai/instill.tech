@@ -54,6 +54,7 @@ const AboutPage: FC<Props> & {
   const [loadSecureYourSpotBlock, setLoadSecureYourSpotBlock] = useState(false);
   const secureYourSpotBlockOnScreen = useOnScreen(
     secureYourSpotBlockRef,
+    !loadSecureYourSpotBlock,
     "100px"
   );
 
@@ -68,6 +69,7 @@ const AboutPage: FC<Props> & {
   const [loadStayInTheLoopBlock, setloadStayInTheLoopBlock] = useState(false);
   const stayInTheLoopBlockOnScreen = useOnScreen(
     secureYourSpotBlockRef,
+    !loadStayInTheLoopBlock,
     "100px"
   );
 

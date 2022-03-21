@@ -17,7 +17,7 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
 
   // We will pause any animation outside of user observed view
   const heroObserver = useRef<HTMLDivElement>();
-  const isOnScreen = useOnScreen(heroObserver);
+  const isOnScreen = useOnScreen(heroObserver, true);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {

@@ -31,7 +31,7 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
 
   // We will pause any animation outside of user observed view
   const magicFlowObserver = useRef<HTMLDivElement>();
-  const isOnScreen = useOnScreen(magicFlowObserver);
+  const isOnScreen = useOnScreen(magicFlowObserver, true);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
