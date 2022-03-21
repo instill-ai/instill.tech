@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, forwardRef, Fragment } from "react";
 import { TMemberDetails } from "../../../types/instill";
 import * as classNames from "classnames";
 import Image from "next/image";
@@ -57,193 +57,195 @@ interface Props {
 //   );
 // };
 
-export const MemberIntroBlock: FC<Props> = ({
-  member,
-  indent,
-  styleName,
-  onCancelHandler,
-}) => {
-  let textColor: string;
-  const defaultTextColor = "text-instillGray70";
-  const defaultFont = "font-mono";
-  const defaultFontSize = "instill-text-small";
+export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
+  ({ member, indent, styleName, onCancelHandler }, ref) => {
+    let textColor: string;
+    const defaultTextColor = "text-instillGray70";
+    const defaultFont = "font-mono";
+    const defaultFontSize = "instill-text-small";
 
-  if (member) {
-    switch (member.kernelColor) {
-      case "#40A8F5": {
-        textColor = "text-[#40A8F5]";
-        break;
+    if (member) {
+      switch (member.kernelColor) {
+        case "#40A8F5": {
+          textColor = "text-[#40A8F5]";
+          break;
+        }
+        case "#FFDF3A": {
+          textColor = "text-[#FFDF3A]";
+          break;
+        }
+        case "#28F67E": {
+          textColor = "text-[#28F67E]";
+          break;
+        }
+        default: {
+          throw new Error("Text color not found");
+        }
       }
-      case "#FFDF3A": {
-        textColor = "text-[#FFDF3A]";
-        break;
-      }
-      case "#28F67E": {
-        textColor = "text-[#28F67E]";
-        break;
-      }
-      default: {
-        throw new Error("Text color not found");
-      }
+    } else {
+      textColor = "#C0C0C0";
     }
-  } else {
-    textColor = "#C0C0C0";
-  }
 
-  const titlesSkeleton = ["N/A", "N/A", "N/A"];
+    const titlesSkeleton = ["N/A", "N/A", "N/A"];
 
-  const getTitleUnit = (m: TMemberDetails, title: string, index: number) => {
-    return (
-      <div
-        key={`${m ? m.id : index}-${title}`}
-        className={classNames.default("flex flex-col", indent)}
-      >
-        <div className="text-instillRed">{`{`}</div>
-        <div className={(classNames.default("flex flex-col"), indent)}>
-          <pre className="whitespace-pre-wrap break-all">
-            <div>
-              <span className={defaultTextColor}>{`"category": `}</span>
-              <span className={defaultTextColor}>{`"`}</span>
-              <span className={m ? textColor : "text-instillGray30"}>
-                {`${title}`}
-              </span>
-              <span className={defaultTextColor}>{`"`}</span>
-            </div>
-          </pre>
-          <pre className="whitespace-pre-wrap break-all">
-            <div>
-              <span className={defaultTextColor}>{`"score": `}</span>
-              <span className={m ? textColor : "text-instillGray30"}>
-                {`${0.993}`}
-              </span>
-            </div>
-          </pre>
-        </div>
-        <div className="text-instillRed">{`}`}</div>
-      </div>
-    );
-  };
-
-  const getTitles = (m: TMemberDetails) => {
-    return (
-      <Fragment>
-        {m
-          ? m.titles.map((title, index) => {
-              return getTitleUnit(m, title, index);
-            })
-          : titlesSkeleton.map((title, index) => {
-              return getTitleUnit(m, title, index);
-            })}
-      </Fragment>
-    );
-  };
-
-  const getTitlesContainer = (m: TMemberDetails) => {
-    return (
-      <div className={classNames.default("flex flex-col", indent)}>
-        <pre>
-          <div>
-            <span className={defaultTextColor}>{`titles: `}</span>
-            <span className="text-instillRed">{`[`}</span>
+    const getTitleUnit = (m: TMemberDetails, title: string, index: number) => {
+      return (
+        <div
+          key={`${m ? m.id : index}-${title}`}
+          className={classNames.default("flex flex-col", indent)}
+        >
+          <div className="text-instillRed">{`{`}</div>
+          <div className={(classNames.default("flex flex-col"), indent)}>
+            <pre className="whitespace-pre-wrap break-all">
+              <div>
+                <span className={defaultTextColor}>{`"category": `}</span>
+                <span className={defaultTextColor}>{`"`}</span>
+                <span className={m ? textColor : "text-instillGray30"}>
+                  {`${title}`}
+                </span>
+                <span className={defaultTextColor}>{`"`}</span>
+              </div>
+            </pre>
+            <pre className="whitespace-pre-wrap break-all">
+              <div>
+                <span className={defaultTextColor}>{`"score": `}</span>
+                <span className={m ? textColor : "text-instillGray30"}>
+                  {`${0.993}`}
+                </span>
+              </div>
+            </pre>
           </div>
-        </pre>
-        {getTitles(m)}
-        <pre>
-          <div className="text-instillRed">{`]`}</div>
-        </pre>
-      </div>
-    );
-  };
-
-  const getMemberName = (m: TMemberDetails) => {
-    return (
-      <div className={defaultTextColor}>{m ? m.name : "No Detection"}</div>
-    );
-  };
-
-  const getLinkedinLink = (m: TMemberDetails) => {
-    return (
-      <div className={classNames.default(indent)}>
-        <pre className="whitespace-pre-wrap break-all">
-          <span className={defaultTextColor}>{`"linkedin": `}</span>
-          <span className={defaultTextColor}>{`"`}</span>
-          <span className={m ? textColor : "text-instillGray30"}>
-            {`${m ? m.linkedinLink : "https://www.linkedin.com/in/???"}`}
-          </span>
-          <span className={defaultTextColor}>{`"`}</span>
-          <div />
-        </pre>
-      </div>
-    );
-  };
-
-  const getGithubLink = (m: TMemberDetails) => {
-    return (
-      <div className={classNames.default(indent)}>
-        <pre className="whitespace-pre-wrap break-all">
-          <span className={defaultTextColor}>{`"github": `}</span>
-          <span className={defaultTextColor}>{`"`}</span>
-          <span className={m ? textColor : "text-instillGray30"}>
-            {`${m ? m.githubLink : "https://github.com/???"}`}
-          </span>
-          <span className={defaultTextColor}>{`"`}</span>
-        </pre>
-      </div>
-    );
-  };
-
-  const getAvatar = (m: TMemberDetails) => {
-    return (
-      <div className="w-full">
-        <Image
-          alt={`Instill member - ${m.name}'s avatar`}
-          width={360}
-          height={360}
-          layout="responsive"
-          src={m.avatarDesktop}
-        />
-      </div>
-    );
-  };
-
-  return (
-    <div
-      className={classNames.default(
-        "flex flex-col border-2 border-instillGray95 bg-instillGray95",
-        styleName
-      )}
-    >
-      <div className="flex flex-row bg-instillGray30 px-5 py-2.5">
-        <div className="text-instill-body mr-auto text-instillGray95">
-          Detection result
+          <div className="text-instillRed">{`}`}</div>
         </div>
-        <button className="ml-auto" onClick={onCancelHandler}>
-          <CrossIcon styleName="w-6 h-6 text-instillGray95" />
-        </button>
-      </div>
+      );
+    };
 
-      <div className="border-t-2 border-instillGray95">
-        {member ? (
-          getAvatar(member)
-        ) : (
-          <MemberAvatarSkeletonSvg styleName="w-full" />
-        )}
-      </div>
+    const getTitles = (m: TMemberDetails) => {
+      return (
+        <Fragment>
+          {m
+            ? m.titles.map((title, index) => {
+                return getTitleUnit(m, title, index);
+              })
+            : titlesSkeleton.map((title, index) => {
+                return getTitleUnit(m, title, index);
+              })}
+        </Fragment>
+      );
+    };
 
+    const getTitlesContainer = (m: TMemberDetails) => {
+      return (
+        <div className={classNames.default("flex flex-col", indent)}>
+          <pre>
+            <div>
+              <span className={defaultTextColor}>{`titles: `}</span>
+              <span className="text-instillRed">{`[`}</span>
+            </div>
+          </pre>
+          {getTitles(m)}
+          <pre>
+            <div className="text-instillRed">{`]`}</div>
+          </pre>
+        </div>
+      );
+    };
+
+    const getMemberName = (m: TMemberDetails) => {
+      return (
+        <div className={defaultTextColor}>{m ? m.name : "No Detection"}</div>
+      );
+    };
+
+    const getLinkedinLink = (m: TMemberDetails) => {
+      return (
+        <div className={classNames.default(indent)}>
+          <pre className="whitespace-pre-wrap break-all">
+            <span className={defaultTextColor}>{`"linkedin": `}</span>
+            <span className={defaultTextColor}>{`"`}</span>
+            <span className={m ? textColor : "text-instillGray30"}>
+              {`${m ? m.linkedinLink : "https://www.linkedin.com/in/???"}`}
+            </span>
+            <span className={defaultTextColor}>{`"`}</span>
+            <div />
+          </pre>
+        </div>
+      );
+    };
+
+    const getGithubLink = (m: TMemberDetails) => {
+      return (
+        <div className={classNames.default(indent)}>
+          <pre className="whitespace-pre-wrap break-all">
+            <span className={defaultTextColor}>{`"github": `}</span>
+            <span className={defaultTextColor}>{`"`}</span>
+            <span className={m ? textColor : "text-instillGray30"}>
+              {`${m ? m.githubLink : "https://github.com/???"}`}
+            </span>
+            <span className={defaultTextColor}>{`"`}</span>
+          </pre>
+        </div>
+      );
+    };
+
+    const getAvatar = (m: TMemberDetails) => {
+      return (
+        <div className="w-full">
+          <Image
+            alt={`Instill member - ${m.name}'s avatar`}
+            width={360}
+            height={360}
+            layout="responsive"
+            src={m.avatarDesktop}
+          />
+        </div>
+      );
+    };
+
+    return (
       <div
+        ref={ref}
         className={classNames.default(
-          "flex flex-col p-5",
-          defaultFont,
-          defaultFontSize
+          "flex flex-col border-2 border-instillGray95",
+          styleName
         )}
       >
-        {getMemberName(member)}
-        <div className="text-instillRed">{`{`}</div>
-        {getTitlesContainer(member)}
-        {getLinkedinLink(member)}
-        {getGithubLink(member)}
-        <div className="text-instillRed">{`}`}</div>
+        <div className="flex flex-col md:sticky md:top-[164px]">
+          <div className="flex flex-row bg-instillGray30 px-5 py-2.5">
+            <div className="text-instill-body mr-auto text-instillGray95">
+              Detection result
+            </div>
+            <button className="ml-auto" onClick={onCancelHandler}>
+              <CrossIcon styleName="w-6 h-6 text-instillGray95" />
+            </button>
+          </div>
+
+          <div className="border-t-2 border-instillGray95">
+            {member ? (
+              getAvatar(member)
+            ) : (
+              <MemberAvatarSkeletonSvg styleName="w-full" />
+            )}
+          </div>
+
+          <div
+            className={classNames.default(
+              "flex flex-col p-5",
+              defaultFont,
+              defaultFontSize
+            )}
+          >
+            {getMemberName(member)}
+            <div className="text-instillRed">{`{`}</div>
+            {getTitlesContainer(member)}
+            {getLinkedinLink(member)}
+            {getGithubLink(member)}
+            <div className="text-instillRed">{`}`}</div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
+
+MemberIntroBlock.displayName = "MemberIntroBlock";
