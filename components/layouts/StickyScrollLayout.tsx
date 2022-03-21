@@ -46,26 +46,26 @@ export const StickyScrollLayout: FC<Props> = ({
     throw new Error("SpanRatio should not be less than or equal to 0");
   }
 
-  const onScroll = () => {
-    let scrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
+  useEffect(() => {
+    const onScroll = () => {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
 
-    const containerPosition = getElementPosition(scrollContainerRef.current);
+      const containerPosition = getElementPosition(scrollContainerRef.current);
 
-    const calculateProportation = () => {
-      if (scrollTop - containerPosition.y > height * spanRatio) {
-        return 1;
-      }
+      const calculateProportation = () => {
+        if (scrollTop - containerPosition.y > height * spanRatio) {
+          return 1;
+        }
 
-      return (scrollTop - containerPosition.y) / (height * spanRatio);
+        return (scrollTop - containerPosition.y) / (height * spanRatio);
+      };
+
+      setProportion(calculateProportation);
     };
 
-    setProportion(calculateProportation);
-  };
-
-  useEffect(() => {
     const throttle = (type: string, name: string, obj?: Window | Element) => {
       obj = obj || window;
       let running = false;
