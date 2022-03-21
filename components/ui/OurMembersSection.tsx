@@ -150,8 +150,8 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
           { "mb-2.5": targerMember }
         )}
       >
-        <div className="flex w-full md:col-span-3 lg:col-span-2">
-          <div className="grid w-full grid-cols-2 gap-x-2.5 gap-y-2.5 md:gap-x-6 md:gap-y-6 lg:gap-x-10 lg:gap-y-10">
+        <div className="w-full md:col-span-3 lg:col-span-2">
+          <div className="grid h-full w-full grid-cols-2 gap-2.5 md:gap-6 lg:gap-10">
             {members.map((m) => {
               const index = membersRef.findIndex((e) => e.id === m.id);
               return (
@@ -199,7 +199,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
         >
           <MemberIntroBlock
             ref={memberIntroBlockRef}
-            indent="pl-4 md:pl-6 xl:pl-8"
+            indent="pl-4 md:pl-6"
             onCancelHandler={onCancelHandler}
             member={targerMember}
           />

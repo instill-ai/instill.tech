@@ -37,10 +37,23 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div
-        className="relative flex w-full max-w-[360px]"
+        className="relative grid h-full w-full max-w-[360px]"
         onClick={() => onClickHandler(id)}
         ref={ref}
       >
+        <div className="absolute top-0 bottom-0 right-0 left-0 z-10">
+          <Image
+            alt={avatarAlt}
+            width={358}
+            height={358}
+            layout="responsive"
+            src={
+              windowDimenstion && windowDimenstion.width > 768
+                ? avatarWithFrameDesktop
+                : avatarWithFrameMobile
+            }
+          />
+        </div>
         <MemberKernelSvg
           styleName={classNames.default(
             "w-full z-20 opacity-0 mb-auto cursor-pointer",
@@ -53,19 +66,6 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
           kernelColor={kernelColor}
           id={id}
         />
-        <div className="absolute top-0 bottom-0 right-0 left-0 block">
-          <Image
-            alt={avatarAlt}
-            width={360}
-            height={360}
-            layout="responsive"
-            src={
-              windowDimenstion && windowDimenstion.width > 768
-                ? avatarWithFrameDesktop
-                : avatarWithFrameMobile
-            }
-          />
-        </div>
       </div>
     );
   }
