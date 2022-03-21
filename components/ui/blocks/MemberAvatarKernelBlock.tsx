@@ -47,12 +47,9 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
         ref={ref}
       >
         <MemberKernelSvg
-          styleName={classNames.default(
-            "w-full hover:opacity-0 z-20 opacity-0 md:opacity-100 mb-auto",
-            {
-              "opacity-0": openKernel,
-            }
-          )}
+          styleName={classNames.default("w-full z-20 opacity-0 mb-auto", {
+            "md:opacity-100": !openKernel,
+          })}
           kernelColorRectLocation={kernelColorRectLocation}
           kernelColor={kernelColor}
           id={id}
