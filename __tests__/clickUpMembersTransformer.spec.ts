@@ -17,7 +17,7 @@ export const mockClickUpTask: IClickUpTask = {
   },
   orderindex: "441244.00000000000000000000000000000000",
   date_created: "1647516242482",
-  date_updated: "1647589480384",
+  date_updated: "1647837734829",
   date_closed: null,
   archived: false,
   creator: {
@@ -252,7 +252,34 @@ export const mockClickUpTask: IClickUpTask = {
       type_config: {},
       date_created: "1647588617113",
       hide_from_guests: false,
-      value: "CEO, Guitarist, Builder",
+      value: "CEO,Guitarist,Builder",
+      required: false,
+    },
+    {
+      id: "0093ddd0-939d-4c4d-8cad-038a6f8840f5",
+      name: "type",
+      type: "drop_down",
+      type_config: {
+        default: 0,
+        placeholder: null,
+        options: [
+          {
+            id: "1871fe8e-84e4-49ad-80e3-37f9f81e555e",
+            name: "current_member",
+            color: null,
+            orderindex: 0,
+          },
+          {
+            id: "ef10e827-6a0f-4923-a521-d5e45d28fcc4",
+            name: "open_role",
+            color: null,
+            orderindex: 1,
+          },
+        ],
+      },
+      date_created: "1647837730900",
+      hide_from_guests: false,
+      value: 0,
       required: false,
     },
   ],
@@ -303,4 +330,5 @@ test("should transform clickUp task to members", () => {
   expect(member.avatarWithFrameMobile).toBe(
     "https://t2564371.p.clickup-attachments.com/t2564371/2528a70b-4d07-4585-8be1-c18a92110c5b/pinglin-avatar-frame-mobile.png"
   );
+  expect(member.type).toBe("current_member");
 });

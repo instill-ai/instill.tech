@@ -61,25 +61,13 @@ export const getClickUpTaskQuery = async (
 export const transformClickUpTaskToPositionDetails = (
   task: IClickUpTask
 ): TPositionDetails => {
-  const workTypeIndex = task.custom_fields.findIndex(
-    (e) => e.name === "work_type"
-  );
-
-  const workType = task.custom_fields[workTypeIndex];
-
-  const locationIndex = task.custom_fields.findIndex(
-    (field) => field.name === "location"
-  );
-
-  const location = task.custom_fields[locationIndex];
-
   return {
     id: task.id,
     slug: getCustomTextFieldValue("slug", task),
     name: task.name,
     description: getCustomTextFieldValue("description_markdown", task),
-    workType: workType.type_config.options[workType.value.toString()].name,
-    location: location.type_config.options[location.value.toString()].name,
+    workType: getCustomSingleSelectFieldValue("work_type", task),
+    location: getCustomSingleSelectFieldValue("location", task),
     stockOptions: getCustomTextFieldValue("stock_options", task),
     packageUK: getCustomTextFieldValue("package_uk", task),
     packageTW: getCustomTextFieldValue("package_tw", task),
@@ -119,7 +107,23 @@ export const transformClickUpTaskToMemberDetails = (
       task
     )[0].thumbnail_large,
     order: parseInt(getCustomTextFieldValue("order", task)),
+    type: getCustomSingleSelectFieldValue("type", task),
   };
+};
+
+const getCustomSingleSelectFieldValue = (
+  key: string,
+  task: IClickUpTask
+): string => {
+  const index = task.custom_fields.findIndex((e) => e.name === key);
+
+  if (index === -1) {
+    throw new Error("Custom field not found");
+  }
+
+  const field = task.custom_fields[index];
+
+  return field.type_config.options[field.value.toString()].name;
 };
 
 const getCustomTextFieldValue = (key: string, task: IClickUpTask): string => {
