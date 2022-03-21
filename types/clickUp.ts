@@ -6,8 +6,8 @@ export interface IClickUpTask {
   id: string;
   custom_id?: null;
   name: string;
-  text_content?: null;
-  description?: null;
+  text_content?: null | string;
+  description?: null | string;
   status: Status;
   orderindex: string;
   date_created: string;
@@ -59,7 +59,7 @@ interface CustomFieldsEntity {
   type_config: TypeConfig;
   date_created: string;
   hide_from_guests: boolean;
-  value: string | number;
+  value?: string | number | IClickUpImageAttatchmentValue[];
   required: boolean;
 }
 
@@ -99,4 +99,42 @@ interface Folder {
 
 interface Space {
   id: string;
+}
+
+export interface IClickUpImageAttatchmentValue {
+  id: string;
+  date: string;
+  title: string;
+  type: number;
+  source: number;
+  version: number;
+  extension: string;
+  thumbnail_small: string;
+  thumbnail_medium: string;
+  thumbnail_large: string;
+  is_folder: any;
+  mimetype: string;
+  hidden: boolean;
+  parent_id: string;
+  size: number;
+  total_comments: number;
+  resolved_comments: number;
+  user: User;
+  deleted: boolean;
+  orientation: any;
+  url: string;
+  parent_comment_type: any;
+  parent_comment_parent: any;
+  email_data: any;
+  url_w_query: string;
+  url_w_host: string;
+}
+
+interface User {
+  id: number;
+  username: string;
+  email: string;
+  initials: string;
+  color: string;
+  profilePicture: string;
 }

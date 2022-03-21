@@ -10,3 +10,22 @@ export type TPositionDetails = {
   packageTW: string;
   postDate: string;
 };
+
+export type TMemberDetails = {
+  id: string;
+  name: string;
+  githubLink: string;
+  linkedinLink: string;
+  avatarDesktop: string;
+  avatarWithFrameDesktop: string;
+  avatarWithFrameMobile: string;
+  titles: string[];
+  kernelColor: string;
+  kernelColorRectLocation: string[];
+  order: number;
+  type: string;
+  openRoleTitle: string;
+  openRoleType: string;
+  openRoleLocation: string;
+  openRoleLink: string;
+};

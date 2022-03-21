@@ -8,6 +8,7 @@ import { RefObject, useEffect, useState } from "react";
 
 export const useOnScreen = (
   ref: RefObject<HTMLDivElement>,
+  activate: boolean,
   rootMargin?: string
 ): boolean => {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -23,5 +24,5 @@ export const useOnScreen = (
     }
     return () => setIntersecting(false);
   }, [ref.current]);
-  return isIntersecting;
+  return activate ? isIntersecting : null;
 };

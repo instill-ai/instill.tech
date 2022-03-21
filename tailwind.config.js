@@ -56,7 +56,7 @@ module.exports = {
         xs: "480px",
         max: "1450px", // We have 10px buffer
         tall: { raw: "(min-height: 800px)" },
-        short: { raw: "(min-height: 600px)"}
+        short: { raw: "(min-height: 600px and max-height: 800px)" },
       },
       typography: (theme) => ({
         DEFAULT: {

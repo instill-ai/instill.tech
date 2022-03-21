@@ -25,17 +25,18 @@ type AnimationTarget = {
 
 export const MagicFlow: FC<Props> = ({ styleName }) => {
   const animateTarget = useRef();
-  const q = gsap.utils.selector(animateTarget);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
 
   // We will pause any animation outside of user observed view
   const magicFlowObserver = useRef<HTMLDivElement>();
-  const isOnScreen = useOnScreen(magicFlowObserver);
+  const isOnScreen = useOnScreen(magicFlowObserver, true);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(animateTarget);
+
     tl.current = gsap.timeline({ repeat: -1 });
 
     const dataSourceTargets: AnimationTarget[] = [
