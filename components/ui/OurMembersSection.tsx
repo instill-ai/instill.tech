@@ -24,6 +24,10 @@ interface Props {
 }
 
 export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
+  const memberIntroBlockRef = useRef<HTMLDivElement>(null);
+  const [sectionAdditionalHeight, setSectionAdditionalHeight] =
+    useState<string>(null);
+
   // If openAllKernel === true, every member's avatar will be revealed.
   const [openAllKernel, setOpenAllKernel] = useState(false);
   const handleKernel = useCallback(() => {
@@ -49,31 +53,6 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
     setContainerPosition(getElementPosition(containerRef.current));
   }, [router]);
 
-  const onMouseEnterHandler = useCallback(
-    (memberId: string) => {
-      if (windowDimenstion && windowDimenstion.width < 768) {
-        return;
-      }
-
-      const index = members.findIndex((e) => e.id === memberId);
-
-      if (index === -1) {
-        console.error("Target member not found");
-        return;
-      }
-
-      setTargetMember(members[index]);
-    },
-    [windowDimenstion, members]
-  );
-
-  const onMouseLeaveHandler = useCallback(() => {
-    if (windowDimenstion && windowDimenstion.width < 768) {
-      return;
-    }
-    setTargetMember(null);
-  }, [windowDimenstion]);
-
   const membersRef = useMemo(
     () =>
       members.map((m) => {
@@ -82,41 +61,77 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
     [members]
   );
 
-  const onClickHandler = useCallback(
-    (memberId: string) => {
-      if (windowDimenstion && windowDimenstion.width >= 768) {
-        return;
-      }
-      const index = members.findIndex((e) => e.id === memberId);
+  const onClickHandler = (memberId: string) => {
+    const index = members.findIndex((e) => e.id === memberId);
 
-      if (index === -1) {
-        console.error("Target member not found");
-        return;
-      }
+    if (index === -1) {
+      console.error("Target member not found");
+      return;
+    }
 
-      setTargetMember(members[index]);
+    setTargetMember(members[index]);
 
-      const refIndex = membersRef.findIndex((e) => e.id === memberId);
+    if (windowDimenstion && windowDimenstion.width > 768) {
+      return;
+    }
 
-      setTagetPosition(getElementPosition(membersRef[refIndex].ref.current));
-    },
-    [windowDimenstion, members, membersRef]
-  );
+    const refIndex = membersRef.findIndex((e) => e.id === memberId);
+
+    const targetPosition = getElementPosition(membersRef[refIndex].ref.current);
+
+    setTagetPosition(targetPosition);
+  };
+
+  useEffect(() => {
+    if (!targerMember) {
+      return;
+    }
+
+    if (!targetPosition) {
+      return;
+    }
+
+    // Calculate the distance between the edge of avatars and the edge of introBlock
+    // We will fill this gap with space to push down content.
+
+    const index = members.findIndex((e) => e.id === targerMember.id);
+
+    // If user click the second row and we have total three row, this num = 1
+    const leftAvatarBlock = members.length / 2 - Math.ceil((index + 1) / 2);
+
+    const memberIntroBlockDimension = getElementPosition(
+      memberIntroBlockRef.current
+    );
+
+    const coveredGap = leftAvatarBlock * 10;
+
+    const paddingBottom = 16;
+
+    let additionalHeight =
+      memberIntroBlockDimension.height -
+      targetPosition.height * leftAvatarBlock -
+      coveredGap +
+      paddingBottom;
+
+    setSectionAdditionalHeight(`${additionalHeight}px`);
+  }, [targerMember, memberIntroBlockRef.current]);
 
   const onCancelHandler = useCallback(() => {
     setTargetMember(null);
+    setSectionAdditionalHeight(null);
   }, []);
 
   return (
     <div
       className={classNames.default(
-        "flex flex-col py-10 px-4 md:px-0",
-        styleName
+        "flex flex-col px-4 pt-10 md:px-0",
+        styleName,
+        { "pb-4": !targerMember }
       )}
     >
       <div className="mb-10 flex flex-col">
-        <h2 className="instill-text-h2 mb-5">Our Member</h2>
-        <h3 className="instill-text-body">
+        <h2 className="instill-text-h2 mb-5 text-instillGray05">Our Member</h2>
+        <h3 className="instill-text-body text-instillGray05">
           Hovering on the moving kernel to reveal the member&#39;s information,
           or
           <span
@@ -130,7 +145,10 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
       </div>
       <div
         ref={containerRef}
-        className="relative flex flex-col md:grid md:grid-cols-5 md:gap-x-6 lg:grid-cols-3 lg:gap-x-10"
+        className={classNames.default(
+          "relative flex flex-col md:grid md:grid-cols-5 md:gap-x-6 lg:grid-cols-3 lg:gap-x-10",
+          { "mb-2.5": targerMember }
+        )}
       >
         <div className="flex w-full md:col-span-3 lg:col-span-2">
           <div className="grid w-full grid-cols-2 gap-x-2.5 gap-y-2.5 md:gap-x-6 md:gap-y-6 lg:gap-x-10 lg:gap-y-10">
@@ -146,10 +164,9 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
                   avatarAlt={`Instill member - ${m.name}'s avatar with detection frame`}
                   avatarWithFrameDesktop={m.avatarWithFrameDesktop}
                   avatarWithFrameMobile={m.avatarWithFrameMobile}
-                  onMouseEnterHandler={onMouseEnterHandler}
-                  onMouseLeaveHandler={onMouseLeaveHandler}
                   onClickHandler={onClickHandler}
                   openKernel={openAllKernel}
+                  targetMemberId={targerMember ? targerMember.id : null}
                 />
               );
             })}
@@ -159,29 +176,48 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
           className={classNames.default(
             "absolute w-full md:static md:col-span-2 md:flex lg:col-span-1",
             {
-              hidden: !targerMember,
+              "invisible md:visible": !targerMember,
               "z-20": targerMember,
             }
           )}
-          style={{
-            top:
-              targetPosition &&
-              `${
-                targetPosition.y -
-                containerPosition.y +
-                targetPosition.height +
-                10
-              }px`,
-          }}
+          style={
+            windowDimenstion
+              ? windowDimenstion.width < 768
+                ? {
+                    top:
+                      targetPosition &&
+                      `${
+                        targetPosition.y -
+                        containerPosition.y +
+                        targetPosition.height +
+                        10
+                      }px`,
+                  }
+                : null
+              : null
+          }
         >
           <MemberIntroBlock
-            styleName="md:sticky md:top-[164px]"
+            ref={memberIntroBlockRef}
             indent="pl-4 md:pl-6 xl:pl-8"
             onCancelHandler={onCancelHandler}
             member={targerMember}
           />
         </div>
       </div>
+      <div
+        className="block"
+        style={
+          windowDimenstion && {
+            height:
+              windowDimenstion.width < 768
+                ? sectionAdditionalHeight
+                  ? sectionAdditionalHeight
+                  : "0px"
+                : "0px",
+          }
+        }
+      />
     </div>
   );
 };
