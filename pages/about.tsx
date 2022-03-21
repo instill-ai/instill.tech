@@ -61,7 +61,7 @@ const AboutPage: FC<Props> & {
     if (!loadSecureYourSpotBlock && secureYourSpotBlockOnScreen) {
       setLoadSecureYourSpotBlock(true);
     }
-  }, [secureYourSpotBlockOnScreen]);
+  }, [secureYourSpotBlockOnScreen, loadSecureYourSpotBlock]);
 
   // Lazy loading StayInTheLoopBlock
   const stayInTheLoopBlockRef = useRef<HTMLDivElement>();
@@ -75,7 +75,7 @@ const AboutPage: FC<Props> & {
     if (!loadStayInTheLoopBlock && stayInTheLoopBlockOnScreen) {
       setloadStayInTheLoopBlock(true);
     }
-  }, [stayInTheLoopBlockOnScreen]);
+  }, [stayInTheLoopBlockOnScreen, loadStayInTheLoopBlock]);
 
   return (
     <PageHead
@@ -135,11 +135,13 @@ const AboutPage: FC<Props> & {
             </div>
           </div>
         </div>
-        <div className="bg-white">
-          <OurMembersSection
-            styleName="md:mx-auto md:w-10/12 max-w-[1440px]"
-            members={members}
-          />
+        <div className="mb-10 bg-white">
+          <div className="max-w-[1440px] md:mx-auto md:w-10/12">
+            <OurMembersSection
+              styleName="md:mx-auto md:w-10/12 max-w-[1128px]"
+              members={members}
+            />
+          </div>
         </div>
         <div
           className="flex max-w-[1440px] md:mx-auto md:w-10/12"
