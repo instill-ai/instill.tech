@@ -97,9 +97,8 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
             <div>
               <span className={defaultTextColor}>{`"category": `}</span>
               <span className={defaultTextColor}>{`"`}</span>
-              <span
-                className={m ? textColor : "text-instillGray30"}
-              >{`${title}`}
+              <span className={m ? textColor : "text-instillGray30"}>
+                {`${title}`}
               </span>
               <span className={defaultTextColor}>{`"`}</span>
             </div>
@@ -107,9 +106,8 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
           <pre>
             <div>
               <span className={defaultTextColor}>{`"score": `}</span>
-              <span
-                className={m ? textColor : "text-instillGray30"}
-              >{`${0.993}`}
+              <span className={m ? textColor : "text-instillGray30"}>
+                {`${0.993}`}
               </span>
             </div>
           </pre>
@@ -162,9 +160,8 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
         <pre className="whitespace-pre-wrap break-all">
           <span className={defaultTextColor}>{`"linkedin": `}</span>
           <span className={defaultTextColor}>{`"`}</span>
-          <span className={m ? textColor : "text-instillGray30"}>{`${
-            m ? m.linkedinLink : "https://www.linkedin.com/in/???"
-          }`}
+          <span className={m ? textColor : "text-instillGray30"}>
+            {`${m ? m.linkedinLink : "https://www.linkedin.com/in/???"}`}
           </span>
           <span className={defaultTextColor}>{`"`}</span>
           <div />
@@ -179,9 +176,8 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
         <pre className="whitespace-pre-wrap break-all">
           <span className={defaultTextColor}>{`"github": `}</span>
           <span className={defaultTextColor}>{`"`}</span>
-          <span className={m ? textColor : "text-instillGray30"}>{`${
-            m ? m.githubLink : "https://github.com/???"
-          }`}
+          <span className={m ? textColor : "text-instillGray30"}>
+            {`${m ? m.githubLink : "https://github.com/???"}`}
           </span>
           <span className={defaultTextColor}>{`"`}</span>
         </pre>
@@ -213,11 +209,14 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
       <div className="text-instill-body bg-instillGray30 px-5 py-2.5 text-instillGray95">
         Detection result
       </div>
-      {member ? (
-        getAvatar(member)
-      ) : (
-        <MemberAvatarSkeletonSvg styleName="w-full max-w-[360px]" />
-      )}
+      <div className="border-t-2 border-instillGray95">
+        {member ? (
+          getAvatar(member)
+        ) : (
+          <MemberAvatarSkeletonSvg styleName="w-full max-w-[360px]" />
+        )}
+      </div>
+
       <div
         className={classNames.default(
           "flex flex-col p-5",
