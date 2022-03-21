@@ -11,17 +11,17 @@ interface Props {
 export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
   // Init the gsap selector and react reference
   const cube = useRef();
-  const q = gsap.utils.selector(cube);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
 
   // We will pause any animation outside of user observed view
   const heroObserver = useRef<HTMLDivElement>();
-  const isOnScreen = useOnScreen(heroObserver);
+  const isOnScreen = useOnScreen(heroObserver, true);
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(cube);
     tl.current = gsap.timeline({ repeat: -1 });
 
     // This array represent the movement of every blocks in the animation

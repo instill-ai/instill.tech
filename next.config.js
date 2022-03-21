@@ -1,6 +1,9 @@
 module.exports = {
   swcMinify: false, // replacing Terser for minification
   reactStrictMode: true,
+  images: {
+    domains: ["t2564371.p.clickup-attachments.com"]
+  },
   webpack: (config, { isServer, dev }) => {
     // if (isServer) {
     //   require("./lib/generate-sitemap");

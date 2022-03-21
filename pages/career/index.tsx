@@ -56,25 +56,31 @@ const CareerPage: FC<Props> & {
 
   // lazy load openPositionList
   const openPositionsRef = useRef<HTMLDivElement>();
-  const openPositionIsOnscreen = useOnScreen(openPositionsRef);
   const [loadOpenPositions, setLoadOpenPositions] = useState(false);
+  const openPositionIsOnscreen = useOnScreen(
+    openPositionsRef,
+    !loadOpenPositions
+  );
 
   useEffect(() => {
     if (openPositionIsOnscreen && !loadOpenPositions) {
       setLoadOpenPositions(true);
     }
-  }, [openPositionIsOnscreen]);
+  }, [openPositionIsOnscreen, loadOpenPositions]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
   const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopIsOnScreen = useOnScreen(
+    stayInTheLoopRef,
+    !loadStayInTheLoop
+  );
 
   useEffect(() => {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
       setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopIsOnScreen]);
+  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
   const scrollHandler = useCallback(() => {
     openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -101,7 +107,7 @@ const CareerPage: FC<Props> & {
         </div>
         <div className="flex" ref={stayInTheLoopRef}>
           {loadStayInTheLoop && (
-            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto" />
+            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto mb-20" />
           )}
         </div>
       </div>

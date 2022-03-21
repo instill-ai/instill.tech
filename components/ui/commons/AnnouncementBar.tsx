@@ -9,7 +9,7 @@ export const AnnouncementBar: FC<Props> = ({ children }) => {
 
   const handleClick = useCallback(() => {
     setEnableAnnouncementBar(false);
-  }, []);
+  }, [setEnableAnnouncementBar]);
 
   return (
     <div className="flex w-full gap-x-2 bg-instillYellow py-2.5 px-4">

@@ -7,6 +7,14 @@ import { PageHead } from "../components/layouts/PageHead";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { useOnScreen } from "../hooks/useOnScreen";
 import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { GetStaticProps } from "next";
+import { IClickUpTask } from "../types/clickUp";
+import {
+  listClickUpTasksInListQuery,
+  transformClickUpTaskToMemberDetails,
+} from "../lib/clickUp";
+import { TMemberDetails } from "../types/instill";
+import { OurMembersSection } from "../components/ui/OurMembersSection";
 
 const SecureYourSpotBlock = dynamic(() =>
   import("../components/ui/blocks/SecureYourSpotBlock").then(
@@ -24,11 +32,13 @@ interface GetLayOutProps {
   page: ReactElement;
 }
 
-interface Props {}
+interface Props {
+  members: TMemberDetails[];
+}
 
 const AboutPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
-} = () => {
+} = ({ members }) => {
   const router = useRouter();
   const { amplitudeIsInit } = useAmplitudeCtx();
 
@@ -43,6 +53,7 @@ const AboutPage: FC<Props> & {
   const [loadSecureYourSpotBlock, setLoadSecureYourSpotBlock] = useState(false);
   const secureYourSpotBlockOnScreen = useOnScreen(
     secureYourSpotBlockRef,
+    !loadSecureYourSpotBlock,
     "100px"
   );
 
@@ -50,13 +61,14 @@ const AboutPage: FC<Props> & {
     if (!loadSecureYourSpotBlock && secureYourSpotBlockOnScreen) {
       setLoadSecureYourSpotBlock(true);
     }
-  }, [secureYourSpotBlockOnScreen]);
+  }, [secureYourSpotBlockOnScreen, loadSecureYourSpotBlock]);
 
   // Lazy loading StayInTheLoopBlock
   const stayInTheLoopBlockRef = useRef<HTMLDivElement>();
   const [loadStayInTheLoopBlock, setloadStayInTheLoopBlock] = useState(false);
   const stayInTheLoopBlockOnScreen = useOnScreen(
     secureYourSpotBlockRef,
+    !loadStayInTheLoopBlock,
     "100px"
   );
 
@@ -64,16 +76,16 @@ const AboutPage: FC<Props> & {
     if (!loadStayInTheLoopBlock && stayInTheLoopBlockOnScreen) {
       setloadStayInTheLoopBlock(true);
     }
-  }, [stayInTheLoopBlockOnScreen]);
+  }, [stayInTheLoopBlockOnScreen, loadStayInTheLoopBlock]);
 
   return (
     <PageHead
       pageTitle="About us | Instill AI"
       pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
     >
-      <div className="flex bg-instillGray95">
-        <div className="max-w-[1440px] md:mx-auto md:w-10/12">
-          <div className="flex flex-col px-4 md:px-0 max:mx-auto max:w-10/12">
+      <div className="flex flex-col bg-instillGray95">
+        <div className="mb-5 flex max-w-[1440px] flex-col md:mx-auto md:w-10/12">
+          <div className="mx-auto flex w-full max-w-[1128px] flex-col">
             <div className="flex w-full pt-[87px] pb-[152px] sm:h-[584px] sm:py-0">
               <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGray05">
                 Make Vision AI Accessible to Everyone
@@ -126,13 +138,35 @@ const AboutPage: FC<Props> & {
                 </div>
               </div>
             </div>
-            <div className="flex" ref={secureYourSpotBlockRef}>
-              {loadSecureYourSpotBlock && <SecureYourSpotBlock />}
-            </div>
-            <div className="mb-40 flex" ref={stayInTheLoopBlockRef}>
-              {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
-            </div>
           </div>
+        </div>
+        <div className="mb-10">
+          <div className="max-w-[1440px] md:mx-auto md:w-10/12">
+            <OurMembersSection
+              styleName="md:mx-auto md:w-full max-w-[1128px]"
+              members={members}
+            />
+          </div>
+        </div>
+        <div
+          className="flex max-w-[1440px] md:mx-auto md:w-10/12"
+          ref={secureYourSpotBlockRef}
+        >
+          {loadSecureYourSpotBlock && (
+            <SecureYourSpotBlock
+              styleName="md:mx-auto md:w-full max-w-[1128px]"
+              bgColor="black"
+              layout="main"
+            />
+          )}
+        </div>
+        <div
+          className="mb-20 flex max-w-[1440px] px-4 md:mx-auto md:w-10/12 md:px-0"
+          ref={stayInTheLoopBlockRef}
+        >
+          {loadStayInTheLoopBlock && (
+            <StayInTheLoopBlock styleName="md:mx-auto md:w-full max-w-[1128px]" />
+          )}
         </div>
       </div>
     </PageHead>
@@ -144,3 +178,27 @@ AboutPage.getLayout = (page) => {
 };
 
 export default AboutPage;
+
+export const getStaticProps: GetStaticProps = async () => {
+  let tasks: IClickUpTask[];
+  let members: TMemberDetails[] = [];
+
+  try {
+    tasks = await listClickUpTasksInListQuery("181513244");
+    tasks.forEach((task) => {
+      members.push(transformClickUpTaskToMemberDetails(task));
+    });
+    members = members.sort((a, b) => a.order - b.order);
+  } catch (err) {
+    console.error("Something went wrong when retrieve member on Clickup", err);
+  }
+
+  return {
+    props: {
+      members,
+    },
+
+    // This page is using ISR
+    revalidate: 10,
+  };
+};

@@ -52,18 +52,22 @@ const CareerPositionPage: FC<Props> & {
         career_position: position.name,
       });
     }
-  }, [router.isReady, amplitudeIsInit]);
+  }, [router.isReady, amplitudeIsInit, position.name]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const stayInTheLoopIsOnScreen = useOnScreen(stayInTheLoopRef);
+
   const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopIsOnScreen = useOnScreen(
+    stayInTheLoopRef,
+    !loadStayInTheLoop
+  );
 
   useEffect(() => {
     if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
       setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopIsOnScreen]);
+  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
   return (
     <PageHead
@@ -71,7 +75,7 @@ const CareerPositionPage: FC<Props> & {
       pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
     >
       <div className="flex bg-instillGray95">
-        <div className="flex max-w-[1440px] flex-col pt-[100px] pb-10 md:mx-auto md:w-10/12 lg:pt-[180px] ">
+        <div className="flex max-w-[1440px] flex-col pt-[100px] md:mx-auto md:w-10/12 lg:pt-[180px] ">
           <div className="mb-10 flex px-4 md:px-0">
             <BackToPreviousPageLink url="/career" />
           </div>
@@ -86,7 +90,7 @@ const CareerPositionPage: FC<Props> & {
               description={position.description}
             />
           </div>
-          <div className="flex" ref={stayInTheLoopRef}>
+          <div className="mb-20 flex" ref={stayInTheLoopRef}>
             {loadStayInTheLoop && (
               <StayInTheLoopBlock styleName="px-4 md:px-0" />
             )}
