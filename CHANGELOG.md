@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://www.github.com/instill-ai/product-website/compare/v1.5.1...v1.6.0) (2022-03-21)
+
+
+### Features
+
+* add about page new design ([#98](https://www.github.com/instill-ai/product-website/issues/98)) ([714c7e3](https://www.github.com/instill-ai/product-website/commit/714c7e3e009928966c9bf78bd9f48b0c957c7ad8))
+
 ### [1.5.1](https://www.github.com/instill-ai/product-website/compare/v1.5.0...v1.5.1) (2022-03-19)
 
 
