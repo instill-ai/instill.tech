@@ -108,6 +108,10 @@ export const transformClickUpTaskToMemberDetails = (
     )[0].thumbnail_large,
     order: parseInt(getCustomTextFieldValue("order", task)),
     type: getCustomSingleSelectFieldValue("type", task),
+    openRoleTitle: getCustomTextFieldValue("open_role_title", task),
+    openRoleType: getCustomTextFieldValue("open_role_type", task),
+    openRoleLocation: getCustomTextFieldValue("open_role_location", task),
+    openRoleLink: getCustomTextFieldValue("open_role_link", task),
   };
 };
 

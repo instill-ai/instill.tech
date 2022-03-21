@@ -17,7 +17,7 @@ export const mockClickUpTask: IClickUpTask = {
   },
   orderindex: "441244.00000000000000000000000000000000",
   date_created: "1647516242482",
-  date_updated: "1647837734829",
+  date_updated: "1647873672915",
   date_closed: null,
   archived: false,
   creator: {
@@ -236,6 +236,46 @@ export const mockClickUpTask: IClickUpTask = {
       required: false,
     },
     {
+      id: "19c1f699-0537-430c-afbd-0a43b82b79c5",
+      name: "open_role_link",
+      type: "short_text",
+      type_config: {},
+      date_created: "1647873658689",
+      hide_from_guests: false,
+      value: "N/A",
+      required: false,
+    },
+    {
+      id: "0a685b68-2425-42d0-8762-7019d21c6d85",
+      name: "open_role_location",
+      type: "short_text",
+      type_config: {},
+      date_created: "1647873637167",
+      hide_from_guests: false,
+      value: "N/A",
+      required: false,
+    },
+    {
+      id: "3eb05fdc-3430-4f64-90ac-4cc158448e1f",
+      name: "open_role_title",
+      type: "short_text",
+      type_config: {},
+      date_created: "1647873574695",
+      hide_from_guests: false,
+      value: "N/A",
+      required: false,
+    },
+    {
+      id: "4e5ce22c-e10c-48f0-98d3-0ba026fd28cf",
+      name: "open_role_type",
+      type: "short_text",
+      type_config: {},
+      date_created: "1647873600128",
+      hide_from_guests: false,
+      value: "N/A",
+      required: false,
+    },
+    {
       id: "a54f377d-3aeb-4520-89c7-aed6d2d55d0e",
       name: "order",
       type: "short_text",
@@ -331,4 +371,8 @@ test("should transform clickUp task to members", () => {
     "https://t2564371.p.clickup-attachments.com/t2564371/2528a70b-4d07-4585-8be1-c18a92110c5b/pinglin-avatar-frame-mobile.png"
   );
   expect(member.type).toBe("current_member");
+  expect(member.openRoleTitle).toBe("N/A");
+  expect(member.openRoleType).toBe("N/A");
+  expect(member.openRoleLocation).toBe("N/A");
+  expect(member.openRoleLink).toBe("N/A");
 });

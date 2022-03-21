@@ -24,4 +24,8 @@ export type TMemberDetails = {
   kernelColorRectLocation: string[];
   order: number;
   type: string;
+  openRoleTitle: string;
+  openRoleType: string;
+  openRoleLocation: string;
+  openRoleLink: string;
 };
