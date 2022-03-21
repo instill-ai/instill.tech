@@ -8,7 +8,11 @@ export default {
 } as ComponentMeta<typeof MemberKernelSvg>;
 
 const Template: ComponentStory<typeof MemberKernelSvg> = (args) => (
-  <MemberKernelSvg styleName="w-[360px] h-[360px]" />
+  <MemberKernelSvg
+    id="test-1"
+    kernelColor="#F7F7F7"
+    kernelColorRectLocation={["1, 2, 6, 7"]}
+    styleName="w-[360px] h-[360px]"
+  />
 );
-
 export const Default = Template.bind({});
