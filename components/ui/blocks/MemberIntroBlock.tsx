@@ -346,7 +346,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
 
           <div
             className={classNames.default(
-              "flex flex-col p-5",
+              "flex flex-col bg-instillGray95 p-5",
               defaultFont,
               defaultFontSize
             )}
