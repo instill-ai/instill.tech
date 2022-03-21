@@ -29,7 +29,7 @@ export const MemberKernelSvg: FC<Props> = ({
       ) as SVGPathElement;
       target.style.fill = kernelColor;
     });
-  }, []);
+  }, [kernelColorRectLocation, id, kernelColor]);
 
   return (
     <SvgBase viewBox="0 0 362 362" styleName={classNames.default(styleName)}>

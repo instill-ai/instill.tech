@@ -15,12 +15,12 @@ export const InstillCloudBannerGSAP: FC<Props> = ({ styleName }) => {
   gsap.registerPlugin(ScrollTrigger);
   const animateTarget = useRef();
   const stickyContainer = useRef();
-  const q = gsap.utils.selector(animateTarget);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
 
   useEffect(() => {
+    const q = gsap.utils.selector(animateTarget);
     ScrollTrigger.matchMedia({
       "(min-width: 768px)": () => {
         tl.current = gsap.timeline({

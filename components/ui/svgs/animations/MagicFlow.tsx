@@ -25,7 +25,6 @@ type AnimationTarget = {
 
 export const MagicFlow: FC<Props> = ({ styleName }) => {
   const animateTarget = useRef();
-  const q = gsap.utils.selector(animateTarget);
 
   // Make sure tl object is outside of render loop
   const tl = useRef<GSAPTimeline>();
@@ -36,6 +35,8 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
+    const q = gsap.utils.selector(animateTarget);
+
     tl.current = gsap.timeline({ repeat: -1 });
 
     const dataSourceTargets: AnimationTarget[] = [
