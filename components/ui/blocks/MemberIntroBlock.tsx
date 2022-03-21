@@ -103,7 +103,7 @@ export const MemberIntroBlock: FC<Props> = ({ member, indent, styleName }) => {
               <span className={defaultTextColor}>{`"`}</span>
             </div>
           </pre>
-          <pre>
+          <pre className="whitespace-pre-wrap break-all">
             <div>
               <span className={defaultTextColor}>{`"score": `}</span>
               <span className={m ? textColor : "text-instillGray30"}>
