@@ -71,7 +71,6 @@ export const debounce = (func: any, wait: number, immediate?: boolean) => {
 
     timeout = setTimeout(function () {
       timeout = null;
-      console.log("hi timeout");
       if (!immediate) func.apply(context, args);
     }, wait);
 

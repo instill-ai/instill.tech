@@ -41,7 +41,6 @@ const AboutPage: FC<Props> & {
 } = ({ members }) => {
   const router = useRouter();
   const { amplitudeIsInit } = useAmplitudeCtx();
-  console.log(members);
 
   useEffect(() => {
     if (router.isReady && amplitudeIsInit) {
