@@ -14,6 +14,7 @@ import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { useAnnouncementBarCtx } from "../../../context/AnnouncementBarContext";
 import { sendAmplitudeData } from "../../../lib/amplitude";
+import { getElementPosition } from "../../../lib/utilities";
 
 interface Props {}
 
@@ -26,7 +27,6 @@ export const NavBar: FC<Props> = () => {
     if (!router.isReady) {
       return;
     }
-
     setOpen(false);
   }, [router]);
 
@@ -42,7 +42,10 @@ export const NavBar: FC<Props> = () => {
   );
 
   return (
-    <div className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50">
+    <div
+      id="navbar-test"
+      className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50"
+    >
       {enableAnnouncementBar && (
         <AnnouncementBar>
           <p className="text-instillGray95">
@@ -65,7 +68,7 @@ export const NavBar: FC<Props> = () => {
         </AnnouncementBar>
       )}
       <div className="mx-auto flex w-full max-w-[1440px]">
-        <div className="hidden w-full content-center p-4 lg:flex lg:flex-row">
+        <div className="hidden w-full content-center p-2 lg:flex lg:flex-row">
           <LinkBase styleName="my-auto mr-auto" href="/">
             <InstillAiLogo type="ColourLogoWhiteType" width={159} />
           </LinkBase>

@@ -51,7 +51,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
       return;
     }
     setContainerPosition(getElementPosition(containerRef.current));
-  }, [router]);
+  }, [router, containerRef.current]);
 
   const membersRef = useMemo(
     () =>
@@ -78,6 +78,8 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
     const refIndex = membersRef.findIndex((e) => e.id === memberId);
 
     const targetPosition = getElementPosition(membersRef[refIndex].ref.current);
+
+    console.log(targetPosition.y, containerPosition.y, targetPosition.height);
 
     setTagetPosition(targetPosition);
   };
