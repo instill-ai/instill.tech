@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.6.1](https://www.github.com/instill-ai/product-website/compare/v1.6.0...v1.6.1) (2022-03-22)
+
+
+### Bug Fixes
+
+* fix detective section issue ([#103](https://www.github.com/instill-ai/product-website/issues/103)) ([a059174](https://www.github.com/instill-ai/product-website/commit/a059174ac1f14b238be6eaed68db110cf6334d10)), closes [#100](https://www.github.com/instill-ai/product-website/issues/100) [#101](https://www.github.com/instill-ai/product-website/issues/101)
+
 ## [1.6.0](https://www.github.com/instill-ai/product-website/compare/v1.5.1...v1.6.0) (2022-03-21)
 
 
