@@ -92,7 +92,12 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
 
     const titlesSkeleton = ["N/A", "N/A", "N/A"];
 
-    const getTitleUnit = (m: TMemberDetails, title: string, index: number) => {
+    const getTitleUnit = (
+      m: TMemberDetails,
+      title: string,
+      index: number,
+      trailingComma: boolean
+    ) => {
       return (
         <div
           key={`${m ? m.id : index}-${title}`}
@@ -108,6 +113,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
                   {`${title}`}
                 </span>
                 <span className={defaultTextColor}>{`"`}</span>
+                <span className={defaultTextColor}>,</span>
               </div>
             </pre>
             <pre className="whitespace-pre-wrap break-all">
@@ -121,7 +127,10 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               </div>
             </pre>
           </div>
-          <div className="text-instillRed">{`}`}</div>
+          <div className="text-instillRed">
+            {`}`}
+            <span className={defaultTextColor}>{trailingComma ? "," : ""}</span>
+          </div>
         </div>
       );
     };
@@ -131,16 +140,26 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
         <Fragment>
           {m
             ? m.titles.map((title, index) => {
-                return getTitleUnit(m, title, index);
+                return getTitleUnit(
+                  m,
+                  title,
+                  index,
+                  index === m.titles.length - 1 ? false : true
+                );
               })
             : titlesSkeleton.map((title, index) => {
-                return getTitleUnit(m, title, index);
+                return getTitleUnit(
+                  m,
+                  title,
+                  index,
+                  index === titlesSkeleton.length - 1 ? false : true
+                );
               })}
         </Fragment>
       );
     };
 
-    const getTitlesContainer = (m: TMemberDetails) => {
+    const getTitlesContainer = (m: TMemberDetails, trailingComma: boolean) => {
       return (
         <div className={classNames.default("flex flex-col", indent)}>
           <pre>
@@ -151,13 +170,18 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
           </pre>
           {getTitles(m)}
           <pre>
-            <div className="text-instillRed">{`]`}</div>
+            <div className="text-instillRed">
+              {`]`}
+              <span className={defaultTextColor}>
+                {trailingComma ? "," : ""}
+              </span>
+            </div>
           </pre>
         </div>
       );
     };
 
-    const getOpenRoleDetails = (m: TMemberDetails) => {
+    const getOpenRoleDetails = (m: TMemberDetails, trailingComma: boolean) => {
       const details = [
         { key: "title", value: m.openRoleTitle },
         { key: "location", value: m.openRoleLocation },
@@ -169,7 +193,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
           <div className="text-instillRed">{`{`}</div>
           <div className={(classNames.default("flex flex-col"), indent)}>
             <pre className="whitespace-pre-wrap break-all">
-              {details.map((e) => (
+              {details.map((e, i) => (
                 <div key={`${m.id}-${e.key}`}>
                   <span className={defaultTextColor}>{`"${e.key}": `}</span>
                   <span className={defaultTextColor}>{`"`}</span>
@@ -185,7 +209,10 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
                   ) : (
                     <span className={textColor}>{`${e.value}`}</span>
                   )}
-                  <span className={defaultTextColor}>{`"`}</span>
+                  <span className={defaultTextColor}>
+                    {`"`}
+                    {trailingComma ? (i === details.length - 1 ? "" : ",") : ""}
+                  </span>
                 </div>
               ))}
             </pre>
@@ -195,7 +222,10 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       );
     };
 
-    const getOpenRoleDetailsContainer = (m: TMemberDetails) => {
+    const getOpenRoleDetailsContainer = (
+      m: TMemberDetails,
+      trailingComma: boolean
+    ) => {
       return (
         <div className={classNames.default("flex flex-col", indent)}>
           <pre>
@@ -204,7 +234,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               <span className="text-instillRed">{`[`}</span>
             </div>
           </pre>
-          {getOpenRoleDetails(m)}
+          {getOpenRoleDetails(m, trailingComma)}
           <pre>
             <div className="text-instillRed">{`]`}</div>
           </pre>
@@ -222,7 +252,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       return <div className={defaultTextColor}>{name}</div>;
     };
 
-    const getLinkedinLink = (m: TMemberDetails) => {
+    const getLinkedinLink = (m: TMemberDetails, trailingComma: boolean) => {
       return (
         <div className={classNames.default(indent)}>
           <pre className="whitespace-pre-wrap break-all">
@@ -242,16 +272,19 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
                 <span className={textColor}>{m.linkedinLink}</span>
               )
             ) : (
-              <span className="text-instillGray30">{`"N/A"`}</span>
+              <span className="text-instillGray30">{`N/A`}</span>
             )}
-            <span className={defaultTextColor}>{`"`}</span>
+            <span className={defaultTextColor}>
+              {`"`}
+              {trailingComma ? "," : ""}
+            </span>
             <div />
           </pre>
         </div>
       );
     };
 
-    const getGithubLink = (m: TMemberDetails) => {
+    const getGithubLink = (m: TMemberDetails, trailingComma: boolean) => {
       return (
         <div className={classNames.default(indent)}>
           <pre className="whitespace-pre-wrap break-all">
@@ -271,9 +304,12 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
                 <span className={textColor}>{m.githubLink}</span>
               )
             ) : (
-              <span className="text-instillGray30">{`"N/A"`}</span>
+              <span className="text-instillGray30">{`N/A`}</span>
             )}
-            <span className={defaultTextColor}>{`"`}</span>
+            <span className={defaultTextColor}>
+              {`"`}
+              {trailingComma ? "," : ""}
+            </span>
             <div />
           </pre>
         </div>
@@ -294,7 +330,7 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
       );
     };
 
-    const getOpenRoleMission = () => {
+    const getOpenRoleMission = (trailingComma: boolean) => {
       return (
         <>
           <div className="text-instillRed">{`{`}</div>
@@ -306,7 +342,10 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
                 Make Vision Al highly accessbile to everyone. Join us and make a
                 dent in the universe!
               </span>
-              <span className={defaultTextColor}>{`"`}</span>
+              <span className={defaultTextColor}>
+                {`"`}
+                {trailingComma ? "," : ""}
+              </span>
             </pre>
           </div>
         </>
@@ -355,17 +394,17 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               member.type === "open_role" ? (
                 <>
                   {getMemberName(member)}
-                  {getOpenRoleMission()}
-                  {getOpenRoleDetailsContainer(member)}
+                  {getOpenRoleMission(true)}
+                  {getOpenRoleDetailsContainer(member, true)}
                   <div className="text-instillRed">{`}`}</div>
                 </>
               ) : (
                 <>
                   {getMemberName(member)}
                   <div className="text-instillRed">{`{`}</div>
-                  {getTitlesContainer(member)}
-                  {getLinkedinLink(member)}
-                  {getGithubLink(member)}
+                  {getTitlesContainer(member, true)}
+                  {getLinkedinLink(member, true)}
+                  {getGithubLink(member, false)}
                   <div className="text-instillRed">{`}`}</div>
                 </>
               )
@@ -373,9 +412,9 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
               <>
                 {getMemberName(member)}
                 <div className="text-instillRed">{`{`}</div>
-                {getTitlesContainer(member)}
-                {getLinkedinLink(member)}
-                {getGithubLink(member)}
+                {getTitlesContainer(member, true)}
+                {getLinkedinLink(member, true)}
+                {getGithubLink(member, false)}
                 <div className="text-instillRed">{`}`}</div>
               </>
             )}
