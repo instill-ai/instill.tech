@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.6.2](https://www.github.com/instill-ai/product-website/compare/v1.6.1...v1.6.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* fix newsletter image width issue ([#107](https://www.github.com/instill-ai/product-website/issues/107)) ([659b656](https://www.github.com/instill-ai/product-website/commit/659b656d82854bb6362b7697265e72289c578cad)), closes [#105](https://www.github.com/instill-ai/product-website/issues/105)
+
 ### [1.6.1](https://www.github.com/instill-ai/product-website/compare/v1.6.0...v1.6.1) (2022-03-22)
 
 
