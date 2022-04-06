@@ -165,7 +165,7 @@ export const getStaticProps: GetStaticProps = async () => {
           e.setAttribute("style", styleList.join(";"));
 
           e.classList.add("mx-auto");
-          e.classList.add("md:max-w-[600px]");
+          e.classList.add("md:max-w-full");
         });
 
         // Remove mailchimp Header logo image
