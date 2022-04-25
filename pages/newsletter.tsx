@@ -91,12 +91,21 @@ export const getStaticProps: GetStaticProps = async () => {
 
   try {
     // Get campaigns, we only want to display public campaigns in this archive
-    const response: ListCampaignsResponse = await mailchimp.campaigns.list({
-      count: 100,
-    });
+    const getCampaignTotalCounts: ListCampaignsResponse =
+      await mailchimp.campaigns.list({
+        count: 1,
+      });
+
+    const totalCounts = getCampaignTotalCounts.total_items;
+
+    const fullCampaigns: ListCampaignsResponse = await mailchimp.campaigns.list(
+      {
+        count: totalCounts,
+      }
+    );
 
     // Check campaign folder_id to find public campaign
-    for (const campaign of response.campaigns) {
+    for (const campaign of fullCampaigns.campaigns) {
       if (
         campaign.settings.folder_id ===
         process.env.NEXT_PUBLIC_PUBLIC_CAMPAIGN_FOLDER_ID
