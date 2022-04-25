@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.6.3](https://www.github.com/instill-ai/product-website/compare/v1.6.2...v1.6.3) (2022-04-25)
+
+
+### Bug Fixes
+
+* fix newsletter archive not correctly display nesletters ([36f98fc](https://www.github.com/instill-ai/product-website/commit/36f98fcf928437bdb66843de0d415253dadcb5e0))
+
 ### [1.6.2](https://www.github.com/instill-ai/product-website/compare/v1.6.1...v1.6.2) (2022-04-06)
 
 
