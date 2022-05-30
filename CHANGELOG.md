@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://www.github.com/instill-ai/product-website/compare/v1.6.3...v1.7.0) (2022-05-30)
+
+
+### Features
+
+* update og image ([#113](https://www.github.com/instill-ai/product-website/issues/113)) ([#114](https://www.github.com/instill-ai/product-website/issues/114)) ([dab01f7](https://www.github.com/instill-ai/product-website/commit/dab01f7a51e40c3c0c6c722ce555fac05fd0a104))
+
 ### [1.6.3](https://www.github.com/instill-ai/product-website/compare/v1.6.2...v1.6.3) (2022-04-25)
 
 
