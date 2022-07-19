@@ -3,7 +3,6 @@ import { MenuIcon } from "../icons/MenuIcon";
 import { BlogLink } from "../links/BlogLink";
 import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
-import { InstillAiLogo } from "./InstillAiLogo";
 import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
 import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
@@ -14,7 +13,7 @@ import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
 import { sendAmplitudeData } from "../../../lib/amplitude";
-import { getElementPosition } from "../../../lib/utilities";
+import { Logo } from "@instill-ai/design-system";
 
 interface Props {}
 
@@ -70,7 +69,7 @@ export const NavBar: FC<Props> = () => {
       <div className="mx-auto flex w-full max-w-[1440px]">
         <div className="hidden w-full content-center p-2 lg:flex lg:flex-row">
           <LinkBase styleName="my-auto mr-auto" href="/">
-            <InstillAiLogo type="ColourLogoWhiteType" width={159} />
+            <Logo type="ColourLogomarkWhiteType" width={159} />
           </LinkBase>
 
           <div className="flex flex-row justify-end gap-x-[60px] lg:ml-auto">
@@ -85,7 +84,7 @@ export const NavBar: FC<Props> = () => {
         >
           <div className="flex w-full flex-row p-4 lg:mb-[60px]">
             <LinkBase styleName="flex" href="/">
-              <InstillAiLogo type="ColourLogoWhiteType" width={159} />
+              <Logo type="ColourLogomarkWhiteType" width={159} />
             </LinkBase>
             <button
               className="ml-auto rounded-[3px] hover:bg-instillGray30 hover:bg-opacity-10"

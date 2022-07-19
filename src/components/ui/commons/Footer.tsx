@@ -1,9 +1,9 @@
+import { Logo } from "@instill-ai/design-system";
 import { FC } from "react";
 import { CookiePolicyLink } from "../links/CookiePolicyLink";
 import { PrivacyPolicyLink } from "../links/PrivacyPolicyLink";
 import { SocialLinksGroup } from "../SocialLinksGroup";
 import { CopyRightText } from "./CopyRightText";
-import { InstillAiLogo } from "./InstillAiLogo";
 import { SimpleHorizontalLine } from "./SimpleHorizontalLine";
 
 interface Props {}
@@ -18,7 +18,7 @@ export const Footer: FC<Props> = () => {
             <h3 className="instill-text-h3 mb-5 max-w-[256px] text-instillGray05">
               Visual Data Preparation Made for All
             </h3>
-            <InstillAiLogo type="logoOnlyWhite" width={30} />
+            <Logo type="whiteLogomark" width={30} />
           </div>
           <div className="flex flex-col-reverse gap-y-[30px] sm:grid sm:grid-cols-3 sm:gap-y-0">
             <CopyRightText />
