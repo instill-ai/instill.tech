@@ -3,16 +3,17 @@ name: cd-build-test-staging
 on:
   pull_request:
     branches:
-      - "staging"
+      - "main"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
+          cache: "yarn"
 
       - name: Checkout
         uses: actions/checkout@v2.3.3
@@ -32,9 +33,10 @@ jobs:
     needs: build
     steps:
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
+          cache: "yarn"
 
       - name: Restore build cache
         uses: actions/cache@v2
@@ -51,9 +53,10 @@ jobs:
     needs: build
     steps:
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
+          cache: "yarn"
 
       - name: Restore build cache
         uses: actions/cache@v2
