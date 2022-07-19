@@ -7,9 +7,9 @@ import {
   useState,
 } from "react";
 import * as classNames from "classnames";
-import { getElementPosition } from "../../lib/utilities";
+import { getElementPosition } from "../../../lib/utilities";
 
-interface Props {
+export type StickyScrollLayoutProps = {
   /** The height of scroll container */
   height: number;
 
@@ -24,9 +24,9 @@ interface Props {
 
   /** Other childrens which will be set to the bottom of scroll container that will display as a push in effect */
   children: ReactElement;
-}
+};
 
-export const StickyScrollLayout: FC<Props> = ({
+const StickyScrollLayout: FC<StickyScrollLayoutProps> = ({
   height,
   styleName,
   targetChildren,
@@ -118,3 +118,5 @@ export const StickyScrollLayout: FC<Props> = ({
     </div>
   );
 };
+
+export default StickyScrollLayout;
