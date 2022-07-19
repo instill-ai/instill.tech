@@ -1,6 +1,5 @@
 import { FC, ReactElement, Fragment, useEffect } from "react";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { GetStaticProps } from "next";
 import {
   GetCampaignContentResponse,

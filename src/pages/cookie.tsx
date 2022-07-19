@@ -1,8 +1,7 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect } from "react";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
 import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 import { sendAmplitudeData } from "../lib/amplitude";

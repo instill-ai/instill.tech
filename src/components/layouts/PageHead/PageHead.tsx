@@ -2,18 +2,19 @@ import { FC, ReactNode } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-interface Props {
+export type PageHeadProps = {
   pageTitle: string;
   pageDescription?: string;
   children: ReactNode;
-}
+};
 
-export const PageHead: FC<Props> = ({
+const PageHead: FC<PageHeadProps> = ({
   pageTitle,
   pageDescription,
   children,
 }) => {
   const router = useRouter();
+
   const meta = {
     type: "website",
     siteName: "Instill AI",
@@ -48,3 +49,5 @@ export const PageHead: FC<Props> = ({
     </>
   );
 };
+
+export default PageHead;

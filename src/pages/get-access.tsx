@@ -1,6 +1,6 @@
 import { FC, ReactElement, useEffect } from "react";
-import { PageHead } from "../components/layouts/PageHead";
-import { PageBase } from "../components/layouts/PageBase";
+
+import { PageBase, PageHead } from "@/components/layouts";
 import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
 import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
 import { useRouter } from "next/router";
