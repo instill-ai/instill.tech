@@ -18,6 +18,9 @@ const customJestConfig = {
     "^@/style/(.*)$": "<rootDir>/src/style/$1",
     "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
+    "react-markdown": "<rootDir>/src/mocks/react-markdown.js",
+    "remark-gfm": "<rootDir>/src/mocks/remark-gfm.js",
+    "rehype-raw": "<rootDir>/src/mocks/rehype-raw.js",
   },
 };
 
