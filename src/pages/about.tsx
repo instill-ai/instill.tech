@@ -78,10 +78,11 @@ const AboutPage: FC<Props> & {
   }, [stayInTheLoopBlockOnScreen, loadStayInTheLoopBlock]);
 
   return (
-    <PageHead
-      pageTitle="About us | Instill AI"
-      pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
-    >
+    <>
+      <PageHead
+        pageTitle="About us | Instill AI"
+        pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
+      />
       <div className="flex flex-col bg-instillGray95">
         <div className="mb-5 flex max-w-[1440px] flex-col md:mx-auto md:w-10/12">
           <div className="mx-auto flex w-full max-w-[1128px] flex-col">
@@ -168,7 +169,7 @@ const AboutPage: FC<Props> & {
           )}
         </div>
       </div>
-    </PageHead>
+    </>
   );
 };
 

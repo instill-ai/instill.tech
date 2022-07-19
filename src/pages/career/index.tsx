@@ -41,6 +41,34 @@ interface GetLayOutProps {
   page: ReactElement;
 }
 
+export const getStaticProps: GetStaticProps = async () => {
+  let tasks: IClickUpTask[];
+  let positions: TPositionDetails[] = [];
+
+  try {
+    tasks = await listClickUpTasksInListQuery("175663624");
+
+    for (const task of tasks) {
+      const position = transformClickUpTaskToPositionDetails(task);
+      positions.push(position);
+    }
+  } catch (err) {
+    console.error(
+      "Something went wrong when retrieve open position on Clickup",
+      err
+    );
+  }
+
+  return {
+    props: {
+      positions,
+    },
+
+    // This page is using ISR
+    revalidate: 10,
+  };
+};
+
 const CareerPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
@@ -86,10 +114,11 @@ const CareerPage: FC<Props> & {
   }, []);
 
   return (
-    <PageHead
-      pageTitle="Career | Instill AI"
-      pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
-    >
+    <>
+      <PageHead
+        pageTitle="Career | Instill AI"
+        pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
+      />
       <div className="flex flex-col bg-instillGray95">
         <CareerHero
           viewJobsScrollHandler={scrollHandler}
@@ -110,7 +139,7 @@ const CareerPage: FC<Props> & {
           )}
         </div>
       </div>
-    </PageHead>
+    </>
   );
 };
 
@@ -119,31 +148,3 @@ CareerPage.getLayout = (page) => {
 };
 
 export default CareerPage;
-
-export const getStaticProps: GetStaticProps = async () => {
-  let tasks: IClickUpTask[];
-  let positions: TPositionDetails[] = [];
-
-  try {
-    tasks = await listClickUpTasksInListQuery("175663624");
-
-    for (const task of tasks) {
-      const position = transformClickUpTaskToPositionDetails(task);
-      positions.push(position);
-    }
-  } catch (err) {
-    console.error(
-      "Something went wrong when retrieve open position on Clickup",
-      err
-    );
-  }
-
-  return {
-    props: {
-      positions,
-    },
-
-    // This page is using ISR
-    revalidate: 10,
-  };
-};

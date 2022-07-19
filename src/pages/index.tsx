@@ -61,10 +61,11 @@ const HomePage: FC<Props> & {
   }, []);
 
   return (
-    <PageHead
-      pageTitle="Instill AI"
-      pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
-    >
+    <>
+      <PageHead
+        pageTitle="Instill AI"
+        pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
+      />
       <div className="flex flex-col">
         <div className="flex w-full bg-instillGray95">
           <div
@@ -110,7 +111,7 @@ const HomePage: FC<Props> & {
           <StayInTheLoopBlock styleName="max-w-[889px] px-4 md:px-10 md:w-8/12 md:mx-auto mb-20" />
         </div>
       </div>
-    </PageHead>
+    </>
   );
 };
 
