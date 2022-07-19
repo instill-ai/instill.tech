@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { PageBase, PageHead } from "@/components/layouts";
+import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
 import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
@@ -119,12 +119,12 @@ const CareerPage: FC<Props> & {
         pageTitle="Career | Instill AI"
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
       />
-      <div className="flex flex-col bg-instillGray95">
+      <ContentContainer>
         <CareerHero
           viewJobsScrollHandler={scrollHandler}
-          styleName="max-w-[1440px] md:w-10/12 md:mx-auto pt-[100px] lg:pt-[180px] pb-10"
+          marginBottom="mb-10"
         />
-        <CareerGeneralIntro styleName="max-w-[1440px] md:w-10/12 md:mx-auto" />
+        <CareerGeneralIntro />
         <div className="flex" ref={openPositionsRef}>
           {loadOpenPositions && (
             <CareerOpenPositionsSection
@@ -138,7 +138,7 @@ const CareerPage: FC<Props> & {
             <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto mb-20" />
           )}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };

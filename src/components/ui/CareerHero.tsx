@@ -19,18 +19,20 @@ interface Props {
   */
   viewJobsScrollHandler: () => void;
 
-  /** <Tailwind format> - position and width */
-  styleName?: string;
+  marginBottom: string;
 }
 
-export const CareerHero: FC<Props> = ({ styleName, viewJobsScrollHandler }) => {
+export const CareerHero: FC<Props> = ({
+  marginBottom,
+  viewJobsScrollHandler,
+}) => {
   const subHeaderStyle =
     "text-lg leading-[27px] text-instillGray05 mx-auto font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
     <div
       className={classNames.default(
         "flex w-full flex-col gap-y-10 px-4 md:px-0",
-        styleName
+        marginBottom
       )}
     >
       <h1 className="instill-text-h1 w-full text-center text-instillGray05">
