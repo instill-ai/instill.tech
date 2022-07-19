@@ -1,5 +1,5 @@
 import { FC, useCallback } from "react";
-import { useAnnouncementBarCtx } from "../../../context/AnnouncementBarContext";
+import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
 import { CrossIcon } from "../icons/CrossIcon";
 
 interface Props {}

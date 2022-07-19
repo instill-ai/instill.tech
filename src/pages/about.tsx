@@ -6,7 +6,7 @@ import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { useOnScreen } from "../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 import { GetStaticProps } from "next";
 import { IClickUpTask } from "../types/clickUp";
 import {

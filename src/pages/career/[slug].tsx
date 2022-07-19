@@ -17,7 +17,7 @@ import { handle } from "../../lib/utilities";
 import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
 import { sendAmplitudeData } from "../../lib/amplitude";
 
 const StayInTheLoopBlock = dynamic(() =>

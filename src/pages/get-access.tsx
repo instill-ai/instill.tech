@@ -5,7 +5,7 @@ import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
 import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 interface Props {}
 

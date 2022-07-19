@@ -13,7 +13,7 @@ import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeade
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 type TPublicCampaign =
   | {

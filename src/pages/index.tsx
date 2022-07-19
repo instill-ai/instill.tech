@@ -12,7 +12,7 @@ import { PageHead } from "../components/layouts/PageHead";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
 import { InstillCloudSection } from "../components/ui/InstillCloudSection";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
   import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)

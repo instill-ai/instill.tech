@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "./AnnouncementBar";
-import { useAnnouncementBarCtx } from "../../../context/AnnouncementBarContext";
+import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 import { getElementPosition } from "../../../lib/utilities";
 

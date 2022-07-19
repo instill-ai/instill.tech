@@ -13,7 +13,7 @@ import { PageBase } from "../../components/layouts/PageBase";
 import { PageHead } from "../../components/layouts/PageHead";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import { sendAmplitudeData } from "../../lib/amplitude";
 import {

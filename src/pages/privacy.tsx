@@ -4,7 +4,7 @@ import { FC, ReactElement, useEffect } from "react";
 import { PageBase } from "../components/layouts/PageBase";
 import { PageHead } from "../components/layouts/PageHead";
 import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { getMDFileContent } from "../lib/file";
 
