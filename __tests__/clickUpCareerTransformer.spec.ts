@@ -1,5 +1,5 @@
-import { transformClickUpTaskToPositionDetails } from "../lib/clickUp";
-import { IClickUpTask } from "../types/clickUp";
+import { transformClickUpTaskToPositionDetails } from "../src/lib/clickUp";
+import { IClickUpTask } from "../src/types/clickUp";
 
 const mockClickUpTask: IClickUpTask = {
   id: "2cr7au1",

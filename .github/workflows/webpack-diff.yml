@@ -1,0 +1,104 @@
+name: ci-webpack-stats-diff
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build-pr:
+    name: "Build PR stats"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # In order to build with some env, we have to create it, but don't commit it
+      # This will occur a warning: Warning: Unexpected input(s)
+      # This is because GitHub is expecing all the potential input variables to be defined by the Action's definition.
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          envkey_AIRTABLE_CAREER_BASE_ID: ${{ secrets.AIRTABLE_CAREER_BASE_ID }}
+          envkey_AIRTABLE_CRREER_TABLE_TITLE: ${{ secrets.AIRTABLE_CRREER_TABLE_TITLE }}
+          file_name: .env.local
+
+      - name: Install dependencies
+        run: rm -rf node_modules && yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Upload stats.json
+        uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: .next/stats.json
+
+  build-base:
+    name: "Build base stats"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ## Here we do not checkout the current branch, but we checkout the base branch.
+          ref: ${{ github.base_ref }}
+
+      # In order to build with some env, we have to create it, but don't commit it
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          envkey_AIRTABLE_CAREER_BASE_ID: ${{ secrets.AIRTABLE_CAREER_BASE_ID }}
+          envkey_AIRTABLE_CRREER_TABLE_TITLE: ${{ secrets.AIRTABLE_CRREER_TABLE_TITLE }}
+          file_name: .env.local
+
+      - name: Install dependencies
+        run: rm -rf node_modules && yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - name: Upload stats.json
+        uses: actions/upload-artifact@v2
+        with:
+          name: base
+          path: .next/stats.json
+
+  compare:
+    name: "Compare base & head bundle sizes"
+    runs-on: ubuntu-latest
+    needs: [build-pr, build-base]
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v2
+
+      - name: Download base artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: base
+          path: base
+
+      - name: Download PR stats
+        uses: actions/download-artifact@v2
+        with:
+          name: pr
+          path: pr
+
+      - name: Get diff
+        id: get-diff
+        uses: NejcZdovc/bundle-size-diff@v1
+        with:
+          base_path: "./base/stats.json"
+          pr_path: "./pr/stats.json"
+
+      - name: Comment
+        uses: NejcZdovc/comment-pr@v1.1.1
+        with:
+          file: "../templates/webpack-diff-comment.md"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          OLD: ${{steps.get-diff.outputs.base_file_string}}
+          NEW: ${{steps.get-diff.outputs.pr_file_string}}
+          DIFF: ${{steps.get-diff.outputs.diff_file_string}}
+          DIFF_PERCENT: ${{steps.get-diff.outputs.percent}}
