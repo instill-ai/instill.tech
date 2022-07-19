@@ -2,36 +2,36 @@ import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
-import { sendAmplitudeData } from "../../lib/amplitude";
+import { sendAmplitudeData } from "../lib/amplitude";
 
-import { Headline } from "../../components/ui/Headline";
-import { MainCtaGroup } from "../../components/ui/MainCtaGroup";
-import { SubHeadline } from "../../components/ui/SubHeadline";
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
-import { HeroAnimationSvg } from "../../components/ui/svgs/animations/HeroAnimationSvg";
-import { ExploreMoreScrollButton } from "../../components/ui/buttons/ExploreMoreScrollButton";
-import { InstillCloudSection } from "../../components/ui/InstillCloudSection";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { Headline } from "../components/ui/Headline";
+import { MainCtaGroup } from "../components/ui/MainCtaGroup";
+import { SubHeadline } from "../components/ui/SubHeadline";
+import { PageBase } from "../components/layouts/PageBase";
+import { PageHead } from "../components/layouts/PageHead";
+import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
+import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
+import { InstillCloudSection } from "../components/ui/InstillCloudSection";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
-  import("../../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
+  import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
 );
 
 const StayInTheLoopBlock = dynamic(() =>
-  import("../../components/ui/blocks/StayInTheLoopBlock").then(
+  import("../components/ui/blocks/StayInTheLoopBlock").then(
     (mod) => mod.StayInTheLoopBlock
   )
 );
 
 const SecureYourSpotBlock = dynamic(() =>
-  import("../../components/ui/blocks/SecureYourSpotBlock").then(
+  import("../components/ui/blocks/SecureYourSpotBlock").then(
     (mod) => mod.SecureYourSpotBlock
   )
 );
 
 const FeatureBlockGroup = dynamic(() =>
-  import("../../components/ui/groups/FeatureBlockGroup").then(
+  import("../components/ui/groups/FeatureBlockGroup").then(
     (mod) => mod.FeatureBlockGroup
   )
 );

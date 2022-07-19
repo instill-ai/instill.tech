@@ -9,26 +9,26 @@ import {
   useRef,
   useState,
 } from "react";
-import { PageBase } from "../../../components/layouts/PageBase";
-import { PageHead } from "../../../components/layouts/PageHead";
-import { CareerGeneralIntro } from "../../../components/ui/CareerGeneralIntro";
-import { CareerHero } from "../../../components/ui/CareerHero";
-import { useAmplitudeCtx } from "../../../context/AmplitudeContext";
-import { useOnScreen } from "../../../hooks/useOnScreen";
-import { sendAmplitudeData } from "../../../lib/amplitude";
+import { PageBase } from "../../components/layouts/PageBase";
+import { PageHead } from "../../components/layouts/PageHead";
+import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
+import { CareerHero } from "../../components/ui/CareerHero";
+import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { useOnScreen } from "../../hooks/useOnScreen";
+import { sendAmplitudeData } from "../../lib/amplitude";
 import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
-} from "../../../lib/clickUp";
-import { IClickUpTask } from "../../../types/clickUp";
-import { TPositionDetails } from "../../../types/instill";
+} from "../../lib/clickUp";
+import { IClickUpTask } from "../../types/clickUp";
+import { TPositionDetails } from "../../types/instill";
 
 const CareerOpenPositionsSection = dynamic(
-  () => import("../../../components/ui/CareerOpenPositionsSection")
+  () => import("../../components/ui/CareerOpenPositionsSection")
 );
 
 const StayInTheLoopBlock = dynamic(() =>
-  import("../../../components/ui/blocks/StayInTheLoopBlock").then(
+  import("../../components/ui/blocks/StayInTheLoopBlock").then(
     (mod) => mod.StayInTheLoopBlock
   )
 );

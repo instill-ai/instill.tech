@@ -1,16 +1,25 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect } from "react";
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
-import { PolicyPageLayout } from "../../components/layouts/PolicyPageLayout";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
-import { sendAmplitudeData } from "../../lib/amplitude";
-import { getMDFileContent } from "../../lib/file";
+import { PageBase } from "../components/layouts/PageBase";
+import { PageHead } from "../components/layouts/PageHead";
+import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { sendAmplitudeData } from "../lib/amplitude";
+import { getMDFileContent } from "../lib/file";
 
 interface Props {
   content: string;
 }
+
+export const getStaticProps: GetStaticProps = () => {
+  const content = getMDFileContent("privacy.md");
+  return {
+    props: {
+      content,
+    },
+  };
+};
 
 interface GetLayOutProps {
   page: ReactElement;
@@ -43,12 +52,3 @@ CookiePage.getLayout = (page) => {
 };
 
 export default CookiePage;
-
-export const getStaticProps: GetStaticProps = () => {
-  const content = getMDFileContent("privacy.md");
-  return {
-    props: {
-      content,
-    },
-  };
-};

@@ -2,28 +2,28 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
-import { sendAmplitudeData } from "../../lib/amplitude";
-import { useOnScreen } from "../../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { PageBase } from "../components/layouts/PageBase";
+import { PageHead } from "../components/layouts/PageHead";
+import { sendAmplitudeData } from "../lib/amplitude";
+import { useOnScreen } from "../hooks/useOnScreen";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
 import { GetStaticProps } from "next";
-import { IClickUpTask } from "../../types/clickUp";
+import { IClickUpTask } from "../types/clickUp";
 import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToMemberDetails,
-} from "../../lib/clickUp";
-import { TMemberDetails } from "../../types/instill";
-import { OurMembersSection } from "../../components/ui/OurMembersSection";
+} from "../lib/clickUp";
+import { TMemberDetails } from "../types/instill";
+import { OurMembersSection } from "../components/ui/OurMembersSection";
 
 const SecureYourSpotBlock = dynamic(() =>
-  import("../../components/ui/blocks/SecureYourSpotBlock").then(
+  import("../components/ui/blocks/SecureYourSpotBlock").then(
     (mod) => mod.SecureYourSpotBlock
   )
 );
 
 const StayInTheLoopBlock = dynamic(() =>
-  import("../../components/ui/blocks/StayInTheLoopBlock").then(
+  import("../components/ui/blocks/StayInTheLoopBlock").then(
     (mod) => mod.StayInTheLoopBlock
   )
 );

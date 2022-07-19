@@ -1,5 +1,5 @@
-import { transformClickUpTaskToMemberDetails } from "../lib/clickUp";
-import { IClickUpTask } from "../types/clickUp";
+import { transformClickUpTaskToMemberDetails } from "../src/lib/clickUp";
+import { IClickUpTask } from "../src/types/clickUp";
 
 export const mockClickUpTask: IClickUpTask = {
   id: "240uhne",

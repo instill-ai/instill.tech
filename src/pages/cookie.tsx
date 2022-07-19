@@ -1,12 +1,12 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect } from "react";
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
-import { PolicyPageLayout } from "../../components/layouts/PolicyPageLayout";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
-import { sendAmplitudeData } from "../../lib/amplitude";
-import { getMDFileContent } from "../../lib/file";
+import { PageBase } from "../components/layouts/PageBase";
+import { PageHead } from "../components/layouts/PageHead";
+import { PolicyPageLayout } from "../components/layouts/PolicyPageLayout";
+import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { sendAmplitudeData } from "../lib/amplitude";
+import { getMDFileContent } from "../lib/file";
 
 interface Props {
   content: string;
@@ -15,6 +15,15 @@ interface Props {
 interface GetLayOutProps {
   page: ReactElement;
 }
+
+export const getStaticProps: GetStaticProps = () => {
+  const content = getMDFileContent("cookie.md");
+  return {
+    props: {
+      content,
+    },
+  };
+};
 
 const PrivacyPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
@@ -43,12 +52,3 @@ PrivacyPage.getLayout = (page) => {
 };
 
 export default PrivacyPage;
-
-export const getStaticProps: GetStaticProps = () => {
-  const content = getMDFileContent("cookie.md");
-  return {
-    props: {
-      content,
-    },
-  };
-};
