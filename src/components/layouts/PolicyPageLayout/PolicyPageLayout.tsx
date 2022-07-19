@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { ReactMDWrapper } from "../ReactMDWrapper";
+import { ReactMDWrapper } from "../../ReactMDWrapper";
 
-interface Props {
+export type PolicyPageLayoutProps = {
   content: string;
-}
+};
 
-export const PolicyPageLayout: FC<Props> = ({ content }) => {
+const PolicyPageLayout: FC<PolicyPageLayoutProps> = ({ content }) => {
   return (
     <div className="flex w-full bg-instillGray95">
       <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">
@@ -30,3 +30,5 @@ export const PolicyPageLayout: FC<Props> = ({ content }) => {
     </div>
   );
 };
+
+export default PolicyPageLayout;
