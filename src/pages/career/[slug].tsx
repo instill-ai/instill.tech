@@ -3,25 +3,25 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
-import { CareerPositionDescriptionBlock } from "../../components/ui/blocks/CareerPositionDescriptionBlock";
-import { CareerPostionDetailsBlock } from "../../components/ui/blocks/CareerPostionDetailsBlock";
-import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
+import { PageBase } from "../../../components/layouts/PageBase";
+import { PageHead } from "../../../components/layouts/PageHead";
+import { CareerPositionDescriptionBlock } from "../../../components/ui/blocks/CareerPositionDescriptionBlock";
+import { CareerPostionDetailsBlock } from "../../../components/ui/blocks/CareerPostionDetailsBlock";
+import { BackToPreviousPageLink } from "../../../components/ui/links/BackToPreviousPageLink";
 import {
   getClickUpTaskQuery,
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
-} from "../../lib/clickUp";
-import { handle } from "../../lib/utilities";
-import { IClickUpTask } from "../../types/clickUp";
-import { TPositionDetails } from "../../types/instill";
-import { useOnScreen } from "../../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
-import { sendAmplitudeData } from "../../lib/amplitude";
+} from "../../../lib/clickUp";
+import { handle } from "../../../lib/utilities";
+import { IClickUpTask } from "../../../types/clickUp";
+import { TPositionDetails } from "../../../types/instill";
+import { useOnScreen } from "../../../hooks/useOnScreen";
+import { useAmplitudeCtx } from "../../../context/AmplitudeContext";
+import { sendAmplitudeData } from "../../../lib/amplitude";
 
 const StayInTheLoopBlock = dynamic(() =>
-  import("../../components/ui/blocks/StayInTheLoopBlock").then(
+  import("../../../components/ui/blocks/StayInTheLoopBlock").then(
     (mod) => mod.StayInTheLoopBlock
   )
 );

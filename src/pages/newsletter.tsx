@@ -1,19 +1,19 @@
 import { FC, ReactElement, Fragment, useEffect } from "react";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase } from "../../components/layouts/PageBase";
+import { PageHead } from "../../components/layouts/PageHead";
 import { GetStaticProps } from "next";
 import {
   GetCampaignContentResponse,
   ListCampaignsResponse,
-} from "../types/mailchimp";
+} from "../../types/mailchimp";
 import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
-import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeader";
+import { NewsletterArchiveHeader } from "../../components/ui/NewsletterArchiveHeader";
 import { useRouter } from "next/router";
-import { sendAmplitudeData } from "../lib/amplitude";
-import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { sendAmplitudeData } from "../../lib/amplitude";
+import { removePlaceholderAndFooterWords } from "../../lib/mailchimp";
+import { useAmplitudeCtx } from "../../context/AmplitudeContext";
 
 type TPublicCampaign =
   | {

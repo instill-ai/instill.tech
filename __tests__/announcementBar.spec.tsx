@@ -2,7 +2,7 @@ import "intersection-observer";
 import "../__mocks__/matchMedia";
 
 import { renderWithContext, withPageBase } from "../lib/testUtils";
-import HomePage from "../pages/index";
+import HomePage from "../src/pages/index";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
