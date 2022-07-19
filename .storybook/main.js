@@ -6,6 +6,7 @@ module.exports = {
       "../src/components"
     );
     config.resolve.alias["@/hooks"] = path.resolve(__dirname, "../src/hooks");
+    config.resolve.alias["@/mocks"] = path.resolve(__dirname, "../src/mocks");
     config.resolve.alias["@/lib"] = path.resolve(__dirname, "../src/lib");
     config.resolve.alias["@/pages"] = path.resolve(__dirname, "../src/pages");
     config.resolve.alias["@/styles"] = path.resolve(__dirname, "../src/styles");
