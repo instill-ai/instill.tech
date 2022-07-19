@@ -9,11 +9,10 @@ import {
   useRef,
   useState,
 } from "react";
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
 import { CareerHero } from "../../components/ui/CareerHero";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import { sendAmplitudeData } from "../../lib/amplitude";
 import {

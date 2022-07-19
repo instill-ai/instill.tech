@@ -1,8 +1,8 @@
 module.exports = {
-  swcMinify: false, // replacing Terser for minification
+  swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ["t2564371.p.clickup-attachments.com"]
+    domains: ["t2564371.p.clickup-attachments.com"],
   },
   webpack: (config, { isServer, dev }) => {
     // if (isServer) {
@@ -15,7 +15,9 @@ module.exports = {
         new BundleAnalyzerPlugin({
           analyzerMode: "disabled",
           generateStatsFile: true,
-          reportFilename: isServer ? "../analyze/server.json" : "./analyze/client.json",
+          reportFilename: isServer
+            ? "../analyze/server.json"
+            : "./analyze/client.json",
         })
       );
     }

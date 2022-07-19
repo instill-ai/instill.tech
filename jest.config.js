@@ -1,16 +1,28 @@
-const nextJest = require('next/jest')
+const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-})
+  dir: "./",
+});
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testEnvironment: 'jest-environment-jsdom',
-  modulePathIgnorePatterns: ["<rootDir>/__tests__/e2e/"]
-}
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  testEnvironment: "jest-environment-jsdom",
+  modulePathIgnorePatterns: ["<rootDir>/e2e/"],
+  moduleNameMapper: {
+    "^@/components/(.*)$": "<rootDir>/src/components/$1",
+    "^@/utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^@/types/(.*)$": "<rootDir>/src/types/$1",
+    "^@/hooks/(.*)$": "<rootDir>/src/hooks/$1",
+    "^@/style/(.*)$": "<rootDir>/src/style/$1",
+    "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
+    "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
+    "react-markdown": "<rootDir>/src/mocks/react-markdown.js",
+    "remark-gfm": "<rootDir>/src/mocks/remark-gfm.js",
+    "rehype-raw": "<rootDir>/src/mocks/rehype-raw.js",
+  },
+};
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = createJestConfig(customJestConfig);

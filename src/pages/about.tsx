@@ -2,11 +2,10 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { useOnScreen } from "../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 import { GetStaticProps } from "next";
 import { IClickUpTask } from "../types/clickUp";
 import {

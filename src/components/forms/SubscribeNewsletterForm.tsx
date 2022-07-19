@@ -9,14 +9,11 @@ interface Props {
 
 export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
   const email = useRef<HTMLInputElement | null>(null);
-  const [success, setSuccess] = useState(false);
   const [warn, setWarn] = useState(false);
   const [message, setMessage] = useState<string>();
 
   const subscribe = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSuccess(false);
-
     if (email.current.value === "") {
       setWarn(true);
       setMessage("Please fill in your email address.");
@@ -48,8 +45,6 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
       }
       return;
     }
-
-    setSuccess(true);
     ga.eventHelpers.engagement("join_newsletter");
     setMessage("Cheers! Welcome aboard.");
   };

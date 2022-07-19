@@ -1,6 +1,5 @@
 import { FC, ReactElement, Fragment, useEffect } from "react";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { GetStaticProps } from "next";
 import {
   GetCampaignContentResponse,
@@ -13,7 +12,7 @@ import { NewsletterArchiveHeader } from "../components/ui/NewsletterArchiveHeade
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { removePlaceholderAndFooterWords } from "../lib/mailchimp";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 type TPublicCampaign =
   | {

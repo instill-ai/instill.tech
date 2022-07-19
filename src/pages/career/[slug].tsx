@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase } from "../../components/layouts/PageBase";
-import { PageHead } from "../../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { CareerPositionDescriptionBlock } from "../../components/ui/blocks/CareerPositionDescriptionBlock";
 import { CareerPostionDetailsBlock } from "../../components/ui/blocks/CareerPostionDetailsBlock";
 import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
@@ -17,7 +16,7 @@ import { handle } from "../../lib/utilities";
 import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
 import { sendAmplitudeData } from "../../lib/amplitude";
 
 const StayInTheLoopBlock = dynamic(() =>

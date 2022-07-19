@@ -7,12 +7,11 @@ import { sendAmplitudeData } from "../lib/amplitude";
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
-import { PageBase } from "../components/layouts/PageBase";
-import { PageHead } from "../components/layouts/PageHead";
+import { PageBase, PageHead } from "@/components/layouts";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
 import { InstillCloudSection } from "../components/ui/InstillCloudSection";
-import { useAmplitudeCtx } from "../context/AmplitudeContext";
+import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
   import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)

@@ -12,8 +12,11 @@ import * as classNames from "classnames";
 import { TMemberDetails } from "../../types/instill";
 import { MemberAvatarKernelBlock } from "./blocks/MemberAvatarKernelBlock";
 import { MemberIntroBlock } from "./blocks/MemberIntroBlock";
-import { useWindowDimension } from "../../../useWindowDimension";
-import { ElementPosition, getElementPosition } from "../../lib/utilities";
+import {
+  ElementPosition,
+  getElementPosition,
+  useWindowDimension,
+} from "../../lib/utilities";
 import { useRouter } from "next/router";
 
 interface Props {

@@ -5,8 +5,8 @@ import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { initAmplitude } from "../lib/amplitude";
 import "../styles/global.css";
 import "intersection-observer";
-import { amplitudeCtx } from "../context/AmplitudeContext";
-import { AnnouncementBarCtxProvider } from "../context/AnnouncementBarContext";
+import { amplitudeCtx } from "../contexts/AmplitudeContext";
+import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
