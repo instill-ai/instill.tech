@@ -67,7 +67,7 @@ const HomePage: FC<Props> & {
         pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
       />
       <div className="flex flex-col">
-        <ContentContainer>
+        <ContentContainer contentMaxWidth="max-w-[1127px]">
           <div
             className={classNames.default(
               "flex flex-col justify-center gap-y-10 px-4 pt-20 md:pt-[84px] lg:px-0",
@@ -84,10 +84,7 @@ const HomePage: FC<Props> & {
                 <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
               </div>
             </div>
-            <ExploreMoreScrollButton
-              scrollHandler={scrollHandler}
-              styleName="max:my-[60px] max:mx-auto"
-            />
+            <ExploreMoreScrollButton scrollHandler={scrollHandler} />
           </div>
 
           <div className="flex h-screen w-full" ref={landingBannerRef}>
@@ -97,7 +94,10 @@ const HomePage: FC<Props> & {
 
         <FeatureBlockGroup styleName="md:pt-10" />
         <InstillCloudSection />
-        <ContentContainer>
+        <ContentContainer
+          contentMaxWidth="max-w-[889px]"
+          marginBottom="mb-[129px]"
+        >
           <SecureYourSpotSection
             bgColor="black"
             layout="main"
