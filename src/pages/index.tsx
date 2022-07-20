@@ -23,9 +23,9 @@ const StayInTheLoopBlock = dynamic(() =>
   )
 );
 
-const SecureYourSpotBlock = dynamic(() =>
-  import("../components/ui/blocks/SecureYourSpotBlock").then(
-    (mod) => mod.SecureYourSpotBlock
+const SecureYourSpotSection = dynamic(() =>
+  import("@/components/sections/").then(
+    (module) => module.SecureYourSpotSection
   )
 );
 
@@ -103,10 +103,10 @@ const HomePage: FC<Props> & {
         <InstillCloudSection />
 
         <div className="flex flex-col bg-instillGray95">
-          <SecureYourSpotBlock
+          <SecureYourSpotSection
             bgColor="black"
             layout="main"
-            styleName="max-w-[889px] md:w-8/12 md:mx-auto mb-40"
+            marginBottom="mb-40"
           />
           <StayInTheLoopBlock styleName="max-w-[889px] px-4 md:px-10 md:w-8/12 md:mx-auto mb-20" />
         </div>

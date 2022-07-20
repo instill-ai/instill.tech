@@ -16,9 +16,9 @@ import { TMemberDetails } from "../types/instill";
 import { OurMembersSection } from "../components/ui/OurMembersSection";
 
 const SecureYourSpotBlock = dynamic(() =>
-  import("../components/ui/blocks/SecureYourSpotBlock").then(
-    (mod) => mod.SecureYourSpotBlock
-  )
+  import(
+    "../components/sections/SecureYourSpotSection/SecureYourSpotSection"
+  ).then((mod) => mod.SecureYourSpotBlock)
 );
 
 const StayInTheLoopBlock = dynamic(() =>
