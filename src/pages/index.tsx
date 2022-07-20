@@ -7,10 +7,10 @@ import { sendAmplitudeData } from "../lib/amplitude";
 import { Headline } from "../components/ui/Headline";
 import { MainCtaGroup } from "../components/ui/MainCtaGroup";
 import { SubHeadline } from "../components/ui/SubHeadline";
-import { PageBase, PageHead } from "@/components/layouts";
+import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
+import { InstillCloudSection } from "@/components/sections";
 import { HeroAnimationSvg } from "../components/ui/svgs/animations/HeroAnimationSvg";
 import { ExploreMoreScrollButton } from "../components/ui/buttons/ExploreMoreScrollButton";
-import { InstillCloudSection } from "../components/ui/InstillCloudSection";
 import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
@@ -67,14 +67,14 @@ const HomePage: FC<Props> & {
         pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
       />
       <div className="flex flex-col">
-        <div className="flex w-full bg-instillGray95">
+        <ContentContainer>
           <div
             className={classNames.default(
-              "mb-1 flex max-w-[1440px] flex-col justify-center gap-y-10 px-4 pt-20 md:min-h-screen md:w-10/12 md:pt-[84px] lg:px-0",
+              "flex flex-col justify-center gap-y-10 px-4 pt-20 md:pt-[84px] lg:px-0",
               elementMaxWidth
             )}
           >
-            <div className="flex flex-col-reverse lg:flex-row lg:gap-y-0 max:mx-auto max:w-10/12">
+            <div className="flex flex-col-reverse lg:flex-row lg:gap-y-0">
               <div className="flex flex-col md:my-auto lg:w-[57%]">
                 <Headline styleName="mb-5 text-left" />
                 <SubHeadline styleName="mb-10 md:px-0 text-left" />
@@ -89,27 +89,22 @@ const HomePage: FC<Props> & {
               styleName="max:my-[60px] max:mx-auto"
             />
           </div>
-        </div>
 
-        <div
-          className="flex h-screen w-full bg-instillGray95"
-          ref={landingBannerRef}
-        >
-          <LandingBanner />
-        </div>
+          <div className="flex h-screen w-full" ref={landingBannerRef}>
+            <LandingBanner />
+          </div>
+        </ContentContainer>
 
         <FeatureBlockGroup styleName="md:pt-10" />
-
         <InstillCloudSection />
-
-        <div className="flex flex-col bg-instillGray95">
+        <ContentContainer>
           <SecureYourSpotSection
             bgColor="black"
             layout="main"
             marginBottom="mb-40"
           />
-          <StayInTheLoopBlock styleName="max-w-[889px] px-4 md:px-10 md:w-8/12 md:mx-auto mb-20" />
-        </div>
+          <StayInTheLoopBlock />
+        </ContentContainer>
       </div>
     </>
   );
