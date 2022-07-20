@@ -36,12 +36,13 @@ const CookiePage: FC<Props> & {
   }, [router.isReady, amplitudeIsInit]);
 
   return (
-    <PageHead
-      pageTitle="Privacy policy | Instill AI"
-      pageDescription="Instill AI's cookie policy."
-    >
+    <>
+      <PageHead
+        pageTitle="Privacy policy | Instill AI"
+        pageDescription="Instill AI's cookie policy."
+      />
       <PolicyPageLayout content={content} />
-    </PageHead>
+    </>
   );
 };
 

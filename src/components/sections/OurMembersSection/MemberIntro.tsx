@@ -1,16 +1,16 @@
-import { FC, forwardRef, Fragment } from "react";
+import { forwardRef, Fragment } from "react";
 import { TMemberDetails } from "../../../types/instill";
 import * as classNames from "classnames";
 import Image from "next/image";
-import { MemberAvatarSkeletonSvg } from "../svgs/images/MemberAvatarSkeletonSvg";
-import { CrossIcon } from "../icons/CrossIcon";
+import { MemberAvatarSkeletonSvg } from "@/components/ui/svgs/images/MemberAvatarSkeletonSvg";
+import { CrossIcon } from "@/components/ui/icons/CrossIcon";
 
-interface Props {
+export type MemberIntroProps = {
   member: TMemberDetails;
   indent: string;
   styleName?: string;
   onCancelHandler: () => void;
-}
+};
 
 // This code is pretty messy because we use <pre> to format the text.
 // If you want to modify this file, please make sure every indention and whitespace
@@ -57,7 +57,7 @@ interface Props {
 //   );
 // };
 
-export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
+const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
     let textColor: string;
     let bgColor: string;
@@ -425,4 +425,6 @@ export const MemberIntroBlock = forwardRef<HTMLDivElement, Props>(
   }
 );
 
-MemberIntroBlock.displayName = "MemberIntroBlock";
+MemberIntro.displayName = "MemberIntro";
+
+export default MemberIntro;

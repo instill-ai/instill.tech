@@ -45,10 +45,11 @@ const NewsletterArchivePage: FC<Props> & {
   }, [router.isReady, amplitudeIsInit]);
 
   return (
-    <PageHead
-      pageTitle="Newsletter Archive | Instill AI"
-      pageDescription="Instill AI newsletter archive"
-    >
+    <>
+      <PageHead
+        pageTitle="Newsletter Archive | Instill AI"
+        pageDescription="Instill AI newsletter archive"
+      />
       <div className="flex w-full flex-col bg-instillGray95 lg:pt-20">
         <NewsletterArchiveHeader />
         <div className="flex max-w-[1440px] flex-col px-5 md:px-0 max:mx-auto max:w-10/12">
@@ -69,7 +70,7 @@ const NewsletterArchivePage: FC<Props> & {
           ))}
         </div>
       </div>
-    </PageHead>
+    </>
   );
 };
 

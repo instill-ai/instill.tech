@@ -1,18 +1,13 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
 export type PageHeadProps = {
   pageTitle: string;
   pageDescription?: string;
-  children: ReactNode;
 };
 
-const PageHead: FC<PageHeadProps> = ({
-  pageTitle,
-  pageDescription,
-  children,
-}) => {
+const PageHead: FC<PageHeadProps> = ({ pageTitle, pageDescription }) => {
   const router = useRouter();
 
   const meta = {
@@ -45,7 +40,6 @@ const PageHead: FC<PageHeadProps> = ({
         <meta name="twitter:title" content={meta.pageTitle} />
         <meta name="twitter:description" content={meta.pageDescription} />
       </Head>
-      {children}
     </>
   );
 };

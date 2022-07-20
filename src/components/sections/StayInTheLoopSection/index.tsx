@@ -2,16 +2,18 @@ import { FC } from "react";
 import * as classNames from "classnames";
 import { SubscribeNewsletterForm } from "../../forms/SubscribeNewsletterForm";
 
-interface Props {
-  styleName?: string;
-}
+export type StayInTheLoopSectionProps = {
+  marginBottom?: string;
+};
 
-export const StayInTheLoopBlock: FC<Props> = ({ styleName }) => {
+const StayInTheLoopSection: FC<StayInTheLoopSectionProps> = ({
+  marginBottom,
+}) => {
   return (
     <div
       className={classNames.default(
-        "grid w-full grid-cols-1 gap-y-[30px] py-6 sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 sm:py-[60px] md:gap-x-16 lg:gap-x-28",
-        styleName
+        "grid w-full grid-cols-1 gap-y-[30px] py-6 px-10 sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 sm:py-[60px] md:gap-x-16 lg:gap-x-28",
+        marginBottom
       )}
     >
       <div className="flex flex-col sm:mr-auto">
@@ -24,3 +26,5 @@ export const StayInTheLoopBlock: FC<Props> = ({ styleName }) => {
     </div>
   );
 };
+
+export default StayInTheLoopSection;

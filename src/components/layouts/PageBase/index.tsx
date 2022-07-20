@@ -8,7 +8,7 @@ const Footer = dynamic(() =>
 
 const PageBase: FC = ({ children }) => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-instillGray95">
       <NavBar />
       <div className="flex flex-1 flex-col">{children}</div>
       <Footer />

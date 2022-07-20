@@ -42,7 +42,7 @@ export const LandingBanner: FC<Props> = () => {
   return (
     <div
       id="landing-page-banner"
-      className="mx-auto mb-8 grid h-full max-w-[1440px] grid-cols-1 lg:w-11/12 lg:grid-cols-2"
+      className="grid h-full w-full grid-cols-1 lg:grid-cols-2"
     >
       <div className="flex h-full max-h-screen flex-col py-20">
         <MagicFlow styleName="h-full w-full mx-auto" />

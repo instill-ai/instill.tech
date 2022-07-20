@@ -1,12 +1,10 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { ShareToFbLink } from "../links/ShareToFbLink";
-import { ShareToLinkedInLink } from "../links/ShareToLinkedInLink";
-import { ShareToTwitterLink } from "../links/ShareToTwitterLink";
+import { ShareToFbLink } from "../../ui/links/ShareToFbLink";
+import { ShareToLinkedInLink } from "../../ui/links/ShareToLinkedInLink";
+import { ShareToTwitterLink } from "../../ui/links/ShareToTwitterLink";
 
-interface Props {}
-
-export const ShareThisRoleBlock: FC<Props> = () => {
+const ShareThisPosition: FC = () => {
   const router = useRouter();
   const pageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`;
   return (
@@ -20,3 +18,5 @@ export const ShareThisRoleBlock: FC<Props> = () => {
     </div>
   );
 };
+
+export default ShareThisPosition;

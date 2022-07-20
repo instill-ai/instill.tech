@@ -1,16 +1,16 @@
 import { FC, ReactNode } from "react";
-import * as classNames from "classnames";
+import cn from "clsx";
 
-interface Props {
+export type FeatureItemProps = {
   imagePosition: "right" | "left";
   title: string;
   description: string;
   label: string;
   image: ReactNode;
   featureCta?: ReactNode;
-}
+};
 
-export const FeatureBlock: FC<Props> = ({
+const FeatureItem: FC<FeatureItemProps> = ({
   imagePosition,
   label,
   title,
@@ -18,7 +18,7 @@ export const FeatureBlock: FC<Props> = ({
   image,
   featureCta,
 }) => {
-  const copyBlock = (
+  const copyItem = (
     <div className="my-auto flex h-full w-full flex-col">
       <p className="instill-text-body mb-1 text-instillBlue30">{label}</p>
       <h2 className="instill-text-h2 mb-[30px] text-instillGray95">{title}</h2>
@@ -29,7 +29,7 @@ export const FeatureBlock: FC<Props> = ({
   const gridItems = (
     <>
       <div
-        className={classNames.default(
+        className={cn(
           "flex lg:h-[400px] lg:w-[455px]",
           imagePosition === "left" ? "" : "lg:col-start-2"
         )}
@@ -37,27 +37,24 @@ export const FeatureBlock: FC<Props> = ({
         {image}
       </div>
       <div
-        className={classNames.default(
+        className={cn(
           "flex flex-col lg:h-[400px] lg:w-[455px]",
           imagePosition === "left" ? "" : "lg:row-start-1"
         )}
       >
-        <div className="mb-[45px] max-w-[456px] lg:mb-auto">{copyBlock}</div>
+        <div className="mb-[45px] max-w-[456px] lg:mb-auto">{copyItem}</div>
         {featureCta && <div className="lg:mt-auto">{featureCta}</div>}
       </div>
     </>
   );
 
   return (
-    <div
-      className={classNames.default(
-        "flex w-full bg-white px-4 py-10 md:px-0 lg:h-[480px]"
-        //imagePosition === "left" ? "bg-instillGray05" : "bg-white"
-      )}
-    >
+    <div className={cn("flex w-full bg-white px-4 py-10 md:px-0 lg:h-[480px]")}>
       <div className="m-auto grid grid-cols-1 gap-y-10 lg:grid-cols-2 lg:gap-y-0">
         {gridItems}
       </div>
     </div>
   );
 };
+
+export default FeatureItem;
