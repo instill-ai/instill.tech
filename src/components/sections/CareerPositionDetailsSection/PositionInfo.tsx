@@ -4,7 +4,7 @@ import { LocationIcon } from "../../ui/icons/LocationIcon";
 import { RightArrowIcon } from "../../ui/icons/RightArrowIcon";
 import { WorkTypeIcon } from "../../ui/icons/WorkTypeIcon";
 import * as classNames from "classnames";
-import { ShareThisRoleBlock } from "../../ui/blocks/ShareThisRoleBlock";
+import ShareThisPosition from "./ShareThisPosition";
 
 export type PositionInfoProps = {
   position: TPositionDetails;
@@ -50,7 +50,7 @@ const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
         <RightArrowIcon styleName="w-[15px] h-[15px] my-auto text-instillGray05" />
         <p className="instill-text-body text-instillGray05">{`Stock options: ${position.stockOptions} Equity`}</p>
       </div>
-      <ShareThisRoleBlock />
+      <ShareThisPosition />
     </div>
   );
 };
