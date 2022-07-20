@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { FC, forwardRef } from "react";
-import { MemberKernelSvg } from "../svgs/images/MemberKernelSvg";
+import { forwardRef } from "react";
+import { MemberKernelSvg } from "../../ui/svgs/images/MemberKernelSvg";
 import * as classNames from "classnames";
 import { useWindowDimension } from "@/lib/utilities";
 
-interface Props {
+export type MemberAvatarKernelProps = {
   id: string;
   targetMemberId: string;
   kernelColorRectLocation: string[];
@@ -16,8 +16,9 @@ interface Props {
 
   /** Every avatar's default will be covered by kernel, this props will turn kernel's opacity to 0 */
   openKernel: boolean;
-}
-export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
+};
+
+const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
   (
     {
       avatarAlt,
@@ -70,4 +71,6 @@ export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
   }
 );
 
-MemberAvatarKernelBlock.displayName = "MemberAvatarKernelBlock";
+MemberAvatarKernel.displayName = "MemberAvatarKernelBlock";
+
+export default MemberAvatarKernel;

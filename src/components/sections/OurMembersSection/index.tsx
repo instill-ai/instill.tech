@@ -10,14 +10,14 @@ import {
 import cn from "clsx";
 
 import { TMemberDetails } from "../../../types/instill";
-import { MemberAvatarKernelBlock } from "../../ui/blocks/MemberAvatarKernelBlock";
-import { MemberIntroBlock } from "../../ui/blocks/MemberIntroBlock";
 import {
   ElementPosition,
   getElementPosition,
   useWindowDimension,
 } from "../../../lib/utilities";
 import { useRouter } from "next/router";
+import MemberAvatarKernel from "./MemberAvatarKernel";
+import MemberIntro from "./MemberIntro";
 
 export type OurMembersSectionProps = {
   members: TMemberDetails[];
@@ -157,7 +157,7 @@ const OurMembersSection: FC<OurMembersSectionProps> = ({
             {members.map((m) => {
               const index = membersRef.findIndex((e) => e.id === m.id);
               return (
-                <MemberAvatarKernelBlock
+                <MemberAvatarKernel
                   ref={membersRef[index].ref}
                   key={m.id}
                   id={m.id}
@@ -199,7 +199,7 @@ const OurMembersSection: FC<OurMembersSectionProps> = ({
               : null
           }
         >
-          <MemberIntroBlock
+          <MemberIntro
             ref={memberIntroBlockRef}
             indent="pl-4 md:pl-6"
             onCancelHandler={onCancelHandler}
