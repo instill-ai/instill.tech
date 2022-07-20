@@ -19,10 +19,8 @@ const SecureYourSpotSection = dynamic(() =>
   import("@/components/sections").then((mod) => mod.SecureYourSpotSection)
 );
 
-const StayInTheLoopBlock = dynamic(() =>
-  import("../components/ui/blocks/StayInTheLoopBlock").then(
-    (mod) => mod.StayInTheLoopBlock
-  )
+const StayInTheLoopSection = dynamic(() =>
+  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
 );
 
 interface GetLayOutProps {
@@ -60,20 +58,21 @@ const AboutPage: FC<Props> & {
     }
   }, [secureYourSpotBlockOnScreen, loadSecureYourSpotBlock]);
 
-  // Lazy loading StayInTheLoopBlock
-  const stayInTheLoopBlockRef = useRef<HTMLDivElement>();
-  const [loadStayInTheLoopBlock, setloadStayInTheLoopBlock] = useState(false);
-  const stayInTheLoopBlockOnScreen = useOnScreen(
+  // Lazy loading StayInTheLoopSection
+  const stayInTheLoopSectionRef = useRef<HTMLDivElement>();
+  const [loadStayInTheLoopSection, setLoadStayInTheLoopSection] =
+    useState(false);
+  const stayInTheLoopSectionOnScreen = useOnScreen(
     secureYourSpotBlockRef,
-    !loadStayInTheLoopBlock,
+    !loadStayInTheLoopSection,
     "100px"
   );
 
   useEffect(() => {
-    if (!loadStayInTheLoopBlock && stayInTheLoopBlockOnScreen) {
-      setloadStayInTheLoopBlock(true);
+    if (!loadStayInTheLoopSection && stayInTheLoopSectionOnScreen) {
+      setLoadStayInTheLoopSection(true);
     }
-  }, [stayInTheLoopBlockOnScreen, loadStayInTheLoopBlock]);
+  }, [stayInTheLoopSectionOnScreen, loadStayInTheLoopSection]);
 
   return (
     <>
@@ -140,8 +139,8 @@ const AboutPage: FC<Props> & {
             <SecureYourSpotSection bgColor="black" layout="main" />
           )}
         </div>
-        <div className="mb-20" ref={stayInTheLoopBlockRef}>
-          {loadStayInTheLoopBlock && <StayInTheLoopBlock />}
+        <div className="mb-20" ref={stayInTheLoopSectionRef}>
+          {loadStayInTheLoopSection && <StayInTheLoopSection />}
         </div>
       </ContentContainer>
     </>

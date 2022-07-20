@@ -19,10 +19,8 @@ import { useOnScreen } from "../../hooks/useOnScreen";
 import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
 import { sendAmplitudeData } from "../../lib/amplitude";
 
-const StayInTheLoopBlock = dynamic(() =>
-  import("../../components/ui/blocks/StayInTheLoopBlock").then(
-    (mod) => mod.StayInTheLoopBlock
-  )
+const StayInTheLoopSection = dynamic(() =>
+  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
 );
 
 interface Props {
@@ -147,7 +145,7 @@ const CareerPositionPage: FC<Props> & {
           />
         </div>
         <div className="mb-20 flex" ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && <StayInTheLoopBlock styleName="px-4 md:px-0" />}
+          {loadStayInTheLoop && <StayInTheLoopSection />}
         </div>
       </ContentContainer>
     </>

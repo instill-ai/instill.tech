@@ -3,7 +3,7 @@ import * as classNames from "classnames";
 import { RightArrowIcon } from "../icons/RightArrowIcon";
 import { ButtonBase } from "./ButtonBase";
 
-interface Props {
+export type ExploreMoreScrollButtonProps = {
   /** This function will scroll pageView to targetRef 
    * 
    *  @Example
@@ -18,9 +18,9 @@ interface Props {
   scrollHandler: () => void;
 
   styleName?: string;
-}
+};
 
-export const ExploreMoreScrollButton: FC<Props> = ({
+export const ExploreMoreScrollButton: FC<ExploreMoreScrollButtonProps> = ({
   styleName,
   scrollHandler,
 }) => {

@@ -26,10 +26,8 @@ const CareerOpenPositionsSection = dynamic(
   () => import("../../components/ui/CareerOpenPositionsSection")
 );
 
-const StayInTheLoopBlock = dynamic(() =>
-  import("../../components/ui/blocks/StayInTheLoopBlock").then(
-    (mod) => mod.StayInTheLoopBlock
-  )
+const StayInTheLoopSection = dynamic(() =>
+  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
 );
 
 interface Props {
@@ -134,9 +132,7 @@ const CareerPage: FC<Props> & {
           )}
         </div>
         <div className="flex" ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && (
-            <StayInTheLoopBlock styleName="px-4 md:px-0 max-w-[1440px] md:w-10/12 md:mx-auto mb-20" />
-          )}
+          {loadStayInTheLoop && <StayInTheLoopSection />}
         </div>
       </ContentContainer>
     </>

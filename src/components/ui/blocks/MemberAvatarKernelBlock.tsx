@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FC, forwardRef } from "react";
 import { MemberKernelSvg } from "../svgs/images/MemberKernelSvg";
 import * as classNames from "classnames";
-import { useWindowDimension } from "lib/utilities";
+import { useWindowDimension } from "@/lib/utilities";
 
 interface Props {
   id: string;
