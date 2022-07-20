@@ -7,26 +7,27 @@ import {
   useRef,
   useState,
 } from "react";
-import * as classNames from "classnames";
+import cn from "clsx";
 
-import { TMemberDetails } from "../../types/instill";
-import { MemberAvatarKernelBlock } from "./blocks/MemberAvatarKernelBlock";
-import { MemberIntroBlock } from "./blocks/MemberIntroBlock";
+import { TMemberDetails } from "../../../types/instill";
+import { MemberAvatarKernelBlock } from "../../ui/blocks/MemberAvatarKernelBlock";
+import { MemberIntroBlock } from "../../ui/blocks/MemberIntroBlock";
 import {
   ElementPosition,
   getElementPosition,
   useWindowDimension,
-} from "../../lib/utilities";
+} from "../../../lib/utilities";
 import { useRouter } from "next/router";
 
-interface Props {
-  /** <Tailwind config> */
-  styleName: string;
-
+export type OurMembersSectionProps = {
   members: TMemberDetails[];
-}
+  marginBottom?: string;
+};
 
-export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
+const OurMembersSection: FC<OurMembersSectionProps> = ({
+  members,
+  marginBottom,
+}) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
     useState<string>(null);
@@ -82,8 +83,6 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
 
     const targetPosition = getElementPosition(membersRef[refIndex].ref.current);
 
-    console.log(targetPosition.y, containerPosition.y, targetPosition.height);
-
     setTagetPosition(targetPosition);
   };
 
@@ -128,11 +127,10 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
 
   return (
     <div
-      className={classNames.default(
-        "flex flex-col px-4 pt-10 md:px-0",
-        styleName,
-        { "pb-4": !targerMember }
-      )}
+      className={cn("flex flex-col px-4 pt-10 md:px-0", {
+        "pb-4": !targerMember,
+        marginBottom,
+      })}
     >
       <div className="mb-10 flex flex-col">
         <h2 className="instill-text-h2 mb-5 text-instillGray05">Our Member</h2>
@@ -149,7 +147,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
       </div>
       <div
         ref={containerRef}
-        className={classNames.default(
+        className={cn(
           "relative flex flex-col md:grid md:grid-cols-5 md:gap-x-6 lg:grid-cols-3 lg:gap-x-10",
           { "mb-2.5": targerMember }
         )}
@@ -177,7 +175,7 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
           </div>
         </div>
         <div
-          className={classNames.default(
+          className={cn(
             "absolute w-full md:static md:col-span-2 md:flex lg:col-span-1",
             {
               "invisible md:visible": !targerMember,
@@ -225,3 +223,5 @@ export const OurMembersSection: FC<Props> = ({ members, styleName }) => {
     </div>
   );
 };
+
+export default OurMembersSection;
