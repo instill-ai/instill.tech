@@ -21,10 +21,8 @@ const SecureYourSpotSection = dynamic(() =>
   )
 );
 
-const FeatureBlockGroup = dynamic(() =>
-  import("../components/ui/groups/FeatureBlockGroup").then(
-    (mod) => mod.FeatureBlockGroup
-  )
+const FeatureSection = dynamic(() =>
+  import("@/components/sections/").then((mod) => mod.FeatureSection)
 );
 
 interface Props {}
@@ -65,7 +63,7 @@ const HomePage: FC<Props> & {
           </div>
         </ContentContainer>
 
-        <FeatureBlockGroup styleName="md:pt-10" />
+        <FeatureSection />
         <InstillCloudSection />
 
         <ContentContainer

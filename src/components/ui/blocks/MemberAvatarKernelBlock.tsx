@@ -17,7 +17,6 @@ interface Props {
   /** Every avatar's default will be covered by kernel, this props will turn kernel's opacity to 0 */
   openKernel: boolean;
 }
-
 export const MemberAvatarKernelBlock = forwardRef<HTMLDivElement, Props>(
   (
     {

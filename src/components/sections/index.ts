@@ -7,6 +7,7 @@ import HeroSection from "./HeroSection";
 import type { HeroSectionProps } from "./HeroSection";
 import StayInTheLoopSection from "./StayInTheLoopSection";
 import type { StayInTheLoopSectionProps } from "./StayInTheLoopSection";
+import FeatureSection from "./FeatureSection";
 
 export {
   SecureYourSpotSection,
@@ -14,6 +15,7 @@ export {
   InstillCloudSection,
   HeroSection,
   StayInTheLoopSection,
+  FeatureSection,
 };
 export type {
   SecureYourSpotSectionProps,
