@@ -8,6 +8,8 @@ import type { HeroSectionProps } from "./HeroSection";
 import StayInTheLoopSection from "./StayInTheLoopSection";
 import type { StayInTheLoopSectionProps } from "./StayInTheLoopSection";
 import FeatureSection from "./FeatureSection";
+import CareerPositionDetailsSection from "./CareerPositionDetailsSection";
+import type { CareerPositionDetailsSectionProps } from "./CareerPositionDetailsSection";
 
 export {
   SecureYourSpotSection,
@@ -16,10 +18,12 @@ export {
   HeroSection,
   StayInTheLoopSection,
   FeatureSection,
+  CareerPositionDetailsSection,
 };
 export type {
   SecureYourSpotSectionProps,
   OurMembersSectionProps,
   HeroSectionProps,
   StayInTheLoopSectionProps,
+  CareerPositionDetailsSectionProps,
 };

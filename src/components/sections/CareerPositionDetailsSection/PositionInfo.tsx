@@ -1,24 +1,20 @@
 import { FC } from "react";
 import { TPositionDetails } from "../../../types/instill";
-import { LocationIcon } from "../icons/LocationIcon";
-import { RightArrowIcon } from "../icons/RightArrowIcon";
-import { WorkTypeIcon } from "../icons/WorkTypeIcon";
+import { LocationIcon } from "../../ui/icons/LocationIcon";
+import { RightArrowIcon } from "../../ui/icons/RightArrowIcon";
+import { WorkTypeIcon } from "../../ui/icons/WorkTypeIcon";
 import * as classNames from "classnames";
-import { ShareThisRoleBlock } from "./ShareThisRoleBlock";
+import { ShareThisRoleBlock } from "../../ui/blocks/ShareThisRoleBlock";
 
-interface Props {
-  /** <Tailwind config> - width and position */
-  styleName?: string;
-
+export type PositionInfoProps = {
   position: TPositionDetails;
-}
+  padding?: string;
+  width?: string;
+};
 
-export const CareerPostionDetailsBlock: FC<Props> = ({
-  position,
-  styleName,
-}) => {
+const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
   return (
-    <div className={classNames.default("flex flex-col", styleName)}>
+    <div className={classNames.default("flex flex-col", padding, width)}>
       <h2 className="instill-text-h2 mb-10 text-instillGray05">
         {position.name}
       </h2>
@@ -58,3 +54,5 @@ export const CareerPostionDetailsBlock: FC<Props> = ({
     </div>
   );
 };
+
+export default PositionInfo;

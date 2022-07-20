@@ -4,8 +4,8 @@ import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
-import { CareerPositionDescriptionBlock } from "../../components/ui/blocks/CareerPositionDescriptionBlock";
-import { CareerPostionDetailsBlock } from "../../components/ui/blocks/CareerPostionDetailsBlock";
+import { CareerPositionDetailsSection } from "@/components/sections";
+
 import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
 import {
   getClickUpTaskQuery,
@@ -22,14 +22,6 @@ import { sendAmplitudeData } from "../../lib/amplitude";
 const StayInTheLoopSection = dynamic(() =>
   import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
 );
-
-interface Props {
-  position: TPositionDetails;
-}
-
-interface GetLayOutProps {
-  page: ReactElement;
-}
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let tasks: IClickUpTask[];
@@ -88,7 +80,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const CareerPositionPage: FC<Props> & {
+export type CareerPositionPageProps = {
+  position: TPositionDetails;
+};
+
+type GetLayOutProps = {
+  page: ReactElement;
+};
+
+const CareerPositionPage: FC<CareerPositionPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ position }) => {
   const router = useRouter();
@@ -134,16 +134,11 @@ const CareerPositionPage: FC<Props> & {
           <BackToPreviousPageLink url="/career" />
         </div>
 
-        <div className="mb-[100px] flex flex-col gap-y-20 md:flex-row md:gap-y-0 md:gap-x-6">
-          <CareerPostionDetailsBlock
-            styleName="px-4 md:px-0 md:w-4/12"
-            position={position}
-          />
-          <CareerPositionDescriptionBlock
-            styleName="px-4 md:px-10 md:w-8/12"
-            description={position.description}
-          />
-        </div>
+        <CareerPositionDetailsSection
+          position={position}
+          marginBottom="mb-[100px]"
+        />
+
         <div className="mb-20 flex" ref={stayInTheLoopRef}>
           {loadStayInTheLoop && <StayInTheLoopSection />}
         </div>

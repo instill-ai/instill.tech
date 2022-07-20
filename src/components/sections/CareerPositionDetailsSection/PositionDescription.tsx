@@ -1,22 +1,21 @@
 import { FC } from "react";
 import { ReactMDWrapper } from "../../ReactMDWrapper";
-import * as classNames from "classnames";
-import { ApplyPositionButton } from "../buttons/ApplyPositionButton";
+import { ApplyPositionButton } from "../../ui/buttons/ApplyPositionButton";
+import cn from "clsx";
 
-interface Props {
-  /** <Markdown formate> */
+export type PositionDescriptionProps = {
   description: string;
+  padding?: string;
+  width?: string;
+};
 
-  /** <Tailwind formate> */
-  styleName?: string;
-}
-
-export const CareerPositionDescriptionBlock: FC<Props> = ({
+export const PositionDescription: FC<PositionDescriptionProps> = ({
   description,
-  styleName,
+  padding,
+  width,
 }) => {
   return (
-    <div className={classNames.default("bg-instillGray05 p-10", styleName)}>
+    <div className={cn("bg-instillGray05 p-10", padding, width)}>
       <style jsx global>
         {`
           .career-position-description > ul {
@@ -33,3 +32,5 @@ export const CareerPositionDescriptionBlock: FC<Props> = ({
     </div>
   );
 };
+
+export default PositionDescription;
