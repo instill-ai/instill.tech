@@ -5,7 +5,7 @@ import * as classNames from "classnames";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 
 interface Props {
-  /** Color and width - tailwindCSS based, default: w-4 text-instillGray30 */
+  /** Color and width - tailwindCSS based, default: w-4 text-instillGrey30 */
   iconStyle?: string;
 }
 
@@ -14,7 +14,7 @@ export const MediumLink: FC<Props> = ({ iconStyle }) => {
     sendAmplitudeData("to_medium", { type: "navigation" });
   }, []);
 
-  const style = iconStyle ? iconStyle : "w-4 text-instillGray30";
+  const style = iconStyle ? iconStyle : "w-4 text-instillGrey30";
   return (
     <LinkBase
       styleName={classNames.default("flex")}

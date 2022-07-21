@@ -11,7 +11,7 @@ interface Props {
 export const BlogLink: FC<Props> = ({ styleName }) => {
   const style = styleName
     ? styleName
-    : "instill-text-body text-instillGray30 hover:text-instillGray05";
+    : "instill-text-body text-instillGrey30 hover:text-instillGrey05";
 
   const handleClick = useCallback(() => {
     sendAmplitudeData("to_blog", { type: "navigation" });

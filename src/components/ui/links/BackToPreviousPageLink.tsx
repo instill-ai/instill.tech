@@ -16,8 +16,8 @@ export const BackToPreviousPageLink: FC<Props> = ({ styleName, url }) => {
       href={url}
       styleName={classNames.default("flex flex-row gap-x-5 group", styleName)}
     >
-      <LeftArrowIcon styleName="my-auto w-[15px] h-[15px] text-instillGray30 group-hover:text-instillGray05" />
-      <p className="instill-text-body text-instillGray30 group-hover:text-instillGray05">
+      <LeftArrowIcon styleName="my-auto w-[15px] h-[15px] text-instillGrey30 group-hover:text-instillGrey05" />
+      <p className="instill-text-body text-instillGrey30 group-hover:text-instillGrey05">
         Back
       </p>
     </LinkBase>

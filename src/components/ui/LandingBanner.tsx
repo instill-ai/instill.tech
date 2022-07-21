@@ -54,10 +54,10 @@ export const LandingBanner: FC<Props> = () => {
             className="flex h-full max-w-[456px] flex-col justify-center gap-y-5 pt-5 pb-5 pr-5"
           >
             <div>{copy.icon}</div>
-            <h2 className="font-instill text-xl text-instillGray05 tall:text-4xl short:text-2xl">
+            <h2 className="font-instill text-xl text-instillGrey05 tall:text-4xl short:text-2xl">
               {copy.title}
             </h2>
-            <p className="instill-text-body text-instillGray05">
+            <p className="instill-text-body text-instillGrey05">
               {copy.description}
             </p>
           </div>

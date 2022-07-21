@@ -5,7 +5,6 @@ import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
 import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
-import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
@@ -14,6 +13,7 @@ import { AnnouncementBar } from "./AnnouncementBar";
 import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 import { Logo } from "@instill-ai/design-system";
+import { GetEarlyAccessButton } from "../buttons";
 
 interface Props {}
 
@@ -43,11 +43,11 @@ export const NavBar: FC<Props> = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-instillGrey95 lg:sticky lg:top-0 lg:z-50"
     >
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="text-instillGray95">
+          <p className="text-instillGrey95">
             Got five minutes? Participate our Data + Vision AI survey
             2022.&nbsp;
             <a
@@ -79,7 +79,7 @@ export const NavBar: FC<Props> = () => {
         <div
           className={classNames.default(
             "flex h-full w-full flex-col lg:hidden",
-            open ? "fixed top-0 left-0 z-50 bg-instillGray95" : ""
+            open ? "fixed top-0 left-0 z-50 bg-instillGrey95" : ""
           )}
         >
           <div className="flex w-full flex-row p-4 lg:mb-[60px]">
@@ -87,19 +87,19 @@ export const NavBar: FC<Props> = () => {
               <Logo type="ColourLogomarkWhiteType" width={159} />
             </LinkBase>
             <button
-              className="ml-auto rounded-[3px] hover:bg-instillGray30 hover:bg-opacity-10"
+              className="ml-auto rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
               onClick={() => setOpen(!open)}
             >
               {open ? (
-                <CrossIcon styleName="w-10 text-instillGray05" />
+                <CrossIcon styleName="w-10 text-instillGrey05" />
               ) : (
-                <MenuIcon styleName="w-10 text-instillGray05" />
+                <MenuIcon styleName="w-10 text-instillGrey05" />
               )}
             </button>
           </div>
           <div className="relative w-full">
             {open && (
-              <div className="absolute top-0 left-0 flex w-full flex-col gap-y-[50px] bg-instillGray95 py-[50px] px-4">
+              <div className="absolute top-0 left-0 flex w-full flex-col gap-y-[50px] bg-instillGrey95 py-[50px] px-4">
                 {navbarLinkGroup}
               </div>
             )}

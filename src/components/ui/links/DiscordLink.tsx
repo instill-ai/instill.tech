@@ -5,12 +5,12 @@ import * as classNames from "classnames";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 
 interface Props {
-  /** Color and width - tailwindCSS based, default: w-4 text-instillGray30 */
+  /** Color and width - tailwindCSS based, default: w-4 text-instillGrey30 */
   iconStyle?: string;
 }
 
 export const DiscordLink: FC<Props> = ({ iconStyle }) => {
-  const style = iconStyle ? iconStyle : "w-4 text-instillGray30";
+  const style = iconStyle ? iconStyle : "w-4 text-instillGrey30";
 
   const handleClick = useCallback(() => {
     sendAmplitudeData("join_discord", { type: "navigation" });

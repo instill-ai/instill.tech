@@ -61,7 +61,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
     let textColor: string;
     let bgColor: string;
-    const defaultTextColor = "text-instillGray05";
+    const defaultTextColor = "text-instillGrey05";
     const defaultFont = "font-mono";
     const defaultFontSize = "instill-text-small";
 
@@ -109,7 +109,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
               <div>
                 <span className={defaultTextColor}>{`"category": `}</span>
                 <span className={defaultTextColor}>{`"`}</span>
-                <span className={m ? textColor : "text-instillGray30"}>
+                <span className={m ? textColor : "text-instillGrey30"}>
                   {`${title}`}
                 </span>
                 <span className={defaultTextColor}>{`"`}</span>
@@ -119,7 +119,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             <pre className="whitespace-pre-wrap break-all">
               <div>
                 <span className={defaultTextColor}>{`"score": `}</span>
-                <span className={m ? textColor : "text-instillGray30"}>
+                <span className={m ? textColor : "text-instillGrey30"}>
                   {m
                     ? `${(Math.random() * (0.999 - 0.95) + 0.95).toFixed(3)}`
                     : "--"}
@@ -272,7 +272,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                 <span className={textColor}>{m.linkedinLink}</span>
               )
             ) : (
-              <span className="text-instillGray30">{`N/A`}</span>
+              <span className="text-instillGrey30">{`N/A`}</span>
             )}
             <span className={defaultTextColor}>
               {`"`}
@@ -304,7 +304,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                 <span className={textColor}>{m.githubLink}</span>
               )
             ) : (
-              <span className="text-instillGray30">{`N/A`}</span>
+              <span className="text-instillGrey30">{`N/A`}</span>
             )}
             <span className={defaultTextColor}>
               {`"`}
@@ -356,7 +356,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       <div
         ref={ref}
         className={classNames.default(
-          "flex w-full flex-col border-2 border-instillGray95",
+          "flex w-full flex-col border-2 border-instillGrey95",
           styleName
         )}
       >
@@ -364,18 +364,18 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
           <div
             className={classNames.default(
               "flex flex-row px-5 py-2.5",
-              member ? bgColor : "bg-instillGray30"
+              member ? bgColor : "bg-instillGrey30"
             )}
           >
-            <div className="text-instill-body mr-auto text-instillGray95">
+            <div className="text-instill-body mr-auto text-instillGrey95">
               Detection result
             </div>
             <button className="ml-auto" onClick={onCancelHandler}>
-              <CrossIcon styleName="w-6 h-6 text-instillGray95" />
+              <CrossIcon styleName="w-6 h-6 text-instillGrey95" />
             </button>
           </div>
 
-          <div className="border-t-2 border-instillGray95">
+          <div className="border-t-2 border-instillGrey95">
             {member ? (
               getAvatar(member)
             ) : (
@@ -385,7 +385,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
           <div
             className={classNames.default(
-              "flex flex-col bg-instillGray95 p-5",
+              "flex flex-col bg-instillGrey95 p-5",
               defaultFont,
               defaultFontSize
             )}

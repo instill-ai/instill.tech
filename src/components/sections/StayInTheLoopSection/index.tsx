@@ -17,8 +17,8 @@ const StayInTheLoopSection: FC<StayInTheLoopSectionProps> = ({
       )}
     >
       <div className="flex flex-col sm:mr-auto">
-        <h3 className="instill-text-h3 text-instillGray05">Stay in the Loop</h3>
-        <p className="instill-text-body text-instillGray05">
+        <h3 className="instill-text-h3 text-instillGrey05">Stay in the Loop</h3>
+        <p className="instill-text-body text-instillGrey05">
           Join our mailing list for the latest news and updates.
         </p>
       </div>

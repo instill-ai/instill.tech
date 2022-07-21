@@ -50,12 +50,12 @@ const NewsletterArchivePage: FC<Props> & {
         pageTitle="Newsletter Archive | Instill AI"
         pageDescription="Instill AI newsletter archive"
       />
-      <div className="flex w-full flex-col bg-instillGray95 lg:pt-20">
+      <div className="flex w-full flex-col bg-instillGrey95 lg:pt-20">
         <NewsletterArchiveHeader />
         <div className="flex max-w-[1440px] flex-col px-5 md:px-0 max:mx-auto max:w-10/12">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="mx-auto mb-[60px] w-full max-w-[800px] border-t border-b border-instillGray70 py-2.5 text-instillGray15">
+              <div className="mx-auto mb-[60px] w-full max-w-[800px] border-t border-b border-instillGrey70 py-2.5 text-instillGrey15">
                 {`Issued on ${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")

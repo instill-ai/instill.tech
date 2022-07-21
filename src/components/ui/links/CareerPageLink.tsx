@@ -17,12 +17,12 @@ export const CareerPageLink: FC<Props> = ({ styleName, hiring }) => {
       styleName={classNames.default("flex group", styleName)}
     >
       <div className="flex flex-row gap-x-[5px] py-1.5">
-        <p className="my-auto text-instillGray30 group-hover:text-instillGray05">
+        <p className="my-auto text-instillGrey30 group-hover:text-instillGrey05">
           Career
         </p>
         {hiring && (
           <div>
-            <p className="rounded-full border border-instillYellow px-2.5 py-[2px] font-mono text-[10px] font-normal leading-[14px] text-instillGray30 group-hover:text-instillYellow">
+            <p className="rounded-full border border-instillYellow px-2.5 py-[2px] font-mono text-[10px] font-normal leading-[14px] text-instillGrey30 group-hover:text-instillYellow">
               hiring
             </p>
           </div>

@@ -24,7 +24,7 @@ export const ShareToTwitterLink: FC<Props> = ({ url, styleName, text }) => {
           : `https://twitter.com/share?url=${url}`
       }
     >
-      <TwitterIcon styleName="w-[15px] h-[15px] text-instillGray30 hover:text-instillGray05" />
+      <TwitterIcon styleName="w-[15px] h-[15px] text-instillGrey30 hover:text-instillGrey05" />
     </LinkBase>
   );
 };

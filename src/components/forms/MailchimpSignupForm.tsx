@@ -5,8 +5,8 @@ interface Props {}
 
 export const MailchimpSignupForm: FC<Props> = () => {
   const inputStyle =
-    "flex-grow text-instillGray95 border border-instillGray50 py-1 px-2 max-h-[36px]";
-  const fieldTitleStyle = "instill-text-body text-instillGray95";
+    "flex-grow text-instillGrey95 border border-instillGrey50 py-1 px-2 max-h-[36px]";
+  const fieldTitleStyle = "instill-text-body text-instillGrey95";
 
   useEffect(() => {
     const mailchimpScript = document.createElement("script");
@@ -194,7 +194,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               type="submit"
               value="Submit"
               name="subscribe"
-              className="button flex-grow cursor-pointer bg-instillBlue30 py-3 text-base text-instillGray05 hover:bg-[#236698]"
+              className="button flex-grow cursor-pointer bg-instillBlue50 py-3 text-base text-instillGrey05 hover:bg-[#236698]"
             />
           </div>
         </div>

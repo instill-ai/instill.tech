@@ -19,7 +19,7 @@ export const AnnouncementBar: FC<Props> = ({ children }) => {
         data-testid="close-announcement-bar"
         className="my-auto flex hover:cursor-pointer hover:bg-[#FFED8F]"
       >
-        <CrossIcon styleName="my-auto w-5 h-5 text-instillGray95" />
+        <CrossIcon styleName="my-auto w-5 h-5 text-instillGrey95" />
       </div>
     </div>
   );

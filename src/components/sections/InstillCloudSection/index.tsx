@@ -6491,21 +6491,21 @@ const InstillCloudSection: FC = () => {
           </defs>
         </svg>
         <InstillCloudBanner styleName="w-full md:hidden" />
-        <div className="z-30 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
-          <p className="instill-text-body mb-5 text-center text-instillBlue30">
+        <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey95 p-10 md:mx-auto md:w-10/12">
+          <p className="instill-text-body mb-5 text-center text-instillBlue50">
             INSTILL CLOUD
           </p>
-          <h2 className="instill-text-h2 mb-10 text-center text-instillGray05">
+          <h2 className="instill-text-h2 mb-10 text-center text-instillGrey05">
             Visual Data Preparation without Managing Infrastructure
           </h2>
-          <p className="instill-text-body text-center text-instillGray05 md:px-28">
+          <p className="instill-text-body text-center text-instillGrey05 md:px-28">
             Instill Cloud provides production-ready visual data preparation
             services — hustle-free setup and Vision AI model serving with
             ready-to-use and custom models. We help you save your time and you
             focus on the core business.
           </p>
         </div>
-        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGray95" />
+        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGrey95" />
       </div>
     </div>
   );

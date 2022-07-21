@@ -1,14 +1,14 @@
 import { FC } from "react";
 import cn from "clsx";
-import {
-  ExploreMoreScrollButton,
-  ExploreMoreScrollButtonProps,
-} from "@/components/ui/buttons/ExploreMoreScrollButton";
 import { Headline } from "@/components/ui/Headline";
 import { SubHeadline } from "@/components/ui/SubHeadline";
 import { HeroAnimationSvg } from "@/components/ui/svgs/animations/HeroAnimationSvg";
-import { GetEarlyAccessButton } from "@/components/ui/buttons/GetEarlyAccessButton";
-import { JoinDiscordButton } from "@/components/ui/buttons/JoinDiscordButton";
+import {
+  ExploreMoreScrollButton,
+  ExploreMoreScrollButtonProps,
+  GetEarlyAccessButton,
+  JoinDiscordButton,
+} from "@/components/ui/buttons";
 
 export type HeroSectionProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
