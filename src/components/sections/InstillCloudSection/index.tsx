@@ -6492,7 +6492,7 @@ const InstillCloudSection: FC = () => {
         </svg>
         <InstillCloudBanner styleName="w-full md:hidden" />
         <div className="z-30 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
-          <p className="instill-text-body mb-5 text-center text-instillBlue30">
+          <p className="instill-text-body mb-5 text-center text-instillBlue50">
             INSTILL CLOUD
           </p>
           <h2 className="instill-text-h2 mb-10 text-center text-instillGray05">

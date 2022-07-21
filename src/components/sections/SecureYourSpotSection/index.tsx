@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cn from "clsx";
-import { GetEarlyAccessButton } from "../../ui/buttons/GetEarlyAccessButton";
 import { AlphaBadgeSvg } from "../../ui/svgs/AlphaBadgeSvg";
+import { GetEarlyAccessButton } from "@/components/ui/buttons";
 
 export type SecureYourSpotSectionProps = {
   /** Layout
@@ -68,9 +68,9 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
             </p>
           </div>
         </div>
-        {layout === "compact" && <GetEarlyAccessButton styleName="mr-auto" />}
+        {layout === "compact" && <GetEarlyAccessButton position="mr-auto" />}
       </div>
-      {layout === "main" && <GetEarlyAccessButton styleName="mx-auto" />}
+      {layout === "main" && <GetEarlyAccessButton position="mx-auto" />}
     </div>
   );
 };

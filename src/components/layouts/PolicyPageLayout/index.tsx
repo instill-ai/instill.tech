@@ -19,7 +19,7 @@ const PolicyPageLayout: FC<PolicyPageLayoutProps> = ({ content }) => {
               We&apos;re happy to hear from you. Get in touch at
             </p>
             <a
-              className="flex text-instillBlue30"
+              className="flex text-instillBlue50"
               href="mailto:hello@instill.tech"
             >
               hello@instill.tech

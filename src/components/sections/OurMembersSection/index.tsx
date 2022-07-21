@@ -137,7 +137,7 @@ const OurMembersSection: FC<OurMembersSectionProps> = ({
         <h3 className="instill-text-body text-instillGray05">
           Click on the feature map to reveal the member&#39;s information, or
           <span
-            className="cursor-pointer text-instillBlue30"
+            className="cursor-pointer text-instillBlue50"
             onClick={handleKernel}
           >
             &nbsp;Click Here&nbsp;
