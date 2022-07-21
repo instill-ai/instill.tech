@@ -5,7 +5,6 @@ import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
 import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
-import { GetEarlyAccessButton } from "../buttons/GetEarlyAccessButton";
 import * as classNames from "classnames";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
@@ -14,6 +13,7 @@ import { AnnouncementBar } from "./AnnouncementBar";
 import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 import { Logo } from "@instill-ai/design-system";
+import { GetEarlyAccessButton } from "../buttons";
 
 interface Props {}
 
