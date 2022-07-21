@@ -10,7 +10,7 @@ interface Props {}
 
 export const Footer: FC<Props> = () => {
   return (
-    <div className="flex w-full bg-instillGray95">
+    <div className="flex w-full bg-instillGrey95">
       <div className="mt-auto flex w-full max-w-[1440px] flex-col py-5 px-4 md:mx-auto max:w-10/12 max:px-0">
         <SimpleHorizontalLine styleName="mb-5 border-instillGray70" />
         <div className="flex flex-col gap-y-[60px] sm:gap-y-10">

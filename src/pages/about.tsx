@@ -89,10 +89,10 @@ const AboutPage: FC<Props> & {
           </div>
           <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6">
             <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
-              <h2 className="instill-text-h2 mb-1 text-instillGray95">
+              <h2 className="instill-text-h2 mb-1 text-instillGrey95">
                 Our Company
               </h2>
-              <p className="instill-text-body text-instillGray95">
+              <p className="instill-text-body text-instillGrey95">
                 Instill AI, founded in 2020 (June 11th 2020, to be more
                 specific), provides no-/low-code tools to convert unstructured
                 visual data to meaningful structured representations. Users can
@@ -100,7 +100,7 @@ const AboutPage: FC<Props> & {
                 into the wealth of their visual data and benefit from Vision AI
                 in a snap.
               </p>
-              <p className="instill-text-body text-instillGray95">
+              <p className="instill-text-body text-instillGrey95">
                 We are a small and ambitious team of passionate
                 engineers/researchers sharing an unconventional culture fused by
                 DevOps, MLOps and academic research lab. We are hands-on and
@@ -109,22 +109,22 @@ const AboutPage: FC<Props> & {
               </p>
             </div>
             <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
-              <h2 className="instill-text-h2 text-instillGray95">Our Value</h2>
+              <h2 className="instill-text-h2 text-instillGrey95">Our Value</h2>
               <div className="flex flex-col">
-                <h3 className="instill-text-h3 text-instillGray95">
+                <h3 className="instill-text-h3 text-instillGrey95">
                   User obsession
                 </h3>
-                <p className="instill-text-body text-instillGray95">
+                <p className="instill-text-body text-instillGrey95">
                   We succeed only when our users succeed. Learning what can
                   really help our users and delivering the value they need will
                   always be Instill&#39;s highest interest.
                 </p>
               </div>
               <div className="flex flex-col">
-                <h3 className="instill-text-h3 text-instillGray95">
+                <h3 className="instill-text-h3 text-instillGrey95">
                   High-performing company with shared values
                 </h3>
-                <p className="instill-text-body text-instillGray95">
+                <p className="instill-text-body text-instillGrey95">
                   We always deliver more than expected. To achieve that, we are
                   the optimisers obsessively chasing intrinsic efficiency and
                   effectiveness.

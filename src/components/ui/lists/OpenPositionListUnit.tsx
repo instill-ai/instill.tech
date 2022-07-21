@@ -48,8 +48,8 @@ export const OpenPositionListUnit: FC<Props> = ({
         )}
       >
         <div className="flex flex-col px-4 py-5 md:p-0">
-          <h3 className="instill-text-h3 text-instillGray95">{name}</h3>
-          <p className="instill-text-body text-instillGray95">
+          <h3 className="instill-text-h3 text-instillGrey95">{name}</h3>
+          <p className="instill-text-body text-instillGrey95">
             {unitIsPlaceholder
               ? "If you're interested in joining us, but don't tick every box, we still encourage you to apply!"
               : `Posted ${daysAgo} days ago`}

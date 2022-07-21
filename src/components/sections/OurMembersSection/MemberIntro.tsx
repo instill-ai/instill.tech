@@ -356,7 +356,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       <div
         ref={ref}
         className={classNames.default(
-          "flex w-full flex-col border-2 border-instillGray95",
+          "flex w-full flex-col border-2 border-instillGrey95",
           styleName
         )}
       >
@@ -367,15 +367,15 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
               member ? bgColor : "bg-instillGray30"
             )}
           >
-            <div className="text-instill-body mr-auto text-instillGray95">
+            <div className="text-instill-body mr-auto text-instillGrey95">
               Detection result
             </div>
             <button className="ml-auto" onClick={onCancelHandler}>
-              <CrossIcon styleName="w-6 h-6 text-instillGray95" />
+              <CrossIcon styleName="w-6 h-6 text-instillGrey95" />
             </button>
           </div>
 
-          <div className="border-t-2 border-instillGray95">
+          <div className="border-t-2 border-instillGrey95">
             {member ? (
               getAvatar(member)
             ) : (
@@ -385,7 +385,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
           <div
             className={classNames.default(
-              "flex flex-col bg-instillGray95 p-5",
+              "flex flex-col bg-instillGrey95 p-5",
               defaultFont,
               defaultFontSize
             )}

@@ -27,7 +27,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
         "flex flex-col rounded-[1px] px-10",
         marginBottom,
         layout === "main" ? "py-[100px]" : "py-10",
-        bgColor === "black" ? "bg-instillGray95" : "bg-white"
+        bgColor === "black" ? "bg-instillGrey95" : "bg-white"
       )}
     >
       <div
@@ -50,7 +50,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
                 "instill-text-h3 mb-2.5",
                 bgColor === "black"
                   ? "text-instillGray05"
-                  : "text-instillGray95"
+                  : "text-instillGrey95"
               )}
             >
               Secure Your Spot
@@ -60,7 +60,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
                 "instill-text-body",
                 bgColor === "black"
                   ? "text-instillGray05"
-                  : "text-instillGray95"
+                  : "text-instillGrey95"
               )}
             >
               We&#39;re now in private alpha. Join and see first-hand how

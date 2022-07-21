@@ -6491,7 +6491,7 @@ const InstillCloudSection: FC = () => {
           </defs>
         </svg>
         <InstillCloudBanner styleName="w-full md:hidden" />
-        <div className="z-30 flex max-w-[889px] flex-col bg-instillGray95 p-10 md:mx-auto md:w-10/12">
+        <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey95 p-10 md:mx-auto md:w-10/12">
           <p className="instill-text-body mb-5 text-center text-instillBlue50">
             INSTILL CLOUD
           </p>
@@ -6505,7 +6505,7 @@ const InstillCloudSection: FC = () => {
             focus on the core business.
           </p>
         </div>
-        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGray95" />
+        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGrey95" />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export type PolicyPageLayoutProps = {
 
 const PolicyPageLayout: FC<PolicyPageLayoutProps> = ({ content }) => {
   return (
-    <div className="flex w-full bg-instillGray95">
+    <div className="flex w-full bg-instillGrey95">
       <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">
         <ReactMDWrapper
           styleName="prose-white mx-5 md:mx-0 mt-[180px] mb-[60px] md:col-span-2"

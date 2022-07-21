@@ -21,8 +21,8 @@ const FeatureItem: FC<FeatureItemProps> = ({
   const copyItem = (
     <div className="my-auto flex h-full w-full flex-col">
       <p className="instill-text-body mb-1 text-instillBlue50">{label}</p>
-      <h2 className="instill-text-h2 mb-[30px] text-instillGray95">{title}</h2>
-      <p className="instill-text-body text-instillGray95">{description}</p>
+      <h2 className="instill-text-h2 mb-[30px] text-instillGrey95">{title}</h2>
+      <p className="instill-text-body text-instillGrey95">{description}</p>
     </div>
   );
 

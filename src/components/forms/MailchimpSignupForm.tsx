@@ -5,8 +5,8 @@ interface Props {}
 
 export const MailchimpSignupForm: FC<Props> = () => {
   const inputStyle =
-    "flex-grow text-instillGray95 border border-instillGray50 py-1 px-2 max-h-[36px]";
-  const fieldTitleStyle = "instill-text-body text-instillGray95";
+    "flex-grow text-instillGrey95 border border-instillGray50 py-1 px-2 max-h-[36px]";
+  const fieldTitleStyle = "instill-text-body text-instillGrey95";
 
   useEffect(() => {
     const mailchimpScript = document.createElement("script");

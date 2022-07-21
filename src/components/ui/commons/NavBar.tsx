@@ -43,11 +43,11 @@ export const NavBar: FC<Props> = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-instillGray95 lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-instillGrey95 lg:sticky lg:top-0 lg:z-50"
     >
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="text-instillGray95">
+          <p className="text-instillGrey95">
             Got five minutes? Participate our Data + Vision AI survey
             2022.&nbsp;
             <a
@@ -79,7 +79,7 @@ export const NavBar: FC<Props> = () => {
         <div
           className={classNames.default(
             "flex h-full w-full flex-col lg:hidden",
-            open ? "fixed top-0 left-0 z-50 bg-instillGray95" : ""
+            open ? "fixed top-0 left-0 z-50 bg-instillGrey95" : ""
           )}
         >
           <div className="flex w-full flex-row p-4 lg:mb-[60px]">
@@ -99,7 +99,7 @@ export const NavBar: FC<Props> = () => {
           </div>
           <div className="relative w-full">
             {open && (
-              <div className="absolute top-0 left-0 flex w-full flex-col gap-y-[50px] bg-instillGray95 py-[50px] px-4">
+              <div className="absolute top-0 left-0 flex w-full flex-col gap-y-[50px] bg-instillGrey95 py-[50px] px-4">
                 {navbarLinkGroup}
               </div>
             )}
