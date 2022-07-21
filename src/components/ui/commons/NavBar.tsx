@@ -87,13 +87,13 @@ export const NavBar: FC<Props> = () => {
               <Logo type="ColourLogomarkWhiteType" width={159} />
             </LinkBase>
             <button
-              className="ml-auto rounded-[3px] hover:bg-instillGray30 hover:bg-opacity-10"
+              className="ml-auto rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
               onClick={() => setOpen(!open)}
             >
               {open ? (
-                <CrossIcon styleName="w-10 text-instillGray05" />
+                <CrossIcon styleName="w-10 text-instillGrey05" />
               ) : (
-                <MenuIcon styleName="w-10 text-instillGray05" />
+                <MenuIcon styleName="w-10 text-instillGrey05" />
               )}
             </button>
           </div>

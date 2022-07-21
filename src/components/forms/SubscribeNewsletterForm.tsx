@@ -53,13 +53,13 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
     <form onSubmit={subscribe} className={styleName}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="mb-1.5 flex flex-row justify-end gap-x-2.5 border border-instillGray05">
+          <div className="mb-1.5 flex flex-row justify-end gap-x-2.5 border border-instillGrey05">
             <input
               aria-label="Email for newsletter"
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGray15"
+              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGrey15"
             />
             <SubscribeEmailButton styleName="instill-text-body" />
           </div>
@@ -67,7 +67,7 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
             <p
               className={classNames.default(
                 "instill-text-small",
-                warn ? "text-instill_red" : "text-instillGray05"
+                warn ? "text-instill_red" : "text-instillGrey05"
               )}
             >
               {message}

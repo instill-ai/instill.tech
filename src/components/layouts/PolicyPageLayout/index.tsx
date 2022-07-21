@@ -15,7 +15,7 @@ const PolicyPageLayout: FC<PolicyPageLayoutProps> = ({ content }) => {
         />
         <div className="relative md:col-span-1 md:mt-[180px]">
           <div className="mb-40 flex flex-col gap-y-2 px-4 pt-40 md:sticky md:top-0 md:mb-0 md:px-16">
-            <p className="text-instillGray05">
+            <p className="text-instillGrey05">
               We&apos;re happy to hear from you. Get in touch at
             </p>
             <a

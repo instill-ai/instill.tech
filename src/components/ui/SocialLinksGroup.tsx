@@ -19,7 +19,7 @@ interface Props {
 
 export const SocialLinksGroup: FC<Props> = ({ styleName }) => {
   const style =
-    "w-6 h-6 sm:w-4 sm:h-6 text-instillGray30 hover:text-instillGray05";
+    "w-6 h-6 sm:w-4 sm:h-6 text-instillGrey30 hover:text-instillGrey05";
   return (
     <div className={classNames.default("flex flex-row gap-x-5", styleName)}>
       <GithubIconLink iconStyle={style} />

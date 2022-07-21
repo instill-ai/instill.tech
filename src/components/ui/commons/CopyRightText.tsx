@@ -9,7 +9,7 @@ export const CopyRightText: FC<Props> = ({ styleName }) => {
   return (
     <div
       className={classNames.default(
-        "instill-text-body text-instillGray30",
+        "instill-text-body text-instillGrey30",
         styleName
       )}
     >

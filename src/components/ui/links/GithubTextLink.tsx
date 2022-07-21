@@ -4,14 +4,14 @@ import * as classNames from "classnames";
 import { sendAmplitudeData } from "../../../lib/amplitude";
 
 interface Props {
-  /** Color and width - tailwindCSS based, default: w-4 text-instillGray30 */
+  /** Color and width - tailwindCSS based, default: w-4 text-instillGrey30 */
   styleName?: string;
 }
 
 export const GithubTextLink: FC<Props> = ({ styleName }) => {
   const style = styleName
     ? styleName
-    : "instill-text-body text-instillGray30 hover:text-instillGray05";
+    : "instill-text-body text-instillGrey30 hover:text-instillGrey05";
 
   const handleClick = useCallback(() => {
     sendAmplitudeData("to_github", { type: "navigation" });

@@ -17,13 +17,13 @@ export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
     >
       <InstillAiBadge styleName="w-full md:w-[201px] md:h-[88.5px] lg:w-[402px] lg:h-[177px] flex-shrink-0" />
       <div className="flex flex-col gap-y-5">
-        <p className="instill-text-body text-instillGray05">
+        <p className="instill-text-body text-instillGrey05">
           We&#39;re looking for passionate and dedicated early members to build
           open-source and highest-quality products for solving a challenging
           issue in the modern data stack. You&#39;ll be joining the founding
           team to establish its strong foundation from the very beginning.
         </p>
-        <p className="instill-text-body text-instillGray05">
+        <p className="instill-text-body text-instillGrey05">
           This is a great opportunity for those who want to build their career
           with a fast-growing startup at zero to one stage. It is also a
           position for those who value learning for the long term above earning

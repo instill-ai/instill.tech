@@ -30,7 +30,7 @@
     @apply font-mono text-xs font-normal;
   }
   .instill-input-highlight {
-    @apply border border-instillGray70 focus:border-instillBlue focus:outline-none focus:ring-0 focus:ring-white;
+    @apply border border-instillGrey70 focus:border-instillBlue focus:outline-none focus:ring-0 focus:ring-white;
   }
 }
 

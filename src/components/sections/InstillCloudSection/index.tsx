@@ -6495,10 +6495,10 @@ const InstillCloudSection: FC = () => {
           <p className="instill-text-body mb-5 text-center text-instillBlue50">
             INSTILL CLOUD
           </p>
-          <h2 className="instill-text-h2 mb-10 text-center text-instillGray05">
+          <h2 className="instill-text-h2 mb-10 text-center text-instillGrey05">
             Visual Data Preparation without Managing Infrastructure
           </h2>
-          <p className="instill-text-body text-center text-instillGray05 md:px-28">
+          <p className="instill-text-body text-center text-instillGrey05 md:px-28">
             Instill Cloud provides production-ready visual data preparation
             services — hustle-free setup and Vision AI model serving with
             ready-to-use and custom models. We help you save your time and you

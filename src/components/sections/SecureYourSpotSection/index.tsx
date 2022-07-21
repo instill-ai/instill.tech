@@ -49,7 +49,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
               className={cn(
                 "instill-text-h3 mb-2.5",
                 bgColor === "black"
-                  ? "text-instillGray05"
+                  ? "text-instillGrey05"
                   : "text-instillGrey95"
               )}
             >
@@ -59,7 +59,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
               className={cn(
                 "instill-text-body",
                 bgColor === "black"
-                  ? "text-instillGray05"
+                  ? "text-instillGrey05"
                   : "text-instillGrey95"
               )}
             >

@@ -43,7 +43,7 @@ export const OpenPositionListUnit: FC<Props> = ({
     <LinkBase href={link} scroll={true}>
       <div
         className={classNames.default(
-          "flex flex-col hover:bg-instillGray05 md:grid md:grid-cols-2 md:px-5 md:py-5",
+          "flex flex-col hover:bg-instillGrey05 md:grid md:grid-cols-2 md:px-5 md:py-5",
           styleName
         )}
       >
@@ -58,14 +58,14 @@ export const OpenPositionListUnit: FC<Props> = ({
         <div className="flex w-full flex-row gap-x-4 px-4 py-5 md:gap-x-0 md:p-0">
           <div className="flex md:flex-1">
             <div className="m-auto flex flex-row gap-x-2.5 pr-5 md:pr-0">
-              <LocationIcon styleName="w-[24px] h-[24px] text-instillGray70" />
-              <p className="instill-text-body text-instillGray70">{location}</p>
+              <LocationIcon styleName="w-[24px] h-[24px] text-instillGrey70" />
+              <p className="instill-text-body text-instillGrey70">{location}</p>
             </div>
           </div>
           <div className="flex md:flex-1">
             <div className="m-auto flex flex-row gap-x-2.5 pr-5 md:pr-0">
-              <WorkTypeIcon styleName="w-[20px] h-[20px] text-instillGray70" />
-              <p className="instill-text-body text-instillGray70">{workType}</p>
+              <WorkTypeIcon styleName="w-[20px] h-[20px] text-instillGrey70" />
+              <p className="instill-text-body text-instillGrey70">{workType}</p>
             </div>
           </div>
         </div>

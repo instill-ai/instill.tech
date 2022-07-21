@@ -8,8 +8,8 @@ const ShareThisPosition: FC = () => {
   const router = useRouter();
   const pageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`;
   return (
-    <div className="flex w-[167px] flex-col gap-y-5 border-t border-instillGray50 py-2.5">
-      <p className="instill-text-body text-instillGray05">Share this role</p>
+    <div className="flex w-[167px] flex-col gap-y-5 border-t border-instillGrey50 py-2.5">
+      <p className="instill-text-body text-instillGrey05">Share this role</p>
       <div className="flex flex-row gap-x-5">
         <ShareToFbLink url={pageUrl} />
         <ShareToTwitterLink url={pageUrl} />

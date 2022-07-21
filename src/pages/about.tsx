@@ -83,7 +83,7 @@ const AboutPage: FC<Props> & {
       <ContentContainer>
         <div className="mx-auto flex w-full max-w-[1128px] flex-col">
           <div className="flex w-full pt-[87px] pb-[152px] sm:h-[584px] sm:py-0">
-            <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGray05">
+            <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGrey05">
               Make Vision AI Accessible to Everyone
             </h1>
           </div>

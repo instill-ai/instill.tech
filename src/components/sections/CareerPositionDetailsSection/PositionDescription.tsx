@@ -23,7 +23,7 @@ export const PositionDescription: FC<PositionDescriptionProps> = ({
   }, []);
 
   return (
-    <div className={cn("bg-instillGray05 p-10", padding, width)}>
+    <div className={cn("bg-instillGrey05 p-10", padding, width)}>
       <style jsx global>
         {`
           .career-position-description > ul {

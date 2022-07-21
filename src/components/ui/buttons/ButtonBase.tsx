@@ -55,7 +55,7 @@ export const ButtonBase: FC<Props> = ({
 
   switch (color) {
     case "primary": {
-      buttonColor = "bg-instillBlue30 text-instillGray05 hover:bg-[#236698]";
+      buttonColor = "bg-instillBlue30 text-instillGrey05 hover:bg-[#236698]";
       break;
     }
     case "white": {
@@ -71,7 +71,7 @@ export const ButtonBase: FC<Props> = ({
       break;
     }
     case "gray": {
-      buttonColor = "text-instillGray30 hover:text-instillGray05";
+      buttonColor = "text-instillGrey30 hover:text-instillGrey05";
       break;
     }
   }
