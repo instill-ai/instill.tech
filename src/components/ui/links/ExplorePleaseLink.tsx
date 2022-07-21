@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { RightArrowIcon } from "../icons/RightArrowIcon";
-import { ButtonBase } from "../buttons/ButtonBase";
 import { LinkBase } from "./LinkBase";
 import * as classNames from "classnames";
 

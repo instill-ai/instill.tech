@@ -36,7 +36,7 @@ export const PositionDescription: FC<PositionDescriptionProps> = ({
         content={description}
         styleName="prose-black max-w-none career-position-description mb-[60px]"
       />
-      <SolidButton type="button" variant="primary" onClickHandler={handleClick}>
+      <SolidButton type="button" color="primary" onClickHandler={handleClick}>
         Start applying
       </SolidButton>
     </div>
