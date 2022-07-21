@@ -16,7 +16,7 @@ const GetEarlyAccessButton: FC<GetEarlyAccessButtonProps> = ({ position }) => {
   return (
     <SolidButton
       type="button"
-      variant="primary"
+      color="primary"
       position={position}
       onClickHandler={handleClick}
     >

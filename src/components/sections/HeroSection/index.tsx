@@ -3,11 +3,11 @@ import cn from "clsx";
 import { Headline } from "@/components/ui/Headline";
 import { SubHeadline } from "@/components/ui/SubHeadline";
 import { HeroAnimationSvg } from "@/components/ui/svgs/animations/HeroAnimationSvg";
-import { JoinDiscordButton } from "@/components/ui/buttons/JoinDiscordButton";
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
   GetEarlyAccessButton,
+  JoinDiscordButton,
 } from "@/components/ui/buttons";
 
 export type HeroSectionProps = {
