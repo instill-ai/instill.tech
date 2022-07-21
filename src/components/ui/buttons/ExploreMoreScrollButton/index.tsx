@@ -1,7 +1,5 @@
 import { FC } from "react";
-import * as classNames from "classnames";
-import { RightArrowIcon } from "../icons/RightArrowIcon";
-import { ButtonBase } from "./ButtonBase";
+import { ArrowDownIcon } from "@instill-ai/design-system";
 
 export type ExploreMoreScrollButtonProps = {
   /** This function will scroll pageView to targetRef 
@@ -16,25 +14,27 @@ export type ExploreMoreScrollButtonProps = {
    * 
   */
   scrollHandler: () => void;
-
-  styleName?: string;
 };
 
-export const ExploreMoreScrollButton: FC<ExploreMoreScrollButtonProps> = ({
-  styleName,
+const ExploreMoreScrollButton: FC<ExploreMoreScrollButtonProps> = ({
   scrollHandler,
 }) => {
   return (
-    <ButtonBase
+    <button
       onClick={scrollHandler}
-      variant="text"
-      color="transparent"
-      styleName={classNames.default("flex flex-col group", styleName)}
+      className="group mx-auto flex flex-col gap-y-5"
     >
       <p className="mx-auto text-instillBlue30 group-hover:text-[#236698]">
         Explore
       </p>
-      <RightArrowIcon styleName="rotate-90 mt-5 mx-auto w-10 h-10 text-instillBlue30 group-hover:text-[#236698]" />
-    </ButtonBase>
+      <ArrowDownIcon
+        width="w-8"
+        height="h-8"
+        color="fill-instillBlue30 group-hover:fill-[#236698]"
+        position="mx-auto"
+      />
+    </button>
   );
 };
+
+export default ExploreMoreScrollButton;
