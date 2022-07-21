@@ -1,7 +1,7 @@
 import { FC, FormEvent, useRef, useState } from "react";
-import { SubscribeEmailButton } from "../ui/buttons/SubscribeEmailButton";
-import * as classNames from "classnames";
 import * as ga from "../../lib/google-analytic";
+import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
+import cn from "clsx";
 
 interface Props {
   styleName?: string;
@@ -59,13 +59,27 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGrey15"
+              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGrey15 instill-input-no-highlight"
             />
-            <SubscribeEmailButton styleName="instill-text-body" />
+            <TextButton
+              color="primary"
+              type="submit"
+              itemGapX="gap-x-5"
+              endIcon={
+                <ArrowRightIcon
+                  width="w-4"
+                  height="h-4"
+                  position="my-auto"
+                  color="fill-instillBlue50 group-hover:fill-instillBlue80"
+                />
+              }
+            >
+              <p className="my-auto">Subscribe</p>
+            </TextButton>
           </div>
           <div className="flex">
             <p
-              className={classNames.default(
+              className={cn(
                 "instill-text-small",
                 warn ? "text-instill_red" : "text-instillGrey05"
               )}
