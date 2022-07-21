@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@instill-ai/design-system/build/*.js",
   ],
   theme: {
     extend: {
@@ -27,8 +28,9 @@ module.exports = {
         instillGray05: "#F6F6F6",
         instillBlue: "#0000FF",
         instillBlue85: "#002050",
+        instillBlue80: "#0268B5",
         instillBlue70: "#003381",
-        instillBlue30: "#40A8F5",
+        instillBlue50: "#40A8F5",
         instillBlue10: "#F4FBFF",
         instillYellow: "#FFDF3A",
         instillYellow10: "#FFFCEB",
@@ -119,7 +121,7 @@ module.exports = {
             "--tw-prose-body": theme("colors.instillGray95"),
             "--tw-prose-headings": theme("colors.instillGray95"),
             "--tw-prose-lead": theme("colors.instillGray95"),
-            "--tw-prose-links": theme("colors.instillBlue30"),
+            "--tw-prose-links": theme("colors.instillBlue50"),
             "--tw-prose-bold": theme("colors.instillGray95"),
             "--tw-prose-counters": theme("colors.instillGray95"),
             "--tw-prose-bullets": theme("colors.instillGray95"),
@@ -139,7 +141,7 @@ module.exports = {
             "--tw-prose-body": theme("colors.instillGray15"),
             "--tw-prose-headings": theme("colors.instillGray15"),
             "--tw-prose-lead": theme("colors.instillGray15"),
-            "--tw-prose-links": theme("colors.instillBlue30"),
+            "--tw-prose-links": theme("colors.instillBlue50"),
             "--tw-prose-bold": theme("colors.instillGray15"),
             "--tw-prose-counters": theme("colors.instillGray15"),
             "--tw-prose-bullets": theme("colors.instillGray15"),

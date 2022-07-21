@@ -1642,10 +1642,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@instill-ai/design-system@^0.0.96":
-  version "0.0.96"
-  resolved "https://registry.yarnpkg.com/@instill-ai/design-system/-/design-system-0.0.96.tgz#0b2fd97e583ee9a278fd3960410ec5127361fb7a"
-  integrity sha512-rrJIn2IhvGpOiPChmKmcFsZkYwFfMZcXGYrhVwqeOjtjt2ktrRYEfvDH0FcBC+8ThJv2gn/IdvKMOPbQmpOFLw==
+"@instill-ai/design-system@^0.0.97":
+  version "0.0.97"
+  resolved "https://registry.yarnpkg.com/@instill-ai/design-system/-/design-system-0.0.97.tgz#27f7b07ee974c5575aa333feb897c79bcc878da6"
+  integrity sha512-qErDXIlryk1LyWn7kRojAkYRVtjQ8vf9SXPSzEt6Tl/aNda67kdwwlKBjUqZlQZm6wguaQ2ss0PskR195SQzpw==
   dependencies:
     sanitize-html "^2.7.0"
 
