@@ -3,7 +3,7 @@ import { FeatureOpenSourceSvg } from "../../ui/svgs/FeatureOpenSourceSvg";
 import { FeatureVersatileInterfaceSvg } from "../../ui/svgs/FeatureVersatileInterfaceSvg";
 import { FeatureVisualDataPreparationSvg } from "../../ui/svgs/FeatureVisualDataPreparationSvg";
 import { GithubCtaButton } from "../../ui/buttons/GitHubCtaButton";
-import FeatureItem from "./FeatureBlock";
+import FeatureItem from "./FeatureItem";
 
 const FeatureSection: FC = () => {
   return (

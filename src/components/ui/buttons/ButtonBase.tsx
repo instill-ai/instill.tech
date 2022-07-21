@@ -41,7 +41,7 @@ export const ButtonBase: FC<Props> = ({
     }
     case "outlined": {
       buttonStyle =
-        "px-[17px] py-2.5 flex border border-instillBlue30 hover:bg-[#3C3C3C]";
+        "px-[17px] py-2.5 flex border border-instillBlue50 hover:bg-[#3C3C3C]";
       break;
     }
     case "text": {
@@ -55,19 +55,19 @@ export const ButtonBase: FC<Props> = ({
 
   switch (color) {
     case "primary": {
-      buttonColor = "bg-instillBlue30 text-instillGrey05 hover:bg-[#236698]";
+      buttonColor = "bg-instillBlue50 text-instillGrey05 hover:bg-[#236698]";
       break;
     }
     case "white": {
-      buttonColor = "text-instillBlue30";
+      buttonColor = "text-instillBlue50";
       break;
     }
     case "lightWhite": {
-      buttonColor = "text-instillBlue30 hover:text-[#236698]";
+      buttonColor = "text-instillBlue50 hover:text-[#236698]";
       break;
     }
     case "transparent": {
-      buttonColor = "text-instillBlue30";
+      buttonColor = "text-instillBlue50";
       break;
     }
     case "gray": {
