@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef } from "react";
 import cn from "clsx";
-import { InstillCloudBanner } from "@/components/ui/svgs/animations/InstillCloudBanner";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Image from "next/future/image";
 
 const InstillCloudSection: FC = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -6490,7 +6490,14 @@ const InstillCloudSection: FC = () => {
             </clipPath>
           </defs>
         </svg>
-        <InstillCloudBanner styleName="w-full md:hidden" />
+        <Image
+          src="/images/instill-cloud-mobile.svg"
+          alt="instill cloud banner for mobile"
+          width={375}
+          height={548}
+          className="w-full md:hidden"
+          sizes="375px"
+        />
         <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey95 p-10 md:mx-auto md:w-10/12">
           <p className="instill-text-body mb-5 text-center text-instillBlue50">
             INSTILL CLOUD

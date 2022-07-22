@@ -1,10 +1,8 @@
 import { FC, ReactElement } from "react";
-import { MagicFlowDestinationIcon } from "./icons/MagicFlowDestinationIcon";
-import { MagicFlowKernelIcon } from "./icons/MagicFlowKernelIcon";
-import { MagicFlowSourceIcon } from "./icons/MagicFlowSourceIcon";
-import { MagicFlow } from "./svgs/animations/MagicFlow";
-
-interface Props {}
+import { MagicFlowDestinationIcon } from "../../ui/icons/MagicFlowDestinationIcon";
+import { MagicFlowKernelIcon } from "../../ui/icons/MagicFlowKernelIcon";
+import { MagicFlowSourceIcon } from "../../ui/icons/MagicFlowSourceIcon";
+import VdpFlow from "./VdpFlow";
 
 type BannerCopy = {
   id: string;
@@ -13,7 +11,7 @@ type BannerCopy = {
   icon: ReactElement;
 };
 
-export const LandingBanner: FC<Props> = () => {
+const VdpFlowSection: FC = () => {
   const bannerCopy: BannerCopy[] = [
     {
       id: "banner-copy-1",
@@ -45,7 +43,7 @@ export const LandingBanner: FC<Props> = () => {
       className="grid h-full w-full grid-cols-1 lg:grid-cols-2"
     >
       <div className="flex h-full max-h-screen flex-col py-20">
-        <MagicFlow styleName="h-full w-full mx-auto" />
+        <VdpFlow styleName="h-full w-full mx-auto" />
       </div>
       <div className="hidden h-full max-h-screen py-5 md:my-auto lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
@@ -66,3 +64,5 @@ export const LandingBanner: FC<Props> = () => {
     </div>
   );
 };
+
+export default VdpFlowSection;

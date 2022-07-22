@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cn from "clsx";
-import { AlphaBadgeSvg } from "../../ui/svgs/AlphaBadgeSvg";
 import { GetEarlyAccessButton } from "@/components/ui/buttons";
+import Image from "next/future/image";
 
 export type SecureYourSpotSectionProps = {
   /** Layout
@@ -35,8 +35,14 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
           "mb-20": layout === "main",
         })}
       >
-        <div className="flex md:col-start-2">
-          <AlphaBadgeSvg styleName="w-full md:w-[355px] mx-auto" />
+        <div className="mx-auto flex md:col-start-2 md:mx-0">
+          <Image
+            src="/images/alpha-badge.svg"
+            alt="instill ai alpha testing badge"
+            width={355}
+            height={146}
+            sizes="355px"
+          />
         </div>
         <div
           className={cn(

@@ -1,4 +1,4 @@
-import { SolidButton } from "@instill-ai/design-system";
+import { SolidButton, SolidButtonProps } from "@instill-ai/design-system";
 import { FC } from "react";
 
 export type ViewJobsScrollButtonProps = {
@@ -14,13 +14,20 @@ export type ViewJobsScrollButtonProps = {
    *
    */
   scrollHandler: () => void;
+  position?: SolidButtonProps["position"];
 };
 
 const ViewJobsScrollButton: FC<ViewJobsScrollButtonProps> = ({
   scrollHandler,
+  position,
 }) => {
   return (
-    <SolidButton onClickHandler={scrollHandler} color="primary" type="button">
+    <SolidButton
+      position={position}
+      onClickHandler={scrollHandler}
+      color="primary"
+      type="button"
+    >
       <p className="my-auto">View Jobs</p>
     </SolidButton>
   );

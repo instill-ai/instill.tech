@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { InstillAiBadge } from "./svgs/images/InstillAiBadge";
-import * as classNames from "classnames";
+import Image from "next/future/image";
+import cn from "clsx";
 
 interface Props {
   /** <Tailwind format> - position and width */
@@ -10,12 +10,24 @@ interface Props {
 export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
   return (
     <div
-      className={classNames.default(
+      className={cn(
         "flex w-full flex-col gap-y-20 gap-x-20 py-[100px] px-4 md:flex-row md:gap-y-0 md:px-0",
         styleName
       )}
     >
-      <InstillAiBadge styleName="w-full md:w-[201px] md:h-[88.5px] lg:w-[402px] lg:h-[177px] flex-shrink-0" />
+      <div className="m-auto flex w-full flex-shrink-0 md:w-[33%]">
+        <Image
+          src="/images/instill-ai-badge.svg"
+          alt="The badge of instill ai"
+          width={402}
+          height={177}
+          sizes="402px"
+          style={{
+            margin: "auto",
+          }}
+        />
+      </div>
+
       <div className="flex flex-col gap-y-5">
         <p className="instill-text-body text-instillGrey05">
           We&#39;re looking for passionate and dedicated early members to build
