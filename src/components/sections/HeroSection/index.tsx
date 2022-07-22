@@ -2,13 +2,13 @@ import { FC } from "react";
 import cn from "clsx";
 import { Headline } from "@/components/ui/Headline";
 import { SubHeadline } from "@/components/ui/SubHeadline";
-import { HeroAnimationSvg } from "@/components/ui/svgs/animations/HeroAnimationSvg";
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
   GetEarlyAccessButton,
   JoinDiscordButton,
 } from "@/components/ui/buttons";
+import HeroAnimation from "./HeroAnimation";
 
 export type HeroSectionProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
@@ -31,7 +31,7 @@ const HeroSection: FC<HeroSectionProps> = ({ scrollHandler }) => {
           </div>
         </div>
         <div className="mb-5 lg:my-auto lg:w-[43%]">
-          <HeroAnimationSvg styleName="m-auto w-full max:w-[475px]" />
+          <HeroAnimation styleName="m-auto w-full max:w-[475px]" />
         </div>
       </div>
       <ExploreMoreScrollButton scrollHandler={scrollHandler} />

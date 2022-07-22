@@ -1,14 +1,14 @@
 import { FC, useEffect, useRef } from "react";
-import { SvgBase } from "../SvgBase";
+import { SvgBase } from "../../ui/svgs/SvgBase";
 import { gsap } from "gsap";
-import { useOnScreen } from "../../../../hooks/useOnScreen";
+import { useOnScreen } from "../../../hooks/useOnScreen";
 
-interface Props {
+export type HeroAnimationProps = {
   /** <Tailwind format> */
   styleName?: string;
-}
+};
 
-export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
+const HeroAnimation: FC<HeroAnimationProps> = ({ styleName }) => {
   // Init the gsap selector and react reference
   const cube = useRef();
 
@@ -1975,3 +1975,5 @@ export const HeroAnimationSvg: FC<Props> = ({ styleName }) => {
     </div>
   );
 };
+
+export default HeroAnimation;
