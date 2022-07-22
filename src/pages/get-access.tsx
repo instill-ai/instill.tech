@@ -43,14 +43,13 @@ const GetEarlyAccessPage: FC<Props> & {
                 Instill AI can help adopt Vision AI in your company.
               </p>
             </div>
-            <div className="mx-auto md:mx-0">
-              <Image
-                src="/images/alpha-badge.svg"
-                alt="instill ai alpha testing badge"
-                width={355}
-                height={146}
-              />
-            </div>
+            <Image
+              src="/images/alpha-badge.svg"
+              alt="instill ai alpha testing badge"
+              width={355}
+              height={146}
+              className="mx-auto md:mx-0"
+            />
           </div>
           <div>
             <MailchimpSignupForm />

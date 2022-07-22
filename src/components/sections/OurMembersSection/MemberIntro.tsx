@@ -367,7 +367,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
               member ? bgColor : "bg-instillGrey30"
             )}
           >
-            <div className="text-instill-body mr-auto text-instillGrey95">
+            <div className="mr-auto text-instillGrey95 text-instill-body">
               Detection result
             </div>
             <button className="ml-auto" onClick={onCancelHandler}>
