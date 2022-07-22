@@ -1,8 +1,7 @@
-import { GithubCtaButton } from "@/components/ui/buttons";
 import Image from "next/future/image";
 import { FC } from "react";
-import { FeatureVersatileInterfaceSvg } from "../../ui/svgs/FeatureVersatileInterfaceSvg";
 import FeatureItem from "./FeatureItem";
+import { GithubCtaButton } from "@/components/ui/buttons";
 
 const FeatureSection: FC = () => {
   return (
@@ -46,7 +45,14 @@ const FeatureSection: FC = () => {
         description="Set up visual data preparation using SDKs and CLI tools built for developers, or via console without writing any code."
         imagePosition="left"
         image={
-          <FeatureVersatileInterfaceSvg styleName="w-[263px] h-[233px] m-auto" />
+          <div className="m-auto">
+            <Image
+              src="/images/feature-integrations.svg"
+              alt="Feature img of versatile integrations"
+              width={263}
+              height={233}
+            />
+          </div>
         }
       />
     </div>
