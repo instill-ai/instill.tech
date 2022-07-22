@@ -1,9 +1,7 @@
 import { GithubCtaButton } from "@/components/ui/buttons";
 import Image from "next/future/image";
 import { FC } from "react";
-import { FeatureOpenSourceSvg } from "../../ui/svgs/FeatureOpenSourceSvg";
 import { FeatureVersatileInterfaceSvg } from "../../ui/svgs/FeatureVersatileInterfaceSvg";
-import { FeatureVisualDataPreparationSvg } from "../../ui/svgs/FeatureVisualDataPreparationSvg";
 import FeatureItem from "./FeatureItem";
 
 const FeatureSection: FC = () => {
@@ -30,7 +28,16 @@ const FeatureSection: FC = () => {
         title="Fetch, Deploy, and Share with the Community"
         description="Get started with our open source projects to explore Vision AI models powered by our community, set up visual data preparation and start processing your visual data right away. "
         imagePosition="right"
-        image={<FeatureOpenSourceSvg styleName="w-[260px] h-[238px] m-auto" />}
+        image={
+          <div className="m-auto">
+            <Image
+              src="/images/feature-open-source.svg"
+              alt="Feature img of opening source"
+              width={260}
+              height={238}
+            />
+          </div>
+        }
         featureCta={<GithubCtaButton />}
       />
       <FeatureItem
