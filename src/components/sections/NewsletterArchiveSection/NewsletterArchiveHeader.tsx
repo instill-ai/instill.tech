@@ -1,9 +1,7 @@
 import { FC } from "react";
-import { SubscribeNewsletterForm } from "../forms/SubscribeNewsletterForm";
+import { SubscribeNewsletterForm } from "../../forms/SubscribeNewsletterForm";
 
-interface Props {}
-
-export const NewsletterArchiveHeader: FC<Props> = () => {
+const NewsletterArchiveHeader: FC = () => {
   return (
     <div className="mb-20 flex max-w-[800px] flex-col px-5 pt-[100px] pb-[60px] md:mx-auto md:px-0">
       <h1 className="instill-text-h1 mb-5 text-center text-instillGrey05">
@@ -17,3 +15,5 @@ export const NewsletterArchiveHeader: FC<Props> = () => {
     </div>
   );
 };
+
+export default NewsletterArchiveHeader;
