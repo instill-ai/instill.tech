@@ -1,4 +1,5 @@
 import { GithubCtaButton } from "@/components/ui/buttons";
+import Image from "next/future/image";
 import { FC } from "react";
 import { FeatureOpenSourceSvg } from "../../ui/svgs/FeatureOpenSourceSvg";
 import { FeatureVersatileInterfaceSvg } from "../../ui/svgs/FeatureVersatileInterfaceSvg";
@@ -14,7 +15,14 @@ const FeatureSection: FC = () => {
         description="Visual data preparation brings seamless data access and faster POC to Production for Vision AI. It unleashes the power of Vision AI in the modern data stack, so the current tooling can process image and video data more effectively."
         imagePosition="left"
         image={
-          <FeatureVisualDataPreparationSvg styleName="w-[289px] h-[183px] m-auto" />
+          <div className="m-auto">
+            <Image
+              src="/images/feature-vdp.svg"
+              alt="Feature img of Visual Data Preparation"
+              width={289}
+              height={283}
+            />
+          </div>
         }
       />
       <FeatureItem
