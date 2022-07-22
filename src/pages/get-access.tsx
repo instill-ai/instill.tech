@@ -1,8 +1,8 @@
 import { FC, ReactElement, useEffect } from "react";
+import Image from "next/future/image";
 
 import { PageBase, PageHead } from "@/components/layouts";
 import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
-import { AlphaBadgeSvg } from "../components/ui/svgs/AlphaBadgeSvg";
 import { useRouter } from "next/router";
 import { sendAmplitudeData } from "../lib/amplitude";
 import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
@@ -43,8 +43,13 @@ const GetEarlyAccessPage: FC<Props> & {
                 Instill AI can help adopt Vision AI in your company.
               </p>
             </div>
-            <div className="flex w-full">
-              <AlphaBadgeSvg styleName="mx-auto md:mx-0 max-w-[355px] w-full" />
+            <div className="mx-auto md:mx-0">
+              <Image
+                src="/images/alpha-badge.svg"
+                alt="instill ai alpha testing badge"
+                width={355}
+                height={146}
+              />
             </div>
           </div>
           <div>
