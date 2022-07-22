@@ -37,7 +37,7 @@ jobs:
           github_token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
 
       - name: Checkout
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v3
         with:
           ref: ${{ steps.latestRelease.outputs.tag_name }}
 

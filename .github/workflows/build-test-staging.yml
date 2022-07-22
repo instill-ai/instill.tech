@@ -9,41 +9,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
 
-      - name: Checkout
-        uses: actions/checkout@v2.3.3
-
       - name: Install dependencies
         run: rm -rf node_modules && yarn install --frozen-lockfile
-
-      - name: Cache build
-        uses: actions/cache@v2
-        id: cache-build
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
 
   lint:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
-
-      - name: Restore build cache
-        uses: actions/cache@v2
-        id: restore-build
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
 
       - name: Lint
         run: yarn lint
@@ -52,18 +41,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: "yarn"
-
-      - name: Restore build cache
-        uses: actions/cache@v2
-        id: restore-build
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
 
       - name: Run unit test
         run: yarn test
@@ -100,7 +85,7 @@ jobs:
           env: preview
 
       - name: Checkout
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v3
 
       - name: Deploy to staging
         id: deployToVercelStaging
@@ -148,7 +133,7 @@ jobs:
             secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
 
       - name: Checkout
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v3
 
       - name: start deployment
         uses: bobheadxi/deployments@v0.4.3
