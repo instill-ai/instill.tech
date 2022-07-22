@@ -15,7 +15,7 @@ export type HeroSectionProps = {
 
 const HeroSection: FC<HeroSectionProps> = ({ scrollHandler }) => {
   return (
-    <div className="flex flex-col justify-center gap-y-10 md:min-h-[90vh] lg:px-0">
+    <div className="flex flex-col justify-center gap-y-10 px-4 md:min-h-[90vh] lg:px-0">
       <div className="mb-20 flex flex-col-reverse lg:flex-row lg:gap-y-0">
         <div className="flex flex-col md:my-auto lg:w-[57%]">
           <Headline marginBottom="mb-5" />
