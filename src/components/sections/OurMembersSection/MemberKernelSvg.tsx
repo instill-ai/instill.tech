@@ -1,8 +1,6 @@
-import { FC, useEffect, useRef } from "react";
-import { SvgBase } from "../SvgBase";
-import * as classNames from "classnames";
+import { FC, useEffect } from "react";
 
-interface Props {
+export type MemberKernelProps = {
   /** <Tailwind config> */
   styleName?: string;
 
@@ -14,9 +12,9 @@ interface Props {
 
   /** member id */
   id: string;
-}
+};
 
-export const MemberKernelSvg: FC<Props> = ({
+const MemberKernel: FC<MemberKernelProps> = ({
   styleName,
   kernelColorRectLocation,
   kernelColor,
@@ -32,7 +30,12 @@ export const MemberKernelSvg: FC<Props> = ({
   }, [kernelColorRectLocation, id, kernelColor]);
 
   return (
-    <SvgBase viewBox="0 0 362 362" styleName={classNames.default(styleName)}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 362 362"
+      fill="none"
+      className={styleName}
+    >
       <g id="Frame 788">
         <g id="Kernel">
           <path
@@ -245,6 +248,8 @@ export const MemberKernelSvg: FC<Props> = ({
         stroke="#1A1A1A"
         strokeWidth="2"
       />
-    </SvgBase>
+    </svg>
   );
 };
+
+export default MemberKernel;

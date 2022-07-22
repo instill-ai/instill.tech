@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { forwardRef } from "react";
-import { MemberKernelSvg } from "../../ui/svgs/images/MemberKernelSvg";
 import * as classNames from "classnames";
 import { useWindowDimension } from "@/lib/utilities";
+import MemberKernel from "./MemberKernelSvg";
 
 export type MemberAvatarKernelProps = {
   id: string;
@@ -46,7 +46,7 @@ const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
             alt={avatarAlt}
             width={358}
             height={358}
-            layout="responsive"
+            sizes="358px"
             src={
               windowDimenstion && windowDimenstion.width > 768
                 ? avatarWithFrameDesktop
@@ -54,7 +54,7 @@ const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
             }
           />
         </div>
-        <MemberKernelSvg
+        <MemberKernel
           styleName={classNames.default(
             "w-full z-20 opacity-0 mb-auto cursor-pointer",
             {

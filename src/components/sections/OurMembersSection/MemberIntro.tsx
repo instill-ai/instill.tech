@@ -1,9 +1,8 @@
 import { forwardRef, Fragment } from "react";
 import { TMemberDetails } from "../../../types/instill";
-import * as classNames from "classnames";
-import Image from "next/image";
-import { MemberAvatarSkeletonSvg } from "@/components/ui/svgs/images/MemberAvatarSkeletonSvg";
 import { CrossIcon } from "@/components/ui/icons/CrossIcon";
+import Image from "next/future/image";
+import cn from "clsx";
 
 export type MemberIntroProps = {
   member: TMemberDetails;
@@ -101,10 +100,10 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       return (
         <div
           key={`${m ? m.id : index}-${title}`}
-          className={classNames.default("flex flex-col", indent)}
+          className={cn("flex flex-col", indent)}
         >
           <div className="text-instillRed">{`{`}</div>
-          <div className={(classNames.default("flex flex-col"), indent)}>
+          <div className={(cn("flex flex-col"), indent)}>
             <pre className="whitespace-pre-wrap break-all">
               <div>
                 <span className={defaultTextColor}>{`"category": `}</span>
@@ -161,7 +160,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
     const getTitlesContainer = (m: TMemberDetails, trailingComma: boolean) => {
       return (
-        <div className={classNames.default("flex flex-col", indent)}>
+        <div className={cn("flex flex-col", indent)}>
           <pre>
             <div>
               <span className={defaultTextColor}>{`"titles": `}</span>
@@ -189,9 +188,9 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
         { key: "link", value: m.openRoleLink },
       ];
       return (
-        <div className={classNames.default("flex flex-col", indent)}>
+        <div className={cn("flex flex-col", indent)}>
           <div className="text-instillRed">{`{`}</div>
-          <div className={(classNames.default("flex flex-col"), indent)}>
+          <div className={(cn("flex flex-col"), indent)}>
             <pre className="whitespace-pre-wrap break-all">
               {details.map((e, i) => (
                 <div key={`${m.id}-${e.key}`}>
@@ -202,7 +201,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                       href={e.value}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className={classNames.default(textColor, "underline")}
+                      className={cn(textColor, "underline")}
                     >
                       {e.value}
                     </a>
@@ -227,7 +226,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       trailingComma: boolean
     ) => {
       return (
-        <div className={classNames.default("flex flex-col", indent)}>
+        <div className={cn("flex flex-col", indent)}>
           <pre>
             <div>
               <span className={defaultTextColor}>{`"open_role": `}</span>
@@ -254,7 +253,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
     const getLinkedinLink = (m: TMemberDetails, trailingComma: boolean) => {
       return (
-        <div className={classNames.default(indent)}>
+        <div className={cn(indent)}>
           <pre className="whitespace-pre-wrap break-all">
             <span className={defaultTextColor}>{`"linkedin": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
@@ -264,7 +263,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                   href={m.linkedinLink}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className={classNames.default(textColor, "underline")}
+                  className={cn(textColor, "underline")}
                 >
                   {`${m.linkedinLink}`}
                 </a>
@@ -286,7 +285,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
     const getGithubLink = (m: TMemberDetails, trailingComma: boolean) => {
       return (
-        <div className={classNames.default(indent)}>
+        <div className={cn(indent)}>
           <pre className="whitespace-pre-wrap break-all">
             <span className={defaultTextColor}>{`"github": `}</span>
             <span className={defaultTextColor}>{`"`}</span>
@@ -296,7 +295,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                   href={m.githubLink}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className={classNames.default(textColor, "underline")}
+                  className={cn(textColor, "underline")}
                 >
                   {`${m.githubLink}`}
                 </a>
@@ -323,8 +322,8 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             alt={`Instill member - ${m.name}'s avatar`}
             width={360}
             height={360}
-            layout="responsive"
             src={m.avatarDesktop}
+            sizes="360px"
           />
         </div>
       );
@@ -334,7 +333,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       return (
         <>
           <div className="text-instillRed">{`{`}</div>
-          <div className={classNames.default(indent)}>
+          <div className={cn(indent)}>
             <pre className="whitespace-pre-wrap break-all">
               <span className={defaultTextColor}>{`"mission": `}</span>
               <span className={defaultTextColor}>{`"`}</span>
@@ -355,14 +354,14 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
     return (
       <div
         ref={ref}
-        className={classNames.default(
+        className={cn(
           "flex w-full flex-col border-2 border-instillGrey95",
           styleName
         )}
       >
         <div className="flex flex-col md:sticky md:top-[164px]">
           <div
-            className={classNames.default(
+            className={cn(
               "flex flex-row px-5 py-2.5",
               member ? bgColor : "bg-instillGrey30"
             )}
@@ -379,12 +378,18 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             {member ? (
               getAvatar(member)
             ) : (
-              <MemberAvatarSkeletonSvg styleName="w-full" />
+              <Image
+                src="/images/member-avatar-skeleton.svg"
+                width={360}
+                height={360}
+                alt="Skeleton of member avatar"
+                sizes="360px"
+              />
             )}
           </div>
 
           <div
-            className={classNames.default(
+            className={cn(
               "flex flex-col bg-instillGrey95 p-5",
               defaultFont,
               defaultFontSize
