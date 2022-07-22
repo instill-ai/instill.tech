@@ -41,6 +41,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
             alt="instill ai alpha testing badge"
             width={355}
             height={146}
+            sizes="355px"
           />
         </div>
         <div

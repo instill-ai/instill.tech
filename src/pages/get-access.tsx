@@ -49,6 +49,7 @@ const GetEarlyAccessPage: FC<Props> & {
               width={355}
               height={146}
               className="mx-auto md:mx-0"
+              sizes="355px"
             />
           </div>
           <div>

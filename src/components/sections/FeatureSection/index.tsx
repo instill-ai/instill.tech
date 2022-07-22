@@ -18,6 +18,7 @@ const FeatureSection: FC = () => {
             width={289}
             height={283}
             className="m-auto"
+            sizes="289px"
           />
         }
       />
@@ -33,6 +34,7 @@ const FeatureSection: FC = () => {
             width={260}
             height={238}
             className="m-auto"
+            sizes="260px"
           />
         }
         featureCta={<GithubCtaButton />}
@@ -49,6 +51,7 @@ const FeatureSection: FC = () => {
             width={263}
             height={233}
             className="m-auto"
+            sizes="263px"
           />
         }
       />

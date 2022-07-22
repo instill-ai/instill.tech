@@ -21,7 +21,7 @@ export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
           alt="The badge of instill ai"
           width={402}
           height={177}
-          sizes="33vw"
+          sizes="402px"
           style={{
             margin: "auto",
           }}

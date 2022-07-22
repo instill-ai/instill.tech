@@ -6496,6 +6496,7 @@ const InstillCloudSection: FC = () => {
           width={375}
           height={548}
           className="w-full md:hidden"
+          sizes="375px"
         />
         <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey95 p-10 md:mx-auto md:w-10/12">
           <p className="instill-text-body mb-5 text-center text-instillBlue50">
