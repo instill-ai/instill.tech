@@ -1,12 +1,11 @@
 import { FC, useRef, useEffect } from "react";
-import { SvgBase } from "../SvgBase";
 import { gsap } from "gsap";
-import { useOnScreen } from "../../../../hooks/useOnScreen";
+import { useOnScreen } from "../../../hooks/useOnScreen";
 
-interface Props {
+export type VdpFlowProps = {
   /** Animation width and height with tailwind style, ratio: "w-[446px] h-[1021px]" */
   styleName?: string;
-}
+};
 
 type AnimationTarget = {
   id: string;
@@ -16,14 +15,7 @@ type AnimationTarget = {
   endY: number;
 };
 
-/**
- *
- * @param styleName - specific width and height with tailwind format
- * @returns react function component
- * - This animation has viwebox 0 0 207 945
- */
-
-export const MagicFlow: FC<Props> = ({ styleName }) => {
+const VdpFlow: FC<VdpFlowProps> = ({ styleName }) => {
   const animateTarget = useRef();
 
   // Make sure tl object is outside of render loop
@@ -237,7 +229,12 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
       className="magic-flow-observer flex h-full w-full"
       ref={magicFlowObserver}
     >
-      <SvgBase viewBox="0 0 207 945" styleName={styleName}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 207 945"
+        fill="none"
+        className={styleName}
+      >
         <style jsx>
           {`
             #lower_trajectory > line {
@@ -3047,7 +3044,9 @@ export const MagicFlow: FC<Props> = ({ styleName }) => {
             </g>
           </g>
         </g>
-      </SvgBase>
+      </svg>
     </div>
   );
 };
+
+export default VdpFlow;

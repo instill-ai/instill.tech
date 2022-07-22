@@ -8,7 +8,7 @@ import { HeroSection, InstillCloudSection } from "@/components/sections";
 import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
-  import("../components/ui/LandingBanner").then((mod) => mod.LandingBanner)
+  import("@/components/sections").then((mod) => mod.VdpFlowSection)
 );
 
 const StayInTheLoopSection = dynamic(() =>

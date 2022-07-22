@@ -12,6 +12,7 @@ import CareerPositionDetailsSection from "./CareerPositionDetailsSection";
 import type { CareerPositionDetailsSectionProps } from "./CareerPositionDetailsSection";
 import NewsletterArchiveSection from "./NewsletterArchiveSection";
 import type { NewsletterArchiveSectionProps } from "./NewsletterArchiveSection";
+import VdpFlowSection from "./VdpFlowSection";
 
 export {
   SecureYourSpotSection,
@@ -22,6 +23,7 @@ export {
   FeatureSection,
   CareerPositionDetailsSection,
   NewsletterArchiveSection,
+  VdpFlowSection,
 };
 export type {
   SecureYourSpotSectionProps,
