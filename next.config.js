@@ -4,6 +4,11 @@ module.exports = {
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   webpack: (config, { isServer, dev }) => {
     // if (isServer) {
     //   require("./lib/generate-sitemap");
