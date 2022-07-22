@@ -1,4 +1,4 @@
-export interface Recipent {
+type Recipient = {
   list_id: string;
   list_ia_active: boolean;
   list_name: string;
@@ -14,9 +14,9 @@ export interface Recipent {
     match: string;
     conditions: any[];
   };
-}
+};
 
-export interface Campaign {
+type Campaign = {
   id: string;
   web_id: number;
   parent_campaign_id: string;
@@ -30,7 +30,7 @@ export interface Campaign {
   content_type: string;
   needs_block_refresh: boolean;
   resendable: boolean;
-  recipients: Recipent[];
+  recipients: Recipient[];
   settings: {
     subject_line: string;
     preview_text: string;
@@ -135,9 +135,9 @@ export interface Campaign {
     targetSchema: string;
     schema: string;
   };
-}
+};
 
-export interface ListCampaignsResponse {
+type ListCampaignsResponse = {
   campaigns: Campaign[];
   total_items: number;
   _links: {
@@ -147,9 +147,9 @@ export interface ListCampaignsResponse {
     targetSchema: string;
     schema: string;
   };
-}
+};
 
-export interface GetCampaignContentResponse {
+type GetCampaignContentResponse = {
   variate_contents: {
     content_label: string;
     plain_text: string;
@@ -165,4 +165,20 @@ export interface GetCampaignContentResponse {
     targetSchema: string;
     schema: string;
   };
-}
+};
+
+type NewsletterPublicCampaign = {
+  title: string;
+  id: string;
+  sendTime: string;
+  plainText: string;
+  html: string;
+};
+
+export type {
+  Recipient,
+  Campaign,
+  ListCampaignsResponse,
+  GetCampaignContentResponse,
+  NewsletterPublicCampaign,
+};
