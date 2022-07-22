@@ -1,7 +1,4 @@
 import { FC } from "react";
-import cn from "clsx";
-import { Headline } from "@/components/ui/Headline";
-import { SubHeadline } from "@/components/ui/SubHeadline";
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
@@ -9,6 +6,8 @@ import {
   JoinDiscordButton,
 } from "@/components/ui/buttons";
 import HeroAnimation from "./HeroAnimation";
+import Headline from "./Headline";
+import SubHeadline from "./SubHeadline";
 
 export type HeroSectionProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
@@ -19,19 +18,15 @@ const HeroSection: FC<HeroSectionProps> = ({ scrollHandler }) => {
     <div className="flex flex-col justify-center gap-y-10 md:min-h-[90vh] lg:px-0">
       <div className="mb-20 flex flex-col-reverse lg:flex-row lg:gap-y-0">
         <div className="flex flex-col md:my-auto lg:w-[57%]">
-          <Headline styleName="mb-5 text-left" />
-          <SubHeadline styleName="mb-10 md:px-0 text-left" />
-          <div
-            className={cn(
-              "flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0"
-            )}
-          >
+          <Headline marginBottom="mb-5" />
+          <SubHeadline marginBottom="mb-10" />
+          <div className="flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0">
             <GetEarlyAccessButton />
             <JoinDiscordButton />
           </div>
         </div>
         <div className="mb-5 lg:my-auto lg:w-[43%]">
-          <HeroAnimation styleName="m-auto w-full max:w-[475px]" />
+          <HeroAnimation />
         </div>
       </div>
       <ExploreMoreScrollButton scrollHandler={scrollHandler} />

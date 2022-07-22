@@ -1,14 +1,8 @@
 import { FC, useEffect, useRef } from "react";
-import { SvgBase } from "../../ui/svgs/SvgBase";
 import { gsap } from "gsap";
 import { useOnScreen } from "../../../hooks/useOnScreen";
 
-export type HeroAnimationProps = {
-  /** <Tailwind format> */
-  styleName?: string;
-};
-
-const HeroAnimation: FC<HeroAnimationProps> = ({ styleName }) => {
+const HeroAnimation: FC = () => {
   // Init the gsap selector and react reference
   const cube = useRef();
 
@@ -416,7 +410,12 @@ const HeroAnimation: FC<HeroAnimationProps> = ({ styleName }) => {
 
   return (
     <div className="hero-animation-observer" ref={heroObserver}>
-      <SvgBase viewBox="0 0 838 638" styleName={styleName}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 838 638"
+        fill="none"
+        className="m-auto w-full max:w-[475px]"
+      >
         <g id="Outline" ref={cube}>
           <g id="Cube D">
             <g id="cube_d_1">
@@ -1971,7 +1970,7 @@ const HeroAnimation: FC<HeroAnimationProps> = ({ styleName }) => {
             </g>
           </g>
         </g>
-      </SvgBase>
+      </svg>
     </div>
   );
 };
