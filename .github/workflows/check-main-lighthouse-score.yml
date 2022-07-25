@@ -3,12 +3,12 @@ name: ci-check-main-lighthouse-score
 on:
   pull_request:
     branches:
-      - 'main'
+      - "main"
 
 jobs:
   check-main-lighthouse-score:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Import Vault secrets
         id: secrets
@@ -45,7 +45,7 @@ jobs:
 
       - name: Create temporary folder for artifacts
         run: mkdir /tmp/artifacts
-      
+
       - name: examine-lighthouse
         id: lighthouseCheck
         uses: foo-software/lighthouse-check-action@master
@@ -55,11 +55,10 @@ jobs:
           branch: ${{ github.ref }}
           prCommentEnabled: true
           outputDirectory: /tmp/artifacts
-          emulatedFormFactor: 'all'
+          emulatedFormFactor: "all"
           urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           sha: ${{ github.sha }}
-          slackWebhookUrl: ${{ steps.secrets.outputs.LIGHTHOUSE_SLACK_WEBHOOK_URL }}
-      
+
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
@@ -70,9 +69,8 @@ jobs:
         uses: foo-software/lighthouse-check-status-action@master
         with:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
-          minAccessibilityScore: '80'
-          minBestPracticesScore: '50'
-          minPerformanceScore: '50'
-          minProgressiveWebAppScore: '10'
-          minSeoScore: '50'
-      
+          minAccessibilityScore: "80"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "50"
+          minProgressiveWebAppScore: "10"
+          minSeoScore: "50"

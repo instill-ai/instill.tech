@@ -79,8 +79,9 @@ jobs:
           prCommentEnabled: true
           outputDirectory: /tmp/artifacts
           emulatedFormFactor: "all"
-          urls: ${{ steps.deployToVercelProd.outputs.preview-url }}
+          urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           sha: ${{ github.sha }}
+          slackWebhookUrl: ${{ steps.secrets.outputs.LIGHTHOUSE_SLACK_WEBHOOK_URL }}
 
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
