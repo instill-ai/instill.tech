@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.8.0](https://github.com/instill-ai/product-website/compare/v1.7.0...v1.8.0) (2022-07-25)
+
+
+### Features
+
+* adapt static svg to use img tag ([#123](https://github.com/instill-ai/product-website/issues/123)) ([e7a1540](https://github.com/instill-ai/product-website/commit/e7a1540a8d7b531dbb37555db599402a89ecc37a))
+* install deps after retrieving cache package data ([#125](https://github.com/instill-ai/product-website/issues/125)) ([779a4dc](https://github.com/instill-ai/product-website/commit/779a4dc4441ea221d8948c9cbefbcbd8d919b759))
+* setup import module alias ([#118](https://github.com/instill-ai/product-website/issues/118)) ([e5676ef](https://github.com/instill-ai/product-website/commit/e5676eff1c8307b315f7adad090ec45e2063758f))
+* Update buttons and Tailwind styles ([#120](https://github.com/instill-ai/product-website/issues/120)) ([5bc6083](https://github.com/instill-ai/product-website/commit/5bc6083e289f6377751d8d806bdd4c2cb072b19a))
+* update folder structure ([#116](https://github.com/instill-ai/product-website/issues/116)) ([0fa6aaf](https://github.com/instill-ai/product-website/commit/0fa6aaf688d0e15f6505be649f790a9d57cc086b))
+* update newsletter page ([#121](https://github.com/instill-ai/product-website/issues/121)) ([da44cc9](https://github.com/instill-ai/product-website/commit/da44cc93969bd9143ece9e739471b0f09c24a838))
+* upgrade Nextjs to 12.2.3 ([#122](https://github.com/instill-ai/product-website/issues/122)) ([813d348](https://github.com/instill-ai/product-website/commit/813d348464de8c26d26f75d8e6d4c0589154d694))
+
+
+### Bug Fixes
+
+* fix action order ([#124](https://github.com/instill-ai/product-website/issues/124)) ([ce66fb9](https://github.com/instill-ai/product-website/commit/ce66fb9c3c2fa68bc44bc7aa1043b9c6bccf4659))
+
 ## [1.7.0](https://www.github.com/instill-ai/product-website/compare/v1.6.3...v1.7.0) (2022-05-30)
 
 
