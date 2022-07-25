@@ -1,5 +1,4 @@
 import { FC, FormEvent, useRef, useState } from "react";
-import * as ga from "../../lib/google-analytic";
 import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
 import cn from "clsx";
 
@@ -45,7 +44,6 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
       }
       return;
     }
-    ga.eventHelpers.engagement("join_newsletter");
     setMessage("Cheers! Welcome aboard.");
   };
 
