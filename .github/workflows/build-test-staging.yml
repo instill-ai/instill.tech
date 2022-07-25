@@ -34,6 +34,8 @@ jobs:
           node-version: 14
           cache: "yarn"
 
+      - run: yarn install --frozen-lockfile
+
       - name: Lint
         run: yarn lint
 
@@ -49,6 +51,8 @@ jobs:
         with:
           node-version: 14
           cache: "yarn"
+
+      - run: yarn install --frozen-lockfile
 
       - name: Run unit test
         run: yarn test
