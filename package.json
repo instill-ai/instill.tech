@@ -21,7 +21,9 @@
   "dependencies": {
     "@instill-ai/design-system": "^0.0.98",
     "@mailchimp/mailchimp_marketing": "^3.0.72",
+    "@mdx-js/loader": "^2.1.2",
     "@next/bundle-analyzer": "^11.1.2",
+    "@next/mdx": "^12.2.3",
     "amplitude-js": "^8.17.0",
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
