@@ -42,6 +42,7 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
             width={355}
             height={146}
             sizes="355px"
+            className="mx-auto"
           />
         </div>
         <div
