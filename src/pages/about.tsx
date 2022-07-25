@@ -80,8 +80,8 @@ const AboutPage: FC<Props> & {
         pageTitle="About us | Instill AI"
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
       />
-      <ContentContainer>
-        <div className="mx-auto flex w-full max-w-[1128px] flex-col">
+      <ContentContainer contentMaxWidth="max-w-[1127px]">
+        <div className="mx-auto flex w-full flex-col">
           <div className="flex w-full pt-[87px] pb-[152px] sm:h-[584px] sm:py-0">
             <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGrey05">
               Make Vision AI Accessible to Everyone
