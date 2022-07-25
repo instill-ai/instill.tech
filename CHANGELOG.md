@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/instill-ai/product-website/compare/v1.8.0...v1.8.1) (2022-07-25)
+
+
+### Bug Fixes
+
+* fix about page max-width issue ([#131](https://github.com/instill-ai/product-website/issues/131)) ([69d9ee9](https://github.com/instill-ai/product-website/commit/69d9ee922c653103443a257df8d3af5878a8b28a))
+
 ## [1.8.0](https://github.com/instill-ai/product-website/compare/v1.7.0...v1.8.0) (2022-07-25)
 
 
