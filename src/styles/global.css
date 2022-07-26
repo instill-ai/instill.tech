@@ -67,3 +67,13 @@ h3.null {
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+
+/*
+  Because we have sticky header, every time we jump to the anchor link, the header will
+  cover the h1~h4 title, we need scroll-margin-top to cope with this issue.
+*/
+
+article > h1, h2, h3, h4 {
+  scroll-margin-top: 80px;
+}
