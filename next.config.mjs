@@ -1,4 +1,7 @@
-const withMDX = require("@next/mdx")({
+import mdx from "@next/mdx";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+
+const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
@@ -8,7 +11,11 @@ const withMDX = require("@next/mdx")({
   },
 });
 
-module.exports = withMDX({
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   swcMinify: true,
   reactStrictMode: true,
@@ -26,7 +33,6 @@ module.exports = withMDX({
     // }
 
     if (!dev) {
-      const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: "disabled",
@@ -40,4 +46,6 @@ module.exports = withMDX({
 
     return config;
   },
-});
+};
+
+export default withMDX(nextConfig);
