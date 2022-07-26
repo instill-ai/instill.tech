@@ -1,10 +1,8 @@
 import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
 import { FC, useCallback } from "react";
-import { sendAmplitudeData } from "../../../../lib/amplitude";
 
 const GithubCtaButton: FC = () => {
   const handleClick = useCallback(() => {
-    sendAmplitudeData("to_github", { type: "navigation" });
     window.open(
       "https://github.com/instill-ai/vdp",
       "_blank",

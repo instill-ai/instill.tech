@@ -1,11 +1,8 @@
-import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
+import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { sendAmplitudeData } from "../lib/amplitude";
 
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
 import { HeroSection, InstillCloudSection } from "@/components/sections";
-import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 
 const LandingBanner = dynamic(() =>
   import("@/components/sections").then((mod) => mod.VdpFlowSection)
@@ -34,16 +31,7 @@ interface GetLayOutProps {
 const HomePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const router = useRouter();
-  const { amplitudeIsInit } = useAmplitudeCtx();
-
   const landingBannerRef = useRef<HTMLDivElement>();
-
-  useEffect(() => {
-    if (router.isReady && amplitudeIsInit) {
-      sendAmplitudeData("hit_main_page", { type: "navigation" });
-    }
-  }, [router.isReady, amplitudeIsInit]);
 
   const scrollHandler = useCallback(() => {
     landingBannerRef.current.scrollIntoView({ behavior: "smooth" });

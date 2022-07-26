@@ -11,7 +11,6 @@ import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
-import { sendAmplitudeData } from "../../../lib/amplitude";
 import { Logo } from "@instill-ai/design-system";
 import { GetEarlyAccessButton } from "../buttons";
 
@@ -51,11 +50,6 @@ export const NavBar: FC<Props> = () => {
             Got five minutes? Participate our Data + Vision AI survey
             2022.&nbsp;
             <a
-              onClick={() => {
-                sendAmplitudeData("to_survey2022", {
-                  type: "navigation",
-                });
-              }}
               className="mr-1.5 underline"
               target="_blank"
               rel="noreferrer noopener"

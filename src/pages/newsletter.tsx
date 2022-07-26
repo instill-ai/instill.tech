@@ -1,19 +1,16 @@
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
-import { useRouter } from "next/router";
 
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
-import { sendAmplitudeData } from "../lib/amplitude";
 import {
   GetCampaignContentResponse,
   ListCampaignsResponse,
   NewsletterPublicCampaign,
 } from "@/types/mailchimp";
 import { NewsletterArchiveSection } from "@/components/sections";
-import { useAmplitudeCtx } from "@/contexts/AmplitudeContext";
 import {
   removeMailchimpStyleAndMeta,
   removePlaceholderAndFooterWords,
@@ -98,15 +95,6 @@ export const getStaticProps: GetStaticProps = async () => {
 const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ campaigns }) => {
-  const router = useRouter();
-  const { amplitudeIsInit } = useAmplitudeCtx();
-
-  useEffect(() => {
-    if (router.isReady && amplitudeIsInit) {
-      sendAmplitudeData("hit_newsletter_archive", { type: "navigation" });
-    }
-  }, [router.isReady, amplitudeIsInit]);
-
   return (
     <>
       <PageHead
