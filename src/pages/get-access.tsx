@@ -1,30 +1,16 @@
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement } from "react";
 import Image from "next/future/image";
 
 import { PageBase, PageHead } from "@/components/layouts";
 import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
-import { useRouter } from "next/router";
-import { sendAmplitudeData } from "../lib/amplitude";
-import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
-
-interface Props {}
 
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const GetEarlyAccessPage: FC<Props> & {
+const GetEarlyAccessPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const router = useRouter();
-  const { amplitudeIsInit } = useAmplitudeCtx();
-
-  useEffect(() => {
-    if (router.isReady && amplitudeIsInit) {
-      sendAmplitudeData("hit_get_early_access_page", { type: "navigation" });
-    }
-  }, [router.isReady, amplitudeIsInit]);
-
   return (
     <>
       <PageHead

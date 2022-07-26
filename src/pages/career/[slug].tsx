@@ -16,8 +16,6 @@ import { handle } from "../../lib/utilities";
 import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../../contexts/AmplitudeContext";
-import { sendAmplitudeData } from "../../lib/amplitude";
 
 const StayInTheLoopSection = dynamic(() =>
   import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
@@ -96,17 +94,6 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
   if (!position) {
     router.push("/404");
   }
-
-  // Send amplitude data
-  const { amplitudeIsInit } = useAmplitudeCtx();
-  useEffect(() => {
-    if (router.isReady && amplitudeIsInit) {
-      sendAmplitudeData("hit_career_detail_page", {
-        type: "navigation",
-        career_position: position.name,
-      });
-    }
-  }, [router.isReady, amplitudeIsInit, position.name]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();

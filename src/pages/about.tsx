@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
-import { sendAmplitudeData } from "../lib/amplitude";
 import { useOnScreen } from "../hooks/useOnScreen";
-import { useAmplitudeCtx } from "../contexts/AmplitudeContext";
 import { GetStaticProps } from "next";
 import { IClickUpTask } from "../types/clickUp";
 import {
@@ -34,15 +31,6 @@ interface Props {
 const AboutPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ members }) => {
-  const router = useRouter();
-  const { amplitudeIsInit } = useAmplitudeCtx();
-
-  useEffect(() => {
-    if (router.isReady && amplitudeIsInit) {
-      sendAmplitudeData("hit_about_page", { type: "navigation" });
-    }
-  }, [router.isReady, amplitudeIsInit]);
-
   // Lazy loading SecureYourSpotBlock
   const secureYourSpotBlockRef = useRef<HTMLDivElement>();
   const [loadSecureYourSpotBlock, setLoadSecureYourSpotBlock] = useState(false);
