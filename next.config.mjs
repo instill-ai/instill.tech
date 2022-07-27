@@ -1,11 +1,13 @@
 import mdx from "@next/mdx";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+import remarkValidateLinks from "remark-validate-links";
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm, remarkValidateLinks],
     rehypePlugins: [rehypeSlug],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
