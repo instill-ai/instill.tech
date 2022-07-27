@@ -41,13 +41,13 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
   return (
     <nav
       className={cn(
-        "sticky flex w-full flex-col",
+        "sticky ml-auto flex w-full max-w-[200px] flex-col",
         docsBaseStyles.sidebar.topOffset
       )}
       aria-labelledby="grid-right"
     >
       {sidebarSections.map((section) => (
-        <div key={section.text} className="w-full border-t">
+        <div key={section.text} className="w-full">
           <Section
             items={section.children}
             text={section.text}

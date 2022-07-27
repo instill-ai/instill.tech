@@ -9,9 +9,11 @@ import Link from "next/link";
 
 export type NavbarProps = {
   navbar: NavBar;
+  maxWidth: string;
+  marginBottom: string;
 };
 
-const Navbar = ({ navbar }: NavbarProps) => {
+const Navbar = ({ navbar, maxWidth, marginBottom }: NavbarProps) => {
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
@@ -30,8 +32,10 @@ const Navbar = ({ navbar }: NavbarProps) => {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-10 flex w-full bg-white py-4 px-10",
-        docsBaseStyles.headerHeight
+        "sticky top-0 z-10 mx-auto flex w-full bg-white py-4 px-10",
+        docsBaseStyles.navbarHeight,
+        maxWidth,
+        marginBottom
       )}
       title="Top Navigation"
     >
@@ -46,7 +50,7 @@ const Navbar = ({ navbar }: NavbarProps) => {
                 height={navbar.logo.height}
                 sizes={`${navbar.logo.width}px`}
               />
-              <h1 className="text-xl font-bold">{navbar.title}</h1>
+              <h1 className="my-auto text-xl font-bold">{navbar.title}</h1>
             </a>
           </Link>
         </div>

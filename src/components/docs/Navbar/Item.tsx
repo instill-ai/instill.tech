@@ -8,7 +8,7 @@ export type ItemProps = {
 const Item = ({ item }: ItemProps) => {
   if (isInteriorLink(item)) {
     return (
-      <a className="text-lg font-medium" href={item.to}>
+      <a className="my-auto text-lg font-medium" href={item.to}>
         {item.label}
       </a>
     );
