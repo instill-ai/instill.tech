@@ -3,8 +3,8 @@ name: ci-unit-test
 on:
   push:
     branches:
-      - '*'
-      - '!main'
+      - "*"
+      - "!main"
 
 jobs:
   unit-test:
@@ -29,14 +29,14 @@ jobs:
       #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
+        run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Run linter
         run: yarn lint
 
       # - name: Run tests
       #  run: npm run test
-      
+
       # Depend on the test result file
       # - name: Publish Unit Test Results
       #  uses: EnricoMi/publish-unit-test-result-action@v1

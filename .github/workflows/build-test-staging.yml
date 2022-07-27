@@ -19,7 +19,7 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
+        run: rm -rf node_modules && pnpm i --frozen-lockfile
 
   lint:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
           node-version: 14
           cache: "yarn"
 
-      - run: yarn install --frozen-lockfile
+      - run: pnpm i --frozen-lockfile
 
       - name: Lint
         run: yarn lint
@@ -52,7 +52,7 @@ jobs:
           node-version: 14
           cache: "yarn"
 
-      - run: yarn install --frozen-lockfile
+      - run: pnpm i --frozen-lockfile
 
       - name: Run unit test
         run: yarn test

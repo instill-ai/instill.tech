@@ -24,7 +24,7 @@ jobs:
           file_name: .env.local
 
       - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
+        run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Build
         run: yarn build
@@ -54,7 +54,7 @@ jobs:
           file_name: .env.local
 
       - name: Install dependencies
-        run: rm -rf node_modules && yarn install --frozen-lockfile
+        run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Build
         run: yarn build
