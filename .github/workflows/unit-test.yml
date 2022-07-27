@@ -15,18 +15,32 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v3
 
-      - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
-      # - name: Cache node_modules
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: '**/node_modules'
-      #     key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: rm -rf node_modules && pnpm i --frozen-lockfile
@@ -34,12 +48,5 @@ jobs:
       - name: Run linter
         run: yarn lint
 
-      # - name: Run tests
-      #  run: npm run test
-
-      # Depend on the test result file
-      # - name: Publish Unit Test Results
-      #  uses: EnricoMi/publish-unit-test-result-action@v1
-      #  if: always()
-      #  with:
-      #    files: test-results/**/*.xml
+      - name: Run tests
+        run: npm run test
