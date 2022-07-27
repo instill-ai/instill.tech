@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import cn from "clsx";
 import Section from "./Section";
-import { Sidebar, SidebarSection } from "@/types/docs";
+import { Sidebar } from "@/types/docs";
 import { docsBaseStyles } from "@/style/docsBaseStyle";
 
 export type LeftSidebarProps = {
@@ -11,33 +11,6 @@ export type LeftSidebarProps = {
 };
 
 const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
-  // const sidebarSections = useMemo<SidebarSection[]>(() => {
-  //   let sections: SidebarSection[] = [];
-
-  //   leftSidebar.items.map((item, i) => {
-  //     if (i === 0 && !item.header) {
-  //       const pesudoSection = { text: "" };
-  //       sections.push({
-  //         ...pesudoSection,
-  //         children: [],
-  //         collapsible: true,
-  //       });
-  //     }
-
-  //     if (item.header) {
-  //       sections.push({
-  //         ...item,
-  //         children: [],
-  //         collapsible: item.collapsible ?? false,
-  //       });
-  //     } else {
-  //       sections[sections.length - 1].children.push(item);
-  //     }
-  //   });
-
-  //   return sections;
-  // }, [leftSidebar.items]);
-
   return (
     <nav
       className={cn(
@@ -53,6 +26,7 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
             text={section.text}
             collapsible={section.collapsible}
             currentPagePath={currentPagePath}
+            link={section.link}
           />
         </div>
       ))}

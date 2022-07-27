@@ -16,6 +16,14 @@ export const OPEN_GRAPH = {
   twitter: "astrodotbuild",
 };
 
+/**
+ *
+ * ### About section.link
+ * - If the section has link props, it will has its own hyperlink to target page, which is useful to overview page.
+ * - If you have setup the section link, the section will automatically be un-collapsable. And we will hide the collapsable button. We suggest that you manually set collapsable to false if the section has its own link.
+ *
+ */
+
 export const SIDEBAR: Sidebar = {
   leftSidebar: {
     sections: [
@@ -93,7 +101,8 @@ export const SIDEBAR: Sidebar = {
       },
       {
         text: "VDP Cloud",
-        collapsible: true,
+        collapsible: false,
+        link: "/docs/vdp-cloud/overview",
         items: [
           {
             text: "Overview",
