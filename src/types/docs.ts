@@ -1,19 +1,26 @@
-export type SidebarElement = {
+export type SidebarItem = {
   header?: boolean;
   link?: string;
   text: string;
   collapsible?: boolean;
 };
 
+export type SidebarSections = {
+  collapsible?: boolean;
+  text: string;
+  link?: string;
+  items: SidebarItem[];
+};
+
 export type SidebarSection = {
   text: string;
   collapsible: boolean;
-  children: SidebarElement[];
+  children: SidebarItem[];
 };
 
 export type Sidebar = {
   leftSidebar: {
-    items: SidebarElement[];
+    sections: SidebarSections[];
   };
   rightSidebar: {
     tableOfContentHeaders: string[];

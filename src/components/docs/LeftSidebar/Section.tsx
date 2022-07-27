@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import cn from "clsx";
 import IconMinusSquare from "./IconMinusSquare";
 import IconPlusSquare from "./IconPlusSquare";
-import { SidebarElement } from "@/types/docs";
+import { SidebarItem } from "@/types/docs";
+import { useRouter } from "next/router";
 
 export type SectionProps = {
   text: string;
-  items: SidebarElement[];
+  items: SidebarItem[];
   collapsible?: boolean;
   currentPagePath: string;
+  link?: string;
 };
 
 const Section = ({
@@ -16,6 +18,7 @@ const Section = ({
   items,
   collapsible,
   currentPagePath,
+  link,
 }: SectionProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const baseIconStyle =
@@ -27,17 +30,33 @@ const Section = ({
     }
   };
 
+  const router = useRouter();
+
+  const toLink = () => {
+    if (link) {
+      router.push(link);
+    }
+  };
+
+  const sectionIsCollapsable = useMemo(() => {
+    if (!link) {
+      return collapsible;
+    } else {
+      return false;
+    }
+  }, [link, collapsible]);
+
   return (
     <section
       className={cn("flex w-full flex-col pt-2", collapsed ? "pb-2" : "pb-6")}
     >
       <div
-        onClick={toggle}
+        onClick={link ? toLink : toggle}
         role={collapsible ? "button" : undefined}
         className={cn("flex flex-row", { "mb-4": !collapsed })}
       >
         <h2 className="my-auto flex-1 text-sm font-semibold">{text}</h2>
-        {collapsible ? (
+        {sectionIsCollapsable ? (
           <div className="relative h-8 w-8">
             <IconMinusSquare
               styleName={

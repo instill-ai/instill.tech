@@ -16,75 +16,119 @@ export const OPEN_GRAPH = {
   twitter: "astrodotbuild",
 };
 
+/**
+ *
+ * ### About section.link
+ * - If the section has link props, it will has its own hyperlink to target page, which is useful to overview page.
+ * - If you have setup the section link, the section will automatically be un-collapsable. And we will hide the collapsable button. We suggest that you manually set collapsable to false if the section has its own link.
+ *
+ */
+
 export const SIDEBAR: Sidebar = {
   leftSidebar: {
-    items: [
-      { header: true, text: "Concept", collapsible: true },
-      { text: "What is VDP", link: "/docs/concepts/vdp" },
-      { text: "Pipeline", link: "/docs/concepts/pipeline" },
-      { text: "Model", link: "/docs/concepts/model" },
-      { text: "Connector", link: "/docs/concepts/connector" },
-      { header: true, text: "Connector", collapsible: true },
+    sections: [
       {
-        text: "Real-time Destination gRPC",
-        link: "/docs/connectors/definitions/destination-grpc-directness",
+        text: "Concept",
+        collapsible: true,
+        items: [
+          { text: "What is VDP", link: "/docs/concepts/vdp" },
+          { text: "Pipeline", link: "/docs/concepts/pipeline" },
+          { text: "Model", link: "/docs/concepts/model" },
+          { text: "Connector", link: "/docs/concepts/connector" },
+        ],
       },
       {
-        text: "Real-time Destination HTTP",
-        link: "/docs/connectors/definitions/destination-http-directness",
+        text: "Connector",
+        collapsible: true,
+        items: [
+          {
+            text: "Real-time Destination gRPC",
+            link: "/docs/connectors/definitions/destination-grpc-directness",
+          },
+          {
+            text: "Real-time Destination HTTP",
+            link: "/docs/connectors/definitions/destination-http-directness",
+          },
+          {
+            text: "Real-time Source gRPC",
+            link: "/docs/connectors/definitions/source-grpc-directness",
+          },
+          {
+            text: "Real-time Source HTTP",
+            link: "/docs/connectors/definitions/source-http-directness",
+          },
+        ],
       },
       {
-        text: "Real-time Source gRPC",
-        link: "/docs/connectors/definitions/source-grpc-directness",
+        text: "Model",
+        collapsible: true,
+        items: [
+          {
+            text: "Import ArtiVC Managed Models",
+            link: "/docs/models/definitions/artivc",
+          },
+          {
+            text: "Import Models from GitHub",
+            link: "/docs/models/definitions/github",
+          },
+          {
+            text: "Import Models from Hugging Face",
+            link: "/docs/models/definitions/huggingface",
+          },
+          {
+            text: "Import Local Models",
+            link: "/docs/models/definitions/local",
+          },
+        ],
       },
       {
-        text: "Real-time Source HTTP",
-        link: "/docs/connectors/definitions/source-http-directness",
-      },
-      { header: true, text: "Model", collapsible: true },
-      {
-        text: "Import ArtiVC Managed Models",
-        link: "/docs/models/definitions/artivc",
-      },
-      {
-        text: "Import Models from GitHub",
-        link: "/docs/models/definitions/github",
-      },
-      {
-        text: "Import Models from Hugging Face",
-        link: "/docs/models/definitions/huggingface",
-      },
-      {
-        text: "Import Local Models",
-        link: "/docs/models/definitions/local",
-      },
-      { header: true, text: "VDP OS", collapsible: true },
-      {
-        text: "Getting started",
-        link: "/docs/vdp-os/getting-started",
+        text: "VDP OS",
+        collapsible: true,
+        items: [
+          {
+            text: "Getting started",
+            link: "/docs/vdp-os/getting-started",
+          },
+          {
+            text: "Build your first pipeline",
+            link: "/docs/vdp-os/build-your-first-pipeline",
+          },
+          {
+            text: "Configuration",
+            link: "/docs/vdp-os/configuration",
+          },
+        ],
       },
       {
-        text: "Build your first pipeline",
-        link: "/docs/vdp-os/build-your-first-pipeline",
-      },
-      {
-        text: "Configuration",
-        link: "/docs/vdp-os/configuration",
-      },
-      { header: true, text: "VDP Cloud", collapsible: true },
-      {
-        text: "Overview",
+        text: "VDP Cloud",
+        collapsible: false,
         link: "/docs/vdp-cloud/overview",
+        items: [
+          {
+            text: "Overview",
+            link: "/docs/vdp-cloud/overview",
+          },
+        ],
       },
-      { header: true, text: "Troubleshoot", collapsible: true },
       {
-        text: "Overview",
-        link: "/docs/troubleshoot/troubleshooting-faq",
+        text: "Troubleshoot",
+        collapsible: true,
+        items: [
+          {
+            text: "Overview",
+            link: "/docs/troubleshoot/troubleshooting-faq",
+          },
+        ],
       },
-      { header: true, text: "Reference", collapsible: true },
       {
-        text: "API documentation",
-        link: "/docs/reference/api-doc",
+        text: "Reference",
+        collapsible: true,
+        items: [
+          {
+            text: "API documentation",
+            link: "/docs/reference/api-doc",
+          },
+        ],
       },
     ],
   },
