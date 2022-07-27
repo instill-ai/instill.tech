@@ -1,9 +1,9 @@
 ## Contribution
 1. Clone the github
-2. `npm install`
+2. `pnpm install`
 
 ## Build up next app
-npm run dev
+pnpm run dev
 
 ## Build up storybook
-npm run storybook
+pnpm run storybook
