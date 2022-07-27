@@ -2,11 +2,11 @@ import { useState } from "react";
 import cn from "clsx";
 import IconMinusSquare from "./IconMinusSquare";
 import IconPlusSquare from "./IconPlusSquare";
-import { SidebarElement } from "@/types/docs";
+import { SidebarItem } from "@/types/docs";
 
 export type SectionProps = {
   text: string;
-  items: SidebarElement[];
+  items: SidebarItem[];
   collapsible?: boolean;
   currentPagePath: string;
 };
