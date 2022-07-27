@@ -37,7 +37,7 @@ export const SIDEBAR: Sidebar = {
 };
 
 export const NAVBAR: NavBar = {
-  title: "Nitro",
+  title: "Visual Data Preparation",
   logo: {
     src: "/logo.svg",
     width: 40,
@@ -50,16 +50,12 @@ export const NAVBAR: NavBar = {
       className: "github-social-link",
       icon: {
         src: "/github.svg",
-        width: 24,
-        height: 24,
+        width: 30,
+        height: 30,
         alt: "github icon",
       },
       position: "right",
-    },
-    {
-      position: "left",
-      to: "/blog",
-      label: "Blog",
+      label: "github",
     },
   ],
 };
