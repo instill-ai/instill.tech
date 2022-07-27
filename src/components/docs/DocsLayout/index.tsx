@@ -25,7 +25,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
     headersEl.forEach((el) => {
       newHeaders.push({
-        slug: `#${el.id}`,
+        slug: el.id,
         text: el.textContent,
       });
     });
@@ -43,7 +43,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       <main className="mx-auto grid max-w-[1440px] grid-flow-col grid-cols-12 gap-x-10">
         <aside
           id="grid-left"
-          className="col-span-2 ml-10"
+          className="col-span-3 ml-10"
           title="Site Navigation"
         >
           <LeftSidebar
@@ -51,7 +51,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             currentPagePath={router.pathname}
           />
         </aside>
-        <div id="grid-main" className="prose col-span-8 mx-auto max-w-4xl">
+        <div id="grid-main" className="prose col-span-7 max-w-4xl">
           {children}
         </div>
         <aside

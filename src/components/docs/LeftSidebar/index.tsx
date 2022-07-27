@@ -41,7 +41,7 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
   return (
     <nav
       className={cn(
-        "sticky ml-auto flex w-full max-w-[200px] flex-col",
+        "sticky flex w-full flex-col",
         docsBaseStyles.sidebar.topOffset
       )}
       aria-labelledby="grid-right"

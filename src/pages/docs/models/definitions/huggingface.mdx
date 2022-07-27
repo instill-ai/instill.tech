@@ -1,0 +1,52 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Import Models from Hugging Face",
+  lang: "en-US",
+  draft: false,
+  description: "",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+The `Hugging Face` model definition allows you to import models from a [Hugging Face](https://github.com/) repository.
+
+## Supported model tasks
+
+Currently, VDP supports importing models tagged with the following tasks
+
+- ✅ Image Classification
+
+## Configuration
+
+| Parameter   | Type   | Notes                                                                                                                                                                                                                         |
+| :---------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `repo_id`\* | string | A model repo name hosted on the [Hugging Face model hub](https://huggingface.co/models). Valid repo ids can be located at the root-level, or namespaced under a user or organization name, like `google/vit-base-patch16-224` |
+
+## Getting started
+
+### Requirements
+
+- A public Hugging Face model repository that is labelled with `Image classification` task
+
+### Setup guide
+
+Go to the model tab and click `Add new model`. Since a Hugging Face model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
+
+1. Pick a name for your model, this will be the unique identifier of this model
+2. Select `Hugging Face` from the drop-down list
+3. Upload the model zip file and click Setup new model
+
+![Add a Hugging Face model](/docs-assets/hf-add-model.png)
+
+4. Once the model is imported, pick one model instance and click `Deploy`
+
+![Deploy a model instance](/docs-assets/hf-deploy-model-instance.png)
+
+Now go to the model tab, the corresponding model instance should be online.
+
+![Hugging Face model list](/docs-assets/hf-model-list.png)
+
+[hi](ji)

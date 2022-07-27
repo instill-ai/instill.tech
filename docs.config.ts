@@ -19,16 +19,73 @@ export const OPEN_GRAPH = {
 export const SIDEBAR: Sidebar = {
   leftSidebar: {
     items: [
-      { header: true, text: "Intro", collapsible: true },
-      { text: "Astro", link: "astro" },
-      { text: "React", link: "react" },
-      { text: "Svelte", link: "svelte" },
-      { text: "Vue", link: "vue" },
-      { text: "Page 5", link: "page-5" },
-      { text: "Page 6", link: "page-6" },
-      { header: true, text: "Quick start", collapsible: false },
-      { text: "Page 7", link: "page-7" },
-      { text: "Page 8", link: "page-8" },
+      { header: true, text: "Concept", collapsible: true },
+      { text: "What is VDP", link: "/docs/concepts/vdp" },
+      { text: "Pipeline", link: "/docs/concepts/pipeline" },
+      { text: "Model", link: "/docs/concepts/model" },
+      { text: "Connector", link: "/docs/concepts/connector" },
+      { header: true, text: "Connector", collapsible: true },
+      {
+        text: "Real-time Destination gRPC",
+        link: "/docs/connectors/definitions/destination-grpc-directness",
+      },
+      {
+        text: "Real-time Destination HTTP",
+        link: "/docs/connectors/definitions/destination-http-directness",
+      },
+      {
+        text: "Real-time Source gRPC",
+        link: "/docs/connectors/definitions/source-grpc-directness",
+      },
+      {
+        text: "Real-time Source HTTP",
+        link: "/docs/connectors/definitions/source-http-directness",
+      },
+      { header: true, text: "Model", collapsible: true },
+      {
+        text: "Import ArtiVC Managed Models",
+        link: "/docs/models/definitions/artivc",
+      },
+      {
+        text: "Import Models from GitHub",
+        link: "/docs/models/definitions/github",
+      },
+      {
+        text: "Import Models from Hugging Face",
+        link: "/docs/models/definitions/huggingface",
+      },
+      {
+        text: "Import Local Models",
+        link: "/docs/models/definitions/local",
+      },
+      { header: true, text: "VDP OS", collapsible: true },
+      {
+        text: "Getting started",
+        link: "/docs/vdp-os/getting-started",
+      },
+      {
+        text: "Build your first pipeline",
+        link: "/docs/vdp-os/build-your-first-pipeline",
+      },
+      {
+        text: "Configuration",
+        link: "/docs/vdp-os/configuration",
+      },
+      { header: true, text: "VDP Cloud", collapsible: true },
+      {
+        text: "Overview",
+        link: "/docs/vdp-cloud/overview",
+      },
+      { header: true, text: "Troubleshoot", collapsible: true },
+      {
+        text: "Overview",
+        link: "/docs/troubleshoot/troubleshooting-faq",
+      },
+      { header: true, text: "Reference", collapsible: true },
+      {
+        text: "API documentation",
+        link: "/docs/reference/api-doc",
+      },
     ],
   },
   rightSidebar: {

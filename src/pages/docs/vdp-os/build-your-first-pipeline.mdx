@@ -1,0 +1,147 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Build your first pipeline",
+  lang: "en-US",
+  draft: false,
+  description: "",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+## Onboarding
+
+You should see the onboarding page for the first time using the console. Please enter your email to proceed.
+
+![Onboarding page of the VDP console](/docs-assets/onboarding.png)
+
+## Add a HTTP source
+
+:::info
+Check our growing list of [source connectors](../../connectors/definitions/source-overview). If you can't find the connectors you want, join our [community](https://discord.gg/sevxWsqpGh) and feel free to post your request in the #vdp channel.
+:::
+
+After onboarding, you will be redirected to the `Pipeline` tab on the left sidebar, where you can build your first VDP pipeline by clicking `Create your first pipeline` and forever change the way you approach visual data processing workflow development.
+
+![Pipeline list page of the VDP console](/docs-assets/pipeline-list-empty.png)
+
+In this tutorial you'll build your first **Sync** pipeline and trigger the pipeline to process some images. You can follow the tutorial via the `Pipeline` tab or navigate to the `Data source` tab.
+
+A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline. To set it up, just choose `HTTP` from the drop-down list below.
+
+![Add a HTTP source to create a pipeline in the VDP console](/docs-assets/add-a-source-http.png)
+
+## Import a model from GitHub repo
+
+:::info
+Check our growing list of [model definitions](../../models/definitions/overview). If you want to import models from other platforms you want, join our [community](https://discord.gg/sevxWsqpGh) and feel free to post your request in the #vdp channel.
+:::
+
+To process images, here we import a model from our public GitHub repo [instill-ai/model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2). To set it up, just follow the instructions on the UI and click `Setup new model`:
+
+1. Pick a name for your model, this will be the unique identifier of this model;
+2. Select `GitHub` from the drop-down list;
+3. Fill the GitHub repository `instill-ai/model-mobilenetv2`.
+
+![Import a model from a GitHub repo via VDP console](/docs-assets/add-a-model.png)
+
+VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance id.
+
+## Deploy a model instance
+
+Once the model is imported, we pick one from all the model instances, and click `deploy` to deploy it online.
+
+![Deploy a model instance via VDP console](/docs-assets/deploy-a-model-instance.png)
+
+## Add a HTTP destination
+
+Just click `Next`. Since we are building a `Sync` pipeline, the HTTP destination is automatically paired with the HTTP source.
+
+:::tip
+Check out [Sync mode](../../concepts/pipeline) about the pairing of source and destination connectors.
+
+- HTTP source -> HTTP destination
+- gRPC source -> gRPC destination
+  :::
+
+![Add a HTTP destination to create a pipeline in the VDP console](/docs-assets/add-a-destination-http.png)
+
+Almost done! Just give your pipeline a unique id and an optional description, and click `Set up pipeline`.
+
+![Set up a pipeline in the VDP console](/docs-assets/set-up-a-pipeline.png)
+
+## Trigger your pipeline for the first time
+
+:::info
+Check the [Sync pipeline state machine chart](../../concepts/pipeline) to understand how a Sync pipeline is automatically activated.
+:::
+
+Now that the `classification` pipeline is automatically activated, you can make a request to trigger the pipeline to process **multiple** images within a batch:
+
+```bash
+curl -X POST \
+--data-raw '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/dog.jpg"
+    },
+    {
+      "image_url": "https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg"
+    }
+  ]
+}' \
+http://localhost:8081/v1alpha/pipelines/classification:trigger
+```
+
+In which `8081` is the port of the local pipeline backend.
+
+A HTTP response will return
+
+```bash
+{
+  "output": {
+    "classification_outputs": [
+      {
+        "category": "golden retriever",
+        "score": 0.896806
+      },
+      {
+        "category": "African elephant",
+        "score": 0.861324
+      }
+    ]
+  }
+}
+```
+
+Besides using remote image url `image_url` as payload, you can send Base64-encoded images with `image_base64`
+
+```bash
+curl -X POST \
+--data-raw '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSk...D/2Q=="
+    },
+    ...
+  ]
+}' \
+http://localhost:8081/v1alpha/pipelines/classification:trigger
+```
+
+or send a multipart request
+
+```
+curl -X POST \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"elephant.jpg"' \
+http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart
+```
+
+**🙌 That's it!**
+
+This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey. Please check [here](../../tutorials/overview) for more tutorials.
+
+We are actively supporting more connectors and model definitions. If you have any questions, please reach out to us on [Discord community](https://discord.gg/sevxWsqpGh). We're still in alpha, so if you see any bugs, please help create an issue on our [GitHub](https://github.com/instill-ai/vdp).

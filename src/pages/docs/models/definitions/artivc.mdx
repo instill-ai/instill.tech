@@ -1,0 +1,180 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Import ArtiVC Managed Models",
+  lang: "en-US",
+  draft: false,
+  description: "",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+The `ArtiVC` model definition allows you to import models versioned by [ArtiVC](https://artivc.io/).
+
+## Supported storage backends
+
+- ❌ Local Filesystem
+- ❌ Remote Filesystem (SSH)
+- ❌ AWS S3
+- ✅ Google Cloud Storage (GCS)
+- ❌ Azure Blob Storage
+- ❌ Rclone
+
+## Configuration
+
+| Parameter    | Type   | Notes                                                                                       |
+| :----------- | :----- | :------------------------------------------------------------------------------------------ |
+| `url`\*      | string | Cloud storage URL where the model is stored                                                 |
+| `credential` | string | Credentials to access with cloud storage in JSON schema format if the GCS bucket is private |
+
+## Getting started
+
+### Requirements
+
+- A model versioned by ArtiVC and stored in an ArtiVC supported storage backend
+- The model should be tagged by ArtiVC at least once
+- Allow VDP to access data in the storage backend
+
+### Prepare a model managed by ArtiVC
+
+If your models are stored in cloud storage, [ArtiVC](https://artivc.io/) is a handy tool to do data versioning directly on cloud without additional dependency.
+
+> ArtiVC is a CLI tool for data versioning on cloud storage. It natively supports local filesystem, remote filesystem (by SSH), AWS S3, Google Cloud Storage, and Azure Blob Storage as backend.
+>
+> —— From ArtiVC [doc](https://artivc.io/).
+
+:::info
+If your models are managed by Git, please check [GitHub](github). VDP supports importing models managed by Git LFS or DVC from a GitHub repository.
+:::
+
+Assuming ArtiVC is [installed](https://artivc.io/usage/getting-started/#install-artivc), this guideline uses GCS as the repository backend to manage the model.
+
+**Step 1: Download sample model data**
+
+In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet) as sample data.
+
+```bash
+$ mkdir workspace
+$ cd workspace
+$ curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
+$ tar -xvf yolov4-onnx-cpu.zip
+$ rm yolov4-onnx-cpu.zip
+```
+
+The extracted model files should look like:
+
+```
+├── README.md
+├── post
+│   ├── 1
+│   │   ├── labels.py
+│   │   ├── model.py
+│   │   └── yolov4_anchors.txt
+│   └── config.pbtxt
+├── pre
+│   ├── 1
+│   │   └── model.py
+│   └── config.pbtxt
+├── yolov4
+│   ├── 1
+│   │   └── .keep
+│   └── config.pbtxt
+└── yolov4-infer
+    ├── 1
+    │   └── model.onnx
+    └── config.pbtxt
+```
+
+**Step 2: Push the data to remote storage**
+
+Before we push the data, install [the gcloud CLI](https://cloud.google.com/sdk/gcloud) and login the application default credential
+
+```bash
+$ gcloud auth application-default login
+```
+
+Initialize the workspace
+
+```bash
+# in /workspace
+$ avc init gs://mybucket/path/to/mymodel
+# list the config
+$ avc config
+repo.url=gs://mybucket/path/to/mymodel
+```
+
+**Step 3: Tag a version**
+
+Push data to the remote and tag a version
+
+```bash
+$ avc push
+$ avc tag v1.0-cpu
+```
+
+If you list the files in the remote storage repository, the file structure will include three types of data: `commits`, `objects` and `refs` like below. See [here](https://artivc.io/design/how-it-works/) to learn how ArtiVC works under the hood
+
+```
+<artifact repository root>
+├── commits
+│   └── f606beaa1749384e19116be6050c5e071a84f9ef
+├── objects
+|   ├── 03
+│   │   └── 0fa5faff0dc467a3931edc191fae3d4216006c
+│   ├── 32
+│   │   └── 9aa45199f1f67c3fce9f4d7f428c11cc35ae1c
+│   ├── 3e
+│   │   └── 94cdbc524e8abc6dfcc62128b2e9abad0df996
+│   ├── 48
+│   │   └── bb5fa66b144211fb9d7d9454fd63e247ffe6d3
+│   ├── 51
+│   │   └── 549d87b42b455b60c8fcfa35c14201f31f073c
+│   ├── 59
+│   │   └── 9f0c0388cb4dfc697e0a3575021a494fad6f86
+│   ├── 86
+│   │   └── 27b1a86d78e408259c0433d16f1093aeea17c5
+│   ├── c3
+│   │   └── c25b8b92c608139ca762eb512e3a8ed2ad761e
+│   ├── da
+│   │   └── 39a3ee5e6b4b0d3255bfef95601890afd80709
+│   ├── dd
+│   │   └── 90f5f1c4e78ad88d8968e9ff29095fa62be6aa
+│   └── e3
+│       └── 043e64cee2e4d248754610146780507d419fb3
+├── refs
+│   ├── latest
+│   └── tags
+        └── v1.0-cpu
+```
+
+🎉 If you've followed the above steps, just run the setup guide below, VDP wll import the model accordingly.
+
+:::info
+Use `avc get` to download data. See [here](https://artivc.io/usage/getting-started/) for more information.
+:::
+
+### Setup guide
+
+Go to the model tab in the console and click `Add new model`. The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
+
+1. Pick a name for your model, this will be the unique identifier of this model
+2. Select `ArtiVC` from the drop-down list
+3. Fill the following information and click `Setup new model`
+   - Fill the GCS bucket path in which the model is stored, e.g., `gs://mybucket/path/to/mymodel/`
+   - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the `Credentials JSON` field. See [here](#find-the-credentials-json-file) to find the credentials json file.
+
+![Add a ArtiVC model YOLOv4](/docs-assets/artivc-add-yolov4-model.png)
+
+4. Once the model is imported, pick one model instance and click `Deploy`
+
+![Deploy a model instance](/docs-assets/artivc-deploy-yolov4-model-instance.png)
+
+Now go to the model tab, the corresponding model instance should be online.
+
+![ArtiVC model list](/docs-assets/artivc-model-list.png)
+
+#### Find the credentials json file
+
+If you are using the application default credentials in a local development environment, the credentials is stored in a `application_default_credentials.json` file under the Google Cloud user configuration directory. See [here](https://cloud.google.com/sdk/docs/authorizing#find_your_credential_files) to find the credential directory.
