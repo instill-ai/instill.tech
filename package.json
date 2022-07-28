@@ -91,9 +91,9 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run prettier:fix",
+      "pnpm run prettier:fix",
       "eslint --fix",
-      "jest --bail --findRelatedTests"
+      "pnpm run test --passWithNoTests"
     ],
     "*.stories.{ts,tsx}": [
       "npm run prettier:fix",
