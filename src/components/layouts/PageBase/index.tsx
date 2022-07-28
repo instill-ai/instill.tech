@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
 import { FC } from "react";
-import { NavBar } from "../../ui/commons/NavBar";
+import { Nav } from "@/components/ui";
 
 const Footer = dynamic(() =>
-  import("../../ui/commons/Footer").then((mod) => mod.Footer)
+  import("@/components/ui").then((mod) => mod.Footer)
 );
 
 const PageBase: FC = ({ children }) => {
   return (
     <div className="flex min-h-screen flex-col bg-instillGrey95">
-      <NavBar />
+      <Nav />
       <div className="flex flex-1 flex-col">{children}</div>
       <Footer />
     </div>
