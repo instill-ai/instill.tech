@@ -1,7 +1,7 @@
+import { useCallback } from "react";
 import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
-import { FC, useCallback } from "react";
 
-const GithubCtaButton: FC = () => {
+const GithubCtaButton = () => {
   const handleClick = useCallback(() => {
     window.open(
       "https://github.com/instill-ai/vdp",

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
 import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
-import { CareerHero } from "../../components/ui/CareerHero";
+import CareerHero from "@/components/ui/CareerHero";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   listClickUpTasksInListQuery,

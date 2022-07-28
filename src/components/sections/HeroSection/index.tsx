@@ -4,7 +4,7 @@ import {
   ExploreMoreScrollButtonProps,
   GetEarlyAccessButton,
   JoinDiscordButton,
-} from "@/components/ui/buttons";
+} from "@/components/ui";
 import HeroAnimation from "./HeroAnimation";
 import Headline from "./Headline";
 import SubHeadline from "./SubHeadline";

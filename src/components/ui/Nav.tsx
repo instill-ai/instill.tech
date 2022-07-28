@@ -11,7 +11,7 @@ import { CareerPageLink } from "./links/CareerPageLink";
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { Logo } from "@instill-ai/design-system";
-import { GetEarlyAccessButton } from "./buttons";
+import GetEarlyAccessButton from "./GetEarlyAccessButton";
 import cn from "clsx";
 
 const Nav: FC = () => {
