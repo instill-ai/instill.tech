@@ -1,18 +1,18 @@
 import { Logo } from "@instill-ai/design-system";
-import { FC } from "react";
-import { CookiePolicyLink } from "../links/CookiePolicyLink";
-import { PrivacyPolicyLink } from "../links/PrivacyPolicyLink";
-import { SocialLinksGroup } from "../SocialLinksGroup";
-import { CopyRightText } from "./CopyRightText";
-import { SimpleHorizontalLine } from "./SimpleHorizontalLine";
+import { CookiePolicyLink } from "./links/CookiePolicyLink";
+import { PrivacyPolicyLink } from "./links/PrivacyPolicyLink";
+import { SocialLinksGroup } from "./SocialLinksGroup";
+import CopyRightText from "./CopyRightText";
+import SimpleHorizontalLine from "./SimpleHorizontalLine";
 
-interface Props {}
-
-export const Footer: FC<Props> = () => {
+const Footer = () => {
   return (
     <div className="flex w-full bg-instillGrey95">
       <div className="mt-auto flex w-full max-w-[1440px] flex-col py-5 px-4 md:mx-auto max:w-10/12 max:px-0">
-        <SimpleHorizontalLine styleName="mb-5 border-instillGrey70" />
+        <SimpleHorizontalLine
+          marginBottom="mb-5"
+          borderColor="border-instillGrey70"
+        />
         <div className="flex flex-col gap-y-[60px] sm:gap-y-10">
           <div className="flex flex-col">
             <h3 className="instill-text-h3 mb-5 max-w-[256px] text-instillGrey05">
@@ -42,3 +42,5 @@ export const Footer: FC<Props> = () => {
     </div>
   );
 };
+
+export default Footer;

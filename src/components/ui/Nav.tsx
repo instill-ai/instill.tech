@@ -1,22 +1,20 @@
 import { FC, useEffect, useState } from "react";
-import { MenuIcon } from "../icons/MenuIcon";
-import { BlogLink } from "../links/BlogLink";
-import { GithubTextLink } from "../links/GithubTextLink";
-import { LinkBase } from "../links/LinkBase";
-import { CrossIcon } from "../icons/CrossIcon";
-import { AboutPageLink } from "../links/AboutPageLink";
-import * as classNames from "classnames";
+import { MenuIcon } from "./icons/MenuIcon";
+import { BlogLink } from "./links/BlogLink";
+import { GithubTextLink } from "./links/GithubTextLink";
+import { LinkBase } from "./links/LinkBase";
+import { CrossIcon } from "./icons/CrossIcon";
+import { AboutPageLink } from "./links/AboutPageLink";
 import { useRouter } from "next/router";
-import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
-import { CareerPageLink } from "../links/CareerPageLink";
-import { AnnouncementBar } from "./AnnouncementBar";
-import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
+import { NewsletterArchivePageLink } from "./links/NewsletterArchivePageLink";
+import { CareerPageLink } from "./links/CareerPageLink";
+import { AnnouncementBar } from "@/components/ui";
+import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { Logo } from "@instill-ai/design-system";
-import { GetEarlyAccessButton } from "../buttons";
+import { GetEarlyAccessButton } from "./buttons";
+import cn from "clsx";
 
-interface Props {}
-
-export const NavBar: FC<Props> = () => {
+const Nav: FC = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
@@ -71,7 +69,7 @@ export const NavBar: FC<Props> = () => {
           </div>
         </div>
         <div
-          className={classNames.default(
+          className={cn(
             "flex h-full w-full flex-col lg:hidden",
             open ? "fixed top-0 left-0 z-50 bg-instillGrey95" : ""
           )}
@@ -103,3 +101,5 @@ export const NavBar: FC<Props> = () => {
     </div>
   );
 };
+
+export default Nav;

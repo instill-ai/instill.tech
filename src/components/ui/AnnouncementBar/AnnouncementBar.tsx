@@ -1,10 +1,8 @@
 import { FC, useCallback } from "react";
-import { useAnnouncementBarCtx } from "../../../contexts/AnnouncementBarContext";
-import { CrossIcon } from "../icons/CrossIcon";
+import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { CrossIcon } from "@/components/ui/icons/CrossIcon";
 
-interface Props {}
-
-export const AnnouncementBar: FC<Props> = ({ children }) => {
+const AnnouncementBar: FC = ({ children }) => {
   const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
 
   const handleClick = useCallback(() => {
@@ -24,3 +22,5 @@ export const AnnouncementBar: FC<Props> = ({ children }) => {
     </div>
   );
 };
+
+export default AnnouncementBar;

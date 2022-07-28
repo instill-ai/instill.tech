@@ -57,13 +57,15 @@
     "@storybook/react": "^6.5.9",
     "@tailwindcss/typography": "^0.5.2",
     "@testing-library/dom": "^8.16.0",
-    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/gtag.js": "^0.0.8",
+    "@types/jest": "^28.1.6",
     "@types/mailchimp__mailchimp_marketing": "^3.0.2",
     "@types/node": "^16.9.6",
     "@types/react": "^17.0.24",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.2",
@@ -89,9 +91,9 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run prettier:fix",
+      "pnpm run prettier:fix",
       "eslint --fix",
-      "jest --bail --findRelatedTests"
+      "pnpm run test --passWithNoTests"
     ],
     "*.stories.{ts,tsx}": [
       "npm run prettier:fix",
