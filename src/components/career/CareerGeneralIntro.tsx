@@ -1,20 +1,8 @@
-import { FC } from "react";
 import Image from "next/future/image";
-import cn from "clsx";
 
-interface Props {
-  /** <Tailwind format> - position and width */
-  styleName?: string;
-}
-
-export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
+const CareerGeneralIntro = () => {
   return (
-    <div
-      className={cn(
-        "flex w-full flex-col gap-y-20 gap-x-20 py-[100px] px-4 md:flex-row md:gap-y-0 md:px-0",
-        styleName
-      )}
-    >
+    <div className="flex w-full flex-col gap-y-20 gap-x-20 py-[100px] px-4 md:flex-row md:gap-y-0 md:px-0">
       <div className="m-auto flex w-full flex-shrink-0 md:w-[33%]">
         <Image
           src="/images/instill-ai-badge.svg"
@@ -48,3 +36,5 @@ export const CareerGeneralIntro: FC<Props> = ({ styleName }) => {
     </div>
   );
 };
+
+export default CareerGeneralIntro;

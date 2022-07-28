@@ -1,5 +1,4 @@
 import { TPositionDetails } from "@/types/instill";
-import { FC } from "react";
 import cn from "clsx";
 import PositionInfo from "./PositionInfo";
 import PositionDescription from "./PositionDescription";
@@ -9,10 +8,10 @@ export type CareerPositionDetailsSectionProps = {
   position: TPositionDetails;
 };
 
-const CareerPositionDetailsSection: FC<CareerPositionDetailsSectionProps> = ({
+const CareerPositionDetailsSection = ({
   marginBottom,
   position,
-}) => {
+}: CareerPositionDetailsSectionProps) => {
   return (
     <div
       className={cn(

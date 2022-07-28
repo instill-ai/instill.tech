@@ -4,7 +4,7 @@ import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
-import { CareerPositionDetailsSection } from "@/components/sections";
+import { CareerPositionDetailsSection } from "@/components/career";
 
 import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
 import {

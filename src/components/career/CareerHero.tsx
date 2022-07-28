@@ -1,7 +1,7 @@
 import cn from "clsx";
 import ViewJobsScrollButton, {
   ViewJobsScrollButtonProps,
-} from "./ViewJobsScrollButton";
+} from "../ui/ViewJobsScrollButton";
 
 export type CareerHeroProps = {
   viewJobsScrollHandler: ViewJobsScrollButtonProps["scrollHandler"];

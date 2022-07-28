@@ -8,8 +8,7 @@ import type { HeroSectionProps } from "./HeroSection";
 import StayInTheLoopSection from "./StayInTheLoopSection";
 import type { StayInTheLoopSectionProps } from "./StayInTheLoopSection";
 import FeatureSection from "./FeatureSection";
-import CareerPositionDetailsSection from "./CareerPositionDetailsSection";
-import type { CareerPositionDetailsSectionProps } from "./CareerPositionDetailsSection";
+
 import NewsletterArchiveSection from "./NewsletterArchiveSection";
 import type { NewsletterArchiveSectionProps } from "./NewsletterArchiveSection";
 import VdpFlowSection from "./VdpFlowSection";
@@ -21,7 +20,6 @@ export {
   HeroSection,
   StayInTheLoopSection,
   FeatureSection,
-  CareerPositionDetailsSection,
   NewsletterArchiveSection,
   VdpFlowSection,
 };
@@ -30,6 +28,5 @@ export type {
   OurMembersSectionProps,
   HeroSectionProps,
   StayInTheLoopSectionProps,
-  CareerPositionDetailsSectionProps,
   NewsletterArchiveSectionProps,
 };
