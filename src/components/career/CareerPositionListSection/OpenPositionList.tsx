@@ -1,18 +1,20 @@
-import { FC } from "react";
+import cn from "clsx";
 import { OpenPositionListUnit } from "./OpenPositionListUnit";
-import * as classNames from "classnames";
-import { TPositionDetails } from "../../../types/instill";
+import { TPositionDetails } from "@/types/instill";
 
-interface Props {
+export type OpenPositionListProps = {
   positions: TPositionDetails[];
 
   /** <Tailwind config> - position and width */
   styleName?: string;
-}
+};
 
-export const OpenPositionList: FC<Props> = ({ positions, styleName }) => {
+export const OpenPositionList = ({
+  positions,
+  styleName,
+}: OpenPositionListProps) => {
   return (
-    <div className={classNames.default("flex flex-col", styleName)}>
+    <div className={cn("flex flex-col", styleName)}>
       {positions.map((position) => {
         return (
           <OpenPositionListUnit

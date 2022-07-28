@@ -9,8 +9,11 @@ import {
   useState,
 } from "react";
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
-import { CareerGeneralIntro } from "../../components/ui/CareerGeneralIntro";
-import CareerHero from "@/components/ui/CareerHero";
+import {
+  CareerGeneralIntro,
+  CareerHero,
+  CareerPositionListSectionProps,
+} from "../../components/career";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   listClickUpTasksInListQuery,
@@ -19,8 +22,8 @@ import {
 import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 
-const CareerOpenPositionsSection = dynamic(
-  () => import("../../components/ui/CareerOpenPositionsSection")
+const CareerPositionListSection = dynamic<CareerPositionListSectionProps>(() =>
+  import("@/components/career").then((mod) => mod.CareerPositionListSection)
 );
 
 const StayInTheLoopSection = dynamic(() =>
@@ -113,8 +116,8 @@ const CareerPage: FC<Props> & {
         <CareerGeneralIntro />
         <div className="flex" ref={openPositionsRef}>
           {loadOpenPositions && (
-            <CareerOpenPositionsSection
-              styleName="mb-[100px]"
+            <CareerPositionListSection
+              marginBottom="mb-[100px]"
               positions={positions}
             />
           )}

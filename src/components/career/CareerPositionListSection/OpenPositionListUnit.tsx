@@ -1,8 +1,8 @@
 import { FC } from "react";
 import * as classNames from "classnames";
-import { LocationIcon } from "../icons/LocationIcon";
-import { WorkTypeIcon } from "../icons/WorkTypeIcon";
-import { LinkBase } from "../links/LinkBase";
+import { LocationIcon } from "@/components/ui/icons/LocationIcon";
+import { WorkTypeIcon } from "@/components/ui/icons/WorkTypeIcon";
+import { LinkBase } from "@/components/ui/links/LinkBase";
 
 interface Props {
   /** Indicate whether the list unit is placeholder or not */
