@@ -1,3 +1,3 @@
 import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
-import Navbar from "./Navbar";
-export { AnnouncementBar };
+import Nav from "./Nav";
+export { AnnouncementBar, Nav };
