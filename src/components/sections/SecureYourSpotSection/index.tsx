@@ -1,6 +1,6 @@
 import { FC } from "react";
 import cn from "clsx";
-import { GetEarlyAccessButton } from "@/components/ui/buttons";
+import { GetEarlyAccessButton } from "@/components/ui";
 import Image from "next/future/image";
 
 export type SecureYourSpotSectionProps = {

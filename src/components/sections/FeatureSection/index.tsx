@@ -1,7 +1,7 @@
 import Image from "next/future/image";
 import { FC } from "react";
 import FeatureItem from "./FeatureItem";
-import { GithubCtaButton } from "@/components/ui/buttons";
+import { GithubCtaButton } from "@/components/ui";
 
 const FeatureSection: FC = () => {
   return (

@@ -1,31 +1,17 @@
-import { FC } from "react";
 import cn from "clsx";
-import { ViewJobsScrollButton } from "./buttons";
+import ViewJobsScrollButton, {
+  ViewJobsScrollButtonProps,
+} from "./ViewJobsScrollButton";
 
-interface Props {
-  /** Because we have ViewJobsScrollButton under this component, we have to provide related
-   * Scroll handler.
-   * 
-   * This function will scroll pageView to targetRef 
-   * 
-   *  @Example
-   * 
-   *  ```
-   *  const handleScroll = useCallback(() => {
-        ref.current.scrollIntoView({ behavior: "smooth" });
-      }, []);
-      ```
-   * 
-  */
-  viewJobsScrollHandler: () => void;
+export type CareerHeroProps = {
+  viewJobsScrollHandler: ViewJobsScrollButtonProps["scrollHandler"];
+  marginBottom?: string;
+};
 
-  marginBottom: string;
-}
-
-export const CareerHero: FC<Props> = ({
+const CareerHero = ({
   marginBottom,
   viewJobsScrollHandler,
-}) => {
+}: CareerHeroProps) => {
   const subHeaderStyle =
     "text-lg leading-[27px] text-instillGrey05 mx-auto font-sans md:font-light md:text-2xl md:leading-10 text-center";
   return (
@@ -57,3 +43,5 @@ export const CareerHero: FC<Props> = ({
     </div>
   );
 };
+
+export default CareerHero;

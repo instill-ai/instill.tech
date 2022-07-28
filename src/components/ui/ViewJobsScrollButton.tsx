@@ -1,5 +1,4 @@
 import { SolidButton, SolidButtonProps } from "@instill-ai/design-system";
-import { FC } from "react";
 
 export type ViewJobsScrollButtonProps = {
   /** This function will scroll pageView to targetRef
@@ -17,10 +16,10 @@ export type ViewJobsScrollButtonProps = {
   position?: SolidButtonProps["position"];
 };
 
-const ViewJobsScrollButton: FC<ViewJobsScrollButtonProps> = ({
+const ViewJobsScrollButton = ({
   scrollHandler,
   position,
-}) => {
+}: ViewJobsScrollButtonProps) => {
   return (
     <SolidButton
       position={position}

@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import { FC, useCallback } from "react";
+import { useCallback } from "react";
 import { DiscordIcon, OutlineButton } from "@instill-ai/design-system";
 
-const JoinDiscordButton: FC = () => {
+const JoinDiscordButton = () => {
   const router = useRouter();
 
   const handleClick = useCallback(() => {

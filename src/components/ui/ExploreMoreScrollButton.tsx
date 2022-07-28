@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { ArrowDownIcon } from "@instill-ai/design-system";
 
 export type ExploreMoreScrollButtonProps = {
@@ -16,9 +15,9 @@ export type ExploreMoreScrollButtonProps = {
   scrollHandler: () => void;
 };
 
-const ExploreMoreScrollButton: FC<ExploreMoreScrollButtonProps> = ({
+const ExploreMoreScrollButton = ({
   scrollHandler,
-}) => {
+}: ExploreMoreScrollButtonProps) => {
   return (
     <button
       onClick={scrollHandler}
