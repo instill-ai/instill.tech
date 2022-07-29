@@ -1,6 +1,6 @@
 import { FC, useCallback } from "react";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
-import { CrossIcon } from "@/components/ui/icons/CrossIcon";
+import { CrossIcon } from "@instill-ai/design-system";
 
 const AnnouncementBar: FC = ({ children }) => {
   const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
@@ -17,7 +17,12 @@ const AnnouncementBar: FC = ({ children }) => {
         data-testid="close-announcement-bar"
         className="my-auto flex hover:cursor-pointer hover:bg-[#FFED8F]"
       >
-        <CrossIcon styleName="my-auto w-5 h-5 text-instillGrey95" />
+        <CrossIcon
+          width="w-5"
+          height="h-5"
+          color="fill-instillGrey95"
+          position="my-auto"
+        />
       </div>
     </div>
   );

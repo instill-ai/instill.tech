@@ -3,16 +3,16 @@ import MenuIcon from "./MenuIcon";
 import { BlogLink } from "../links/BlogLink";
 import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
-import { CrossIcon } from "../icons/CrossIcon";
 import { AboutPageLink } from "../links/AboutPageLink";
 import { useRouter } from "next/router";
 import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
 import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
-import { Logo } from "@instill-ai/design-system";
+import { CrossIcon, Logo } from "@instill-ai/design-system";
 import GetEarlyAccessButton from "../GetEarlyAccessButton";
 import cn from "clsx";
+import Image from "next/future/image";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -79,13 +79,24 @@ const Nav = () => {
               <Logo type="ColourLogomarkWhiteType" width={159} />
             </LinkBase>
             <button
-              className="ml-auto rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
+              className="flex ml-auto w-[30px] h-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
               onClick={() => setOpen(!open)}
             >
               {open ? (
-                <CrossIcon styleName="w-10 text-instillGrey05" />
+                <CrossIcon
+                  width="w-6"
+                  height="h-6"
+                  color="fill-instillGrey05"
+                  position="m-auto"
+                />
               ) : (
-                <MenuIcon />
+                <Image
+                  src="/images/menu.svg"
+                  alt="Navbar menu icon"
+                  width={30}
+                  height={30}
+                  sizes="30px"
+                />
               )}
             </button>
           </div>

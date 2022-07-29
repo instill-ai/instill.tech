@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
 import { CareerPositionDetailsSection } from "@/components/career";
 
-import { BackToPreviousPageLink } from "../../components/ui/links/BackToPreviousPageLink";
+import BackToPreviousPageLink from "@/components/ui/links/BackToPreviousPageLink";
 import {
   getClickUpTaskQuery,
   listClickUpTasksInListQuery,

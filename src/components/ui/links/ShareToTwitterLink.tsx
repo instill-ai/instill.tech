@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { LinkBase } from "./LinkBase";
 import * as classNames from "classnames";
-import { TwitterIcon } from "../icons/TwitterIcon";
+import { TwitterIcon } from "@instill-ai/design-system";
 
 interface Props {
   /** Page;s url you want to share */
@@ -24,7 +24,12 @@ export const ShareToTwitterLink: FC<Props> = ({ url, styleName, text }) => {
           : `https://twitter.com/share?url=${url}`
       }
     >
-      <TwitterIcon styleName="w-[15px] h-[15px] text-instillGrey30 hover:text-instillGrey05" />
+      <TwitterIcon
+        width="w-[15px]"
+        height="h-[15px]"
+        color="fill-instillGrey30 hover:fill-instillGrey05"
+        position="my-auto"
+      />
     </LinkBase>
   );
 };

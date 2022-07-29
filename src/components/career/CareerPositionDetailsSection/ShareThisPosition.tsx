@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { ShareToFbLink } from "../../ui/links/ShareToFbLink";
-import { ShareToLinkedInLink } from "../../ui/links/ShareToLinkedInLink";
+import ShareToLinkedInLink from "../../ui/links/ShareToLinkedInLink";
 import { ShareToTwitterLink } from "../../ui/links/ShareToTwitterLink";
 
 const ShareThisPosition: FC = () => {

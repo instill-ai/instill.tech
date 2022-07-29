@@ -1,24 +1,29 @@
-import { FC } from "react";
 import { LinkBase } from "./LinkBase";
-import * as classNames from "classnames";
-import { TwitterIcon } from "../icons/TwitterIcon";
-import { LinkedInIcon } from "../icons/LinkedInIcon";
+import { LinkedInIcon } from "@instill-ai/design-system";
+import cn from "clsx";
 
-interface Props {
+export type ShareToLinkedInLinkProps = {
   /** Page;s url you want to share */
   url: string;
 
   /** <Tailwind config> */
   styleName?: string;
-}
+};
 
-export const ShareToLinkedInLink: FC<Props> = ({ url, styleName }) => {
+const ShareToLinkedInLink = ({ url, styleName }: ShareToLinkedInLinkProps) => {
   return (
     <LinkBase
-      styleName={classNames.default("flex", styleName)}
+      styleName={cn("flex", styleName)}
       href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
     >
-      <LinkedInIcon styleName="w-[15px] h-[15px] text-instillGrey30 hover:text-instillGrey05" />
+      <LinkedInIcon
+        width="w-[15px]"
+        height="h-[15px]"
+        color="fill-instillGrey30 hover:fill-instillGrey05"
+        position="my-auto"
+      />
     </LinkBase>
   );
 };
+
+export default ShareToLinkedInLink;
