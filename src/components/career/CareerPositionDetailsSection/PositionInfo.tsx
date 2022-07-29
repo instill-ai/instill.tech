@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { TPositionDetails } from "../../../types/instill";
-import { LocationIcon } from "../../ui/icons/LocationIcon";
-import { RightArrowIcon } from "../../ui/icons/RightArrowIcon";
-import { WorkTypeIcon } from "../../ui/icons/WorkTypeIcon";
 import * as classNames from "classnames";
 import ShareThisPosition from "./ShareThisPosition";
+import {
+  ArrowRightIcon,
+  PinIcon,
+  ToolboxIcon,
+} from "@instill-ai/design-system";
 
 export type PositionInfoProps = {
   position: TPositionDetails;
@@ -20,13 +22,23 @@ const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
       </h2>
       <div className="mb-10 flex flex-row gap-x-5">
         <div className="flex flex-row gap-x-2.5 pr-5">
-          <LocationIcon styleName="w-[24px] h-[24px] text-instillGrey05" />
+          <PinIcon
+            width="w-6"
+            height="h-6"
+            color="fill-instillGrey05"
+            position="my-auto"
+          />
           <p className="instill-text-body text-instillGrey05">
             {position.location}
           </p>
         </div>
         <div className="flex flex-row gap-x-2.5 pr-5">
-          <WorkTypeIcon styleName="w-[20px] h-[20px] text-instillGrey05" />
+          <ToolboxIcon
+            width="w-5"
+            height="h-5"
+            color="fill-instillGrey05"
+            position="my-auto"
+          />
           <p className="instill-text-body text-instillGrey05">
             {position.workType}
           </p>
@@ -34,9 +46,13 @@ const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
       </div>
       <div className="mb-10 flex flex-row gap-x-5">
         <div className="flex flex-shrink-0 pt-1.5">
-          <RightArrowIcon styleName="w-[15px] h-[15px] mb-auto text-instillGrey05" />
+          <ArrowRightIcon
+            width="w-[15px]"
+            height="h-[15px]"
+            color="fill-instillGrey05"
+            position="mb-auto"
+          />
         </div>
-
         <div className="flex flex-col">
           <p className="instill-text-body text-instillGrey05">
             {position.packageUK}
@@ -47,7 +63,12 @@ const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
         </div>
       </div>
       <div className="mb-[120px] flex flex-row gap-x-5">
-        <RightArrowIcon styleName="w-[15px] h-[15px] my-auto text-instillGrey05" />
+        <ArrowRightIcon
+          width="w-[15px]"
+          height="h-[15px]"
+          color="fill-instillGrey05"
+          position="my-auto"
+        />
         <p className="instill-text-body text-instillGrey05">{`Stock options: ${position.stockOptions} Equity`}</p>
       </div>
       <ShareThisPosition />

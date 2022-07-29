@@ -1,7 +1,7 @@
 import { Logo } from "@instill-ai/design-system";
 import { CookiePolicyLink } from "./links/CookiePolicyLink";
 import { PrivacyPolicyLink } from "./links/PrivacyPolicyLink";
-import { SocialLinksGroup } from "./SocialLinksGroup";
+import SocialLinksGroup from "./SocialLinksGroup";
 import CopyRightText from "./CopyRightText";
 import SimpleHorizontalLine from "./SimpleHorizontalLine";
 

@@ -1,8 +1,8 @@
 import { forwardRef, Fragment } from "react";
 import { TMemberDetails } from "../../../types/instill";
-import { CrossIcon } from "@/components/ui/icons/CrossIcon";
 import Image from "next/future/image";
 import cn from "clsx";
+import { CrossIcon } from "@instill-ai/design-system";
 
 export type MemberIntroProps = {
   member: TMemberDetails;
@@ -370,7 +370,12 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
               Detection result
             </div>
             <button className="ml-auto" onClick={onCancelHandler}>
-              <CrossIcon styleName="w-6 h-6 text-instillGrey95" />
+              <CrossIcon
+                width="w-6"
+                height="h-6"
+                color="fill-instillGrey95"
+                position="my-auto"
+              />
             </button>
           </div>
 

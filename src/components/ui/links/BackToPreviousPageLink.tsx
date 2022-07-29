@@ -1,25 +1,34 @@
-import { FC } from "react";
 import { LinkBase } from "./LinkBase";
-import * as classNames from "classnames";
-import { LeftArrowIcon } from "../icons/LeftArrowIcon";
+import { ArrowLeftIcon } from "@instill-ai/design-system";
+import cn from "clsx";
 
-interface Props {
+export type BackToPreviousPageLinkProps = {
   styleName?: string;
 
   /** Previous page's link */
   url: string;
-}
+};
 
-export const BackToPreviousPageLink: FC<Props> = ({ styleName, url }) => {
+const BackToPreviousPageLink = ({
+  styleName,
+  url,
+}: BackToPreviousPageLinkProps) => {
   return (
     <LinkBase
       href={url}
-      styleName={classNames.default("flex flex-row gap-x-5 group", styleName)}
+      styleName={cn("flex flex-row gap-x-5 group", styleName)}
     >
-      <LeftArrowIcon styleName="my-auto w-[15px] h-[15px] text-instillGrey30 group-hover:text-instillGrey05" />
+      <ArrowLeftIcon
+        width="w-[15px]"
+        height="h-[15px]"
+        color="fill-instillGrey30 group-hover:fill-instillGrey05"
+        position="my-auto"
+      />
       <p className="instill-text-body text-instillGrey30 group-hover:text-instillGrey05">
         Back
       </p>
     </LinkBase>
   );
 };
+
+export default BackToPreviousPageLink;

@@ -4,11 +4,12 @@ specifiers:
   '@babel/core': ^7.15.5
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
-  '@instill-ai/design-system': ^0.0.98
+  '@instill-ai/design-system': ^0.0.100
   '@mailchimp/mailchimp_marketing': ^3.0.72
   '@mdx-js/loader': ^2.1.2
   '@mdx-js/react': ^2.1.2
   '@next/bundle-analyzer': ^11.1.2
+  '@next/env': ^12.2.3
   '@next/mdx': ^12.2.3
   '@playwright/test': ^1.17.2
   '@storybook/addon-actions': ^6.5.9
@@ -70,7 +71,7 @@ specifiers:
   webpack-bundle-analyzer: ^4.3.0
 
 dependencies:
-  '@instill-ai/design-system': 0.0.98_b4usidsfzquyh4hx4nnzn3lrei
+  '@instill-ai/design-system': 0.0.100_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
   '@mdx-js/loader': 2.1.2_webpack@5.74.0
   '@next/bundle-analyzer': 11.1.4
@@ -96,6 +97,7 @@ devDependencies:
   '@commitlint/cli': 13.2.1
   '@commitlint/config-conventional': 13.2.0
   '@mdx-js/react': 2.1.2_react@17.0.2
+  '@next/env': 12.2.3
   '@playwright/test': 1.24.1
   '@storybook/addon-actions': 6.5.9_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-essentials': 6.5.9_dbsfem7jtivfagwowmh55ulmg4
@@ -1887,8 +1889,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@instill-ai/design-system/0.0.98_b4usidsfzquyh4hx4nnzn3lrei:
-    resolution: {integrity: sha512-Dtxre0PNLxm9HFHh3upT4Zt03wLf+1MMT8I9fwCY6GAuyLUxR5OppICiDdhwlvBBadIcuRkXAZI3AZ23qK1Xxg==}
+  /@instill-ai/design-system/0.0.100_b4usidsfzquyh4hx4nnzn3lrei:
+    resolution: {integrity: sha512-vf3qvGGDws5Ve14O0NRbMn8BMjxr/0HXb8ytbLHxuxF0Wvy7uMXgpfJGVJeMnm4pVHkIU5wdfy37qHnaH6O0qQ==}
     peerDependencies:
       clsx: ^1.1.1
       react: ^17.0.2

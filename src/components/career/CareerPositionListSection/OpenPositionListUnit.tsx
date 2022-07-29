@@ -1,8 +1,7 @@
 import { FC } from "react";
 import * as classNames from "classnames";
-import { LocationIcon } from "@/components/ui/icons/LocationIcon";
-import { WorkTypeIcon } from "@/components/ui/icons/WorkTypeIcon";
 import { LinkBase } from "@/components/ui/links/LinkBase";
+import { PinIcon, ToolboxIcon } from "@instill-ai/design-system";
 
 interface Props {
   /** Indicate whether the list unit is placeholder or not */
@@ -58,13 +57,23 @@ export const OpenPositionListUnit: FC<Props> = ({
         <div className="flex w-full flex-row gap-x-4 px-4 py-5 md:gap-x-0 md:p-0">
           <div className="flex md:flex-1">
             <div className="m-auto flex flex-row gap-x-2.5 pr-5 md:pr-0">
-              <LocationIcon styleName="w-[24px] h-[24px] text-instillGrey70" />
+              <PinIcon
+                width="w-6"
+                height="h-6"
+                color="fill-instillGrey70"
+                position="my-auto"
+              />
               <p className="instill-text-body text-instillGrey70">{location}</p>
             </div>
           </div>
           <div className="flex md:flex-1">
             <div className="m-auto flex flex-row gap-x-2.5 pr-5 md:pr-0">
-              <WorkTypeIcon styleName="w-[20px] h-[20px] text-instillGrey70" />
+              <ToolboxIcon
+                width="w-5"
+                height="h-5"
+                color="fill-instillGrey70"
+                position="my-auto"
+              />
               <p className="instill-text-body text-instillGrey70">{workType}</p>
             </div>
           </div>
