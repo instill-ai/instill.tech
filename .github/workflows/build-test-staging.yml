@@ -51,30 +51,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-test-lint]
     steps:
-      - name: Import Vault secrets
-        id: secrets
-        uses: hashicorp/vault-action@v2.1.0
-        with:
-          url: https://vault.instill.tech
-          method: approle
-          roleId: ${{ secrets.vaultAppRoleRoleId }}
-          secretId: ${{ secrets.vaultAppRoleSecretId }}
-          tlsSkipVerify: false
-          extraHeaders: |
-            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
-            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
-          secrets: |
-            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
-            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
-            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
-            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
-
       - name: Activate deployment status
         uses: bobheadxi/deployments@v0.4.3
         id: deployment
         with:
           step: start
-          token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           env: preview
 
       - name: Checkout
@@ -84,11 +66,11 @@ jobs:
         id: deploy-to-vercel-staging
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
-          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
-          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
-          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-token: ${{ secrets.VERCELTOKEN }}
+          github-token: ${{ secrets.BOTTOKEN }}
+          vercel-org-id: ${{ secrets.VERCELORGID }}
+          vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID }}
+          scope: ${{ secrets.VERCELORGID }}
           github-comment: false
           alias-domains: |
             www.instill-inc.tech
@@ -107,24 +89,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-test-lint]
     steps:
-      - name: Import Vault secrets
-        id: secrets
-        uses: hashicorp/vault-action@v2.1.0
-        with:
-          url: https://vault.instill.tech
-          method: approle
-          roleId: ${{ secrets.vaultAppRoleRoleId }}
-          secretId: ${{ secrets.vaultAppRoleSecretId }}
-          tlsSkipVerify: false
-          extraHeaders: |
-            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
-            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
-          secrets: |
-            secret/data/devops/vercel/github-action product-webasite-storybook-id | PRODUCT_WEBSITE_STORYBOOK_ID ;
-            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
-            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
-            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -133,18 +97,18 @@ jobs:
         id: deployment
         with:
           step: start
-          token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           env: preview
 
       - name: Deploy storybook to vercel
         id: deploy-storybook-to-vercel
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
-          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
-          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_STORYBOOK_ID}}
-          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-token: ${{ secrets.VERCELTOKEN }}
+          github-token: ${{ secrets.BOTTOKEN }}
+          vercel-org-id: ${{ secrets.VERCELORGID }}
+          vercel-project-id: ${{ secrets.INSTILLTECHSTORYBOOKVERCELPROJECTID }}
+          scope: ${{ secrets.VERCELORGID }}
           vercel-args: "--prod"
           github-comment: true
 
