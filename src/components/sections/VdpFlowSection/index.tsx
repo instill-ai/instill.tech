@@ -1,7 +1,6 @@
+import Image from "next/future/image";
 import { FC, ReactElement } from "react";
-import { MagicFlowDestinationIcon } from "../../ui/icons/MagicFlowDestinationIcon";
-import { MagicFlowKernelIcon } from "../../ui/icons/MagicFlowKernelIcon";
-import { MagicFlowSourceIcon } from "../../ui/icons/MagicFlowSourceIcon";
+
 import VdpFlow from "./VdpFlow";
 
 type BannerCopy = {
@@ -17,7 +16,15 @@ const VdpFlowSection: FC = () => {
       id: "banner-copy-1",
       title: "UNSTRUCTURED VISUAL DATA",
       description: "Ingest image and video data with pre-built data connectors",
-      icon: <MagicFlowSourceIcon styleName="w-[60px] h-[63px]" />,
+      icon: (
+        <Image
+          src="/images/vdp-flow-source.svg"
+          width={60}
+          height={63}
+          sizes="60px"
+          alt="VDP flow source icon"
+        />
+      ),
     },
     {
       id: "banner-copy-2",
@@ -25,7 +32,15 @@ const VdpFlowSection: FC = () => {
       description:
         "Transform unstructured data into structured insights with ready-to-use Vision AI models",
 
-      icon: <MagicFlowKernelIcon styleName="w-[65px] h-[42px]" />,
+      icon: (
+        <Image
+          src="/images/vdp-flow-kernel.svg"
+          width={65}
+          height={42}
+          sizes="65px"
+          alt="VDP flow kernel icon"
+        />
+      ),
     },
     {
       id: "banner-copy-3",
@@ -33,7 +48,15 @@ const VdpFlowSection: FC = () => {
       description:
         "Send structured insights to data warehouses and applications for future analysis or workflow automation",
 
-      icon: <MagicFlowDestinationIcon styleName="w-[60px] h-[63px]" />,
+      icon: (
+        <Image
+          src="/images/vdp-flow-destination.svg"
+          width={60}
+          height={63}
+          sizes="63px"
+          alt="VDP flow destination icon"
+        />
+      ),
     },
   ];
 
