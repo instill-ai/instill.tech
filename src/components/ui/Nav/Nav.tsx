@@ -1,20 +1,20 @@
-import { FC, useEffect, useState } from "react";
-import { MenuIcon } from "./icons/MenuIcon";
-import { BlogLink } from "./links/BlogLink";
-import { GithubTextLink } from "./links/GithubTextLink";
-import { LinkBase } from "./links/LinkBase";
-import { CrossIcon } from "./icons/CrossIcon";
-import { AboutPageLink } from "./links/AboutPageLink";
+import { useEffect, useState } from "react";
+import MenuIcon from "./MenuIcon";
+import { BlogLink } from "../links/BlogLink";
+import { GithubTextLink } from "../links/GithubTextLink";
+import { LinkBase } from "../links/LinkBase";
+import { CrossIcon } from "../icons/CrossIcon";
+import { AboutPageLink } from "../links/AboutPageLink";
 import { useRouter } from "next/router";
-import { NewsletterArchivePageLink } from "./links/NewsletterArchivePageLink";
-import { CareerPageLink } from "./links/CareerPageLink";
+import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
+import { CareerPageLink } from "../links/CareerPageLink";
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { Logo } from "@instill-ai/design-system";
-import GetEarlyAccessButton from "./GetEarlyAccessButton";
+import GetEarlyAccessButton from "../GetEarlyAccessButton";
 import cn from "clsx";
 
-const Nav: FC = () => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
@@ -85,7 +85,7 @@ const Nav: FC = () => {
               {open ? (
                 <CrossIcon styleName="w-10 text-instillGrey05" />
               ) : (
-                <MenuIcon styleName="w-10 text-instillGrey05" />
+                <MenuIcon />
               )}
             </button>
           </div>

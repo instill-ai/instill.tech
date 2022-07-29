@@ -1,5 +1,5 @@
 import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 import CopyRightText from "./CopyRightText";
 
 import ExploreMoreScrollButton from "./ExploreMoreScrollButton";
