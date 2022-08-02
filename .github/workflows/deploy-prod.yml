@@ -1,4 +1,4 @@
-name: cd-prod-deploy
+name: deploy-to-prod
 
 on:
   release:
@@ -12,29 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Import Vault secrets
-        id: secrets
-        uses: hashicorp/vault-action@v2.1.0
-        with:
-          url: https://vault.instill.tech
-          method: approle
-          roleId: ${{ secrets.vaultAppRoleRoleId }}
-          secretId: ${{ secrets.vaultAppRoleSecretId }}
-          tlsSkipVerify: false
-          extraHeaders: |
-            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
-            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
-          secrets: |
-            secret/data/devops/vercel/github-action product-website-id | PRODUCT_WEBSITE_ID ;
-            secret/data/devops/slack/github-action/slack-notify-build bot-token | SLACK_BOT_TOKEN ;
-            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID ;
-            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN ;
-            secret/data/devops/github/drop@instill.tech/github-action personal-access-token | GITHUB_TOKEN ;
-
       - id: latestRelease
         uses: thebritican/fetch-latest-release@v1.0.3
         with:
-          github_token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          github_token: ${{ secrets.BOTTOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,26 +27,26 @@ jobs:
         id: deployment
         with:
           step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOTTOKEN }}
           env: preview
 
       - name: deploy-to-vercel-prod
         id: deployToVercelProd
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ steps.secrets.outputs.VERCEL_TOKEN }}
-          github-token: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCELTOKEN }}
+          github-token: ${{ secrets.BOTTOKEN }}
           vercel-args: "--prod"
-          vercel-org-id: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ steps.secrets.outputs.PRODUCT_WEBSITE_ID}}
-          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
+          vercel-org-id: ${{ secrets.VERCELORGID }}
+          vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID}}
+          scope: ${{ steps.secrets.outputs.VERCELORGID }}
 
       - name: update deployment status
         uses: bobheadxi/deployments@v0.4.3
         if: always()
         with:
           step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOTTOKEN }}
           status: ${{ job.status }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -73,7 +54,7 @@ jobs:
         id: lighthouseCheck
         uses: foo-software/lighthouse-check-action@master
         with:
-          accessToken: ${{ steps.secrets.outputs.GITHUB_TOKEN }}
+          accessToken: ${{ secrets.BOTTOKEN }}
           author: ${{ github.actor }}
           branch: ${{ github.ref }}
           prCommentEnabled: true
@@ -81,7 +62,6 @@ jobs:
           emulatedFormFactor: "all"
           urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           sha: ${{ github.sha }}
-          slackWebhookUrl: ${{ steps.secrets.outputs.LIGHTHOUSE_SLACK_WEBHOOK_URL }}
 
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
