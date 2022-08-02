@@ -2,6 +2,7 @@
 // import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 //import rehypeSlug from "rehype-slug";
 //import remarkGfm from "remark-gfm";
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
