@@ -2,11 +2,16 @@ import mdx from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { remarkCodeHike } from "@code-hike/mdx";
+import theme from "./src/styles/slack-dark.json" assert { type: "json" };
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [
+      remarkGfm,
+      [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }],
+    ],
     rehypePlugins: [rehypeSlug],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
