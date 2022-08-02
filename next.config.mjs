@@ -3,7 +3,11 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { remarkCodeHike } from "@code-hike/mdx";
-import theme from "./src/styles/slack-dark.json" assert { type: "json" };
+import { readFile } from "fs/promises";
+
+const theme = JSON.parse(
+  await readFile(new URL("./src/styles/slack-dark.json", import.meta.url))
+);
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
