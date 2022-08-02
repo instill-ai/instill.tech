@@ -126,7 +126,7 @@ jobs:
         with:
           file: "../templates/webpack-diff-comment.md"
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.BOTTOKEN}}
           OLD: ${{steps.get-diff.outputs.base_file_string}}
           NEW: ${{steps.get-diff.outputs.pr_file_string}}
           DIFF: ${{steps.get-diff.outputs.diff_file_string}}
