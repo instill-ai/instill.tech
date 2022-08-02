@@ -57,7 +57,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           <h1 className=" font-sans font-semibold text-3xl mb-10">
             {meta.title}
           </h1>
-          <div className="prose">{children}</div>
+          <div className="prose max-w-none">{children}</div>
         </div>
         <aside
           id="grid-right"
