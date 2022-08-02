@@ -6,6 +6,7 @@ import RightSidebar from "../RightSidebar";
 import Navbar from "../Navbar";
 import { Frontmatter } from "@/types/docs";
 import { docsBaseStyles } from "@/style/docsBaseStyle";
+import DocsFooter from "../DocsFooter";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
@@ -51,8 +52,12 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             currentPagePath={router.pathname}
           />
         </aside>
-        <div id="grid-main" className="prose col-span-7 max-w-4xl">
-          {children}
+
+        <div id="grid-main" className="flex flex-col col-span-7 max-w-4xl">
+          <h1 className=" font-sans font-semibold text-3xl mb-10">
+            {meta.title}
+          </h1>
+          <div className="prose">{children}</div>
         </div>
         <aside
           id="grid-right"
@@ -62,6 +67,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           <RightSidebar headers={headers} />
         </aside>
       </main>
+      <DocsFooter />
     </>
   );
 };
