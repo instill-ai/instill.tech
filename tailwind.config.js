@@ -62,56 +62,28 @@ module.exports = {
         DEFAULT: {
           css: {
             h1: {
-              fontFamily: theme("fontFamily.mono")[0],
+              fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              letterSpacing: theme("letterSpacing.wide"),
+              lineHeight: "40px",
+              fontSize: "28px",
+              letterSpacing: theme("letterSpacing.tight"),
             },
             h2: {
-              fontFamily: theme("fontFamily.mono")[0],
-              fontWeight: "500",
-              letterSpacing: theme("letterSpacing.wide"),
+              fontFamily: theme("fontFamily.sans")[0],
+              fontWeight: "600",
+              fontSize: "24px",
+              lineHeight: "32px",
+              borderTopWidth: "1px",
+              borderStyle: "solid",
+              paddingTop: "28px",
+              marginTop: "48px",
+              letterSpacing: theme("letterSpacing.tight"),
             },
             h3: {
-              fontFamily: theme("fontFamily.mono")[0],
-              fontWeight: "400",
-            },
-            strong: {
-              fontWeight: 600,
-            },
-            code: {
-              fontSize: theme("fontSize.base"),
-              fontWeight: 600,
-              borderRadius: "0.5rem",
-              paddingLeft: "0.5rem",
-              paddingRight: "0.5rem",
-              paddingTop: "0.125rem",
-              paddingBottom: "0.125rem",
-              wordBreak: "break-word",
-            },
-            a: {
-              fontWeight: 600,
-            },
-            pre: {
-              code: {
-                fontWeight: 300,
-                paddingLeft: "0rem",
-                paddingRight: "0rem",
-                paddingTop: "0rem",
-                paddingBottom: "0rem",
-              },
-            },
-            blockquote: {
-              paddingBottom: "1px",
-              paddingTop: "1px",
-            },
-            th: {
-              fontWeight: 600,
-            },
-            ul: {
-              li: {
-                marginTop: "20px",
-                marginBottom: "20px",
-              },
+              fontFamily: theme("fontFamily.sans")[0],
+              fontWeight: "600",
+              fontSize: "20px",
+              lineHeight: "28px",
             },
           },
         },
