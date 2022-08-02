@@ -1,34 +1,30 @@
-//import mdx from "@next/mdx";
-// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-//import rehypeSlug from "rehype-slug";
-//import remarkGfm from "remark-gfm";
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+import mdx from "@next/mdx";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
-const withMDX = require("@next/mdx")({
+const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
 });
 
-/**
- * @type {import('next').NextConfig}
- */
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  swcMinify: true,
   reactStrictMode: true,
-  images: {
-    domains: ["t2564371.p.clickup-attachments.com"],
-  },
+  swcMinify: true,
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   experimental: {
     images: {
       allowFutureImage: true,
     },
+  },
+  images: {
+    domains: ["t2564371.p.clickup-attachments.com"],
   },
   webpack: (config, { isServer, dev }) => {
     // if (isServer) {
@@ -51,4 +47,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);
