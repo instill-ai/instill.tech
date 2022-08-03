@@ -1,0 +1,15 @@
+{
+    "sequence": {
+        "bottomMarginAdj": 10,
+        "actorFontFamily": "IBM Plex Sans, IBM Plex Mono, Helvetica, Arial, sans-serif",
+        "actorFontWeight": 400,
+        "actorFontSize": 16,
+        "noteFontFamily": "IBM Plex Sans, Helvetica, Arial, sans-serif",
+        "noteFontWeight": 400,
+        "noteFontSize": 14,
+        "noteMargin": 6,
+        "messageFontFamily": "IBM Plex Sans, Helvetica, Arial, sans-serif",
+        "messageFontWeight": 100,
+        "messageFontSize": 12
+    }
+}

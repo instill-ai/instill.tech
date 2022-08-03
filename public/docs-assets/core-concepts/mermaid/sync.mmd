@@ -1,0 +1,29 @@
+%%{
+  init: {
+    'themeVariables': {
+      'primaryBorderColor': '#1A1A1A',
+      'secondaryBorderColor': '#1A1A1A',
+      'tertiaryBorderColor': '#1A1A1A',
+      'lineColor': '#1A1A1A',
+      'actorBkg': '#80A8F5',
+      'actorBorder': '#1A1A1A',
+      'actorTextColor': '#1A1A1A',
+      'actorLineColor': '#1A1A1A',
+      'noteBkgColor': '#FFDF3A',
+      'noteBorderColor': '#1A1A1A',
+      'noteTextColor': '#1A1A1A',
+      'activationBkgColor': '#28F67E',
+      'activationBorderColor': '#1A1A1A',
+      'sequenceNumberColor': '#FFFFFF',
+      'textColor': '#1A1A1A'
+    },
+    'themeCSS': 'background-color: white;'
+  }
+}%%
+sequenceDiagram
+  autonumber
+  User->>+Source/Destination: HTTP/gRPC
+  Note over Source/Destination,Model: Pipeline
+  Source/Destination->>+Model: SYNC gRPC request (Inferece)
+  Model-->>-Source/Destination: SYNC gRPC response (Result)
+  Source/Destination-->>-User: HTTP/gRPC
