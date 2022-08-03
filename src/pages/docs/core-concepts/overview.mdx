@@ -1,0 +1,40 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Overview",
+  lang: "en-US",
+  draft: false,
+  description: "Core concepts of the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+Modern data stack misses unstructured visual data processing.
+
+**Visual data preparation (VDP)** is to fill in the missing piece. At a high-level perspective, VDP streamlines visual data from a data **source** to a computer vision **model** processing (or deep learning inferencing) to a data **destination**. In other words, VDP is a tool to extract, transform and load (ETL) unstructured visual data to their structured forms.
+
+To benefit a broader set of users and maximise the tool's usability and affordability, VDP is built with an open heart to make the most of open source software in each component:
+
+![VDP overview](/docs-assets/overview.svg)
+
+## Pipeline
+
+A pipeline consists of the source, model and destination, together defined by a **Recipe**. One pipeline defines one processing unit for a certain [CV Task](cv-task). A pipeline can be in either **SYNC** or **ASYNC** mode, depending on whether the pipeline task is time-critical or not. See [Pipeline](pipeline) for more details.
+
+## Source
+
+Unstructured visual data (e.g., images, videos) are usually streamed directly from IoT devices (e.g., IP cameras) or extracted from cloud storage services (e.g., GCP Cloud Storage, AWS S3). In the VDP project, the unstructured data **source connectors** are developed and maintained by the **Instill AI** community.
+
+## Model
+
+Model is the core component to process the unstructured visual data to solve a certain [CV Task](core-concepts/cv-task). VDP uses [Triton Inference Server](https://github.com/triton-inference-server/server) under the hood to enable optimised AI model inference with the support of various frameworks including TensorRT, TensorFlow, PyTorch, ONNX, Python, and more. 
+
+VDP defines the model source via `Model Definition`. `Model Definition` abstracts raw model codebases for VDP so the users can use many different sources for model source code maintenance. Different options can offer different features. For example, some model sources support version control but some do not. It is up to the users to adopt which source they are already familiar with and we strive to support as many popular model sources as possible. See [Model Definition](../models/definitions/overview.md) for more details.
+
+## Destination
+
+Destination is the component at the end of a VDP pipeline, which loads the structured data provided by the Model component to a target destination.
+
+VDP adopts [Airbyte Protocol](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol) and leverages Airbyte's 30+ destination connectors. VDP users can thus directly benefit from the abundant Airbyte community resource to perform data movement or transformation for the output structured data.

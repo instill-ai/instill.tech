@@ -1,0 +1,38 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Build your first pipeline",
+  lang: "en-US",
+  draft: false,
+  description: "Public roadmap for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+VDP is under rapid development. Our team is pushing new features every day to meet the needs of our users. Here is our public high-level roadmap for 2022. If you are interested in what's being worked on right now and what will be explored in the future for the VDP project, please check our [VDP project roadmap](https://github.com/orgs/instill-ai/projects/5/views/4).
+
+### 2022 Q3
+
+- 🎯 Add API gateway / Reverse Proxy
+- 🎯 Support deploying VDP on Kubernetes
+- 🔌 Add new Async source connectors
+  - Local filesystem
+  - Google Cloud Storage (GCS)
+- 🔮 Improve the UX to import models
+- ☁️ Instill Cloud (Alpha): our hosted service to provide you with all the power of VDP, without managing infrastructure. [Join the wait list](https://www.instill.tech/get-access)
+
+### 2022 Q4
+- 🎯 Add dashboard for out-of-the-box monitoring and logging
+- 🪢 Scheduling feature to control how often to trigger a pipeline 
+- 🔮 Support new embedding task: convert unstructured image data to low-dimensional vectors. The task is the foundation for real-world applications such as retrieval, semantic search and recommendation systems
+
+### Future
+- 🔮 AutoML service to automatically build, train and deploy ML models on VDP
+- 🔮 Improve model deployment with the latest serverless technology
+
+
+## Contributing to the roadmap
+
+Your feedback is important for us to understand how to build better and valuable tools for the community. If you'd like to **send us a feature request**, you can have a look at the existing issues on the [VDP project roadmap](https://github.com/orgs/instill-ai/projects/5/views/4) first. If your idea has already made to the planning, give it the thumbs up 👍 to vote for it. If not, you can create a [new issue](https://github.com/instill-ai/vdp/issues/new). Besides, you can also join our [community](https://discord.gg/sevxWsqpGh) and request it in the #vdp channel.

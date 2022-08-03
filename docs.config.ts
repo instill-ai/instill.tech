@@ -28,97 +28,102 @@ export const SIDEBAR: Sidebar = {
   leftSidebar: {
     sections: [
       {
-        text: "Concept",
+        text: "Start here",
         collapsible: true,
         items: [
-          { text: "What is VDP", link: "/docs/concepts/vdp" },
-          { text: "Pipeline", link: "/docs/concepts/pipeline" },
-          { text: "Model", link: "/docs/concepts/model" },
-          { text: "Connector", link: "/docs/concepts/connector" },
+          { text: "Getting started", link: "/docs/start-here/getting-started" },
+          {
+            text: "Build your first pipeline",
+            link: "/docs/start-here/build-your-first-pipeline",
+          },
+          { text: "Configuration", link: "/docs/start-here/configuration" },
+          { text: "Roadmap", link: "/docs/start-here/roadmap" },
+          { text: "FAQ", link: "/docs/start-here/faq" },
         ],
       },
       {
-        text: "Connector",
+        text: "Core Concepts",
+        collapsible: true,
+        items: [
+          { text: "Overview", link: "/docs/core-concepts/overview" },
+          { text: "Pipeline", link: "/docs/core-concepts/pipeline" },
+          { text: "Connector", link: "/docs/core-concepts/connector" },
+          { text: "Model", link: "/docs/core-concepts/model" },
+          { text: "CV Task", link: "/docs/core-concepts/cv-task" },
+        ],
+      },
+      {
+        text: "Connectors",
+        collapsible: false,
+        link: "/docs/connectors/overview",
+        items: [],
+      },
+      {
+        text: "Sources",
         collapsible: true,
         items: [
           {
-            text: "Real-time Destination gRPC",
-            link: "/docs/connectors/definitions/destination-grpc-directness",
-          },
-          {
-            text: "Real-time Destination HTTP",
-            link: "/docs/connectors/definitions/destination-http-directness",
+            text: "Real-time Source HTTP",
+            link: "/docs/connectors/definitions/source-http-directness",
           },
           {
             text: "Real-time Source gRPC",
             link: "/docs/connectors/definitions/source-grpc-directness",
           },
+        ],
+      },
+      {
+        text: "Destinations",
+        collapsible: true,
+        items: [
           {
-            text: "Real-time Source HTTP",
-            link: "/docs/connectors/definitions/source-http-directness",
+            text: "Real-time Destination HTTP",
+            link: "/docs/connectors/definitions/destination-http-directness",
+          },
+          {
+            text: "Real-time Destination gRPC",
+            link: "/docs/connectors/definitions/destination-grpc-directness",
           },
         ],
       },
       {
-        text: "Model",
+        text: "Create Models",
+        collapsible: true,
+        items: [],
+      },
+      {
+        text: "Import Models",
         collapsible: true,
         items: [
           {
-            text: "Import ArtiVC Managed Models",
-            link: "/docs/models/definitions/artivc",
+            text: "Import Local Models",
+            link: "/docs/models/definitions/local",
           },
           {
             text: "Import Models from GitHub",
             link: "/docs/models/definitions/github",
           },
           {
+            text: "Import ArtiVC Managed Models",
+            link: "/docs/models/definitions/artivc",
+          },
+          {
             text: "Import Models from Hugging Face",
             link: "/docs/models/definitions/huggingface",
           },
-          {
-            text: "Import Local Models",
-            link: "/docs/models/definitions/local",
-          },
         ],
       },
       {
-        text: "VDP OS",
-        collapsible: true,
-        items: [
-          {
-            text: "Getting started",
-            link: "/docs/vdp-os/getting-started",
-          },
-          {
-            text: "Build your first pipeline",
-            link: "/docs/vdp-os/build-your-first-pipeline",
-          },
-          {
-            text: "Configuration",
-            link: "/docs/vdp-os/configuration",
-          },
-        ],
-      },
-      {
-        text: "VDP Cloud",
+        text: "Instill Cloud",
         collapsible: false,
-        link: "/docs/vdp-cloud/overview",
-        items: [
-          {
-            text: "Overview",
-            link: "/docs/vdp-cloud/overview",
-          },
-        ],
+        link: "/docs/instill-cloud",
+        items: [],
       },
       {
-        text: "Troubleshoot",
-        collapsible: true,
-        items: [
-          {
-            text: "Overview",
-            link: "/docs/troubleshoot/troubleshooting-faq",
-          },
-        ],
+        text: "Contribution",
+        collapsible: false,
+        link: "/docs/contribution",
+        items: [],
       },
       {
         text: "Reference",
@@ -143,11 +148,11 @@ export const NAVBAR: NavBar = {
     src: "/logo.svg",
     width: 40,
     height: 30,
-    alt: "Nitro logo",
+    alt: "Visual Data Preparation (VDP) logo",
   },
   items: [
     {
-      href: "https://github.com/EiffelFly/nitro",
+      href: "https://github.com/instill-ai/vdp",
       className: "github-social-link",
       icon: {
         src: "/github.svg",
