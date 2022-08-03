@@ -12,6 +12,84 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-## Pipeline Mode
+A pipeline is an end-to-end workflow that automates a sequence of components to process visual data. It is defined by a **recipe** which is essentially a JSON object:
 
-![Pipeline modes](/docs-assets/pipeline-modes.png)
+```json
+{
+  "source": <source-connector-resource-name>,
+  "model_instances": [
+    <model-instance-resource-name>,
+    ...
+  ],
+  "destination": <destination-connector-resource-name>
+}
+```
+
+A recipe describes a pipeline resource consisting of:
+
+- `source` - where the pipeline starts to ingest image/video data to be processed
+- `model_instances` - a number of deployed Vision AI models to process the ingested visual data in parallel to generate structured outputs
+- `destination` - where to send the structured outputs
+
+Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `FETCH` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read below for more details.
+
+# SYNC mode
+
+A pipeline in the `SYNC` mode responds to requests synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
+The request flow when triggering a `SYNC` pipeline is shown below:
+
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/sync.svg"
+    alt="SYNC pipeline mode"
+  />
+</p>
+
+To create a `SYNC` pipeline, both source and destination needs to be configured with the same type of syncrunouse protocol. VDP supports both HTTP and gRPC for a `SYNC` pipeline.
+
+For example, this recipe defines a gRPC `SYNC` pipeline for real-time YOLOv7 inference:
+
+```json
+{
+  "source": "source-connectors/source-grpc",
+  "model_instances": ["models/yolov7/instances/v1.0-cpu"],
+  "destination": "destination-connectors/destination-grpc"
+}
+```
+
+# ASYNC mode
+
+A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response. 
+Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
+
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/async.svg"
+    alt="ASYNC pipeline mode"
+  />
+</p>
+
+To create an `ASYNC` pipeline, the source can be either HTTP or gRPC, and the destination can be any Airbyte destination connectors.
+
+For example, this recipe defines an`ASYNC` pipeline to detect images by YOLOv7 via HTTP request and write the sturcutred detection output into a PostgreSQL database:
+
+```json
+{
+  "source": "source-connectors/source-http",
+  "model_instances": ["models/yolov7/instances/v1.0-cpu"],
+  "destination": "destination-connectors/postgres"
+}
+```
+
+# FETCH mode
+
+A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
+
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/fetch.svg"
+    alt="FETCH pipeline mode"
+  />
+</p>
+
+The `FETCH` mode support is coming soon.
