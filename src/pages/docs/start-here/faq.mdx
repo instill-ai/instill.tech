@@ -1,0 +1,13 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "FAQ",
+  lang: "en-US",
+  draft: false,
+  description:
+    "Frequently Asked Questions (FAQ): If you have a question about the open-source data ETL tool VDP https://github.com/instill-ai/vdp, you're in the right place",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
