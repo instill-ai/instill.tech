@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import MenuIcon from "./MenuIcon";
-import { BlogLink } from "../links/BlogLink";
-import { GithubTextLink } from "../links/GithubTextLink";
 import { LinkBase } from "../links/LinkBase";
-import { AboutPageLink } from "../links/AboutPageLink";
 import { useRouter } from "next/router";
-import { NewsletterArchivePageLink } from "../links/NewsletterArchivePageLink";
-import { CareerPageLink } from "../links/CareerPageLink";
+
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { CrossIcon, Logo } from "@instill-ai/design-system";
 import GetEarlyAccessButton from "../GetEarlyAccessButton";
 import cn from "clsx";
 import Image from "next/future/image";
+
+import NewsletterArchiveLink from "./NewsletterArchiveLink";
+import BlogLink from "./BlogLink";
+import GithubTextLink from "./GithubTextLink";
+import AboutPageLink from "./AboutPageLink";
+import CareerPageLink from "./CareerPageLink";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ const Nav = () => {
       <AboutPageLink />
       <BlogLink />
       <CareerPageLink hiring={true} />
-      <NewsletterArchivePageLink />
+      <NewsletterArchiveLink />
       <GithubTextLink />
       <GetEarlyAccessButton />
     </>
