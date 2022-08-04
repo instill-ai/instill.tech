@@ -1,28 +1,24 @@
-import { FC } from "react";
-import { LinkBase } from "./LinkBase";
-import * as classNames from "classnames";
 import { TwitterIcon } from "@instill-ai/design-system";
 
-interface Props {
-  /** Page;s url you want to share */
+export type ShareToTwitterProps = {
+  /** Page url you want to share */
   url: string;
 
   /** Text you want to add into sharing post */
   text?: string;
+};
 
-  /** <Tailwind config> */
-  styleName?: string;
-}
-
-export const ShareToTwitterLink: FC<Props> = ({ url, styleName, text }) => {
+const ShareToTwitter = ({ url, text }: ShareToTwitterProps) => {
   return (
-    <LinkBase
-      styleName={classNames.default("flex", styleName)}
+    <a
+      className="flex"
       href={
         text
           ? `https://twitter.com/share?text=${text}&url=${url}`
           : `https://twitter.com/share?url=${url}`
       }
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <TwitterIcon
         width="w-[15px]"
@@ -30,6 +26,8 @@ export const ShareToTwitterLink: FC<Props> = ({ url, styleName, text }) => {
         color="fill-instillGrey30 hover:fill-instillGrey05"
         position="my-auto"
       />
-    </LinkBase>
+    </a>
   );
 };
+
+export default ShareToTwitter;

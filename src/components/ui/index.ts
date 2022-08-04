@@ -13,6 +13,13 @@ import JoinDiscordButton from "./JoinDiscordButton";
 import ViewJobsScrollButton from "./ViewJobsScrollButton";
 import { ViewJobsScrollButtonProps } from "./ViewJobsScrollButton";
 
+import ShareToFb from "./ShareToFb";
+import type { ShareToFbProps } from "./ShareToFb";
+import ShareToLinkedIn from "./ShareToLinkedIn";
+import type { ShareToLinkedInProps } from "./ShareToLinkedIn";
+import ShareToTwitter from "./ShareToTwitter";
+import type { ShareToTwitterProps } from "./ShareToTwitter";
+
 export {
   AnnouncementBar,
   CopyRightText,
@@ -23,6 +30,15 @@ export {
   GithubCtaButton,
   JoinDiscordButton,
   ViewJobsScrollButton,
+  ShareToFb,
+  ShareToLinkedIn,
+  ShareToTwitter,
 };
 
-export type { ExploreMoreScrollButtonProps, ViewJobsScrollButtonProps };
+export type {
+  ExploreMoreScrollButtonProps,
+  ViewJobsScrollButtonProps,
+  ShareToFbProps,
+  ShareToLinkedInProps,
+  ShareToTwitterProps,
+};
