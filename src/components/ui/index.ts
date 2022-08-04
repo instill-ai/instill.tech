@@ -1,6 +1,8 @@
 import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
 import { Nav } from "./Nav";
 import CopyRightText from "./CopyRightText";
+import ContentContainer from "./ContentContainer";
+import type { ContentContainerProps } from "./ContentContainer";
 
 import ExploreMoreScrollButton from "./ExploreMoreScrollButton";
 import type { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
@@ -36,6 +38,7 @@ export {
   ShareToLinkedIn,
   ShareToTwitter,
   BackToPreviousPageLink,
+  ContentContainer,
 };
 
 export type {
@@ -45,4 +48,5 @@ export type {
   ShareToLinkedInProps,
   ShareToTwitterProps,
   BackToPreviousPageLinkProps,
+  ContentContainerProps,
 };
