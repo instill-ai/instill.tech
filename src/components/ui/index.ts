@@ -14,6 +14,8 @@ import GetEarlyAccessButton from "./GetEarlyAccessButton";
 import GithubCtaButton from "./GithubCtaButton";
 import PageBase from "./PageBase";
 import type { PageBaseProps } from "./PageBase";
+import PageHead from "./PageHead";
+import type { PageHeadProps } from "./PageHead";
 import JoinDiscordButton from "./JoinDiscordButton";
 
 import ViewJobsScrollButton from "./ViewJobsScrollButton";
@@ -42,6 +44,7 @@ export {
   BackToPreviousPageLink,
   ContentContainer,
   PageBase,
+  PageHead,
 };
 
 export type {
@@ -53,4 +56,5 @@ export type {
   BackToPreviousPageLinkProps,
   ContentContainerProps,
   PageBaseProps,
+  PageHeadProps,
 };

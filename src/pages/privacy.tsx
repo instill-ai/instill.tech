@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 import { FC, ReactElement } from "react";
-import { PageHead, PolicyPageLayout } from "@/components/layouts";
 import { getMDFileContent } from "../lib/file";
-import { PageBase } from "@/components/ui";
+import { PageBase, PageHead } from "@/components/ui";
+import { PolicyPageLayout } from "@/components/layouts";
 
 interface Props {
   content: string;

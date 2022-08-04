@@ -8,8 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { PageHead } from "@/components/layouts";
-import { ContentContainer, PageBase } from "@/components/ui";
+import { ContentContainer, PageBase, PageHead } from "@/components/ui";
 import {
   CareerGeneralIntro,
   CareerHero,

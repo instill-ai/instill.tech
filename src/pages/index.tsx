@@ -1,9 +1,8 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { PageHead } from "@/components/layouts";
 import { HeroSection, InstillCloudSection } from "@/components/sections";
-import { PageBase, ContentContainer } from "@/components/ui";
+import { PageBase, ContentContainer, PageHead } from "@/components/ui";
 
 const LandingBanner = dynamic(() =>
   import("@/components/sections").then((mod) => mod.VdpFlowSection)
