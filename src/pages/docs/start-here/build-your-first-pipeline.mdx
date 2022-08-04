@@ -100,7 +100,7 @@ In which `8081` is the port of the local pipeline backend.
 
 A HTTP response will return
 
-```bash
+```json
 {
   "output": {
     "classification_outputs": [
@@ -134,7 +134,7 @@ http://localhost:8081/v1alpha/pipelines/classification:trigger
 
 or send a multipart request
 
-```
+```bash
 curl -X POST \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"elephant.jpg"' \
