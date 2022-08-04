@@ -1,5 +1,7 @@
 import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
 import { Nav } from "./Nav";
+import BackToPreviousPageLink from "./BackToPreviousPageLink";
+import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
 import CopyRightText from "./CopyRightText";
 import ContentContainer from "./ContentContainer";
 import type { ContentContainerProps } from "./ContentContainer";
@@ -10,6 +12,8 @@ import type { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
 import Footer from "./Footer";
 import GetEarlyAccessButton from "./GetEarlyAccessButton";
 import GithubCtaButton from "./GithubCtaButton";
+import PageBase from "./PageBase";
+import type { PageBaseProps } from "./PageBase";
 import JoinDiscordButton from "./JoinDiscordButton";
 
 import ViewJobsScrollButton from "./ViewJobsScrollButton";
@@ -21,8 +25,6 @@ import ShareToLinkedIn from "./ShareToLinkedIn";
 import type { ShareToLinkedInProps } from "./ShareToLinkedIn";
 import ShareToTwitter from "./ShareToTwitter";
 import type { ShareToTwitterProps } from "./ShareToTwitter";
-import BackToPreviousPageLink from "./BackToPreviousPageLink";
-import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
 
 export {
   AnnouncementBar,
@@ -39,6 +41,7 @@ export {
   ShareToTwitter,
   BackToPreviousPageLink,
   ContentContainer,
+  PageBase,
 };
 
 export type {
@@ -49,4 +52,5 @@ export type {
   ShareToTwitterProps,
   BackToPreviousPageLinkProps,
   ContentContainerProps,
+  PageBaseProps,
 };

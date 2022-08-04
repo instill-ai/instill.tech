@@ -1,7 +1,7 @@
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase, PageHead } from "@/components/layouts";
+import { PageHead } from "@/components/layouts";
 import { useOnScreen } from "../hooks/useOnScreen";
 import { GetStaticProps } from "next";
 import { IClickUpTask } from "../types/clickUp";
@@ -11,7 +11,7 @@ import {
 } from "../lib/clickUp";
 import { TMemberDetails } from "../types/instill";
 import { OurMembersSection } from "@/components/sections";
-import { ContentContainer } from "@/components/ui";
+import { ContentContainer, PageBase } from "@/components/ui";
 
 const SecureYourSpotSection = dynamic(() =>
   import("@/components/sections").then((mod) => mod.SecureYourSpotSection)

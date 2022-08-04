@@ -3,11 +3,15 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { PageBase, PageHead } from "@/components/layouts";
+import { PageHead } from "@/components/layouts";
 
 import { CareerPositionDetailsSection } from "@/components/career";
 
-import { BackToPreviousPageLink, ContentContainer } from "@/components/ui";
+import {
+  BackToPreviousPageLink,
+  ContentContainer,
+  PageBase,
+} from "@/components/ui";
 import {
   getClickUpTaskQuery,
   listClickUpTasksInListQuery,
