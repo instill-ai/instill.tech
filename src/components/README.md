@@ -44,3 +44,15 @@ You should lift the components up to the responsibility layer, like. In this way
 
 - /components/career
 - /components/ui
+
+### About the styleName props
+
+Normally you would like to pass a group of Tailwind class into component within single props, it easy and align with className. But it will raise bunch of issues like
+
+- You can't control other programmer what style should be passed into the component.
+- You will miss the opportunity to indicate what style will affect this component.
+
+Besides that, our desing-system secific every style props beneath the API, we encourage you to adapt this style props pattern. But under one circumstance you can choose to use styleName pattern: When your component is a one-time component which located under other component's folder.
+
+For example, under Footer there has SocialLink component, this is a one time component that locate under Footer's folder, it can adapt styleName prop pattern for convient purpose. But don't forget that you can't export this kind of one-time component to outside.
+
