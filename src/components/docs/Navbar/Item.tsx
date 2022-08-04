@@ -30,6 +30,8 @@ const Item = ({ item }: ItemProps) => {
             sizes={`${item.icon.width}px`}
             alt={item.icon.alt}
           />
+        ) : item.iconElement ? (
+          item.iconElement
         ) : (
           <p className="my-auto">{item.label}</p>
         )}

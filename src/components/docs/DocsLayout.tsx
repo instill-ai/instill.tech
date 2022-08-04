@@ -33,6 +33,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     setHeaders(newHeaders);
   }, []);
 
+  console.log(router.pathname.slice(1));
+
   return (
     <>
       <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10">

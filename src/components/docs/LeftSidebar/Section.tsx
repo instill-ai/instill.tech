@@ -40,20 +40,27 @@ const Section = ({
 
   const sectionIsCollapsable = useMemo(() => {
     if (!link) {
+      if (items.length === 0) return false;
       return collapsible;
     } else {
       return false;
     }
-  }, [link, collapsible]);
+  }, [link, collapsible, items]);
 
   return (
     <section
-      className={cn("flex w-full flex-col pt-2", collapsed ? "pb-2" : "pb-6")}
+      className={cn(
+        "flex w-full flex-col pt-2",
+        sectionIsCollapsable ? (collapsed ? "pb-2" : "pb-6") : "pb-2"
+      )}
     >
       <div
         onClick={link ? toLink : toggle}
-        role={collapsible ? "button" : undefined}
-        className={cn("flex flex-row", { "mb-4": !collapsed })}
+        role="button"
+        className={cn(
+          "flex flex-row",
+          sectionIsCollapsable ? { "mb-4": !collapsed } : ""
+        )}
       >
         <h2 className="my-auto flex-1 text-sm font-semibold">{text}</h2>
         {sectionIsCollapsable ? (
@@ -74,7 +81,7 @@ const Section = ({
             />
           </div>
         ) : (
-          <div className="relative h-8 w-8" />
+          <div className="relative h-8 w-8 cursor-pointer" />
         )}
       </div>
       <div
@@ -86,10 +93,10 @@ const Section = ({
           <a
             key={item.text}
             className={cn(
-              "text-sm font-normal hover:text-instillGrey80",
-              item.link === currentPagePath.slice(1)
-                ? "text-instillGrey80"
-                : "text-instillGrey50"
+              "text-sm hover:text-instillGrey95",
+              item.link === currentPagePath
+                ? "text-instillGrey95 font-semibold"
+                : "text-instillGrey80 font-normal"
             )}
             href={item.link}
           >
