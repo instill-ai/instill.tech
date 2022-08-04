@@ -6,6 +6,7 @@ import RightSidebar from "./RightSidebar";
 import Navbar from "./Navbar";
 import { Frontmatter } from "@/types/docs";
 import { docsBaseStyles } from "@/style/docsBaseStyle";
+import { PageHead } from "../ui";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
@@ -33,10 +34,9 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     setHeaders(newHeaders);
   }, []);
 
-  console.log(router.pathname.slice(1));
-
   return (
     <>
+      <PageHead pageTitle={meta.title} pageDescription={meta.description} />
       <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10">
         <aside
           className="col-span-4 z-10 bg-instillGrey05"
