@@ -1,9 +1,9 @@
 import { Logo } from "@instill-ai/design-system";
-import { CookiePolicyLink } from "./links/CookiePolicyLink";
-import { PrivacyPolicyLink } from "./links/PrivacyPolicyLink";
-import SocialLinksGroup from "./SocialLinksGroup";
-import CopyRightText from "./CopyRightText";
-import SimpleHorizontalLine from "./SimpleHorizontalLine";
+import SocialLinksGroup from "../SocialLinksGroup";
+import CopyRightText from "../CopyRightText";
+import SimpleHorizontalLine from "../SimpleHorizontalLine";
+import PrivacyPolicyLink from "./PrivacyPolicyLink";
+import CookiePolicyLink from "./CookiePolicyLink";
 
 const Footer = () => {
   return (
