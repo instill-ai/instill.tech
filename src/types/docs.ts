@@ -1,3 +1,5 @@
+import { ReactElement } from "react-markdown/lib/react-markdown";
+
 export type SidebarItem = {
   header?: boolean;
   link?: string;
@@ -18,9 +20,18 @@ export type SidebarSection = {
   children: SidebarItem[];
 };
 
+export type Logo = {
+  alt: string;
+  src: string;
+  srcDark?: string;
+  width: number;
+  height: number;
+};
+
 export type Sidebar = {
   leftSidebar: {
     sections: SidebarSections[];
+    logo?: Logo;
   };
   rightSidebar: {
     tableOfContentHeaders: string[];
@@ -28,14 +39,8 @@ export type Sidebar = {
 };
 
 export type NavBar = {
-  title: string;
-  logo: {
-    alt: string;
-    src: string;
-    srcDark?: string;
-    width: number;
-    height: number;
-  };
+  title?: string;
+  logo?: Logo;
   items: NavbarItem[];
 };
 
@@ -43,6 +48,13 @@ export type NavBarInteriorLinkItem = {
   to: string;
   label: string;
   position: "right" | "left";
+  iconElement?: ReactElement;
+  icon?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 };
 
 export type NavbarExteriorLinkItem = {
@@ -52,6 +64,7 @@ export type NavbarExteriorLinkItem = {
 
   // If src is present, label will not be displayed, it will display the icon and the aria-label with label as value
   label: string;
+  iconElement?: ReactElement;
   icon?: {
     src: string;
     width: number;

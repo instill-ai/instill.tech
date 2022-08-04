@@ -1,4 +1,5 @@
 import { NavBar, Sidebar } from "@/types/docs";
+import { DiscordIcon, GitHubIcon } from "@instill-ai/design-system";
 
 export const SITE = {
   title: "Documentation",
@@ -26,6 +27,12 @@ export const OPEN_GRAPH = {
 
 export const SIDEBAR: Sidebar = {
   leftSidebar: {
+    logo: {
+      src: "/images/vdp-logo-white-bg.svg",
+      width: 152,
+      height: 54,
+      alt: "VDP's logo",
+    },
     sections: [
       {
         text: "Start here",
@@ -143,23 +150,38 @@ export const SIDEBAR: Sidebar = {
 };
 
 export const NAVBAR: NavBar = {
-  title: "Visual Data Preparation",
-  logo: {
-    src: "/logo.svg",
-    width: 40,
-    height: 30,
-    alt: "Visual Data Preparation (VDP) logo",
-  },
   items: [
+    {
+      to: "/",
+      className: "",
+      position: "right",
+      label: "Product website",
+    },
+    {
+      href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK,
+      className: "discord-social-link",
+      iconElement: (
+        <DiscordIcon
+          width="w-[30px]"
+          height="h-[30px]"
+          color="fill-instillGrey95"
+          position="my-auto"
+        />
+      ),
+      position: "right",
+      label: "discord",
+    },
     {
       href: "https://github.com/instill-ai/vdp",
       className: "github-social-link",
-      icon: {
-        src: "/github.svg",
-        width: 30,
-        height: 30,
-        alt: "github icon",
-      },
+      iconElement: (
+        <GitHubIcon
+          width="w-[30px]"
+          height="h-[30px]"
+          color="fill-instillGrey95"
+          position="my-auto"
+        />
+      ),
       position: "right",
       label: "github",
     },

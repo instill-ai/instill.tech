@@ -85,6 +85,22 @@ module.exports = {
               fontSize: "20px",
               lineHeight: "28px",
             },
+            code: {
+              paddingTop: "3px",
+              paddingBottom: "3px",
+              paddingRight: "6px",
+              paddingLeft: "6px",
+              backgroundColor: theme("colors.instillGrey05"),
+              borderRadius: "4px",
+              marginRight: "2px",
+              marginLeft: "2px",
+            },
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
           },
         },
         black: {
@@ -115,7 +131,7 @@ module.exports = {
             "--tw-prose-links": theme("colors.instillBlue50"),
             "--tw-prose-bold": theme("colors.instillGrey15"),
             "--tw-prose-counters": theme("colors.instillGrey15"),
-            "--tw-prose-bullets": theme("colors.instillGrey15"),
+            "--tw-prose-bullets": theme("colors.instillGrey95"),
             "--tw-prose-hr": theme("colors.instillGrey30"),
             "--tw-prose-quotes": theme("colors.instillGrey15"),
             "--tw-prose-quote-borders": theme("colors.instillGrey15"),
