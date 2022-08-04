@@ -169,7 +169,7 @@ export const NAVBAR: NavBar = {
         />
       ),
       position: "right",
-      label: "github",
+      label: "discord",
     },
     {
       href: "https://github.com/instill-ai/vdp",
