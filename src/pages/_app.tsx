@@ -18,6 +18,8 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
+  console.log(Component.getLayout);
+
   return (
     <AnnouncementBarCtxProvider>
       {getLayout(<Component {...pageProps} />)}
