@@ -1,9 +1,8 @@
-import { FC } from "react";
-import * as classNames from "classnames";
-import { LinkBase } from "@/components/ui/links/LinkBase";
 import { PinIcon, ToolboxIcon } from "@instill-ai/design-system";
+import Link from "next/link";
+import cn from "clsx";
 
-interface Props {
+export type OpenPositionListUnitProps = {
   /** Indicate whether the list unit is placeholder or not */
   unitIsPlaceholder: boolean;
 
@@ -24,9 +23,9 @@ interface Props {
 
   /** <Tailwind config> - position */
   styleName?: string;
-}
+};
 
-export const OpenPositionListUnit: FC<Props> = ({
+export const OpenPositionListUnit = ({
   name,
   location,
   workType,
@@ -34,14 +33,14 @@ export const OpenPositionListUnit: FC<Props> = ({
   styleName,
   unitIsPlaceholder,
   link,
-}) => {
+}: OpenPositionListUnitProps) => {
   const now = Date.now();
   const daysAgo = Math.round(Math.abs(parseInt(postDate) - now) / 86400000);
 
   return (
-    <LinkBase href={link} scroll={true}>
-      <div
-        className={classNames.default(
+    <Link href={link} scroll={true}>
+      <a
+        className={cn(
           "flex flex-col hover:bg-instillGrey05 md:grid md:grid-cols-2 md:px-5 md:py-5",
           styleName
         )}
@@ -78,7 +77,7 @@ export const OpenPositionListUnit: FC<Props> = ({
             </div>
           </div>
         </div>
-      </div>
-    </LinkBase>
+      </a>
+    </Link>
   );
 };

@@ -108,13 +108,13 @@ const CareerPage: FC<Props> & {
         pageTitle="Career | Instill AI"
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
       />
-      <ContentContainer>
+      <ContentContainer contentMaxWidth="max-w-[1127px]">
         <CareerHero
           viewJobsScrollHandler={scrollHandler}
           marginBottom="mb-10"
         />
         <CareerGeneralIntro />
-        <div className="flex" ref={openPositionsRef}>
+        <div className="flex w-full" ref={openPositionsRef}>
           {loadOpenPositions && (
             <CareerPositionListSection
               marginBottom="mb-[100px]"

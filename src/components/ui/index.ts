@@ -19,6 +19,8 @@ import ShareToLinkedIn from "./ShareToLinkedIn";
 import type { ShareToLinkedInProps } from "./ShareToLinkedIn";
 import ShareToTwitter from "./ShareToTwitter";
 import type { ShareToTwitterProps } from "./ShareToTwitter";
+import BackToPreviousPageLink from "./BackToPreviousPageLink";
+import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
 
 export {
   AnnouncementBar,
@@ -33,6 +35,7 @@ export {
   ShareToFb,
   ShareToLinkedIn,
   ShareToTwitter,
+  BackToPreviousPageLink,
 };
 
 export type {
@@ -41,4 +44,5 @@ export type {
   ShareToFbProps,
   ShareToLinkedInProps,
   ShareToTwitterProps,
+  BackToPreviousPageLinkProps,
 };

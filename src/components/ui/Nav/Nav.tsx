@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { LinkBase } from "../links/LinkBase";
 import { useRouter } from "next/router";
 
 import { AnnouncementBar } from "@/components/ui";
@@ -14,6 +13,7 @@ import BlogLink from "./BlogLink";
 import GithubTextLink from "./GithubTextLink";
 import AboutPageLink from "./AboutPageLink";
 import CareerPageLink from "./CareerPageLink";
+import Link from "next/link";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -61,9 +61,11 @@ const Nav = () => {
       )}
       <div className="mx-auto flex w-full max-w-[1440px]">
         <div className="hidden w-full content-center p-2 lg:flex lg:flex-row">
-          <LinkBase styleName="my-auto mr-auto" href="/">
-            <Logo type="ColourLogomarkWhiteType" width={159} />
-          </LinkBase>
+          <Link href="/">
+            <a className="flex my-auto mr-auto">
+              <Logo type="ColourLogomarkWhiteType" width={159} />
+            </a>
+          </Link>
 
           <div className="flex flex-row justify-end gap-x-[60px] lg:ml-auto">
             {navbarLinkGroup}
@@ -76,9 +78,11 @@ const Nav = () => {
           )}
         >
           <div className="flex w-full flex-row p-4 lg:mb-[60px]">
-            <LinkBase styleName="flex" href="/">
-              <Logo type="ColourLogomarkWhiteType" width={159} />
-            </LinkBase>
+            <Link href="/">
+              <a className="flex">
+                <Logo type="ColourLogomarkWhiteType" width={159} />
+              </a>
+            </Link>
             <button
               className="flex ml-auto w-[30px] h-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
               onClick={() => setOpen(!open)}

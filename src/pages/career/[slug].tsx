@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
 import { CareerPositionDetailsSection } from "@/components/career";
 
-import BackToPreviousPageLink from "@/components/ui/links/BackToPreviousPageLink";
+import { BackToPreviousPageLink } from "@/components/ui";
 import {
   getClickUpTaskQuery,
   listClickUpTasksInListQuery,
@@ -116,8 +116,8 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         pageTitle={`${position.name} | Instill AI`}
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
       />
-      <ContentContainer>
-        <div className="mb-10 flex px-4 md:px-0">
+      <ContentContainer contentMaxWidth="max-w-[1127px]">
+        <div className="my-10 flex px-4 md:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
 
