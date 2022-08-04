@@ -5,7 +5,7 @@ export type SocialLinksGroupProps = {
   styleName?: string;
 };
 
-const SocialLinksGroup = ({ styleName }: SocialLinksGroupProps) => {
+const SocialLinks = ({ styleName }: SocialLinksGroupProps) => {
   return (
     <div className={cn("flex flex-row gap-x-5", styleName)}>
       <a
@@ -51,4 +51,4 @@ const SocialLinksGroup = ({ styleName }: SocialLinksGroupProps) => {
   );
 };
 
-export default SocialLinksGroup;
+export default SocialLinks;
