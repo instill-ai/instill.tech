@@ -8,12 +8,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { ContentContainer, PageBase, PageHead } from "@/components/layouts";
+import { ContentContainer, PageBase, PageHead } from "@/components/ui";
 import {
   CareerGeneralIntro,
   CareerHero,
   CareerPositionListSectionProps,
-} from "../../components/career";
+} from "@/components/career";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   listClickUpTasksInListQuery,

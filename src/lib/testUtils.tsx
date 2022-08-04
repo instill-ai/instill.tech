@@ -2,7 +2,7 @@ import { NextRouter } from "next/router";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { render } from "@testing-library/react";
 import { AnnouncementBarCtxProvider } from "@/contexts/AnnouncementBarContext";
-import { PageBase } from "@/components/layouts";
+import { PageBase } from "@/components/ui";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 
 export function createMockRouter(router: Partial<NextRouter>): NextRouter {

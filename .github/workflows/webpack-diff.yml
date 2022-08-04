@@ -54,8 +54,10 @@ jobs:
     name: "Build base stats"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout base branch
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.base_ref }}
 
       - name: Setup node
         uses: actions/setup-node@v3
