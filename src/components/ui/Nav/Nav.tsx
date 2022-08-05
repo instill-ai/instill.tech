@@ -14,6 +14,7 @@ import GithubTextLink from "./GithubTextLink";
 import AboutPageLink from "./AboutPageLink";
 import CareerPageLink from "./CareerPageLink";
 import Link from "next/link";
+import DocsPageLink from "./DocsPageLink";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -30,6 +31,7 @@ const Nav = () => {
   const navbarLinkGroup = (
     <>
       <AboutPageLink />
+      <DocsPageLink />
       <BlogLink />
       <CareerPageLink hiring={true} />
       <NewsletterArchiveLink />
