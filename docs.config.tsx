@@ -150,6 +150,12 @@ export const SIDEBAR: Sidebar = {
 };
 
 export const NAVBAR: NavBar = {
+  logo: {
+    src: "/images/vdp-logo-white-bg.svg",
+    width: 152,
+    height: 54,
+    alt: "VDP's logo",
+  },
   items: [
     {
       to: "/",
