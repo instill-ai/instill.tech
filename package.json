@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -H localhost -p 3000",
-    "build": "next build",
+    "build": "next build && pnpm run postbuild",
     "lint": "next lint",
     "start": "next start",
     "export": "next export",
@@ -16,7 +16,8 @@
     "prettier:fix": "prettier --write",
     "prettier:check": "prettier --check",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@code-hike/mdx": "^0.7.2",
@@ -79,6 +80,7 @@
     "husky": "^7.0.0",
     "jest": "^27.4.7",
     "lint-staged": "^11.2.3",
+    "next-sitemap": "^3.1.16",
     "postcss": "^8.4.5",
     "prettier": "2.4.1",
     "prettier-plugin-tailwindcss": "^0.1.8",

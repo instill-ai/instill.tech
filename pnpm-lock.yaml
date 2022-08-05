@@ -52,6 +52,7 @@ specifiers:
   jest: ^27.4.7
   lint-staged: ^11.2.3
   next: ^12.2.3
+  next-sitemap: ^3.1.16
   node-html-parser: ^5.2.0
   postcss: ^8.4.5
   prettier: 2.4.1
@@ -131,6 +132,7 @@ devDependencies:
   husky: 7.0.4
   jest: 27.5.1
   lint-staged: 11.2.6
+  next-sitemap: 3.1.16_6lynxinfr2uix4icggokqiwwie
   postcss: 8.4.14
   prettier: 2.4.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.4.1
@@ -1761,6 +1763,10 @@ packages:
     engines: {node: '>=v12'}
     dependencies:
       chalk: 4.1.2
+    dev: true
+
+  /@corex/deepmerge/4.0.29:
+    resolution: {integrity: sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==}
     dev: true
 
   /@discoveryjs/json-ext/0.5.7:
@@ -11449,6 +11455,20 @@ packages:
 
   /nested-error-stacks/2.1.1:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
+    dev: true
+
+  /next-sitemap/3.1.16_6lynxinfr2uix4icggokqiwwie:
+    resolution: {integrity: sha512-kczTKLB1ifqi44mMImv/sLRsqxy/O4DXJ4mx/1l23vyx6QFWqeuHxS0duEL/EsChcVJUMWV4FNg2pIiX31xxmg==}
+    engines: {node: '>=14.18'}
+    hasBin: true
+    peerDependencies:
+      '@next/env': '*'
+      next: '*'
+    dependencies:
+      '@corex/deepmerge': 4.0.29
+      '@next/env': 12.2.3
+      minimist: 1.2.6
+      next: 12.2.3_quymggomo7oodk3cofk2m5scyu
     dev: true
 
   /next/12.2.3_quymggomo7oodk3cofk2m5scyu:
