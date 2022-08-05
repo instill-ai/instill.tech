@@ -1,17 +1,19 @@
-import { useMemo } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 
 import Item from "./Item";
 import cn from "clsx";
 import { NavBar, NavbarItem } from "@/types/docs";
 import Image from "next/future/image";
 import Link from "next/link";
+import SubNav from "./SubNav";
 
-export type NavbarProps = {
+export type NavProps = {
   navbar: NavBar;
   marginBottom: string;
+  setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Navbar = ({ navbar, marginBottom }: NavbarProps) => {
+const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
@@ -28,16 +30,16 @@ const Navbar = ({ navbar, marginBottom }: NavbarProps) => {
   }, [navbar]);
 
   return (
-    <nav
-      className={cn(
-        "sticky top-0 z-10 mx-auto flex w-full bg-white py-4 pr-10",
-        marginBottom
-      )}
-      title="Top Navigation"
-    >
-      <div className="flex w-full items-center justify-end gap-x-4 py-2">
+    <>
+      <nav
+        className={cn(
+          "sticky top-0 z-10 mx-auto flex flex-row w-full bg-white py-4 px-8 h-[132px] border-b md:border-none",
+          marginBottom
+        )}
+        title="Top Navigation"
+      >
         {!navbar.logo && !navbar.title ? null : (
-          <div className="logo mr-4 flex">
+          <div className="logo mr-4 flex md:hidden">
             <Link href="/docs">
               <a className="flex flex-row gap-x-3">
                 {navbar.logo ? (
@@ -57,21 +59,35 @@ const Navbar = ({ navbar, marginBottom }: NavbarProps) => {
           </div>
         )}
 
-        <div className="grid flex-1 grid-cols-2">
-          <div className="flex w-full flex-row">
+        <div className="flex flex-row flex-1">
+          <div
+            className={cn(
+              "flex flex-row",
+              items.left.length === 0 ? "flex-shrink" : "grow"
+            )}
+          >
             {items.left.map((item) => (
               <Item key={item.label} item={item} />
             ))}
           </div>
-          <div className="flex w-full flex-row justify-end gap-x-5">
+          <div
+            className={cn(
+              "flex flex-row justify-end gap-x-5",
+              items.right.length === 0 ? "flex-shrink" : "grow"
+            )}
+          >
             {items.right.map((item) => (
               <Item key={item.label} item={item} />
             ))}
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <SubNav
+        styleName="mb-5 flex md:hidden sticky top-[132px]"
+        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+      />
+    </>
   );
 };
 
-export default Navbar;
+export default Nav;

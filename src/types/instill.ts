@@ -29,3 +29,5 @@ export type TMemberDetails = {
   openRoleLocation: string;
   openRoleLink: string;
 };
+
+export type Nullable<T> = T | null;

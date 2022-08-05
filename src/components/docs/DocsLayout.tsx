@@ -3,10 +3,10 @@ import LeftSidebar from "./LeftSidebar";
 import { SIDEBAR, NAVBAR } from "../../../docs.config";
 import { useRouter } from "next/router";
 import RightSidebar from "./RightSidebar";
-import Navbar from "./Navbar";
+import Nav from "./Nav";
 import { Frontmatter } from "@/types/docs";
-import { docsBaseStyles } from "@/style/docsBaseStyle";
 import { PageHead } from "../ui";
+import cn from "clsx";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
@@ -15,6 +15,7 @@ export type DocsLayoutProps = {
 const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const router = useRouter();
   const [headers, setHeaders] = useState<{ slug: string; text: string }[]>([]);
+  const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 
   useEffect(() => {
     let newHeaders = [];
@@ -36,10 +37,16 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
   return (
     <>
-      <PageHead pageTitle={meta.title} pageDescription={meta.description} />
+      <PageHead
+        pageTitle={`${meta.title} | Documentation`}
+        pageDescription={meta.description}
+      />
       <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10">
         <aside
-          className="col-span-4 z-10 bg-instillGrey05"
+          className={cn(
+            "fixed md:sticky md:flex top-0 md:col-span-4 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
+            leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
+          )}
           title="Site Navigation"
         >
           <LeftSidebar
@@ -49,13 +56,21 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           />
         </aside>
 
-        <div className="flex flex-col col-span-7 max-w-[1140px] mr-auto pb-40">
-          <Navbar
-            navbar={NAVBAR}
-            marginBottom={docsBaseStyles.navbarMarginBottom}
+        {leftSidebarIsOpen ? (
+          <div
+            onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
+            className="fixed top-0 bottom-0 left-0 right-0 bg-instillGrey70 opacity-80 z-20"
           />
-          <div className="grid grid-cols-9">
-            <div className="col-span-7 px-8">
+        ) : null}
+
+        <div className="flex flex-col col-span-12 md:col-span-8 max-w-[1140px] mr-auto pb-40">
+          <Nav
+            setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+            navbar={NAVBAR}
+            marginBottom="md:mb-4"
+          />
+          <div className="grid grid-cols-8 py-8">
+            <div className="col-span-8 xl:col-span-6 px-8">
               <h1 className=" font-sans font-semibold text-3xl mb-10">
                 {meta.title}
               </h1>
@@ -65,7 +80,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             </div>
 
             <aside
-              className="grid-sidebar col-span-2 pl-8"
+              className="grid-sidebar col-span-2 pl-8 sticky top-[140px] hidden md:flex"
               title="Table of Contents"
             >
               <RightSidebar headers={headers} />

@@ -8,7 +8,7 @@ export type TableOfContentProps = {
 const TableOfContent = ({ headers }: TableOfContentProps) => {
   return (
     <>
-      <h2 className="mb-4">On this page</h2>
+      <h2 className="mb-4 text-instillGrey95 font-semibold">On this page</h2>
       <ul>
         {headers.map((header) => (
           <li
