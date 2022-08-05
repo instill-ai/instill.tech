@@ -3,7 +3,7 @@ import LeftSidebar from "./LeftSidebar";
 import { SIDEBAR, NAVBAR } from "../../../docs.config";
 import { useRouter } from "next/router";
 import RightSidebar from "./RightSidebar";
-import Navbar from "./Navbar";
+import Nav from "./Nav";
 import { Frontmatter } from "@/types/docs";
 import { PageHead } from "../ui";
 import cn from "clsx";
@@ -64,7 +64,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         ) : null}
 
         <div className="flex flex-col col-span-12 md:col-span-8 max-w-[1140px] mr-auto pb-40">
-          <Navbar
+          <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
             navbar={NAVBAR}
             marginBottom="md:mb-4"

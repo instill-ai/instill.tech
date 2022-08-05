@@ -7,17 +7,13 @@ import Image from "next/future/image";
 import Link from "next/link";
 import SubNav from "./SubNav";
 
-export type NavbarProps = {
+export type NavProps = {
   navbar: NavBar;
   marginBottom: string;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Navbar = ({
-  navbar,
-  marginBottom,
-  setLeftSidebarIsOpen,
-}: NavbarProps) => {
+const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
@@ -94,4 +90,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default Nav;
