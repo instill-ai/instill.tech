@@ -6,7 +6,7 @@ export type RightSidebarProps = {
 
 const RightSidebar = ({ headers }: RightSidebarProps) => {
   return (
-    <div className="sticky  top-[148px]" aria-labelledby="grid-right">
+    <div className="sticky top-[148px] pr-4" aria-labelledby="grid-right">
       <div className="h-full overflow-auto">
         <TableOfContent headers={headers} />
       </div>

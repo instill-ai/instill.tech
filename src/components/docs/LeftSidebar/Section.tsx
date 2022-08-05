@@ -4,6 +4,7 @@ import IconMinusSquare from "./IconMinusSquare";
 import IconPlusSquare from "./IconPlusSquare";
 import { SidebarItem } from "@/types/docs";
 import { useRouter } from "next/router";
+import { CollapseRightIcon } from "@instill-ai/design-system";
 
 export type SectionProps = {
   text: string;
@@ -64,25 +65,15 @@ const Section = ({
       >
         <h2 className="my-auto flex-1 text-sm font-semibold">{text}</h2>
         {sectionIsCollapsable ? (
-          <div className="relative h-8 w-8">
-            <IconMinusSquare
-              styleName={
-                collapsed
-                  ? cn(baseIconStyle, "opacity-0")
-                  : cn(baseIconStyle, "opacity-1")
-              }
-            />
-            <IconPlusSquare
-              styleName={
-                collapsed
-                  ? cn(baseIconStyle, "opacity-1")
-                  : cn(baseIconStyle, "opacity-0")
-              }
+          <div className="my-auto">
+            <CollapseRightIcon
+              width="w-3"
+              height="h-3"
+              color="fill-instillGrey95"
+              position={cn("my-auto", collapsed ? "rotate-90" : "-rotate-90")}
             />
           </div>
-        ) : (
-          <div className="relative h-8 w-8 cursor-pointer" />
-        )}
+        ) : null}
       </div>
       <div
         className={cn("flex flex-col gap-y-2", {

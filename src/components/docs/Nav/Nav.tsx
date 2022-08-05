@@ -40,7 +40,7 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
       >
         {!navbar.logo && !navbar.title ? null : (
           <div className="logo mr-4 flex md:hidden">
-            <Link href="/docs">
+            <Link href="/docs/start-here/getting-started">
               <a className="flex flex-row gap-x-3">
                 {navbar.logo ? (
                   <Image
