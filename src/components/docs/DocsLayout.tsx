@@ -44,7 +44,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10">
         <aside
           className={cn(
-            "fixed md:sticky md:flex top-0 md:col-span-4 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
+            "fixed md:sticky h-full md:flex top-0 md:col-span-4 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
           title="Site Navigation"
