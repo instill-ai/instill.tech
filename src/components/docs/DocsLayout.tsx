@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import RightSidebar from "./RightSidebar";
 import Navbar from "./Navbar";
 import { Frontmatter } from "@/types/docs";
-import { docsBaseStyles } from "@/style/docsBaseStyle";
 import { PageHead } from "../ui";
 
 export type DocsLayoutProps = {
@@ -36,7 +35,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
   return (
     <>
-      <PageHead pageTitle={meta.title} pageDescription={meta.description} />
+      <PageHead
+        pageTitle={`${meta.title} | Documentation`}
+        pageDescription={meta.description}
+      />
       <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10">
         <aside
           className="col-span-4 z-10 bg-instillGrey05"
@@ -50,10 +52,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         </aside>
 
         <div className="flex flex-col col-span-7 max-w-[1140px] mr-auto pb-40">
-          <Navbar
-            navbar={NAVBAR}
-            marginBottom={docsBaseStyles.navbarMarginBottom}
-          />
+          <Navbar navbar={NAVBAR} marginBottom="mb-4" />
           <div className="grid grid-cols-9">
             <div className="col-span-7 px-8">
               <h1 className=" font-sans font-semibold text-3xl mb-10">

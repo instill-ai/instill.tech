@@ -16,7 +16,7 @@ const LeftSidebar = ({
   maxWidth,
 }: LeftSidebarProps) => {
   return (
-    <nav
+    <div
       className={cn(
         "flex w-full ml-auto flex-col sticky top-0 py-10 h-screen overflow-auto px-5",
         maxWidth
@@ -47,7 +47,7 @@ const LeftSidebar = ({
           />
         </div>
       ))}
-    </nav>
+    </div>
   );
 };
 
