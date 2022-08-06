@@ -3,10 +3,34 @@ export const meta = {
   title: "CV Task",
   lang: "en-US",
   draft: false,
-  description: "Standardise structured outputs for computer vision tasks the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  description:
+    "Standardise structured outputs for computer vision tasks the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
 export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
+
+![VDP model definition integration](/docs-assets/cv-tasks.svg)
+
+CV tasks, a.k.a Vision tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does.
+The goal is to make a computer/device provide description for the data as complete and accurate as possible.
+Some classic CV tasks include image classification, object detection, image segmentation and keypoint detection.
+These primitive tasks are the foundation for building many real-world industrial vision applications.
+
+VDP support by importing the state-of-the-art CV models to solve a certain CV task:
+
+- **Image classification** - classify images into predefined categories
+- **Object detection** - detect and localize multiple objects in images
+- **Keypoint detection** - detect and localize multiple keypoints of objects in images
+
+## Image classification
+
+Image
+
+## Object detection
+
+## Keypoint detection
+
+## What if my task is not supported by VDP?

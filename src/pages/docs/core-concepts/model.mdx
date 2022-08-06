@@ -3,10 +3,143 @@ export const meta = {
   title: "Model",
   lang: "en-US",
   draft: false,
-  description: "One-click import and deploy ML models with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  description:
+    "One-click import and deploy ML models with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
 export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
+
+## Model management in VDP
+
+🎯 **VDP captures the versioning of your models.** During model development, ML teams version models to track and manage changes and collaborate between members.
+As you use VDP to import your model, different versions of your model are also imported.
+In this case, you can keep a single history of your models and the original versioning serves as the single source of truth.
+
+_VDP enables model versioning using the concepts of model and model instance_. A model represents an algorithm run on data and it may have multiple model instances.
+Each model instance represents a tagged snapshot of the model. The tags of the instances depend on the model source and what versioning control tool the model source uses.
+Please refer to [Import models](../models/definitions/local) to learn about model versioning with supported model sources.
+
+When importing a model in VDP, all versions of the model are imported as model instances associated with the original version tags.
+Among all, you can choose specific model instances into the model repository to deploy and then to use in data pipelines.
+
+![VDP model and model instance](/docs-assets/model-and-model-instance.svg)
+
+## Prepare your model to be VDP-ready
+
+VDP uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
+Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
+To import your models into VDP, please refer to the [Prepare models](../models/preparation/overview) guideline.
+
+## Import model made easy
+
+![VDP model definition integration](/docs-assets/model-definitions.svg)
+
+No matter where your model stores, we want to keep your models on the same storage without changes and make the process of importing your models into VDP easy.
+That's why we integrate VDP with various platforms and tools as model sources and strive to support as many popular model sources as possible.
+
+The model source in VDP is defined as `model definition`. A `model definition` defines the schema about how to configure and import the model. Currently, VDP supports importing models from the following sources:
+
+- [ArtiVC](/docs/models/definitions/artivc)
+- [GitHub](/docs/models/definitions/github)
+  - Track model files using [Git-LFS](/docs/models/definitions/github#prepare-a-github-repository-and-track-large-model-files-by-git-lfs)
+  - Track model files using [DVC](/docs/models/definitions/github#prepare-a-github-repository-and-manage-large-model-files-by-dvc)
+- [Hugging Face](/docs/models/definitions/huggingface)
+- [Local](/docs/models/definitions/local)
+- The list is growing ... 🌱
+
+If you'd like to **ask for a new model definition**, you can create a issue on [GitHub](https://github.com/instill-ai/vdp/issues), or request it in the #vdp channel of our [community](https://discord.gg/sevxWsqpGh).
+
+## Use model
+
+### Model inference
+
+An inference is a prediction to a question or task. In the concept of Machine Learning (ML) and Artificial Intelligence (AI), the term inference is often compared with training.
+To put it simple, inference is where capabilities learnt during training are put to analyze data to "infer" a result. Inference can be found and are applied everywhere across industries from photo tagging to autonomous driving.
+
+🎯 **VDP provides automatic model inference server.**
+After importing your model into VDP and deploying its model instance online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
+
+The API supports batch processing: you can send multiple images of popular formats (PNG and JPEG) in one request. Check the examples below.
+The API accepts images
+
+- sent by remote URL and Base64 or
+- uploaded by multipart.
+
+<CH.Code>
+
+```bash remote
+# Test model to infer images with remote URL
+curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_url": "https://artifacts.instill.tech/dog.jpg"
+        },
+        {
+            "image_url": "https://artifacts.instill.tech/horse.jpg"
+        }
+    ]
+}'
+```
+
+```bash base64
+# Test model to infer Base64 encoded images
+curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+        },
+        {
+            "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+        }
+    ]
+}'
+```
+
+```bash multipart
+# Test model to infer local images
+curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart' \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"horse.jpg"'
+```
+
+</CH.Code>
+
+In which `http://localhost:8083` is the default URL of the VDP model backend. `{model-id}` and `{instance-id}` correspond to the ID of model and model instance respectively.
+
+### Use model in pipeline for inference
+
+Sometimes we use the two terms _model_ and _model instance_ interchangeably.
+For example, we say that model is the core component of data pipeline to convert the unstructured visual data to structured insights.
+
+This is a high level concept, but underneath model instances are used to construct a data pipeline.
+The examples below showcase pipeline recipes that uses single or multiple model instances.
+
+<CH.Code>
+
+```json single-model-instance-in-pipeline
+{
+  "source": "source-connectors/source-http",
+  "model_instances": ["models/model-1/instances/v1.0"],
+  "destination": "destination-connectors/postgres-db"
+}
+```
+
+```json multiple-model-instances-in-pipeline
+{
+  "source": "source-connectors/source-http",
+  "model_instances": [
+    "models/model-1/instances/v1.0",
+    "models/model-2/instances/v0.3"
+  ],
+  "destination": "destination-connectors/source-destination"
+}
+```
+
+</CH.Code>

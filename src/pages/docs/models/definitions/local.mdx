@@ -3,7 +3,8 @@ export const meta = {
   title: "Import Local Models",
   lang: "en-US",
   draft: false,
-  description: "",
+  description:
+    "Learn about how to import local models into the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
@@ -42,7 +43,7 @@ $ rm yolov4-onnx-cpu.zip
 
 The extracted model files in `/local-model` should look like
 
-```
+```bash
 ├── README.md
 ├── post
 │   ├── 1
@@ -135,6 +136,8 @@ drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/pre/1/
 
 ### Setup guide
 
+#### 🎯 No-code console
+
 Go to the model tab and click `Add new model`. Since a local model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
 
 1. Pick a name for your model, this will be the unique identifier of this model
@@ -143,10 +146,64 @@ Go to the model tab and click `Add new model`. Since a local model has no versio
 
 ![Add a Local model YOLOv4](/docs-assets/local-add-yolov4-model.png)
 
-4. Once the model is imported, pick one model instance and click `Deploy`
+4. Once the model is imported, pick the `latest` model instance and click `Deploy`
 
 ![Deploy a model instance](/docs-assets/local-deploy-yolov4-model-instance.png)
 
 Now go to the model tab, the corresponding model instance should be online.
 
 ![Local model list](/docs-assets/local-model-list.png)
+
+#### 🎯 Low-code
+
+1. Send a HTTP request to the VDP model backend to import a local model.
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models:multipart' \
+--form 'id="yolov4"' \
+--form 'model_definition="model-definitions/local"' \
+--form 'content=@"yolov4.zip"'
+```
+
+2. Deploy the `latest` model instance
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy'
+```
+
+3. Perform an inference to test the model
+
+<CH.Code>
+
+```bash remote
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_url": "https://artifacts.instill.tech/dog.jpg"
+        }
+    ]
+}'
+```
+
+```bash base64
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+        }
+    ]
+}'
+```
+
+```bash multipart
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart' \
+--form 'file=@"dog.jpg"'
+```
+
+</ CH.Code>
+
+In which `http://localhost:8083` is the default URL of the model backend.

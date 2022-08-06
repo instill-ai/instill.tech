@@ -3,7 +3,8 @@ export const meta = {
   title: "Import Models from GitHub",
   lang: "en-US",
   draft: false,
-  description: "",
+  description:
+    "Learn about how to import models from GitHub into the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
@@ -67,7 +68,7 @@ $ rm yolov4-onnx-cpu.zip
 
 The extracted model files should look like:
 
-```
+```bash
 ├── README.md
 ├── post
 │   ├── 1
@@ -298,6 +299,8 @@ Use `dvc pull` to retrieve DVC-tracked files from remote storage. See [here](htt
 
 ### Setup guide
 
+#### 🎯 No-code console
+
 Go to the model tab and click `Add new model`. No matter if you are using Git LFS or DVC in the repository, when the model is imported, each model instance of the model corresponds to one release tag of the GitHub repository.
 
 1. Pick a name for your model, this will be the unique identifier of this model
@@ -313,6 +316,65 @@ Go to the model tab and click `Add new model`. No matter if you are using Git LF
 Now go to the model tab, the corresponding model instance should be online.
 
 ![GitHub model list](/docs-assets/github-model-list.png)
+
+#### 🎯 Low-code
+
+1. Send a HTTP request to the VDP model backend to import a model from a GitHub repository:
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "yolov4",
+    "model_definition": "model-definitions/github",
+    "configuration": {
+        "repository": "instill-ai/model-yolov4"
+    }
+}'
+```
+
+2. Deploy the `v1.0-cpu` model instance
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy'
+```
+
+3. Perform an inference to test the model
+
+<CH.Code>
+
+```bash remote
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_url": "https://artifacts.instill.tech/dog.jpg"
+        }
+    ]
+}'
+```
+
+```bash base64
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+        }
+    ]
+}'
+```
+
+```bash multipart
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart' \
+--form 'file=@"dog.jpg"'
+```
+
+</ CH.Code>
+
+In which `http://localhost:8083` is the default URL of the model backend.
 
 ## Limitations
 
