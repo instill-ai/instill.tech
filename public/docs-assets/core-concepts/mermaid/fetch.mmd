@@ -23,7 +23,9 @@
 sequenceDiagram
   autonumber  
   Note left of Source: Scheduled pull
+  rect rgb(190, 222, 255)
   Note over Source,Model: Pipeline
   Source->>+Model: ASYNC gRPC request (Inference)
   Note over Model,Destination: Pipeline 
   Model->>+Destination: ASYNC gRPC requset (Result)  
+  end

@@ -12,7 +12,7 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-A pipeline is an end-to-end workflow that automates a sequence of components to process visual data. It is defined by a **recipe** which is essentially a JSON object:
+A pipeline is an end-to-end workflow that automates a sequence of components to process visual data. It is defined by a `recipe` which is essentially a JSON object:
 
 ```json
 {
@@ -25,17 +25,17 @@ A pipeline is an end-to-end workflow that automates a sequence of components to 
 }
 ```
 
-A recipe describes a pipeline resource consisting of:
+A `recipe` describes a pipeline resource consisting of:
 
 - `source` - where the pipeline starts to ingest image/video data to be processed
 - `model_instances` - a number of deployed Vision AI models to process the ingested visual data in parallel to generate structured outputs
 - `destination` - where to send the structured outputs
 
-Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `FETCH` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read below for more details.
+Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `FETCH` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
 
-# SYNC mode
+## SYNC mode
 
-A pipeline in the `SYNC` mode responds to requests synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
+A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
 
 <p align="center">
@@ -45,9 +45,9 @@ The request flow when triggering a `SYNC` pipeline is shown below:
   />
 </p>
 
-To create a `SYNC` pipeline, both source and destination needs to be configured with the same type of syncrunouse protocol. VDP supports both HTTP and gRPC for a `SYNC` pipeline.
+To create a `SYNC` pipeline, both source and destination needs to be configured with the same type of protocol. VDP supports HTTP and gRPC for a `SYNC` pipeline.
 
-For example, this recipe defines a gRPC `SYNC` pipeline for real-time YOLOv7 inference:
+For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 inference:
 
 ```json
 {
@@ -57,7 +57,7 @@ For example, this recipe defines a gRPC `SYNC` pipeline for real-time YOLOv7 inf
 }
 ```
 
-# ASYNC mode
+## ASYNC mode
 
 A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response. 
 Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
@@ -71,7 +71,7 @@ Once the data has been processed by **Model**, the result is sent to the data de
 
 To create an `ASYNC` pipeline, the source can be either HTTP or gRPC, and the destination can be any Airbyte destination connectors.
 
-For example, this recipe defines an`ASYNC` pipeline to detect images by YOLOv7 via HTTP request and write the sturcutred detection output into a PostgreSQL database:
+For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7 via HTTP request and write the sturcutred detection output into a PostgreSQL database:
 
 ```json
 {
@@ -81,7 +81,7 @@ For example, this recipe defines an`ASYNC` pipeline to detect images by YOLOv7 v
 }
 ```
 
-# FETCH mode
+## FETCH mode
 
 A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
 
@@ -92,4 +92,4 @@ A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch da
   />
 </p>
 
-The `FETCH` mode support is coming soon.
+`FETCH` mode support is coming soon.
