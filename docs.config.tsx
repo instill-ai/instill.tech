@@ -94,8 +94,9 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "Create Models",
-        collapsible: true,
+        text: "Prepare Models",
+        collapsible: false,
+        link: "/docs/models/preparation",
         items: [],
       },
       {
