@@ -14,23 +14,340 @@ export default ({ children }) => (
 
 ![VDP model definition integration](/docs-assets/cv-tasks.svg)
 
-CV tasks, a.k.a Vision tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does.
+Computer Vision (CV) tasks, a.k.a Vision tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does.
 The goal is to make a computer/device provide description for the data as complete and accurate as possible.
 Some classic CV tasks include image classification, object detection, image segmentation and keypoint detection.
 These primitive tasks are the foundation for building many real-world industrial vision applications.
 
-VDP support by importing the state-of-the-art CV models to solve a certain CV task:
+**VDP supports importing the state-of-the-art models to solve CV tasks in a standardised framework**
 
-- **Image classification** - classify images into predefined categories
-- **Object detection** - detect and localize multiple objects in images
-- **Keypoint detection** - detect and localize multiple keypoints of objects in images
+- _Image classification_ - classify images into predefined categories
+- _Object detection_ - detect and localize multiple objects in images
+- _Keypoint detection_ - detect and localize multiple keypoints of objects in images
 
 ## Image classification
 
-Image
+Image classification task is the CV task to assign a single pre-defined category label to an entire input image.
+Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
+
+![Image classification task](/docs-assets/cv-task-classification.svg)
+
+<CH.Code>
+```json current
+{
+  "classification_outputs": [
+    {
+      "category": "golden retriever",
+      "score": 0.98
+    }
+  ]
+}
+
+````
+```json next-release
+{
+  "batch_outputs": [
+    {
+      "task": "classification",
+      "category": "golden retriever",
+      "score": 0.98
+    }
+  ]
+}
+````
+
+</CH.Code>
 
 ## Object detection
 
+Object detection task is the CV task to localize multiple objects of pre-defined categories in an input image.
+Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and scores on detected objects.
+
+![Object detection task](/docs-assets/cv-task-detection.svg)
+
+<CH.Code>
+```json current
+{
+  "detection_outputs": [
+    {
+      "bounding_box_objects": [
+        {
+          "bounding_box": {
+            "height": 405,
+            "left": 324,
+            "top": 102,
+            "width": 208
+          },
+          "category": "dog",
+          "score": 0.97
+        },
+        ...
+      ]
+    }
+  ]
+}
+
+````
+```json next-release
+{
+  "batch_outputs": [
+    {
+      "task": "detection",
+      "bounding_boxes": [
+        {
+          "bounding_box": {
+            "height": 405,
+            "left": 324,
+            "top": 102,
+            "width": 208
+          },
+          "category": "dog",
+          "score": 0.97
+        },
+        {
+          "bounding_box": {
+            "height": 237,
+            "left": 130,
+            "top": 198,
+            "width": 198
+          },
+          "category": "dog",
+          "score": 0.91
+        }
+      ]
+    }
+  ]
+}
+````
+
+</CH.Code>
+
 ## Keypoint detection
 
+![Keypoint detection task](/docs-assets/cv-task-keypoint.svg)
+
+<CH.Code>
+```json current
+{
+  "keypoint_outputs": [
+    {
+      "keypoint_objects": [
+        {
+          "keypoints": [
+            {
+              "v": 0.53722847,
+              "x": 542.82764,
+              "y": 86.63817
+            },
+            {
+              "v": 0.634061,
+              "x": 553.0073,
+              "y": 79.440636
+            },
+            ...
+          ],
+          "score": 0.94
+        },
+        ...
+      ]
+    }
+  ]
+}
+````
+```json next-release
+{
+  "batch_outputs": [
+    {
+      "task": "keypoint",
+      "keypoint_groups": [
+        {
+          "keypoint_group": [
+            {
+              "v": 0.53722847,
+              "x": 542.82764,
+              "y": 86.63817
+            },
+            {
+              "v": 0.634061,
+              "x": 553.0073,
+              "y": 79.440636
+            },
+            {
+              "v": 0.8720866,
+              "x": 536.2408,
+              "y": 75.84188
+            },
+            {
+              "v": 0.4154614,
+              "x": 565.5823,
+              "y": 85.43859
+            },
+            {
+              "v": 0.416304,
+              "x": 527.25867,
+              "y": 80.640236
+            },
+            {
+              "v": 0.13971187,
+              "x": 575.76196,
+              "y": 140.61961
+            },
+            {
+              "v": 0.14259703,
+              "x": 522.46826,
+              "y": 124.425186
+            },
+            {
+              "v": 0.30061233,
+              "x": 587.7381,
+              "y": 210.19571
+            },
+            {
+              "v": 0.08482641,
+              "x": 500.9112,
+              "y": 156.21428
+            },
+            {
+              "v": 0.20613925,
+              "x": 523.66583,
+              "y": 219.19261
+            },
+            {
+              "v": 0.12679558,
+              "x": 446.41986,
+              "y": 155.01468
+            },
+            {
+              "v": 0.06268822,
+              "x": 542.82764,
+              "y": 259.3788
+            },
+            {
+              "v": 0.10661233,
+              "x": 501.51004,
+              "y": 246.78313
+            },
+            {
+              "v": 0.21722153,
+              "x": 498.516,
+              "y": 343.94974
+            },
+            {
+              "v": 0.11985732,
+              "x": 466.18045,
+              "y": 338.5516
+            },
+            {
+              "v": 0.2539621,
+              "x": 491.33032,
+              "y": 432.71924
+            },
+            {
+              "v": 0.10835977,
+              "x": 553.60614,
+              "y": 350.5475
+            }
+          ],
+          "score": 0.94
+        },
+        {
+          "keypoint_group": [
+            {
+              "v": 0.27231798,
+              "x": 304.89474,
+              "y": 93.73572
+            },
+            {
+              "v": 0.34804285,
+              "x": 312.0822,
+              "y": 81.7416
+            },
+            {
+              "v": 0.3189971,
+              "x": 295.31143,
+              "y": 87.13896
+            },
+            {
+              "v": 0.2630824,
+              "x": 318.67072,
+              "y": 67.94835
+            },
+            {
+              "v": 0.20525646,
+              "x": 275.5459,
+              "y": 78.14336
+            },
+            {
+              "v": 0.07679265,
+              "x": 339.63422,
+              "y": 90.13749
+            },
+            {
+              "v": 0.10571399,
+              "x": 253.38452,
+              "y": 109.9278
+            },
+            {
+              "v": 0.22494087,
+              "x": 398.3319,
+              "y": 112.92633
+            },
+            {
+              "v": 0.06706125,
+              "x": 210.25969,
+              "y": 136.91458
+            },
+            {
+              "v": 0.40014565,
+              "x": 425.2849,
+              "y": 137.51428
+            },
+            {
+              "v": 0.10030802,
+              "x": 164.14006,
+              "y": 168.09932
+            },
+            {
+              "v": 0.09512514,
+              "x": 360.59766,
+              "y": 230.46878
+            },
+            {
+              "v": 0.08152217,
+              "x": 298.3062,
+              "y": 230.46878
+            },
+            {
+              "v": 0.058529146,
+              "x": 292.31665,
+              "y": 319.825
+            },
+            {
+              "v": 0.19041036,
+              "x": 309.6864,
+              "y": 279.04498
+            },
+            {
+              "v": 0.12619522,
+              "x": 289.32187,
+              "y": 444.56396
+            },
+            {
+              "v": 0.25567034,
+              "x": 365.98825,
+              "y": 360.00534
+            }
+          ],
+          "score": 0.98
+        }
+      ]
+    }
+  ]
+}
+````
+
+</CH.Code>
+
 ## What if my task is not supported by VDP?
+
+![Unspecified task](/docs-assets/cv-task-unspecified.svg)

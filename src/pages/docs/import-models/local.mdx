@@ -1,0 +1,209 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Import Local Models",
+  lang: "en-US",
+  draft: false,
+  description:
+    "Learn about how to import local models into the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+The `Local` model definition enables you to import a model from your local machine.
+
+## Configuration
+
+| Parameter   | Type     | Notes                                        |
+| :---------- | :------- | :------------------------------------------- |
+| `content`\* | zip file | a zip file that contains all the model files |
+
+## Getting started
+
+### Requirements
+
+- A `.zip` file with all the model files
+
+### Prepare a local model
+
+The `Local` model definition accepts a `.zip` file that contains all files required for a model to be deployed.
+
+**Step 1: Download sample model data**
+In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet). Let's download and extract the contents of the sample data.
+
+```bash
+$ mkdir local-model
+$ cd local-model
+$ curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
+$ tar -xvf yolov4-onnx-cpu.zip
+$ rm yolov4-onnx-cpu.zip
+```
+
+The extracted model files in `/local-model` should look like
+
+```bash
+├── README.md
+├── post
+│   ├── 1
+│   │   ├── labels.py
+│   │   ├── model.py
+│   │   └── yolov4_anchors.txt
+│   └── config.pbtxt
+├── pre
+│   ├── 1
+│   │   └── model.py
+│   └── config.pbtxt
+├── yolov4
+│   ├── 1
+│   │   └── .keep
+│   └── config.pbtxt
+└── yolov4-infer
+    ├── 1
+    │   └── model.onnx
+    └── config.pbtxt
+```
+
+**Step 2: Create a local model zip file**
+
+In `/local-model` directory
+
+```bash
+$ zip -r "yolov4.zip" .
+```
+
+🎉 The model is ready, just run the setup guide below, VDP wll import it accordingly.
+
+**Caveat**
+
+✅ Make sure that the compressed model files are in the _root directory_ of the zip file.
+
+```bash
+$ zipinfo yolov4.zip
+Archive:  yolov4.zip
+Zip file size: 239252025 bytes, number of entries: 19
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 post/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 post/1/
+-rw-r--r--  3.0 unx     1381 tx defN 22-Mar-27 16:25 post/1/labels.py
+-rw-r--r--  3.0 unx     7329 tx defN 22-Mar-30 01:17 post/1/model.py
+-rw-r--r--  3.0 unx       69 tx defN 22-Mar-27 16:25 post/1/yolov4_anchors.txt
+-rw-r--r--  3.0 unx      778 tx defN 22-Mar-27 16:25 post/config.pbtxt
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 yolov4-infer/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 yolov4-infer/1/
+-rw-r--r--  3.0 unx 257470589 bx defN 22-Mar-27 16:25 yolov4-infer/1/model.onnx
+-rw-r--r--  3.0 unx      559 tx defN 22-Mar-27 16:25 yolov4-infer/config.pbtxt
+-rw-r--r--  3.0 unx      110 tx defN 22-Jul-10 02:41 README.md
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 yolov4/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:13 yolov4/1/
+-rw-r--r--  3.0 unx        0 bx stor 22-Jul-21 12:13 yolov4/1/.keep
+-rw-r--r--  3.0 unx     1843 tx defN 22-Mar-27 16:25 yolov4/config.pbtxt
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 pre/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 pre/1/
+-rw-r--r--  3.0 unx     4629 tx defN 22-Mar-30 01:17 pre/1/model.py
+-rw-r--r--  3.0 unx      507 tx defN 22-Mar-27 16:25 pre/config.pbtxt
+19 files, 257487794 bytes uncompressed, 239249049 bytes compressed:  7.1%
+```
+
+❌ Don't compress the model files in another root directory
+
+```bash
+$ zipinfo yolov4.zip
+Archive:  yolov4.zip
+Zip file size: 239252633 bytes, number of entries: 20
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:26 local-model/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/post/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/post/1/
+-rw-r--r--  3.0 unx     1381 tx defN 22-Mar-27 16:25 local-model/post/1/labels.py
+-rw-r--r--  3.0 unx     7329 tx defN 22-Mar-30 01:17 local-model/post/1/model.py
+-rw-r--r--  3.0 unx       69 tx defN 22-Mar-27 16:25 local-model/post/1/yolov4_anchors.txt
+-rw-r--r--  3.0 unx      778 tx defN 22-Mar-27 16:25 local-model/post/config.pbtxt
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/yolov4-infer/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/yolov4-infer/1/
+-rw-r--r--  3.0 unx 257470589 bx defN 22-Mar-27 16:25 local-model/yolov4-infer/1/model.onnx
+-rw-r--r--  3.0 unx      559 tx defN 22-Mar-27 16:25 local-model/yolov4-infer/config.pbtxt
+-rw-r--r--  3.0 unx      110 tx defN 22-Jul-10 02:41 local-model/README.md
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/yolov4/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:13 local-model/yolov4/1/
+-rw-r--r--  3.0 unx        0 bx stor 22-Jul-21 12:13 local-model/yolov4/1/.keep
+-rw-r--r--  3.0 unx     1843 tx defN 22-Mar-27 16:25 local-model/yolov4/config.pbtxt
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/pre/
+drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/pre/1/
+-rw-r--r--  3.0 unx     4629 tx defN 22-Mar-30 01:17 local-model/pre/1/model.py
+-rw-r--r--  3.0 unx      507 tx defN 22-Mar-27 16:25 local-model/pre/config.pbtxt
+20 files, 257487794 bytes uncompressed, 239249049 bytes compressed:  7.1%
+```
+
+### Setup guide
+
+#### 🎯 No-code console
+
+Go to the model tab and click `Add new model`. Since a local model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
+
+1. Pick a name for your model, this will be the unique identifier of this model
+2. Select `Local` from the drop-down list
+3. Upload the model zip file and click `Setup new model`
+
+![Add a Local model YOLOv4](/docs-assets/local-add-yolov4-model.png)
+
+4. Once the model is imported, pick the `latest` model instance and click `Deploy`
+
+![Deploy a model instance](/docs-assets/local-deploy-yolov4-model-instance.png)
+
+Now go to the model tab, the corresponding model instance should be online.
+
+![Local model list](/docs-assets/local-model-list.png)
+
+#### 🎯 Low-code
+
+1. Send a HTTP request to the VDP model backend to import a local model.
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models:multipart' \
+--form 'id="yolov4"' \
+--form 'model_definition="model-definitions/local"' \
+--form 'content=@"yolov4.zip"'
+```
+
+2. Deploy the `latest` model instance
+
+```bash cURL
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy'
+```
+
+3. Perform an inference to test the model
+
+<CH.Code>
+
+```bash remote
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_url": "https://artifacts.instill.tech/dog.jpg"
+        }
+    ]
+}'
+```
+
+```bash base64
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "inputs": [
+        {
+            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+        }
+    ]
+}'
+```
+
+```bash multipart
+curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart' \
+--form 'file=@"dog.jpg"'
+```
+
+</ CH.Code>
+
+In which `http://localhost:8083` is the default URL of the model backend.

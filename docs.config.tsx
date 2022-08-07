@@ -95,9 +95,13 @@ export const SIDEBAR: Sidebar = {
       },
       {
         text: "Prepare Models",
-        collapsible: false,
-        link: "/docs/models/preparation",
-        items: [],
+        collapsible: true,
+        items: [
+          {
+            text: "Overview",
+            link: "/docs/prepare-models/overview",
+          },
+        ],
       },
       {
         text: "Import Models",
@@ -105,19 +109,19 @@ export const SIDEBAR: Sidebar = {
         items: [
           {
             text: "Import Local Models",
-            link: "/docs/models/definitions/local",
+            link: "/docs/import-models/local",
           },
           {
             text: "Import Models from GitHub",
-            link: "/docs/models/definitions/github",
+            link: "/docs/import-models/github",
           },
           {
             text: "Import ArtiVC Managed Models",
-            link: "/docs/models/definitions/artivc",
+            link: "/docs/import-models/artivc",
           },
           {
             text: "Import Models from Hugging Face",
-            link: "/docs/models/definitions/huggingface",
+            link: "/docs/import-models/huggingface",
           },
         ],
       },
@@ -126,22 +130,6 @@ export const SIDEBAR: Sidebar = {
         collapsible: false,
         link: "/docs/instill-cloud",
         items: [],
-      },
-      {
-        text: "Contribution",
-        collapsible: false,
-        link: "/docs/contribution",
-        items: [],
-      },
-      {
-        text: "Reference",
-        collapsible: true,
-        items: [
-          {
-            text: "API documentation",
-            link: "/docs/reference/api-doc",
-          },
-        ],
       },
     ],
   },
