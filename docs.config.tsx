@@ -108,6 +108,10 @@ export const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           {
+            text: "Overview",
+            link: "/docs/import-models/overview",
+          },
+          {
             text: "Import Local Models",
             link: "/docs/import-models/local",
           },
