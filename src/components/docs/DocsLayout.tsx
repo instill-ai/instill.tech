@@ -37,6 +37,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
   return (
     <>
+      <style jsx>{``}</style>
       <PageHead
         pageTitle={`${meta.title} | Documentation`}
         pageDescription={meta.description}
@@ -63,13 +64,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           />
         ) : null}
 
-        <div className="flex flex-col col-span-12 md:col-span-8 max-w-[1140px] mr-auto pb-40 w-full">
+        <div className="flex flex-col col-span-12 md:col-span-8 mr-auto pb-40 w-full max-w-[1140px]">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
             navbar={NAVBAR}
             marginBottom="md:mb-4"
           />
-          <div className="grid grid-cols-8 py-8">
+          <div className="grid grid-cols-8">
             <div className="col-span-8 xl:col-span-6 px-8">
               <h1 className="font-sans font-semibold text-3xl mb-10">
                 {meta.title}
@@ -80,7 +81,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             </div>
 
             <aside
-              className="grid-sidebar col-span-2 pl-8 sticky top-[140px] hidden md:flex"
+              className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]"
               title="Table of Contents"
             >
               <RightSidebar headers={headers} />
