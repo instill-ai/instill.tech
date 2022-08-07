@@ -14,7 +14,7 @@ const withMDX = mdx({
   options: {
     remarkPlugins: [
       remarkGfm,
-      [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }],
+      [remarkCodeHike, { theme, lineNumbers: false, showCopyButton: true }],
     ],
     rehypePlugins: [rehypeSlug],
     // If you use `MDXProvider`, uncomment the following line.

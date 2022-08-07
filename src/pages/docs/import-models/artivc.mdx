@@ -57,11 +57,14 @@ Assuming ArtiVC is [installed](https://artivc.io/usage/getting-started/#install-
 In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet) as sample data.
 
 ```bash
-$ mkdir workspace
-$ cd workspace
-$ curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
-$ tar -xvf yolov4-onnx-cpu.zip
-$ rm yolov4-onnx-cpu.zip
+# Create a workspace
+mkdir workspace
+cd workspace
+
+# Download sample model
+curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
+tar -xvf yolov4-onnx-cpu.zip
+rm yolov4-onnx-cpu.zip
 ```
 
 The extracted model files should look like:
@@ -93,16 +96,17 @@ The extracted model files should look like:
 Before we push the data, install [the gcloud CLI](https://cloud.google.com/sdk/gcloud) and login the application default credential
 
 ```bash
-$ gcloud auth application-default login
+gcloud auth application-default login
 ```
 
 Initialize the workspace
 
 ```bash
-# in /workspace
-$ avc init gs://mybucket/path/to/mymodel
-# list the config
-$ avc config
+# In /workspace
+avc init gs://mybucket/path/to/mymodel
+
+# List the config
+avc config
 repo.url=gs://mybucket/path/to/mymodel
 ```
 
@@ -111,8 +115,8 @@ repo.url=gs://mybucket/path/to/mymodel
 Push data to the remote and tag a version
 
 ```bash
-$ avc push
-$ avc tag v1.0-cpu
+avc push
+avc tag v1.0-cpu
 ```
 
 If you list the files in the remote storage repository, the file structure will include three types of data: `commits`, `objects` and `refs` like below. See [here](https://artivc.io/design/how-it-works/) to learn how ArtiVC works under the hood
@@ -183,7 +187,7 @@ Now go to the model tab, the corresponding model instance should be online.
 1. Send a HTTP request to the VDP model backend to import a model from GCS bucket managed by ArtiVC:
 
 ```bash cURL
-curl -X POST 'http://localhost:8083/v1alpha/models' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "id": "yolov4",
@@ -197,13 +201,14 @@ curl -X POST 'http://localhost:8083/v1alpha/models' \
             "type": "< replace with your account type >"
         }
     }
-}'
+}' \
+http://localhost:8083/v1alpha/models
 ```
 
 2. Deploy the `v1.0-cpu` model instance
 
 ```bash cURL
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy'
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy
 ```
 
 3. Perform an inference to test the model
@@ -211,7 +216,7 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:dep
 <CH.Code>
 
 ```bash remote
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -219,11 +224,12 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:tes
             "image_url": "https://artifacts.instill.tech/dog.jpg"
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 ```
 
 ```bash base64
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -231,12 +237,14 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:tes
             "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 ```
 
 ```bash multipart
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart' \
---form 'file=@"dog.jpg"'
+curl -X POST \
+--form 'file=@"dog.jpg"' \
+http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart
 ```
 
 </ CH.Code>

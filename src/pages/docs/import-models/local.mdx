@@ -34,11 +34,14 @@ The `Local` model definition accepts a `.zip` file that contains all files requi
 In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet). Let's download and extract the contents of the sample data.
 
 ```bash
-$ mkdir local-model
-$ cd local-model
-$ curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
-$ tar -xvf yolov4-onnx-cpu.zip
-$ rm yolov4-onnx-cpu.zip
+# Create a folder
+mkdir local-model
+cd local-model
+
+# Download sample model
+curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
+tar -xvf yolov4-onnx-cpu.zip
+rm yolov4-onnx-cpu.zip
 ```
 
 The extracted model files in `/local-model` should look like
@@ -70,7 +73,7 @@ The extracted model files in `/local-model` should look like
 In `/local-model` directory
 
 ```bash
-$ zip -r "yolov4.zip" .
+zip -r "yolov4.zip" .
 ```
 
 🎉 The model is ready, just run the setup guide below, VDP wll import it accordingly.
@@ -80,7 +83,9 @@ $ zip -r "yolov4.zip" .
 ✅ Make sure that the compressed model files are in the _root directory_ of the zip file.
 
 ```bash
-$ zipinfo yolov4.zip
+zipinfo yolov4.zip
+
+# Output
 Archive:  yolov4.zip
 Zip file size: 239252025 bytes, number of entries: 19
 drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 post/
@@ -108,7 +113,9 @@ drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 pre/1/
 ❌ Don't compress the model files in another root directory
 
 ```bash
-$ zipinfo yolov4.zip
+zipinfo yolov4.zip
+
+# Output
 Archive:  yolov4.zip
 Zip file size: 239252633 bytes, number of entries: 20
 drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:26 local-model/
@@ -159,16 +166,17 @@ Now go to the model tab, the corresponding model instance should be online.
 1. Send a HTTP request to the VDP model backend to import a local model.
 
 ```bash cURL
-curl -X POST 'http://localhost:8083/v1alpha/models:multipart' \
+curl -X POST \
 --form 'id="yolov4"' \
 --form 'model_definition="model-definitions/local"' \
---form 'content=@"yolov4.zip"'
+--form 'content=@"yolov4.zip"' \
+http://localhost:8083/v1alpha/models:multipart
 ```
 
 2. Deploy the `latest` model instance
 
 ```bash cURL
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy'
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy
 ```
 
 3. Perform an inference to test the model
@@ -176,7 +184,7 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:deplo
 <CH.Code>
 
 ```bash remote
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -184,11 +192,12 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test'
             "image_url": "https://artifacts.instill.tech/dog.jpg"
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/yolov4/instances/latest:test
 ```
 
 ```bash base64
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -196,12 +205,14 @@ curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test'
             "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/yolov4/instances/latest:test
 ```
 
 ```bash multipart
-curl -X POST 'http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart' \
---form 'file=@"dog.jpg"'
+curl -X POST \
+--form 'file=@"dog.jpg"' \
+http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart
 ```
 
 </ CH.Code>
