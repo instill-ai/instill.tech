@@ -35,7 +35,7 @@ export const SIDEBAR: Sidebar = {
     },
     sections: [
       {
-        text: "⚡️ Start here",
+        text: "Start here",
         collapsible: true,
         items: [
           { text: "Getting started", link: "/docs/start-here/getting-started" },
@@ -50,7 +50,7 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "🎯 Core Concepts",
+        text: "Core Concepts",
         collapsible: true,
         items: [
           { text: "Overview", link: "/docs/core-concepts/overview" },
@@ -61,13 +61,13 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "🔌 Connectors",
+        text: "Connectors",
         collapsible: false,
         link: "/docs/connectors/overview",
         items: [],
       },
       {
-        text: "🔌 Sources",
+        text: "Sources",
         collapsible: true,
         items: [
           {
@@ -81,7 +81,7 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "🔌 Destinations",
+        text: "Destinations",
         collapsible: true,
         items: [
           {
@@ -95,7 +95,7 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "🔮 Prepare Models",
+        text: "Prepare Models",
         collapsible: true,
         items: [
           {
@@ -105,7 +105,7 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "🔮 Import Models",
+        text: "Import Models",
         collapsible: true,
         items: [
           {
