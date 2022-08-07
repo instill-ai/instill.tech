@@ -46,8 +46,27 @@ VDP uses `model definition` to abstract a model source (i.e., codebase) so the u
 
 ## Destination
 
-Destination is the component at the end of a VDP pipeline, which loads the structured data provided by the Model component to a target destination.
+**Destination** is the component at the end of a VDP pipeline, which loads the structured data provided by the Model component to a target destination.
 
 VDP implements [Airbyte Protocol](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol) to adopt Airbyte's 30+ destination connectors to write the structured data result from **Model** to the destination. VDP users can thus directly benefit from the abundant community resources from there to further perform data movement or transformation.
 
 **Destination** is maintained in [connector-backend](https://github.com/instill-ai/connector-backend).
+
+## Console
+
+**Console** is the _no-code_ VDP platform. The goal is to provide an unified, clean and intuitive user experience of VDP.
+It is written using [Nextjs](https://nextjs.org), [Typescript](https://www.typescriptlang.org) and [TailwindCSS](https://tailwindcss.com).
+
+**Console** is maintained in [console](https://github.com/instill-ai/console).
+
+## API
+
+VDP is implemented with **API-first** design principle. It enables seamless integration to your data stack at any scale.
+
+VDP uses [Protobuf Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
+The same interface definitions are used for both REST (via [gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC. This enables the access to the API over different protocols:
+
+- JSON over HTTP
+- Protocol Buffers over gRPC
+
+The interface definitions are maintained in [protobufs](https://github.com/instill-ai/protobufs) with auto-generated Go codes in [protogen-go](https://github.com/instill-ai/protogen-go) and Python code in [protogen-python](https://github.com/instill-ai/protogen-python).
