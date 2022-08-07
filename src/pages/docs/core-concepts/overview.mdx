@@ -40,7 +40,7 @@ In the VDP project, the unstructured data source connectors are developed and ma
 
 **Model** is the core component to process the unstructured visual data to solve a certain [CV Task](core-concepts/cv-task). VDP uses [Triton Inference Server](https://github.com/triton-inference-server/server) under the hood to optimise AI model inference for various frameworks including TensorRT, TensorFlow, PyTorch, ONNX, Python, and more.
 
-VDP uses `model definition` to abstract a model source (i.e., codebase) so the users can adopt different appraoches to import models. Different appraoches can provide different features. For example, some approaches support version control but some do not. It is up to the users to adopt appraoch they are already familiar with. We strive to support as many popular model sources as possible. See [Model Definition](../models/definitions/overview.md) for more details.
+VDP uses `model definition` to abstract a model source (i.e., codebase) so the users can adopt different appraoches to import models. Different appraoches can provide different features. For example, some approaches support version control but some do not. It is up to the users to adopt appraoch they are already familiar with. We strive to support as many popular model sources as possible. See [Model Definition](/docs/import-models/overview) for more details.
 
 **Model** is maintained in [model-backend](https://github.com/instill-ai/model-backend).
 

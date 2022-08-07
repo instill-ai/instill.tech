@@ -20,7 +20,7 @@ In this case, you can keep a single history of your models and the original vers
 
 _VDP enables model versioning using the concepts of model and model instance_. A model represents an algorithm run on data and it may have multiple model instances.
 Each model instance represents a tagged snapshot of the model. The tags of the instances depend on the model source and what versioning control tool the model source uses.
-Please refer to [Import models](../models/definitions/local) to learn about model versioning with supported model sources.
+Please refer to [Import models](/docs/import-models/overview) to learn about model versioning with supported model sources.
 
 When importing a model in VDP, all versions of the model are imported as model instances associated with the original version tags.
 Among all, you can choose specific model instances into the model repository to deploy and then to use in data pipelines.
@@ -31,36 +31,23 @@ Among all, you can choose specific model instances into the model repository to 
 
 VDP uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
 Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
-To import your models into VDP, please refer to the [Prepare models](../models/preparation/overview) guideline.
+To make your models VDP-ready, please refer to [Prepare models](/docs/prepare-models/overview) guideline.
 
 ## Import model made easy
 
-![VDP model definition integration](/docs-assets/model-definitions.svg)
-
-No matter where your model stores, we want to keep your models on the same storage without changes and make the process of importing your models into VDP easy.
-That's why we integrate VDP with various platforms and tools as model sources and strive to support as many popular model sources as possible.
-
-The model source in VDP is defined as `model definition`. A `model definition` defines the schema about how to configure and import the model. Currently, VDP supports importing models from the following sources:
-
-- [ArtiVC](/docs/models/definitions/artivc)
-- [GitHub](/docs/models/definitions/github)
-  - Track model files using [Git-LFS](/docs/models/definitions/github#prepare-a-github-repository-and-track-large-model-files-by-git-lfs)
-  - Track model files using [DVC](/docs/models/definitions/github#prepare-a-github-repository-and-manage-large-model-files-by-dvc)
-- [Hugging Face](/docs/models/definitions/huggingface)
-- [Local](/docs/models/definitions/local)
-- The list is growing ... 🌱
-
-If you'd like to **ask for a new model definition**, you can create a issue on [GitHub](https://github.com/instill-ai/vdp/issues), or request it in the #vdp channel of our [community](https://discord.gg/sevxWsqpGh).
+To automatically import your models as smooth as possible, VDP works seamlessly with many model platforms and versioning tools, including GitHub, ArtiVC and Hugging Face, and more.
+Please refer to [Import models](/docs/import-models/overview) guidelines to learn about how to configure and import model from various sources.
 
 ## Use model
+
+🎯 **VDP provides automatic model inference server.**
+After importing your model into VDP and deploying its model instance online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
+You can then build end-to-end data pipelines using the models to run ETL operations.
 
 ### Model inference
 
 An inference is a prediction to a question or task. In the concept of Machine Learning (ML) and Artificial Intelligence (AI), the term inference is often compared with training.
 To put it simple, inference is where capabilities learnt during training are put to analyze data to "infer" a result. Inference can be found and are applied everywhere across industries from photo tagging to autonomous driving.
-
-🎯 **VDP provides automatic model inference server.**
-After importing your model into VDP and deploying its model instance online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
 
 The API supports batch processing: you can send multiple images of popular formats (PNG and JPEG) in one request. Check the examples below.
 The API accepts images
@@ -72,7 +59,7 @@ The API accepts images
 
 ```bash remote
 # Test model to infer images with remote URL
-curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -83,12 +70,13 @@ curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instanc
             "image_url": "https://artifacts.instill.tech/horse.jpg"
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test
 ```
 
 ```bash base64
 # Test model to infer Base64 encoded images
-curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -99,27 +87,29 @@ curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instanc
             "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test
 ```
 
 ```bash multipart
 # Test model to infer local images
-curl -X POST 'http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart' \
+curl -X POST \
 --form 'file=@"dog.jpg"' \
---form 'file=@"horse.jpg"'
+--form 'file=@"horse.jpg"' \
+http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart
 ```
 
 </CH.Code>
 
 In which `http://localhost:8083` is the default URL of the VDP model backend. `{model-id}` and `{instance-id}` correspond to the ID of model and model instance respectively.
 
-### Use model in pipeline for inference
+### Use model in pipeline
 
 Sometimes we use the two terms _model_ and _model instance_ interchangeably.
 For example, we say that model is the core component of data pipeline to convert the unstructured visual data to structured insights.
 
 This is a high level concept, but underneath model instances are used to construct a data pipeline.
-The examples below showcase pipeline recipes that uses single or multiple model instances.
+The examples below showcase pipeline recipes that incorporate single or multiple model instances.
 
 <CH.Code>
 

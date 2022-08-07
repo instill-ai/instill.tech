@@ -12,13 +12,13 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-The `Hugging Face` model definition allows you to import models from a [Hugging Face](https://github.com/) repository.
+The `Hugging Face` model definition allows you to import models from a [Hugging Face](https://huggingface.co/models) repository.
 
 ## Supported model tasks
 
 Currently, VDP supports importing models tagged with the following tasks
 
-- ✅ Image Classification
+- ✅ [Image Classification](https://huggingface.co/models?pipeline_tag=image-classification&sort=downloads)
 
 ## Configuration
 
@@ -57,7 +57,7 @@ Now go to the model tab, the corresponding model instance should be online.
 1. Send a HTTP request to the VDP model backend to import a model from GCS bucket managed by ArtiVC:
 
 ```bash cURL
-curl --location --request POST 'http://localhost:8083/v1alpha/models' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "id": "vit-base-patch16-224",
@@ -65,13 +65,14 @@ curl --location --request POST 'http://localhost:8083/v1alpha/models' \
     "configuration": {
         "repo_id": "google/vit-base-patch16-224"
     }
-}'
+}' \
+http://localhost:8083/v1alpha/models
 ```
 
 2. Deploy the `latest` model instance
 
 ```bash cURL
-curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:deploy'
+curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:deploy
 ```
 
 3. Perform an inference to test the model
@@ -79,7 +80,7 @@ curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instance
 <CH.Code>
 
 ```bash remote
-curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -87,11 +88,12 @@ curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instance
             "image_url": "https://artifacts.instill.tech/dog.jpg"
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test
 ```
 
 ```bash base64
-curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test' \
+curl -X POST \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "inputs": [
@@ -99,12 +101,14 @@ curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instance
             "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
         }
     ]
-}'
+}' \
+http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test
 ```
 
 ```bash multipart
-curl -X POST 'http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test-multipart' \
---form 'file=@"dog.jpg"'
+curl -X POST \
+--form 'file=@"dog.jpg"' \
+http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test-multipart
 ```
 
 </ CH.Code>

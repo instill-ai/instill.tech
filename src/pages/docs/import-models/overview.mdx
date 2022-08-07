@@ -11,3 +11,20 @@ export const meta = {
 export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
+
+No matter where your model stores, we want to keep your models on the same storage without changes and make the process of importing your models into VDP easy.
+That's why we integrate VDP with various model platforms and tools as model sources and strive to support as many popular model sources as possible.
+
+![VDP model definition integration](/docs-assets/model-definitions.svg)
+
+A model source in VDP is defined as `model definition`. A `model definition` defines the schema about how to configure and import the model. Currently, VDP supports importing models from the following model definitions:
+
+- [ArtiVC](/docs/import-models/artivc)
+- [GitHub](/docs/import-models/github)
+  - Track model files using [Git-LFS](/docs/import-models/github#prepare-a-github-repository-and-track-large-model-files-by-git-lfs)
+  - Track model files using [DVC](/docs/import-models/github#prepare-a-github-repository-and-manage-large-model-files-by-dvc)
+- [Hugging Face](/docs/import-models/huggingface)
+- [Local](/docs/import-models/local)
+- The list is growing ... 🌱
+
+If you'd like to **ask for a new model definition**, you can create an issue on [GitHub](https://github.com/instill-ai/vdp/issues), or request it in the #vdp channel of our [community](https://discord.gg/sevxWsqpGh).
