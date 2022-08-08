@@ -1,8 +1,8 @@
-import { FC, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useOnScreen } from "../../../hooks/useOnScreen";
 
-export type VdpFlowProps = {
+export type VdpFlowAnimationProps = {
   /** Animation width and height with tailwind style, ratio: "w-[446px] h-[1021px]" */
   styleName?: string;
 };
@@ -15,7 +15,7 @@ type AnimationTarget = {
   endY: number;
 };
 
-const VdpFlow: FC<VdpFlowProps> = ({ styleName }) => {
+const VdpFlowAnimation = ({ styleName }: VdpFlowAnimationProps) => {
   const animateTarget = useRef();
 
   // Make sure tl object is outside of render loop
@@ -3049,4 +3049,4 @@ const VdpFlow: FC<VdpFlowProps> = ({ styleName }) => {
   );
 };
 
-export default VdpFlow;
+export default VdpFlowAnimation;

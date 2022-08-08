@@ -1,9 +1,8 @@
 import Image from "next/future/image";
-import { FC } from "react";
 import FeatureItem from "./FeatureItem";
 import { GithubCtaButton } from "@/components/ui";
 
-const FeatureSection: FC = () => {
+const Features = () => {
   return (
     <div id="feature-block-group" className="flex flex-col">
       <FeatureItem
@@ -59,4 +58,4 @@ const FeatureSection: FC = () => {
   );
 };
 
-export default FeatureSection;
+export default Features;

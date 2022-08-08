@@ -1,11 +1,10 @@
-import { FC } from "react";
 import cn from "clsx";
 
 export type SubHeadlineProps = {
   marginBottom?: string;
 };
 
-const SubHeadline: FC<SubHeadlineProps> = ({ marginBottom }) => {
+const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(

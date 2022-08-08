@@ -1,5 +1,5 @@
+import { SubscribeNewsletterForm } from "@/components/ui";
 import { FC } from "react";
-import { SubscribeNewsletterForm } from "../../forms/SubscribeNewsletterForm";
 
 const NewsletterArchiveHeader: FC = () => {
   return (
@@ -11,7 +11,10 @@ const NewsletterArchiveHeader: FC = () => {
         Get the latest news from Instill AI: open source updates, community
         highlights, blog posts, useful tutorials and more!
       </h3>
-      <SubscribeNewsletterForm styleName="max-w-[552px] w-full mx-auto" />
+      <SubscribeNewsletterForm
+        width="w-full max-w-[552px]"
+        position="mx-auto"
+      />
     </div>
   );
 };

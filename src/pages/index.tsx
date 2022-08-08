@@ -1,25 +1,29 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { HeroSection, InstillCloudSection } from "@/components/sections";
-import { PageBase, ContentContainer, PageHead } from "@/components/ui";
+import { Hero, InstillCloud } from "@/components/landing";
+import {
+  PageBase,
+  ContentContainer,
+  PageHead,
+  SecureYourSpotProps,
+  StayInTheLoopProps,
+} from "@/components/ui";
 
-const LandingBanner = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.VdpFlowSection)
+const VdpFlow = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.VdpFlow)
 );
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections/").then((mod) => mod.StayInTheLoopSection)
+const Features = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.Features)
 );
 
-const SecureYourSpotSection = dynamic(() =>
-  import("@/components/sections/").then(
-    (module) => module.SecureYourSpotSection
-  )
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
-const FeatureSection = dynamic(() =>
-  import("@/components/sections/").then((mod) => mod.FeatureSection)
+const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
+  import("@/components/ui").then((mod) => mod.SecureYourSpot)
 );
 
 interface Props {}
@@ -31,10 +35,10 @@ interface GetLayOutProps {
 const HomePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const landingBannerRef = useRef<HTMLDivElement>();
+  const vdpFlowRef = useRef<HTMLDivElement>();
 
   const scrollHandler = useCallback(() => {
-    landingBannerRef.current.scrollIntoView({ behavior: "smooth" });
+    vdpFlowRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   return (
@@ -45,25 +49,21 @@ const HomePage: FC<Props> & {
       />
       <div className="flex flex-col">
         <ContentContainer contentMaxWidth="max-w-[1127px]">
-          <HeroSection scrollHandler={scrollHandler} />
-          <div className="flex h-screen w-full" ref={landingBannerRef}>
-            <LandingBanner />
+          <Hero scrollHandler={scrollHandler} />
+          <div className="flex h-screen w-full" ref={vdpFlowRef}>
+            <VdpFlow />
           </div>
         </ContentContainer>
 
-        <FeatureSection />
-        <InstillCloudSection />
+        <Features />
+        <InstillCloud />
 
         <ContentContainer
           contentMaxWidth="max-w-[889px]"
           marginBottom="mb-[129px]"
         >
-          <SecureYourSpotSection
-            bgColor="black"
-            layout="main"
-            marginBottom="mb-40"
-          />
-          <StayInTheLoopSection />
+          <SecureYourSpot bgColor="black" layout="main" marginBottom="mb-40" />
+          <StayInTheLoop />
         </ContentContainer>
       </div>
     </>

@@ -10,14 +10,20 @@ import {
 } from "../lib/clickUp";
 import { TMemberDetails } from "../types/instill";
 import { OurMembersSection } from "@/components/sections";
-import { ContentContainer, PageBase, PageHead } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  SecureYourSpotProps,
+  StayInTheLoopProps,
+} from "@/components/ui";
 
-const SecureYourSpotSection = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.SecureYourSpotSection)
+const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
+  import("@/components/ui").then((mod) => mod.SecureYourSpot)
 );
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 interface GetLayOutProps {
@@ -31,36 +37,35 @@ interface Props {
 const AboutPage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ members }) => {
-  // Lazy loading SecureYourSpotBlock
-  const secureYourSpotBlockRef = useRef<HTMLDivElement>();
-  const [loadSecureYourSpotBlock, setLoadSecureYourSpotBlock] = useState(false);
-  const secureYourSpotBlockOnScreen = useOnScreen(
-    secureYourSpotBlockRef,
-    !loadSecureYourSpotBlock,
+  // Lazy loading SecureYourSpot
+  const secureYourSpotRef = useRef<HTMLDivElement>();
+  const [loadSecureYourSpot, setLoadSecureYourSpot] = useState(false);
+  const secureYourSpotOnScreen = useOnScreen(
+    secureYourSpotRef,
+    !loadSecureYourSpot,
     "100px"
   );
 
   useEffect(() => {
-    if (!loadSecureYourSpotBlock && secureYourSpotBlockOnScreen) {
-      setLoadSecureYourSpotBlock(true);
+    if (!loadSecureYourSpot && secureYourSpotOnScreen) {
+      setLoadSecureYourSpot(true);
     }
-  }, [secureYourSpotBlockOnScreen, loadSecureYourSpotBlock]);
+  }, [loadSecureYourSpot, secureYourSpotOnScreen]);
 
-  // Lazy loading StayInTheLoopSection
-  const stayInTheLoopSectionRef = useRef<HTMLDivElement>();
-  const [loadStayInTheLoopSection, setLoadStayInTheLoopSection] =
-    useState(false);
-  const stayInTheLoopSectionOnScreen = useOnScreen(
-    secureYourSpotBlockRef,
-    !loadStayInTheLoopSection,
+  // Lazy loading StayInTheLoop
+  const stayInTheLoopRef = useRef<HTMLDivElement>();
+  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopOnScreen = useOnScreen(
+    secureYourSpotRef,
+    !loadStayInTheLoop,
     "100px"
   );
 
   useEffect(() => {
-    if (!loadStayInTheLoopSection && stayInTheLoopSectionOnScreen) {
-      setLoadStayInTheLoopSection(true);
+    if (!loadStayInTheLoop && stayInTheLoopOnScreen) {
+      setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopSectionOnScreen, loadStayInTheLoopSection]);
+  }, [loadStayInTheLoop, stayInTheLoopOnScreen]);
 
   return (
     <>
@@ -122,13 +127,13 @@ const AboutPage: FC<Props> & {
           </div>
         </div>
         <OurMembersSection members={members} marginBottom="mb-10" />
-        <div ref={secureYourSpotBlockRef}>
-          {loadSecureYourSpotBlock && (
-            <SecureYourSpotSection bgColor="black" layout="main" />
+        <div ref={secureYourSpotRef}>
+          {loadSecureYourSpot && (
+            <SecureYourSpot bgColor="black" layout="main" />
           )}
         </div>
-        <div className="mb-20" ref={stayInTheLoopSectionRef}>
-          {loadStayInTheLoopSection && <StayInTheLoopSection />}
+        <div className="mb-20" ref={stayInTheLoopRef}>
+          {loadStayInTheLoop && <StayInTheLoop />}
         </div>
       </ContentContainer>
     </>

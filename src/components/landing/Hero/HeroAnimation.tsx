@@ -1,8 +1,8 @@
-import { FC, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useOnScreen } from "../../../hooks/useOnScreen";
 
-const HeroAnimation: FC = () => {
+const HeroAnimation = () => {
   // Init the gsap selector and react reference
   const cube = useRef();
 
