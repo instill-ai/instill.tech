@@ -1,7 +1,8 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { HeroSection, InstillCloudSection } from "@/components/sections";
+import { InstillCloudSection } from "@/components/sections";
+import { Hero } from "@/components/landing";
 import {
   PageBase,
   ContentContainer,
@@ -49,7 +50,7 @@ const HomePage: FC<Props> & {
       />
       <div className="flex flex-col">
         <ContentContainer contentMaxWidth="max-w-[1127px]">
-          <HeroSection scrollHandler={scrollHandler} />
+          <Hero scrollHandler={scrollHandler} />
           <div className="flex h-screen w-full" ref={vdpFlowRef}>
             <VdpFlow />
           </div>
