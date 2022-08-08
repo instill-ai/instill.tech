@@ -61,6 +61,7 @@ specifiers:
   react-dom: ^17.0.2
   react-markdown: ^7.0.1
   react-select: ^5.4.0
+  rehype-autolink-headings: ^6.1.1
   rehype-raw: ^6.1.1
   rehype-slug: ^5.0.1
   remark-gfm: ^3.0.1
@@ -136,6 +137,7 @@ devDependencies:
   postcss: 8.4.14
   prettier: 2.4.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.4.1
+  rehype-autolink-headings: 6.1.1
   rehype-slug: 5.0.1
   require-from-string: 2.0.2
   storybook-addon-next-router: 4.0.0_6kgqvbws3oshcx6xqur3zsmily
@@ -8583,6 +8585,13 @@ packages:
       '@types/hast': 2.3.4
     dev: true
 
+  /hast-util-is-element/2.1.2:
+    resolution: {integrity: sha512-thjnlGAnwP8ef/GSO1Q8BfVk2gundnc2peGQqEg2kUt/IqesiGg/5mSwN2fE7nLzy61pg88NG6xV+UrGOrx9EA==}
+    dependencies:
+      '@types/hast': 2.3.4
+      '@types/unist': 2.0.6
+    dev: true
+
   /hast-util-parse-selector/2.2.5:
     resolution: {integrity: sha512-7j6mrk/qqkSehsM92wQjdIgWM2/BW61u/53G6xmC8i1OmEdKLHbk419QKQUjz6LglWsfqoiHmyMRkP1BGjecNQ==}
     dev: true
@@ -13067,6 +13076,18 @@ packages:
     hasBin: true
     dependencies:
       jsesc: 0.5.0
+    dev: true
+
+  /rehype-autolink-headings/6.1.1:
+    resolution: {integrity: sha512-NMYzZIsHM3sA14nC5rAFuUPIOfg+DFmf9EY1YMhaNlB7+3kK/ZlE6kqPfuxr1tsJ1XWkTrMtMoyHosU70d35mA==}
+    dependencies:
+      '@types/hast': 2.3.4
+      extend: 3.0.2
+      hast-util-has-property: 2.0.0
+      hast-util-heading-rank: 2.1.0
+      hast-util-is-element: 2.1.2
+      unified: 10.1.2
+      unist-util-visit: 4.1.0
     dev: true
 
   /rehype-raw/6.1.1:
