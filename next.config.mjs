@@ -4,6 +4,7 @@ import rehypeSlug from "rehype-slug";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { remarkCodeHike } from "@code-hike/mdx";
 import { readFile } from "fs/promises";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/slack-dark.json", import.meta.url))
@@ -16,7 +17,7 @@ const withMDX = mdx({
       remarkGfm,
       [remarkCodeHike, { theme, lineNumbers: false, showCopyButton: true }],
     ],
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },

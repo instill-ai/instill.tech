@@ -84,6 +84,7 @@
     "postcss": "^8.4.5",
     "prettier": "2.4.1",
     "prettier-plugin-tailwindcss": "^0.1.8",
+    "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "require-from-string": "^2.0.2",
     "storybook-addon-next-router": "^4.0.0",
