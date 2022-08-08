@@ -14,6 +14,8 @@ export default ({ children }) => (
 
 At the two ends of a VDP pipeline, there are source connector (i.e., the E in ETL) and destination connector (i.e., the L in ETL).
 
+## Definition
+
 ## Source
 
 A source connector is in charge of ingesting unstructured visual data into **Pipeline**.
@@ -35,3 +37,21 @@ Specifically, to trigger a destination connector's container [`write`](https://d
 As far as [Airbyte connections and sync modes](https://docs.airbyte.com/understanding-airbyte/connections) are concerned, VDP currently supports `full_refresh` sync mode and `append` destination sync mode for an `ASYNC` pipeline.
 
 VDP currently does not support Airbyte's [Namespaces](https://docs.airbyte.com/understanding-airbyte/namespaces).
+
+## State
+
+## Release stage
+
+#### Source connectors
+
+Instill AI develops and maintains source connectors. We use release stage below to indicate a source connector's readiness:
+
+| Stage                   | Description                                                                                                                                                                                                                                                            |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha source connector indicates the connector is under development and Instill AI is collecting its early feedback and issues reported by early adopters. We strongly discourage using alpha source connectors for production.                                     |
+| **Beta**                | A beta source connector is considered stable and reliable with no further backwards incompatible changes but has not been validated by a broader group of users. We expect to find and fix a few issues and bugs in the release before it is ready for the next stage. |
+| **Generally Available** | A generally available source connector has been thoroughly tested in the battlefield and is ready for use in a production environment. Its documentation is considered sufficient to support widespread adoption.                                                      |
+
+#### Destination connectors
+
+Destination connectors are developed and maintained by Airbyte community, where the release stage of each Airbyte destination connector is reported [here](https://docs.airbyte.com/integrations/#destinations).
