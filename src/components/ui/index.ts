@@ -16,6 +16,8 @@ import PageBase from "./PageBase";
 import type { PageBaseProps } from "./PageBase";
 import PageHead from "./PageHead";
 import type { PageHeadProps } from "./PageHead";
+import ReactMarkdownWrapper from "./ReactMarkdownWrapper";
+import type { ReactMarkdownWrapperProps } from "./ReactMarkdownWrapper";
 import SecureYourSpot from "./SecureYourSpot";
 import type { SecureYourSpotProps } from "./SecureYourSpot";
 import JoinDiscordButton from "./JoinDiscordButton";
@@ -56,6 +58,7 @@ export {
   SubscribeNewsletterForm,
   SecureYourSpot,
   StayInTheLoop,
+  ReactMarkdownWrapper,
 };
 
 export type {
@@ -71,4 +74,5 @@ export type {
   SubscribeNewsletterFormProps,
   SecureYourSpotProps,
   StayInTheLoopProps,
+  ReactMarkdownWrapperProps,
 };
