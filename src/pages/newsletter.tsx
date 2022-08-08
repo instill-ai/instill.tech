@@ -1,16 +1,20 @@
-import { FC, ReactElement } from "react";
+import { FC, Fragment, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
 
-import { ContentContainer, PageBase, PageHead } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  SubscribeNewsletterForm,
+} from "@/components/ui";
 import {
   GetCampaignContentResponse,
   ListCampaignsResponse,
   NewsletterPublicCampaign,
 } from "@/types/mailchimp";
-import { NewsletterArchiveSection } from "@/components/sections";
 import {
   removeMailchimpStyleAndMeta,
   removePlaceholderAndFooterWords,
@@ -102,7 +106,36 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         pageDescription="Instill AI newsletter archive"
       />
       <ContentContainer>
-        <NewsletterArchiveSection campaigns={campaigns} />
+        <div className="mb-20 flex max-w-[800px] flex-col px-5 pt-[100px] pb-[60px] md:mx-auto md:px-0">
+          <h1 className="instill-text-h1 mb-5 text-center text-instillGrey05">
+            Newsletter
+          </h1>
+          <h3 className="instill-text-h3-light mb-[60px] text-center text-instillGrey05">
+            Get the latest news from Instill AI: open source updates, community
+            highlights, blog posts, useful tutorials and more!
+          </h3>
+          <SubscribeNewsletterForm
+            width="w-full max-w-[552px]"
+            position="mx-auto"
+          />
+        </div>
+        <div className="flex flex-col">
+          {campaigns.map((campaign) => (
+            <Fragment key={campaign.id}>
+              <div className="mx-auto mb-[60px] w-full max-w-[800px] border-t border-b border-instillGrey70 py-2.5 text-instillGrey15">
+                {`Issued on ${new Date(campaign.sendTime)
+                  .toDateString()
+                  .split(" ")
+                  .slice(1)
+                  .join(" ")}`}
+              </div>
+              <div
+                className="mailchimp-archive mx-auto mb-[120px]"
+                dangerouslySetInnerHTML={{ __html: campaign.html }}
+              />
+            </Fragment>
+          ))}
+        </div>
       </ContentContainer>
     </>
   );
