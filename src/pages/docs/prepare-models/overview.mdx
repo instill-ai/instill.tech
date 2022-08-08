@@ -1,6 +1,6 @@
 import { DocsLayout } from "@/components/docs";
 export const meta = {
-  title: "Overview",
+  title: "Prepare Models Overview",
   lang: "en-US",
   draft: false,
   description:
@@ -12,7 +12,7 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-_model_ is the pipeline component used to process ingested visual data. VDP uses [Triton Inference server](https://github.com/triton-inference-server/server/releases/tag/v2.18.0) for model serving. It supports multiple deep learning frameworks including TensorFlow, PyTorch, TensorRT, ONNX and OpenVINO.
+**Model** is the pipeline component used to process ingested visual data. VDP uses [Triton Inference server](https://github.com/triton-inference-server/server/releases/tag/v2.18.0) for model serving. It supports multiple deep learning frameworks including TensorFlow, PyTorch, TensorRT, ONNX and OpenVINO.
 Besides, the [Triton Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
 
 ## VDP model layout
@@ -50,20 +50,20 @@ The above layout displays a typical VDP model consisting of
 
 You can name `<pre-model>`, `<infer-model>`, `<post-model>` and `<ensemble-model>` folders freely provided that the folder names are clear and semantic. All these models bundle into a deployable model for VDP.
 
-> 📔 As long as your model fulfills the required [Triton model repository layout](https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md), it can be safely imported into VDP and deployed online.
+> 📔 As long as your model fulfils the required [Triton model repository layout](https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md), it can be safely imported into VDP and deployed online.
 
-## Serve models writtin in Python
+## Serve models written in Python
 
 To deploy your pre-processing and post-processing models with Python code, use [Triton Python Backend](https://github.com/triton-inference-server/python_backend) that supports `conda-pack` to deploy Python models with dependencies.
 We have prepared a [custom Conda environment](https://github.com/instill-ai/triton-python-model) with pre-installed libraries including
 [scikit-learn](https://github.com/scikit-learn/scikit-learn), [Pillow](https://github.com/python-pillow/Pillow), [PyTorch](https://github.com/pytorch/pytorch), [torchvision](https://pytorch.org/vision/stable/index.html), [Transformers](https://github.com/huggingface/transformers) and [triton_python_model](https://github.com/instill-ai/triton-python-model).
-It shipped in the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers uses Python 3.8.
+It is shipped with the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers using Python 3.8.
 
 If your model is not compatible with Python 3.8 or if it requires additional dependencies, you could [create your own Conda environment](https://github.com/triton-inference-server/python_backend#2-packaging-the-conda-environment) and configure the `config.pbtext` to point to the custom conda-pack tar file accordingly.
 
 ## Prepare your model to be VDP compatible
 
-- Create a [model card](model-card) `README.md` to describe information of your model
+- Create a [model card](model-card) `README.md` to describe your model
 - Write a [pre-processing model](pre-processing) and a [post-processing model](post-processing) that are compatible with the Triton Python Backend
 - Prepare the model configuration file for your inference model
 - Set up an [ensemble model](https://github.com/triton-inference-server/server/blob/main/docs/architecture.md#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure

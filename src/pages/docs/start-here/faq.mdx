@@ -113,7 +113,7 @@ Find out the supported model sources to import in [Import Models](../import-mode
 <details>
 <summary>**VDP vs. BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
 
-VDP is not just a model serving framework! Instead, model serving is a core component in a VDP pipeline. 
+VDP is not just a model serving framework! Nonetheless, model serving is a core component in a VDP pipeline. 
 
 See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
 
@@ -151,33 +151,33 @@ We believe tooling development in AI and Data industry is marching toward a comp
 </details>
 
 <details>
-<summary>**Why is Triton Inference Server adopted?**</summary>
 <a name="why-triton"></a>
+<summary>**Why does VDP adopt Triton Inference Server?**</summary>
 
 There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, BentoML and Cortex just to name a few.
 
-VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for the users. 
+VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for our users. 
 
-Computer vision algorithms can benefit from parallelism by nature, since the bunch of pixels/voxels imagined in a 2D/3D image essentially share the same computing operations. 
+Computer vision algorithms can benefit from parallelism by nature, because all the pixels/voxels imagined in one 2D/3D image can share the same computing operations. 
 We were therefore looking into the highest performant GPU model serving framework to serve in a VDP pipeline.
 Triton Inference Server provides a native way to make the most of NVIDIA GPU architecture (e.g., concurrency, scheduler, batcher) for multiple frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more.
 
-We are continuously working on features to help create and import a Triton-based model easier. Please refer to [Prepare Models](prepare-models/overview) for details.
+We are continuously working on new features to help create and import a Triton-based model easier. Please refer to [Prepare Models](prepare-models/overview) for details.
 
 </details>
 
 
 <details>
-<summary>**Why is Airbyte adopted?**</summary>
+<summary>**Why does VDP adopt Airbyte?**</summary>
 
 VDP needs to load the structured data transformed from [Model](../core-concepts/model) to [Destination](../core-concepts/connector#destination). 
-Since structured data has gained overflowing love in the modern data stack, instead of reinventing the wheel, what makes more sense is to investigate the best way to plug VDP into the modern data stack for the subsequent structured data journey.
+Since structured data has gained overflowing love in the data industry, instead of reinventing the wheel, what makes more sense is to investigate the best way to plug VDP into the modern data stack for the subsequent structured data journey.
 
 Soon, Airbyte showed up on our radar. 
 
 Airbyte has provided a good number of destination connectors for structured data. 
 In addition, the Airbyte Protocol provides a standardised interface to integrate with VDP. 
-Last but not least, VDP loves open source. Airbyte is also open source and the community welcomes all sorts of possibilities.
+Last but not least, VDP loves open source. Airbyte is also open source and the community welcomes all sorts of possibilities with Airbyte.
 
 </details>
 
@@ -192,14 +192,14 @@ it is fair to say that we, the whole industry, still have a long way to go.
 
 We are enthusiastic about being on the journey, to instill the Vision AI gradually to the industry.
 
-The name was also inspired by a Chinese poem "Delighting in Rain on a Spring Night (春夜喜雨)" by Du Fu (杜甫), particularly for the reification of the word "instill":
-```
-好雨知時節，當春乃發生。
+The name is also inspired by a Chinese poem "Delighting in Rain on a Spring Night (春夜喜雨)" by Du Fu (杜甫), particularly for reifying the word "instill":
+
+> 好雨知時節，當春乃發生。
 隨風潛入夜，潤物細無聲。
 野徑雲俱黑，江船火獨明。
 曉看紅濕處，花重錦官城。
-```
-It's pretty hard to have this poem precisely translated in English, but the main idea is to express how delightful when hard working finally pays off. 
+
+It's pretty hard to have this poem precisely translated in English, but anyway the main idea is to express how delightful when hard working finally pays off. 
 </details>
 
 <details>
@@ -207,7 +207,9 @@ It's pretty hard to have this poem precisely translated in English, but the main
 
 Our visual designer [Wen Chen](https://mrwenchen.com/about) has done a great job to embed Instill AI and the meaning of our effort into the logo.
 
-<img src="/docs-assets/start-here/why-logo.png" alt="logo" width="500"/>
+<p align="center">
+<img src="/docs-assets/start-here/why-logo.png" alt="logo" width="400"/>
+</p>
 
 </details>
 
