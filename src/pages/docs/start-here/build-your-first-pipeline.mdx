@@ -14,31 +14,28 @@ export default ({ children }) => (
 
 ## Onboarding
 
-You should see the onboarding page for the first time using the console. Please enter your email to proceed.
+You should see the onboarding page for the first time using the Console. Please enter your email to proceed.
 
-![Onboarding page of the VDP console](/docs-assets/onboarding.png)
+![Onboarding page of the VDP Console](/docs-assets/onboarding.png)
 
-## Add a HTTP source
-
-:::info
-Check our growing list of [source connectors](../../connectors/definitions/source-overview). If you can't find the connectors you want, join our [community](https://discord.gg/sevxWsqpGh) and feel free to post your request in the #vdp channel.
-:::
+## Build via no-code Console
 
 After onboarding, you will be redirected to the `Pipeline` tab on the left sidebar, where you can build your first VDP pipeline by clicking `Create your first pipeline` and forever change the way you approach visual data processing workflow development.
 
-![Pipeline list page of the VDP console](/docs-assets/pipeline-list-empty.png)
+**Add a HTTP Source**
 
-In this tutorial you'll build your first **Sync** pipeline and trigger the pipeline to process some images. You can follow the tutorial via the `Pipeline` tab or navigate to the `Data source` tab.
+In this tutorial you'll build your first **`SYNC`** pipeline and trigger the pipeline to process some images.
+You can follow the tutorial via the `Pipeline` tab or navigate to the `Data source` tab.
 
-A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline. To set it up, just choose `HTTP` from the drop-down list below.
+![Pipeline list page of the VDP Console](/docs-assets/pipeline-list-empty.png)
 
-![Add a HTTP source to create a pipeline in the VDP console](/docs-assets/add-a-source-http.png)
+A HTTP Source accepts HTTP requests with image payloads to be processed by a pipeline. To set it up, just choose `HTTP` from the drop-down list below.
 
-## Import a model from GitHub
+![Add a HTTP Source to create a pipeline in the VDP Console](/docs-assets/add-a-source-http.png)
 
-:::info
-Check our growing list of [model definitions](/docs/import-models/overview). If you want to import models from other platforms you want, join our [community](https://discord.gg/sevxWsqpGh) and feel free to post your request in the #vdp channel.
-:::
+> 📔 Check our growing list of [Source connectors](/docs/connectors/overview).
+
+**Import a model from GitHub**
 
 To process images, here we import a model from our public GitHub repo [instill-ai/model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2). To set it up, just follow the instructions on the UI and click `Setup new model`:
 
@@ -46,42 +43,146 @@ To process images, here we import a model from our public GitHub repo [instill-a
 2. Select `GitHub` from the drop-down list;
 3. Fill the GitHub repository `instill-ai/model-mobilenetv2`.
 
-![Import a model from a GitHub repo via VDP console](/docs-assets/add-a-model.png)
+![Import a model from a GitHub repo via VDP Console](/docs-assets/add-a-model.png)
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance id.
 
-## Deploy a model instance
+> 📔 Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
+
+**Deploy a model instance of the imported model**
 
 Once the model is imported, we pick one from all the model instances, and click `deploy` to deploy it online.
 
-![Deploy a model instance via VDP console](/docs-assets/deploy-a-model-instance.png)
+![Deploy a model instance via VDP Console](/docs-assets/deploy-a-model-instance.png)
 
-## Add a HTTP destination
+**Add a HTTP Destination**
 
-Just click `Next`. Since we are building a `Sync` pipeline, the HTTP destination is automatically paired with the HTTP source.
+Just click `Next`. Since we are building a `SYNC` pipeline, the HTTP Destination is automatically paired with the HTTP source.
 
-:::tip
-Check out [Sync mode](../../concepts/pipeline) about the pairing of source and destination connectors.
+> 📔 The paired Sources and Destinations for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
+>
+> - HTTP Source → HTTP Destination
+> - gRPC Source → gRPC Destination
 
-- HTTP source -> HTTP destination
-- gRPC source -> gRPC destination
-  :::
-
-![Add a HTTP destination to create a pipeline in the VDP console](/docs-assets/add-a-destination-http.png)
+![Add a HTTP Destination to create a pipeline in the VDP console](/docs-assets/add-a-destination-http.png)
 
 Almost done! Just give your pipeline a unique id and an optional description, and click `Set up pipeline`.
 
-![Set up a pipeline in the VDP console](/docs-assets/set-up-a-pipeline.png)
+![Set up a pipeline in the VDP Console](/docs-assets/set-up-a-pipeline.png)
+
+## Build via low-code
+
+You can also build the pipeline by sending requests, thanks to the [API-first](/docs/core-concepts/overview#api) design.
+
+<CH.Scrollycoding>
+
+**Step 1: Add a HTTP source**
+
+`http://localhost:8082` is the default URL of the VDP connector backend.
+
+```bash focus=1:11
+
+curl -X POST \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}' \
+http://localhost:8082/v1alpha/source-connectors
+
+curl -X POST \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "mobilenetv2",
+    "model_definition": "model-definitions/github",
+    "configuration": {
+        "repository": "instill-ai/model-mobilenetv2"
+    }
+}' \
+http://localhost:8083/v1alpha/models
+
+curl -X POST \
+http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu:deploy
+
+curl -X POST \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "destination-http",
+    "destination_connector_definition": "destination-connector-definitions/destination-http",
+    "connector": {
+        "configuration": {}
+    }
+}' \
+http://localhost:8082/v1alpha/destination-connectors
+
+curl -X POST \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "classification",
+    "recipe": {
+        "source": "source-connectors/source-http",
+        "model_instances": [
+            "models/mobilenetv2/instances/v1.0-cpu"
+        ],
+        "destination": "destination-connectors/destination-http"
+    }
+}' \
+http://localhost:8081/v1alpha/pipelines
+
+```
+
+---
+
+**Step 2: Import a model from GitHub**
+
+`http://localhost:8083` is the default URL of the VDP model backend.
+
+```bash focus=13:22
+
+```
+
+---
+
+**Step 3: Deploy a model instance**
+
+Choose the model instance `v1.0-cpu` to deploy.
+
+```bash focus=24:25
+
+```
+
+---
+
+**Step 4: Add a HTTP Destination**
+
+```bash focus=27:36
+
+```
+
+---
+
+**Step 5: Create your first pipeline**
+
+`http://localhost:8081` is the default URL of the VDP pipeline backend.
+
+```bash focus=38:51
+
+```
+
+</CH.Scrollycoding>
 
 ## Trigger your pipeline for the first time
 
-:::info
-Check the [Sync pipeline state machine chart](../../concepts/pipeline) to understand how a Sync pipeline is automatically activated.
-:::
+> All `SYNC` pipelines are automatically activated.
 
-Now that the `classification` pipeline is automatically activated, you can make a request to trigger the pipeline to process **multiple** images within a batch:
+Now that the `classification` pipeline is automatically activated, you can make a request to trigger the pipeline to process **multiple** images within a batch via remote image URLs, Base64 or multipart:
 
-```bash
+<CH.Code>
+
+```bash remote
 curl -X POST \
 --data-raw '{
   "inputs": [
@@ -96,7 +197,29 @@ curl -X POST \
 http://localhost:8081/v1alpha/pipelines/classification:trigger
 ```
 
-In which `8081` is the port of the local pipeline backend.
+```bash base64
+curl -X POST \
+--data-raw '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSk...D/2Q=="
+    },
+    ...
+  ]
+}' \
+http://localhost:8081/v1alpha/pipelines/classification:trigger
+```
+
+```bash multipart
+curl -X POST \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"elephant.jpg"' \
+http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart
+```
+
+</CH.Code>
+
+in which `http://localhost:8081` is the default URL of the VDP pipeline backend.
 
 A HTTP response will return
 
@@ -117,32 +240,6 @@ A HTTP response will return
 }
 ```
 
-Besides using remote image url `image_url` as payload, you can send Base64-encoded images with `image_base64`
-
-```bash
-curl -X POST \
---data-raw '{
-  "inputs": [
-    {
-      "image_base64": "/9j/4AAQSk...D/2Q=="
-    },
-    ...
-  ]
-}' \
-http://localhost:8081/v1alpha/pipelines/classification:trigger
-```
-
-or send a multipart request
-
-```bash
-curl -X POST \
---form 'file=@"dog.jpg"' \
---form 'file=@"elephant.jpg"' \
-http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart
-```
-
 **🙌 That's it!**
 
-This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey. Please check [here](../../tutorials/overview) for more tutorials.
-
-We are actively supporting more connectors and model definitions. If you have any questions, please reach out to us on [Discord community](https://discord.gg/sevxWsqpGh). We're still in alpha, so if you see any bugs, please help create an issue on our [GitHub](https://github.com/instill-ai/vdp).
+This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey.
