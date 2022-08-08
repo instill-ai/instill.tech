@@ -1,12 +1,16 @@
-import { FC, FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
 import cn from "clsx";
 
-interface Props {
-  styleName?: string;
-}
+export type SubscribeNewsletterFormProps = {
+  position?: string;
+  width?: string;
+};
 
-export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
+const SubscribeNewsletterForm = ({
+  position,
+  width,
+}: SubscribeNewsletterFormProps) => {
   const email = useRef<HTMLInputElement | null>(null);
   const [warn, setWarn] = useState(false);
   const [message, setMessage] = useState<string>();
@@ -48,7 +52,7 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
   };
 
   return (
-    <form onSubmit={subscribe} className={styleName}>
+    <form onSubmit={subscribe} className={cn(position, width)}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
           <div className="mb-1.5 flex flex-row justify-end gap-x-2.5 border border-instillGrey05">
@@ -90,3 +94,5 @@ export const SubscribeNewsletterForm: FC<Props> = ({ styleName }) => {
     </form>
   );
 };
+
+export default SubscribeNewsletterForm;

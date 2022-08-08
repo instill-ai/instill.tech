@@ -28,6 +28,8 @@ import ShareToLinkedIn from "./ShareToLinkedIn";
 import type { ShareToLinkedInProps } from "./ShareToLinkedIn";
 import ShareToTwitter from "./ShareToTwitter";
 import type { ShareToTwitterProps } from "./ShareToTwitter";
+import SubscribeNewsletterForm from "./SubscribeNewsletterForm";
+import type { SubscribeNewsletterFormProps } from "./SubscribeNewsletterForm";
 
 export {
   AnnouncementBar,
@@ -47,6 +49,7 @@ export {
   ContentContainer,
   PageBase,
   PageHead,
+  SubscribeNewsletterForm,
 };
 
 export type {
@@ -59,4 +62,5 @@ export type {
   ContentContainerProps,
   PageBaseProps,
   PageHeadProps,
+  SubscribeNewsletterFormProps,
 };

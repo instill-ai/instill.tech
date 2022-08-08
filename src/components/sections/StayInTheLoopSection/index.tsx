@@ -1,6 +1,6 @@
 import { FC } from "react";
-import * as classNames from "classnames";
-import { SubscribeNewsletterForm } from "../../forms/SubscribeNewsletterForm";
+import { SubscribeNewsletterForm } from "@/components/ui";
+import cn from "clsx";
 
 export type StayInTheLoopSectionProps = {
   marginBottom?: string;
@@ -11,7 +11,7 @@ const StayInTheLoopSection: FC<StayInTheLoopSectionProps> = ({
 }) => {
   return (
     <div
-      className={classNames.default(
+      className={cn(
         "grid w-full grid-cols-1 gap-y-[30px] py-6 px-10 sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8 sm:py-[60px] md:gap-x-16 lg:gap-x-28",
         marginBottom
       )}
