@@ -102,6 +102,18 @@ export const SIDEBAR: Sidebar = {
             text: "Overview",
             link: "/docs/prepare-models/overview",
           },
+          {
+            text: "Add model card",
+            link: "/docs/prepare-models/model-card",
+          },
+          {
+            text: "Prepare pre-processing model",
+            link: "/docs/prepare-models/pre-processing",
+          },
+          {
+            text: "Prepare post-processing model",
+            link: "/docs/prepare-models/post-processing",
+          },
         ],
       },
       {
