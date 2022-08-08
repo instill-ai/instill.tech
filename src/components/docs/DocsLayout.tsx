@@ -42,13 +42,14 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
   return (
     <>
-      <style jsx>{`
-        @media screen and (min-width: 1440px) {
-          .docs-left-sidebar {
-            width: calc((100vw - 1140px) / 2);
+      <style jsx>
+        {`
+          @media screen and (min-width: 1440px) {
+            .docs-left-sidebar {
+              width: calc((100vw - 1140px) / 2);
+            }
           }
-        }
-      `}
+        `}
       </style>
       <PageHead
         pageTitle={`${meta.title} | Documentation`}
