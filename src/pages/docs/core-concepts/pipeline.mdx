@@ -33,7 +33,9 @@ A `recipe` describes a pipeline resource consisting of:
 
 Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `FETCH` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
 
-## SYNC mode
+## Mode
+
+#### `SYNC` mode
 
 A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
@@ -42,7 +44,7 @@ The request flow when triggering a `SYNC` pipeline is shown below:
   <img src="/docs-assets/core-concepts/sync.svg" alt="SYNC pipeline mode" />
 </p>
 
-To create a `SYNC` pipeline, both source and destination needs to be configured with the same type of protocol. VDP supports HTTP and gRPC for a `SYNC` pipeline.
+To create a `SYNC` pipeline, both source and destination needs to be configured with the same protocol type. VDP supports HTTP and gRPC for a `SYNC` pipeline.
 
 For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 inference:
 
@@ -54,7 +56,7 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 }
 ```
 
-## ASYNC mode
+#### `ASYNC` mode
 
 A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
 Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
@@ -75,7 +77,7 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 }
 ```
 
-## FETCH mode
+#### `FETCH` mode (coming soon)
 
 A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
 
@@ -83,4 +85,4 @@ A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch da
   <img src="/docs-assets/core-concepts/fetch.svg" alt="FETCH pipeline mode" />
 </p>
 
-`FETCH` mode support is coming soon.
+## State
