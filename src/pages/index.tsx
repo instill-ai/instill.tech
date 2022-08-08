@@ -1,8 +1,7 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { InstillCloudSection } from "@/components/sections";
-import { Hero } from "@/components/landing";
+import { Hero, InstillCloud } from "@/components/landing";
 import {
   PageBase,
   ContentContainer,
@@ -57,7 +56,7 @@ const HomePage: FC<Props> & {
         </ContentContainer>
 
         <Features />
-        <InstillCloudSection />
+        <InstillCloud />
 
         <ContentContainer
           contentMaxWidth="max-w-[889px]"

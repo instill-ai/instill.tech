@@ -1,10 +1,10 @@
-import { FC, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import cn from "clsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/future/image";
 
-const InstillCloudSection: FC = () => {
+const InstillCloud = () => {
   gsap.registerPlugin(ScrollTrigger);
   const animateTarget = useRef();
   const stickyContainer = useRef();
@@ -6518,4 +6518,4 @@ const InstillCloudSection: FC = () => {
   );
 };
 
-export default InstillCloudSection;
+export default InstillCloud;
