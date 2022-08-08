@@ -7,7 +7,6 @@ import FeatureSection from "./FeatureSection";
 
 import NewsletterArchiveSection from "./NewsletterArchiveSection";
 import type { NewsletterArchiveSectionProps } from "./NewsletterArchiveSection";
-import VdpFlowSection from "./VdpFlowSection";
 
 export {
   OurMembersSection,
@@ -15,7 +14,6 @@ export {
   HeroSection,
   FeatureSection,
   NewsletterArchiveSection,
-  VdpFlowSection,
 };
 export type {
   OurMembersSectionProps,

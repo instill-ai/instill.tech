@@ -10,8 +10,8 @@ import {
   StayInTheLoopProps,
 } from "@/components/ui";
 
-const LandingBanner = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.VdpFlowSection)
+const VdpFlow = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.VdpFlow)
 );
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
@@ -35,10 +35,10 @@ interface GetLayOutProps {
 const HomePage: FC<Props> & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const landingBannerRef = useRef<HTMLDivElement>();
+  const vdpFlowRef = useRef<HTMLDivElement>();
 
   const scrollHandler = useCallback(() => {
-    landingBannerRef.current.scrollIntoView({ behavior: "smooth" });
+    vdpFlowRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   return (
@@ -50,8 +50,8 @@ const HomePage: FC<Props> & {
       <div className="flex flex-col">
         <ContentContainer contentMaxWidth="max-w-[1127px]">
           <HeroSection scrollHandler={scrollHandler} />
-          <div className="flex h-screen w-full" ref={landingBannerRef}>
-            <LandingBanner />
+          <div className="flex h-screen w-full" ref={vdpFlowRef}>
+            <VdpFlow />
           </div>
         </ContentContainer>
 

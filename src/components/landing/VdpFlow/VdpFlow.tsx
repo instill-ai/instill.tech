@@ -1,7 +1,7 @@
 import Image from "next/future/image";
-import { FC, ReactElement } from "react";
+import { ReactElement } from "react";
 
-import VdpFlow from "./VdpFlow";
+import VdpFlowAnimation from "./VdpFlowAnimation";
 
 type BannerCopy = {
   id: string;
@@ -10,7 +10,7 @@ type BannerCopy = {
   icon: ReactElement;
 };
 
-const VdpFlowSection: FC = () => {
+const VdpFlow = () => {
   const bannerCopy: BannerCopy[] = [
     {
       id: "banner-copy-1",
@@ -66,7 +66,7 @@ const VdpFlowSection: FC = () => {
       className="grid h-full w-full grid-cols-1 lg:grid-cols-2"
     >
       <div className="flex h-full max-h-screen flex-col py-20">
-        <VdpFlow styleName="h-full w-full mx-auto" />
+        <VdpFlowAnimation styleName="h-full w-full mx-auto" />
       </div>
       <div className="hidden h-full max-h-screen py-5 md:my-auto lg:grid lg:grid-rows-3">
         {bannerCopy.map((copy) => (
@@ -88,4 +88,4 @@ const VdpFlowSection: FC = () => {
   );
 };
 
-export default VdpFlowSection;
+export default VdpFlow;
