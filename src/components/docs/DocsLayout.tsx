@@ -46,7 +46,12 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         {`
           @media screen and (min-width: 1440px) {
             .docs-left-sidebar {
-              width: calc((100vw - 1140px) / 2);
+              width: calc((100vw - 1140px + 300px) / 2);
+            }
+
+            .docs-content {
+              margin-left: calc((100vw - 1140px + 300px) / 2);
+              margin-right: calc((100vw - 1140px) / 2);
             }
           }
         `}
@@ -55,7 +60,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         pageTitle={`${meta.title} | Documentation`}
         pageDescription={meta.description}
       />
-      <main className="mx-auto grid grid-flow-col grid-cols-12 gap-x-10 max:flex">
+      <main className="w-screen grid grid-flow-col grid-cols-12 gap-x-10 max:block">
         <aside
           className={cn(
             "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-4 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
@@ -77,7 +82,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           />
         ) : null}
 
-        <div className="docs-content flex flex-col col-span-12 md:grid-col-8 max:mx-auto pb-40 w-full max-w-[1140px]">
+        <div className="docs-content flex flex-col col-span-12 md:col-span-8 max:col-span-12 pb-40 w-full max-w-[1140px]">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
             navbar={NAVBAR}
