@@ -14,16 +14,16 @@ const VdpFlow = dynamic(() =>
   import("@/components/landing").then((mod) => mod.VdpFlow)
 );
 
+const Features = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.Features)
+);
+
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
   import("@/components/ui").then((mod) => mod.SecureYourSpot)
-);
-
-const FeatureSection = dynamic(() =>
-  import("@/components/sections/").then((mod) => mod.FeatureSection)
 );
 
 interface Props {}
@@ -55,7 +55,7 @@ const HomePage: FC<Props> & {
           </div>
         </ContentContainer>
 
-        <FeatureSection />
+        <Features />
         <InstillCloudSection />
 
         <ContentContainer

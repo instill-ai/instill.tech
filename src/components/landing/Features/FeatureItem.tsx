@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import cn from "clsx";
 
 export type FeatureItemProps = {
@@ -10,14 +10,14 @@ export type FeatureItemProps = {
   featureCta?: ReactNode;
 };
 
-const FeatureItem: FC<FeatureItemProps> = ({
+const FeatureItem = ({
   imagePosition,
   label,
   title,
   description,
   image,
   featureCta,
-}) => {
+}: FeatureItemProps) => {
   const copyItem = (
     <div className="my-auto flex h-full w-full flex-col">
       <p className="instill-text-body mb-1 text-instillBlue50">{label}</p>
