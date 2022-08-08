@@ -1,12 +1,12 @@
 import cn from "clsx";
 
-export type GetJson = {
+export type SetJson = {
   bracketColor: string;
   indent: string;
   children?: any[];
 };
 
-export const getColorJson = ({ bracketColor, indent, children }: GetJson) => {
+export const setColorJson = ({ bracketColor, indent, children }: SetJson) => {
   return (
     <div className="flex flex-col">
       <div className={bracketColor}>{`{`}</div>
@@ -16,7 +16,7 @@ export const getColorJson = ({ bracketColor, indent, children }: GetJson) => {
   );
 };
 
-export type GetString = {
+export type SetString = {
   value: string;
   valueColor: string;
   quoteColor: string;
@@ -24,13 +24,13 @@ export type GetString = {
   trailingCommaColor: string;
 };
 
-export const getString = ({
+export const setString = ({
   value,
   valueColor,
   quoteColor,
   trailingComma,
   trailingCommaColor,
-}: GetString) => {
+}: SetString) => {
   return (
     <pre>
       <span className={quoteColor}>{`"`}</span>
@@ -43,19 +43,19 @@ export const getString = ({
   );
 };
 
-export type GetNumber = {
+export type SetNumber = {
   value: number;
   valueColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
 };
 
-export const getNumber = ({
+export const setNumber = ({
   value,
   valueColor,
   trailingComma,
   trailingCommaColor,
-}: GetNumber) => {
+}: SetNumber) => {
   return (
     <>
       <span className={valueColor}>{`${value}`}</span>
@@ -66,7 +66,7 @@ export const getNumber = ({
   );
 };
 
-export type GetStringProp = {
+export type SetStringProp = {
   key: string;
   keyColor: string;
   value: string;
@@ -77,7 +77,7 @@ export type GetStringProp = {
   trailingCommaColor: string;
 };
 
-export const getStringProp = ({
+export const setStringProp = ({
   key,
   keyColor,
   value,
@@ -86,7 +86,7 @@ export const getStringProp = ({
   colonColor,
   trailingComma,
   trailingCommaColor,
-}: GetStringProp) => {
+}: SetStringProp) => {
   return (
     <pre>
       <span className={quoteColor}>{`"`}</span>
@@ -103,7 +103,7 @@ export const getStringProp = ({
   );
 };
 
-export type GetObjectProp = {
+export type SetObjectProp = {
   key: string;
   keyColor: string;
   quoteColor: string;
@@ -115,7 +115,7 @@ export type GetObjectProp = {
   children: any[];
 };
 
-export const getObjectProp = ({
+export const setObjectProp = ({
   key,
   keyColor,
   quoteColor,
@@ -125,7 +125,7 @@ export const getObjectProp = ({
   trailingCommaColor,
   indent,
   children,
-}: GetObjectProp) => {
+}: SetObjectProp) => {
   return (
     <pre>
       <span className={quoteColor}>{`"`}</span>
@@ -144,7 +144,7 @@ export const getObjectProp = ({
   );
 };
 
-export type GetArrayProp = {
+export type SetArrayProp = {
   key: string;
   keyColor: string;
   quoteColor: string;
@@ -157,7 +157,7 @@ export type GetArrayProp = {
   breakLine: boolean;
 };
 
-export const getArrayProp = ({
+export const setArrayProp = ({
   key,
   keyColor,
   quoteColor,
@@ -168,7 +168,7 @@ export const getArrayProp = ({
   indent,
   children,
   breakLine,
-}: GetArrayProp) => {
+}: SetArrayProp) => {
   return (
     <pre>
       <span className={quoteColor}>{`"`}</span>

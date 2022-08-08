@@ -1,9 +1,9 @@
 import {
-  getColorJson,
-  getStringProp,
-  getObjectProp,
-  getArrayProp,
-  getNumber,
+  setColorJson,
+  setStringProp,
+  setObjectProp,
+  setArrayProp,
+  setNumber,
 } from ".";
 
 export default {
@@ -11,11 +11,11 @@ export default {
 };
 
 const Template = () => {
-  return getColorJson({
+  return setColorJson({
     bracketColor: "text-black",
     indent: "pl-8",
     children: [
-      getStringProp({
+      setStringProp({
         key: "id",
         keyColor: "text-instillBlue",
         value: "det-pipeline",
@@ -25,7 +25,7 @@ const Template = () => {
         trailingComma: true,
         trailingCommaColor: "text-black",
       }),
-      getObjectProp({
+      setObjectProp({
         key: "recipe",
         keyColor: "text-instillBlue",
         quoteColor: "text-black",
@@ -35,7 +35,7 @@ const Template = () => {
         trailingCommaColor: "text-black",
         indent: "pl-8",
         children: [
-          getStringProp({
+          setStringProp({
             key: "source",
             keyColor: "text-instillGreen",
             value: "source-connectors/source-http",
@@ -45,7 +45,7 @@ const Template = () => {
             trailingComma: true,
             trailingCommaColor: "text-black",
           }),
-          getArrayProp({
+          setArrayProp({
             key: "model_instances",
             keyColor: "text-instillYellow",
             quoteColor: "text-black",
@@ -56,13 +56,13 @@ const Template = () => {
             indent: "pl-8",
             breakLine: false,
             children: [
-              getNumber({
+              setNumber({
                 value: 10,
                 valueColor: "text-instillYellow",
                 trailingComma: true,
                 trailingCommaColor: "text-black",
               }),
-              getNumber({
+              setNumber({
                 value: 1220,
                 valueColor: "text-instillYellow",
                 trailingComma: false,
@@ -70,7 +70,7 @@ const Template = () => {
               }),
             ],
           }),
-          getStringProp({
+          setStringProp({
             key: "destination",
             keyColor: "text-instillGreen",
             value: "destination-connectors/destination-http",
