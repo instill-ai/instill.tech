@@ -1,8 +1,7 @@
 import { FC, ReactElement } from "react";
 import Image from "next/future/image";
 
-import { MailchimpSignupForm } from "../components/forms/MailchimpSignupForm";
-import { PageBase, PageHead } from "@/components/ui";
+import { PageBase, PageHead, MailchimpSignupForm } from "@/components/ui";
 
 interface GetLayOutProps {
   page: ReactElement;

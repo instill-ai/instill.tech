@@ -17,6 +17,7 @@ import type { PageBaseProps } from "./PageBase";
 import PageHead from "./PageHead";
 import type { PageHeadProps } from "./PageHead";
 import JoinDiscordButton from "./JoinDiscordButton";
+import { MailchimpSignupForm } from "./MailchimpSignupForm";
 
 import ViewJobsScrollButton from "./ViewJobsScrollButton";
 import { ViewJobsScrollButtonProps } from "./ViewJobsScrollButton";
@@ -37,6 +38,7 @@ export {
   GetEarlyAccessButton,
   GithubCtaButton,
   JoinDiscordButton,
+  MailchimpSignupForm,
   ViewJobsScrollButton,
   ShareToFb,
   ShareToLinkedIn,

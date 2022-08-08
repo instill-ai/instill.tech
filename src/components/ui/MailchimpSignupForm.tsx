@@ -1,9 +1,7 @@
-import { FC, useEffect } from "react";
-import * as classNames from "classnames";
+import { useEffect } from "react";
+import cn from "clsx";
 
-interface Props {}
-
-export const MailchimpSignupForm: FC<Props> = () => {
+export const MailchimpSignupForm = () => {
   const inputStyle =
     "flex-grow text-instillGrey95 border border-instillGrey50 py-1 px-2 max-h-[36px]";
   const fieldTitleStyle = "instill-text-body text-instillGrey95";
@@ -56,7 +54,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               id="mce-EMAIL"
               type="email"
               name="EMAIL"
-              className={classNames.default(inputStyle, "required")}
+              className={cn(inputStyle, "required")}
             />
           </div>
           <div className="grid grid-cols-1 gap-x-5 md:grid-cols-2">
@@ -68,7 +66,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
                 id="mce-FNAME"
                 type="text"
                 name="FNAME"
-                className={classNames.default(inputStyle, "required")}
+                className={cn(inputStyle, "required")}
               />
             </div>
             <div className="mc-field-group flex flex-col gap-y-2">
@@ -79,7 +77,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
                 id="mce-LNAME"
                 type="text"
                 name="LNAME"
-                className={classNames.default(inputStyle, "required")}
+                className={cn(inputStyle, "required")}
               />
             </div>
           </div>
@@ -92,7 +90,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               id="mce-COMPANY"
               type="text"
               name="COMPANY"
-              className={classNames.default(inputStyle, "required")}
+              className={cn(inputStyle, "required")}
             />
           </div>
           <div className="mc-field-group flex flex-col gap-y-2">
@@ -103,7 +101,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               id="mce-ORG_URL"
               type="url"
               name="ORG_URL"
-              className={classNames.default(inputStyle)}
+              className={cn(inputStyle)}
             />
           </div>
           <div className="mc-field-group flex flex-col gap-y-2">
@@ -113,7 +111,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
             <select
               id="mce-ORG_SIZE"
               name="ORG_SIZE"
-              className={classNames.default(inputStyle, "required")}
+              className={cn(inputStyle, "required")}
             >
               <option value="" />
               <option value="&lt; 5">&lt; 5</option>
@@ -129,7 +127,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
             <select
               id="mce-AI_SIZE"
               name="AI_SIZE"
-              className={classNames.default(inputStyle, "required")}
+              className={cn(inputStyle, "required")}
             >
               <option value="" />
               <option value="None">None</option>
@@ -148,7 +146,7 @@ export const MailchimpSignupForm: FC<Props> = () => {
               id="mce-WHY_JOIN"
               type="text"
               name="WHY_JOIN"
-              className={classNames.default(inputStyle, "required")}
+              className={cn(inputStyle, "required")}
             />
           </div>
           <div className="mc-field-group hidden">
