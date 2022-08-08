@@ -1,5 +1,3 @@
-import SecureYourSpotSection from "./SecureYourSpotSection";
-import type { SecureYourSpotSectionProps } from "./SecureYourSpotSection";
 import OurMembersSection from "./OurMembersSection";
 import type { OurMembersSectionProps } from "./OurMembersSection";
 import InstillCloudSection from "./InstillCloudSection";
@@ -14,7 +12,6 @@ import type { NewsletterArchiveSectionProps } from "./NewsletterArchiveSection";
 import VdpFlowSection from "./VdpFlowSection";
 
 export {
-  SecureYourSpotSection,
   OurMembersSection,
   InstillCloudSection,
   HeroSection,
@@ -24,7 +21,6 @@ export {
   VdpFlowSection,
 };
 export type {
-  SecureYourSpotSectionProps,
   OurMembersSectionProps,
   HeroSectionProps,
   StayInTheLoopSectionProps,

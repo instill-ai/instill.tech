@@ -16,6 +16,8 @@ import PageBase from "./PageBase";
 import type { PageBaseProps } from "./PageBase";
 import PageHead from "./PageHead";
 import type { PageHeadProps } from "./PageHead";
+import SecureYourSpot from "./SecureYourSpot";
+import type { SecureYourSpotProps } from "./SecureYourSpot";
 import JoinDiscordButton from "./JoinDiscordButton";
 import { MailchimpSignupForm } from "./MailchimpSignupForm";
 
@@ -50,6 +52,7 @@ export {
   PageBase,
   PageHead,
   SubscribeNewsletterForm,
+  SecureYourSpot,
 };
 
 export type {
@@ -63,4 +66,5 @@ export type {
   PageBaseProps,
   PageHeadProps,
   SubscribeNewsletterFormProps,
+  SecureYourSpotProps,
 };

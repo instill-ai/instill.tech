@@ -1,9 +1,8 @@
-import { FC } from "react";
 import cn from "clsx";
 import { GetEarlyAccessButton } from "@/components/ui";
 import Image from "next/future/image";
 
-export type SecureYourSpotSectionProps = {
+export type SecureYourSpotProps = {
   /** Layout
    *  - main: alpha badge horizontal align with title and description, underneath is get early access button
    *  - compact: title and description stick with get early access button and horizontal align with alpha badge
@@ -16,11 +15,11 @@ export type SecureYourSpotSectionProps = {
   marginBottom?: string;
 };
 
-const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
+const SecureYourSpot = ({
   marginBottom,
   layout,
   bgColor,
-}) => {
+}: SecureYourSpotProps) => {
   return (
     <div
       className={cn(
@@ -82,4 +81,4 @@ const SecureYourSpotSection: FC<SecureYourSpotSectionProps> = ({
   );
 };
 
-export default SecureYourSpotSection;
+export default SecureYourSpot;

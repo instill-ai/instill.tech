@@ -2,7 +2,12 @@ import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
 import { HeroSection, InstillCloudSection } from "@/components/sections";
-import { PageBase, ContentContainer, PageHead } from "@/components/ui";
+import {
+  PageBase,
+  ContentContainer,
+  PageHead,
+  SecureYourSpotProps,
+} from "@/components/ui";
 
 const LandingBanner = dynamic(() =>
   import("@/components/sections").then((mod) => mod.VdpFlowSection)
@@ -12,10 +17,8 @@ const StayInTheLoopSection = dynamic(() =>
   import("@/components/sections/").then((mod) => mod.StayInTheLoopSection)
 );
 
-const SecureYourSpotSection = dynamic(() =>
-  import("@/components/sections/").then(
-    (module) => module.SecureYourSpotSection
-  )
+const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
+  import("@/components/ui").then((mod) => mod.SecureYourSpot)
 );
 
 const FeatureSection = dynamic(() =>
@@ -58,11 +61,7 @@ const HomePage: FC<Props> & {
           contentMaxWidth="max-w-[889px]"
           marginBottom="mb-[129px]"
         >
-          <SecureYourSpotSection
-            bgColor="black"
-            layout="main"
-            marginBottom="mb-40"
-          />
+          <SecureYourSpot bgColor="black" layout="main" marginBottom="mb-40" />
           <StayInTheLoopSection />
         </ContentContainer>
       </div>
