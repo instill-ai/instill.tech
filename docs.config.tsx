@@ -51,37 +51,21 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "Connectors",
-        collapsible: false,
-        link: "/docs/connectors/overview",
-        items: [],
-      },
-      {
-        text: "Sources",
+        text: "Source Connectors",
         collapsible: true,
         items: [
-          {
-            text: "Real-time Source HTTP",
-            link: "/docs/connectors/definitions/source-http-directness",
-          },
-          {
-            text: "Real-time Source gRPC",
-            link: "/docs/connectors/definitions/source-grpc-directness",
-          },
+          { text: "Overview", link: "/docs/source-connectors/overview" },
+          { text: "HTTP", link: "/docs/source-connectors/http" },
+          { text: "gRPC", link: "/docs/source-connectors/grpc" },
         ],
       },
       {
-        text: "Destinations",
+        text: "Destination Connectors",
         collapsible: true,
         items: [
-          {
-            text: "Real-time Destination HTTP",
-            link: "/docs/connectors/definitions/destination-http-directness",
-          },
-          {
-            text: "Real-time Destination gRPC",
-            link: "/docs/connectors/definitions/destination-grpc-directness",
-          },
+          { text: "Overview", link: "/docs/destination-connectors/overview" },
+          { text: "HTTP", link: "/docs/destination-connectors/http" },
+          { text: "gRPC", link: "/docs/destination-connectors/grpc" },
         ],
       },
       {
