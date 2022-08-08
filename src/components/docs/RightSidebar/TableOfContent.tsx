@@ -7,16 +7,16 @@ export type TableOfContentProps = {
 
 const TableOfContent = ({ headers }: TableOfContentProps) => {
   return (
-    <>
+    <div className="flex flex-col mb-10">
       <h2 className="mb-4 text-instillGrey95 font-semibold">On this page</h2>
       <ul>
         {headers.map((header) => (
           <li
             key={header.slug}
-            className="group my-2.5 border-l-2 border-slate-300 py-0.5 pl-4 text-sm hover:border-slate-700"
+            className="group my-2.5 border-l-2 border-slate-300 py-0.5 pl-4 text-sm hover:border-instillBlue50"
           >
             <a
-              className="block truncate text-slate-600 group-hover:text-slate-900"
+              className="block truncate text-instillGrey50 group-hover:text-instillBlue50"
               href={`#${header.slug}`}
             >
               {header.text}
@@ -24,7 +24,7 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

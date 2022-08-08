@@ -15,7 +15,7 @@ export type DocsLayoutProps = {
 // When screen exceed min-width:1440px we want to center the docs-content,  make left sidebar
 // expand to the left edge of the docs-content. In order to accomplish this task, left sidebar's
 // position will be fixed at the leftside and have its width determined by the max-width of docs
-// container
+// container.
 
 const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const router = useRouter();
@@ -97,7 +97,14 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
               className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]"
               title="Table of Contents"
             >
-              <RightSidebar headers={headers} />
+              <RightSidebar
+                githubEditUrl={
+                  "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
+                  router.asPath +
+                  ".mdx"
+                }
+                headers={headers}
+              />
             </aside>
           </div>
         </div>
