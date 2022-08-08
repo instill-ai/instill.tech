@@ -12,10 +12,11 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-No matter where your model stores, we want to keep your models on the same storage without changes and make the process of importing your models into VDP easy.
-That's why we integrate VDP with various model platforms and tools as model sources and strive to support as many popular model sources as possible.
+No matter where your model stores, we want to keep your models in the same place without changes and make the process of importing the models into VDP very easy.
+That's why VDP has integrated many model platforms and tools as _model sources_. We strive to support as many popular _model sources_ as possible.
 
-A model source in VDP is defined as `model definition`. A `model definition` defines the schema about how to configure and import the model. Currently, VDP supports importing models from the following model definitions:
+A _model source_ in VDP is defined by `model definition`. A `model definition` JSON Schema defines how to configure and import a _model source_.
+Currently, VDP supports importing models using the following `model definitions`:
 
 - [ArtiVC](/docs/import-models/artivc)
 - [GitHub](/docs/import-models/github)
