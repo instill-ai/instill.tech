@@ -187,31 +187,29 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 
 ![Keypoint detection task](/docs-assets/cv-task-keypoint.svg)
 
+> Keypoint detection task only allows single image input for now, will allow batch processing soon.
+
 <CH.Code>
 ```json current
 {
   "keypoint_outputs": [
     {
-      "keypoint_objects": [
+      "keypoints": [
         {
-          "keypoints": [
-            {
-              "v": 0.53722847,
-              "x": 542.82764,
-              "y": 86.63817
-            },
-            {
-              "v": 0.634061,
-              "x": 553.0073,
-              "y": 79.440636
-            },
-            ...
-          ],
-          "score": 0.94
+          "v": 0.53722847,
+          "x": 542.82764,
+          "y": 86.63817
+        },
+        {
+          "v": 0.634061,
+          "x": 553.0073,
+          "y": 79.440636
         },
         ...
-      ]
-    }
+      ],
+      "score": 0.94
+    },
+    ...
   ]
 }
 ````
@@ -246,10 +244,14 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 
 </CH.Code>
 
-## What if my task is not supported by VDP?
+## What if my task is not standardised by by VDP yet?
 
-VDP is very flexible and allows you to import models even if your task is not supported or the output of the model can't be converted to the format of supported CV Tasks.
-Send an image to the model as the input, VDP wraps the raw model output in a _standard_ format, including necessary fields for the names, types and shapes of the model output variables.
+VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported CV Tasks.
+The model will be classified as an `Unspecified` CV Task. Send an image to the model as the input,
+VDP will
+
+- check the `config.pbtxt` [model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) file to extract the output names, datatypes and shapes of the model outputs,
+- and wrap these information along with the raw model output in a _standard_ format.
 
 ![Unspecified task](/docs-assets/cv-task-unspecified.svg)
 
