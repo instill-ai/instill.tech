@@ -12,13 +12,13 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-At the two ends of a VDP pipeline, there are source connector (i.e., the E in ETL) and destination connector (i.e., the L in ETL).
+At the two ends of a VDP pipeline, there are **Source** component (i.e., the E in ETL) and **Destination** component (i.e., the L in ETL).
 
 ## Definition
 
 ## Source
 
-A source connector is in charge of ingesting unstructured visual data into **Pipeline**.
+A **Source** component is a data connector in charge of ingesting unstructured visual data into **Pipeline**.
 
 VDP supports HTTP and gRPC source connector for both `SYNC` and `ASYNC` pipelines.
 
@@ -26,7 +26,7 @@ Source connectors for the pipeline [`FETCH`](core-concepts/pipeline#fetch-mode) 
 
 ## Destination
 
-A destination connector is to write the standardised CV Task output from **Model** to the destination data warehouse or notification.
+A **Destination** component is a data connector to write the standardised CV Task output from **Model** to the destination data warehouse or notification.
 
 VDP supports HTTP and gRPC destination connector for the `SYNC` pipeline.
 
@@ -42,7 +42,7 @@ VDP currently does not support Airbyte's [Namespaces](https://docs.airbyte.com/u
 
 ## Release stage
 
-#### Source connectors
+#### Source release stage
 
 Instill AI develops and maintains source connectors. We use release stage below to indicate a source connector's readiness:
 
@@ -52,6 +52,6 @@ Instill AI develops and maintains source connectors. We use release stage below 
 | **Beta**                | A beta source connector is considered stable and reliable with no further backwards incompatible changes but has not been validated by a broader group of users. We expect to find and fix a few issues and bugs in the release before it is ready for the next stage. |
 | **Generally Available** | A generally available source connector has been thoroughly tested in the battlefield and is ready for use in a production environment. Its documentation is considered sufficient to support widespread adoption.                                                      |
 
-#### Destination connectors
+#### Destination release stage
 
 Destination connectors are developed and maintained by Airbyte community, where the release stage of each Airbyte destination connector is reported [here](https://docs.airbyte.com/integrations/#destinations).
