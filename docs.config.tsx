@@ -116,6 +116,16 @@ export const SIDEBAR: Sidebar = {
           },
         ],
       },
+      {
+        text: "Development",
+        collapsible: true,
+        items: [
+          {
+            text: "Local development",
+            link: "/docs/development/local-development",
+          },
+        ],
+      },
     ],
   },
   rightSidebar: {
