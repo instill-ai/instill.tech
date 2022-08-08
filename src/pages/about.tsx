@@ -15,14 +15,15 @@ import {
   PageBase,
   PageHead,
   SecureYourSpotProps,
+  StayInTheLoopProps,
 } from "@/components/ui";
 
 const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
   import("@/components/ui").then((mod) => mod.SecureYourSpot)
 );
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 interface GetLayOutProps {
@@ -49,23 +50,22 @@ const AboutPage: FC<Props> & {
     if (!loadSecureYourSpot && secureYourSpotOnScreen) {
       setLoadSecureYourSpot(true);
     }
-  }, [secureYourSpotOnScreen, loadSecureYourSpot]);
+  }, [loadSecureYourSpot, secureYourSpotOnScreen]);
 
-  // Lazy loading StayInTheLoopSection
-  const stayInTheLoopSectionRef = useRef<HTMLDivElement>();
-  const [loadStayInTheLoopSection, setLoadStayInTheLoopSection] =
-    useState(false);
-  const stayInTheLoopSectionOnScreen = useOnScreen(
+  // Lazy loading StayInTheLoop
+  const stayInTheLoopRef = useRef<HTMLDivElement>();
+  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
+  const stayInTheLoopOnScreen = useOnScreen(
     secureYourSpotRef,
-    !loadStayInTheLoopSection,
+    !loadStayInTheLoop,
     "100px"
   );
 
   useEffect(() => {
-    if (!loadStayInTheLoopSection && stayInTheLoopSectionOnScreen) {
-      setLoadStayInTheLoopSection(true);
+    if (!loadStayInTheLoop && stayInTheLoopOnScreen) {
+      setLoadStayInTheLoop(true);
     }
-  }, [stayInTheLoopSectionOnScreen, loadStayInTheLoopSection]);
+  }, [loadStayInTheLoop, stayInTheLoopOnScreen]);
 
   return (
     <>
@@ -132,8 +132,8 @@ const AboutPage: FC<Props> & {
             <SecureYourSpot bgColor="black" layout="main" />
           )}
         </div>
-        <div className="mb-20" ref={stayInTheLoopSectionRef}>
-          {loadStayInTheLoopSection && <StayInTheLoopSection />}
+        <div className="mb-20" ref={stayInTheLoopRef}>
+          {loadStayInTheLoop && <StayInTheLoop />}
         </div>
       </ContentContainer>
     </>

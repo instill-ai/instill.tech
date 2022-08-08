@@ -3,8 +3,6 @@ import type { OurMembersSectionProps } from "./OurMembersSection";
 import InstillCloudSection from "./InstillCloudSection";
 import HeroSection from "./HeroSection";
 import type { HeroSectionProps } from "./HeroSection";
-import StayInTheLoopSection from "./StayInTheLoopSection";
-import type { StayInTheLoopSectionProps } from "./StayInTheLoopSection";
 import FeatureSection from "./FeatureSection";
 
 import NewsletterArchiveSection from "./NewsletterArchiveSection";
@@ -15,7 +13,6 @@ export {
   OurMembersSection,
   InstillCloudSection,
   HeroSection,
-  StayInTheLoopSection,
   FeatureSection,
   NewsletterArchiveSection,
   VdpFlowSection,
@@ -23,6 +20,5 @@ export {
 export type {
   OurMembersSectionProps,
   HeroSectionProps,
-  StayInTheLoopSectionProps,
   NewsletterArchiveSectionProps,
 };

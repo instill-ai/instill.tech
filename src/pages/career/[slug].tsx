@@ -10,6 +10,7 @@ import {
   ContentContainer,
   PageBase,
   PageHead,
+  StayInTheLoopProps,
 } from "@/components/ui";
 import {
   getClickUpTaskQuery,
@@ -21,8 +22,8 @@ import { IClickUpTask } from "../../types/clickUp";
 import { TPositionDetails } from "../../types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -131,7 +132,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         />
 
         <div className="mb-20 flex" ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && <StayInTheLoopSection />}
+          {loadStayInTheLoop && <StayInTheLoop />}
         </div>
       </ContentContainer>
     </>

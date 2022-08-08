@@ -8,7 +8,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { ContentContainer, PageBase, PageHead } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  StayInTheLoopProps,
+} from "@/components/ui";
 import {
   CareerGeneralIntro,
   CareerHero,
@@ -26,8 +31,8 @@ const CareerPositionListSection = dynamic<CareerPositionListSectionProps>(() =>
   import("@/components/career").then((mod) => mod.CareerPositionListSection)
 );
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections").then((mod) => mod.StayInTheLoopSection)
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 interface Props {
@@ -123,7 +128,7 @@ const CareerPage: FC<Props> & {
           )}
         </div>
         <div className="flex" ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && <StayInTheLoopSection />}
+          {loadStayInTheLoop && <StayInTheLoop />}
         </div>
       </ContentContainer>
     </>

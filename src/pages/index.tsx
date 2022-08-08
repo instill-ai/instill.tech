@@ -7,14 +7,15 @@ import {
   ContentContainer,
   PageHead,
   SecureYourSpotProps,
+  StayInTheLoopProps,
 } from "@/components/ui";
 
 const LandingBanner = dynamic(() =>
   import("@/components/sections").then((mod) => mod.VdpFlowSection)
 );
 
-const StayInTheLoopSection = dynamic(() =>
-  import("@/components/sections/").then((mod) => mod.StayInTheLoopSection)
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
@@ -62,7 +63,7 @@ const HomePage: FC<Props> & {
           marginBottom="mb-[129px]"
         >
           <SecureYourSpot bgColor="black" layout="main" marginBottom="mb-40" />
-          <StayInTheLoopSection />
+          <StayInTheLoop />
         </ContentContainer>
       </div>
     </>

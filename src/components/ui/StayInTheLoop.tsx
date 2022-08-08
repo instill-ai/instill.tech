@@ -1,14 +1,11 @@
-import { FC } from "react";
-import { SubscribeNewsletterForm } from "@/components/ui";
 import cn from "clsx";
+import { SubscribeNewsletterForm } from "@/components/ui";
 
-export type StayInTheLoopSectionProps = {
+export type StayInTheLoopProps = {
   marginBottom?: string;
 };
 
-const StayInTheLoopSection: FC<StayInTheLoopSectionProps> = ({
-  marginBottom,
-}) => {
+const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
   return (
     <div
       className={cn(
@@ -27,4 +24,4 @@ const StayInTheLoopSection: FC<StayInTheLoopSectionProps> = ({
   );
 };
 
-export default StayInTheLoopSection;
+export default StayInTheLoop;

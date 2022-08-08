@@ -30,6 +30,8 @@ import ShareToLinkedIn from "./ShareToLinkedIn";
 import type { ShareToLinkedInProps } from "./ShareToLinkedIn";
 import ShareToTwitter from "./ShareToTwitter";
 import type { ShareToTwitterProps } from "./ShareToTwitter";
+import StayInTheLoop from "./StayInTheLoop";
+import type { StayInTheLoopProps } from "./StayInTheLoop";
 import SubscribeNewsletterForm from "./SubscribeNewsletterForm";
 import type { SubscribeNewsletterFormProps } from "./SubscribeNewsletterForm";
 
@@ -53,6 +55,7 @@ export {
   PageHead,
   SubscribeNewsletterForm,
   SecureYourSpot,
+  StayInTheLoop,
 };
 
 export type {
@@ -67,4 +70,5 @@ export type {
   PageHeadProps,
   SubscribeNewsletterFormProps,
   SecureYourSpotProps,
+  StayInTheLoopProps,
 };
