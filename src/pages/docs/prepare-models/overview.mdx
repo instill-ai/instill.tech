@@ -65,4 +65,7 @@ If your model is not compatible with Python 3.8 or if it requires additional dep
 
 - Create a [model card](model-card) `README.md` to describe information of your model
 - Write a [pre-processing model](pre-processing) and a [post-processing model](post-processing) that are compatible with the Triton Python Backend
-- Set up an [ensemble model](https://github.com/triton-inference-server/server/blob/main/docs/architecture.md#ensemble-models) to encapsulate a "pre-processing model → inference model → post-processing model" procedure
+- Prepare the model configuration file for your inference model
+- Set up an [ensemble model](https://github.com/triton-inference-server/server/blob/main/docs/architecture.md#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
+
+After preparing your model to be VDP compatible, check out [Import Models](/docs/import-models/overview) to learn about how to import the model into VDP from different sources.
