@@ -1,6 +1,5 @@
 import {
   createRef,
-  FC,
   useCallback,
   useEffect,
   useMemo,
@@ -19,15 +18,12 @@ import { useRouter } from "next/router";
 import MemberAvatarKernel from "./MemberAvatarKernel";
 import MemberIntro from "./MemberIntro";
 
-export type OurMembersSectionProps = {
+export type OurMembersProps = {
   members: TMemberDetails[];
   marginBottom?: string;
 };
 
-const OurMembersSection: FC<OurMembersSectionProps> = ({
-  members,
-  marginBottom,
-}) => {
+const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
     useState<string>(null);
@@ -224,4 +220,4 @@ const OurMembersSection: FC<OurMembersSectionProps> = ({
   );
 };
 
-export default OurMembersSection;
+export default OurMembers;

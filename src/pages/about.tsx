@@ -9,7 +9,7 @@ import {
   transformClickUpTaskToMemberDetails,
 } from "../lib/clickUp";
 import { TMemberDetails } from "../types/instill";
-import { OurMembersSection } from "@/components/sections";
+import { OurMembers } from "@/components/about";
 import {
   ContentContainer,
   PageBase,
@@ -126,7 +126,7 @@ const AboutPage: FC<Props> & {
             </div>
           </div>
         </div>
-        <OurMembersSection members={members} marginBottom="mb-10" />
+        <OurMembers members={members} marginBottom="mb-10" />
         <div ref={secureYourSpotRef}>
           {loadSecureYourSpot && (
             <SecureYourSpot bgColor="black" layout="main" />
