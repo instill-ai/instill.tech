@@ -101,6 +101,13 @@ module.exports = {
             "code::after": {
               content: '""',
             },
+
+            // We have implemented rehype-autolink-headings that will wrap a tag in headings
+            // This config will cancel natural a tag style under headings
+            "h1 a,h2 a,h3 a,h4 a,h5 a": {
+              color: theme("colors.instillGrey95"),
+              textDecorationLine: "none",
+            },
           },
         },
         black: {
