@@ -19,8 +19,8 @@ export const SIDEBAR: Sidebar = {
   leftSidebar: {
     logo: {
       src: "/images/vdp-logo-white-bg.svg",
-      width: 152,
-      height: 54,
+      width: 100,
+      height: 36,
       alt: "VDP's logo",
     },
     sections: [

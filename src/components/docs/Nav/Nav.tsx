@@ -33,7 +33,7 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
     <>
       <nav
         className={cn(
-          "sticky top-0 z-10 mx-auto flex flex-row w-full bg-white py-4 px-8 h-[132px] border-b md:border-none",
+          "sticky backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white/50 py-4 px-8 h-[100px] border-b md:border-none",
           marginBottom
         )}
       >

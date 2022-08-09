@@ -18,19 +18,20 @@ const LeftSidebar = ({
   return (
     <div
       className={cn(
-        "flex w-full md:ml-auto flex-col md:sticky md:top-0 py-10 h-screen overflow-auto px-5",
+        "flex w-full md:ml-auto flex-col md:sticky md:top-0 pt-4 pb-10 h-screen overflow-auto px-5",
         maxWidth
       )}
     >
       {leftSidebar.logo ? (
         <Link href="/docs/start-here/getting-started">
-          <a className="hidden flex-row gap-x-3 mx-auto mb-10 md:flex">
+          <a className="hidden w-full md:flex-row gap-x-3 mx-auto my-auto md:flex">
             <Image
               src={leftSidebar.logo.src}
               alt={leftSidebar.logo.alt}
               width={leftSidebar.logo.width}
               height={leftSidebar.logo.height}
               sizes={`${leftSidebar.logo.width}px`}
+              className="mx-auto"
             />
           </a>
         </Link>
