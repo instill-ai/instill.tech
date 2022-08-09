@@ -166,7 +166,7 @@ Since a local model has no version control, when the model is successfully impor
 
 #### Low-code
 
-1. Send a HTTP request to the VDP model backend to import a local model.
+1. Send a HTTP request to the VDP `model-backend` to import a local model.
 
 ```bash cURL
 curl -X POST \
@@ -220,4 +220,4 @@ http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart
 
 </ CH.Code>
 
-In which `http://localhost:8083` is the default URL of the model backend.
+In which `http://localhost:8083` is the default URL of the `model-backend`.

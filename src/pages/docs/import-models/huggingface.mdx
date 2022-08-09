@@ -57,7 +57,7 @@ Since a Hugging Face model has no version control, when the model is successfull
 
 #### Low-code
 
-1. Send a HTTP request to the VDP model backend to import a model from GCS bucket managed by ArtiVC:
+1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
 
 ```bash cURL
 curl -X POST \
@@ -116,4 +116,4 @@ http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test-
 
 </ CH.Code>
 
-In which `http://localhost:8083` is the default URL of the model backend.
+In which `http://localhost:8083` is the default URL of the `model-backend`.

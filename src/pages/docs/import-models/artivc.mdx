@@ -181,7 +181,7 @@ The setup guide assumes your model is stored in a GCS bucket. When the model is 
 
 #### Low-code
 
-1. Send a HTTP request to the VDP model backend to import a model from GCS bucket managed by ArtiVC:
+1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
 
 ```bash cURL
 curl -X POST \
@@ -246,7 +246,7 @@ http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart
 
 </ CH.Code>
 
-In which `http://localhost:8083` is the default URL of the model backend.
+In which `http://localhost:8083` is the default URL of the `model-backend`.
 
 ### Find the credentials JSON file
 

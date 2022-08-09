@@ -78,7 +78,7 @@ You can also build the pipeline by sending requests, thanks to the [API-first](/
 
 **Step 1: Add a HTTP source**
 
-`http://localhost:8082` is the default URL of the VDP connector backend.
+`http://localhost:8082` is the default URL of the VDP `connector-backend`.
 
 ```bash focus=1:11
 
@@ -138,7 +138,7 @@ http://localhost:8081/v1alpha/pipelines
 
 **Step 2: Import a model from GitHub**
 
-`http://localhost:8083` is the default URL of the VDP model backend.
+`http://localhost:8083` is the default URL of the VDP `model-backend`.
 
 ```bash focus=13:22
 
@@ -166,7 +166,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 **Step 5: Create your first pipeline**
 
-`http://localhost:8081` is the default URL of the VDP pipeline backend.
+`http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
 
 ```bash focus=38:51
 
@@ -219,7 +219,7 @@ http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart
 
 </CH.Code>
 
-in which `http://localhost:8081` is the default URL of the VDP pipeline backend.
+in which `http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
 
 A HTTP response will return
 
