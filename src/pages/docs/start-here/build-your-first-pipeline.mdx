@@ -33,7 +33,7 @@ A HTTP Source accepts HTTP requests with image payloads to be processed by a pip
 
 ![Add a HTTP Source to create a pipeline in the VDP Console](/docs-assets/add-a-source-http.png)
 
-> 📔 Check our growing list of [Source connectors](/docs/connectors/overview).
+> Check our growing list of [Source connectors](/docs/connectors/overview).
 
 **Import a model from GitHub**
 
@@ -47,7 +47,7 @@ To process images, here we import a model from our public GitHub repo [instill-a
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance id.
 
-> 📔 Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
+> Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
 
 **Deploy a model instance of the imported model**
 
@@ -59,7 +59,7 @@ Once the model is imported, we pick one from all the model instances, and click 
 
 Just click `Next`. Since we are building a `SYNC` pipeline, the HTTP Destination is automatically paired with the HTTP source.
 
-> 📔 The paired Sources and Destinations for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
+> The paired Sources and Destinations for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
 >
 > - HTTP Source → HTTP Destination
 > - gRPC Source → gRPC Destination

@@ -16,12 +16,12 @@ The `ArtiVC` model definition allows you to import models versioned by [ArtiVC](
 
 ## Supported storage backends
 
-- ❌ Local Filesystem
-- ❌ Remote Filesystem (SSH)
-- ❌ AWS S3
 - ✅ Google Cloud Storage (GCS)
-- ❌ Azure Blob Storage
-- ❌ Rclone
+- 🚧 Local Filesystem
+- 🚧 Remote Filesystem (SSH)
+- 🚧 AWS S3
+- 🚧 Azure Blob Storage
+- 🚧 Rclone
 
 ## Release stage
 
@@ -156,11 +156,11 @@ If you list the files in the remote storage repository, the file structure will 
 
 🎉 If you've followed the above steps, just run the setup guide below, VDP wll import the model accordingly.
 
-> 📔 Use `avc get` to download data. See [here](https://artivc.io/usage/getting-started/) for more information.
+> Use `avc get` to download data. See [here](https://artivc.io/usage/getting-started/) for more information.
 
 ### Setup guide
 
-#### 🎯 No-code Console
+#### No-code Console
 
 Go to the model tab in the console and click `Add new model`. The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
 
@@ -180,7 +180,7 @@ Now go to the model tab, the corresponding model instance should be online.
 
 ![ArtiVC model list](/docs-assets/artivc-model-list.png)
 
-#### 🎯 Low-code
+#### Low-code
 
 1. Send a HTTP request to the VDP model backend to import a model from GCS bucket managed by ArtiVC:
 
