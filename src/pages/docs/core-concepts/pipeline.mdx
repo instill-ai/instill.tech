@@ -12,7 +12,7 @@ export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
 
-A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process visual data. 
+A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process visual data.
 
 It is defined by a `recipe` which is essentially a JSON object:
 
@@ -98,9 +98,13 @@ When a pipeline is initially created, the pipeline state is determined by the pi
 
 A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend` endpoint `:deactivate` only when its original state is `ACTIVE`.
 
-A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `:activate` only when its original state is `INACTIVE`. 
+A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `:activate` only when its original state is `INACTIVE`.
 
-<p align="center">  
-  <img src="/docs-assets/core-concepts/pipeline-state.svg" alt="pipeline state" width="500" />
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/pipeline-state.svg"
+    alt="pipeline state"
+    width="500"
+  />
   The finite-state-machine (FSM) diagram for the pipeline state transition logic.
 </p>

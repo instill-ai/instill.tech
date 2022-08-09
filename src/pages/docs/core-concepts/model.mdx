@@ -23,6 +23,8 @@ To make your models VDP-ready, please refer to [Prepare models](/docs/prepare-mo
 VDP uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model_definition.proto#L30-L76) to define how to configure and import a model from a supported model source.
 Please check out [Import Models](/docs/import-models/overview) to learn more.
 
+Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.
+
 ## Model Instance
 
 A **Model Instance** represents a tagged snapshot of a Model. A model may have multiple model instances.
@@ -61,8 +63,6 @@ The examples below showcase pipeline recipes that incorporate single or multiple
 
 </CH.Code>
 
-## State
-
 ## Model deployment
 
 When importing a model in VDP, all versions of the model are imported as model instances associated with the original version tags.
@@ -70,6 +70,30 @@ Please refer to [Import Models](/docs/import-models/overview) to learn about mod
 Among all model instances, you can choose specific ones into the model repository to deploy and then to use in data pipelines.
 
 ![VDP model and model instance](/docs-assets/model-and-model-instance.svg)
+
+## State
+
+The state of a model instance can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
+
+When a model is initially created, the states of all model instances of this model are by default `OFFLINE`.
+
+A model instance can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `:undeploy` only when its original state is `ONLINE`.
+
+A model instance can be switch to `ONLINE` state by invoking the `model-backend` endpoint `:deploy` only when its original state is `OFFLINE`.
+Model deployment operation can take time depending on factors like Internet connection and model size.
+Before a model instance is deployed online, the state of the model instance will be `UNSPECIFIED`.
+
+If the state of a model instance ends up with `ERROR`, the model instance is undeployable on VDP. Please refer to [Prepare Models](/docs/prepare-models/overview) to make your model VDP-ready.
+
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/model-instance-state.svg"
+    alt="model instance state"
+    width="500"
+  />
+  The finite-state-machine (FSM) diagram for the model instance state transition
+  logic.
+</p>
 
 ## Inference
 
@@ -133,7 +157,3 @@ http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-mul
 </CH.Code>
 
 In which `http://localhost:8083` is the default URL of the VDP model backend. `{model-id}` and `{instance-id}` correspond to the ID of model and model instance respectively.
-
-## Release stage
-
-Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.
