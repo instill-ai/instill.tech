@@ -23,7 +23,7 @@ If no task is specified when creating a model, the output will the raw model out
 
 ### Image classification
 
-> 📔 Learn more about [Image classification Task](/docs/core-concepts/cv-task#image-classification)
+> Learn more about [Image classification Task](/docs/core-concepts/cv-task#image-classification)
 
 Assume we have a "cat vs. dog" model to infer whether an image is a cat image or dog image. Create a `labels.txt` file to list all the pre-defined categories, with one category label per line. Add the file to the folder of inference model.
 
@@ -64,7 +64,7 @@ Check the [standarised output for image classification](/docs/core-concepts/cv-t
 
 ### Object detection
 
-> 📔 Learn more about [Object detection Task](/docs/core-concepts/cv-task#object-detection)
+> Learn more about [Object detection Task](/docs/core-concepts/cv-task#object-detection)
 
 Create a Python file with a structure similar to below. The file inherits the `PostDetectionModel` class and implement the `post_process_per_image` abstract method.
 Then, add the file in the post-processing model folder:
@@ -138,7 +138,7 @@ Check the [standardised output for object detection](/docs/core-concepts/cv-task
 
 ### Keypoint detection
 
-> 📔 Learn more about [Keypoint detection Task](/docs/core-concepts/cv-task#keypoint-detection)
+> Learn more about [Keypoint detection Task](/docs/core-concepts/cv-task#keypoint-detection)
 
 Create a Python file with a structure similar to below and add the file in the post-processing model folder:
 
@@ -214,7 +214,7 @@ Check the [standardised output for keypoint detection](/docs/core-concepts/cv-ta
 
 ### Unspecified CV Task
 
-> 📔 Learn more about [Unspecified CV Task](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
+> Learn more about [Unspecified CV Task](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
 
 If your model is imported without specifying any Task metadata, the model will be recognised to solve an `Unspecified` CV task.
 There is no need to prepare your model outputs to fit any format.

@@ -16,7 +16,7 @@ export default ({ children }) => (
 
 You should see the onboarding page for the first time using the Console. Please enter your email to proceed.
 
-![Onboarding page of the VDP Console](/docs-assets/onboarding.png)
+![Onboarding page of the VDP Console](/docs-assets/start-here/onboarding.png)
 
 ## Build via no-code Console
 
@@ -27,13 +27,13 @@ After onboarding, you will be redirected to the `Pipeline` tab on the left sideb
 In this tutorial you'll build your first **`SYNC`** pipeline and trigger the pipeline to process some images.
 You can follow the tutorial via the `Pipeline` tab or navigate to the `Data source` tab.
 
-![Pipeline list page of the VDP Console](/docs-assets/pipeline-list-empty.png)
+![Pipeline list page of the VDP Console](/docs-assets/start-here/pipeline-list-empty.png)
 
 A HTTP Source accepts HTTP requests with image payloads to be processed by a pipeline. To set it up, just choose `HTTP` from the drop-down list below.
 
-![Add a HTTP Source to create a pipeline in the VDP Console](/docs-assets/add-a-source-http.png)
+![Add a HTTP Source to create a pipeline in the VDP Console](/docs-assets/start-here/add-a-source-http.png)
 
-> 📔 Check our growing list of [Source connectors](/docs/connectors/overview).
+> Check our growing list of [Source connectors](/docs/connectors/overview).
 
 **Import a model from GitHub**
 
@@ -43,32 +43,32 @@ To process images, here we import a model from our public GitHub repo [instill-a
 2. Select `GitHub` from the drop-down list;
 3. Fill the GitHub repository `instill-ai/model-mobilenetv2`.
 
-![Import a model from a GitHub repo via VDP Console](/docs-assets/add-a-model.png)
+![Import a model from a GitHub repo via VDP Console](/docs-assets/start-here/add-a-model.png)
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance id.
 
-> 📔 Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
+> Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
 
 **Deploy a model instance of the imported model**
 
 Once the model is imported, we pick one from all the model instances, and click `deploy` to deploy it online.
 
-![Deploy a model instance via VDP Console](/docs-assets/deploy-a-model-instance.png)
+![Deploy a model instance via VDP Console](/docs-assets/start-here/deploy-a-model-instance.png)
 
 **Add a HTTP Destination**
 
 Just click `Next`. Since we are building a `SYNC` pipeline, the HTTP Destination is automatically paired with the HTTP source.
 
-> 📔 The paired Sources and Destinations for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
+> The paired Sources and Destinations for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
 >
 > - HTTP Source → HTTP Destination
 > - gRPC Source → gRPC Destination
 
-![Add a HTTP Destination to create a pipeline in the VDP console](/docs-assets/add-a-destination-http.png)
+![Add a HTTP Destination to create a pipeline in the VDP console](/docs-assets/start-here/add-a-destination-http.png)
 
 Almost done! Just give your pipeline a unique id and an optional description, and click `Set up pipeline`.
 
-![Set up a pipeline in the VDP Console](/docs-assets/set-up-a-pipeline.png)
+![Set up a pipeline in the VDP Console](/docs-assets/start-here/set-up-a-pipeline.png)
 
 ## Build via low-code
 
@@ -78,7 +78,7 @@ You can also build the pipeline by sending requests, thanks to the [API-first](/
 
 **Step 1: Add a HTTP source**
 
-`http://localhost:8082` is the default URL of the VDP connector backend.
+`http://localhost:8082` is the default URL of the VDP `connector-backend`.
 
 ```bash focus=1:11
 
@@ -138,7 +138,7 @@ http://localhost:8081/v1alpha/pipelines
 
 **Step 2: Import a model from GitHub**
 
-`http://localhost:8083` is the default URL of the VDP model backend.
+`http://localhost:8083` is the default URL of the VDP `model-backend`.
 
 ```bash focus=13:22
 
@@ -166,7 +166,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 **Step 5: Create your first pipeline**
 
-`http://localhost:8081` is the default URL of the VDP pipeline backend.
+`http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
 
 ```bash focus=38:51
 
@@ -219,7 +219,7 @@ http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart
 
 </CH.Code>
 
-in which `http://localhost:8081` is the default URL of the VDP pipeline backend.
+in which `http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
 
 A HTTP response will return
 

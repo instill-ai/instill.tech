@@ -29,9 +29,9 @@ In a model card, you can provide information about:
 After importing a model into VDP, the model card will be rendered in the Console on the Model page.
 Here shows a model card example of a model imported from a GitHub repository [model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
 
-![Model card in VDP Console](/docs-assets/model-card.png)
+![Model card in VDP Console](/docs-assets/prepare-models/console-model-card.png)
 
-> 📔 Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
+> Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
 
 ## Model card metadata
 
@@ -50,7 +50,7 @@ Tags:
 
 ### Specify a CV Task
 
-> 📔 Technically, you can assign different CV Task to model instances of the same model.
+> Technically, you can assign different CV Task to model instances of the same model.
 > Howerver, this is strongly discouraged. Model instances of a model should be designed to solve the same CV Task.
 
 When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the CV Task requirements.
@@ -80,4 +80,4 @@ and the raw model output will be wrapped in a [standard format](docs/core-concep
 
 If you include valid CV Task metadata, they will show on the Model page of the Console like this:
 
-![Model CV Task label in VDP Console](/docs-assets/console-model-cv-task-label.png)
+![Model CV Task label in VDP Console](/docs-assets/prepare-models/console-model-cv-task-label.png)

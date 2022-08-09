@@ -37,11 +37,11 @@ If you'd like to **ask for a new model definition**, you can create a topic in [
 
 ### How to standardise
 
-🎯 **Standardise via Protocol Buffers**
+**Standardise via Protocol Buffers**
 
 Currently, the model output is converted to standard format based on the CV task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model.proto).
 
-🎯 **Standardise through VDP Protocol (coming soon!)**
+**Standardise through VDP Protocol (coming soon!)**
 
 The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of model outputs in order to standardise an ETL pipeline for visual data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
@@ -90,7 +90,7 @@ TaskOutput:
 Image classification task is the CV task to assign a single pre-defined category label to an entire input image.
 Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
 
-![Image classification task](/docs-assets/cv-task-classification.svg)
+![Image classification task](/docs-assets/core-concepts/cv-task-classification.svg)
 
 <CH.Code>
 ```json current
@@ -123,7 +123,7 @@ Generally, an image classification model takes an image as the input, and output
 Object detection task is the CV task to localize multiple objects of pre-defined categories in an input image.
 Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
 
-![Object detection task](/docs-assets/cv-task-detection.svg)
+![Object detection task](/docs-assets/core-concepts/cv-task-detection.svg)
 
 <CH.Code>
 ```json current
@@ -187,7 +187,7 @@ Generally, an object detection model receives an image as the input, and outputs
 Keypoint detection task is the CV task to localize multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
 Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with confidence scores on detected objects.
 
-![Keypoint detection task](/docs-assets/cv-task-keypoint.svg)
+![Keypoint detection task](/docs-assets/core-concepts/cv-task-keypoint.svg)
 
 > Keypoint detection task only allows single image input for now, will allow batch processing soon.
 
@@ -255,7 +255,7 @@ VDP will
 - check the `config.pbtxt` [model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) file to extract the output names, datatypes and shapes of the model outputs,
 - and wrap these information along with the raw model output in a _standard_ format.
 
-![Unspecified task](/docs-assets/cv-task-unspecified.svg)
+![Unspecified task](/docs-assets/core-concepts/cv-task-unspecified.svg)
 
 <CH.Code>
 ```json current
