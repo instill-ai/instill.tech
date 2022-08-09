@@ -162,23 +162,22 @@ If you list the files in the remote storage repository, the file structure will 
 
 #### No-code Console
 
-Go to the model tab in the console and click `Add new model`. The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
+To import a model managed by ArtiVC in the Console, do the following:
 
-1. Pick a name for your model, this will be the unique identifier of this model
-2. Select `ArtiVC` from the drop-down list
-3. Fill the following information and click `Setup new model`
-   - Fill the GCS bucket path in which the model is stored, e.g., `gs://mybucket/path/to/mymodel/`
-   - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the `Credentials JSON` field. See [here](#find-the-credentials-json-file) to find the credentials json file.
-
-![Add a ArtiVC model YOLOv4](/docs-assets/artivc-add-yolov4-model.png)
-
-4. Once the model is imported, pick one model instance and click `Deploy`
-
-![Deploy a model instance](/docs-assets/artivc-deploy-yolov4-model-instance.png)
+1. Go to the **Model** page and click **Add new model**
+2. In the **Set Up New Model** page, fill an ID for your model, this will be the unique identifier of this model
+3. Click the **Model type** ▾ drop-down and choose **ArtiVC**
+4. [Optional] Give a short description of your model in the **Description** field
+5. Fill the following information and click **Setup new model**
+   - Fill the **GCS Bucket Path** where the model is stored, e.g., `gs://mybucket/path/to/mymodel/`
+   - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the **Credentials JSON** field. See [Find the credentials JSON file](#find-the-credentials-json-file) to find the credentials json file
+6. Once the model is imported, click the **Model instances** ▾ drop-down, pick one model instance and click **Deploy**
 
 Now go to the model tab, the corresponding model instance should be online.
 
 ![ArtiVC model list](/docs-assets/artivc-model-list.png)
+
+The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
 
 #### Low-code
 
@@ -249,6 +248,6 @@ http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart
 
 In which `http://localhost:8083` is the default URL of the model backend.
 
-### Find the credentials json file
+### Find the credentials JSON file
 
 If you are using the application default credentials in a local development environment, the credentials is stored in a `application_default_credentials.json` file under the Google Cloud user configuration directory. See [here](https://cloud.google.com/sdk/docs/authorizing#find_your_credential_files) to find the credential directory.
