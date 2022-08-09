@@ -19,9 +19,9 @@ const customJestConfig = {
     "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
     "^@/contexts/(.*)$": "<rootDir>/src/contexts/$1",
-    "react-markdown": "<rootDir>/src/mocks/react-markdown.jsx",
-    "remark-gfm": "<rootDir>/src/mocks/remark-gfm.js",
-    "rehype-raw": "<rootDir>/src/mocks/rehype-raw.js",
+    "react-markdown": "<rootDir>/src/lib/mocks/react-markdown.jsx",
+    "remark-gfm": "<rootDir>/src/lib/mocks/remark-gfm.js",
+    "rehype-raw": "<rootDir>/src/lib/mocks/rehype-raw.js",
   },
 };
 
