@@ -1,10 +1,10 @@
 import axios from "axios";
 import {
-  TGetClickUpTasksQueryResponse,
-  IClickUpTask,
+  GetClickUpTasksResponse,
+  ClickUpTask,
   IClickUpImageAttatchmentValue,
-} from "../types/clickUp";
-import { TMemberDetails, TPositionDetails } from "../types/instill";
+} from "./types";
+import { MemberDetails, PositionDetails } from "@/types/instill";
 
 export const createClickUpApiClient = () => {
   return axios.create({
@@ -30,7 +30,7 @@ export const getClickUpListQuery = async (listId: string) => {
 export const listClickUpTasksInListQuery = async (listId: string) => {
   try {
     const client = createClickUpApiClient();
-    const res = await client.get<TGetClickUpTasksQueryResponse>(
+    const res = await client.get<GetClickUpTasksResponse>(
       `/list/${listId}/task`
     );
     return Promise.resolve(res.data.tasks);
@@ -41,10 +41,10 @@ export const listClickUpTasksInListQuery = async (listId: string) => {
 
 export const getClickUpTaskQuery = async (
   taskId: string
-): Promise<IClickUpTask> => {
+): Promise<ClickUpTask> => {
   try {
     const client = createClickUpApiClient();
-    const res = await client.get<IClickUpTask>(`/task/${taskId}`);
+    const res = await client.get<ClickUpTask>(`/task/${taskId}`);
     return Promise.resolve(res.data);
   } catch (err) {
     return Promise.reject(err);
@@ -53,14 +53,11 @@ export const getClickUpTaskQuery = async (
 
 /**
  * This function will transform clickup task object to our desired data structure for Career position.
- *
- * @param task clickup api return object
- * @returns
  */
 
 export const transformClickUpTaskToPositionDetails = (
-  task: IClickUpTask
-): TPositionDetails => {
+  task: ClickUpTask
+): PositionDetails => {
   return {
     id: task.id,
     slug: getCustomTextFieldValue("slug", task),
@@ -76,8 +73,8 @@ export const transformClickUpTaskToPositionDetails = (
 };
 
 export const transformClickUpTaskToMemberDetails = (
-  task: IClickUpTask
-): TMemberDetails => {
+  task: ClickUpTask
+): MemberDetails => {
   const titles = getCustomTextFieldValue("titles", task);
   const kernelColorRectLocation = getCustomTextFieldValue(
     "kernel_color_rect_location",
@@ -117,7 +114,7 @@ export const transformClickUpTaskToMemberDetails = (
 
 const getCustomSingleSelectFieldValue = (
   key: string,
-  task: IClickUpTask
+  task: ClickUpTask
 ): string => {
   const index = task.custom_fields.findIndex((e) => e.name === key);
 
@@ -130,7 +127,7 @@ const getCustomSingleSelectFieldValue = (
   return field.type_config.options[field.value.toString()].name;
 };
 
-const getCustomTextFieldValue = (key: string, task: IClickUpTask): string => {
+const getCustomTextFieldValue = (key: string, task: ClickUpTask): string => {
   const index = task.custom_fields.findIndex((e) => e.name === key);
 
   if (index === -1) {
@@ -148,7 +145,7 @@ const getCustomTextFieldValue = (key: string, task: IClickUpTask): string => {
 
 const getCustomAttatchmentImageFieldValue = (
   key: string,
-  task: IClickUpTask
+  task: ClickUpTask
 ): IClickUpImageAttatchmentValue[] => {
   const index = task.custom_fields.findIndex((e) => e.name === key);
 

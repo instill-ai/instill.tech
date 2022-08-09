@@ -12,23 +12,22 @@ import {
   PageHead,
   StayInTheLoopProps,
 } from "@/components/ui";
+
+import { PositionDetails } from "@/types/instill";
+import { useOnScreen } from "../../hooks/useOnScreen";
 import {
+  ClickUpTask,
   getClickUpTaskQuery,
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
-} from "../../lib/clickUp";
-import { handle } from "../../lib/utilities";
-import { IClickUpTask } from "../../types/clickUp";
-import { TPositionDetails } from "../../types/instill";
-import { useOnScreen } from "../../hooks/useOnScreen";
+} from "@/lib/click-up";
+import { handle } from "@/lib/utils";
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let tasks: IClickUpTask[];
-
   const taskId = params.slug.toString().split("-")[0];
 
   const [error, task] = await handle(getClickUpTaskQuery(taskId));
@@ -56,7 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let tasks: IClickUpTask[];
+  let tasks: ClickUpTask[];
   let paths = [];
 
   try {
@@ -84,7 +83,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export type CareerPositionPageProps = {
-  position: TPositionDetails;
+  position: PositionDetails;
 };
 
 type GetLayOutProps = {

@@ -1,9 +1,9 @@
 import cn from "clsx";
 import { OpenPositionListUnit } from "./OpenPositionListUnit";
-import { TPositionDetails } from "@/types/instill";
+import { PositionDetails } from "@/types/instill";
 
 export type OpenPositionListProps = {
-  positions: TPositionDetails[];
+  positions: PositionDetails[];
 
   /** <Tailwind config> - position and width */
   styleName?: string;

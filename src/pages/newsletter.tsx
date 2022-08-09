@@ -14,8 +14,6 @@ import {
   GetCampaignContentResponse,
   ListCampaignsResponse,
   NewsletterPublicCampaign,
-} from "@/types/mailchimp";
-import {
   removeMailchimpStyleAndMeta,
   removePlaceholderAndFooterWords,
 } from "@/lib/mailchimp";

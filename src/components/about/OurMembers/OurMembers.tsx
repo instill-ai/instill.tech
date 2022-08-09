@@ -8,18 +8,18 @@ import {
 } from "react";
 import cn from "clsx";
 
-import { TMemberDetails } from "../../../types/instill";
-import {
-  ElementPosition,
-  getElementPosition,
-  useWindowDimension,
-} from "../../../lib/utilities";
+import { MemberDetails } from "@/types/instill";
 import { useRouter } from "next/router";
 import MemberAvatarKernel from "./MemberAvatarKernel";
 import MemberIntro from "./MemberIntro";
+import {
+  ElementPosition,
+  getElementPosition,
+  useWindowSize,
+} from "@instill-ai/design-system";
 
 export type OurMembersProps = {
-  members: TMemberDetails[];
+  members: MemberDetails[];
   marginBottom?: string;
 };
 
@@ -38,12 +38,12 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
   // once user hover on member's avatar. If it's on mobile view(width < 768px), the hover
   // behavior will be changed to click behavior to enhance user experience.
 
-  const [targerMember, setTargetMember] = useState<TMemberDetails>(null);
+  const [targerMember, setTargetMember] = useState<MemberDetails>(null);
   const [targetPosition, setTagetPosition] = useState<ElementPosition>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerPosition, setContainerPosition] =
     useState<ElementPosition>(null);
-  const windowDimenstion = useWindowDimension();
+  const windowSize = useWindowSize();
   const router = useRouter();
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
 
     setTargetMember(members[index]);
 
-    if (windowDimenstion && windowDimenstion.width > 768) {
+    if (windowSize && windowSize.width > 768) {
       return;
     }
 
@@ -179,8 +179,8 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
             }
           )}
           style={
-            windowDimenstion
-              ? windowDimenstion.width < 768
+            windowSize
+              ? windowSize.width < 768
                 ? {
                     top:
                       targetPosition &&
@@ -206,9 +206,9 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
       <div
         className="block"
         style={
-          windowDimenstion && {
+          windowSize && {
             height:
-              windowDimenstion.width < 768
+              windowSize.width < 768
                 ? sectionAdditionalHeight
                   ? sectionAdditionalHeight
                   : "0px"

@@ -1,8 +1,8 @@
-export type TGetClickUpTasksQueryResponse = {
-  tasks: IClickUpTask[];
+export type GetClickUpTasksResponse = {
+  tasks: ClickUpTask[];
 };
 
-export interface IClickUpTask {
+export type ClickUpTask = {
   id: string;
   custom_id?: null;
   name: string;
@@ -35,7 +35,7 @@ export interface IClickUpTask {
   project: Project;
   folder: Folder;
   space: Space;
-}
+};
 
 interface Status {
   status: string;

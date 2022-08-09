@@ -1,11 +1,11 @@
-import { TPositionDetails } from "@/types/instill";
+import { PositionDetails } from "@/types/instill";
 import cn from "clsx";
 import PositionInfo from "./PositionInfo";
 import PositionDescription from "./PositionDescription";
 
 export type CareerPositionDetailsSectionProps = {
   marginBottom: string;
-  position: TPositionDetails;
+  position: PositionDetails;
 };
 
 const CareerPositionDetailsSection = ({

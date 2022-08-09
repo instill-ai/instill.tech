@@ -1,11 +1,11 @@
 import { forwardRef, Fragment } from "react";
-import { TMemberDetails } from "../../../types/instill";
+import { MemberDetails } from "@/types/instill";
 import Image from "next/future/image";
 import cn from "clsx";
 import { CrossIcon } from "@instill-ai/design-system";
 
 export type MemberIntroProps = {
-  member: TMemberDetails;
+  member: MemberDetails;
   indent: string;
   styleName?: string;
   onCancelHandler: () => void;
@@ -92,7 +92,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
     const titlesSkeleton = ["N/A", "N/A", "N/A"];
 
     const getTitleUnit = (
-      m: TMemberDetails,
+      m: MemberDetails,
       title: string,
       index: number,
       trailingComma: boolean
@@ -134,7 +134,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getTitles = (m: TMemberDetails) => {
+    const getTitles = (m: MemberDetails) => {
       return (
         <Fragment>
           {m
@@ -158,7 +158,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getTitlesContainer = (m: TMemberDetails, trailingComma: boolean) => {
+    const getTitlesContainer = (m: MemberDetails, trailingComma: boolean) => {
       return (
         <div className={cn("flex flex-col", indent)}>
           <pre>
@@ -180,7 +180,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getOpenRoleDetails = (m: TMemberDetails, trailingComma: boolean) => {
+    const getOpenRoleDetails = (m: MemberDetails, trailingComma: boolean) => {
       const details = [
         { key: "title", value: m.openRoleTitle },
         { key: "location", value: m.openRoleLocation },
@@ -222,7 +222,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
     };
 
     const getOpenRoleDetailsContainer = (
-      m: TMemberDetails,
+      m: MemberDetails,
       trailingComma: boolean
     ) => {
       return (
@@ -241,7 +241,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getMemberName = (m: TMemberDetails) => {
+    const getMemberName = (m: MemberDetails) => {
       const name = m
         ? m.type === "open_role"
           ? "Open Roles"
@@ -251,7 +251,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       return <div className={defaultTextColor}>{name}</div>;
     };
 
-    const getLinkedinLink = (m: TMemberDetails, trailingComma: boolean) => {
+    const getLinkedinLink = (m: MemberDetails, trailingComma: boolean) => {
       return (
         <div className={cn(indent)}>
           <pre className="whitespace-pre-wrap break-all">
@@ -283,7 +283,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getGithubLink = (m: TMemberDetails, trailingComma: boolean) => {
+    const getGithubLink = (m: MemberDetails, trailingComma: boolean) => {
       return (
         <div className={cn(indent)}>
           <pre className="whitespace-pre-wrap break-all">
@@ -315,11 +315,12 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       );
     };
 
-    const getAvatar = (m: TMemberDetails) => {
+    const getAvatar = (m: MemberDetails) => {
       return (
         <div className="w-full">
           <Image
             alt={`Instill member - ${m.name}'s avatar`}
+            style={{ width: "100%", height: "auto" }}
             width={360}
             height={360}
             src={m.avatarDesktop}

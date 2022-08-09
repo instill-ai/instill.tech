@@ -58,9 +58,6 @@ const nextConfig = {
         new BundleAnalyzerPlugin({
           analyzerMode: "disabled",
           generateStatsFile: true,
-          reportFilename: isServer
-            ? "../analyze/server.json"
-            : "./analyze/client.json",
         })
       );
     }
