@@ -75,5 +75,22 @@ h3.null {
 */
 
 article > h1, h2, h3, h4 {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 140px;
+}
+
+
+/*
+  The style of header-anchor in header
+*/
+
+a.heading-anchor {
+  transition: color 0.25s, opacity 0.25s;
+  margin-left: -1.5rem;
+  margin-right: 0.5rem;
+  opacity: 0;
+  color: #1A1A1A;
+}
+
+article > h2:hover a.heading-anchor, h3:hover a.heading-anchor, h4:hover a.heading-anchor {
+  opacity: 100;
 }
