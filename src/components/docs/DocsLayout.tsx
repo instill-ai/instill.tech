@@ -33,7 +33,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     headersEl.forEach((el) => {
       newHeaders.push({
         slug: el.id,
-        text: el.textContent,
+        text: el.textContent.replace("#", ""),
       });
     });
 
