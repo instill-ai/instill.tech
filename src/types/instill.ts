@@ -1,4 +1,4 @@
-export type TPositionDetails = {
+export type PositionDetails = {
   id: string;
   slug: string;
   name: string;
@@ -11,7 +11,7 @@ export type TPositionDetails = {
   postDate: string;
 };
 
-export type TMemberDetails = {
+export type MemberDetails = {
   id: string;
   name: string;
   githubLink: string;

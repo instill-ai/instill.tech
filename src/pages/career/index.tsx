@@ -19,13 +19,13 @@ import {
   CareerHero,
   CareerPositionListSectionProps,
 } from "@/components/career";
-import { useOnScreen } from "../../hooks/useOnScreen";
+import { useOnScreen } from "@/hooks/useOnScreen";
+import { PositionDetails } from "@/types/instill";
 import {
+  ClickUpTask,
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
-} from "../../lib/clickUp";
-import { IClickUpTask } from "../../types/clickUp";
-import { TPositionDetails } from "../../types/instill";
+} from "@/lib/click-up";
 
 const CareerPositionListSection = dynamic<CareerPositionListSectionProps>(() =>
   import("@/components/career").then((mod) => mod.CareerPositionListSection)
@@ -35,18 +35,18 @@ const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)
 );
 
-interface Props {
+type CareerPageProps = {
   content: string;
-  positions: TPositionDetails[];
-}
+  positions: PositionDetails[];
+};
 
-interface GetLayOutProps {
+type GetLayOutProps = {
   page: ReactElement;
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  let tasks: IClickUpTask[];
-  let positions: TPositionDetails[] = [];
+  let tasks: ClickUpTask[];
+  let positions: PositionDetails[] = [];
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");
@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const CareerPage: FC<Props> & {
+const CareerPage: FC<CareerPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
   // lazy load openPositionList

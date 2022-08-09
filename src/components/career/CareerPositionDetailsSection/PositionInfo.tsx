@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TPositionDetails } from "../../../types/instill";
+import { PositionDetails } from "@/types/instill";
 import * as classNames from "classnames";
 import ShareThisPosition from "./ShareThisPosition";
 import {
@@ -9,7 +9,7 @@ import {
 } from "@instill-ai/design-system";
 
 export type PositionInfoProps = {
-  position: TPositionDetails;
+  position: PositionDetails;
   padding?: string;
   width?: string;
 };

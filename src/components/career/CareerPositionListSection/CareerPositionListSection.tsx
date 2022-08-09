@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import cn from "clsx";
 import { OpenPositionList } from "./OpenPositionList";
-import { TPositionDetails } from "@/types/instill";
+import { PositionDetails } from "@/types/instill";
 
 export type CareerPositionListSectionProps = {
-  positions: TPositionDetails[];
+  positions: PositionDetails[];
   marginBottom?: string;
 };
 

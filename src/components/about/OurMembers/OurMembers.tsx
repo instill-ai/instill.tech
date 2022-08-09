@@ -8,7 +8,7 @@ import {
 } from "react";
 import cn from "clsx";
 
-import { TMemberDetails } from "../../../types/instill";
+import { MemberDetails } from "@/types/instill";
 import {
   ElementPosition,
   getElementPosition,
@@ -19,7 +19,7 @@ import MemberAvatarKernel from "./MemberAvatarKernel";
 import MemberIntro from "./MemberIntro";
 
 export type OurMembersProps = {
-  members: TMemberDetails[];
+  members: MemberDetails[];
   marginBottom?: string;
 };
 
@@ -38,7 +38,7 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
   // once user hover on member's avatar. If it's on mobile view(width < 768px), the hover
   // behavior will be changed to click behavior to enhance user experience.
 
-  const [targerMember, setTargetMember] = useState<TMemberDetails>(null);
+  const [targerMember, setTargetMember] = useState<MemberDetails>(null);
   const [targetPosition, setTagetPosition] = useState<ElementPosition>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerPosition, setContainerPosition] =
