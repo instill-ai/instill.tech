@@ -70,3 +70,13 @@ The same interface definitions are used for both REST (via [gRPC-Gateway](https:
 
 The interface definitions are maintained in [protobufs](https://github.com/instill-ai/protobufs) with auto-generated Go codes in [protogen-go](https://github.com/instill-ai/protogen-go) and Python code in [protogen-python](https://github.com/instill-ai/protogen-python).
 The genuine protobuf documentation can be found in our [Buf Scheme Registry (BSR)](https://buf.build/instill-ai/protobufs).
+
+## Release stage
+
+For Instill AI developed and maintained components, we use release stage defined as below to indicate their readiness:
+
+| Stage                   | Description                                                                                                                                                                                                                                                     |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates the component is under development and Instill AI is collecting its early feedback and issues reported by early adopters. We strongly discourage using alpha components for production.                                            |
+| **Beta**                | A beta component is considered stable and reliable with no further backwards incompatible changes but has not been validated by a broader group of users. We expect to find and fix a few issues and bugs in the release before it is ready for the next stage. |
+| **Generally Available** | A generally available component has been thoroughly tested in the battlefield and is ready for use in a production environment. Its documentation is considered sufficient to support widespread adoption.                                                      |
