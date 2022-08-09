@@ -320,6 +320,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
         <div className="w-full">
           <Image
             alt={`Instill member - ${m.name}'s avatar`}
+            style={{ width: "100%", height: "auto" }}
             width={360}
             height={360}
             src={m.avatarDesktop}
