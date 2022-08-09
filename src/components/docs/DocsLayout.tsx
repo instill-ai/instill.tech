@@ -97,7 +97,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
               </article>
             </div>
 
-            <aside className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]">
+            <aside className="grid-sidebar col-span-2 pl-8 hidden xl:block max-w-[300px]">
               <RightSidebar
                 githubEditUrl={
                   "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
