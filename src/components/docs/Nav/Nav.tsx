@@ -36,7 +36,6 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
           "sticky top-0 z-10 mx-auto flex flex-row w-full bg-white py-4 px-8 h-[132px] border-b md:border-none",
           marginBottom
         )}
-        title="Top Navigation"
       >
         {!navbar.logo && !navbar.title ? null : (
           <div className="logo mr-4 flex md:hidden">

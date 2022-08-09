@@ -66,7 +66,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-4 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
-          title="Site Navigation"
         >
           <LeftSidebar
             leftSidebar={SIDEBAR.leftSidebar}
@@ -98,10 +97,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
               </article>
             </div>
 
-            <aside
-              className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]"
-              title="Table of Contents"
-            >
+            <aside className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]">
               <RightSidebar
                 githubEditUrl={
                   "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +

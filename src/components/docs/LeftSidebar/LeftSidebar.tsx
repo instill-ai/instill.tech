@@ -21,7 +21,6 @@ const LeftSidebar = ({
         "flex w-full md:ml-auto flex-col md:sticky md:top-0 py-10 h-screen overflow-auto px-5",
         maxWidth
       )}
-      aria-labelledby="grid-right"
     >
       {leftSidebar.logo ? (
         <Link href="/docs/start-here/getting-started">
