@@ -14,8 +14,6 @@ export default ({ children }) => (
 
 At the two ends of a VDP pipeline, there are **Source** component (i.e., the E in ETL) and **Destination** component (i.e., the L in ETL).
 
-## Definition
-
 ## Source
 
 A **Source** component is a data connector in charge of ingesting unstructured visual data into **Pipeline**.
@@ -32,7 +30,10 @@ VDP supports HTTP and gRPC destination connector for the `SYNC` pipeline.
 
 For the `ASYNC` pipeline, VDP adopts [Airbyte Protocol](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol) to inject standardised CV Task output from **Model** into the [AirbyteRecordMessage](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#airbyterecordmessage) JSON object, to employ Airbyte destination connectors.
 
-Specifically, to trigger a destination connector's container [`write`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#write) operation, `connector-backend` assembles the [ConfiguredAirbyteCatalog](https://docs.airbyte.com/understanding-airbyte/beginners-guide-to-catalog/#configuredairbytecatalog) on the fly, with the corresponding connector configuration JSON object used in [`check`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#check) operation, to start a Temporal workflow to write the structured data to the destination.
+Specifically, to trigger a destination connector's container [`write`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#write) operation,
+`connector-backend` assembles the [ConfiguredAirbyteCatalog](https://docs.airbyte.com/understanding-airbyte/beginners-guide-to-catalog/#configuredairbytecatalog) on the fly,
+with the corresponding connector configuration JSON object used in [`check`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#check) operation,
+to start a Temporal workflow to write the structured data to the destination.
 
 As far as [Airbyte connections and sync modes](https://docs.airbyte.com/understanding-airbyte/connections) are concerned, VDP currently supports `full_refresh` sync mode and `append` destination sync mode for an `ASYNC` pipeline.
 
@@ -40,4 +41,31 @@ VDP currently does not support Airbyte's [Namespaces](https://docs.airbyte.com/u
 
 The release stages of destination connectors developed and maintained by Airbyte community are reported [here](https://docs.airbyte.com/integrations/#destinations).
 
+## Definition
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto#L63-L102) to define the basic properties and detailed configuration of **Source** and **Destination**.
+Please check out [Source Connectors](../source-connectors/overview) and [Destination Connectors](../destination-connectors/overview) to learn more?
+
 ## State
+
+When a connector is initially created, the connector state is checked by the connector container `check` operation.
+
+The exit code of the container `check` operation decides the connector state.
+If the exit code is 0, the state will be `CONNECTED`.
+If the exit code is 1, the state will be `ERROR`.
+Before the container `check` return the result, the connector state will remain `UNSPECIFIED`.
+
+A connector can be switched to `DISCONNECTED` state by invoking the `connector-backend` endpoint `:disconnect` only when its original state is `CONNECTED`.
+
+A connector can be switched to `CONNECTED` state by invoking the `connector-backend` endpoint `:connect` only when its original state is `DISCONNECTED`.
+
+If the connector state ends up with `ERROR`, the connector configuration will need to be updated via the UPDATE `connector-backend` endpoint.
+
+<p align="center">
+  <img
+    src="/docs-assets/core-concepts/connector-state.svg"
+    alt="connector state"
+    width="500"
+  />
+  The finite-state-machine (FSM) diagram for the connector state transition logic.
+</p>
