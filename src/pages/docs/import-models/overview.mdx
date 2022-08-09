@@ -15,8 +15,8 @@ export default ({ children }) => (
 No matter where your model stores, we want to keep your models in the same place without changes and make the process of importing the models into VDP very easy.
 That's why VDP has integrated many model platforms and tools as _model sources_. We strive to support as many popular _model sources_ as possible.
 
-A _model source_ in VDP is defined by `model definition`. A `model definition` JSON Schema defines how to configure and import a _model source_.
-Currently, VDP supports importing models using the following `model definitions`:
+A _model source_ in VDP is defined by [`ModelDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model_definition.proto#L30-L76). The JSON Schema of a `ModelDefinition` defines how to configure and import a _model source_.
+Currently, VDP supports importing models using the following sources:
 
 - [ArtiVC](/docs/import-models/artivc)
 - [GitHub](/docs/import-models/github)

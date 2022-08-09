@@ -78,15 +78,15 @@ export const SIDEBAR: Sidebar = {
             link: "/docs/prepare-models/overview",
           },
           {
-            text: "Add model card",
+            text: "Model card",
             link: "/docs/prepare-models/model-card",
           },
           {
-            text: "Prepare pre-processing model",
+            text: "Pre-processing",
             link: "/docs/prepare-models/pre-processing",
           },
           {
-            text: "Prepare post-processing model",
+            text: "Post-processing",
             link: "/docs/prepare-models/post-processing",
           },
         ],
@@ -100,19 +100,19 @@ export const SIDEBAR: Sidebar = {
             link: "/docs/import-models/overview",
           },
           {
-            text: "Import Local Models",
+            text: "Local",
             link: "/docs/import-models/local",
           },
           {
-            text: "Import Models from GitHub",
+            text: "GitHub",
             link: "/docs/import-models/github",
           },
           {
-            text: "Import ArtiVC Managed Models",
+            text: "ArtiVC",
             link: "/docs/import-models/artivc",
           },
           {
-            text: "Import Models from Hugging Face",
+            text: "Hugging Face",
             link: "/docs/import-models/huggingface",
           },
         ],
@@ -122,8 +122,8 @@ export const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           {
-            text: "Local development",
-            link: "/docs/development/local-development",
+            text: "Setup",
+            link: "/docs/development/setup-local-development",
           },
         ],
       },

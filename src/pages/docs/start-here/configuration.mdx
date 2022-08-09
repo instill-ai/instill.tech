@@ -70,7 +70,7 @@ To help us better understand how VDP is used and can be improved, VDP collects a
 
 When a new VDP is running, the usage client in services including `mgmt-backend`, `connector-backend`, `model-backend` and `pipeline-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
-For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
+For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
 
 - name of the service to collect data from, e.g., `SERVICE_CONNECTOR` for `connector-backend`
 - edition of the service to identify the deployment, e.g., `local-ce` for local open-source deployment
@@ -80,24 +80,24 @@ For each session, we collect [`Session`](https://github.com/instill-ai/protobufs
 - uptime in seconds to identify the rough life span of the service
 
 Each session is assigned with a random UUID for tracking and identification.
-Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L153-L175) data every one hour:
+Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every one hour:
 
-- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
+- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
   - information of the [onboarded User](/docs/start-here/build-your-first-pipeline#onboarding)
-- [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
+- [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _connected_ or _disconnected_ Sources
   - number of _connected_ or _disconnected_ Destinations
   - array of `SourceConenctorDefinition` of the Sources
   - array of `DestinationConnectorDefinition` of the Destinations
-- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L105-L130) reports data for `model-backend` session of the onboarded User
+- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L130) reports data for `model-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of Models that have at least one _online_ Model Instance or have no _online_ Model Instances
   - number of _online_ and _offline_ Model Instances
   - array of `ModelDefinition` of the Models
   - array of CV Tasks of the Model Instances
   - number of processed images for testing models
-- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/01d024a562d083f896b840acc6153f3cf1b4e858/vdp/usage/v1alpha/usage.proto#L132-L151) reports data for `pipeline-backend` session of the onboarded User
+- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L132-L151) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _active_ and _inactive_ Pipelines
   - number of `SYNC` and `ASYNC` Pipelines
@@ -116,7 +116,7 @@ Additionally, The frontend Console sends event data to [Amplitude](https://ampli
 
 ### Opting out
 
-DVC usage collection helps the entire community, we really appreciate if you can leave it on.
+VDP usage collection helps the entire community. We'd appreciate if you can leave it on.
 However, if you want to opt out, you can disable it by overriding the `.env` file:
 
 ```make .env
