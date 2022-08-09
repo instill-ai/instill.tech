@@ -1,10 +1,11 @@
 import {
   setColorJson,
-  setStringProp,
-  setObjectProp,
-  setArrayProp,
-  setNumber,
-} from ".";
+  setStringKv,
+  setObjectKv,
+  setArrayKv,
+  setNumberValue,
+  setNumberKv,
+} from "./colorJson";
 
 export default {
   title: "Components/ColorJson",
@@ -15,7 +16,7 @@ const Template = () => {
     bracketColor: "text-black",
     indent: "pl-8",
     children: [
-      setStringProp({
+      setStringKv({
         key: "id",
         keyColor: "text-instillBlue",
         value: "det-pipeline",
@@ -25,7 +26,7 @@ const Template = () => {
         trailingComma: true,
         trailingCommaColor: "text-black",
       }),
-      setObjectProp({
+      setObjectKv({
         key: "recipe",
         keyColor: "text-instillBlue",
         quoteColor: "text-black",
@@ -35,7 +36,7 @@ const Template = () => {
         trailingCommaColor: "text-black",
         indent: "pl-8",
         children: [
-          setStringProp({
+          setStringKv({
             key: "source",
             keyColor: "text-instillGreen",
             value: "source-connectors/source-http",
@@ -45,7 +46,7 @@ const Template = () => {
             trailingComma: true,
             trailingCommaColor: "text-black",
           }),
-          setArrayProp({
+          setArrayKv({
             key: "model_instances",
             keyColor: "text-instillYellow",
             quoteColor: "text-black",
@@ -56,13 +57,13 @@ const Template = () => {
             indent: "pl-8",
             breakLine: false,
             children: [
-              setNumber({
+              setNumberValue({
                 value: 10,
                 valueColor: "text-instillYellow",
                 trailingComma: true,
                 trailingCommaColor: "text-black",
               }),
-              setNumber({
+              setNumberValue({
                 value: 1220,
                 valueColor: "text-instillYellow",
                 trailingComma: false,
@@ -70,11 +71,21 @@ const Template = () => {
               }),
             ],
           }),
-          setStringProp({
+          setStringKv({
             key: "destination",
             keyColor: "text-instillGreen",
             value: "destination-connectors/destination-http",
             valueColor: "text-black",
+            quoteColor: "text-black",
+            colonColor: "text-black",
+            trailingComma: true,
+            trailingCommaColor: "text-black",
+          }),
+          setNumberKv({
+            key: "number",
+            keyColor: "text-instillGreen",
+            value: 2456,
+            valueColor: "text-instillYellow",
             quoteColor: "text-black",
             colonColor: "text-black",
             trailingComma: true,
