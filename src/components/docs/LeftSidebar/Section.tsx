@@ -84,10 +84,10 @@ const Section = ({
           <a
             key={item.text}
             className={cn(
-              "text-sm hover:text-instillGrey95",
+              "text-sm hover:text-instillBlue50 font-normal",
               item.link === currentPagePath
-                ? "text-instillGrey95 font-semibold"
-                : "text-instillGrey80 font-normal"
+                ? "text-instillBlue50"
+                : "text-instillGrey80"
             )}
             href={item.link}
           >
