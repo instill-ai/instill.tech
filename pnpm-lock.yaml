@@ -47,6 +47,7 @@ specifiers:
   eslint-plugin-testing-library: ^5.0.3
   gray-matter: ^4.0.3
   gsap: ^3.9.1
+  hastscript: ^7.0.2
   husky: ^7.0.0
   intersection-observer: ^0.12.0
   jest: ^27.4.7
@@ -130,6 +131,7 @@ devDependencies:
   eslint-config-next: 11.1.2_2d4rpaaoxxpngwedbhc3eezoj4
   eslint-plugin-storybook: 0.6.1_hxadhbs2xogijvk7vq4t2azzbu
   eslint-plugin-testing-library: 5.5.1_hxadhbs2xogijvk7vq4t2azzbu
+  hastscript: 7.0.2
   husky: 7.0.4
   jest: 27.5.1
   lint-staged: 11.2.6
@@ -8600,7 +8602,6 @@ packages:
     resolution: {integrity: sha512-AyjlI2pTAZEOeu7GeBPZhROx0RHBnydkQIXlhnFzDi0qfXTmGUWoCYZtomHbrdrheV4VFUlPcfJ6LMF5T6sQzg==}
     dependencies:
       '@types/hast': 2.3.4
-    dev: false
 
   /hast-util-raw/6.0.1:
     resolution: {integrity: sha512-ZMuiYA+UF7BXBtsTBNcLBF5HzXzkyE6MLzJnL605LKE8GJylNjGc4jjxazAHUtcwT5/CEt6afRKViYB4X66dig==}
@@ -8721,7 +8722,6 @@ packages:
       hast-util-parse-selector: 3.1.0
       property-information: 6.1.1
       space-separated-tokens: 2.0.1
-    dev: false
 
   /he/1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
