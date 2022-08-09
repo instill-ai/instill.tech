@@ -1,7 +1,7 @@
-import { transformClickUpTaskToMemberDetails } from "../src/lib/clickUp";
-import { IClickUpTask } from "../src/types/clickUp";
+import { transformClickUpTaskToMemberDetails } from "./clickUp";
+import { ClickUpTask } from "./types";
 
-export const mockClickUpTask: IClickUpTask = {
+export const mockClickUpTask: ClickUpTask = {
   id: "240uhne",
   custom_id: null,
   name: "Ping-Lin Chang",
