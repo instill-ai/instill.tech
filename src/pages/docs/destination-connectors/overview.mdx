@@ -15,10 +15,10 @@ export default ({ children }) => (
 A destination connector is to write the standardised **CV Task** output from **Model** to the destination data warehouse or notification.
 
 A destination connector in VDP is defined by [`DestinationConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto#L126-L149) 
-which defines the basic properties of a source connector, of which the inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto#L43-L45) 
+which defines the basic properties of a destination connector, of which the inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto#L43-L45) 
 defines the connector configuration JSON Schema.
 
-Currently, VDP supports source connectors:
+Currently, VDP supports destination connectors:
 
 - [HTTP](/docs/source-connectors/http)
 - [gRPC](/docs/source-connectors/grpc)
