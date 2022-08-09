@@ -143,7 +143,7 @@ git push -u origin main
 
 After uploading all files successfully, go to your GitHub repository. You should see all model files are uploaded with the `.onnx` file in Git LFS.
 
-![Show YOLOv4 tracked by Git LFS](/docs-assets/yolov4-git-lfs.png)
+![Show YOLOv4 tracked by Git LFS](/docs-assets/import-models/yolov4-git-lfs.png)
 
 **Step 4: Create a GitHub release**
 
@@ -156,7 +156,7 @@ git push origin --tags
 
 Go to your GitHub repository and follow the [GitHub Docs to create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) based on created tag above.
 
-![Create a new GitHub release](/docs-assets/yolov4-dvc-new-release.png)
+![Create a new GitHub release](/docs-assets/import-models/yolov4-dvc-new-release.png)
 
 🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to VDP.
 
@@ -338,7 +338,7 @@ To import a model from GitHub in the Console, do the following:
 
 Now go to the model tab, the corresponding model instance should be online.
 
-![GitHub model list](/docs-assets/github-model-list.png)
+![GitHub model list](/docs-assets/import-models/github-model-list.png)
 
 No matter if you are using Git LFS or DVC in the repository, when the model is imported, each model instance of the model corresponds to one release tag of the GitHub repository.
 
