@@ -13,7 +13,6 @@ import {
   StayInTheLoopProps,
 } from "@/components/ui";
 
-import { handle } from "../../lib/utilities";
 import { PositionDetails } from "@/types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
@@ -22,6 +21,7 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
+import { handle } from "@/lib/utils";
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)

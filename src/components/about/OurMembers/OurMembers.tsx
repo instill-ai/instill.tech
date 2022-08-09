@@ -9,14 +9,14 @@ import {
 import cn from "clsx";
 
 import { MemberDetails } from "@/types/instill";
-import {
-  ElementPosition,
-  getElementPosition,
-  useWindowDimension,
-} from "../../../lib/utilities";
 import { useRouter } from "next/router";
 import MemberAvatarKernel from "./MemberAvatarKernel";
 import MemberIntro from "./MemberIntro";
+import {
+  ElementPosition,
+  getElementPosition,
+  useWindowSize,
+} from "@instill-ai/design-system";
 
 export type OurMembersProps = {
   members: MemberDetails[];
@@ -43,7 +43,7 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerPosition, setContainerPosition] =
     useState<ElementPosition>(null);
-  const windowDimenstion = useWindowDimension();
+  const windowSize = useWindowSize();
   const router = useRouter();
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
 
     setTargetMember(members[index]);
 
-    if (windowDimenstion && windowDimenstion.width > 768) {
+    if (windowSize && windowSize.width > 768) {
       return;
     }
 
@@ -179,8 +179,8 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
             }
           )}
           style={
-            windowDimenstion
-              ? windowDimenstion.width < 768
+            windowSize
+              ? windowSize.width < 768
                 ? {
                     top:
                       targetPosition &&
@@ -206,9 +206,9 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
       <div
         className="block"
         style={
-          windowDimenstion && {
+          windowSize && {
             height:
-              windowDimenstion.width < 768
+              windowSize.width < 768
                 ? sectionAdditionalHeight
                   ? sectionAdditionalHeight
                   : "0px"

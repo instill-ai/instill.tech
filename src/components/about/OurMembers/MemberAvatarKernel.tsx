@@ -1,7 +1,8 @@
 import Image from "next/future/image";
 import { forwardRef } from "react";
-import * as classNames from "classnames";
-import { useWindowDimension } from "@/lib/utilities";
+import { useWindowSize } from "@instill-ai/design-system";
+import cn from "clsx";
+
 import MemberKernel from "./MemberKernelSvg";
 
 export type MemberAvatarKernelProps = {
@@ -33,7 +34,7 @@ const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
     },
     ref
   ) => {
-    const windowDimenstion = useWindowDimension();
+    const windowSize = useWindowSize();
 
     return (
       <div
@@ -44,24 +45,20 @@ const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
         <div className="absolute top-0 bottom-0 right-0 left-0 z-10">
           <Image
             alt={avatarAlt}
-            width={358}
-            height={358}
-            sizes="358px"
+            style={{ width: "100%" }}
+            fill={true}
             src={
-              windowDimenstion && windowDimenstion.width > 768
+              windowSize && windowSize.width > 768
                 ? avatarWithFrameDesktop
                 : avatarWithFrameMobile
             }
           />
         </div>
         <MemberKernel
-          styleName={classNames.default(
-            "w-full z-20 opacity-0 mb-auto cursor-pointer",
-            {
-              "md:opacity-100": !openKernel,
-              "md:invisible": id === targetMemberId,
-            }
-          )}
+          styleName={cn("w-full z-20 opacity-0 mb-auto cursor-pointer", {
+            "md:opacity-100": !openKernel,
+            "md:invisible": id === targetMemberId,
+          })}
           kernelColorRectLocation={kernelColorRectLocation}
           kernelColor={kernelColor}
           id={id}
