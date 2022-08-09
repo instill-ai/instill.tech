@@ -66,6 +66,7 @@ export const SIDEBAR: Sidebar = {
           { text: "Overview", link: "/docs/destination-connectors/overview" },
           { text: "HTTP", link: "/docs/destination-connectors/http" },
           { text: "gRPC", link: "/docs/destination-connectors/grpc" },
+          { text: "Airbyte", link: "/docs/destination-connectors/airbyte" },
         ],
       },
       {
