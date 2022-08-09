@@ -1,12 +1,29 @@
 import { DocsLayout } from "@/components/docs";
 export const meta = {
-  title: "Real-time Destination HTTP",
+  title: "HTTP Destination Connector",
   lang: "en-US",
-  draft: true,
-  description: "",
+  draft: false,
+  description:
+    "Learn about how to set up a HTTP destination connector for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
 export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
+
+## Description
+
+A HTTP destination connector is for pairing with a HTTP source connector to set up a `SYNC` pipeline. 
+
+A HTTP destination connector is always in the `CONNECTED` state.
+
+## Release stage
+
+`Generally Available`
+
+## Configuration
+
+| Field | Type | Notes                                                                                                 |
+| :---- | :--- | :---------------------------------------------------------------------------------------------------- |
+| N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |

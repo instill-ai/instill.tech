@@ -1,0 +1,26 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Airbyte Destination Connectors",
+  lang: "en-US",
+  draft: false,
+  description: "Learn about how to set up Airbyte destination connectors for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+## Description
+
+An Airbyte destination connector paired with any source connector defines an `ASYNC` or `FETCH` pipeline. 
+
+An Airbyte destination connector is in `CONNECTED` state only when its configuration is valid to connect with the destination. Otherwise, the state will be either `ERROR` or `UNSPECIFIED`.
+
+## Release stage
+
+Please refer to the Airbyte [Destinations Connector Catalog](https://docs.airbyte.com/integrations/#destinations) table.
+
+## Configuration
+
+Please refer to each Airbyte [Destinations](https://docs.airbyte.com/category/destinations) for configuration details.

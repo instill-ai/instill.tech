@@ -1,12 +1,32 @@
 import { DocsLayout } from "@/components/docs";
 export const meta = {
-  title: "Real-time Source gRPC",
+  title: "gRPC Source Connector",
   lang: "en-US",
-  draft: true,
-  description: "",
+  draft: false,
+  description: "Learn about how to set up a gRPC source connector for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
   date: "",
 };
 
 export default ({ children }) => (
   <DocsLayout meta={meta}>{children}</DocsLayout>
 );
+
+## Description
+
+When a gRPC source connector is paired with a gRPC destination connector, the pipeline will be in the `SYNC` mode. 
+
+When a gRPC source connector is paired with an Airbyte connector, the pipeline will be in the `ASYNC` mode.
+
+An gRPC source connector cannot be paired with a HTTP destination connector.
+
+A gRPC source connector is always in the `CONNECTED` state.
+
+## Release stage
+
+`Generally Available`
+
+## Configuration
+
+| Field | Type | Notes                                                                                                 |
+| :---- | :--- | :---------------------------------------------------------------------------------------------------- |
+| N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |
