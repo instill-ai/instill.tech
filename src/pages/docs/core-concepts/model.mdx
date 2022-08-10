@@ -112,7 +112,7 @@ The API accepts images
 
 <CH.Code>
 
-```bash cURL(url)
+```shellscript cURL(url)
 curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
   "inputs": [
     {
@@ -125,7 +125,7 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 }'
 ```
 
-```bash cURL(base64)
+```shellscript cURL(base64)
 curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
   "inputs": [
     {
@@ -138,7 +138,7 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 }'
 ```
 
-```bash cURL(multipart)
+```shellscript cURL(multipart)
 curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'

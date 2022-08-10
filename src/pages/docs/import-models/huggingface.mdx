@@ -57,7 +57,7 @@ Since a Hugging Face model has no version control, when the model is successfull
 
 1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models -d '{
   "id": "vit-base-patch16-224",
   "model_definition": "model-definitions/huggingface",
@@ -69,7 +69,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
 
 2. Deploy the `latest` model instance
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:deploy
 ```
 
@@ -77,7 +77,7 @@ curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances
 
 <CH.Code>
 
-```bash cURL(url)
+```shellscript cURL(url)
 curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test -d '{
   "inputs": [
     {
@@ -87,7 +87,7 @@ curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances
 }'
 ```
 
-```bash cURL(base64)
+```shellscript cURL(base64)
 curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test -d '{
   "inputs": [
     {
@@ -97,7 +97,7 @@ curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances
 }'
 ```
 
-```bash cURL(multipart)
+```shellscript cURL(multipart)
 curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:test-multipart \
 --form 'file=@"dog.jpg"'
 ```

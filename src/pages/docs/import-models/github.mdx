@@ -48,7 +48,7 @@ Assume Git LFS is [installed](https://git-lfs.github.com/), this guideline publi
 
 Go to [GitHub](https://github.com/new) and create a new _public_ repository and set up on the command line
 
-```bash
+```shellscript
 # Create a folder
 mkdir model-yolov4
 cd model-yolov4
@@ -65,7 +65,7 @@ Replace `https://github.com/user/repo.git` with your repository's remote URL.
 
 Having initialized the project, let's download the sample model files
 
-```bash
+```shellscript
 # Download sample model
 curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
 tar -xvf yolov4-onnx-cpu.zip
@@ -74,7 +74,7 @@ rm yolov4-onnx-cpu.zip
 
 The extracted model files should look like:
 
-```bash
+```shellscript
 ├── README.md
 ├── post
 │   ├── 1
@@ -102,7 +102,7 @@ In this case, we use the object detection model [YOLOv4](https://github.com/Alex
 
 To associate a file type with Git LFS, enter `git lfs track` followed by the name of the file extension.
 
-```bash
+```shellscript
 # Install Git LFS
 git lfs install
 
@@ -125,7 +125,7 @@ This commands amends the repository's `.gitattributes` file and associates every
 
 Then, let's push all the other files to GitHub as you normally would:
 
-```bash
+```shellscript
 #  Update remote
 git add --all
 git commit -m "feat: add model files"
@@ -149,7 +149,7 @@ After uploading all files successfully, go to your GitHub repository. You should
 
 GitHub releases mark specific points in the repository's history. They are based on Git tags and are deployable software iterations for share and re-use. When importing a model from a GitHub repository, VDP creates one model instances per release. So let's tag the current model.
 
-```bash
+```shellscript
 git tag <tagname>
 git push origin --tags
 ```
@@ -180,7 +180,7 @@ Follow **Step 1-2** of the [How to prepare a GitHub repository and use Git LFS t
 
 Go to [GitHub](https://github.com/new) and create a new _public_ repository and set up on the command line
 
-```bash
+```shellscript
 # Create a folder
 mkdir model-yolov4
 cd model-yolov4
@@ -197,7 +197,7 @@ Replace `https://github.com/user/repo.git` with your repository's remote URL.
 
 Having initialized the project, let's download the sample model files
 
-```bash
+```shellscript
 # Download sample model
 curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
 tar -xvf yolov4-onnx-cpu.zip
@@ -206,13 +206,13 @@ rm yolov4-onnx-cpu.zip
 
 **Step 3: Initialize DVC in the repository**
 
-```bash
+```shellscript
 dvc init
 ```
 
 A few [DVC internal directories and files](https://dvc.org/doc/user-guide/project-structure/internal-files) are created. Let's track them with Git.
 
-```bash
+```shellscript
 git status
 # Output
 ...
@@ -229,7 +229,7 @@ git commit -m "chore: initialize DVC"
 
 Let's use `dvc add` to track the ONNX model file:
 
-```bash
+```shellscript
 dvc add yolov4-infer/1/model.onnx
 
 # Output
@@ -241,7 +241,7 @@ dvc add yolov4-infer/1/model.onnx
 
 DVC stores the model file information in a `.dvc` metadata file and lists it in `.gitignore`. The `.dvc` file is a placeholder for the original large file.
 
-```bash
+```shellscript
 cat yolov4-infer/1/model.onnx.dvc
 
 # Output
@@ -253,7 +253,7 @@ outs:
 
 `dvc add` moves the large file into `.dvc/cache`:
 
-```bash
+```shellscript
 .dvc/cache
 └── 2e
     └── 0eeb4de8da2a0663ae3eb4a0dabbce
@@ -263,7 +263,7 @@ The hash value of the ONNX file we just added (`2e0eeb4...`) determines the abov
 
 Follow the instruction and track these files with Git
 
-```bash
+```shellscript
 git add yolov4-infer/1/model.onnx.dvc yolov4-infer/1/.gitignore
 git commit -m "feat: add model file"
 ```
@@ -277,7 +277,7 @@ Currently, VDP supports fetching models from public Google Cloud Storage (GCS). 
 > - [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets) before adding DVC remote
 > - Make sure to run `gcloud auth application-default login` or other ways to authenticate and access GCS.
 
-```bash
+```shellscript
 # Create a new data remote
 dvc remote add -d myremote gs://my-public-bucket/yolov4
 
@@ -288,13 +288,13 @@ git commit -m "chore: set up dvc remote storage"
 
 Instead of storing the DVC-tracked large files in the repository, we can store them remotely (usually with a cloud storage service) with `dvc push`.
 
-```bash
+```shellscript
 dvc push
 ```
 
 dvc push copies the local cached data to the remote storage we set up earlier. The remote bucket directory should look like:
 
-```bash
+```shellscript
 .../yolov4
 └── 2e
     └── 0eeb4de8da2a0663ae3eb4a0dabbce
@@ -302,7 +302,7 @@ dvc push copies the local cached data to the remote storage we set up earlier. T
 
 Let's push all files including dvc files to GitHub
 
-```bash
+```shellscript
 git add --all
 git commit -m "feat: add model files"
 git push -u origin main
@@ -312,7 +312,7 @@ git push -u origin main
 
 Follow **Step 4** of the [Prepare a GitHub repository and track large model files by Git LFS](#how-to-prepare-a-github-repository-and-use-git-lfs-to-track-large-model-files) guideline, tag the current model and create a new release based on the tag.
 
-```bash
+```shellscript
 git tag <tagname>
 git push origin --tags
 ```
@@ -344,7 +344,7 @@ No matter if you are using Git LFS or DVC in the repository, when the model is i
 
 1. Send a HTTP request to the VDP `model-backend` to import a model from a GitHub repository:
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models -d '{
   "id": "yolov4",
   "model_definition": "model-definitions/github",
@@ -356,7 +356,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
 
 2. Deploy the `v1.0-cpu` model instance
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy
 ```
 
@@ -364,7 +364,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:depl
 
 <CH.Code>
 
-```bash cURL(url)
+```shellscript cURL(url)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
   "inputs": [
     {
@@ -374,7 +374,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 }'
 ```
 
-```bash cURL(base64)
+```shellscript cURL(base64)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
   "inputs": [
     {
@@ -384,7 +384,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 }'
 ```
 
-```bash cURL(multipart)
+```shellscript cURL(multipart)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart \
 --form 'file=@"dog.jpg"'
 ```

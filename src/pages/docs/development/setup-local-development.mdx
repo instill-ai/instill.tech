@@ -29,7 +29,7 @@ VDP assigns five different profile names:
 
 Use one of the profile name to develop the corresponding service:
 
-```bash
+```shellscript
 # In VDP project
 make build PROFILE=<valid-profile-name>
 make dev PROFILE=<valid-profile-name>
@@ -41,7 +41,7 @@ The following guideline shows detailed guideline about how to develop the `conne
 
 On the local machine, clone `vdp` repository in your workspace, move to the repository folder, and launch all dependent microservices:
 
-```bash
+```shellscript
 # Clone VDP project
 cd <your-workspace>
 git clone https://github.com/instill-ai/vdp.git
@@ -56,7 +56,7 @@ make dev PROFILE=connector
 
 Clone `connector-backend` repository in your workspace and move to the repository folder:
 
-```bash
+```shellscript
 cd <your-workspace>
 git clone https://github.com/instill-ai/connector-backend.git
 cd connector-backend
@@ -64,7 +64,7 @@ cd connector-backend
 
 **Build & run the dev image**
 
-```bash
+```shellscript
 make build
 make dev
 ```
@@ -73,7 +73,7 @@ Now, you have the Go project set up in the container, in which you can compile a
 
 **Start the `connector-backend` server**
 
-```bash
+```shellscript
 docker exec -it connector-backend /bin/bash
 go run ./cmd/migration
 go run ./cmd/init
@@ -82,7 +82,7 @@ go run ./cmd/main
 
 **Start the Temporal worker**
 
-```bash
+```shellscript
 docker exec -it connector-backend /bin/bash
 go run ./cmd/worker
 ```
@@ -90,13 +90,13 @@ go run ./cmd/worker
 **Run the integration test**
 During development, you can run the integration test to make sure the updated `connector-backend` works as intended:
 
-```bash
+```shellscript
 docker exec -it connector-backend /bin/bash
 make integration-test
 ```
 
 ### Stop the dev container
 
-```bash
+```shellscript
 make stop
 ```

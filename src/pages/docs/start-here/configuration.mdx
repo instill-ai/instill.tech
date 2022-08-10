@@ -31,7 +31,7 @@ Read the default configuration files for a full overview of all supported config
 
 Set the environment variable for a specific service to determine which version to use in VDP.
 
-```make .env
+```shellscript .env
 # Set the version of individual VDP service
 CONSOLE_VERSION=<console-version>
 MGMT_BACKEND_VERSION=<mgmt-backend-version>
@@ -54,7 +54,7 @@ Unless you are debugging and testing, updating the default versions in `env` fil
 
 Set the domain name to access VDP by overriding the environment variable `DOMAIN`:
 
-```make .env
+```shellscript .env
 DOMAIN=<domain-name-to-access-vdp>
 ```
 
@@ -66,7 +66,7 @@ To help us better understand how VDP is used and can be improved, VDP collects a
 
 #### What data is collected
 
-> **We value your privacy.** So, we went for the annoymous data and selected a set of details to share from your VDP instance that would give us insights about how to improve VDP without being invasive.
+> **We value your privacy.** So, we went for the anonymous data and selected a set of details to share from your VDP instance that would give us insights about how to improve VDP without being invasive.
 
 When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, `model-backend` and `mgmt-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
@@ -88,7 +88,7 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
   - UUID of the onboarded User
   - number of _connected_ or _disconnected_ Sources
   - number of _connected_ or _disconnected_ Destinations
-  - array of `SourceConenctorDefinition` of the Sources
+  - array of `SourceConnectorDefinition` of the Sources
   - array of `DestinationConnectorDefinition` of the Destinations
 - [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L130) reports data for `model-backend` session of the onboarded User
   - UUID of the onboarded User
@@ -119,7 +119,7 @@ Additionally, The frontend Console sends event data to [Amplitude](https://ampli
 VDP usage collection helps the entire community. We'd appreciate if you can leave it on.
 However, if you want to opt out, you can disable it by overriding the `.env` file:
 
-```make .env
+```shellscript .env
 DISABLEUSAGE=true
 ```
 
