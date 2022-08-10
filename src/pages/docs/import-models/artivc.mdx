@@ -158,9 +158,7 @@ If you list the files in the remote storage repository, the file structure will 
 
 > Use `avc get` to download data. See [here](https://artivc.io/usage/getting-started/) for more information.
 
-### Setup guide
-
-#### No-code Console
+### No-code setup
 
 To import a model managed by ArtiVC in the Console, do the following:
 
@@ -173,33 +171,30 @@ To import a model managed by ArtiVC in the Console, do the following:
    - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the **Credentials JSON** field. See [Find the credentials JSON file](#find-the-credentials-json-file) to find the credentials json file
 6. Once the model is imported, click the **Model instances** ▾ drop-down, pick one model instance and click **Deploy**
 
-Now go to the model tab, the corresponding model instance should be online.
+Now go to the **Model**, the corresponding model instance should be online.
 
 ![ArtiVC model list](/docs-assets/import-models/artivc-model-list.png)
 
 The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
 
-#### Low-code
+### Low-code setup
 
 1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
 
 ```bash cURL
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "id": "yolov4",
-    "model_definition": "model-definitions/artivc",
-    "configuration": {
-        "url": "gs://public-europe-west2-c-artifacts/vdp/public-artivc-models/mymodel",
-        "credential": {
-            "client_id": "< replace with your client_id  >",
-            "client_secret": "< replace with your client_secret >",
-            "refresh_token": "< replace with your refresh_token >",
-            "type": "< replace with your account type >"
-        }
+curl -X POST http://localhost:8083/v1alpha/models -d '{
+  "id": "yolov4",
+  "model_definition": "model-definitions/artivc",
+  "configuration": {
+    "url": "gs://public-europe-west2-c-artifacts/vdp/public-artivc-models/mymodel",
+    "credential": {
+      "client_id": "< replace with your client_id  >",
+      "client_secret": "< replace with your client_secret >",
+      "refresh_token": "< replace with your refresh_token >",
+      "type": "< replace with your account type >"
     }
-}' \
-http://localhost:8083/v1alpha/models
+  }
+}'
 ```
 
 2. Deploy the `v1.0-cpu` model instance
@@ -212,36 +207,29 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:depl
 
 <CH.Code>
 
-```bash remote
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_url": "https://artifacts.instill.tech/dog.jpg"
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
+```bash cURL(url)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/dog.jpg"
+    }
+  ]
+}'
 ```
 
-```bash base64
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
+```bash cURL(base64)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+    }
+  ]
+}'
 ```
 
-```bash multipart
-curl -X POST \
---form 'file=@"dog.jpg"' \
-http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart
+```bash cURL(multipart)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart \
+--form 'file=@"dog.jpg"'
 ```
 
 </ CH.Code>

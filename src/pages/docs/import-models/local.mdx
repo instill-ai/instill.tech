@@ -145,9 +145,7 @@ drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 local-model/pre/1/
 20 files, 257487794 bytes uncompressed, 239249049 bytes compressed:  7.1%
 ```
 
-### Setup guide
-
-#### No-code Console
+### No-code setup
 
 To create a local model in the Console, do the following:
 
@@ -164,16 +162,15 @@ Now go to the **Model** page, the corresponding model instance should be online.
 
 Since a local model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
 
-#### Low-code
+### Low-code setup
 
 1. Send a HTTP request to the VDP `model-backend` to import a local model.
 
 ```bash cURL
-curl -X POST \
+curl -X POST http://localhost:8083/v1alpha/models:multipart \
 --form 'id="yolov4"' \
 --form 'model_definition="model-definitions/local"' \
---form 'content=@"yolov4.zip"' \
-http://localhost:8083/v1alpha/models:multipart
+--form 'content=@"yolov4.zip"'
 ```
 
 2. Deploy the `latest` model instance
@@ -186,36 +183,29 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy
 
 <CH.Code>
 
-```bash remote
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_url": "https://artifacts.instill.tech/dog.jpg"
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/yolov4/instances/latest:test
+```bash cURL(url)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/dog.jpg"
+    }
+  ]
+}'
 ```
 
-```bash base64
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/yolov4/instances/latest:test
+```bash cURL(base64)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+    }
+  ]
+}'
 ```
 
-```bash multipart
-curl -X POST \
---form 'file=@"dog.jpg"' \
-http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart
+```bash cURL(multipart)
+curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart \
+--form 'file=@"dog.jpg"'
 ```
 
 </ CH.Code>

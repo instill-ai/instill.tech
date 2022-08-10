@@ -29,10 +29,6 @@ export const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           { text: "Getting started", link: "/docs/start-here/getting-started" },
-          {
-            text: "Build your first pipeline",
-            link: "/docs/start-here/build-your-first-pipeline",
-          },
           { text: "Configuration", link: "/docs/start-here/configuration" },
           { text: "Roadmap", link: "/docs/start-here/roadmap" },
           { text: "FAQ", link: "/docs/start-here/faq" },
@@ -124,6 +120,16 @@ export const SIDEBAR: Sidebar = {
           {
             text: "Setup",
             link: "/docs/development/setup-local-development",
+          },
+        ],
+      },
+      {
+        text: "Tutorials",
+        collapsible: true,
+        items: [
+          {
+            text: "Build a SYNC pipeline",
+            link: "/docs/tutorials/build-a-sync-pipeline",
           },
         ],
       },

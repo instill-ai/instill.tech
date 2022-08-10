@@ -64,7 +64,7 @@ Without setting `DOMAIN`, the default domain is `localhost`.
 
 To help us better understand how VDP is used and can be improved, VDP collects and reports _Anonymised_ usage statistics.
 
-### What data is collected
+#### What data is collected
 
 > **We value your privacy.** So, we went for the annoymous data and selected a set of details to share from your VDP instance that would give us insights about how to improve VDP without being invasive.
 
@@ -106,7 +106,7 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
 You can check the full usage data structs in [protobufs](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto).
 These data does not allow us to track Personal Data but enables us to measure session counts and usage statistics.
 
-### Implementation
+#### Implementation
 
 The anonymous usage report client library is open-source in [`usage-client`](https://github.com/instill-ai/usage-client).
 To limit risk exposure, we keep the usage server implementation private for now.
@@ -114,7 +114,7 @@ In summary, the Session data and SessionReport sent from each session get update
 
 Additionally, The frontend Console sends event data to [Amplitude](https://amplitude.com).
 
-### Opting out
+#### Opting out
 
 VDP usage collection helps the entire community. We'd appreciate if you can leave it on.
 However, if you want to opt out, you can disable it by overriding the `.env` file:
