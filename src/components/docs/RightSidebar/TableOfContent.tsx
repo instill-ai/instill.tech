@@ -8,15 +8,15 @@ export type TableOfContentProps = {
 };
 
 const TableOfContent = ({ headers }: TableOfContentProps) => {
-  const handleClick = useCallback(
-    (e: MouseEvent<HTMLAnchorElement>, slug: string) => {
-      e.preventDefault();
-      document.querySelector(`#${slug}`).scrollIntoView({
-        behavior: "smooth",
-      });
-    },
-    []
-  );
+  // const handleClick = useCallback(
+  //   (e: MouseEvent<HTMLAnchorElement>, slug: string) => {
+  //     //e.preventDefault();
+  //     document.querySelector(`#${slug}`).scrollIntoView({
+  //       behavior: "smooth",
+  //     });
+  //   },
+  //   []
+  // );
 
   return (
     <div className="flex flex-col mb-10">
@@ -30,7 +30,6 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
             <a
               className="block truncate text-instillGrey50 group-hover:text-instillBlue50"
               href={`#${header.slug}`}
-              onClick={(e) => handleClick(e, header.slug)}
             >
               {header.text}
             </a>

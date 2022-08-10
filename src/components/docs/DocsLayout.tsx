@@ -71,24 +71,26 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
     setHeaders(newHeaders);
 
-    const anchorClickHandler = function (e: Event) {
-      e.preventDefault();
+    // const anchorClickHandler = function (e: Event) {
+    //   e.preventDefault();
 
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
-      });
-    };
+    //   document.querySelector(this.getAttribute("href")).scrollIntoView({
+    //     behavior: "smooth",
+    //   });
 
-    const anchors = document.querySelectorAll('a.heading-anchor[href^="#"]');
+    //   window.location.replace(this.getAttribute("href"));
+    // };
 
-    anchors.forEach((anchor) => {
-      anchor.addEventListener("click", anchorClickHandler);
-    });
+    // const anchors = document.querySelectorAll('a.heading-anchor[href^="#"]');
 
-    return () =>
-      anchors.forEach((anchor) =>
-        anchor.removeEventListener("click", anchorClickHandler)
-      );
+    // anchors.forEach((anchor) => {
+    //   anchor.addEventListener("click", anchorClickHandler);
+    // });
+
+    // return () =>
+    //   anchors.forEach((anchor) =>
+    //     anchor.removeEventListener("click", anchorClickHandler)
+    //   );
   }, [SIDEBAR]);
 
   useEffect(() => {
@@ -99,9 +101,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         "src/pages" + router.asPath + ".mdx"
       );
 
-      const time = new Date(commits[0].commit.author.date).toLocaleString();
-
-      setLastEditedTime(time);
+      if (commits.length > 0) {
+        const time = new Date(commits[0].commit.author.date).toLocaleString();
+        setLastEditedTime(time);
+      }
     };
 
     fetchCommit();
