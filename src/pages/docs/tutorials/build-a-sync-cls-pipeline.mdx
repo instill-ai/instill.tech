@@ -16,7 +16,7 @@ In this tutorial you'll build your first **`SYNC`** classification pipeline and 
 
 ## Build via no-code Console
 
-After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, 
+After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
 where you can build your first VDP pipeline by clicking **Create your first pipeline** and forever change the way you approach visual data processing workflow development.
 
 ![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
@@ -27,9 +27,10 @@ where you can build your first VDP pipeline by clicking **Create your first pipe
 
 A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline.
 
-To set it up, 
+To set it up,
+
 1. click the **Pipeline mode** ▾ drop-down and choose `SYNC`, and
-2. click the **Source type** ▾ drop-down and choose `HTTP`.
+2. click the **Source type** ▾ drop-down and choose `HTTP`
 
 ![Add a HTTP source to create a SYNC pipeline in the VDP Console](/docs-assets/tutorials/add-a-sync-source-http.png)
 
@@ -39,13 +40,13 @@ To set it up,
 
 To process images, here we import a model from our public GitHub repo [instill-ai/model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
 
-To set it up, 
+To set it up,
 
-1. give your model a unique ID,
-2. [optional] add description,
-3. click the **Model type** ▾ drop-down and choose `GitHub`,
-4. fill in the GitHub repository URL `instill-ai/model-mobilenetv2`, and 
-5. click **Setup new model**.
+1. give your model a unique ID
+2. [optional] add description
+3. click the **Model type** ▾ drop-down and choose `GitHub`
+4. fill in the GitHub repository URL `instill-ai/model-mobilenetv2`, and
+5. click **Setup new model**
 
 ![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-mobilenetv2-model.png)
 
@@ -55,11 +56,11 @@ VDP will fetch all the releases of the GitHub repository. Each release is conver
 
 #### Deploy a model instance of the imported model
 
-Once the model is imported, 
+Once the model is imported,
 
-1. click the **Model instances** ▾ drop-down, 
-2. pick one model instance, and 
-3. click **Deploy** to put it online.
+1. click the **Model instances** ▾ drop-down
+2. pick one model instance, and
+3. click **Deploy** to put it online
 
 ![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png)
 
@@ -67,8 +68,9 @@ Once the model is imported,
 
 Since we are building a `SYNC` pipeline, the HTTP destination is automatically paired with the HTTP source.
 
-Just,
-1. click **Next**. 
+Just
+
+1. click **Next**
 
 ![Add a HTTP destination to create a SYNC pipeline in the VDP console](/docs-assets/tutorials/add-a-sync-destination-http.png)
 
@@ -79,12 +81,11 @@ Just,
 
 #### Set up the pipeline
 
-Almost done! 
+Almost done! Just
 
-Just,
-1. give your pipeline a unique ID, 
+1. give your pipeline a unique ID
 2. [optional] add description, and
-3. click **Set up pipeline**.
+3. click **Set up pipeline**
 
 ![Set up a pipeline in the VDP Console](/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png)
 
@@ -140,7 +141,6 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 ```
 
 ---
-
 
 #### Step 1: Add a HTTP source
 
@@ -259,5 +259,6 @@ A HTTP response will return
 
 By now, you should have a basic understanding of how VDP streamlines the end-to-end ETL pipelines for visual data.
 This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey.
-Next, check out [Learn VDP](getting-started#learn-vdp).
+
+Next, check out how to [Build an ASYNC object detection pipeline](build-an-async-det-pipeline).
 If you have any problem at all, join our [Discord](https://discord.gg/sevxWsqpGh) to get [community support](getting-started#community-support).

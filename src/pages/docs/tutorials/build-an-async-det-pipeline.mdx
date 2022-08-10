@@ -1,6 +1,6 @@
 import { DocsLayout } from "@/components/docs";
 export const meta = {
-  title: "Build an ASYNC pipeline",
+  title: "Build an ASYNC object detection pipeline",
   lang: "en-US",
   draft: false,
   description:
@@ -30,7 +30,7 @@ A HTTP source accepts HTTP requests with image payloads to be processed by a pip
 To set it up,
 
 1. click the **Pipeline mode** ▾ drop-down and choose `ASYNC`, and
-2. click the **Source type** ▾ drop-down and choose `HTTP`.
+2. click the **Source type** ▾ drop-down and choose `HTTP`
 
 ![Add a HTTP source to create an async pipeline in the VDP Console](/docs-assets/tutorials/add-an-async-source-http.png)
 
@@ -42,11 +42,11 @@ To process images, here we import a model from our public GitHub repo [instill-a
 
 To set it up,
 
-1. give your model a unique ID,
-2. [optional] add description,
-3. click the **Model type** ▾ drop-down and choose `GitHub`,
+1. give your model a unique ID
+2. [optional] add description
+3. click the **Model type** ▾ drop-down and choose `GitHub`
 4. fill in the GitHub repository URL `instill-ai/model-yolov7-dvc`, and
-5. click **Setup new model**.
+5. click **Setup new model**
 
 ![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-yolov7-model.png)
 
@@ -58,9 +58,9 @@ VDP will fetch all the releases of the GitHub repository. Each release is conver
 
 Once the model is imported,
 
-1. click the **Model instances** ▾ drop-down,
+1. click the **Model instances** ▾ drop-down
 2. pick one model instance, and
-3. click **Deploy** to put it online.
+3. click **Deploy** to put it online
 
 ![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-yolov7-model-instance.png)
 
@@ -68,10 +68,10 @@ Once the model is imported,
 
 To set it up,
 
-1. give your destination a unique ID,
-2. [optional] add description,
+1. give your destination a unique ID
+2. [optional] add description
 3. click the **Destination type** ▾ drop-down and choose `Postgres`, and
-4. fill in the required fields.
+4. fill in the required fields
 
 ![Add a PostgreSQL destination to create a pipeline in the VDP console](/docs-assets/tutorials/add-a-destination-postgres.png)
 
@@ -79,13 +79,11 @@ To set it up,
 
 #### Set up the pipeline
 
-Almost done!
+Almost done! Just
 
-Just,
-
-1. give your pipeline a unique ID,
+1. give your pipeline a unique ID
 2. [optional] add description, and
-3. click **Set up pipeline**.
+3. click **Set up pipeline**
 
 ![Set up an pipeline in the VDP Console](/docs-assets/tutorials/set-up-an-async-det-pipeline.png)
 
@@ -266,7 +264,5 @@ SELECT 2
 
 ## What's next?
 
-By now, you should have a basic understanding of how VDP streamlines the end-to-end ETL pipelines for visual data.
-This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey.
-Next, check out [Learn VDP](getting-started#learn-vdp).
+Check out [Learn VDP](getting-started#learn-vdp).
 If you have any problem at all, join our [Discord](https://discord.gg/sevxWsqpGh) to get [community support](getting-started#community-support).
