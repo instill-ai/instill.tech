@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
 import cn from "clsx";
-import IconMinusSquare from "./IconMinusSquare";
-import IconPlusSquare from "./IconPlusSquare";
 import { SidebarItem } from "@/types/docs";
 import { useRouter } from "next/router";
 import { CollapseRightIcon } from "@instill-ai/design-system";
