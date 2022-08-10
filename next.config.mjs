@@ -8,7 +8,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { h } from "hastscript";
 
 const theme = JSON.parse(
-  await readFile(new URL("./src/styles/slack-dark.json", import.meta.url))
+  await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
 );
 
 const withMDX = mdx({
@@ -24,8 +24,9 @@ const withMDX = mdx({
         rehypeAutolinkHeadings,
         {
           behavior: "prepend",
+          properties: { class: "heading-anchor" },
           content(node) {
-            return h("a", { class: "heading-anchor" }, ["#"]);
+            return h("span", { class: "heading-anchor-hash" }, ["#"]);
           },
         },
       ],

@@ -5,6 +5,7 @@ import IconPlusSquare from "./IconPlusSquare";
 import { SidebarItem } from "@/types/docs";
 import { useRouter } from "next/router";
 import { CollapseRightIcon } from "@instill-ai/design-system";
+import Link from "next/link";
 
 export type SectionProps = {
   text: string;
@@ -81,18 +82,19 @@ const Section = ({
         })}
       >
         {items.map((item) => (
-          <a
-            key={item.text}
-            className={cn(
-              "text-sm hover:text-instillGrey95",
-              item.link === currentPagePath
-                ? "text-instillGrey95 font-semibold"
-                : "text-instillGrey80 font-normal"
-            )}
-            href={item.link}
-          >
-            {item.text}
-          </a>
+          <Link key={item.link} href={item.link}>
+            <a
+              key={item.text}
+              className={cn(
+                "text-sm hover:text-instillBlue50 font-normal transition ease-in-out duration-300",
+                item.link === currentPagePath
+                  ? "text-instillBlue50"
+                  : "text-instillGrey80"
+              )}
+            >
+              {item.text}
+            </a>
+          </Link>
         ))}
       </div>
     </section>

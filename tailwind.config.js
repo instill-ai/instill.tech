@@ -54,7 +54,7 @@ module.exports = {
       screens: {
         xx: "320px",
         xs: "480px",
-        max: "1450px", // We have 10px buffer
+        max: "1440px",
         tall: { raw: "(min-height: 800px)" },
         short: { raw: "(min-height: 600px and max-height: 800px)" },
       },

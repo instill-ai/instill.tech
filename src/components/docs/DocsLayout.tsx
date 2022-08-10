@@ -38,6 +38,25 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     });
 
     setHeaders(newHeaders);
+
+    const anchorClickHandler = function (e: Event) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    };
+
+    const anchors = document.querySelectorAll('a.heading-anchor[href^="#"]');
+
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", anchorClickHandler);
+    });
+
+    return () =>
+      anchors.forEach((anchor) =>
+        anchor.removeEventListener("click", anchorClickHandler)
+      );
   }, []);
 
   return (
@@ -52,6 +71,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
             .docs-content {
               margin-left: calc((100vw - 1140px + 300px) / 2);
               margin-right: calc((100vw - 1140px) / 2);
+              max-width: var(--docs-content-max-width);
             }
           }
         `}
@@ -63,15 +83,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       <main className="w-screen grid grid-flow-col grid-cols-12 gap-x-10 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-4 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
+            "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-3 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
-          title="Site Navigation"
         >
           <LeftSidebar
             leftSidebar={SIDEBAR.leftSidebar}
             currentPagePath={router.pathname}
-            maxWidth="max-w-[300px]"
           />
         </aside>
 
@@ -82,12 +100,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           />
         ) : null}
 
-        <div className="docs-content flex flex-col col-span-12 md:col-span-8 max:col-span-12 pb-40 w-full max-w-[1140px]">
-          <Nav
-            setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-            navbar={NAVBAR}
-            marginBottom="md:mb-4"
-          />
+        <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full">
+          <Nav setLeftSidebarIsOpen={setLeftSidebarIsOpen} navbar={NAVBAR} />
           <div className="grid grid-cols-8">
             <div className="col-span-8 xl:col-span-6 pl-8 max:pl-16 pr-8">
               <h1 className="font-sans font-semibold text-3xl mb-10">
@@ -98,10 +112,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
               </article>
             </div>
 
-            <aside
-              className="grid-sidebar col-span-2 pl-8 hidden md:block max-w-[300px]"
-              title="Table of Contents"
-            >
+            <aside className="col-span-2 pl-8 hidden xl:block">
               <RightSidebar
                 githubEditUrl={
                   "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
