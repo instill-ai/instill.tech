@@ -1,0 +1,263 @@
+import { DocsLayout } from "@/components/docs";
+export const meta = {
+  title: "Build a SYNC classification pipeline",
+  lang: "en-US",
+  draft: false,
+  description:
+    "Build a SYNC classification pipeline with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+  date: "",
+};
+
+export default ({ children }) => (
+  <DocsLayout meta={meta}>{children}</DocsLayout>
+);
+
+In this tutorial you'll build your first **`SYNC`** classification pipeline and trigger the pipeline to process some images.
+
+## Build via no-code Console
+
+After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, 
+where you can build your first VDP pipeline by clicking **Create your first pipeline** and forever change the way you approach visual data processing workflow development.
+
+![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
+
+> You can follow the tutorial via the **Pipeline** page. Or, you can navigate to the **Source**, **Model** and **Destination** page to create each component first and use them to configure a pipeline in **Pipeline** page later.
+
+#### Add a HTTP source
+
+A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline.
+
+To set it up, 
+1. click the **Pipeline mode** ▾ drop-down and choose `SYNC`, and
+2. click the **Source type** ▾ drop-down and choose `HTTP`.
+
+![Add a HTTP source to create a SYNC pipeline in the VDP Console](/docs-assets/tutorials/add-a-sync-source-http.png)
+
+> Check our growing list of [Source Connectors](/docs/source-connectors/overview).
+
+#### Import a model from GitHub
+
+To process images, here we import a model from our public GitHub repo [instill-ai/model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
+
+To set it up, 
+
+1. give your model a unique ID,
+2. [optional] add description,
+3. click the **Model type** ▾ drop-down and choose `GitHub`,
+4. fill in the GitHub repository URL `instill-ai/model-mobilenetv2`, and 
+5. click **Setup new model**.
+
+![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-mobilenetv2-model.png)
+
+VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
+
+> Check our growing list of [model definitions](/docs/import-models/overview) to learn about how to import models from other platforms.
+
+#### Deploy a model instance of the imported model
+
+Once the model is imported, 
+
+1. click the **Model instances** ▾ drop-down, 
+2. pick one model instance, and 
+3. click **Deploy** to put it online.
+
+![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png)
+
+#### Add a HTTP destination
+
+Since we are building a `SYNC` pipeline, the HTTP destination is automatically paired with the HTTP source.
+
+Just,
+1. click **Next**. 
+
+![Add a HTTP destination to create a SYNC pipeline in the VDP console](/docs-assets/tutorials/add-a-sync-destination-http.png)
+
+> The paired source and destination connectors for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
+>
+> - HTTP source → HTTP destination
+> - gRPC source → gRPC destination
+
+#### Set up the pipeline
+
+Almost done! 
+
+Just,
+1. give your pipeline a unique ID, 
+2. [optional] add description, and
+3. click **Set up pipeline**.
+
+![Set up a pipeline in the VDP Console](/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png)
+
+Now you should see the newly created `SYNC` pipeline on the **Pipeline** page 🎉
+
+![Pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-sync-cls.png)
+
+## Build via low-code
+
+<CH.Scrollycoding>
+
+You can programmatically build a `SYNC` pipeline via REST API.
+
+```shellscript
+
+curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8083/v1alpha/models -d '{
+  "id": "mobilenetv2",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-mobilenetv2"
+  }
+}'
+
+curl -X POST http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu:deploy
+
+curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+  "id": "destination-http",
+  "destination_connector_definition": "destination-connector-definitions/destination-http",
+  "connector": {
+      "configuration": {}
+  }
+}'
+
+curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
+  "id": "classification",
+  "recipe": {
+    "source": "source-connectors/source-http",
+    "model_instances": [
+      "models/mobilenetv2/instances/v1.0-cpu"
+    ],
+    "destination": "destination-connectors/destination-http"
+  }
+}'
+
+```
+
+---
+
+
+#### Step 1: Add a HTTP source
+
+`http://localhost:8082` is the default URL of the VDP `connector-backend`.
+
+```shellscript focus=1:8
+
+```
+
+---
+
+#### Step 2: Import a model from GitHub
+
+`http://localhost:8083` is the default URL of the VDP `model-backend`.
+
+```shellscript focus=10:16
+
+```
+
+---
+
+#### Step 3: Deploy a model instance
+
+Choose the model instance `v1.0-cpu` to deploy.
+
+```shellscript focus=18:18
+
+```
+
+---
+
+#### Step 4: Add a HTTP destination
+
+```shellscript focus=20:26
+
+```
+
+---
+
+#### Step 5: Create your first pipeline
+
+`http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
+
+```shellscript focus=27:38
+
+```
+
+</CH.Scrollycoding>
+
+## Trigger your pipeline for the first time
+
+> All `SYNC` pipelines are automatically activated.
+
+Now that the `classification` pipeline is automatically activated, you can make a request to trigger the pipeline to process **multiple** images within a batch via remote image URLs, Base64 or multipart:
+
+<CH.Code>
+
+```shellscript cURL(url)
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/dog.jpg"
+    },
+    {
+      "image_url": "https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg"
+    }
+  ]
+}'
+```
+
+```shellscript cURL(base64)
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSk...D/2Q=="
+    },
+    ...
+  ]
+}'
+```
+
+```shellscript cURL(multipart)
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"elephant.jpg"'
+```
+
+</CH.Code>
+
+in which `http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
+
+A HTTP response will return
+
+```json
+{
+  "output": [
+    {
+      "classification_outputs": [
+        {
+          "category": "golden retriever",
+          "score": 0.898938
+        },
+        {
+          "category": "African elephant",
+          "score": 0.864008
+        }
+      ]
+    }
+  ]
+}
+```
+
+**🙌 That's it!** You just built your first `SYNC` pipeline and triggered it to convert unstructured image data into structured and analysable insight.
+
+## What's next?
+
+By now, you should have a basic understanding of how VDP streamlines the end-to-end ETL pipelines for visual data.
+This tutorial only shows the tip of what VDP is capable of and is just the beginning of your VDP journey.
+Next, check out [Learn VDP](getting-started#learn-vdp).
+If you have any problem at all, join our [Discord](https://discord.gg/sevxWsqpGh) to get [community support](getting-started#community-support).

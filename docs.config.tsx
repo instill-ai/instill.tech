@@ -36,6 +36,20 @@ export const SIDEBAR: Sidebar = {
         ],
       },
       {
+        text: "Tutorials",
+        collapsible: true,
+        items: [
+          {
+            text: "Build a SYNC classification pipeline",
+            link: "/docs/tutorials/build-a-sync-cls-pipeline",
+          },
+          {
+            text: "Build an ASYNC object detection pipeline",
+            link: "/docs/tutorials/build-an-async-det-pipeline",
+          },
+        ],
+      },
+      {
         text: "Core Concepts",
         collapsible: true,
         items: [
@@ -120,16 +134,6 @@ export const SIDEBAR: Sidebar = {
           {
             text: "Setup",
             link: "/docs/development/setup-local-development",
-          },
-        ],
-      },
-      {
-        text: "Tutorials",
-        collapsible: true,
-        items: [
-          {
-            text: "Build a SYNC pipeline",
-            link: "/docs/tutorials/build-a-sync-pipeline",
           },
         ],
       },

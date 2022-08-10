@@ -56,7 +56,7 @@ Assuming ArtiVC is [installed](https://artivc.io/usage/getting-started/#install-
 
 In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet) as sample data.
 
-```bash
+```shellscript
 # Create a workspace
 mkdir workspace
 cd workspace
@@ -95,13 +95,13 @@ The extracted model files should look like:
 
 Before we push the data, install [the gcloud CLI](https://cloud.google.com/sdk/gcloud) and login the application default credential
 
-```bash
+```shellscript
 gcloud auth application-default login
 ```
 
 Initialize the workspace
 
-```bash
+```shellscript
 # In /workspace
 avc init gs://mybucket/path/to/mymodel
 
@@ -114,7 +114,7 @@ repo.url=gs://mybucket/path/to/mymodel
 
 Push data to the remote and tag a version
 
-```bash
+```shellscript
 avc push
 avc tag v1.0-cpu
 ```
@@ -181,7 +181,7 @@ The setup guide assumes your model is stored in a GCS bucket. When the model is 
 
 1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models -d '{
   "id": "yolov4",
   "model_definition": "model-definitions/artivc",
@@ -199,7 +199,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
 
 2. Deploy the `v1.0-cpu` model instance
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy
 ```
 
@@ -207,7 +207,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:depl
 
 <CH.Code>
 
-```bash cURL(url)
+```shellscript cURL(url)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
   "inputs": [
     {
@@ -217,7 +217,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 }'
 ```
 
-```bash cURL(base64)
+```shellscript cURL(base64)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test -d '{
   "inputs": [
     {
@@ -227,7 +227,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test
 }'
 ```
 
-```bash cURL(multipart)
+```shellscript cURL(multipart)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:test-multipart \
 --form 'file=@"dog.jpg"'
 ```

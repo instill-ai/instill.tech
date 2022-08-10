@@ -37,7 +37,7 @@ The `Local` model definition accepts a `.zip` file that contains all files requi
 **Step 1: Download sample model data**
 In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet). Let's download and extract the contents of the sample data.
 
-```bash
+```shellscript
 # Create a folder
 mkdir local-model
 cd local-model
@@ -50,7 +50,7 @@ rm yolov4-onnx-cpu.zip
 
 The extracted model files in `/local-model` should look like
 
-```bash
+```shellscript
 ├── README.md
 ├── post
 │   ├── 1
@@ -76,7 +76,7 @@ The extracted model files in `/local-model` should look like
 
 In `/local-model` directory
 
-```bash
+```shellscript
 zip -r "yolov4.zip" .
 ```
 
@@ -86,7 +86,7 @@ zip -r "yolov4.zip" .
 
 ✅ Make sure that the compressed model files are in the _root directory_ of the zip file.
 
-```bash
+```shellscript
 zipinfo yolov4.zip
 
 # Output
@@ -116,7 +116,7 @@ drwxr-xr-x  3.0 unx        0 bx stor 22-Jul-21 12:12 pre/1/
 
 ❌ Don't compress the model files in another root directory
 
-```bash
+```shellscript
 zipinfo yolov4.zip
 
 # Output
@@ -166,7 +166,7 @@ Since a local model has no version control, when the model is successfully impor
 
 1. Send a HTTP request to the VDP `model-backend` to import a local model.
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models:multipart \
 --form 'id="yolov4"' \
 --form 'model_definition="model-definitions/local"' \
@@ -175,7 +175,7 @@ curl -X POST http://localhost:8083/v1alpha/models:multipart \
 
 2. Deploy the `latest` model instance
 
-```bash cURL
+```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy
 ```
 
@@ -183,7 +183,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:deploy
 
 <CH.Code>
 
-```bash cURL(url)
+```shellscript cURL(url)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -d '{
   "inputs": [
     {
@@ -193,7 +193,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -
 }'
 ```
 
-```bash cURL(base64)
+```shellscript cURL(base64)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -d '{
   "inputs": [
     {
@@ -203,7 +203,7 @@ curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test -
 }'
 ```
 
-```bash cURL(multipart)
+```shellscript cURL(multipart)
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/latest:test-multipart \
 --form 'file=@"dog.jpg"'
 ```
