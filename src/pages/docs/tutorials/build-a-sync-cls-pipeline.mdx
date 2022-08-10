@@ -144,7 +144,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 #### Step 1: Add a HTTP source
 
-`http://localhost:8082` is the default URL of the VDP `connector-backend`.
+`http://localhost:8082` is the `connector-backend` default URL.
 
 ```shellscript focus=1:8
 
@@ -154,7 +154,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 #### Step 2: Import a model from GitHub
 
-`http://localhost:8083` is the default URL of the VDP `model-backend`.
+`http://localhost:8083` is the `model-backend` default URL.
 
 ```shellscript focus=10:16
 
@@ -182,7 +182,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 #### Step 5: Create your first pipeline
 
-`http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
+`http://localhost:8081` is the `pipeline-backend` default URL.
 
 ```shellscript focus=27:38
 
@@ -230,7 +230,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger-mult
 
 </CH.Code>
 
-in which `http://localhost:8081` is the default URL of the VDP `pipeline-backend`.
+in which `http://localhost:8081` is the `pipeline-backend` default URL.
 
 A HTTP response will return
 
