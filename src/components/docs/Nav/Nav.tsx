@@ -33,7 +33,7 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
     <>
       <nav
         className={cn(
-          "sticky backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white/50 py-4 px-8 h-[100px] border-b md:border-none",
+          "sticky md:backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white md:bg-white/50 py-4 px-8 h-[100px] border-b md:border-none",
           marginBottom
         )}
       >
@@ -82,7 +82,7 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
         </div>
       </nav>
       <SubNav
-        styleName="mb-5 flex md:hidden sticky top-[132px]"
+        styleName="mb-5 flex md:hidden sticky top-[100px]"
         setLeftSidebarIsOpen={setLeftSidebarIsOpen}
       />
     </>

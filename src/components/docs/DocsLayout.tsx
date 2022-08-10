@@ -63,14 +63,14 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       <main className="w-screen grid grid-flow-col grid-cols-12 gap-x-10 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-4 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
+            "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-3 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
           <LeftSidebar
             leftSidebar={SIDEBAR.leftSidebar}
             currentPagePath={router.pathname}
-            maxWidth="max-w-[300px]"
+            maxWidth="max-w-[279px]"
           />
         </aside>
 
@@ -81,7 +81,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           />
         ) : null}
 
-        <div className="docs-content flex flex-col col-span-12 md:col-span-8 max:col-span-12 pb-40 w-full max-w-[1140px]">
+        <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full max-w-[1140px]">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
             navbar={NAVBAR}
