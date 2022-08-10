@@ -339,7 +339,7 @@ No matter if you are using Git LFS or DVC in the repository, when the model is i
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a model from a GitHub repository:
+1. Send a HTTP request to the VDP `model-backend` to import a model from a GitHub repository.
 
 ```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models -d '{
@@ -351,7 +351,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
 }'
 ```
 
-2. Deploy the `v1.0-cpu` model instance
+2. Deploy the `v1.0-cpu` model instance.
 
 ```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/yolov4/instances/v1.0-cpu:deploy
