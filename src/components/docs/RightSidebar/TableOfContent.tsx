@@ -1,3 +1,5 @@
+import { MouseEvent, useCallback } from "react";
+
 export type TableOfContentProps = {
   headers: {
     slug: string;
@@ -6,6 +8,16 @@ export type TableOfContentProps = {
 };
 
 const TableOfContent = ({ headers }: TableOfContentProps) => {
+  const handleClick = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>, slug: string) => {
+      e.preventDefault();
+      document.querySelector(`#${slug}`).scrollIntoView({
+        behavior: "smooth",
+      });
+    },
+    []
+  );
+
   return (
     <div className="flex flex-col mb-10">
       <h2 className="mb-4 text-instillGrey95 font-semibold">On this page</h2>
@@ -18,6 +30,7 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
             <a
               className="block truncate text-instillGrey50 group-hover:text-instillBlue50"
               href={`#${header.slug}`}
+              onClick={(e) => handleClick(e, header.slug)}
             >
               {header.text}
             </a>

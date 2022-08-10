@@ -24,8 +24,9 @@ const withMDX = mdx({
         rehypeAutolinkHeadings,
         {
           behavior: "prepend",
+          properties: { class: "heading-anchor" },
           content(node) {
-            return h("a", { class: "heading-anchor" }, ["#"]);
+            return h("span", { class: "heading-anchor-hash" }, ["#"]);
           },
         },
       ],
