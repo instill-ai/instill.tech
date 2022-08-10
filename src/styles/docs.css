@@ -1,0 +1,35 @@
+:root {
+  --docs-nav-height: 100px;
+  --docs-nav-margin-bottom: 16px;
+  --docs-left-sidebar-logo-height: var(--docs-nav-height);
+  --docs-left-sidebar-logo-margin-bottom: var(--docs-nav-margin-bottom);
+  --docs-left-sidebar-max-width: 279px;
+  --docs-right-sidebar-max-width: var(--docs-left-sidebar-max-width);
+  --docs-content-max-width: 1140px
+}
+
+/*
+  Because we have sticky header, every time we jump to the anchor link, the header will
+  cover the h1~h4 title, we need scroll-margin-top to cope with this issue.
+*/
+
+article > h1, h2, h3, h4 {
+  scroll-margin-top: 140px;
+}
+
+/*
+  The style of header-anchor in header
+*/
+
+span.heading-anchor-hash {
+  transition: color 0.25s, opacity 0.25s;
+  margin-left: -1.5rem;
+  margin-right: 0.5rem;
+  opacity: 0;
+  color: #8C8A8A;
+  display: inline-block;
+}
+
+article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, h4:hover span.heading-anchor-hash {
+  opacity: 100;
+}

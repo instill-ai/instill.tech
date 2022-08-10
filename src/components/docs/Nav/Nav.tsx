@@ -9,11 +9,10 @@ import SubNav from "./SubNav";
 
 export type NavProps = {
   navbar: NavBar;
-  marginBottom: string;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
+const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
@@ -31,10 +30,17 @@ const Nav = ({ navbar, marginBottom, setLeftSidebarIsOpen }: NavProps) => {
 
   return (
     <>
+      <style jsx>
+        {`
+          .nav {
+            min-height: var(--docs-nav-height);
+            margin-bottom: var(docs-nav-margin-bottom);
+          }
+        `}
+      </style>
       <nav
         className={cn(
-          "sticky md:backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white md:bg-white/50 py-4 px-8 h-[100px] border-b md:border-none",
-          marginBottom
+          "nav sticky md:backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white md:bg-white/50 py-4 px-8 border-b md:border-none"
         )}
       >
         {!navbar.logo && !navbar.title ? null : (

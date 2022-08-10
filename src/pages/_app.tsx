@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
 import "../styles/global.css";
 import "@/style/codeHike.css";
+import "../styles/docs.css";
 
 import "intersection-observer";
 import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";

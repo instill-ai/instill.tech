@@ -84,7 +84,7 @@ const Section = ({
           <a
             key={item.text}
             className={cn(
-              "text-sm hover:text-instillBlue50 font-normal",
+              "text-sm hover:text-instillBlue50 font-normal transition ease-in-out duration-300",
               item.link === currentPagePath
                 ? "text-instillBlue50"
                 : "text-instillGrey80"
