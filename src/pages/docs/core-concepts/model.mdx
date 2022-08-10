@@ -37,11 +37,12 @@ In this case, you can keep a single history of your models and the original vers
 
 Throughout the documentation, we use the two terms _model_ and _model instance_ interchangeably.
 For example, when we say that **Model** is the core component of data pipeline to convert the unstructured visual data to structured insights, what actually happens underneath is the model instances being used to construct a data pipeline.
+
 A VDP pipeline can have multiple model instances. The examples below showcase pipeline recipes that incorporate single or multiple model instances.
 
 <CH.Code>
 
-```json single-model-instance-in-pipeline
+```json single-model-instance-pipeline
 {
   "source": "source-connectors/source-http",
   "model_instances": ["models/model-1/instances/v1.0"],
@@ -49,7 +50,7 @@ A VDP pipeline can have multiple model instances. The examples below showcase pi
 }
 ```
 
-```json multiple-model-instances-in-pipeline
+```json multiple-model-instance-pipeline
 {
   "source": "source-connectors/source-http",
   "model_instances": [
@@ -111,46 +112,36 @@ The API accepts images
 
 <CH.Code>
 
-```bash remote
-# Test model to infer images with remote URL
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_url": "https://artifacts.instill.tech/dog.jpg"
-        },
-        {
-            "image_url": "https://artifacts.instill.tech/horse.jpg"
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test
+```bash cURL(url)
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/dog.jpg"
+    },
+    {
+      "image_url": "https://artifacts.instill.tech/horse.jpg"
+    }
+  ]
+}'
 ```
 
-```bash base64
-# Test model to infer Base64 encoded images
-curl -X POST \
---header 'Content-Type: application/json' \
---data-raw '{
-    "inputs": [
-        {
-            "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-        },
-        {
-            "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
-        }
-    ]
-}' \
-http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test
+```bash cURL(base64)
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+    },
+    {
+      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+    }
+  ]
+}'
 ```
 
-```bash multipart
-# Test model to infer local images
-curl -X POST \
+```bash cURL(multipart)
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart \
 --form 'file=@"dog.jpg"' \
---form 'file=@"horse.jpg"' \
-http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart
+--form 'file=@"horse.jpg"'
 ```
 
 </CH.Code>
