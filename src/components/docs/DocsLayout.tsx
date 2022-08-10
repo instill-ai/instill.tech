@@ -1,26 +1,55 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useMemo } from "react";
 import LeftSidebar from "./LeftSidebar";
 import { SIDEBAR, NAVBAR } from "../../../docs.config";
 import { useRouter } from "next/router";
 import RightSidebar from "./RightSidebar";
 import Nav from "./Nav";
-import { Frontmatter } from "@/types/docs";
+import { Frontmatter, SidebarItem } from "@/types/docs";
 import { PageHead } from "../ui";
 import cn from "clsx";
+import ArticleNavigationButton from "./ArticleNavigationButton";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
 };
 
-// When screen exceed min-width:1440px we want to center the docs-content,  make left sidebar
+// When screen exceed min-width:1440px we want to center the docs-content and make left sidebar
 // expand to the left edge of the docs-content. In order to accomplish this task, left sidebar's
-// position will be fixed at the leftside and have its width determined by the max-width of docs
-// container.
+// container's position will be fixed at the leftside and have its width determined by the max-width
+// of docs container.
 
 const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const router = useRouter();
   const [headers, setHeaders] = useState<{ slug: string; text: string }[]>([]);
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
+
+  const nextArticle = useMemo(() => {
+    const sidebarLinks: SidebarItem[] = [].concat(
+      ...SIDEBAR.leftSidebar.sections.map((e) => e.items)
+    );
+
+    const currentPageIndex = sidebarLinks.findIndex(
+      (e) => e.link === router.asPath
+    );
+
+    if (currentPageIndex + 1 > sidebarLinks.length) return null;
+
+    return sidebarLinks[currentPageIndex + 1];
+  }, [SIDEBAR]);
+
+  const prevArticle = useMemo(() => {
+    const sidebarLinks: SidebarItem[] = [].concat(
+      ...SIDEBAR.leftSidebar.sections.map((e) => e.items)
+    );
+
+    const currentPageIndex = sidebarLinks.findIndex(
+      (e) => e.link === router.asPath
+    );
+
+    if (currentPageIndex - 1 < 0) return null;
+
+    return sidebarLinks[currentPageIndex - 1];
+  }, [SIDEBAR]);
 
   useEffect(() => {
     let newHeaders = [];
@@ -103,16 +132,39 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full">
           <Nav setLeftSidebarIsOpen={setLeftSidebarIsOpen} navbar={NAVBAR} />
           <div className="grid grid-cols-8">
-            <div className="col-span-8 xl:col-span-6 pl-8 max:pl-16 pr-8">
+            <div className="col-span-8 xl:col-span-6 px-4 md:px-8 max:px-16">
               <h1 className="font-sans font-semibold text-3xl mb-10">
                 {meta.title}
               </h1>
-              <article id="content" className="prose prose-black max-w-none">
+              <article
+                id="content"
+                className="prose prose-black max-w-none border-b pb-10 mb-10"
+              >
                 {children}
               </article>
+              <div className="grid grid-flow-row grid-cols-2 gap-x-5">
+                {prevArticle ? (
+                  <ArticleNavigationButton
+                    type="prev"
+                    link={prevArticle.link}
+                    text={prevArticle.text}
+                  />
+                ) : (
+                  <div />
+                )}
+                {nextArticle ? (
+                  <ArticleNavigationButton
+                    type="next"
+                    link={nextArticle.link}
+                    text={nextArticle.text}
+                  />
+                ) : (
+                  <div />
+                )}
+              </div>
             </div>
 
-            <aside className="col-span-2 pl-8 hidden xl:block">
+            <aside className="col-span-2 hidden xl:block">
               <RightSidebar
                 githubEditUrl={
                   "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +

@@ -1,10 +1,8 @@
-import { ReactElement } from "react-markdown/lib/react-markdown";
+import { ReactElement } from "react";
 
 export type SidebarItem = {
-  header?: boolean;
-  link?: string;
+  link: string;
   text: string;
-  collapsible?: boolean;
 };
 
 export type SidebarSections = {
