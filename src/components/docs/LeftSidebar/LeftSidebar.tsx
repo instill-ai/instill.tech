@@ -11,7 +11,8 @@ export type LeftSidebarProps = {
 const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
   return (
     <>
-      <style>{`
+      <style>
+        {`
         .leftsidebar-logo {
           min-height: var(--docs-left-sidebar-logo-height);
           margin-bottom: var(--docs-left-sidebar-logo-margin-bottom)
@@ -22,7 +23,7 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
         }
       `}
       </style>
-      <div className="left-sidebar flex w-full md:ml-auto flex-col md:sticky md:top-0 pb-10 h-screen overflow-auto px-5">
+      <div className="left-sidebar flex w-full md:ml-auto flex-col md:sticky md:top-0 pb-10 h-screen overflow-auto px-8">
         {leftSidebar.logo ? (
           <Link href="/docs/start-here/getting-started">
             <a className="leftsidebar-logo hidden w-full md:flex-row gap-x-3 my-auto md:flex py-4">

@@ -1,9 +1,9 @@
 :root {
-  --docs-nav-height: 100px;
+  --docs-nav-height: 72px;
   --docs-nav-margin-bottom: 16px;
   --docs-left-sidebar-logo-height: var(--docs-nav-height);
   --docs-left-sidebar-logo-margin-bottom: var(--docs-nav-margin-bottom);
-  --docs-left-sidebar-max-width: 279px;
+  --docs-left-sidebar-max-width: 240px;
   --docs-right-sidebar-max-width: var(--docs-left-sidebar-max-width);
   --docs-content-max-width: 1140px
 }

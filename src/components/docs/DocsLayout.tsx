@@ -8,6 +8,8 @@ import { Frontmatter, SidebarItem } from "@/types/docs";
 import { PageHead } from "../ui";
 import cn from "clsx";
 import ArticleNavigationButton from "./ArticleNavigationButton";
+import { Nullable } from "@/types/instill";
+import { getRepoFileCommits, getRepoFileContent } from "@/lib/github";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
@@ -22,6 +24,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const router = useRouter();
   const [headers, setHeaders] = useState<{ slug: string; text: string }[]>([]);
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
+  const [lastEditedTime, setLastEditedTime] = useState<Nullable<string>>(null);
 
   const nextArticle = useMemo(() => {
     const sidebarLinks: SidebarItem[] = [].concat(
@@ -86,6 +89,22 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       anchors.forEach((anchor) =>
         anchor.removeEventListener("click", anchorClickHandler)
       );
+  }, [SIDEBAR]);
+
+  useEffect(() => {
+    const fetchCommit = async () => {
+      const commits = await getRepoFileCommits(
+        "instill-ai",
+        "instill.tech",
+        "src/pages" + router.asPath + ".mdx"
+      );
+
+      const time = new Date(commits[0].commit.author.date).toLocaleString();
+
+      setLastEditedTime(time);
+    };
+
+    fetchCommit();
   }, []);
 
   return (
@@ -132,16 +151,19 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full">
           <Nav setLeftSidebarIsOpen={setLeftSidebarIsOpen} navbar={NAVBAR} />
           <div className="grid grid-cols-8">
-            <div className="col-span-8 xl:col-span-6 px-4 md:px-8 max:px-16">
+            <div className="col-span-8 xl:col-span-6 px-6 md:px-8 max:px-16">
               <h1 className="font-sans font-semibold text-3xl mb-10">
                 {meta.title}
               </h1>
               <article
                 id="content"
-                className="prose prose-black max-w-none border-b pb-10 mb-10"
+                className="prose prose-black max-w-none mb-20"
               >
                 {children}
               </article>
+              <div className="flex w-full pb-6 mb-8 border-b">
+                <p className="ml-auto text-base text-instillGrey70">{`Last updated: ${lastEditedTime}`}</p>
+              </div>
               <div className="grid grid-flow-row grid-cols-2 gap-x-5">
                 {prevArticle ? (
                   <ArticleNavigationButton
