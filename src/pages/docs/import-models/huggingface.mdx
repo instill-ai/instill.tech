@@ -46,16 +46,13 @@ To import a model from Hugging Face in the Console, do the following:
 4. [Optional] Give a short description of your model in the **Description** field
 5. Fill the Hugging Face model ID that stores the model files and click **Setup new model**
 6. Once the model is imported, click the **Model instances** ▾ drop-down, pick the `latest` model instance and click **Deploy**
-
-Now go to the **Model** page, the corresponding model instance should be online.
-
-![Hugging Face model list](/docs-assets/import-models/hf-model-list.png)
+7. Now go to the **Model** page, the corresponding model instance should be online
 
 Since a Hugging Face model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC:
+1. Send a HTTP request to the VDP `model-backend` to import a model from Hugging Face.
 
 ```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models -d '{
@@ -67,7 +64,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
 }'
 ```
 
-2. Deploy the `latest` model instance
+2. Deploy the `latest` model instance.
 
 ```shellscript cURL
 curl -X POST http://localhost:8083/v1alpha/models/vit-base-patch16-224/instances/latest:deploy
