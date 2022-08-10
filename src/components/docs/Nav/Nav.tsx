@@ -34,7 +34,7 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
         {`
           .nav {
             min-height: var(--docs-nav-height);
-            margin-bottom: var(docs-nav-margin-bottom);
+            margin-bottom: var(--docs-nav-margin-bottom);
           }
         `}
       </style>
