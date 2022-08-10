@@ -14,13 +14,12 @@ export default ({ children }) => (
 
 ## Description
 
-When a HTTP source connector is paired with a HTTP destination connector, the pipeline will be in the `SYNC` mode.
-
-When a HTTP source connector is paired with an Airbyte connector, the pipeline will be in the `ASYNC` mode.
-
-An HTTP source connector cannot be paired with a gRPC destination connector.
-
-A HTTP source connector is always in the `CONNECTED` state.
+- When a HTTP source connector is paired with a HTTP destination connector, the pipeline will be in the `SYNC` mode.
+- When a HTTP source connector is paired with an Airbyte connector, the pipeline will be in the `ASYNC` mode.
+- An HTTP source connector cannot be paired with a gRPC destination connector.
+- A HTTP source connector is always in the `CONNECTED` state.
+- A HTTP source connector's ID must be `source-http`
+- A user account can set up only one HTTP source connector.
 
 ## Release stage
 
@@ -31,3 +30,31 @@ A HTTP source connector is always in the `CONNECTED` state.
 | Field | Type | Note                                                                                                  |
 | :---- | :--- | :---------------------------------------------------------------------------------------------------- |
 | N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |
+
+### No-code setup
+
+To create a HTTP source connector:
+
+1. Go to the **Source** page and click **Add new source**
+2. Click the **Source type** ▾ drop-down and choose **HTTP**
+3. [Optional] Give a short description in the **Description** field
+
+Now go to the **Source** page, the corresponding HTTP source connector should be connected.
+
+### Low-code setup
+
+To create a HTTP source connector:
+
+```bash cURL
+curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+  "id": "source-http",
+  "source_connector_definition": "instill-ai/source-http",
+  "connector": {
+    "configuration": {}
+  }
+}'
+```
+
+, where `localhost:8082` is the URL of the `connector-backend`.
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
