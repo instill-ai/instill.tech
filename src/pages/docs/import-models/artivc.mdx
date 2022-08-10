@@ -170,10 +170,7 @@ To import a model managed by ArtiVC in the Console, do the following:
    - Fill the **GCS Bucket Path** where the model is stored, e.g., `gs://mybucket/path/to/mymodel/`
    - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the **Credentials JSON** field. See [Find the credentials JSON file](#find-the-credentials-json-file) to find the credentials json file
 6. Once the model is imported, click the **Model instances** ▾ drop-down, pick one model instance and click **Deploy**
-
-Now go to the **Model**, the corresponding model instance should be online.
-
-![ArtiVC model list](/docs-assets/import-models/artivc-model-list.png)
+7. Now go to the **Model**, the corresponding model instance should be online
 
 The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
 
