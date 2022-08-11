@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.0](https://github.com/instill-ai/instill.tech/compare/v1.9.1...v1.10.0) (2022-08-11)
+
+
+### Features
+
+* add contributon name in last-updated info ([#217](https://github.com/instill-ai/instill.tech/issues/217)) ([1173717](https://github.com/instill-ai/instill.tech/commit/1173717ec4856a723b9419557c172482b5e6fed3))
+* Implement info block ([#221](https://github.com/instill-ai/instill.tech/issues/221)) ([0e3a564](https://github.com/instill-ai/instill.tech/commit/0e3a5641b4c3ecb6b1bbc5959c3dee78b25806ac))
+* shrink the size of vdp logo at mobile view and fix sub-navbar not align issue ([#216](https://github.com/instill-ai/instill.tech/issues/216)) ([2a139d2](https://github.com/instill-ai/instill.tech/commit/2a139d254754840abd34f201b5d6c24cd967fdb4))
+
+
+### Bug Fixes
+
+* fix urls is not iterable issue when lighthouse action access vercel preview url ([#213](https://github.com/instill-ai/instill.tech/issues/213)) ([6d3f143](https://github.com/instill-ai/instill.tech/commit/6d3f14338560856178f3c89f87539ede979094e7))
+
 ## [1.9.1](https://github.com/instill-ai/instill.tech/compare/v1.9.0...v1.9.1) (2022-08-11)
 
 
