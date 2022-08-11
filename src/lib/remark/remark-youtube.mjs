@@ -29,6 +29,8 @@ export function remarkYoutube(options) {
         }
         let youtubeLinkIsValid = true;
 
+        // We fetch youtube oembed API endpoint to check whether the youtube link exist.
+
         if (options.validateYoutubeLink) {
           const youtube = await fetch(
             `https://youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}`
