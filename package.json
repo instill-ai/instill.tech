@@ -104,5 +104,5 @@
       "eslint --fix"
     ]
   },
-  "version": "1.9.0"
+  "version": "0.9.1-alpha"
 }
