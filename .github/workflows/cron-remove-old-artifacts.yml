@@ -2,7 +2,7 @@ name: cron-remove-old-artifacts
 
 on:
   schedule:
-    - cron: '0 1 * * *' # Every day at 1am
+    - cron: "0 1 * * *" # Every day at 1am
 
 jobs:
   remove-old-artifacts:
@@ -13,5 +13,6 @@ jobs:
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1
         with:
-          age: '1 day'
+          age: "1 day"
           skip-tags: true
+          GITHUB_TOKEN: ${{ secrets.BOTTOKEN }}
