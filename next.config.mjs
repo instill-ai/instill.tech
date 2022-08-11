@@ -1,11 +1,19 @@
 import mdx from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import remarkDirective from "remark-directive";
+import remarkRehype from "remark-rehype";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { remarkCodeHike } from "@code-hike/mdx";
 import { readFile } from "fs/promises";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { h } from "hastscript";
+import { remarkInfoBlock } from "./src/lib/markdown/remark-info-block.mjs";
+import { remarkYoutube } from "./src/lib/markdown/remark-youtube.mjs";
+import {
+  infoBlockHeader,
+  infoBlockChildren,
+} from "./src/lib/markdown/rehype-info-block-handler.mjs";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -15,10 +23,14 @@ const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
+      remarkDirective,
+      remarkInfoBlock,
+      [remarkYoutube, { validateYoutubeLink: true }],
       remarkGfm,
       [remarkCodeHike, { theme, lineNumbers: false, showCopyButton: true }],
     ],
     rehypePlugins: [
+      [remarkRehype, { handlers: { infoBlockHeader, infoBlockChildren } }],
       rehypeSlug,
       [
         rehypeAutolinkHeadings,

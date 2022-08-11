@@ -33,3 +33,58 @@ span.heading-anchor-hash {
 article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, h4:hover span.heading-anchor-hash {
   opacity: 100;
 }
+
+.embed-youtube {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .embed-youtube {
+    width: 100%;
+    height: 450px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+.docs-info-block {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  margin-bottom: 20px;
+}
+
+.docs-info-block.warning {
+  background-color: #FFFCE3;
+  border-color: #DEC800;
+  color: #DEC800;
+}
+
+.docs-info-block.tip {
+  background-color: #EDEDFF;
+  border-color: #0000FF;
+  color: #0000FF;
+}
+
+.docs-info-block.danger {
+  background-color: #FFF1F1;
+  border-color: #FF5353;
+  color: #FF5353;
+}
+
+.docs-info-block.info {
+  background-color: #ECFFF0;
+  border-color: #02D12F;
+  color: #02D12F;
+}
+
+.docs-info-block-header {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 500;
+}
