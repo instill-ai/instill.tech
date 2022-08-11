@@ -132,7 +132,7 @@ export const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           {
-            text: "Setup",
+            text: "Local setup",
             link: "/docs/development/setup-local-development",
           },
         ],
