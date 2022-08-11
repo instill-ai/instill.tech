@@ -34,7 +34,15 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
         {`
           .nav {
             min-height: var(--docs-nav-height);
-            margin-bottom: var(--docs-nav-margin-bottom);
+          }
+          .sub-nav {
+            top: var(--docs-nav-height);
+          }
+
+          @media screen and (min-width: 768px) {
+            .nav {
+              margin-bottom: var(--docs-nav-margin-bottom);
+            }
           }
         `}
       </style>
@@ -87,10 +95,7 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
           </div>
         </div>
       </nav>
-      <SubNav
-        styleName="mb-5 flex md:hidden sticky top-[100px]"
-        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-      />
+      <SubNav marginBottom="mb-5" setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
     </>
   );
 };
