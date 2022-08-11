@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.9.0](https://github.com/instill-ai/instill.tech/compare/v1.8.1...v1.9.0) (2022-08-10)
+
+
+### Features
+
+* add components/about folder ([#174](https://github.com/instill-ai/instill.tech/issues/174)) ([5671f67](https://github.com/instill-ai/instill.tech/commit/5671f673d99081b5261f73fd7b80512f1058a39c))
+* add components/landing folder ([#173](https://github.com/instill-ai/instill.tech/issues/173)) ([79d9cb3](https://github.com/instill-ai/instill.tech/commit/79d9cb3cd8fa54d4229c482a1e353cbdbbb30cf1))
+* add edit this page github-edit-url on docs RightSidebar ([#171](https://github.com/instill-ai/instill.tech/issues/171)) ([f8dab79](https://github.com/instill-ai/instill.tech/commit/f8dab797b1c8982e1a531b332a0717b3903a9a34))
+* add mdx ([#133](https://github.com/instill-ai/instill.tech/issues/133)) ([438aa02](https://github.com/instill-ai/instill.tech/commit/438aa02adc48448043c2e9335b21812fcb10f8e1))
+* add next-sitemap to generate sitemap ([#162](https://github.com/instill-ai/instill.tech/issues/162)) ([bdf057b](https://github.com/instill-ai/instill.tech/commit/bdf057b4065e427feb0fd735c257307f26c807e7))
+* center doc content ([#169](https://github.com/instill-ai/instill.tech/issues/169)) ([e086234](https://github.com/instill-ai/instill.tech/commit/e0862342b48de89585c73875fa202f400525d16f))
+* deprecate amplitude ([#136](https://github.com/instill-ai/instill.tech/issues/136)) ([ea8c1fc](https://github.com/instill-ai/instill.tech/commit/ea8c1fc6df7056ded835b846c9e802209741e2bc))
+* disable smooth scroll behavior ([#204](https://github.com/instill-ai/instill.tech/issues/204)) ([5e135f2](https://github.com/instill-ai/instill.tech/commit/5e135f23bf4866349a4b29dab18fbbff0b5a34b5))
+* **docs:** add autolink heading ([#170](https://github.com/instill-ai/instill.tech/issues/170)) ([266f672](https://github.com/instill-ai/instill.tech/commit/266f67246a291852a189c125d3909892f63fe2d2))
+* Implement code hike ([#152](https://github.com/instill-ai/instill.tech/issues/152)) ([db1b379](https://github.com/instill-ai/instill.tech/commit/db1b3790708c86315afb842f3a3b43cde03dcbe9))
+* Implement docs foundation ([#137](https://github.com/instill-ai/instill.tech/issues/137)) ([45d495b](https://github.com/instill-ai/instill.tech/commit/45d495b6209a0a171ab11a9642cd4820d6227cc2))
+* Implement docs style ([#158](https://github.com/instill-ai/instill.tech/issues/158)) ([ead93cb](https://github.com/instill-ai/instill.tech/commit/ead93cb816c2124bf695a9bdee3474209a146eb6))
+* Implement mobile style ([#160](https://github.com/instill-ai/instill.tech/issues/160)) ([3d109ec](https://github.com/instill-ai/instill.tech/commit/3d109ec3891a73cb5c91f2390572796c55a1ab2f))
+* Implement timestamp ([#202](https://github.com/instill-ai/instill.tech/issues/202)) ([4a7f08d](https://github.com/instill-ai/instill.tech/commit/4a7f08d435c9c4b39e99436b761ede5af3ead228))
+* migrate docs ([#138](https://github.com/instill-ai/instill.tech/issues/138)) ([452ad44](https://github.com/instill-ai/instill.tech/commit/452ad44b1f4aae4ff4474f6b0efeaa4b487dad26))
+* migrate to esm config ([#135](https://github.com/instill-ai/instill.tech/issues/135)) ([812b1cb](https://github.com/instill-ai/instill.tech/commit/812b1cb1bada2ab009e7b12409d1dff2ffe83019))
+* migrate to pnpm ([#140](https://github.com/instill-ai/instill.tech/issues/140)) ([ab3bb6b](https://github.com/instill-ai/instill.tech/commit/ab3bb6baa5b366d6a37e07a442a2352fb7cfce75))
+* setup pnpm at github action ([#142](https://github.com/instill-ai/instill.tech/issues/142)) ([415b60a](https://github.com/instill-ai/instill.tech/commit/415b60aa73701d19db0da5a5eb3f9ca56ced8f03))
+* support prev/next article navigation button ([#200](https://github.com/instill-ai/instill.tech/issues/200)) ([5e90eea](https://github.com/instill-ai/instill.tech/commit/5e90eeadcc6099ba1d17e20e10648c74345fefd0))
+* update action for pnpm ([#141](https://github.com/instill-ai/instill.tech/issues/141)) ([cf2ff05](https://github.com/instill-ai/instill.tech/commit/cf2ff0578944fdea0b8767ad3f1144a14f857dc3))
+* update docs Sidebar's type and related components ([#139](https://github.com/instill-ai/instill.tech/issues/139)) ([1fe7e94](https://github.com/instill-ai/instill.tech/commit/1fe7e94e4d5eb58d65c2b29067da141d86fc667c))
+* update DocsLayout, center content ([#172](https://github.com/instill-ai/instill.tech/issues/172)) ([b777c83](https://github.com/instill-ai/instill.tech/commit/b777c833585479eda5363c2cadf8986f6bb30f05))
+* update tailwind typography style ([#151](https://github.com/instill-ai/instill.tech/issues/151)) ([8fa8291](https://github.com/instill-ai/instill.tech/commit/8fa8291b1c5b7d8c342e7e43a2f4eca915c815ef))
+
+
+### Bug Fixes
+
+* fix action deploy issue ([#149](https://github.com/instill-ai/instill.tech/issues/149)) ([f8c6f60](https://github.com/instill-ai/instill.tech/commit/f8c6f601c1157c2cd187898d5fe24facde59bfd3))
+* fix right sidebar not sticky issue ([#165](https://github.com/instill-ai/instill.tech/issues/165)) ([389105d](https://github.com/instill-ai/instill.tech/commit/389105d810b750eb8205d16598a1f6bdc718ecca))
+* fix various style issues ([#161](https://github.com/instill-ai/instill.tech/issues/161)) ([786c025](https://github.com/instill-ai/instill.tech/commit/786c0252c9b86a2126ca362dc87b2a0905616cd0))
+* fix vercel deployment error ([#150](https://github.com/instill-ai/instill.tech/issues/150)) ([5abb9dc](https://github.com/instill-ai/instill.tech/commit/5abb9dc449d75f6791803520a7d7279f37a9257d))
+
 ## [1.8.1](https://github.com/instill-ai/product-website/compare/v1.8.0...v1.8.1) (2022-07-25)
 
 
