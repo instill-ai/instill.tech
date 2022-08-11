@@ -13,7 +13,7 @@ import { remarkYoutube } from "./src/lib/markdown/remark-youtube.mjs";
 import {
   infoBlockHeader,
   infoBlockChildren,
-} from "./src/lib/remark/rehype-info-block-handler.mjs";
+} from "./src/lib/markdown/rehype-info-block-handler.mjs";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
