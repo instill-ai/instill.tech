@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/instill-ai/instill.tech/compare/v1.9.0...v1.9.1) (2022-08-11)
+
+
+### Miscellaneous Chores
+
+* release 1.9.1 ([2f57aac](https://github.com/instill-ai/instill.tech/commit/2f57aac4fa3327cbe6f996bad95441d47f5d5b26))
+
 ## [1.9.0](https://github.com/instill-ai/instill.tech/compare/v1.8.1...v1.9.0) (2022-08-10)
 
 
