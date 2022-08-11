@@ -22,7 +22,7 @@ export function remarkInfoBlock() {
         if (
           type === "warning" ||
           type === "info" ||
-          type === "success" ||
+          type === "tip" ||
           type === "danger"
         ) {
           const tagName = node.type === "containerDirective" ? "div" : "span";

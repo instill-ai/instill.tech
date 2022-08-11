@@ -49,3 +49,24 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
     margin-bottom: 60px;
   }
 }
+
+.docs-info-block {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-info-block.docs-info-block.warning {
+  background-color: #F4FBFF;
+  opacity: 1;
+}
+
+.docs-info-block-header {
+  font-size: 14px;
+}
+
+.docs-info-block.warning > .docs-info-block-header {
+  color: #FF5353;
+  font-weight: 700;
+}
