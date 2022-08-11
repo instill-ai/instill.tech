@@ -25,6 +25,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const [headers, setHeaders] = useState<{ slug: string; text: string }[]>([]);
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
   const [lastEditedTime, setLastEditedTime] = useState<Nullable<string>>(null);
+  const [lastEditedAuthor, setLastEditedAuthor] =
+    useState<Nullable<string>>(null);
 
   const nextArticle = useMemo(() => {
     const sidebarLinks: SidebarItem[] = [].concat(
@@ -103,7 +105,9 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
       if (commits.length > 0) {
         const time = new Date(commits[0].commit.author.date).toLocaleString();
+        const author = commits[0].commit.author.name;
         setLastEditedTime(time);
+        setLastEditedAuthor(author);
       }
     };
 
@@ -165,7 +169,9 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
                 {children}
               </article>
               <div className="flex w-full pb-6 mb-8 border-b">
-                <p className="ml-auto text-base text-instillGrey70">{`Last updated: ${lastEditedTime}`}</p>
+                {lastEditedTime && lastEditedAuthor ? (
+                  <p className="ml-auto text-base text-instillGrey70">{`Last updated: ${lastEditedTime} @${lastEditedAuthor}`}</p>
+                ) : null}
               </div>
               <div className="grid grid-flow-row grid-cols-2 gap-x-5">
                 {prevArticle ? (
