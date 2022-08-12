@@ -52,16 +52,28 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
 
 .docs-info-block {
   width: 100%;
-  padding: 20px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
   display: flex;
   flex-direction: column;
   border: 1px solid;
   margin-bottom: 20px;
 }
 
+.docs-info-block p  {
+  margin: 8px 0;
+}
+
+
 .docs-info-block.warning {
   background-color: #FFFCE3;
   border-color: #DEC800;
+  color: #DEC800;
+}
+
+.docs-info-block.warning a {
   color: #DEC800;
 }
 
@@ -71,9 +83,17 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   color: #0000FF;
 }
 
+.docs-info-block.tip a {
+  color: #0000FF;
+}
+
 .docs-info-block.danger {
   background-color: #FFF1F1;
   border-color: #FF5353;
+  color: #FF5353;
+}
+
+.docs-info-block.danger a {
   color: #FF5353;
 }
 
@@ -83,8 +103,11 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   color: #02D12F;
 }
 
+.docs-info-block.info a {
+  color: #02D12F;
+}
+
 .docs-info-block-header {
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 16px;
   font-weight: 500;
 }
