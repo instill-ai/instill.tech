@@ -50,6 +50,9 @@ jobs:
           status: ${{ job.status }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
+      - name: Create temporary folder for artifacts
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+
       - name: examine-lighthouse
         id: lighthouseCheck
         uses: foo-software/lighthouse-check-action@master
@@ -58,10 +61,16 @@ jobs:
           author: ${{ github.actor }}
           branch: ${{ github.ref }}
           prCommentEnabled: true
-          outputDirectory: /tmp/artifacts
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
           emulatedFormFactor: "all"
           urls: ${{ steps.deployToVercelProd.outputs.preview-url }}
           sha: ${{ github.sha }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: ${{ github.workspace }}/tmp/artifacts
 
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
