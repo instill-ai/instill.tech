@@ -36,13 +36,13 @@ export type Sidebar = {
   };
 };
 
-export type NavBar = {
+export type NAV = {
   title?: string;
   logo?: Logo;
   items: NavbarItem[];
 };
 
-export type NavBarInteriorLinkItem = {
+export type NavInteriorLinkItem = {
   to: string;
   label: string;
   position: "right" | "left";
@@ -55,7 +55,7 @@ export type NavBarInteriorLinkItem = {
   };
 };
 
-export type NavbarExteriorLinkItem = {
+export type NavExteriorLinkItem = {
   href: string;
   className: string;
   position: "right" | "left";
@@ -71,18 +71,18 @@ export type NavbarExteriorLinkItem = {
   };
 };
 
-export type NavbarItem = NavBarInteriorLinkItem | NavbarExteriorLinkItem;
+export type NavbarItem = NavInteriorLinkItem | NavExteriorLinkItem;
 
 export const isInteriorLink = (
   item: NavbarItem
-): item is NavBarInteriorLinkItem => {
+): item is NavInteriorLinkItem => {
   if ("to" in item) return true;
   return false;
 };
 
 export const isExteriorLink = (
   item: NavbarItem
-): item is NavbarExteriorLinkItem => {
+): item is NavExteriorLinkItem => {
   if ("href" in item) return true;
   return false;
 };
