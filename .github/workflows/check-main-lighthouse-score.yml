@@ -25,7 +25,7 @@ jobs:
           github-comment: false
 
       - name: Create temporary folder for artifacts
-        run: mkdir /tmp/artifacts
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
 
       - name: examine-lighthouse
         id: lighthouseCheck
@@ -35,7 +35,7 @@ jobs:
           author: ${{ github.actor }}
           branch: ${{ github.ref }}
           prCommentEnabled: true
-          outputDirectory: /tmp/artifacts
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
           emulatedFormFactor: "all"
           urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           sha: ${{ github.sha }}
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: Lighthouse reports
-          path: /tmp/artifacts
+          path: ${{ github.workspace }}/tmp/artifacts
 
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
