@@ -25,7 +25,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
   const [headers, setHeaders] = useState<{ slug: string; text: string }[]>([]);
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
   const [lastEditedTime, setLastEditedTime] = useState<Nullable<string>>(null);
-  const [lastEditedAuthor, setLastEditedAuthor] =
+  const [author, setAuthor] = useState<Nullable<string>>(null);
+  const [authorGithubUrl, setAuthorGithubUrl] =
     useState<Nullable<string>>(null);
 
   const nextArticle = useMemo(() => {
@@ -106,8 +107,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
       if (commits.length > 0) {
         const time = new Date(commits[0].commit.author.date).toLocaleString();
         const author = commits[0].commit.author.name;
+
         setLastEditedTime(time);
-        setLastEditedAuthor(author);
+        setAuthor(author);
+        setAuthorGithubUrl(commits[0].author.html_url);
       }
     };
 
@@ -168,9 +171,24 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
               >
                 {children}
               </article>
-              <div className="flex w-full pb-6 mb-8 border-b">
-                {lastEditedTime && lastEditedAuthor ? (
-                  <p className="ml-auto text-base text-instillGrey70">{`Last updated: ${lastEditedTime} @${lastEditedAuthor}`}</p>
+              <div className="flex flex-row gap-x-2 w-full pb-6 mb-8 border-b">
+                {lastEditedTime && author ? (
+                  <>
+                    <p className="ml-auto text-sm text-instillGrey70">
+                      {`Last updated: ${lastEditedTime}`}
+                    </p>
+                    <div className="flex flex-row gap-x-1 text-sm ">
+                      <p className="text-instillGrey70">by</p>
+                      <a
+                        className="text-instillBlue50 underline"
+                        href={authorGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {author}
+                      </a>
+                    </div>
+                  </>
                 ) : null}
               </div>
               <div className="grid grid-flow-row grid-cols-2 gap-x-5">
