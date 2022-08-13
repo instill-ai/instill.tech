@@ -1,6 +1,5 @@
 import { FC, useState, useEffect, useMemo } from "react";
 import LeftSidebar from "./LeftSidebar";
-import { SIDEBAR, NAVBAR } from "../../../docs.config";
 import { useRouter } from "next/router";
 import RightSidebar from "./RightSidebar";
 import Nav from "./Nav";
@@ -10,6 +9,7 @@ import cn from "clsx";
 import ArticleNavigationButton from "./ArticleNavigationButton";
 import { Nullable } from "@/types/instill";
 import { getRepoFileCommits, getRepoFileContent } from "@/lib/github";
+import docsConfig from "../../../docs.config";
 
 export type DocsLayoutProps = {
   meta: Frontmatter;
@@ -31,7 +31,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
 
   const nextArticle = useMemo(() => {
     const sidebarLinks: SidebarItem[] = [].concat(
-      ...SIDEBAR.leftSidebar.sections.map((e) => e.items)
+      ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
     );
 
     const currentPageIndex = sidebarLinks.findIndex(
@@ -41,11 +41,11 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     if (currentPageIndex + 1 > sidebarLinks.length) return null;
 
     return sidebarLinks[currentPageIndex + 1];
-  }, [SIDEBAR]);
+  }, [docsConfig.sidebar]);
 
   const prevArticle = useMemo(() => {
     const sidebarLinks: SidebarItem[] = [].concat(
-      ...SIDEBAR.leftSidebar.sections.map((e) => e.items)
+      ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
     );
 
     const currentPageIndex = sidebarLinks.findIndex(
@@ -55,12 +55,12 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     if (currentPageIndex - 1 < 0) return null;
 
     return sidebarLinks[currentPageIndex - 1];
-  }, [SIDEBAR]);
+  }, [docsConfig.sidebar]);
 
   useEffect(() => {
     let newHeaders = [];
     const headersEl = document.querySelectorAll(
-      SIDEBAR.rightSidebar.tableOfContentHeaders
+      docsConfig.sidebar.rightSidebar.tableOfContentHeaders
         .map((e) => `#content ${e}`)
         .join(",")
     );
@@ -94,7 +94,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
     //   anchors.forEach((anchor) =>
     //     anchor.removeEventListener("click", anchorClickHandler)
     //   );
-  }, [SIDEBAR]);
+  }, [docsConfig.sidebar]);
 
   useEffect(() => {
     const fetchCommit = async () => {
@@ -146,7 +146,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
           )}
         >
           <LeftSidebar
-            leftSidebar={SIDEBAR.leftSidebar}
+            leftSidebar={docsConfig.sidebar.leftSidebar}
             currentPagePath={router.pathname}
           />
         </aside>
@@ -159,7 +159,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         ) : null}
 
         <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full">
-          <Nav setLeftSidebarIsOpen={setLeftSidebarIsOpen} navbar={NAVBAR} />
+          <Nav
+            setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+            navbar={docsConfig.sidebar}
+          />
           <div className="grid grid-cols-8">
             <div className="col-span-8 xl:col-span-6 px-6 md:px-8 max:px-16">
               <h1 className="font-sans font-semibold text-3xl mb-10">
