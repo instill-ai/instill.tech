@@ -20,7 +20,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@code-hike/mdx": "^0.7.2",
+    "@code-hike/mdx": "^0.7.3",
     "@instill-ai/design-system": "^0.0.105",
     "@mailchimp/mailchimp_marketing": "^3.0.72",
     "axios": "^0.21.4",
@@ -31,6 +31,7 @@
     "gsap": "^3.9.1",
     "intersection-observer": "^0.12.0",
     "next": "^12.2.4",
+    "next-mdx-remote": "4.0.0",
     "node-html-parser": "^5.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -82,7 +83,6 @@
     "jest": "^27.4.7",
     "lint-staged": "^11.2.3",
     "mdast-util-to-hast": "^12.2.0",
-    "next-mdx-remote": "^4.1.0",
     "next-sitemap": "^3.1.16",
     "postcss": "^8.4.5",
     "prettier": "2.4.1",
