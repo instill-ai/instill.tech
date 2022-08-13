@@ -48,7 +48,7 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky md:backdrop-blur-sm top-0 z-10 mx-auto flex flex-row w-full bg-white md:bg-white/50 py-4 px-8 border-b md:border-none"
+          "nav sticky top-0 z-10 mx-auto flex flex-row w-full bg-white py-4 px-8 border-b border-b-instillGrey30"
         )}
       >
         {!navbar.logo && !navbar.title ? null : (
