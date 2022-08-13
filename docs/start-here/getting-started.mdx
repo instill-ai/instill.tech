@@ -1,16 +1,10 @@
-import { DocsLayout } from "@/components/docs";
-export const meta = {
-  title: "Getting started",
-  lang: "en-US",
-  draft: false,
-  description:
-    "Getting started with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
-  date: "",
-};
-
-export default ({ children }) => (
-  <DocsLayout meta={meta}>{children}</DocsLayout>
-);
+---
+title: "Getting started"
+lang: "en-US"
+draft: false
+description: "Getting started with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+date: ""
+---
 
 **Visual Data Preparation (VDP)** is an open-source visual data ETL tool to streamline the end-to-end visual data processing:
 
@@ -80,8 +74,6 @@ Jump right in
 📔 Check out the [FAQ](faq) and [tutorials](http://localhost:3010/docs/tutorials/build-a-sync-cls-pipeline)
 
 📔 Explore the [Sources](/docs/source-connectors/overview) and [Destinations](/docs/destination-connectors/overview) to find the connectors you want
-
-📔 Learn about how to [prepare](/docs/prepare-models/overview) and [import](/docs/import-models/overview) models
 
 📔 Explore the APIs of [Protobufs](https://buf.build/instill-ai/protobufs) or [OpenAPI](http://localhost:3001) (after `make all` or `make doc`)
 
