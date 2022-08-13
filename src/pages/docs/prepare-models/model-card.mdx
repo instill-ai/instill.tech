@@ -31,7 +31,9 @@ Here shows a model card example of a model imported from a GitHub repository [mo
 
 ![Model card in VDP Console](/docs-assets/prepare-models/console-model-card.png)
 
-> Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
+:::info{type=info}
+Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
+:::
 
 ## Model card metadata
 
@@ -50,8 +52,10 @@ Tags:
 
 ### Specify a CV Task
 
-> Technically, you can assign different CV Task to model instances of the same model.
-> Howerver, this is strongly discouraged. Model instances of a model should be designed to solve the same CV Task.
+:::info{type=tip}
+Technically, you can assign different CV Task to model instances of the same model.
+However, this is strongly discouraged. Model instances of a model should be designed to solve the same CV Task.
+:::
 
 When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the CV Task requirements.
 If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised CV Task format whenever using the model.

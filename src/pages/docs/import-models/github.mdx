@@ -42,7 +42,9 @@ GitHub limits the size of files ([max 100 MB](https://docs.github.com/en/reposit
 
 Assume Git LFS is [installed](https://git-lfs.github.com/), this guideline publishes model files in a repository on GitHub.
 
-> GitHub has a limit of [2 GB per repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage) for using Git LFS.
+:::info{type=info}
+GitHub has a limit of [2 GB per repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage) for using Git LFS.
+:::
 
 **Step 1: Create a GitHub repository**
 
@@ -139,7 +141,9 @@ git lfs ls-files
 git push -u origin main
 ```
 
-> As the [official GitHub Docs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage) suggested, please commit the local `.gitattributes` file into your repository.
+:::info{type=info}
+As the [official GitHub Docs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage) suggested, please commit the local `.gitattributes` file into your repository.
+:::
 
 After uploading all files successfully, go to your GitHub repository. You should see all model files are uploaded with the `.onnx` file in Git LFS.
 
@@ -214,6 +218,7 @@ A few [DVC internal directories and files](https://dvc.org/doc/user-guide/projec
 
 ```shellscript
 git status
+
 # Output
 ...
 Changes to be committed:
@@ -233,10 +238,10 @@ Let's use `dvc add` to track the ONNX model file:
 dvc add yolov4-infer/1/model.onnx
 
 # Output
-> To track the changes with git, run:
+To track the changes with git, run:
 
-    git add yolov4-infer/1/model.onnx.dvc yolov4-infer/1/.gitignore
-    ...
+  git add yolov4-infer/1/model.onnx.dvc yolov4-infer/1/.gitignore
+  ...
 ```
 
 DVC stores the model file information in a `.dvc` metadata file and lists it in `.gitignore`. The `.dvc` file is a placeholder for the original large file.
@@ -246,9 +251,9 @@ cat yolov4-infer/1/model.onnx.dvc
 
 # Output
 outs:
-- md5: 2e0eeb4de8da2a0663ae3eb4a0dabbce
-  size: 257470589
-  path: model.onnx
+  - md5: 2e0eeb4de8da2a0663ae3eb4a0dabbce
+    size: 257470589
+    path: model.onnx
 ```
 
 `dvc add` moves the large file into `.dvc/cache`:
@@ -272,10 +277,13 @@ git commit -m "feat: add model file"
 
 Currently, VDP supports fetching models from public Google Cloud Storage (GCS). Let's set up the [remote storage location with a public GCS bucket](https://dvc.org/doc/command-reference/remote/add#google-cloud-storage):
 
-> Preparation
->
-> - [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets) before adding DVC remote
-> - Make sure to run `gcloud auth application-default login` or other ways to authenticate and access GCS.
+:::info{type=info}
+
+Prepare the GCS bucket:
+
+- [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets) before adding DVC remote
+- Make sure to run `gcloud auth application-default login` or other ways to authenticate and access GCS.
+  :::
 
 ```shellscript
 # Create a new data remote
@@ -321,7 +329,9 @@ Go to your GitHub repository and follow the [GitHub Docs to create a new release
 
 🎉 If you've followed the above steps to store the model in remote storage and version it within a GitHub repository using [DVC](https://dvc.org/doc/user-guide/basic-concepts/dvc-project#dvc-repository), just run the setup guide below, VDP will import the model accordingly.
 
-> Use `dvc pull` to retrieve DVC-tracked files from remote storage. See [here](https://dvc.org/doc/start/data-management?tab=Mac-Linux#retrieving) for more information.
+:::info{type=tip}
+Use `dvc pull` to retrieve DVC-tracked files from remote storage. See [here](https://dvc.org/doc/start/data-management?tab=Mac-Linux#retrieving) for more information.
+:::
 
 ### No-code setup
 

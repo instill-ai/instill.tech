@@ -15,8 +15,10 @@ export default ({ children }) => (
 VDP is built with the microservice architecture. To develop each service independently, we assign [profiles](https://docs.docker.com/compose/profiles) to each service in the [`docker-compose-dev.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose-dev.yml) file in VDP.
 This allows us to selectively enabling services for various usages, e.g., debugging or development.
 
-> Services are associated with profiles through the `profiles` attribute, which takes an array of profile names.
-> A service will be started only if one of its profile names is activated. A service without `profiles` will always be started.
+:::info{type=info}
+Services are associated with profiles through the `profiles` attribute, which takes an array of profile names.
+A service will be started only if one of its profile names is activated. A service without `profiles` will always be started.
+:::
 
 VDP assigns five different profile names:
 
