@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.11.0](https://github.com/instill-ai/instill.tech/compare/v1.10.0...v1.11.0) (2022-08-13)
+
+
+### Features
+
+* update info block style ([#227](https://github.com/instill-ai/instill.tech/issues/227)) ([a000c8d](https://github.com/instill-ai/instill.tech/commit/a000c8dbb3fcb2784dce08925ea7aaf1e7150418))
+* update last-edited info to include authou github url ([#226](https://github.com/instill-ai/instill.tech/issues/226)) ([7c70eca](https://github.com/instill-ai/instill.tech/commit/7c70eca72fa409448544c67250daf858bae5d1e5))
+
+
+### Bug Fixes
+
+* fix lighthouse action not correctly make tmp/artifacts folder ([#224](https://github.com/instill-ai/instill.tech/issues/224)) ([a84080d](https://github.com/instill-ai/instill.tech/commit/a84080d0a27f46df3a7b09dd13f910952d0221ea))
+
 ## [1.10.0](https://github.com/instill-ai/instill.tech/compare/v1.9.1...v1.10.0) (2022-08-11)
 
 
