@@ -138,7 +138,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, meta }) => {
         pageTitle={`${meta.title} | Documentation`}
         pageDescription={meta.description}
       />
-      <main className="w-screen grid grid-flow-col grid-cols-12 gap-x-10 max:block">
+      <main className="w-screen grid grid-flow-col grid-cols-12 max:block">
         <aside
           className={cn(
             "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-3 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
