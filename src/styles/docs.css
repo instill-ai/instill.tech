@@ -52,39 +52,123 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
 
 .docs-info-block {
   width: 100%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-  border: 1px solid;
+  border-left: 5px solid;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
+
+.docs-info-block p  {
+  margin: 10px 0;
+}
+
 
 .docs-info-block.warning {
   background-color: #FFFCE3;
   border-color: #DEC800;
-  color: #DEC800;
+  color: #735301;
+}
+
+.docs-info-block.warning a {
+  color: #735301;
+}
+
+.docs-info-block.warning code {
+  background-color: #FFFCE3;
+  border-color: #DEC800;
+  color: #735301;
+}
+
+.docs-info-block.warning blockquote {
+  border-left-color: #DEC800;
+  color: #735301;
+}
+
+.docs-info-block.warning strong {
+  color: #735301;
 }
 
 .docs-info-block.tip {
-  background-color: #EDEDFF;
+  background-color: #F8F8FF;
   border-color: #0000FF;
-  color: #0000FF;
+  color: #000090;
+}
+
+.docs-info-block.tip a {
+  color: #000090;
+}
+
+.docs-info-block.tip code {
+  background-color: #F8F8FF;
+  border-color: #0000FF;
+  color: #000090;
+}
+
+.docs-info-block.tip blockquote {
+  border-left-color: #0000FF;
+  color: #000090;
+}
+
+.docs-info-block.tip strong {
+  color: #000090;
 }
 
 .docs-info-block.danger {
   background-color: #FFF1F1;
   border-color: #FF5353;
-  color: #FF5353;
+  color: #A40000;
+}
+
+.docs-info-block.danger a {
+  color: #A40000;
+}
+
+.docs-info-block.danger code {
+  background-color: #FFF1F1;
+  border-color: #FF5353;
+  color: #A40000;
+}
+
+.docs-info-block.danger blockquote {
+  border-left-color: #FF5353;
+  color: #A40000;
+}
+
+.docs-info-block.danger strong {
+  color: #A40000;
 }
 
 .docs-info-block.info {
-  background-color: #ECFFF0;
-  border-color: #02D12F;
-  color: #02D12F;
+  background-color: #FAFDFF;
+  border-color: #40A8F5;
+  color: #004477;
+}
+
+.docs-info-block.info a {
+  color: #004477;
+}
+
+.docs-info-block.info code {
+  background-color: #FAFDFF;
+  border-color: #40A8F5;
+  color: #004477;
+}
+
+.docs-info-block.info blockquote {
+  border-left-color: #40A8F5;
+  color: #004477;
+}
+
+.docs-info-block.info strong {
+  color: #004477;
 }
 
 .docs-info-block-header {
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 16px;
   font-weight: 500;
 }
