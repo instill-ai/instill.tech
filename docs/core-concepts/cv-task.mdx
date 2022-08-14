@@ -45,25 +45,39 @@ The batched outputs of a model for input images is wrapped in a `BatchOutputs`. 
 The `TaskOutput` struct has a required `task` which describes the CV task type of the wrapped model output. Based on the `task`, the corresponding field will be populated, other fields will be null.
 
 ```yaml
-BatchOutputs:
-  type: array
-  items:
-    "$ref": "#/definitions/TaskOutput"
-TaskOutput:
+ModelInstanceOutput:
   type: object
   additionalProperties: true
-  minProperties: 2
   required:
     - task
+    - batch_outputs
   properties:
     task:
       description: "Task type"
       type: string
       enum:
-        - CLASSIFICATION
-        - DETECTION
-        - KEYPOINT
-        - UNSPECIFIED
+        - TASK_CLASSIFICATION
+        - TASK_DETECTION
+        - TASK_KEYPOINT
+        - TASK_UNSPECIFIED
+    batch_outputs:
+      description: "a list of inference output for a specific CV Task"
+      type: array
+      items:
+        "$ref": "#/definitions/TaskOutput"
+TaskOutput:
+  type: object
+  additionalProperties: true
+  anyOf:
+    - required:
+        - classification
+    - required:
+        - detection
+    - required:
+        - keypoint
+    - required:
+        - unspecified
+  properties:
     classification:
       description: "Classify into pre-defined categories"
       "$ref": "#/definitions/Classification"
@@ -99,11 +113,13 @@ Generally, an image classification model takes an image as the input, and output
 ````
 ```json coming-soon
 {
+  "task": "TASK_CLASSIFICATION",
   "batch_outputs": [
     {
-      "task": "classification",
-      "category": "golden retriever",
-      "score": 0.98
+      "classification": {
+        "category": "golden retriever",
+        "score": 0.98
+      }
     }
   ]
 }
@@ -143,31 +159,24 @@ Generally, an object detection model receives an image as the input, and outputs
 ````
 ```json coming-soon
 {
+  "task": "TASK_DETECTION",
   "batch_outputs": [
     {
-      "task": "detection",
-      "bounding_boxes": [
-        {
-          "bounding_box": {
-            "height": 405,
-            "left": 324,
-            "top": 102,
-            "width": 208
+      "detection": {
+        "bounding_boxes": [
+          {
+            "bounding_box": {
+              "height": 405,
+              "left": 324,
+              "top": 102,
+              "width": 208
+            },
+            "category": "dog",
+            "score": 0.97
           },
-          "category": "dog",
-          "score": 0.97
-        },
-        {
-          "bounding_box": {
-            "height": 237,
-            "left": 130,
-            "top": 198,
-            "width": 198
-          },
-          "category": "dog",
-          "score": 0.91
-        }
-      ]
+          ...
+        ]
+      }
     }
   ]
 }
@@ -212,28 +221,29 @@ Keypoint detection task only allows single image input for now, will allow batch
 ````
 ```json coming-soon
 {
+  "task": "TASK_KEYPOINT",
   "batch_outputs": [
     {
-      "task": "keypoint",
-      "keypoint_groups": [
-        {
-          "keypoint_group": [
-            {
-              "v": 0.53722847,
-              "x": 542.82764,
-              "y": 86.63817
-            },
-            {
-              "v": 0.634061,
-              "x": 553.0073,
-              "y": 79.440636
-            },
-            ...
-          ],
-          "score": 0.94
-        },
-        ...
-      ]
+      "keypoint": {
+        "keypoint_groups": [
+          {
+            "keypoint_group": [
+              {
+                "v": 0.53722847,
+                "x": 542.82764,
+                "y": 86.63817
+              },
+              {
+                "v": 0.634061,
+                "x": 553.0073,
+                "y": 79.440636
+              },
+              ...
+            ],
+            "score": 0.94
+          }
+        ]
+      }
     }
   ]
 }
@@ -279,23 +289,25 @@ VDP will
 
 ```json coming-soon
 {
+  "task": "TASK_KEYPOINT",
   "batch_outputs": [
     {
-      "task": "unspecified",
-      "raw_output": [
-        {
-          "data": [0.85, 0.1, 0.05],
-          "data_type": "FP32",
-          "name": "output_scores",
-          "shape": [3]
-        },
-        {
-          "data": ["dog", "cat", "rabbit"],
-          "data_type": "BYTES",
-          "name": "output_labels",
-          "shape": [3]
-        }
-      ]
+      "unspecified": {
+        "raw_outputs": [
+          {
+            "data": [0.85, 0.1, 0.05],
+            "data_type": "FP32",
+            "name": "output_scores",
+            "shape": [3]
+          },
+          {
+            "data": ["dog", "cat", "rabbit"],
+            "data_type": "BYTES",
+            "name": "output_labels",
+            "shape": [3]
+          }
+        ]
+      }
     }
   ]
 }
