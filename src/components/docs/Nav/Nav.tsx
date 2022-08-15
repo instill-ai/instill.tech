@@ -2,13 +2,13 @@ import { Dispatch, SetStateAction, useMemo } from "react";
 
 import Item from "./Item";
 import cn from "clsx";
-import { NavBar, NavbarItem } from "@/types/docs";
+import { Nav, NavbarItem } from "@/types/docs";
 import Image from "next/future/image";
 import Link from "next/link";
 import SubNav from "./SubNav";
 
 export type NavProps = {
-  navbar: NavBar;
+  navbar: Nav;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
