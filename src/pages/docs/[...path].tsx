@@ -146,23 +146,23 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
 
   // Access GitHub API to retrieve the info of Committer
 
-  // const commits = await getRepoFileCommits(
-  //   "instill-ai",
-  //   "instill.tech",
-  //   "docs/" + relativePath + ".mdx"
-  // );
+  const commits = await getRepoFileCommits(
+    "instill-ai",
+    "instill.tech",
+    "docs/" + relativePath + ".mdx"
+  );
 
   let lastEditedTime: Nullable<string> = null;
   let author: Nullable<string> = null;
   let authorGithubUrl: Nullable<string> = null;
 
-  // if (commits.length > 0) {
-  //   const time = new Date(commits[0].commit.author.date).toLocaleString();
+  if (commits.length > 0) {
+    const time = new Date(commits[0].commit.author.date).toLocaleString();
 
-  //   lastEditedTime = time;
-  //   author = commits[0].commit.author.name;
-  //   authorGithubUrl = commits[0].author.html_url;
-  // }
+    lastEditedTime = time;
+    author = commits[0].commit.author.name;
+    authorGithubUrl = commits[0].author.html_url;
+  }
 
   // We use remark to correctly get the headers
 
@@ -215,11 +215,12 @@ const DocsPage = ({
           }
         `}
       </style>
-      <style global jsx>{`
-        html {
-          scroll-behavior: smooth;
-        }
-      `}
+      <style global jsx>
+        {`
+          html {
+            scroll-behavior: smooth;
+          }
+        `}
       </style>
       <PageHead
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
@@ -232,10 +233,7 @@ const DocsPage = ({
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <LeftSidebar
-            leftSidebar={docsConfig.sidebar.leftSidebar}
-            currentPagePath={router.pathname}
-          />
+          <LeftSidebar leftSidebar={docsConfig.sidebar.leftSidebar} />
         </aside>
 
         {leftSidebarIsOpen ? (

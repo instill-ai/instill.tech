@@ -173,3 +173,8 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   font-size: 16px;
   font-weight: 500;
 }
+
+.ch-codeblock ::selection {
+  background-color: rgba(64, 168, 245, 0.5);
+  opacity: 0.8;
+}

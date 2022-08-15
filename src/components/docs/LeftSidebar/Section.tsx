@@ -9,20 +9,11 @@ export type SectionProps = {
   text: string;
   items: SidebarItem[];
   collapsible?: boolean;
-  currentPagePath: string;
   link?: string;
 };
 
-const Section = ({
-  text,
-  items,
-  collapsible,
-  currentPagePath,
-  link,
-}: SectionProps) => {
+const Section = ({ text, items, collapsible, link }: SectionProps) => {
   const [collapsed, setCollapsed] = useState(false);
-  const baseIconStyle =
-    "absolute w-4 h-4 top-2 bottom-2 right-2 fill-instillGrey500";
 
   const toggle = () => {
     if (collapsible) {
@@ -31,6 +22,8 @@ const Section = ({
   };
 
   const router = useRouter();
+
+  console.log(router);
 
   const toLink = () => {
     if (link) {
@@ -85,7 +78,7 @@ const Section = ({
               key={item.text}
               className={cn(
                 "text-sm hover:text-instillBlue50 font-normal transition ease-in-out duration-300",
-                item.link === currentPagePath
+                item.link === router.asPath.split("#")[0]
                   ? "text-instillBlue50"
                   : "text-instillGrey80"
               )}

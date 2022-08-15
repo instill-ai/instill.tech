@@ -5,10 +5,9 @@ import Image from "next/future/image";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
-  currentPagePath: string;
 };
 
-const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
+const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
   return (
     <>
       <style>
@@ -44,7 +43,6 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
               items={section.items}
               text={section.text}
               collapsible={section.collapsible}
-              currentPagePath={currentPagePath}
               link={section.link}
             />
           </div>
