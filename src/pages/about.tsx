@@ -96,6 +96,7 @@ const AboutPage: FC<AboutPageProps> & {
       <PageHead
         pageTitle="About us | Instill AI"
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
+        ogImageSrc={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
       />
       <ContentContainer contentMaxWidth="max-w-[1127px]">
         <div className="mx-auto flex w-full flex-col">

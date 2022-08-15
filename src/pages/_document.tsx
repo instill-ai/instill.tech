@@ -51,19 +51,6 @@ export const Document: FC<Props> = () => {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
-        />
-        <meta
-          property="twitter:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
-        />
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
-          async={true}
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-        />
         <script
           defer={true}
           data-domain="instill.tech"

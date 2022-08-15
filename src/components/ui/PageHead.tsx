@@ -1,13 +1,17 @@
-import { FC } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
 export type PageHeadProps = {
   pageTitle: string;
   pageDescription?: string;
+  ogImageSrc: string;
 };
 
-const PageHead: FC<PageHeadProps> = ({ pageTitle, pageDescription }) => {
+const PageHead = ({
+  pageTitle,
+  pageDescription,
+  ogImageSrc,
+}: PageHeadProps) => {
   const router = useRouter();
 
   const meta = {
@@ -39,6 +43,8 @@ const PageHead: FC<PageHeadProps> = ({ pageTitle, pageDescription }) => {
         <meta name="twitter:site" content={meta.siteName} />
         <meta name="twitter:title" content={meta.pageTitle} />
         <meta name="twitter:description" content={meta.pageDescription} />
+        <meta property="og:image" content={ogImageSrc} />
+        <meta property="twitter:image" content={ogImageSrc} />
       </Head>
     </>
   );

@@ -15,6 +15,7 @@ const GetEarlyAccessPage: FC & {
       <PageHead
         pageTitle="Get early access | Instill AI"
         pageDescription=" We're now in private alpha. Join and see first-hand how Instill AI can help adopt Vision AI in your company."
+        ogImageSrc={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
       />
       <div className="flex w-full bg-instillGrey95">
         <div className="grid w-full max-w-[1440px] grid-cols-1 py-[60px] px-4 md:mx-auto md:w-10/12 md:px-0 lg:grid-cols-2 lg:pt-[244px] lg:pb-[60px]">
