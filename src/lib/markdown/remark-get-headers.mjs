@@ -14,10 +14,17 @@ export function remarkGetHeaders(options) {
     visit(tree, async (node) => {
       if (node.type !== "heading") return;
       if (node.children.length === 0) return;
+
+      let headingText = "";
+
+      node.children.forEach((child) => {
+        headingText = headingText + child.value;
+      });
+
       options.headers.push({
         depth: node.depth,
-        text: node.children[0].value,
-        slug: node.children[0].value.toLowerCase().split(" ").join("-"),
+        text: headingText,
+        slug: headingText.toLowerCase().split(" ").join("-"),
       });
     });
   };
