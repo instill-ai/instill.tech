@@ -205,10 +205,10 @@ Now that the `classification` pipeline is automatically activated, you can make 
 curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
   "inputs": [
     {
-      "image_url": "https://artifacts.instill.tech/dog.jpg"
+      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
     },
     {
-      "image_url": "https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg"
+      "image_url": "https://artifacts.instill.tech/imgs/polar-bear.jpg"
     }
   ]
 }'
@@ -228,7 +228,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '
 ```shellscript cURL(multipart)
 curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart \
 --form 'file=@"dog.jpg"' \
---form 'file=@"elephant.jpg"'
+--form 'file=@"polar-bear.jpg"'
 ```
 
 </CH.Code>
@@ -239,16 +239,21 @@ A HTTP response will return
 
 ```json
 {
-  "output": [
+  "model_instance_outputs": [
     {
-      "classification_outputs": [
+      "task": "TASK_CLASSIFICATION",
+      "batch_outputs": [
         {
-          "category": "golden retriever",
-          "score": 0.898938
+          "classification": {
+            "category": "golden retriever",
+            "score": 0.898938
+          }
         },
         {
-          "category": "African elephant",
-          "score": 0.864008
+          "classification": {
+            "category": "ice bear",
+            "score": 0.999554
+          }
         }
       ]
     }
