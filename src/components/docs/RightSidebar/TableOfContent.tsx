@@ -4,6 +4,7 @@ export type TableOfContentProps = {
   headers: {
     slug: string;
     text: string;
+    depth: number;
   }[];
 };
 
@@ -30,6 +31,7 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
             <a
               className="block truncate text-instillGrey50 group-hover:text-instillBlue50"
               href={`#${header.slug}`}
+              style={{ paddingLeft: `${(header.depth - 1) * 10}px` }}
             >
               {header.text}
             </a>

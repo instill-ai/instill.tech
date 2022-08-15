@@ -1,0 +1,80 @@
+---
+title: "Add a model card"
+lang: "en-US"
+draft: false
+description: "Learn about how to add a model card for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+## Model card
+
+Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with every model instance of a model.
+It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in VDP.
+
+In a model card, you can provide information about:
+
+- the model itself
+- its use cases and limitations
+- the datasets used to train the model
+- the training experiments and configuration
+- benchmarking and evaluation results
+- reference materials
+
+After importing a model into VDP, the model card will be rendered in the Console on the Model page.
+Here shows a model card example of a model imported from a GitHub repository [model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
+
+![Model card in VDP Console](/docs-assets/prepare-models/console-model-card.png)
+
+:::info{type=info}
+Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
+:::
+
+## Model card metadata
+
+You can insert Front Matter in a model card to define the model metadata.
+Start with three `---` at the top, then include all the metadata and close the section with `---` like the example below.
+
+```yaml README.md
+---
+Task: "any VDP supported CV Task valid identifier"
+Tags:
+  - tag1
+  - tag2
+  - tag3
+---
+```
+
+### Specify a CV Task
+
+:::info{type=tip}
+Technically, you can assign different CV Task to model instances of the same model.
+However, this is strongly discouraged. Model instances of a model should be designed to solve the same CV Task.
+:::
+
+When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the CV Task requirements.
+If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised CV Task format whenever using the model.
+Please check the [supported standarised CV Tasks](/docs/core-concepts/cv-task) and the corresponding output format for each task.
+
+<CH.Code>
+
+```yaml image-classification
+Task: Classification
+```
+
+```yaml object-detection
+Task: Detection
+```
+
+```yaml keypoint-detection
+Task: Keypoint
+```
+
+</CH.Code>
+
+If not specified, the model will be recognised with `Unspecified` CV Task,
+and the raw model output will be wrapped in a [standard format](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
+
+**❓ How to know if the CV Task metadata is correctly recognised?**
+
+If you include valid CV Task metadata, they will show on the Model page of the Console like this:
+
+![Model CV Task label in VDP Console](/docs-assets/prepare-models/console-model-cv-task-label.png)

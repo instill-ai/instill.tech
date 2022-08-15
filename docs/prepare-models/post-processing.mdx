@@ -1,0 +1,247 @@
+---
+title: "Prepare post-processing model"
+lang: "en-US"
+draft: false
+description: "Learn about how to prepare a post-processing Python model for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+## Standardise post-processing output format
+
+You can prepare the post-processing model the same way as the [pre-processing model](pre-processing). However, to get the model inference output in a standarised format you can
+
+- specify a [supported CV Task](/docs/core-concepts/cv-task) when creating the [model card](model-card)
+- create a Python model that inherits the corresponding post-processing task class in [triton_python_model](https://github.com/instill-ai/triton-python-model).
+
+If no task is specified when creating a model, the output will the raw model output in a [serialized JSON message](/docs/core-concepts/cv-task#how-to-standardise).
+
+### Image classification
+
+:::info{type=info}
+Learn more about [Image classification Task](/docs/core-concepts/cv-task#image-classification)
+:::
+
+Assume we have a "cat vs. dog" model to infer whether an image is a cat image or dog image. Create a `labels.txt` file to list all the pre-defined categories, with one category label per line. Add the file to the folder of inference model.
+
+**`labels.txt` example**
+
+```
+cat
+dog
+```
+
+Include the label file `labels.txt` in the model configuration of the inference model.
+
+**`config.pbtxt` example**
+
+```
+...
+output [
+  {
+    ...
+    label_filename: "labels.txt"
+  }
+]
+...
+```
+
+Check the [standarised output for image classification](/docs/core-concepts/cv-task#image-classification), here shows an output example:
+
+```json
+{
+  "classification_outputs": [
+    {
+      "category": "dog",
+      "score": 0.6
+    }
+  ]
+}
+```
+
+### Object detection
+
+:::info{type=info}
+Learn more about [Object detection Task](/docs/core-concepts/cv-task#object-detection)
+:::
+
+Create a Python file with a structure similar to below. The file inherits the `PostDetectionModel` class and implement the `post_process_per_image` abstract method.
+Then, add the file in the post-processing model folder:
+
+```python model.py
+import numpy as np
+from triton_python_model.task.detection import PostDetectionModel
+
+
+class TritonPythonModel(PostDetectionModel):
+    """Your Python model must use the same class name.
+    Every Python model that is created must have "TritonPythonModel" as the class name.
+    """
+    def __init__(self):
+        """ Constructor function must be implemented in every model.
+        This function initializes the names of the input and output
+        variables in the model configuration.
+        """
+        # super().__init__(input_names=[...], output_names=[...])
+        # ...
+
+    def post_process_per_image(self, inputs):
+        """`post_process_per_image` must be implemented in every Python model.
+        This function receives a sequence of the input array of the model for
+        one image of a batch, converts and returns the a sequence of array
+        `bboxes` and `labels`.
+          - `bboxes` represents the detected bounding boxes and scores.
+          - `labels` represents the corresponding category label for each bounding box.
+
+        Parameters
+        ----------
+        inputs: Tuple[np.ndarray]
+          a sequence of Input array of one image
+
+        Returns
+        -------
+        Tuple[np.ndarray]
+          - `bboxes`: bounding boxes detected in this image with shape (n,5) or (0,).
+             The bounding box format is [x1, y1, x2, y2, score] in the image.
+          - `labels`: labels corresponding to the bounding boxes with shape (n,) or (0,),
+             where `n` is the number of categories.
+
+          The length of `bboxes` must be the same as that of `labels`.
+        """
+        # return np.array([[324, 102, 532, 507, 0.98]]), np.array(["dog"]) # Dummy detection example
+
+```
+
+Check the [standardised output for object detection](/docs/core-concepts/cv-task#object-detection), here shows an output example:
+
+```json
+{
+  "detection_outputs": [
+    {
+      "bounding_box_objects": [
+        {
+          "bounding_box": {
+            "height": 405,
+            "left": 324,
+            "top": 102,
+            "width": 208
+          },
+          "category": "dog",
+          "score": 0.98
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Keypoint detection
+
+:::info{type=info}
+Learn more about [Keypoint detection Task](/docs/core-concepts/cv-task#keypoint-detection)
+:::
+
+Create a Python file with a structure similar to below and add the file in the post-processing model folder:
+
+```python model.py
+import numpy as np
+from triton_python_model.task.keypoint import PostKeypointDetectionModel
+
+
+class TritonPythonModel(PostKeypointDetectionModel):
+    """Your Python model must use the same class name.
+    Every Python model that is created must have "TritonPythonModel" as the class name.
+    """
+    def __init__(self):
+        """ Constructor function must be implemented in every model.
+        This function initializes the names of the input and output
+        variables in the model configuration.
+        """
+        # super().__init__(input_names=[...], output_names=[...])
+        # ...
+
+    def post_process_per_image(self, inputs):
+        """`post_process_per_image` must be implemented in every Python model.
+        This function receives a sequence of the input array of the model for
+        one image of a batch, converts and returns the a sequence of array
+        `bboxes` and `labels`.
+          - `bboxes` represents the detected bounding boxes and scores.
+          - `labels` represents the corresponding category label for each bounding box.
+
+        Parameters
+        ----------
+        inputs: Tuple[np.ndarray]
+          a sequence of Input array of one image
+
+        Returns
+        -------
+        Tuple[np.ndarray]
+          - `bboxes`: bounding boxes detected in this image with shape (n,5) or (0,).
+             The bounding box format is [x1, y1, x2, y2, score] in the image.
+          - `labels`: labels corresponding to the bounding boxes with shape (n,) or (0,),
+             where `n` is the number of categories.
+
+          The length of `bboxes` must be the same as that of `labels`.
+        """
+        # return np.array([[324, 102, 532, 507, 0.98]]), np.array(["dog"]) # Dummy detection example
+
+```
+
+Check the [standardised output for keypoint detection](/docs/core-concepts/cv-task#keypoint-detection), here shows an output example:
+
+```json
+{
+  "keypoint_outputs": [
+    {
+      "keypoints": [
+        {
+          "v": 0.53722847,
+          "x": 542.82764,
+          "y": 86.63817
+        },
+        {
+          "v": 0.634061,
+          "x": 553.0073,
+          "y": 79.440636
+        },
+        ...
+      ],
+      "score": 0.94
+    },
+    ...
+  ]
+}
+```
+
+### Unspecified CV Task
+
+:::info{type=info}
+Learn more about [Unspecified CV Task](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
+:::
+
+If your model is imported without specifying any Task metadata, the model will be recognised to solve an `Unspecified` CV task.
+There is no need to prepare your model outputs to fit any format.
+
+Check the [standardised output for Unspecified CV Task](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
+Assume we import the above ["cat vs. dog"](#image-classification) model without specifying the CV Task metadata, here shows an output example:
+
+```json
+{
+  "raw_outputs": [
+    {
+      "raw_output": [
+        {
+          "data": [0.4, 0.6],
+          "data_type": "FP32",
+          "name": "output_scores",
+          "shape": [2]
+        },
+        {
+          "data": ["cat", "dog"],
+          "data_type": "BYTES",
+          "name": "output_labels",
+          "shape": [2]
+        }
+      ]
+    }
+  ]
+}
+```

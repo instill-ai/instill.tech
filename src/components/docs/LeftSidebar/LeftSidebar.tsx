@@ -26,7 +26,7 @@ const LeftSidebar = ({ leftSidebar, currentPagePath }: LeftSidebarProps) => {
       <div className="left-sidebar flex w-full md:ml-auto flex-col md:sticky md:top-0 pb-10 h-screen overflow-auto px-8">
         {leftSidebar.logo ? (
           <Link href="/docs/start-here/getting-started">
-            <a className="leftsidebar-logo hidden w-full md:flex-row gap-x-3 my-auto md:flex py-4">
+            <a className="leftsidebar-logo hidden w-full md:flex-row gap-x-3 md:flex py-4">
               <Image
                 src={leftSidebar.logo.src}
                 alt={leftSidebar.logo.alt}

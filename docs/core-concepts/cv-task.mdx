@@ -1,0 +1,304 @@
+---
+title: "CV Task"
+lang: "en-US"
+draft: false
+description: "Standardise structured outputs for computer vision tasks the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+Computer Vision (CV) Tasks, a.k.a Vision tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does. The goal is to make a computer/device provide description for the data as complete and accurate as possible.
+Some classic CV Tasks include image classification, object detection, image segmentation and keypoint detection. These primitive tasks are the foundation for building many real-world industrial vision applications.
+
+Intrigued? Refer to [Prepare models](/docs/prepare-models/overview) to Learn about how to prepare your models for CV Tasks supported by VDP.
+
+## Standardise CV Tasks
+
+In a data pipeline, model is the core component designed to solve a specific CV task. By standardising the data format of model outputs into CV Tasks,
+
+- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same CV task;
+- VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
+
+At the moment, VDP defines the data interface for popular CV Tasks:
+
+- _Image classification_ - classify images into predefined categories
+- _Object detection_ - detect and localize multiple objects in images
+- _Keypoint detection_ - detect and localize multiple keypoints of objects in images
+- The list is growing ... 🌱
+
+Each CV task is described in depth in the respective section below.
+
+If you'd like to **ask for a new model definition**, you can create a topic in [Discussions](https://github.com/instill-ai/vdp/discussions), or request it in the **#vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
+
+### How to standardise
+
+**Standardise via Protocol Buffers**
+
+Currently, the model output is converted to standard format based on the CV task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model.proto).
+
+**Standardise through VDP Protocol (coming soon!)**
+
+The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of model outputs in order to standardise an ETL pipeline for visual data.
+The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
+
+The protocol is still under development. Stay tuned on how the protocol will evolve.
+
+The batched outputs of a model for input images is wrapped in a `BatchOutputs`. It includes an array of `TaskOutput`, each of which corresponds to the model output of one input image in the batch.
+The `TaskOutput` struct has a required `task` which describes the CV task type of the wrapped model output. Based on the `task`, the corresponding field will be populated, other fields will be null.
+
+```yaml
+BatchOutputs:
+  type: array
+  items:
+    "$ref": "#/definitions/TaskOutput"
+TaskOutput:
+  type: object
+  additionalProperties: true
+  minProperties: 2
+  required:
+    - task
+  properties:
+    task:
+      description: "Task type"
+      type: string
+      enum:
+        - CLASSIFICATION
+        - DETECTION
+        - KEYPOINT
+        - UNSPECIFIED
+    classification:
+      description: "Classify into pre-defined categories"
+      "$ref": "#/definitions/Classification"
+    detection:
+      description: "Detect and localize multiple objects"
+      "$ref": "#/definitions/Detection"
+    keypoint:
+      description: "Detect and localize keypoints of multiple objects"
+      "$ref": "#/definitions/Keypoint"
+    unspecified:
+      description: "Unspecified task with output in the free form"
+      "$ref": "#/definitions/Unspecified"
+```
+
+## Image classification
+
+Image classification task is the CV task to assign a single pre-defined category label to an entire input image.
+Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
+
+![Image classification task](/docs-assets/core-concepts/cv-task-classification.svg)
+
+<CH.Code>
+```json current
+{
+  "classification_outputs": [
+    {
+      "category": "golden retriever",
+      "score": 0.98
+    }
+  ]
+}
+
+````
+```json coming-soon
+{
+  "batch_outputs": [
+    {
+      "task": "classification",
+      "category": "golden retriever",
+      "score": 0.98
+    }
+  ]
+}
+````
+
+</CH.Code>
+
+## Object detection
+
+Object detection task is the CV task to localize multiple objects of pre-defined categories in an input image.
+Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
+
+![Object detection task](/docs-assets/core-concepts/cv-task-detection.svg)
+
+<CH.Code>
+```json current
+{
+  "detection_outputs": [
+    {
+      "bounding_box_objects": [
+        {
+          "bounding_box": {
+            "height": 405,
+            "left": 324,
+            "top": 102,
+            "width": 208
+          },
+          "category": "dog",
+          "score": 0.97
+        },
+        ...
+      ]
+    }
+  ]
+}
+
+````
+```json coming-soon
+{
+  "batch_outputs": [
+    {
+      "task": "detection",
+      "bounding_boxes": [
+        {
+          "bounding_box": {
+            "height": 405,
+            "left": 324,
+            "top": 102,
+            "width": 208
+          },
+          "category": "dog",
+          "score": 0.97
+        },
+        {
+          "bounding_box": {
+            "height": 237,
+            "left": 130,
+            "top": 198,
+            "width": 198
+          },
+          "category": "dog",
+          "score": 0.91
+        }
+      ]
+    }
+  ]
+}
+````
+
+</CH.Code>
+
+## Keypoint detection
+
+Keypoint detection task is the CV task to localize multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
+Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with confidence scores on detected objects.
+
+![Keypoint detection task](/docs-assets/core-concepts/cv-task-keypoint.svg)
+
+:::info{type=warning}
+Keypoint detection task only allows single image input for now, will allow batch processing soon.
+:::
+
+<CH.Code>
+```json current
+{
+  "keypoint_outputs": [
+    {
+      "keypoints": [
+        {
+          "v": 0.53722847,
+          "x": 542.82764,
+          "y": 86.63817
+        },
+        {
+          "v": 0.634061,
+          "x": 553.0073,
+          "y": 79.440636
+        },
+        ...
+      ],
+      "score": 0.94
+    },
+    ...
+  ]
+}
+````
+```json coming-soon
+{
+  "batch_outputs": [
+    {
+      "task": "keypoint",
+      "keypoint_groups": [
+        {
+          "keypoint_group": [
+            {
+              "v": 0.53722847,
+              "x": 542.82764,
+              "y": 86.63817
+            },
+            {
+              "v": 0.634061,
+              "x": 553.0073,
+              "y": 79.440636
+            },
+            ...
+          ],
+          "score": 0.94
+        },
+        ...
+      ]
+    }
+  ]
+}
+````
+
+</CH.Code>
+
+## What if my task is not standardised by by VDP yet?
+
+VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported CV Tasks.
+The model will be classified as an `Unspecified` CV Task. Send an image to the model as the input,
+VDP will
+
+- check the `config.pbtxt` [model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) file to extract the output names, datatypes and shapes of the model outputs,
+- and wrap these information along with the raw model output in a _standard_ format.
+
+![Unspecified task](/docs-assets/core-concepts/cv-task-unspecified.svg)
+
+<CH.Code>
+```json current
+{
+  "raw_outputs": [
+    {
+      "raw_output": [
+        {
+          "data": [0.85, 0.1, 0.05],
+          "data_type": "FP32",
+          "name": "output_scores",
+          "shape": [3]
+        },
+        {
+          "data": ["dog", "cat", "rabbit"],
+          "data_type": "BYTES",
+          "name": "output_labels",
+          "shape": [3]
+        }
+      ]
+    }
+  ]
+}
+
+````
+
+```json coming-soon
+{
+  "batch_outputs": [
+    {
+      "task": "unspecified",
+      "raw_output": [
+        {
+          "data": [0.85, 0.1, 0.05],
+          "data_type": "FP32",
+          "name": "output_scores",
+          "shape": [3]
+        },
+        {
+          "data": ["dog", "cat", "rabbit"],
+          "data_type": "BYTES",
+          "name": "output_labels",
+          "shape": [3]
+        }
+      ]
+    }
+  ]
+}
+````
+
+</CH.Code>
