@@ -11,9 +11,9 @@ pnpm run storybook
 
 # About how to contribute to Documentation
 
-## Every document lie under the `/src/pages/docs` folder.
+## Every document lie under the `/docs` folder.
 
-- The routing will match the path, take getting-started page for example, its path is `/src/pages/docs/start-here/getting-started.mdx` the url will be `https://www.instill.tech/docs/start-here/getting-started`
+- The routing will match the path, take getting-started page for example, its path is `/docs/start-here/getting-started.mdx` the url will be `https://www.instill.tech/docs/start-here/getting-started`
 - The file name and the folder name only allow `kebab-case`.
 
 ## Navbar and Sidebar
