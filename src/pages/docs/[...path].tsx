@@ -215,6 +215,12 @@ const DocsPage = ({
           }
         `}
       </style>
+      <style global jsx>{`
+        html {
+          scroll-behavior: smooth;
+        }
+      `}
+      </style>
       <PageHead
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
         pageDescription={mdxSource.frontmatter.description}
