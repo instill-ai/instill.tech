@@ -14,12 +14,10 @@ export function remarkGetHeaders(options) {
     visit(tree, async (node) => {
       if (node.type !== "heading") return;
       if (node.children.length === 0) return;
-
-      console.log(node);
-
       options.headers.push({
         depth: node.depth,
         text: node.children[0].value,
+        slug: node.children[0].value.toLowerCase().split(" ").join("-"),
       });
     });
   };
