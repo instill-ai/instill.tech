@@ -92,6 +92,12 @@ module.exports = {
               fontSize: "20px",
               lineHeight: "28px",
             },
+            h4: {
+              fontFamily: theme("fontFamily.sans")[0],
+              fontWeight: "500",
+              fontSize: "18px",
+              lineHeight: "20px",
+            },
             code: {
               paddingTop: "3px",
               paddingBottom: "3px",

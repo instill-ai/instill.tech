@@ -27,7 +27,7 @@ span.heading-anchor-hash {
   margin-right: 0.5rem;
   opacity: 0;
   color: #8C8A8A;
-  display: inline-block;
+  float: left;
 }
 
 article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, h4:hover span.heading-anchor-hash {
@@ -59,6 +59,7 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   display: flex;
   flex-direction: column;
   border-left: 5px solid;
+  margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
