@@ -233,10 +233,7 @@ const DocsPage = ({
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <LeftSidebar
-            leftSidebar={docsConfig.sidebar.leftSidebar}
-            currentPagePath={router.pathname}
-          />
+          <LeftSidebar leftSidebar={docsConfig.sidebar.leftSidebar} />
         </aside>
 
         {leftSidebarIsOpen ? (
