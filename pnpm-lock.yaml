@@ -26,6 +26,7 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^12.1.2
   '@testing-library/user-event': ^13.5.0
+  '@types/github-slugger': ^1.3.0
   '@types/gtag.js': ^0.0.8
   '@types/jest': ^28.1.6
   '@types/mailchimp__mailchimp_marketing': ^3.0.2
@@ -45,6 +46,7 @@ specifiers:
   eslint-plugin-storybook: ^0.6.1
   eslint-plugin-testing-library: ^5.0.3
   fast-glob: ^3.2.11
+  github-slugger: ^1.4.0
   gray-matter: ^4.0.3
   gsap: ^3.9.1
   hastscript: ^7.0.2
@@ -53,6 +55,7 @@ specifiers:
   jest: ^27.4.7
   lint-staged: ^11.2.3
   mdast-util-to-hast: ^12.2.0
+  mdast-util-to-string: ^3.1.0
   next: ^12.2.4
   next-mdx-remote: 4.0.0
   next-sitemap: ^3.1.16
@@ -124,6 +127,7 @@ devDependencies:
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
   '@testing-library/user-event': 13.5.0_gwcpuyfvwbszhlmedmugzivgzu
+  '@types/github-slugger': 1.3.0
   '@types/gtag.js': 0.0.8
   '@types/jest': 28.1.6
   '@types/mailchimp__mailchimp_marketing': 3.0.5
@@ -139,11 +143,13 @@ devDependencies:
   eslint-plugin-storybook: 0.6.1_hxadhbs2xogijvk7vq4t2azzbu
   eslint-plugin-testing-library: 5.5.1_hxadhbs2xogijvk7vq4t2azzbu
   fast-glob: 3.2.11
+  github-slugger: 1.4.0
   hastscript: 7.0.2
   husky: 7.0.4
   jest: 27.5.1
   lint-staged: 11.2.6
   mdast-util-to-hast: 12.2.0
+  mdast-util-to-string: 3.1.0
   next-sitemap: 3.1.16_qeectzqwokkgapebu4iq54o3cu
   postcss: 8.4.14
   prettier: 2.4.1
@@ -4108,6 +4114,10 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+
+  /@types/github-slugger/1.3.0:
+    resolution: {integrity: sha512-J/rMZa7RqiH/rT29TEVZO4nBoDP9XJOjnbbIofg7GQKs4JIduEO3WLpte+6WeUz/TcrXKlY+bM7FYrp8yFB+3g==}
+    dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}

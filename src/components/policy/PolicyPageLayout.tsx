@@ -12,7 +12,11 @@ export type PolicyPageLayoutProps = {
 const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
   return (
     <PageBase>
-      <PageHead pageTitle={meta.title} pageDescription={meta.description} />
+      <PageHead
+        pageTitle={meta.title}
+        pageDescription={meta.description}
+        pageType="main"
+      />
       <div className="flex w-full bg-instillGrey95">
         <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">
           <article className="prose prose-white max-w-none mx-5 md:mx-0 mt-[180px] mb-[60px] md:col-span-2">

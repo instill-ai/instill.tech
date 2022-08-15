@@ -1,13 +1,13 @@
-import { FC } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
 export type PageHeadProps = {
   pageTitle: string;
   pageDescription?: string;
+  pageType: "main" | "docs";
 };
 
-const PageHead: FC<PageHeadProps> = ({ pageTitle, pageDescription }) => {
+const PageHead = ({ pageTitle, pageDescription, pageType }: PageHeadProps) => {
   const router = useRouter();
 
   const meta = {
@@ -39,6 +39,56 @@ const PageHead: FC<PageHeadProps> = ({ pageTitle, pageDescription }) => {
         <meta name="twitter:site" content={meta.siteName} />
         <meta name="twitter:title" content={meta.pageTitle} />
         <meta name="twitter:description" content={meta.pageDescription} />
+
+        {pageType === "main" ? (
+          <>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/instill-ai-favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/instill-ai-favicon-16x16.png"
+            />
+            <link rel="shortcut icon" href="instill-ai-favicon.ico" />
+            <meta
+              property="og:image"
+              content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
+            />
+            <meta
+              property="twitter:image"
+              content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
+            />
+          </>
+        ) : (
+          <>
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/vdp-favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/vdp-favicon-16x16.png"
+            />
+            <link rel="shortcut icon" href="vdp-favicon.ico" />
+            <meta
+              property="og:image"
+              content={`${process.env.NEXT_PUBLIC_BASE_URL}/vdp-open-graph.png`}
+            />
+            <meta
+              property="twitter:image"
+              content={`${process.env.NEXT_PUBLIC_BASE_URL}/vdp-open-graph.png`}
+            />
+          </>
+        )}
       </Head>
     </>
   );

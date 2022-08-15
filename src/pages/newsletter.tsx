@@ -102,6 +102,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
       <PageHead
         pageTitle="Newsletter Archive | Instill AI"
         pageDescription="Instill AI newsletter archive"
+        pageType="main"
       />
       <ContentContainer>
         <div className="mb-20 flex max-w-[800px] flex-col px-5 pt-[100px] pb-[60px] md:mx-auto md:px-0">
