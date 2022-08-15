@@ -1,31 +1,43 @@
+import { useState } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
-import { PageHead } from "@/components/ui";
 import cn from "clsx";
-import { useState } from "react";
-import { LeftSidebar, Nav, RightSidebar } from "@/components/docs";
-import docsConfig from "../../../docs.config";
-import { useRouter } from "next/router";
 import remarkDirective from "remark-directive";
-import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
-import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
-import remarkGfm from "remark-gfm";
 import { remarkCodeHike } from "@code-hike/mdx";
+import remarkGfm from "remark-gfm";
 import { CH } from "@code-hike/mdx/components";
-
+import { useRouter } from "next/router";
+import { h } from "hastscript";
 import { readFile } from "fs/promises";
 import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkFrontmatter from "remark-frontmatter";
+import { remark } from "remark";
+
+import { PageHead } from "@/components/ui";
+import {
+  LeftSidebar,
+  Nav,
+  RightSidebar,
+  RightSidebarProps,
+} from "@/components/docs";
+import docsConfig from "../../../docs.config";
+import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
+import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
 import {
   infoBlockHeader,
   infoBlockChildren,
 } from "@/lib/markdown/rehype-info-block-handler.mjs";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { h } from "hastscript";
+import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
+import { SidebarItem } from "@/types/docs";
+import { ArticleNavigationButton } from "@/components/docs";
+import { getRepoFileCommits } from "@/lib/github";
+import { Nullable } from "@/types/instill";
 
 type DocsParams = {
   params: {
@@ -35,6 +47,12 @@ type DocsParams = {
 
 type DocsProps = {
   mdxSource: MDXRemoteSerializeResult;
+  nextArticle: SidebarItem;
+  prevArticle: SidebarItem;
+  lastEditedTime: Nullable<string>;
+  author: Nullable<string>;
+  authorGithubUrl: Nullable<string>;
+  headers: RightSidebarProps["headers"];
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -56,7 +74,10 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
   params,
 }: DocsParams) => {
   const fullPath = join(process.cwd(), "docs", ...params.path);
+  const relativePath = join(...params.path);
   const source = fs.readFileSync(fullPath + ".mdx", "utf8");
+
+  // Prepare the codeHike theme
 
   const theme = JSON.parse(
     await readFile(
@@ -67,6 +88,8 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
     )
   );
 
+  // Serialize the mdx file for client
+
   const mdxSource = await serialize(source, {
     parseFrontmatter: true,
     mdxOptions: {
@@ -75,6 +98,7 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
         [
           remarkCodeHike,
           {
+            theme,
             lineNumbers: false,
             showCopyButton: true,
             autoImport: false,
@@ -93,7 +117,7 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
           {
             behavior: "prepend",
             properties: { class: "heading-anchor" },
-            content(node) {
+            content() {
               return h("span", { class: "heading-anchor-hash" }, ["#"]);
             },
           },
@@ -102,20 +126,75 @@ export const getStaticProps: GetStaticProps<DocsProps> = async ({
     },
   });
 
-  // Construct docsument's header
+  // Get prev and next link from sidebar config
 
-  const gegexHeader = /#{1,6}.+/g;
+  const sidebarLinks: SidebarItem[] = [].concat(
+    ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
+  );
 
-  let newHeaders = [];
+  const currentPageIndex = sidebarLinks.findIndex(
+    (e) => e.link === "/docs/" + relativePath
+  );
+
+  const nextArticle =
+    currentPageIndex + 1 >= sidebarLinks.length
+      ? null
+      : sidebarLinks[currentPageIndex + 1];
+
+  const prevArticle =
+    currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
+
+  // Access GitHub API to retrieve the info of Committer
+
+  // const commits = await getRepoFileCommits(
+  //   "instill-ai",
+  //   "instill.tech",
+  //   "docs/" + relativePath + ".mdx"
+  // );
+
+  let lastEditedTime: Nullable<string> = null;
+  let author: Nullable<string> = null;
+  let authorGithubUrl: Nullable<string> = null;
+
+  // if (commits.length > 0) {
+  //   const time = new Date(commits[0].commit.author.date).toLocaleString();
+
+  //   lastEditedTime = time;
+  //   author = commits[0].commit.author.name;
+  //   authorGithubUrl = commits[0].author.html_url;
+  // }
+
+  // We use remark to correctly get the headers
+
+  let headers = [] as RightSidebarProps["headers"];
+
+  await remark()
+    .use(remarkFrontmatter)
+    .use(remarkGetHeaders, { headers })
+    .process(source);
 
   return {
     props: {
       mdxSource,
+      nextArticle,
+      prevArticle,
+      lastEditedTime,
+      author,
+      authorGithubUrl,
+      headers,
     },
   };
 };
 
-const DocsPage = ({ mdxSource }: DocsProps) => {
+const DocsPage = ({
+  mdxSource,
+  nextArticle,
+  prevArticle,
+  lastEditedTime,
+  author,
+  authorGithubUrl,
+  headers,
+}: DocsProps) => {
   const router = useRouter();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 
@@ -140,7 +219,7 @@ const DocsPage = ({ mdxSource }: DocsProps) => {
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
         pageDescription={mdxSource.frontmatter.description}
       />
-      <main className="w-screen grid grid-flow-col grid-cols-12 gap-x-10 max:block">
+      <main className="w-screen grid grid-flow-col grid-cols-12 max:block">
         <aside
           className={cn(
             "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-3 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
@@ -176,7 +255,7 @@ const DocsPage = ({ mdxSource }: DocsProps) => {
               >
                 <MDXRemote {...mdxSource} components={{ CH }} />
               </article>
-              {/* <div className="flex flex-row gap-x-2 w-full pb-6 mb-8 border-b">
+              <div className="flex flex-row gap-x-2 w-full pb-6 mb-8 border-b">
                 {lastEditedTime && author ? (
                   <>
                     <p className="ml-auto text-sm text-instillGrey70">
@@ -196,7 +275,7 @@ const DocsPage = ({ mdxSource }: DocsProps) => {
                   </>
                 ) : null}
               </div>
-              <div cㄙlassName="grid grid-flow-row grid-cols-2 gap-x-5">
+              <div className="grid grid-flow-row grid-cols-2 gap-x-5">
                 {prevArticle ? (
                   <ArticleNavigationButton
                     type="prev"
@@ -215,10 +294,10 @@ const DocsPage = ({ mdxSource }: DocsProps) => {
                 ) : (
                   <div />
                 )}
-              </div> */}
+              </div>
             </div>
 
-            {/* <aside className="col-span-2 hidden xl:block">
+            <aside className="col-span-2 hidden xl:block">
               <RightSidebar
                 githubEditUrl={
                   "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
@@ -227,7 +306,7 @@ const DocsPage = ({ mdxSource }: DocsProps) => {
                 }
                 headers={headers}
               />
-            </aside> */}
+            </aside>
           </div>
         </div>
       </main>
