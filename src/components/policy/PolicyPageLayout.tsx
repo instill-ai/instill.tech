@@ -15,7 +15,7 @@ const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
       <PageHead
         pageTitle={meta.title}
         pageDescription={meta.description}
-        ogImageSrc={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
+        pageType="main"
       />
       <div className="flex w-full bg-instillGrey95">
         <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">

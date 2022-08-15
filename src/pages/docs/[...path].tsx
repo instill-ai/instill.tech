@@ -225,7 +225,7 @@ const DocsPage = ({
       <PageHead
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
         pageDescription={mdxSource.frontmatter.description}
-        ogImageSrc={`${process.env.NEXT_PUBLIC_BASE_URL}/images/vdp-open-graph.png`}
+        pageType="docs"
       />
       <main className="w-screen grid grid-flow-col grid-cols-12 max:block">
         <aside

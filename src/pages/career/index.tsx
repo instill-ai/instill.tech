@@ -112,7 +112,7 @@ const CareerPage: FC<CareerPageProps> & {
       <PageHead
         pageTitle="Career | Instill AI"
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
-        ogImageSrc={`${process.env.NEXT_PUBLIC_BASE_URL}/images/instill-open-graph.png`}
+        pageType="main"
       />
       <ContentContainer contentMaxWidth="max-w-[1127px]">
         <CareerHero
