@@ -1,4 +1,6 @@
 import { visit } from "unist-util-visit";
+import BananaSlug from "github-slugger";
+import { toString } from "mdast-util-to-string";
 
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 export function remarkGetHeaders(options) {
@@ -10,21 +12,19 @@ export function remarkGetHeaders(options) {
     throw Error("options.headers prop is not provided");
   }
 
+  const slugs = new BananaSlug();
+
   return (tree) => {
     visit(tree, async (node) => {
       if (node.type !== "heading") return;
       if (node.children.length === 0) return;
 
-      let headingText = "";
-
-      node.children.forEach((child) => {
-        headingText = headingText + child.value;
-      });
+      let headingText = slugs.slug(toString(node));
 
       options.headers.push({
         depth: node.depth,
-        text: headingText,
-        slug: headingText.toLowerCase().split(" ").join("-"),
+        text: toString(node),
+        slug: headingText,
       });
     });
   };
