@@ -32,6 +32,10 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
           html {
             scroll-behavior: smooth;
           }
+
+          img {
+            border-radius: 5px;
+          }
         `}
       </style>
       <main className="w-screen grid grid-flow-col grid-cols-12 max:block">
