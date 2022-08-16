@@ -6,12 +6,15 @@ import RightSidebar from "./RightSidebar";
 import type { RightSidebarProps } from "./RightSidebar";
 import ArticleNavigationButton from "./ArticleNavigationButton";
 import type { ArticleNavigationButtonProps } from "./ArticleNavigationButton";
+import DocsLayout from "./DocsLayout";
+import type { DocsLayoutProps } from "./DocsLayout";
 
-export { LeftSidebar, Nav, RightSidebar, ArticleNavigationButton };
+export { LeftSidebar, Nav, RightSidebar, ArticleNavigationButton, DocsLayout };
 
 export type {
   LeftSidebarProps,
   NavProps,
   RightSidebarProps,
   ArticleNavigationButtonProps,
+  DocsLayoutProps,
 };

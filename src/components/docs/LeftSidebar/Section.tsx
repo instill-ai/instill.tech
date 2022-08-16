@@ -23,8 +23,6 @@ const Section = ({ text, items, collapsible, link }: SectionProps) => {
 
   const router = useRouter();
 
-  console.log(router);
-
   const toLink = () => {
     if (link) {
       router.push(link);
