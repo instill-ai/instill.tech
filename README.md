@@ -1,31 +1,38 @@
-# Contribution
+# instill.tech
+
+This repository maintains the Instill AI product website and VDP documentation.
+
+## Contribution
 1. Clone the github
 2. `pnpm install`
 
-# Build up next app
+## Build up next app
+```
 pnpm run dev
+```
 
-# Build up storybook
+## Build up storybook
+```
 pnpm run storybook
+```
 
+## About how to contribute to Documentation
 
-# About how to contribute to Documentation
-
-## Every document lie under the `/docs` folder.
+### Every document lie under the `/docs` folder.
 
 - The routing will match the path, take getting-started page for example, its path is `/docs/start-here/getting-started.mdx` the url will be `https://www.instill.tech/docs/start-here/getting-started`
 - The file name and the folder name only allow `kebab-case`.
 
-## Navbar and Sidebar
+### Navbar and Sidebar
 
 You could adjust Navbar and Sidebar item in `docs.config.tsx` in the root.
 
 - Please add every page in the sidebar. 
 - Please follow the type instruction.
 
-## About the extended markdown syntax
+### About the extended markdown syntax
 
-### Info-block
+#### Info-block
 
 - We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed. 
 - Please do enclose the info-block with proper syntax, every missed ::: will cause some unwanted behavior.(Currently, we don't have way to detect this kind of syntax error)
@@ -55,12 +62,12 @@ This is info block with danger type
 :::
 ```
 
-### Youtube embed
+#### YouTube embed
 
-- We offer youtube embed
-- Currently we don't support customize dimension
+- We offer YouTube embed
+- Currently we don't support custom dimensions
 
-#### Syntax
+##### Syntax
 
 ```md
 ::youtube[title]{#id}
@@ -72,6 +79,6 @@ Example
 ::youtube[This is a cat video]{#2MP5Ov_H4Go}
 ```
 
-#### About how to get the youtube id
+##### How to get the YouTube video id
 
-You could get video id with regular youtube url. For example `https://www.youtube.com/watch?v=2MP5Ov_H4Go&ab_channel=NaturalWorldTriumph`. The youtube id is after `watch?v=` that is `2MP5Ov_H4Go`.
+You can get video id with regular YouTube url. For example `https://www.youtube.com/watch?v=2MP5Ov_H4Go&ab_channel=NaturalWorldTriumph`. The YouTube id is after `watch?v=` that is `2MP5Ov_H4Go`.

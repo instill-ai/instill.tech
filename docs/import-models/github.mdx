@@ -7,10 +7,11 @@ description: "Learn about how to import models from GitHub into the open-source 
 
 The `GitHub` model definition allows you to import models from a [GitHub](https://github.com/) repository. Your model files can be tracked with [Git LFS](https://git-lfs.github.com/) or [DVC](https://dvc.org/).
 
-## Features
+## Feature
 
+Currently, VDP supports importing models from
 - ✅ Public GitHub repository
-- 🚧 Private GitHub repository
+- 🚧 Private GitHub repository (coming soon!)
 
 ## Release stage
 
@@ -276,7 +277,7 @@ Prepare the GCS bucket:
 
 - [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets) before adding DVC remote
 - Make sure to run `gcloud auth application-default login` or other ways to authenticate and access GCS.
-  :::
+:::
 
 ```shellscript
 # Create a new data remote
