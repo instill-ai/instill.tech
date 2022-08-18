@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.12.0](https://github.com/instill-ai/instill.tech/compare/v1.11.0...v1.12.0) (2022-08-18)
+
+
+### Features
+
+* fully migrate from docs under /pages to remote mdx file ([#231](https://github.com/instill-ai/instill.tech/issues/231)) ([97e4b36](https://github.com/instill-ai/instill.tech/commit/97e4b36dbe19e453ffa850796662857b5ad39fbd))
+* update selection color at code-block, highlight current hast at toc ([#236](https://github.com/instill-ai/instill.tech/issues/236)) ([934f930](https://github.com/instill-ai/instill.tech/commit/934f93099988c69f54c884572b4c79b05297cfcc))
+
+
+### Bug Fixes
+
+* fix sidebar reset position issue and implement round image ([#239](https://github.com/instill-ai/instill.tech/issues/239)) ([5fe4e8a](https://github.com/instill-ai/instill.tech/commit/5fe4e8a1ea701832e0c759f5913aec4a6151c00c))
+* fix table of content's link and update favicon ([#237](https://github.com/instill-ai/instill.tech/issues/237)) ([ecb3813](https://github.com/instill-ai/instill.tech/commit/ecb3813a7712d1369804f87bbc935f289459a477))
+
 ## [1.11.0](https://github.com/instill-ai/instill.tech/compare/v1.10.0...v1.11.0) (2022-08-13)
 
 
