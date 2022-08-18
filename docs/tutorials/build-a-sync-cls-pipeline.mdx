@@ -18,7 +18,7 @@ where you can build your first VDP pipeline by clicking **Create your first pipe
 You can follow the tutorial via the **Pipeline** page. Or, you can navigate to the **Source**, **Model** and **Destination** page to create each component first and use them to configure a pipeline in **Pipeline** page later.
 :::
 
-#### Add a HTTP source
+### Add a HTTP source
 
 A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline.
 
@@ -33,7 +33,7 @@ To set it up,
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
 :::
 
-#### Import a model from GitHub
+### Import a model from GitHub
 
 To process images, here we import a model from our public GitHub repo [instill-ai/model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
 
@@ -53,7 +53,7 @@ VDP will fetch all the releases of the GitHub repository. Each release is conver
 Check our growing list of [model sources](/docs/import-models/overview) to learn about how to import models from other platforms.
 :::
 
-#### Deploy a model instance of the imported model
+### Deploy a model instance of the imported model
 
 Once the model is imported,
 
@@ -63,7 +63,7 @@ Once the model is imported,
 
 ![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png)
 
-#### Add a HTTP destination
+### Add a HTTP destination
 
 Since we are building a `SYNC` pipeline, the HTTP destination is automatically paired with the HTTP source.
 
@@ -78,9 +78,9 @@ The paired source and destination connectors for pipelines in [`SYNC`](/docs/cor
 
 - HTTP source → HTTP destination
 - gRPC source → gRPC destination
-:::
+  :::
 
-#### Set up the pipeline
+### Set up the pipeline
 
 Almost done! Just
 
@@ -143,7 +143,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 1: Add a HTTP source
+### Step 1: Add a HTTP source
 
 `http://localhost:8082` is the `connector-backend` default URL.
 
@@ -153,7 +153,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 2: Import a model from GitHub
+### Step 2: Import a model from GitHub
 
 `http://localhost:8083` is the `model-backend` default URL.
 
@@ -163,7 +163,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 3: Deploy a model instance
+### Step 3: Deploy a model instance
 
 Choose the model instance `v1.0-cpu` to deploy.
 
@@ -173,7 +173,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ---
 
-#### Step 4: Add a HTTP destination
+### Step 4: Add a HTTP destination
 
 ```shellscript focus=20:26
 
@@ -181,7 +181,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ---
 
-#### Step 5: Create your first pipeline
+### Step 5: Create your first pipeline
 
 `http://localhost:8081` is the `pipeline-backend` default URL.
 

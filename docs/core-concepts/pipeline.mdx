@@ -30,7 +30,7 @@ Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or
 
 ## Mode
 
-#### `SYNC` mode
+### `SYNC` mode
 
 A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
@@ -51,7 +51,7 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 }
 ```
 
-#### `ASYNC` mode
+### `ASYNC` mode
 
 A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
 Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
@@ -72,7 +72,7 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 }
 ```
 
-#### `FETCH` mode (coming soon!)
+### `FETCH` mode (coming soon!)
 
 A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
 

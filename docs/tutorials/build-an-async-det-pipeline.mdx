@@ -18,7 +18,7 @@ where you can build your first VDP pipeline by clicking **Create your first pipe
 You can follow the tutorial via the _Pipeline_ page. Or, you can navigate to the _Source_, _Model_ and _Destination_ page to create each component first and use them to configure a pipeline in _Pipeline_ page later.
 :::
 
-#### Add a HTTP source
+### Add a HTTP source
 
 A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline.
 
@@ -33,7 +33,7 @@ To set it up,
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
 :::
 
-#### Import a model from GitHub
+### Import a model from GitHub
 
 To process images, here we import a model from our public GitHub repo [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc).
 
@@ -53,7 +53,7 @@ VDP will fetch all the releases of the GitHub repository. Each release is conver
 Check our growing list of [model sources](/docs/import-models/overview) to learn about how to import models from other platforms.
 :::
 
-#### Deploy a model instance of the imported model
+### Deploy a model instance of the imported model
 
 Once the model is imported,
 
@@ -63,7 +63,7 @@ Once the model is imported,
 
 ![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-yolov7-model-instance.png)
 
-#### Add a PostgreSQL destination
+### Add a PostgreSQL destination
 
 To set it up,
 
@@ -78,7 +78,7 @@ To set it up,
 Make sure the PostgreSQL is accessible by VDP using the specified `Host` and `Port`, and the `tutorial` database has been created in advance.
 :::
 
-#### Set up the pipeline
+### Set up the pipeline
 
 Almost done! Just
 
@@ -151,7 +151,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 1: Add a HTTP source
+### Step 1: Add a HTTP source
 
 `http://localhost:8082` is the `connector-backend` default URL.
 
@@ -161,7 +161,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 2: Import a model from GitHub
+### Step 2: Import a model from GitHub
 
 `http://localhost:8083` is the `model-backend` default URL.
 
@@ -171,7 +171,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 ---
 
-#### Step 3: Deploy a model instance
+### Step 3: Deploy a model instance
 
 Choose the model instance `v1.0-cpu` to deploy.
 
@@ -181,7 +181,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ---
 
-#### Step 4: Add a PostgreSQL destination
+### Step 4: Add a PostgreSQL destination
 
 ```shellscript focus=20:35
 
@@ -189,7 +189,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ---
 
-#### Step 5: Create your first pipeline
+### Step 5: Create your first pipeline
 
 `http://localhost:8081` is the `pipeline-backend` default URL.
 
