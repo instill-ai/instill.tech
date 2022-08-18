@@ -8,7 +8,7 @@ description: "Standardise structured outputs for computer vision tasks the open-
 Computer Vision (CV) Tasks, a.k.a Vision tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does. The goal is to make a computer/device provide description for the data as complete and accurate as possible.
 Some classic CV Tasks include image classification, object detection, image segmentation and keypoint detection. These primitive tasks are the foundation for building many real-world industrial vision applications.
 
-Intrigued? Refer to [Prepare models](/docs/prepare-models/overview) to Learn about how to prepare your models for CV Tasks supported by VDP.
+Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to Learn about how to prepare your models for CV Tasks supported by VDP.
 
 ## Standardise CV Tasks
 
@@ -34,7 +34,7 @@ If you'd like to **ask for a new model definition**, you can create a topic in [
 
 Currently, the model output is converted to standard format based on the CV task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model.proto).
 
-**Standardise through VDP Protocol (coming soon!)**
+**Standardise through VDP Protocol**
 
 The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of model outputs in order to standardise an ETL pipeline for visual data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
@@ -99,19 +99,7 @@ Generally, an image classification model takes an image as the input, and output
 
 ![Image classification task](/docs-assets/core-concepts/cv-task-classification.svg)
 
-<CH.Code>
-```json current
-{
-  "classification_outputs": [
-    {
-      "category": "golden retriever",
-      "score": 0.98
-    }
-  ]
-}
-
-````
-```json coming-soon
+```json
 {
   "task": "TASK_CLASSIFICATION",
   "batch_outputs": [
@@ -123,9 +111,7 @@ Generally, an image classification model takes an image as the input, and output
     }
   ]
 }
-````
-
-</CH.Code>
+```
 
 ## Object detection
 
@@ -134,30 +120,7 @@ Generally, an object detection model receives an image as the input, and outputs
 
 ![Object detection task](/docs-assets/core-concepts/cv-task-detection.svg)
 
-<CH.Code>
-```json current
-{
-  "detection_outputs": [
-    {
-      "bounding_box_objects": [
-        {
-          "bounding_box": {
-            "height": 405,
-            "left": 324,
-            "top": 102,
-            "width": 208
-          },
-          "category": "dog",
-          "score": 0.97
-        },
-        ...
-      ]
-    }
-  ]
-}
-
-````
-```json coming-soon
+```json
 {
   "task": "TASK_DETECTION",
   "batch_outputs": [
@@ -166,10 +129,10 @@ Generally, an object detection model receives an image as the input, and outputs
         "bounding_boxes": [
           {
             "bounding_box": {
-              "height": 405,
               "left": 324,
               "top": 102,
-              "width": 208
+              "width": 208,
+              "height": 405,
             },
             "category": "dog",
             "score": 0.97
@@ -180,9 +143,7 @@ Generally, an object detection model receives an image as the input, and outputs
     }
   ]
 }
-````
-
-</CH.Code>
+```
 
 ## Keypoint detection
 
@@ -195,31 +156,7 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 Keypoint detection task only allows single image input for now, will allow batch processing soon.
 :::
 
-<CH.Code>
-```json current
-{
-  "keypoint_outputs": [
-    {
-      "keypoints": [
-        {
-          "v": 0.53722847,
-          "x": 542.82764,
-          "y": 86.63817
-        },
-        {
-          "v": 0.634061,
-          "x": 553.0073,
-          "y": 79.440636
-        },
-        ...
-      ],
-      "score": 0.94
-    },
-    ...
-  ]
-}
-````
-```json coming-soon
+```json
 {
   "task": "TASK_KEYPOINT",
   "batch_outputs": [
@@ -247,9 +184,7 @@ Keypoint detection task only allows single image input for now, will allow batch
     }
   ]
 }
-````
-
-</CH.Code>
+```
 
 ## What if my task is not standardised by by VDP yet?
 
@@ -262,34 +197,9 @@ VDP will
 
 ![Unspecified task](/docs-assets/core-concepts/cv-task-unspecified.svg)
 
-<CH.Code>
-```json current
+```json
 {
-  "raw_outputs": [
-    {
-      "raw_output": [
-        {
-          "data": [0.85, 0.1, 0.05],
-          "data_type": "FP32",
-          "name": "output_scores",
-          "shape": [3]
-        },
-        {
-          "data": ["dog", "cat", "rabbit"],
-          "data_type": "BYTES",
-          "name": "output_labels",
-          "shape": [3]
-        }
-      ]
-    }
-  ]
-}
-
-````
-
-```json coming-soon
-{
-  "task": "TASK_KEYPOINT",
+  "task": "TASK_UNSPECIFIED",
   "batch_outputs": [
     {
       "unspecified": {
@@ -311,6 +221,4 @@ VDP will
     }
   ]
 }
-````
-
-</CH.Code>
+```
