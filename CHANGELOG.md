@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/instill-ai/instill.tech/compare/v1.12.0...v1.13.0) (2022-08-19)
+
+
+### Features
+
+* Implement toggle box ([#249](https://github.com/instill-ai/instill.tech/issues/249)) ([0b9c41c](https://github.com/instill-ai/instill.tech/commit/0b9c41c247054b61b3045f79a78b5339bd27d292))
+
 ## [1.12.0](https://github.com/instill-ai/instill.tech/compare/v1.11.0...v1.12.0) (2022-08-18)
 
 
