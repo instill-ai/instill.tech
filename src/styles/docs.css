@@ -18,6 +18,27 @@ article > h1, h2, h3, h4 {
 }
 
 /*
+  The style of summary block
+*/
+
+article > details {
+  padding: 20px 25px;
+  background-color: #FAFAFA;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border-left: 5px solid #5c5c5c;
+}
+
+article > details > summary {
+  cursor: pointer;
+}
+
+article > details > summary > strong {
+  padding-left: 10px;
+}
+
+/*
   The style of header-anchor in header
 */
 
