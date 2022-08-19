@@ -82,3 +82,15 @@ Example
 ##### How to get the YouTube video id
 
 You can get video id with regular YouTube url. For example `https://www.youtube.com/watch?v=2MP5Ov_H4Go&ab_channel=NaturalWorldTriumph`. The YouTube id is after `watch?v=` that is `2MP5Ov_H4Go`.
+
+#### Details section
+
+Please follow markdown details syntax like below
+
+```md
+<details>
+  <summary>**Is VDP free?**</summary>
+
+  Content
+</details>
+```
