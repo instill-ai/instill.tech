@@ -60,7 +60,7 @@ const Section = ({ text, items, collapsible, link }: SectionProps) => {
               width="w-3"
               height="h-3"
               color="fill-instillGrey95"
-              position={cn("my-auto", collapsed ? "rotate-90" : "-rotate-90")}
+              position={cn("my-auto", collapsed ? "-rotate-90" : "rotate-90")}
             />
           </div>
         ) : null}
