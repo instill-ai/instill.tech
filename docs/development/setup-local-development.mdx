@@ -32,7 +32,7 @@ make dev PROFILE=<valid-profile-name>
 
 The following guideline shows detailed guideline about how to develop the `connector-backend`.
 
-### Start dependent VDP services for `connector-backend`
+## Start dependent VDP services for `connector-backend`
 
 On the local machine, clone `vdp` repository in your workspace, move to the repository folder, and launch all dependent microservices:
 
@@ -46,7 +46,7 @@ make build PROFILE=connector
 make dev PROFILE=connector
 ```
 
-### Run dev `connector-backend`
+## Run dev `connector-backend`
 
 Clone `connector-backend` repository in your workspace and move to the repository folder:
 
@@ -89,7 +89,7 @@ docker exec -it connector-backend /bin/bash
 make integration-test
 ```
 
-### Stop the dev container
+## Stop the dev container
 
 ```shellscript
 make stop

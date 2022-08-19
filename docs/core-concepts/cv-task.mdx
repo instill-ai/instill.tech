@@ -28,13 +28,13 @@ Each CV task is described in depth in the respective section below.
 
 If you'd like to **ask for a new model definition**, you can create a topic in [Discussions](https://github.com/instill-ai/vdp/discussions), or request it in the **#vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
 
-### How to standardise
+## How to standardise
 
-**Standardise via Protocol Buffers**
+### Standardise via Protocol Buffers
 
 Currently, the model output is converted to standard format based on the CV task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model.proto).
 
-**Standardise through VDP Protocol**
+### Standardise via VDP Protocol
 
 The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of model outputs in order to standardise an ETL pipeline for visual data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
