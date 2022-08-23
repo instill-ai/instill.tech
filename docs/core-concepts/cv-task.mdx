@@ -12,19 +12,20 @@ Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to Learn abo
 
 ## Standardise CV Tasks
 
-In a data pipeline, model is the core component designed to solve a specific CV task. By standardising the data format of model outputs into CV Tasks,
+In a data pipeline, model is the core component designed to solve a specific CV Task. By standardising the data format of model outputs into CV Tasks,
 
-- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same CV task;
+- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same CV Task;
 - VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
 
 At the moment, VDP defines the data interface for popular CV Tasks:
 
 - _Image classification_ - classify images into predefined categories
-- _Object detection_ - detect and localize multiple objects in images
-- _Keypoint detection_ - detect and localize multiple keypoints of objects in images
+- _Object detection_ - detect and localise multiple objects in images
+- _Keypoint detection_ - detect and localise multiple keypoints of objects in images
+- _OCR (Optical Character Recognition)_ - detect and recognise text in images
 - The list is growing ... 🌱
 
-Each CV task is described in depth in the respective section below.
+Each CV Task is described in depth in the respective section below.
 
 If you'd like to **ask for a new model definition**, you can create a topic in [Discussions](https://github.com/instill-ai/vdp/discussions), or request it in the **#vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
 
@@ -32,7 +33,7 @@ If you'd like to **ask for a new model definition**, you can create a topic in [
 
 ### Standardise via Protocol Buffers
 
-Currently, the model output is converted to standard format based on the CV task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model.proto).
+Currently, the model output is converted to standard format based on the CV Task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
 
 ### Standardise via VDP Protocol
 
@@ -42,7 +43,7 @@ The data produced by the model component and passed to destination component of 
 The protocol is still under development. Stay tuned on how the protocol will evolve.
 
 The batched outputs of a model for input images is wrapped in a `BatchOutputs`. It includes an array of `TaskOutput`, each of which corresponds to the model output of one input image in the batch.
-The `TaskOutput` struct has a required `task` which describes the CV task type of the wrapped model output. Based on the `task`, the corresponding field will be populated, other fields will be null.
+The `TaskOutput` struct has a required `task` which describes the CV Task type of the wrapped model output. Based on the `task`, the corresponding field will be populated, other fields will be null.
 
 ```yaml
 ModelInstanceOutput:
@@ -59,6 +60,7 @@ ModelInstanceOutput:
         - TASK_CLASSIFICATION
         - TASK_DETECTION
         - TASK_KEYPOINT
+        - TASK_OCR
         - TASK_UNSPECIFIED
     batch_outputs:
       description: "a list of inference output for a specific CV Task"
@@ -76,17 +78,22 @@ TaskOutput:
     - required:
         - keypoint
     - required:
+        - ocr
+    - required:
         - unspecified
   properties:
     classification:
       description: "Classify into pre-defined categories"
       "$ref": "#/definitions/Classification"
     detection:
-      description: "Detect and localize multiple objects"
+      description: "Detect and localise multiple objects"
       "$ref": "#/definitions/Detection"
     keypoint:
-      description: "Detect and localize keypoints of multiple objects"
+      description: "Detect and localise keypoints of multiple objects"
       "$ref": "#/definitions/Keypoint"
+    ocr:
+      description: "Detect, localise and recognise texts"
+      "$ref": "#/definitions/Ocr"
     unspecified:
       description: "Unspecified task with output in the free form"
       "$ref": "#/definitions/Unspecified"
@@ -94,7 +101,7 @@ TaskOutput:
 
 ## Image classification
 
-Image classification task is the CV task to assign a single pre-defined category label to an entire input image.
+Image classification task is the CV Task to assign a single pre-defined category label to an entire input image.
 Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
 
 ![Image classification task](/docs-assets/core-concepts/cv-task-classification.svg)
@@ -115,7 +122,7 @@ Generally, an image classification model takes an image as the input, and output
 
 ## Object detection
 
-Object detection task is the CV task to localize multiple objects of pre-defined categories in an input image.
+Object detection task is the CV Task to localise multiple objects of pre-defined categories in an input image.
 Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
 
 ![Object detection task](/docs-assets/core-concepts/cv-task-detection.svg)
@@ -147,14 +154,10 @@ Generally, an object detection model receives an image as the input, and outputs
 
 ## Keypoint detection
 
-Keypoint detection task is the CV task to localize multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
+Keypoint detection task is the CV Task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
 Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with confidence scores on detected objects.
 
 ![Keypoint detection task](/docs-assets/core-concepts/cv-task-keypoint.svg)
-
-:::info{type=warning}
-Keypoint detection task only allows single image input for now, will allow batch processing soon.
-:::
 
 ```json
 {
@@ -180,6 +183,43 @@ Keypoint detection task only allows single image input for now, will allow batch
             "score": 0.94
           }
         ]
+      }
+    }
+  ]
+}
+```
+
+## Optical Character Recognition (OCR)
+
+OCR task is the CV Task to localise and recognise text in an input image.
+The task can be done in two steps by multiple models:
+a text detection model to detect bounding boxes containing text and
+a text recognition model to process typed or handwritten text within each bounding box into machine readable text.
+Alternatively, there are deep learning models that can accomplish the task in one single step.
+
+![OCR task](/docs-assets/core-concepts/cv-task-ocr.svg)
+
+```json
+{
+  "task": "TASK_OCR",
+  "batch_outputs": [
+    {
+      "ocr": {
+        "bounding_boxes": [
+          {
+            "top": 298,
+            "left": 279,
+            "width": 134,
+            "height": 59
+          },
+          {
+            "top": 228,
+            "left": 216,
+            "width": 255,
+            "height": 65
+          }
+        ],
+        "texts": ["ENDS", "PAVEMENT"]
       }
     }
   ]
