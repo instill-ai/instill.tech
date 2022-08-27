@@ -75,7 +75,7 @@ For each session, we collect [`Session`](https://github.com/instill-ai/protobufs
 - uptime in seconds to identify the rough life span of the service
 
 Each session is assigned with a random UUID for tracking and identification.
-Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every one hour:
+Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every 10 minutes:
 
 - [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
   - information of the [onboarded User](/docs/start-here/getting-started#start-building-with-vdp)
