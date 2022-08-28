@@ -38,7 +38,9 @@ GitHub limits the size of files ([max 100 MB](https://docs.github.com/en/reposit
 Assume Git LFS is [installed](https://git-lfs.github.com/), this guideline publishes model files in a repository on GitHub.
 
 :::info{type=info}
-Importing models from GitHub using Git LFS is not recommended unless you're with a private GitHub Enterprise account.
+In general, importing models via this approach is not recommended. GitHub has limited quotas of storage and bandwidth for Git LFS files, and the usage will count against the repository owner's quotas leading you to purchase more when reaching the cap.
+
+Instead, consider using GitHub DVC or ArtiVC approaches.
 :::
 
 **Step 1: Create a GitHub repository**
