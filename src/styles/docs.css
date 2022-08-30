@@ -197,5 +197,8 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
 
 .ch-codeblock ::selection {
   background-color: rgba(64, 168, 245, 0.5);
-  opacity: 0.8;
+}
+
+.ch-codegroup ::selection {
+  background-color: rgba(64, 168, 245, 0.5);
 }

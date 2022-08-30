@@ -86,6 +86,10 @@ export const getStaticProps: GetStaticProps = async () => {
     );
   }
 
+  publicCampaigns = publicCampaigns.sort((a, b) => {
+    return new Date(b.sendTime).getTime() - new Date(a.sendTime).getTime();
+  });
+
   return {
     props: {
       campaigns: publicCampaigns,
