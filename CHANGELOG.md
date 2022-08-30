@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.14.0](https://github.com/instill-ai/instill.tech/compare/v1.13.0...v1.14.0) (2022-08-30)
+
+
+### Features
+
+* outbound-link tracking ([#258](https://github.com/instill-ai/instill.tech/issues/258)) ([652df62](https://github.com/instill-ai/instill.tech/commit/652df62dc2512d24cc3324d32ccb50a989202655))
+
+
+### Bug Fixes
+
+* fix newsletter archive's order issue ([#256](https://github.com/instill-ai/instill.tech/issues/256)) ([cebd857](https://github.com/instill-ai/instill.tech/commit/cebd857997cf028ce8145340b559d40d67e92de2))
+
 ## [1.13.0](https://github.com/instill-ai/instill.tech/compare/v1.12.0...v1.13.0) (2022-08-19)
 
 
