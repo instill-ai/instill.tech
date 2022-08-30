@@ -42,7 +42,7 @@ export const Document: FC<Props> = () => {
         <script
           defer={true}
           data-domain="instill.tech"
-          src="https://plausible.io/js/plausible.js"
+          src="https://plausible.io/js/script.outbound-links.js"
         />
       </Head>
       <body>
