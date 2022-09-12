@@ -48,15 +48,14 @@ const Nav = () => {
       {enableAnnouncementBar && (
         <AnnouncementBar>
           <p className="text-instillGrey95">
-            Got five minutes? Participate our Data + Vision AI survey
-            2022.&nbsp;
+            Check out our new article &nbsp;
             <a
-              className="mr-1.5 underline"
+              className="mr-1.5 underline italic"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://dkuwzh3w0h3.typeform.com/to/wQcfIXal?utm_source=product_website&utm_medium=banner&utm_campaign=survey2022"
+              href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
             >
-              Learn more
+              Introducing VDP: open-source visual data ETL
             </a>
           </p>
         </AnnouncementBar>
