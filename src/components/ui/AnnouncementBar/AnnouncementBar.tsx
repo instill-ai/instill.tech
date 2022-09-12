@@ -10,7 +10,10 @@ const AnnouncementBar: FC = ({ children }) => {
   }, [setEnableAnnouncementBar]);
 
   return (
-    <div className="flex w-full gap-x-2 bg-instillYellow py-2.5 px-4">
+    <div
+      data-testid="announcement-bar"
+      className="flex w-full gap-x-2 bg-instillYellow py-2.5 px-4"
+    >
       <div className="mx-auto flex">{children}</div>
       <div
         onClick={handleClick}

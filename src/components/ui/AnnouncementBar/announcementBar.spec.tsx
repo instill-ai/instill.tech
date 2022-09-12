@@ -10,24 +10,14 @@ test("should display announcement bar", async () => {
   renderWithContext(withPageBase(<HomePage />), {});
   await screen.findByText(/Visual Data Preparation Made for All/i);
 
-  expect(
-    screen.getByText(
-      /got five minutes\? participate our data \+ vision ai survey 2022\./i
-    )
-  ).toBeInTheDocument();
+  expect(screen.queryByTestId("announcement-bar")).toBeInTheDocument();
 });
 
 test("should close announcement bar", async () => {
   renderWithContext(withPageBase(<HomePage />), {});
-  await screen.findByText(
-    /got five minutes\? participate our data \+ vision ai survey 2022\./i
-  );
+  await screen.findByTestId("announcement-bar");
 
   userEvent.click(screen.getByTestId("close-announcement-bar"));
 
-  expect(
-    screen.queryByText(
-      /got five minutes\? participate our data \+ vision ai survey 2022\./i
-    )
-  ).not.toBeInTheDocument();
+  expect(screen.queryByTestId("announcement-bar")).not.toBeInTheDocument();
 });
