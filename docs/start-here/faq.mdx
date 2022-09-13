@@ -90,24 +90,27 @@ Last but not least, Instill Cloud offers one order of magnitude lower pay-as-you
 </details>
 
 <details>
-<summary>**VDP vs. Hugging Face/Clarifai/Roboflow/Datature/Nyckel/Sieve/etc.**</summary>
+<summary>**VDP vs. Clarifai/Roboflow/Encord/Datature/Nyckel/Sieve/etc.**</summary>
 
-VDP is not a PaaS solution! To the best of our knowledge, these solutions either provide Vision AI API SaaS or Vision AI model generation PaaS.
+To the best of our knowledge, these solutions either provide Vision AI API SaaS or Vision AI model generation PaaS.
 
-VDP aims to integrate with the modern data stack for unstructured visual data ETL.
+VDP aims to integrate with tooling in the modern data stack for unstructured visual data ETL.
 
-While effective computer vision models are crucial to transform image and video data, model generation is in fact a task orthogonal to the VDP pipeline.
+While effective computer vision models are crucial to transform image and video data, model generation is in fact a task orthogonal to a VDP pipeline.
 The design principle of VDP is to make the use of models as flexible as possible.
-VDP users can hence freely use their familiar ways to generate models and can import the generated model into a VDP pipeline easily.
+
+That said, we will provide AutoML in VDP for custom model training in the near future. At the moment, the VDP users can freely use their familiar ways to generate models and import the models into a VDP pipeline fairly easily.
 
 Find out the supported model sources to import in [Import Models](../import-models/overview) section.
 
 </details>
 
 <details>
-<summary>**VDP vs. BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
+<summary>**VDP vs. Seldon/BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
 
-VDP is not just a model serving framework! Nonetheless, model serving is a core component in a VDP pipeline.
+VDP is more than a model serving framework!
+
+VDP has a model serving component specifically for computer vision models, but more importantly, the goal of VDP is to streamline the end-to-end visual data flow.
 
 See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
 
@@ -148,7 +151,7 @@ We believe tooling development in AI and Data industry is marching toward a comp
 <a name="why-triton"></a>
 <summary>**Why does VDP adopt Triton Inference Server?**</summary>
 
-There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, BentoML and Cortex just to name a few.
+There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, Seldon, BentoML and Cortex just to name a few.
 
 VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for our users.
 
@@ -170,7 +173,8 @@ Soon, Airbyte showed up on our radar.
 
 Airbyte has provided a good number of destination connectors for structured data.
 In addition, the Airbyte Protocol provides a standardised interface to integrate with VDP.
-Last but not least, VDP loves open source. Airbyte is also open source and the community welcomes all sorts of possibilities.
+
+Last but not least, we love open source.
 
 </details>
 
