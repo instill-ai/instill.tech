@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.0](https://github.com/instill-ai/instill.tech/compare/v1.14.0...v1.15.0) (2022-09-13)
+
+
+### Features
+
+* Implement new document sidebar toggle and docs favicon ([#265](https://github.com/instill-ai/instill.tech/issues/265)) ([6f4cb69](https://github.com/instill-ai/instill.tech/commit/6f4cb69c426589eb212a9366cef4df0eff2bb3dc))
+* update product website banner ([#262](https://github.com/instill-ai/instill.tech/issues/262)) ([ec07fa6](https://github.com/instill-ai/instill.tech/commit/ec07fa6249f76a67808d4a7cff9dd771f04a69fa))
+
 ## [1.14.0](https://github.com/instill-ai/instill.tech/compare/v1.13.0...v1.14.0) (2022-08-30)
 
 
