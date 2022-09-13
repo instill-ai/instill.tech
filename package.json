@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@code-hike/mdx": "^0.7.3",
-    "@instill-ai/design-system": "^0.0.105",
+    "@instill-ai/design-system": "^0.0.115",
     "@mailchimp/mailchimp_marketing": "^3.0.72",
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
