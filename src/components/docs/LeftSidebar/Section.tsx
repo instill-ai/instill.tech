@@ -1,9 +1,13 @@
 import { useMemo, useState } from "react";
 import cn from "clsx";
-import { SidebarItem } from "@/types/docs";
 import { useRouter } from "next/router";
-import { CollapseRightIcon } from "@instill-ai/design-system";
+import {
+  CollapseRightIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@instill-ai/design-system";
 import Link from "next/link";
+import { SidebarItem } from "@/types/docs";
 
 export type SectionProps = {
   text: string;
@@ -55,13 +59,12 @@ const Section = ({ text, items, collapsible, link }: SectionProps) => {
       >
         <h2 className="my-auto flex-1 text-sm font-semibold">{text}</h2>
         {sectionIsCollapsable ? (
-          <div className="my-auto">
-            <CollapseRightIcon
-              width="w-3"
-              height="h-3"
-              color="fill-instillGrey95"
-              position={cn("my-auto", collapsed ? "-rotate-90" : "rotate-90")}
-            />
+          <div className="my-auto p-[3px] hover:bg-instillGrey20">
+            {collapsed ? (
+              <PlusIcon width="w-4" height="h-4" color="fill-instillGrey95" />
+            ) : (
+              <MinusIcon width="w-4" height="h-4" color="fill-instillGrey95" />
+            )}
           </div>
         ) : null}
       </div>
