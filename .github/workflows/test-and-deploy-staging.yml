@@ -1,4 +1,4 @@
-name: cd-build-test-staging
+name: cd-test-and-deploy-staging
 
 on:
   pull_request:
