@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/instill-ai/instill.tech/compare/v1.15.0...v1.16.0) (2022-09-21)
+
+
+### Features
+
+* trigger build ([872b3ec](https://github.com/instill-ai/instill.tech/commit/872b3ec2549e998796edf9fdb626d8a235453d55))
+
 ## [1.15.0](https://github.com/instill-ai/instill.tech/compare/v1.14.0...v1.15.0) (2022-09-13)
 
 
