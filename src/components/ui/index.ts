@@ -2,7 +2,7 @@ import AnnouncementBar from "./AnnouncementBar";
 import { Nav } from "./Nav";
 import BackToPreviousPageLink from "./BackToPreviousPageLink";
 import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
-import CopyRightText from "./CopyRightText";
+import { CopyRightText } from "./CopyRightText";
 import ContentContainer from "./ContentContainer";
 import type { ContentContainerProps } from "./ContentContainer";
 
