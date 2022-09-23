@@ -4,7 +4,7 @@ const DocsPageLink = () => {
   return (
     <Link href="/docs/start-here/getting-started">
       <a className="flex instill-text-body text-instillGrey30 hover:text-instillGrey05">
-        <p className="my-auto">Docs</p>
+        <p className="my-auto">Documentation</p>
       </a>
     </Link>
   );
