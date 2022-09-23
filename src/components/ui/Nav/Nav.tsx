@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import cn from "clsx";
+import Image from "next/future/image";
+import { CrossIcon, Logo } from "@instill-ai/design-system";
+import Link from "next/link";
 
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
-import { CrossIcon, Logo } from "@instill-ai/design-system";
 import GetEarlyAccessButton from "../GetEarlyAccessButton";
-import cn from "clsx";
-import Image from "next/future/image";
-
-import NewsletterArchiveLink from "./NewsletterArchiveLink";
-import BlogLink from "./BlogLink";
 import GithubTextLink from "./GithubTextLink";
-import AboutPageLink from "./AboutPageLink";
-import CareerPageLink from "./CareerPageLink";
-import Link from "next/link";
 import DocsPageLink from "./DocsPageLink";
 
 const Nav = () => {
@@ -30,11 +25,7 @@ const Nav = () => {
 
   const navbarLinkGroup = (
     <>
-      <AboutPageLink />
       <DocsPageLink />
-      <BlogLink />
-      <CareerPageLink hiring={true} />
-      <NewsletterArchiveLink />
       <GithubTextLink />
       <GetEarlyAccessButton />
     </>
@@ -61,10 +52,10 @@ const Nav = () => {
         </AnnouncementBar>
       )}
       <div className="mx-auto flex w-full max-w-[1440px]">
-        <div className="hidden w-full content-center p-2 lg:flex lg:flex-row">
+        <div className="hidden w-full content-center py-5 px-[30px] lg:flex lg:flex-row">
           <Link href="/">
             <a className="flex my-auto mr-auto">
-              <Logo type="ColourLogomarkWhiteType" width={159} />
+              <Logo type="ColourLogomarkWhiteType" width={158} />
             </a>
           </Link>
 
