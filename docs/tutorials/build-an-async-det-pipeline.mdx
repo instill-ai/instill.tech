@@ -243,18 +243,24 @@ in which `http://localhost:8081` is the `pipeline-backend` default URL.
 A HTTP response will return
 
 ```json
-{ "model_instance_outputs": [] }
+{
+  "data_mapping_indices": [
+    "01GDR4ZW7W4T2H2G8MK79Y49PG",
+    "01GDR4ZW7W4T2H2G8MK8AR1T2B"
+  ],
+  "model_instance_outputs": []
+}
 ```
 
 and in the PostgreSQL `tutorial` database, you should see
 
 ```sql
-tutorial> SELECT * FROM _airbyte_raw_detection
+tutorial> SELECT * FROM _airbyte_raw_vdp
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 | _airbyte_ab_id                       | _airbyte_data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | _airbyte_emitted_at        |
 |--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------|
-| dad59bd5-50fa-467e-bb97-b36d1f5190ad | {"index": "0-1660557631222020335", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"bounding_boxes": [{"score": 0.9597808, "category": "dog", "bounding_box": {"top": 102, "left": 324, "width": 208, "height": 405}}, {"score": 0.92909366, "category": "dog", "bounding_box": {"top": 198, "left": 130, "width": 198, "height":... | 2022-08-15 10:00:31.226+00 |
-| 0f320e19-5c40-41f5-b7a8-f9f70e5b7b69 | {"index": "1-1660557631222022501", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"bounding_boxes": [{"score": 0.9475409, "category": "bear", "bounding_box": {"top": 457, "left": 1372, "width": 1300, "height": 2175}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                   | 2022-08-15 10:00:31.226+00 |
+| 36474aa5-9257-463f-920b-95b3399cd5f4 | {"index": "01GDR4ZW7W4T2H2G8MK79Y49PG", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9597808, "category": "dog", "bounding_box": {"top": 102, "left": 324, "width": 208, "height": 405}}, {"score": 0.92909366, "category": "dog", "bounding_box": {"top": 198, "left": 130, "width": 198, "height": 2... | 2022-09-24 16:23:55.288+00 |
+| 95b9f812-6ff5-4708-9d3f-8e6c97bf4dbe | {"index": "01GDR4ZW7W4T2H2G8MK8AR1T2B", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9475409, "category": "bear", "bounding_box": {"top": 457, "left": 1372, "width": 1300, "height": 2175}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                     | 2022-09-24 16:23:55.288+00 |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 SELECT 2
 ```
