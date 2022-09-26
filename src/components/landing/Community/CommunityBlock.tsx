@@ -10,7 +10,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { Nullable } from "@/types/instill";
 
 export type CommunityBlockProps = {
-  name: "GitHub" | "Disocrd" | "Twitter";
+  name: "GitHub" | "Discord" | "Twitter";
   title: string;
   link: string;
   linkText: string;
@@ -43,7 +43,7 @@ const CommunityBlock = ({
     "absolute top-1/2 -right-0 -translate-y-1/2 fill-instillGrey20";
 
   switch (name) {
-    case "Disocrd":
+    case "Discord":
       croppedIcon = (
         <svg
           viewBox="-8 0 30 30"

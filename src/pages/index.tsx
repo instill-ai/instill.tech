@@ -1,7 +1,7 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { Hero, InstillCloud } from "@/components/landing";
+import { Community, Hero, InstillCloud } from "@/components/landing";
 import {
   PageBase,
   ContentContainer,
@@ -57,6 +57,7 @@ const HomePage: FC<Props> & {
         </ContentContainer>
 
         <Features />
+        <Community />
         <InstillCloud />
 
         <ContentContainer
