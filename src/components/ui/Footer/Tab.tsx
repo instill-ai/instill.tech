@@ -24,7 +24,7 @@ export type TabLinks = {
 export const Tab = ({ header, links, type }: TabProps) => {
   return (
     <div className="flex flex-col space-y-6">
-      <div className="uppercase font-semibold text-lg text-instillGrey05">
+      <div className="text-lg font-semibold uppercase text-instillGrey05">
         {header}
       </div>
       {type === "social" ? (
@@ -36,7 +36,7 @@ export const Tab = ({ header, links, type }: TabProps) => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex m-auto"
+                className="m-auto flex"
               >
                 {link.icon}
               </a>
@@ -49,11 +49,12 @@ export const Tab = ({ header, links, type }: TabProps) => {
             const linkStyle = "font-normal text-lg text-instillGrey05";
 
             return link.href.startsWith("/") ? (
-              <Link href={link.href}>
+              <Link key={link.href} href={link.href}>
                 <a className={cn("flex", linkStyle)}>{link.text}</a>
               </Link>
             ) : (
               <a
+                key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
