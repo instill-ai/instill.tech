@@ -49,15 +49,15 @@ const Footer = () => {
     products: [
       {
         text: "Deploy OSS VDP",
-        href: "",
+        href: "https://github.com/instill-ai/vdp",
       },
       {
         text: "Try VDP Demo",
-        href: "",
+        href: "https://demo.instill.tech",
       },
       {
         text: "Join Instill Cloud waitlist",
-        href: "",
+        href: "/get-access",
       },
     ],
     resources: [
@@ -93,7 +93,7 @@ const Footer = () => {
       },
       {
         text: "Contact Us",
-        href: "",
+        href: "/contact",
       },
     ],
   };
@@ -101,14 +101,14 @@ const Footer = () => {
   return (
     <div className="flex w-full bg-instillGrey90">
       <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 md:mx-auto max:w-10/12 max:px-0">
-        <div className="flex flex-row space-x-10 mb-[180px]">
+        <div className="mb-[180px] flex flex-row space-x-10">
           <div className="flex flex-col space-y-5">
-            <div className="w-[300px] font-mono font-medium text-2xl text-instillGrey05">
+            <div className="w-[300px] font-mono text-2xl font-medium text-instillGrey05">
               WHERE VISUAL DATA PREPARATION MADE FOR ALL
             </div>
             <Logo type="whiteLogomark" width={30} />
           </div>
-          <div className="flex-1 grid grid-cols-4 gap-x-5">
+          <div className="grid flex-1 grid-cols-4 gap-x-5">
             <Tab type="social" header="socials" links={tabs.socialLinks} />
             <Tab type="others" header="product" links={tabs.products} />
             <Tab type="others" header="resources" links={tabs.resources} />
