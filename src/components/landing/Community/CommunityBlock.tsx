@@ -96,16 +96,16 @@ const CommunityBlock = ({
   return (
     <div
       ref={containerRef}
-      className="w-full flex flex-col relative bg-instillGrey01 p-5"
+      className="relative flex w-full flex-col bg-instillGrey01 p-5"
     >
-      <div className="flex flex-col gap-y-2.5 mb-20">
+      <div className="z-10 mb-20 flex flex-col gap-y-2.5">
         <div className="flex flex-row gap-x-2">
           {icon}
-          <div className="my-auto uppercase font-normal text-base text-instillGrey90">
+          <div className="my-auto text-base font-normal uppercase text-instillGrey90">
             {name}
           </div>
         </div>
-        <h3 className="font-medium font-mono text-2xl text-instillGrey90">
+        <h3 className="font-mono text-2xl font-medium text-instillGrey90">
           {title}
         </h3>
       </div>
@@ -114,6 +114,7 @@ const CommunityBlock = ({
         color="primary"
         itemGapX="gap-x-6"
         padding="px-2.5 py-[5px]"
+        position="mt-auto z-10"
         onClickHandler={() => router.push(link)}
         endIcon={
           <ArrowRightIcon
