@@ -33,6 +33,7 @@ module.exports = {
         instillBlue80: "#0268B5",
         instillBlue70: "#003381",
         instillBlue50: "#40A8F5",
+        instillBlue30: "#40A8F5",
         instillBlue10: "#F4FBFF",
         instillYellow: "#FFDF3A",
         instillYellow10: "#FFFCEB",
@@ -48,7 +49,8 @@ module.exports = {
         instillGreen05: "#ECFFF0",
         instillGreen50: "#02D12F",
         instillNeonGreen: "#28F67E",
-        instillWarmOrange: "#FF8A00",
+        instillWarmOrange50: "#FF8A00",
+        instillWarmOrange05: "#FFF3E4",
       },
       fontFamily: {
         mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
