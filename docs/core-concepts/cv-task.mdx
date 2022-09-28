@@ -37,7 +37,7 @@ Currently, the model output is converted to standard format based on the CV Task
 
 ### Standardise via VDP Protocol
 
-The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of CV task output in order to standardise an ETL pipeline for visual data.
+The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of CV Task output in order to standardise an ETL pipeline for visual data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
 
 ```yaml
@@ -76,7 +76,7 @@ properties:
     "$ref": "#/definitions/Unspecified"
 ```
 
-To be more specific, the above protocol defines the CV task output for one input image in a batch produced by the corresponding model instance.
+To be more specific, the above protocol defines the CV Task output for one input image in a batch produced by the corresponding model instance.
 
 The protocol is still under development. Stay tuned on how the protocol will evolve.
 
