@@ -7,12 +7,14 @@ This repository maintains the Instill AI product website and VDP documentation.
 2. `pnpm install`
 
 ## Build up next app
-```
+```bash
 pnpm run dev
 ```
 
+Then, go to `http://localhost:3000`. You can add `-p <port number>` to the command to deploy on a different port.
+
 ## Build up storybook
-```
+```bash
 pnpm run storybook
 ```
 
