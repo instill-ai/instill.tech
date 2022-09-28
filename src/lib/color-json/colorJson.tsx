@@ -4,15 +4,17 @@ export type SetColorJson = {
   bracketColor: string;
   indent: string;
   children?: any[];
+  position?: string;
 };
 
 export const setColorJson = ({
   bracketColor,
   indent,
   children,
+  position,
 }: SetColorJson) => {
   return (
-    <div className="flex flex-col">
+    <div className={cn("flex flex-col", position)}>
       <div className={bracketColor}>{`{`}</div>
       <div className={cn("flex flex-col", indent)}>{children}</div>
       <div className={bracketColor}>{`}`}</div>
@@ -26,6 +28,7 @@ export type SetStringValueProps = {
   quoteColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  indent?: string;
 };
 
 export const setStringValue = ({
@@ -34,9 +37,10 @@ export const setStringValue = ({
   quoteColor,
   trailingComma,
   trailingCommaColor,
+  indent,
 }: SetStringValueProps) => {
   return (
-    <pre>
+    <pre className={indent}>
       <span className={quoteColor}>{`"`}</span>
       <span className={valueColor}>{`${value}`}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -52,6 +56,7 @@ export type SetNumberValueProps = {
   valueColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  indent?: string;
 };
 
 export const setNumberValue = ({
@@ -59,10 +64,11 @@ export const setNumberValue = ({
   valueColor,
   trailingComma,
   trailingCommaColor,
+  indent,
 }: SetNumberValueProps) => {
   return (
     <>
-      <span className={valueColor}>{`${value}`}</span>
+      <span className={cn(valueColor, indent)}>{`${value}`}</span>
       {trailingComma ? (
         <span className={trailingCommaColor}>{`, `}</span>
       ) : null}

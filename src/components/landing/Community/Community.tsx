@@ -8,14 +8,14 @@ export type CommunityProps = {
 const Community = ({ marginBottom }: CommunityProps) => {
   return (
     <div className={cn("flex flex-col", marginBottom)}>
-      <div className="flex flex-col mb-10">
-        <div className="uppercase font-sans font-normal text-lg text-instillBlue50">
+      <div className="mb-10 flex flex-col">
+        <div className="font-sans text-lg font-normal uppercase text-instillBlue50">
           Follow us
         </div>
-        <h2 className="font-mono font-medium text-4xl text-instillGrey90 mb-5">
+        <h2 className="mb-5 font-mono text-4xl font-medium text-instillGrey90">
           Built by the community
         </h2>
-        <p className="font-normal text-lg text-instillGrey90">
+        <p className="text-lg font-normal text-instillGrey90">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo amet
           purus mattis ac, tempus tellus.
         </p>

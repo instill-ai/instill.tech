@@ -7,6 +7,8 @@ import Community from "./Community";
 import { CommunityProps } from "./Community";
 import Faq from "./Faq";
 import { FaqProps } from "./Faq";
+import CodeShowcase from "./CodeShowcase";
+import type { CodeShowcaseProps } from "./CodeShowcase";
 
-export { VdpFlow, Features, Hero, InstillCloud, Community, Faq };
-export type { HeroProps, CommunityProps, FaqProps };
+export { VdpFlow, Features, Hero, InstillCloud, Community, Faq, CodeShowcase };
+export type { HeroProps, CommunityProps, FaqProps, CodeShowcaseProps };
