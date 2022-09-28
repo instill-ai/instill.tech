@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.16.0](https://github.com/instill-ai/instill.tech/compare/v1.16.0...v1.16.0) (2022-09-28)
+
+
+### Features
+
+* extend release-action to include docs prefix ([#271](https://github.com/instill-ai/instill.tech/issues/271)) ([22b1b32](https://github.com/instill-ai/instill.tech/commit/22b1b3281b3da282fa653190e94327aea7799cf6))
+
+
+### Bug Fixes
+
+* fix sep nesletter style issue ([#282](https://github.com/instill-ai/instill.tech/issues/282)) ([7bfba08](https://github.com/instill-ai/instill.tech/commit/7bfba082bb0b1c27cdd363c15d0c3ea55886b0f8))
+
+
+### Miscellaneous
+
+* remove non necessary commit and rollback release version to 1.15.0 ([#268](https://github.com/instill-ai/instill.tech/issues/268)) ([0852fff](https://github.com/instill-ai/instill.tech/commit/0852fff0fdb22a9d947b861a0d3ab9636f0ab305))
+
+
+### Documentation
+
+* **core-concepts:** update cv task protocol ([#280](https://github.com/instill-ai/instill.tech/issues/280)) ([8f6a324](https://github.com/instill-ai/instill.tech/commit/8f6a3242ae35a0ad5cedbb7bf4e464182ea2fb03))
+* **tutorials,core-concepts:** update tutorial images ([#277](https://github.com/instill-ai/instill.tech/issues/277)) ([8b57c9c](https://github.com/instill-ai/instill.tech/commit/8b57c9c382f3331db46f409e43602f8adebc67ed))
+* **tutorials:** update async pipeline outputs ([#276](https://github.com/instill-ai/instill.tech/issues/276)) ([de037b8](https://github.com/instill-ai/instill.tech/commit/de037b8c37344939d1294827494e26f4cb557413))
+
 ## [1.16.0](https://github.com/instill-ai/instill.tech/compare/v1.15.0...v1.16.0) (2022-09-21)
 
 
