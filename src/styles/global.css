@@ -43,12 +43,37 @@
       format("woff");
 }
 
+
+/*
+  Mailchimp content
+*/
+
+
+/*
+  This is for special mailchimp quote block
+  Used in Sept 2022 newsletter
+*/
+
+td[style*="color: #40A8F5"] > em {
+  color: #40A8F5;
+}
+
+table[style*="border: 2px dashed"] {
+  border-color: white !important;
+  background-color: #1A1A1A !important;
+}
+
 .mcnTextContent {
   color: #f6f6f6 !important;
 }
 
 h3.null {
   color: #f6f6f6 !important;
+}
+
+td.mcnTextContent > ul {
+  list-style-type: circle;
+  padding-left: 16px;
 }
 
 .mcnTextContent > p,
