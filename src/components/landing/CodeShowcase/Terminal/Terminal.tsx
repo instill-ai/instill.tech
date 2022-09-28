@@ -7,9 +7,10 @@ import {
 } from "@/lib/color-json";
 import { Nullable } from "@/types/instill";
 import { ReactNode } from "react";
+import { Resource } from "../CodeShowcase";
 
 export type TerminalProps = {
-  currectResource: "pipeline" | "source" | "model" | "destination";
+  currectResource: Resource;
 };
 
 const Terminal = ({ currectResource }: TerminalProps) => {
@@ -18,7 +19,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
   let tokenColor = "text-white";
   let color = {
     source: "text-instillNeonGreen",
-    destination: "text-instillWarmOrange",
+    destination: "text-instillWarmOrange50",
     model: "text-instillYellow50",
     pipeline: "text-instillBlue50",
   };
@@ -28,6 +29,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
       code = setColorJson({
         bracketColor: tokenColor,
         indent,
+        position: "my-auto",
         children: [
           setStringKv({
             key: "id",
@@ -99,6 +101,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
       code = setColorJson({
         bracketColor: tokenColor,
         indent,
+        position: "my-auto",
         children: [
           setStringKv({
             key: "id",
@@ -150,6 +153,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
       code = setColorJson({
         bracketColor: tokenColor,
         indent,
+        position: "my-auto",
         children: [
           setStringKv({
             key: "id",
@@ -200,6 +204,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
       code = setColorJson({
         bracketColor: tokenColor,
         indent,
+        position: "my-auto",
         children: [
           setStringKv({
             key: "id",
@@ -250,7 +255,7 @@ const Terminal = ({ currectResource }: TerminalProps) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex h-full flex-col">
       <div className="flex flex-row rounded-tl-[3px] rounded-tr-[3px] bg-instillGrey05 p-2">
         <div className="flex flex-row gap-x-[5px]">
           <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillRed50" />
@@ -261,7 +266,9 @@ const Terminal = ({ currectResource }: TerminalProps) => {
           <div className="mx-auto text-sm font-normal text-instillGrey70">{`${currectResource}.json`}</div>
         </div>
       </div>
-      <div className="bg-instillGrey90 p-10">{code}</div>
+      <div className="flex flex-1 rounded-br-[3px] rounded-bl-[3px] bg-instillGrey90 p-10">
+        {code}
+      </div>
     </div>
   );
 };

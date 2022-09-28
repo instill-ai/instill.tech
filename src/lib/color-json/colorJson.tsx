@@ -4,15 +4,17 @@ export type SetColorJson = {
   bracketColor: string;
   indent: string;
   children?: any[];
+  position?: string;
 };
 
 export const setColorJson = ({
   bracketColor,
   indent,
   children,
+  position,
 }: SetColorJson) => {
   return (
-    <div className="flex flex-col">
+    <div className={cn("flex flex-col", position)}>
       <div className={bracketColor}>{`{`}</div>
       <div className={cn("flex flex-col", indent)}>{children}</div>
       <div className={bracketColor}>{`}`}</div>

@@ -56,7 +56,7 @@ const ResourceBlock = ({
       borderColor =
         resource === currentResource
           ? "border-instillWarmOrange50"
-          : "border-instillWarmOrange10";
+          : "border-instillWarmOrange05";
       title = "Destination";
       description =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui a sit mauris posuere elementum non sit. ";

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Terminal from "./Terminal";
 
 export default {
-  title: "Components/Terminal",
+  title: "Components/Landing/CodeShowcase/Terminal",
   component: Terminal,
 } as ComponentMeta<typeof Terminal>;
 

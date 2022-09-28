@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ResourceBlock from "./ResourceBlock";
 
 export default {
-  title: "Components/ResourceBlock",
+  title: "Components/Landing/CodeShowcase/ResourceBlock",
   component: ResourceBlock,
 } as ComponentMeta<typeof ResourceBlock>;
 
