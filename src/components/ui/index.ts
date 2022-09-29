@@ -1,4 +1,4 @@
-import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
+import AnnouncementBar from "./AnnouncementBar";
 import { Nav } from "./Nav";
 import BackToPreviousPageLink from "./BackToPreviousPageLink";
 import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
