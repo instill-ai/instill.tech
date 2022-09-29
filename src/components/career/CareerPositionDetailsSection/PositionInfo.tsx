@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { PositionDetails } from "@/types/instill";
 import * as classNames from "classnames";
 import ShareThisPosition from "./ShareThisPosition";
@@ -14,7 +13,7 @@ export type PositionInfoProps = {
   width?: string;
 };
 
-const PositionInfo: FC<PositionInfoProps> = ({ position, padding, width }) => {
+const PositionInfo = ({ position, padding, width }: PositionInfoProps) => {
   return (
     <div className={classNames.default("flex flex-col", padding, width)}>
       <h2 className="instill-text-h2 mb-10 text-instillGrey05">

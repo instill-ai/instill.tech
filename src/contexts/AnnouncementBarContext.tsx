@@ -1,7 +1,7 @@
 import {
   createContext,
   Dispatch,
-  FC,
+  ReactNode,
   SetStateAction,
   useContext,
   useState,
@@ -21,9 +21,13 @@ export const announcementBarCtx = createContext(defaultAnnouncementBarCtxValue);
 
 export const useAnnouncementBarCtx = () => useContext(announcementBarCtx);
 
-type Props = {};
+type AnnouncementBarCtxProviderProps = {
+  children?: ReactNode;
+};
 
-export const AnnouncementBarCtxProvider: FC<Props> = ({ children }) => {
+export const AnnouncementBarCtxProvider = ({
+  children,
+}: AnnouncementBarCtxProviderProps) => {
   const [enableAnnouncementBar, setEnableAnnouncementBar] = useState(true);
 
   return (
