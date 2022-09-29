@@ -13,6 +13,7 @@ import Footer from "./Footer";
 import GetEarlyAccessButton from "./GetEarlyAccessButton";
 import GithubCtaButton from "./GithubCtaButton";
 import PageBase from "./PageBase";
+import type { PageBaseProps } from "./PageBase";
 import PageHead from "./PageHead";
 import type { PageHeadProps } from "./PageHead";
 import ReactMarkdownWrapper from "./ReactMarkdownWrapper";
@@ -69,6 +70,7 @@ export type {
   BackToPreviousPageLinkProps,
   ContentContainerProps,
   PageHeadProps,
+  PageBaseProps,
   SubscribeNewsletterFormProps,
   SecureYourSpotProps,
   StayInTheLoopProps,
