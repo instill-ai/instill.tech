@@ -1,9 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { FC } from "react";
 
-interface Props {}
-
-export const Document: FC<Props> = () => {
+export const Document = () => {
   return (
     <Html>
       <Head>

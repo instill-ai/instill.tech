@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from "react";
+import { FC, ReactElement } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";

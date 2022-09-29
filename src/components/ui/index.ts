@@ -1,4 +1,4 @@
-import AnnouncementBar from "./AnnouncementBar/AnnouncementBar";
+import AnnouncementBar from "./AnnouncementBar";
 import { Nav } from "./Nav";
 import BackToPreviousPageLink from "./BackToPreviousPageLink";
 import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
@@ -69,8 +69,8 @@ export type {
   ShareToTwitterProps,
   BackToPreviousPageLinkProps,
   ContentContainerProps,
-  PageBaseProps,
   PageHeadProps,
+  PageBaseProps,
   SubscribeNewsletterFormProps,
   SecureYourSpotProps,
   StayInTheLoopProps,
