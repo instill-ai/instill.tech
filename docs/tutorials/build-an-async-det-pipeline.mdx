@@ -10,7 +10,7 @@ In this tutorial you'll build your first **`ASYNC`** object detection pipeline a
 ## Build via no-code Console
 
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
-where you can build your first VDP pipeline by clicking **Create your first pipeline** and forever change the way you approach visual data processing workflow development.
+where you can build your first VDP pipeline by clicking **Set up your first pipeline** and forever change the way you approach visual data processing workflow development.
 
 ![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
 
@@ -24,10 +24,11 @@ A HTTP source accepts HTTP requests with image payloads to be processed by a pip
 
 To set it up,
 
-1. click the **Pipeline mode** ▾ drop-down and choose `ASYNC`, and
-2. click the **Source type** ▾ drop-down and choose `HTTP`.
+1. click the **Pipeline mode** ▾ drop-down and choose `Async`,
+2. click the **Source type** ▾ drop-down and choose `HTTP`, and
+3. click **Next**.
 
-![Add a HTTP source to create an async pipeline in the VDP Console](/docs-assets/tutorials/add-an-async-source-http.png)
+![Add a HTTP source to set up an async pipeline in the VDP Console](/docs-assets/tutorials/add-an-async-source-http.png)
 
 :::info{type=info}
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
@@ -41,9 +42,9 @@ To set it up,
 
 1. give your model a unique ID,
 2. [optional] add description,
-3. click the **Model type** ▾ drop-down and choose `GitHub`,
+3. click the **Model source** ▾ drop-down and choose `GitHub`,
 4. fill in the GitHub repository URL `instill-ai/model-yolov7-dvc`, and
-5. click **Setup new model**.
+5. click **Set up**.
 
 ![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-yolov7-model.png)
 
@@ -84,7 +85,7 @@ Almost done! Just
 
 1. give your pipeline a unique ID,
 2. [optional] add description, and
-3. click **Set up pipeline**.
+3. click **Set up**.
 
 ![Set up an pipeline in the VDP Console](/docs-assets/tutorials/set-up-an-async-det-pipeline.png)
 
@@ -124,7 +125,7 @@ curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   "connector": {
     "description": "The PostgreSQL database in my basement",
     "configuration": {
-      "host": "100.117.197.108",
+      "host": "100.113.68.102",
       "port": 5432,
       "database": "tutorial",
       "schema": "public",
@@ -189,7 +190,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ---
 
-### Step 5: Create your first pipeline
+### Step 5: Set up your first pipeline
 
 `http://localhost:8081` is the `pipeline-backend` default URL.
 
@@ -243,18 +244,24 @@ in which `http://localhost:8081` is the `pipeline-backend` default URL.
 A HTTP response will return
 
 ```json
-{ "model_instance_outputs": [] }
+{
+  "data_mapping_indices": [
+    "01GDR4ZW7W4T2H2G8MK79Y49PG",
+    "01GDR4ZW7W4T2H2G8MK8AR1T2B"
+  ],
+  "model_instance_outputs": []
+}
 ```
 
 and in the PostgreSQL `tutorial` database, you should see
 
 ```sql
-tutorial> SELECT * FROM _airbyte_raw_detection
+tutorial> SELECT * FROM _airbyte_raw_vdp
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 | _airbyte_ab_id                       | _airbyte_data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | _airbyte_emitted_at        |
 |--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------|
-| dad59bd5-50fa-467e-bb97-b36d1f5190ad | {"index": "0-1660557631222020335", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"bounding_boxes": [{"score": 0.9597808, "category": "dog", "bounding_box": {"top": 102, "left": 324, "width": 208, "height": 405}}, {"score": 0.92909366, "category": "dog", "bounding_box": {"top": 198, "left": 130, "width": 198, "height":... | 2022-08-15 10:00:31.226+00 |
-| 0f320e19-5c40-41f5-b7a8-f9f70e5b7b69 | {"index": "1-1660557631222022501", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"bounding_boxes": [{"score": 0.9475409, "category": "bear", "bounding_box": {"top": 457, "left": 1372, "width": 1300, "height": 2175}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                   | 2022-08-15 10:00:31.226+00 |
+| 36474aa5-9257-463f-920b-95b3399cd5f4 | {"index": "01GDR4ZW7W4T2H2G8MK79Y49PG", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9597808, "category": "dog", "bounding_box": {"top": 102, "left": 324, "width": 208, "height": 405}}, {"score": 0.92909366, "category": "dog", "bounding_box": {"top": 198, "left": 130, "width": 198, "height": 2... | 2022-09-24 16:23:55.288+00 |
+| 95b9f812-6ff5-4708-9d3f-8e6c97bf4dbe | {"index": "01GDR4ZW7W4T2H2G8MK8AR1T2B", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9475409, "category": "bear", "bounding_box": {"top": 457, "left": 1372, "width": 1300, "height": 2175}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                     | 2022-09-24 16:23:55.288+00 |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 SELECT 2
 ```

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 
 export type MemberKernelProps = {
   /** <Tailwind config> */
@@ -14,12 +14,12 @@ export type MemberKernelProps = {
   id: string;
 };
 
-const MemberKernel: FC<MemberKernelProps> = ({
+const MemberKernel = ({
   styleName,
   kernelColorRectLocation,
   kernelColor,
   id,
-}) => {
+}: MemberKernelProps) => {
   useEffect(() => {
     kernelColorRectLocation.forEach((e) => {
       const target = document.querySelector(

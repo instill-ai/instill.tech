@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { useCallback } from "react";
 import cn from "clsx";
 import { SolidButton } from "@instill-ai/design-system";
 import { ReactMarkdownWrapper } from "@/components/ui";
@@ -9,11 +9,11 @@ export type PositionDescriptionProps = {
   width?: string;
 };
 
-export const PositionDescription: FC<PositionDescriptionProps> = ({
+export const PositionDescription = ({
   description,
   padding,
   width,
-}) => {
+}: PositionDescriptionProps) => {
   const handleClick = useCallback(() => {
     window.open(
       "https://forms.clickup.com/f/2e88k-1856/90J2JKV7NTVLYD6M1J",

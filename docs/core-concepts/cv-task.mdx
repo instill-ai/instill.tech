@@ -8,7 +8,7 @@ description: "Standardise structured outputs for computer vision tasks the open-
 Computer Vision (CV) Tasks, a.k.a Vision Tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does. The goal is to make a computer/device provide description for the data as complete and accurate as possible.
 Some classic CV Tasks include image classification, object detection, image segmentation and keypoint detection. These primitive tasks are the foundation for building many real-world industrial vision applications.
 
-Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to Learn about how to prepare your models for CV Tasks supported by VDP.
+Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to learn about how to prepare your models for CV Tasks supported by VDP.
 
 ## Standardise CV Tasks
 
@@ -37,67 +37,48 @@ Currently, the model output is converted to standard format based on the CV Task
 
 ### Standardise via VDP Protocol
 
-The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of model outputs in order to standardise an ETL pipeline for visual data.
+The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of CV Task output in order to standardise an ETL pipeline for visual data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
 
-The protocol is still under development. Stay tuned on how the protocol will evolve.
-
-The batched outputs of a model for input images is wrapped in a `BatchOutputs`. It includes an array of `TaskOutput`, each of which corresponds to the model output of one input image in the batch.
-The `TaskOutput` struct has a required `task` which describes the CV Task type of the wrapped model output. Based on the `task`, the corresponding field will be populated, other fields will be null.
-
 ```yaml
-ModelInstanceOutput:
-  type: object
-  additionalProperties: true
-  required:
-    - task
-    - batch_outputs
-  properties:
-    task:
-      description: "Task type"
-      type: string
-      enum:
-        - TASK_CLASSIFICATION
-        - TASK_DETECTION
-        - TASK_KEYPOINT
-        - TASK_OCR
-        - TASK_UNSPECIFIED
-    batch_outputs:
-      description: "a list of inference output for a specific CV Task"
-      type: array
-      items:
-        "$ref": "#/definitions/TaskOutput"
-TaskOutput:
-  type: object
-  additionalProperties: true
-  anyOf:
-    - required:
-        - classification
-    - required:
-        - detection
-    - required:
-        - keypoint
-    - required:
-        - ocr
-    - required:
-        - unspecified
-  properties:
-    classification:
-      description: "Classify into pre-defined categories"
-      "$ref": "#/definitions/Classification"
-    detection:
-      description: "Detect and localise multiple objects"
-      "$ref": "#/definitions/Detection"
-    keypoint:
-      description: "Detect and localise keypoints of multiple objects"
-      "$ref": "#/definitions/Keypoint"
-    ocr:
-      description: "Detect, localise and recognise texts"
-      "$ref": "#/definitions/Ocr"
-    unspecified:
-      description: "Unspecified task with output in the free form"
-      "$ref": "#/definitions/Unspecified"
+"$schema": http://json-schema.org/draft-07/schema#
+"$id": https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml
+title: VDP Protocol
+type: object
+description: VDP Protocol structs
+additionalProperties: true
+anyOf:
+  - required:
+      - classification
+  - required:
+      - detection
+  - required:
+      - keypoint
+  - required:
+      - ocr
+  - required:
+      - unspecified
+properties:
+  classification:
+    description: "Classify into pre-defined categories"
+    "$ref": "#/definitions/Classification"
+  detection:
+    description: "Detect and localise multiple objects"
+    "$ref": "#/definitions/Detection"
+  keypoint:
+    description: "Detect and localise keypoints of multiple objects"
+    "$ref": "#/definitions/Keypoint"
+  ocr:
+    description: "Detect, localise and recognise texts"
+    "$ref": "#/definitions/Ocr"
+  unspecified:
+    description: "Unspecified task with output in the free form"
+    "$ref": "#/definitions/Unspecified"
 ```
+
+To be more specific, the above protocol defines the CV Task output for one input image in a batch produced by the corresponding model instance.
+
+The protocol is still under development. Stay tuned on how the protocol will evolve.
 
 ## Image classification
 
@@ -108,15 +89,10 @@ Generally, an image classification model takes an image as the input, and output
 
 ```json
 {
-  "task": "TASK_CLASSIFICATION",
-  "batch_outputs": [
-    {
-      "classification": {
-        "category": "golden retriever",
-        "score": 0.98
-      }
-    }
-  ]
+  "classification": {
+    "category": "golden retriever",
+    "score": 0.98
+  }
 }
 ```
 
@@ -129,26 +105,21 @@ Generally, an object detection model receives an image as the input, and outputs
 
 ```json
 {
-  "task": "TASK_DETECTION",
-  "batch_outputs": [
-    {
-      "detection": {
-        "bounding_boxes": [
-          {
-            "bounding_box": {
-              "left": 324,
-              "top": 102,
-              "width": 208,
-              "height": 405,
-            },
-            "category": "dog",
-            "score": 0.97
-          },
-          ...
-        ]
-      }
-    }
-  ]
+  "detection": {
+    "objects": [
+      {
+        "category": "dog",
+        "score": 0.97,
+        "bounding_box": {
+          "top": 102,
+          "left": 324,
+          "width": 208,
+          "height": 405
+        }
+      },
+      ...
+    ]
+  }
 }
 ```
 
@@ -161,31 +132,26 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 
 ```json
 {
-  "task": "TASK_KEYPOINT",
-  "batch_outputs": [
-    {
-      "keypoint": {
-        "keypoint_groups": [
+  "keypoint": {
+    "objects": [
+      {
+        "keypoints": [
           {
-            "keypoint_group": [
-              {
-                "v": 0.53722847,
-                "x": 542.82764,
-                "y": 86.63817
-              },
-              {
-                "v": 0.634061,
-                "x": 553.0073,
-                "y": 79.440636
-              },
-              ...
-            ],
-            "score": 0.94
-          }
-        ]
+            "v": 0.53722847,
+            "x": 542.82764,
+            "y": 86.63817
+          },
+          {
+            "v": 0.634061,
+            "x": 553.0073,
+            "y": 79.440636
+          },
+          ...
+        ],
+        "score": 0.94
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
@@ -201,28 +167,30 @@ Alternatively, there are deep learning models that can accomplish the task in on
 
 ```json
 {
-  "task": "TASK_OCR",
-  "batch_outputs": [
-    {
-      "ocr": {
-        "bounding_boxes": [
-          {
-            "top": 298,
-            "left": 279,
-            "width": 134,
-            "height": 59
-          },
-          {
-            "top": 228,
-            "left": 216,
-            "width": 255,
-            "height": 65
-          }
-        ],
-        "texts": ["ENDS", "PAVEMENT"]
+  "ocr": {
+    "objects": [
+      {
+        "text": "ENDS",
+        "score": 0.99,
+        "bounding_box": {
+          "top": 298,
+          "left": 279,
+          "width": 134,
+          "height": 59
+        }
+      },
+      {
+        "text": "PAVEMENT",
+        "score": 0.99,
+        "bounding_box": {
+          "top": 228,
+          "left": 216,
+          "width": 255,
+          "height": 65
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
@@ -239,26 +207,21 @@ VDP will
 
 ```json
 {
-  "task": "TASK_UNSPECIFIED",
-  "batch_outputs": [
-    {
-      "unspecified": {
-        "raw_outputs": [
-          {
-            "data": [0.85, 0.1, 0.05],
-            "data_type": "FP32",
-            "name": "output_scores",
-            "shape": [3]
-          },
-          {
-            "data": ["dog", "cat", "rabbit"],
-            "data_type": "BYTES",
-            "name": "output_labels",
-            "shape": [3]
-          }
-        ]
+  "unspecified": {
+    "raw_outputs": [
+      {
+        "data": [0.85, 0.1, 0.05],
+        "data_type": "FP32",
+        "name": "output_scores",
+        "shape": [3]
+      },
+      {
+        "data": ["dog", "cat", "rabbit"],
+        "data_type": "BYTES",
+        "name": "output_labels",
+        "shape": [3]
       }
-    }
-  ]
+    ]
+  }
 }
 ```

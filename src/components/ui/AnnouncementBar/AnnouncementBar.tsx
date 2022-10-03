@@ -1,8 +1,12 @@
-import { FC, useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { CrossIcon } from "@instill-ai/design-system";
 
-const AnnouncementBar: FC = ({ children }) => {
+export type AnnouncementBarProps = {
+  children?: ReactNode;
+};
+
+const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
   const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
 
   const handleClick = useCallback(() => {
