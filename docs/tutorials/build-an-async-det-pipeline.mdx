@@ -138,7 +138,7 @@ curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
 
 curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
   "id": "detection",
-  "description": "A magic pipeline to detect images for general objects",
+  "description": "A magic pipeline to detect objects in images",
   "recipe": {
     "source": "source-connectors/source-http",
     "model_instances": [
