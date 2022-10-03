@@ -82,7 +82,7 @@ const HomePage: FC<LandingPageProps> & {
         pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
         pageType="main"
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-white">
         <ContentContainer contentMaxWidth="max-w-[1127px]">
           <Hero scrollHandler={scrollHandler} />
           <div className="flex h-screen w-full" ref={vdpFlowRef}>

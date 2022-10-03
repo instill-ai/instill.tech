@@ -1,12 +1,12 @@
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
-  GetEarlyAccessButton,
-  JoinDiscordButton,
 } from "@/components/ui";
 import HeroAnimation from "./HeroAnimation";
 import Headline from "./Headline";
 import SubHeadline from "./SubHeadline";
+import GitHubCta from "./GitHubCta";
+import DiscordCta from "./DiscordCta";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
@@ -20,8 +20,8 @@ const Hero = ({ scrollHandler }: HeroProps) => {
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-10" />
           <div className="flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0">
-            <GetEarlyAccessButton />
-            <JoinDiscordButton />
+            <GitHubCta />
+            <DiscordCta />
           </div>
         </div>
         <div className="mb-5 lg:my-auto lg:w-[43%]">
