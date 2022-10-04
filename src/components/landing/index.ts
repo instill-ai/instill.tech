@@ -1,4 +1,3 @@
-import VdpFlow from "./VdpFlow";
 import Features from "./Features";
 import Hero from "./Hero";
 import { HeroProps } from "./Hero";
@@ -10,5 +9,5 @@ import { FaqProps } from "./Faq";
 import CodeShowcase from "./CodeShowcase";
 import type { CodeShowcaseProps } from "./CodeShowcase";
 
-export { VdpFlow, Features, Hero, InstillCloud, Community, Faq, CodeShowcase };
+export { Features, Hero, InstillCloud, Community, Faq, CodeShowcase };
 export type { HeroProps, CommunityProps, FaqProps, CodeShowcaseProps };

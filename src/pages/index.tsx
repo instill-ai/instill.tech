@@ -16,10 +16,6 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-const VdpFlow = dynamic(() =>
-  import("@/components/landing").then((mod) => mod.VdpFlow)
-);
-
 const Features = dynamic(() =>
   import("@/components/landing").then((mod) => mod.Features)
 );
@@ -85,9 +81,6 @@ const HomePage: FC<LandingPageProps> & {
       <div className="flex flex-col bg-white">
         <ContentContainer contentMaxWidth="max-w-[1127px]">
           <Hero scrollHandler={scrollHandler} />
-          <div className="flex h-screen w-full" ref={vdpFlowRef}>
-            <VdpFlow />
-          </div>
         </ContentContainer>
 
         <Features />
