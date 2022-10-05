@@ -1,12 +1,31 @@
 import "tailwindcss/tailwind.css";
 import "../src/styles/global.css";
-import * as NextImage from "next/image";
+import NextImage from "next/future/image";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
-const OriginalNextImage = NextImage.default;
+// Workaround for next/future/image
 Object.defineProperty(NextImage, "default", {
   configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
+  value: (props) => {
+    const { fill, ...restProps } = props;
+
+    return (
+      <img
+        {...restProps}
+        style={
+          fill
+            ? {
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                inset: 0,
+                color: "transparent",
+              }
+            : undefined
+        }
+      />
+    );
+  },
 });
 
 export const parameters = {
