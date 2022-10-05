@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Image from "next/image";
+import Image from "next/future/image";
 import VdpArrowBlock from "./VdpArrowBlock";
 
 export default {
@@ -19,12 +19,13 @@ Playground.args = {
   title: "Extract",
   description: "Extract unstructured visual data from pre-built data sources",
   icon: (
-    <img
+    <Image
       src="/images/vdp-flow-source.svg"
       width={70}
       height={63}
       alt="VDP flow source icon"
     />
   ),
+  width: 384,
   color: "#FFFCE3",
 };
