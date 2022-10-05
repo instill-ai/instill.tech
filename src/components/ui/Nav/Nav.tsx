@@ -34,14 +34,14 @@ const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-instillGrey95 lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-white lg:sticky lg:top-0 lg:z-50"
     >
       {enableAnnouncementBar && (
         <AnnouncementBar>
           <p className="text-instillGrey95">
             Check out our new article &nbsp;
             <a
-              className="mr-1.5 underline italic"
+              className="mr-1.5 italic underline"
               target="_blank"
               rel="noreferrer noopener"
               href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
@@ -54,8 +54,8 @@ const Nav = () => {
       <div className="mx-auto flex w-full max-w-[1440px]">
         <div className="hidden w-full content-center py-5 px-[30px] lg:flex lg:flex-row">
           <Link href="/">
-            <a className="flex my-auto mr-auto">
-              <Logo type="ColourLogomarkWhiteType" width={158} />
+            <a className="my-auto mr-auto flex">
+              <Logo type="ColourLogomarkBlackType" width={158} />
             </a>
           </Link>
 
@@ -76,7 +76,7 @@ const Nav = () => {
               </a>
             </Link>
             <button
-              className="flex ml-auto w-[30px] h-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
+              className="ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
               onClick={() => setOpen(!open)}
             >
               {open ? (
