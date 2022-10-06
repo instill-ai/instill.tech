@@ -9,7 +9,7 @@ export type CommunityProps = {
 const Community = ({ marginBottom }: CommunityProps) => {
   return (
     <div className={cn("flex flex-col bg-instillGrey90 p-10", marginBottom)}>
-      <div className="mb-[200px] flex  flex-col">
+      <div className="mb-[200px] flex flex-col">
         <SectionLabel
           text="follow us"
           position="mr-auto"
