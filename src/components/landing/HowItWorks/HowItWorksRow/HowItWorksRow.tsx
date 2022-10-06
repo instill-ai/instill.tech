@@ -2,7 +2,7 @@ import cn from "clsx";
 import IconsCube, { IconsCubeProps } from "../IconsCube";
 import NumberCube from "../NumberCube";
 
-export type HowItWorksLayoutProps = {
+export type HowItWorksRowProps = {
   title: string;
   description: string;
   learnMoreLink: string;
@@ -11,14 +11,14 @@ export type HowItWorksLayoutProps = {
   type: "right" | "left";
 };
 
-const HowItWorksLayout = ({
+const HowItWorksRow = ({
   type,
   title,
   description,
   learnMoreLink,
   cubes,
   number,
-}: HowItWorksLayoutProps) => {
+}: HowItWorksRowProps) => {
   return (
     <div
       className={cn(
@@ -46,4 +46,4 @@ const HowItWorksLayout = ({
   );
 };
 
-export default HowItWorksLayout;
+export default HowItWorksRow;

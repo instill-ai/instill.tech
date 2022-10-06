@@ -5,19 +5,20 @@ import {
   PlusIcon,
 } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import HowItWorksLayout from "./HowItWorksLayout";
+import HowItWorksRow from "./HowItWorksRow";
 
 export default {
-  title: "Components/HowItWorksLayout",
-  component: HowItWorksLayout,
-} as ComponentMeta<typeof HowItWorksLayout>;
+  title: "Components/HowItWorksRow",
+  component: HowItWorksRow,
+} as ComponentMeta<typeof HowItWorksRow>;
 
-const Template: ComponentStory<typeof HowItWorksLayout> = (args) => (
-  <HowItWorksLayout {...args} />
+const Template: ComponentStory<typeof HowItWorksRow> = (args) => (
+  <HowItWorksRow {...args} />
 );
 
-export const Playground: ComponentStory<typeof HowItWorksLayout> =
-  Template.bind({});
+export const Playground: ComponentStory<typeof HowItWorksRow> = Template.bind(
+  {}
+);
 
 Playground.args = {
   type: "left",
