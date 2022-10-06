@@ -9,6 +9,7 @@ import {
   Hero,
   HowItWorks,
   InstillCloud,
+  NoCodeInterface,
   Vdp,
 } from "@/components/landing";
 import {
@@ -92,6 +93,7 @@ const HomePage: FC<LandingPageProps> & {
         <div className="mx-auto flex max-w-[1127px] flex-col">
           <Vdp marginBottom="mb-20" />
           <HowItWorks marginBottom="mb-20" />
+          <NoCodeInterface marginBottom="mb-20" />
         </div>
 
         <div className="flex flex-col bg-white">
