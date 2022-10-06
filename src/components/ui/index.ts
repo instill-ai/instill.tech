@@ -5,10 +5,8 @@ import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
 import { CopyRightText } from "./CopyRightText";
 import ContentContainer from "./ContentContainer";
 import type { ContentContainerProps } from "./ContentContainer";
-
 import ExploreMoreScrollButton from "./ExploreMoreScrollButton";
 import type { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
-
 import Footer from "./Footer";
 import GetEarlyAccessButton from "./GetEarlyAccessButton";
 import GithubCtaButton from "./GithubCtaButton";
@@ -21,11 +19,11 @@ import type { ReactMarkdownWrapperProps } from "./ReactMarkdownWrapper";
 import SecureYourSpot from "./SecureYourSpot";
 import type { SecureYourSpotProps } from "./SecureYourSpot";
 import JoinDiscordButton from "./JoinDiscordButton";
+import LearnMoreButton from "./LearnMoreButton";
+import type { LearnMoreButtonProps } from "./LearnMoreButton";
 import { MailchimpSignupForm } from "./MailchimpSignupForm";
-
 import ViewJobsScrollButton from "./ViewJobsScrollButton";
 import { ViewJobsScrollButtonProps } from "./ViewJobsScrollButton";
-
 import ShareToFb from "./ShareToFb";
 import type { ShareToFbProps } from "./ShareToFb";
 import ShareToLinkedIn from "./ShareToLinkedIn";
@@ -46,6 +44,7 @@ export {
   GetEarlyAccessButton,
   GithubCtaButton,
   JoinDiscordButton,
+  LearnMoreButton,
   MailchimpSignupForm,
   ViewJobsScrollButton,
   ShareToFb,
@@ -75,4 +74,5 @@ export type {
   SecureYourSpotProps,
   StayInTheLoopProps,
   ReactMarkdownWrapperProps,
+  LearnMoreButtonProps,
 };
