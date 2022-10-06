@@ -28,11 +28,11 @@ const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
   return (
     <div ref={containerRef} className={cn("flex flex-col", marginBottom)}>
       <SectionLabel text="No-code interface" position="mr-auto mb-2.5" />
-      <div className="mb-10 flex flex-row">
-        <h2 className="w-1/2 font-mono text-4xl font-medium text-instillGrey90">
+      <div className="mb-10 flex flex-col xl:flex-row">
+        <h2 className="mb-5 w-full font-mono text-4xl font-medium text-instillGrey90 xl:mb-0 xl:w-1/2">
           Unify all your visual data pipelines in one place
         </h2>
-        <div className="flex flex-col">
+        <div className="flex w-full flex-col xl:w-1/2">
           <p className="mb-[45px] text-lg font-normal text-instillGrey90">
             The no-code interface helps provides a unified, clean and intuitive
             user experience of VDP.
