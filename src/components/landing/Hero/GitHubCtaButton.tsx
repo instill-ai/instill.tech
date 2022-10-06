@@ -1,10 +1,10 @@
 import { GitHubIcon, SolidButton } from "@instill-ai/design-system";
 
-export type GitHubCtaProps = {
+export type GitHubCtaButtonProps = {
   position?: string;
 };
 
-const GitHubCta = ({ position }: GitHubCtaProps) => {
+const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
   return (
     <SolidButton
       type="button"
@@ -22,11 +22,11 @@ const GitHubCta = ({ position }: GitHubCtaProps) => {
       position={position}
     >
       <div className="flex flex-col">
-        <div className="mr-auto uppercase">Open-source VDP</div>
-        <div className="mr-auto text-xs font-normal">Deploy now</div>
+        <div className="mr-auto text-left uppercase">Open-source VDP</div>
+        <div className="mr-auto text-left text-xs font-normal">Deploy now</div>
       </div>
     </SolidButton>
   );
 };
 
-export default GitHubCta;
+export default GitHubCtaButton;

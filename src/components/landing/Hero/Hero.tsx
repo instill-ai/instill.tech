@@ -5,8 +5,8 @@ import {
 import HeroAnimation from "./HeroAnimation";
 import Headline from "./Headline";
 import SubHeadline from "./SubHeadline";
-import GitHubCta from "./GitHubCta";
-import DiscordCta from "./DiscordCta";
+import GitHubCtaButton from "./GitHubCtaButton";
+import DiscordCtaButton from "./DiscordCtaButton";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
@@ -14,17 +14,17 @@ export type HeroProps = {
 
 const Hero = ({ scrollHandler }: HeroProps) => {
   return (
-    <div className="flex flex-col justify-center gap-y-10 px-4 md:min-h-[90vh] lg:px-0">
-      <div className="mb-20 flex flex-col-reverse lg:flex-row lg:gap-y-0">
-        <div className="flex flex-col md:my-auto lg:w-[57%]">
+    <div className="flex flex-col justify-center gap-y-10 px-4 md:min-h-[90vh] xl:px-0">
+      <div className="mb-20 flex flex-col-reverse xl:flex-row xl:gap-y-0">
+        <div className="flex flex-col md:my-auto xl:w-[57%]">
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-10" />
           <div className="flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0">
-            <GitHubCta />
-            <DiscordCta />
+            <GitHubCtaButton />
+            <DiscordCtaButton />
           </div>
         </div>
-        <div className="mb-5 lg:my-auto lg:w-[43%]">
+        <div className="mb-5 xl:my-auto xl:w-[43%]">
           <HeroAnimation />
         </div>
       </div>

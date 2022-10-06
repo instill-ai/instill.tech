@@ -1,10 +1,10 @@
 import { DiscordIcon, TextButton } from "@instill-ai/design-system";
 
-export type DiscordCtaProps = {
+export type DiscordCtaButtonProps = {
   position?: string;
 };
 
-const DiscordCta = ({ position }: DiscordCtaProps) => {
+const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
   return (
     <TextButton
       type="button"
@@ -22,11 +22,11 @@ const DiscordCta = ({ position }: DiscordCtaProps) => {
       position={position}
     >
       <div className="flex flex-col">
-        <div className="mr-auto uppercase">200+ User community</div>
-        <div className="mr-auto text-xs font-normal">Join now</div>
+        <div className="mr-auto text-left uppercase">200+ User community</div>
+        <div className="mr-auto text-left text-xs font-normal">Join now</div>
       </div>
     </TextButton>
   );
 };
 
-export default DiscordCta;
+export default DiscordCtaButton;
