@@ -33,7 +33,7 @@ const VdpArrowBlock = ({
             background-color: ${color};
             z-index: ${zIndex};
           }
-          .arrow-block-${title}:after {
+          .arrow-block-${title}:before {
             content: "";
             position: absolute;
             top: 0px;
@@ -43,19 +43,7 @@ const VdpArrowBlock = ({
             border: 97px solid transparent;
             border-left: 65px solid ${color};
             z-index: ${zIndex};
-          }
-
-          @media screen and (min-width: 1440px) {
-            .docs-left-sidebar {
-              width: calc((100vw - 1140px + 300px) / 2);
-            }
-
-            .docs-content {
-              margin-left: calc((100vw - 1140px + 300px) / 2);
-              margin-right: calc((100vw - 1140px) / 2);
-              max-width: var(--docs-content-max-width);
-            }
-          }
+        
         `}
       </style>
       <div
