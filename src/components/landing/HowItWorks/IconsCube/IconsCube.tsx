@@ -9,11 +9,12 @@ export type IconsCubeProps = {
     width: string;
     height: string;
   }[];
+  position?: string;
 };
 
-const IconsCube = ({ cubes }: IconsCubeProps) => {
+const IconsCube = ({ cubes, position }: IconsCubeProps) => {
   return (
-    <div className="flex">
+    <div className={cn("flex", position)}>
       <div className="grid grid-cols-2 grid-rows-2">
         {cubes.map((cube) => (
           <div

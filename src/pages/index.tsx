@@ -3,7 +3,14 @@ import dynamic from "next/dynamic";
 import fs from "fs";
 import { join } from "path";
 
-import { Community, Faq, Hero, InstillCloud, Vdp } from "@/components/landing";
+import {
+  Community,
+  Faq,
+  Hero,
+  HowItWorks,
+  InstillCloud,
+  Vdp,
+} from "@/components/landing";
 import {
   PageBase,
   ContentContainer,
@@ -84,9 +91,9 @@ const HomePage: FC<LandingPageProps> & {
         </ContentContainer>
         <div className="mx-auto flex max-w-[1127px] flex-col">
           <Vdp marginBottom="mb-20" />
+          <HowItWorks marginBottom="mb-20" />
         </div>
 
-        <Features />
         <div className="flex flex-col bg-white">
           <div className="mx-auto flex max-w-[1127px] flex-col">
             <Community marginBottom="mb-[60px]" />

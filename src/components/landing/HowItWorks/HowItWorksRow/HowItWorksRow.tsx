@@ -1,10 +1,11 @@
 import cn from "clsx";
+import { ReactElement } from "react";
 import IconsCube, { IconsCubeProps } from "../IconsCube";
 import NumberCube from "../NumberCube";
 
 export type HowItWorksRowProps = {
   title: string;
-  description: string;
+  description: ReactElement | string;
   learnMoreLink: string;
   cubes: IconsCubeProps["cubes"];
   number: number;
@@ -21,12 +22,9 @@ const HowItWorksRow = ({
 }: HowItWorksRowProps) => {
   return (
     <div
-      className={cn(
-        "flex gap-x-20",
-        type === "right" ? "flex-row-reverse" : "flex-row"
-      )}
+      className={cn("flex", type === "right" ? "flex-row-reverse" : "flex-row")}
     >
-      <div className="flex w-2/3 flex-row gap-x-10">
+      <div className="flex w-7/12 flex-row gap-x-10">
         <div>
           <NumberCube number={number} />
         </div>
@@ -34,13 +32,16 @@ const HowItWorksRow = ({
           <h3 className="mb-7 text-2xl font-medium text-instillGrey90">
             {title}
           </h3>
-          <p className="mb-[88px] text-lg font-normal text-instillGrey95">
+          <div className="mb-[88px] text-lg font-normal text-instillGrey95">
             {description}
-          </p>
+          </div>
         </div>
       </div>
-      <div className="flex w-1/3">
-        <IconsCube cubes={cubes} />
+      <div className="flex w-5/12">
+        <IconsCube
+          cubes={cubes}
+          position={type === "left" ? "ml-auto" : "mr-auto"}
+        />
       </div>
     </div>
   );
