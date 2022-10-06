@@ -101,14 +101,14 @@ const Footer = () => {
   return (
     <div className="flex w-full bg-instillGrey90">
       <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 md:mx-auto max:w-10/12 max:px-0">
-        <div className="mb-[180px] flex flex-row space-x-10">
-          <div className="flex flex-col space-y-5">
+        <div className="mb-[120px] flex flex-col gap-x-10 xl:mb-[180px] xl:flex-row">
+          <div className="mb-[120px] flex flex-col space-y-5 xl:mb-0">
             <div className="w-[300px] font-mono text-2xl font-medium text-instillGrey05">
               WHERE VISUAL DATA PREPARATION MADE FOR ALL
             </div>
             <Logo type="whiteLogomark" width={30} />
           </div>
-          <div className="grid flex-1 grid-cols-4 gap-x-5">
+          <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-4 xl:gap-y-0">
             <Tab type="social" header="socials" links={tabs.socialLinks} />
             <Tab type="others" header="product" links={tabs.products} />
             <Tab type="others" header="resources" links={tabs.resources} />
