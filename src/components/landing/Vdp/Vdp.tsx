@@ -28,16 +28,21 @@ const Vdp = ({ marginBottom }: VdpProps) => {
 
   return (
     <div className={cn("flex flex-col py-10", marginBottom)} ref={containerRef}>
+      <div className="mb-10 flex">
+        <VdpLogo type="expand" width={340} position="mr-auto my-auto" />
+      </div>
       <SectionLabel
         text="Visual data preperation"
         position="mr-auto"
         marginBottom="mb-2.5"
       />
       <div className="mb-[30px] flex flex-row">
-        <h2 className="w-2/3 font-mono text-5xl text-instillGrey90">
+        <h2 className="w-7/12 font-mono text-4xl text-instillGrey90 xl:text-5xl">
           Fastest way to build end-to-end visual data ETL pipelines
         </h2>
-        <VdpLogo type="expand" width={340} position="ml-auto" />
+        <div className="hidden w-5/12 xl:flex">
+          <VdpLogo type="expand" width={340} position="ml-auto my-auto" />
+        </div>
       </div>
       <VdpFlow marginBottom="mb-5" />
       <Image
