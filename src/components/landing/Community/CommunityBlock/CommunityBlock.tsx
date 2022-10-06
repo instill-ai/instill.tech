@@ -29,7 +29,15 @@ const CommunityBlock = ({
     useState<Nullable<number>>(null);
 
   useEffect(() => {
-    setContainerHeight(containerRef.current.clientHeight);
+    const updateContainerHeight = () => {
+      setContainerHeight(containerRef.current.clientHeight);
+    };
+
+    updateContainerHeight();
+    window.addEventListener("resize", updateContainerHeight);
+    return () => {
+      window.removeEventListener("resize", updateContainerHeight);
+    };
   }, []);
 
   let croppedIcon: Nullable<ReactNode> = null;
@@ -50,10 +58,10 @@ const CommunityBlock = ({
       icon = <DiscordIcon {...iconProp} />;
       croppedIcon = (
         <svg
-          viewBox="-11 0 30 30"
+          viewBox="-12 0 30 30"
           style={{
-            width: `${containerHeight * 1.15}px`,
-            height: `${containerHeight * 1.15}px`,
+            width: `${containerHeight * 1.1}px`,
+            height: `${containerHeight * 1.1}px`,
           }}
           className={croppedIconStyle}
         >
@@ -67,10 +75,10 @@ const CommunityBlock = ({
       icon = <GitHubIcon {...iconProp} />;
       croppedIcon = (
         <svg
-          viewBox="-11 0 30 30"
+          viewBox="-12 0 30 30"
           style={{
-            width: `${containerHeight * 1.15}px`,
-            height: `${containerHeight * 1.15}px`,
+            width: `${containerHeight * 1.1}px`,
+            height: `${containerHeight * 1.1}px`,
           }}
           className={croppedIconStyle}
         >
@@ -87,10 +95,10 @@ const CommunityBlock = ({
       icon = <TwitterIcon {...iconProp} />;
       croppedIcon = (
         <svg
-          viewBox="-11 0 30 30"
+          viewBox="-12 0 30 30"
           style={{
-            width: `${containerHeight * 1.15}px`,
-            height: `${containerHeight * 1.15}px`,
+            width: `${containerHeight * 1.1}px`,
+            height: `${containerHeight * 1.1}px`,
           }}
           className={croppedIconStyle}
         >
@@ -102,9 +110,9 @@ const CommunityBlock = ({
   return (
     <div
       ref={containerRef}
-      className={cn("relative flex w-full flex-col p-5", blockColor)}
+      className={cn("relative flex h-[240px] w-full flex-col p-5", blockColor)}
     >
-      <div className="z-10 mb-[75px] flex w-1/2 flex-col gap-y-2.5">
+      <div className="z-10 mb-auto flex w-1/2 flex-col gap-y-2.5">
         <div className="flex flex-row gap-x-2">
           {icon}
           <div className="my-auto text-base font-normal uppercase text-white">
