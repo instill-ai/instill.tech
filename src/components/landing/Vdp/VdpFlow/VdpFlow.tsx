@@ -40,7 +40,10 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
 
   return (
     <div
-      className={cn("flex w-full flex-col xl:flex-row", marginBottom)}
+      className={cn(
+        "flex w-full flex-col overflow-hidden xl:flex-row",
+        marginBottom
+      )}
       ref={containerRef}
     >
       <VdpArrowBlock
