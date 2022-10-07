@@ -6,8 +6,6 @@ export type IconsCubeProps = {
     id: string;
     color: string;
     icon: ReactElement;
-    width: string;
-    height: string;
   }[];
   position?: string;
 };
@@ -15,11 +13,11 @@ export type IconsCubeProps = {
 const IconsCube = ({ cubes, position }: IconsCubeProps) => {
   return (
     <div className={cn("flex", position)}>
-      <div className="grid grid-cols-2 grid-rows-2">
+      <div className="grid grid-cols-4 grid-rows-1 xl:grid-cols-2 xl:grid-rows-2">
         {cubes.map((cube) => (
           <div
             key={`icons-cube-${cube.id}`}
-            className={cn("h-full w-full", cube.color, cube.width, cube.height)}
+            className={cn("h-full w-full", cube.color)}
           >
             {cube.icon}
           </div>
