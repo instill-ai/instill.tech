@@ -1,5 +1,8 @@
+import { Nullable } from "@/types/instill";
 import {
   AirbyteIcon,
+  AsyncArrowsIcon,
+  AsyncIcon,
   GrpcIcon,
   HttpIcon,
   ImageClassificationIcon,
@@ -10,10 +13,12 @@ import {
   PlusIcon,
   PythonIcon,
   PyTorchIcon,
+  SyncArrowsIcon,
   SyncIcon,
   TensorFlowIcon,
 } from "@instill-ai/design-system";
 import cn from "clsx";
+import { useEffect, useRef, useState } from "react";
 import SectionLabel from "../SectionLabel";
 import HowItWorksRow from "./HowItWorksRow";
 
@@ -22,7 +27,7 @@ export type HowItWorksProps = {
 };
 
 const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
-  let iconProps = {};
+  let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
   return (
     <div className={cn("flex flex-col", marginBottom)}>
       <div className="mb-20 flex flex-col gap-y-2.5">
@@ -43,56 +48,29 @@ const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
               id: "httpIcon",
               icon: (
                 <HttpIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
+                  {...iconProps}
                   color="fill-instillBlue50"
                   position="m-auto"
                 />
               ),
               color: "bg-instillBlue10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "grpcIcon",
               icon: (
-                <GrpcIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  color="fill-instillWarmOrange50"
-                  position="m-auto"
-                />
+                <GrpcIcon {...iconProps} color="fill-instillWarmOrange50" />
               ),
               color: "bg-instillWarmOrange05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "airbyteIcon",
-              icon: (
-                <AirbyteIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                />
-              ),
+              icon: <AirbyteIcon {...iconProps} />,
               color: "bg-[#ECEBFF]",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "plusIcon",
-              icon: (
-                <PlusIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  color="fill-instillGrey50"
-                  position="m-auto"
-                />
-              ),
+              icon: <PlusIcon {...iconProps} color="fill-instillGrey50" />,
               color: "bg-instillGrey05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
           ]}
         />
@@ -105,55 +83,23 @@ const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
           cubes={[
             {
               id: "tensorflowIcon",
-              icon: (
-                <TensorFlowIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                />
-              ),
+              icon: <TensorFlowIcon {...iconProps} />,
               color: "bg-instillWarmOrange05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "pythonIcon",
-              icon: (
-                <PythonIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                />
-              ),
+              icon: <PythonIcon {...iconProps} />,
               color: "bg-instillBlue10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "onnxIcon",
-              icon: (
-                <OnnxIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                />
-              ),
+              icon: <OnnxIcon {...iconProps} />,
               color: "bg-instillGrey05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "pytorchIcon",
-              icon: (
-                <PyTorchIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                />
-              ),
+              icon: <PyTorchIcon {...iconProps} />,
               color: "bg-instillRed10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
           ]}
         />
@@ -168,57 +114,41 @@ const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
               id: "imageClassificationIcon",
               icon: (
                 <ImageClassificationIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
+                  {...iconProps}
                   color="fill-instillBlue50"
                 />
               ),
               color: "bg-instillBlue10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "keypointDetectionIcon",
               icon: (
                 <KeypointDetectionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
+                  {...iconProps}
                   color="fill-instillLemonYellow50"
                 />
               ),
               color: "bg-instillLemonYellow05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "opticalCharacterRecognitionIcon",
               icon: (
                 <OpticalCharacterRecognitionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
+                  {...iconProps}
                   color="fill-instillWarmOrange50"
                 />
               ),
               color: "bg-instillWarmOrange05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
               id: "objectDetectionIcon",
               icon: (
                 <ObjectDetectionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
+                  {...iconProps}
                   color="fill-instillNeonGreen"
                 />
               ),
               color: "bg-instillNeonGreen10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
           ]}
         />
@@ -244,59 +174,29 @@ const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
           cubes={[
             {
               id: "syncIcon",
-              icon: (
-                <SyncIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                  color="fill-instillNeonBlue50"
-                />
-              ),
+              icon: <SyncIcon {...iconProps} color="fill-instillNeonBlue50" />,
               color: "bg-instillNeonBlue05",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
             {
-              id: "keypointDetectionIcon1",
+              id: "syncArrowsIcon",
               icon: (
-                <KeypointDetectionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                  color="fill-instillLemonYellow50"
-                />
+                <SyncArrowsIcon {...iconProps} color="fill-instillGrey50" />
               ),
-              color: "bg-instillLemonYellow05",
-              width: "w-[180px]",
-              height: "h-[180px]",
+              color: "bg-instillGrey05",
             },
             {
-              id: "opticalCharacterRecognitionIcon1",
+              id: "asyncArrowsIcon",
               icon: (
-                <OpticalCharacterRecognitionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                  color="fill-instillWarmOrange50"
-                />
+                <AsyncArrowsIcon {...iconProps} color="fill-instillGrey50" />
+              ),
+              color: "bg-instillGrey05",
+            },
+            {
+              id: "asyncIcon",
+              icon: (
+                <AsyncIcon {...iconProps} color="fill-instillWarmOrange50" />
               ),
               color: "bg-instillWarmOrange05",
-              width: "w-[180px]",
-              height: "h-[180px]",
-            },
-            {
-              id: "objectDetectionIcon1",
-              icon: (
-                <ObjectDetectionIcon
-                  width="w-[180px]"
-                  height="h-[180px]"
-                  position="m-auto"
-                  color="fill-instillNeonGreen"
-                />
-              ),
-              color: "bg-instillNeonGreen10",
-              width: "w-[180px]",
-              height: "h-[180px]",
             },
           ]}
         />
