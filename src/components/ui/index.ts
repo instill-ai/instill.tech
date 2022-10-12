@@ -2,6 +2,8 @@ import AnnouncementBar from "./AnnouncementBar";
 import { Nav } from "./Nav";
 import BackToPreviousPageLink from "./BackToPreviousPageLink";
 import type { BackToPreviousPageLinkProps } from "./BackToPreviousPageLink";
+import BlueprintContainer from "./BlueprintContainer";
+import type { BlueprintContainerProps } from "./BlueprintContainer";
 import { CopyRightText } from "./CopyRightText";
 import ContentContainer from "./ContentContainer";
 import type { ContentContainerProps } from "./ContentContainer";
@@ -37,6 +39,7 @@ import type { SubscribeNewsletterFormProps } from "./SubscribeNewsletterForm";
 
 export {
   AnnouncementBar,
+  BlueprintContainer,
   CopyRightText,
   ExploreMoreScrollButton,
   Footer,
@@ -61,6 +64,7 @@ export {
 };
 
 export type {
+  BlueprintContainerProps,
   ExploreMoreScrollButtonProps,
   ViewJobsScrollButtonProps,
   ShareToFbProps,
