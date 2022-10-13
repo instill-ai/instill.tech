@@ -14,6 +14,8 @@ import HowItWorks from "./HowItWorks";
 import type { HowItWorksProps } from "./HowItWorks";
 import NoCodeInterface from "./NoCodeInterface";
 import type { NoCodeInterfaceProps } from "./NoCodeInterface";
+import CaseStudy from "./CaseStudy";
+import type { CaseStudyProps } from "./CaseStudy";
 
 export {
   Features,
@@ -25,6 +27,7 @@ export {
   Vdp,
   HowItWorks,
   NoCodeInterface,
+  CaseStudy,
 };
 export type {
   HeroProps,
@@ -34,4 +37,5 @@ export type {
   VdpProps,
   HowItWorksProps,
   NoCodeInterfaceProps,
+  CaseStudyProps,
 };
