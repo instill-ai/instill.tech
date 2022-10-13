@@ -4,6 +4,7 @@ import fs from "fs";
 import { join } from "path";
 
 import {
+  CaseStudy,
   Community,
   Faq,
   Hero,
@@ -95,6 +96,8 @@ const HomePage: FC<LandingPageProps> & {
           <HowItWorks marginBottom="mb-20" />
           <NoCodeInterface marginBottom="mb-20" />
         </div>
+
+        <CaseStudy />
 
         <div className="flex flex-col bg-white">
           <div className="mx-auto flex max-w-[1127px] flex-col">
