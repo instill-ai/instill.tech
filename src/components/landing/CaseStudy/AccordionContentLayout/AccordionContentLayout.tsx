@@ -23,11 +23,11 @@ const AccordionContentLayout = ({
   showcase,
 }: AccordionContentLayoutProps) => {
   return (
-    <div className="flex w-full flex-row gap-x-10 bg-[#23C4E7] bg-opacity-30 p-10">
+    <div className="z-20 flex w-full flex-row gap-x-10 bg-[#285863] p-10">
       <div className="flex w-5/12 flex-col">
         <div className="mb-5 flex flex-row gap-x-5">
-          <div className="flex">{icon}</div>
-          <div className="text-lg font-semibold uppercase text-white">
+          <div className="my-auto flex">{icon}</div>
+          <div className="my-auto text-lg font-semibold uppercase text-white">
             {title}
           </div>
         </div>
@@ -39,7 +39,7 @@ const AccordionContentLayout = ({
           <line x1="0" x2="16" y1="0.5" y2="0.5" strokeWidth={0.6} />
         </svg>
         <div className="mr-auto mb-5 flex flex-row gap-x-2">
-          <div className="mx-auto text-lg font-normal text-white">{source}</div>
+          <div className="my-auto text-lg font-normal text-white">{source}</div>
           <ArrowRightIcon
             width="w-4"
             height="h-4"
@@ -58,7 +58,7 @@ const AccordionContentLayout = ({
             color="fill-white"
             position="m-auto"
           />
-          <div className="mx-auto text-lg font-normal text-white">
+          <div className="my-auto text-lg font-normal text-white">
             {destination}
           </div>
         </div>
@@ -66,7 +66,7 @@ const AccordionContentLayout = ({
           {description}
         </div>
       </div>
-      <div className="flex w-7/12">{showcase}</div>
+      <div className="relative flex w-7/12">{showcase}</div>
     </div>
   );
 };

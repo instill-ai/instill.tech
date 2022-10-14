@@ -1,5 +1,6 @@
 import { MutableRefObject, ReactNode, useEffect, useRef } from "react";
 import * as d3 from "d3";
+import cn from "clsx";
 import { getElementPosition } from "@instill-ai/design-system";
 
 export type BlueprintContainerProps = {
@@ -8,6 +9,8 @@ export type BlueprintContainerProps = {
   unitHeight: number;
   unitWidth: number;
   children: ReactNode;
+  padding?: string;
+  bgColor: string;
 };
 
 // This container will fill in the given space of its parent and draw a
@@ -20,6 +23,8 @@ const BlueprintContainer = ({
   unitHeight,
   unitWidth,
   children,
+  padding,
+  bgColor,
 }: BlueprintContainerProps) => {
   const svgContainerRef = useRef<HTMLDivElement>(null);
 
@@ -115,12 +120,12 @@ const BlueprintContainer = ({
   }, []);
 
   return (
-    <div className="relative h-full w-full">
+    <div className={cn("relative h-full w-full", padding, bgColor)}>
       <div
         ref={svgContainerRef}
-        className="absolute top-0 bottom-0 right-0 left-0"
+        className="absolute top-0 bottom-0 right-0 left-0 z-0"
       />
-      <div className="flex h-full w-full">{children}</div>
+      <div className="relative z-10 flex h-full w-full">{children}</div>
     </div>
   );
 };
