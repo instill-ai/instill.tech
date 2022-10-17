@@ -29,11 +29,12 @@ Playground.args = {
   destination: "Google Sheet",
   description:
     "Automatically capture and extract data from invoices to avoid manual data entry",
-  showcase: (
+  showcases: [
     <Image
+      key="case-study-invoice-0"
       className="h-auto w-full"
       src="/images/case-study-ocr.png"
-      alt="Instill case study ocr image"
-    />
-  ),
+      alt="Instill case study ocr"
+    />,
+  ],
 };

@@ -1,9 +1,5 @@
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ModelIcon,
-} from "@instill-ai/design-system";
-import { ReactElement } from "react";
+import { ArrowRightIcon, ModelIcon } from "@instill-ai/design-system";
+import { ReactElement, useMemo } from "react";
 
 export type AccordionContentLayoutProps = {
   icon: ReactElement;
@@ -11,7 +7,8 @@ export type AccordionContentLayoutProps = {
   source: string;
   destination: string;
   description: string;
-  showcase: ReactElement;
+  showcases: ReactElement[];
+  currentFrame: number;
 };
 
 const AccordionContentLayout = ({
@@ -20,8 +17,13 @@ const AccordionContentLayout = ({
   source,
   destination,
   description,
-  showcase,
+  showcases,
+  currentFrame,
 }: AccordionContentLayoutProps) => {
+  const showcase = useMemo(() => {
+    return showcases[currentFrame];
+  }, [showcases, currentFrame]);
+
   return (
     <div className="z-20 flex w-full flex-row gap-x-10 bg-[#285863] p-10">
       <div className="flex w-5/12 flex-col">
