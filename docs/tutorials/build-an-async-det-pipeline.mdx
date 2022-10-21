@@ -117,7 +117,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu:deploy
+curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
 
 curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   "id": "postgres-db",
@@ -208,7 +208,7 @@ You can make a request to trigger the pipeline to process **multiple** images wi
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -221,7 +221,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -232,7 +232,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger-multipart \
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"bear.jpg"'
 ```

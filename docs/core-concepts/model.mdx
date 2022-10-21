@@ -70,9 +70,9 @@ The state of a model instance can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERRO
 
 When a model is initially created, the states of all model instances of this model are by default `OFFLINE`.
 
-A model instance can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `:undeploy` only when its original state is `ONLINE`.
+A model instance can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
 
-A model instance can be switch to `ONLINE` state by invoking the `model-backend` endpoint `:deploy` only when its original state is `OFFLINE`.
+A model instance can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`.
 Model deployment operation can take time depending on factors like Internet connection and model size.
 Before a model instance is deployed online, the state of the model instance will be `UNSPECIFIED`.
 
@@ -106,7 +106,7 @@ The API accepts images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -119,7 +119,7 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test -d '{
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -132,7 +132,7 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}:test-multipart \
+curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```

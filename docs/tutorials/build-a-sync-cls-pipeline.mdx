@@ -119,7 +119,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu:deploy
+curl -X POST http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu/deploy
 
 curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   "id": "destination-http",
@@ -204,7 +204,7 @@ Now that the `classification` pipeline is automatically activated, you can make 
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -217,7 +217,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -228,7 +228,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart \
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"polar-bear.jpg"'
 ```
