@@ -14,14 +14,12 @@ import {
   useCallback,
   useLayoutEffect,
 } from "react";
-import ControlPanelItem from "./ControlPanelItem";
+import ControlPanelItem from "../ControlPanelItem";
 
-export type ControlPanelLayoutProps = {
-  controls: {
-    source: ReactElement[];
-    model: ReactElement[];
-    destination: ReactElement[];
-  };
+export type ControlPanelProps = {
+  source: ReactElement;
+  model: ReactElement;
+  destination: ReactElement;
 };
 
 type LineStat = {
@@ -35,7 +33,7 @@ type LineStat = {
 // won't get notified. We need to use useMutationObservable to be reactive
 // about this changes.
 
-const ControlPanelLayout = ({ controls }: ControlPanelLayoutProps) => {
+const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerPosition, setContainerPosition] =
     useState<Nullable<ElementPosition>>(null);
@@ -164,36 +162,15 @@ const ControlPanelLayout = ({ controls }: ControlPanelLayoutProps) => {
   return (
     <div
       ref={containerRef}
-      className="relative flex h-full flex-col justify-between"
+      className="relative mx-auto flex h-full flex-col justify-between"
     >
-      <ControlPanelItem
-        ref={sourceRef}
-        title="Source"
-        description="Select an exisiting online source"
-        icon={<DataSourceIcon {...iconStyle} />}
-        isActive={false}
-        controls={controls.source}
-      />
+      <div ref={sourceRef}>{source}</div>
       {sourceToModelLineStat ? getSvgLine(sourceToModelLineStat) : null}
-      <ControlPanelItem
-        ref={modelRef}
-        title="Model"
-        description="Select an exisiting online model"
-        icon={<ModelIcon {...iconStyle} />}
-        isActive={false}
-        controls={controls.source}
-      />
+      <div ref={modelRef}>{model}</div>
       {modelToDestLineStat ? getSvgLine(modelToDestLineStat) : null}
-      <ControlPanelItem
-        ref={destRef}
-        title="Destination"
-        description="Select an exisiting online destination"
-        icon={<DataDestinationIcon {...iconStyle} />}
-        isActive={false}
-        controls={controls.source}
-      />
+      <div ref={destRef}>{destination}</div>
     </div>
   );
 };
 
-export default ControlPanelLayout;
+export default ControlPanel;
