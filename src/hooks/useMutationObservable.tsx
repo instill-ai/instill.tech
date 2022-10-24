@@ -24,7 +24,7 @@ const useMutationObservable = (
         observerRef.current.disconnect();
       }
     };
-  }, [options]);
+  }, [options, ref]);
 };
 
 export { useMutationObservable };
