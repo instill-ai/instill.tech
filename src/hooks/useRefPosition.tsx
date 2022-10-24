@@ -1,13 +1,13 @@
 import { Nullable } from "@/types/instill";
 import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
 import useResizeObserver from "@react-hook/resize-observer";
-import { MutableRefObject, useLayoutEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 
 export const useRefPosition = (ref: MutableRefObject<HTMLElement>) => {
   const [position, setPosition] = useState<Nullable<ElementPosition>>(null);
 
-  useLayoutEffect(() => {
-    if (ref) {
+  useEffect(() => {
+    if (ref && ref.current) {
       setPosition(getElementPosition(ref.current));
     }
   }, [ref]);
