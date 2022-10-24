@@ -4,7 +4,7 @@ import fs from "fs";
 import { join } from "path";
 
 import {
-  CaseStudy,
+  CaseStudyProps,
   Community,
   Faq,
   Hero,
@@ -35,6 +35,10 @@ const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
 
 const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
   import("@/components/ui").then((mod) => mod.SecureYourSpot)
+);
+
+const CaseStudy = dynamic<CaseStudyProps>(() =>
+  import("@/components/landing").then((mod) => mod.CaseStudy)
 );
 
 export type LandingPageProps = {
