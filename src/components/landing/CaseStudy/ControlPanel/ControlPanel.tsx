@@ -1,4 +1,6 @@
 import { useMutationObservable } from "@/hooks/useMutationObservable";
+import { useRefPosition } from "@/hooks/useRefPosition";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import { Nullable } from "@/types/instill";
 import {
   DataDestinationIcon,
@@ -7,14 +9,8 @@ import {
   getElementPosition,
   ModelIcon,
 } from "@instill-ai/design-system";
-import {
-  ReactElement,
-  useRef,
-  useState,
-  useCallback,
-  useLayoutEffect,
-} from "react";
-import ControlPanelItem from "../ControlPanelItem";
+import useResizeObserver from "@react-hook/resize-observer";
+import { ReactElement, useRef, useState, useCallback, useEffect } from "react";
 
 export type ControlPanelProps = {
   source: ReactElement;
@@ -35,32 +31,16 @@ type LineStat = {
 
 const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerPosition, setContainerPosition] =
-    useState<Nullable<ElementPosition>>(null);
-  useMutationObservable(containerRef, () => {
-    setContainerPosition(getElementPosition(containerRef.current));
-  });
+  const containerPosition = useRefPosition(containerRef);
 
   const sourceRef = useRef<HTMLDivElement>(null);
-  const [sourcePosition, setSourcePosition] =
-    useState<Nullable<ElementPosition>>(null);
-  useMutationObservable(sourceRef, () => {
-    setSourcePosition(getElementPosition(sourceRef.current));
-  });
+  const sourcePosition = useRefPosition(sourceRef);
 
   const modelRef = useRef<HTMLDivElement>(null);
-  const [modelPosition, setModelPosition] =
-    useState<Nullable<ElementPosition>>(null);
-  useMutationObservable(modelRef, () => {
-    setModelPosition(getElementPosition(modelRef.current));
-  });
+  const modelPosition = useRefPosition(modelRef);
 
   const destRef = useRef<HTMLDivElement>(null);
-  const [destPosition, setDestPosition] =
-    useState<Nullable<ElementPosition>>(null);
-  useMutationObservable(destRef, () => {
-    setDestPosition(getElementPosition(destRef.current));
-  });
+  const destPosition = useRefPosition(destRef);
 
   const [sourceToModelLineStat, setSourceToModelLineStat] =
     useState<Nullable<LineStat>>(null);
@@ -69,7 +49,7 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
 
   const lineDotR = 8;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (
       !containerPosition ||
       !sourcePosition ||
