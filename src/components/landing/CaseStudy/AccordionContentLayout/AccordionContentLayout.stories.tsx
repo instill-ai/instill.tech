@@ -4,7 +4,7 @@ import Image from "next/future/image";
 import AccordionContentLayout from "./AccordionContentLayout";
 
 export default {
-  title: "Components/AccordionContentLayout",
+  title: "Landing/CaseStudy/AccordionContentLayout",
   component: AccordionContentLayout,
 } as ComponentMeta<typeof AccordionContentLayout>;
 

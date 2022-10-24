@@ -25,8 +25,8 @@ const AccordionContentLayout = ({
   }, [showcases, currentFrame]);
 
   return (
-    <div className="z-20 flex w-full flex-row gap-x-10 bg-[#285863] p-10">
-      <div className="flex w-5/12 flex-col">
+    <div className="z-20 flex w-full flex-col gap-y-5 bg-[#285863] p-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
+      <div className="flex w-full flex-col xl:w-5/12">
         <div className="mb-5 flex flex-row gap-x-5">
           <div className="my-auto flex">{icon}</div>
           <div className="my-auto text-lg font-semibold uppercase text-white">
@@ -68,7 +68,7 @@ const AccordionContentLayout = ({
           {description}
         </div>
       </div>
-      <div className="relative flex w-7/12">{showcase}</div>
+      <div className="relative flex w-full xl:w-7/12">{showcase}</div>
     </div>
   );
 };
