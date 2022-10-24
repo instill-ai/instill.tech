@@ -20,6 +20,8 @@ export const Playground: ComponentStory<typeof HowItWorksRow> = Template.bind(
   {}
 );
 
+let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
+
 Playground.args = {
   type: "left",
   title: "Pre-built ETL data connectors for extensive data access",
@@ -29,55 +31,26 @@ Playground.args = {
   number: 1,
   cubes: [
     {
-      id: "http",
+      id: "httpIcon",
       icon: (
-        <HttpIcon
-          width="w-[180px]"
-          height="h-[180px]"
-          color="fill-instillBlue50"
-          position="m-auto"
-        />
+        <HttpIcon {...iconProps} color="fill-instillBlue50" position="m-auto" />
       ),
       color: "bg-instillBlue10",
-      width: "w-[180px]",
-      height: "h-[180px]",
     },
     {
-      id: "grpc",
-      icon: (
-        <GrpcIcon
-          width="w-[180px]"
-          height="h-[180px]"
-          color="fill-instillWarmOrange50"
-          position="m-auto"
-        />
-      ),
+      id: "grpcIcon",
+      icon: <GrpcIcon {...iconProps} color="fill-instillWarmOrange50" />,
       color: "bg-instillWarmOrange05",
-      width: "w-[180px]",
-      height: "h-[180px]",
     },
     {
-      id: "airbyte",
-      icon: (
-        <AirbyteIcon width="w-[180px]" height="h-[180px]" position="m-auto" />
-      ),
+      id: "airbyteIcon",
+      icon: <AirbyteIcon {...iconProps} />,
       color: "bg-[#ECEBFF]",
-      width: "w-[180px]",
-      height: "h-[180px]",
     },
     {
-      id: "plus",
-      icon: (
-        <PlusIcon
-          width="w-[180px]"
-          height="h-[180px]"
-          color="fill-instillGrey50"
-          position="m-auto"
-        />
-      ),
+      id: "plusIcon",
+      icon: <PlusIcon {...iconProps} color="fill-instillGrey50" />,
       color: "bg-instillGrey05",
-      width: "w-[180px]",
-      height: "h-[180px]",
     },
   ],
 };

@@ -16,7 +16,6 @@ const Vdp = ({ marginBottom }: VdpProps) => {
   useEffect(() => {
     const updateContainerWidth = () => {
       setContainerWidth(containerRef.current.offsetWidth);
-      console.log(containerRef.current.offsetWidth);
     };
 
     updateContainerWidth();
