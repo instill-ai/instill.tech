@@ -6,14 +6,14 @@ import { matchMedia, renderWithContext, withPageBase } from "@/lib/mocks";
 
 matchMedia();
 
-test("should display announcement bar", async () => {
+test.skip("should display announcement bar", async () => {
   renderWithContext(withPageBase(<HomePage />), {});
   await screen.findByText(/Visual Data Preparation Made for All/i);
 
   expect(screen.queryByTestId("announcement-bar")).toBeInTheDocument();
 });
 
-test("should close announcement bar", async () => {
+test.skip("should close announcement bar", async () => {
   renderWithContext(withPageBase(<HomePage />), {});
   await screen.findByTestId("announcement-bar");
 
