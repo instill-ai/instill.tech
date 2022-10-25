@@ -1,39 +1,23 @@
 import cn from "clsx";
 import { GetEarlyAccessButton } from "@/components/ui";
 import Image from "next/future/image";
+import { SolidButton } from "@instill-ai/design-system";
+import { useRouter } from "next/router";
 
 export type SecureYourSpotProps = {
-  /** Layout
-   *  - main: alpha badge horizontal align with title and description, underneath is get early access button
-   *  - compact: title and description stick with get early access button and horizontal align with alpha badge
-   */
-  layout: "main" | "compact";
-
-  /** Color of component background */
-  bgColor: "white" | "black";
-
   marginBottom?: string;
 };
 
-const SecureYourSpot = ({
-  marginBottom,
-  layout,
-  bgColor,
-}: SecureYourSpotProps) => {
+const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
+  const router = useRouter();
   return (
     <div
       className={cn(
-        "flex flex-col rounded-[1px] px-10",
-        marginBottom,
-        layout === "main" ? "py-[100px]" : "py-10",
-        bgColor === "black" ? "bg-instillGrey95" : "bg-white"
+        "flex flex-col rounded-[1px] px-10 py-[100px]",
+        marginBottom
       )}
     >
-      <div
-        className={cn("grid grid-cols-1 gap-x-6 md:grid-cols-2", {
-          "mb-20": layout === "main",
-        })}
-      >
+      <div className={cn("mb-20 grid grid-cols-1 gap-x-6 md:grid-cols-2")}>
         <div className="mx-auto flex md:col-start-2 md:mx-0">
           <Image
             src="/images/alpha-badge.svg"
@@ -44,39 +28,27 @@ const SecureYourSpot = ({
             className="mx-auto"
           />
         </div>
-        <div
-          className={cn(
-            "flex flex-col pt-20 md:row-start-1 md:pt-0",
-            layout === "compact" ? "mb-auto" : ""
-          )}
-        >
+        <div className="flex flex-col pt-20 md:row-start-1 md:pt-0">
           <div className="flex flex-col">
-            <h3
-              className={cn(
-                "instill-text-h3 mb-2.5",
-                bgColor === "black"
-                  ? "text-instillGrey05"
-                  : "text-instillGrey95"
-              )}
-            >
+            <h3 className="mb-2.5 text-left font-sans text-2xl font-medium text-instillGrey90">
               Secure Your Spot
             </h3>
-            <p
-              className={cn(
-                "instill-text-body",
-                bgColor === "black"
-                  ? "text-instillGrey05"
-                  : "text-instillGrey95"
-              )}
-            >
+            <p className="text-left font-sans text-lg font-normal text-instillGrey70">
               We&#39;re now in private alpha. Join and see first-hand how
               Instill AI can help adopt Vision AI in your company.
             </p>
           </div>
         </div>
-        {layout === "compact" && <GetEarlyAccessButton position="mr-auto" />}
       </div>
-      {layout === "main" && <GetEarlyAccessButton position="mx-auto" />}
+      <SolidButton
+        type="button"
+        color="primaryLight"
+        padding="px-5 py-2.5"
+        position="mr-auto"
+        onClickHandler={() => router.push("/get-access")}
+      >
+        <p className="text-2xl font-normal">Get Early Access</p>
+      </SolidButton>
     </div>
   );
 };
