@@ -1,7 +1,8 @@
 import { Nullable } from "@/types/instill";
 import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
-import { ReactElement, useRef, useState, useEffect } from "react";
+import { ReactElement, useRef, useState, useEffect, useCallback } from "react";
 import * as d3 from "d3";
+import { useMutationObservable } from "@/hooks/useMutationObservable";
 
 export type ControlPanelProps = {
   source: ReactElement;
@@ -21,6 +22,13 @@ type ConnectionLineDataset = {
 const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sourceRef = useRef<HTMLDivElement>(null);
+  const [sourceMutationInfo, setSourceMutationInfo] =
+    useState<Nullable<MutationRecord>>(null);
+
+  useMutationObservable(sourceRef, (record) => {
+    setSourceMutationInfo(record[0]);
+  });
+
   const modelRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
 
@@ -33,10 +41,6 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
 
   const sourceToModelLineSvgRef = useRef<Nullable<SVGSVGElement>>(null);
   const modelToDestLineSvgRef = useRef<Nullable<SVGSVGElement>>(null);
-
-  // Be caution, we deliberately calculate our line dataset on every render
-  // because within the child, there are multiple SingleSelect component that
-  // will reset the dimension of itself after the render of this ControlPanel.
 
   useEffect(() => {
     const getLineStat = (
@@ -100,14 +104,12 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
     return () => {
       window.removeEventListener("resize", setLineDataset);
     };
-  });
+  }, [sourceMutationInfo]);
 
   useEffect(() => {
     if (!sourceToModelLineDataset) return;
 
     const svg = d3.select(sourceToModelLineSvgRef.current);
-
-    console.log(sourceToModelLineDataset);
 
     svg.selectAll("*").remove();
 
@@ -184,60 +186,6 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
       );
   }, [modelToDestLineDataset, lineDotR]);
 
-  // const getSvgLine = useCallback(
-  //   (stat: LineStat) => {
-  //     return (
-  //       <svg
-  //         viewBox={`0 0 ${stat.width} ${stat.height}`}
-  //         xmlns="http://www.w3.org/2000/svg"
-  //         className="absolute"
-  //         style={{ top: stat.y, left: stat.x }}
-  //       >
-  //         <line
-  //           x1={stat.x + stat.width / 2}
-  //           y1={lineDotR}
-  //           x2={stat.x + stat.width / 2}
-  //           y2={stat.height}
-  //           stroke="#C0C0C0"
-  //           strokeWidth="3"
-  //         />
-  //         <circle
-  //           cx={stat.x + stat.width / 2}
-  //           cy={lineDotR}
-  //           fill="#A5A5A5"
-  //           r={lineDotR}
-  //         />
-  //         <circle
-  //           cx={stat.x + stat.width / 2}
-  //           cy={lineDotR}
-  //           r={lineDotR / 2}
-  //           fill="white"
-  //         />
-  //         <circle
-  //           cx={stat.x + stat.width / 2}
-  //           cy={stat.height - lineDotR}
-  //           fill="#A5A5A5"
-  //           r={lineDotR}
-  //         />
-  //         <circle
-  //           cx={stat.x + stat.width / 2}
-  //           cy={stat.height - lineDotR}
-  //           r={lineDotR / 2}
-  //           fill="white"
-  //         />
-  //       </svg>
-  //     );
-  //   },
-  //   [lineDotR]
-  // );
-
-  const iconStyle = {
-    width: "w-[30px]",
-    height: "h-[30px]",
-    color: "fill-white",
-    position: "my-auto",
-  };
-
   return (
     <div
       ref={containerRef}
@@ -262,9 +210,7 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
         }}
         ref={sourceToModelLineSvgRef}
       />
-      {/* {sourceToModelLineStat ? getSvgLine(sourceToModelLineStat) : null} */}
       <div ref={modelRef}>{model}</div>
-      {/* {modelToDestLineStat ? getSvgLine(modelToDestLineStat) : null} */}
       <svg
         className="absolute"
         style={{
