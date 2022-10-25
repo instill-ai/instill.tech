@@ -81,14 +81,6 @@ const HomePage: FC & {
         <Faq />
 
         <InstillCloud />
-
-        <ContentContainer
-          contentMaxWidth="max-w-[889px]"
-          marginBottom="mb-[129px]"
-        >
-          <SecureYourSpot bgColor="black" layout="main" marginBottom="mb-40" />
-          <StayInTheLoop />
-        </ContentContainer>
       </div>
     </>
   );
