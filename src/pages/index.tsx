@@ -1,12 +1,10 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
-import fs from "fs";
-import { join } from "path";
 
 import {
   CaseStudyProps,
   Community,
-  Faq,
+  FaqProps,
   Hero,
   HowItWorks,
   InstillCloud,
@@ -20,9 +18,6 @@ import {
   SecureYourSpotProps,
   StayInTheLoopProps,
 } from "@/components/ui";
-import { GetStaticProps } from "next";
-import { serialize } from "next-mdx-remote/serialize";
-import remarkGfm from "remark-gfm";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 const Features = dynamic(() =>
@@ -41,43 +36,17 @@ const CaseStudy = dynamic<CaseStudyProps>(() =>
   import("@/components/landing").then((mod) => mod.CaseStudy)
 );
 
-export type LandingPageProps = {
-  mdxSource: MDXRemoteSerializeResult;
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const faqTemplatePath = join(
-    process.cwd(),
-    "src",
-    "lib",
-    "markdown",
-    "plain-text",
-    "landing-faq.mdx"
-  );
-  const faqSource = fs.readFileSync(faqTemplatePath, "utf8");
-
-  const mdxSource = await serialize(faqSource, {
-    parseFrontmatter: true,
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [],
-    },
-  });
-
-  return {
-    props: {
-      mdxSource,
-    },
-  };
-};
+const Faq = dynamic<FaqProps>(() =>
+  import("@/components/landing").then((mod) => mod.Faq)
+);
 
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const HomePage: FC<LandingPageProps> & {
+const HomePage: FC & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource }) => {
+} = () => {
   const vdpFlowRef = useRef<HTMLDivElement>();
 
   const scrollHandler = useCallback(() => {
@@ -101,14 +70,15 @@ const HomePage: FC<LandingPageProps> & {
           <NoCodeInterface marginBottom="mb-20" />
         </div>
 
-        <CaseStudy />
-
         <div className="flex flex-col bg-white">
           <div className="mx-auto flex max-w-[1127px] flex-col">
             <Community marginBottom="mb-[60px]" />
-            <Faq mdxSource={mdxSource} />
           </div>
         </div>
+
+        <CaseStudy />
+
+        <Faq />
 
         <InstillCloud />
 
