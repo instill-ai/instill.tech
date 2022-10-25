@@ -14,12 +14,12 @@ const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
       )}
     >
       <div className="flex flex-col sm:mr-auto">
-        <h3 className="instill-text-h3 text-instillGrey05">Stay in the Loop</h3>
-        <p className="instill-text-body text-instillGrey05">
+        <h3 className="instill-text-h3 text-instillGrey90">Stay in the Loop</h3>
+        <p className="instill-text-body text-instillGrey70">
           Join our mailing list for the latest news and updates.
         </p>
       </div>
-      <SubscribeNewsletterForm />
+      <SubscribeNewsletterForm position="my-auto" />
     </div>
   );
 };

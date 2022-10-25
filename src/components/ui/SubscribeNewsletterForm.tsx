@@ -1,5 +1,9 @@
 import { FormEvent, useRef, useState } from "react";
-import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
+import {
+  ArrowRightIcon,
+  SolidButton,
+  TextButton,
+} from "@instill-ai/design-system";
 import cn from "clsx";
 
 export type SubscribeNewsletterFormProps = {
@@ -55,16 +59,16 @@ const SubscribeNewsletterForm = ({
     <form onSubmit={subscribe} className={cn(position, width)}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="mb-1.5 flex flex-row justify-end gap-x-2.5 border border-instillGrey05">
+          <div className="mb-1.5 flex flex-row justify-end border border-instillGrey05">
             <input
               aria-label="Email for newsletter"
               placeholder="Your email..."
               type="email"
               ref={email}
-              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGrey15 instill-input-no-highlight"
+              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillNeonBlue05 px-5 text-instillGrey90 instill-input-no-highlight"
             />
-            <TextButton
-              color="primary"
+            <SolidButton
+              color="primaryLight"
               type="submit"
               itemGapX="gap-x-5"
               endIcon={
@@ -77,7 +81,7 @@ const SubscribeNewsletterForm = ({
               }
             >
               <p className="my-auto">Subscribe</p>
-            </TextButton>
+            </SolidButton>
           </div>
           <div className="flex">
             <p
