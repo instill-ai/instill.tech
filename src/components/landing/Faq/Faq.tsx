@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import SectionLabel from "../SectionLabel";
 import FaqContent from "./FaqContent";
+import FaqText from "./FaqText";
 
 export type FaqProps = {
   marginBottom?: string;
@@ -27,10 +28,8 @@ const Faq = ({ marginBottom }: FaqProps) => {
   return (
     <div className={cn("flex w-full flex-col", marginBottom)}>
       <div className="relative mb-20 w-full">
-        <h3 className="text-left font-instill text-[200px] leading-[160px] text-instillGrey90 md:text-[360px] md:leading-[360px]">
-          FAQ
-        </h3>
-        <div className="absolute top-0 left-0 right-0 h-16 bg-instillGrey90 md:h-32" />
+        <FaqText width="sm:w-10/12 md:w-8/12 xl:w-6/12" />
+        <div className="absolute top-0 left-0 right-0 h-8 bg-instillGrey90 md:h-20" />
       </div>
       <div className="flex flex-col gap-y-10 md:flex-row md:gap-y-0 md:gap-x-10">
         <div className="flex w-full flex-col md:w-1/3">
@@ -80,7 +79,8 @@ You can find more detailed narrative in our blog article [Why Instill AI exists]
                 ...accordionHeaderStyle,
                 header: "Who are behind VDP?",
                 content: (
-                  <FaqContent>{`We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
+                  <FaqContent>
+                    {`We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
 We have in-depth experiences in developing and maintaining a Vision AI system.
 
 Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate vision tasks using deep learning-based computer vision models, sweating blood to build everything from scratch.
@@ -99,7 +99,8 @@ In spite of all that, VDP is an open-source project. Everyone is more than welco
                 ...accordionHeaderStyle,
                 header: "Is VDP free?",
                 content: (
-                  <FaqContent>{`Yes. VDP is open source so you can self-host it in your basement for free.
+                  <FaqContent>
+                    {`Yes. VDP is open source so you can self-host it in your basement for free.
 
 In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
                   
@@ -111,7 +112,8 @@ If you are interested in the hosting service of VDP, we've started signing up us
                 ...accordionHeaderStyle,
                 header: "How do you make money?",
                 content: (
-                  <FaqContent>{`We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
+                  <FaqContent>
+                    {`We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
 
 If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](https://www.instill.tech/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
                   </FaqContent>
