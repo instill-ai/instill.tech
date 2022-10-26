@@ -44,6 +44,7 @@ specifiers:
   clsx: ^1.2.1
   cross-env: ^7.0.3
   d3: ^7.6.1
+  embla-carousel-react: ^6.2.0
   eslint: 7.32.0
   eslint-config-next: 11.1.2
   eslint-plugin-storybook: ^0.6.1
@@ -96,6 +97,7 @@ dependencies:
   clsx: 1.2.1
   cross-env: 7.0.3
   d3: 7.6.1
+  embla-carousel-react: 6.2.0_react@17.0.2
   gray-matter: 4.0.3
   gsap: 3.10.4
   intersection-observer: 0.12.2
@@ -7489,6 +7491,19 @@ packages:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
     dev: true
+
+  /embla-carousel-react/6.2.0_react@17.0.2:
+    resolution: {integrity: sha512-XshB7pmmhso/fzENefflWw5/N3HqCjO8H5CkzQxuCQqV9w+bvEaBkjUZ6fxfqLUMMSKFWIQvMD6uo9f8oKS+2g==}
+    peerDependencies:
+      react: ^17.0.2
+    dependencies:
+      embla-carousel: 6.2.0
+      react: 17.0.2
+    dev: false
+
+  /embla-carousel/6.2.0:
+    resolution: {integrity: sha512-dSNsiQ7nmSQJZgbYfZCLdzrnznHwpaAcdJFcMRKgm/pjH1doOgxmfsvlMy4VfO4J11hLz8jm/W8WxSSDqfuu4w==}
+    dev: false
 
   /emittery/0.8.1:
     resolution: {integrity: sha512-uDfvUjVrfGJJhymx/kz6prltenw1u7WrCg1oa94zYY8xxVpLLUu045LAT0dhDZdXG58/EpPL/5kA180fQ/qudg==}

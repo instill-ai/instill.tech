@@ -2,7 +2,7 @@
   "name": "product-website",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev -H localhost -p 3000",
+    "dev": "NODE_OPTIONS='--inspect' next dev -H localhost -p 3010",
     "build": "next build && pnpm run postbuild",
     "lint": "next lint",
     "start": "next start",
@@ -40,7 +40,8 @@
     "react-markdown": "^7.0.1",
     "react-select": "^5.4.0",
     "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1"
+    "remark-gfm": "^3.0.1",
+    "embla-carousel-react": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
