@@ -17,6 +17,10 @@ export type BlueprintContainerProps = {
   children: ReactNode;
   padding?: string;
   bgColor: string;
+  display?: string;
+  position?: string;
+  zIndex?: string;
+  childrenPosition?: string;
 };
 
 // This container will fill in the given space of its parent and draw a
@@ -31,12 +35,16 @@ const BlueprintContainer = ({
   children,
   padding,
   bgColor,
+  display,
+  position,
+  zIndex,
+  childrenPosition,
 }: BlueprintContainerProps) => {
   const svgRef = useRef<Nullable<SVGSVGElement>>(null);
   const parentRef = useRef<Nullable<HTMLDivElement>>(null);
-  const parentPosition = useRefPosition(parentRef);
+  const parentDimension = useRefPosition(parentRef);
   const childrenRef = useRef<Nullable<HTMLDivElement>>(null);
-  const childrenPosition = useRefPosition(childrenRef);
+  const childrenDimension = useRefPosition(childrenRef);
 
   const [lineDataset, setLineDataset] = useState<Nullable<LineData[]>>(null);
 
@@ -47,18 +55,18 @@ const BlueprintContainer = ({
 
     // We first draw the vertical line from children X1 to parent X2.
 
-    if (!parentPosition || !childrenPosition) return;
+    if (!parentDimension || !childrenDimension) return;
 
     const generateLineDataset = (
-      parentPosition: ElementPosition,
-      childrenPosition: ElementPosition
+      parentDimension: ElementPosition,
+      childrenDimension: ElementPosition
     ) => {
       const parentX1 = 0;
-      const parentX2 = parentPosition.width;
+      const parentX2 = parentDimension.width;
       const parentY1 = 0;
-      const parentY2 = parentPosition.height;
-      const childrenX1 = childrenPosition.x - parentPosition.x;
-      const childrenY1 = childrenPosition.y - parentPosition.y;
+      const parentY2 = parentDimension.height;
+      const childrenX1 = childrenDimension.x - parentDimension.x;
+      const childrenY1 = childrenDimension.y - parentDimension.y;
 
       let lineDataset: LineData[] = [];
 
@@ -121,8 +129,8 @@ const BlueprintContainer = ({
       return lineDataset;
     };
 
-    setLineDataset(generateLineDataset(parentPosition, childrenPosition));
-  }, [parentPosition, childrenPosition, unitHeight, unitWidth]);
+    setLineDataset(generateLineDataset(parentDimension, childrenDimension));
+  }, [parentDimension, childrenDimension, unitHeight, unitWidth]);
 
   useEffect(() => {
     if (!lineDataset) return;
@@ -153,16 +161,29 @@ const BlueprintContainer = ({
   return (
     <div
       ref={parentRef}
-      className={cn("relative flex h-full w-full", padding, bgColor)}
+      className={cn(
+        "h-full w-full",
+        padding,
+        bgColor,
+        display ? display : "flex",
+        position ? position : "relative",
+        zIndex
+      )}
     >
       <div className="absolute top-0 bottom-0 right-0 left-0 z-0">
         <svg
           ref={svgRef}
-          width={parentPosition ? parentPosition.width : 0}
-          height={parentPosition ? parentPosition.height : 0}
+          width={parentDimension ? parentDimension.width : 0}
+          height={parentDimension ? parentDimension.height : 0}
         />
       </div>
-      <div ref={childrenRef} className="relative z-10 mx-auto flex h-full">
+      <div
+        ref={childrenRef}
+        className={cn(
+          "relative z-10 flex h-full",
+          childrenPosition ? childrenPosition : "mx-auto"
+        )}
+      >
         {children}
       </div>
     </div>

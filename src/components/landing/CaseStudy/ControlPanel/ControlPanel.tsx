@@ -1,13 +1,23 @@
 import { Nullable } from "@/types/instill";
+import cn from "clsx";
 import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
-import { ReactElement, useRef, useState, useEffect, useCallback } from "react";
+import {
+  ReactElement,
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import * as d3 from "d3";
-import { useMutationObservable } from "@/hooks/useMutationObservable";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { mode } from "d3";
 
 export type ControlPanelProps = {
   source: ReactElement;
   model: ReactElement;
   destination: ReactElement;
+  getActiveControl: () => "source" | "destination" | "model";
 };
 
 type ConnectionLineDataset = {
@@ -19,15 +29,15 @@ type ConnectionLineDataset = {
 // won't get notified. We need to use useMutationObservable to be reactive
 // about this changes.
 
-const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
+const ControlPanel = ({
+  source,
+  model,
+  destination,
+  getActiveControl,
+}: ControlPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sourceRef = useRef<HTMLDivElement>(null);
-  const [sourceMutationInfo, setSourceMutationInfo] =
-    useState<Nullable<MutationRecord>>(null);
-
-  useMutationObservable(sourceRef, (record) => {
-    setSourceMutationInfo(record[0]);
-  });
+  const windowSize = useWindowSize();
 
   const modelRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
@@ -89,6 +99,13 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
       const sourcePosition = getElementPosition(sourceRef.current);
       const modelPosition = getElementPosition(modelRef.current);
       const destPosition = getElementPosition(destRef.current);
+
+      if (windowSize.width < 768) {
+        setSourceToModelLineDataset(null);
+        setModelToDestLineDataset(null);
+        return;
+      }
+
       setSourceToModelLineDataset(
         getLineStat(containerPosition, sourcePosition, modelPosition)
       );
@@ -104,12 +121,14 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
     return () => {
       window.removeEventListener("resize", setLineDataset);
     };
-  }, [sourceMutationInfo]);
+  }, [windowSize]);
 
   useEffect(() => {
-    if (!sourceToModelLineDataset) return;
-
     const svg = d3.select(sourceToModelLineSvgRef.current);
+    if (!sourceToModelLineDataset) {
+      svg.selectAll("*").remove();
+      return;
+    }
 
     svg.selectAll("*").remove();
 
@@ -147,9 +166,11 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
   }, [sourceToModelLineDataset, lineDotR]);
 
   useEffect(() => {
-    if (!modelToDestLineDataset) return;
-
     const svg = d3.select(modelToDestLineSvgRef.current);
+    if (!modelToDestLineDataset) {
+      svg.selectAll("*").remove();
+      return;
+    }
 
     svg.selectAll("*").remove();
 
@@ -186,47 +207,81 @@ const ControlPanel = ({ source, model, destination }: ControlPanelProps) => {
       );
   }, [modelToDestLineDataset, lineDotR]);
 
+  const mobilePanel = useMemo(() => {
+    return (
+      <>
+        <div
+          className={cn(
+            "w-full",
+            getActiveControl() === "source" ? "" : "hidden"
+          )}
+        >
+          {source}
+        </div>
+        <div
+          className={cn(
+            "w-full",
+            getActiveControl() === "model" ? "" : "hidden"
+          )}
+        >
+          {model}
+        </div>
+        <div
+          className={cn(
+            "w-full",
+            getActiveControl() === "destination" ? "" : "hidden"
+          )}
+        >
+          {destination}
+        </div>
+      </>
+    );
+  }, [getActiveControl]);
+
   return (
-    <div
-      ref={containerRef}
-      className="relative mx-auto flex h-full flex-col justify-between"
-    >
-      <div ref={sourceRef}>{source}</div>
-      <svg
-        className="absolute"
-        style={{
-          top: sourceToModelLineDataset
-            ? sourceToModelLineDataset.line[0].y
-            : 0,
-          left: sourceToModelLineDataset
-            ? sourceToModelLineDataset.line[0].x
-            : 0,
-          width: sourceToModelLineDataset
-            ? sourceToModelLineDataset.line[0].width
-            : 0,
-          height: sourceToModelLineDataset
-            ? sourceToModelLineDataset.line[0].height
-            : 0,
-        }}
-        ref={sourceToModelLineSvgRef}
-      />
-      <div ref={modelRef}>{model}</div>
-      <svg
-        className="absolute"
-        style={{
-          top: modelToDestLineDataset ? modelToDestLineDataset.line[0].y : 0,
-          left: modelToDestLineDataset ? modelToDestLineDataset.line[0].x : 0,
-          width: modelToDestLineDataset
-            ? modelToDestLineDataset.line[0].width
-            : 0,
-          height: modelToDestLineDataset
-            ? modelToDestLineDataset.line[0].height
-            : 0,
-        }}
-        ref={modelToDestLineSvgRef}
-      />
-      <div ref={destRef}>{destination}</div>
-    </div>
+    <>
+      <div
+        ref={containerRef}
+        className="relative mx-auto hidden h-full flex-col justify-between md:flex"
+      >
+        <div ref={sourceRef}>{source}</div>
+        <svg
+          className="absolute"
+          style={{
+            top: sourceToModelLineDataset
+              ? sourceToModelLineDataset.line[0].y
+              : 0,
+            left: sourceToModelLineDataset
+              ? sourceToModelLineDataset.line[0].x
+              : 0,
+            width: sourceToModelLineDataset
+              ? sourceToModelLineDataset.line[0].width
+              : 0,
+            height: sourceToModelLineDataset
+              ? sourceToModelLineDataset.line[0].height
+              : 0,
+          }}
+          ref={sourceToModelLineSvgRef}
+        />
+        <div ref={modelRef}>{model}</div>
+        <svg
+          className="absolute"
+          style={{
+            top: modelToDestLineDataset ? modelToDestLineDataset.line[0].y : 0,
+            left: modelToDestLineDataset ? modelToDestLineDataset.line[0].x : 0,
+            width: modelToDestLineDataset
+              ? modelToDestLineDataset.line[0].width
+              : 0,
+            height: modelToDestLineDataset
+              ? modelToDestLineDataset.line[0].height
+              : 0,
+          }}
+          ref={modelToDestLineSvgRef}
+        />
+        <div ref={destRef}>{destination}</div>
+      </div>
+      <div className="flex min-h-[150px] w-full md:hidden">{mobilePanel}</div>
+    </>
   );
 };
 

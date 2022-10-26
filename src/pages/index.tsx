@@ -64,7 +64,7 @@ const HomePage: FC & {
         <ContentContainer contentMaxWidth="max-w-[1127px]">
           <Hero scrollHandler={scrollHandler} />
         </ContentContainer>
-        <div className="mx-auto flex max-w-[1127px] flex-col px-10 xl:px-0">
+        <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
           <Vdp marginBottom="mb-20" />
           <HowItWorks marginBottom="mb-20" />
           <NoCodeInterface marginBottom="mb-20" />
@@ -76,7 +76,9 @@ const HomePage: FC & {
           </div>
         </div>
 
-        <CaseStudy />
+        <div className="bg-instillGrey90">
+          <CaseStudy />
+        </div>
 
         <Faq />
 
