@@ -1,23 +1,16 @@
 import { Nullable } from "@/types/instill";
 import cn from "clsx";
 import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
-import {
-  ReactElement,
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-} from "react";
+import { ReactElement, useRef, useState, useEffect, useMemo } from "react";
 import * as d3 from "d3";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { mode } from "d3";
+import useEmblaCarousel from "embla-carousel-react";
 
 export type ControlPanelProps = {
   source: ReactElement;
   model: ReactElement;
   destination: ReactElement;
-  getActiveControl: () => "source" | "destination" | "model";
+  getActiveControl: () => "source" | "destination" | "model" | "customize";
 };
 
 type ConnectionLineDataset = {
@@ -207,7 +200,29 @@ const ControlPanel = ({
       );
   }, [modelToDestLineDataset, lineDotR]);
 
+  const [viewportRef] = useEmblaCarousel();
+
   const mobilePanel = useMemo(() => {
+    if (getActiveControl() === "customize") {
+      return (
+        <div className="embla overflow-hidden">
+          <div className="embla__viewport w-full" ref={viewportRef}>
+            <div className="embla__container flex gap-x-10">
+              <div className="embla__slide min-width-[240px] relative flex-33%">
+                {source}
+              </div>
+              <div className="embla__slide min-width-[240px] relative flex-33%">
+                {model}
+              </div>
+              <div className="embla__slide min-width-[240px] relative flex-33%">
+                {destination}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <>
         <div
