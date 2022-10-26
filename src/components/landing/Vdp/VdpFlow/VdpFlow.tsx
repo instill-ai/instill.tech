@@ -10,6 +10,7 @@ export type VdpFlowProps = {
 const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [blocksWidth, setBlocksWidth] = useState<number[]>([]);
+  const [arrowWidth, setArrowWidth] = useState<number>(65);
 
   useEffect(() => {
     const updateBlocksWidth = () => {
@@ -24,9 +25,15 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         // need to further minus 65. The final function will be
         // (a) + (a + 65) + (a + 65) = container's width - 65
         const baseWidth = (containerWidth - 130 - 65) / 3;
+        setArrowWidth(65);
         setBlocksWidth([baseWidth, baseWidth + 65, baseWidth + 65]);
+      } else if (containerWidth < 360) {
+        const baseWidth = containerWidth - 65;
+        setArrowWidth(45);
+        setBlocksWidth([baseWidth, baseWidth, baseWidth]);
       } else {
         const baseWidth = containerWidth - 65;
+        setArrowWidth(65);
         setBlocksWidth([baseWidth, baseWidth, baseWidth]);
       }
     };
@@ -59,6 +66,7 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
           />
         }
         width={blocksWidth[0] ? blocksWidth[0] : 0}
+        arrowWidth={arrowWidth}
         color="#FFFCE3"
         zIndex={20}
       />
@@ -75,6 +83,7 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
           />
         }
         width={blocksWidth[1] ? blocksWidth[1] : 0}
+        arrowWidth={arrowWidth}
         color="#ECFFF0"
         zIndex={10}
         padding="xl:pl-[85px]"
@@ -92,6 +101,7 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
           />
         }
         width={blocksWidth[2] ? blocksWidth[2] : 0}
+        arrowWidth={arrowWidth}
         color="#F4FBFF"
         zIndex={5}
         padding="xl:pl-[85px]"

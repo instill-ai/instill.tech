@@ -13,6 +13,7 @@ export type ControlSelectWrapperProps = {
   isActive: boolean;
   options: SingleSelectOption[];
   onFocus?: () => void;
+  minWidth: string;
 };
 
 const ControlSelectWrapper = ({
@@ -22,6 +23,7 @@ const ControlSelectWrapper = ({
   isActive,
   options,
   onFocus,
+  minWidth,
 }: ControlSelectWrapperProps) => {
   const [selectOption, setSelectOption] = useState<SingleSelectOption>(
     options[0]
@@ -32,7 +34,7 @@ const ControlSelectWrapper = ({
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className={cn("relative w-full", minWidth)}>
       <BasicSingleSelect
         key={id}
         id={id}
