@@ -20,7 +20,7 @@ import {
   PipelineIcon,
 } from "@instill-ai/design-system";
 import cn from "clsx";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AccordionContentLayout from "./AccordionContentLayout";
 import ControlPanel from "./ControlPanel";
 import ControlPanelItem from "./ControlPanelItem";
@@ -37,6 +37,34 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
 
+  const getActiveControl = useCallback(() => {
+    if (activeIndex === 1) {
+      switch (currentShowcaseFrame) {
+        case 0:
+          return "source";
+        case 1:
+        case 2:
+          return "model";
+        case 3:
+          return "destination";
+        default:
+          throw new Error("Current frame index out of bound");
+      }
+    } else if (activeIndex === 3) {
+    } else {
+      switch (currentShowcaseFrame) {
+        case 0:
+          return "source";
+        case 1:
+          return "model";
+        case 2:
+          return "destination";
+        default:
+          throw new Error("Current frame index out of bound");
+      }
+    }
+  }, [activeIndex, currentShowcaseFrame]);
+
   const controlPanel = useMemo(() => {
     const controlPanelIconStyle = {
       width: "w-[30px]",
@@ -49,6 +77,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       case 0:
         return (
           <ControlPanel
+            getActiveControl={getActiveControl}
             source={
               <ControlPanelItem
                 title="Source"
@@ -60,6 +89,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     customizable={false}
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     label="Source"
                     isActive={currentShowcaseFrame === 0}
                     options={[
@@ -90,6 +120,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-model-control"
                     id="case-study-model-control"
                     label="Model"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 1}
                     options={[
@@ -121,6 +152,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 2}
                     options={[
@@ -145,6 +177,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       case 1:
         return (
           <ControlPanel
+            getActiveControl={getActiveControl}
             source={
               <ControlPanelItem
                 title="Source"
@@ -157,6 +190,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     id="case-study-source-control"
                     label="Source"
                     customizable={false}
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     isActive={currentShowcaseFrame === 0}
                     options={[
                       {
@@ -188,6 +222,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-model-control-0"
                     id="case-study-model-control-0"
                     label="Model"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 1}
                     options={[
@@ -209,6 +244,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     id="case-study-model-control-1"
                     label="Model"
                     customizable={false}
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     isActive={currentShowcaseFrame === 2}
                     options={[
                       {
@@ -238,6 +274,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 3}
                     options={[
@@ -262,6 +299,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       case 2:
         return (
           <ControlPanel
+            getActiveControl={getActiveControl}
             source={
               <ControlPanelItem
                 title="Source"
@@ -273,6 +311,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     label="Source"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 0}
                     options={[
@@ -303,6 +342,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-model-control-0"
                     id="case-study-model-control-0"
                     label="Model"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 1}
                     options={[
@@ -333,6 +373,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
                     isActive={currentShowcaseFrame === 2}
                     options={[
@@ -357,6 +398,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       default:
         return (
           <ControlPanel
+            getActiveControl={getActiveControl}
             source={
               <ControlPanelItem
                 title="Source"
@@ -368,6 +410,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     label="Source"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 0}
                     onFocus={() => {
@@ -412,6 +455,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-model-control-0"
                     id="case-study-model-control-0"
                     label="Model"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 1}
                     onFocus={() => {
@@ -445,6 +489,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
+                    minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 2}
                     onFocus={() => {
@@ -472,6 +517,264 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     }
   }, [activeIndex, currentShowcaseFrame]);
 
+  const caseAccordion = useMemo(() => {
+    const iconStyle = {
+      width: "w-20",
+      height: "h-20",
+      color: "fill-white",
+      position: "m-auto",
+    };
+    return (
+      <BasicAccordion
+        activeIndex={activeIndex}
+        setActiveIndex={setActiveIndex}
+        enableHeaderIcon={false}
+        items={[
+          {
+            header: "Invoice Processing",
+            headerActiveBgColor: "bg-instillNeonBlue",
+            headerInActiveBgColor: "bg-[#2596AE]",
+            headerActiveTextColor: "text-white",
+            headerInActiveTextColor: "text-instillGray80",
+            content: (
+              <AccordionContentLayout
+                title="Optical Character Recognition"
+                source="Google Drive"
+                destination="Google Sheet"
+                description="Automatically capture and extract data from 
+                invoices to avoid manual data entry"
+                currentFrame={currentShowcaseFrame}
+                showcases={[
+                  <ShowcaseImage
+                    key="case-study-invoice-0"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-invoice-0.png"
+                    alt="An invoice"
+                  />,
+                  <ShowcaseImage
+                    key="case-study-invoice-1"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-invoice-1.png"
+                    alt="An invoice processed by OCR and display the detected words"
+                  />,
+                  <ShowcaseTable
+                    height="h-[355px]"
+                    width="w-[336px]"
+                    key="case-study-invoice-table"
+                    position="ml-auto"
+                    tables={[
+                      {
+                        name: "invoice-table",
+                        head: ["text", "number"],
+                        rows: [
+                          ["Filing Jointly or Qualifying Widow(er)", "30,000"],
+                          ["Lower Paying Job Annual Taxable Wage", "3,999"],
+                          ["12/02/2021", "40,000"],
+                          ["10:38", "49,999"],
+                          ["12/02/2021", "890"],
+                          ["12:38", "2,090"],
+                          ["-", "2,950"],
+                          ["-", "2,950"],
+                          ["-", "2,950"],
+                        ],
+                      },
+                    ]}
+                  />,
+                ]}
+                icon={<OpticalCharacterRecognitionIcon {...iconStyle} />}
+              />
+            ),
+          },
+          {
+            header: "Workspace Safety",
+            headerActiveBgColor: "bg-instillNeonBlue",
+            headerInActiveBgColor: "bg-[#2596AE]",
+            headerActiveTextColor: "text-white",
+            headerInActiveTextColor: "text-instillGrrey80",
+            content: (
+              <AccordionContentLayout
+                title="Object detection & Pose Estimation"
+                source="Camera (IoT)"
+                destination="PostgreSQL"
+                description="Spot unsafe behaviours in real-time to lower 
+            employee health incidents and improve workspace safety."
+                currentFrame={currentShowcaseFrame}
+                showcases={[
+                  <ShowcaseImage
+                    key="case-study-workspace-0"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-workspace-0.png"
+                    alt="Workers with safety helmets"
+                  />,
+                  <ShowcaseImage
+                    key="case-study-workspace-1"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-workspace-1.png"
+                    alt="Workers with safety helmets processed by object 
+                    dection and label the position of the workers."
+                  />,
+                  <ShowcaseImage
+                    key="case-study-workspace-2"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-workspace-2.png"
+                    alt="Workers with safety helmets processed by pose 
+                    estimation and draw the skeleton of the workers"
+                  />,
+                  <ShowcaseTable
+                    key="case-study-workspace-table-0"
+                    height="h-[355px]"
+                    width="w-[336px]"
+                    position="ml-auto"
+                    tables={[
+                      {
+                        name: "workspace-category-table",
+                        head: ["Category", "x", "y"],
+                        rows: [
+                          ["Unattended object", "3", "52"],
+                          ["Person 1", "12", "104"],
+                          ["Person 2", "394", "502"],
+                          ["Helmet 1", "123", "1042"],
+                          ["Helmet 2", "320", "242"],
+                        ],
+                      },
+                      {
+                        name: "workspace-skeleton-table",
+                        head: ["Skeleton", "Head_x", "Head_y"],
+                        rows: [
+                          ["Person 1", "3", "52"],
+                          ["Person 2", "12", "222"],
+                          ["Person 3", "921", "307"],
+                        ],
+                      },
+                    ]}
+                  />,
+                ]}
+                icon={<ObjectDetectionIcon {...iconStyle} />}
+              />
+            ),
+          },
+          {
+            header: "E-Commerce Labelling",
+            headerActiveBgColor: "bg-instillNeonBlue",
+            headerInActiveBgColor: "bg-[#26869B]",
+            headerActiveTextColor: "text-white",
+            headerInActiveTextColor: "text-instillGrrey80",
+            content: (
+              <AccordionContentLayout
+                title="Image tagging"
+                source="S3"
+                destination="Redshift"
+                description="Automatically detect and tag visual 
+                attributes (such as category, colour, style, and more)  
+                in the products."
+                currentFrame={currentShowcaseFrame}
+                showcases={[
+                  <ShowcaseImage
+                    key="case-study-ecommerce-0"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-ecommerce-0.png"
+                    alt="A ecommerce cloth model"
+                  />,
+                  <ShowcaseImage
+                    key="case-study-ecommerce-1"
+                    width={336}
+                    height={355}
+                    src="/images/case-study-ecommerce-1.png"
+                    alt="A ecommerce cloth model processed by tagging."
+                  />,
+                  <ShowcaseTable
+                    key="case-study-ecommerce-table"
+                    height="h-[355px]"
+                    width="w-[336px]"
+                    position="ml-auto"
+                    tables={[
+                      {
+                        name: "ecommerce-table",
+                        head: ["Item", "Value"],
+                        rows: [
+                          ["Name", "Summer dress"],
+                          ["Category", "Dress"],
+                          ["Style", "Retro"],
+                          ["Sleeve", "No sleeve"],
+                          ["Length", "Long"],
+                          ["Waistline", "High waist"],
+                          ["Colour 1", "67A4DB"],
+                          ["Colour 2", "68A9E3"],
+                          ["Colour 3", "A6C4E1"],
+                        ],
+                      },
+                    ]}
+                  />,
+                ]}
+                icon={<ImageClassificationIcon {...iconStyle} />}
+              />
+            ),
+          },
+          {
+            header: "Customise Your Pipeline",
+            headerActiveBgColor: "bg-instillNeonBlue",
+            headerInActiveBgColor: "bg-[#267788]",
+            headerActiveTextColor: "text-white",
+            headerInActiveTextColor: "text-instillGrrey80",
+            content: (
+              <AccordionContentLayout
+                title="Task for your use case"
+                source="Source"
+                destination="Destination"
+                description="Stop building data pipelines from scratch. 
+                Just use VDP to connect your data and import STOA Vision 
+                AI models to solve your use cases."
+                currentFrame={currentShowcaseFrame}
+                showcases={[
+                  <div
+                    key="case-study-custom"
+                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                  >
+                    <DataSourceIcon
+                      width="w-[226px]"
+                      height="h-[226px]"
+                      color="fill-white"
+                      position="m-auto"
+                    />
+                  </div>,
+                  <div
+                    key="case-study-custom"
+                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                  >
+                    <ModelIcon
+                      width="w-[226px]"
+                      height="h-[226px]"
+                      color="fill-white"
+                      position="m-auto"
+                    />
+                  </div>,
+                  <div
+                    key="case-study-custom"
+                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                  >
+                    <DataDestinationIcon
+                      width="w-[226px]"
+                      height="h-[226px]"
+                      color="fill-white"
+                      position="m-auto"
+                    />
+                  </div>,
+                ]}
+                icon={<PipelineIcon {...iconStyle} />}
+              />
+            ),
+          },
+        ]}
+      />
+    );
+  }, [activeIndex, setActiveIndex, currentShowcaseFrame]);
+
   useEffect(() => {
     setCurrentShowcaseFrame(0);
     switch (activeIndex) {
@@ -495,276 +798,69 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     });
   }, 1500);
 
-  const iconStyle = {
-    width: "w-20",
-    height: "h-20",
-    color: "fill-white",
-    position: "m-auto",
-  };
-
   return (
-    <BlueprintContainer
-      padding="py-[60px]"
-      unitHeight={30}
-      unitWidth={30}
-      bgColor="bg-instillGrey90"
-    >
-      <div className="m-auto flex w-full max-w-[1127px] flex-row gap-x-[60px]">
-        <div className="flex w-1/2 xl:w-2/3">
-          <BasicAccordion
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-            enableHeaderIcon={false}
-            items={[
-              {
-                header: "Invoice Processing",
-                headerActiveBgColor: "bg-instillNeonBlue",
-                headerInActiveBgColor: "bg-[#2596AE]",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-instillGray80",
-                content: (
-                  <AccordionContentLayout
-                    title="Optical Character Recognition"
-                    source="Google Drive"
-                    destination="Google Sheet"
-                    description="Automatically capture and extract data from 
-                        invoices to avoid manual data entry"
-                    currentFrame={currentShowcaseFrame}
-                    showcases={[
-                      <ShowcaseImage
-                        key="case-study-invoice-0"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-invoice-0.png"
-                        alt="An invoice"
-                      />,
-                      <ShowcaseImage
-                        key="case-study-invoice-1"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-invoice-1.png"
-                        alt="An invoice processed by OCR and display the detected words"
-                      />,
-                      <ShowcaseTable
-                        height="h-[355px]"
-                        width="w-[336px]"
-                        key="case-study-invoice-table"
-                        position="ml-auto"
-                        tables={[
-                          {
-                            name: "invoice-table",
-                            head: ["text", "number"],
-                            rows: [
-                              [
-                                "Filing Jointly or Qualifying Widow(er)",
-                                "30,000",
-                              ],
-                              ["Lower Paying Job Annual Taxable Wage", "3,999"],
-                              ["12/02/2021", "40,000"],
-                              ["10:38", "49,999"],
-                              ["12/02/2021", "890"],
-                              ["12:38", "2,090"],
-                              ["-", "2,950"],
-                              ["-", "2,950"],
-                              ["-", "2,950"],
-                            ],
-                          },
-                        ]}
-                      />,
-                    ]}
-                    icon={<OpticalCharacterRecognitionIcon {...iconStyle} />}
-                  />
-                ),
-              },
-              {
-                header: "Workspace Safety",
-                headerActiveBgColor: "bg-instillNeonBlue",
-                headerInActiveBgColor: "bg-[#2596AE]",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-instillGrrey80",
-                content: (
-                  <AccordionContentLayout
-                    title="Object detection & Pose Estimation"
-                    source="Camera (IoT)"
-                    destination="PostgreSQL"
-                    description="Spot unsafe behaviours in real-time to lower 
-                        employee health incidents and improve workspace safety."
-                    currentFrame={currentShowcaseFrame}
-                    showcases={[
-                      <ShowcaseImage
-                        key="case-study-workspace-0"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-workspace-0.png"
-                        alt="Workers with safety helmets"
-                      />,
-                      <ShowcaseImage
-                        key="case-study-workspace-1"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-workspace-1.png"
-                        alt="Workers with safety helmets processed by object 
-                            dection and label the position of the workers."
-                      />,
-                      <ShowcaseImage
-                        key="case-study-workspace-2"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-workspace-2.png"
-                        alt="Workers with safety helmets processed by pose 
-                            estimation and draw the skeleton of the workers"
-                      />,
-                      <ShowcaseTable
-                        key="case-study-workspace-table-0"
-                        height="h-[355px]"
-                        width="w-[336px]"
-                        position="ml-auto"
-                        tables={[
-                          {
-                            name: "workspace-category-table",
-                            head: ["Category", "x", "y"],
-                            rows: [
-                              ["Unattended object", "3", "52"],
-                              ["Person 1", "12", "104"],
-                              ["Person 2", "394", "502"],
-                              ["Helmet 1", "123", "1042"],
-                              ["Helmet 2", "320", "242"],
-                            ],
-                          },
-                          {
-                            name: "workspace-skeleton-table",
-                            head: ["Skeleton", "Head_x", "Head_y"],
-                            rows: [
-                              ["Person 1", "3", "52"],
-                              ["Person 2", "12", "222"],
-                              ["Person 3", "921", "307"],
-                            ],
-                          },
-                        ]}
-                      />,
-                    ]}
-                    icon={<ObjectDetectionIcon {...iconStyle} />}
-                  />
-                ),
-              },
-              {
-                header: "E-Commerce Labelling",
-                headerActiveBgColor: "bg-instillNeonBlue",
-                headerInActiveBgColor: "bg-[#26869B]",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-instillGrrey80",
-                content: (
-                  <AccordionContentLayout
-                    title="Image tagging"
-                    source="S3"
-                    destination="Redshift"
-                    description="Automatically detect and tag visual 
-                        attributes (such as category, colour, style, and more)  
-                        in the products."
-                    currentFrame={currentShowcaseFrame}
-                    showcases={[
-                      <ShowcaseImage
-                        key="case-study-ecommerce-0"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-ecommerce-0.png"
-                        alt="A ecommerce cloth model"
-                      />,
-                      <ShowcaseImage
-                        key="case-study-ecommerce-1"
-                        width={336}
-                        height={355}
-                        src="/images/case-study-ecommerce-1.png"
-                        alt="A ecommerce cloth model processed by tagging."
-                      />,
-                      <ShowcaseTable
-                        key="case-study-ecommerce-table"
-                        height="h-[355px]"
-                        width="w-[336px]"
-                        position="ml-auto"
-                        tables={[
-                          {
-                            name: "ecommerce-table",
-                            head: ["Item", "Value"],
-                            rows: [
-                              ["Name", "Summer dress"],
-                              ["Category", "Dress"],
-                              ["Style", "Retro"],
-                              ["Sleeve", "No sleeve"],
-                              ["Length", "Long"],
-                              ["Waistline", "High waist"],
-                              ["Colour 1", "67A4DB"],
-                              ["Colour 2", "68A9E3"],
-                              ["Colour 3", "A6C4E1"],
-                            ],
-                          },
-                        ]}
-                      />,
-                    ]}
-                    icon={<ImageClassificationIcon {...iconStyle} />}
-                  />
-                ),
-              },
-              {
-                header: "Customise Your Pipeline",
-                headerActiveBgColor: "bg-instillNeonBlue",
-                headerInActiveBgColor: "bg-[#267788]",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-instillGrrey80",
-                content: (
-                  <AccordionContentLayout
-                    title="Task for your use case"
-                    source="Source"
-                    destination="Destination"
-                    description="Stop building data pipelines from scratch. 
-                        Just use VDP to connect your data and import STOA Vision 
-                        AI models to solve your use cases."
-                    currentFrame={currentShowcaseFrame}
-                    showcases={[
-                      <div
-                        key="case-study-custom"
-                        className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
-                      >
-                        <DataSourceIcon
-                          width="w-[226px]"
-                          height="h-[226px]"
-                          color="fill-white"
-                          position="m-auto"
-                        />
-                      </div>,
-                      <div
-                        key="case-study-custom"
-                        className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
-                      >
-                        <ModelIcon
-                          width="w-[226px]"
-                          height="h-[226px]"
-                          color="fill-white"
-                          position="m-auto"
-                        />
-                      </div>,
-                      <div
-                        key="case-study-custom"
-                        className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
-                      >
-                        <DataDestinationIcon
-                          width="w-[226px]"
-                          height="h-[226px]"
-                          color="fill-white"
-                          position="m-auto"
-                        />
-                      </div>,
-                    ]}
-                    icon={<PipelineIcon {...iconStyle} />}
-                  />
-                ),
-              },
-            ]}
-          />
+    <>
+      <BlueprintContainer
+        padding="py-[60px]"
+        unitHeight={30}
+        unitWidth={30}
+        bgColor="bg-instillGrey90"
+        display="hidden md:flex"
+      >
+        <div className="m-auto flex w-full max-w-[1127px] flex-row gap-x-[30px] xl:gap-x-[60px]">
+          <div className="flex w-full md:w-1/2 xl:w-2/3">{caseAccordion}</div>
+          <div className="flex w-full md:w-1/2 xl:w-1/3">{controlPanel}</div>
         </div>
-        <div className="flex w-1/2 xl:w-1/3">{controlPanel}</div>
+      </BlueprintContainer>
+      <div className="relative flex flex-col gap-y-10 md:hidden">
+        {caseAccordion}
+        <BlueprintContainer
+          padding="pt-[32px]"
+          unitHeight={30}
+          unitWidth={30}
+          bgColor="bg-instillGrey90"
+          position="sticky bottom-0"
+          zIndex="z-20"
+          childrenPosition="w-full"
+        >
+          <div className="flex w-full flex-col">
+            <div className="mx-auto w-full px-[30px]">{controlPanel}</div>
+            <div className="flex w-full bg-instillGrey90 bg-opacity-60 py-5">
+              {activeIndex === 3 ? (
+                <></>
+              ) : (
+                <div className="mx-auto flex flex-row gap-x-[30px]">
+                  <div
+                    className={cn(
+                      "h-4 w-4",
+                      getActiveControl() === "source"
+                        ? "bg-instillLightGreen"
+                        : "bg-white"
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      "h-4 w-4",
+                      getActiveControl() === "model"
+                        ? "bg-instillLightGreen"
+                        : "bg-white"
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      "h-4 w-4",
+                      getActiveControl() === "destination"
+                        ? "bg-instillLightGreen"
+                        : "bg-white"
+                    )}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </BlueprintContainer>
       </div>
-    </BlueprintContainer>
+    </>
   );
 };
 
