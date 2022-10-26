@@ -11,6 +11,7 @@ export type VdpArrowBlockProps = {
   color: string;
   zIndex: number;
   width: number;
+  arrowWidth: number;
 };
 
 const VdpArrowBlock = ({
@@ -21,6 +22,7 @@ const VdpArrowBlock = ({
   color,
   zIndex,
   width,
+  arrowWidth,
 }: VdpArrowBlockProps) => {
   return (
     <>
@@ -41,7 +43,7 @@ const VdpArrowBlock = ({
             width: 0;
             height: 0;
             border: 97px solid transparent;
-            border-left: 65px solid ${color};
+            border-left: ${arrowWidth}px solid ${color};
             z-index: ${zIndex};
         
         `}
