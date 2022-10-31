@@ -1,22 +1,27 @@
 import { Nullable } from "@/types/instill";
 import cn from "clsx";
-import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
+import { ElementPosition } from "@instill-ai/design-system";
 import {
   ReactElement,
   useRef,
   useState,
   useEffect,
-  useCallback,
-  useMemo,
+  Dispatch,
+  SetStateAction,
+  useLayoutEffect,
 } from "react";
 import * as d3 from "d3";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { mode } from "d3";
+import { useRefPosition } from "@/hooks/useRefPosition";
+
+import useEmblaCarousel from "embla-carousel-react";
 
 export type ControlPanelProps = {
   source: ReactElement;
   model: ReactElement;
   destination: ReactElement;
+  setCurrentShowcaseFrame: Dispatch<SetStateAction<number>>;
+  activeIndex: number;
   getActiveControl: () => "source" | "destination" | "model";
 };
 
@@ -33,14 +38,35 @@ const ControlPanel = ({
   source,
   model,
   destination,
+  setCurrentShowcaseFrame,
+  activeIndex,
   getActiveControl,
 }: ControlPanelProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sourceRef = useRef<HTMLDivElement>(null);
   const windowSize = useWindowSize();
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const containerPosition = useRefPosition(containerRef, {
+    listenWindowResize: true,
+    additionalDep: activeIndex,
+  });
+
+  const sourceRef = useRef<HTMLDivElement>(null);
+  const sourcePosition = useRefPosition(sourceRef, {
+    listenWindowResize: true,
+    additionalDep: activeIndex,
+  });
+
   const modelRef = useRef<HTMLDivElement>(null);
+  const modelPosition = useRefPosition(modelRef, {
+    listenWindowResize: true,
+    additionalDep: activeIndex,
+  });
+
   const destRef = useRef<HTMLDivElement>(null);
+  const destPosition = useRefPosition(destRef, {
+    listenWindowResize: true,
+    additionalDep: activeIndex,
+  });
 
   const [sourceToModelLineDataset, setSourceToModelLineDataset] =
     useState<Nullable<ConnectionLineDataset>>(null);
@@ -94,34 +120,45 @@ const ControlPanel = ({
       };
     };
 
-    const setLineDataset = () => {
-      const containerPosition = getElementPosition(containerRef.current);
-      const sourcePosition = getElementPosition(sourceRef.current);
-      const modelPosition = getElementPosition(modelRef.current);
-      const destPosition = getElementPosition(destRef.current);
+    if (
+      !sourcePosition ||
+      !modelPosition ||
+      !destPosition ||
+      !containerPosition
+    ) {
+      return;
+    }
 
-      if (windowSize.width < 768) {
-        setSourceToModelLineDataset(null);
-        setModelToDestLineDataset(null);
-        return;
-      }
+    if (
+      sourcePosition.width === 0 ||
+      modelPosition.width === 0 ||
+      destPosition.width === 0 ||
+      containerPosition.width === 0
+    ) {
+      return;
+    }
 
-      setSourceToModelLineDataset(
-        getLineStat(containerPosition, sourcePosition, modelPosition)
-      );
-      setModelToDestLineDataset(
-        getLineStat(containerPosition, modelPosition, destPosition)
-      );
-    };
+    console.log(modelPosition);
 
-    setLineDataset();
+    if (windowSize.width < 768) {
+      setSourceToModelLineDataset(null);
+      setModelToDestLineDataset(null);
+      return;
+    }
 
-    window.addEventListener("resize", setLineDataset);
-
-    return () => {
-      window.removeEventListener("resize", setLineDataset);
-    };
-  }, [windowSize]);
+    setSourceToModelLineDataset(
+      getLineStat(containerPosition, sourcePosition, modelPosition)
+    );
+    setModelToDestLineDataset(
+      getLineStat(containerPosition, modelPosition, destPosition)
+    );
+  }, [
+    windowSize,
+    sourcePosition,
+    modelPosition,
+    destPosition,
+    containerPosition,
+  ]);
 
   useEffect(() => {
     const svg = d3.select(sourceToModelLineSvgRef.current);
@@ -163,7 +200,7 @@ const ControlPanel = ({
         (update) => update,
         (exit) => exit.remove()
       );
-  }, [sourceToModelLineDataset, lineDotR]);
+  }, [sourceToModelLineDataset, lineDotR, activeIndex]);
 
   useEffect(() => {
     const svg = d3.select(modelToDestLineSvgRef.current);
@@ -205,9 +242,44 @@ const ControlPanel = ({
         (update) => update,
         (exit) => exit.remove()
       );
-  }, [modelToDestLineDataset, lineDotR]);
+  }, [modelToDestLineDataset, lineDotR, activeIndex]);
 
-  const mobilePanel = useMemo(() => {
+  const [viewportRef, emblaApi] = useEmblaCarousel();
+
+  useEffect(() => {
+    const onSelect = () => {
+      setCurrentShowcaseFrame(emblaApi.selectedScrollSnap());
+    };
+
+    if (emblaApi) {
+      emblaApi.on("select", onSelect);
+      return () => {
+        emblaApi.off("select", onSelect);
+      };
+    }
+  }, [emblaApi, setCurrentShowcaseFrame]);
+
+  const mobilePanel = () => {
+    if (activeIndex === 3) {
+      return (
+        <div className="embla overflow-y-auto overflow-x-hidden">
+          <div className="embla__viewport w-full" ref={viewportRef}>
+            <div className="embla__container flex gap-x-10">
+              <div className="embla__slide min-width-[240px] flex-33%">
+                {source}
+              </div>
+              <div className="embla__slide min-width-[240px] flex-33%">
+                {model}
+              </div>
+              <div className="embla__slide min-width-[240px] flex-33%">
+                {destination}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <>
         <div
@@ -236,13 +308,13 @@ const ControlPanel = ({
         </div>
       </>
     );
-  }, [getActiveControl]);
+  };
 
   return (
     <>
       <div
         ref={containerRef}
-        className="relative mx-auto hidden h-full flex-col justify-between md:flex"
+        className="relative hidden h-full w-full flex-col justify-between md:flex"
       >
         <div ref={sourceRef}>{source}</div>
         <svg
@@ -280,7 +352,7 @@ const ControlPanel = ({
         />
         <div ref={destRef}>{destination}</div>
       </div>
-      <div className="flex min-h-[150px] w-full md:hidden">{mobilePanel}</div>
+      <div className="flex min-h-[150px] w-full md:hidden">{mobilePanel()}</div>
     </>
   );
 };

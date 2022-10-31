@@ -2,7 +2,7 @@
   "name": "product-website",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev -H localhost -p 3000",
+    "dev": "NODE_OPTIONS='--inspect' next dev -H localhost -p 3010",
     "build": "next build && pnpm run postbuild",
     "lint": "next lint",
     "start": "next start",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@code-hike/mdx": "^0.7.3",
-    "@instill-ai/design-system": "^0.0.127",
+    "@instill-ai/design-system": "^0.0.129-alpha.3",
     "@mailchimp/mailchimp_marketing": "^3.0.72",
     "@react-hook/resize-observer": "^1.2.6",
     "axios": "^0.21.4",
@@ -40,7 +40,8 @@
     "react-markdown": "^7.0.1",
     "react-select": "^5.4.0",
     "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1"
+    "remark-gfm": "^3.0.1",
+    "embla-carousel-react": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

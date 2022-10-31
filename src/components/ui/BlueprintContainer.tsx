@@ -42,9 +42,13 @@ const BlueprintContainer = ({
 }: BlueprintContainerProps) => {
   const svgRef = useRef<Nullable<SVGSVGElement>>(null);
   const parentRef = useRef<Nullable<HTMLDivElement>>(null);
-  const parentDimension = useRefPosition(parentRef);
+  const parentDimension = useRefPosition(parentRef, {
+    listenWindowResize: true,
+  });
   const childrenRef = useRef<Nullable<HTMLDivElement>>(null);
-  const childrenDimension = useRefPosition(childrenRef);
+  const childrenDimension = useRefPosition(childrenRef, {
+    listenWindowResize: true,
+  });
 
   const [lineDataset, setLineDataset] = useState<Nullable<LineData[]>>(null);
 
