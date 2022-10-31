@@ -4,7 +4,6 @@ import {
   SingleSelectOption,
 } from "@instill-ai/design-system";
 import { useCallback, useState } from "react";
-import { Nullable } from "@/types/instill";
 
 export type ControlSelectWrapperProps = {
   customizable: boolean;
@@ -14,6 +13,7 @@ export type ControlSelectWrapperProps = {
   options: SingleSelectOption[];
   onFocus?: () => void;
   minWidth: string;
+  menuPlacement?: "top" | "bottom" | "auto";
 };
 
 const ControlSelectWrapper = ({
@@ -24,6 +24,7 @@ const ControlSelectWrapper = ({
   options,
   onFocus,
   minWidth,
+  menuPlacement,
 }: ControlSelectWrapperProps) => {
   const [selectOption, setSelectOption] = useState<SingleSelectOption>(
     options[0]
@@ -36,6 +37,7 @@ const ControlSelectWrapper = ({
   return (
     <div className={cn("relative w-full", minWidth)}>
       <BasicSingleSelect
+        menuPlacement={menuPlacement ?? "auto"}
         key={id}
         id={id}
         instanceId={id}

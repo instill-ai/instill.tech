@@ -5,7 +5,7 @@ specifiers:
   '@code-hike/mdx': ^0.7.3
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
-  '@instill-ai/design-system': ^0.0.127
+  '@instill-ai/design-system': ^0.0.129-alpha.3
   '@mailchimp/mailchimp_marketing': ^3.0.72
   '@mdx-js/loader': ^2.1.2
   '@mdx-js/react': ^2.1.2
@@ -44,6 +44,7 @@ specifiers:
   clsx: ^1.2.1
   cross-env: ^7.0.3
   d3: ^7.6.1
+  embla-carousel-react: ^6.2.0
   eslint: 7.32.0
   eslint-config-next: 11.1.2
   eslint-plugin-storybook: ^0.6.1
@@ -88,7 +89,7 @@ specifiers:
 
 dependencies:
   '@code-hike/mdx': 0.7.3_react@17.0.2
-  '@instill-ai/design-system': 0.0.127_b4usidsfzquyh4hx4nnzn3lrei
+  '@instill-ai/design-system': 0.0.129-alpha.3_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
   '@react-hook/resize-observer': 1.2.6_react@17.0.2
   axios: 0.21.4
@@ -96,6 +97,7 @@ dependencies:
   clsx: 1.2.1
   cross-env: 7.0.3
   d3: 7.6.1
+  embla-carousel-react: 6.2.0_react@17.0.2
   gray-matter: 4.0.3
   gsap: 3.10.4
   intersection-observer: 0.12.2
@@ -1943,8 +1945,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@instill-ai/design-system/0.0.127_b4usidsfzquyh4hx4nnzn3lrei:
-    resolution: {integrity: sha512-iEroILXFjqhO7nwsuO1HdADzT1dABE+KwRL5l0lWuenAnhrgZeet4Q/n5kgJw5pzCOR6S1U1nD92cZ+VBzIeyA==}
+  /@instill-ai/design-system/0.0.129-alpha.3_b4usidsfzquyh4hx4nnzn3lrei:
+    resolution: {integrity: sha512-O8/4fIiezM144neuwl9v1W44sCq/MlaBEBfuJdkOoxDnCRsl3lUtJn77jRMJ+4J6LElLci/oNx0AwKIhwua+Dw==}
     peerDependencies:
       clsx: ^1.1.1
       react: ^17.0.2
@@ -7489,6 +7491,19 @@ packages:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
     dev: true
+
+  /embla-carousel-react/6.2.0_react@17.0.2:
+    resolution: {integrity: sha512-XshB7pmmhso/fzENefflWw5/N3HqCjO8H5CkzQxuCQqV9w+bvEaBkjUZ6fxfqLUMMSKFWIQvMD6uo9f8oKS+2g==}
+    peerDependencies:
+      react: ^17.0.2
+    dependencies:
+      embla-carousel: 6.2.0
+      react: 17.0.2
+    dev: false
+
+  /embla-carousel/6.2.0:
+    resolution: {integrity: sha512-dSNsiQ7nmSQJZgbYfZCLdzrnznHwpaAcdJFcMRKgm/pjH1doOgxmfsvlMy4VfO4J11hLz8jm/W8WxSSDqfuu4w==}
+    dev: false
 
   /emittery/0.8.1:
     resolution: {integrity: sha512-uDfvUjVrfGJJhymx/kz6prltenw1u7WrCg1oa94zYY8xxVpLLUu045LAT0dhDZdXG58/EpPL/5kA180fQ/qudg==}
