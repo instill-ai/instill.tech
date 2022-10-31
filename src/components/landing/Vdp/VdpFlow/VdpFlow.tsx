@@ -29,7 +29,7 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         setBlocksWidth([baseWidth, baseWidth + 65, baseWidth + 65]);
       } else if (containerWidth < 360) {
         const baseWidth = containerWidth - 65;
-        setArrowWidth(45);
+        setArrowWidth(65);
         setBlocksWidth([baseWidth, baseWidth, baseWidth]);
       } else {
         const baseWidth = containerWidth - 65;

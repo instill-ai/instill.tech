@@ -1,16 +1,38 @@
 import { Nullable } from "@/types/instill";
 import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
 import useResizeObserver from "@react-hook/resize-observer";
-import { MutableRefObject, useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useLayoutEffect, useState } from "react";
 
-export const useRefPosition = (ref: MutableRefObject<HTMLElement>) => {
+type UseRefPositionOption = {
+  listenWindowResize: boolean;
+  additionalDep?: any;
+};
+
+export const useRefPosition = (
+  ref: MutableRefObject<HTMLElement>,
+  option: UseRefPositionOption
+) => {
   const [position, setPosition] = useState<Nullable<ElementPosition>>(null);
 
-  useEffect(() => {
-    if (ref && ref.current) {
-      setPosition(getElementPosition(ref.current));
+  useLayoutEffect(() => {
+    const updatePosition = () => {
+      if (ref && ref.current) {
+        setPosition(getElementPosition(ref.current));
+        console.log(
+          "get new position",
+          ref.current,
+          getElementPosition(ref.current)
+        );
+      }
+    };
+
+    updatePosition();
+
+    if (option.listenWindowResize) {
+      window.addEventListener("resize", updatePosition);
+      return () => window.removeEventListener("resize", updatePosition);
     }
-  }, [ref]);
+  }, [ref, option.additionalDep]);
 
   useResizeObserver(ref, (entry) => {
     setPosition(getElementPosition(entry.target));

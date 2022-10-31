@@ -20,7 +20,8 @@ import {
   PipelineIcon,
 } from "@instill-ai/design-system";
 import cn from "clsx";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+import { useCallback, useEffect, useMemo, useState } from "react";
 import AccordionContentLayout from "./AccordionContentLayout";
 import ControlPanel from "./ControlPanel";
 import ControlPanelItem from "./ControlPanelItem";
@@ -48,9 +49,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         case 3:
           return "destination";
         default:
-          throw new Error("Current frame index out of bound");
+          return "source";
       }
-    } else if (activeIndex === 3) {
     } else {
       switch (currentShowcaseFrame) {
         case 0:
@@ -60,10 +60,13 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         case 2:
           return "destination";
         default:
-          throw new Error("Current frame index out of bound");
+          return "source";
       }
     }
   }, [activeIndex, currentShowcaseFrame]);
+
+  // The key of the ControlPanelItem.controls will affect whether React can
+  // get the correct position.
 
   const controlPanel = useMemo(() => {
     const controlPanelIconStyle = {
@@ -78,6 +81,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         return (
           <ControlPanel
             getActiveControl={getActiveControl}
+            activeIndex={activeIndex}
+            setCurrentShowcaseFrame={setCurrentShowcaseFrame}
             source={
               <ControlPanelItem
                 title="Source"
@@ -178,6 +183,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         return (
           <ControlPanel
             getActiveControl={getActiveControl}
+            activeIndex={activeIndex}
+            setCurrentShowcaseFrame={setCurrentShowcaseFrame}
             source={
               <ControlPanelItem
                 title="Source"
@@ -300,6 +307,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         return (
           <ControlPanel
             getActiveControl={getActiveControl}
+            activeIndex={activeIndex}
+            setCurrentShowcaseFrame={setCurrentShowcaseFrame}
             source={
               <ControlPanelItem
                 title="Source"
@@ -339,8 +348,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 isActive={currentShowcaseFrame === 1}
                 controls={[
                   <ControlSelectWrapper
-                    key="case-study-model-control-0"
-                    id="case-study-model-control-0"
+                    key="case-study-model-control"
+                    id="case-study-model-control"
                     label="Model"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
@@ -399,6 +408,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         return (
           <ControlPanel
             getActiveControl={getActiveControl}
+            activeIndex={activeIndex}
+            setCurrentShowcaseFrame={setCurrentShowcaseFrame}
             source={
               <ControlPanelItem
                 title="Source"
@@ -407,6 +418,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 isActive={currentShowcaseFrame === 0}
                 controls={[
                   <ControlSelectWrapper
+                    menuPlacement="top"
                     key="case-study-source-control"
                     id="case-study-source-control"
                     label="Source"
@@ -414,6 +426,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     customizable={true}
                     isActive={currentShowcaseFrame === 0}
                     onFocus={() => {
+                      console.log("hi");
                       setCurrentShowcaseFrame(0);
                     }}
                     options={[
@@ -452,8 +465,9 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 isActive={currentShowcaseFrame === 1}
                 controls={[
                   <ControlSelectWrapper
-                    key="case-study-model-control-0"
-                    id="case-study-model-control-0"
+                    menuPlacement="top"
+                    key="case-study-model-control"
+                    id="case-study-model-control"
                     label="Model"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
@@ -486,6 +500,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 isActive={currentShowcaseFrame === 2}
                 controls={[
                   <ControlSelectWrapper
+                    menuPlacement="top"
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
@@ -599,7 +614,7 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 source="Camera (IoT)"
                 destination="PostgreSQL"
                 description="Spot unsafe behaviours in real-time to lower 
-            employee health incidents and improve workspace safety."
+                employee health incidents and improve workspace safety."
                 currentFrame={currentShowcaseFrame}
                 showcases={[
                   <ShowcaseImage
@@ -733,8 +748,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 currentFrame={currentShowcaseFrame}
                 showcases={[
                   <div
-                    key="case-study-custom"
-                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                    key="case-study-custom-0"
+                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
                   >
                     <DataSourceIcon
                       width="w-[226px]"
@@ -744,8 +759,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     />
                   </div>,
                   <div
-                    key="case-study-custom"
-                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                    key="case-study-custom-1"
+                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
                   >
                     <ModelIcon
                       width="w-[226px]"
@@ -755,8 +770,8 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     />
                   </div>,
                   <div
-                    key="case-study-custom"
-                    className="ml-auto flex h-[355px] min-w-[336px] bg-[#268398]"
+                    key="case-study-custom-2"
+                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
                   >
                     <DataDestinationIcon
                       width="w-[226px]"
@@ -787,16 +802,16 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     }
   }, [activeIndex]);
 
-  useInterval(() => {
-    if (activeIndex === 3) return;
-    setCurrentShowcaseFrame((prev) => {
-      if (prev + 1 <= showcaseMaxFrame) {
-        return prev + 1;
-      } else {
-        return 0;
-      }
-    });
-  }, 1500);
+  // useInterval(() => {
+  //   if (activeIndex === 3) return;
+  //   setCurrentShowcaseFrame((prev) => {
+  //     if (prev + 1 <= showcaseMaxFrame) {
+  //       return prev + 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   });
+  // }, 1500);
 
   return (
     <>
@@ -826,36 +841,32 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           <div className="flex w-full flex-col">
             <div className="mx-auto w-full px-[30px]">{controlPanel}</div>
             <div className="flex w-full bg-instillGrey90 bg-opacity-60 py-5">
-              {activeIndex === 3 ? (
-                <></>
-              ) : (
-                <div className="mx-auto flex flex-row gap-x-[30px]">
-                  <div
-                    className={cn(
-                      "h-4 w-4",
-                      getActiveControl() === "source"
-                        ? "bg-instillLightGreen"
-                        : "bg-white"
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      "h-4 w-4",
-                      getActiveControl() === "model"
-                        ? "bg-instillLightGreen"
-                        : "bg-white"
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      "h-4 w-4",
-                      getActiveControl() === "destination"
-                        ? "bg-instillLightGreen"
-                        : "bg-white"
-                    )}
-                  />
-                </div>
-              )}
+              <div className="mx-auto flex flex-row gap-x-[30px]">
+                <div
+                  className={cn(
+                    "h-4 w-4",
+                    getActiveControl() === "source"
+                      ? "bg-instillLightGreen"
+                      : "bg-white"
+                  )}
+                />
+                <div
+                  className={cn(
+                    "h-4 w-4",
+                    getActiveControl() === "model"
+                      ? "bg-instillLightGreen"
+                      : "bg-white"
+                  )}
+                />
+                <div
+                  className={cn(
+                    "h-4 w-4",
+                    getActiveControl() === "destination"
+                      ? "bg-instillLightGreen"
+                      : "bg-white"
+                  )}
+                />
+              </div>
             </div>
           </div>
         </BlueprintContainer>

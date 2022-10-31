@@ -47,6 +47,7 @@ const Faq = ({ marginBottom }: FaqProps) => {
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
             enableHeaderIcon={true}
+            headerIconColor="fill-black"
             itemGapY="gap-y-2.5"
             items={[
               {
