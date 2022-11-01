@@ -1,8 +1,10 @@
 import cn from "clsx";
 import Image from "next/future/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+
 import { LearnMoreButton } from "@/components/ui";
 import SectionLabel from "./SectionLabel";
+import { useRefPosition } from "@/hooks/useRefPosition";
 
 export type NoCodeInterfaceProps = {
   marginBottom?: string;
@@ -10,24 +12,14 @@ export type NoCodeInterfaceProps = {
 
 const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
-
-  useEffect(() => {
-    const updateContainerWidth = () => {
-      setContainerWidth(containerRef.current.offsetWidth);
-    };
-
-    updateContainerWidth();
-    window.addEventListener("resize", updateContainerWidth);
-    return () => {
-      window.removeEventListener("resize", updateContainerWidth);
-    };
-  }, []);
+  const containerDimension = useRefPosition(containerRef, {
+    listenWindowResize: true,
+  });
 
   return (
     <div ref={containerRef} className={cn("flex flex-col", marginBottom)}>
       <SectionLabel text="No-code interface" position="mr-auto mb-2.5" />
-      <div className="mb-10 flex flex-col xl:flex-row">
+      <div className="mb-10 flex flex-col xl:flex-row xl:gap-x-10">
         <h2 className="mb-5 w-full font-mono text-4xl font-medium text-instillGrey90 xl:mb-0 xl:w-1/2">
           Unify all your visual data pipelines in one place
         </h2>
@@ -44,8 +36,8 @@ const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
       </div>
       <Image
         src="/images/no-code-interface.png"
-        width={containerWidth}
-        height={containerWidth * 0.54}
+        width={containerDimension ? containerDimension.width : 0}
+        height={containerDimension ? containerDimension.width * 0.54 : 0}
         sizes="100vw"
         alt="The console screenshot of VDP"
       />

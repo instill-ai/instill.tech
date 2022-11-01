@@ -68,13 +68,10 @@ const HomePage: FC & {
           <NoCodeInterface marginBottom="mb-20" />
         </div>
 
-        <div className="flex flex-col bg-white">
-          <div className="mx-auto flex max-w-[1127px] flex-col">
-            <Community marginBottom="mb-[60px]" />
-          </div>
-        </div>
-
         <div className="bg-instillGrey90">
+          <div className="mx-auto flex max-w-[1127px] flex-col py-10 px-4 xl:py-20 xl:px-0">
+            <Community />
+          </div>
           <CaseStudy />
         </div>
 
