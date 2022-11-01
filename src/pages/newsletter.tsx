@@ -103,43 +103,46 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
 } = ({ campaigns }) => {
   return (
     <>
+      <style jsx>{`
+        .newsletter-block {
+          box-shadow: 20px 20px 0px #23c4e7;
+        }
+      `}
+      </style>
       <PageHead
         pageTitle="Newsletter Archive | Instill AI"
         pageDescription="Instill AI newsletter archive"
         pageType="main"
       />
-      <ContentContainer>
-        <div className="mb-20 flex max-w-[800px] flex-col px-5 pt-[100px] pb-[60px] md:mx-auto md:px-0">
-          <h1 className="instill-text-h1 mb-5 text-center text-instillGrey05">
+      <div className="mx-auto w-full max-w-[800px] px-8 md:px-10 xl:w-8/12 xl:px-0">
+        <div className="flex w-full flex-col px-5 pt-[100px] pb-[60px] md:px-0 xl:mb-[180px]">
+          <h1 className="mb-5 text-left text-3xl font-semibold uppercase text-instillSkyBlue md:text-[64px]">
             Newsletter
           </h1>
-          <h3 className="instill-text-h3-light mb-[60px] text-center text-instillGrey05">
+          <h3 className=" mb-[60px] text-left text-lg font-light text-instillGrey90">
             Get the latest news from Instill AI: open source updates, community
             highlights, blog posts, useful tutorials and more!
           </h3>
-          <SubscribeNewsletterForm
-            width="w-full max-w-[552px]"
-            position="mx-auto"
-          />
+          <SubscribeNewsletterForm width="w-full" position="mx-auto" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="mx-auto mb-[60px] w-full max-w-[800px] border-t border-b border-instillGrey70 py-2.5 text-instillGrey15">
-                {`Issued on ${new Date(campaign.sendTime)
+              <div className="mr-auto mb-5 bg-instillLightGreen py-[5px] px-2.5">
+                {`${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
                   .slice(1)
                   .join(" ")}`}
               </div>
               <div
-                className="mailchimp-archive mx-auto mb-[120px]"
+                className="newsletter-block mb-[120px] w-full bg-instillGrey05 py-10 px-4 md:px-10"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
             </Fragment>
           ))}
         </div>
-      </ContentContainer>
+      </div>
     </>
   );
 };

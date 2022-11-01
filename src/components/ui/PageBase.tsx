@@ -12,7 +12,7 @@ export type PageBaseProps = {
 
 const PageBase = ({ children }: PageBaseProps) => {
   return (
-    <div className="flex min-h-screen flex-col bg-instillGrey95">
+    <div className="flex min-h-screen flex-col bg-white">
       <Nav />
       <div className="flex flex-1 flex-col">{children}</div>
       <Footer />
