@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
-import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 import Link from "next/link";
+import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
@@ -47,7 +47,7 @@ const Nav = () => {
           </p>
         </AnnouncementBar>
       )}
-      <div className="mx-auto flex max-w-[1440px] flex-row py-5 px-[30px] ">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
         <Link href="/">
           <a className="my-auto mr-auto flex">
             <Logo type="ColourLogomarkBlackType" width={158} />
@@ -121,7 +121,7 @@ const Nav = () => {
       className="flex w-full flex-col bg-white lg:sticky lg:top-0 lg:z-50"
     >
       <div className="flex w-full flex-col">
-        <div className="hidden w-full lg:flex lg:flex-row">{desktopView}</div>
+        <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>
         <div
           className={cn(
             "flex h-full w-full flex-col lg:hidden",
