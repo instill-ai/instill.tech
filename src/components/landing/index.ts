@@ -3,7 +3,6 @@ import Hero from "./Hero";
 import { HeroProps } from "./Hero";
 import InstillCloud from "./InstillCloud";
 import Community from "./Community";
-import { CommunityProps } from "./Community";
 import Faq from "./Faq/Faq";
 import { FaqProps } from "./Faq/Faq";
 import CodeShowcase from "./CodeShowcase";
@@ -16,12 +15,15 @@ import NoCodeInterface from "./NoCodeInterface";
 import type { NoCodeInterfaceProps } from "./NoCodeInterface";
 import CaseStudy from "./CaseStudy";
 import type { CaseStudyProps } from "./CaseStudy";
+import FaqHeader from "./FaqHeader";
+import { FaqHeaderProps } from "./FaqHeader";
 
 export {
   Features,
   Hero,
   InstillCloud,
   Community,
+  FaqHeader,
   Faq,
   CodeShowcase,
   Vdp,
@@ -31,7 +33,7 @@ export {
 };
 export type {
   HeroProps,
-  CommunityProps,
+  FaqHeaderProps,
   FaqProps,
   CodeShowcaseProps,
   VdpProps,

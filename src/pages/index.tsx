@@ -11,26 +11,8 @@ import {
   NoCodeInterface,
   Vdp,
 } from "@/components/landing";
-import {
-  PageBase,
-  ContentContainer,
-  PageHead,
-  SecureYourSpotProps,
-  StayInTheLoopProps,
-} from "@/components/ui";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-
-const Features = dynamic(() =>
-  import("@/components/landing").then((mod) => mod.Features)
-);
-
-const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/ui").then((mod) => mod.StayInTheLoop)
-);
-
-const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
-  import("@/components/ui").then((mod) => mod.SecureYourSpot)
-);
+import { PageBase, PageHead } from "@/components/ui";
+import { FaqHeader } from "@/components/landing";
 
 const CaseStudy = dynamic<CaseStudyProps>(() =>
   import("@/components/landing").then((mod) => mod.CaseStudy)
@@ -74,8 +56,12 @@ const HomePage: FC & {
           </div>
           <CaseStudy />
         </div>
-
-        <Faq />
+        <div className="mb-20 flex w-full flex-col bg-white">
+          <FaqHeader marginBottom="mb-20" />
+          <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
+            <Faq />
+          </div>
+        </div>
 
         <InstillCloud />
       </div>
