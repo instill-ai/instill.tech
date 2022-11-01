@@ -23,12 +23,7 @@ const ContentContainer = ({
         marginBottom
       )}
     >
-      <div
-        className={cn(
-          "mx-auto flex flex-col",
-          contentMaxWidth ? contentMaxWidth : "w-full"
-        )}
-      >
+      <div className={cn("mx-auto flex w-full flex-col", contentMaxWidth)}>
         {children}
       </div>
     </div>
