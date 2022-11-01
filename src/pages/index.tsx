@@ -64,7 +64,7 @@ const HomePage: FC & {
         pageDescription="Empower modern data stack, tapping the value of unstructured visual data with our open source community."
         pageType="main"
       />
-      <div className="flex flex-col bg-white">
+      <div className="flex flex-col">
         <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
           <Vdp marginBottom="mb-20" />
@@ -78,7 +78,7 @@ const HomePage: FC & {
           </div>
           <CaseStudy />
         </div>
-        <div className="mb-20 flex w-full flex-col bg-white">
+        <div className="mb-20 flex w-full flex-col">
           <FaqHeader marginBottom="mb-20" />
           <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
             <Faq />
