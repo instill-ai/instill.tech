@@ -153,9 +153,7 @@ const AboutPage: FC<AboutPageProps> & {
         </div>
         <OurMembers members={members} marginBottom="mb-10" />
         <div ref={secureYourSpotRef}>
-          {loadSecureYourSpot && (
-            <SecureYourSpot bgColor="black" layout="main" />
-          )}
+          {loadSecureYourSpot && <SecureYourSpot />}
         </div>
         <div className="mb-20" ref={stayInTheLoopRef}>
           {loadStayInTheLoop && <StayInTheLoop />}

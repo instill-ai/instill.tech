@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import SectionLabel from "../SectionLabel";
 import FaqContent from "./FaqContent";
-import FaqText from "./FaqText";
 
 export type FaqProps = {
   marginBottom?: string;
@@ -27,10 +26,6 @@ const Faq = ({ marginBottom }: FaqProps) => {
 
   return (
     <div className={cn("flex w-full flex-col", marginBottom)}>
-      <div className="relative mb-20 w-full">
-        <FaqText width="sm:w-10/12 md:w-8/12 xl:w-6/12" />
-        <div className="absolute top-0 left-0 right-0 h-8 bg-instillGrey90 md:h-20" />
-      </div>
       <div className="flex flex-col gap-y-10 md:flex-row md:gap-y-0 md:gap-x-10">
         <div className="flex w-full flex-col md:w-1/3">
           <SectionLabel text="Got a question?" position="mr-auto mb-2.5" />
