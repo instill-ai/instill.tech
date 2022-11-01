@@ -1,18 +1,20 @@
-import { FC, ReactElement, useCallback, useRef } from "react";
+import { FC, ReactElement, Suspense, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
 import {
   CaseStudyProps,
-  Community,
+  FaqHeaderProps,
   FaqProps,
   Hero,
-  HowItWorks,
-  InstillCloud,
-  NoCodeInterface,
-  Vdp,
+  HowItWorksProps,
+  NoCodeInterfaceProps,
+  VdpProps,
 } from "@/components/landing";
 import { PageBase, PageHead } from "@/components/ui";
-import { FaqHeader } from "@/components/landing";
+
+const FaqHeader = dynamic<FaqHeaderProps>(() =>
+  import("@/components/landing").then((mod) => mod.FaqHeader)
+);
 
 const CaseStudy = dynamic<CaseStudyProps>(() =>
   import("@/components/landing").then((mod) => mod.CaseStudy)
@@ -20,6 +22,26 @@ const CaseStudy = dynamic<CaseStudyProps>(() =>
 
 const Faq = dynamic<FaqProps>(() =>
   import("@/components/landing").then((mod) => mod.Faq)
+);
+
+const Vdp = dynamic<VdpProps>(() =>
+  import("@/components/landing").then((mod) => mod.Vdp)
+);
+
+const NoCodeInterface = dynamic<NoCodeInterfaceProps>(() =>
+  import("@/components/landing").then((mod) => mod.NoCodeInterface)
+);
+
+const HowItWorks = dynamic<HowItWorksProps>(() =>
+  import("@/components/landing").then((mod) => mod.HowItWorks)
+);
+
+const InstillCloud = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.InstillCloud)
+);
+
+const Community = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.Community)
 );
 
 interface GetLayOutProps {
