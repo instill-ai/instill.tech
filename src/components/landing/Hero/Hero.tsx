@@ -14,8 +14,8 @@ export type HeroProps = {
 
 const Hero = ({ scrollHandler }: HeroProps) => {
   return (
-    <div className="flex flex-col justify-center gap-y-10 px-4 md:min-h-[90vh] xl:px-0">
-      <div className="mb-20 flex flex-col-reverse xl:flex-row xl:gap-y-0">
+    <div className="flex min-h-[90vh] flex-col justify-center px-4 xl:px-0">
+      <div className="flex flex-col-reverse md:mb-[120px] xl:flex-row xl:gap-y-0 xl:gap-x-12">
         <div className="flex flex-col md:my-auto xl:w-[57%]">
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-10" />
@@ -24,11 +24,13 @@ const Hero = ({ scrollHandler }: HeroProps) => {
             <DiscordCtaButton />
           </div>
         </div>
-        <div className="mb-5 xl:my-auto xl:w-[43%]">
+        <div className="mb-20 xl:my-auto xl:mb-0 xl:w-[43%]">
           <HeroAnimation />
         </div>
       </div>
-      <ExploreMoreScrollButton scrollHandler={scrollHandler} />
+      <div className="hidden xl:flex">
+        <ExploreMoreScrollButton scrollHandler={scrollHandler} />
+      </div>
     </div>
   );
 };

@@ -1,14 +1,9 @@
-import cn from "clsx";
 import SectionLabel from "../SectionLabel";
 import CommunityBlock from "./CommunityBlock";
 
-export type CommunityProps = {
-  marginBottom?: string;
-};
-
-const Community = ({ marginBottom }: CommunityProps) => {
+const Community = () => {
   return (
-    <div className={cn("flex flex-col bg-instillGrey90 p-10", marginBottom)}>
+    <div className="flex flex-col bg-instillGrey90">
       <div className="mb-10 flex flex-col xl:mb-[200px]">
         <SectionLabel
           text="follow us"

@@ -414,7 +414,7 @@ const HeroAnimation = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 838 638"
         fill="none"
-        className="m-auto w-full max:w-[475px]"
+        className="m-auto w-full max-w-[475px]"
       >
         <g id="Outline" ref={cube}>
           <g id="Cube D">

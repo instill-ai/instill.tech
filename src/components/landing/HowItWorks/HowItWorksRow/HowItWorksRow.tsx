@@ -28,7 +28,7 @@ const HowItWorksRow = ({
         type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
       )}
     >
-      <div className="mt-20 flex flex-row gap-x-10 xl:mb-0 xl:h-[360px] xl:w-7/12">
+      <div className="mt-20 flex flex-col gap-y-10 xl:mt-0 xl:h-[360px] xl:w-7/12 xs:flex-row xs:gap-y-0 xs:gap-x-10">
         <div>
           <NumberCube number={number} />
         </div>
