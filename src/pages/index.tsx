@@ -61,10 +61,8 @@ const HomePage: FC & {
         pageType="main"
       />
       <div className="flex flex-col bg-white">
-        <ContentContainer contentMaxWidth="max-w-[1127px]">
-          <Hero scrollHandler={scrollHandler} />
-        </ContentContainer>
         <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
+          <Hero scrollHandler={scrollHandler} />
           <Vdp marginBottom="mb-20" />
           <HowItWorks marginBottom="mb-20" />
           <NoCodeInterface marginBottom="mb-20" />
