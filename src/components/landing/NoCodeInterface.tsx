@@ -3,7 +3,7 @@ import Image from "next/future/image";
 import { useRef } from "react";
 
 import { LearnMoreButton } from "@/components/ui";
-import SectionLabel from "./SectionLabel";
+import { SectionLabel } from "@/components/ui";
 import { useRefPosition } from "@/hooks/useRefPosition";
 
 export type NoCodeInterfaceProps = {

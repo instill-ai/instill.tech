@@ -4,7 +4,7 @@ import cn from "clsx";
 
 import { useRefPosition } from "@/hooks/useRefPosition";
 import Image from "next/future/image";
-import SectionLabel from "../SectionLabel";
+import { SectionLabel } from "@/components/ui";
 import VdpFlow from "./VdpFlow";
 
 export type VdpProps = {

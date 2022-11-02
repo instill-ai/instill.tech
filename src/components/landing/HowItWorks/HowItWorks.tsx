@@ -1,4 +1,4 @@
-import { Nullable } from "@/types/instill";
+import cn from "clsx";
 import {
   AirbyteIcon,
   AsyncArrowsIcon,
@@ -17,9 +17,8 @@ import {
   SyncIcon,
   TensorFlowIcon,
 } from "@instill-ai/design-system";
-import cn from "clsx";
-import { useEffect, useRef, useState } from "react";
-import SectionLabel from "../SectionLabel";
+
+import { SectionLabel } from "@/components/ui";
 import HowItWorksRow from "./HowItWorksRow";
 
 export type HowItWorksProps = {

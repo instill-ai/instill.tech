@@ -6,7 +6,11 @@ export type SectionLabelProps = {
   marginBottom?: string;
 };
 
-const SectionLabel = ({ text, position, marginBottom }: SectionLabelProps) => {
+export const SectionLabel = ({
+  text,
+  position,
+  marginBottom,
+}: SectionLabelProps) => {
   return (
     <div
       className={cn(
@@ -21,5 +25,3 @@ const SectionLabel = ({ text, position, marginBottom }: SectionLabelProps) => {
     </div>
   );
 };
-
-export default SectionLabel;
