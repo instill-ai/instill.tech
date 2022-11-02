@@ -3,17 +3,16 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { CareerPositionDetailsSection } from "@/components/career";
+import { PositionDetails } from "@/components/career";
 
 import {
   BackToPreviousPageLink,
-  ContentContainer,
   PageBase,
   PageHead,
   StayInTheLoopProps,
 } from "@/components/ui";
 
-import { PositionDetails } from "@/types/instill";
+import { PositionInfo } from "@/types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   ClickUpTask,
@@ -83,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export type CareerPositionPageProps = {
-  position: PositionDetails;
+  position: PositionInfo;
 };
 
 type GetLayOutProps = {
@@ -125,12 +124,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         <div className="my-10 flex px-4 xl:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
-
-        <CareerPositionDetailsSection
-          position={position}
-          marginBottom="mb-20 md:mb-40"
-        />
-
+        <PositionDetails position={position} marginBottom="mb-20 md:mb-40" />
         <div
           className="mb-20 flex px-4 md:mb-40 xl:px-0"
           ref={stayInTheLoopRef}

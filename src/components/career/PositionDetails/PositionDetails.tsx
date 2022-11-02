@@ -1,17 +1,17 @@
-import { PositionDetails } from "@/types/instill";
 import cn from "clsx";
-import PositionInfo from "./PositionInfo";
+import { PositionInfo } from "@/types/instill";
+import { PositionInfoBlock } from "./PositionInfoBlock";
 import PositionDescription from "./PositionDescription";
 
-export type CareerPositionDetailsSectionProps = {
+export type PositionDetailsProps = {
   marginBottom: string;
-  position: PositionDetails;
+  position: PositionInfo;
 };
 
-const CareerPositionDetailsSection = ({
+export const PositionDetails = ({
   marginBottom,
   position,
-}: CareerPositionDetailsSectionProps) => {
+}: PositionDetailsProps) => {
   return (
     <div
       className={cn(
@@ -19,7 +19,7 @@ const CareerPositionDetailsSection = ({
         marginBottom
       )}
     >
-      <PositionInfo
+      <PositionInfoBlock
         padding="px-4 xl:px-0"
         width="xl:w-4/12"
         position={position}
@@ -32,5 +32,3 @@ const CareerPositionDetailsSection = ({
     </div>
   );
 };
-
-export default CareerPositionDetailsSection;

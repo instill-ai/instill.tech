@@ -1,4 +1,4 @@
-import { PositionDetails } from "@/types/instill";
+import { PositionInfo } from "@/types/instill";
 import * as classNames from "classnames";
 import ShareThisPosition from "./ShareThisPosition";
 import {
@@ -7,13 +7,17 @@ import {
   ToolboxIcon,
 } from "@instill-ai/design-system";
 
-export type PositionInfoProps = {
-  position: PositionDetails;
+export type PositionInfoBlockProps = {
+  position: PositionInfo;
   padding?: string;
   width?: string;
 };
 
-const PositionInfo = ({ position, padding, width }: PositionInfoProps) => {
+export const PositionInfoBlock = ({
+  position,
+  padding,
+  width,
+}: PositionInfoBlockProps) => {
   return (
     <div className={classNames.default("flex flex-col", padding, width)}>
       <h2 className="mb-10 text-instillGrey90 text-instill-h2">
@@ -74,5 +78,3 @@ const PositionInfo = ({ position, padding, width }: PositionInfoProps) => {
     </div>
   );
 };
-
-export default PositionInfo;
