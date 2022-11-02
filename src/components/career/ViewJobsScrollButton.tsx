@@ -1,4 +1,8 @@
-import { SolidButton, SolidButtonProps } from "@instill-ai/design-system";
+import {
+  ArrowRightIcon,
+  SolidButton,
+  SolidButtonProps,
+} from "@instill-ai/design-system";
 
 export type ViewJobsScrollButtonProps = {
   /** This function will scroll pageView to targetRef
@@ -24,10 +28,19 @@ const ViewJobsScrollButton = ({
     <SolidButton
       position={position}
       onClickHandler={scrollHandler}
-      color="primary"
+      color="primaryLight"
       type="button"
+      itemGapX="gap-x-5"
+      endIcon={
+        <ArrowRightIcon
+          width="w-[28px]"
+          height="h-[28px]"
+          color="fill-instillSkyBlue"
+          position="my-auto"
+        />
+      }
     >
-      <p className="my-auto">View Jobs</p>
+      <p className="my-auto text-2xl">View Jobs</p>
     </SolidButton>
   );
 };

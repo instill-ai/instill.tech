@@ -1,18 +1,15 @@
-import CareerGeneralIntro from "./CareerGeneralIntro";
+import { CareerGeneralIntro } from "./CareerGeneralIntro";
 import CareerHero from "./CareerHero";
 import { CareerPositionDetailsSection } from "./CareerPositionDetailsSection";
 import type { CareerPositionDetailsSectionProps } from "./CareerPositionDetailsSection";
-import { CareerPositionListSection } from "./CareerPositionListSection";
-import type { CareerPositionListSectionProps } from "./CareerPositionListSection";
+import { CareerPositionList } from "./CareerPositionList";
+import type { CareerPositionListProps } from "./CareerPositionList";
 
 export {
   CareerGeneralIntro,
   CareerHero,
   CareerPositionDetailsSection,
-  CareerPositionListSection,
+  CareerPositionList,
 };
 
-export type {
-  CareerPositionDetailsSectionProps,
-  CareerPositionListSectionProps,
-};
+export type { CareerPositionDetailsSectionProps, CareerPositionListProps };

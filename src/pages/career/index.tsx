@@ -17,7 +17,7 @@ import {
 import {
   CareerGeneralIntro,
   CareerHero,
-  CareerPositionListSectionProps,
+  CareerPositionListProps,
 } from "@/components/career";
 import { useOnScreen } from "@/hooks/useOnScreen";
 import { PositionDetails } from "@/types/instill";
@@ -27,8 +27,8 @@ import {
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
 
-const CareerPositionListSection = dynamic<CareerPositionListSectionProps>(() =>
-  import("@/components/career").then((mod) => mod.CareerPositionListSection)
+const CareerPositionList = dynamic<CareerPositionListProps>(() =>
+  import("@/components/career").then((mod) => mod.CareerPositionList)
 );
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
@@ -114,24 +114,22 @@ const CareerPage: FC<CareerPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <ContentContainer contentMaxWidth="max-w-[1127px]">
+      <div className="mx-auto flex max-w-[1127px] flex-col">
         <CareerHero
           viewJobsScrollHandler={scrollHandler}
-          marginBottom="mb-10"
+          marginBottom="md:mb-[150px]"
         />
         <CareerGeneralIntro />
-        <div className="flex w-full" ref={openPositionsRef}>
-          {loadOpenPositions && (
-            <CareerPositionListSection
-              marginBottom="mb-[100px]"
-              positions={positions}
-            />
-          )}
+        <div className="mb-20 flex w-full md:mb-40" ref={openPositionsRef}>
+          {loadOpenPositions && <CareerPositionList positions={positions} />}
         </div>
-        <div className="flex" ref={stayInTheLoopRef}>
+        <div
+          className="mb-20 flex px-4 md:mb-40 md:px-0"
+          ref={stayInTheLoopRef}
+        >
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
-      </ContentContainer>
+      </div>
     </>
   );
 };

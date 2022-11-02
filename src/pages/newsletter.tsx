@@ -103,12 +103,6 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
 } = ({ campaigns }) => {
   return (
     <>
-      <style jsx>{`
-        .newsletter-block {
-          box-shadow: 20px 20px 0px #23c4e7;
-        }
-      `}
-      </style>
       <PageHead
         pageTitle="Newsletter Archive | Instill AI"
         pageDescription="Instill AI newsletter archive"
@@ -136,7 +130,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
                   .join(" ")}`}
               </div>
               <div
-                className="newsletter-block mb-[120px] w-full bg-instillGrey05 py-10 px-4 md:px-10"
+                className="mb-[120px] w-full bg-instillGrey05 py-10 px-4 shadow-instill-solid-20 md:px-10"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
             </Fragment>
