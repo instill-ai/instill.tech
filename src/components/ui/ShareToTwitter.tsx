@@ -6,9 +6,16 @@ export type ShareToTwitterProps = {
 
   /** Text you want to add into sharing post */
   text?: string;
+  color: string;
+  position?: string;
 };
 
-const ShareToTwitter = ({ url, text }: ShareToTwitterProps) => {
+export const ShareToTwitter = ({
+  url,
+  text,
+  color,
+  position,
+}: ShareToTwitterProps) => {
   return (
     <a
       className="flex"
@@ -21,13 +28,11 @@ const ShareToTwitter = ({ url, text }: ShareToTwitterProps) => {
       rel="noopener noreferrer"
     >
       <TwitterIcon
-        width="w-[15px]"
-        height="h-[15px]"
-        color="fill-instillGrey30 hover:fill-instillGrey05"
-        position="my-auto"
+        width="w-[30px]"
+        height="h-[30px]"
+        color={color}
+        position={position ?? "my-auto"}
       />
     </a>
   );
 };
-
-export default ShareToTwitter;

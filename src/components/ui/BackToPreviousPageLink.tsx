@@ -9,14 +9,14 @@ export type BackToPreviousPageLinkProps = {
 const BackToPreviousPageLink = ({ url }: BackToPreviousPageLinkProps) => {
   return (
     <Link href={url}>
-      <a className="flex flex-row gap-x-5 group">
+      <a className="group flex flex-row gap-x-5">
         <ArrowLeftIcon
-          width="w-[15px]"
-          height="h-[15px]"
-          color="fill-instillGrey30 group-hover:fill-instillGrey05"
+          width="w-5"
+          height="h-5"
+          color="fill-instillGrey50 group-hover:fill-instillGrey90"
           position="my-auto"
         />
-        <p className="instill-text-body text-instillGrey30 group-hover:text-instillGrey05">
+        <p className="text-instill-body text-instillGrey50 group-hover:text-instillGrey90">
           Back
         </p>
       </a>
