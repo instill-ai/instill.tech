@@ -2,9 +2,15 @@ import { LinkedInIcon } from "@instill-ai/design-system";
 
 export type ShareToLinkedInProps = {
   url: string;
+  color: string;
+  position?: string;
 };
 
-const ShareToLinkedIn = ({ url }: ShareToLinkedInProps) => {
+export const ShareToLinkedIn = ({
+  url,
+  color,
+  position,
+}: ShareToLinkedInProps) => {
   return (
     <a
       className="flex"
@@ -13,13 +19,11 @@ const ShareToLinkedIn = ({ url }: ShareToLinkedInProps) => {
       rel="noopener noreferrer"
     >
       <LinkedInIcon
-        width="w-[15px]"
-        height="h-[15px]"
-        color="fill-instillGrey30 hover:fill-instillGrey05"
-        position="my-auto"
+        width="w-[30px]"
+        height="h-[30px]"
+        color={color}
+        position={position ?? "my-auto"}
       />
     </a>
   );
 };
-
-export default ShareToLinkedIn;

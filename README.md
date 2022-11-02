@@ -6,6 +6,10 @@ This repository maintains the Instill AI product website and VDP documentation.
 1. Clone the github
 2. `pnpm install`
 
+### Reminder
+
+1. We only have singular major breakpoint right now: xl: (1127px)
+
 ## Build up next app
 ```bash
 pnpm run dev

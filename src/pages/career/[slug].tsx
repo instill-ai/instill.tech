@@ -121,20 +121,23 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <ContentContainer contentMaxWidth="max-w-[1127px]">
-        <div className="my-10 flex px-4 md:px-0">
+      <div className="mx-auto flex max-w-[1127px] flex-col">
+        <div className="my-10 flex px-4 xl:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
 
         <CareerPositionDetailsSection
           position={position}
-          marginBottom="mb-[100px]"
+          marginBottom="mb-20 md:mb-40"
         />
 
-        <div className="mb-20 flex" ref={stayInTheLoopRef}>
+        <div
+          className="mb-20 flex px-4 md:mb-40 xl:px-0"
+          ref={stayInTheLoopRef}
+        >
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
-      </ContentContainer>
+      </div>
     </>
   );
 };
