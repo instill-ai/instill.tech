@@ -1,4 +1,4 @@
-export type PositionDetails = {
+export type PositionInfo = {
   id: string;
   slug: string;
   name: string;
