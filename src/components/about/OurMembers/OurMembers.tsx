@@ -21,9 +21,10 @@ import {
 export type OurMembersProps = {
   members: MemberDetails[];
   marginBottom?: string;
+  width: string;
 };
 
-const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
+const OurMembers = ({ members, marginBottom, width }: OurMembersProps) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
     useState<string>(null);
@@ -123,10 +124,14 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
 
   return (
     <div
-      className={cn("flex flex-col px-4 pt-10 md:px-0", {
-        "pb-4": !targerMember,
+      className={cn(
+        "flex flex-col bg-instillGrey90 px-4 pt-10 md:px-0",
+        {
+          "pb-4": !targerMember,
+        },
         marginBottom,
-      })}
+        width
+      )}
     >
       <div className="mb-10 flex flex-col">
         <h2 className="instill-text-h2 mb-5 text-instillGrey05">Our Member</h2>

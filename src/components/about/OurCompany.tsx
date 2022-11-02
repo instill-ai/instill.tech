@@ -1,6 +1,6 @@
 import cn from "clsx";
 
-import SectionLabel from "../landing/SectionLabel";
+import { SectionLabel } from "@/components/ui";
 
 export type OurCompanyProps = {
   marginBottom?: string;
@@ -10,7 +10,7 @@ export const OurCompany = ({ marginBottom }: OurCompanyProps) => {
   return (
     <div
       className={cn(
-        "flex w-full flex-col bg-instillGrey05 p-10 shadow-instill-solid-20",
+        "flex w-full flex-col bg-instillGrey05 p-10 shadow-instill-solid-10 xl:shadow-instill-solid-20",
         marginBottom
       )}
     >
@@ -19,7 +19,7 @@ export const OurCompany = ({ marginBottom }: OurCompanyProps) => {
         position="mr-auto"
         marginBottom="mb-2.5"
       />
-      <h2 className="mb-10 font-mono text-[28px] font-medium">Our company</h2>
+      <h2 className="mb-10 font-mono text-[28px] font-medium">Our Company</h2>
       <p className="mb-10 text-instillGrey95 text-instill-body-normal">
         Instill AI, founded in 2020 (June 11th 2020, to be more specific),
         provides no-/low-code tools to convert unstructured visual data to

@@ -38,6 +38,8 @@ import SubscribeNewsletterForm from "./SubscribeNewsletterForm";
 import type { SubscribeNewsletterFormProps } from "./SubscribeNewsletterForm";
 import { SectionLabel } from "./SectionLabel";
 import type { SectionLabelProps } from "./SectionLabel";
+import { NumberCube } from "./NumberCube";
+import type { NumberCubeProps } from "./NumberCube";
 
 export {
   AnnouncementBar,
@@ -64,6 +66,7 @@ export {
   StayInTheLoop,
   ReactMarkdownWrapper,
   SectionLabel,
+  NumberCube,
 };
 
 export type {
@@ -83,4 +86,5 @@ export type {
   ReactMarkdownWrapperProps,
   LearnMoreButtonProps,
   SectionLabelProps,
+  NumberCubeProps,
 };

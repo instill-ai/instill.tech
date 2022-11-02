@@ -11,14 +11,13 @@ export type SecureYourSpotProps = {
 const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
   const router = useRouter();
   return (
-    <div
-      className={cn(
-        "flex flex-col rounded-[1px] px-10 py-[100px]",
-        marginBottom
-      )}
-    >
-      <div className={cn("mb-20 grid grid-cols-1 gap-x-6 md:grid-cols-2")}>
-        <div className="mx-auto flex md:col-start-2 md:mx-0">
+    <div className={cn("flex flex-col py-20", marginBottom)}>
+      <div
+        className={cn(
+          "mb-10 grid grid-cols-1 gap-y-10 gap-x-6 xl:mb-[100px] xl:grid-cols-2 xl:gap-y-0"
+        )}
+      >
+        <div className="mx-auto flex xl:col-start-2 xl:mx-0">
           <Image
             src="/images/alpha-badge.svg"
             alt="instill ai alpha testing badge"
@@ -28,7 +27,7 @@ const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
             className="mx-auto"
           />
         </div>
-        <div className="flex flex-col pt-20 md:row-start-1 md:pt-0">
+        <div className="flex flex-col xl:row-start-1">
           <div className="flex flex-col">
             <h3 className="mb-2.5 text-left font-sans text-2xl font-medium text-instillGrey90">
               Secure Your Spot
