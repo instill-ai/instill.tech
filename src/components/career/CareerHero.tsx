@@ -1,5 +1,6 @@
 import cn from "clsx";
-import ViewJobsScrollButton, {
+import {
+  ViewJobsScrollButton,
   ViewJobsScrollButtonProps,
 } from "./ViewJobsScrollButton";
 
@@ -8,7 +9,7 @@ export type CareerHeroProps = {
   marginBottom?: string;
 };
 
-const CareerHero = ({
+export const CareerHero = ({
   marginBottom,
   viewJobsScrollHandler,
 }: CareerHeroProps) => {
@@ -17,7 +18,7 @@ const CareerHero = ({
   return (
     <div
       className={cn(
-        "mx-auto flex w-full flex-col gap-y-10 p-10 md:w-8/12 md:px-0 md:pb-0 md:pt-[100px]",
+        "mx-auto flex w-full flex-col gap-y-10 md:w-8/12",
         marginBottom
       )}
     >
@@ -37,5 +38,3 @@ const CareerHero = ({
     </div>
   );
 };
-
-export default CareerHero;

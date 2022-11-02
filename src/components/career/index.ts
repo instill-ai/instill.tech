@@ -1,10 +1,7 @@
-import { CareerGeneralIntro } from "./CareerGeneralIntro";
-import CareerHero from "./CareerHero";
-import { PositionDetails } from "./PositionDetails";
-import type { PositionDetailsProps } from "./PositionDetails";
-import { CareerPositionList } from "./CareerPositionList";
-import type { CareerPositionListProps } from "./CareerPositionList";
-
-export { CareerGeneralIntro, CareerHero, PositionDetails, CareerPositionList };
-
-export type { PositionDetailsProps, CareerPositionListProps };
+export { CareerGeneralIntro } from "./CareerGeneralIntro";
+export { CareerHero } from "./CareerHero";
+export type { CareerHeroProps } from "./CareerHero";
+export { PositionDetails } from "./PositionDetails";
+export type { PositionDetailsProps } from "./PositionDetails";
+export { PositionList } from "./PositionList";
+export type { PositionListProps } from "./PositionList";

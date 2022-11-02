@@ -1,11 +1,12 @@
-import { PositionInfo } from "@/types/instill";
 import * as classNames from "classnames";
-import ShareThisPosition from "./ShareThisPosition";
 import {
   ArrowRightIcon,
   PinIcon,
   ToolboxIcon,
 } from "@instill-ai/design-system";
+
+import { PositionInfo } from "@/types/instill";
+import { ShareThisPosition } from "./ShareThisPosition";
 
 export type PositionInfoBlockProps = {
   position: PositionInfo;

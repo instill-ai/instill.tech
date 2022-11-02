@@ -1,7 +1,8 @@
 import cn from "clsx";
+
 import { PositionInfo } from "@/types/instill";
 import { PositionInfoBlock } from "./PositionInfoBlock";
-import PositionDescription from "./PositionDescription";
+import { PositionDescription } from "./PositionDescription";
 
 export type PositionDetailsProps = {
   marginBottom: string;

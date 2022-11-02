@@ -20,7 +20,7 @@ export type ViewJobsScrollButtonProps = {
   position?: SolidButtonProps["position"];
 };
 
-const ViewJobsScrollButton = ({
+export const ViewJobsScrollButton = ({
   scrollHandler,
   position,
 }: ViewJobsScrollButtonProps) => {
@@ -44,5 +44,3 @@ const ViewJobsScrollButton = ({
     </SolidButton>
   );
 };
-
-export default ViewJobsScrollButton;

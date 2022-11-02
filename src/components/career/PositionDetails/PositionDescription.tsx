@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import cn from "clsx";
 import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
+
 import { ReactMarkdownWrapper } from "@/components/ui";
 
 export type PositionDescriptionProps = {
@@ -60,5 +61,3 @@ export const PositionDescription = ({
     </div>
   );
 };
-
-export default PositionDescription;

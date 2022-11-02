@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
+
 import { ShareToFb, ShareToLinkedIn, ShareToTwitter } from "@/components/ui";
 
-const ShareThisPosition = () => {
+export const ShareThisPosition = () => {
   const router = useRouter();
   const pageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`;
   return (
@@ -24,5 +25,3 @@ const ShareThisPosition = () => {
     </div>
   );
 };
-
-export default ShareThisPosition;

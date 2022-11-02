@@ -1,5 +1,2 @@
-import { PositionDetails } from "./PositionDetails";
-import { PositionDetailsProps } from "./PositionDetails";
-
-export { PositionDetails };
-export type { PositionDetailsProps };
+export { PositionDetails } from "./PositionDetails";
+export type { PositionDetailsProps } from "./PositionDetails";

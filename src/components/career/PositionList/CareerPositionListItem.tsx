@@ -1,6 +1,6 @@
-import { PinIcon, ToolboxIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import cn from "clsx";
+import { PinIcon, ToolboxIcon } from "@instill-ai/design-system";
 
 export type CareerPositionListItemProps = {
   /** Indicate whether the list unit is placeholder or not */
