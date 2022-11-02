@@ -24,7 +24,7 @@ import JoinDiscordButton from "./JoinDiscordButton";
 import LearnMoreButton from "./LearnMoreButton";
 import type { LearnMoreButtonProps } from "./LearnMoreButton";
 import { MailchimpSignupForm } from "./MailchimpSignupForm";
-import ViewJobsScrollButton from "../career/ViewJobsScrollButton";
+import { ViewJobsScrollButton } from "../career/ViewJobsScrollButton";
 import { ViewJobsScrollButtonProps } from "../career/ViewJobsScrollButton";
 import { ShareToFb } from "./ShareToFb";
 import type { ShareToFbProps } from "./ShareToFb";

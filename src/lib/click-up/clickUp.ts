@@ -4,7 +4,7 @@ import {
   ClickUpTask,
   IClickUpImageAttatchmentValue,
 } from "./types";
-import { MemberDetails, PositionDetails } from "@/types/instill";
+import { MemberDetails, PositionInfo } from "@/types/instill";
 
 export const createClickUpApiClient = () => {
   return axios.create({
@@ -57,7 +57,7 @@ export const getClickUpTaskQuery = async (
 
 export const transformClickUpTaskToPositionDetails = (
   task: ClickUpTask
-): PositionDetails => {
+): PositionInfo => {
   return {
     id: task.id,
     slug: getCustomTextFieldValue("slug", task),
