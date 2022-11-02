@@ -7,16 +7,16 @@ import {
   useState,
 } from "react";
 import cn from "clsx";
-
-import { MemberDetails } from "@/types/instill";
-import { useRouter } from "next/router";
-import MemberAvatarKernel from "./MemberAvatarKernel";
-import MemberIntro from "./MemberIntro";
 import {
   ElementPosition,
   getElementPosition,
   useWindowSize,
 } from "@instill-ai/design-system";
+
+import { MemberDetails } from "@/types/instill";
+import { useRouter } from "next/router";
+import { MemberAvatarKernel } from "./MemberAvatarKernel";
+import { MemberIntro } from "./MemberIntro";
 
 export type OurMembersProps = {
   members: MemberDetails[];
@@ -24,7 +24,11 @@ export type OurMembersProps = {
   width: string;
 };
 
-const OurMembers = ({ members, marginBottom, width }: OurMembersProps) => {
+export const OurMembers = ({
+  members,
+  marginBottom,
+  width,
+}: OurMembersProps) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
     useState<string>(null);
@@ -224,5 +228,3 @@ const OurMembers = ({ members, marginBottom, width }: OurMembersProps) => {
     </div>
   );
 };
-
-export default OurMembers;

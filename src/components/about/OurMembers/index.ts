@@ -1,2 +1,2 @@
-export { default } from "./OurMembers";
-export * from "./OurMembers";
+export { OurMembers } from "./OurMembers";
+export type { OurMembersProps } from "./OurMembers";

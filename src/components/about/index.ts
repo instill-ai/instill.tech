@@ -1,8 +1,5 @@
-import OurMembers from "./OurMembers";
-import type { OurMembersProps } from "./OurMembers";
-
-export { OurMembers };
-export type { OurMembersProps };
+export { OurMembers } from "./OurMembers";
+export type { OurMembersProps } from "./OurMembers";
 
 export { AboutHero } from "./AboutHero";
 export type { AboutHeroProps } from "./AboutHero";

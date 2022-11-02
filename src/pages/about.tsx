@@ -11,7 +11,6 @@ import {
   OurValue,
 } from "@/components/about";
 import {
-  ContentContainer,
   PageBase,
   PageHead,
   SecureYourSpotProps,
