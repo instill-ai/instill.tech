@@ -1,12 +1,13 @@
+import { useRouter } from "next/router";
+import { useState } from "react";
 import {
   ArrowRightIcon,
   BasicAccordion,
   SolidButton,
 } from "@instill-ai/design-system";
 import cn from "clsx";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import SectionLabel from "../SectionLabel";
+
+import { SectionLabel } from "@/components/ui";
 import FaqContent from "./FaqContent";
 
 export type FaqProps = {

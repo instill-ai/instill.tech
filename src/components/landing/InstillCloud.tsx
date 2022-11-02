@@ -3,7 +3,7 @@ import cn from "clsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/future/image";
-import SectionLabel from "./SectionLabel";
+import { SectionLabel } from "@/components/ui";
 import { SecureYourSpot, StayInTheLoop } from "../ui";
 
 const InstillCloud = () => {

@@ -2,7 +2,7 @@ import { LearnMoreButton } from "@/components/ui";
 import cn from "clsx";
 import { ReactElement } from "react";
 import IconsCube, { IconsCubeProps } from "../IconsCube";
-import NumberCube from "../NumberCube";
+import { NumberCube } from "@/components/ui";
 
 export type HowItWorksRowProps = {
   title: string;
@@ -29,9 +29,12 @@ const HowItWorksRow = ({
       )}
     >
       <div className="mt-20 flex flex-col gap-y-10 xl:mt-0 xl:h-[360px] xl:w-7/12 xs:flex-row xs:gap-y-0 xs:gap-x-10">
-        <div>
-          <NumberCube number={number} />
-        </div>
+        <NumberCube
+          number={number}
+          color="bg-instillNeonBlue"
+          width="w-20"
+          height="h-20"
+        />
         <div className="flex flex-col">
           <h3 className="mb-7 text-2xl font-medium text-instillGrey90">
             {title}

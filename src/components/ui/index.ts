@@ -36,6 +36,10 @@ import StayInTheLoop from "./StayInTheLoop";
 import type { StayInTheLoopProps } from "./StayInTheLoop";
 import SubscribeNewsletterForm from "./SubscribeNewsletterForm";
 import type { SubscribeNewsletterFormProps } from "./SubscribeNewsletterForm";
+import { SectionLabel } from "./SectionLabel";
+import type { SectionLabelProps } from "./SectionLabel";
+import { NumberCube } from "./NumberCube";
+import type { NumberCubeProps } from "./NumberCube";
 
 export {
   AnnouncementBar,
@@ -61,6 +65,8 @@ export {
   SecureYourSpot,
   StayInTheLoop,
   ReactMarkdownWrapper,
+  SectionLabel,
+  NumberCube,
 };
 
 export type {
@@ -79,4 +85,6 @@ export type {
   StayInTheLoopProps,
   ReactMarkdownWrapperProps,
   LearnMoreButtonProps,
+  SectionLabelProps,
+  NumberCubeProps,
 };

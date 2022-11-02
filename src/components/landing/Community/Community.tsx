@@ -1,4 +1,4 @@
-import SectionLabel from "../SectionLabel";
+import { SectionLabel } from "@/components/ui";
 import CommunityBlock from "./CommunityBlock";
 
 const Community = () => {
