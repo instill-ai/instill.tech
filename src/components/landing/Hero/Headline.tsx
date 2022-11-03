@@ -4,7 +4,7 @@ export type HeadlineProps = {
   marginBottom?: string;
 };
 
-const Headline = ({ marginBottom }: HeadlineProps) => {
+export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
@@ -16,5 +16,3 @@ const Headline = ({ marginBottom }: HeadlineProps) => {
     </h1>
   );
 };
-
-export default Headline;

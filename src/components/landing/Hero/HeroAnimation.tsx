@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useOnScreen } from "../../../hooks/useOnScreen";
 
-const HeroAnimation = () => {
+export const HeroAnimation = () => {
   // Init the gsap selector and react reference
   const cube = useRef();
 
@@ -1974,5 +1974,3 @@ const HeroAnimation = () => {
     </div>
   );
 };
-
-export default HeroAnimation;
