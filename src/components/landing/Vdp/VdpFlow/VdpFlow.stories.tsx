@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import VdpFlow from "./VdpFlow";
+import { VdpFlow } from "./VdpFlow";
 
 export default {
   title: "Components/VdpFlow",

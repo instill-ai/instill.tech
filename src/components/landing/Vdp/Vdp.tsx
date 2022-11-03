@@ -1,17 +1,17 @@
 import { useRef } from "react";
-import { VdpLogo } from "@instill-ai/design-system";
 import cn from "clsx";
+import Image from "next/future/image";
+import { VdpLogo } from "@instill-ai/design-system";
 
 import { useRefPosition } from "@/hooks/useRefPosition";
-import Image from "next/future/image";
 import { SectionLabel } from "@/components/ui";
-import VdpFlow from "./VdpFlow";
+import { VdpFlow } from "./VdpFlow";
 
 export type VdpProps = {
   marginBottom?: string;
 };
 
-const Vdp = ({ marginBottom }: VdpProps) => {
+export const Vdp = ({ marginBottom }: VdpProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const containerDimension = useRefPosition(containerRef, {
     listenWindowResize: true,
@@ -58,5 +58,3 @@ const Vdp = ({ marginBottom }: VdpProps) => {
     </div>
   );
 };
-
-export default Vdp;

@@ -1,2 +1,2 @@
-export { default } from "./VdpArrowBlock";
-export * from "./VdpArrowBlock";
+export { VdpArrowBlock } from "./VdpArrowBlock";
+export type { VdpArrowBlockProps } from "./VdpArrowBlock";

@@ -1,13 +1,13 @@
 import Image from "next/future/image";
 import cn from "clsx";
 import { useEffect, useRef, useState } from "react";
-import VdpArrowBlock from "../VdpArrowBlock";
+import { VdpArrowBlock } from "../VdpArrowBlock";
 
 export type VdpFlowProps = {
   marginBottom?: string;
 };
 
-const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
+export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [blocksWidth, setBlocksWidth] = useState<number[]>([]);
   const [arrowWidth, setArrowWidth] = useState<number>(65);
@@ -109,5 +109,3 @@ const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
     </div>
   );
 };
-
-export default VdpFlow;

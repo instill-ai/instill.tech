@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Image from "next/future/image";
-import VdpArrowBlock from "./VdpArrowBlock";
+import { VdpArrowBlock } from "./VdpArrowBlock";
 
 export default {
   title: "Components/VdpArrowBlock",

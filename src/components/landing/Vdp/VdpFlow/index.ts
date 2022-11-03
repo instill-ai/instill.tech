@@ -1,2 +1,2 @@
-export { default } from "./VdpFlow";
-export * from "./VdpFlow";
+export { VdpFlow } from "./VdpFlow";
+export type { VdpFlowProps } from "./VdpFlow";
