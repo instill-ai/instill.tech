@@ -3,8 +3,8 @@ import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
 
-import ResourceBlock from "./ResourceBlock";
-import Terminal from "./Terminal";
+import { ResourceBlock } from "./ResourceBlock";
+import { Terminal } from "./Terminal";
 
 export type CodeShowcaseProps = {
   marginBottom?: string;
@@ -13,7 +13,7 @@ export type CodeShowcaseProps = {
 export type Resource = "pipeline" | "source" | "model" | "destination";
 export type SetResource = Dispatch<SetStateAction<Resource>>;
 
-const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
+export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
   const router = useRouter();
   const [currentResource, setCurrentResource] = useState<Resource>("pipeline");
 
@@ -81,5 +81,3 @@ const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
     </div>
   );
 };
-
-export default CodeShowcase;

@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Terminal from "./Terminal";
+import { Terminal } from "./Terminal";
 
 export default {
   title: "Components/Landing/CodeShowcase/Terminal",

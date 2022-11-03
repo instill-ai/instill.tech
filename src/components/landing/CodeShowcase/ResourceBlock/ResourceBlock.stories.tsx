@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ResourceBlock from "./ResourceBlock";
+import { ResourceBlock } from "./ResourceBlock";
 
 export default {
   title: "Components/Landing/CodeShowcase/ResourceBlock",

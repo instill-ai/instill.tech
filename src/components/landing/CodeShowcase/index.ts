@@ -1,2 +1,2 @@
-export { default } from "./CodeShowcase";
-export * from "./CodeShowcase";
+export { CodeShowcase } from "./CodeShowcase";
+export type { CodeShowcaseProps } from "./CodeShowcase";
