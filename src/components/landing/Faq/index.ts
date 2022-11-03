@@ -1,2 +1,2 @@
-export { default } from "./Faq";
-export * from "./Faq";
+export { Faq } from "./Faq";
+export type { FaqProps } from "./Faq";

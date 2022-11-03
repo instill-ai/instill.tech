@@ -4,7 +4,7 @@ export type GitHubCtaButtonProps = {
   position?: string;
 };
 
-const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
+export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
   return (
     <SolidButton
       type="button"
@@ -28,5 +28,3 @@ const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
     </SolidButton>
   );
 };
-
-export default GitHubCtaButton;

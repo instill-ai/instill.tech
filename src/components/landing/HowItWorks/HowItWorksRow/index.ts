@@ -1,2 +1,2 @@
-export { default } from "./HowItWorksRow";
-export * from "./HowItWorksRow";
+export { HowItWorksRow } from "./HowItWorksRow";
+export type { HowItWorksRowProps } from "./HowItWorksRow";

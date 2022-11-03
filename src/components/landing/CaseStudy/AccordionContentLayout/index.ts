@@ -1,2 +1,2 @@
-export { default } from "./AccordionContentLayout";
-export * from "./AccordionContentLayout";
+export { AccordionContentLayout } from "./AccordionContentLayout";
+export type { AccordionContentLayoutProps } from "./AccordionContentLayout";

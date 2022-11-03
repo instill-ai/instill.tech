@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import cn from "clsx";
 import {
   ArrowRightIcon,
   DiscordIcon,
@@ -5,9 +8,7 @@ import {
   TextButton,
   TwitterIcon,
 } from "@instill-ai/design-system";
-import { useRouter } from "next/router";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import cn from "clsx";
+
 import { Nullable } from "@/types/instill";
 
 export type CommunityBlockProps = {
@@ -17,7 +18,7 @@ export type CommunityBlockProps = {
   linkText: string;
 };
 
-const CommunityBlock = ({
+export const CommunityBlock = ({
   name,
   title,
   link,
@@ -143,5 +144,3 @@ const CommunityBlock = ({
     </div>
   );
 };
-
-export default CommunityBlock;

@@ -4,7 +4,7 @@ export type SubHeadlineProps = {
   marginBottom?: string;
 };
 
-const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
+export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(
@@ -18,5 +18,3 @@ const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
     </div>
   );
 };
-
-export default SubHeadline;

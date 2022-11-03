@@ -2,17 +2,17 @@ import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
 } from "@/components/ui";
-import HeroAnimation from "./HeroAnimation";
-import Headline from "./Headline";
-import SubHeadline from "./SubHeadline";
-import GitHubCtaButton from "./GitHubCtaButton";
-import DiscordCtaButton from "./DiscordCtaButton";
+import { HeroAnimation } from "./HeroAnimation";
+import { Headline } from "./Headline";
+import { SubHeadline } from "./SubHeadline";
+import { GitHubCtaButton } from "./GitHubCtaButton";
+import { DiscordCtaButton } from "./DiscordCtaButton";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
 };
 
-const Hero = ({ scrollHandler }: HeroProps) => {
+export const Hero = ({ scrollHandler }: HeroProps) => {
   return (
     <div className="flex min-h-[90vh] flex-col justify-center px-4 xl:px-0">
       <div className="flex flex-col-reverse md:mb-[120px] xl:flex-row xl:gap-y-0 xl:gap-x-12">
@@ -34,5 +34,3 @@ const Hero = ({ scrollHandler }: HeroProps) => {
     </div>
   );
 };
-
-export default Hero;

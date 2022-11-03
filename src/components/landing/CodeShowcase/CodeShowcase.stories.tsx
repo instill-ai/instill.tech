@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CodeShowcase from "./CodeShowcase";
+import { CodeShowcase } from "./CodeShowcase";
 
 export default {
   title: "Components/Landing/CodeShowcase",

@@ -19,13 +19,13 @@ import {
 } from "@instill-ai/design-system";
 
 import { SectionLabel } from "@/components/ui";
-import HowItWorksRow from "./HowItWorksRow";
+import { HowItWorksRow } from "./HowItWorksRow";
 
 export type HowItWorksProps = {
   marginBottom?: string;
 };
 
-const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
+export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
   let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
   return (
     <div className={cn("flex flex-col", marginBottom)}>
@@ -203,5 +203,3 @@ const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
     </div>
   );
 };
-
-export default HowItWorks;

@@ -14,7 +14,7 @@ export type VdpArrowBlockProps = {
   arrowWidth: number;
 };
 
-const VdpArrowBlock = ({
+export const VdpArrowBlock = ({
   padding,
   icon,
   title,
@@ -65,5 +65,3 @@ const VdpArrowBlock = ({
     </>
   );
 };
-
-export default VdpArrowBlock;

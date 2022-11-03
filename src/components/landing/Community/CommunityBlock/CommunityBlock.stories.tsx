@@ -1,6 +1,5 @@
-import { GitHubIcon } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CommunityBlock from "./CommunityBlock";
+import { CommunityBlock } from "./CommunityBlock";
 
 export default {
   title: "Components/CommunityBlock",

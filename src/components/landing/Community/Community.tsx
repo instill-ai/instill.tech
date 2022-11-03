@@ -1,7 +1,7 @@
 import { SectionLabel } from "@/components/ui";
-import CommunityBlock from "./CommunityBlock";
+import { CommunityBlock } from "./CommunityBlock";
 
-const Community = () => {
+export const Community = () => {
   return (
     <div className="flex flex-col bg-instillGrey90">
       <div className="mb-10 flex flex-col xl:mb-[200px]">
@@ -41,5 +41,3 @@ const Community = () => {
     </div>
   );
 };
-
-export default Community;

@@ -1,2 +1,2 @@
-export { default } from "./CommunityBlock";
-export * from "./CommunityBlock";
+export { CommunityBlock } from "./CommunityBlock";
+export type { CommunityBlockProps } from "./CommunityBlock";

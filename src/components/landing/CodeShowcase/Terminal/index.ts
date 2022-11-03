@@ -1,2 +1,2 @@
-export { default } from "./Terminal";
-export * from "./Terminal";
+export { Terminal } from "./Terminal";
+export type { TerminalProps } from "./Terminal";

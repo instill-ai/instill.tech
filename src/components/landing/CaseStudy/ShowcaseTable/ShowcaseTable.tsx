@@ -1,5 +1,4 @@
 /* eslint-disable react/no-array-index-key*/
-
 import cn from "clsx";
 
 export type ShowcaseTableProps = {
@@ -9,7 +8,7 @@ export type ShowcaseTableProps = {
   width: string;
 };
 
-const ShowcaseTable = ({
+export const ShowcaseTable = ({
   tables,
   position,
   height,
@@ -60,5 +59,3 @@ const ShowcaseTable = ({
     </div>
   );
 };
-
-export default ShowcaseTable;
