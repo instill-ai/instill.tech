@@ -9,7 +9,7 @@ export type PolicyPageLayoutProps = {
   children?: ReactNode | undefined;
 };
 
-const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
+export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
   return (
     <PageBase>
       <PageHead
@@ -40,5 +40,3 @@ const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
     </PageBase>
   );
 };
-
-export default PolicyPageLayout;

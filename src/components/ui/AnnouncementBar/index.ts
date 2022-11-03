@@ -1,2 +1,2 @@
-export { default } from "./AnnouncementBar";
-export * from "./AnnouncementBar";
+export { AnnouncementBar } from "./AnnouncementBar";
+export type { AnnouncementBarProps } from "./AnnouncementBar";

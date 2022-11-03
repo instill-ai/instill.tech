@@ -7,7 +7,11 @@ export type PageHeadProps = {
   pageType: "main" | "docs";
 };
 
-const PageHead = ({ pageTitle, pageDescription, pageType }: PageHeadProps) => {
+export const PageHead = ({
+  pageTitle,
+  pageDescription,
+  pageType,
+}: PageHeadProps) => {
   const router = useRouter();
 
   const meta = {
@@ -93,5 +97,3 @@ const PageHead = ({ pageTitle, pageDescription, pageType }: PageHeadProps) => {
     </>
   );
 };
-
-export default PageHead;

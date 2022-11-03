@@ -1,12 +1,13 @@
 import { ReactNode, useCallback } from "react";
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { CrossIcon } from "@instill-ai/design-system";
+
+import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 
 export type AnnouncementBarProps = {
   children?: ReactNode;
 };
 
-const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
+export const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
   const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
 
   const handleClick = useCallback(() => {
@@ -34,5 +35,3 @@ const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
     </div>
   );
 };
-
-export default AnnouncementBar;
