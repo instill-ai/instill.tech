@@ -11,7 +11,7 @@ export type ContentContainerProps = {
 // restrict the width of the page and the content. Currently we have a screen max-w-[1440px] and we may
 // have a content max width with max-w-[1127px] at some page
 
-const ContentContainer = ({
+export const ContentContainer = ({
   children,
   contentMaxWidth,
   marginBottom,
@@ -29,5 +29,3 @@ const ContentContainer = ({
     </div>
   );
 };
-
-export default ContentContainer;

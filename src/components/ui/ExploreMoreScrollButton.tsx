@@ -15,7 +15,7 @@ export type ExploreMoreScrollButtonProps = {
   scrollHandler: () => void;
 };
 
-const ExploreMoreScrollButton = ({
+export const ExploreMoreScrollButton = ({
   scrollHandler,
 }: ExploreMoreScrollButtonProps) => {
   return (
@@ -35,5 +35,3 @@ const ExploreMoreScrollButton = ({
     </button>
   );
 };
-
-export default ExploreMoreScrollButton;

@@ -1,8 +1,14 @@
-import { SolidButton } from "@instill-ai/design-system";
-import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { useRouter } from "next/router";
+import { SolidButton } from "@instill-ai/design-system";
 
-const GetEarlyAccessButton = ({ position }: { position?: string }) => {
+export type GetEarlyAccessButtonProps = {
+  position?: string;
+};
+
+export const GetEarlyAccessButton = ({
+  position,
+}: GetEarlyAccessButtonProps) => {
   const router = useRouter();
 
   const handleClick = useCallback(() => {
@@ -20,5 +26,3 @@ const GetEarlyAccessButton = ({ position }: { position?: string }) => {
     </SolidButton>
   );
 };
-
-export default GetEarlyAccessButton;

@@ -11,7 +11,7 @@ import { CopyRightText } from "..";
 import { Tab } from "./Tab";
 import { TabLinks } from "./Tab";
 
-const Footer = () => {
+export const Footer = () => {
   const socialIconStyle = {
     width: "w-[30px]",
     height: "h-[30px]",
@@ -120,5 +120,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;

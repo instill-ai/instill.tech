@@ -1,12 +1,12 @@
-import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
+import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
 
 export type LearnMoreButtonProps = {
   link: string;
   position?: string;
 };
 
-const LearnMoreButton = ({ position, link }: LearnMoreButtonProps) => {
+export const LearnMoreButton = ({ position, link }: LearnMoreButtonProps) => {
   const router = useRouter();
   return (
     <SolidButton
@@ -29,5 +29,3 @@ const LearnMoreButton = ({ position, link }: LearnMoreButtonProps) => {
     </SolidButton>
   );
 };
-
-export default LearnMoreButton;

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
 
-const GithubCtaButton = () => {
+export const GithubCtaButton = () => {
   const handleClick = useCallback(() => {
     window.open(
       "https://github.com/instill-ai/vdp",
@@ -29,5 +29,3 @@ const GithubCtaButton = () => {
     </TextButton>
   );
 };
-
-export default GithubCtaButton;

@@ -1,11 +1,12 @@
-import { DiscordIcon, GitHubIcon, MediumIcon } from "@instill-ai/design-system";
 import cn from "clsx";
+
+import { DiscordIcon, GitHubIcon, MediumIcon } from "@instill-ai/design-system";
 
 export type SocialLinksGroupProps = {
   styleName?: string;
 };
 
-const SocialLinks = ({ styleName }: SocialLinksGroupProps) => {
+export const SocialLinks = ({ styleName }: SocialLinksGroupProps) => {
   return (
     <div className={cn("flex flex-row gap-x-5", styleName)}>
       <a
@@ -50,5 +51,3 @@ const SocialLinks = ({ styleName }: SocialLinksGroupProps) => {
     </div>
   );
 };
-
-export default SocialLinks;

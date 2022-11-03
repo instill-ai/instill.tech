@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { useRouter } from "next/router";
 import { DiscordIcon, OutlineButton } from "@instill-ai/design-system";
 
-const JoinDiscordButton = () => {
+export const JoinDiscordButton = () => {
   const router = useRouter();
 
   const handleClick = useCallback(() => {
@@ -28,5 +28,3 @@ const JoinDiscordButton = () => {
     </OutlineButton>
   );
 };
-
-export default JoinDiscordButton;

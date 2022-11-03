@@ -11,7 +11,7 @@ export type ReactMarkdownWrapperProps = {
   width?: string;
 };
 
-const ReactMarkdownWrapper = ({
+export const ReactMarkdownWrapper = ({
   content,
   marginBottom,
   prose,
@@ -38,5 +38,3 @@ const ReactMarkdownWrapper = ({
     </article>
   );
 };
-
-export default ReactMarkdownWrapper;

@@ -1,5 +1,4 @@
 import cn from "clsx";
-import { GetEarlyAccessButton } from "@/components/ui";
 import Image from "next/future/image";
 import { SolidButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
@@ -8,7 +7,7 @@ export type SecureYourSpotProps = {
   marginBottom?: string;
 };
 
-const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
+export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
   const router = useRouter();
   return (
     <div className={cn("flex flex-col py-20", marginBottom)}>
@@ -51,5 +50,3 @@ const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
     </div>
   );
 };
-
-export default SecureYourSpot;

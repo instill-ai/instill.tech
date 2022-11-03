@@ -5,7 +5,7 @@ export type SimpleHorizontalLineProps = {
   borderColor: string;
 };
 
-const SimpleHorizontalLine = ({
+export const SimpleHorizontalLine = ({
   marginBottom,
   borderColor,
 }: SimpleHorizontalLineProps) => {
@@ -13,5 +13,3 @@ const SimpleHorizontalLine = ({
     <div className={cn("block w-full border-b", marginBottom, borderColor)} />
   );
 };
-
-export default SimpleHorizontalLine;

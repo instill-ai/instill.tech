@@ -6,11 +6,11 @@ import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
 import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
-import GetEarlyAccessButton from "../GetEarlyAccessButton";
-import GithubTextLink from "./GithubTextLink";
-import DocsPageLink from "./DocsPageLink";
+import { GetEarlyAccessButton } from "../GetEarlyAccessButton";
+import { GithubTextLink } from "./GithubTextLink";
+import { DocsPageLink } from "./DocsPageLink";
 
-const Nav = () => {
+export const Nav = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
@@ -134,5 +134,3 @@ const Nav = () => {
     </div>
   );
 };
-
-export default Nav;
