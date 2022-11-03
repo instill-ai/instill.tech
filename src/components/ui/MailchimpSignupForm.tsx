@@ -35,7 +35,10 @@ export const MailchimpSignupForm = () => {
 
   return (
     // Begin Mailchimp Signup Form
-    <div id="mc_embed_signup" className="bg-white p-10">
+    <div
+      id="mc_embed_signup"
+      className="bg-instillGrey05 p-10 shadow-instill-solid-20"
+    >
       <form
         id="mc-embedded-subscribe-form"
         action="https://tech.us2.list-manage.com/subscribe/post?u=01e7d5733aaa59d21ac12a1c8&amp;id=40bfc06254"
@@ -192,7 +195,7 @@ export const MailchimpSignupForm = () => {
               type="submit"
               value="Submit"
               name="subscribe"
-              className="button flex-grow cursor-pointer bg-instillBlue50 py-3 text-base text-instillGrey05 hover:bg-[#236698]"
+              className="button flex-grow cursor-pointer bg-instillNeonBlue bg-opacity-10 py-3 text-2xl font-normal text-instillNeonBlue hover:bg-opacity-20"
             />
           </div>
         </div>

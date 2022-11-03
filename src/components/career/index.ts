@@ -1,4 +1,5 @@
 export { CareerGeneralIntro } from "./CareerGeneralIntro";
+export type { CareerGeneralIntroProps } from "./CareerGeneralIntro";
 export { CareerHero } from "./CareerHero";
 export type { CareerHeroProps } from "./CareerHero";
 export { PositionDetails } from "./PositionDetails";
