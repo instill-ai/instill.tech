@@ -8,13 +8,13 @@ import {
 import cn from "clsx";
 
 import { SectionLabel } from "@/components/ui";
-import FaqContent from "./FaqContent";
+import { FaqContent } from "./FaqContent";
 
 export type FaqProps = {
   marginBottom?: string;
 };
 
-const Faq = ({ marginBottom }: FaqProps) => {
+export const Faq = ({ marginBottom }: FaqProps) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -143,5 +143,3 @@ If you are interested in the hosting service of VDP, we've started signing up us
     </div>
   );
 };
-
-export default Faq;
