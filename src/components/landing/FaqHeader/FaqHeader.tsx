@@ -1,11 +1,11 @@
 import cn from "clsx";
-import FaqText from "./FaqText";
+import { FaqText } from "./FaqText";
 
 export type FaqHeaderProps = {
   marginBottom?: string;
 };
 
-const FaqHeader = ({ marginBottom }: FaqHeaderProps) => {
+export const FaqHeader = ({ marginBottom }: FaqHeaderProps) => {
   return (
     <div className={cn("relative w-full", marginBottom)}>
       <FaqText width="sm:w-10/12 md:w-8/12 xl:w-6/12" />
@@ -13,5 +13,3 @@ const FaqHeader = ({ marginBottom }: FaqHeaderProps) => {
     </div>
   );
 };
-
-export default FaqHeader;

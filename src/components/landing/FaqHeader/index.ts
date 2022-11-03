@@ -1,2 +1,2 @@
-export { default } from "./FaqHeader";
-export * from "./FaqHeader";
+export { FaqHeader } from "./FaqHeader";
+export type { FaqHeaderProps } from "./FaqHeader";
