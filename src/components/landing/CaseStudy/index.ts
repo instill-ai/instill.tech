@@ -1,2 +1,2 @@
-export { default } from "./CaseStudy";
-export * from "./CaseStudy";
+export { CaseStudy } from "./CaseStudy";
+export type { CaseStudyProps } from "./CaseStudy";

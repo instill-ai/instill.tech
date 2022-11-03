@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ShowcaseTable from "./ShowcaseTable";
+import { ShowcaseTable } from "./ShowcaseTable";
 
 export default {
   title: "Components/ShowcaseTable",

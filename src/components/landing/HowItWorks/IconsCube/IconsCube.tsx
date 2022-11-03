@@ -10,7 +10,7 @@ export type IconsCubeProps = {
   position?: string;
 };
 
-const IconsCube = ({ cubes, position }: IconsCubeProps) => {
+export const IconsCube = ({ cubes, position }: IconsCubeProps) => {
   return (
     <div className={cn("flex", position)}>
       <div className="grid grid-cols-4 grid-rows-1 xl:grid-cols-2 xl:grid-rows-2">
@@ -26,5 +26,3 @@ const IconsCube = ({ cubes, position }: IconsCubeProps) => {
     </div>
   );
 };
-
-export default IconsCube;

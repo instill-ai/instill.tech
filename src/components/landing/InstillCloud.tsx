@@ -3,10 +3,11 @@ import cn from "clsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/future/image";
+
 import { SectionLabel } from "@/components/ui";
 import { SecureYourSpot, StayInTheLoop } from "../ui";
 
-const InstillCloud = () => {
+export const InstillCloud = () => {
   gsap.registerPlugin(ScrollTrigger);
   const animateTarget = useRef();
   const stickyContainer = useRef();
@@ -6523,5 +6524,3 @@ const InstillCloud = () => {
     </div>
   );
 };
-
-export default InstillCloud;

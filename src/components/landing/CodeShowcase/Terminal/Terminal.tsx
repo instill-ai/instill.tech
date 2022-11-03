@@ -13,7 +13,7 @@ export type TerminalProps = {
   currectResource: Resource;
 };
 
-const Terminal = ({ currectResource }: TerminalProps) => {
+export const Terminal = ({ currectResource }: TerminalProps) => {
   let code: Nullable<ReactNode> = null;
   let indent = "pl-8";
   let tokenColor = "text-white";
@@ -272,5 +272,3 @@ const Terminal = ({ currectResource }: TerminalProps) => {
     </div>
   );
 };
-
-export default Terminal;

@@ -11,7 +11,7 @@ export type AccordionContentLayoutProps = {
   currentFrame: number;
 };
 
-const AccordionContentLayout = ({
+export const AccordionContentLayout = ({
   icon,
   title,
   source,
@@ -70,5 +70,3 @@ const AccordionContentLayout = ({
     </div>
   );
 };
-
-export default AccordionContentLayout;

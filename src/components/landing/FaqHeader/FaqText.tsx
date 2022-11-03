@@ -2,7 +2,7 @@ export type FaqTextProps = {
   width: string;
 };
 
-const FaqText = ({ width }: FaqTextProps) => {
+export const FaqText = ({ width }: FaqTextProps) => {
   return (
     <svg
       viewBox="0 0 814 291"
@@ -25,5 +25,3 @@ const FaqText = ({ width }: FaqTextProps) => {
     </svg>
   );
 };
-
-export default FaqText;

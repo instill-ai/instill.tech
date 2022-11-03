@@ -1,2 +1,2 @@
-export { default } from "./HowItWorks";
-export * from "./HowItWorks";
+export { HowItWorks } from "./HowItWorks";
+export type { HowItWorksProps } from "./HowItWorks";

@@ -15,7 +15,7 @@ export type ResourceBlockProps = {
   setCurrentResource: SetResource;
 };
 
-const ResourceBlock = ({
+export const ResourceBlock = ({
   resource,
   currentResource,
   setCurrentResource,
@@ -92,5 +92,3 @@ const ResourceBlock = ({
     </div>
   );
 };
-
-export default ResourceBlock;

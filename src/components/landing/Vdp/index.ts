@@ -1,2 +1,2 @@
-export { default } from "./Vdp";
-export * from "./Vdp";
+export { Vdp } from "./Vdp";
+export type { VdpProps } from "./Vdp";

@@ -1,2 +1,2 @@
-export { default } from "./ShowcaseTable";
-export * from "./ShowcaseTable";
+export { ShowcaseTable } from "./ShowcaseTable";
+export type { ShowcaseTableProps } from "./ShowcaseTable";

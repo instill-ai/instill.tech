@@ -7,7 +7,12 @@ export type ShowcaseImageProps = {
   alt: string;
 };
 
-const ShowcaseImage = ({ width, height, src, alt }: ShowcaseImageProps) => {
+export const ShowcaseImage = ({
+  width,
+  height,
+  src,
+  alt,
+}: ShowcaseImageProps) => {
   return (
     <Image
       width={width}
@@ -18,5 +23,3 @@ const ShowcaseImage = ({ width, height, src, alt }: ShowcaseImageProps) => {
     />
   );
 };
-
-export default ShowcaseImage;

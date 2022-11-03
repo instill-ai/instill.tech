@@ -4,7 +4,7 @@ export type DiscordCtaButtonProps = {
   position?: string;
 };
 
-const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
+export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
   return (
     <TextButton
       type="button"
@@ -28,5 +28,3 @@ const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
     </TextButton>
   );
 };
-
-export default DiscordCtaButton;

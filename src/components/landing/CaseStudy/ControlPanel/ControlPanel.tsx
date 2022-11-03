@@ -8,7 +8,6 @@ import {
   useEffect,
   Dispatch,
   SetStateAction,
-  useLayoutEffect,
 } from "react";
 import * as d3 from "d3";
 import { useWindowSize } from "@/hooks/useWindowSize";
@@ -34,7 +33,7 @@ type ConnectionLineDataset = {
 // won't get notified. We need to use useMutationObservable to be reactive
 // about this changes.
 
-const ControlPanel = ({
+export const ControlPanel = ({
   source,
   model,
   destination,
@@ -356,5 +355,3 @@ const ControlPanel = ({
     </>
   );
 };
-
-export default ControlPanel;

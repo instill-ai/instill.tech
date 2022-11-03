@@ -10,7 +10,7 @@ export type NoCodeInterfaceProps = {
   marginBottom?: string;
 };
 
-const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
+export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const containerDimension = useRefPosition(containerRef, {
     listenWindowResize: true,
@@ -44,5 +44,3 @@ const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
     </div>
   );
 };
-
-export default NoCodeInterface;

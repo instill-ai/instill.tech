@@ -1,2 +1,2 @@
-export { default } from "./ResourceBlock";
-export * from "./ResourceBlock";
+export { ResourceBlock } from "./ResourceBlock";
+export type { ResourceBlockProps } from "./ResourceBlock";
