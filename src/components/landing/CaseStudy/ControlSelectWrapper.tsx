@@ -1,9 +1,9 @@
 import cn from "clsx";
+import { useCallback, useState } from "react";
 import {
   BasicSingleSelect,
   SingleSelectOption,
 } from "@instill-ai/design-system";
-import { useCallback, useState } from "react";
 
 export type ControlSelectWrapperProps = {
   customizable: boolean;
@@ -16,7 +16,7 @@ export type ControlSelectWrapperProps = {
   menuPlacement?: "top" | "bottom" | "auto";
 };
 
-const ControlSelectWrapper = ({
+export const ControlSelectWrapper = ({
   customizable,
   id,
   label,
@@ -60,5 +60,3 @@ const ControlSelectWrapper = ({
     </div>
   );
 };
-
-export default ControlSelectWrapper;

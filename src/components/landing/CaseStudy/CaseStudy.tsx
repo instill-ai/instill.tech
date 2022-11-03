@@ -22,18 +22,18 @@ import {
 import cn from "clsx";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import AccordionContentLayout from "./AccordionContentLayout";
-import ControlPanel from "./ControlPanel";
-import ControlPanelItem from "./ControlPanelItem";
-import ControlSelectWrapper from "./ControlSelectWrapper";
-import ShowcaseImage from "./ShowcaseImage";
-import ShowcaseTable from "./ShowcaseTable/ShowcaseTable";
+import { AccordionContentLayout } from "./AccordionContentLayout";
+import { ControlPanel } from "./ControlPanel";
+import { ControlPanelItem } from "./ControlPanelItem";
+import { ControlSelectWrapper } from "./ControlSelectWrapper";
+import { ShowcaseImage } from "./ShowcaseImage";
+import { ShowcaseTable } from "./ShowcaseTable/ShowcaseTable";
 
 export type CaseStudyProps = {
   marginBottom?: string;
 };
 
-const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
+export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
@@ -802,16 +802,16 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     }
   }, [activeIndex]);
 
-  // useInterval(() => {
-  //   if (activeIndex === 3) return;
-  //   setCurrentShowcaseFrame((prev) => {
-  //     if (prev + 1 <= showcaseMaxFrame) {
-  //       return prev + 1;
-  //     } else {
-  //       return 0;
-  //     }
-  //   });
-  // }, 1500);
+  useInterval(() => {
+    if (activeIndex === 3) return;
+    setCurrentShowcaseFrame((prev) => {
+      if (prev + 1 <= showcaseMaxFrame) {
+        return prev + 1;
+      } else {
+        return 0;
+      }
+    });
+  }, 1500);
 
   return (
     <>
@@ -874,5 +874,3 @@ const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     </>
   );
 };
-
-export default CaseStudy;

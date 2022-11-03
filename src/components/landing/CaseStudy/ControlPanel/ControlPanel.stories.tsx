@@ -1,25 +1,19 @@
-import {
-  AwsS3Icon,
-  BasicSingleSelect,
-  BigQueryIcon,
-  GoogleDriveIcon,
-  ModelIcon,
-} from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ControlPanelLayout from "./ControlPanel";
+import { ControlPanel } from "./ControlPanel";
 
 export default {
-  title: "Landing/CaseStudy/ControlPanelLayout",
-  component: ControlPanelLayout,
-} as ComponentMeta<typeof ControlPanelLayout>;
+  title: "Landing/CaseStudy/ControlPanel",
+  component: ControlPanel,
+} as ComponentMeta<typeof ControlPanel>;
 
-const Template: ComponentStory<typeof ControlPanelLayout> = (args) => (
+const Template: ComponentStory<typeof ControlPanel> = (args) => (
   <div className="flex h-[1000px]">
-    <ControlPanelLayout {...args} />
+    <ControlPanel {...args} />
   </div>
 );
 
-export const Playground: ComponentStory<typeof ControlPanelLayout> =
-  Template.bind({});
+export const Playground: ComponentStory<typeof ControlPanel> = Template.bind(
+  {}
+);
 
 Playground.args = {};

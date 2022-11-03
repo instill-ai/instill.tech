@@ -9,7 +9,7 @@ export type ControlPanelItemProps = {
   controls: ReactElement[];
 };
 
-const ControlPanelItem = ({
+export const ControlPanelItem = ({
   icon,
   title,
   description,
@@ -45,5 +45,3 @@ const ControlPanelItem = ({
     </div>
   );
 };
-
-export default ControlPanelItem;

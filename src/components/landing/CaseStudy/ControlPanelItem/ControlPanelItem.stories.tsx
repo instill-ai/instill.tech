@@ -4,7 +4,7 @@ import {
   ModelIcon,
 } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ControlPanelItem from "./ControlPanelItem";
+import { ControlPanelItem } from "./ControlPanelItem";
 
 export default {
   title: "Landing/CaseStudy/ControlPanelItem",
