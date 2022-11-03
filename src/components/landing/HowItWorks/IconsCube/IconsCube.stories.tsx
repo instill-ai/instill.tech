@@ -5,7 +5,7 @@ import {
   PlusIcon,
 } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import IconsCube from "./IconsCube";
+import { IconsCube } from "./IconsCube";
 
 export default {
   title: "Components/IconsCube",

@@ -1,2 +1,2 @@
-export { default } from "./IconsCube";
-export * from "./IconsCube";
+export { IconsCube } from "./IconsCube";
+export type { IconsCubeProps } from "./IconsCube";

@@ -5,7 +5,7 @@ import {
   PlusIcon,
 } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import HowItWorksRow from "./HowItWorksRow";
+import { HowItWorksRow } from "./HowItWorksRow";
 
 export default {
   title: "Components/HowItWorksRow",

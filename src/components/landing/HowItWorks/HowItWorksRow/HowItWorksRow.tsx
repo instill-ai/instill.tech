@@ -1,8 +1,8 @@
-import { LearnMoreButton } from "@/components/ui";
 import cn from "clsx";
 import { ReactElement } from "react";
-import IconsCube, { IconsCubeProps } from "../IconsCube";
-import { NumberCube } from "@/components/ui";
+
+import { LearnMoreButton, NumberCube } from "@/components/ui";
+import { IconsCubeProps, IconsCube } from "../IconsCube";
 
 export type HowItWorksRowProps = {
   title: string;
@@ -13,7 +13,7 @@ export type HowItWorksRowProps = {
   type: "right" | "left";
 };
 
-const HowItWorksRow = ({
+export const HowItWorksRow = ({
   type,
   title,
   description,
@@ -54,5 +54,3 @@ const HowItWorksRow = ({
     </div>
   );
 };
-
-export default HowItWorksRow;
