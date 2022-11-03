@@ -5,7 +5,7 @@ export type StayInTheLoopProps = {
   marginBottom?: string;
 };
 
-const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
+export const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
   return (
     <div
       className={cn(
@@ -23,5 +23,3 @@ const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
     </div>
   );
 };
-
-export default StayInTheLoop;

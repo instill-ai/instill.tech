@@ -1,6 +1,6 @@
+import { ReactNode } from "react";
 import Link from "next/link";
 import cn from "clsx";
-import { ReactNode } from "react";
 
 export type TabProps = {
   header: string;

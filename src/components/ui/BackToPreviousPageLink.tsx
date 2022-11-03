@@ -6,7 +6,9 @@ export type BackToPreviousPageLinkProps = {
   url: string;
 };
 
-const BackToPreviousPageLink = ({ url }: BackToPreviousPageLinkProps) => {
+export const BackToPreviousPageLink = ({
+  url,
+}: BackToPreviousPageLinkProps) => {
   return (
     <Link href={url}>
       <a className="group flex flex-row gap-x-5">
@@ -23,5 +25,3 @@ const BackToPreviousPageLink = ({ url }: BackToPreviousPageLinkProps) => {
     </Link>
   );
 };
-
-export default BackToPreviousPageLink;

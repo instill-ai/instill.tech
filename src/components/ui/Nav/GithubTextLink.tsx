@@ -1,4 +1,4 @@
-const GithubTextLink = () => {
+export const GithubTextLink = () => {
   return (
     <a
       href="https://github.com/instill-ai"
@@ -10,5 +10,3 @@ const GithubTextLink = () => {
     </a>
   );
 };
-
-export default GithubTextLink;

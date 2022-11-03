@@ -1,13 +1,8 @@
-import {
-  MutableRefObject,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import cn from "clsx";
 import { ElementPosition } from "@instill-ai/design-system";
+
 import { useRefPosition } from "@/hooks/useRefPosition";
 import { Nullable } from "@/types/instill";
 
@@ -29,7 +24,7 @@ export type BlueprintContainerProps = {
 
 type LineData = { x1: number; x2: number; y1: number; y2: number };
 
-const BlueprintContainer = ({
+export const BlueprintContainer = ({
   unitHeight,
   unitWidth,
   children,
@@ -193,5 +188,3 @@ const BlueprintContainer = ({
     </div>
   );
 };
-
-export default BlueprintContainer;

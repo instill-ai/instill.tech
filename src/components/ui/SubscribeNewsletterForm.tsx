@@ -1,9 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
-import {
-  ArrowRightIcon,
-  SolidButton,
-  TextButton,
-} from "@instill-ai/design-system";
+import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
 import cn from "clsx";
 
 export type SubscribeNewsletterFormProps = {
@@ -11,7 +7,7 @@ export type SubscribeNewsletterFormProps = {
   width?: string;
 };
 
-const SubscribeNewsletterForm = ({
+export const SubscribeNewsletterForm = ({
   position,
   width,
 }: SubscribeNewsletterFormProps) => {
@@ -98,5 +94,3 @@ const SubscribeNewsletterForm = ({
     </form>
   );
 };
-
-export default SubscribeNewsletterForm;
