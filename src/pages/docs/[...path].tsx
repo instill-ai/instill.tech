@@ -20,7 +20,7 @@ import { remark } from "remark";
 
 import { PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import docsConfig from "../../../docs.config";
+import { docsConfig } from "../../../docs.config";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
 import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
 import {
@@ -205,14 +205,14 @@ const DocsPage: FC<DocsPageProps> & {
         pageType="docs"
       />
       <div className="grid grid-cols-8">
-        <div className="col-span-8 xl:col-span-6 px-6 md:px-8 max:px-16">
-          <h1 className="font-sans font-semibold text-3xl mb-10">
+        <div className="col-span-8 px-6 md:px-8 xl:col-span-6 max:px-16">
+          <h1 className="mb-10 font-sans text-3xl font-semibold">
             {mdxSource.frontmatter.title}
           </h1>
-          <article id="content" className="prose prose-black max-w-none mb-20">
+          <article id="content" className="prose prose-black mb-20 max-w-none">
             <MDXRemote {...mdxSource} components={{ CH }} />
           </article>
-          <div className="flex flex-row gap-x-2 w-full pb-6 mb-8 border-b">
+          <div className="mb-8 flex w-full flex-row gap-x-2 border-b pb-6">
             {lastEditedTime && author ? (
               <>
                 <p className="ml-auto text-sm text-instillGrey70">
@@ -254,7 +254,7 @@ const DocsPage: FC<DocsPageProps> & {
           </div>
         </div>
 
-        <aside className="hidden xl:block xl:col-span-2">
+        <aside className="hidden xl:col-span-2 xl:block">
           <RightSidebar
             githubEditUrl={
               "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
