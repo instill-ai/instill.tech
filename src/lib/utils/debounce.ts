@@ -1,7 +1,7 @@
 // Debounce function
 // ref: https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_debounce
 
-const debounce = (func: any, wait: number, immediate?: boolean) => {
+export const debounce = (func: any, wait: number, immediate?: boolean) => {
   let timeout: NodeJS.Timeout;
 
   return function () {
@@ -18,5 +18,3 @@ const debounce = (func: any, wait: number, immediate?: boolean) => {
     if (immediate && !timeout) func.apply(context, args);
   };
 };
-
-export default debounce;

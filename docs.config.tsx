@@ -189,10 +189,8 @@ const NAV: NavConfig = {
   ],
 };
 
-const docsConfig = {
+export const docsConfig = {
   site: SITE,
   nav: NAV,
   sidebar: SIDEBAR,
 };
-
-export default docsConfig;

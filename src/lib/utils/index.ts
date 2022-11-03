@@ -1,4 +1,2 @@
-import handle from "./handle";
-import debounce from "./debounce";
-
-export { handle, debounce };
+export { handle } from "./handle";
+export { debounce } from "./debounce";
