@@ -34,7 +34,7 @@ const Nav = () => {
     <>
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="hidden text-instillGrey95 ">
+          <p className="text-instillGrey95">
             Check out our new article &nbsp;
             <a
               className="mr-1.5 italic underline"
