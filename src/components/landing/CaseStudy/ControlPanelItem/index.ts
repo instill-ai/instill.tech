@@ -1,2 +1,2 @@
-export { default } from "./ControlPanelItem";
-export * from "./ControlPanelItem";
+export { ControlPanelItem } from "./ControlPanelItem";
+export type { ControlPanelItemProps } from "./ControlPanelItem";
