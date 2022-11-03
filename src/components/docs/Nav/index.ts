@@ -1,2 +1,2 @@
-export { default } from "./Nav";
-export * from "./Nav";
+export { Nav } from "./Nav";
+export type { NavProps } from "./Nav";

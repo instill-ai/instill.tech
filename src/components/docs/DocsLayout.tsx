@@ -1,14 +1,15 @@
 import { ReactNode, useState } from "react";
 import cn from "clsx";
-import LeftSidebar from "./LeftSidebar";
+
+import { LeftSidebar } from "./LeftSidebar";
 import docsConfig from "../../../docs.config";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 
 export type DocsLayoutProps = {
   children?: ReactNode;
 };
 
-const DocsLayout = ({ children }: DocsLayoutProps) => {
+export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
   return (
     <>
@@ -38,10 +39,10 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
           }
         `}
       </style>
-      <main className="w-screen grid grid-flow-col grid-cols-12 max:block">
+      <main className="grid w-screen grid-flow-col grid-cols-12 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed md:sticky h-full md:flex md:col-span-3 max:fixed top-0 z-30 bg-instillGrey05 transform md:transform-none transition-transform",
+            "docs-left-sidebar fixed top-0 z-30 h-full transform bg-instillGrey05 transition-transform md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
@@ -51,14 +52,14 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
         {leftSidebarIsOpen ? (
           <div
             onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
-            className="fixed top-0 bottom-0 left-0 right-0 bg-instillGrey70 opacity-80 z-20"
+            className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-instillGrey70 opacity-80"
           />
         ) : null}
 
-        <div className="docs-content flex flex-col col-span-12 md:col-span-9 max:col-span-12 pb-40 w-full">
+        <div className="docs-content col-span-12 flex w-full flex-col pb-40 md:col-span-9 max:col-span-12">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-            navbar={docsConfig.nav}
+            nav={docsConfig.nav}
           />
           {children}
         </div>
@@ -66,5 +67,3 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
     </>
   );
 };
-
-export default DocsLayout;

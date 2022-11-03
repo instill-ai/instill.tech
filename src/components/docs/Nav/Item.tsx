@@ -1,11 +1,12 @@
-import { isExteriorLink, isInteriorLink, NavbarItem } from "@/types/docs";
 import Image from "next/future/image";
+
+import { isExteriorLink, isInteriorLink, NavbarItem } from "@/types/docs";
 
 export type ItemProps = {
   item: NavbarItem;
 };
 
-const Item = ({ item }: ItemProps) => {
+export const Item = ({ item }: ItemProps) => {
   if (isInteriorLink(item)) {
     return (
       <a className="my-auto text-sm font-normal" href={item.to}>
@@ -41,5 +42,3 @@ const Item = ({ item }: ItemProps) => {
 
   return null;
 };
-
-export default Item;
