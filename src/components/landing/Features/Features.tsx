@@ -1,8 +1,8 @@
 import Image from "next/future/image";
-import FeatureItem from "./FeatureItem";
+import { FeatureItem } from "./FeatureItem";
 import { GithubCtaButton } from "@/components/ui";
 
-const Features = () => {
+export const Features = () => {
   return (
     <div id="feature-block-group" className="flex flex-col">
       <FeatureItem
@@ -57,5 +57,3 @@ const Features = () => {
     </div>
   );
 };
-
-export default Features;

@@ -10,7 +10,7 @@ export type FeatureItemProps = {
   featureCta?: ReactNode;
 };
 
-const FeatureItem = ({
+export const FeatureItem = ({
   imagePosition,
   label,
   title,
@@ -56,5 +56,3 @@ const FeatureItem = ({
     </div>
   );
 };
-
-export default FeatureItem;
