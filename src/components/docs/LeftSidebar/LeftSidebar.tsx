@@ -1,4 +1,4 @@
-import Section from "./Section";
+import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import Link from "next/link";
 import Image from "next/future/image";
@@ -7,7 +7,7 @@ export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
 };
 
-const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
+export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
   return (
     <>
       <style>
@@ -22,10 +22,10 @@ const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         }
       `}
       </style>
-      <div className="left-sidebar flex w-full md:ml-auto flex-col md:sticky md:top-0 pb-10 h-screen overflow-auto px-8">
+      <div className="left-sidebar flex h-screen w-full flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
         {leftSidebar.logo ? (
           <Link href="/docs/start-here/getting-started">
-            <a className="leftsidebar-logo hidden w-full md:flex-row gap-x-3 md:flex py-4">
+            <a className="leftsidebar-logo hidden w-full gap-x-3 py-4 md:flex md:flex-row">
               <Image
                 src={leftSidebar.logo.src}
                 alt={leftSidebar.logo.alt}
@@ -51,5 +51,3 @@ const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
     </>
   );
 };
-
-export default LeftSidebar;

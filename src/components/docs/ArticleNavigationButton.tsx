@@ -7,20 +7,20 @@ export type ArticleNavigationButtonProps = {
   type: "prev" | "next";
 };
 
-const ArticleNavigationButton = ({
+export const ArticleNavigationButton = ({
   text,
   link,
   type,
 }: ArticleNavigationButtonProps) => {
   return (
     <Link href={link}>
-      <a className="flex flex-col gap-y-1.5 p-2.5 border rounded-md hover:border-instillBlue50 transition ease-in-out duration-300">
+      <a className="flex flex-col gap-y-1.5 rounded-md border p-2.5 transition duration-300 ease-in-out hover:border-instillBlue50">
         <p className={cn("text-xs", type === "prev" ? "mr-auto" : "ml-auto")}>
           {type === "next" ? "Next page" : "Previous page"}
         </p>
         <p
           className={cn(
-            "text-instillBlue50 text-sm",
+            "text-sm text-instillBlue50",
             type === "prev" ? "mr-auto" : "ml-auto"
           )}
         >
@@ -30,5 +30,3 @@ const ArticleNavigationButton = ({
     </Link>
   );
 };
-
-export default ArticleNavigationButton;

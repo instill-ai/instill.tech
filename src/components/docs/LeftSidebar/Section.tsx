@@ -1,12 +1,9 @@
 import { useMemo, useState } from "react";
 import cn from "clsx";
 import { useRouter } from "next/router";
-import {
-  CollapseRightIcon,
-  MinusIcon,
-  PlusIcon,
-} from "@instill-ai/design-system";
 import Link from "next/link";
+import { MinusIcon, PlusIcon } from "@instill-ai/design-system";
+
 import { SidebarItem } from "@/types/docs";
 
 export type SectionProps = {
@@ -16,7 +13,7 @@ export type SectionProps = {
   link?: string;
 };
 
-const Section = ({ text, items, collapsible, link }: SectionProps) => {
+export const Section = ({ text, items, collapsible, link }: SectionProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggle = () => {
@@ -78,7 +75,7 @@ const Section = ({ text, items, collapsible, link }: SectionProps) => {
             <a
               key={item.text}
               className={cn(
-                "text-sm hover:text-instillBlue50 font-normal transition ease-in-out duration-300",
+                "text-sm font-normal transition duration-300 ease-in-out hover:text-instillBlue50",
                 item.link === router.asPath.split("#")[0]
                   ? "text-instillBlue50"
                   : "text-instillGrey80"
@@ -92,5 +89,3 @@ const Section = ({ text, items, collapsible, link }: SectionProps) => {
     </section>
   );
 };
-
-export default Section;

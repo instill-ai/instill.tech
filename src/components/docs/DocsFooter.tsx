@@ -1,5 +1,3 @@
-const DocsFooter = () => {
-  return <div className="w-full h-80" />;
+export const DocsFooter = () => {
+  return <div className="h-80 w-full" />;
 };
-
-export default DocsFooter;

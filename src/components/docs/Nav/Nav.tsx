@@ -1,23 +1,23 @@
 import { Dispatch, SetStateAction, useMemo } from "react";
-
-import Item from "./Item";
 import cn from "clsx";
-import { Nav, NavbarItem } from "@/types/docs";
 import Image from "next/future/image";
 import Link from "next/link";
-import SubNav from "./SubNav";
+
+import { Item } from "./Item";
+import { NavConfig, NavbarItem } from "@/types/docs";
+import { SubNav } from "./SubNav";
 
 export type NavProps = {
-  navbar: Nav;
+  nav: NavConfig;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
+export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
 
-    navbar.items.forEach((item) => {
+    nav.items.forEach((item) => {
       if (item.position === "right") {
         right.push(item);
       } else {
@@ -26,7 +26,7 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
     });
 
     return { left, right };
-  }, [navbar]);
+  }, [nav]);
 
   return (
     <>
@@ -48,31 +48,31 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex flex-row w-full bg-white py-4 px-8 border-b border-b-instillGrey30"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white py-4 px-8"
         )}
       >
-        {!navbar.logo && !navbar.title ? null : (
+        {!nav.logo && !nav.title ? null : (
           <div className="logo mr-4 flex md:hidden">
             <Link href="/docs/start-here/getting-started">
               <a className="flex flex-row gap-x-3">
-                {navbar.logo ? (
+                {nav.logo ? (
                   <Image
-                    src={navbar.logo.src}
-                    alt={navbar.logo.alt}
-                    width={navbar.logo.width}
-                    height={navbar.logo.height}
-                    sizes={`${navbar.logo.width}px`}
+                    src={nav.logo.src}
+                    alt={nav.logo.alt}
+                    width={nav.logo.width}
+                    height={nav.logo.height}
+                    sizes={`${nav.logo.width}px`}
                   />
                 ) : null}
-                {navbar.title ? (
-                  <h1 className="my-auto text-xl font-bold">{navbar.title}</h1>
+                {nav.title ? (
+                  <h1 className="my-auto text-xl font-bold">{nav.title}</h1>
                 ) : null}
               </a>
             </Link>
           </div>
         )}
 
-        <div className="flex flex-row flex-1">
+        <div className="flex flex-1 flex-row">
           <div
             className={cn(
               "flex flex-row",
@@ -99,5 +99,3 @@ const Nav = ({ navbar, setLeftSidebarIsOpen }: NavProps) => {
     </>
   );
 };
-
-export default Nav;
