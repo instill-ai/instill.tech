@@ -1,2 +1,2 @@
-export { default } from "./LeftSidebar";
-export * from "./LeftSidebar";
+export { LeftSidebar } from "./LeftSidebar";
+export type { LeftSidebarProps } from "./LeftSidebar";

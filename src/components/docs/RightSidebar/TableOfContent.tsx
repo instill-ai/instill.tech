@@ -11,7 +11,7 @@ export type TableOfContentProps = {
   }[];
 };
 
-const TableOfContent = ({ headers }: TableOfContentProps) => {
+export const TableOfContent = ({ headers }: TableOfContentProps) => {
   const router = useRouter();
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
 
@@ -33,14 +33,14 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
   }, [router]);
 
   return (
-    <div className="flex flex-col mb-10">
-      <h2 className="mb-4 text-instillGrey95 font-semibold">On this page</h2>
+    <div className="mb-10 flex flex-col">
+      <h2 className="mb-4 font-semibold text-instillGrey95">On this page</h2>
       <ul>
         {headers.map((header) => (
           <li
             key={header.slug}
             className={cn(
-              "group border-l-2 my-1.5 py-0.5 pl-[15px] text-sm hover:border-instillBlue50",
+              "group my-1.5 border-l-2 py-0.5 pl-[15px] text-sm hover:border-instillBlue50",
               currentHash === header.slug
                 ? "border-instillBlue50"
                 : "border-instillGrey50"
@@ -65,5 +65,3 @@ const TableOfContent = ({ headers }: TableOfContentProps) => {
     </div>
   );
 };
-
-export default TableOfContent;

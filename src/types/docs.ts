@@ -36,7 +36,7 @@ export type Sidebar = {
   };
 };
 
-export type Nav = {
+export type NavConfig = {
   title?: string;
   logo?: Logo;
   items: NavbarItem[];
