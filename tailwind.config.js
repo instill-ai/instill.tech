@@ -49,7 +49,7 @@ module.exports = {
         instillGreen: "#28F67E",
         instillGreen05: "#ECFFF0",
         instillGreen50: "#02D12F",
-        instillLightGreen: "#02D085",
+        instillNatureGreen: "#02D085",
         instillNeonGreen: "#28F67E",
         instillNeonGreen10: "#EAFFF3",
         instillWarmOrange50: "#FF8A00",
