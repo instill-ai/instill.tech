@@ -27,7 +27,7 @@ export const OurCompany = ({ marginBottom }: OurCompanyProps) => {
         into their data stack, and start tapping into the wealth of their visual
         data and benefit from Vision AI in a snap.
       </p>
-      <p className="instill-text-body text-instillGrey95">
+      <p className="text-instillGrey95 text-instill-body-normal">
         We are a small and ambitious team of passionate engineers/researchers
         sharing an unconventional culture fused by DevOps, MLOps and academic
         research lab. We are hands-on and love to automate everything. We care

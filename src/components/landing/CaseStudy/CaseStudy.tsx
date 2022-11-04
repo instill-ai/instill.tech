@@ -846,7 +846,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                   className={cn(
                     "h-4 w-4",
                     getActiveControl() === "source"
-                      ? "bg-instillLightGreen"
+                      ? "bg-instillNatureGreen"
                       : "bg-white"
                   )}
                 />
@@ -854,7 +854,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                   className={cn(
                     "h-4 w-4",
                     getActiveControl() === "model"
-                      ? "bg-instillLightGreen"
+                      ? "bg-instillNatureGreen"
                       : "bg-white"
                   )}
                 />
@@ -862,7 +862,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                   className={cn(
                     "h-4 w-4",
                     getActiveControl() === "destination"
-                      ? "bg-instillLightGreen"
+                      ? "bg-instillNatureGreen"
                       : "bg-white"
                   )}
                 />

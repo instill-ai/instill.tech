@@ -18,7 +18,7 @@ export const PositionList = forwardRef<HTMLDivElement, PositionListProps>(
         )}
         ref={ref}
       >
-        <div className="mr-auto mb-2.5 bg-instillLightGreen px-2.5 py-[5px] font-sans text-base font-normal uppercase text-instillGrey90">
+        <div className="mr-auto mb-2.5 bg-instillNatureGreen px-2.5 py-[5px] font-sans text-base font-normal uppercase text-instillGrey90">
           Job listing
         </div>
         <div className="mb-10 flex flex-col gap-y-5">

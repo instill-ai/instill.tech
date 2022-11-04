@@ -53,7 +53,7 @@ export const ControlSelectWrapper = ({
         <div
           className={cn(
             "absolute top-0 bottom-0 right-0 left-0 border-2",
-            isActive ? "border-instillLightGreen" : "border-instillGrey20"
+            isActive ? "border-instillNatureGreen" : "border-instillGrey20"
           )}
         />
       )}

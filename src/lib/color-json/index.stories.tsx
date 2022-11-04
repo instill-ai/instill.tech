@@ -25,6 +25,7 @@ const Template = () => {
         colonColor: "text-black",
         trailingComma: true,
         trailingCommaColor: "text-black",
+        wrap: false,
       }),
       setObjectKv({
         key: "recipe",
@@ -35,6 +36,7 @@ const Template = () => {
         trailingComma: true,
         trailingCommaColor: "text-black",
         indent: "pl-8",
+        wrap: false,
         children: [
           setStringKv({
             key: "source",
@@ -45,6 +47,7 @@ const Template = () => {
             colonColor: "text-black",
             trailingComma: true,
             trailingCommaColor: "text-black",
+            wrap: false,
           }),
           setArrayKv({
             key: "model_instances",
@@ -56,6 +59,7 @@ const Template = () => {
             trailingCommaColor: "text-black",
             indent: "pl-8",
             breakLine: false,
+            wrap: false,
             children: [
               setNumberValue({
                 value: 10,
@@ -80,6 +84,7 @@ const Template = () => {
             colonColor: "text-black",
             trailingComma: true,
             trailingCommaColor: "text-black",
+            wrap: false,
           }),
           setNumberKv({
             key: "number",
@@ -90,6 +95,7 @@ const Template = () => {
             colonColor: "text-black",
             trailingComma: true,
             trailingCommaColor: "text-black",
+            wrap: false,
           }),
         ],
       }),
