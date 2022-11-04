@@ -7,30 +7,41 @@ description: "Public roadmap for the open-source visual data ETL tool VDP https:
 
 VDP is under rapid development. Our team is pushing new features every day to meet the needs of our users. Here is our public high-level roadmap for 2022. If you are interested in what's being worked on right now and what will be explored in the future for the VDP project, please check our [VDP project roadmap](https://github.com/orgs/instill-ai/projects/5/views/4).
 
-## 2022 Q3
-
-- 🎯 Add API gateway / Reverse Proxy
-- 🎯 Add auth to endpoints
-- 🎯 Support deploying VDP on Kubernetes
-- 🔮 Improve the UX to import models
-- ☁️ Instill Cloud (Alpha): our hosted service to provide you with all the power of VDP, without managing infrastructure. If you're interested, [join the waitlist](https://www.instill.tech/get-access/?utm_source=documentation&utm_medium=link).
-
 ## 2022 Q4
 
-- 🔌 Support `FETCH` mode with new source connectors
-  - Local filesystem
-  - Google Cloud Storage (GCS)
-- 🎯 Add dashboard for out-of-the-box monitoring and logging
-- 🪢 Scheduling feature to control how often to trigger a pipeline
+- 🎯 [api-gateway] Add API Gateway / Reverse Proxy
+- 🎯 [vdp] Support VDP Kubernetes deployment
+
+## 2023 Q1
+
+- 🎯 [vdp] Support multi-language SDKs
+- 🎯 [vdp] Add dashboard for out-of-the-box monitoring
+- 🔮 [model][console] Support model card
 - ☁️ Instill Cloud (Alpha): our hosted service to provide you with all the power of VDP, without managing infrastructure. If you're interested, [join the waitlist now](https://www.instill.tech/get-access/?utm_source=documentation&utm_medium=link).
 
-## Future
+## 2023 Q2
 
-- 📺 Instill CLI
-- 🎯 Support multi-language SDKs
-- 🔮 AutoML service to automatically build, train and deploy ML models on VDP
-- 🔮 Improve model deployment with the latest serverless technology
-- 🔮 Support new embedding task: convert unstructured image data to low-dimensional vectors. The task is the foundation for real-world applications such as retrieval, semantic search and recommendation systems
+- 🔌 [connector] Support `PULL` mode with new source connectors for scheduling pipeline
+  - Local filesystem
+  - Google Cloud Storage (GCS)
+- 🎯 [vdp] Instill CLI
+- 🎯 [vdp] Support logging
+- 🎯 [logic] Support logic operator pipeline component
+- 🔮 [model][automl] Support user dataset uploading
+- 🔮 [model][automl] Support AI model iteration
+- 🔮 [model][automl] One-click deploy fine-tuned AI models
+
+## 2023 Q3
+
+- 🔌 [connector] Support `PUSH` mode with source connectors
+- 🔮 [model][automl] Support data labelling
+- 🔮 [model] Model hub for discovery and sharing
+
+## 2023 Q4
+
+- 🎯 [pipeline] Support complex pipeline (DAG)
+- 🎯 [vdp] SQL extension for dataset and model management
+- 🔮 [model] Support model monitoring
 
 ## Contributing to the roadmap
 
