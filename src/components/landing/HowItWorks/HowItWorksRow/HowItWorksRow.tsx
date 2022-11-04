@@ -1,7 +1,7 @@
 import cn from "clsx";
 import { ReactElement } from "react";
 
-import { LearnMoreButton, NumberCube } from "@/components/ui";
+import { CommonCtaButton, NumberCube } from "@/components/ui";
 import { IconsCubeProps, IconsCube } from "../IconsCube";
 
 export type HowItWorksRowProps = {
@@ -42,7 +42,12 @@ export const HowItWorksRow = ({
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
             {description}
           </div>
-          <LearnMoreButton link={learnMoreLink} position="mt-auto mr-auto" />
+          <CommonCtaButton
+            withArrow={true}
+            link={learnMoreLink}
+            position="mt-auto mr-auto"
+            text="Learn more"
+          />
         </div>
       </div>
       <div className="flex xl:w-5/12">

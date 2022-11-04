@@ -40,7 +40,7 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
           type="left"
           title="Pre-built ETL data connectors for extensive data access"
           description="By leveraging ready-to-use ETL data connectors, VDP is the single point of visual data integration, where you can sync visual data from anywhere into data warehouses or applications. Focus on gaining insights across all your visual data, instead of maintaining connectors."
-          learnMoreLink=""
+          learnMoreLink="/docs/core-concepts/connector"
           number={1}
           cubes={[
             {
@@ -77,7 +77,7 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
           type="right"
           title="One-click import and deploy Vision AI models across vendors and frameworks"
           description="VDP integrates with the best ML tools and platforms to make importing models super easy. Get access to state-of-the-art models across vendors and your own models without changing your workflow. It supports frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more."
-          learnMoreLink=""
+          learnMoreLink="/docs/import-models/overview"
           number={2}
           cubes={[
             {

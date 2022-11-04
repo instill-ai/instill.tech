@@ -75,8 +75,9 @@ export const SubscribeNewsletterForm = ({
                   color="fill-instillBlue50 group-hover:fill-instillBlue80"
                 />
               }
+              hoveredShadow="hover:shadow-instill-solid-5"
             >
-              <p className="my-auto">Subscribe</p>
+              <p className="my-auto text-2xl">Subscribe</p>
             </SolidButton>
           </div>
           <div className="flex">

@@ -1,14 +1,13 @@
 import cn from "clsx";
 import Image from "next/future/image";
-import { SolidButton } from "@instill-ai/design-system";
-import { useRouter } from "next/router";
+
+import { CommonCtaButton } from "./CommonCtaButton";
 
 export type SecureYourSpotProps = {
   marginBottom?: string;
 };
 
 export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
-  const router = useRouter();
   return (
     <div className={cn("flex flex-col py-20", marginBottom)}>
       <div
@@ -38,15 +37,12 @@ export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
           </div>
         </div>
       </div>
-      <SolidButton
-        type="button"
-        color="primaryLight"
-        padding="px-5 py-2.5"
+      <CommonCtaButton
         position="mr-auto"
-        onClickHandler={() => router.push("/get-access")}
-      >
-        <p className="text-2xl font-normal">Get Early Access</p>
-      </SolidButton>
+        withArrow={false}
+        text="Get Early Access"
+        link="/get-access"
+      />
     </div>
   );
 };

@@ -40,6 +40,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setObjectKv({
             key: "recipe",
@@ -50,6 +51,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             trailingComma: true,
             trailingCommaColor: tokenColor,
             indent,
+            wrap: false,
             children: [
               setStringKv({
                 key: "source",
@@ -60,6 +62,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 colonColor: tokenColor,
                 trailingComma: true,
                 trailingCommaColor: tokenColor,
+                wrap: false,
               }),
               setArrayKv({
                 key: "model_instances",
@@ -71,6 +74,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 trailingCommaColor: tokenColor,
                 indent,
                 breakLine: false,
+                wrap: false,
                 children: [
                   setStringValue({
                     value: "models/yolov4/instances/v1.0",
@@ -79,6 +83,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                     trailingComma: false,
                     trailingCommaColor: tokenColor,
                     indent,
+                    wrap: false,
                   }),
                 ],
               }),
@@ -91,6 +96,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 colonColor: tokenColor,
                 trailingComma: true,
                 trailingCommaColor: tokenColor,
+                wrap: false,
               }),
             ],
           }),
@@ -112,6 +118,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setStringKv({
             key: "source_connector_definition",
@@ -122,6 +129,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setObjectKv({
             key: "connector",
@@ -132,6 +140,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             trailingComma: true,
             trailingCommaColor: tokenColor,
             indent,
+            wrap: false,
             children: [
               setObjectKv({
                 key: "connector",
@@ -143,6 +152,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 trailingCommaColor: tokenColor,
                 indent,
                 children: [],
+                wrap: false,
               }),
             ],
           }),
@@ -164,6 +174,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setStringKv({
             key: "model_definition",
@@ -174,6 +185,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setObjectKv({
             key: "configuration",
@@ -183,6 +195,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             bracketColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
             indent,
             children: [
               setStringKv({
@@ -194,6 +207,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 colonColor: tokenColor,
                 trailingComma: true,
                 trailingCommaColor: tokenColor,
+                wrap: false,
               }),
             ],
           }),
@@ -215,6 +229,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setStringKv({
             key: "destination_connector_definition",
@@ -225,6 +240,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             colonColor: tokenColor,
             trailingComma: true,
             trailingCommaColor: tokenColor,
+            wrap: false,
           }),
           setObjectKv({
             key: "connector",
@@ -235,6 +251,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             trailingComma: true,
             trailingCommaColor: tokenColor,
             indent,
+            wrap: false,
             children: [
               setObjectKv({
                 key: "connector",
@@ -246,6 +263,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 trailingCommaColor: tokenColor,
                 indent,
                 children: [],
+                wrap: false,
               }),
             ],
           }),
@@ -255,19 +273,21 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
   }
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex flex-row rounded-tl-[3px] rounded-tr-[3px] bg-instillGrey05 p-2">
-        <div className="flex flex-row gap-x-[5px]">
-          <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillRed50" />
-          <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillYellow50" />
-          <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillGreen50" />
+    <div className="h-full w-full pb-2.5 pr-2.5 xl:pb-5 xl:pr-5">
+      <div className="flex h-full flex-col border border-instillGrey20 shadow-instill-solid-10 xl:shadow-instill-solid-20">
+        <div className="flex flex-row rounded-tl-[3px] rounded-tr-[3px] bg-instillGrey05 p-2">
+          <div className="flex flex-row gap-x-[5px]">
+            <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillRed50" />
+            <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillYellow50" />
+            <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillGreen50" />
+          </div>
+          <div className="flex flex-1">
+            <div className="mx-auto text-sm font-normal text-instillGrey70">{`${currectResource}.json`}</div>
+          </div>
         </div>
-        <div className="flex flex-1">
-          <div className="mx-auto text-sm font-normal text-instillGrey70">{`${currectResource}.json`}</div>
+        <div className="flex flex-1 overflow-x-scroll rounded-br-[3px] rounded-bl-[3px] bg-instillGrey90 p-10">
+          {code}
         </div>
-      </div>
-      <div className="flex flex-1 rounded-br-[3px] rounded-bl-[3px] bg-instillGrey90 p-10">
-        {code}
       </div>
     </div>
   );
