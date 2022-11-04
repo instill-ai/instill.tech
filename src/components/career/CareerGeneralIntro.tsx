@@ -1,8 +1,21 @@
+import cn from "clsx";
+
 import Image from "next/future/image";
 
-export const CareerGeneralIntro = () => {
+export type CareerGeneralIntroProps = {
+  marginBottom?: string;
+};
+
+export const CareerGeneralIntro = ({
+  marginBottom,
+}: CareerGeneralIntroProps) => {
   return (
-    <div className="flex w-full flex-col gap-y-20 gap-x-20 py-20 xl:flex-row xl:gap-y-0">
+    <div
+      className={cn(
+        "flex w-full flex-col gap-y-20 gap-x-20 xl:flex-row xl:gap-y-0",
+        marginBottom
+      )}
+    >
       <div className="m-auto flex w-full flex-shrink-0 md:w-[33%]">
         <Image
           src="/images/instill-ai-badge.svg"
