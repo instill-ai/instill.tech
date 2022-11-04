@@ -93,7 +93,7 @@ export const Footer = () => {
       },
       {
         text: "Contact Us",
-        href: "/contact",
+        href: "mailto:hello@instill.tech",
       },
     ],
   };

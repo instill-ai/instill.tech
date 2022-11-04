@@ -122,7 +122,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="mr-auto mb-5 bg-instillLightGreen py-[5px] px-2.5">
+              <div className="mr-auto mb-5 bg-instillNatureGreen py-[5px] px-2.5">
                 {`${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")

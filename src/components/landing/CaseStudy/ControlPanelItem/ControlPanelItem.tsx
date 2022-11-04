@@ -21,7 +21,7 @@ export const ControlPanelItem = ({
       <div
         className={cn(
           "flex py-2.5",
-          isActive ? "bg-instillLightGreen" : "bg-instillGrey30"
+          isActive ? "bg-instillNatureGreen" : "bg-instillGrey30"
         )}
       >
         <div className="mx-auto flex flex-row gap-x-2 ">

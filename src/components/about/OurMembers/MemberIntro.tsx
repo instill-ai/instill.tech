@@ -311,7 +311,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       <div
         ref={ref}
         className={cn(
-          "flex w-full flex-col border-2 border-instillGrey95",
+          "flex w-full flex-col border-2 border-instillGrey90",
           styleName
         )}
       >

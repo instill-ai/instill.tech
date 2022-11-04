@@ -240,11 +240,20 @@ module.exports = {
         ".shadow-instill-solid-20": {
           boxShadow: "20px 20px 0px #23c4e7",
         },
+        ".shadow-instill-solid-20-white": {
+          boxShadow: "20px 20px 0px #ffffff",
+        },
         ".shadow-instill-solid-10": {
           boxShadow: "10px 10px 0px #23c4e7",
         },
+        ".shadow-instill-solid-10-white": {
+          boxShadow: "10px 10px 0px #ffffff",
+        },
         ".shadow-instill-solid-5": {
           boxShadow: "5px 5px 0px #23c4e7",
+        },
+        ".shadow-instill-solid-5-white": {
+          boxShadow: "5px 5px 0px #ffffff",
         },
         ".instill-toggle-loading-shadow": {
           boxShadow: "0px 0px 0px 3px #FFFCE3",

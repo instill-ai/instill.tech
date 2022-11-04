@@ -1,10 +1,12 @@
 import { GitHubIcon, SolidButton } from "@instill-ai/design-system";
+import { useRouter } from "next/router";
 
 export type GitHubCtaButtonProps = {
   position?: string;
 };
 
 export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
+  const router = useRouter();
   return (
     <SolidButton
       type="button"
@@ -20,6 +22,8 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       itemGapX="gap-x-2.5"
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
+      hoveredShadow="hover:shadow-instill-solid-10"
+      onClickHandler={() => router.push("https://github.com/instill-ai")}
     >
       <div className="flex flex-col">
         <div className="mr-auto text-left uppercase">Open-source VDP</div>

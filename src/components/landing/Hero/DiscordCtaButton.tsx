@@ -1,10 +1,12 @@
 import { DiscordIcon, TextButton } from "@instill-ai/design-system";
+import { useRouter } from "next/router";
 
 export type DiscordCtaButtonProps = {
   position?: string;
 };
 
 export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
+  const router = useRouter();
   return (
     <TextButton
       type="button"
@@ -20,6 +22,9 @@ export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
       itemGapX="gap-x-2.5"
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
+      onClickHandler={() =>
+        router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK)
+      }
     >
       <div className="flex flex-col">
         <div className="mr-auto text-left uppercase">200+ User community</div>

@@ -23,19 +23,19 @@ export const Community = () => {
           name="GitHub"
           title="Star VDP on GitHub"
           linkText="Star VDP"
-          link=""
+          link="https://github.com/instill-ai"
         />
         <CommunityBlock
           name="Discord"
           title="Join the discussion on Dicord"
           linkText="Join the community"
-          link=""
+          link={process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK}
         />
         <CommunityBlock
           name="Twitter"
           title="Keep updated on Twitter"
           linkText="Follow us"
-          link=""
+          link="https://twitter.com/instill_tech"
         />
       </div>
     </div>

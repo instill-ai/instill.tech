@@ -111,7 +111,11 @@ export const CommunityBlock = ({
   return (
     <div
       ref={containerRef}
-      className={cn("relative flex h-[240px] w-full flex-col p-5", blockColor)}
+      className={cn(
+        "relative flex h-[240px] w-full cursor-pointer flex-col p-5 hover:shadow-instill-solid-10-white",
+        blockColor
+      )}
+      onClick={() => router.push(link)}
     >
       <div className="z-10 mb-auto flex w-1/2 flex-col gap-y-2.5">
         <div className="flex flex-row gap-x-2">
@@ -128,17 +132,16 @@ export const CommunityBlock = ({
         itemGapX="gap-x-6"
         padding="px-2.5 py-[5px]"
         position="mt-auto z-10"
-        onClickHandler={() => router.push(link)}
         endIcon={
           <ArrowRightIcon
             position="my-auto"
             width="w-5"
             height="h-5"
-            color="fill-instillBlue50"
+            color="fill-white"
           />
         }
       >
-        {linkText}
+        <p className="text-white text-instill-body-normal">{linkText}</p>
       </TextButton>
       {croppedIcon}
     </div>
