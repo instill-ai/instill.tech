@@ -1,13 +1,8 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
-import {
-  ArrowRightIcon,
-  BasicAccordion,
-  SolidButton,
-} from "@instill-ai/design-system";
+import { BasicAccordion } from "@instill-ai/design-system";
 import cn from "clsx";
 
-import { SectionLabel } from "@/components/ui";
+import { CommonCtaButton, SectionLabel } from "@/components/ui";
 import { FaqContent } from "./FaqContent";
 
 export type FaqProps = {
@@ -15,7 +10,6 @@ export type FaqProps = {
 };
 
 export const Faq = ({ marginBottom }: FaqProps) => {
-  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const accordionHeaderStyle = {
@@ -118,26 +112,12 @@ If you are interested in the hosting service of VDP, we've started signing up us
               },
             ]}
           />
-          <SolidButton
-            type="button"
-            color="primaryLight"
-            endIcon={
-              <ArrowRightIcon
-                width="w-[28px]"
-                height="h-[28px]"
-                color="fill-instillNeonBlue"
-                position="my-auto"
-              />
-            }
-            padding="px-5 py-2.5"
-            itemGapX="gap-x-5"
+          <CommonCtaButton
+            withArrow={true}
             position="xl:ml-auto"
-            onClickHandler={() =>
-              router.push("https://www.instill.tech/docs/start-here/faq")
-            }
-          >
-            <p className="text-2xl font-normal">See all FAQ</p>
-          </SolidButton>
+            text="See all FAQ"
+            link="https://www.instill.tech/docs/start-here/faq"
+          />
         </div>
       </div>
     </div>

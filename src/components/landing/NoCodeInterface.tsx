@@ -2,7 +2,7 @@ import cn from "clsx";
 import Image from "next/future/image";
 import { useRef } from "react";
 
-import { LearnMoreButton } from "@/components/ui";
+import { CommonCtaButton } from "@/components/ui";
 import { SectionLabel } from "@/components/ui";
 import { useRefPosition } from "@/hooks/useRefPosition";
 
@@ -28,9 +28,11 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
             The no-code interface helps provides a unified, clean and intuitive
             user experience of VDP.
           </p>
-          <LearnMoreButton
+          <CommonCtaButton
             position="mr-auto"
             link="https://demo.instill.tech/"
+            withArrow={true}
+            text="Learn more"
           />
         </div>
       </div>
