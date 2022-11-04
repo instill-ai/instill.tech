@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.16.1](https://github.com/instill-ai/instill.tech/compare/v1.16.0...v1.16.1) (2022-11-04)
+
+
+### Documentation
+
+* adjust roadmap ([#322](https://github.com/instill-ai/instill.tech/issues/322)) ([1d26dda](https://github.com/instill-ai/instill.tech/commit/1d26ddaad19f5caf82f93ace82e7dfbe4a677b8c))
+* **tutorials:** refactor low code ([#287](https://github.com/instill-ai/instill.tech/issues/287)) ([be494d9](https://github.com/instill-ai/instill.tech/commit/be494d9781f7cc3f540cfe6aeabd88b2d2189ea5))
+
 ## [1.16.0](https://github.com/instill-ai/instill.tech/compare/v1.16.0...v1.16.0) (2022-09-29)
 
 
