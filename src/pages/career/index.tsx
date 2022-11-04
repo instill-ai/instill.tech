@@ -109,15 +109,15 @@ const CareerPage: FC<CareerPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <div className="mx-auto flex max-w-[1127px] flex-col xl:mt-40">
-        <div className="p-10 xl:p-0">
+      <div className="mx-auto mt-[100px] flex max-w-[1127px] flex-col xl:mt-40">
+        <div className="mb-[100px] p-10 xl:p-0">
           <CareerHero
             viewJobsScrollHandler={scrollHandler}
             marginBottom="md:mb-20"
           />
         </div>
 
-        <div className="mb-10 px-4 xl:px-0">
+        <div className="mb-20 px-4 xl:px-0">
           <CareerGeneralIntro />
         </div>
 
