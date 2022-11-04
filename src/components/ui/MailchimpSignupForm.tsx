@@ -20,7 +20,7 @@ export const MailchimpSignupForm = () => {
 
     const style = document.createElement("style");
     style.innerHTML =
-      "#mc_embed_signup div.mce_inline_error{ background-color: #FFFFFF !important; font-size: 12px !imporrtant; color: #FF5353 !important; font-weight: 400 !important; padding: 0 !important; }";
+      "#mc_embed_signup div.mce_inline_error{ background-color: #F6F6F6 !important; font-size: 12px !imporrtant; color: #FF5353 !important; font-weight: 400 !important; padding: 0 !important; }";
 
     document.head.appendChild(mailchimpScript);
     document.head.appendChild(style);
