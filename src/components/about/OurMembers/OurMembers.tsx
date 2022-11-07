@@ -129,7 +129,7 @@ export const OurMembers = ({
   return (
     <div
       className={cn(
-        "flex flex-col bg-instillGrey90 px-4 pt-10 md:px-0",
+        "flex flex-col bg-instillGrey90 px-4 pt-10 xl:px-0",
         {
           "pb-4": !targerMember,
         },
