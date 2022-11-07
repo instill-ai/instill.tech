@@ -37,7 +37,7 @@ export const MailchimpSignupForm = () => {
     // Begin Mailchimp Signup Form
     <div
       id="mc_embed_signup"
-      className="bg-instillGrey05 p-10 shadow-instill-solid-20"
+      className="bg-instillGrey05 p-10 shadow-instill-solid-10 xl:shadow-instill-solid-20"
     >
       <form
         id="mc-embedded-subscribe-form"

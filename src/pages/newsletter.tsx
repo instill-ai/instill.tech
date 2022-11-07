@@ -4,7 +4,12 @@ import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
 
-import { PageBase, PageHead, SubscribeNewsletterForm } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  SubscribeNewsletterForm,
+} from "@/components/ui";
 import {
   GetCampaignContentResponse,
   ListCampaignsResponse,
@@ -103,8 +108,11 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         pageDescription="Instill AI newsletter archive"
         pageType="main"
       />
-      <div className="mx-auto w-full max-w-[800px] px-4 xl:w-8/12 xl:px-0">
-        <div className="flex w-full flex-col pt-[100px] pb-[60px] xl:mb-[180px] xl:px-0">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[800px]"
+      >
+        <div className="mb-[120px] flex w-full flex-col xl:mb-40 xl:px-0">
           <h1 className="mb-10 w-full text-left font-mono text-5xl font-semibold uppercase text-instillSkyBlue xl:text-instill-h1">
             Newsletter
           </h1>
@@ -131,7 +139,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
             </Fragment>
           ))}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };

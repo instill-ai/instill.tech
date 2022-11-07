@@ -102,7 +102,7 @@ const AboutPage: FC<AboutPageProps> & {
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
         pageType="main"
       />
-      <div className="mx-auto mb-[120px] mt-[100px] flex max-w-[1127px] flex-col xl:mt-40">
+      <div className="mx-auto my-[120px] flex max-w-[1127px] flex-col xl:my-40">
         <div className="mb-[100px] p-4 xl:mb-40 xl:p-0">
           <AboutHero />
         </div>
@@ -119,7 +119,7 @@ const AboutPage: FC<AboutPageProps> & {
           marginBottom="mb-10"
         />
       </div>
-      <div className="mx-auto mb-20 max-w-[1127px] px-4 xl:mb-40 xl:px-0">
+      <div className="mx-auto mb-[120px] max-w-[1127px] px-4 xl:mb-40 xl:px-0">
         <div className="mb-[120px]" ref={secureYourSpotRef}>
           {loadSecureYourSpot && <SecureYourSpot />}
         </div>

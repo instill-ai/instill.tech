@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { PageBase, PageHead } from "../ui";
+import { ContentContainer, PageBase, PageHead } from "../ui";
 
 export type PolicyPageLayoutProps = {
   meta: {
@@ -17,8 +17,11 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         pageDescription={meta.description}
         pageType="main"
       />
-      <div className="flex w-full bg-white">
-        <div className="max-w-[1440px] xl:mx-auto xl:grid xl:w-10/12 xl:grid-cols-3">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <div className="xl:grid xl:w-10/12 xl:grid-cols-3">
           <article className="prose mx-5 mt-[180px] mb-[60px] max-w-none xl:col-span-2 xl:mx-0">
             {children}
           </article>
@@ -36,7 +39,7 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </ContentContainer>
     </PageBase>
   );
 };
