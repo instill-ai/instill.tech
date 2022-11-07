@@ -4,12 +4,7 @@ import matter from "gray-matter";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
 
-import {
-  ContentContainer,
-  PageBase,
-  PageHead,
-  SubscribeNewsletterForm,
-} from "@/components/ui";
+import { PageBase, PageHead, SubscribeNewsletterForm } from "@/components/ui";
 import {
   GetCampaignContentResponse,
   ListCampaignsResponse,

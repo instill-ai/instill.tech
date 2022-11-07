@@ -55,14 +55,17 @@ export const SubscribeNewsletterForm = ({
     <form onSubmit={subscribe} className={cn(position, width)}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="mb-1.5 flex flex-row justify-end border border-instillGrey05">
-            <input
-              aria-label="Email for newsletter"
-              placeholder="Your email..."
-              type="email"
-              ref={email}
-              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillNeonBlue05 px-5 text-instillGrey90 instill-input-no-highlight"
-            />
+          <div className="mb-1.5 flex flex-row">
+            <div className="flex flex-1">
+              <input
+                aria-label="Email for newsletter"
+                placeholder="Your email..."
+                type="email"
+                ref={email}
+                className="h-full w-full rounded-[1px] bg-instillNeonBlue05 px-5 text-instillGrey90 instill-input-no-highlight"
+              />
+            </div>
+
             <SolidButton
               color="primaryLight"
               type="submit"
