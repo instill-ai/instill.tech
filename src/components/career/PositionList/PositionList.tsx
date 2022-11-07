@@ -13,7 +13,7 @@ export const PositionList = forwardRef<HTMLDivElement, PositionListProps>(
     return (
       <div
         className={cn(
-          "flex w-full flex-col bg-instillGrey05 p-5 md:p-10",
+          "flex w-full flex-col bg-instillGrey05 p-5 xl:p-10",
           marginBottom
         )}
         ref={ref}

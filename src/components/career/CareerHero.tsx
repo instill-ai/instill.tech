@@ -14,15 +14,15 @@ export const CareerHero = ({
   viewJobsScrollHandler,
 }: CareerHeroProps) => {
   const subHeaderStyle =
-    "text-lg text-instillGrey70 font-sans font-light md:text-2xl";
+    "text-lg text-instillGrey70 font-sans font-light xl:text-2xl";
   return (
     <div
       className={cn(
-        "mx-auto flex w-full flex-col gap-y-10 md:w-8/12",
+        "mx-auto flex w-full flex-col gap-y-10 xl:w-8/12",
         marginBottom
       )}
     >
-      <h1 className="w-full text-left font-mono text-5xl font-semibold uppercase text-instillSkyBlue md:text-instill-h1">
+      <h1 className="w-full text-left font-mono text-5xl font-semibold uppercase text-instillSkyBlue xl:text-instill-h1">
         Come together
       </h1>
       <div className="flex flex-col">
