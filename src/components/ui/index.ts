@@ -9,8 +9,6 @@ export { CopyRightText } from "./CopyRightText";
 export { ContentContainer } from "./ContentContainer";
 export type { ContentContainerProps } from "./ContentContainer";
 export { Footer } from "./Footer";
-export { GetEarlyAccessButton } from "./GetEarlyAccessButton";
-export type { GetEarlyAccessButtonProps } from "./GetEarlyAccessButton";
 export { GithubCtaButton } from "./GithubCtaButton";
 export { PageBase } from "./PageBase";
 export type { PageBaseProps } from "./PageBase";
