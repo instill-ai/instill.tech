@@ -205,7 +205,7 @@ const DocsPage: FC<DocsPageProps> & {
         pageType="docs"
       />
       <div className="grid grid-cols-8">
-        <div className="col-span-8 px-6 md:px-8 xl:col-span-6 max:px-16">
+        <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-3xl font-semibold">
             {mdxSource.frontmatter.title}
           </h1>

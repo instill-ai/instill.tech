@@ -113,7 +113,7 @@ const CareerPage: FC<CareerPageProps> & {
         <div className="mb-[100px] p-10 xl:p-0">
           <CareerHero
             viewJobsScrollHandler={scrollHandler}
-            marginBottom="md:mb-20"
+            marginBottom="xl:mb-20"
           />
         </div>
 

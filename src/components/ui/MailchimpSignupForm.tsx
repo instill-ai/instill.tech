@@ -60,7 +60,7 @@ export const MailchimpSignupForm = () => {
               className={cn(inputStyle, "required")}
             />
           </div>
-          <div className="grid grid-cols-1 gap-x-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
             <div className="mc-field-group flex flex-col gap-y-2">
               <label htmlFor="mce-FNAME" className={fieldTitleStyle}>
                 First Name<span>*</span>
