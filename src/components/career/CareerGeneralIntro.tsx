@@ -16,7 +16,7 @@ export const CareerGeneralIntro = ({
         marginBottom
       )}
     >
-      <div className="m-auto flex w-full flex-shrink-0 md:w-[33%]">
+      <div className="m-auto flex w-full flex-shrink-0 xl:w-[33%]">
         <Image
           src="/images/instill-ai-badge.svg"
           alt="The badge of instill ai"

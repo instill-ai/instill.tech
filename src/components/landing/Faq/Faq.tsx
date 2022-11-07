@@ -21,8 +21,8 @@ export const Faq = ({ marginBottom }: FaqProps) => {
 
   return (
     <div className={cn("flex w-full flex-col", marginBottom)}>
-      <div className="flex flex-col gap-y-10 md:flex-row md:gap-y-0 md:gap-x-10">
-        <div className="flex w-full flex-col md:w-1/3">
+      <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
+        <div className="flex w-full flex-col xl:w-1/3">
           <SectionLabel text="Got a question?" position="mr-auto mb-2.5" />
           <h3 className="mb-5 font-mono text-4xl font-medium text-instillGrey90">
             FAQ
@@ -32,7 +32,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
             our users, friends, candidates, investors, random people, etc.
           </p>
         </div>
-        <div className="flex w-full flex-col gap-y-5 md:w-2/3">
+        <div className="flex w-full flex-col gap-y-5 xl:w-2/3">
           <BasicAccordion
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}

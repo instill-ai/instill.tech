@@ -137,7 +137,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
     e.setAttribute("style", styleList.join(";"));
 
     e.classList.add("mx-auto");
-    e.classList.add("md:max-w-full");
+    e.classList.add("xl:max-w-full");
   });
 
   // Remove mailchimp Header logo image

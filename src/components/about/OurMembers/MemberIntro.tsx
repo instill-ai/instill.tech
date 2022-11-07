@@ -335,12 +335,13 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             </button>
           </div>
 
-          <div className="border-t-2 border-instillGrey95">
+          <div className="w-full border-t-2 border-instillGrey95">
             {member ? (
               getAvatar(member)
             ) : (
               <Image
                 src="/images/member-avatar-skeleton.svg"
+                style={{ width: "100%", height: "auto" }}
                 width={360}
                 height={360}
                 alt="Skeleton of member avatar"

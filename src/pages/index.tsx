@@ -1,4 +1,4 @@
-import { FC, ReactElement, Suspense, useCallback, useRef } from "react";
+import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
 import {

@@ -21,7 +21,7 @@ export const ReactMarkdownWrapper = ({
   return (
     <article
       className={cn(
-        "prose prose-sm md:prose-lg",
+        "prose prose-lg",
         marginBottom,
         prose,
         additionalClassname,

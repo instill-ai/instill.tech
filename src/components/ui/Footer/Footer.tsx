@@ -100,7 +100,7 @@ export const Footer = () => {
 
   return (
     <div className="flex w-full bg-instillGrey90">
-      <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 md:mx-auto max:w-10/12 max:px-0">
+      <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 xl:mx-auto max:w-10/12 max:px-0">
         <div className="mb-[120px] flex flex-col gap-x-10 xl:mb-[180px] xl:flex-row">
           <div className="mb-[120px] flex flex-col space-y-5 xl:mb-0">
             <div className="w-[240px] font-mono text-2xl font-medium text-instillGrey05 xl:w-[300px]">

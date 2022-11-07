@@ -9,7 +9,12 @@ import {
   useState,
 } from "react";
 
-import { PageBase, PageHead, StayInTheLoopProps } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  StayInTheLoopProps,
+} from "@/components/ui";
 import {
   CareerGeneralIntro,
   CareerHero,
@@ -109,28 +114,24 @@ const CareerPage: FC<CareerPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <div className="mx-auto mt-[100px] flex max-w-[1127px] flex-col xl:mt-40">
-        <div className="mb-[100px] p-10 xl:p-0">
-          <CareerHero
-            viewJobsScrollHandler={scrollHandler}
-            marginBottom="md:mb-20"
-          />
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <CareerHero
+          viewJobsScrollHandler={scrollHandler}
+          marginBottom="mb-[120px] xl:mb-40"
+        />
+        <CareerGeneralIntro marginBottom="mb-20 xl:mb-40" />
+        <div ref={positionListRef}>
+          {loadPositionList && (
+            <PositionList marginBottom="mb-20 xl:mb-40" positions={positions} />
+          )}
         </div>
-
-        <div className="mb-20 px-4 xl:px-0">
-          <CareerGeneralIntro />
-        </div>
-
-        <div className="mb-20 flex w-full xl:mb-40" ref={positionListRef}>
-          {loadPositionList && <PositionList positions={positions} />}
-        </div>
-        <div
-          className="mb-20 flex px-4 xl:mb-40 xl:px-0"
-          ref={stayInTheLoopRef}
-        >
+        <div ref={stayInTheLoopRef}>
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };

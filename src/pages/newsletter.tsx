@@ -108,12 +108,15 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         pageDescription="Instill AI newsletter archive"
         pageType="main"
       />
-      <div className="mx-auto w-full max-w-[800px] px-8 md:px-10 xl:w-8/12 xl:px-0">
-        <div className="flex w-full flex-col px-5 pt-[100px] pb-[60px] md:px-0 xl:mb-[180px]">
-          <h1 className="mb-5 text-left text-3xl font-semibold uppercase text-instillSkyBlue md:text-[64px]">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[800px]"
+      >
+        <div className="mb-[120px] flex w-full flex-col xl:mb-40 xl:px-0">
+          <h1 className="mb-10 w-full text-left font-mono text-5xl font-semibold uppercase text-instillSkyBlue xl:text-instill-h1">
             Newsletter
           </h1>
-          <h3 className=" mb-[60px] text-left text-lg font-light text-instillGrey90">
+          <h3 className="mb-10 font-sans text-lg font-light text-instillGrey70 xl:text-2xl">
             Get the latest news from Instill AI: open source updates, community
             highlights, blog posts, useful tutorials and more!
           </h3>
@@ -130,13 +133,13 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
                   .join(" ")}`}
               </div>
               <div
-                className="mb-[120px] w-full bg-instillGrey05 py-10 px-4 shadow-instill-solid-20 md:px-10"
+                className="mb-[120px] w-full bg-instillGrey05 py-10 px-4 shadow-instill-solid-10 xl:px-10 xl:shadow-instill-solid-20"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
             </Fragment>
           ))}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };

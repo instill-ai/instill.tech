@@ -2,7 +2,6 @@ import { ArrowLeftIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 
 export type BackToPreviousPageLinkProps = {
-  /** Previous page's link */
   url: string;
 };
 

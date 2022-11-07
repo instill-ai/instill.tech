@@ -822,7 +822,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         bgColor="bg-instillGrey90"
         display="hidden md:flex"
       >
-        <div className="m-auto flex w-full max-w-[1127px] flex-row gap-x-[30px] xl:gap-x-[60px]">
+        <div className="m-auto flex w-full max-w-[1127px] flex-row gap-x-[30px] px-[30px] xl:gap-x-[60px] xl:px-0">
           <div className="flex w-full md:w-1/2 xl:w-2/3">{caseAccordion}</div>
           <div className="flex w-full md:w-1/2 xl:w-1/3">{controlPanel}</div>
         </div>

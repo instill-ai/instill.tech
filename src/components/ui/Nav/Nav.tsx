@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
-import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
+import {
+  CrossIcon,
+  Logo,
+  MenuIcon,
+  SolidButton,
+} from "@instill-ai/design-system";
 
-import { AnnouncementBar } from "@/components/ui";
+import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
-import { GetEarlyAccessButton } from "../GetEarlyAccessButton";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
+import { GetAccessButton } from "./GetAccessButton";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +31,7 @@ export const Nav = () => {
     <>
       <DocsPageLink />
       <GithubTextLink />
-      <GetEarlyAccessButton />
+      <GetAccessButton />
     </>
   );
 
