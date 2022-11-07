@@ -1,14 +1,21 @@
 import { ArrowDownIcon } from "@instill-ai/design-system";
 
 export type ExploreMoreScrollButtonProps = {
-  /** This function will scroll pageView to targetRef 
-   * 
-   *  @Example
-   * 
+  /** You can use scrollIntoView.
    *  ```
    *  const handleScroll = useCallback(() => {
         ref.current.scrollIntoView({ behavior: "smooth" });
       }, []);
+      ```
+
+      But if you have the sticky navbar, you may need to get the target 
+      position and use window,scrollTo
+
+      ```
+        window.scrollTo({
+          top: <calculated_top>,
+          behavior: "smooth",
+        });
       ```
    * 
   */

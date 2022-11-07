@@ -1,7 +1,7 @@
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
-} from "@/components/ui";
+} from "./ExploreMoreScrollButton";
 import { HeroAnimation } from "./HeroAnimation";
 import { Headline } from "./Headline";
 import { SubHeadline } from "./SubHeadline";

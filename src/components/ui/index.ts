@@ -8,8 +8,6 @@ export type { BlueprintContainerProps } from "./BlueprintContainer";
 export { CopyRightText } from "./CopyRightText";
 export { ContentContainer } from "./ContentContainer";
 export type { ContentContainerProps } from "./ContentContainer";
-export { ExploreMoreScrollButton } from "./ExploreMoreScrollButton";
-export type { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
 export { Footer } from "./Footer";
 export { GetEarlyAccessButton } from "./GetEarlyAccessButton";
 export type { GetEarlyAccessButtonProps } from "./GetEarlyAccessButton";
