@@ -30,7 +30,7 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
             marginBottom="mb-2.5"
           />
           <div className="flex flex-row">
-            <h2 className="w-full font-mono text-4xl text-instillGrey90 md:w-7/12 xl:text-5xl">
+            <h2 className="w-full font-mono text-4xl text-instillGrey90 xl:w-7/12 xl:text-5xl">
               Fastest way to build end-to-end visual data ETL pipelines
             </h2>
             <div className="hidden w-5/12 xl:flex">

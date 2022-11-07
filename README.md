@@ -8,8 +8,9 @@ This repository maintains the Instill AI product website and VDP documentation.
 
 ### Reminder
 
-1. We only have singular major breakpoint right now: xl: (1127px)
-  - OurMember component is still under re-construction
+1. We mainly have singular major breakpoint right now: xl: (1127px)
+  - OurMember component is still under re-construction.
+  - InstillCloud use md breakpoint because it makes more sense.
 2. The max-width of context is 1127px
 
 ## Build up next app
