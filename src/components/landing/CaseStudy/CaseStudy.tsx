@@ -539,6 +539,17 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       color: "fill-white",
       position: "m-auto",
     };
+
+    // These gradient color are not stored in the design-system, they are
+    // instillSkyBlue with background-opacity, but we can't use opacity
+    // element in this section, we have to use this kind of color variant.
+
+    const inactiveHeaderGradient = [
+      "bg-[#2596AE]",
+      "bg-[#26869B]",
+      "bg-[#267788]",
+    ];
+
     return (
       <BasicAccordion
         activeIndex={activeIndex}
@@ -548,9 +559,9 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Invoice Processing",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#2596AE]",
+            headerInActiveBgColor: inactiveHeaderGradient[0],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGray80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Optical Character Recognition"
@@ -605,9 +616,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Workspace Safety",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#2596AE]",
+            headerInActiveBgColor:
+              activeIndex === 0
+                ? inactiveHeaderGradient[0]
+                : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Object detection & Pose Estimation"
@@ -676,9 +690,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "E-Commerce Labelling",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#26869B]",
+            headerInActiveBgColor:
+              activeIndex === 3
+                ? inactiveHeaderGradient[2]
+                : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Image tagging"
@@ -734,9 +751,9 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Customise Your Pipeline",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#267788]",
+            headerInActiveBgColor: inactiveHeaderGradient[2],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Task for your use case"
