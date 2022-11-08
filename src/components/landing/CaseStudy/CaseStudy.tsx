@@ -816,6 +816,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   return (
     <>
       <BlueprintContainer
+        alignWith="container"
         padding="py-[60px]"
         unitHeight={30}
         unitWidth={30}
@@ -830,6 +831,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       <div className="relative flex flex-col gap-y-10 md:hidden">
         {caseAccordion}
         <BlueprintContainer
+          alignWith="container"
           padding="pt-[32px]"
           unitHeight={30}
           unitWidth={30}
