@@ -60,7 +60,7 @@ export const AccordionContentLayout = ({
             {destination}
           </div>
         </div>
-        <div className="mr-auto flex text-base font-normal text-instillGrey30">
+        <div className="mr-auto flex text-base font-normal text-white">
           {description}
         </div>
       </div>
