@@ -20,7 +20,7 @@ export type ControlPanelProps = {
   model: ReactElement;
   destination: ReactElement;
   setCurrentShowcaseFrame: Dispatch<SetStateAction<number>>;
-  activeIndex: number;
+  activeIndex: number[];
   getActiveControl: () => "source" | "destination" | "model";
 };
 
@@ -257,7 +257,7 @@ export const ControlPanel = ({
   }, [emblaApi, setCurrentShowcaseFrame]);
 
   const mobilePanel = () => {
-    if (activeIndex === 3) {
+    if (activeIndex[0] === 3) {
       return (
         <div className="embla overflow-y-auto overflow-x-hidden">
           <div className="embla__viewport w-full" ref={viewportRef}>

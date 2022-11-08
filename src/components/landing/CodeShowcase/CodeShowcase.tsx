@@ -20,10 +20,10 @@ export type Resource = "pipeline" | "source" | "model" | "destination";
 export type SetResource = Dispatch<SetStateAction<Resource>>;
 
 export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number[]>([0]);
 
   const currentResource = useMemo<Resource>(() => {
-    switch (activeIndex) {
+    switch (activeIndex[0]) {
       case 0:
         return "pipeline";
       case 1:
@@ -71,6 +71,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
           <BgIconAccordion
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            allowMultiItems={false}
             enableHeaderIcon={true}
             headerIconColor="fill-white"
             bgIconPosition="top-0 -right-20"

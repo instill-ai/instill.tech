@@ -10,7 +10,7 @@ export type FaqProps = {
 };
 
 export const Faq = ({ marginBottom }: FaqProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number[]>([]);
 
   const accordionHeaderStyle = {
     headerActiveBgColor: "bg-instillGrey05",
@@ -36,6 +36,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
           <BasicAccordion
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            allowMultiItems={true}
             enableHeaderIcon={true}
             headerIconColor="fill-black"
             itemGapY="gap-y-2.5"

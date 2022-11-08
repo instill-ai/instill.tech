@@ -35,14 +35,14 @@ export type CaseStudyProps = {
 };
 
 export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number[]>([0]);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
     useState<Nullable<number>>(null);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
 
   const getActiveControl = useCallback(() => {
-    if (activeIndex === 1) {
+    if (activeIndex[0] === 1) {
       switch (currentShowcaseFrame) {
         case 0:
           return "source";
@@ -79,7 +79,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       position: "my-auto",
     };
 
-    switch (activeIndex) {
+    switch (activeIndex[0]) {
       case 0:
         return (
           <ControlPanel
@@ -641,6 +641,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         activeIndex={activeIndex}
         setActiveIndex={setActiveIndex}
         enableHeaderIcon={false}
+        allowMultiItems={false}
         items={[
           {
             header: "Invoice Processing",
@@ -704,7 +705,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
             header: "Workspace Safety",
             headerActiveBgColor: "bg-instillNeonBlue",
             headerInActiveBgColor:
-              activeIndex === 0
+              activeIndex[0] === 0
                 ? inactiveHeaderGradient[0]
                 : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
@@ -779,7 +780,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
             header: "E-Commerce Labelling",
             headerActiveBgColor: "bg-instillNeonBlue",
             headerInActiveBgColor:
-              activeIndex === 3
+              activeIndex[0] === 3
                 ? inactiveHeaderGradient[2]
                 : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
@@ -900,7 +901,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   useEffect(() => {
     setCurrentShowcaseFrame(0);
     setFocusedShowcaseFrame(null);
-    switch (activeIndex) {
+    switch (activeIndex[0]) {
       case 1:
         setShowcaseMaxFrame(3);
         break;
@@ -911,7 +912,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   }, [activeIndex]);
 
   useInterval(() => {
-    if (activeIndex === 3 || focusedShowcaseFrame !== null) return;
+    if (activeIndex[0] === 3 || focusedShowcaseFrame !== null) return;
     setCurrentShowcaseFrame((prev) => {
       if (prev + 1 <= showcaseMaxFrame) {
         return prev + 1;
