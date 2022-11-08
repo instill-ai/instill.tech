@@ -274,7 +274,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
 
   return (
     <div className="h-full w-full pb-2.5 pr-2.5 xl:pb-5 xl:pr-5">
-      <div className="flex h-full flex-col border border-instillGrey20 shadow-instill-solid-10 xl:shadow-instill-solid-20">
+      <div className="flex h-full flex-col rounded-[5px] border border-instillGrey05 shadow-instill-solid-10 xl:shadow-instill-solid-20">
         <div className="flex flex-row rounded-tl-[3px] rounded-tr-[3px] bg-instillGrey05 p-2">
           <div className="flex flex-row gap-x-[5px]">
             <div className="my-auto h-2.5 w-2.5 rounded-full bg-instillRed50" />
@@ -285,7 +285,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             <div className="mx-auto text-sm font-normal text-instillGrey70">{`${currectResource}.json`}</div>
           </div>
         </div>
-        <div className="flex flex-1 overflow-x-scroll rounded-br-[3px] rounded-bl-[3px] bg-instillGrey90 p-10">
+        <div className="flex flex-1 overflow-x-scroll rounded-br-[5px] rounded-bl-[5px] bg-instillGrey90 p-10">
           {code}
         </div>
       </div>
