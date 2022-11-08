@@ -5,7 +5,7 @@ specifiers:
   '@code-hike/mdx': ^0.7.3
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
-  '@instill-ai/design-system': ^0.0.129-alpha.9
+  '@instill-ai/design-system': ^0.0.129-alpha.10
   '@mailchimp/mailchimp_marketing': ^3.0.72
   '@mdx-js/loader': ^2.1.2
   '@mdx-js/react': ^2.1.2
@@ -89,7 +89,7 @@ specifiers:
 
 dependencies:
   '@code-hike/mdx': 0.7.3_react@17.0.2
-  '@instill-ai/design-system': 0.0.129-alpha.9_b4usidsfzquyh4hx4nnzn3lrei
+  '@instill-ai/design-system': 0.0.129-alpha.10_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
   '@react-hook/resize-observer': 1.2.6_react@17.0.2
   axios: 0.21.4
@@ -1945,8 +1945,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@instill-ai/design-system/0.0.129-alpha.9_b4usidsfzquyh4hx4nnzn3lrei:
-    resolution: {integrity: sha512-tn8RR4T1ivHp8KP0XICGWO1vO451ZAIuSJb5shEbLf9ZvB9D6EAKEOHfZRxhun2W894QFneHHZ4+i2CbGmqaSA==}
+  /@instill-ai/design-system/0.0.129-alpha.10_b4usidsfzquyh4hx4nnzn3lrei:
+    resolution: {integrity: sha512-f8LqglgSyMWu7FcAxwc55f+/IYURXOWwFirKr9pVPlaS8oXSfihjDNxzzKR9Qzt31dVv8/9ZR3sMNGtsYnqXXQ==}
     peerDependencies:
       clsx: ^1.1.1
       react: ^17.0.2

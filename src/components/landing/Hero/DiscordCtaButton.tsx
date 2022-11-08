@@ -1,4 +1,8 @@
-import { DiscordIcon, TextButton } from "@instill-ai/design-system";
+import {
+  DiscordIcon,
+  OutlineButton,
+  TextButton,
+} from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 
 export type DiscordCtaButtonProps = {
@@ -8,9 +12,10 @@ export type DiscordCtaButtonProps = {
 export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
   const router = useRouter();
   return (
-    <TextButton
+    <OutlineButton
       type="button"
-      color="primary"
+      color="primaryLight"
+      hoveredShadow="hover:shadow-instill-solid-5"
       startIcon={
         <DiscordIcon
           width="w-9"
@@ -30,6 +35,6 @@ export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
         <div className="mr-auto text-left uppercase">200+ User community</div>
         <div className="mr-auto text-left text-xs font-normal">Join now</div>
       </div>
-    </TextButton>
+    </OutlineButton>
   );
 };

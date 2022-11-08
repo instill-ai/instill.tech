@@ -22,7 +22,7 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       itemGapX="gap-x-2.5"
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
-      hoveredShadow="hover:shadow-instill-solid-10"
+      hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() => router.push("https://github.com/instill-ai")}
     >
       <div className="flex flex-col">
