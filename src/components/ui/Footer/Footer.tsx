@@ -1,46 +1,122 @@
-import { Logo } from "@instill-ai/design-system";
-import SocialLinks from "./SocialLinks";
-import CopyRightText from "../CopyRightText";
-import SimpleHorizontalLine from "../SimpleHorizontalLine";
-import PrivacyPolicyLink from "./PrivacyPolicyLink";
-import CookiePolicyLink from "./CookiePolicyLink";
+import {
+  DiscordIcon,
+  FacebookIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  Logo,
+  MediumIcon,
+  TwitterIcon,
+} from "@instill-ai/design-system";
+import { CopyRightText } from "..";
+import { Tab } from "./Tab";
+import { TabLinks } from "./Tab";
 
-const Footer = () => {
+export const Footer = () => {
+  const socialIconStyle = {
+    width: "w-[30px]",
+    height: "h-[30px]",
+    position: "m-auto",
+    color: "fill-instillGrey30 hover:fill-instillGrey05",
+  };
+
+  const tabs: TabLinks = {
+    socialLinks: [
+      {
+        icon: <GitHubIcon {...socialIconStyle} />,
+        href: "https://github.com/instill-ai",
+      },
+      {
+        icon: <DiscordIcon {...socialIconStyle} />,
+        href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK,
+      },
+      {
+        icon: <TwitterIcon {...socialIconStyle} />,
+        href: "https://twitter.com/instill_tech",
+      },
+      {
+        icon: <LinkedInIcon {...socialIconStyle} />,
+        href: "https://www.linkedin.com/company/instilltech/",
+      },
+      {
+        icon: <FacebookIcon {...socialIconStyle} />,
+        href: "https://www.facebook.com/instilltech",
+      },
+      {
+        icon: <MediumIcon {...socialIconStyle} />,
+        href: "https://medium.com/instill-ai",
+      },
+    ],
+    products: [
+      {
+        text: "Deploy OSS VDP",
+        href: "https://github.com/instill-ai/vdp",
+      },
+      {
+        text: "Try VDP Demo",
+        href: "https://demo.instill.tech",
+      },
+      {
+        text: "Join Instill Cloud waitlist",
+        href: "/get-access",
+      },
+    ],
+    resources: [
+      {
+        text: "Documentation",
+        href: "/docs/start-here/getting-started",
+      },
+      {
+        text: "Blog",
+        href: "https://blog.instill.tech/",
+      },
+      {
+        text: "Newsletter",
+        href: "/newsletter",
+      },
+    ],
+    company: [
+      {
+        text: "About Instill AI",
+        href: "/about",
+      },
+      {
+        text: "Career",
+        href: "/career",
+      },
+      {
+        text: "Privacy Policy",
+        href: "/privacy",
+      },
+      {
+        text: "Cookie Policy",
+        href: "/cookie",
+      },
+      {
+        text: "Contact Us",
+        href: "mailto:hello@instill.tech",
+      },
+    ],
+  };
+
   return (
-    <div className="flex w-full bg-instillGrey95">
-      <div className="mt-auto flex w-full max-w-[1440px] flex-col py-5 px-4 md:mx-auto max:w-10/12 max:px-0">
-        <SimpleHorizontalLine
-          marginBottom="mb-5"
-          borderColor="border-instillGrey70"
-        />
-        <div className="flex flex-col space-y-[60px] sm:space-y-10">
-          <div className="flex flex-col">
-            <h3 className="instill-text-h3 mb-5 max-w-[256px] text-instillGrey05">
-              Visual Data Preparation Made for All
-            </h3>
+    <div className="flex w-full bg-instillGrey90">
+      <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 xl:mx-auto max:w-10/12 max:px-0">
+        <div className="mb-[120px] flex flex-col gap-x-10 xl:mb-[180px] xl:flex-row">
+          <div className="mb-[120px] flex flex-col space-y-5 xl:mb-0">
+            <div className="w-[240px] font-mono text-2xl font-medium text-instillGrey05 xl:w-[300px]">
+              WHERE VISUAL DATA PREPARATION MADE FOR ALL
+            </div>
             <Logo type="whiteLogomark" width={30} />
           </div>
-          <div className="flex flex-col-reverse space-y-[30px] sm:grid sm:grid-cols-3 sm:space-y-0">
-            <CopyRightText />
-            <div className="flex flex-col space-y-[60px] sm:hidden">
-              <SocialLinks styleName="sm:justify-center" />
-              <div className="flex flex-row space-x-5 sm:justify-end">
-                <CookiePolicyLink />
-                <div className="my-1.5 border-r border-instillGrey15" />
-                <PrivacyPolicyLink />
-              </div>
-            </div>
-            <SocialLinks styleName="hidden sm:flex sm:justify-center" />
-            <div className="hidden space-x-2 sm:flex sm:flex-row sm:justify-end md:space-x-5">
-              <CookiePolicyLink />
-              <div className="my-1.5 max-h-[16px] border-r border-instillGrey15" />
-              <PrivacyPolicyLink />
-            </div>
+          <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-4 xl:gap-y-0">
+            <Tab type="social" header="socials" links={tabs.socialLinks} />
+            <Tab type="others" header="product" links={tabs.products} />
+            <Tab type="others" header="resources" links={tabs.resources} />
+            <Tab type="others" header="company" links={tabs.company} />
           </div>
         </div>
+        <CopyRightText />
       </div>
     </div>
   );
 };
-
-export default Footer;

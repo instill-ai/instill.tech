@@ -19,6 +19,7 @@ module.exports = {
         instill_light_blue: "#F4FBFF",
         instill_light_yellow: "#FFFCEB",
         instillGrey95: "#1A1A1A",
+        instillGrey90: "#2B2B2B",
         instillGrey80: "#5c5c5c",
         instillGrey70: "#8C8A8A",
         instillGrey50: "#A5A5A5",
@@ -32,18 +33,28 @@ module.exports = {
         instillBlue80: "#0268B5",
         instillBlue70: "#003381",
         instillBlue50: "#40A8F5",
+        instillBlue30: "#40A8F5",
         instillBlue10: "#F4FBFF",
         instillYellow: "#FFDF3A",
         instillYellow10: "#FFFCEB",
+        instillYellow50: "#FFDF3A",
         instillLemonYellow05: "#FFFCE3",
-        instillLemonYellow05: "#DEC800",
+        instillLemonYellow50: "#DEC800",
         instillNeonBlue05: "#EDEDFF",
         instillNeonBlue50: "#0000FF",
+        instillNeonBlue: "#23C4E7",
         instillRed: "#FF5353",
         instillRed10: "#FFF1F1",
+        instillRed50: "#FF5353",
         instillGreen: "#28F67E",
         instillGreen05: "#ECFFF0",
         instillGreen50: "#02D12F",
+        instillNatureGreen: "#02D085",
+        instillNeonGreen: "#28F67E",
+        instillNeonGreen10: "#EAFFF3",
+        instillWarmOrange50: "#FF8A00",
+        instillWarmOrange05: "#FFF3E4",
+        instillSkyBlue: "#23C4E7",
       },
       fontFamily: {
         mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
@@ -64,6 +75,7 @@ module.exports = {
         xx: "320px",
         xs: "480px",
         max: "1440px",
+        xl: "1127px",
         tall: { raw: "(min-height: 800px)" },
         short: { raw: "(min-height: 600px and max-height: 800px)" },
       },
@@ -183,40 +195,34 @@ module.exports = {
     ({ addUtilities }) => {
       addUtilities({
         ".text-instill-h1": {
-          fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "32px",
-          fontWeight: 500,
-          lineHeight: "42px",
+          fontFamily: `IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
+          fontSize: "64px",
+          fontWeight: 600,
         },
         ".text-instill-h2": {
           fontFamily: `IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
-          fontSize: "20px",
+          fontSize: "36px",
           fontWeight: 500,
-          lineHeight: "26px",
         },
-        ".text-instill-h3": {
+        ".text-instill-h3-medium": {
           fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "16px",
-          fontWeight: 400,
-          lineHeight: "28px",
+          fontSize: "24px",
+          fontWeight: 500,
         },
-        ".text-instill-body": {
+        ".text-instill-h3-light": {
           fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "14px",
-          fontWeight: 400,
-          lineHeight: "18px",
+          fontSize: "24px",
+          fontWeight: 300,
         },
-        ".text-instill-bold-body": {
+        ".text-instill-body-normal": {
           fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "14px",
-          fontWeight: 600,
-          lineHeight: "18px",
-        },
-        ".text-instill-small": {
-          fontFamily: `IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
-          fontSize: "12px",
+          fontSize: "18px",
           fontWeight: 400,
-          lineHeight: "16px",
+        },
+        ".text-instill-body-light": {
+          fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
+          fontSize: "18px",
+          fontWeight: 300,
         },
         ".instill-input-focus-shadow": {
           boxShadow: "0px 0px 0px 3px rgba(64, 168, 245, 0.2)",
@@ -230,6 +236,24 @@ module.exports = {
         ".instill-input-highlight": {
           "@apply focus:border-instillBlue50 focus:outline-none focus:ring-0 focus:ring-white":
             {},
+        },
+        ".shadow-instill-solid-20": {
+          boxShadow: "20px 20px 0px #23c4e7",
+        },
+        ".shadow-instill-solid-20-white": {
+          boxShadow: "20px 20px 0px #ffffff",
+        },
+        ".shadow-instill-solid-10": {
+          boxShadow: "10px 10px 0px #23c4e7",
+        },
+        ".shadow-instill-solid-10-white": {
+          boxShadow: "10px 10px 0px #ffffff",
+        },
+        ".shadow-instill-solid-5": {
+          boxShadow: "5px 5px 0px #23c4e7",
+        },
+        ".shadow-instill-solid-5-white": {
+          boxShadow: "5px 5px 0px #ffffff",
         },
         ".instill-toggle-loading-shadow": {
           boxShadow: "0px 0px 0px 3px #FFFCE3",

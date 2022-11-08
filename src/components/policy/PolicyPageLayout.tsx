@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { PageBase, PageHead } from "../ui";
+import { ContentContainer, PageBase, PageHead } from "../ui";
 
 export type PolicyPageLayoutProps = {
   meta: {
@@ -9,7 +9,7 @@ export type PolicyPageLayoutProps = {
   children?: ReactNode | undefined;
 };
 
-const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
+export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
   return (
     <PageBase>
       <PageHead
@@ -17,18 +17,21 @@ const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         pageDescription={meta.description}
         pageType="main"
       />
-      <div className="flex w-full bg-instillGrey95">
-        <div className="max-w-[1440px] md:mx-auto md:grid md:w-10/12 md:grid-cols-3">
-          <article className="prose prose-white max-w-none mx-5 md:mx-0 mt-[180px] mb-[60px] md:col-span-2">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <div className="xl:grid xl:w-10/12 xl:grid-cols-3">
+          <article className="prose mx-5 mt-[180px] mb-[60px] max-w-none xl:col-span-2 xl:mx-0">
             {children}
           </article>
-          <div className="relative md:col-span-1 md:mt-[180px]">
-            <div className="mb-40 flex flex-col gap-y-2 px-4 pt-40 md:sticky md:top-0 md:mb-0 md:px-16">
-              <p className="text-instillGrey05">
+          <div className="relative xl:col-span-1 xl:mt-[180px]">
+            <div className="mb-40 flex flex-col gap-y-2 px-4 pt-40 xl:sticky xl:top-0 xl:mb-0 xl:px-16">
+              <p className="text-instillGrey90">
                 We&apos;re happy to hear from you. Get in touch at
               </p>
               <a
-                className="flex text-instillBlue50"
+                className="flex text-instillSkyBlue"
                 href="mailto:hello@instill.tech"
               >
                 hello@instill.tech
@@ -36,9 +39,7 @@ const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </ContentContainer>
     </PageBase>
   );
 };
-
-export default PolicyPageLayout;

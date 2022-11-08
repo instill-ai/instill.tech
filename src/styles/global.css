@@ -1,7 +1,5 @@
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 @layer utilities {
@@ -58,17 +56,26 @@ td[style*="color: #40A8F5"] > em {
   color: #40A8F5;
 }
 
-table[style*="border: 2px dashed"] {
+/* table[style*="border: 2px dashed"] {
   border-color: white !important;
   background-color: #1A1A1A !important;
-}
+} */
 
 .mcnTextContent {
-  color: #f6f6f6 !important;
+  color: #1A1A1A !important;
+}
+
+table.templateContainer {
+  max-width: none !important;
 }
 
 h3.null {
-  color: #f6f6f6 !important;
+  color: #1A1A1A !important;
+}
+
+.mcnButtonContent {
+  background-color: #23C4E7 !important;
+
 }
 
 td.mcnTextContent > ul {
@@ -76,11 +83,19 @@ td.mcnTextContent > ul {
   padding-left: 16px;
 }
 
+table.mcnCaptionBottomContent {
+  width: 100% !important
+}
+
+table.mcnCaptionTopContent {
+  width: 100% !important
+}
+
 .mcnTextContent > p,
 .mcnTextContent > h3,
 .mcnTextContent > h4,
 .mcnTextContent > li {
-  color: #f6f6f6;
+  color: #1A1A1A;
 }
 
 .mcnTextContent > ul > li {

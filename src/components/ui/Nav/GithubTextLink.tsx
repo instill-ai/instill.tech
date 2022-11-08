@@ -1,8 +1,8 @@
-const GithubTextLink = () => {
+export const GithubTextLink = () => {
   return (
     <a
       href="https://github.com/instill-ai"
-      className="flex instill-text-body text-instillGrey30 hover:text-instillGrey05"
+      className="instill-text-body flex text-instillGrey80 hover:text-instillBlue50"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -10,5 +10,3 @@ const GithubTextLink = () => {
     </a>
   );
 };
-
-export default GithubTextLink;

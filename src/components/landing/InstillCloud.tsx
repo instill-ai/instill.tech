@@ -4,7 +4,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/future/image";
 
-const InstillCloud = () => {
+import { SectionLabel } from "@/components/ui";
+import { SecureYourSpot, StayInTheLoop } from "../ui";
+
+export const InstillCloud = () => {
   gsap.registerPlugin(ScrollTrigger);
   const animateTarget = useRef();
   const stickyContainer = useRef();
@@ -20,7 +23,7 @@ const InstillCloud = () => {
           scrollTrigger: {
             trigger: stickyContainer.current,
             start: "top top",
-            end: "+=450",
+            end: "+=500",
             scrub: true,
             markers: false,
           },
@@ -58,11 +61,10 @@ const InstillCloud = () => {
     });
   }, []);
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col">
       <div
         ref={stickyContainer}
-        id="sticky-scroll-container"
-        className="bg-whitebg-white relative flex flex-col md:h-[1500px]"
+        className="relative flex flex-col md:h-[1500px]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -6498,24 +6500,27 @@ const InstillCloud = () => {
           className="w-full md:hidden"
           sizes="375px"
         />
-        <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey95 p-10 md:mx-auto md:w-10/12">
-          <p className="instill-text-body mb-5 text-center text-instillBlue50">
-            INSTILL CLOUD
-          </p>
-          <h2 className="instill-text-h2 mb-10 text-center text-instillGrey05">
+        <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey05 p-10 md:mx-auto md:w-10/12">
+          <SectionLabel text="instill cloud" position="mr-auto mb-2.5" />
+          <h2 className="mb-10 text-left font-mono text-4xl font-medium text-instillGrey90">
             Visual Data Preparation without Managing Infrastructure
           </h2>
-          <p className="instill-text-body text-center text-instillGrey05 md:px-28">
+          <p className="font-sans text-lg font-normal text-instillGrey70">
             Instill Cloud provides production-ready visual data preparation
             services — hustle-free setup and Vision AI model serving with
             ready-to-use and custom models. We help you save your time and you
             focus on the core business.
           </p>
         </div>
-        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGrey95" />
+
+        <span className="absolute bottom-0 inline-block h-36 w-full bg-instillGrey05" />
+      </div>
+      <div className="flex w-full bg-instillGrey05">
+        <div className="mx-auto flex max-w-[889px] flex-col px-10 md:mx-auto md:w-10/12">
+          <SecureYourSpot />
+          <StayInTheLoop />
+        </div>
       </div>
     </div>
   );
 };
-
-export default InstillCloud;

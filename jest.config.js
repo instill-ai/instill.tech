@@ -22,6 +22,8 @@ const customJestConfig = {
     "react-markdown": "<rootDir>/src/lib/mocks/react-markdown.jsx",
     "remark-gfm": "<rootDir>/src/lib/mocks/remark-gfm.js",
     "rehype-raw": "<rootDir>/src/lib/mocks/rehype-raw.js",
+    "next-mdx-remote": "<rootDir>/src/lib/mocks/next-mdx-remote.jsx",
+    d3: "<rootDir>/node_modules/d3/dist/d3.min.js",
   },
 };
 

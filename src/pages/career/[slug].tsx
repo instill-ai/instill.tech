@@ -3,17 +3,16 @@ import { useRouter } from "next/router";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { CareerPositionDetailsSection } from "@/components/career";
+import { PositionDetails } from "@/components/career";
 
 import {
   BackToPreviousPageLink,
-  ContentContainer,
   PageBase,
   PageHead,
   StayInTheLoopProps,
 } from "@/components/ui";
 
-import { PositionDetails } from "@/types/instill";
+import { PositionInfo } from "@/types/instill";
 import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   ClickUpTask,
@@ -83,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export type CareerPositionPageProps = {
-  position: PositionDetails;
+  position: PositionInfo;
 };
 
 type GetLayOutProps = {
@@ -121,20 +120,18 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <ContentContainer contentMaxWidth="max-w-[1127px]">
-        <div className="my-10 flex px-4 md:px-0">
+      <div className="mx-auto flex max-w-[1127px] flex-col">
+        <div className="my-10 flex px-4 xl:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
-
-        <CareerPositionDetailsSection
-          position={position}
-          marginBottom="mb-[100px]"
-        />
-
-        <div className="mb-20 flex" ref={stayInTheLoopRef}>
+        <PositionDetails position={position} marginBottom="mb-20 xl:mb-40" />
+        <div
+          className="mb-20 flex px-4 xl:mb-40 xl:px-0"
+          ref={stayInTheLoopRef}
+        >
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
-      </ContentContainer>
+      </div>
     </>
   );
 };

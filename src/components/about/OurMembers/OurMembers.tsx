@@ -7,23 +7,28 @@ import {
   useState,
 } from "react";
 import cn from "clsx";
-
-import { MemberDetails } from "@/types/instill";
-import { useRouter } from "next/router";
-import MemberAvatarKernel from "./MemberAvatarKernel";
-import MemberIntro from "./MemberIntro";
 import {
   ElementPosition,
   getElementPosition,
   useWindowSize,
 } from "@instill-ai/design-system";
 
+import { MemberDetails } from "@/types/instill";
+import { useRouter } from "next/router";
+import { MemberAvatarKernel } from "./MemberAvatarKernel";
+import { MemberIntro } from "./MemberIntro";
+
 export type OurMembersProps = {
   members: MemberDetails[];
   marginBottom?: string;
+  width: string;
 };
 
-const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
+export const OurMembers = ({
+  members,
+  marginBottom,
+  width,
+}: OurMembersProps) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
     useState<string>(null);
@@ -123,10 +128,14 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
 
   return (
     <div
-      className={cn("flex flex-col px-4 pt-10 md:px-0", {
-        "pb-4": !targerMember,
+      className={cn(
+        "flex flex-col bg-instillGrey90 px-4 pt-10 xl:px-0",
+        {
+          "pb-4": !targerMember,
+        },
         marginBottom,
-      })}
+        width
+      )}
     >
       <div className="mb-10 flex flex-col">
         <h2 className="instill-text-h2 mb-5 text-instillGrey05">Our Member</h2>
@@ -219,5 +228,3 @@ const OurMembers = ({ members, marginBottom }: OurMembersProps) => {
     </div>
   );
 };
-
-export default OurMembers;

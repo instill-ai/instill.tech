@@ -1,9 +1,9 @@
-import Image from "next/future/image";
 import { forwardRef } from "react";
+import Image from "next/future/image";
 import { useWindowSize } from "@instill-ai/design-system";
 import cn from "clsx";
 
-import MemberKernel from "./MemberKernelSvg";
+import { MemberKernel } from "./MemberKernelSvg";
 
 export type MemberAvatarKernelProps = {
   id: string;
@@ -19,7 +19,10 @@ export type MemberAvatarKernelProps = {
   openKernel: boolean;
 };
 
-const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
+export const MemberAvatarKernel = forwardRef<
+  HTMLDivElement,
+  MemberAvatarKernelProps
+>(
   (
     {
       avatarAlt,
@@ -69,5 +72,3 @@ const MemberAvatarKernel = forwardRef<HTMLDivElement, MemberAvatarKernelProps>(
 );
 
 MemberAvatarKernel.displayName = "MemberAvatarKernelBlock";
-
-export default MemberAvatarKernel;

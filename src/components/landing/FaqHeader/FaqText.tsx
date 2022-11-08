@@ -1,0 +1,27 @@
+export type FaqTextProps = {
+  width: string;
+};
+
+export const FaqText = ({ width }: FaqTextProps) => {
+  return (
+    <svg
+      viewBox="0 0 814 291"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={width}
+    >
+      <path
+        d="M58.25 0V58.2H233V0H58.25ZM0 291H58.25V174.6H233V116.4H58.25V58.2H0V291Z"
+        fill="#2B2B2B"
+      />
+      <path
+        d="M376 0V58.2H434V174.6H318V116.4H260V232.8H434V291H492V0H376ZM318 58.2V116.4H376V58.2H318ZM260 291V232.8H202V291H260Z"
+        fill="#2B2B2B"
+      />
+      <path
+        d="M581.2 0V58.6157H755.384V0H581.2ZM523 58.6157V232.384H581.2V58.6157H523ZM755.384 58.6157V174.184H814V58.6157H755.384ZM638.569 115.984V174.184H696.769V115.984H638.569ZM696.769 174.184V232.384H754.137L755.384 174.184H696.769ZM581.2 232.384V291H696.769V232.384H581.2ZM754.137 232.384V291H814V232.384H754.137Z"
+        fill="#2B2B2B"
+      />
+    </svg>
+  );
+};

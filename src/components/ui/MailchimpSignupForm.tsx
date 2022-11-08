@@ -20,7 +20,7 @@ export const MailchimpSignupForm = () => {
 
     const style = document.createElement("style");
     style.innerHTML =
-      "#mc_embed_signup div.mce_inline_error{ background-color: #FFFFFF !important; font-size: 12px !imporrtant; color: #FF5353 !important; font-weight: 400 !important; padding: 0 !important; }";
+      "#mc_embed_signup div.mce_inline_error{ background-color: #F6F6F6 !important; font-size: 12px !imporrtant; color: #FF5353 !important; font-weight: 400 !important; padding: 0 !important; }";
 
     document.head.appendChild(mailchimpScript);
     document.head.appendChild(style);
@@ -35,7 +35,10 @@ export const MailchimpSignupForm = () => {
 
   return (
     // Begin Mailchimp Signup Form
-    <div id="mc_embed_signup" className="bg-white p-10">
+    <div
+      id="mc_embed_signup"
+      className="bg-instillGrey05 p-10 shadow-instill-solid-10 xl:shadow-instill-solid-20"
+    >
       <form
         id="mc-embedded-subscribe-form"
         action="https://tech.us2.list-manage.com/subscribe/post?u=01e7d5733aaa59d21ac12a1c8&amp;id=40bfc06254"
@@ -57,7 +60,7 @@ export const MailchimpSignupForm = () => {
               className={cn(inputStyle, "required")}
             />
           </div>
-          <div className="grid grid-cols-1 gap-x-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
             <div className="mc-field-group flex flex-col gap-y-2">
               <label htmlFor="mce-FNAME" className={fieldTitleStyle}>
                 First Name<span>*</span>
@@ -192,7 +195,7 @@ export const MailchimpSignupForm = () => {
               type="submit"
               value="Submit"
               name="subscribe"
-              className="button flex-grow cursor-pointer bg-instillBlue50 py-3 text-base text-instillGrey05 hover:bg-[#236698]"
+              className="button flex-grow cursor-pointer bg-instillNeonBlue bg-opacity-10 py-3 text-2xl font-normal text-instillNeonBlue hover:bg-opacity-20"
             />
           </div>
         </div>

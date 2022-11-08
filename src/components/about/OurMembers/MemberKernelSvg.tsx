@@ -14,7 +14,7 @@ export type MemberKernelProps = {
   id: string;
 };
 
-const MemberKernel = ({
+export const MemberKernel = ({
   styleName,
   kernelColorRectLocation,
   kernelColor,
@@ -251,5 +251,3 @@ const MemberKernel = ({
     </svg>
   );
 };
-
-export default MemberKernel;

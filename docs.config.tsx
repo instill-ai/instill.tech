@@ -1,4 +1,4 @@
-import { Nav, Sidebar } from "@/types/docs";
+import { NavConfig, Sidebar } from "@/types/docs";
 import { DiscordIcon, GitHubIcon } from "@instill-ai/design-system";
 
 const SITE = {
@@ -144,7 +144,7 @@ const SIDEBAR: Sidebar = {
   },
 };
 
-const NAV: Nav = {
+const NAV: NavConfig = {
   logo: {
     src: "/images/vdp-logo-white-bg.svg",
     width: 100,
@@ -189,10 +189,8 @@ const NAV: Nav = {
   ],
 };
 
-const docsConfig = {
+export const docsConfig = {
   site: SITE,
   nav: NAV,
   sidebar: SIDEBAR,
 };
-
-export default docsConfig;

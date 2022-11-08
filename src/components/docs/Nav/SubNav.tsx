@@ -7,24 +7,25 @@ export type SubNavProps = {
   marginBottom: Nullable<string>;
 };
 
-const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
+export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
   return (
     <>
-      <style jsx>{`
-        .sub-nav {
-          top: var(--docs-nav-height);
-        }
-      `}
+      <style jsx>
+        {`
+          .sub-nav {
+            top: var(--docs-nav-height);
+          }
+        `}
       </style>
       <div
         className={cn(
-          "sub-nav w-full border-b flex-row bg-white z-10 py-4 px-8 flex md:hidden sticky",
+          "sub-nav sticky z-10 flex w-full flex-row border-b bg-white py-4 px-8 md:hidden",
           marginBottom
         )}
       >
         <button
           onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
-          className="text-sm text-instillGrey70 mr-auto"
+          className="mr-auto text-sm text-instillGrey70"
         >
           Menu
         </button>
@@ -33,7 +34,7 @@ const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
           onClick={() =>
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
           }
-          className="text-sm text-instillGrey70 ml-auto"
+          className="ml-auto text-sm text-instillGrey70"
         >
           Return to top
         </button>
@@ -41,5 +42,3 @@ const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
     </>
   );
 };
-
-export default SubNav;

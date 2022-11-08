@@ -1,5 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
-import { ArrowRightIcon, TextButton } from "@instill-ai/design-system";
+import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
 import cn from "clsx";
 
 export type SubscribeNewsletterFormProps = {
@@ -7,7 +7,7 @@ export type SubscribeNewsletterFormProps = {
   width?: string;
 };
 
-const SubscribeNewsletterForm = ({
+export const SubscribeNewsletterForm = ({
   position,
   width,
 }: SubscribeNewsletterFormProps) => {
@@ -55,16 +55,19 @@ const SubscribeNewsletterForm = ({
     <form onSubmit={subscribe} className={cn(position, width)}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="mb-1.5 flex flex-row justify-end gap-x-2.5 border border-instillGrey05">
-            <input
-              aria-label="Email for newsletter"
-              placeholder="Your email..."
-              type="email"
-              ref={email}
-              className="instill-text-small my-auto flex h-12 w-full flex-grow rounded-[1px] bg-instillGrey95 px-5 text-instillGrey15 instill-input-no-highlight"
-            />
-            <TextButton
-              color="primary"
+          <div className="mb-1.5 flex flex-row">
+            <div className="flex flex-1">
+              <input
+                aria-label="Email for newsletter"
+                placeholder="Your email..."
+                type="email"
+                ref={email}
+                className="h-full w-full rounded-[1px] bg-instillNeonBlue05 px-5 text-instillGrey90 instill-input-no-highlight"
+              />
+            </div>
+
+            <SolidButton
+              color="primaryLight"
               type="submit"
               itemGapX="gap-x-5"
               endIcon={
@@ -75,9 +78,10 @@ const SubscribeNewsletterForm = ({
                   color="fill-instillBlue50 group-hover:fill-instillBlue80"
                 />
               }
+              hoveredShadow="hover:shadow-instill-solid-5"
             >
-              <p className="my-auto">Subscribe</p>
-            </TextButton>
+              <p className="my-auto text-2xl">Subscribe</p>
+            </SolidButton>
           </div>
           <div className="flex">
             <p
@@ -94,5 +98,3 @@ const SubscribeNewsletterForm = ({
     </form>
   );
 };
-
-export default SubscribeNewsletterForm;

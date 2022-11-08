@@ -1,44 +1,67 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 
-import { Hero, InstillCloud } from "@/components/landing";
 import {
-  PageBase,
-  ContentContainer,
-  PageHead,
-  SecureYourSpotProps,
-  StayInTheLoopProps,
-} from "@/components/ui";
+  CaseStudyProps,
+  CodeShowcase,
+  FaqHeaderProps,
+  FaqProps,
+  Hero,
+  HowItWorksProps,
+  NoCodeInterfaceProps,
+  Vdp,
+} from "@/components/landing";
+import { PageBase, PageHead } from "@/components/ui";
+import { getElementPosition } from "@instill-ai/design-system";
+import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 
-const VdpFlow = dynamic(() =>
-  import("@/components/landing").then((mod) => mod.VdpFlow)
+const FaqHeader = dynamic<FaqHeaderProps>(() =>
+  import("@/components/landing").then((mod) => mod.FaqHeader)
 );
 
-const Features = dynamic(() =>
-  import("@/components/landing").then((mod) => mod.Features)
+const CaseStudy = dynamic<CaseStudyProps>(() =>
+  import("@/components/landing").then((mod) => mod.CaseStudy)
 );
 
-const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/ui").then((mod) => mod.StayInTheLoop)
+const Faq = dynamic<FaqProps>(() =>
+  import("@/components/landing").then((mod) => mod.Faq)
 );
 
-const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
-  import("@/components/ui").then((mod) => mod.SecureYourSpot)
+const NoCodeInterface = dynamic<NoCodeInterfaceProps>(() =>
+  import("@/components/landing").then((mod) => mod.NoCodeInterface)
 );
 
-interface Props {}
+const HowItWorks = dynamic<HowItWorksProps>(() =>
+  import("@/components/landing").then((mod) => mod.HowItWorks)
+);
+
+const InstillCloud = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.InstillCloud)
+);
+
+const Community = dynamic(() =>
+  import("@/components/landing").then((mod) => mod.Community)
+);
 
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const HomePage: FC<Props> & {
+const HomePage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const vdpFlowRef = useRef<HTMLDivElement>();
+  const vdpRef = useRef<HTMLDivElement>(null);
+  const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
   const scrollHandler = useCallback(() => {
-    vdpFlowRef.current.scrollIntoView({ behavior: "smooth" });
+    if (!window) return;
+    const vdfDimension = getElementPosition(vdpRef.current);
+    const navbarHeight = enableAnnouncementBar ? 128 : 84;
+
+    window.scrollTo({
+      top: vdfDimension.y - navbarHeight,
+      behavior: "smooth",
+    });
   }, []);
 
   return (
@@ -49,23 +72,30 @@ const HomePage: FC<Props> & {
         pageType="main"
       />
       <div className="flex flex-col">
-        <ContentContainer contentMaxWidth="max-w-[1127px]">
+        <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
-          <div className="flex h-screen w-full" ref={vdpFlowRef}>
-            <VdpFlow />
+          <Vdp marginBottom="mb-20" ref={vdpRef} />
+          <HowItWorks marginBottom="mb-20" />
+          <NoCodeInterface marginBottom="mb-20" />
+        </div>
+
+        <div className="bg-instillGrey90">
+          <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
+            <Community />
           </div>
-        </ContentContainer>
+          <CaseStudy />
+          <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
+            <CodeShowcase />
+          </div>
+        </div>
+        <div className="mb-20 flex w-full flex-col">
+          <FaqHeader marginBottom="mb-20" />
+          <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
+            <Faq />
+          </div>
+        </div>
 
-        <Features />
         <InstillCloud />
-
-        <ContentContainer
-          contentMaxWidth="max-w-[889px]"
-          marginBottom="mb-[129px]"
-        >
-          <SecureYourSpot bgColor="black" layout="main" marginBottom="mb-40" />
-          <StayInTheLoop />
-        </ContentContainer>
       </div>
     </>
   );

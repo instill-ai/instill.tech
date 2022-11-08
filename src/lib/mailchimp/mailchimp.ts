@@ -137,11 +137,20 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
     e.setAttribute("style", styleList.join(";"));
 
     e.classList.add("mx-auto");
-    e.classList.add("md:max-w-full");
+    e.classList.add("xl:max-w-full");
   });
 
   // Remove mailchimp Header logo image
   root.querySelectorAll("#templateHeader").forEach((e) => e.remove());
+
+  // Remove templateContainer inner style
+  root.querySelectorAll(".templateContainer").forEach((e) => {
+    let styleList = e.attributes.style.split(";");
+    styleList = styleList.filter((style) => {
+      return !style.includes("max-width:");
+    });
+    e.setAttribute("style", styleList.join(";"));
+  });
 
   return root;
 };

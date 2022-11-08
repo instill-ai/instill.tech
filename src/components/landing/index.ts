@@ -1,8 +1,18 @@
-import VdpFlow from "./VdpFlow";
-import Features from "./Features";
-import Hero from "./Hero";
-import { HeroProps } from "./Hero";
-import InstillCloud from "./InstillCloud";
-
-export { VdpFlow, Features, Hero, InstillCloud };
-export type { HeroProps };
+export { Hero } from "./Hero";
+export type { HeroProps } from "./Hero";
+export { InstillCloud } from "./InstillCloud";
+export { Community } from "./Community";
+export { Faq } from "./Faq/Faq";
+export type { FaqProps } from "./Faq/Faq";
+export { CodeShowcase } from "./CodeShowcase";
+export type { CodeShowcaseProps } from "./CodeShowcase";
+export { Vdp } from "./Vdp";
+export type { VdpProps } from "./Vdp";
+export { HowItWorks } from "./HowItWorks";
+export type { HowItWorksProps } from "./HowItWorks";
+export { NoCodeInterface } from "./NoCodeInterface";
+export type { NoCodeInterfaceProps } from "./NoCodeInterface";
+export { CaseStudy } from "./CaseStudy";
+export type { CaseStudyProps } from "./CaseStudy";
+export { FaqHeader } from "./FaqHeader";
+export type { FaqHeaderProps } from "./FaqHeader";

@@ -4,9 +4,13 @@ import dynamic from "next/dynamic";
 
 import { useOnScreen } from "../hooks/useOnScreen";
 import { MemberDetails } from "@/types/instill";
-import { OurMembers } from "@/components/about";
 import {
-  ContentContainer,
+  AboutHero,
+  OurMembers,
+  OurCompany,
+  OurValue,
+} from "@/components/about";
+import {
   PageBase,
   PageHead,
   SecureYourSpotProps,
@@ -34,7 +38,7 @@ type AboutPageProps = {
   members: MemberDetails[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
   let tasks: ClickUpTask[];
   let members: MemberDetails[] = [];
 
@@ -98,69 +102,31 @@ const AboutPage: FC<AboutPageProps> & {
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
         pageType="main"
       />
-      <ContentContainer contentMaxWidth="max-w-[1127px]">
-        <div className="mx-auto flex w-full flex-col">
-          <div className="flex w-full pt-[87px] pb-[152px] sm:h-[584px] sm:py-0">
-            <h1 className="instill-text-h1 m-auto max-w-[934px] text-center text-instillGrey05">
-              Make Vision AI Accessible to Everyone
-            </h1>
-          </div>
-          <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6">
-            <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
-              <h2 className="instill-text-h2 mb-1 text-instillGrey95">
-                Our Company
-              </h2>
-              <p className="instill-text-body text-instillGrey95">
-                Instill AI, founded in 2020 (June 11th 2020, to be more
-                specific), provides no-/low-code tools to convert unstructured
-                visual data to meaningful structured representations. Users can
-                integrate our service into their data stack, and start tapping
-                into the wealth of their visual data and benefit from Vision AI
-                in a snap.
-              </p>
-              <p className="instill-text-body text-instillGrey95">
-                We are a small and ambitious team of passionate
-                engineers/researchers sharing an unconventional culture fused by
-                DevOps, MLOps and academic research lab. We are hands-on and
-                love to automate everything. We care about our products and
-                deliver to the highest standard.
-              </p>
-            </div>
-            <div className="flex flex-col gap-y-5 rounded-[1px] bg-white p-10">
-              <h2 className="instill-text-h2 text-instillGrey95">Our Value</h2>
-              <div className="flex flex-col">
-                <h3 className="instill-text-h3 text-instillGrey95">
-                  User obsession
-                </h3>
-                <p className="instill-text-body text-instillGrey95">
-                  We succeed only when our users succeed. Learning what can
-                  really help our users and delivering the value they need will
-                  always be Instill&#39;s highest interest.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <h3 className="instill-text-h3 text-instillGrey95">
-                  High-performing company with shared values
-                </h3>
-                <p className="instill-text-body text-instillGrey95">
-                  We always deliver more than expected. To achieve that, we are
-                  the optimisers obsessively chasing intrinsic efficiency and
-                  effectiveness.
-                </p>
-              </div>
-            </div>
-          </div>
+      <div className="mx-auto my-[120px] flex max-w-[1127px] flex-col xl:my-40">
+        <div className="mb-[100px] p-4 xl:mb-40 xl:p-0">
+          <AboutHero />
         </div>
-        <OurMembers members={members} marginBottom="mb-10" />
-        <div ref={secureYourSpotRef}>
-          {loadSecureYourSpot && (
-            <SecureYourSpot bgColor="black" layout="main" />
-          )}
+
+        <div className="px-4 xl:px-0">
+          <OurCompany marginBottom="mb-[120px]" />
+          <OurValue />
         </div>
-        <div className="mb-20" ref={stayInTheLoopRef}>
+      </div>
+      <div className="bg-instillGrey90">
+        <OurMembers
+          width="mx-auto max-w-[1127px]"
+          members={members}
+          marginBottom="mb-10"
+        />
+      </div>
+      <div className="mx-auto mb-[120px] max-w-[1127px] px-4 xl:mb-40 xl:px-0">
+        <div className="mb-[120px]" ref={secureYourSpotRef}>
+          {loadSecureYourSpot && <SecureYourSpot />}
+        </div>
+        <div ref={stayInTheLoopRef}>
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
-      </ContentContainer>
+      </div>
     </>
   );
 };

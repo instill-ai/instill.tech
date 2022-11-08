@@ -4,17 +4,15 @@ export type HeadlineProps = {
   marginBottom?: string;
 };
 
-const Headline = ({ marginBottom }: HeadlineProps) => {
+export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
-        "instill-text-h1 text-left font-mono text-instillGrey05",
+        "instill-text-h1 text-left font-mono text-instillNeonBlue",
         marginBottom
       )}
     >
-      Visual Data Preparation Made for All
+      Open-source Visual Data ETL Infrastructure
     </h1>
   );
 };
-
-export default Headline;

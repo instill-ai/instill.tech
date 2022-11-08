@@ -23,6 +23,6 @@ export const useOnScreen = (
       observer.observe(ref.current);
     }
     return () => setIntersecting(false);
-  }, [ref.current]);
+  }, [ref, rootMargin]);
   return activate ? isIntersecting : null;
 };

@@ -1,36 +1,36 @@
 import {
   ExploreMoreScrollButton,
   ExploreMoreScrollButtonProps,
-  GetEarlyAccessButton,
-  JoinDiscordButton,
-} from "@/components/ui";
-import HeroAnimation from "./HeroAnimation";
-import Headline from "./Headline";
-import SubHeadline from "./SubHeadline";
+} from "./ExploreMoreScrollButton";
+import { HeroAnimation } from "./HeroAnimation";
+import { Headline } from "./Headline";
+import { SubHeadline } from "./SubHeadline";
+import { GitHubCtaButton } from "./GitHubCtaButton";
+import { DiscordCtaButton } from "./DiscordCtaButton";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
 };
 
-const Hero = ({ scrollHandler }: HeroProps) => {
+export const Hero = ({ scrollHandler }: HeroProps) => {
   return (
-    <div className="flex flex-col justify-center gap-y-10 px-4 md:min-h-[90vh] lg:px-0">
-      <div className="mb-20 flex flex-col-reverse lg:flex-row lg:gap-y-0">
-        <div className="flex flex-col md:my-auto lg:w-[57%]">
+    <div className="flex min-h-[90vh] flex-col justify-center px-4 xl:px-0">
+      <div className="flex flex-col-reverse xl:mb-[120px] xl:flex-row xl:gap-y-0 xl:gap-x-12">
+        <div className="flex flex-col xl:my-auto xl:w-[57%]">
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-10" />
-          <div className="flex flex-col gap-y-5 sm:flex-row sm:gap-x-5 sm:gap-y-0">
-            <GetEarlyAccessButton />
-            <JoinDiscordButton />
+          <div className="flex flex-col gap-y-5 xl:flex-row xl:gap-x-5 xl:gap-y-0">
+            <GitHubCtaButton />
+            <DiscordCtaButton />
           </div>
         </div>
-        <div className="mb-5 lg:my-auto lg:w-[43%]">
+        <div className="mb-20 xl:my-auto xl:mb-0 xl:w-[43%]">
           <HeroAnimation />
         </div>
       </div>
-      <ExploreMoreScrollButton scrollHandler={scrollHandler} />
+      <div className="hidden xl:flex">
+        <ExploreMoreScrollButton scrollHandler={scrollHandler} />
+      </div>
     </div>
   );
 };
-
-export default Hero;

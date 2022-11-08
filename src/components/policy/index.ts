@@ -1,5 +1,2 @@
-import PolicyPageLayout from "./PolicyPageLayout";
-import type { PolicyPageLayoutProps } from "./PolicyPageLayout";
-
-export { PolicyPageLayout };
-export type { PolicyPageLayoutProps };
+export { PolicyPageLayout } from "./PolicyPageLayout";
+export type { PolicyPageLayoutProps } from "./PolicyPageLayout";

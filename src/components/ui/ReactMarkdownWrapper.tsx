@@ -11,7 +11,7 @@ export type ReactMarkdownWrapperProps = {
   width?: string;
 };
 
-const ReactMarkdownWrapper = ({
+export const ReactMarkdownWrapper = ({
   content,
   marginBottom,
   prose,
@@ -21,7 +21,7 @@ const ReactMarkdownWrapper = ({
   return (
     <article
       className={cn(
-        "prose prose-sm md:prose-lg",
+        "prose prose-lg",
         marginBottom,
         prose,
         additionalClassname,
@@ -38,5 +38,3 @@ const ReactMarkdownWrapper = ({
     </article>
   );
 };
-
-export default ReactMarkdownWrapper;

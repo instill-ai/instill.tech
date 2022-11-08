@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+
 import {
   ContentContainer,
   PageBase,
@@ -17,18 +18,18 @@ import {
 import {
   CareerGeneralIntro,
   CareerHero,
-  CareerPositionListSectionProps,
+  PositionListProps,
 } from "@/components/career";
 import { useOnScreen } from "@/hooks/useOnScreen";
-import { PositionDetails } from "@/types/instill";
+import { PositionInfo } from "@/types/instill";
 import {
   ClickUpTask,
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
 
-const CareerPositionListSection = dynamic<CareerPositionListSectionProps>(() =>
-  import("@/components/career").then((mod) => mod.CareerPositionListSection)
+const PositionList = dynamic<PositionListProps>(() =>
+  import("@/components/career").then((mod) => mod.PositionList)
 );
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
@@ -36,17 +37,16 @@ const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
 );
 
 type CareerPageProps = {
-  content: string;
-  positions: PositionDetails[];
+  positions: PositionInfo[];
 };
 
 type GetLayOutProps = {
   page: ReactElement;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
   let tasks: ClickUpTask[];
-  let positions: PositionDetails[] = [];
+  let positions: PositionInfo[] = [];
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");
@@ -76,18 +76,18 @@ const CareerPage: FC<CareerPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
   // lazy load openPositionList
-  const openPositionsRef = useRef<HTMLDivElement>();
-  const [loadOpenPositions, setLoadOpenPositions] = useState(false);
-  const openPositionIsOnscreen = useOnScreen(
-    openPositionsRef,
-    !loadOpenPositions
+  const positionListRef = useRef<HTMLDivElement>();
+  const [loadPositionList, setLoadPositionList] = useState(false);
+  const positionListIsOnscreen = useOnScreen(
+    positionListRef,
+    !loadPositionList
   );
 
   useEffect(() => {
-    if (openPositionIsOnscreen && !loadOpenPositions) {
-      setLoadOpenPositions(true);
+    if (positionListIsOnscreen && !loadPositionList) {
+      setLoadPositionList(true);
     }
-  }, [openPositionIsOnscreen, loadOpenPositions]);
+  }, [positionListIsOnscreen, loadPositionList]);
 
   // lazy load stayInTheLoop
   const stayInTheLoopRef = useRef<HTMLDivElement>();
@@ -104,7 +104,7 @@ const CareerPage: FC<CareerPageProps> & {
   }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
   const scrollHandler = useCallback(() => {
-    openPositionsRef.current.scrollIntoView({ behavior: "smooth" });
+    positionListRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   return (
@@ -114,21 +114,21 @@ const CareerPage: FC<CareerPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <ContentContainer contentMaxWidth="max-w-[1127px]">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
         <CareerHero
           viewJobsScrollHandler={scrollHandler}
-          marginBottom="mb-10"
+          marginBottom="mb-[120px] xl:mb-40"
         />
-        <CareerGeneralIntro />
-        <div className="flex w-full" ref={openPositionsRef}>
-          {loadOpenPositions && (
-            <CareerPositionListSection
-              marginBottom="mb-[100px]"
-              positions={positions}
-            />
+        <CareerGeneralIntro marginBottom="mb-20 xl:mb-40" />
+        <div ref={positionListRef}>
+          {loadPositionList && (
+            <PositionList marginBottom="mb-20 xl:mb-40" positions={positions} />
           )}
         </div>
-        <div className="flex" ref={stayInTheLoopRef}>
+        <div ref={stayInTheLoopRef}>
           {loadStayInTheLoop && <StayInTheLoop />}
         </div>
       </ContentContainer>

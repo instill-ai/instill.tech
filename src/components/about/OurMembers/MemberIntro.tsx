@@ -11,52 +11,7 @@ export type MemberIntroProps = {
   onCancelHandler: () => void;
 };
 
-// This code is pretty messy because we use <pre> to format the text.
-// If you want to modify this file, please make sure every indention and whitespace
-// are correct.
-
-// export const MemberIntroBlock: FC<Props> = ({ member }) => {
-
-//   useEffect(() => {
-//     prism.highlightAll()
-
-//   }, [])
-
-//   let titleString = "";
-
-//   member.titles.forEach((e) => {
-//     titleString =
-//       titleString +
-//       `
-//         {
-//             "category": ${e},
-//             "score": ${getRandIntBetween(0.85, 1)}
-//         }`;
-//   });
-
-//   return (
-//     <div className="">
-//       <pre className="flex flex-col">
-//         <code className={`language-js`}>
-//           {`Ping-Lin Chang
-// {
-//     "titles": [${titleString}
-//     ],
-// `}
-//         </code>
-//         <code className="ml-10 whitespace-pre-wrap break-all">
-//           {`"linkedin": "${member.linkedinLink}",
-// "github": "${member.githubLink}"
-// `}
-//         </code>
-//         <code>{`}`}
-//         </code>
-//       </pre>
-//     </div>
-//   );
-// };
-
-const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
+export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
     let textColor: string;
     let bgColor: string;
@@ -356,7 +311,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
       <div
         ref={ref}
         className={cn(
-          "flex w-full flex-col border-2 border-instillGrey95",
+          "flex w-full flex-col border-2 border-instillGrey90",
           styleName
         )}
       >
@@ -367,7 +322,7 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
               member ? bgColor : "bg-instillGrey30"
             )}
           >
-            <div className="mr-auto text-instillGrey95 text-instill-body">
+            <div className="text-instill-body mr-auto text-instillGrey95">
               Detection result
             </div>
             <button className="ml-auto" onClick={onCancelHandler}>
@@ -380,12 +335,13 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             </button>
           </div>
 
-          <div className="border-t-2 border-instillGrey95">
+          <div className="w-full border-t-2 border-instillGrey95">
             {member ? (
               getAvatar(member)
             ) : (
               <Image
                 src="/images/member-avatar-skeleton.svg"
+                style={{ width: "100%", height: "auto" }}
                 width={360}
                 height={360}
                 alt="Skeleton of member avatar"
@@ -437,5 +393,3 @@ const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 );
 
 MemberIntro.displayName = "MemberIntro";
-
-export default MemberIntro;

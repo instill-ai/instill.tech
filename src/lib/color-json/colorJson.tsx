@@ -4,17 +4,19 @@ export type SetColorJson = {
   bracketColor: string;
   indent: string;
   children?: any[];
+  position?: string;
 };
 
 export const setColorJson = ({
   bracketColor,
   indent,
   children,
+  position,
 }: SetColorJson) => {
   return (
-    <div className="flex flex-col">
+    <div className={cn("flex w-full flex-col", position)}>
       <div className={bracketColor}>{`{`}</div>
-      <div className={cn("flex flex-col", indent)}>{children}</div>
+      <div className={cn("flex w-full flex-col", indent)}>{children}</div>
       <div className={bracketColor}>{`}`}</div>
     </div>
   );
@@ -26,6 +28,8 @@ export type SetStringValueProps = {
   quoteColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  indent?: string;
+  wrap: boolean;
 };
 
 export const setStringValue = ({
@@ -34,9 +38,11 @@ export const setStringValue = ({
   quoteColor,
   trailingComma,
   trailingCommaColor,
+  indent,
+  wrap,
 }: SetStringValueProps) => {
   return (
-    <pre>
+    <pre className={cn(wrap ? "whitespace-pre-line break-words" : "", indent)}>
       <span className={quoteColor}>{`"`}</span>
       <span className={valueColor}>{`${value}`}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -52,6 +58,7 @@ export type SetNumberValueProps = {
   valueColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  indent?: string;
 };
 
 export const setNumberValue = ({
@@ -59,10 +66,11 @@ export const setNumberValue = ({
   valueColor,
   trailingComma,
   trailingCommaColor,
+  indent,
 }: SetNumberValueProps) => {
   return (
     <>
-      <span className={valueColor}>{`${value}`}</span>
+      <span className={cn(valueColor, indent)}>{`${value}`}</span>
       {trailingComma ? (
         <span className={trailingCommaColor}>{`, `}</span>
       ) : null}
@@ -79,6 +87,7 @@ export type SetStringKvProps = {
   colonColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  wrap: boolean;
 };
 
 export const setStringKv = ({
@@ -90,9 +99,10 @@ export const setStringKv = ({
   colonColor,
   trailingComma,
   trailingCommaColor,
+  wrap,
 }: SetStringKvProps) => {
   return (
-    <pre>
+    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -116,6 +126,7 @@ export type SetNumberKvProps = {
   colonColor: string;
   trailingComma: boolean;
   trailingCommaColor: string;
+  wrap: boolean;
 };
 
 export const setNumberKv = ({
@@ -127,9 +138,10 @@ export const setNumberKv = ({
   colonColor,
   trailingComma,
   trailingCommaColor,
+  wrap,
 }: SetNumberKvProps) => {
   return (
-    <pre>
+    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -152,6 +164,7 @@ export type SetObjectKvProps = {
   trailingCommaColor: string;
   indent: string;
   children: any[];
+  wrap: boolean;
 };
 
 export const setObjectKv = ({
@@ -164,9 +177,10 @@ export const setObjectKv = ({
   trailingCommaColor,
   indent,
   children,
+  wrap,
 }: SetObjectKvProps) => {
   return (
-    <pre>
+    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -194,6 +208,7 @@ export type SetArrayKvProps = {
   indent: string;
   children: any;
   breakLine: boolean;
+  wrap: boolean;
 };
 
 export const setArrayKv = ({
@@ -207,9 +222,10 @@ export const setArrayKv = ({
   indent,
   children,
   breakLine,
+  wrap,
 }: SetArrayKvProps) => {
   return (
-    <pre>
+    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
