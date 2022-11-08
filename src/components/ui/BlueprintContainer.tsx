@@ -16,6 +16,13 @@ export type BlueprintContainerProps = {
   position?: string;
   zIndex?: string;
   childrenPosition?: string;
+
+  /**
+   * Which element should the grid align with
+   * - children: the drawing will start from the top left corner of the children
+   * - container: the drawing will start from the top left corner of the container
+   */
+  alignWith: "children" | "container";
 };
 
 // This container will fill in the given space of its parent and draw a
@@ -34,6 +41,7 @@ export const BlueprintContainer = ({
   position,
   zIndex,
   childrenPosition,
+  alignWith,
 }: BlueprintContainerProps) => {
   const svgRef = useRef<Nullable<SVGSVGElement>>(null);
   const parentRef = useRef<Nullable<HTMLDivElement>>(null);
@@ -69,67 +77,109 @@ export const BlueprintContainer = ({
 
       let lineDataset: LineData[] = [];
 
-      // Generate the vertical line data from children X1 to parent X2.
+      if (alignWith === "children") {
+        // Generate the vertical line data from children X1 to parent X2.
 
-      let rightVerticalLines = 0;
+        let rightVerticalLines = 0;
 
-      while (childrenX1 + rightVerticalLines * unitWidth < parentX2) {
-        lineDataset.push({
-          x1: childrenX1 + rightVerticalLines * unitWidth,
-          x2: childrenX1 + rightVerticalLines * unitWidth,
-          y1: parentY1,
-          y2: parentY2,
-        });
-        rightVerticalLines += 1;
-      }
+        while (childrenX1 + rightVerticalLines * unitWidth < parentX2) {
+          lineDataset.push({
+            x1: childrenX1 + rightVerticalLines * unitWidth,
+            x2: childrenX1 + rightVerticalLines * unitWidth,
+            y1: parentY1,
+            y2: parentY2,
+          });
+          rightVerticalLines += 1;
+        }
 
-      // Generate the vertical line data from children X1 to parent X1
+        // Generate the vertical line data from children X1 to parent X1
 
-      let leftVerticalLines = 0;
+        let leftVerticalLines = 0;
 
-      while (childrenX1 - leftVerticalLines * unitHeight > parentX1) {
-        lineDataset.push({
-          x1: childrenX1 - leftVerticalLines * unitWidth,
-          x2: childrenX1 - leftVerticalLines * unitWidth,
-          y1: parentY1,
-          y2: parentY2,
-        });
-        leftVerticalLines += 1;
-      }
+        while (childrenX1 - leftVerticalLines * unitHeight > parentX1) {
+          lineDataset.push({
+            x1: childrenX1 - leftVerticalLines * unitWidth,
+            x2: childrenX1 - leftVerticalLines * unitWidth,
+            y1: parentY1,
+            y2: parentY2,
+          });
+          leftVerticalLines += 1;
+        }
 
-      // Generate the horizontal line data from childrenY1 to parentY2
+        // Generate the horizontal line data from childrenY1 to parentY2
 
-      let downHorizontalLines = 0;
+        let downHorizontalLines = 0;
 
-      while (childrenY1 + downHorizontalLines * unitHeight < parentY2) {
-        lineDataset.push({
-          x1: parentX1,
-          x2: parentX2,
-          y1: childrenY1 + downHorizontalLines * unitHeight,
-          y2: childrenY1 + downHorizontalLines * unitHeight,
-        });
-        downHorizontalLines += 1;
-      }
+        while (childrenY1 + downHorizontalLines * unitHeight < parentY2) {
+          lineDataset.push({
+            x1: parentX1,
+            x2: parentX2,
+            y1: childrenY1 + downHorizontalLines * unitHeight,
+            y2: childrenY1 + downHorizontalLines * unitHeight,
+          });
+          downHorizontalLines += 1;
+        }
 
-      // Generate the horizontal line data from childrenY1 to parentY1
+        // Generate the horizontal line data from childrenY1 to parentY1
 
-      let upHorizontalLines = 0;
+        let upHorizontalLines = 0;
 
-      while (childrenY1 - upHorizontalLines * unitHeight > parentY1) {
-        lineDataset.push({
-          x1: parentX1,
-          x2: parentX2,
-          y1: childrenY1 - upHorizontalLines * unitHeight,
-          y2: childrenY1 - upHorizontalLines * unitHeight,
-        });
-        upHorizontalLines += 1;
+        while (childrenY1 - upHorizontalLines * unitHeight > parentY1) {
+          lineDataset.push({
+            x1: parentX1,
+            x2: parentX2,
+            y1: childrenY1 - upHorizontalLines * unitHeight,
+            y2: childrenY1 - upHorizontalLines * unitHeight,
+          });
+          upHorizontalLines += 1;
+        }
+      } else {
+        let verticalLines = 0;
+
+        // If the alighWith === container, we start drawing the line from the
+        // edge of the container, but in order to not make the line cut by
+        // the edge we need to have some buffer
+
+        while (verticalLines * unitWidth < parentX2) {
+          lineDataset.push({
+            x1:
+              verticalLines === 0
+                ? 0.5 + verticalLines * unitWidth
+                : verticalLines * unitWidth,
+            x2:
+              verticalLines === 0
+                ? 0.5 + verticalLines * unitWidth
+                : verticalLines * unitWidth,
+            y1: parentY1,
+            y2: parentY2,
+          });
+          console.log(verticalLines);
+          verticalLines += 1;
+        }
+
+        let horizontalLines = 0;
+        while (horizontalLines * unitHeight < parentY2) {
+          lineDataset.push({
+            x1: parentX1,
+            x2: parentX2,
+            y1:
+              horizontalLines === 0
+                ? 0.5 + horizontalLines * unitHeight
+                : horizontalLines * unitHeight,
+            y2:
+              horizontalLines === 0
+                ? 0.5 + horizontalLines * unitHeight
+                : horizontalLines * unitHeight,
+          });
+          horizontalLines += 1;
+        }
       }
 
       return lineDataset;
     };
 
     setLineDataset(generateLineDataset(parentDimension, childrenDimension));
-  }, [parentDimension, childrenDimension, unitHeight, unitWidth]);
+  }, [parentDimension, childrenDimension, unitHeight, unitWidth, alignWith]);
 
   useEffect(() => {
     if (!lineDataset) return;

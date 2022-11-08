@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 
 export type ControlPanelItemProps = {
   icon: ReactElement;
-  title: string;
+  title: "Source" | "Model" | "Destination";
   description: string;
   isActive: boolean;
   controls: ReactElement[];

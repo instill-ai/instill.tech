@@ -1,3 +1,4 @@
+import { Nullable } from "@/types/instill";
 import { ArrowRightIcon, ModelIcon } from "@instill-ai/design-system";
 import { ReactElement } from "react";
 
@@ -9,6 +10,7 @@ export type AccordionContentLayoutProps = {
   description: string;
   showcases: ReactElement[];
   currentFrame: number;
+  focusedShowcaseFrame: Nullable<number>;
 };
 
 export const AccordionContentLayout = ({
@@ -19,10 +21,11 @@ export const AccordionContentLayout = ({
   description,
   showcases,
   currentFrame,
+  focusedShowcaseFrame,
 }: AccordionContentLayoutProps) => {
   return (
-    <div className="z-20 flex w-full flex-col gap-y-5 bg-[#285863] p-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
-      <div className="flex w-full flex-col xl:w-5/12">
+    <div className="z-20 flex w-full flex-col gap-y-5 bg-[#285863] p-10 xl:flex-row xl:gap-y-0 xl:gap-x-5">
+      <div className="flex w-full flex-col xl:w-6/12">
         <div className="mb-5 flex flex-row gap-x-5">
           <div className="my-auto flex">{icon}</div>
           <div className="my-auto text-lg font-semibold uppercase text-white">
@@ -37,7 +40,7 @@ export const AccordionContentLayout = ({
           <line x1="0" x2="16" y1="0.5" y2="0.5" strokeWidth={0.6} />
         </svg>
         <div className="mr-auto mb-5 flex flex-row gap-x-2">
-          <div className="my-auto text-lg font-normal text-white">{source}</div>
+          <div className="my-auto text-sm font-normal text-white">{source}</div>
           <ArrowRightIcon
             width="w-4"
             height="h-4"
@@ -56,16 +59,18 @@ export const AccordionContentLayout = ({
             color="fill-white"
             position="m-auto"
           />
-          <div className="my-auto text-lg font-normal text-white">
+          <div className="my-auto text-sm font-normal text-white">
             {destination}
           </div>
         </div>
-        <div className="mr-auto flex text-base font-normal text-instillGrey30">
+        <div className="mr-auto flex text-base font-normal text-white">
           {description}
         </div>
       </div>
       <div className="relative mr-auto flex xl:mr-0 xl:ml-auto">
-        {showcases[currentFrame]}
+        {focusedShowcaseFrame
+          ? showcases[focusedShowcaseFrame]
+          : showcases[currentFrame]}
       </div>
     </div>
   );

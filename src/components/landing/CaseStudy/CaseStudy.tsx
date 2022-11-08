@@ -1,5 +1,6 @@
 import { BlueprintContainer } from "@/components/ui";
 import { useInterval } from "@/hooks/useInterval";
+import { Nullable } from "@/types/instill";
 import {
   ArtiVcIcon,
   AwsRdsIcon,
@@ -36,6 +37,8 @@ export type CaseStudyProps = {
 export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
+  const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
+    useState<Nullable<number>>(null);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
 
   const getActiveControl = useCallback(() => {
@@ -88,7 +91,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Source"
                 description="Select an exisiting online source"
                 icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 0}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 0
+                    : currentShowcaseFrame === 0
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-source-control"
@@ -96,7 +103,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     customizable={false}
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     label="Source"
-                    isActive={currentShowcaseFrame === 0}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 0
+                        : currentShowcaseFrame === 0
+                    }
                     options={[
                       {
                         label: "Batch-Invoice-Photos",
@@ -119,7 +131,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Model"
                 description="Select an exisiting online model"
                 icon={<GitHubIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 1}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 1
+                    : currentShowcaseFrame === 1
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-model-control"
@@ -127,7 +143,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Model"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 1}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 1
+                        : currentShowcaseFrame === 1
+                    }
                     options={[
                       {
                         label: "Instill-AI/OCR",
@@ -151,15 +172,24 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Destination"
                 description="Select an exisiting online destination"
                 icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 2}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 2
+                    : currentShowcaseFrame === 2
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
+                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
                     customizable={false}
-                    isActive={currentShowcaseFrame === 2}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 2
+                        : currentShowcaseFrame === 2
+                    }
                     options={[
                       {
                         label: "Invoice-Record-Sheet",
@@ -190,7 +220,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Source"
                 description="Select an exisiting online source"
                 icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 0}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 0
+                    : currentShowcaseFrame === 0
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-source-control"
@@ -198,7 +232,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Source"
                     customizable={false}
                     minWidth="min-w-[240px] xx:min-w-[300px]"
-                    isActive={currentShowcaseFrame === 0}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 0
+                        : currentShowcaseFrame === 0
+                    }
                     options={[
                       {
                         label: "Camera-on-site-1",
@@ -222,7 +261,9 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 description="Select an exisiting online model"
                 icon={<ArtiVcIcon {...controlPanelIconStyle} />}
                 isActive={
-                  currentShowcaseFrame === 1 || currentShowcaseFrame === 2
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 1 || focusedShowcaseFrame === 2
+                    : currentShowcaseFrame === 1 || currentShowcaseFrame === 2
                 }
                 controls={[
                   <ControlSelectWrapper
@@ -231,7 +272,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Model"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 1}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 1
+                        : currentShowcaseFrame === 1
+                    }
                     options={[
                       {
                         label: "yolov7",
@@ -252,7 +298,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Model"
                     customizable={false}
                     minWidth="min-w-[240px] xx:min-w-[300px]"
-                    isActive={currentShowcaseFrame === 2}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 2
+                        : currentShowcaseFrame === 2
+                    }
                     options={[
                       {
                         label: "yolov7-pose",
@@ -275,7 +326,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Destination"
                 description="Select an exisiting online destination"
                 icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 3}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 3
+                    : currentShowcaseFrame === 3
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-destination-control"
@@ -283,7 +338,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Destination"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 3}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(3)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 3
+                        : currentShowcaseFrame === 3
+                    }
                     options={[
                       {
                         label: "workspace-safety-record",
@@ -314,7 +374,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Source"
                 description="Select an exisiting online source"
                 icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 0}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 0
+                    : currentShowcaseFrame === 0
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-source-control"
@@ -322,7 +386,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Source"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 0}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 0
+                        : currentShowcaseFrame === 0
+                    }
                     options={[
                       {
                         label: "Batch-Womenswear-Photos",
@@ -345,7 +414,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Model"
                 description="Select an exisiting online model"
                 icon={<HuggingFaceIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 1}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 1
+                    : currentShowcaseFrame === 1
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-model-control"
@@ -353,7 +426,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Model"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 1}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 1
+                        : currentShowcaseFrame === 1
+                    }
                     options={[
                       {
                         label: "Instill-AI/Image-Tagging",
@@ -376,7 +454,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                 title="Destination"
                 description="Select an exisiting online destination"
                 icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 2}
+                isActive={
+                  focusedShowcaseFrame !== null
+                    ? focusedShowcaseFrame === 2
+                    : currentShowcaseFrame === 2
+                }
                 controls={[
                   <ControlSelectWrapper
                     key="case-study-destination-control"
@@ -384,7 +466,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     label="Destination"
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={false}
-                    isActive={currentShowcaseFrame === 2}
+                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
+                    isActive={
+                      focusedShowcaseFrame !== null
+                        ? focusedShowcaseFrame === 2
+                        : currentShowcaseFrame === 2
+                    }
                     options={[
                       {
                         label: "Labbelled-Photos",
@@ -425,8 +512,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 0}
-                    onFocus={() => {
-                      console.log("hi");
+                    selectOnFocus={() => {
                       setCurrentShowcaseFrame(0);
                     }}
                     options={[
@@ -472,7 +558,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 1}
-                    onFocus={() => {
+                    selectOnFocus={() => {
                       setCurrentShowcaseFrame(1);
                     }}
                     options={[
@@ -507,7 +593,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     minWidth="min-w-[240px] xx:min-w-[300px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 2}
-                    onFocus={() => {
+                    selectOnFocus={() => {
                       setCurrentShowcaseFrame(2);
                     }}
                     options={[
@@ -530,7 +616,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           />
         );
     }
-  }, [activeIndex, currentShowcaseFrame]);
+  }, [activeIndex, currentShowcaseFrame, focusedShowcaseFrame]);
 
   const caseAccordion = useMemo(() => {
     const iconStyle = {
@@ -539,6 +625,17 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       color: "fill-white",
       position: "m-auto",
     };
+
+    // These gradient color are not stored in the design-system, they are
+    // instillSkyBlue with background-opacity, but we can't use opacity
+    // element in this section, we have to use this kind of color variant.
+
+    const inactiveHeaderGradient = [
+      "bg-[#2596AE]",
+      "bg-[#26869B]",
+      "bg-[#267788]",
+    ];
+
     return (
       <BasicAccordion
         activeIndex={activeIndex}
@@ -548,17 +645,18 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Invoice Processing",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#2596AE]",
+            headerInActiveBgColor: inactiveHeaderGradient[0],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGray80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Optical Character Recognition"
                 source="Google Drive"
                 destination="Google Sheet"
                 description="Automatically capture and extract data from 
-                invoices to avoid manual data entry"
+                  invoices to avoid manual data entry"
                 currentFrame={currentShowcaseFrame}
+                focusedShowcaseFrame={focusedShowcaseFrame}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-invoice-0"
@@ -605,17 +703,21 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Workspace Safety",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#2596AE]",
+            headerInActiveBgColor:
+              activeIndex === 0
+                ? inactiveHeaderGradient[0]
+                : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Object detection & Pose Estimation"
                 source="Camera (IoT)"
                 destination="PostgreSQL"
                 description="Spot unsafe behaviours in real-time to lower 
-                employee health incidents and improve workspace safety."
+                  employee health incidents and improve workspace safety."
                 currentFrame={currentShowcaseFrame}
+                focusedShowcaseFrame={focusedShowcaseFrame}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-workspace-0"
@@ -676,18 +778,22 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "E-Commerce Labelling",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#26869B]",
+            headerInActiveBgColor:
+              activeIndex === 3
+                ? inactiveHeaderGradient[2]
+                : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Image tagging"
                 source="S3"
                 destination="Redshift"
                 description="Automatically detect and tag visual 
-                attributes (such as category, colour, style, and more)  
-                in the products."
+                  attributes (such as category, colour, style, and more)  
+                  in the products."
                 currentFrame={currentShowcaseFrame}
+                focusedShowcaseFrame={focusedShowcaseFrame}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-ecommerce-0"
@@ -734,18 +840,19 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           {
             header: "Customise Your Pipeline",
             headerActiveBgColor: "bg-instillNeonBlue",
-            headerInActiveBgColor: "bg-[#267788]",
+            headerInActiveBgColor: inactiveHeaderGradient[2],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrrey80",
+            headerInActiveTextColor: "text-instillGrey80",
             content: (
               <AccordionContentLayout
                 title="Task for your use case"
                 source="Source"
                 destination="Destination"
                 description="Stop building data pipelines from scratch. 
-                Just use VDP to connect your data and import STOA Vision 
-                AI models to solve your use cases."
+                  Just use VDP to connect your data and import STOA Vision 
+                  AI models to solve your use cases."
                 currentFrame={currentShowcaseFrame}
+                focusedShowcaseFrame={focusedShowcaseFrame}
                 showcases={[
                   <div
                     key="case-study-custom-0"
@@ -788,10 +895,11 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
         ]}
       />
     );
-  }, [activeIndex, setActiveIndex, currentShowcaseFrame]);
+  }, [activeIndex, setActiveIndex, currentShowcaseFrame, focusedShowcaseFrame]);
 
   useEffect(() => {
     setCurrentShowcaseFrame(0);
+    setFocusedShowcaseFrame(null);
     switch (activeIndex) {
       case 1:
         setShowcaseMaxFrame(3);
@@ -803,7 +911,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   }, [activeIndex]);
 
   useInterval(() => {
-    if (activeIndex === 3) return;
+    if (activeIndex === 3 || focusedShowcaseFrame !== null) return;
     setCurrentShowcaseFrame((prev) => {
       if (prev + 1 <= showcaseMaxFrame) {
         return prev + 1;
@@ -813,9 +921,23 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     });
   }, 1500);
 
+  useEffect(() => {
+    if (focusedShowcaseFrame === null) return;
+
+    const resetClickedShowcaseFrame = () => {
+      if (focusedShowcaseFrame !== null) {
+        setFocusedShowcaseFrame(null);
+      }
+    };
+
+    let timeout = setTimeout(resetClickedShowcaseFrame, 3000);
+    return () => clearTimeout(timeout);
+  }, [focusedShowcaseFrame]);
+
   return (
     <>
       <BlueprintContainer
+        alignWith="container"
         padding="py-[60px]"
         unitHeight={30}
         unitWidth={30}
@@ -830,6 +952,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       <div className="relative flex flex-col gap-y-10 md:hidden">
         {caseAccordion}
         <BlueprintContainer
+          alignWith="container"
           padding="pt-[32px]"
           unitHeight={30}
           unitWidth={30}
