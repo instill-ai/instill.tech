@@ -9,7 +9,6 @@ export const FaqHeader = ({ marginBottom }: FaqHeaderProps) => {
   return (
     <div className={cn("relative w-full", marginBottom)}>
       <FaqText width="w-10/12 xl:w-6/12" />
-      <div className="absolute top-0 left-0 right-0 h-12 bg-instillGrey90 xs:h-16" />
     </div>
   );
 };
