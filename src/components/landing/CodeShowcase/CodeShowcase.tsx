@@ -20,10 +20,10 @@ export type Resource = "pipeline" | "source" | "model" | "destination";
 export type SetResource = Dispatch<SetStateAction<Resource>>;
 
 export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number[]>([0]);
 
   const currentResource = useMemo<Resource>(() => {
-    switch (activeIndex) {
+    switch (activeIndex[0]) {
       case 0:
         return "pipeline";
       case 1:
@@ -33,7 +33,8 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
       case 3:
         return "destination";
       default:
-        throw new Error("Instill website internal error: index out of bound");
+        console.error("Instill website internal error: index out of bound");
+        return "pipeline";
     }
   }, [activeIndex]);
 
@@ -66,11 +67,12 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         />
       </div>
 
-      <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-y-0 xl:gap-x-6">
-        <div className="xl:w-4/12">
+      <div className="flex flex-col gap-y-10 xl:grid xl:grid-cols-12 xl:gap-x-6">
+        <div className="xl:col-span-4">
           <BgIconAccordion
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            allowMultiItems={false}
             enableHeaderIcon={true}
             headerIconColor="fill-white"
             bgIconPosition="top-0 -right-20"
@@ -143,7 +145,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             ]}
           />
         </div>
-        <div className="xl:w-8/12">
+        <div className="xl:col-span-8">
           <Terminal currectResource={currentResource} />
         </div>
       </div>
