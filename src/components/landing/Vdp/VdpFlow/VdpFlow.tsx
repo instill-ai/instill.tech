@@ -97,7 +97,6 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
             width={60}
             height={42}
             alt="VDP flow source icon"
-            className="-scale-x-100"
           />
         }
         width={blocksWidth[2] ? blocksWidth[2] : 0}

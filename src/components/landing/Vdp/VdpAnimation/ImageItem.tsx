@@ -1,6 +1,9 @@
 import cn from "clsx";
 
-export type ImageItemProps = { width: string; height: string };
+export type ImageItemProps = {
+  width: string;
+  height: string;
+};
 
 export const ImageItem = ({ width, height }: ImageItemProps) => {
   return (

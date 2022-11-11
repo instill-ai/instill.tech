@@ -311,7 +311,7 @@ export const ControlPanel = ({
     <>
       <div
         ref={containerRef}
-        className="relative hidden h-full w-full flex-col justify-between md:flex"
+        className="relative hidden h-full w-full flex-col justify-between xl:flex"
       >
         <div ref={sourceRef}>{source}</div>
         <svg
@@ -349,7 +349,7 @@ export const ControlPanel = ({
         />
         <div ref={destRef}>{destination}</div>
       </div>
-      <div className="flex min-h-[150px] w-full md:hidden">{mobilePanel()}</div>
+      <div className="flex min-h-[150px] w-full xl:hidden">{mobilePanel()}</div>
     </>
   );
 };
