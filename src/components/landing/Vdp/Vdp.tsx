@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useRef, useState } from "react";
 import cn from "clsx";
 import Image from "next/future/image";
 import { VdpLogo } from "@instill-ai/design-system";
@@ -6,6 +6,7 @@ import { VdpLogo } from "@instill-ai/design-system";
 import { useRefPosition } from "@/hooks/useRefPosition";
 import { SectionLabel } from "@/components/ui";
 import { VdpFlow } from "./VdpFlow";
+import { VdpAnimation, VdpAnimationProps } from "./VdpAnimation";
 
 export type VdpProps = {
   marginBottom?: string;
@@ -52,13 +53,18 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
           />
         </div>
         <VdpFlow marginBottom="mb-5" />
-        <Image
-          src="/images/vdp-flow.png"
-          width={containerDimension ? containerDimension.width : 0}
-          height={containerDimension ? containerDimension.width * 0.54 : 0}
-          sizes="100vw"
-          alt="The flow of VDP"
-        />
+        <div className="hidden xl:flex">
+          <VdpAnimation />
+        </div>
+        <div className="flex xl:hidden">
+          <Image
+            src="/images/vdp-mobile.svg"
+            width={1128}
+            height={612}
+            alt="VDP flow source icon"
+            className="w-full"
+          />
+        </div>
       </div>
     );
   }

@@ -153,7 +153,6 @@ export const BlueprintContainer = ({
             y1: parentY1,
             y2: parentY2,
           });
-          console.log(verticalLines);
           verticalLines += 1;
         }
 
