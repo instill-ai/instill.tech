@@ -930,6 +930,8 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
       }
     };
 
+    setCurrentShowcaseFrame(focusedShowcaseFrame);
+
     let timeout = setTimeout(resetClickedShowcaseFrame, 3000);
     return () => clearTimeout(timeout);
   }, [focusedShowcaseFrame]);
