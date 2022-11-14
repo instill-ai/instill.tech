@@ -381,7 +381,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                         label: "workspace-safety-record",
                         value: "workspace-safety-record",
                         startIcon: (
-                          <ModelIcon
+                          <BigQueryIcon
                             width="w-[30px]"
                             height="h-[30px]"
                             position="my-auto"
