@@ -3,6 +3,13 @@ import { MemberDetails } from "@/types/instill";
 import Image from "next/future/image";
 import cn from "clsx";
 import { CrossIcon } from "@instill-ai/design-system";
+import {
+  setArrayKv,
+  setColorJson,
+  setNumberKv,
+  setObjectKv,
+  setStringKv,
+} from "@/lib/color-json";
 
 export type MemberIntroProps = {
   member: MemberDetails;
@@ -18,6 +25,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
     const defaultTextColor = "text-instillGrey05";
     const defaultFont = "font-mono";
     const defaultFontSize = "instill-text-small";
+    const defaultIndent = "pl-6";
 
     if (member) {
       switch (member.kernelColor) {
@@ -46,230 +54,6 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
 
     const titlesSkeleton = ["N/A", "N/A", "N/A"];
 
-    const getTitleUnit = (
-      m: MemberDetails,
-      title: string,
-      index: number,
-      trailingComma: boolean
-    ) => {
-      return (
-        <div
-          key={`${m ? m.id : index}-${title}`}
-          className={cn("flex flex-col", indent)}
-        >
-          <div className="text-instillRed">{`{`}</div>
-          <div className={(cn("flex flex-col"), indent)}>
-            <pre className="whitespace-pre-wrap break-all">
-              <div>
-                <span className={defaultTextColor}>{`"category": `}</span>
-                <span className={defaultTextColor}>{`"`}</span>
-                <span className={m ? textColor : "text-instillGrey30"}>
-                  {`${title}`}
-                </span>
-                <span className={defaultTextColor}>{`"`}</span>
-                <span className={defaultTextColor}>,</span>
-              </div>
-            </pre>
-            <pre className="whitespace-pre-wrap break-all">
-              <div>
-                <span className={defaultTextColor}>{`"score": `}</span>
-                <span className={m ? textColor : "text-instillGrey30"}>
-                  {m
-                    ? `${(Math.random() * (0.999 - 0.95) + 0.95).toFixed(3)}`
-                    : "--"}
-                </span>
-              </div>
-            </pre>
-          </div>
-          <div className="text-instillRed">
-            {`}`}
-            <span className={defaultTextColor}>{trailingComma ? "," : ""}</span>
-          </div>
-        </div>
-      );
-    };
-
-    const getTitles = (m: MemberDetails) => {
-      return (
-        <Fragment>
-          {m
-            ? m.titles.map((title, index) => {
-                return getTitleUnit(
-                  m,
-                  title,
-                  index,
-                  index === m.titles.length - 1 ? false : true
-                );
-              })
-            : titlesSkeleton.map((title, index) => {
-                return getTitleUnit(
-                  m,
-                  title,
-                  index,
-                  index === titlesSkeleton.length - 1 ? false : true
-                );
-              })}
-        </Fragment>
-      );
-    };
-
-    const getTitlesContainer = (m: MemberDetails, trailingComma: boolean) => {
-      return (
-        <div className={cn("flex flex-col", indent)}>
-          <pre>
-            <div>
-              <span className={defaultTextColor}>{`"titles": `}</span>
-              <span className="text-instillRed">{`[`}</span>
-            </div>
-          </pre>
-          {getTitles(m)}
-          <pre>
-            <div className="text-instillRed">
-              {`]`}
-              <span className={defaultTextColor}>
-                {trailingComma ? "," : ""}
-              </span>
-            </div>
-          </pre>
-        </div>
-      );
-    };
-
-    const getOpenRoleDetails = (m: MemberDetails, trailingComma: boolean) => {
-      const details = [
-        { key: "title", value: m.openRoleTitle },
-        { key: "location", value: m.openRoleLocation },
-        { key: "type", value: m.openRoleType },
-        { key: "link", value: m.openRoleLink },
-      ];
-      return (
-        <div className={cn("flex flex-col", indent)}>
-          <div className="text-instillRed">{`{`}</div>
-          <div className={(cn("flex flex-col"), indent)}>
-            <pre className="whitespace-pre-wrap break-all">
-              {details.map((e, i) => (
-                <div key={`${m.id}-${e.key}`}>
-                  <span className={defaultTextColor}>{`"${e.key}": `}</span>
-                  <span className={defaultTextColor}>{`"`}</span>
-                  {e.key === "link" ? (
-                    <a
-                      href={e.value}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className={cn(textColor, "underline")}
-                    >
-                      {e.value}
-                    </a>
-                  ) : (
-                    <span className={textColor}>{`${e.value}`}</span>
-                  )}
-                  <span className={defaultTextColor}>
-                    {`"`}
-                    {trailingComma ? (i === details.length - 1 ? "" : ",") : ""}
-                  </span>
-                </div>
-              ))}
-            </pre>
-          </div>
-          <div className="text-instillRed">{`}`}</div>
-        </div>
-      );
-    };
-
-    const getOpenRoleDetailsContainer = (
-      m: MemberDetails,
-      trailingComma: boolean
-    ) => {
-      return (
-        <div className={cn("flex flex-col", indent)}>
-          <pre>
-            <div>
-              <span className={defaultTextColor}>{`"open_role": `}</span>
-              <span className="text-instillRed">{`[`}</span>
-            </div>
-          </pre>
-          {getOpenRoleDetails(m, trailingComma)}
-          <pre>
-            <div className="text-instillRed">{`]`}</div>
-          </pre>
-        </div>
-      );
-    };
-
-    const getMemberName = (m: MemberDetails) => {
-      const name = m
-        ? m.type === "open_role"
-          ? "Open Roles"
-          : m.name
-        : "No Detection";
-
-      return <div className={defaultTextColor}>{name}</div>;
-    };
-
-    const getLinkedinLink = (m: MemberDetails, trailingComma: boolean) => {
-      return (
-        <div className={cn(indent)}>
-          <pre className="whitespace-pre-wrap break-all">
-            <span className={defaultTextColor}>{`"linkedin": `}</span>
-            <span className={defaultTextColor}>{`"`}</span>
-            {m ? (
-              m.linkedinLink !== "N/A" ? (
-                <a
-                  href={m.linkedinLink}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className={cn(textColor, "underline")}
-                >
-                  {`${m.linkedinLink}`}
-                </a>
-              ) : (
-                <span className={textColor}>{m.linkedinLink}</span>
-              )
-            ) : (
-              <span className="text-instillGrey30">{`N/A`}</span>
-            )}
-            <span className={defaultTextColor}>
-              {`"`}
-              {trailingComma ? "," : ""}
-            </span>
-            <div />
-          </pre>
-        </div>
-      );
-    };
-
-    const getGithubLink = (m: MemberDetails, trailingComma: boolean) => {
-      return (
-        <div className={cn(indent)}>
-          <pre className="whitespace-pre-wrap break-all">
-            <span className={defaultTextColor}>{`"github": `}</span>
-            <span className={defaultTextColor}>{`"`}</span>
-            {m ? (
-              m.githubLink !== "N/A" ? (
-                <a
-                  href={m.githubLink}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className={cn(textColor, "underline")}
-                >
-                  {`${m.githubLink}`}
-                </a>
-              ) : (
-                <span className={textColor}>{m.githubLink}</span>
-              )
-            ) : (
-              <span className="text-instillGrey30">{`N/A`}</span>
-            )}
-            <span className={defaultTextColor}>
-              {`"`}
-              {trailingComma ? "," : ""}
-            </span>
-            <div />
-          </pre>
-        </div>
-      );
-    };
-
     const getAvatar = (m: MemberDetails) => {
       return (
         <div className="w-full">
@@ -282,28 +66,6 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             sizes="360px"
           />
         </div>
-      );
-    };
-
-    const getOpenRoleMission = (trailingComma: boolean) => {
-      return (
-        <>
-          <div className="text-instillRed">{`{`}</div>
-          <div className={cn(indent)}>
-            <pre className="whitespace-pre-wrap break-all">
-              <span className={defaultTextColor}>{`"mission": `}</span>
-              <span className={defaultTextColor}>{`"`}</span>
-              <span className={textColor}>
-                Make Vision Al highly accessbile to everyone. Join us and make a
-                dent in the universe!
-              </span>
-              <span className={defaultTextColor}>
-                {`"`}
-                {trailingComma ? "," : ""}
-              </span>
-            </pre>
-          </div>
-        </>
       );
     };
 
@@ -360,29 +122,295 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
             {member ? (
               member.type === "open_role" ? (
                 <>
-                  {getMemberName(member)}
-                  {getOpenRoleMission(true)}
-                  {getOpenRoleDetailsContainer(member, true)}
-                  <div className="text-instillRed">{`}`}</div>
+                  <div className={defaultTextColor}>Open Roles</div>
+                  {setColorJson({
+                    id: "open-roles-json",
+                    bracketColor: "text-instillRed",
+                    indent: "",
+                    trailingComma: false,
+                    children: [
+                      setStringKv({
+                        id: "open-roles-mission",
+                        key: "mission",
+                        keyColor: defaultTextColor,
+                        value:
+                          "Make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!",
+                        valueColor: "text-[#FFDF3A]",
+                        quoteColor: defaultTextColor,
+                        colonColor: defaultTextColor,
+                        trailingComma: true,
+                        trailingCommaColor: defaultTextColor,
+                        indent,
+                        wrap: true,
+                      }),
+                      setArrayKv({
+                        id: "open_roles_open_roles",
+                        key: "open_role",
+                        keyColor: defaultTextColor,
+                        quoteColor: defaultTextColor,
+                        colonColor: defaultTextColor,
+                        bracketColor: "text-instillRed",
+                        trailingComma: true,
+                        trailingCommaColor: defaultTextColor,
+                        indent: defaultIndent,
+                        children: [
+                          setColorJson({
+                            id: `open-role-${member.openRoleLink}`,
+                            bracketColor: "text-instillRed",
+                            indent: defaultIndent,
+                            trailingComma: false,
+                            children: [
+                              setStringKv({
+                                id: `open-role-${member.openRoleLink}-title`,
+                                key: "title",
+                                keyColor: defaultTextColor,
+                                value: member.openRoleTitle,
+                                valueColor: "text-[#FFDF3A]",
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                              setStringKv({
+                                id: `open-role-${member.openRoleLink}-location`,
+                                key: "location",
+                                keyColor: defaultTextColor,
+                                value: member.openRoleLocation,
+                                valueColor: "text-[#FFDF3A]",
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                              setStringKv({
+                                id: `open-role-${member.openRoleLink}-type`,
+                                key: "type",
+                                keyColor: defaultTextColor,
+                                value: member.openRoleType,
+                                valueColor: "text-[#FFDF3A]",
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                              setStringKv({
+                                id: `open-role-${member.openRoleLink}-link`,
+                                key: "link",
+                                keyColor: defaultTextColor,
+                                hyperlink: member.openRoleLink,
+                                value: member.openRoleLink,
+                                valueColor: "text-[#FFDF3A]",
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                            ],
+                          }),
+                        ],
+                        breakLine: false,
+                        wrap: true,
+                      }),
+                    ],
+                  })}
                 </>
               ) : (
                 <>
-                  {getMemberName(member)}
-                  <div className="text-instillRed">{`{`}</div>
-                  {getTitlesContainer(member, true)}
-                  {getLinkedinLink(member, true)}
-                  {getGithubLink(member, false)}
-                  <div className="text-instillRed">{`}`}</div>
+                  <div className={defaultTextColor}>{member.name}</div>
+                  {setColorJson({
+                    id: `${member.name}-json`,
+                    bracketColor: "text-instillRed",
+                    indent: "",
+                    trailingComma: false,
+                    children: [
+                      setArrayKv({
+                        id: `${member.name}-titles`,
+                        key: "titles",
+                        keyColor: defaultTextColor,
+                        quoteColor: defaultTextColor,
+                        colonColor: defaultTextColor,
+                        bracketColor: defaultTextColor,
+                        trailingComma: true,
+                        trailingCommaColor: defaultTextColor,
+                        indent: defaultIndent,
+                        children: [
+                          member.titles.map((title) =>
+                            setColorJson({
+                              id: `${member.name}-titles-${title}`,
+                              bracketColor: "text-instillRed",
+                              indent: defaultIndent,
+                              trailingComma: true,
+                              trailingCommaColor: defaultTextColor,
+                              children: [
+                                setStringKv({
+                                  id: `${member.name}-titles-${title}-category`,
+                                  key: "category",
+                                  keyColor: defaultTextColor,
+                                  value: title,
+                                  valueColor: textColor,
+                                  quoteColor: defaultTextColor,
+                                  colonColor: defaultTextColor,
+                                  trailingComma: true,
+                                  trailingCommaColor: defaultTextColor,
+                                  indent,
+                                  wrap: true,
+                                }),
+                                setNumberKv({
+                                  id: `${member.name}-titles-${title}-score`,
+                                  key: "score",
+                                  keyColor: defaultTextColor,
+                                  value:
+                                    Math.round(
+                                      (Math.random() * (0.999 - 0.95) + 0.95) *
+                                        1e3
+                                    ) / 1e3,
+                                  valueColor: textColor,
+                                  quoteColor: defaultTextColor,
+                                  colonColor: defaultTextColor,
+                                  trailingComma: true,
+                                  trailingCommaColor: defaultTextColor,
+                                  indent,
+                                  wrap: true,
+                                }),
+                              ],
+                            })
+                          ),
+                        ],
+                        breakLine: false,
+                        wrap: true,
+                      }),
+                      setStringKv({
+                        id: `${member.name}-linkedin`,
+                        key: "linkedin",
+                        keyColor: defaultTextColor,
+                        hyperlink: member.linkedinLink,
+                        value: member.linkedinLink,
+                        valueColor: textColor,
+                        quoteColor: defaultTextColor,
+                        colonColor: defaultTextColor,
+                        trailingComma: true,
+                        trailingCommaColor: defaultTextColor,
+                        indent,
+                        wrap: true,
+                      }),
+                      setStringKv({
+                        id: `${member.name}-github`,
+                        key: "github",
+                        keyColor: defaultTextColor,
+                        hyperlink:
+                          member.githubLink === "N/A"
+                            ? undefined
+                            : member.githubLink,
+                        value: member.githubLink,
+                        valueColor: textColor,
+                        quoteColor: defaultTextColor,
+                        colonColor: defaultTextColor,
+                        trailingComma: true,
+                        trailingCommaColor: defaultTextColor,
+                        indent,
+                        wrap: true,
+                      }),
+                    ],
+                  })}
                 </>
               )
             ) : (
               <>
-                {getMemberName(member)}
-                <div className="text-instillRed">{`{`}</div>
-                {getTitlesContainer(member, true)}
-                {getLinkedinLink(member, true)}
-                {getGithubLink(member, false)}
-                <div className="text-instillRed">{`}`}</div>
+                <div className={defaultTextColor}>No Detection</div>
+                {setColorJson({
+                  id: "no-detection-json",
+                  bracketColor: "text-instillRed",
+                  indent: "",
+                  trailingComma: false,
+                  children: [
+                    setArrayKv({
+                      id: "no-detection-title",
+                      key: "titles",
+                      keyColor: defaultTextColor,
+                      quoteColor: defaultTextColor,
+                      colonColor: defaultTextColor,
+                      bracketColor: defaultTextColor,
+                      trailingComma: true,
+                      trailingCommaColor: defaultTextColor,
+                      indent: defaultIndent,
+                      children: [
+                        titlesSkeleton.map((title, i) =>
+                          setColorJson({
+                            id: `no-detection-title-${i}`,
+                            bracketColor: "text-instillRed",
+                            indent: defaultIndent,
+                            trailingComma: true,
+                            trailingCommaColor: defaultTextColor,
+                            children: [
+                              setStringKv({
+                                id: `no-detection-title-${i}-category`,
+                                key: "category",
+                                keyColor: defaultTextColor,
+                                value: title,
+                                valueColor: defaultTextColor,
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                              setStringKv({
+                                id: `no-detection-title-${i}-score`,
+                                key: "score",
+                                keyColor: defaultTextColor,
+                                value: "--",
+                                valueColor: defaultTextColor,
+                                quoteColor: defaultTextColor,
+                                colonColor: defaultTextColor,
+                                trailingComma: true,
+                                trailingCommaColor: defaultTextColor,
+                                indent,
+                                wrap: true,
+                              }),
+                            ],
+                          })
+                        ),
+                      ],
+                      breakLine: false,
+                      wrap: true,
+                    }),
+                    setStringKv({
+                      id: "no-detection-linkedin",
+                      key: "linkedin",
+                      keyColor: defaultTextColor,
+                      value: "N/A",
+                      valueColor: defaultTextColor,
+                      quoteColor: defaultTextColor,
+                      colonColor: defaultTextColor,
+                      trailingComma: true,
+                      trailingCommaColor: defaultTextColor,
+                      indent,
+                      wrap: true,
+                    }),
+                    setStringKv({
+                      id: "no-detection-github",
+                      key: "github",
+                      keyColor: defaultTextColor,
+                      value: "N/A",
+                      valueColor: defaultTextColor,
+                      quoteColor: defaultTextColor,
+                      colonColor: defaultTextColor,
+                      trailingComma: true,
+                      trailingCommaColor: defaultTextColor,
+                      indent,
+                      wrap: true,
+                    }),
+                  ],
+                })}
               </>
             )}
           </div>

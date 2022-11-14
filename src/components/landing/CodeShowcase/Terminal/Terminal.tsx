@@ -28,12 +28,16 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
   switch (currectResource) {
     case "pipeline":
       code = setColorJson({
+        id: "pipeline-code",
         bracketColor: tokenColor,
-        indent,
+        indent: "",
         position: "my-auto",
+        trailingComma: false,
         children: [
           setStringKv({
+            id: "pipeline_id",
             key: "id",
+            indent,
             keyColor: color.pipeline,
             value: "det-pipeline",
             valueColor: tokenColor,
@@ -45,6 +49,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
           }),
           setObjectKv({
             key: "recipe",
+            id: "pipeline_recipe",
             keyColor: color.pipeline,
             quoteColor: tokenColor,
             colonColor: tokenColor,
@@ -55,6 +60,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
             children: [
               setStringKv({
+                id: "pipeline_recipe_source",
+                indent,
                 key: "source",
                 keyColor: color.source,
                 value: "source-connectors/source-http",
@@ -66,6 +73,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 wrap: false,
               }),
               setArrayKv({
+                id: "pipeline_recipe_model_instances",
                 key: "model_instances",
                 keyColor: color.model,
                 quoteColor: tokenColor,
@@ -78,7 +86,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 wrap: false,
                 children: [
                   setStringValue({
-                    key: "models/yolov4/instances/v1.0",
+                    id: "pipeline_recipe_model_instances_yolov4",
                     value: "models/yolov4/instances/v1.0",
                     valueColor: tokenColor,
                     quoteColor: tokenColor,
@@ -90,6 +98,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 ],
               }),
               setStringKv({
+                id: "pipeline_recipe_destination",
+                indent,
                 key: "destination",
                 keyColor: color.destination,
                 value: "destination-connectors/destination-http",
@@ -107,11 +117,15 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
       break;
     case "source":
       code = setColorJson({
+        id: "source-code",
         bracketColor: tokenColor,
+        trailingComma: false,
         indent,
         position: "my-auto",
         children: [
           setStringKv({
+            id: "source_id",
+            indent,
             key: "id",
             keyColor: color.source,
             value: "source-http",
@@ -123,6 +137,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setStringKv({
+            id: "source_connector_definition",
+            indent,
             key: "source_connector_definition",
             keyColor: color.source,
             value: "source_connector_definitions/source-http",
@@ -134,6 +150,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setObjectKv({
+            id: "source_connector",
             key: "connector",
             keyColor: color.source,
             quoteColor: tokenColor,
@@ -145,6 +162,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
             children: [
               setObjectKv({
+                id: "source_connector_empty",
                 key: "connector",
                 keyColor: color.source,
                 quoteColor: tokenColor,
@@ -163,11 +181,15 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
       break;
     case "model":
       code = setColorJson({
+        id: "model-code",
         bracketColor: tokenColor,
+        trailingComma: false,
         indent,
         position: "my-auto",
         children: [
           setStringKv({
+            id: "model_id",
+            indent,
             key: "id",
             keyColor: color.model,
             value: "yolov4",
@@ -179,6 +201,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setStringKv({
+            id: "model_definition",
+            indent,
             key: "model_definition",
             keyColor: color.model,
             value: "model_definitions/github",
@@ -190,6 +214,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setObjectKv({
+            id: "model_definition_configuration",
             key: "configuration",
             keyColor: color.model,
             quoteColor: tokenColor,
@@ -201,6 +226,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             indent,
             children: [
               setStringKv({
+                id: "model_definition_repository",
+                indent,
                 key: "repository",
                 keyColor: color.model,
                 value: "instill-ai/model-yolov4",
@@ -218,11 +245,15 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
       break;
     default:
       code = setColorJson({
+        id: "destination-code",
         bracketColor: tokenColor,
+        trailingComma: false,
         indent,
         position: "my-auto",
         children: [
           setStringKv({
+            id: "destination_id",
+            indent,
             key: "id",
             keyColor: color.destination,
             value: "destination-http",
@@ -234,6 +265,8 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setStringKv({
+            id: "destination_connector_definition",
+            indent,
             key: "destination_connector_definition",
             keyColor: color.destination,
             value: "destination_connector_definitions/destination-http",
@@ -245,6 +278,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
           }),
           setObjectKv({
+            id: "destination_connector",
             key: "connector",
             keyColor: color.destination,
             quoteColor: tokenColor,
@@ -256,6 +290,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
             wrap: false,
             children: [
               setObjectKv({
+                id: "destination_connector_0",
                 key: "connector",
                 keyColor: color.destination,
                 quoteColor: tokenColor,
