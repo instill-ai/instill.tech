@@ -62,12 +62,14 @@ const Template = () => {
             wrap: false,
             children: [
               setNumberValue({
+                key: "model_instances_10",
                 value: 10,
                 valueColor: "text-instillYellow",
                 trailingComma: true,
                 trailingCommaColor: "text-black",
               }),
               setNumberValue({
+                key: "model_instances_1220",
                 value: 1220,
                 valueColor: "text-instillYellow",
                 trailingComma: false,
