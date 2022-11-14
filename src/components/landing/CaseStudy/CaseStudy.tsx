@@ -47,13 +47,6 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     useState<Nullable<number>>(null);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
 
-  const controlPanelIconStyle = {
-    width: "w-[30px]",
-    height: "h-[30px]",
-    color: "fill-white",
-    position: "my-auto",
-  };
-
   const getActiveControl = useCallback(() => {
     if (activeIndex[0] === 1) {
       switch (currentShowcaseFrame) {
@@ -87,6 +80,13 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
   ] = useState<Nullable<CustomizableModel>>(null);
 
   const selectedCustomizableModelIcon = useMemo(() => {
+    const controlPanelIconStyle = {
+      width: "w-[30px]",
+      height: "h-[30px]",
+      color: "fill-white",
+      position: "my-auto",
+    };
+
     switch (currentSelectedCustomizableModel) {
       case "artivc":
         return <ArtiVcIcon {...controlPanelIconStyle} />;
@@ -99,12 +99,18 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
       default:
         return <LocalUploadIcon {...controlPanelIconStyle} />;
     }
-  }, [currentSelectedCustomizableModel, controlPanelIconStyle]);
+  }, [currentSelectedCustomizableModel]);
 
   // The key of the ControlPanelItem.controls will affect whether React can
   // get the correct position.
 
   const controlPanel = useMemo(() => {
+    const controlPanelIconStyle = {
+      width: "w-[30px]",
+      height: "h-[30px]",
+      color: "fill-white",
+      position: "my-auto",
+    };
     switch (activeIndex[0]) {
       case 0:
         return (
@@ -705,8 +711,9 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     activeIndex,
     currentShowcaseFrame,
     focusedShowcaseFrame,
-    controlPanelIconStyle,
     destinations,
+    getActiveControl,
+    selectedCustomizableModelIcon,
   ]);
 
   const caseAccordion = useMemo(() => {

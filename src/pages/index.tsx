@@ -94,7 +94,7 @@ const HomePage: FC<HomePageProps> & {
       top: vdfDimension.y - navbarHeight,
       behavior: "smooth",
     });
-  }, []);
+  }, [enableAnnouncementBar]);
 
   return (
     <>
