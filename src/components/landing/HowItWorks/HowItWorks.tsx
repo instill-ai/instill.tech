@@ -106,7 +106,7 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
           type="left"
           title="Standardise Computer Vision Tasks for ETL pipelines, data and application integration"
           description="VDP solves popular Computer Vision Tasks including image classification, object detection, keypoint detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
-          learnMoreLink=""
+          learnMoreLink="/docs/core-concepts/cv-task"
           number={3}
           cubes={[
             {
@@ -168,7 +168,7 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
               </p>
             </div>
           }
-          learnMoreLink=""
+          learnMoreLink="/docs/core-concepts/pipeline"
           number={4}
           cubes={[
             {
