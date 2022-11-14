@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.17.0](https://github.com/instill-ai/instill.tech/compare/v1.16.1...v1.17.0) (2022-11-14)
+
+
+### Features
+
+* deprecate old member intro ([#331](https://github.com/instill-ai/instill.tech/issues/331)) ([b06965a](https://github.com/instill-ai/instill.tech/commit/b06965a15e6c14aeaf5e218d010fec8e6ffb1c82))
+* implement new visual design ([#324](https://github.com/instill-ai/instill.tech/issues/324)) ([75be96d](https://github.com/instill-ai/instill.tech/commit/75be96d79fc07524676f8b3a290b8e07df63a6b0))
+* Implement vdp animation ([#328](https://github.com/instill-ai/instill.tech/issues/328)) ([5c1aba8](https://github.com/instill-ai/instill.tech/commit/5c1aba8ceff3e4d6286d57683a418772f19b3a86))
+* update case study ([#332](https://github.com/instill-ai/instill.tech/issues/332)) ([b2d1633](https://github.com/instill-ai/instill.tech/commit/b2d1633861d8f1b3ec88301a1efbd6d39a74248d))
+
+
+### Bug Fixes
+
+* fix CaseStudy visual bugs ([#335](https://github.com/instill-ai/instill.tech/issues/335)) ([c5f6f07](https://github.com/instill-ai/instill.tech/commit/c5f6f07cbea038341e8eded2a244a2363115533d))
+* fix CaseStudy visual issue ([#334](https://github.com/instill-ai/instill.tech/issues/334)) ([807de8f](https://github.com/instill-ai/instill.tech/commit/807de8f898c23df7e35148d01ae46922f61e2b23))
+* fix other UI issue ([#327](https://github.com/instill-ai/instill.tech/issues/327)) ([50941f1](https://github.com/instill-ai/instill.tech/commit/50941f113236dda7de6c12d8f2543ad8fd121e49))
+* fix ui issue of CaseStudy ([#326](https://github.com/instill-ai/instill.tech/issues/326)) ([b188c11](https://github.com/instill-ai/instill.tech/commit/b188c11321ab7c313aba5969af28b781e34f9d9e))
+* fix visual bugs ([#330](https://github.com/instill-ai/instill.tech/issues/330)) ([6e0a73f](https://github.com/instill-ai/instill.tech/commit/6e0a73f28724167a1e7966ff6db3106c4d716621))
+* gix wrong icon ([#336](https://github.com/instill-ai/instill.tech/issues/336)) ([8799763](https://github.com/instill-ai/instill.tech/commit/87997633889015517b51690dd62963d2e8132559))
+
+
+### Documentation
+
+* **start-here:** fix typos ([#329](https://github.com/instill-ai/instill.tech/issues/329)) ([058995b](https://github.com/instill-ai/instill.tech/commit/058995b3a9f894d12079c9e445a338990abe3ab6))
+
 ## [1.16.1](https://github.com/instill-ai/instill.tech/compare/v1.16.0...v1.16.1) (2022-11-04)
 
 
