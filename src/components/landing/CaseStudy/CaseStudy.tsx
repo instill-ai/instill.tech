@@ -15,10 +15,12 @@ import {
   HttpIcon,
   HuggingFaceIcon,
   ImageClassificationIcon,
+  LocalUploadIcon,
   ModelIcon,
   ObjectDetectionIcon,
   OpticalCharacterRecognitionIcon,
   PipelineIcon,
+  SingleSelectOption,
 } from "@instill-ai/design-system";
 import cn from "clsx";
 
@@ -34,12 +36,21 @@ export type CaseStudyProps = {
   marginBottom?: string;
 };
 
+type CustomizableModel = "github" | "artivc" | "local" | "huggingFace";
+
 export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
   const [activeIndex, setActiveIndex] = useState<number[]>([0]);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
     useState<Nullable<number>>(null);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
+
+  const controlPanelIconStyle = {
+    width: "w-[30px]",
+    height: "h-[30px]",
+    color: "fill-white",
+    position: "my-auto",
+  };
 
   const getActiveControl = useCallback(() => {
     if (activeIndex[0] === 1) {
@@ -68,17 +79,30 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
     }
   }, [activeIndex, currentShowcaseFrame]);
 
+  const [
+    currentSelectedCustomizableModel,
+    setCurrentSelectedCustomizableModel,
+  ] = useState<Nullable<CustomizableModel>>(null);
+
+  const selectedCustomizableModelIcon = useMemo(() => {
+    switch (currentSelectedCustomizableModel) {
+      case "artivc":
+        return <ArtiVcIcon {...controlPanelIconStyle} />;
+      case "github":
+        return <GitHubIcon {...controlPanelIconStyle} />;
+      case "huggingFace":
+        return <HuggingFaceIcon {...controlPanelIconStyle} />;
+      case "local":
+        return <LocalUploadIcon {...controlPanelIconStyle} />;
+      default:
+        return <LocalUploadIcon {...controlPanelIconStyle} />;
+    }
+  }, [currentSelectedCustomizableModel, controlPanelIconStyle]);
+
   // The key of the ControlPanelItem.controls will affect whether React can
   // get the correct position.
 
   const controlPanel = useMemo(() => {
-    const controlPanelIconStyle = {
-      width: "w-[30px]",
-      height: "h-[30px]",
-      color: "fill-white",
-      position: "my-auto",
-    };
-
     switch (activeIndex[0]) {
       case 0:
         return (
@@ -547,7 +571,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
               <ControlPanelItem
                 title="Model"
                 description="Select an exisiting online model"
-                icon={<ArtiVcIcon {...controlPanelIconStyle} />}
+                icon={selectedCustomizableModelIcon}
                 isActive={currentShowcaseFrame === 1}
                 controls={[
                   <ControlSelectWrapper
@@ -561,12 +585,67 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     selectOnFocus={() => {
                       setCurrentShowcaseFrame(1);
                     }}
+                    onChange={(option: SingleSelectOption) => {
+                      switch (option.value) {
+                        case "artivc":
+                          setCurrentSelectedCustomizableModel(option.value);
+                          break;
+                        case "github":
+                          setCurrentSelectedCustomizableModel(option.value);
+                          break;
+                        case "local":
+                          setCurrentSelectedCustomizableModel(option.value);
+                          break;
+                        case "huggingFace":
+                          setCurrentSelectedCustomizableModel(option.value);
+                          break;
+                        default:
+                          throw new Error(
+                            `Option value doesn't match selected state, selected ${option.value}`
+                          );
+                      }
+                    }}
                     options={[
                       {
-                        label: "yolov7",
-                        value: "yolov7",
+                        label: "ArtiVC",
+                        value: "artivc",
                         startIcon: (
-                          <ModelIcon
+                          <ArtiVcIcon
+                            width="w-[30px]"
+                            height="h-[30px]"
+                            position="my-auto"
+                          />
+                        ),
+                      },
+                      {
+                        label: "GitHub",
+                        value: "github",
+                        startIcon: (
+                          <GitHubIcon
+                            width="w-[30px]"
+                            height="h-[30px]"
+                            position="my-auto"
+                            color="fill-black"
+                          />
+                        ),
+                      },
+                      {
+                        label: "Local",
+                        value: "local",
+                        startIcon: (
+                          <LocalUploadIcon
+                            width="w-[30px]"
+                            height="h-[30px]"
+                            position="my-auto"
+                            color="fill-black"
+                          />
+                        ),
+                      },
+                      {
+                        label: "Hugging Face",
+                        value: "huggingFace",
+                        startIcon: (
+                          <HuggingFaceIcon
                             width="w-[30px]"
                             height="h-[30px]"
                             position="my-auto"
@@ -616,7 +695,12 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
           />
         );
     }
-  }, [activeIndex, currentShowcaseFrame, focusedShowcaseFrame]);
+  }, [
+    activeIndex,
+    currentShowcaseFrame,
+    focusedShowcaseFrame,
+    controlPanelIconStyle,
+  ]);
 
   const caseAccordion = useMemo(() => {
     const iconStyle = {
