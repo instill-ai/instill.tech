@@ -691,7 +691,6 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                           ["12:38", "2,090"],
                           ["-", "2,950"],
                           ["-", "2,950"],
-                          ["-", "2,950"],
                         ],
                       },
                     ]}
