@@ -11,6 +11,7 @@ import {
   DataSourceIcon,
   GitHubIcon,
   GoogleDriveIcon,
+  GoogleSheetIcon,
   GrpcIcon,
   HttpIcon,
   HuggingFaceIcon,
@@ -226,7 +227,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                         label: "invoice-record-sheet",
                         value: "invoice-record-sheet",
                         startIcon: (
-                          <BigQueryIcon
+                          <GoogleSheetIcon
                             width="w-[30px]"
                             height="h-[30px]"
                             position="my-auto"
@@ -311,8 +312,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "yolov7",
-                        value: "yolov7",
+                        label: "instill-ai/yolov7",
+                        value: "instill-ai/yolov7",
                         startIcon: (
                           <ModelIcon
                             width="w-[30px]"
@@ -337,8 +338,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "yolov7-pose",
-                        value: "yolov7-pose",
+                        label: "instill-ai/yolov7-pose",
+                        value: "instill-ai/yolov7-pose",
                         startIcon: (
                           <ModelIcon
                             width="w-[30px]"
@@ -505,8 +506,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Labelled-photos",
-                        value: "Labelled-photos",
+                        label: "labelled-photos",
+                        value: "labelled-photos",
                         startIcon: (
                           <AwsRdsIcon
                             width="w-[30px]"
