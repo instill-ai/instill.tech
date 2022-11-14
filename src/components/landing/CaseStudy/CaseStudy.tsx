@@ -686,8 +686,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           fallbackImg={
                             <DataDestinationIcon width="w-6" height="h-6" />
                           }
-                          width={24}
-                          height={24}
+                          width={16}
+                          height={16}
                           alt={`${destination.name}-image`}
                         />
                       ) : (
@@ -706,6 +706,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     currentShowcaseFrame,
     focusedShowcaseFrame,
     controlPanelIconStyle,
+    destinations,
   ]);
 
   const caseAccordion = useMemo(() => {

@@ -25,7 +25,10 @@ export const ImgWithFallback = ({
       width={width}
       height={height}
       alt={alt}
-      onError={() => setError(true)}
+      onError={() => {
+        console.log("error");
+        setError(true);
+      }}
     />
   );
 };
