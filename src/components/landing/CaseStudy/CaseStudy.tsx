@@ -1,4 +1,4 @@
-import { BlueprintContainer } from "@/components/ui";
+import { BlueprintContainer, ImgWithFallback } from "@/components/ui";
 import { useInterval } from "@/hooks/useInterval";
 import { Nullable } from "@/types/instill";
 import {
@@ -23,6 +23,7 @@ import {
   SingleSelectOption,
 } from "@instill-ai/design-system";
 import cn from "clsx";
+import Image from "next/future/image";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
@@ -34,11 +35,12 @@ import { ShowcaseTable } from "./ShowcaseTable/ShowcaseTable";
 
 export type CaseStudyProps = {
   marginBottom?: string;
+  destinations: { name: string; icon: string }[];
 };
 
 type CustomizableModel = "github" | "artivc" | "local" | "huggingFace";
 
-export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
+export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
   const [activeIndex, setActiveIndex] = useState<number[]>([0]);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
@@ -524,7 +526,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
             source={
               <ControlPanelItem
                 title="Source"
-                description="Select an exisiting online source"
+                description="Set up source"
                 icon={<DataSourceIcon {...controlPanelIconStyle} />}
                 isActive={currentShowcaseFrame === 0}
                 controls={[
@@ -570,7 +572,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
             model={
               <ControlPanelItem
                 title="Model"
-                description="Select an exisiting online model"
+                description="Set up model"
                 icon={selectedCustomizableModelIcon}
                 isActive={currentShowcaseFrame === 1}
                 controls={[
@@ -660,7 +662,7 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
             destination={
               <ControlPanelItem
                 title="Destination"
-                description="Select an exisiting online destination"
+                description="Set up destination"
                 icon={<DataDestinationIcon {...controlPanelIconStyle} />}
                 isActive={currentShowcaseFrame === 2}
                 controls={[
@@ -675,19 +677,23 @@ export const CaseStudy = ({ marginBottom }: CaseStudyProps) => {
                     selectOnFocus={() => {
                       setCurrentShowcaseFrame(2);
                     }}
-                    options={[
-                      {
-                        label: "workspace-safety-record",
-                        value: "workspace-safety-record",
-                        startIcon: (
-                          <ModelIcon
-                            width="w-[30px]"
-                            height="h-[30px]"
-                            position="my-auto"
-                          />
-                        ),
-                      },
-                    ]}
+                    options={destinations.map((destination) => ({
+                      label: destination.name,
+                      value: destination.name,
+                      startIcon: destination.icon ? (
+                        <ImgWithFallback
+                          src={`/icons/airbyte/${destination.icon}`}
+                          fallbackImg={
+                            <DataDestinationIcon width="w-6" height="h-6" />
+                          }
+                          width={24}
+                          height={24}
+                          alt={`${destination.name}-image`}
+                        />
+                      ) : (
+                        <DataDestinationIcon width="w-6" height="h-6" />
+                      ),
+                    }))}
                   />,
                 ]}
               />

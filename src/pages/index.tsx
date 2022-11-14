@@ -1,5 +1,6 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
+import { parse } from "yaml";
 
 import {
   CaseStudyProps,
@@ -14,6 +15,8 @@ import {
 import { PageBase, PageHead } from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { GetStaticProps } from "next";
+import { getRepoFileContent } from "@/lib/github";
 
 const FaqHeader = dynamic<FaqHeaderProps>(() =>
   import("@/components/landing").then((mod) => mod.FaqHeader)
@@ -43,13 +46,42 @@ const Community = dynamic(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
 
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  const destinationDefinitions = await getRepoFileContent(
+    "instill-ai",
+    "connector-backend",
+    "config/init/airbyte/seed/destination_definitions.yaml"
+  );
+
+  let buf = Buffer.from(destinationDefinitions.content, "base64").toString(
+    "utf-8"
+  );
+
+  let destinationArray: Record<string, string>[] = parse(buf);
+
+  return {
+    props: {
+      destinations: destinationArray.map((e) => {
+        return {
+          name: e.name,
+          icon: e.icon ?? null,
+        };
+      }),
+    },
+  };
+};
+
+type HomePageProps = {
+  destinations: CaseStudyProps["destinations"];
+};
+
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const HomePage: FC & {
+const HomePage: FC<HomePageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = () => {
+} = ({ destinations }) => {
   const vdpRef = useRef<HTMLDivElement>(null);
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
@@ -83,7 +115,7 @@ const HomePage: FC & {
           <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
             <Community />
           </div>
-          <CaseStudy />
+          <CaseStudy destinations={destinations} />
           <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
             <CodeShowcase />
           </div>
