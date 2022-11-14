@@ -1,29 +1,40 @@
 import cn from "clsx";
 
 export type SetColorJson = {
+  id: string;
   bracketColor: string;
   indent: string;
   children?: any[];
   position?: string;
+  trailingComma: boolean;
+  trailingCommaColor?: string;
 };
 
 export const setColorJson = ({
+  id,
   bracketColor,
   indent,
   children,
   position,
+  trailingComma,
+  trailingCommaColor,
 }: SetColorJson) => {
   return (
-    <div className={cn("flex w-full flex-col", position)}>
+    <div key={id} className={cn("flex w-full flex-col", position, indent)}>
       <div className={bracketColor}>{`{`}</div>
-      <div className={cn("flex w-full flex-col", indent)}>{children}</div>
-      <div className={bracketColor}>{`}`}</div>
+      <div className={cn("flex w-full flex-col")}>{children}</div>
+      <div>
+        <span className={bracketColor}>{`}`}</span>
+        {trailingComma ? (
+          <span className={trailingCommaColor}>{`, `}</span>
+        ) : null}
+      </div>
     </div>
   );
 };
 
 export type SetStringValueProps = {
-  key: string;
+  id: string;
   value: string;
   valueColor: string;
   quoteColor: string;
@@ -34,7 +45,7 @@ export type SetStringValueProps = {
 };
 
 export const setStringValue = ({
-  key,
+  id,
   value,
   valueColor,
   quoteColor,
@@ -45,8 +56,8 @@ export const setStringValue = ({
 }: SetStringValueProps) => {
   return (
     <pre
-      key={key}
-      className={cn(wrap ? "whitespace-pre-line break-words" : "", indent)}
+      key={id}
+      className={cn(wrap ? "whitespace-pre-line break-all" : "", indent)}
     >
       <span className={quoteColor}>{`"`}</span>
       <span className={valueColor}>{`${value}`}</span>
@@ -59,7 +70,7 @@ export const setStringValue = ({
 };
 
 export type SetNumberValueProps = {
-  key: string;
+  id: string;
   value: number;
   valueColor: string;
   trailingComma: boolean;
@@ -68,7 +79,7 @@ export type SetNumberValueProps = {
 };
 
 export const setNumberValue = ({
-  key,
+  id,
   value,
   valueColor,
   trailingComma,
@@ -76,7 +87,7 @@ export const setNumberValue = ({
   indent,
 }: SetNumberValueProps) => {
   return (
-    <div key={key}>
+    <div key={id}>
       <span className={cn(valueColor, indent)}>{`${value}`}</span>
       {trailingComma ? (
         <span className={trailingCommaColor}>{`, `}</span>
@@ -86,8 +97,11 @@ export const setNumberValue = ({
 };
 
 export type SetStringKvProps = {
+  id: string;
   key: string;
+  indent: string;
   keyColor: string;
+  hyperlink?: string;
   value: string;
   valueColor: string;
   quoteColor: string;
@@ -98,9 +112,12 @@ export type SetStringKvProps = {
 };
 
 export const setStringKv = ({
+  id,
   key,
   keyColor,
+  hyperlink,
   value,
+  indent,
   valueColor,
   quoteColor,
   colonColor,
@@ -109,13 +126,23 @@ export const setStringKv = ({
   wrap,
 }: SetStringKvProps) => {
   return (
-    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre
+      key={id}
+      className={cn(wrap ? "whitespace-pre-line break-all" : "", indent)}
+    >
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
       <span className={colonColor}>{`: `}</span>
       <span className={quoteColor}>{`"`}</span>
-      <span className={valueColor}>{value}</span>
+      {hyperlink ? (
+        <a href={hyperlink}>
+          <span className={cn("underline", valueColor)}>{value}</span>
+        </a>
+      ) : (
+        <span className={valueColor}>{value}</span>
+      )}
+
       <span className={quoteColor}>{`"`}</span>
       {trailingComma ? (
         <span className={trailingCommaColor}>{`, `}</span>
@@ -125,7 +152,9 @@ export const setStringKv = ({
 };
 
 export type SetNumberKvProps = {
+  id: string;
   key: string;
+  indent: string;
   keyColor: string;
   value: number;
   valueColor: string;
@@ -137,8 +166,10 @@ export type SetNumberKvProps = {
 };
 
 export const setNumberKv = ({
+  id,
   key,
   keyColor,
+  indent,
   value,
   valueColor,
   quoteColor,
@@ -148,7 +179,10 @@ export const setNumberKv = ({
   wrap,
 }: SetNumberKvProps) => {
   return (
-    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre
+      key={id}
+      className={cn(wrap ? "whitespace-pre-line break-all" : "", indent)}
+    >
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -162,6 +196,7 @@ export const setNumberKv = ({
 };
 
 export type SetObjectKvProps = {
+  id: string;
   key: string;
   keyColor: string;
   quoteColor: string;
@@ -175,6 +210,7 @@ export type SetObjectKvProps = {
 };
 
 export const setObjectKv = ({
+  id,
   key,
   keyColor,
   quoteColor,
@@ -187,14 +223,17 @@ export const setObjectKv = ({
   wrap,
 }: SetObjectKvProps) => {
   return (
-    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre
+      key={id}
+      className={cn(wrap ? "whitespace-pre-line break-all" : "", indent)}
+    >
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
       <span className={colonColor}>{`: `}</span>
       <span className={bracketColor}>{`{`}</span>
       {children.length > 0 ? (
-        <div className={cn("flex flex-col", indent)}>{children}</div>
+        <div className="flex flex-col">{children}</div>
       ) : null}
       <span className={bracketColor}>{`}`}</span>
       {trailingComma ? (
@@ -205,6 +244,7 @@ export const setObjectKv = ({
 };
 
 export type SetArrayKvProps = {
+  id: string;
   key: string;
   keyColor: string;
   quoteColor: string;
@@ -219,6 +259,7 @@ export type SetArrayKvProps = {
 };
 
 export const setArrayKv = ({
+  id,
   key,
   keyColor,
   quoteColor,
@@ -232,7 +273,10 @@ export const setArrayKv = ({
   wrap,
 }: SetArrayKvProps) => {
   return (
-    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre
+      key={id}
+      className={cn(wrap ? "whitespace-pre-line break-all" : "", indent)}
+    >
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -240,7 +284,7 @@ export const setArrayKv = ({
       <span className={bracketColor}>{`[ `}</span>
       {children.length > 0 ? (
         breakLine ? (
-          <div className={cn("flex flex-col", indent)}>{children}</div>
+          <div className="flex flex-col">{children}</div>
         ) : (
           children
         )
