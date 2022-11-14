@@ -23,7 +23,6 @@ import {
   SingleSelectOption,
 } from "@instill-ai/design-system";
 import cn from "clsx";
-import Image from "next/future/image";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
@@ -31,7 +30,7 @@ import { ControlPanel } from "./ControlPanel";
 import { ControlPanelItem } from "./ControlPanelItem";
 import { ControlSelectWrapper } from "./ControlSelectWrapper";
 import { ShowcaseImage } from "./ShowcaseImage";
-import { ShowcaseTable } from "./ShowcaseTable/ShowcaseTable";
+import { ShowcaseTable } from "./ShowcaseTable";
 
 export type CaseStudyProps = {
   marginBottom?: string;
@@ -133,7 +132,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     customizable={false}
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     label="Source"
                     wrapperOnClick={() => setFocusedShowcaseFrame(0)}
                     isActive={
@@ -143,8 +142,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Batch-Invoice-Photos",
-                        value: "Batch-Invoice-Photos",
+                        label: "batch-invoice-photos",
+                        value: "batch-invoice-photos",
                         startIcon: (
                           <GoogleDriveIcon
                             width="w-[30px]"
@@ -173,7 +172,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-model-control"
                     id="case-study-model-control"
                     label="Model"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(1)}
                     isActive={
@@ -183,8 +182,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Instill-AI/OCR",
-                        value: "Instill-AI/OCR",
+                        label: "instill-ai/ocr",
+                        value: "instill-ai/ocr",
                         startIcon: (
                           <ModelIcon
                             width="w-[30px]"
@@ -214,7 +213,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     wrapperOnClick={() => setFocusedShowcaseFrame(2)}
                     customizable={false}
                     isActive={
@@ -224,8 +223,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Invoice-Record-Sheet",
-                        value: "Invoice-Record-Sheet",
+                        label: "invoice-record-sheet",
+                        value: "invoice-record-sheet",
                         startIcon: (
                           <BigQueryIcon
                             width="w-[30px]"
@@ -263,7 +262,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id="case-study-source-control"
                     label="Source"
                     customizable={false}
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     wrapperOnClick={() => setFocusedShowcaseFrame(0)}
                     isActive={
                       focusedShowcaseFrame !== null
@@ -272,8 +271,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Camera-on-site-1",
-                        value: "Camera-on-site-1",
+                        label: "camera-on-site-1",
+                        value: "camera-on-site-1",
                         startIcon: (
                           <GoogleDriveIcon
                             width="w-[30px]"
@@ -302,7 +301,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-model-control-0"
                     id="case-study-model-control-0"
                     label="Model"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(1)}
                     isActive={
@@ -329,7 +328,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id="case-study-model-control-1"
                     label="Model"
                     customizable={false}
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     wrapperOnClick={() => setFocusedShowcaseFrame(2)}
                     isActive={
                       focusedShowcaseFrame !== null
@@ -368,7 +367,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(3)}
                     isActive={
@@ -416,7 +415,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     label="Source"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(0)}
                     isActive={
@@ -426,8 +425,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Batch-Womenswear-Photos",
-                        value: "Batch-Womenswear-Photos",
+                        label: "batch-womenswear-photos",
+                        value: "batch-womenswear-photos",
                         startIcon: (
                           <AwsS3Icon
                             width="w-[30px]"
@@ -456,7 +455,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-model-control"
                     id="case-study-model-control"
                     label="Model"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(1)}
                     isActive={
@@ -466,8 +465,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Instill-AI/Image-Tagging",
-                        value: "Instill-AI/Image-Tagging",
+                        label: "instill-ai/image-tagging",
+                        value: "instill-ai/image-tagging",
                         startIcon: (
                           <ModelIcon
                             width="w-[30px]"
@@ -496,7 +495,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={false}
                     wrapperOnClick={() => setFocusedShowcaseFrame(2)}
                     isActive={
@@ -506,8 +505,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }
                     options={[
                       {
-                        label: "Labbelled-Photos",
-                        value: "Labbelled-Photos",
+                        label: "Labelled-photos",
+                        value: "Labelled-photos",
                         startIcon: (
                           <AwsRdsIcon
                             width="w-[30px]"
@@ -541,7 +540,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-source-control"
                     id="case-study-source-control"
                     label="Source"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 0}
                     selectOnFocus={() => {
@@ -549,7 +548,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     }}
                     options={[
                       {
-                        label: "source-http",
+                        label: "HTTP",
                         value: "source-http",
                         startIcon: (
                           <HttpIcon
@@ -560,7 +559,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                         ),
                       },
                       {
-                        label: "source-grpc",
+                        label: "gRPC",
                         value: "source-grpc",
                         startIcon: (
                           <GrpcIcon
@@ -578,7 +577,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             model={
               <ControlPanelItem
                 title="Model"
-                description="Set up model"
+                description="Set up model from source"
                 icon={selectedCustomizableModelIcon}
                 isActive={currentShowcaseFrame === 1}
                 controls={[
@@ -587,7 +586,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-model-control"
                     id="case-study-model-control"
                     label="Model"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 1}
                     selectOnFocus={() => {
@@ -677,7 +676,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     key="case-study-destination-control"
                     id="case-study-destination-control"
                     label="Destination"
-                    minWidth="min-w-[240px] xx:min-w-[300px]"
+                    minWidth="min-w-[200px]"
                     customizable={true}
                     isActive={currentShowcaseFrame === 2}
                     selectOnFocus={() => {
@@ -773,7 +772,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   />,
                   <ShowcaseTable
                     height="h-[355px]"
-                    width="w-[336px]"
+                    width="w-[280px] md:w-[336px]"
                     key="case-study-invoice-table"
                     position="ml-auto"
                     tables={[
@@ -843,7 +842,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   <ShowcaseTable
                     key="case-study-workspace-table-0"
                     height="h-[355px]"
-                    width="w-[336px]"
+                    width="w-[280px] md:w-[336px]"
                     position="ml-auto"
                     tables={[
                       {
@@ -910,7 +909,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   <ShowcaseTable
                     key="case-study-ecommerce-table"
                     height="h-[355px]"
-                    width="w-[336px]"
+                    width="w-[280px] md:w-[336px]"
                     position="ml-auto"
                     tables={[
                       {
@@ -954,7 +953,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 showcases={[
                   <div
                     key="case-study-custom-0"
-                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
+                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
                   >
                     <DataSourceIcon
                       width="w-[226px]"
@@ -965,7 +964,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-1"
-                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
+                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
                   >
                     <ModelIcon
                       width="w-[226px]"
@@ -976,7 +975,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-2"
-                    className="flex h-[355px] min-w-[336px] bg-[#268398]"
+                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
                   >
                     <DataDestinationIcon
                       width="w-[226px]"
