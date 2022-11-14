@@ -27,7 +27,7 @@ export const useRefPosition = (
       window.addEventListener("resize", updatePosition);
       return () => window.removeEventListener("resize", updatePosition);
     }
-  }, [ref, option.additionalDep]);
+  }, [ref, option.additionalDep, option.listenWindowResize]);
 
   useResizeObserver(ref, (entry) => {
     setPosition(getElementPosition(entry.target));

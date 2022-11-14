@@ -47,5 +47,5 @@ export const useAnimationFrameLoop = ({
     }
 
     return () => cancelAnimationFrame(frame.current);
-  }, [shouldAnimate]);
+  }, [shouldAnimate, animate]);
 };

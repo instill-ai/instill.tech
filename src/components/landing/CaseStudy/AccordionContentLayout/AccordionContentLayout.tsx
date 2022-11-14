@@ -68,7 +68,7 @@ export const AccordionContentLayout = ({
         </div>
       </div>
       <div className="relative mr-auto flex xl:mr-0 xl:ml-auto">
-        {focusedShowcaseFrame
+        {focusedShowcaseFrame !== null
           ? showcases[focusedShowcaseFrame]
           : showcases[currentFrame]}
       </div>

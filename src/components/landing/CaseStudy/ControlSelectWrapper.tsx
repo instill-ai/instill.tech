@@ -1,10 +1,9 @@
 import cn from "clsx";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   BasicSingleSelect,
   SingleSelectOption,
 } from "@instill-ai/design-system";
-import { Nullable } from "@/types/instill";
 
 export type ControlSelectWrapperProps = {
   customizable: boolean;
@@ -14,6 +13,7 @@ export type ControlSelectWrapperProps = {
   options: SingleSelectOption[];
   wrapperOnClick?: () => void;
   selectOnFocus?: () => void;
+  onChange?: (option: SingleSelectOption) => void;
   minWidth: string;
   menuPlacement?: "top" | "bottom" | "auto";
 };
@@ -28,14 +28,19 @@ export const ControlSelectWrapper = ({
   selectOnFocus,
   minWidth,
   menuPlacement,
+  onChange,
 }: ControlSelectWrapperProps) => {
   const [selectOption, setSelectOption] = useState<SingleSelectOption>(
     options[0]
   );
 
-  const onChange = useCallback((option: SingleSelectOption) => {
-    setSelectOption(option);
-  }, []);
+  const onChangehandler = useCallback(
+    (option: SingleSelectOption) => {
+      if (onChange) onChange(option);
+      setSelectOption(option);
+    },
+    [onChange]
+  );
 
   return (
     <div
@@ -52,10 +57,10 @@ export const ControlSelectWrapper = ({
         label={label}
         options={options}
         value={customizable ? selectOption : options[0]}
-        onChange={customizable ? onChange : undefined}
+        onChange={onChangehandler}
         onFocus={selectOnFocus}
         required={true}
-        disabled={customizable ? false : true}
+        disabled={customizable ? false : onChange ? false : true}
       />
       {customizable ? null : (
         <div

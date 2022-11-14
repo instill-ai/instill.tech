@@ -38,3 +38,5 @@ export { SectionLabel } from "./SectionLabel";
 export type { SectionLabelProps } from "./SectionLabel";
 export { NumberCube } from "./NumberCube";
 export type { NumberCubeProps } from "./NumberCube";
+export { ImgWithFallback } from "./ImgWithFallback";
+export type { ImgWithFallbackProps } from "./ImgWithFallback";

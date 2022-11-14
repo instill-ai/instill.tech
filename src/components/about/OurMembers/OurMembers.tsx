@@ -119,7 +119,7 @@ export const OurMembers = ({
       paddingBottom;
 
     setSectionAdditionalHeight(`${additionalHeight}px`);
-  }, [targerMember, memberIntroBlockRef.current]);
+  }, [targerMember, memberIntroBlockRef.current, members, targetPosition]);
 
   const onCancelHandler = useCallback(() => {
     setTargetMember(null);
