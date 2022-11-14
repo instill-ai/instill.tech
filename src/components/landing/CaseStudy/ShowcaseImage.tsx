@@ -19,7 +19,7 @@ export const ShowcaseImage = ({
       height={height}
       src={src}
       alt={alt}
-      className="h-[355px] min-w-[336px]"
+      className="h-[296px] min-w-[280px] sm:h-[355px] sm:min-w-[336px]"
     />
   );
 };
