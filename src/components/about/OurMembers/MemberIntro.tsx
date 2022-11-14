@@ -161,7 +161,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                             trailingComma: false,
                             children: [
                               setStringKv({
-                                id: `open-role-${member.openRoleLink}`,
+                                id: `open-role-${member.openRoleLink}-title`,
                                 key: "title",
                                 keyColor: defaultTextColor,
                                 value: member.openRoleTitle,
@@ -174,7 +174,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                                 wrap: true,
                               }),
                               setStringKv({
-                                id: `open-role-${member.openRoleLink}`,
+                                id: `open-role-${member.openRoleLink}-location`,
                                 key: "location",
                                 keyColor: defaultTextColor,
                                 value: member.openRoleLocation,
@@ -187,8 +187,8 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                                 wrap: true,
                               }),
                               setStringKv({
-                                id: `open-role-${member.openRoleLink}`,
-                                key: "location",
+                                id: `open-role-${member.openRoleLink}-type`,
+                                key: "type",
                                 keyColor: defaultTextColor,
                                 value: member.openRoleType,
                                 valueColor: "text-[#FFDF3A]",
@@ -200,8 +200,8 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                                 wrap: true,
                               }),
                               setStringKv({
-                                id: `open-role-${member.openRoleLink}`,
-                                key: "location",
+                                id: `open-role-${member.openRoleLink}-link`,
+                                key: "link",
                                 keyColor: defaultTextColor,
                                 hyperlink: member.openRoleLink,
                                 value: member.openRoleLink,
