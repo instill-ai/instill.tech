@@ -1,6 +1,7 @@
 import {
   setArrayKv,
   setColorJson,
+  setNumberValue,
   setObjectKv,
   setStringKv,
   setStringValue,
@@ -77,6 +78,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
                 wrap: false,
                 children: [
                   setStringValue({
+                    key: "models/yolov4/instances/v1.0",
                     value: "models/yolov4/instances/v1.0",
                     valueColor: tokenColor,
                     quoteColor: tokenColor,

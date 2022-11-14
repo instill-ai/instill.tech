@@ -18,11 +18,6 @@ export const useRefPosition = (
     const updatePosition = () => {
       if (ref && ref.current) {
         setPosition(getElementPosition(ref.current));
-        console.log(
-          "get new position",
-          ref.current,
-          getElementPosition(ref.current)
-        );
       }
     };
 

@@ -23,6 +23,7 @@ export const setColorJson = ({
 };
 
 export type SetStringValueProps = {
+  key: string;
   value: string;
   valueColor: string;
   quoteColor: string;
@@ -33,6 +34,7 @@ export type SetStringValueProps = {
 };
 
 export const setStringValue = ({
+  key,
   value,
   valueColor,
   quoteColor,
@@ -42,7 +44,10 @@ export const setStringValue = ({
   wrap,
 }: SetStringValueProps) => {
   return (
-    <pre className={cn(wrap ? "whitespace-pre-line break-words" : "", indent)}>
+    <pre
+      key={key}
+      className={cn(wrap ? "whitespace-pre-line break-words" : "", indent)}
+    >
       <span className={quoteColor}>{`"`}</span>
       <span className={valueColor}>{`${value}`}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -54,6 +59,7 @@ export const setStringValue = ({
 };
 
 export type SetNumberValueProps = {
+  key: string;
   value: number;
   valueColor: string;
   trailingComma: boolean;
@@ -62,6 +68,7 @@ export type SetNumberValueProps = {
 };
 
 export const setNumberValue = ({
+  key,
   value,
   valueColor,
   trailingComma,
@@ -69,12 +76,12 @@ export const setNumberValue = ({
   indent,
 }: SetNumberValueProps) => {
   return (
-    <>
+    <div key={key}>
       <span className={cn(valueColor, indent)}>{`${value}`}</span>
       {trailingComma ? (
         <span className={trailingCommaColor}>{`, `}</span>
       ) : null}
-    </>
+    </div>
   );
 };
 
@@ -102,7 +109,7 @@ export const setStringKv = ({
   wrap,
 }: SetStringKvProps) => {
   return (
-    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -141,7 +148,7 @@ export const setNumberKv = ({
   wrap,
 }: SetNumberKvProps) => {
   return (
-    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -180,7 +187,7 @@ export const setObjectKv = ({
   wrap,
 }: SetObjectKvProps) => {
   return (
-    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
@@ -225,7 +232,7 @@ export const setArrayKv = ({
   wrap,
 }: SetArrayKvProps) => {
   return (
-    <pre className={wrap ? "whitespace-pre-line break-words" : ""}>
+    <pre key={key} className={wrap ? "whitespace-pre-line break-words" : ""}>
       <span className={quoteColor}>{`"`}</span>
       <span className={keyColor}>{key}</span>
       <span className={quoteColor}>{`"`}</span>
