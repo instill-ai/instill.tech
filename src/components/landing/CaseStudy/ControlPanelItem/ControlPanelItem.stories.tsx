@@ -1,6 +1,7 @@
 import {
   AwsS3Icon,
   BasicSingleSelect,
+  GoogleDriveIcon,
   ModelIcon,
 } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
@@ -31,29 +32,24 @@ Playground.args = {
   description: "Select an exisiting online model",
   isActive: true,
   controls: [
-    <BasicSingleSelect
-      key="case-study-model-control"
-      id="case-study-model-control"
-      instanceId="case-study-model-control"
-      label="Model"
-      required={true}
-      disabled={true}
-      options={[
+    {
+      id: "case-study-0-source-control",
+      customizable: false,
+      label: "Source",
+      isActive: true,
+      options: [
         {
-          label: "S3",
-          value: "S3",
+          label: "batch-invoice-photos",
+          value: "batch-invoice-photos",
           startIcon: (
-            <AwsS3Icon width="w-[30px]" height="h-[30px]" position="my-auto" />
+            <GoogleDriveIcon
+              width="w-[30px]"
+              height="h-[30px]"
+              position="my-auto"
+            />
           ),
         },
-      ]}
-      value={{
-        label: "S3",
-        value: "S3",
-        startIcon: (
-          <AwsS3Icon width="w-[30px]" height="h-[30px]" position="my-auto" />
-        ),
-      }}
-    />,
+      ],
+    },
   ],
 };
