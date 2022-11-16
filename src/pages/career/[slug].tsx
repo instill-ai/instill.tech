@@ -49,6 +49,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       position: positionDetails,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
     revalidate: 10,
   };
 };
@@ -75,9 +78,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     );
   }
 
+  // We'll pre-render only these paths at build time. { fallback: blocking }
+  // will server-render pages on-demand if the path doesn't exist.
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
