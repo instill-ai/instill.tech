@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.1](https://github.com/instill-ai/instill.tech/compare/v1.17.0...v1.17.1) (2022-11-16)
+
+
+### Bug Fixes
+
+* make isr server-rendering on demand ([#342](https://github.com/instill-ai/instill.tech/issues/342)) ([745067b](https://github.com/instill-ai/instill.tech/commit/745067bbc721fa6d2aee6da37898fd79b3760e7a))
+
 ## [1.17.0](https://github.com/instill-ai/instill.tech/compare/v1.16.1...v1.17.0) (2022-11-14)
 
 
