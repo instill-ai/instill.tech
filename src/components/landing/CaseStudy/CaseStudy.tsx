@@ -118,30 +118,26 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             getActiveControl={getActiveControl}
             activeIndex={activeIndex}
             setCurrentShowcaseFrame={setCurrentShowcaseFrame}
-            source={
-              <ControlPanelItem
-                title="Source"
-                description="Select an exisiting online source"
-                icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={
+            items={{
+              source: {
+                title: "Source",
+                description: "Select an exisiting online source",
+                icon: <DataSourceIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 0
-                    : currentShowcaseFrame === 0
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-source-control"
-                    id="case-study-source-control"
-                    customizable={false}
-                    minWidth="min-w-[200px]"
-                    label="Source"
-                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
-                    isActive={
+                    : currentShowcaseFrame === 0,
+                controls: [
+                  {
+                    id: "case-study-0-source-control",
+                    customizable: false,
+                    label: "Source",
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
-                        : currentShowcaseFrame === 0
-                    }
-                    options={[
+                        : currentShowcaseFrame === 0,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    options: [
                       {
                         label: "batch-invoice-photos",
                         value: "batch-invoice-photos",
@@ -153,35 +149,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            model={
-              <ControlPanelItem
-                title="Model"
-                description="Select an exisiting online model"
-                icon={<GitHubIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              model: {
+                title: "Model",
+                description: "Select an exisiting online model",
+                icon: <GitHubIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 1
-                    : currentShowcaseFrame === 1
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-model-control"
-                    id="case-study-model-control"
-                    label="Model"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
-                    isActive={
+                    : currentShowcaseFrame === 1,
+                controls: [
+                  {
+                    id: "case-study-0-model-control",
+                    customizable: false,
+                    label: "Model",
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
-                        : currentShowcaseFrame === 1
-                    }
-                    options={[
+                        : currentShowcaseFrame === 1,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    options: [
                       {
                         label: "instill-ai/ocr",
                         value: "instill-ai/ocr",
@@ -194,35 +184,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            destination={
-              <ControlPanelItem
-                title="Destination"
-                description="Select an exisiting online destination"
-                icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              destination: {
+                title: "Destination",
+                description: "Select an exisiting online destination",
+                icon: <DataDestinationIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 2
-                    : currentShowcaseFrame === 2
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-destination-control"
-                    id="case-study-destination-control"
-                    label="Destination"
-                    minWidth="min-w-[200px]"
-                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
-                    customizable={false}
-                    isActive={
+                    : currentShowcaseFrame === 2,
+                controls: [
+                  {
+                    id: "case-study-0-destination-control",
+                    customizable: false,
+                    label: "Destination",
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
-                        : currentShowcaseFrame === 2
-                    }
-                    options={[
+                        : currentShowcaseFrame === 2,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    options: [
                       {
                         label: "invoice-record-sheet",
                         value: "invoice-record-sheet",
@@ -234,11 +218,11 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
+                    ],
+                  },
+                ],
+              },
+            }}
           />
         );
       case 1:
@@ -247,30 +231,26 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             getActiveControl={getActiveControl}
             activeIndex={activeIndex}
             setCurrentShowcaseFrame={setCurrentShowcaseFrame}
-            source={
-              <ControlPanelItem
-                title="Source"
-                description="Select an exisiting online source"
-                icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={
+            items={{
+              source: {
+                title: "Source",
+                description: "Select an exisiting online source",
+                icon: <DataSourceIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 0
-                    : currentShowcaseFrame === 0
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-source-control"
-                    id="case-study-source-control"
-                    label="Source"
-                    customizable={false}
-                    minWidth="min-w-[200px]"
-                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
-                    isActive={
+                    : currentShowcaseFrame === 0,
+                controls: [
+                  {
+                    id: "case-study-1-source-control",
+                    label: "Source",
+                    customizable: false,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
-                        : currentShowcaseFrame === 0
-                    }
-                    options={[
+                        : currentShowcaseFrame === 0,
+                    options: [
                       {
                         label: "camera-on-site-1",
                         value: "camera-on-site-1",
@@ -282,35 +262,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            model={
-              <ControlPanelItem
-                title="Model"
-                description="Select an exisiting online model"
-                icon={<ArtiVcIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              model: {
+                title: "Model",
+                description: "Select an exisiting online model",
+                icon: <ArtiVcIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 1 || focusedShowcaseFrame === 2
-                    : currentShowcaseFrame === 1 || currentShowcaseFrame === 2
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-model-control-0"
-                    id="case-study-model-control-0"
-                    label="Model"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
-                    isActive={
+                    : currentShowcaseFrame === 1 || currentShowcaseFrame === 2,
+                controls: [
+                  {
+                    id: "case-study-1-model-control-0",
+                    label: "Model",
+                    customizable: false,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
-                        : currentShowcaseFrame === 1
-                    }
-                    options={[
+                        : currentShowcaseFrame === 1,
+                    options: [
                       {
                         label: "instill-ai/yolov7",
                         value: "instill-ai/yolov7",
@@ -322,21 +296,18 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                  <ControlSelectWrapper
-                    key="case-study-model-control-1"
-                    id="case-study-model-control-1"
-                    label="Model"
-                    customizable={false}
-                    minWidth="min-w-[200px]"
-                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
-                    isActive={
+                    ],
+                  },
+                  {
+                    id: "case-study-1-model-control-1",
+                    label: "Model",
+                    customizable: false,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
-                        : currentShowcaseFrame === 2
-                    }
-                    options={[
+                        : currentShowcaseFrame === 2,
+                    options: [
                       {
                         label: "instill-ai/yolov7-pose",
                         value: "instill-ai/yolov7-pose",
@@ -348,35 +319,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            destination={
-              <ControlPanelItem
-                title="Destination"
-                description="Select an exisiting online destination"
-                icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              destination: {
+                title: "Destination",
+                description: "Select an exisiting online destination",
+                icon: <DataDestinationIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 3
-                    : currentShowcaseFrame === 3
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-destination-control"
-                    id="case-study-destination-control"
-                    label="Destination"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(3)}
-                    isActive={
+                    : currentShowcaseFrame === 3,
+                controls: [
+                  {
+                    id: "case-study-1-destination-control",
+                    label: "Destination",
+                    customizable: false,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(3),
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 3
-                        : currentShowcaseFrame === 3
-                    }
-                    options={[
+                        : currentShowcaseFrame === 3,
+                    options: [
                       {
                         label: "workspace-safety-record",
                         value: "workspace-safety-record",
@@ -388,11 +353,11 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
+                    ],
+                  },
+                ],
+              },
+            }}
           />
         );
       case 2:
@@ -401,30 +366,26 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             getActiveControl={getActiveControl}
             activeIndex={activeIndex}
             setCurrentShowcaseFrame={setCurrentShowcaseFrame}
-            source={
-              <ControlPanelItem
-                title="Source"
-                description="Select an exisiting online source"
-                icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={
+            items={{
+              source: {
+                title: "Source",
+                description: "Select an exisiting online source",
+                icon: <DataSourceIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 0
-                    : currentShowcaseFrame === 0
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-source-control"
-                    id="case-study-source-control"
-                    label="Source"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(0)}
-                    isActive={
+                    : currentShowcaseFrame === 0,
+                controls: [
+                  {
+                    id: "case-study-2-source-control",
+                    customizable: false,
+                    label: "Source",
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
-                        : currentShowcaseFrame === 0
-                    }
-                    options={[
+                        : currentShowcaseFrame === 0,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    options: [
                       {
                         label: "batch-womenswear-photos",
                         value: "batch-womenswear-photos",
@@ -436,35 +397,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            model={
-              <ControlPanelItem
-                title="Model"
-                description="Select an exisiting online model"
-                icon={<HuggingFaceIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              model: {
+                title: "Model",
+                description: "Select an exisiting online model",
+                icon: <GitHubIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 1
-                    : currentShowcaseFrame === 1
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-model-control"
-                    id="case-study-model-control"
-                    label="Model"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(1)}
-                    isActive={
+                    : currentShowcaseFrame === 1,
+                controls: [
+                  {
+                    id: "case-study-2-model-control",
+                    label: "Model",
+                    customizable: false,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
-                        : currentShowcaseFrame === 1
-                    }
-                    options={[
+                        : currentShowcaseFrame === 1,
+                    options: [
                       {
                         label: "instill-ai/image-tagging",
                         value: "instill-ai/image-tagging",
@@ -476,35 +431,29 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            destination={
-              <ControlPanelItem
-                title="Destination"
-                description="Select an exisiting online destination"
-                icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={
+                    ],
+                  },
+                ],
+              },
+              destination: {
+                title: "Destination",
+                description: "Select an exisiting online destination",
+                icon: <DataDestinationIcon {...controlPanelIconStyle} />,
+                isActive:
                   focusedShowcaseFrame !== null
                     ? focusedShowcaseFrame === 2
-                    : currentShowcaseFrame === 2
-                }
-                controls={[
-                  <ControlSelectWrapper
-                    key="case-study-destination-control"
-                    id="case-study-destination-control"
-                    label="Destination"
-                    minWidth="min-w-[200px]"
-                    customizable={false}
-                    wrapperOnClick={() => setFocusedShowcaseFrame(2)}
-                    isActive={
+                    : currentShowcaseFrame === 2,
+                controls: [
+                  {
+                    id: "case-study-2-destination-control",
+                    customizable: false,
+                    label: "Destination",
+                    isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
-                        : currentShowcaseFrame === 2
-                    }
-                    options={[
+                        : currentShowcaseFrame === 2,
+                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    options: [
                       {
                         label: "labelled-photos",
                         value: "labelled-photos",
@@ -516,38 +465,33 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
+                    ],
+                  },
+                ],
+              },
+            }}
           />
         );
-      default:
+      case 3:
         return (
           <ControlPanel
             getActiveControl={getActiveControl}
             activeIndex={activeIndex}
             setCurrentShowcaseFrame={setCurrentShowcaseFrame}
-            source={
-              <ControlPanelItem
-                title="Source"
-                description="Set up source"
-                icon={<DataSourceIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 0}
-                controls={[
-                  <ControlSelectWrapper
-                    menuPlacement="top"
-                    key="case-study-source-control"
-                    id="case-study-source-control"
-                    label="Source"
-                    minWidth="min-w-[200px]"
-                    customizable={true}
-                    isActive={currentShowcaseFrame === 0}
-                    selectOnFocus={() => {
-                      setCurrentShowcaseFrame(0);
-                    }}
-                    options={[
+            items={{
+              source: {
+                title: "Source",
+                description: "Set up source",
+                icon: <DataSourceIcon {...controlPanelIconStyle} />,
+                isActive: currentShowcaseFrame === 0,
+                controls: [
+                  {
+                    id: "customizable-case-study-source-control",
+                    customizable: true,
+                    label: "Source",
+                    isActive: currentShowcaseFrame === 0,
+                    selectOnFocus: () => setCurrentShowcaseFrame(0),
+                    options: [
                       {
                         label: "HTTP",
                         value: "source-http",
@@ -570,30 +514,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            model={
-              <ControlPanelItem
-                title="Model"
-                description="Set up model from source"
-                icon={selectedCustomizableModelIcon}
-                isActive={currentShowcaseFrame === 1}
-                controls={[
-                  <ControlSelectWrapper
-                    menuPlacement="top"
-                    key="case-study-model-control"
-                    id="case-study-model-control"
-                    label="Model"
-                    minWidth="min-w-[200px]"
-                    customizable={true}
-                    isActive={currentShowcaseFrame === 1}
-                    selectOnFocus={() => {
-                      setCurrentShowcaseFrame(1);
-                    }}
-                    onChange={(option: SingleSelectOption) => {
+                    ],
+                  },
+                ],
+              },
+              model: {
+                title: "Model",
+                description: "Set up model from source",
+                icon: selectedCustomizableModelIcon,
+                isActive: currentShowcaseFrame === 1,
+                controls: [
+                  {
+                    id: "customizable-case-study-model-control",
+                    label: "Model",
+                    customizable: true,
+                    selectOnFocus: () => setFocusedShowcaseFrame(1),
+                    isActive: currentShowcaseFrame === 1,
+                    onChange: (option: SingleSelectOption) => {
                       switch (option.value) {
                         case "artivc":
                           setCurrentSelectedCustomizableModel(option.value);
@@ -609,11 +546,11 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           break;
                         default:
                           throw new Error(
-                            `Option value doesn't match selected state, selected ${option.value}`
+                            `Option value doesn't match selected customizable model state, selected ${option.value}`
                           );
                       }
-                    }}
-                    options={[
+                    },
+                    options: [
                       {
                         label: "ArtiVC",
                         value: "artivc",
@@ -660,30 +597,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                           />
                         ),
                       },
-                    ]}
-                  />,
-                ]}
-              />
-            }
-            destination={
-              <ControlPanelItem
-                title="Destination"
-                description="Set up destination"
-                icon={<DataDestinationIcon {...controlPanelIconStyle} />}
-                isActive={currentShowcaseFrame === 2}
-                controls={[
-                  <ControlSelectWrapper
-                    menuPlacement="top"
-                    key="case-study-destination-control"
-                    id="case-study-destination-control"
-                    label="Destination"
-                    minWidth="min-w-[200px]"
-                    customizable={true}
-                    isActive={currentShowcaseFrame === 2}
-                    selectOnFocus={() => {
-                      setCurrentShowcaseFrame(2);
-                    }}
-                    options={destinations.map((destination) => ({
+                    ],
+                  },
+                ],
+              },
+              destination: {
+                title: "Destination",
+                description: "Set up destination",
+                icon: <DataDestinationIcon {...controlPanelIconStyle} />,
+                isActive: currentShowcaseFrame === 2,
+                controls: [
+                  {
+                    id: "customizable-case-study-destination-control",
+                    customizable: true,
+                    label: "Destination",
+                    isActive: currentShowcaseFrame === 2,
+                    selectOnFocus: () => setFocusedShowcaseFrame(2),
+                    options: destinations.map((destination) => ({
                       label: destination.name,
                       value: destination.name,
                       startIcon: destination.icon ? (
@@ -699,13 +629,15 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       ) : (
                         <DataDestinationIcon width="w-6" height="h-6" />
                       ),
-                    }))}
-                  />,
-                ]}
-              />
-            }
+                    })),
+                  },
+                ],
+              },
+            }}
           />
         );
+      default:
+        throw new Error(`ActiveIndex out of bound: ${activeIndex}`);
     }
   }, [
     activeIndex,
@@ -1033,6 +965,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     let timeout = setTimeout(resetClickedShowcaseFrame, 3000);
     return () => clearTimeout(timeout);
   }, [focusedShowcaseFrame]);
+
+  // The blueprint location is onl
 
   return (
     <>

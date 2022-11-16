@@ -5,7 +5,6 @@ import { MutableRefObject, useEffect, useState } from "react";
 
 type UseRefPositionOption = {
   listenWindowResize: boolean;
-  additionalDep?: any;
 };
 
 export const useRefPosition = (
@@ -27,9 +26,10 @@ export const useRefPosition = (
       window.addEventListener("resize", updatePosition);
       return () => window.removeEventListener("resize", updatePosition);
     }
-  }, [ref, option.additionalDep, option.listenWindowResize]);
+  }, [ref, option.listenWindowResize]);
 
   useResizeObserver(ref, (entry) => {
+    console.log("due to resize", getElementPosition(entry.target));
     setPosition(getElementPosition(entry.target));
   });
 

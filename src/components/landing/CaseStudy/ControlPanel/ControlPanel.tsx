@@ -14,11 +14,24 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { useRefPosition } from "@/hooks/useRefPosition";
 
 import useEmblaCarousel from "embla-carousel-react";
+import { ControlPanelItem, ControlPanelItemProps } from "../ControlPanelItem";
+
+type Item = {
+  title: string;
+  description: string;
+  icon: ReactElement;
+  isActive: boolean;
+  controls: ControlPanelItemProps["controls"];
+};
+
+type ControlPanelItems = {
+  source: Item;
+  model: Item;
+  destination: Item;
+};
 
 export type ControlPanelProps = {
-  source: ReactElement;
-  model: ReactElement;
-  destination: ReactElement;
+  items: ControlPanelItems;
   setCurrentShowcaseFrame: Dispatch<SetStateAction<number>>;
   activeIndex: number[];
   getActiveControl: () => "source" | "destination" | "model";
@@ -34,9 +47,7 @@ type ConnectionLineDataset = {
 // about this changes.
 
 export const ControlPanel = ({
-  source,
-  model,
-  destination,
+  items,
   setCurrentShowcaseFrame,
   activeIndex,
   getActiveControl,
@@ -46,25 +57,21 @@ export const ControlPanel = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const containerPosition = useRefPosition(containerRef, {
     listenWindowResize: true,
-    additionalDep: activeIndex,
   });
 
   const sourceRef = useRef<HTMLDivElement>(null);
   const sourcePosition = useRefPosition(sourceRef, {
     listenWindowResize: true,
-    additionalDep: activeIndex,
   });
 
   const modelRef = useRef<HTMLDivElement>(null);
   const modelPosition = useRefPosition(modelRef, {
     listenWindowResize: true,
-    additionalDep: activeIndex,
   });
 
   const destRef = useRef<HTMLDivElement>(null);
   const destPosition = useRefPosition(destRef, {
     listenWindowResize: true,
-    additionalDep: activeIndex,
   });
 
   const [sourceToModelLineDataset, setSourceToModelLineDataset] =
@@ -78,6 +85,21 @@ export const ControlPanel = ({
   const modelToDestLineSvgRef = useRef<Nullable<SVGSVGElement>>(null);
 
   useEffect(() => {
+    // get the line and the circle's position. x1 and y1 is the most
+    // top left of the ref element. We set the most top left of the
+    // container to (0, 0)
+    /* 
+      (0, 0)
+      - - - - - - - - - - - - - - - - - This is the container
+      |  (x1, y1)                     |
+      |  - - - - - - - - - - - - - -  |
+      |  |     I am the element    |  |
+      |  - - - - - - - - - - - - - -  |
+      |                               |
+      - - - - - - - - - - - - - - - - -
+
+    */
+
     const getLineStat = (
       containerPosition: ElementPosition,
       startPosition: ElementPosition,
@@ -160,6 +182,9 @@ export const ControlPanel = ({
   useEffect(() => {
     const svg = d3.select(sourceToModelLineSvgRef.current);
     if (!sourceToModelLineDataset) {
+      // Here can be optimized, we can use the d3.join to update
+      // the data and let d3 to recognize which one to update.
+      // But right now this route is trouble-prone
       svg.selectAll("*").remove();
       return;
     }
@@ -255,6 +280,10 @@ export const ControlPanel = ({
       };
     }
   }, [emblaApi, setCurrentShowcaseFrame]);
+
+  const source = <ControlPanelItem {...items.source} />;
+  const model = <ControlPanelItem {...items.model} />;
+  const destination = <ControlPanelItem {...items.destination} />;
 
   const mobilePanel = () => {
     if (activeIndex[0] === 3) {

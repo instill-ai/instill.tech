@@ -1,12 +1,19 @@
+import { SingleSelectOption } from "@instill-ai/design-system";
 import cn from "clsx";
 import { ReactElement } from "react";
+import {
+  ControlSelectWrapper,
+  ControlSelectWrapperProps,
+} from "../ControlSelectWrapper";
+
+type Control = Omit<ControlSelectWrapperProps, "menuPlacement" | "minWidth">;
 
 export type ControlPanelItemProps = {
   icon: ReactElement;
-  title: "Source" | "Model" | "Destination";
+  title: string;
   description: string;
   isActive: boolean;
-  controls: ReactElement[];
+  controls: Control[];
 };
 
 export const ControlPanelItem = ({
@@ -40,7 +47,14 @@ export const ControlPanelItem = ({
         >
           {description}
         </p>
-        {controls}
+        {controls.map((control) => (
+          <ControlSelectWrapper
+            {...control}
+            key={control.id}
+            minWidth="min-w-[200px]"
+            menuPlacement="top"
+          />
+        ))}
       </div>
     </div>
   );
