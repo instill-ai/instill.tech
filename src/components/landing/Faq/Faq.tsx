@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BasicAccordion } from "@instill-ai/design-system";
 import cn from "clsx";
 
-import { CommonCtaButton, SectionLabel } from "@/components/ui";
+import { CommonCtaButton, SectionHeader, SectionLabel } from "@/components/ui";
 import { FaqContent } from "./FaqContent";
 
 export type FaqProps = {
@@ -24,9 +24,12 @@ export const Faq = ({ marginBottom }: FaqProps) => {
       <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
         <div className="flex w-full flex-col xl:w-1/3">
           <SectionLabel text="Got a question?" position="mr-auto mb-2.5" />
-          <h3 className="mb-5 font-mono text-4xl font-medium text-instillGrey90">
-            FAQ
-          </h3>
+          <SectionHeader
+            header="FAQ"
+            headerWidth="w-full"
+            headerTextColor="text-instillGrey90"
+            marginBottom="mb-5"
+          />
           <p className="text-base font-normal text-instillGrey70">
             This section selects a short list of frequently asked questions from
             our users, friends, candidates, investors, random people, etc.

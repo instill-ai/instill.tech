@@ -18,7 +18,7 @@ import {
   TensorFlowIcon,
 } from "@instill-ai/design-system";
 
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
 
 export type HowItWorksProps = {
@@ -31,9 +31,11 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
     <div className={cn("flex flex-col", marginBottom)}>
       <div className="mb-20 flex flex-col gap-y-2.5">
         <SectionLabel text="Read Getting started guide" position="mr-auto" />
-        <h2 className="text-5xl font-normal text-instillGrey90">
-          How it works?
-        </h2>
+        <SectionHeader
+          header="How it works?"
+          headerWidth="w-full"
+          headerTextColor="text-instillGrey90"
+        />
       </div>
       <div className="flex flex-col gap-y-20">
         <HowItWorksRow

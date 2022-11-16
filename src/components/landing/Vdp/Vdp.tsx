@@ -4,7 +4,7 @@ import Image from "next/future/image";
 import { VdpLogo } from "@instill-ai/design-system";
 
 import { useRefPosition } from "@/hooks/useRefPosition";
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 import { VdpFlow } from "./VdpFlow";
 import { VdpAnimation, VdpAnimationProps } from "./VdpAnimation";
 
@@ -30,14 +30,16 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
             position="mr-auto"
             marginBottom="mb-2.5"
           />
-          <div className="flex flex-row">
-            <h2 className="w-full font-mono text-4xl text-instillGrey90 xl:w-7/12 xl:text-5xl">
-              Fastest way to build end-to-end visual data ETL pipelines
-            </h2>
-            <div className="hidden w-5/12 xl:flex">
-              <VdpLogo type="expand" width={340} position="ml-auto my-auto" />
-            </div>
-          </div>
+          <SectionHeader
+            header="Fastest way to build end-to-end visual data ETL pipelines"
+            headerWidth="w-full xl:w-7/12"
+            headerTextColor="text-instillGrey90"
+            subElement={
+              <div className="hidden w-full xl:my-auto xl:flex">
+                <VdpLogo type="expand" width={340} position="ml-auto my-auto" />
+              </div>
+            }
+          />
         </div>
         <div className="mb-10 flex">
           <VdpLogo

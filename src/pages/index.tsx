@@ -104,7 +104,7 @@ const HomePage: FC<HomePageProps> & {
         pageType="main"
       />
       <div className="flex flex-col">
-        <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
+        <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
           <Vdp marginBottom="mb-20" ref={vdpRef} />
           <HowItWorks marginBottom="mb-20" />

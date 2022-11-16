@@ -1,4 +1,4 @@
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 import { CommunityBlock } from "./CommunityBlock";
 
 export const Community = () => {
@@ -10,9 +10,13 @@ export const Community = () => {
           position="mr-auto"
           marginBottom="mb-2.5"
         />
-        <h2 className="mb-5 font-mono text-4xl font-medium text-white">
-          Built by and for the community
-        </h2>
+        <SectionHeader
+          header="Built by and for the community"
+          headerWidth="w-full"
+          headerTextColor="text-white"
+          marginBottom="mb-10"
+        />
+        <h2 className="mb-5 font-mono text-4xl font-medium text-white" />
         <p className="text-lg font-normal text-white xl:w-7/12">
           Join 100+ Data/AI practitioners discussing VDP in action and help
           building the modern ETL infrastructure for unstructured visual data.

@@ -2,7 +2,7 @@ import cn from "clsx";
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 
 import { Terminal } from "./Terminal";
-import { CommonCtaButton, SectionLabel } from "@/components/ui";
+import { CommonCtaButton, SectionHeader, SectionLabel } from "@/components/ui";
 import {
   BgIconAccordion,
   DataDestinationIcon,
@@ -52,7 +52,12 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
           text="For researchers & developers"
           position="mr-auto mb-2.5"
         />
-        <h3 className="mb-5 text-white text-instill-h2">VDP as code</h3>
+        <SectionHeader
+          header="VDP as code"
+          headerTextColor="text-white"
+          headerWidth="w-full"
+          marginBottom="mb-10"
+        />
         <p className="mb-[60px] text-white text-instill-body-normal">
           A VDP pipeline is configured in a declarative style, allowing for
           human-/machine-friendly management. VDP will proactively allocate

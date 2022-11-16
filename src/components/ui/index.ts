@@ -40,3 +40,5 @@ export { NumberCube } from "./NumberCube";
 export type { NumberCubeProps } from "./NumberCube";
 export { ImgWithFallback } from "./ImgWithFallback";
 export type { ImgWithFallbackProps } from "./ImgWithFallback";
+export { SectionHeader } from "./SectionHeader";
+export type { SectionHeaderProps } from "./SectionHeader";
