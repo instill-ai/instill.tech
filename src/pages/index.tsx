@@ -87,11 +87,11 @@ const HomePage: FC<HomePageProps> & {
 
   const scrollHandler = useCallback(() => {
     if (!window) return;
-    const vdfDimension = getElementPosition(vdpRef.current);
+    const vdpDimension = getElementPosition(vdpRef.current);
     const navbarHeight = enableAnnouncementBar ? 128 : 84;
 
     window.scrollTo({
-      top: vdfDimension.y - navbarHeight,
+      top: vdpDimension.y - navbarHeight,
       behavior: "smooth",
     });
   }, [enableAnnouncementBar]);

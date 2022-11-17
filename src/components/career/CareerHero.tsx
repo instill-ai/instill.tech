@@ -14,8 +14,6 @@ export const CareerHero = ({
   marginBottom,
   viewJobsScrollHandler,
 }: CareerHeroProps) => {
-  const subHeaderStyle =
-    "text-lg text-instillGrey70 font-sans font-light xl:text-2xl";
   return (
     <PageHero
       headline="Come together"
