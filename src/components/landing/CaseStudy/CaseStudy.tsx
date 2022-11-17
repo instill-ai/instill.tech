@@ -693,6 +693,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   invoices to avoid manual data entry"
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-invoice-0"
@@ -753,6 +770,25 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   employee health incidents and improve workspace safety."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "model";
+                    case 3:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-workspace-0"
@@ -829,6 +865,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   in the products."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-ecommerce-0"
@@ -884,14 +937,16 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 source="Source"
                 destination="Destination"
                 description="Stop building data pipelines from scratch. 
-                  Just use VDP to connect your data and import STOA Vision 
-                  AI models to solve your use cases."
+                  Just use VDP to connect your data, import STOA Vision 
+                  AI models, and load the results to 30+ destinations to 
+                  solve your use cases."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => null}
                 showcases={[
                   <div
                     key="case-study-custom-0"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <DataSourceIcon
                       width="w-[226px]"
@@ -902,7 +957,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-1"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <ModelIcon
                       width="w-[226px]"
@@ -913,7 +968,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-2"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <DataDestinationIcon
                       width="w-[226px]"
@@ -1001,50 +1056,19 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
           </div>
         </div>
       </BlueprintContainer>
-      <div className="relative flex flex-col gap-y-10 xl:hidden">
+      <div className="relative flex flex-col px-4 xl:hidden">
+        <SectionLabel
+          text="Case study"
+          position="mr-auto"
+          marginBottom="mb-2.5"
+        />
+        <SectionHeader
+          header="VDP integration in AI lifecycle"
+          headerWidth="w-full"
+          headerTextColor="text-white"
+          marginBottom="mb-10"
+        />
         {caseAccordion}
-        <BlueprintContainer
-          alignWith="container"
-          padding="pt-[32px]"
-          unitHeight={30}
-          unitWidth={30}
-          bgColor="bg-instillGrey90"
-          position="sticky bottom-0"
-          zIndex="z-20"
-          childrenPosition="w-full"
-        >
-          <div className="flex w-full flex-col">
-            <div className="mx-auto w-full px-[30px]">{controlPanel}</div>
-            <div className="flex w-full bg-instillGrey90 bg-opacity-60 py-5">
-              <div className="mx-auto flex flex-row gap-x-[30px]">
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "source"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "model"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "destination"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-              </div>
-            </div>
-          </div>
-        </BlueprintContainer>
       </div>
     </>
   );
