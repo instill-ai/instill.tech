@@ -80,7 +80,7 @@ export const SubscribeNewsletterForm = ({
               }
               hoveredShadow="hover:shadow-instill-solid-5"
             >
-              <p className="my-auto text-2xl">Subscribe</p>
+              <p className="my-auto text-lg">Subscribe</p>
             </SolidButton>
           </div>
           <div className="flex">

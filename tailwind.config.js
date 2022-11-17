@@ -201,7 +201,7 @@ module.exports = {
         },
         ".text-instill-h2": {
           fontFamily: `IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
-          fontSize: "36px",
+          fontSize: "48px",
           fontWeight: 500,
         },
         ".text-instill-h3-medium": {

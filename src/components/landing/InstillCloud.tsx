@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/future/image";
 
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 import { SecureYourSpot, StayInTheLoop } from "../ui";
 
 export const InstillCloud = () => {
@@ -6502,9 +6502,12 @@ export const InstillCloud = () => {
         />
         <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey05 p-10 md:mx-auto md:w-10/12">
           <SectionLabel text="instill cloud" position="mr-auto mb-2.5" />
-          <h2 className="mb-10 text-left font-mono text-4xl font-medium text-instillGrey90">
-            Visual Data Preparation without Managing Infrastructure
-          </h2>
+          <SectionHeader
+            header="Visual Data Preparation without Managing Infrastructure"
+            headerTextColor="text-instillGrey90"
+            headerWidth="w-full"
+            marginBottom="mb-10"
+          />
           <p className="font-sans text-lg font-normal text-instillGrey70">
             Instill Cloud provides production-ready visual data preparation
             services — hustle-free setup and Vision AI model serving with

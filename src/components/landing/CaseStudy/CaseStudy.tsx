@@ -1,4 +1,9 @@
-import { BlueprintContainer, ImgWithFallback } from "@/components/ui";
+import {
+  BlueprintContainer,
+  ImgWithFallback,
+  SectionHeader,
+  SectionLabel,
+} from "@/components/ui";
 import { useInterval } from "@/hooks/useInterval";
 import { Nullable } from "@/types/instill";
 import {
@@ -978,9 +983,22 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
         bgColor="bg-instillGrey90"
         display="hidden xl:flex"
       >
-        <div className="m-auto flex w-full max-w-[1127px] flex-row gap-x-[30px] px-[30px] xl:gap-x-[60px] xl:px-0">
-          <div className="flex w-full md:w-1/2 xl:w-2/3">{caseAccordion}</div>
-          <div className="flex w-full md:w-1/2 xl:w-1/3">{controlPanel}</div>
+        <div className="m-auto flex w-full max-w-[1127px] flex-col  px-[30px]  xl:px-0">
+          <SectionLabel
+            text="Case study"
+            position="mr-auto"
+            marginBottom="mb-2.5"
+          />
+          <SectionHeader
+            header="VDP integration in AI lifecycle"
+            headerWidth="w-full"
+            headerTextColor="text-white"
+            marginBottom="mb-10"
+          />
+          <div className="flex flex-row gap-x-[30px] xl:gap-x-[60px]">
+            <div className="flex w-full md:w-1/2 xl:w-2/3">{caseAccordion}</div>
+            <div className="flex w-full md:w-1/2 xl:w-1/3">{controlPanel}</div>
+          </div>
         </div>
       </BlueprintContainer>
       <div className="relative flex flex-col gap-y-10 xl:hidden">

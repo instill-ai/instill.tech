@@ -8,7 +8,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
-        "instill-text-h1 text-left font-mono text-instillNeonBlue",
+        "w-full text-left font-mono text-[32px] font-semibold uppercase text-instillNeonBlue xl:text-instill-h1",
         marginBottom
       )}
     >

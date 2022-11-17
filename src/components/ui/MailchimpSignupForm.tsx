@@ -195,7 +195,7 @@ export const MailchimpSignupForm = () => {
               type="submit"
               value="Submit"
               name="subscribe"
-              className="button flex-grow cursor-pointer bg-instillNeonBlue bg-opacity-10 py-3 text-2xl font-normal text-instillNeonBlue hover:bg-opacity-20"
+              className="button flex-grow cursor-pointer bg-instillNeonBlue bg-opacity-10 py-3 text-lg font-normal text-instillNeonBlue hover:bg-opacity-20"
             />
           </div>
         </div>
