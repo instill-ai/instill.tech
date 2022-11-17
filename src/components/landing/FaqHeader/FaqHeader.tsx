@@ -8,7 +8,7 @@ export type FaqHeaderProps = {
 export const FaqHeader = ({ marginBottom }: FaqHeaderProps) => {
   return (
     <div className={cn("relative w-full", marginBottom)}>
-      <FaqText width="w-10/12 xl:w-6/12" />
+      <FaqText width="w-10/12 w-6/12" />
     </div>
   );
 };
