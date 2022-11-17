@@ -12,6 +12,7 @@ export type ControlSelectWrapperProps = {
   isActive: boolean;
   options: SingleSelectOption[];
   wrapperOnClick?: () => void;
+  wrapperOnMouseOver?: () => void;
   selectOnFocus?: () => void;
   onChange?: (option: SingleSelectOption) => void;
   minWidth: string;
@@ -29,6 +30,7 @@ export const ControlSelectWrapper = ({
   minWidth,
   menuPlacement,
   onChange,
+  wrapperOnMouseOver,
 }: ControlSelectWrapperProps) => {
   const [selectOption, setSelectOption] = useState<SingleSelectOption>(
     options[0]
@@ -65,9 +67,10 @@ export const ControlSelectWrapper = ({
       {customizable ? null : (
         <div
           className={cn(
-            "absolute top-0 bottom-0 right-0 left-0 border-2",
+            "absolute top-0 bottom-0 right-0 left-0 cursor-pointer border-2",
             isActive ? "border-instillNatureGreen" : "border-instillGrey20"
           )}
+          onMouseOver={wrapperOnMouseOver}
         />
       )}
     </div>

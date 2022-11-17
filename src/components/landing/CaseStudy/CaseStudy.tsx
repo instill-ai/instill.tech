@@ -33,8 +33,6 @@ import cn from "clsx";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
 import { ControlPanel } from "./ControlPanel";
-import { ControlPanelItem } from "./ControlPanelItem";
-import { ControlSelectWrapper } from "./ControlSelectWrapper";
 import { ShowcaseImage } from "./ShowcaseImage";
 import { ShowcaseTable } from "./ShowcaseTable";
 
@@ -106,9 +104,6 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     }
   }, [currentSelectedCustomizableModel]);
 
-  // The key of the ControlPanelItem.controls will affect whether React can
-  // get the correct position.
-
   const controlPanel = useMemo(() => {
     const controlPanelIconStyle = {
       width: "w-[30px]",
@@ -141,7 +136,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
                         : currentShowcaseFrame === 0,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     options: [
                       {
                         label: "batch-invoice-photos",
@@ -175,7 +170,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
                         : currentShowcaseFrame === 1,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     options: [
                       {
                         label: "instill-ai/ocr",
@@ -210,7 +205,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
                         : currentShowcaseFrame === 2,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     options: [
                       {
                         label: "invoice-record-sheet",
@@ -250,7 +245,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-source-control",
                     label: "Source",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
@@ -284,7 +279,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-model-control-0",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
@@ -307,7 +302,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-model-control-1",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
@@ -341,7 +336,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-destination-control",
                     label: "Destination",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(3),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(3),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 3
@@ -389,7 +384,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
                         : currentShowcaseFrame === 0,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     options: [
                       {
                         label: "batch-womenswear-photos",
@@ -419,7 +414,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-2-model-control",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
@@ -457,7 +452,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
                         : currentShowcaseFrame === 2,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     options: [
                       {
                         label: "labelled-photos",
@@ -533,7 +528,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "customizable-case-study-model-control",
                     label: "Model",
                     customizable: true,
-                    selectOnFocus: () => setFocusedShowcaseFrame(1),
+                    selectOnFocus: () => setCurrentShowcaseFrame(1),
                     isActive: currentShowcaseFrame === 1,
                     onChange: (option: SingleSelectOption) => {
                       switch (option.value) {
@@ -617,7 +612,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     customizable: true,
                     label: "Destination",
                     isActive: currentShowcaseFrame === 2,
-                    selectOnFocus: () => setFocusedShowcaseFrame(2),
+                    selectOnFocus: () => setCurrentShowcaseFrame(2),
                     options: destinations.map((destination) => ({
                       label: destination.name,
                       value: destination.name,
