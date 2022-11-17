@@ -30,7 +30,7 @@ export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
   return (
     <div className={cn("flex flex-col", marginBottom)}>
       <div className="mb-20 flex flex-col gap-y-2.5">
-        <SectionLabel text="Read Getting started guide" position="mr-auto" />
+        <SectionLabel text="Open to integrations" position="mr-auto" />
         <SectionHeader
           header="How it works?"
           headerWidth="w-full"
