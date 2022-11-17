@@ -266,75 +266,9 @@ export const ControlPanel = ({
       );
   }, [modelToDestLineDataset, lineDotR, activeIndex]);
 
-  const [viewportRef, emblaApi] = useEmblaCarousel();
-
-  useEffect(() => {
-    const onSelect = () => {
-      setCurrentShowcaseFrame(emblaApi.selectedScrollSnap());
-    };
-
-    if (emblaApi) {
-      emblaApi.on("select", onSelect);
-      return () => {
-        emblaApi.off("select", onSelect);
-      };
-    }
-  }, [emblaApi, setCurrentShowcaseFrame]);
-
   const source = <ControlPanelItem {...items.source} />;
   const model = <ControlPanelItem {...items.model} />;
   const destination = <ControlPanelItem {...items.destination} />;
-
-  const mobilePanel = () => {
-    if (activeIndex[0] === 3) {
-      return (
-        <div className="embla overflow-y-auto overflow-x-hidden">
-          <div className="embla__viewport w-full" ref={viewportRef}>
-            <div className="embla__container flex gap-x-10">
-              <div className="embla__slide min-width-[240px] flex-33%">
-                {source}
-              </div>
-              <div className="embla__slide min-width-[240px] flex-33%">
-                {model}
-              </div>
-              <div className="embla__slide min-width-[240px] flex-33%">
-                {destination}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <>
-        <div
-          className={cn(
-            "w-full",
-            getActiveControl() === "source" ? "" : "hidden"
-          )}
-        >
-          {source}
-        </div>
-        <div
-          className={cn(
-            "w-full",
-            getActiveControl() === "model" ? "" : "hidden"
-          )}
-        >
-          {model}
-        </div>
-        <div
-          className={cn(
-            "w-full",
-            getActiveControl() === "destination" ? "" : "hidden"
-          )}
-        >
-          {destination}
-        </div>
-      </>
-    );
-  };
 
   return (
     <>
@@ -378,7 +312,6 @@ export const ControlPanel = ({
         />
         <div ref={destRef}>{destination}</div>
       </div>
-      <div className="flex min-h-[150px] w-full xl:hidden">{mobilePanel()}</div>
     </>
   );
 };

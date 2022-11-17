@@ -33,8 +33,6 @@ import cn from "clsx";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
 import { ControlPanel } from "./ControlPanel";
-import { ControlPanelItem } from "./ControlPanelItem";
-import { ControlSelectWrapper } from "./ControlSelectWrapper";
 import { ShowcaseImage } from "./ShowcaseImage";
 import { ShowcaseTable } from "./ShowcaseTable";
 
@@ -106,9 +104,6 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
     }
   }, [currentSelectedCustomizableModel]);
 
-  // The key of the ControlPanelItem.controls will affect whether React can
-  // get the correct position.
-
   const controlPanel = useMemo(() => {
     const controlPanelIconStyle = {
       width: "w-[30px]",
@@ -141,7 +136,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
                         : currentShowcaseFrame === 0,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     options: [
                       {
                         label: "batch-invoice-photos",
@@ -175,7 +170,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
                         : currentShowcaseFrame === 1,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     options: [
                       {
                         label: "instill-ai/ocr",
@@ -210,7 +205,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
                         : currentShowcaseFrame === 2,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     options: [
                       {
                         label: "invoice-record-sheet",
@@ -250,7 +245,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-source-control",
                     label: "Source",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
@@ -284,7 +279,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-model-control-0",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
@@ -307,7 +302,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-model-control-1",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
@@ -341,7 +336,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-1-destination-control",
                     label: "Destination",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(3),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(3),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 3
@@ -389,7 +384,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
                         : currentShowcaseFrame === 0,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(0),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     options: [
                       {
                         label: "batch-womenswear-photos",
@@ -419,7 +414,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "case-study-2-model-control",
                     label: "Model",
                     customizable: false,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(1),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
@@ -457,7 +452,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
                         : currentShowcaseFrame === 2,
-                    wrapperOnClick: () => setFocusedShowcaseFrame(2),
+                    wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     options: [
                       {
                         label: "labelled-photos",
@@ -533,7 +528,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     id: "customizable-case-study-model-control",
                     label: "Model",
                     customizable: true,
-                    selectOnFocus: () => setFocusedShowcaseFrame(1),
+                    selectOnFocus: () => setCurrentShowcaseFrame(1),
                     isActive: currentShowcaseFrame === 1,
                     onChange: (option: SingleSelectOption) => {
                       switch (option.value) {
@@ -617,7 +612,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     customizable: true,
                     label: "Destination",
                     isActive: currentShowcaseFrame === 2,
-                    selectOnFocus: () => setFocusedShowcaseFrame(2),
+                    selectOnFocus: () => setCurrentShowcaseFrame(2),
                     options: destinations.map((destination) => ({
                       label: destination.name,
                       value: destination.name,
@@ -693,6 +688,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   invoices to avoid manual data entry"
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-invoice-0"
@@ -753,6 +765,25 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   employee health incidents and improve workspace safety."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "model";
+                    case 3:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-workspace-0"
@@ -829,6 +860,23 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   in the products."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => {
+                  let targetFrame = currentShowcaseFrame;
+                  if (focusedShowcaseFrame) {
+                    targetFrame = focusedShowcaseFrame;
+                  }
+
+                  switch (targetFrame) {
+                    case 0:
+                      return "source";
+                    case 1:
+                      return "model";
+                    case 2:
+                      return "destination";
+                    default:
+                      return null;
+                  }
+                }}
                 showcases={[
                   <ShowcaseImage
                     key="case-study-ecommerce-0"
@@ -884,14 +932,16 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 source="Source"
                 destination="Destination"
                 description="Stop building data pipelines from scratch. 
-                  Just use VDP to connect your data and import STOA Vision 
-                  AI models to solve your use cases."
+                  Just use VDP to connect your data, import STOA Vision 
+                  AI models, and load the results to 30+ destinations to 
+                  solve your use cases."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}
+                getCurrentItem={() => null}
                 showcases={[
                   <div
                     key="case-study-custom-0"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <DataSourceIcon
                       width="w-[226px]"
@@ -902,7 +952,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-1"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <ModelIcon
                       width="w-[226px]"
@@ -913,7 +963,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   </div>,
                   <div
                     key="case-study-custom-2"
-                    className="flex h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px]"
+                    className="hidden h-[260px] min-w-[260px] bg-[#268398] md:h-[355px] md:min-w-[336px] xl:flex"
                   >
                     <DataDestinationIcon
                       width="w-[226px]"
@@ -1001,50 +1051,19 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
           </div>
         </div>
       </BlueprintContainer>
-      <div className="relative flex flex-col gap-y-10 xl:hidden">
+      <div className="relative flex flex-col px-4 xl:hidden">
+        <SectionLabel
+          text="Case study"
+          position="mr-auto"
+          marginBottom="mb-2.5"
+        />
+        <SectionHeader
+          header="VDP integration in AI lifecycle"
+          headerWidth="w-full"
+          headerTextColor="text-white"
+          marginBottom="mb-10"
+        />
         {caseAccordion}
-        <BlueprintContainer
-          alignWith="container"
-          padding="pt-[32px]"
-          unitHeight={30}
-          unitWidth={30}
-          bgColor="bg-instillGrey90"
-          position="sticky bottom-0"
-          zIndex="z-20"
-          childrenPosition="w-full"
-        >
-          <div className="flex w-full flex-col">
-            <div className="mx-auto w-full px-[30px]">{controlPanel}</div>
-            <div className="flex w-full bg-instillGrey90 bg-opacity-60 py-5">
-              <div className="mx-auto flex flex-row gap-x-[30px]">
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "source"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "model"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-                <div
-                  className={cn(
-                    "h-4 w-4",
-                    getActiveControl() === "destination"
-                      ? "bg-instillNatureGreen"
-                      : "bg-white"
-                  )}
-                />
-              </div>
-            </div>
-          </div>
-        </BlueprintContainer>
       </div>
     </>
   );

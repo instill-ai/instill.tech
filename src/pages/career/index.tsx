@@ -27,6 +27,8 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
+import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { getElementPosition } from "@instill-ai/design-system";
 
 const PositionList = dynamic<PositionListProps>(() =>
   import("@/components/career").then((mod) => mod.PositionList)
@@ -103,9 +105,18 @@ const CareerPage: FC<CareerPageProps> & {
     }
   }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
 
+  const { enableAnnouncementBar } = useAnnouncementBarCtx();
+
   const scrollHandler = useCallback(() => {
-    positionListRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    if (!window) return;
+    const positionListDimension = getElementPosition(positionListRef.current);
+    const navbarHeight = enableAnnouncementBar ? 128 : 84;
+
+    window.scrollTo({
+      top: positionListDimension.y - navbarHeight,
+      behavior: "smooth",
+    });
+  }, [enableAnnouncementBar]);
 
   return (
     <>
