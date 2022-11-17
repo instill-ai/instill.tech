@@ -120,7 +120,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
         id: "source-code",
         bracketColor: tokenColor,
         trailingComma: false,
-        indent,
+        indent: "",
         position: "my-auto",
         children: [
           setStringKv({
@@ -184,7 +184,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
         id: "model-code",
         bracketColor: tokenColor,
         trailingComma: false,
-        indent,
+        indent: "",
         position: "my-auto",
         children: [
           setStringKv({
@@ -248,7 +248,7 @@ export const Terminal = ({ currectResource }: TerminalProps) => {
         id: "destination-code",
         bracketColor: tokenColor,
         trailingComma: false,
-        indent,
+        indent: "",
         position: "my-auto",
         children: [
           setStringKv({
