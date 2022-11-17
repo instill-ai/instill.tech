@@ -1,3 +1,4 @@
+import cn from "clsx";
 import { Nullable } from "@/types/instill";
 import { ArrowRightIcon, ModelIcon } from "@instill-ai/design-system";
 import { ReactElement } from "react";
@@ -11,6 +12,7 @@ export type AccordionContentLayoutProps = {
   showcases: ReactElement[];
   currentFrame: number;
   focusedShowcaseFrame: Nullable<number>;
+  getCurrentItem: () => "source" | "model" | "destination" | null;
 };
 
 export const AccordionContentLayout = ({
@@ -22,6 +24,7 @@ export const AccordionContentLayout = ({
   showcases,
   currentFrame,
   focusedShowcaseFrame,
+  getCurrentItem,
 }: AccordionContentLayoutProps) => {
   return (
     <div className="z-20 flex w-full flex-col gap-y-5 bg-[#285863] p-10 xl:flex-row xl:gap-y-0 xl:gap-x-5">
@@ -40,7 +43,16 @@ export const AccordionContentLayout = ({
           <line x1="0" x2="16" y1="0.5" y2="0.5" strokeWidth={0.6} />
         </svg>
         <div className="mr-auto mb-5 flex flex-row gap-x-2">
-          <div className="my-auto text-sm font-normal text-white">{source}</div>
+          <div
+            className={cn(
+              "my-auto text-sm font-normal",
+              getCurrentItem() === "source"
+                ? "text-instillNatureGreen"
+                : "text-white"
+            )}
+          >
+            {source}
+          </div>
           <ArrowRightIcon
             width="w-4"
             height="h-4"
@@ -50,7 +62,11 @@ export const AccordionContentLayout = ({
           <ModelIcon
             width="w-6"
             height="h-6"
-            color="fill-white"
+            color={
+              getCurrentItem() === "model"
+                ? "fill-instillNatureGreen"
+                : "fill-white"
+            }
             position="m-auto"
           />
           <ArrowRightIcon
@@ -59,7 +75,14 @@ export const AccordionContentLayout = ({
             color="fill-white"
             position="m-auto"
           />
-          <div className="my-auto text-sm font-normal text-white">
+          <div
+            className={cn(
+              "my-auto text-sm font-normal",
+              getCurrentItem() === "destination"
+                ? "text-instillNatureGreen"
+                : "text-white"
+            )}
+          >
             {destination}
           </div>
         </div>
