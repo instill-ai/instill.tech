@@ -120,7 +120,7 @@ const HomePage: FC<HomePageProps> & {
             <CodeShowcase />
           </div>
         </div>
-        <div className="mb-20 flex w-full flex-col">
+        <div className="mb-20 -mt-0.5 flex w-full flex-col">
           <FaqHeader />
           <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
             <Faq />

@@ -1097,7 +1097,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
           </div>
         </div>
       </BlueprintContainer>
-      <div className="relative flex flex-col px-4 xl:hidden">
+      <div className="relative flex flex-col px-4 py-20 xl:hidden">
         <SectionLabel
           text="Case study"
           position="mr-auto"
