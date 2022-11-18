@@ -14,9 +14,8 @@ export const Community = () => {
           header="Built by and for the community"
           headerWidth="w-full"
           headerTextColor="text-white"
-          marginBottom="mb-10"
+          marginBottom="mb-4"
         />
-        <h2 className="mb-5 font-mono text-4xl font-medium text-white" />
         <p className="text-lg font-normal text-white xl:w-7/12">
           Join 100+ Data/AI practitioners discussing VDP in action and help
           building the modern ETL infrastructure for unstructured visual data.

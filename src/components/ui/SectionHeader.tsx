@@ -22,7 +22,8 @@ export const SectionHeader = ({
         className={cn(
           "mb-5 font-mono text-3xl font-medium word-spacing-tighter xl:mb-0 xl:leading-[48px] xl:text-instill-h2",
           headerWidth,
-          headerTextColor
+          headerTextColor,
+          subElement ? "mb-4 xl:mb-0" : ""
         )}
       >
         {header}

@@ -56,9 +56,9 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
           header="VDP as code"
           headerTextColor="text-white"
           headerWidth="w-full"
-          marginBottom="mb-10"
+          marginBottom="mb-4"
         />
-        <p className="mb-[60px] text-white text-instill-body-normal">
+        <p className="mb-10 text-white text-instill-body-normal">
           A VDP pipeline is configured in a declarative style, allowing for
           human-/machine-friendly management. VDP will proactively allocate
           compute resource to persistently operate the visual data ETL pipeline,
