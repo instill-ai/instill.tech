@@ -6506,7 +6506,7 @@ export const InstillCloud = () => {
             header="Visual Data Preparation without Managing Infrastructure"
             headerTextColor="text-instillGrey90"
             headerWidth="w-full"
-            marginBottom="mb-10"
+            marginBottom="mb-4"
           />
           <p className="font-sans text-lg font-normal text-instillGrey70">
             Instill Cloud provides production-ready visual data preparation

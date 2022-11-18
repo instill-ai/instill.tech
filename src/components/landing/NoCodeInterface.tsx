@@ -26,7 +26,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
         marginBottom="mb-10"
         subElement={
           <div className="flex w-full flex-col">
-            <p className="mb-[45px] text-lg font-normal text-instillGrey90">
+            <p className="mb-10 text-lg font-normal text-instillGrey90 xl:mb-[45px]">
               The no-code interface helps provides a unified, clean and
               intuitive user experience of VDP.
             </p>
