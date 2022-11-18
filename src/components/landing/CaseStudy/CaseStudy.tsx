@@ -681,7 +681,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             headerActiveBgColor: "bg-instillNeonBlue",
             headerInActiveBgColor: inactiveHeaderGradient[0],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrey80",
+            headerInActiveTextColor: "text-instillGrey20",
             content: (
               <AccordionContentLayout
                 title="Optical Character Recognition"
@@ -777,7 +777,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 ? inactiveHeaderGradient[0]
                 : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrey80",
+            headerInActiveTextColor: "text-instillGrey20",
             content: (
               <AccordionContentLayout
                 title="Object detection & Pose Estimation"
@@ -882,7 +882,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 ? inactiveHeaderGradient[2]
                 : inactiveHeaderGradient[1],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrey80",
+            headerInActiveTextColor: "text-instillGrey20",
             content: (
               <AccordionContentLayout
                 title="Image tagging"
@@ -951,7 +951,6 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                                 ["Style", "Retro"],
                                 ["Sleeve", "No sleeve"],
                                 ["Length", "Long"],
-                                ["Waistline", "High waist"],
                               ],
                       },
                     ]}
@@ -966,7 +965,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             headerActiveBgColor: "bg-instillNeonBlue",
             headerInActiveBgColor: inactiveHeaderGradient[2],
             headerActiveTextColor: "text-white",
-            headerInActiveTextColor: "text-instillGrey80",
+            headerInActiveTextColor: "text-instillGrey20",
             content: (
               <AccordionContentLayout
                 title="Task for your use case"
