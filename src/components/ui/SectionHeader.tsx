@@ -20,7 +20,7 @@ export const SectionHeader = ({
     <div className={cn("flex w-full flex-col xl:flex-row", marginBottom)}>
       <h2
         className={cn(
-          "align-top font-mono text-3xl font-medium xl:leading-[48px] xl:text-instill-h2",
+          "font-mono text-3xl font-medium word-spacing-tighter xl:leading-[48px] xl:text-instill-h2",
           headerWidth,
           headerTextColor
         )}
