@@ -91,9 +91,23 @@ export const AccordionContentLayout = ({
         </div>
       </div>
       <div className="relative mr-auto flex xl:mr-0 xl:ml-auto">
-        {focusedShowcaseFrame !== null
-          ? showcases[focusedShowcaseFrame]
-          : showcases[currentFrame]}
+        {showcases.map((showcase, i) => (
+          <div
+            key={showcase.key}
+            className={cn(
+              "transition delay-150 ease-in-out",
+              focusedShowcaseFrame !== null
+                ? i === focusedShowcaseFrame
+                  ? ""
+                  : "hidden"
+                : i === currentFrame
+                ? ""
+                : "hidden"
+            )}
+          >
+            {showcase}
+          </div>
+        ))}
       </div>
     </div>
   );

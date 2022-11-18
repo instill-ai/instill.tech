@@ -4,18 +4,15 @@ import cn from "clsx";
 export type ShowcaseTableProps = {
   tables: { name: string; head: string[]; rows: string[][] }[];
   position?: string;
-  height: string;
-  width: string;
 };
 
-export const ShowcaseTable = ({
-  tables,
-  position,
-  height,
-  width,
-}: ShowcaseTableProps) => {
+export const ShowcaseTable = ({ tables, position }: ShowcaseTableProps) => {
   return (
-    <div className={cn("flex flex-col overflow-hidden", height, width)}>
+    <div
+      className={cn(
+        "flex h-[254px] w-[240px] flex-col overflow-hidden sm:h-[355px] sm:w-[336px]"
+      )}
+    >
       {tables.map((table, i) => (
         <table
           key={`case-study-showcase-table-${table.name}`}
