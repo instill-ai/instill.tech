@@ -258,6 +258,15 @@ module.exports = {
         ".instill-toggle-loading-shadow": {
           boxShadow: "0px 0px 0px 3px #FFFCE3",
         },
+        ".word-spacing-tight": {
+          wordSpacing: "-0.25rem",
+        },
+        ".word-spacing-tighter": {
+          wordSpacing: "-0.5rem",
+        },
+        ".word-spacing-super-tight": {
+          wordSpacing: "-1rem",
+        },
       });
     },
   ],
