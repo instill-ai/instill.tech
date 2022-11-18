@@ -106,22 +106,22 @@ const HomePage: FC<HomePageProps> & {
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
-          <Vdp marginBottom="mb-20" ref={vdpRef} />
-          <HowItWorks marginBottom="mb-20" />
-          <NoCodeInterface marginBottom="mb-20" />
+          <Vdp ref={vdpRef} />
+          <HowItWorks />
+          <NoCodeInterface />
         </div>
 
         <div className="bg-instillGrey90">
-          <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
+          <div className="mx-auto max-w-[1127px] px-4 xl:px-0">
             <Community />
           </div>
           <CaseStudy destinations={destinations} />
-          <div className="mx-auto max-w-[1127px] py-10 px-4 xl:py-20 xl:px-0">
+          <div className="mx-auto max-w-[1127px] px-4 xl:px-0">
             <CodeShowcase />
           </div>
         </div>
         <div className="mb-20 flex w-full flex-col">
-          <FaqHeader marginBottom="mb-20" />
+          <FaqHeader />
           <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
             <Faq />
           </div>

@@ -20,7 +20,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
   };
 
   return (
-    <div className={cn("flex w-full flex-col", marginBottom)}>
+    <div className={cn("flex w-full flex-col py-20", marginBottom)}>
       <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
         <div className="flex w-full flex-col xl:w-1/3">
           <SectionLabel text="Got a question?" position="mr-auto mb-2.5" />

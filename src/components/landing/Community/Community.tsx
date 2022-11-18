@@ -3,7 +3,7 @@ import { CommunityBlock } from "./CommunityBlock";
 
 export const Community = () => {
   return (
-    <div className="flex flex-col bg-instillGrey90">
+    <div className="flex flex-col bg-instillGrey90 py-20">
       <div className="mb-10 flex flex-col xl:mb-[200px]">
         <SectionLabel
           text="follow us"

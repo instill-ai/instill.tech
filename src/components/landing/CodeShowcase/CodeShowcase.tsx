@@ -46,7 +46,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
   };
 
   return (
-    <div className={cn("flex flex-col", marginBottom)}>
+    <div className={cn("flex flex-col py-20", marginBottom)}>
       <div className="mb-10 flex flex-col">
         <SectionLabel
           text="For researchers & developers"
