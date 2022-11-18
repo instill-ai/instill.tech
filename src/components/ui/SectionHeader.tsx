@@ -17,13 +17,12 @@ export const SectionHeader = ({
   marginBottom,
 }: SectionHeaderProps) => {
   return (
-    <div className="flex w-full flex-col xl:flex-row">
+    <div className={cn("flex w-full flex-col xl:flex-row", marginBottom)}>
       <h2
         className={cn(
-          "align-top font-mono text-3xl font-medium xl:leading-[48px] xl:text-instill-h2",
+          "mb-5 font-mono text-3xl font-medium word-spacing-tighter xl:mb-0 xl:leading-[48px] xl:text-instill-h2",
           headerWidth,
-          headerTextColor,
-          marginBottom
+          headerTextColor
         )}
       >
         {header}

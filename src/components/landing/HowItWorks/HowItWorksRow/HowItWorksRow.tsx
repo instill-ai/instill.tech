@@ -24,11 +24,16 @@ export const HowItWorksRow = ({
   return (
     <div
       className={cn(
-        "flex flex-col-reverse xl:gap-x-20",
+        "flex h-full flex-col-reverse xl:gap-x-20",
         type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
       )}
     >
-      <div className="mt-20 flex flex-col gap-y-10 xl:mt-0 xl:h-[360px] xl:w-7/12 xs:flex-row xs:gap-y-0 xs:gap-x-10">
+      <div
+        className={cn(
+          "mt-20 flex flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
+          type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
+        )}
+      >
         <NumberCube
           number={number}
           color="bg-instillNeonBlue"
@@ -50,10 +55,12 @@ export const HowItWorksRow = ({
           />
         </div>
       </div>
-      <div className="flex xl:w-5/12">
+      <div className="flex">
         <IconsCube
           cubes={cubes}
           position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
+          width="xl:w-[360px]"
+          height="xl:h-[360px]"
         />
       </div>
     </div>

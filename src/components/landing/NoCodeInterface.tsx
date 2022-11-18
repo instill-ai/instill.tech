@@ -17,7 +17,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
   });
 
   return (
-    <div ref={containerRef} className={cn("flex flex-col", marginBottom)}>
+    <div ref={containerRef} className={cn("flex flex-col py-20", marginBottom)}>
       <SectionLabel text="No-code interface" position="mr-auto mb-2.5" />
       <SectionHeader
         header="Unify all your visual data pipelines in one place"
@@ -39,13 +39,31 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
           </div>
         }
       />
-      <Image
-        src="/images/no-code-interface.png"
-        width={containerDimension ? containerDimension.width : 0}
-        height={containerDimension ? containerDimension.width * 0.54 : 0}
-        sizes="100vw"
-        alt="The console screenshot of VDP"
-      />
+      <div className="w-full pr-2.5 xl:pr-5">
+        <div className="flex flex-col shadow-instill-solid-10-grey xl:shadow-instill-solid-20-grey">
+          <div className="flex flex-row bg-instillGrey20 px-4 py-3">
+            <div className="hidden flex-row gap-x-[10px] xs:flex">
+              <div className="my-auto h-4 w-4 rounded-full bg-instillGrey30" />
+              <div className="my-auto h-4 w-4 rounded-full bg-instillGrey30" />
+              <div className="my-auto h-4 w-4 rounded-full bg-instillGrey30" />
+            </div>
+            <div className="flex flex-1">
+              <div className="mx-auto flex w-8/12 bg-instillGrey05 py-[3px]">
+                <p className="mx-auto font-sans text-xs font-normal text-instillGrey70">
+                  demo.instill.tech
+                </p>
+              </div>
+            </div>
+          </div>
+          <Image
+            src="/images/no-code-interface.png"
+            width={containerDimension ? containerDimension.width : 0}
+            height={containerDimension ? containerDimension.width * 0.54 : 0}
+            sizes="100vw"
+            alt="The console screenshot of VDP"
+          />
+        </div>
+      </div>
     </div>
   );
 };

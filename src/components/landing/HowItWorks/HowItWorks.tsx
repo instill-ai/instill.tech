@@ -28,7 +28,7 @@ export type HowItWorksProps = {
 export const HowItWorks = ({ marginBottom }: HowItWorksProps) => {
   let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
   return (
-    <div className={cn("flex flex-col", marginBottom)}>
+    <div className={cn("flex flex-col py-20", marginBottom)}>
       <div className="mb-20 flex flex-col gap-y-2.5">
         <SectionLabel text="Open to integrations" position="mr-auto" />
         <SectionHeader

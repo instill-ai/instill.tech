@@ -21,7 +21,7 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
 
     return (
       <div
-        className={cn("flex flex-col py-10", marginBottom)}
+        className={cn("flex flex-col py-20", marginBottom)}
         ref={containerRef}
       >
         <div className="mb-10 flex flex-col" ref={ref}>
