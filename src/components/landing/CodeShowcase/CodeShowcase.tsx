@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { Terminal } from "./Terminal";
 import { CommonCtaButton, SectionHeader, SectionLabel } from "@/components/ui";
 import {
+  BasicAccordion,
   BgIconAccordion,
   DataDestinationIcon,
   DataSourceIcon,
@@ -38,12 +39,82 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
     }
   }, [activeIndex]);
 
-  const bgIconStyle = {
-    width: "w-[250px]",
-    height: "h-[250px]",
-    color: "fill-white opacity-60",
-    position: "m-auto",
-  };
+  const accordionItems = useMemo(() => {
+    const bgIconStyle = {
+      width: "w-[250px]",
+      height: "h-[250px]",
+      color: "fill-white opacity-60",
+      position: "m-auto",
+    };
+
+    return [
+      {
+        headerActiveBgColor: "bg-instillSkyBlue",
+        headerInActiveBgColor: "bg-instillSkyBlue",
+        headerActiveTextColor: "text-white",
+        headerInActiveTextColor: "text-white",
+        header: "Pipeline",
+        content: (
+          <AccordionContent
+            bgColor="bg-instillSkyBlue"
+            link="/docs/core-concepts/pipeline"
+            description="An end-to-end workflow that automates a 
+              sequence of sub-components to process visual data."
+          />
+        ),
+        bgIcon: <PipelineIcon {...bgIconStyle} />,
+      },
+      {
+        headerActiveBgColor: "bg-instillNatureGreen",
+        headerInActiveBgColor: "bg-instillNatureGreen",
+        headerActiveTextColor: "text-white",
+        headerInActiveTextColor: "text-white",
+        header: "Source",
+        content: (
+          <AccordionContent
+            bgColor="bg-instillNatureGreen"
+            link="/docs/core-concepts/connector#source"
+            description="A data connector in charge of ingesting 
+              unstructured visual data into a Pipeline."
+          />
+        ),
+        bgIcon: <DataSourceIcon {...bgIconStyle} />,
+      },
+      {
+        headerActiveBgColor: "bg-instillLemonYellow50",
+        headerInActiveBgColor: "bg-instillLemonYellow50",
+        headerActiveTextColor: "text-white",
+        headerInActiveTextColor: "text-white",
+        header: "Model",
+        content: (
+          <AccordionContent
+            bgColor="bg-instillLemonYellow50"
+            link="docs/core-concepts/model"
+            description="An algorithm that runs on unstructured 
+              visual data to solve a certain Computer Vision (CV) 
+              Task."
+          />
+        ),
+        bgIcon: <ModelIcon {...bgIconStyle} />,
+      },
+      {
+        headerActiveBgColor: "bg-instillWarmOrange50",
+        headerInActiveBgColor: "bg-instillWarmOrange50",
+        headerActiveTextColor: "text-white",
+        headerInActiveTextColor: "text-white",
+        header: "Destination",
+        content: (
+          <AccordionContent
+            bgColor="bg-instillWarmOrange50"
+            link="/docs/core-concepts/connector#destination"
+            description="A data connector to load the standarised 
+              CV Task output from Model to the destination."
+          />
+        ),
+        bgIcon: <DataDestinationIcon {...bgIconStyle} />,
+      },
+    ];
+  }, []);
 
   return (
     <div className={cn("flex flex-col py-20", marginBottom)}>
@@ -72,8 +143,8 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         />
       </div>
 
-      <div className="flex flex-col gap-y-10 xl:grid xl:grid-cols-12 xl:gap-x-6">
-        <div className="xl:col-span-4">
+      <div className="flex flex-col-reverse gap-y-10 xl:grid xl:grid-cols-12 xl:flex-col xl:gap-x-6">
+        <div className="hidden xl:col-span-4 xl:flex">
           <BgIconAccordion
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
@@ -81,73 +152,17 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             enableHeaderIcon={true}
             headerIconColor="fill-white"
             bgIconPosition="top-0 -right-20"
-            items={[
-              {
-                headerActiveBgColor: "bg-instillSkyBlue",
-                headerInActiveBgColor: "bg-instillSkyBlue",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-white",
-                header: "Pipeline",
-                content: (
-                  <AccordionContent
-                    bgColor="bg-instillSkyBlue"
-                    link="/docs/core-concepts/pipeline"
-                    description="An end-to-end workflow that automates a 
-                      sequence of sub-components to process visual data."
-                  />
-                ),
-                bgIcon: <PipelineIcon {...bgIconStyle} />,
-              },
-              {
-                headerActiveBgColor: "bg-instillNatureGreen",
-                headerInActiveBgColor: "bg-instillNatureGreen",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-white",
-                header: "Source",
-                content: (
-                  <AccordionContent
-                    bgColor="bg-instillNatureGreen"
-                    link="/docs/core-concepts/connector#source"
-                    description="A data connector in charge of ingesting 
-                      unstructured visual data into a Pipeline."
-                  />
-                ),
-                bgIcon: <DataSourceIcon {...bgIconStyle} />,
-              },
-              {
-                headerActiveBgColor: "bg-instillLemonYellow50",
-                headerInActiveBgColor: "bg-instillLemonYellow50",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-white",
-                header: "Model",
-                content: (
-                  <AccordionContent
-                    bgColor="bg-instillLemonYellow50"
-                    link="docs/core-concepts/model"
-                    description="An algorithm that runs on unstructured 
-                      visual data to solve a certain Computer Vision (CV) 
-                      Task."
-                  />
-                ),
-                bgIcon: <ModelIcon {...bgIconStyle} />,
-              },
-              {
-                headerActiveBgColor: "bg-instillWarmOrange50",
-                headerInActiveBgColor: "bg-instillWarmOrange50",
-                headerActiveTextColor: "text-white",
-                headerInActiveTextColor: "text-white",
-                header: "Destination",
-                content: (
-                  <AccordionContent
-                    bgColor="bg-instillWarmOrange50"
-                    link="/docs/core-concepts/connector#destination"
-                    description="A data connector to load the standarised 
-                      CV Task output from Model to the destination."
-                  />
-                ),
-                bgIcon: <DataDestinationIcon {...bgIconStyle} />,
-              },
-            ]}
+            items={accordionItems}
+          />
+        </div>
+        <div className="xl:hidden">
+          <BasicAccordion
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            allowMultiItems={false}
+            enableHeaderIcon={true}
+            headerIconColor="fill-white"
+            items={accordionItems}
           />
         </div>
         <div className="xl:col-span-8">

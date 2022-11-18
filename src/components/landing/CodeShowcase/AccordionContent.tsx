@@ -15,9 +15,9 @@ export const AccordionContent = ({
 }: AccordionContentProps) => {
   const router = useRouter();
   return (
-    <div className={cn("min-h-[320px] w-full xl:min-h-[300px]", bgColor)}>
-      <div className="flex h-full w-7/12 flex-col p-5">
-        <div className="mb-auto flex text-white text-instill-body-normal">
+    <div className={cn("min-h-[180px] w-full xl:min-h-[300px]", bgColor)}>
+      <div className="flex h-full flex-col p-5 xl:w-7/12">
+        <div className="mb-5 flex text-white text-instill-body-normal xl:mb-auto">
           {description}
         </div>
         <SolidButton
