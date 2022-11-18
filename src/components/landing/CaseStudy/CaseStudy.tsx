@@ -5,6 +5,7 @@ import {
   SectionLabel,
 } from "@/components/ui";
 import { useInterval } from "@/hooks/useInterval";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import { Nullable } from "@/types/instill";
 import {
   ArtiVcIcon,
@@ -49,6 +50,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
   const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
     useState<Nullable<number>>(null);
   const [showcaseMaxFrame, setShowcaseMaxFrame] = useState<number>(0);
+
+  const windowSize = useWindowSize();
 
   const getActiveControl = useCallback(() => {
     if (activeIndex[0] === 1) {
@@ -721,24 +724,43 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                     alt="An invoice processed by OCR and display the detected words"
                   />,
                   <ShowcaseTable
-                    height="h-[355px]"
-                    width="w-[280px] md:w-[336px]"
                     key="case-study-invoice-table"
                     position="ml-auto"
                     tables={[
                       {
                         name: "invoice-table",
                         head: ["text", "number"],
-                        rows: [
-                          ["Filing Jointly or Qualifying Widow(er)", "30,000"],
-                          ["Lower Paying Job Annual Taxable Wage", "3,999"],
-                          ["12/02/2021", "40,000"],
-                          ["10:38", "49,999"],
-                          ["12/02/2021", "890"],
-                          ["12:38", "2,090"],
-                          ["-", "2,950"],
-                          ["-", "2,950"],
-                        ],
+                        rows:
+                          windowSize.width > 640
+                            ? [
+                                [
+                                  "Filing Jointly or Qualifying Widow(er)",
+                                  "30,000",
+                                ],
+                                [
+                                  "Lower Paying Job Annual Taxable Wage",
+                                  "3,999",
+                                ],
+                                ["12/02/2021", "40,000"],
+                                ["10:38", "49,999"],
+                                ["12/02/2021", "890"],
+                                ["12:38", "2,090"],
+                                ["-", "2,950"],
+                                ["-", "2,950"],
+                              ]
+                            : [
+                                [
+                                  "Filing Jointly or Qualifying Widow(er)",
+                                  "30,000",
+                                ],
+                                [
+                                  "Lower Paying Job Annual Taxable Wage",
+                                  "3,999",
+                                ],
+                                ["12/02/2021", "40,000"],
+                                ["10:38", "49,999"],
+                                ["12/02/2021", "890"],
+                              ],
                       },
                     ]}
                   />,
@@ -810,29 +832,40 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   />,
                   <ShowcaseTable
                     key="case-study-workspace-table-0"
-                    height="h-[355px]"
-                    width="w-[280px] md:w-[336px]"
                     position="ml-auto"
                     tables={[
                       {
                         name: "workspace-category-table",
                         head: ["Category", "x", "y"],
-                        rows: [
-                          ["Unattended object", "3", "52"],
-                          ["Person 1", "12", "104"],
-                          ["Person 2", "394", "502"],
-                          ["Helmet 1", "123", "1042"],
-                          ["Helmet 2", "320", "242"],
-                        ],
+                        rows:
+                          windowSize.width > 640
+                            ? [
+                                ["Unattended object", "3", "52"],
+                                ["Person 1", "12", "104"],
+                                ["Person 2", "394", "502"],
+                                ["Helmet 1", "123", "1042"],
+                                ["Helmet 2", "320", "242"],
+                              ]
+                            : [
+                                ["Unattended object", "3", "52"],
+                                ["Person 1", "12", "104"],
+                                ["Person 2", "394", "502"],
+                              ],
                       },
                       {
                         name: "workspace-skeleton-table",
                         head: ["Skeleton", "Head_x", "Head_y"],
-                        rows: [
-                          ["Person 1", "3", "52"],
-                          ["Person 2", "12", "222"],
-                          ["Person 3", "921", "307"],
-                        ],
+                        rows:
+                          windowSize.width > 640
+                            ? [
+                                ["Person 1", "3", "52"],
+                                ["Person 2", "12", "222"],
+                                ["Person 3", "921", "307"],
+                              ]
+                            : [
+                                ["Person 1", "3", "52"],
+                                ["Person 2", "12", "222"],
+                              ],
                       },
                     ]}
                   />,
@@ -894,24 +927,32 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                   />,
                   <ShowcaseTable
                     key="case-study-ecommerce-table"
-                    height="h-[355px]"
-                    width="w-[280px] md:w-[336px]"
                     position="ml-auto"
                     tables={[
                       {
                         name: "ecommerce-table",
                         head: ["Item", "Value"],
-                        rows: [
-                          ["Name", "Summer dress"],
-                          ["Category", "Dress"],
-                          ["Style", "Retro"],
-                          ["Sleeve", "No sleeve"],
-                          ["Length", "Long"],
-                          ["Waistline", "High waist"],
-                          ["Colour 1", "67A4DB"],
-                          ["Colour 2", "68A9E3"],
-                          ["Colour 3", "A6C4E1"],
-                        ],
+                        rows:
+                          windowSize.width > 640
+                            ? [
+                                ["Name", "Summer dress"],
+                                ["Category", "Dress"],
+                                ["Style", "Retro"],
+                                ["Sleeve", "No sleeve"],
+                                ["Length", "Long"],
+                                ["Waistline", "High waist"],
+                                ["Colour 1", "67A4DB"],
+                                ["Colour 2", "68A9E3"],
+                                ["Colour 3", "A6C4E1"],
+                              ]
+                            : [
+                                ["Name", "Summer dress"],
+                                ["Category", "Dress"],
+                                ["Style", "Retro"],
+                                ["Sleeve", "No sleeve"],
+                                ["Length", "Long"],
+                                ["Waistline", "High waist"],
+                              ],
                       },
                     ]}
                   />,
@@ -980,7 +1021,13 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
         ]}
       />
     );
-  }, [activeIndex, setActiveIndex, currentShowcaseFrame, focusedShowcaseFrame]);
+  }, [
+    activeIndex,
+    setActiveIndex,
+    currentShowcaseFrame,
+    focusedShowcaseFrame,
+    windowSize,
+  ]);
 
   useEffect(() => {
     setCurrentShowcaseFrame(0);

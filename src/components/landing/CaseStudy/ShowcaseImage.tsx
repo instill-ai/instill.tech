@@ -14,12 +14,8 @@ export const ShowcaseImage = ({
   alt,
 }: ShowcaseImageProps) => {
   return (
-    <Image
-      width={width}
-      height={height}
-      src={src}
-      alt={alt}
-      className="h-[296px] min-w-[280px] sm:h-[355px] sm:min-w-[336px]"
-    />
+    <div className="h-[254px] w-[240px] sm:h-[355px] sm:w-[336px]">
+      <Image fill={true} src={src} alt={alt} />
+    </div>
   );
 };
