@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.18.0](https://github.com/instill-ai/instill.tech/compare/v1.17.1...v1.18.0) (2022-11-18)
+
+
+### Features
+
+* add SectionHeader and adapt all section to it ([#345](https://github.com/instill-ai/instill.tech/issues/345)) ([8ed962d](https://github.com/instill-ai/instill.tech/commit/8ed962db170ab602cd459a16a2a6b7bf353af700))
+
+
+### Bug Fixes
+
+* fix case study transition issue ([#350](https://github.com/instill-ai/instill.tech/issues/350)) ([5b1ac2c](https://github.com/instill-ai/instill.tech/commit/5b1ac2c414942f811b3df5abe0c0a5f07bd9ad97))
+* fix CodeShowcase indent ([#348](https://github.com/instill-ai/instill.tech/issues/348)) ([c7c825f](https://github.com/instill-ai/instill.tech/commit/c7c825f05770aca6d8bf293e5adf8978169b9c5f))
+* fix HowItWorks section label ([#349](https://github.com/instill-ai/instill.tech/issues/349)) ([8704cf0](https://github.com/instill-ai/instill.tech/commit/8704cf0b8f304f462debc511b41990a0bc5f0735))
+* fix various visual bugs, NoCodeInterface, SectionHeader ([#351](https://github.com/instill-ai/instill.tech/issues/351)) ([963cffa](https://github.com/instill-ai/instill.tech/commit/963cffaed579beba7ba43b2452d287663e18d645))
+* fix visual bugs ([#347](https://github.com/instill-ai/instill.tech/issues/347)) ([7facb0a](https://github.com/instill-ai/instill.tech/commit/7facb0a2cd425aae15535349b2c2f8a53adbb459))
+* optimize case study and fixes calculation issue ([#344](https://github.com/instill-ai/instill.tech/issues/344)) ([f581fbb](https://github.com/instill-ai/instill.tech/commit/f581fbb712e5fc37d9f2b26ea0bbe6c90d7e4ffd))
+
 ## [1.17.1](https://github.com/instill-ai/instill.tech/compare/v1.17.0...v1.17.1) (2022-11-16)
 
 
