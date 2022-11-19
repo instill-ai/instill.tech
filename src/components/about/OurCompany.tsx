@@ -1,6 +1,6 @@
 import cn from "clsx";
 
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 
 export type OurCompanyProps = {
   marginBottom?: string;
@@ -19,8 +19,14 @@ export const OurCompany = ({ marginBottom }: OurCompanyProps) => {
         position="mr-auto"
         marginBottom="mb-2.5"
       />
-      <h2 className="mb-10 font-mono text-[28px] font-medium">Our Company</h2>
-      <p className="mb-10 text-instillGrey95 text-instill-body-normal">
+      <SectionHeader
+        header="Our Company"
+        headerWidth="w-full"
+        headerFontSize="text-3xl"
+        headerTextColor="text-black"
+        marginBottom="mb-10"
+      />
+      <p className="mb-4 text-instillGrey95 text-instill-body-normal">
         Instill AI, founded in 2020 (June 11th 2020, to be more specific),
         provides no-/low-code tools to convert unstructured visual data to
         meaningful structured representations. Users can integrate our service

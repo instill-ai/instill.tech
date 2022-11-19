@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 
 export type SectionHeaderProps = {
   header: string;
+  headerFontSize?: string;
   headerTextColor: string;
   headerWidth: string;
   marginBottom?: string;
@@ -12,6 +13,7 @@ export type SectionHeaderProps = {
 export const SectionHeader = ({
   header,
   headerWidth,
+  headerFontSize,
   headerTextColor,
   subElement,
   marginBottom,
@@ -20,7 +22,10 @@ export const SectionHeader = ({
     <div className={cn("flex w-full flex-col xl:flex-row", marginBottom)}>
       <h2
         className={cn(
-          "font-mono text-3xl font-medium word-spacing-tighter xl:leading-[48px] xl:text-instill-h2",
+          "font-mono font-medium word-spacing-tighter",
+          headerFontSize
+            ? headerFontSize
+            : "text-3xl xl:leading-[48px] xl:text-instill-h2",
           headerWidth,
           headerTextColor,
           subElement ? "mb-4 xl:mb-0" : ""

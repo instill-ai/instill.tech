@@ -1,6 +1,6 @@
 import cn from "clsx";
 
-import { SectionLabel } from "@/components/ui";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 import { ValueBlock } from "./ValueBlock";
 
 export type OurValueProps = {
@@ -15,7 +15,13 @@ export const OurValue = ({ marginBottom }: OurValueProps) => {
         position="mr-auto"
         marginBottom="mb-2.5"
       />
-      <h2 className="mb-10 font-mono text-[28px] font-medium">Our Value</h2>
+      <SectionHeader
+        header="Our Value"
+        headerWidth="w-full"
+        headerFontSize="text-3xl"
+        headerTextColor="text-black"
+        marginBottom="mb-10"
+      />
       <div className="grid grid-cols-1 gap-y-10 xl:grid-cols-2 xl:gap-y-0">
         <ValueBlock
           number={1}
