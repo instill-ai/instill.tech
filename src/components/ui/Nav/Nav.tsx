@@ -39,17 +39,19 @@ export const Nav = () => {
     <>
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="text-instillGrey95">
-            Check out our new article &nbsp;
+          <div className="flex flex-row gap-x-1">
+            <p className="text-base text-instillGrey95">
+              🚀 We&apos;re growing! Check out our
+            </p>
             <a
               className="mr-1.5 italic underline"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
+              href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
             >
-              Introducing VDP: open-source visual data ETL
+              open roles
             </a>
-          </p>
+          </div>
         </AnnouncementBar>
       )}
       <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
