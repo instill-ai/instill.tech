@@ -276,6 +276,12 @@ module.exports = {
         ".word-spacing-super-tight": {
           wordSpacing: "-1rem",
         },
+        ".word-spacing-normal": {
+          wordSpacing: "0rem",
+        },
+        ".word-spacing-wide": {
+          wordSpacing: "0.25rem",
+        },
       });
     },
   ],
