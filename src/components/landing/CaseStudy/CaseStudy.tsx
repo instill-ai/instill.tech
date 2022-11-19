@@ -22,6 +22,7 @@ import {
   HttpIcon,
   HuggingFaceIcon,
   ImageClassificationIcon,
+  IotIcon,
   LocalUploadIcon,
   ModelIcon,
   ObjectDetectionIcon,
@@ -258,7 +259,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                         label: "camera-on-site-1",
                         value: "camera-on-site-1",
                         startIcon: (
-                          <GoogleDriveIcon
+                          <IotIcon
                             width="w-[30px]"
                             height="h-[30px]"
                             position="my-auto"
