@@ -14,6 +14,7 @@ import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { GetAccessButton } from "./GetAccessButton";
+import { CareerPageLink } from "./CareerPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -30,6 +31,7 @@ export const Nav = () => {
   const navbarLinkGroup = (
     <>
       <DocsPageLink />
+      <CareerPageLink hiring={true} />
       <GithubTextLink />
       <GetAccessButton />
     </>
