@@ -14,6 +14,7 @@ import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { GetAccessButton } from "./GetAccessButton";
+import { CareerPageLink } from "./CareerPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -30,6 +31,7 @@ export const Nav = () => {
   const navbarLinkGroup = (
     <>
       <DocsPageLink />
+      <CareerPageLink hiring={true} />
       <GithubTextLink />
       <GetAccessButton />
     </>
@@ -39,17 +41,19 @@ export const Nav = () => {
     <>
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="text-instillGrey95">
-            Check out our new article &nbsp;
+          <div className="flex flex-row gap-x-1">
+            <p className="text-base text-instillGrey95">
+              🚀 We&apos;re growing! Check out our
+            </p>
             <a
               className="mr-1.5 italic underline"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
+              href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
             >
-              Introducing VDP: open-source visual data ETL
+              open roles
             </a>
-          </p>
+          </div>
         </AnnouncementBar>
       )}
       <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
