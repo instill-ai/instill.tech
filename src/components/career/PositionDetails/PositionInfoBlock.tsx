@@ -21,7 +21,7 @@ export const PositionInfoBlock = ({
 }: PositionInfoBlockProps) => {
   return (
     <div className={classNames.default("flex flex-col", padding, width)}>
-      <h2 className="mb-10 text-instillGrey90 text-instill-h2">
+      <h2 className="mb-10 text-instillGrey90 text-instill-h2 word-spacing-tighter">
         {position.name}
       </h2>
       <div className="mb-10 flex flex-row gap-x-5">

@@ -46,8 +46,8 @@ export const CareerPositionListItem = ({
         )}
       >
         <div className="flex flex-col p-4 xl:p-0">
-          <h3 className="instill-text-h3 text-instillGrey95">{name}</h3>
-          <p className="instill-text-body text-instillGrey95">
+          <h3 className="text-instillGrey95 text-instill-h3-medium">{name}</h3>
+          <p className="text-instillGrey70 text-instill-body-normal">
             {unitIsPlaceholder
               ? "If you're interested in joining us, but don't tick every box, we still encourage you to apply!"
               : `Posted ${daysAgo} days ago`}

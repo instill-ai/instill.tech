@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import cn from "clsx";
 import { CareerPositionListItem } from "./CareerPositionListItem";
 import { PositionInfo } from "@/types/instill";
+import { SectionHeader, SectionLabel } from "@/components/ui";
 
 export type PositionListProps = {
   positions: PositionInfo[];
@@ -18,18 +19,21 @@ export const PositionList = forwardRef<HTMLDivElement, PositionListProps>(
         )}
         ref={ref}
       >
-        <div className="mr-auto mb-2.5 bg-instillNatureGreen px-2.5 py-[5px] font-sans text-base font-normal uppercase text-instillGrey90">
-          Job listing
-        </div>
-        <div className="mb-10 flex flex-col gap-y-5">
-          <h2 className="text text-left text-instillGrey95 text-instill-h2">
-            Open Roles
-          </h2>
-          <p className="text-left text-instillGrey95 text-instill-body-normal">
-            We&#39;re on a mission to make Vision Al highly accessbile to
-            everyone. Join us and make a dent in the universe!
-          </p>
-        </div>
+        <SectionLabel
+          text="Job listing"
+          position="mr-auto"
+          marginBottom="mb-2.5"
+        />
+        <SectionHeader
+          header="Open Roles"
+          headerWidth="w=full"
+          headerTextColor="text-black"
+          marginBottom="mb-5"
+        />
+        <p className="mb-10 text-left text-instillGrey95 text-instill-body-normal">
+          We&#39;re on a mission to make Vision Al highly accessbile to
+          everyone. Join us and make a dent in the universe!
+        </p>
         <div className="flex flex-col gap-y-5">
           {positions.map((position) => {
             return (
