@@ -29,7 +29,6 @@ export const useRefPosition = (
   }, [ref, option.listenWindowResize]);
 
   useResizeObserver(ref, (entry) => {
-    console.log("due to resize", getElementPosition(entry.target));
     setPosition(getElementPosition(entry.target));
   });
 

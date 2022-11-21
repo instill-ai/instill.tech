@@ -120,10 +120,6 @@ const HomePage: FC<HomePageProps> & {
     rootMargin,
   });
 
-  useEffect(() => {
-    console.log(noCodeInterfaceIsInView);
-  }, [noCodeInterfaceIsInView]);
-
   const [communityIsInViewRef, communityIsInView] = useInView({
     triggerOnce: true,
     rootMargin,

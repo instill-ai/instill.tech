@@ -26,7 +26,6 @@ export const ImgWithFallback = ({
       height={height}
       alt={alt}
       onError={() => {
-        console.log("error");
         setError(true);
       }}
     />
