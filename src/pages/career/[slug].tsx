@@ -37,9 +37,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       error
     );
     return {
-      props: {
-        position: null,
+      redirect: {
+        destination: "/404",
+        permanent: false,
       },
+      revalidate: 10,
     };
   }
 
