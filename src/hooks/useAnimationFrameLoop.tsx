@@ -21,24 +21,24 @@ export const useAnimationFrameLoop = ({
   const frame = useRef(0);
   const firstFrameTime = useRef(performance.now());
 
-  const animate = (now: number) => {
-    // calculate at what time fraction we are currently of whole time of animation
-    let timeFraction = (now - firstFrameTime.current) / duration;
-
-    if (timeFraction > 1) {
-      timeFraction = 1;
-    }
-
-    if (timeFraction === 1) {
-      nextHandler();
-      firstFrameTime.current = performance.now();
-      frame.current = requestAnimationFrame(animate);
-    } else {
-      frame.current = requestAnimationFrame(animate);
-    }
-  };
-
   useEffect(() => {
+    const animate = (now: number) => {
+      // calculate at what time fraction we are currently of whole time of animation
+      let timeFraction = (now - firstFrameTime.current) / duration;
+
+      if (timeFraction > 1) {
+        timeFraction = 1;
+      }
+
+      if (timeFraction === 1) {
+        nextHandler();
+        firstFrameTime.current = performance.now();
+        frame.current = requestAnimationFrame(animate);
+      } else {
+        frame.current = requestAnimationFrame(animate);
+      }
+    };
+
     if (shouldAnimate) {
       firstFrameTime.current = performance.now();
       frame.current = requestAnimationFrame(animate);
@@ -47,5 +47,5 @@ export const useAnimationFrameLoop = ({
     }
 
     return () => cancelAnimationFrame(frame.current);
-  }, [shouldAnimate, animate]);
+  }, [shouldAnimate, duration, nextHandler]);
 };

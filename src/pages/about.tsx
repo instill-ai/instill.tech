@@ -1,6 +1,7 @@
-import { FC, ReactElement, useEffect, useRef, useState } from "react";
+import { FC, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
+import cn from "clsx";
 
 import { MemberDetails } from "@/types/instill";
 import {
@@ -75,6 +76,11 @@ const AboutPage: FC<AboutPageProps> & {
     triggerOnce: true,
   });
 
+  // Lazy loading OurMember
+  const [ourMemberRef, ourMemberIsInView] = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <>
       <PageHead
@@ -92,12 +98,17 @@ const AboutPage: FC<AboutPageProps> & {
           <OurValue />
         </div>
       </div>
-      <div className="bg-instillGrey90">
-        <OurMembers
-          width="mx-auto max-w-[1127px]"
-          members={members}
-          marginBottom="mb-10"
-        />
+      <div
+        ref={ourMemberRef}
+        className={cn("bg-instillGrey90", ourMemberIsInView ? "" : "mb-20")}
+      >
+        {ourMemberIsInView ? (
+          <OurMembers
+            width="mx-auto max-w-[1127px]"
+            members={members}
+            marginBottom="mb-10"
+          />
+        ) : null}
       </div>
       <div className="mx-auto mb-[120px] max-w-[1127px] px-4 xl:mb-40 xl:px-0">
         <div className="mb-[120px]" ref={secureYourSpotRef}>

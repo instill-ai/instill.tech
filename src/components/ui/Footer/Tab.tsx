@@ -46,7 +46,8 @@ export const Tab = ({ header, links, type }: TabProps) => {
       ) : (
         <div className="flex flex-col space-y-3">
           {links.map((link) => {
-            const linkStyle = "font-normal text-lg text-instillGrey05";
+            const linkStyle =
+              "font-normal text-base text-instillGrey30 hover:text-instillGrey05";
 
             return link.href.startsWith("/") ? (
               <Link key={link.href} href={link.href}>

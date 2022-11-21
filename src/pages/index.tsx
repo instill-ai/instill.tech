@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useRef } from "react";
+import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { parse } from "yaml";
 import cn from "clsx";
@@ -103,36 +103,46 @@ const HomePage: FC<HomePageProps> & {
   //   triggerOnce: true,
   // });
 
+  const rootMargin = "100px 0px 0px 0px";
+
   const [vdpIsInViewRef, vdpIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [howItWorksIsInViewRef, howItWorksIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [noCodeInterfaceIsInViewRef, noCodeInterfaceIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [communityIsInViewRef, communityIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [caseStudyIsInViewRef, caseStudyIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [codeShowcaseIsInViewRef, codeShowcaseIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [faqIsInViewRef, faqIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   const [instillCloudIsInViewRef, instillCloudIsInView] = useInView({
     triggerOnce: true,
+    rootMargin,
   });
 
   return (
