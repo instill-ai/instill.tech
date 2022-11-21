@@ -36,7 +36,6 @@ export const PositionList = forwardRef<HTMLDivElement, PositionListProps>(
         </p>
         <div className="flex flex-col gap-y-5">
           {positions.map((position) => {
-            if (position.status === "close") return null;
             return (
               <CareerPositionListItem
                 link={`/career/${position.id}-${position.slug}`}
