@@ -9,6 +9,7 @@ export type PositionInfo = {
   packageUK: string;
   packageTW: string;
   postDate: string;
+  status: "open" | "close";
 };
 
 export type MemberDetails = {

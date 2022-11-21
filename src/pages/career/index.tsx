@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
 
     for (const task of tasks) {
       const position = transformClickUpTaskToPositionDetails(task);
-      positions.push(position);
+      if (position.status === "open") positions.push(position);
     }
   } catch (err) {
     console.error(
