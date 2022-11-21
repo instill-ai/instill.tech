@@ -1,13 +1,6 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import {
-  FC,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, ReactElement, useCallback, useRef } from "react";
 
 import {
   ContentContainer,
@@ -20,7 +13,6 @@ import {
   CareerHero,
   PositionListProps,
 } from "@/components/career";
-import { useOnScreen } from "@/hooks/useOnScreen";
 import { PositionInfo } from "@/types/instill";
 import {
   ClickUpTask,
@@ -29,6 +21,7 @@ import {
 } from "@/lib/click-up";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { getElementPosition } from "@instill-ai/design-system";
+import { useInView } from "react-intersection-observer";
 
 const PositionList = dynamic<PositionListProps>(() =>
   import("@/components/career").then((mod) => mod.PositionList)
@@ -78,32 +71,15 @@ const CareerPage: FC<CareerPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
   // lazy load openPositionList
-  const positionListRef = useRef<HTMLDivElement>();
-  const [loadPositionList, setLoadPositionList] = useState(false);
-  const positionListIsOnscreen = useOnScreen(
-    positionListRef,
-    !loadPositionList
-  );
-
-  useEffect(() => {
-    if (positionListIsOnscreen && !loadPositionList) {
-      setLoadPositionList(true);
-    }
-  }, [positionListIsOnscreen, loadPositionList]);
+  const positionListRef = useRef<HTMLDivElement>(null);
+  const [positionListInViewRef, positionListInView] = useInView({
+    triggerOnce: true,
+  });
 
   // lazy load stayInTheLoop
-  const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
-  const stayInTheLoopIsOnScreen = useOnScreen(
-    stayInTheLoopRef,
-    !loadStayInTheLoop
-  );
-
-  useEffect(() => {
-    if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
-      setLoadStayInTheLoop(true);
-    }
-  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
+  const [stayInTheLoopInViewRef, stayInTheLoopInView] = useInView({
+    triggerOnce: true,
+  });
 
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
@@ -134,13 +110,19 @@ const CareerPage: FC<CareerPageProps> & {
           marginBottom="mb-[120px] xl:mb-40"
         />
         <CareerGeneralIntro marginBottom="mb-20 xl:mb-40" />
-        <div ref={positionListRef}>
-          {loadPositionList && (
+        <div
+          ref={(el) => {
+            positionListInViewRef(el);
+            positionListRef.current = el;
+          }}
+          className={positionListInView ? "" : "mb-20"}
+        >
+          {positionListInView && (
             <PositionList marginBottom="mb-20 xl:mb-40" positions={positions} />
           )}
         </div>
-        <div ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && <StayInTheLoop />}
+        <div ref={stayInTheLoopInViewRef}>
+          {stayInTheLoopInView && <StayInTheLoop />}
         </div>
       </ContentContainer>
     </>

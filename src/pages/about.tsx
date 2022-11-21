@@ -2,7 +2,6 @@ import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 
-import { useOnScreen } from "../hooks/useOnScreen";
 import { MemberDetails } from "@/types/instill";
 import {
   AboutHero,
@@ -21,6 +20,7 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToMemberDetails,
 } from "@/lib/click-up";
+import { useInView } from "react-intersection-observer";
 
 const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
   import("@/components/ui").then((mod) => mod.SecureYourSpot)
@@ -66,34 +66,14 @@ const AboutPage: FC<AboutPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ members }) => {
   // Lazy loading SecureYourSpot
-  const secureYourSpotRef = useRef<HTMLDivElement>();
-  const [loadSecureYourSpot, setLoadSecureYourSpot] = useState(false);
-  const secureYourSpotOnScreen = useOnScreen(
-    secureYourSpotRef,
-    !loadSecureYourSpot,
-    "100px"
-  );
-
-  useEffect(() => {
-    if (!loadSecureYourSpot && secureYourSpotOnScreen) {
-      setLoadSecureYourSpot(true);
-    }
-  }, [loadSecureYourSpot, secureYourSpotOnScreen]);
+  const [secureYourSpotRef, secureYourSpotIsInView] = useInView({
+    triggerOnce: true,
+  });
 
   // Lazy loading StayInTheLoop
-  const stayInTheLoopRef = useRef<HTMLDivElement>();
-  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
-  const stayInTheLoopOnScreen = useOnScreen(
-    secureYourSpotRef,
-    !loadStayInTheLoop,
-    "100px"
-  );
-
-  useEffect(() => {
-    if (!loadStayInTheLoop && stayInTheLoopOnScreen) {
-      setLoadStayInTheLoop(true);
-    }
-  }, [loadStayInTheLoop, stayInTheLoopOnScreen]);
+  const [stayInTheLoopRef, stayInTheLoopIsInView] = useInView({
+    triggerOnce: true,
+  });
 
   return (
     <>
@@ -121,10 +101,10 @@ const AboutPage: FC<AboutPageProps> & {
       </div>
       <div className="mx-auto mb-[120px] max-w-[1127px] px-4 xl:mb-40 xl:px-0">
         <div className="mb-[120px]" ref={secureYourSpotRef}>
-          {loadSecureYourSpot && <SecureYourSpot />}
+          {secureYourSpotIsInView && <SecureYourSpot />}
         </div>
         <div ref={stayInTheLoopRef}>
-          {loadStayInTheLoop && <StayInTheLoop />}
+          {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
       </div>
     </>

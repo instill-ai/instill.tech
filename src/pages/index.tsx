@@ -1,6 +1,7 @@
 import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import { parse } from "yaml";
+import cn from "clsx";
 
 import {
   CaseStudyProps,
@@ -17,6 +18,7 @@ import { getElementPosition } from "@instill-ai/design-system";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
+import { useInView } from "react-intersection-observer";
 
 const FaqHeader = dynamic<FaqHeaderProps>(() =>
   import("@/components/landing").then((mod) => mod.FaqHeader)
@@ -96,6 +98,43 @@ const HomePage: FC<HomePageProps> & {
     });
   }, [enableAnnouncementBar]);
 
+  // Implement Lazy load
+  // const [heroIsInViewRef, heroIsInView] = useInView({
+  //   triggerOnce: true,
+  // });
+
+  const [vdpIsInViewRef, vdpIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [howItWorksIsInViewRef, howItWorksIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [noCodeInterfaceIsInViewRef, noCodeInterfaceIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [communityIsInViewRef, communityIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [caseStudyIsInViewRef, caseStudyIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [codeShowcaseIsInViewRef, codeShowcaseIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [faqIsInViewRef, faqIsInView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [instillCloudIsInViewRef, instillCloudIsInView] = useInView({
+    triggerOnce: true,
+  });
+
   return (
     <>
       <PageHead
@@ -106,28 +145,68 @@ const HomePage: FC<HomePageProps> & {
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
-          <Vdp ref={vdpRef} />
-          <HowItWorks />
-          <NoCodeInterface />
+          <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
+            {vdpIsInView ? <Vdp ref={vdpRef} /> : null}
+          </div>
+          <div
+            ref={howItWorksIsInViewRef}
+            className={howItWorksIsInView ? "" : "mb-20"}
+          >
+            {howItWorksIsInView ? <HowItWorks /> : null}
+          </div>
+          <div
+            ref={noCodeInterfaceIsInViewRef}
+            className={noCodeInterfaceIsInView ? "" : "mb-20"}
+          >
+            {noCodeInterfaceIsInView ? <NoCodeInterface /> : null}
+          </div>
         </div>
 
         <div className="bg-instillGrey90">
-          <div className="mx-auto max-w-[1127px] px-4 xl:px-0">
-            <Community />
+          <div
+            ref={communityIsInViewRef}
+            className={cn(
+              "mx-auto max-w-[1127px] px-4 xl:px-0",
+              communityIsInView ? "" : "mb-20"
+            )}
+          >
+            {communityIsInView ? <Community /> : null}
           </div>
-          <CaseStudy destinations={destinations} />
-          <div className="mx-auto max-w-[1127px] px-4 xl:px-0">
-            <CodeShowcase />
+          <div
+            ref={caseStudyIsInViewRef}
+            className={caseStudyIsInView ? "" : "mb-20"}
+          >
+            {caseStudyIsInView ? (
+              <CaseStudy destinations={destinations} />
+            ) : null}
           </div>
-        </div>
-        <div className="mb-20 -mt-0.5 flex w-full flex-col">
-          <FaqHeader />
-          <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
-            <Faq />
-          </div>
-        </div>
 
-        <InstillCloud />
+          <div
+            ref={codeShowcaseIsInViewRef}
+            className={cn(
+              "mx-auto max-w-[1127px] px-4 xl:px-0",
+              codeShowcaseIsInView ? "" : "mb-20"
+            )}
+          >
+            {codeShowcaseIsInView ? <CodeShowcase /> : null}
+          </div>
+        </div>
+        <div
+          ref={faqIsInViewRef}
+          className="mb-20 -mt-0.5 flex w-full flex-col"
+        >
+          {faqIsInView ? (
+            <>
+              <FaqHeader />
+              <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
+                <Faq />
+              </div>
+            </>
+          ) : null}
+        </div>
+        <div ref={instillCloudIsInViewRef}>
+          {instillCloudIsInView ? <InstillCloud /> : null}
+        </div>
       </div>
     </>
   );
