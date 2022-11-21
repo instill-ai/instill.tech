@@ -45,10 +45,11 @@ export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");
-
     for (const task of tasks) {
-      const position = transformClickUpTaskToPositionDetails(task);
-      if (position.status === "open") positions.push(position);
+      if (task.status.status === "Open") {
+        const position = transformClickUpTaskToPositionDetails(task);
+        positions.push(position);
+      }
     }
   } catch (err) {
     console.error(

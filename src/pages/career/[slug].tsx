@@ -45,9 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  const positionDetails = transformClickUpTaskToPositionDetails(task);
-
-  if (positionDetails.status === "close") {
+  if (task.status.status !== "Open") {
     return {
       redirect: {
         destination: "/404",
@@ -56,6 +54,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 10,
     };
   }
+
+  const positionDetails = transformClickUpTaskToPositionDetails(task);
 
   return {
     props: {
@@ -76,8 +76,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     tasks = await listClickUpTasksInListQuery("175663624");
 
     for (const task of tasks) {
-      const position = transformClickUpTaskToPositionDetails(task);
-      if (position.status === "open") {
+      if (task.status.status === "Open") {
+        const position = transformClickUpTaskToPositionDetails(task);
         paths.push({
           params: {
             slug: `${position.id}-${position.slug}`,
