@@ -99,9 +99,9 @@ const HomePage: FC<HomePageProps> & {
   }, [enableAnnouncementBar]);
 
   // Implement Lazy load
-  const [heroIsInViewRef, heroIsInView] = useInView({
-    triggerOnce: true,
-  });
+  // const [heroIsInViewRef, heroIsInView] = useInView({
+  //   triggerOnce: true,
+  // });
 
   const [vdpIsInViewRef, vdpIsInView] = useInView({
     triggerOnce: true,
@@ -144,9 +144,7 @@ const HomePage: FC<HomePageProps> & {
       />
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          {/* <div ref={heroIsInViewRef} className={heroIsInView ? "" : "mb-20"}>
-            {heroIsInView ? <Hero scrollHandler={scrollHandler} /> : null}
-          </div> */}
+          <Hero scrollHandler={scrollHandler} />
           <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
             {vdpIsInView ? <Vdp ref={vdpRef} /> : null}
           </div>
@@ -206,8 +204,8 @@ const HomePage: FC<HomePageProps> & {
             </>
           ) : null}
         </div>
-        <div>
-          <InstillCloud />
+        <div ref={instillCloudIsInViewRef}>
+          {instillCloudIsInView ? <InstillCloud /> : null}
         </div>
       </div>
     </>
