@@ -783,7 +783,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
               <AccordionContentLayout
                 title="Object detection & Pose Estimation"
                 source="Camera (IoT)"
-                destination="PostgreSQL"
+                destination="BigQuery"
                 description="Spot unsafe behaviours in real-time to lower 
                   employee health incidents and improve workspace safety."
                 currentFrame={currentShowcaseFrame}
