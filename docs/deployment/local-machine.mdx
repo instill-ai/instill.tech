@@ -1,0 +1,33 @@
+---
+title: "Deploy VDP Open Source into your local machine"
+lang: "en-US"
+draft: false
+description: "Learn about how to deploy the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+:::info{type=info}
+These instructions have been tested on MacOS.
+- Docker version: 4.12.0
+:::
+
+## Setup and launch VDP
+
+Install Docker and docker-compose on your local machine (see [instructions](https://www.docker.com/products/docker-desktop/)).
+
+On the local machine, clone `vdp` repository in your workspace, move to the repository folder, and launch all dependent microservices:
+
+```shellscript
+# Clone VDP project
+cd <your-workspace>
+git clone https://github.com/instill-ai/vdp.git
+cd vdp
+
+# launch all VDP's services
+make all
+```
+
+In your browser, just visit http://localhost:3000 and start using VDP to make your own data ETL (refer to [Tutorial](http://localhost:3010/docs/tutorials/build-a-sync-cls-pipeline) sections). 
+
+## Troubleshooting
+
+If you encounter any issues, just connect to our Slack or Discord. Our community will help! We also have a troubleshooting section in our docs for common problems.

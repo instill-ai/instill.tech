@@ -36,6 +36,20 @@ const SIDEBAR: Sidebar = {
         ],
       },
       {
+        text: "Deploy VDP Open Source",
+        collapsible: true,
+        items: [
+          {
+            text: "On your local machine",
+            link: "/docs/deployment/local-machine",
+          },
+          {
+            text: "On local Kubernetes",
+            link: "/docs/deployment/local-kubernetes",
+          },
+        ],
+      },
+      {
         text: "Tutorials",
         collapsible: true,
         items: [

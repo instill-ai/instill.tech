@@ -1,0 +1,67 @@
+---
+title: "Deploy VDP Open Source into your local Kubernetes"
+lang: "en-US"
+draft: false
+description: "Learn about how to deploy the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+:::info{type=info}
+These instructions have been tested on MacOS with:
+- minikube version: v1.27.1
+- kind version: v0.17.0
+- Docker version: 4.12.0
+:::
+
+This page guides you through deploying Visual Data Preparation (VDP) Open Source on local Kubernetes. <br />
+To test locally, you can use one of the following local Kubernetes tools: <br />
+- [Docker Desktop](https://docs.docker.com/desktop/) with [Kubernetes enabled](https://docs.docker.com/desktop/kubernetes/#enable-kubernetes)
+- [Minikube](https://docs.docker.com/desktop/kubernetes/#enable-kubernetes)
+- [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+
+Following setup tools and create a local Kubernetes cluster step as below, you could easily create a local Kubernetes cluster with Minikube or Kind. <br />
+In case of using Docker Desktop with Kubernetes enabled or you already have a local Kubernetes cluster created by your own tools, you could jump to deploy services step.
+:::info{type=info}
+If you using Docker Desktop with Kubernetes enabled, please run `make pull` at setup tools step to download all docker images before deploying services.
+:::
+
+## Setup tools
+
+On the local machine, clone `vdp` repository in your workspace, move to the repository folder, and setup tools such as Minikube or Kind for creating a local Kubernetes cluster and Helm to deploy services into the cluster:
+
+```shellscript
+# Clone VDP project
+cd <your-workspace>
+git clone https://github.com/instill-ai/vdp.git
+cd vdp/charts
+
+# Download local Kubernetes tool such as Minikube or Kind
+# Note Minikube limit download docker image within 2 minutes then this step will support minikube ssh to download large docker images including Triton Server and [Triton Conda Environment](https://github.com/instill-ai/triton-python-model)
+make setup (or make setup kube=minikube) # default install minikube
+# If you want use Kind, specify kube=kind
+make setup kube=kind
+# If you use Docker Desktop with Kubernetes enabled, download all docker images with below command.
+# Otherwise, please skip it
+make pull
+```
+
+## Create a local Kubernetes cluster
+```shellscript
+# create a local Kubernetes using tools such as Minikube or Kind
+make start (or make start kube=minikube) # default using minikube
+# If you want use Kind, specify kube=kind
+make start kube=kind
+```
+
+## Deploy services
+```shellscript
+# deploy database, redis, namespace and secret
+make init
+# deploy Instill services
+make install
+```
+
+In your browser, just visit http://localhost:3000 and start using VDP to make your own data ETL (refer to [Tutorial](http://localhost:3010/docs/tutorials/build-a-sync-cls-pipeline) sections).
+
+## Troubleshooting
+
+If you encounter any issues, just connect to our Slack or Discord. Our community will help! We also have a troubleshooting section in our docs for common problems.
