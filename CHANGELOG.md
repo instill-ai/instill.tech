@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.19.0](https://github.com/instill-ai/instill.tech/compare/v1.18.0...v1.19.0) (2022-11-21)
+
+
+### Features
+
+* implement open close toggle flag for career list ([#361](https://github.com/instill-ai/instill.tech/issues/361)) ([6e8314e](https://github.com/instill-ai/instill.tech/commit/6e8314e38073b6198a15691c3af50ceb7de095f6))
+* optimize landing page ([#364](https://github.com/instill-ai/instill.tech/issues/364)) ([0f4e595](https://github.com/instill-ai/instill.tech/commit/0f4e595d2e2900dfe2a022b8aa70be08005a0d92))
+* remove status field and utilize clickup inherit statues ([#366](https://github.com/instill-ai/instill.tech/issues/366)) ([d759ce3](https://github.com/instill-ai/instill.tech/commit/d759ce33f7870631f21ed7bc090444435e66bc8e))
+* update announcement ([#358](https://github.com/instill-ai/instill.tech/issues/358)) ([b22fc33](https://github.com/instill-ai/instill.tech/commit/b22fc33f95f014b53f37c6855f8eb64af6c568d8))
+* update footer style ([#365](https://github.com/instill-ai/instill.tech/issues/365)) ([5aee983](https://github.com/instill-ai/instill.tech/commit/5aee983443b9c950e39d336fd5cf9e5a9c9b7df2))
+
+
+### Bug Fixes
+
+* fix word spacing at AboutPage and CareerPage ([#356](https://github.com/instill-ai/instill.tech/issues/356)) ([501cb49](https://github.com/instill-ai/instill.tech/commit/501cb4961b6dea019a65efa42e13d7d447a1837e))
+* replace work-safety case study icon ([#359](https://github.com/instill-ai/instill.tech/issues/359)) ([7dcc935](https://github.com/instill-ai/instill.tech/commit/7dcc9350d534ab873e79b1bd7d422cfe26e7836a))
+
 ## [1.18.0](https://github.com/instill-ai/instill.tech/compare/v1.17.1...v1.18.0) (2022-11-18)
 
 
