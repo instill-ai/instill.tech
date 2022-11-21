@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { useOnScreen } from "../../../hooks/useOnScreen";
+import { useInView } from "react-intersection-observer";
 
 export const HeroAnimation = () => {
   // Init the gsap selector and react reference
@@ -10,8 +10,7 @@ export const HeroAnimation = () => {
   const tl = useRef<GSAPTimeline>();
 
   // We will pause any animation outside of user observed view
-  const heroObserver = useRef<HTMLDivElement>();
-  const isOnScreen = useOnScreen(heroObserver, true);
+  const [heroRef, heroIsInView] = useInView({});
 
   // Put every function or array into useEffect to prevent unnecessary render
   useEffect(() => {
@@ -400,16 +399,16 @@ export const HeroAnimation = () => {
   }, []);
 
   useEffect(() => {
-    if (isOnScreen) {
+    if (heroIsInView) {
       tl.current.play();
       return;
     }
 
     tl.current.pause();
-  }, [isOnScreen]);
+  }, [heroIsInView]);
 
   return (
-    <div className="hero-animation-observer" ref={heroObserver}>
+    <div className="hero-animation-observer" ref={heroRef}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 838 638"

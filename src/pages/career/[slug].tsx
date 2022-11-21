@@ -13,7 +13,6 @@ import {
 } from "@/components/ui";
 
 import { PositionInfo } from "@/types/instill";
-import { useOnScreen } from "../../hooks/useOnScreen";
 import {
   ClickUpTask,
   getClickUpTaskQuery,
@@ -21,6 +20,7 @@ import {
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
 import { handle } from "@/lib/utils";
+import { useInView } from "react-intersection-observer";
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)
@@ -118,19 +118,9 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
   }
 
   // lazy load stayInTheLoop
-  const stayInTheLoopRef = useRef<HTMLDivElement>();
-
-  const [loadStayInTheLoop, setLoadStayInTheLoop] = useState(false);
-  const stayInTheLoopIsOnScreen = useOnScreen(
-    stayInTheLoopRef,
-    !loadStayInTheLoop
-  );
-
-  useEffect(() => {
-    if (stayInTheLoopIsOnScreen && !loadStayInTheLoop) {
-      setLoadStayInTheLoop(true);
-    }
-  }, [stayInTheLoopIsOnScreen, loadStayInTheLoop]);
+  const [stayInTheLoopRef, stayInTheLoopIsInView] = useInView({
+    triggerOnce: true,
+  });
 
   return (
     <>
@@ -148,7 +138,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
           className="mb-20 flex px-4 xl:mb-40 xl:px-0"
           ref={stayInTheLoopRef}
         >
-          {loadStayInTheLoop && <StayInTheLoop />}
+          {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
       </div>
     </>
