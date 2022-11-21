@@ -1,20 +1,27 @@
 import { RefObject, useEffect, useState } from "react";
 
-/**
- *
- * @param ref - React ref<HTMLDivElement>
- * @returns whether the element is on the screen or not
- */
+export type UseOnScreenProps = {
+  ref: RefObject<HTMLDivElement>;
+  activate: boolean;
+  options?: {
+    // If the ref component is already on screen, and the isIntersecting
+    // state is true, we don't update it anymore.
+    once: boolean;
+    rootMargin?: string;
+  };
+};
 
-export const useOnScreen = (
-  ref: RefObject<HTMLDivElement>,
-  activate: boolean,
-  rootMargin?: string
-): boolean => {
+export const useOnScreen = ({
+  ref,
+  activate,
+  options,
+}: UseOnScreenProps): boolean => {
   const [isIntersecting, setIntersecting] = useState(false);
+  const { once, rootMargin } = options;
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (once && isIntersecting) return;
         setIntersecting(entry.isIntersecting);
       },
       { rootMargin: rootMargin ? rootMargin : "0px" }
