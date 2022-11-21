@@ -147,6 +147,34 @@ const mockClickUpTask: ClickUpTask = {
       value: 0,
       required: false,
     },
+    {
+      id: "a335016b-6bef-4f7c-9e3e-bd943424324b5",
+      name: "status",
+      type: "drop_down",
+      type_config: {
+        default: 0,
+        placeholder: null,
+        new_drop_down: true,
+        options: [
+          {
+            id: "08a31a6b-2c7a-4509-8bd6-eae83459209d",
+            name: "open",
+            color: null,
+            orderindex: 0,
+          },
+          {
+            id: "f4a886ed-da50-4806-91e9-9eb123545d4e",
+            name: "close",
+            color: null,
+            orderindex: 1,
+          },
+        ],
+      },
+      date_created: "1646376566325",
+      hide_from_guests: false,
+      value: 0,
+      required: false,
+    },
   ],
   dependencies: [],
   linked_tasks: [],
@@ -189,4 +217,5 @@ test("This should transform clickUp task into position details", () => {
   expect(positionDetails.stockOptions).toBe("0.1% - 0.3%");
   expect(positionDetails.workType).toBe("Full time");
   expect(positionDetails.slug).toBe("full-stack-ai-engineer");
+  expect(positionDetails.status).toBe("open");
 });

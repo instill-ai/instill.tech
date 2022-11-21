@@ -69,6 +69,7 @@ export const transformClickUpTaskToPositionDetails = (
     packageUK: getCustomTextFieldValue("package_uk", task),
     packageTW: getCustomTextFieldValue("package_tw", task),
     postDate: getCustomTextFieldValue("post_date", task),
+    status: getCustomSingleSelectFieldValue("status", task) as "close" | "open",
   };
 };
 

@@ -37,13 +37,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       error
     );
     return {
-      props: {
-        position: null,
+      redirect: {
+        destination: "/404",
+        permanent: false,
       },
+      revalidate: 10,
     };
   }
 
   const positionDetails = transformClickUpTaskToPositionDetails(task);
+
+  if (positionDetails.status === "close") {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+      revalidate: 10,
+    };
+  }
 
   return {
     props: {
@@ -65,11 +77,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     for (const task of tasks) {
       const position = transformClickUpTaskToPositionDetails(task);
-      paths.push({
-        params: {
-          slug: `${position.id}-${position.slug}`,
-        },
-      });
+      if (position.status === "open") {
+        paths.push({
+          params: {
+            slug: `${position.id}-${position.slug}`,
+          },
+        });
+      }
     }
   } catch (err) {
     console.error(
