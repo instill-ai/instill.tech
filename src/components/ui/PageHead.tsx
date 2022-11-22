@@ -1,16 +1,19 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { ReactElement } from "react";
 
 export type PageHeadProps = {
   pageTitle: string;
   pageDescription?: string;
   pageType: "main" | "docs";
+  additionMeta?: ReactElement;
 };
 
 export const PageHead = ({
   pageTitle,
   pageDescription,
   pageType,
+  additionMeta,
 }: PageHeadProps) => {
   const router = useRouter();
 
@@ -43,6 +46,7 @@ export const PageHead = ({
         <meta name="twitter:site" content={meta.siteName} />
         <meta name="twitter:title" content={meta.pageTitle} />
         <meta name="twitter:description" content={meta.pageDescription} />
+        {additionMeta}
 
         {pageType === "main" ? (
           <>
