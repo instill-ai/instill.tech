@@ -6,7 +6,7 @@ specifiers:
   '@code-hike/mdx': ^0.7.3
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
-  '@docsearch/js': '3'
+  '@docsearch/react': ^3.3.0
   '@instill-ai/design-system': ^0.0.130
   '@mailchimp/mailchimp_marketing': ^3.0.72
   '@mdx-js/loader': ^2.1.2
@@ -97,7 +97,7 @@ specifiers:
 dependencies:
   '@algolia/client-search': 4.14.2
   '@code-hike/mdx': 0.7.3_react@17.0.2
-  '@docsearch/js': 3.3.0_bfuehj63lhrswk37rv2llps2f4
+  '@docsearch/react': 3.3.0_bfuehj63lhrswk37rv2llps2f4
   '@instill-ai/design-system': 0.0.130_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
   '@react-hook/resize-observer': 1.2.6_react@17.0.2
@@ -1933,18 +1933,6 @@ packages:
 
   /@docsearch/css/3.3.0:
     resolution: {integrity: sha512-rODCdDtGyudLj+Va8b6w6Y85KE85bXRsps/R4Yjwt5vueXKXZQKYw0aA9knxLBT6a/bI/GMrAcmCR75KYOM6hg==}
-    dev: false
-
-  /@docsearch/js/3.3.0_bfuehj63lhrswk37rv2llps2f4:
-    resolution: {integrity: sha512-oFXWRPNvPxAzBhnFJ9UCFIYZiQNc3Yrv6912nZHw/UIGxsyzKpNRZgHq8HDk1niYmOSoLKtVFcxkccpQmYGFyg==}
-    dependencies:
-      '@docsearch/react': 3.3.0_bfuehj63lhrswk37rv2llps2f4
-      preact: 10.11.3
-    transitivePeerDependencies:
-      - '@algolia/client-search'
-      - '@types/react'
-      - react
-      - react-dom
     dev: false
 
   /@docsearch/react/3.3.0_bfuehj63lhrswk37rv2llps2f4:
@@ -13278,10 +13266,6 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
-
-  /preact/10.11.3:
-    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
-    dev: false
 
   /prebuild-install/7.1.1:
     resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
