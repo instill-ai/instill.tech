@@ -203,7 +203,7 @@ const DocsPage: FC<DocsPageProps> & {
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
         pageDescription={mdxSource.frontmatter.description}
         pageType="docs"
-        additionMetas={
+        additionMeta={
           <>
             <meta name="docsearch:language" content="en" />
             <meta name="docsearch:version" content="3.0.0" />

@@ -4,6 +4,7 @@ import { ReactElement, ReactNode } from "react";
 import "../styles/global.css";
 import "@/style/codeHike.css";
 import "../styles/docs.css";
+import "@docsearch/css";
 
 import "intersection-observer";
 import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
