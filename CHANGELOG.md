@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.19.1](https://github.com/instill-ai/instill.tech/compare/v1.19.0...v1.19.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* fix landing page canonical link ([#370](https://github.com/instill-ai/instill.tech/issues/370)) ([a5118d8](https://github.com/instill-ai/instill.tech/commit/a5118d8990bc60793f1a88ecc1c90db70eaa3d11))
+* remove trailing slash ([#368](https://github.com/instill-ai/instill.tech/issues/368)) ([b7f0ff9](https://github.com/instill-ai/instill.tech/commit/b7f0ff92ae6f2e07af64089533b4702fa07d66e2))
+
 ## [1.19.0](https://github.com/instill-ai/instill.tech/compare/v1.18.0...v1.19.0) (2022-11-21)
 
 
