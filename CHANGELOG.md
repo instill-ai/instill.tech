@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.20.0](https://github.com/instill-ai/instill.tech/compare/v1.19.1...v1.20.0) (2022-11-23)
+
+
+### Features
+
+* Implement docsearch ([#372](https://github.com/instill-ai/instill.tech/issues/372)) ([4604d9c](https://github.com/instill-ai/instill.tech/commit/4604d9c0cf0eee16a932fb161a712d578f9ba3f3))
+* update Navbar style ([#376](https://github.com/instill-ai/instill.tech/issues/376)) ([0f8e089](https://github.com/instill-ai/instill.tech/commit/0f8e0890431a11b6c619f4f46bade1ab2393b477))
+
+
+### Bug Fixes
+
+* fix landing page dynamic load issue ([#375](https://github.com/instill-ai/instill.tech/issues/375)) ([603c0c6](https://github.com/instill-ai/instill.tech/commit/603c0c6f7e64ae93f34aeb0f8e08d3d51e9bdbdd))
+
 ## [1.19.1](https://github.com/instill-ai/instill.tech/compare/v1.19.0...v1.19.1) (2022-11-22)
 
 
