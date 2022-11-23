@@ -42,9 +42,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             }
           `}
         </style>
-        <div className="flex w-full md:hidden">
+        <div className="flex md:hidden">
           <button
-            className="my-auto ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
+            className="my-auto flex h-[36px] w-[36px] rounded-[3px] bg-instillGrey05 hover:bg-instillGrey20"
             onClick={() => setMobileNavOpen((prev) => !prev)}
           >
             {mobileNavOpen ? (
@@ -153,7 +153,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         )}
 
         <div className="flex flex-1 flex-row">
-          <div className="flex flex-grow flex-row xl:mr-5">
+          <div className="flex flex-grow flex-row justify-end xl:mr-5">
             <div className="mr-5">
               <DocSearch
                 appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID}

@@ -59,7 +59,7 @@ span.DocSearch-Button-Placeholder {
 }
 
 .DocSearch-Hit[aria-selected='true'] a {
-  background-color: #A5A5A5 !important;
+  background-color: #02D085 !important;
 }
 
 /*
@@ -68,12 +68,12 @@ span.DocSearch-Button-Placeholder {
 
 .DocSearch-Form {
   border-color: #A5A5A5 !important;
-  border-width: 2px;
+  border-width: 1px;
   box-shadow: none !important;
 }
 
 div.DocSearch-Hit-source {
-  color: #2B2B2B !important;
+  color: #A5A5A5 !important;
 }
 
 .DocSearch-Cancel {
@@ -89,13 +89,8 @@ div.DocSearch-Hit-source {
   box-shadow: none !important;
   background-color: #E4E4E4 !important;
   background: none !important;
-  padding: 2px 0 0 0 !important;
+  padding: 1px 0 0 0 !important;
 }
-
-/* .DocSearch-Hit[aria-selected="true"] {
-  background-color: #02D085 !important;
-} */
-
 
 /*
   Because we have sticky header, every time we jump to the anchor link, the header will
