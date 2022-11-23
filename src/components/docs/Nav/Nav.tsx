@@ -35,11 +35,12 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
   const mobileView = useMemo(() => {
     return (
       <>
-        <style jsx>{`
-          .docs-mobile-nav-list {
-            top: calc(var(--docs-nav-height) + var(--docs-sub-nav-height));
-          }
-        `}
+        <style jsx>
+          {`
+            .docs-mobile-nav-list {
+              top: calc(var(--docs-nav-height) + var(--docs-sub-nav-height));
+            }
+          `}
         </style>
         <div className="flex w-full md:hidden">
           <button
@@ -65,12 +66,12 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           {mobileNavOpen && (
             <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-8 py-10 px-4">
               {items.left.map((item) => (
-                <div key={item.label}>
+                <div key={item.key}>
                   <Item item={item} />
                 </div>
               ))}
               {items.right.map((item) => (
-                <div key={item.label}>
+                <div key={item.key}>
                   <Item item={item} />
                 </div>
               ))}
@@ -92,7 +93,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           >
             {items.left.map((item) => (
-              <Item key={item.label} item={item} />
+              <Item key={item.key} item={item} />
             ))}
           </div>
           <div
@@ -102,7 +103,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           >
             {items.right.map((item) => (
-              <Item key={item.label} item={item} />
+              <Item key={item.key} item={item} />
             ))}
           </div>
         </div>
@@ -160,7 +161,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                 indexName="instill"
               />
             </div>
-
             {desktopView}
             {mobileView}
           </div>
