@@ -43,6 +43,7 @@ export type NavConfig = {
 };
 
 export type NavInteriorLinkItem = {
+  key: string;
   to: string;
   label: string;
   position: "right" | "left";
@@ -56,10 +57,10 @@ export type NavInteriorLinkItem = {
 };
 
 export type NavExteriorLinkItem = {
+  key: string;
   href: string;
   className: string;
   position: "right" | "left";
-
   // If src is present, label will not be displayed, it will display the icon and the aria-label with label as value
   label: string;
   iconElement?: ReactElement;
@@ -71,7 +72,16 @@ export type NavExteriorLinkItem = {
   };
 };
 
-export type NavbarItem = NavInteriorLinkItem | NavExteriorLinkItem;
+export type NavbarBorderItem = {
+  key: string;
+  position: "right" | "left";
+  border: boolean;
+};
+
+export type NavbarItem =
+  | NavInteriorLinkItem
+  | NavExteriorLinkItem
+  | NavbarBorderItem;
 
 export const isInteriorLink = (
   item: NavbarItem
@@ -84,6 +94,11 @@ export const isExteriorLink = (
   item: NavbarItem
 ): item is NavExteriorLinkItem => {
   if ("href" in item) return true;
+  return false;
+};
+
+export const isBorder = (item: NavbarItem): item is NavbarBorderItem => {
+  if ("border" in item) return true;
   return false;
 };
 

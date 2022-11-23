@@ -203,13 +203,22 @@ const DocsPage: FC<DocsPageProps> & {
         pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
         pageDescription={mdxSource.frontmatter.description}
         pageType="docs"
+        additionMeta={
+          <>
+            <meta name="docsearch:language" content="en" />
+            <meta name="docsearch:version" content="3.0.0" />
+          </>
+        }
       />
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-3xl font-semibold">
             {mdxSource.frontmatter.title}
           </h1>
-          <article id="content" className="prose prose-black mb-20 max-w-none">
+          <article
+            id="content"
+            className="DocSearch-content prose prose-black mb-20 max-w-none"
+          >
             <MDXRemote {...mdxSource} components={{ CH }} />
           </article>
           <div className="mb-8 flex w-full flex-row gap-x-2 border-b pb-6">

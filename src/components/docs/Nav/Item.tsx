@@ -1,15 +1,32 @@
 import Image from "next/future/image";
 
-import { isExteriorLink, isInteriorLink, NavbarItem } from "@/types/docs";
+import {
+  isBorder,
+  isExteriorLink,
+  isInteriorLink,
+  NavbarItem,
+} from "@/types/docs";
 
 export type ItemProps = {
   item: NavbarItem;
 };
 
 export const Item = ({ item }: ItemProps) => {
+  if (isBorder(item)) {
+    return (
+      <div className="grid grid-cols-2 py-2">
+        <div className="border-r border-black" />
+        <div />
+      </div>
+    );
+  }
+
   if (isInteriorLink(item)) {
     return (
-      <a className="my-auto text-sm font-normal" href={item.to}>
+      <a
+        className="my-auto text-sm font-normal hover:text-instillBlue50"
+        href={item.to}
+      >
         {item.label}
       </a>
     );
@@ -34,7 +51,7 @@ export const Item = ({ item }: ItemProps) => {
         ) : item.iconElement ? (
           item.iconElement
         ) : (
-          <p className="my-auto">{item.label}</p>
+          <p className="my-auto hover:text-instillBlue50">{item.label}</p>
         )}
       </a>
     );

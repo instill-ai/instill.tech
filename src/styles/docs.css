@@ -2,11 +2,100 @@
   --docs-nav-height: 72px;
   --docs-nav-margin-bottom: 32px;
   --docs-left-sidebar-logo-height: var(--docs-nav-height);
+  --docs-sub-nav-height: 52px;
   --docs-left-sidebar-logo-margin-bottom: var(--docs-nav-margin-bottom);
   --docs-left-sidebar-max-width: 240px;
   --docs-right-sidebar-max-width: var(--docs-left-sidebar-max-width);
   --docs-content-max-width: 1140px
 }
+
+/*
+  DocSearch styles
+*/
+
+.DocSearch-Button {
+  border-radius: 2px !important;
+  background-color: #F6F6F6 !important;
+  column-gap: 20px !important;
+  margin: 0px !important;
+  padding: 0px 12px !important;
+} 
+
+@media screen and (min-width: 768px) {
+  .DocSearch-Button {
+    padding: 0px 16px !important;
+  } 
+}
+
+span.DocSearch-Button-Keys  {
+  min-width: 32px !important;
+  border-width: 1px !important;
+  border-color: #A5A5A5 !important;
+  border-radius: 4px !important;
+}
+
+span.DocSearch-Button-Placeholder {
+  font-size: 16px !important;
+  font-weight: 400;
+}
+
+.DocSearch-Search-Icon {
+  width: 14px !important;
+}
+
+.DocSearch-Button-Container {
+  margin: 0 auto 0 0 !important;
+}
+
+.DocSearch-Button-Key {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background-color: #E4E4E4 !important;
+  background: none !important;
+  padding: 3px 0 0 0 !important;
+  margin: auto 0 !important;
+  width: 16px !important;
+  font-size: 14px !important;
+}
+
+.DocSearch-Hit[aria-selected='true'] a {
+  background-color: #A5A5A5 !important;
+}
+
+/*
+  DocSearch modal search box
+*/
+
+.DocSearch-Form {
+  border-color: #A5A5A5 !important;
+  border-width: 2px;
+  box-shadow: none !important;
+}
+
+div.DocSearch-Hit-source {
+  color: #2B2B2B !important;
+}
+
+.DocSearch-Cancel {
+  color: #2B2B2B !important;
+}
+
+/*
+  DocSearch modal key instruction
+*/
+
+.DocSearch-Commands-Key {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background-color: #E4E4E4 !important;
+  background: none !important;
+  padding: 2px 0 0 0 !important;
+}
+
+/* .DocSearch-Hit[aria-selected="true"] {
+  background-color: #02D085 !important;
+} */
+
 
 /*
   Because we have sticky header, every time we jump to the anchor link, the header will

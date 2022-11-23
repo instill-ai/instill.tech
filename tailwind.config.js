@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@instill-ai/design-system/build/*.js",
+    "./docs.config.tsx",
   ],
   theme: {
     extend: {

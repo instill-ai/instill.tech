@@ -14,6 +14,7 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
         {`
           .sub-nav {
             top: var(--docs-nav-height);
+            height: var(--docs-sub-nav-height);
           }
         `}
       </style>
