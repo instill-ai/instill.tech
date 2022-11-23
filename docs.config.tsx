@@ -153,19 +153,26 @@ const NAV: NavConfig = {
   },
   items: [
     {
+      key: "docs-nav-product-webiste",
       to: "/",
       className: "",
       position: "right",
       label: "Product website",
     },
     {
+      key: "docs-nav-item-1",
+      position: "right",
+      border: true,
+    },
+    {
+      key: "docs-nav-item-border-discord-link",
       href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK,
       className: "discord-social-link",
       iconElement: (
         <DiscordIcon
-          width="w-[30px]"
-          height="h-[30px]"
-          color="fill-instillGrey95"
+          width="w-[24px]"
+          height="h-[24px]"
+          color="fill-instillGrey95 hover:fill-instillBlue50"
           position="my-auto"
         />
       ),
@@ -173,13 +180,14 @@ const NAV: NavConfig = {
       label: "discord",
     },
     {
+      key: "docs-nav-item--github-link",
       href: "https://github.com/instill-ai/vdp",
       className: "github-social-link",
       iconElement: (
         <GitHubIcon
-          width="w-[30px]"
-          height="h-[30px]"
-          color="fill-instillGrey95"
+          width="w-[24px]"
+          height="h-[24px]"
+          color="fill-instillGrey95 hover:fill-instillBlue50"
           position="my-auto"
         />
       ),
