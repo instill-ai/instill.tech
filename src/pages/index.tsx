@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
+import { FC, ReactElement, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import { parse } from "yaml";
 import cn from "clsx";
@@ -99,10 +99,6 @@ const HomePage: FC<HomePageProps> & {
   }, [enableAnnouncementBar]);
 
   // Implement Lazy load
-  // const [heroIsInViewRef, heroIsInView] = useInView({
-  //   triggerOnce: true,
-  // });
-
   const rootMargin = "100px 0px 0px 0px";
 
   const [vdpIsInViewRef, vdpIsInView] = useInView({
@@ -140,11 +136,6 @@ const HomePage: FC<HomePageProps> & {
     rootMargin,
   });
 
-  const [instillCloudIsInViewRef, instillCloudIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
   return (
     <>
       <PageHead
@@ -160,15 +151,15 @@ const HomePage: FC<HomePageProps> & {
           </div>
           <div
             ref={howItWorksIsInViewRef}
-            className={howItWorksIsInView ? "" : "mb-20"}
+            className={vdpIsInView ? "" : "mb-20"}
           >
-            {howItWorksIsInView ? <HowItWorks /> : null}
+            {vdpIsInView ? <HowItWorks /> : null}
           </div>
           <div
             ref={noCodeInterfaceIsInViewRef}
-            className={noCodeInterfaceIsInView ? "" : "mb-20"}
+            className={howItWorksIsInView ? "" : "mb-20"}
           >
-            {noCodeInterfaceIsInView ? <NoCodeInterface /> : null}
+            {howItWorksIsInView ? <NoCodeInterface /> : null}
           </div>
         </div>
 
@@ -177,16 +168,16 @@ const HomePage: FC<HomePageProps> & {
             ref={communityIsInViewRef}
             className={cn(
               "mx-auto max-w-[1127px] px-4 xl:px-0",
-              communityIsInView ? "" : "mb-20"
+              noCodeInterfaceIsInView ? "" : "mb-20"
             )}
           >
-            {communityIsInView ? <Community /> : null}
+            {noCodeInterfaceIsInView ? <Community /> : null}
           </div>
           <div
             ref={caseStudyIsInViewRef}
-            className={caseStudyIsInView ? "" : "mb-20"}
+            className={communityIsInView ? "" : "mb-20"}
           >
-            {caseStudyIsInView ? (
+            {communityIsInView ? (
               <CaseStudy destinations={destinations} />
             ) : null}
           </div>
@@ -195,17 +186,17 @@ const HomePage: FC<HomePageProps> & {
             ref={codeShowcaseIsInViewRef}
             className={cn(
               "mx-auto max-w-[1127px] px-4 xl:px-0",
-              codeShowcaseIsInView ? "" : "mb-20"
+              caseStudyIsInView ? "" : "mb-20"
             )}
           >
-            {codeShowcaseIsInView ? <CodeShowcase /> : null}
+            {caseStudyIsInView ? <CodeShowcase /> : null}
           </div>
         </div>
         <div
           ref={faqIsInViewRef}
           className="mb-20 -mt-0.5 flex w-full flex-col"
         >
-          {faqIsInView ? (
+          {codeShowcaseIsInView ? (
             <>
               <FaqHeader />
               <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
@@ -214,9 +205,7 @@ const HomePage: FC<HomePageProps> & {
             </>
           ) : null}
         </div>
-        <div ref={instillCloudIsInViewRef}>
-          {instillCloudIsInView ? <InstillCloud /> : null}
-        </div>
+        <div>{faqIsInView ? <InstillCloud /> : null}</div>
       </div>
     </>
   );

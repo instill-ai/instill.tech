@@ -13,15 +13,17 @@ export type PageBaseProps = {
 };
 
 export const PageBase = ({ children }: PageBaseProps) => {
-  const [footerRef, footerIsInView] = useInView({
+  const [contentRef, contentIsInView] = useInView({
     triggerOnce: true,
   });
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <Nav />
-      <div className="flex flex-1 flex-col">{children}</div>
-      <div ref={footerRef}>{footerIsInView ? <Footer /> : null}</div>
+      <div ref={contentRef} className="flex flex-1 flex-col">
+        {children}
+      </div>
+      <div>{contentIsInView ? <Footer /> : null}</div>
     </div>
   );
 };
