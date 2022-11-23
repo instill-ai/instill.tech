@@ -1,11 +1,13 @@
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import cn from "clsx";
 import Image from "next/future/image";
 import Link from "next/link";
+import { DocSearch } from "@docsearch/react";
 
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
+import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
 
 export type NavProps = {
   nav: NavConfig;
@@ -13,6 +15,8 @@ export type NavProps = {
 };
 
 export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
   const items = useMemo(() => {
     let left: NavbarItem[] = [];
     let right: NavbarItem[] = [];
@@ -28,15 +32,90 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
     return { left, right };
   }, [nav]);
 
+  const mobileView = useMemo(() => {
+    return (
+      <>
+        <style jsx>{`
+          .docs-mobile-nav-list {
+            top: calc(var(--docs-nav-height) + var(--docs-sub-nav-height));
+          }
+        `}
+        </style>
+        <div className="flex w-full md:hidden">
+          <button
+            className="my-auto ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
+            onClick={() => setMobileNavOpen((prev) => !prev)}
+          >
+            {mobileNavOpen ? (
+              <CrossIcon
+                width="w-6"
+                height="h-6"
+                color="fill-instillGrey90"
+                position="m-auto"
+              />
+            ) : (
+              <MenuIcon
+                width="w-6"
+                height="h-6"
+                color="fill-instillGrey90"
+                position="m-auto"
+              />
+            )}
+          </button>
+          {mobileNavOpen && (
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-8 py-10 px-4">
+              {items.left.map((item) => (
+                <div key={item.label}>
+                  <Item item={item} />
+                </div>
+              ))}
+              {items.right.map((item) => (
+                <div key={item.label}>
+                  <Item item={item} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </>
+    );
+  }, [mobileNavOpen, items.left, items.right]);
+
+  const desktopView = useMemo(() => {
+    return (
+      <>
+        <div className="hidden flex-grow flex-row md:flex">
+          <div
+            className={cn(
+              "flex flex-row",
+              items.left.length === 0 ? "flex-shrink" : "grow"
+            )}
+          >
+            {items.left.map((item) => (
+              <Item key={item.label} item={item} />
+            ))}
+          </div>
+          <div
+            className={cn(
+              "flex flex-row justify-end gap-x-5",
+              items.right.length === 0 ? "flex-shrink" : "grow"
+            )}
+          >
+            {items.right.map((item) => (
+              <Item key={item.label} item={item} />
+            ))}
+          </div>
+        </div>
+      </>
+    );
+  }, [items]);
+
   return (
     <>
       <style jsx>
         {`
           .nav {
             min-height: var(--docs-nav-height);
-          }
-          .sub-nav {
-            top: var(--docs-nav-height);
           }
 
           @media screen and (min-width: 768px) {
@@ -73,25 +152,17 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         )}
 
         <div className="flex flex-1 flex-row">
-          <div
-            className={cn(
-              "flex flex-row",
-              items.left.length === 0 ? "flex-shrink" : "grow"
-            )}
-          >
-            {items.left.map((item) => (
-              <Item key={item.label} item={item} />
-            ))}
-          </div>
-          <div
-            className={cn(
-              "flex flex-row justify-end gap-x-5",
-              items.right.length === 0 ? "flex-shrink" : "grow"
-            )}
-          >
-            {items.right.map((item) => (
-              <Item key={item.label} item={item} />
-            ))}
+          <div className="flex flex-grow flex-row xl:mr-5">
+            <div className="mr-5">
+              <DocSearch
+                appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID}
+                apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY}
+                indexName="instill"
+              />
+            </div>
+
+            {desktopView}
+            {mobileView}
           </div>
         </div>
       </nav>
