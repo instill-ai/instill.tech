@@ -14,8 +14,8 @@ export type ItemProps = {
 export const Item = ({ item }: ItemProps) => {
   if (isBorder(item)) {
     return (
-      <div className="grid grid-cols-2 py-2">
-        <div className="border-r border-black" />
+      <div className="grid grid-cols-1 py-2 md:grid-cols-2">
+        <div className="border-b border-black md:border-r" />
         <div />
       </div>
     );
