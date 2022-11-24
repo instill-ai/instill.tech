@@ -180,6 +180,8 @@ export const BlueprintContainer = ({
     setLineDataset(generateLineDataset(parentDimension, childrenDimension));
   }, [parentDimension, childrenDimension, unitHeight, unitWidth, alignWith]);
 
+  // We draw the dotted lines here
+
   useEffect(() => {
     if (!lineDataset) return;
 
@@ -198,7 +200,7 @@ export const BlueprintContainer = ({
             .attr("x2", (d) => d.x2)
             .attr("y1", (d) => d.y1)
             .attr("y2", (d) => d.y2)
-            .style("stroke", "#C0C0C0")
+            .style("stroke", "#5c5c5c")
             .style("stroke-width", "1px")
             .style("stroke-dasharray", "5,3"),
         (update) => update,

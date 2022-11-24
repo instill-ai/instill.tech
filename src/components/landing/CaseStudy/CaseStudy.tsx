@@ -1087,7 +1087,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
             marginBottom="mb-2.5"
           />
           <SectionHeader
-            header="VDP integration in AI lifecycle"
+            header="Transform your business with VDP"
             headerWidth="w-full"
             headerTextColor="text-white"
             marginBottom="mb-10"
