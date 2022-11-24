@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/instill-ai/instill.tech/compare/v1.20.0...v1.21.0) (2022-11-24)
+
+
+### Features
+
+* update Blueprint line color and the CaseStudy title ([#377](https://github.com/instill-ai/instill.tech/issues/377)) ([f8444b3](https://github.com/instill-ai/instill.tech/commit/f8444b3deedc04d61b48e698b05ef19e9dd6b1bf))
+
 ## [1.20.0](https://github.com/instill-ai/instill.tech/compare/v1.19.1...v1.20.0) (2022-11-23)
 
 
