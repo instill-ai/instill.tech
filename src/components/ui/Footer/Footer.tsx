@@ -27,7 +27,7 @@ export const Footer = () => {
       },
       {
         icon: <DiscordIcon {...socialIconStyle} />,
-        href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK,
+        href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
       },
       {
         icon: <TwitterIcon {...socialIconStyle} />,

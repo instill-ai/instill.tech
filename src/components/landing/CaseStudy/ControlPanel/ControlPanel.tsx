@@ -159,6 +159,10 @@ export const ControlPanel = ({
       return;
     }
 
+    if (!windowSize) {
+      return;
+    }
+
     if (windowSize.width < 768) {
       setSourceToModelLineDataset(null);
       setModelToDestLineDataset(null);

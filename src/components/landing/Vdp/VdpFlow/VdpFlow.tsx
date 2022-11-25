@@ -14,10 +14,14 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
 
   useEffect(() => {
     const updateBlocksWidth = () => {
+      if (!containerRef.current) {
+        return;
+      }
+
       const containerWidth = containerRef.current.offsetWidth;
       if (
         containerWidth >=
-        parseInt(process.env.NEXT_PUBLIC_CONTENT_MAX_WIDTH) - 10
+        parseInt(process.env.NEXT_PUBLIC_CONTENT_MAX_WIDTH || "1127") - 10
       ) {
         // The arrow's width is 65px so in order to get the width of the box we have
         // this function (a) + (a + 65) + (a + 65) = container's width

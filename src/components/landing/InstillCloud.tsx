@@ -6,14 +6,15 @@ import Image from "next/future/image";
 
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { SecureYourSpot, StayInTheLoop } from "../ui";
+import { Nullable } from "@/types/instill";
 
 export const InstillCloud = () => {
   gsap.registerPlugin(ScrollTrigger);
-  const animateTarget = useRef();
-  const stickyContainer = useRef();
+  const animateTarget = useRef<SVGSVGElement>(null);
+  const stickyContainer = useRef<HTMLDivElement>(null);
 
   // Make sure tl object is outside of render loop
-  const tl = useRef<GSAPTimeline>();
+  const tl = useRef<Nullable<GSAPTimeline>>(null);
 
   useEffect(() => {
     const q = gsap.utils.selector(animateTarget);
@@ -44,6 +45,10 @@ export const InstillCloud = () => {
         ];
 
         const addAnimationIntoTl = (id: string) => {
+          if (!tl.current) {
+            return;
+          }
+
           tl.current.to(
             q(id),
             {

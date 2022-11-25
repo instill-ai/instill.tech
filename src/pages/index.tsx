@@ -40,11 +40,11 @@ const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
 );
 
-const InstillCloud = dynamic(() =>
+const InstillCloud = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.InstillCloud)
 );
 
-const Community = dynamic(() =>
+const Community = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
 
@@ -88,7 +88,10 @@ const HomePage: FC<HomePageProps> & {
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
   const scrollHandler = useCallback(() => {
-    if (!window) return;
+    if (!window || !vdpRef.current) {
+      return;
+    }
+
     const vdpDimension = getElementPosition(vdpRef.current);
     const navbarHeight = enableAnnouncementBar ? 128 : 84;
 

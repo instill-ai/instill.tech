@@ -1,3 +1,4 @@
+import { Nullable } from "@/types/instill";
 import {
   createContext,
   Dispatch,
@@ -9,12 +10,12 @@ import {
 
 type AnnouncementBarCtxValue = {
   enableAnnouncementBar: boolean;
-  setEnableAnnouncementBar?: Dispatch<SetStateAction<boolean>>;
+  setEnableAnnouncementBar: Nullable<Dispatch<SetStateAction<boolean>>>;
 };
 
 const defaultAnnouncementBarCtxValue: AnnouncementBarCtxValue = {
   enableAnnouncementBar: true,
-  setEnableAnnouncementBar: (state: boolean) => {},
+  setEnableAnnouncementBar: null,
 };
 
 export const announcementBarCtx = createContext(defaultAnnouncementBarCtxValue);

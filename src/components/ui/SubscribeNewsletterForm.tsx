@@ -11,12 +11,17 @@ export const SubscribeNewsletterForm = ({
   position,
   width,
 }: SubscribeNewsletterFormProps) => {
-  const email = useRef<HTMLInputElement | null>(null);
+  const email = useRef<HTMLInputElement>(null);
   const [warn, setWarn] = useState(false);
   const [message, setMessage] = useState<string>();
 
   const subscribe = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!email.current) {
+      return;
+    }
+
     if (email.current.value === "") {
       setWarn(true);
       setMessage("Please fill in your email address.");

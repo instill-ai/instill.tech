@@ -731,8 +731,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       {
                         name: "invoice-table",
                         head: ["text", "number"],
-                        rows:
-                          windowSize.width > 640
+                        rows: windowSize
+                          ? windowSize.width > 640
                             ? [
                                 [
                                   "Filing Jointly or Qualifying Widow(er)",
@@ -761,7 +761,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                                 ["12/02/2021", "40,000"],
                                 ["10:38", "49,999"],
                                 ["12/02/2021", "890"],
-                              ],
+                              ]
+                          : [],
                       },
                     ]}
                   />,
@@ -838,8 +839,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       {
                         name: "workspace-category-table",
                         head: ["Category", "x", "y"],
-                        rows:
-                          windowSize.width > 640
+                        rows: windowSize
+                          ? windowSize.width > 640
                             ? [
                                 ["Unattended object", "3", "52"],
                                 ["Person 1", "12", "104"],
@@ -851,13 +852,14 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                                 ["Unattended object", "3", "52"],
                                 ["Person 1", "12", "104"],
                                 ["Person 2", "394", "502"],
-                              ],
+                              ]
+                          : [],
                       },
                       {
                         name: "workspace-skeleton-table",
                         head: ["Skeleton", "Head_x", "Head_y"],
-                        rows:
-                          windowSize.width > 640
+                        rows: windowSize
+                          ? windowSize.width > 640
                             ? [
                                 ["Person 1", "3", "52"],
                                 ["Person 2", "12", "222"],
@@ -866,7 +868,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                             : [
                                 ["Person 1", "3", "52"],
                                 ["Person 2", "12", "222"],
-                              ],
+                              ]
+                          : [],
                       },
                     ]}
                   />,
@@ -933,8 +936,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                       {
                         name: "ecommerce-table",
                         head: ["Item", "Value"],
-                        rows:
-                          windowSize.width > 640
+                        rows: windowSize
+                          ? windowSize.width > 640
                             ? [
                                 ["Name", "Summer dress"],
                                 ["Category", "Dress"],
@@ -952,7 +955,8 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                                 ["Style", "Retro"],
                                 ["Sleeve", "No sleeve"],
                                 ["Length", "Long"],
-                              ],
+                              ]
+                          : [],
                       },
                     ]}
                   />,

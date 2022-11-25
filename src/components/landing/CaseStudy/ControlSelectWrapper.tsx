@@ -4,6 +4,7 @@ import {
   BasicSingleSelect,
   SingleSelectOption,
 } from "@instill-ai/design-system";
+import { Nullable } from "@/types/instill";
 
 export type ControlSelectWrapperProps = {
   customizable: boolean;
@@ -37,9 +38,11 @@ export const ControlSelectWrapper = ({
   );
 
   const onChangehandler = useCallback(
-    (option: SingleSelectOption) => {
-      if (onChange) onChange(option);
-      setSelectOption(option);
+    (option: Nullable<SingleSelectOption>) => {
+      if (option) {
+        if (onChange) onChange(option);
+        setSelectOption(option);
+      }
     },
     [onChange]
   );

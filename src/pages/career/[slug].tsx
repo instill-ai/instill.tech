@@ -19,7 +19,6 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
-import { handle } from "@/lib/utils";
 import { useInView } from "react-intersection-observer";
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
@@ -27,14 +26,46 @@ const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
 );
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params || !params.slug) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+      revalidate: 10,
+    };
+  }
+
   const taskId = params.slug.toString().split("-")[0];
 
-  const [error, task] = await handle(getClickUpTaskQuery(taskId));
+  try {
+    const task = await getClickUpTaskQuery(taskId);
 
-  if (error) {
+    if (task.status.status !== "Open") {
+      return {
+        redirect: {
+          destination: "/404",
+          permanent: false,
+        },
+        revalidate: 10,
+      };
+    }
+
+    const positionDetails = transformClickUpTaskToPositionDetails(task);
+
+    return {
+      props: {
+        position: positionDetails,
+      },
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every 10 seconds
+      revalidate: 10,
+    };
+  } catch (err) {
     console.error(
       "Something went wrong when fetch the open position detail",
-      error
+      err
     );
     return {
       redirect: {
@@ -44,28 +75,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 10,
     };
   }
-
-  if (task.status.status !== "Open") {
-    return {
-      redirect: {
-        destination: "/404",
-        permanent: false,
-      },
-      revalidate: 10,
-    };
-  }
-
-  const positionDetails = transformClickUpTaskToPositionDetails(task);
-
-  return {
-    props: {
-      position: positionDetails,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10,
-  };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

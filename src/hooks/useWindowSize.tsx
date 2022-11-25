@@ -2,15 +2,12 @@ import { Nullable } from "@/types/instill";
 import { useState, useEffect } from "react";
 
 export type WindowSize = {
-  width: Nullable<number>;
-  height: Nullable<number>;
+  width: number;
+  height: number;
 };
 
-export const useWindowSize = (): WindowSize => {
-  const [windowSize, setWindowSize] = useState<Nullable<WindowSize>>({
-    width: null,
-    height: null,
-  });
+export const useWindowSize = (): Nullable<WindowSize> => {
+  const [windowSize, setWindowSize] = useState<Nullable<WindowSize>>(null);
 
   const getWindowSize = (): { width: number; height: number } => {
     const width =

@@ -12,7 +12,6 @@ import { CH } from "@code-hike/mdx/components";
 import { useRouter } from "next/router";
 import { h } from "hastscript";
 import { readFile } from "fs/promises";
-import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkFrontmatter from "remark-frontmatter";
@@ -41,8 +40,8 @@ type DocsParams = {
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
-  nextArticle: SidebarItem;
-  prevArticle: SidebarItem;
+  nextArticle: Nullable<SidebarItem>;
+  prevArticle: Nullable<SidebarItem>;
   lastEditedTime: Nullable<string>;
   author: Nullable<string>;
   authorGithubUrl: Nullable<string>;
@@ -66,9 +65,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
-}: DocsParams) => {
-  const fullPath = join(process.cwd(), "docs", ...params.path);
-  const relativePath = join(...params.path);
+}) => {
+  if (!params || !params.path) {
+    return {
+      notFound: true,
+    };
+  }
+
+  let fullPath: string;
+  let relativePath: string;
+
+  if (Array.isArray(params.path)) {
+    fullPath = join(process.cwd(), "docs", ...params.path);
+    relativePath = join(...params.path);
+  } else {
+    fullPath = join(process.cwd(), "docs", params.path);
+    relativePath = join(params.path);
+  }
+
   const source = fs.readFileSync(fullPath + ".mdx", "utf8");
 
   // Prepare the codeHike theme
@@ -88,6 +102,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     parseFrontmatter: true,
     mdxOptions: {
       useDynamicImport: true,
+      remarkRehypeOptions: { handlers: { infoBlockHeader, infoBlockChildren } },
       remarkPlugins: [
         [
           remarkCodeHike,
@@ -104,7 +119,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
         remarkGfm,
       ],
       rehypePlugins: [
-        [remarkRehype, { handlers: { infoBlockHeader, infoBlockChildren } }],
         rehypeSlug,
         [
           rehypeAutolinkHeadings,
@@ -122,7 +136,9 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
-  const sidebarLinks: SidebarItem[] = [].concat(
+  const sidebarLinks: SidebarItem[] = [];
+
+  sidebarLinks.concat(
     ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
   );
 
@@ -150,12 +166,20 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   let author: Nullable<string> = null;
   let authorGithubUrl: Nullable<string> = null;
 
-  if (commits.length > 0) {
-    const time = new Date(commits[0].commit.author.date).toLocaleString();
+  if (commits.length > 0 && commits[0]) {
+    const authorObj = commits[0].commit.author;
+    if (authorObj) {
+      if (authorObj.date) {
+        const time = new Date(authorObj.date).toLocaleString();
 
-    lastEditedTime = time;
-    author = commits[0].commit.author.name;
-    authorGithubUrl = commits[0].author.html_url;
+        lastEditedTime = time;
+      }
+
+      author = authorObj.name || null;
+    }
+    if (commits[0].author) {
+      authorGithubUrl = commits[0].author.html_url;
+    }
   }
 
   // We use remark to correctly get the headers
@@ -200,8 +224,14 @@ const DocsPage: FC<DocsPageProps> & {
   return (
     <>
       <PageHead
-        pageTitle={`${mdxSource.frontmatter.title} | Documentation`}
-        pageDescription={mdxSource.frontmatter.description}
+        pageTitle={
+          mdxSource.frontmatter
+            ? `${mdxSource.frontmatter.title} | Documentation`
+            : "Documentation"
+        }
+        pageDescription={
+          mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
+        }
         pageType="docs"
         additionMeta={
           <>
@@ -213,7 +243,9 @@ const DocsPage: FC<DocsPageProps> & {
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-3xl font-semibold">
-            {mdxSource.frontmatter.title}
+            {mdxSource.frontmatter
+              ? mdxSource.frontmatter.title
+              : "Documentation"}
           </h1>
           <article
             id="content"
@@ -231,7 +263,7 @@ const DocsPage: FC<DocsPageProps> & {
                   <p className="text-instillGrey70">by</p>
                   <a
                     className="text-instillBlue50 underline"
-                    href={authorGithubUrl}
+                    href={authorGithubUrl || "/"}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
