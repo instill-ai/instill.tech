@@ -298,7 +298,7 @@ const DocsPage: FC<DocsPageProps> & {
         <aside className="hidden xl:col-span-2 xl:block">
           <RightSidebar
             githubEditUrl={
-              "https://github.com/instill-ai/instill.tech/edit/main/src/pages" +
+              "https://github.com/instill-ai/instill.tech/edit/main" +
               router.asPath +
               ".mdx"
             }
