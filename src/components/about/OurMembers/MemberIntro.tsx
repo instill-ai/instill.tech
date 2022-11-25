@@ -1,5 +1,5 @@
-import { forwardRef, Fragment } from "react";
-import { MemberDetails } from "@/types/instill";
+import { forwardRef } from "react";
+import { MemberDetails, Nullable } from "@/types/instill";
 import Image from "next/future/image";
 import cn from "clsx";
 import { CrossIcon } from "@instill-ai/design-system";
@@ -7,7 +7,6 @@ import {
   setArrayKv,
   setColorJson,
   setNumberKv,
-  setObjectKv,
   setStringKv,
 } from "@/lib/color-json";
 
@@ -20,8 +19,8 @@ export type MemberIntroProps = {
 
 export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
   ({ member, indent, styleName, onCancelHandler }, ref) => {
-    let textColor: string;
-    let bgColor: string;
+    let textColor: Nullable<string> = null;
+    let bgColor: Nullable<string> = null;
     const defaultTextColor = "text-instillGrey05";
     const defaultFont = "font-mono";
     const defaultFontSize = "instill-text-small";
@@ -255,7 +254,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                                   key: "category",
                                   keyColor: defaultTextColor,
                                   value: title,
-                                  valueColor: textColor,
+                                  valueColor: textColor || defaultTextColor,
                                   quoteColor: defaultTextColor,
                                   colonColor: defaultTextColor,
                                   trailingComma: true,
@@ -272,7 +271,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                                       (Math.random() * (0.999 - 0.95) + 0.95) *
                                         1e3
                                     ) / 1e3,
-                                  valueColor: textColor,
+                                  valueColor: textColor || defaultTextColor,
                                   quoteColor: defaultTextColor,
                                   colonColor: defaultTextColor,
                                   trailingComma: true,

@@ -8,7 +8,7 @@ type UseRefPositionOption = {
 };
 
 export const useRefPosition = (
-  ref: MutableRefObject<HTMLElement>,
+  ref: MutableRefObject<Nullable<HTMLElement>>,
   option: UseRefPositionOption
 ) => {
   const [position, setPosition] = useState<Nullable<ElementPosition>>(null);
