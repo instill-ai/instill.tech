@@ -13,7 +13,7 @@ import {
   useWindowSize,
 } from "@instill-ai/design-system";
 
-import { MemberDetails } from "@/types/instill";
+import { MemberDetails, Nullable } from "@/types/instill";
 import { useRouter } from "next/router";
 import { MemberAvatarKernel } from "./MemberAvatarKernel";
 import { MemberIntro } from "./MemberIntro";
@@ -24,6 +24,10 @@ export type OurMembersProps = {
   width: string;
 };
 
+// 2022-11-25
+// These codes need to be re-written to use useRefPosition hook
+// And redesign the overall position handling
+
 export const OurMembers = ({
   members,
   marginBottom,
@@ -31,7 +35,7 @@ export const OurMembers = ({
 }: OurMembersProps) => {
   const memberIntroBlockRef = useRef<HTMLDivElement>(null);
   const [sectionAdditionalHeight, setSectionAdditionalHeight] =
-    useState<string>(null);
+    useState<Nullable<number>>(null);
 
   // If openAllKernel === true, every member's avatar will be revealed.
   const [openAllKernel, setOpenAllKernel] = useState(false);
@@ -43,16 +47,18 @@ export const OurMembers = ({
   // once user hover on member's avatar. If it's on mobile view(width < 768px), the hover
   // behavior will be changed to click behavior to enhance user experience.
 
-  const [targerMember, setTargetMember] = useState<MemberDetails>(null);
-  const [targetPosition, setTagetPosition] = useState<ElementPosition>(null);
+  const [targerMember, setTargetMember] =
+    useState<Nullable<MemberDetails>>(null);
+  const [targetPosition, setTagetPosition] =
+    useState<Nullable<ElementPosition>>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerPosition, setContainerPosition] =
-    useState<ElementPosition>(null);
+    useState<Nullable<ElementPosition>>(null);
   const windowSize = useWindowSize();
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.isReady) {
+    if (!router.isReady || !containerRef.current) {
       return;
     }
     setContainerPosition(getElementPosition(containerRef.current));
@@ -61,7 +67,7 @@ export const OurMembers = ({
   const membersRef = useMemo(
     () =>
       members.map((m) => {
-        return { id: m.id, ref: createRef<HTMLDivElement>() };
+        return { id: m.id, ref: createRef<Nullable<HTMLDivElement>>() };
       }),
     [members]
   );
@@ -82,7 +88,18 @@ export const OurMembers = ({
 
     const refIndex = membersRef.findIndex((e) => e.id === memberId);
 
-    const targetPosition = getElementPosition(membersRef[refIndex].ref.current);
+    if (
+      !membersRef ||
+      !membersRef[refIndex] ||
+      !membersRef[refIndex].ref ||
+      !membersRef[refIndex].ref.current
+    ) {
+      return;
+    }
+
+    const targetPosition = getElementPosition(
+      membersRef[refIndex].ref.current as HTMLDivElement
+    );
 
     setTagetPosition(targetPosition);
   };
@@ -93,6 +110,10 @@ export const OurMembers = ({
     }
 
     if (!targetPosition) {
+      return;
+    }
+
+    if (!memberIntroBlockRef.current) {
       return;
     }
 
@@ -118,7 +139,7 @@ export const OurMembers = ({
       coveredGap +
       paddingBottom;
 
-    setSectionAdditionalHeight(`${additionalHeight}px`);
+    setSectionAdditionalHeight(additionalHeight);
   }, [targerMember, memberIntroBlockRef.current, members, targetPosition]);
 
   const onCancelHandler = useCallback(() => {
@@ -192,16 +213,18 @@ export const OurMembers = ({
               ? windowSize.width < 768
                 ? {
                     top:
-                      targetPosition &&
-                      `${
-                        targetPosition.y -
-                        containerPosition.y +
-                        targetPosition.height +
-                        10
-                      }px`,
+                      (targetPosition &&
+                        containerPosition &&
+                        `${
+                          targetPosition.y -
+                          containerPosition.y +
+                          targetPosition.height +
+                          10
+                        }px`) ||
+                      "",
                   }
-                : null
-              : null
+                : {}
+              : {}
           }
         >
           <MemberIntro
@@ -215,14 +238,16 @@ export const OurMembers = ({
       <div
         className="block"
         style={
-          windowSize && {
-            height:
-              windowSize.width < 768
-                ? sectionAdditionalHeight
-                  ? sectionAdditionalHeight
-                  : "0px"
-                : "0px",
-          }
+          windowSize
+            ? {
+                height:
+                  windowSize.width < 768
+                    ? sectionAdditionalHeight
+                      ? `${sectionAdditionalHeight}px`
+                      : "0px"
+                    : "0px",
+              }
+            : {}
         }
       />
     </div>

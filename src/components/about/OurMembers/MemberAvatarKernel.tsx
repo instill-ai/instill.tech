@@ -4,10 +4,11 @@ import { useWindowSize } from "@instill-ai/design-system";
 import cn from "clsx";
 
 import { MemberKernel } from "./MemberKernelSvg";
+import { Nullable } from "@/types/instill";
 
 export type MemberAvatarKernelProps = {
   id: string;
-  targetMemberId: string;
+  targetMemberId: Nullable<string>;
   kernelColorRectLocation: string[];
   kernelColor: string;
   avatarAlt: string;
@@ -20,7 +21,7 @@ export type MemberAvatarKernelProps = {
 };
 
 export const MemberAvatarKernel = forwardRef<
-  HTMLDivElement,
+  Nullable<HTMLDivElement>,
   MemberAvatarKernelProps
 >(
   (

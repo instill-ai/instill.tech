@@ -11,7 +11,7 @@ import {
 } from "@/lib/color-json";
 
 export type MemberIntroProps = {
-  member: MemberDetails;
+  member: Nullable<MemberDetails>;
   indent: string;
   styleName?: string;
   onCancelHandler: () => void;
