@@ -156,8 +156,8 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           <div className="flex flex-grow flex-row justify-end xl:mr-5">
             <div className="mr-5">
               <DocSearch
-                appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID}
-                apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY}
+                appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
+                apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
                 indexName="instill"
               />
             </div>

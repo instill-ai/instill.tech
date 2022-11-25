@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import anime, { AnimeInstance, AnimeTimelineInstance } from "animejs";
+import anime, { AnimeTimelineInstance } from "animejs";
 import { Nullable } from "@/types/instill";
 
 export type VdpAnimationProps = {};
@@ -55,13 +55,20 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
         duration: 2000,
         easing: "linear",
         complete: () => {
-          itemAnimationRef.current.restart();
+          if (itemAnimationRef.current) {
+            itemAnimationRef.current.restart();
+          }
         },
       });
 
       const addSourceItemAnimation = (item: AnimateItem) => {
+        if (!itemAnimationRef.current) {
+          return;
+        }
+
         // Set the initial value of the item
         anime.set(item.id, { filter: "brightness(100%)", opacity: 100 });
+
         itemAnimationRef.current.add(
           {
             targets: item.id,
@@ -107,6 +114,10 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
       };
 
       const addDestinationItemAnimation = (item: AnimateItem) => {
+        if (!itemAnimationRef.current) {
+          return;
+        }
+
         // Set the initial value of the item
         anime.set(item.id, { filter: "brightness(100%)", opacity: 0 });
         itemAnimationRef.current.add(
@@ -190,7 +201,9 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
       sourceArrowAnimationRef.current = anime.timeline({
         duration: delay,
         complete: () => {
-          sourceArrowAnimationRef.current.restart();
+          if (sourceArrowAnimationRef.current) {
+            sourceArrowAnimationRef.current.restart();
+          }
         },
       });
 
@@ -257,7 +270,9 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
       destinationArrowAnimationRef.current = anime.timeline({
         duration: delay,
         complete: () => {
-          destinationArrowAnimationRef.current.restart();
+          if (destinationArrowAnimationRef.current) {
+            destinationArrowAnimationRef.current.restart();
+          }
         },
       });
 
@@ -2524,10 +2539,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                   </g>
                 </g>
                 <g id="destination_conveyor_item">
-                  <g
-                    id="destination_item_0"
-                    clipPath="url(#clip21_3013_97113)"
-                  >
+                  <g id="destination_item_0" clipPath="url(#clip21_3013_97113)">
                     <path
                       id="Vector 2_11"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2561,10 +2573,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_1"
-                    clipPath="url(#clip22_3013_97113)"
-                  >
+                  <g id="destination_item_1" clipPath="url(#clip22_3013_97113)">
                     <path
                       id="Vector 2_12"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2598,10 +2607,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_2"
-                    clipPath="url(#clip23_3013_97113)"
-                  >
+                  <g id="destination_item_2" clipPath="url(#clip23_3013_97113)">
                     <path
                       id="Vector 2_13"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2635,10 +2641,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_3"
-                    clipPath="url(#clip24_3013_97113)"
-                  >
+                  <g id="destination_item_3" clipPath="url(#clip24_3013_97113)">
                     <path
                       id="Vector 2_14"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2672,10 +2675,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_4"
-                    clipPath="url(#clip25_3013_97113)"
-                  >
+                  <g id="destination_item_4" clipPath="url(#clip25_3013_97113)">
                     <path
                       id="Vector 2_15"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2709,10 +2709,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_5"
-                    clipPath="url(#clip26_3013_97113)"
-                  >
+                  <g id="destination_item_5" clipPath="url(#clip26_3013_97113)">
                     <path
                       id="Vector 2_16"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2746,10 +2743,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_6"
-                    clipPath="url(#clip27_3013_97113)"
-                  >
+                  <g id="destination_item_6" clipPath="url(#clip27_3013_97113)">
                     <path
                       id="Vector 2_17"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2783,10 +2777,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_7"
-                    clipPath="url(#clip28_3013_97113)"
-                  >
+                  <g id="destination_item_7" clipPath="url(#clip28_3013_97113)">
                     <path
                       id="Vector 2_18"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2820,10 +2811,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_8"
-                    clipPath="url(#clip29_3013_97113)"
-                  >
+                  <g id="destination_item_8" clipPath="url(#clip29_3013_97113)">
                     <path
                       id="Vector 2_19"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -2857,10 +2845,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                       </g>
                     </g>
                   </g>
-                  <g
-                    id="destination_item_9"
-                    clipPath="url(#clip30_3013_97113)"
-                  >
+                  <g id="destination_item_9" clipPath="url(#clip30_3013_97113)">
                     <path
                       id="Vector 2_20"
                       d="M596.434 240.507L596.435 222.507L591.239 219.507L580.847 225.507L580.846 249.507L596.434 240.507Z"
@@ -3804,10 +3789,7 @@ export const VdpAnimation = ({}: VdpAnimationProps) => {
                             d="M908.858 295.631L978.135 255.631C978.278 255.548 978.395 255.615 978.395 255.781L978.392 337.189L909.029 377.239C908.933 377.294 908.855 377.249 908.855 377.139L908.858 295.631Z"
                             fill="#7CBEFF"
                           />
-                          <g
-                            id="PostgreSQL"
-                            clipPath="url(#clip41_3013_97113)"
-                          >
+                          <g id="PostgreSQL" clipPath="url(#clip41_3013_97113)">
                             <g id="PostgreSQL_2">
                               <g id="Vector_117">
                                 <path

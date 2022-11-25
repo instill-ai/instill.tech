@@ -28,7 +28,7 @@ export const DiscordCtaButton = ({ position }: DiscordCtaButtonProps) => {
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
       onClickHandler={() =>
-        router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK)
+        router.push(process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/")
       }
     >
       <div className="flex flex-col">

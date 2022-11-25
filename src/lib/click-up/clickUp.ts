@@ -116,6 +116,10 @@ const getCustomSingleSelectFieldValue = (
   key: string,
   task: ClickUpTask
 ): string => {
+  if (!task.custom_fields) {
+    throw new Error("Custom field not found");
+  }
+
   const index = task.custom_fields.findIndex((e) => e.name === key);
 
   if (index === -1) {
@@ -124,10 +128,26 @@ const getCustomSingleSelectFieldValue = (
 
   const field = task.custom_fields[index];
 
-  return field.type_config.options[field.value.toString()].name;
+  if (!field.type_config.options) {
+    throw new Error("Field option not found");
+  }
+
+  if (typeof field.value === "string") {
+    return field.type_config.options[parseInt(field.value)].name;
+  } else if (typeof field.value === "number") {
+    return field.type_config.options[field.value].name;
+  } else {
+    throw new Error(
+      "Field value type is not correct, you may use the wrong method for this field"
+    );
+  }
 };
 
 const getCustomTextFieldValue = (key: string, task: ClickUpTask): string => {
+  if (!task.custom_fields) {
+    throw new Error("Custom field not found");
+  }
+
   const index = task.custom_fields.findIndex((e) => e.name === key);
 
   if (index === -1) {
@@ -147,6 +167,10 @@ const getCustomAttatchmentImageFieldValue = (
   key: string,
   task: ClickUpTask
 ): IClickUpImageAttatchmentValue[] => {
+  if (!task.custom_fields) {
+    throw new Error("Custom field not found");
+  }
+
   const index = task.custom_fields.findIndex((e) => e.name === key);
 
   if (index === -1) {

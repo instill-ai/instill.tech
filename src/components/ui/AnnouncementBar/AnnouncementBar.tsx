@@ -11,7 +11,9 @@ export const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
   const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
 
   const handleClick = useCallback(() => {
-    setEnableAnnouncementBar(false);
+    if (setEnableAnnouncementBar) {
+      setEnableAnnouncementBar(false);
+    }
   }, [setEnableAnnouncementBar]);
 
   return (

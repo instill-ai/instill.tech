@@ -12,6 +12,10 @@ export const addMemberIntoMailchimpList = async (email: string) => {
   }
 
   try {
+    if (!process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID) {
+      return;
+    }
+
     await mailchimp.lists.addListMember(
       process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID,
       {

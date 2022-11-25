@@ -13,7 +13,7 @@ import {
   CareerHero,
   PositionListProps,
 } from "@/components/career";
-import { PositionInfo } from "@/types/instill";
+import { Nullable, PositionInfo } from "@/types/instill";
 import {
   ClickUpTask,
   listClickUpTasksInListQuery,
@@ -72,7 +72,7 @@ const CareerPage: FC<CareerPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ positions }) => {
   // lazy load openPositionList
-  const positionListRef = useRef<HTMLDivElement>(null);
+  const positionListRef = useRef<Nullable<HTMLDivElement>>(null);
   const [positionListInViewRef, positionListInView] = useInView({
     triggerOnce: true,
   });
@@ -85,7 +85,8 @@ const CareerPage: FC<CareerPageProps> & {
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
   const scrollHandler = useCallback(() => {
-    if (!window) return;
+    if (!window || !positionListRef.current) return;
+
     const positionListDimension = getElementPosition(positionListRef.current);
     const navbarHeight = enableAnnouncementBar ? 128 : 84;
 

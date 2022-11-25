@@ -166,7 +166,7 @@ const NAV: NavConfig = {
     },
     {
       key: "docs-nav-item-border-discord-link",
-      href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK,
+      href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
       className: "discord-social-link",
       iconElement: (
         <DiscordIcon

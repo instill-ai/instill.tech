@@ -15,6 +15,10 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       .json({ status: "error", error: "Email is required" });
   }
 
+  if (!process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID) {
+    return;
+  }
+
   try {
     await mailchimp.lists.addListMember(
       process.env.NEXT_PUBLIC_MAILCHIMP_LIST_ID,

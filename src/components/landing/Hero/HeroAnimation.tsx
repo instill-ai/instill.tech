@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useInView } from "react-intersection-observer";
+import { Nullable } from "@/types/instill";
 
 export const HeroAnimation = () => {
   // Init the gsap selector and react reference
-  const cube = useRef();
+  const cube = useRef<SVGGElement>(null);
 
   // Make sure tl object is outside of render loop
-  const tl = useRef<GSAPTimeline>();
+  const tl = useRef<Nullable<GSAPTimeline>>(null);
 
   // We will pause any animation outside of user observed view
   const [heroRef, heroIsInView] = useInView({});
@@ -343,6 +344,9 @@ export const HeroAnimation = () => {
 
     // Add every block's animation into timeline
     const addMovingAnimationToTl = (id: string, endX: string, endY: string) => {
+      if (!tl.current) {
+        return;
+      }
       tl.current.to(
         q(id),
         {
@@ -374,6 +378,10 @@ export const HeroAnimation = () => {
       addMovingAnimationToTl(block.id, block.x, block.y);
     }
 
+    if (!cube.current) {
+      return;
+    }
+
     // We use this one to control the fade-in-out animation
     tl.current.to(
       cube.current,
@@ -399,6 +407,10 @@ export const HeroAnimation = () => {
   }, []);
 
   useEffect(() => {
+    if (!tl.current) {
+      return;
+    }
+
     if (heroIsInView) {
       tl.current.play();
       return;
