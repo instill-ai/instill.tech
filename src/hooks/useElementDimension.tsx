@@ -4,6 +4,7 @@ import { getElementPosition } from "@instill-ai/design-system";
 import { useCallback, useState } from "react";
 import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 import useResizeObserver from "@react-hook/resize-observer";
+import { Nullable } from "@/types/instill";
 
 export type Position = {
   width: number;
@@ -13,14 +14,13 @@ export type Position = {
 };
 
 // eslint-disable-next-line
-export const useElementDimension = <T extends HTMLElement = HTMLDivElement>(): [
-  (node: T | null) => void,
-  Position
-] => {
+export const useElementDimension = <
+  T extends HTMLElement = HTMLDivElement
+>(options?: {}): [(node: T | null) => void, Position] => {
   // Mutable values like 'ref.current' aren't valid dependencies
   // because mutating them doesn't re-render the component.
   // Instead, we use a state as a ref to be reactive.
-  const [ref, setRef] = useState<T | null>(null);
+  const [ref, setRef] = useState<Nullable<T>>(null);
   const [position, setPosition] = useState<Position>({
     y: 0,
     x: 0,
