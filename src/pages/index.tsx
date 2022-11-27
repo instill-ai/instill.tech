@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useRef } from "react";
+import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { parse } from "yaml";
 import cn from "clsx";
@@ -24,8 +24,9 @@ const FaqHeader = dynamic<FaqHeaderProps>(() =>
   import("@/components/landing").then((mod) => mod.FaqHeader)
 );
 
-const CaseStudy = dynamic<CaseStudyProps>(() =>
-  import("@/components/landing").then((mod) => mod.CaseStudy)
+const CaseStudy = dynamic<CaseStudyProps>(
+  () => import("@/components/landing").then((mod) => mod.CaseStudy),
+  { ssr: false }
 );
 
 const Faq = dynamic<FaqProps>(() =>
@@ -87,6 +88,38 @@ const HomePage: FC<HomePageProps> & {
   const vdpRef = useRef<HTMLDivElement>(null);
   const { enableAnnouncementBar } = useAnnouncementBarCtx();
 
+  useEffect(() => {
+    // The CaseStudy component can't correctly calculate the element
+    // position when user scroll to the CaseStudy section and directly
+    // refresh the page. So we need to enforce the page to go back to
+    // top to enforce the experience.
+
+    // The issue is centered at ControlPanel component:
+
+    // The problem is, The ControlPanel will work corretly if user start
+    // navigate before the CaseStudy is displayed. But if they refresh
+    // the page directly on top of CaseStudy section. The page will only
+    // load Hero section and CaseStudySection and some component below it
+    // because we dynamic load these element when they are in view.
+
+    // In this way, the ControlPanel will have the wrong dimension and cause
+    // some weird behavior
+
+    // At the first glance, the solution seems to be using the CaseStudy
+    // activeIndex props to update the dimension state of every component
+    // in Control Panel(Because upon the first draw, the line is correct,
+    // The issue will only happen when user switch active CaseStudy item).
+
+    // But in this way we can not use useElementDimension hook which is
+    // troublesome. Even We use ref and get element dimension in the useEffect
+    // that calculate the line stat. The time activeIndex change didn't mean
+    // it's the time DOM had been updated and every component had been drew.
+
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
   const scrollHandler = useCallback(() => {
     if (!window || !vdpRef.current) {
       return;
@@ -121,8 +154,12 @@ const HomePage: FC<HomePageProps> & {
 
   const [communityIsInViewRef, communityIsInView] = useInView({
     triggerOnce: true,
-    rootMargin,
+    rootMargin: "0px",
   });
+
+  useEffect(() => {
+    console.log(communityIsInView);
+  }, [communityIsInView]);
 
   const [caseStudyIsInViewRef, caseStudyIsInView] = useInView({
     triggerOnce: true,
