@@ -1,20 +1,16 @@
 import cn from "clsx";
 import Image from "next/future/image";
-import { useRef } from "react";
 
 import { CommonCtaButton, SectionHeader } from "@/components/ui";
 import { SectionLabel } from "@/components/ui";
-import { useRefPosition } from "@/hooks/useRefPosition";
+import { useElementDimension } from "@/hooks/useElementDimension";
 
 export type NoCodeInterfaceProps = {
   marginBottom?: string;
 };
 
 export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const containerDimension = useRefPosition(containerRef, {
-    listenWindowResize: true,
-  });
+  const [containerRef, containerDimension] = useElementDimension();
 
   return (
     <div ref={containerRef} className={cn("flex flex-col py-20", marginBottom)}>

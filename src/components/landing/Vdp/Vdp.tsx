@@ -1,12 +1,12 @@
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef } from "react";
 import cn from "clsx";
 import Image from "next/future/image";
 import { VdpLogo } from "@instill-ai/design-system";
 
-import { useRefPosition } from "@/hooks/useRefPosition";
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { VdpFlow } from "./VdpFlow";
-import { VdpAnimation, VdpAnimationProps } from "./VdpAnimation";
+import { VdpAnimation } from "./VdpAnimation";
+import { useElementDimension } from "@/hooks/useElementDimension";
 
 export type VdpProps = {
   marginBottom?: string;
@@ -14,10 +14,7 @@ export type VdpProps = {
 
 export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
   ({ marginBottom }, ref) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const containerDimension = useRefPosition(containerRef, {
-      listenWindowResize: true,
-    });
+    const [containerRef, containerDimension] = useElementDimension();
 
     return (
       <div

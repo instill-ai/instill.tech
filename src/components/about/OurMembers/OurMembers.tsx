@@ -25,7 +25,7 @@ export type OurMembersProps = {
 };
 
 // 2022-11-25
-// These codes need to be re-written to use useRefPosition hook
+// These codes need to be re-written to use useElementDimension hook
 // And redesign the overall position handling
 
 export const OurMembers = ({

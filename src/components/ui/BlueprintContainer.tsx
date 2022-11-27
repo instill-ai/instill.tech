@@ -3,8 +3,8 @@ import * as d3 from "d3";
 import cn from "clsx";
 import { ElementPosition } from "@instill-ai/design-system";
 
-import { useRefPosition } from "@/hooks/useRefPosition";
 import { Nullable } from "@/types/instill";
+import { useElementDimension } from "@/hooks/useElementDimension";
 
 export type BlueprintContainerProps = {
   unitHeight: number;
@@ -44,14 +44,8 @@ export const BlueprintContainer = ({
   alignWith,
 }: BlueprintContainerProps) => {
   const svgRef = useRef<Nullable<SVGSVGElement>>(null);
-  const parentRef = useRef<Nullable<HTMLDivElement>>(null);
-  const parentDimension = useRefPosition(parentRef, {
-    listenWindowResize: true,
-  });
-  const childrenRef = useRef<Nullable<HTMLDivElement>>(null);
-  const childrenDimension = useRefPosition(childrenRef, {
-    listenWindowResize: true,
-  });
+  const [parentRef, parentDimension] = useElementDimension();
+  const [childrenRef, childrenDimension] = useElementDimension();
 
   const [lineDataset, setLineDataset] = useState<Nullable<LineData[]>>(null);
 
