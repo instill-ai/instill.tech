@@ -76,7 +76,7 @@ export const Footer = () => {
     ],
     company: [
       {
-        text: "About Instill AI",
+        text: "About Us",
         href: "/about",
       },
       {
