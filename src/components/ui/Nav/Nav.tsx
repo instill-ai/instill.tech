@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
-import {
-  CrossIcon,
-  Logo,
-  MenuIcon,
-  SolidButton,
-} from "@instill-ai/design-system";
+import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";

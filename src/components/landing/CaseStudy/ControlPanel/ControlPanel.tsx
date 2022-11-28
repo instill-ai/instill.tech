@@ -1,5 +1,4 @@
 import { Nullable } from "@/types/instill";
-import cn from "clsx";
 import { ElementPosition } from "@instill-ai/design-system";
 import {
   ReactElement,
@@ -11,10 +10,9 @@ import {
 } from "react";
 import * as d3 from "d3";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { useRefPosition } from "@/hooks/useRefPosition";
 
-import useEmblaCarousel from "embla-carousel-react";
 import { ControlPanelItem, ControlPanelItemProps } from "../ControlPanelItem";
+import { useElementDimension } from "@/hooks/useElementDimension";
 
 type Item = {
   title: string;
@@ -46,33 +44,13 @@ type ConnectionLineDataset = {
 // won't get notified. We need to use useMutationObservable to be reactive
 // about this changes.
 
-export const ControlPanel = ({
-  items,
-  setCurrentShowcaseFrame,
-  activeIndex,
-  getActiveControl,
-}: ControlPanelProps) => {
+export const ControlPanel = ({ items, activeIndex }: ControlPanelProps) => {
   const windowSize = useWindowSize();
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const containerPosition = useRefPosition(containerRef, {
-    listenWindowResize: true,
-  });
-
-  const sourceRef = useRef<HTMLDivElement>(null);
-  const sourcePosition = useRefPosition(sourceRef, {
-    listenWindowResize: true,
-  });
-
-  const modelRef = useRef<HTMLDivElement>(null);
-  const modelPosition = useRefPosition(modelRef, {
-    listenWindowResize: true,
-  });
-
-  const destRef = useRef<HTMLDivElement>(null);
-  const destPosition = useRefPosition(destRef, {
-    listenWindowResize: true,
-  });
+  const [containerRef, containerDimension] = useElementDimension();
+  const [sourceRef, sourceDimension] = useElementDimension();
+  const [modelRef, modelDimension] = useElementDimension({ delay: 100 });
+  const [destRef, destDimension] = useElementDimension();
 
   const [sourceToModelLineDataset, setSourceToModelLineDataset] =
     useState<Nullable<ConnectionLineDataset>>(null);
@@ -81,8 +59,8 @@ export const ControlPanel = ({
 
   const lineDotR = 8;
 
-  const sourceToModelLineSvgRef = useRef<Nullable<SVGSVGElement>>(null);
-  const modelToDestLineSvgRef = useRef<Nullable<SVGSVGElement>>(null);
+  const sourceToModelLineSvgRef = useRef<SVGSVGElement>(null);
+  const modelToDestLineSvgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     // get the line and the circle's position. x1 and y1 is the most
@@ -142,46 +120,42 @@ export const ControlPanel = ({
     };
 
     if (
-      !sourcePosition ||
-      !modelPosition ||
-      !destPosition ||
-      !containerPosition
+      !sourceDimension ||
+      !modelDimension ||
+      !destDimension ||
+      !containerDimension
     ) {
       return;
     }
 
-    if (
-      sourcePosition.width === 0 ||
-      modelPosition.width === 0 ||
-      destPosition.width === 0 ||
-      containerPosition.width === 0
-    ) {
-      return;
-    }
-
-    if (!windowSize) {
-      return;
-    }
-
-    if (windowSize.width < 768) {
+    if (windowSize && windowSize.width < 768) {
       setSourceToModelLineDataset(null);
       setModelToDestLineDataset(null);
       return;
     }
 
-    setSourceToModelLineDataset(
-      getLineStat(containerPosition, sourcePosition, modelPosition)
-    );
-    setModelToDestLineDataset(
-      getLineStat(containerPosition, modelPosition, destPosition)
-    );
+    const cookData = () => {
+      setSourceToModelLineDataset(
+        getLineStat(containerDimension, sourceDimension, modelDimension)
+      );
+      setModelToDestLineDataset(
+        getLineStat(containerDimension, modelDimension, destDimension)
+      );
+    };
+
+    cookData();
   }, [
     windowSize,
-    sourcePosition,
-    modelPosition,
-    destPosition,
-    containerPosition,
+    containerDimension,
+    sourceDimension,
+    modelDimension,
+    destDimension,
+    lineDotR,
   ]);
+
+  useEffect(() => {
+    console.log(activeIndex, sourceToModelLineDataset);
+  }, [activeIndex]);
 
   useEffect(() => {
     const svg = d3.select(sourceToModelLineSvgRef.current);
@@ -195,6 +169,13 @@ export const ControlPanel = ({
 
     svg.selectAll("*").remove();
 
+    console.log("height", sourceToModelLineDataset.line[0].height);
+
+    svg.style("width", sourceToModelLineDataset.line[0].width);
+    svg.style("height", sourceToModelLineDataset.line[0].height);
+    svg.style("top", sourceToModelLineDataset.line[0].y);
+    svg.style("left", sourceToModelLineDataset.line[0].x);
+
     svg
       .selectAll("line")
       .data(sourceToModelLineDataset.line)
@@ -204,7 +185,7 @@ export const ControlPanel = ({
             .append("line")
             .attr("x1", (d) => d.width / 2)
             .attr("x2", (d) => d.width / 2)
-            .attr("y1", (d) => lineDotR)
+            .attr("y1", () => lineDotR)
             .attr("y2", (d) => d.height)
             .style("stroke", "#C0C0C0")
             .style("stroke-width", "2px"),
@@ -226,16 +207,22 @@ export const ControlPanel = ({
         (update) => update,
         (exit) => exit.remove()
       );
-  }, [sourceToModelLineDataset, lineDotR, activeIndex]);
+  }, [sourceToModelLineDataset, lineDotR]);
 
   useEffect(() => {
     const svg = d3.select(modelToDestLineSvgRef.current);
+
     if (!modelToDestLineDataset) {
       svg.selectAll("*").remove();
       return;
     }
 
     svg.selectAll("*").remove();
+
+    svg.style("width", modelToDestLineDataset.line[0].width);
+    svg.style("height", modelToDestLineDataset.line[0].height);
+    svg.style("top", modelToDestLineDataset.line[0].y);
+    svg.style("left", modelToDestLineDataset.line[0].x);
 
     svg
       .selectAll("line")
@@ -246,7 +233,7 @@ export const ControlPanel = ({
             .append("line")
             .attr("x1", (d) => d.width / 2)
             .attr("x2", (d) => d.width / 2)
-            .attr("y1", (d) => lineDotR)
+            .attr("y1", () => lineDotR)
             .attr("y2", (d) => d.height)
             .style("stroke", "#C0C0C0")
             .style("stroke-width", "2px"),
@@ -268,7 +255,7 @@ export const ControlPanel = ({
         (update) => update,
         (exit) => exit.remove()
       );
-  }, [modelToDestLineDataset, lineDotR, activeIndex]);
+  }, [modelToDestLineDataset, lineDotR]);
 
   const source = <ControlPanelItem {...items.source} />;
   const model = <ControlPanelItem {...items.model} />;
@@ -278,42 +265,12 @@ export const ControlPanel = ({
     <>
       <div
         ref={containerRef}
-        className="relative hidden h-full w-full flex-col justify-between xl:flex"
+        className="relative hidden w-full flex-col justify-between xl:flex"
       >
         <div ref={sourceRef}>{source}</div>
-        <svg
-          className="absolute"
-          style={{
-            top: sourceToModelLineDataset
-              ? sourceToModelLineDataset.line[0].y
-              : 0,
-            left: sourceToModelLineDataset
-              ? sourceToModelLineDataset.line[0].x
-              : 0,
-            width: sourceToModelLineDataset
-              ? sourceToModelLineDataset.line[0].width
-              : 0,
-            height: sourceToModelLineDataset
-              ? sourceToModelLineDataset.line[0].height
-              : 0,
-          }}
-          ref={sourceToModelLineSvgRef}
-        />
+        <svg className="absolute" ref={sourceToModelLineSvgRef} />
         <div ref={modelRef}>{model}</div>
-        <svg
-          className="absolute"
-          style={{
-            top: modelToDestLineDataset ? modelToDestLineDataset.line[0].y : 0,
-            left: modelToDestLineDataset ? modelToDestLineDataset.line[0].x : 0,
-            width: modelToDestLineDataset
-              ? modelToDestLineDataset.line[0].width
-              : 0,
-            height: modelToDestLineDataset
-              ? modelToDestLineDataset.line[0].height
-              : 0,
-          }}
-          ref={modelToDestLineSvgRef}
-        />
+        <svg className="absolute" ref={modelToDestLineSvgRef} />
         <div ref={destRef}>{destination}</div>
       </div>
     </>

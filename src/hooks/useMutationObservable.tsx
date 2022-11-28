@@ -1,10 +1,10 @@
 import { Nullable } from "@/types/instill";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, RefObject, useEffect, useRef } from "react";
 
 const DEFAULT_OPTIONS = { attributes: true, childList: true, subtree: true };
 
-const useMutationObservable = (
-  ref: MutableRefObject<HTMLElement>,
+const useMutationObservable = <T extends HTMLElement = HTMLDivElement>(
+  ref: T | null,
   callback: (record: MutationRecord[]) => void,
   options = DEFAULT_OPTIONS
 ) => {
@@ -15,8 +15,10 @@ const useMutationObservable = (
   }, [callback]);
 
   useEffect(() => {
+    if (!ref) return;
+
     if (observerRef && observerRef.current) {
-      observerRef.current.observe(ref.current, options);
+      observerRef.current.observe(ref, options);
     }
 
     return () => {
