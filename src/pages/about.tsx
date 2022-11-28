@@ -11,6 +11,7 @@ import {
   OurValue,
 } from "@/components/about";
 import {
+  ContentContainer,
   PageBase,
   PageHead,
   SecureYourSpotProps,
@@ -88,7 +89,10 @@ const AboutPage: FC<AboutPageProps> & {
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
         pageType="main"
       />
-      <div className="mx-auto my-[120px] flex max-w-[1127px] flex-col xl:my-40">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
         <div className="mb-[100px] p-4 xl:mb-40 xl:p-0">
           <AboutHero />
         </div>
@@ -97,7 +101,7 @@ const AboutPage: FC<AboutPageProps> & {
           <OurCompany marginBottom="mb-[120px]" />
           <OurValue />
         </div>
-      </div>
+      </ContentContainer>
       <div
         ref={ourMemberRef}
         className={cn("bg-instillGrey90", ourMemberIsInView ? "" : "mb-20")}
@@ -110,14 +114,17 @@ const AboutPage: FC<AboutPageProps> & {
           />
         ) : null}
       </div>
-      <div className="mx-auto mb-[120px] max-w-[1127px] px-4 xl:mb-40 xl:px-0">
+      <ContentContainer
+        margin="mb-[120px] xl:mb-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
         <div className="mb-[120px]" ref={secureYourSpotRef}>
           {secureYourSpotIsInView && <SecureYourSpot />}
         </div>
         <div ref={stayInTheLoopRef}>
           {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };
