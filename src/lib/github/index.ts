@@ -1,5 +1,5 @@
-import axios from "axios";
 import { Commit } from "./type";
+import { Octokit } from "@octokit/core";
 
 export const getRepoFileContent = async (
   owner: string,
@@ -7,8 +7,19 @@ export const getRepoFileContent = async (
   path: string
 ): Promise<any> => {
   try {
-    const response = await axios.get(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+    const octokitOpion = process.env.NEXT_PUBLIC_GITHUB_TOKEN
+      ? { auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN }
+      : {};
+
+    const octokit = new Octokit(octokitOpion);
+
+    const response = await octokit.request(
+      "Get /repos/{owner}/{repo}/contents/{path}",
+      {
+        owner,
+        repo,
+        path,
+      }
     );
 
     return Promise.resolve(response.data);
@@ -23,11 +34,22 @@ export const getRepoFileCommits = async (
   path: string
 ) => {
   try {
-    const response = await axios.get<Commit[]>(
-      `https://api.github.com/repos/${owner}/${repo}/commits?path=${path}&page=1&per_page=1`
+    const octokitOpion = process.env.NEXT_PUBLIC_GITHUB_TOKEN
+      ? { auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN }
+      : {};
+
+    const octokit = new Octokit(octokitOpion);
+
+    const response = await octokit.request(
+      "Get /repos/{owner}/{repo}/commits?path={path}&page=1&per_page=1",
+      {
+        owner,
+        repo,
+        path,
+      }
     );
 
-    return Promise.resolve(response.data);
+    return Promise.resolve(response.data as Commit[]);
   } catch (error) {
     console.log(error);
     return Promise.reject(error);

@@ -13,6 +13,7 @@ specifiers:
   '@mdx-js/react': ^2.1.2
   '@next/env': ^12.2.3
   '@next/mdx': ^12.2.3
+  '@octokit/core': ^4.1.0
   '@playwright/test': ^1.17.2
   '@react-hook/resize-observer': ^1.2.6
   '@storybook/addon-actions': ^6.5.9
@@ -100,6 +101,7 @@ dependencies:
   '@docsearch/react': 3.3.0_bfuehj63lhrswk37rv2llps2f4
   '@instill-ai/design-system': 0.0.130_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
+  '@octokit/core': 4.1.0
   '@react-hook/resize-observer': 1.2.6_react@17.0.2
   animejs: 3.2.1
   axios: 0.21.4
@@ -2672,6 +2674,81 @@ packages:
       mkdirp: 1.0.4
       rimraf: 3.0.2
     dev: true
+
+  /@octokit/auth-token/3.0.2:
+    resolution: {integrity: sha512-pq7CwIMV1kmzkFTimdwjAINCXKTajZErLB4wMLYapR2nuB/Jpr66+05wOTZMSCBXP6n4DdDWT2W19Bm17vU69Q==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+    dev: false
+
+  /@octokit/core/4.1.0:
+    resolution: {integrity: sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/auth-token': 3.0.2
+      '@octokit/graphql': 5.0.4
+      '@octokit/request': 6.2.2
+      '@octokit/request-error': 3.0.2
+      '@octokit/types': 8.0.0
+      before-after-hook: 2.2.3
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/endpoint/7.0.3:
+    resolution: {integrity: sha512-57gRlb28bwTsdNXq+O3JTQ7ERmBTuik9+LelgcLIVfYwf235VHbN9QNo4kXExtp/h8T423cR5iJThKtFYxC7Lw==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+      is-plain-object: 5.0.0
+      universal-user-agent: 6.0.0
+    dev: false
+
+  /@octokit/graphql/5.0.4:
+    resolution: {integrity: sha512-amO1M5QUQgYQo09aStR/XO7KAl13xpigcy/kI8/N1PnZYSS69fgte+xA4+c2DISKqUZfsh0wwjc2FaCt99L41A==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/request': 6.2.2
+      '@octokit/types': 8.0.0
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/openapi-types/14.0.0:
+    resolution: {integrity: sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==}
+    dev: false
+
+  /@octokit/request-error/3.0.2:
+    resolution: {integrity: sha512-WMNOFYrSaX8zXWoJg9u/pKgWPo94JXilMLb2VManNOby9EZxrQaBe/QSC4a1TzpAlpxofg2X/jMnCyZgL6y7eg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+      deprecation: 2.3.1
+      once: 1.4.0
+    dev: false
+
+  /@octokit/request/6.2.2:
+    resolution: {integrity: sha512-6VDqgj0HMc2FUX2awIs+sM6OwLgwHvAi4KCK3mT2H2IKRt6oH9d0fej5LluF5mck1lRR/rFWN0YIDSYXYSylbw==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/endpoint': 7.0.3
+      '@octokit/request-error': 3.0.2
+      '@octokit/types': 8.0.0
+      is-plain-object: 5.0.0
+      node-fetch: 2.6.7
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/types/8.0.0:
+    resolution: {integrity: sha512-65/TPpOJP1i3K4lBJMnWqPUJ6zuOtzhtagDvydAWbEXpbFYA0oMKKyLb95NFZZP0lSh/4b6K+DQlzvYQJQQePg==}
+    dependencies:
+      '@octokit/openapi-types': 14.0.0
+    dev: false
 
   /@playwright/test/1.24.1:
     resolution: {integrity: sha512-VJ9qekMis7Oze2Q/Vb+w1g2aPaJFRdl5vhTS6h82kG89Jb8trlU2WHY7oYzNRjvFPoVUMcWXiblH2bWcbEax/A==}
@@ -5907,6 +5984,10 @@ packages:
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
+  /before-after-hook/2.2.3:
+    resolution: {integrity: sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==}
+    dev: false
+
   /better-opn/2.1.1:
     resolution: {integrity: sha512-kIPXZS5qwyKiX/HcRvDYfmBQUa8XP17I0mYZZ0y4UhpYOSvtsLHDYqmomS+Mj20aDvD3knEiQ0ecQy2nhio3yA==}
     engines: {node: '>8.0.0'}
@@ -7482,6 +7563,10 @@ packages:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /deprecation/2.3.1:
+    resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
+    dev: false
 
   /dequal/2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -15882,6 +15967,10 @@ packages:
       '@types/unist': 2.0.6
       unist-util-is: 5.1.1
       unist-util-visit-parents: 5.1.0
+
+  /universal-user-agent/6.0.0:
+    resolution: {integrity: sha512-isyNax3wXoKaulPDZWHQqbmIx1k2tb9fb3GGDBRxCscfYV2Ch7WxPArBsFEG8s/safwXTT7H4QGhaIkTp9447w==}
+    dev: false
 
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
