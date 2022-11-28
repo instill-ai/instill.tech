@@ -1,0 +1,108 @@
+.instill-footer-animate-slogan-letter-6, 
+.instill-footer-animate-slogan-letter-9,
+.instill-footer-animate-slogan-letter-15,
+.instill-footer-animate-slogan-letter-19,
+.instill-footer-animate-slogan-letter-22,
+.instill-footer-animate-slogan-letter-25,
+.instill-footer-animate-slogan-letter-26,
+.instill-footer-animate-slogan-letter-28 {
+  animation: slogan-group-0 3s step-end infinite;
+}
+
+.instill-footer-animate-slogan-letter-7,
+.instill-footer-animate-slogan-letter-10,
+.instill-footer-animate-slogan-letter-11,
+.instill-footer-animate-slogan-letter-13,
+.instill-footer-animate-slogan-letter-14,
+.instill-footer-animate-slogan-letter-20,
+.instill-footer-animate-slogan-letter-21,
+.instill-footer-animate-slogan-letter-27 {
+  animation: slogan-group-1 3s step-end infinite;
+}
+
+.instill-footer-animate-slogan-letter-8, 
+.instill-footer-animate-slogan-letter-16,
+.instill-footer-animate-slogan-letter-18,
+.instill-footer-animate-slogan-letter-23,
+.instill-footer-animate-slogan-letter-24 {
+  animation: slogan-group-2 3s step-end infinite;
+}
+
+.instill-footer-animate-slogan span {
+  line-height: 32px;
+}
+
+@keyframes slogan-group-0 {
+  0% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  25% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  50% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  75% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  100%{
+    font-family: "IBM Plex Mono";
+    color:#F6F6F6;
+  }
+}
+
+@keyframes slogan-group-1 {
+  0% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  25% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  50% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  75% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  100%{
+    font-family: "IBM Plex Mono";
+    color:#F6F6F6;
+  }
+}
+
+@keyframes slogan-group-2 {
+  0% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  25% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  50% {
+    font-family: "IBM Plex Mono";
+    color: #F6F6F6;
+  }
+  75% {
+    font-family: "instill";
+    color: #23C4E7;
+    font-size: 23.8px;
+  }
+  100%{
+    font-family: "IBM Plex Mono";
+    color:#F6F6F6;
+  }
+}
