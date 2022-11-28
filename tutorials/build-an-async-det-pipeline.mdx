@@ -1,0 +1,279 @@
+---
+title: "Build an ASYNC object detection pipeline"
+lang: "en-US"
+draft: false
+description: "Build an ASYNC object detection pipeline with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+cv_task: "object_detection"
+source_connector: "http"
+destination_connector: "postgreSQL"
+---
+
+destination_connector: "postgreSQL"
+
+In this tutorial you'll build your first **`ASYNC`** object detection pipeline and trigger the pipeline to process some images.
+
+## Build via no-code Console
+
+After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
+where you can build your first VDP pipeline by clicking **Set up your first pipeline** and forever change the way you approach visual data processing workflow development.
+
+![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
+
+:::info{type=tip}
+You can follow the tutorial via the _Pipeline_ page. Or, you can navigate to the _Source_, _Model_ and _Destination_ page to create each component first and use them to configure a pipeline in _Pipeline_ page later.
+:::
+
+### Add a HTTP source
+
+A HTTP source accepts HTTP requests with image payloads to be processed by a pipeline.
+
+To set it up,
+
+1. click the **Pipeline mode** ▾ drop-down and choose `Async`,
+2. click the **Source type** ▾ drop-down and choose `HTTP`, and
+3. click **Next**.
+
+![Add a HTTP source to set up an async pipeline in the VDP Console](/docs-assets/tutorials/add-an-async-source-http.png)
+
+:::info{type=info}
+Check our growing list of [Source Connectors](/docs/source-connectors/overview).
+:::
+
+### Import a model from GitHub
+
+To process images, here we import a model from our public GitHub repo [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc).
+
+To set it up,
+
+1. give your model a unique ID,
+2. [optional] add description,
+3. click the **Model source** ▾ drop-down and choose `GitHub`,
+4. fill in the GitHub repository URL `instill-ai/model-yolov7-dvc`, and
+5. click **Set up**.
+
+![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-yolov7-model.png)
+
+VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
+
+:::info{type=info}
+Check our growing list of [model sources](/docs/import-models/overview) to learn about how to import models from other platforms.
+:::
+
+### Deploy a model instance of the imported model
+
+Once the model is imported,
+
+1. click the **Model instances** ▾ drop-down,
+2. pick one model instance, and
+3. click **Deploy** to put it online.
+
+![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-yolov7-model-instance.png)
+
+### Add a PostgreSQL destination
+
+To set it up,
+
+1. give your destination a unique ID,
+2. [optional] add description,
+3. click the **Destination type** ▾ drop-down and choose `Postgres`, and
+4. fill in the required fields.
+
+![Add a PostgreSQL destination to create a pipeline in the VDP console](/docs-assets/tutorials/add-a-destination-postgres.png)
+
+:::info{type=info}
+Make sure the PostgreSQL is accessible by VDP using the specified `Host` and `Port`, and the `tutorial` database has been created in advance.
+:::
+
+### Set up the pipeline
+
+Almost done! Just
+
+1. give your pipeline a unique ID,
+2. [optional] add description, and
+3. click **Set up**.
+
+![Set up an pipeline in the VDP Console](/docs-assets/tutorials/set-up-an-async-det-pipeline.png)
+
+Now you should see the newly created `ASYNC` pipeline on the **Pipeline** page 🎉
+
+![Pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-async-det.png)
+
+## Build via low-code
+
+<CH.Scrollycoding>
+
+You can programmatically build a `ASYNC` pipeline via REST API.
+
+```shellscript
+
+curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8083/v1alpha/models -d '{
+  "id": "yolov7",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-yolov7-dvc"
+  }
+}'
+
+curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu:deploy
+
+curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+  "id": "postgres-db",
+  "destination_connector_definition": "destination-connector-definitions/destination-postgres",
+  "connector": {
+    "description": "The PostgreSQL database in my basement",
+    "configuration": {
+      "host": "100.113.68.102",
+      "port": 5432,
+      "database": "tutorial",
+      "schema": "public",
+      "username": "postgres",
+      "password": "password",
+      "ssl": false
+    }
+  }
+}'
+
+curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
+  "id": "detection",
+  "description": "A magic pipeline to detect objects in images",
+  "recipe": {
+    "source": "source-connectors/source-http",
+    "model_instances": [
+      "models/yolov7/instances/v1.0-cpu"
+    ],
+    "destination": "destination-connectors/postgres-db"
+  }
+}'
+
+```
+
+---
+
+### Step 1: Add a HTTP source
+
+`http://localhost:8082` is the `connector-backend` default URL.
+
+```shellscript focus=1:8
+
+```
+
+---
+
+### Step 2: Import a model from GitHub
+
+`http://localhost:8083` is the `model-backend` default URL.
+
+```shellscript focus=10:16
+
+```
+
+---
+
+### Step 3: Deploy a model instance
+
+Choose the model instance `v1.0-cpu` to deploy.
+
+```shellscript focus=18:18
+
+```
+
+---
+
+### Step 4: Add a PostgreSQL destination
+
+```shellscript focus=20:35
+
+```
+
+---
+
+### Step 5: Set up your first pipeline
+
+`http://localhost:8081` is the `pipeline-backend` default URL.
+
+```shellscript focus=36:48
+
+```
+
+</CH.Scrollycoding>
+
+## Trigger your pipeline for the first time
+
+Now that if all components are in the positive state, the `detection` pipeline will be automatically activated.
+You can make a request to trigger the pipeline to process **multiple** images within a batch via remote image URLs, Base64 or multipart:
+
+<CH.Code>
+
+```shellscript cURL(url)
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+    },
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/polar-bear.jpg"
+    }
+  ]
+}'
+```
+
+```shellscript cURL(base64)
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSk...D/2Q=="
+    },
+    ...
+  ]
+}'
+```
+
+```shellscript cURL(multipart)
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger-multipart \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"bear.jpg"'
+```
+
+</CH.Code>
+
+in which `http://localhost:8081` is the `pipeline-backend` default URL.
+
+A HTTP response will return
+
+```json
+{
+  "data_mapping_indices": [
+    "01GDR4ZW7W4T2H2G8MK79Y49PG",
+    "01GDR4ZW7W4T2H2G8MK8AR1T2B"
+  ],
+  "model_instance_outputs": []
+}
+```
+
+and in the PostgreSQL `tutorial` database, you should see
+
+```sql
+tutorial> SELECT * FROM _airbyte_raw_vdp
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| _airbyte_ab_id                       | _airbyte_data                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | _airbyte_emitted_at        |
+|--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------|
+| 36474aa5-9257-463f-920b-95b3399cd5f4 | {"index": "01GDR4ZW7W4T2H2G8MK79Y49PG", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9597808, "category": "dog", "bounding_box": {"top": 102, "left": 324, "width": 208, "height": 405}}, {"score": 0.92909366, "category": "dog", "bounding_box": {"top": 198, "left": 130, "width": 198, "height": 2... | 2022-09-24 16:23:55.288+00 |
+| 95b9f812-6ff5-4708-9d3f-8e6c97bf4dbe | {"index": "01GDR4ZW7W4T2H2G8MK8AR1T2B", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_instances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.9475409, "category": "bear", "bounding_box": {"top": 457, "left": 1372, "width": 1300, "height": 2175}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                     | 2022-09-24 16:23:55.288+00 |
++--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+SELECT 2
+```
+
+**🙌 That's it!** You just built your first `ASYNC` object detection pipeline and triggered it to convert unstructured image data into structured and analysable insight.
+
+## What's next?
+
+Check out [Learn VDP](/docs/start-here/getting-started#learn-vdp).
+If you have any problem at all, join our [Discord](https://discord.gg/sevxWsqpGh) to get [community support](/docs/start-here/getting-started#community-support).
