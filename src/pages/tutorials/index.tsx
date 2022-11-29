@@ -4,9 +4,9 @@ import glob from "fast-glob";
 import matter from "gray-matter";
 import fs from "fs";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import { FC, ReactElement } from "react";
-import { TutorialHero } from "@/components/tutorial";
-import { TutorialMeta } from "@/types/instill";
+import { FC, ReactElement, useState } from "react";
+import { TutorialHero, TutorialList } from "@/components/tutorial";
+import { Nullable, TutorialMeta } from "@/types/instill";
 import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
 import { getCommitMeta } from "@/lib/github";
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
     const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
     let turtoialPaths: { absolute: string; relative: string }[] = [];
-    let tutorialMetas: TutorialMeta[] = [];
+    let tutorials: TutorialMeta[] = [];
 
     for (const path of tutorialRelativePaths) {
       turtoialPaths.push({
@@ -34,17 +34,25 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
       const commitMeta = await getCommitMeta({
         org: "instill-ai",
         repo: "instill.tech",
-        path: "docs/" + path.relative + ".mdx",
+        path: "tutorial/" + path.relative + ".mdx",
       });
+
+      console.log(path);
 
       const validatedMeta = validateTutorialMeta(path.absolute, data);
 
-      tutorialMetas.push({ ...validatedMeta, commit: commitMeta });
+      tutorials.push({
+        ...validatedMeta,
+        commit: commitMeta,
+        slug: path.relative.split(".")[0],
+      });
     }
+
+    console.log(tutorials);
 
     return {
       props: {
-        tutorialMetas,
+        tutorials,
       },
     };
   };
@@ -54,12 +62,15 @@ type GetLayOutProps = {
 };
 
 type TutorialIndexPageProps = {
-  tutorialMetas: TutorialMeta[];
+  tutorials: TutorialMeta[];
 };
 
 const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ tutorialMetas }) => {
+} = ({ tutorials }) => {
+  const [filteredTutorials, setFilterTutorials] = useState<TutorialMeta[]>([]);
+  const [searchedTutorials, setSearchTutorials] = useState<TutorialMeta[]>([]);
+
   return (
     <>
       <PageHead
@@ -72,6 +83,9 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
         contentMaxWidth="max-w-[1127px]"
       >
         <TutorialHero marginBottom="mb-[120px] xl:mb-40" />
+        <div className="flex flex-col">
+          <TutorialList tutorials={tutorials} />
+        </div>
       </ContentContainer>
     </>
   );
