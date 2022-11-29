@@ -1,5 +1,6 @@
-import { Commit } from "./type";
+import { Commit, CommitMeta } from "./type";
 import { Octokit } from "@octokit/core";
+import { Nullable } from "@/types/instill";
 
 export const getRepoFileContent = async (
   owner: string,
@@ -53,5 +54,49 @@ export const getRepoFileCommits = async (
   } catch (error) {
     console.log(error);
     return Promise.reject(error);
+  }
+};
+
+type GetCommitMetaProps = {
+  org: string;
+  repo: string;
+  path: string;
+};
+
+export const getCommitMeta = async ({
+  org,
+  repo,
+  path,
+}: GetCommitMetaProps): Promise<CommitMeta> => {
+  try {
+    const commits = await getRepoFileCommits(org, repo, path);
+
+    let lastEditedTime: Nullable<string> = null;
+    let author: Nullable<string> = null;
+    let authorGithubUrl: Nullable<string> = null;
+
+    if (commits.length > 0 && commits[0]) {
+      const authorObj = commits[0].commit.author;
+      if (authorObj) {
+        if (authorObj.date) {
+          const time = new Date(authorObj.date).toLocaleString();
+
+          lastEditedTime = time;
+        }
+
+        author = authorObj.name || null;
+      }
+      if (commits[0].author) {
+        authorGithubUrl = commits[0].author.html_url;
+      }
+    }
+
+    return Promise.resolve({
+      author,
+      authorGithubUrl,
+      lastEditedTime,
+    });
+  } catch (err) {
+    return Promise.reject(err);
   }
 };
