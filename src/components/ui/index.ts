@@ -42,3 +42,5 @@ export { ImgWithFallback } from "./ImgWithFallback";
 export type { ImgWithFallbackProps } from "./ImgWithFallback";
 export { SectionHeader } from "./SectionHeader";
 export type { SectionHeaderProps } from "./SectionHeader";
+export { SingleSelectCheckbox } from "./SingleSelectCheckbox";
+export type { SingleSelectCheckboxProps } from "./SingleSelectCheckbox";
