@@ -39,8 +39,18 @@ export type TutorialMeta = {
   lang: string;
   draft: boolean;
   description: string;
-  cv_task: "string";
-  source_connector: string;
-  destination_connector: string;
+  cvTask: TutorialCvTask;
+  sourceConnector: string;
+  destinationConnector: string;
   commit: CommitMeta;
+  slug: string;
 };
+
+export type TutorialCvTask =
+  | "objectDetection"
+  | "ocr"
+  | "imageClassification"
+  | "instanceSegmentation"
+  | "keypointDetection"
+  | "objectDetection"
+  | "semanticSegmentation";

@@ -1,6 +1,6 @@
 import { TutorialMeta } from "@/types/instill";
 
-type PartialTutorialMeta = Omit<TutorialMeta, "commit">;
+type PartialTutorialMeta = Omit<TutorialMeta, "commit" | "slug">;
 
 export const validateTutorialMeta = (
   path: string,
@@ -28,42 +28,42 @@ export const validateTutorialMeta = (
   }
 
   // Validate whether tutorial have necessary fields - cv_task
-  if (!data.hasOwnProperty("cv_task")) {
+  if (!data.hasOwnProperty("cvTask")) {
     throw new Error(
-      `Error occured when generate tutorials - missing cv_task field at ${path}`
+      `Error occured when generate tutorials - missing cvTask field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - source_connector
-  if (!data.hasOwnProperty("source_connector")) {
+  if (!data.hasOwnProperty("sourceConnector")) {
     throw new Error(
-      `Error occured when generate tutorials - missing source_connector field at ${path}`
+      `Error occured when generate tutorials - missing sourceConnector field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - destination_connector
-  if (!data.hasOwnProperty("destination_connector")) {
+  if (!data.hasOwnProperty("destinationConnector")) {
     throw new Error(
-      `Error occured when generate tutorials - missing destination_connector field at ${path}`
+      `Error occured when generate tutorials - missing destinationConnector field at ${path}`
     );
   }
 
   // Validate the cv_task types
   const supportCvTasks = [
-    "object_detection",
+    "objectDetection",
     "ocr",
-    "image_classification",
-    "instance_segmentation",
-    "keypoint_detection",
-    "object_detection",
-    "semantic_segmentation",
+    "imageClassification",
+    "instanceSegmentation",
+    "keypointDetection",
+    "objectDetection",
+    "semanticSegmentation",
   ];
 
-  if (!supportCvTasks.includes(data.cv_task)) {
+  if (!supportCvTasks.includes(data.cvTask)) {
     throw new Error(
-      `Error occured when generate tutorials - wrong cv_task at ${path}, expect ${supportCvTasks.join(
+      `Error occured when generate tutorials - wrong cvTask at ${path}, expect ${supportCvTasks.join(
         ", "
-      )}. Found ${data.cv_task}`
+      )}. Found ${data.cvTask}`
     );
   }
 
