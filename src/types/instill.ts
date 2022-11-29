@@ -1,3 +1,5 @@
+import { CommitMeta } from "@/lib/github/type";
+
 export type PositionInfo = {
   id: string;
   slug: string;
@@ -31,3 +33,14 @@ export type MemberDetails = {
 };
 
 export type Nullable<T> = T | null;
+
+export type TutorialMeta = {
+  title: string;
+  lang: string;
+  draft: boolean;
+  description: string;
+  cv_task: "string";
+  source_connector: string;
+  destination_connector: string;
+  commit: CommitMeta;
+};

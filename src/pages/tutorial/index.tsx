@@ -3,93 +3,82 @@ import { join } from "path";
 import glob from "fast-glob";
 import matter from "gray-matter";
 import fs from "fs";
+import { ContentContainer, PageBase, PageHead } from "@/components/ui";
+import { FC, ReactElement } from "react";
+import { TutorialHero } from "@/components/tutorial";
+import { TutorialMeta } from "@/types/instill";
+import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
+import { getCommitMeta } from "@/lib/github";
 
-export const getStaticProps: GetStaticProps = async () => {
-  // Glob all tutorials and construct full absolute paths
-  const tutorialDir = join(process.cwd(), "tutorials");
-  const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
+export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
+  async () => {
+    // Glob all tutorials and construct full absolute paths
+    const tutorialDir = join(process.cwd(), "tutorials");
+    const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
-  let turtoialfullPaths: string[] = [];
+    let turtoialPaths: { absolute: string; relative: string }[] = [];
+    let tutorialMetas: TutorialMeta[] = [];
 
-  for (const path of tutorialRelativePaths) {
-    turtoialfullPaths.push(join(process.cwd(), "tutorials", path));
-  }
-
-  console.log(turtoialfullPaths);
-
-  // Read the tutorial file's frontmatter
-  for (const path of turtoialfullPaths) {
-    const source = fs.readFileSync(path, "utf8");
-    const { data } = matter(source);
-    console.log(data);
-
-    // Validate whether tutorial have necessary fields - title
-    if (!data.hasOwnProperty("title")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing title field at ${path}`
-      );
+    for (const path of tutorialRelativePaths) {
+      turtoialPaths.push({
+        relative: path,
+        absolute: join(process.cwd(), "tutorials", path),
+      });
     }
 
-    // Validate whether tutorial have necessary fields - lang
-    if (!data.hasOwnProperty("lang")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing lang field at ${path}`
-      );
+    // Read the tutorial file's frontmatter and prepare tutorial meta
+    for (const path of turtoialPaths) {
+      const source = fs.readFileSync(path.absolute, "utf8");
+      const { data } = matter(source);
+
+      const commitMeta = await getCommitMeta({
+        org: "instill-ai",
+        repo: "instill.tech",
+        path: "docs/" + path.relative + ".mdx",
+      });
+
+      const validatedMeta = validateTutorialMeta(path.absolute, data);
+
+      tutorialMetas.push({ ...validatedMeta, commit: commitMeta });
     }
 
-    // Validate whether tutorial have necessary fields - description
-    if (!data.hasOwnProperty("description")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing description field at ${path}`
-      );
-    }
+    return {
+      props: {
+        tutorialMetas,
+      },
+    };
+  };
 
-    // Validate whether tutorial have necessary fields - cv_task
-    if (!data.hasOwnProperty("cv_task")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing cv_task field at ${path}`
-      );
-    }
-
-    // Validate whether tutorial have necessary fields - source_connector
-    if (!data.hasOwnProperty("source_connector")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing source_connector field at ${path}`
-      );
-    }
-
-    // Validate whether tutorial have necessary fields - destination_connector
-    if (!data.hasOwnProperty("destination_connector")) {
-      throw new Error(
-        `Error occured when generate tutorials - missing destination_connector field at ${path}`
-      );
-    }
-
-    // Validate the cv_task types
-    const supportCvTasks = [
-      "object_detection",
-      "ocr",
-      "image_classification",
-      "instance_segmentation",
-      "keypoint_detection",
-      "object_detection",
-      "semantic_segmentation",
-    ];
-
-    if (!supportCvTasks.includes(data.cv_task)) {
-      throw new Error(
-        `Error occured when generate tutorials - wrong cv_task at ${path}, expect ${supportCvTasks.join(
-          ", "
-        )}. Found ${data.cv_task}`
-      );
-    }
-  }
-
-  return { props: {} };
+type GetLayOutProps = {
+  page: ReactElement;
 };
 
-const TutorialIndex = () => {
-  return <></>;
+type TutorialIndexPageProps = {
+  tutorialMetas: TutorialMeta[];
 };
 
-export default TutorialIndex;
+const TutorialIndexPage: FC<TutorialIndexPageProps> & {
+  getLayout?: FC<GetLayOutProps>;
+} = ({ tutorialMetas }) => {
+  return (
+    <>
+      <PageHead
+        pageTitle="Tutorial | Instill AI"
+        pageDescription=""
+        pageType="main"
+      />
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <TutorialHero marginBottom="mb-[120px] xl:mb-40" />
+      </ContentContainer>
+    </>
+  );
+};
+
+TutorialIndexPage.getLayout = (page) => {
+  return <PageBase>{page}</PageBase>;
+};
+
+export default TutorialIndexPage;

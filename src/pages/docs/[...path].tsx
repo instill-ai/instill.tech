@@ -29,7 +29,7 @@ import {
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
-import { getRepoFileCommits } from "@/lib/github";
+import { getCommitMeta, getRepoFileCommits } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 
 type DocsParams = {
@@ -156,31 +156,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Access GitHub API to retrieve the info of Committer
 
-  const commits = await getRepoFileCommits(
-    "instill-ai",
-    "instill.tech",
-    "docs/" + relativePath + ".mdx"
-  );
-
-  let lastEditedTime: Nullable<string> = null;
-  let author: Nullable<string> = null;
-  let authorGithubUrl: Nullable<string> = null;
-
-  if (commits.length > 0 && commits[0]) {
-    const authorObj = commits[0].commit.author;
-    if (authorObj) {
-      if (authorObj.date) {
-        const time = new Date(authorObj.date).toLocaleString();
-
-        lastEditedTime = time;
-      }
-
-      author = authorObj.name || null;
-    }
-    if (commits[0].author) {
-      authorGithubUrl = commits[0].author.html_url;
-    }
-  }
+  const commitMeta = await getCommitMeta({
+    org: "instill-ai",
+    repo: "instill.tech",
+    path: "docs/" + relativePath + ".mdx",
+  });
 
   // We use remark to correctly get the headers
 
@@ -196,10 +176,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       mdxSource,
       nextArticle,
       prevArticle,
-      lastEditedTime,
-      author,
-      authorGithubUrl,
       headers,
+      ...commitMeta,
     },
   };
 };
