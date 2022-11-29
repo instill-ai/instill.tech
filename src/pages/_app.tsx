@@ -5,6 +5,7 @@ import "../styles/global.css";
 import "@/style/codeHike.css";
 import "../styles/docs.css";
 import "@docsearch/css";
+import "@/components/ui/Footer/AnimateSlogan.css";
 
 import "intersection-observer";
 import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
