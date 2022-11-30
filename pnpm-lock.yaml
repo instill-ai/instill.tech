@@ -25,6 +25,7 @@ specifiers:
   '@storybook/client-api': ^6.5.9
   '@storybook/manager-webpack5': ^6.5.9
   '@storybook/react': ^6.5.9
+  '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.2
   '@testing-library/dom': ^8.16.0
   '@testing-library/jest-dom': ^5.16.4
@@ -144,6 +145,7 @@ devDependencies:
   '@storybook/client-api': 6.5.9_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/manager-webpack5': 6.5.9_gjxyvv5b5y34u3p3y4qizewcfy
   '@storybook/react': 6.5.9_dygsotm2uinhsschwep4spkgwi
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.6
   '@tailwindcss/typography': 0.5.4_tailwindcss@3.1.6
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
@@ -4236,6 +4238,14 @@ packages:
     resolution: {integrity: sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA==}
     dependencies:
       tslib: 2.4.0
+
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.1.6:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.1.6_postcss@8.4.14
+    dev: true
 
   /@tailwindcss/typography/0.5.4_tailwindcss@3.1.6:
     resolution: {integrity: sha512-QEdg40EmGvE7kKoDei8zr5sf4D1pIayHj4R31bH3lX8x2BtTiR+jNejYPOkhbmy3DXgkMF9jC8xqNiGFAuL9Sg==}

@@ -68,6 +68,7 @@
     "@storybook/client-api": "^6.5.9",
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.2",
     "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.16.4",
