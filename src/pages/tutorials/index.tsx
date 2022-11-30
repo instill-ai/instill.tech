@@ -4,11 +4,17 @@ import glob from "fast-glob";
 import matter from "gray-matter";
 import fs from "fs";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import { FC, ReactElement, useState } from "react";
-import { TutorialHero, TutorialList } from "@/components/tutorial";
+import { FC, ReactElement, useMemo, useState } from "react";
+import {
+  TutorialHero,
+  TutorialList,
+  TutorialFilters,
+  TutorialFiltersProps,
+} from "@/components/tutorial";
 import { Nullable, TutorialMeta } from "@/types/instill";
 import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
 import { getCommitMeta } from "@/lib/github";
+import { TutorialFilterProps } from "@/components/tutorial/TutorialFilters/TutorialFilter";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -68,8 +74,51 @@ type TutorialIndexPageProps = {
 const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ tutorials }) => {
-  const [filteredTutorials, setFilterTutorials] = useState<TutorialMeta[]>([]);
-  const [searchedTutorials, setSearchTutorials] = useState<TutorialMeta[]>([]);
+  const [searchedTutorials, setSearchedTutorials] = useState<TutorialMeta[]>(
+    []
+  );
+  const [filters, setFilters] = useState<TutorialFiltersProps["filters"]>({
+    cvTask: "all",
+    connector: "all",
+  });
+
+  // We don't need to complicate thing at this stage, once
+  // we have many conditinon to filter we can find a lib to
+  // handle it for us.
+
+  const filteredTutorials = useMemo(() => {
+    const filterCvTask = (
+      item: TutorialMeta,
+      filters: TutorialFiltersProps["filters"]
+    ) => {
+      if (filters.cvTask === "all") {
+        return true;
+      } else {
+        return item.cvTask === filters.cvTask ? true : false;
+      }
+    };
+
+    const filterConnector = (
+      item: TutorialMeta,
+      filters: TutorialFiltersProps["filters"]
+    ) => {
+      if (filters.connector === "all") {
+        return true;
+      } else {
+        if (
+          filters.connector === item.sourceConnector ||
+          filters.connector === item.destinationConnector
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    };
+
+    let filteredTutorials = tutorials.filter((e) => filterCvTask(e, filters));
+    return filteredTutorials.filter((e) => filterConnector(e, filters));
+  }, [filters, tutorials]);
 
   return (
     <>
@@ -84,7 +133,12 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       >
         <TutorialHero marginBottom="mb-[120px] xl:mb-40" />
         <div className="flex flex-col">
-          <TutorialList tutorials={tutorials} />
+          <TutorialFilters
+            tutorials={tutorials}
+            filters={filters}
+            setFilters={setFilters}
+          />
+          <TutorialList tutorials={filteredTutorials} />
         </div>
       </ContentContainer>
     </>
