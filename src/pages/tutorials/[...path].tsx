@@ -3,12 +3,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { CH } from "@code-hike/mdx/components";
 import { join } from "path";
 import glob from "fast-glob";
 import remarkDirective from "remark-directive";
 import { remarkCodeHike } from "@code-hike/mdx";
 import remarkGfm from "remark-gfm";
-import { CH } from "@code-hike/mdx/components";
 import { useRouter } from "next/router";
 import { h } from "hastscript";
 import { readFile } from "fs/promises";
@@ -17,7 +17,12 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 
-import { PageHead } from "@/components/ui";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  PageHero,
+} from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
 import { docsConfig } from "../../../docs.config";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
@@ -32,16 +37,8 @@ import { ArticleNavigationButton } from "@/components/docs";
 import { getCommitMeta, getRepoFileCommits } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 
-type DocsParams = {
-  params: {
-    path: string[];
-  };
-};
-
-type DocsPageProps = {
+type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
-  nextArticle: Nullable<SidebarItem>;
-  prevArticle: Nullable<SidebarItem>;
   lastEditedTime: Nullable<string>;
   author: Nullable<string>;
   authorGithubUrl: Nullable<string>;
@@ -49,21 +46,21 @@ type DocsPageProps = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const docsDir = join(process.cwd(), "docs");
-  const docsPaths = glob.sync("**/*.mdx", { cwd: docsDir });
+  const tutorialDir = join(process.cwd(), "tutorials");
+  const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
   return {
-    paths: docsPaths.map((path) => ({
+    paths: tutorialRelativePaths.map((path) => ({
       params: {
         path: path.replace(".mdx", "").split("/"),
       },
     })),
 
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
-export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
+export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   params,
 }) => {
   if (!params || !params.path) {
@@ -76,10 +73,10 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   let relativePath: string;
 
   if (Array.isArray(params.path)) {
-    fullPath = join(process.cwd(), "docs", ...params.path);
+    fullPath = join(process.cwd(), "tutorials", ...params.path);
     relativePath = join(...params.path);
   } else {
-    fullPath = join(process.cwd(), "docs", params.path);
+    fullPath = join(process.cwd(), "tutorials", params.path);
     relativePath = join(params.path);
   }
 
@@ -134,26 +131,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     },
   });
 
-  // Get prev and next link from sidebar config
-
-  const sidebarLinks: SidebarItem[] = [];
-
-  sidebarLinks.concat(
-    ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
-  );
-
-  const currentPageIndex = sidebarLinks.findIndex(
-    (e) => e.link === "/docs/" + relativePath
-  );
-
-  const nextArticle =
-    currentPageIndex + 1 >= sidebarLinks.length
-      ? null
-      : sidebarLinks[currentPageIndex + 1];
-
-  const prevArticle =
-    currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
-
   // Access GitHub API to retrieve the info of Committer
 
   const commitMeta = await getCommitMeta({
@@ -174,8 +151,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   return {
     props: {
       mdxSource,
-      nextArticle,
-      prevArticle,
       headers,
       ...commitMeta,
     },
@@ -186,17 +161,9 @@ type GetLayOutProps = {
   page: ReactElement;
 };
 
-const DocsPage: FC<DocsPageProps> & {
+const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({
-  mdxSource,
-  nextArticle,
-  prevArticle,
-  lastEditedTime,
-  author,
-  authorGithubUrl,
-  headers,
-}) => {
+} = ({ mdxSource, lastEditedTime, author, authorGithubUrl, headers }) => {
   const router = useRouter();
 
   return (
@@ -218,78 +185,33 @@ const DocsPage: FC<DocsPageProps> & {
           </>
         }
       />
-      <div className="grid grid-cols-8">
-        <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
-          <h1 className="mb-10 font-sans text-3xl font-semibold">
-            {mdxSource.frontmatter
-              ? mdxSource.frontmatter.title
-              : "Documentation"}
-          </h1>
-          <article
-            id="content"
-            className="DocSearch-content prose prose-black mb-20 max-w-none"
-          >
-            <MDXRemote {...mdxSource} components={{ CH }} />
-          </article>
-          <div className="mb-8 flex w-full flex-row gap-x-2 border-b pb-6">
-            {lastEditedTime && author ? (
-              <>
-                <p className="ml-auto text-sm text-instillGrey70">
-                  {`Last updated: ${lastEditedTime}`}
-                </p>
-                <div className="flex flex-row gap-x-1 text-sm ">
-                  <p className="text-instillGrey70">by</p>
-                  <a
-                    className="text-instillBlue50 underline"
-                    href={authorGithubUrl || "/"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {author}
-                  </a>
-                </div>
-              </>
-            ) : null}
-          </div>
-          <div className="grid grid-flow-row grid-cols-2 gap-x-5">
-            {prevArticle ? (
-              <ArticleNavigationButton
-                type="prev"
-                link={prevArticle.link}
-                text={prevArticle.text}
-              />
-            ) : (
-              <div />
-            )}
-            {nextArticle ? (
-              <ArticleNavigationButton
-                type="next"
-                link={nextArticle.link}
-                text={nextArticle.text}
-              />
-            ) : (
-              <div />
-            )}
-          </div>
-        </div>
-
-        <aside className="hidden xl:col-span-2 xl:block">
-          <RightSidebar
-            githubEditUrl={
-              "https://github.com/instill-ai/instill.tech/edit/main" +
-              router.asPath +
-              ".mdx"
-            }
-            headers={headers}
-          />
-        </aside>
-      </div>
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <PageHero
+          headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
+          subHeadline={
+            <p>
+              {mdxSource.frontmatter ? mdxSource.frontmatter.description : ""}
+            </p>
+          }
+          marginBottom="mb-[120px] xl:mb-40"
+          width="w-[800px]"
+        />
+        <article
+          id="content"
+          className="prose prose-black mx-auto mb-20 max-w-[800px]"
+        >
+          <MDXRemote {...mdxSource} components={{ CH }} />
+        </article>
+      </ContentContainer>
     </>
   );
 };
 
-DocsPage.getLayout = (page) => {
-  return <DocsLayout>{page}</DocsLayout>;
+TutorialPage.getLayout = (page) => {
+  return <PageBase>{page}</PageBase>;
 };
 
-export default DocsPage;
+export default TutorialPage;
