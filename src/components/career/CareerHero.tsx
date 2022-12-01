@@ -1,4 +1,3 @@
-import cn from "clsx";
 import { PageHero } from "../ui";
 import {
   ViewJobsScrollButton,

@@ -64,7 +64,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           </button>
           {mobileNavOpen && (
-            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-8 py-10 px-4">
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10">
               {items.left.map((item) => (
                 <div key={item.key}>
                   <Item item={item} />

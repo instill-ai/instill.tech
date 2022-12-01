@@ -7,6 +7,7 @@ import { PositionDetails } from "@/components/career";
 
 import {
   BackToPreviousPageLink,
+  ContentContainer,
   PageBase,
   PageHead,
   StayInTheLoopProps,
@@ -138,18 +139,18 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
-      <div className="mx-auto flex max-w-[1127px] flex-col">
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
         <div className="my-10 flex px-4 xl:px-0">
           <BackToPreviousPageLink url="/career" />
         </div>
         <PositionDetails position={position} marginBottom="mb-20 xl:mb-40" />
-        <div
-          className="mb-20 flex px-4 xl:mb-40 xl:px-0"
-          ref={stayInTheLoopRef}
-        >
+        <div className="flex px-4" ref={stayInTheLoopRef}>
           {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
-      </div>
+      </ContentContainer>
     </>
   );
 };

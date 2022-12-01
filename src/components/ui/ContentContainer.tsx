@@ -15,7 +15,7 @@ export const ContentContainer = ({
   return (
     <div
       className={cn(
-        "mx-auto my-[120px] flex w-full flex-col px-4 xl:px-0",
+        "mx-auto flex w-full flex-col px-4 xl:px-0",
         contentMaxWidth,
         margin
       )}

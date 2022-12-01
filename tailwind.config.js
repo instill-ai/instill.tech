@@ -190,6 +190,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
 
     // We have to use plugin to let intelligence pick up our custom classname's style
     // ref: https://github.com/tailwindlabs/tailwindcss-intellisense/issues/227
