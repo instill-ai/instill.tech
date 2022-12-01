@@ -19,10 +19,14 @@ import { remark } from "remark";
 
 import {
   ContentContainer,
+  ContributeLinks,
   PageBase,
   PageHead,
   PageHero,
+  TableOfContent,
 } from "@/components/ui";
+import { TutorialLabel } from "@/components/tutorial";
+
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
 import { docsConfig } from "../../../docs.config";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
@@ -32,10 +36,11 @@ import {
   infoBlockChildren,
 } from "@/lib/markdown/rehype-info-block-handler.mjs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
-import { SidebarItem } from "@/types/docs";
-import { ArticleNavigationButton } from "@/components/docs";
-import { getCommitMeta, getRepoFileCommits } from "@/lib/github";
-import { Nullable } from "@/types/instill";
+import { getCommitMeta } from "@/lib/github";
+import { Nullable, TutorialMeta } from "@/types/instill";
+import Link from "next/link";
+import { ArrowLeftIcon, ArrowRightIcon } from "@instill-ai/design-system";
+import { getCvTaskIconAndLabel } from "@/lib/instill";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -166,6 +171,16 @@ const TutorialPage: FC<TutorialPageProps> & {
 } = ({ mdxSource, lastEditedTime, author, authorGithubUrl, headers }) => {
   const router = useRouter();
 
+  const { icon, label } = getCvTaskIconAndLabel({
+    cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
+    iconStyle: {
+      color: "fill-instillGrey05",
+      width: "w-6",
+      height: "h-6",
+      position: "m-auto",
+    },
+  });
+
   return (
     <>
       <PageHead
@@ -189,6 +204,47 @@ const TutorialPage: FC<TutorialPageProps> & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
+        <div className="relative mb-10 h-[500px] w-full bg-instillWarmOrange50">
+          <div className="absolute top-5 left-5 flex flex-col gap-y-5">
+            <div className="group flex bg-instillGrey80 bg-opacity-20 px-5 py-2 hover:bg-opacity-75">
+              <Link href="/tutorials">
+                <a className="flex w-full flex-row gap-x-2">
+                  <ArrowLeftIcon
+                    width="w-5"
+                    height="h-5"
+                    color="fill-instillGrey20 group-hover:fill-instillGrey05"
+                    position="my-auto"
+                  />
+                  <p className="inline-flex items-center font-mono text-xs font-normal text-instillGrey20 group-hover:text-instillGrey05">
+                    Back
+                  </p>
+                </a>
+              </Link>
+            </div>
+            <div className="bg-instillGrey80 bg-opacity-20 px-5 py-2">
+              <TutorialLabel
+                icon={icon || undefined}
+                label={label}
+                position="mr-auto"
+                labelTextStyle="font-mono text-xs font-normal text-instillGrey20"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mb-2 flex flex-row gap-x-4 pl-1">
+          <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
+            {mdxSource.frontmatter?.sourceConnector}
+          </p>
+          <ArrowRightIcon
+            width="w-5"
+            height="h-5"
+            color="fill-instillSkyBlue"
+            position="my-auto"
+          />
+          <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
+            {mdxSource.frontmatter?.destinationConnector}
+          </p>
+        </div>
         <PageHero
           headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
           subHeadline={
@@ -197,14 +253,32 @@ const TutorialPage: FC<TutorialPageProps> & {
             </p>
           }
           marginBottom="mb-[120px] xl:mb-40"
-          width="w-[800px]"
+          width="max-w-[1127px] w-10/12"
+          position="mr-auto"
+          headerColor="text-instillGrey95"
         />
-        <article
-          id="content"
-          className="prose prose-black mx-auto mb-20 max-w-[800px]"
-        >
-          <MDXRemote {...mdxSource} components={{ CH }} />
-        </article>
+        <div className="relative flex h-full flex-row">
+          <article
+            id="content"
+            className="prose prose-black mb-20 mr-auto w-full max-w-none xl:w-9/12  xl:max-w-[800px]"
+          >
+            <MDXRemote {...mdxSource} components={{ CH }} />
+          </article>
+          <div className="hidden w-3/12 xl:block">
+            <div className="sticky top-[140px]  pr-4">
+              <div className="flex h-full flex-col overflow-auto">
+                <TableOfContent headers={headers} />
+                <ContributeLinks
+                  githubEditUrl={
+                    "https://github.com/instill-ai/instill.tech/edit/main" +
+                    router.asPath +
+                    ".mdx"
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </ContentContainer>
     </>
   );
