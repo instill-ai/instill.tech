@@ -48,9 +48,9 @@ If the exit code is 0, the state will be `CONNECTED`.
 If the exit code is 1, the state will be `ERROR`.
 Before the container `check` return the result, the connector state will remain `UNSPECIFIED`.
 
-A connector can be switched to `DISCONNECTED` state by invoking the `connector-backend` endpoint `:disconnect` only when its original state is `CONNECTED`.
+A connector can be switched to `DISCONNECTED` state by invoking the `connector-backend` endpoint `/disconnect` only when its original state is `CONNECTED`.
 
-A connector can be switched to `CONNECTED` state by invoking the `connector-backend` endpoint `:connect` only when its original state is `DISCONNECTED`.
+A connector can be switched to `CONNECTED` state by invoking the `connector-backend` endpoint `/connect` only when its original state is `DISCONNECTED`.
 
 If the connector state ends up with `ERROR`, the connector configuration will need to be updated via the UPDATE `connector-backend` endpoint.
 

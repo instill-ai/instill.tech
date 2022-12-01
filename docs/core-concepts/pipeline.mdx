@@ -89,9 +89,9 @@ When a pipeline is initially created, the pipeline state is determined by the pi
 - `INACTIVE` if **ANY** of its sub-components are in their negative state
 - `ACTIVE` if **ALL** of its sub-components are in their positive state
 
-A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend` endpoint `:deactivate` only when its original state is `ACTIVE`.
+A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend` endpoint `/deactivate` only when its original state is `ACTIVE`.
 
-A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `:activate` only when its original state is `INACTIVE`.
+A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `/activate` only when its original state is `INACTIVE`.
 
 <p align="center">
   <img
