@@ -3,10 +3,10 @@ import cn from "clsx";
 import { ReactElement } from "react";
 
 export type TutorialLabellProps = {
-  labelTextStyle: string;
-  labelBgColor: string;
-  labelPadding: string;
   label: string;
+  labelTextStyle?: string;
+  labelBgColor?: string;
+  labelPadding?: string;
   icon?: ReactElement;
   position?: string;
   marginBottom?: string;
@@ -24,11 +24,12 @@ export const TutorialLabel = ({
   return (
     <div
       className={cn(
-        "flex flex-row gap-x-[5px]",
+        "flex flex-row",
         position,
         marginBottom,
         labelBgColor,
-        labelPadding
+        labelPadding,
+        icon ? "gap-x-[5px]" : ""
       )}
     >
       <div className="my-auto">{icon}</div>
