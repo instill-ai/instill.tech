@@ -67,7 +67,7 @@ specifiers:
   mdast-util-to-hast: ^12.2.0
   mdast-util-to-string: ^3.1.0
   next: ^12.2.4
-  next-mdx-remote: 4.0.0
+  next-mdx-remote: 4.2.0
   next-sitemap: ^3.1.16
   node-html-parser: ^5.2.0
   postcss: ^8.4.5
@@ -115,7 +115,7 @@ dependencies:
   gsap: 3.10.4
   intersection-observer: 0.12.2
   next: 12.2.4_quymggomo7oodk3cofk2m5scyu
-  next-mdx-remote: 4.0.0_sfoxds7t5ydpegc3knd667wn6m
+  next-mdx-remote: 4.2.0_sfoxds7t5ydpegc3knd667wn6m
   node-html-parser: 5.3.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -9272,7 +9272,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.16.3
+      uglify-js: 3.17.4
     dev: true
 
   /hard-rejection/2.1.0:
@@ -12363,12 +12363,12 @@ packages:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
     dev: true
 
-  /next-mdx-remote/4.0.0_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-WEEBe5OaIiiACvWsYwkf6uFnVcuam33dghDu2WpALE1BcH8Oozwvmjb0KFLURuAQsYL/yOZCTr8urmYtOZifRQ==}
+  /next-mdx-remote/4.2.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-X5RhD7f7b78pH2abbuusObSGgII5l54OdusS/2iXljN7WN1cel6ToLlZeCZcyxx9cR4wmBGQYGongIttDYNmAA==}
     engines: {node: '>=14', npm: '>=7'}
     peerDependencies:
-      react: '>=16.x <=17.x'
-      react-dom: '>=16.x <=17.x'
+      react: '>=16.x <=18.x'
+      react-dom: '>=16.x <=18.x'
     dependencies:
       '@mdx-js/mdx': 2.1.2
       '@mdx-js/react': 2.1.2_react@17.0.2
@@ -15783,8 +15783,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.16.3:
-    resolution: {integrity: sha512-uVbFqx9vvLhQg0iBaau9Z75AxWJ8tqM9AV890dIZCLApF4rTcyHwmAvLeEdYRs+BzYWu8Iw81F79ah0EfTXbaw==}
+  /uglify-js/3.17.4:
+    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
