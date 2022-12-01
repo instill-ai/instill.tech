@@ -11,10 +11,9 @@ import {
   TutorialFilters,
   TutorialFiltersProps,
 } from "@/components/tutorial";
-import { Nullable, TutorialMeta } from "@/types/instill";
+import { TutorialMeta } from "@/types/instill";
 import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
 import { getCommitMeta } from "@/lib/github";
-import { TutorialFilterProps } from "@/components/tutorial/TutorialFilters/TutorialFilter";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -78,8 +77,8 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
     []
   );
   const [filters, setFilters] = useState<TutorialFiltersProps["filters"]>({
-    cvTask: "all",
-    connector: "all",
+    cvTask: "All",
+    connector: "All",
   });
 
   // We don't need to complicate thing at this stage, once
@@ -91,7 +90,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.cvTask === "all") {
+      if (filters.cvTask === "All") {
         return true;
       } else {
         return item.cvTask === filters.cvTask ? true : false;
@@ -102,7 +101,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.connector === "all") {
+      if (filters.connector === "All") {
         return true;
       } else {
         if (
@@ -132,13 +131,18 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
         contentMaxWidth="max-w-[1127px]"
       >
         <TutorialHero marginBottom="mb-[120px] xl:mb-40" />
-        <div className="flex flex-col">
-          <TutorialFilters
-            tutorials={tutorials}
-            filters={filters}
-            setFilters={setFilters}
-          />
-          <TutorialList tutorials={filteredTutorials} />
+        <div className="flex flex-col xl:flex-row xl:gap-x-10">
+          <div className="xl:flex xl:w-3/12">
+            <TutorialFilters
+              tutorials={tutorials}
+              filters={filters}
+              setFilters={setFilters}
+            />
+          </div>
+
+          <div className="flex xl:w-9/12">
+            <TutorialList tutorials={filteredTutorials} />
+          </div>
         </div>
       </ContentContainer>
     </>

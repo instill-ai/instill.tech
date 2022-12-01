@@ -1,27 +1,42 @@
+import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
-import { Label } from "./Label";
+import { TutorialLabel } from "../TutorialLabel";
 
 export type TutorialBlockProps = {
   tutorial: TutorialMeta;
 };
 
 export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
+  const { icon, label } = getCvTaskIconAndLabel({
+    cvTask: tutorial.cvTask,
+    iconStyle: {
+      color: "fill-instillGrey80",
+      width: "w-5",
+      height: "h-5",
+      position: "m-auto",
+    },
+  });
+
   return (
     <Link href={`/tutorials/${tutorial.slug}`}>
-      <a className="flex w-[340px] flex-col hover:shadow-instill-solid-10 xl:w-[360px]">
-        <div className="h-[160px] bg-instillWarmOrange50 xl:h-[200px]" />
-        <div className="flex w-full flex-col bg-instillGrey05 p-5">
-          <Label
-            cvTask={tutorial.cvTask}
+      <a className="flex h-[480px] w-full flex-col hover:shadow-instill-solid-10 xl:h-[520px] xl:w-[360px]">
+        <div className="min-h-[160px] bg-instillWarmOrange50 xl:min-h-[200px]" />
+        <div className="flex h-full w-full flex-col bg-instillGrey05 p-5">
+          <TutorialLabel
+            icon={icon || undefined}
+            label={label}
             position="mr-auto"
             marginBottom="mb-2.5"
+            labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
+            labelBgColor="bg-instillGrey20"
+            labelPadding="py-1 px-2"
           />
           <h3 className="mb-2 break-all text-instillGrey90 text-instill-h3-medium">
             {tutorial.title}
           </h3>
-          <p className="mb-5 w-full flex-1 text-ellipsis font-sans text-lg font-normal text-instillGrey70">
+          <p className="mb-auto w-full text-ellipsis font-sans text-lg font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
             {tutorial.description}
           </p>
           <div className="flex flex-row gap-x-2 py-0.5">

@@ -15,7 +15,7 @@ export const Playground: ComponentStory<typeof TutorialBlock> = Template.bind(
 );
 
 Playground.args = {
-  meta: {
+  tutorial: {
     cvTask: "ocr",
     title: "Build a SYNC classification pipeline",
     description:
@@ -29,5 +29,6 @@ Playground.args = {
       authorGithubUrl: "https://github.com/EiffelFly",
     },
     draft: false,
+    slug: "build-an-async-det-pipeline",
   },
 };

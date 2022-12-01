@@ -39,14 +39,14 @@ export type TutorialMeta = {
   lang: string;
   draft: boolean;
   description: string;
-  cvTask: TutorialCvTask;
+  cvTask: CvTask;
   sourceConnector: string;
   destinationConnector: string;
   commit: CommitMeta;
   slug: string;
 };
 
-export type TutorialCvTask =
+export type CvTask =
   | "objectDetection"
   | "ocr"
   | "imageClassification"

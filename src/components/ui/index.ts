@@ -44,3 +44,7 @@ export { SectionHeader } from "./SectionHeader";
 export type { SectionHeaderProps } from "./SectionHeader";
 export { SingleSelectCheckbox } from "./SingleSelectCheckbox";
 export type { SingleSelectCheckboxProps } from "./SingleSelectCheckbox";
+export { TableOfContent } from "./TableOfContent";
+export type { TableOfContentProps } from "./TableOfContent";
+export { ContributeLinks } from "./ContributeLinks";
+export type { ContributeLinksProps } from "./ContributeLinks";
