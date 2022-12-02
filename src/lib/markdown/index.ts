@@ -1,0 +1,1 @@
+export { serializeMdxRemote } from "./serializeMdxRemote";

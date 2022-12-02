@@ -1,36 +1,23 @@
 import { FC, ReactElement } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
-import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
-import remarkDirective from "remark-directive";
-import { remarkCodeHike } from "@code-hike/mdx";
-import remarkGfm from "remark-gfm";
-import { CH } from "@code-hike/mdx/components";
+
 import { useRouter } from "next/router";
-import { h } from "hastscript";
 import { readFile } from "fs/promises";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
-
 import { PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
 import { docsConfig } from "../../../docs.config";
-import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
-import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
-import {
-  infoBlockHeader,
-  infoBlockChildren,
-} from "@/lib/markdown/rehype-info-block-handler.mjs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
 import { getRepoFileCommits } from "@/lib/github";
 import { Nullable } from "@/types/instill";
+import { serializeMdxRemote } from "@/lib/markdown";
 
 type DocsParams = {
   params: {
@@ -98,41 +85,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Serialize the mdx file for client
 
-  const mdxSource = await serialize(source, {
-    parseFrontmatter: true,
-    mdxOptions: {
-      useDynamicImport: true,
-      remarkRehypeOptions: { handlers: { infoBlockHeader, infoBlockChildren } },
-      remarkPlugins: [
-        [
-          remarkCodeHike,
-          {
-            theme,
-            lineNumbers: false,
-            showCopyButton: true,
-            autoImport: false,
-          },
-        ],
-        remarkDirective,
-        remarkInfoBlock,
-        [remarkYoutube, { validateYoutubeLink: true }],
-        remarkGfm,
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "prepend",
-            properties: { class: "heading-anchor" },
-            content() {
-              return h("span", { class: "heading-anchor-hash" }, ["#"]);
-            },
-          },
-        ],
-      ],
-    },
-  });
+  const mdxSource = serializeMdxRemote(source, true, theme);
 
   // Get prev and next link from sidebar config
 
@@ -251,7 +204,7 @@ const DocsPage: FC<DocsPageProps> & {
             id="content"
             className="DocSearch-content prose prose-black mb-20 max-w-none"
           >
-            <MDXRemote {...mdxSource} components={{ CH }} />
+            <MDXRemote {...mdxSource} />
           </article>
           <div className="mb-8 flex w-full flex-row gap-x-2 border-b pb-6">
             {lastEditedTime && author ? (
