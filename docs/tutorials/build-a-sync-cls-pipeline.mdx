@@ -12,7 +12,10 @@ In this tutorial you'll build your first **`SYNC`** classification pipeline and 
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
 where you can build your first VDP pipeline by clicking **Set up your first pipeline** and forever change the way you approach visual data processing workflow development.
 
-![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-empty.png"
+  alt="Empty pipeline list page of the VDP Console"
+/>
 
 :::info{type=tip}
 You can follow the tutorial via the **Pipeline** page. Or, you can navigate to the **Source**, **Model** and **Destination** page to create each component first and use them to configure a pipeline in **Pipeline** page later.
@@ -28,7 +31,10 @@ To set it up,
 2. click the **Source type** ▾ drop-down and choose `HTTP`, and
 3. click **Next**.
 
-![Add a HTTP source to set up a SYNC pipeline in the VDP Console](/docs-assets/tutorials/add-a-sync-source-http.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-sync-source-http.png"
+  alt="Add a HTTP source to set up a SYNC pipeline in the VDP Console"
+/>
 
 :::info{type=info}
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
@@ -46,7 +52,10 @@ To set it up,
 4. fill in the GitHub repository URL `instill-ai/model-mobilenetv2`, and
 5. click **Set up**.
 
-![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-mobilenetv2-model.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-mobilenetv2-model.png"
+  alt="Import a model from a GitHub repo via VDP Console"
+/>
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
 
@@ -62,7 +71,10 @@ Once the model is imported,
 2. pick one model instance, and
 3. click **Deploy** to put it online.
 
-![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png"
+  alt="Deploy a model instance via VDP Console"
+/>
 
 ### Add a HTTP destination
 
@@ -72,7 +84,10 @@ Just
 
 1. click **Next**.
 
-![Add a HTTP destination to create a SYNC pipeline in the VDP console](/docs-assets/tutorials/add-a-sync-destination-http.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-sync-destination-http.png"
+  alt="Add a HTTP destination to create a SYNC pipeline in the VDP console"
+/>
 
 :::info{type=info}
 The paired source and destination connectors for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
@@ -89,11 +104,17 @@ Almost done! Just
 2. [optional] add description, and
 3. click **Set up**.
 
-![Set up a pipeline in the VDP Console](/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png"
+  alt="Set up a pipeline in the VDP Console"
+/>
 
 Now you should see the newly created `SYNC` pipeline on the **Pipeline** page 🎉
 
-![Pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-sync-cls.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-sync-cls.png"
+  alt="Pipeline list page of the VDP Console"
+/>
 
 ## Build via low-code
 

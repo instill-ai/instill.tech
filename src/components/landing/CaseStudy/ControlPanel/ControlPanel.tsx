@@ -154,10 +154,6 @@ export const ControlPanel = ({ items, activeIndex }: ControlPanelProps) => {
   ]);
 
   useEffect(() => {
-    console.log(activeIndex, sourceToModelLineDataset);
-  }, [activeIndex]);
-
-  useEffect(() => {
     const svg = d3.select(sourceToModelLineSvgRef.current);
     if (!sourceToModelLineDataset) {
       // Here can be optimized, we can use the d3.join to update

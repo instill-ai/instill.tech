@@ -42,3 +42,5 @@ export { ImgWithFallback } from "./ImgWithFallback";
 export type { ImgWithFallbackProps } from "./ImgWithFallback";
 export { SectionHeader } from "./SectionHeader";
 export type { SectionHeaderProps } from "./SectionHeader";
+export { ZoomableImg } from "./ZoomableImg";
+export type { ZoomableImgProps } from "./ZoomableImg";

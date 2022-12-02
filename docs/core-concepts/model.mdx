@@ -62,7 +62,10 @@ When importing a model in VDP, all versions of the model are imported as model i
 Please refer to [Import Models](/docs/import-models/overview) to learn about model versioning with supported model sources.
 Among all model instances, you can choose specific ones into the model repository to deploy and then to use in data pipelines.
 
-![VDP model and model instance](/docs-assets/core-concepts/model-and-model-instance.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/model-and-model-instance.svg"
+  alt="VDP model and model instance"
+/>
 
 ## State
 
@@ -78,15 +81,15 @@ Before a model instance is deployed online, the state of the model instance will
 
 If the state of a model instance ends up with `ERROR`, the model instance is undeployable on VDP. Please refer to [Prepare Models](/docs/prepare-models/overview) to make your model VDP-ready.
 
-<p align="center">
-  <img
+<div align="center">
+  <ZoomableImg
     src="/docs-assets/core-concepts/model-instance-state.svg"
     alt="model instance state"
     width="500"
   />
   The finite-state-machine (FSM) diagram for the model instance state transition
   logic.
-</p>
+</div>
 
 ## Inference
 
