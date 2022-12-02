@@ -85,7 +85,10 @@ The protocol is still under development. Stay tuned on how the protocol will evo
 Image classification task is the CV Task to assign a single pre-defined category label to an entire input image.
 Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
 
-![Image classification task](/docs-assets/core-concepts/cv-task-classification.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/cv-task-classification.svg"
+  alt="Image classification task"
+/>
 
 ```json
 {
@@ -101,7 +104,10 @@ Generally, an image classification model takes an image as the input, and output
 Object detection task is the CV Task to localise multiple objects of pre-defined categories in an input image.
 Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
 
-![Object detection task](/docs-assets/core-concepts/cv-task-detection.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/cv-task-detection.svg"
+  alt="Object detection task"
+/>
 
 ```json
 {
@@ -128,7 +134,10 @@ Generally, an object detection model receives an image as the input, and outputs
 Keypoint detection task is the CV Task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
 Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with confidence scores on detected objects.
 
-![Keypoint detection task](/docs-assets/core-concepts/cv-task-keypoint.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/cv-task-keypoint.svg"
+  alt="Keypoint detection task"
+/>
 
 ```json
 {
@@ -163,7 +172,7 @@ a text detection model to detect bounding boxes containing text and
 a text recognition model to process typed or handwritten text within each bounding box into machine readable text.
 Alternatively, there are deep learning models that can accomplish the task in one single step.
 
-![OCR task](/docs-assets/core-concepts/cv-task-ocr.svg)
+<ZoomableImg src="/docs-assets/core-concepts/cv-task-ocr.svg" alt="OCR task" />
 
 ```json
 {
@@ -203,7 +212,10 @@ VDP will
 - check the `config.pbtxt` [model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) file to extract the output names, datatypes and shapes of the model outputs,
 - and wrap these information along with the raw model output in a _standard_ format.
 
-![Unspecified task](/docs-assets/core-concepts/cv-task-unspecified.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/cv-task-unspecified.svg"
+  alt="Unspecified task"
+/>
 
 ```json
 {

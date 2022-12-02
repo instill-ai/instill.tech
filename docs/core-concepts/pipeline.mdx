@@ -35,9 +35,10 @@ Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or
 A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
 
-<p align="center">
-  <img src="/docs-assets/core-concepts/sync.svg" alt="SYNC pipeline mode" />
-</p>
+<ZoomableImg
+  src="/docs-assets/core-concepts/sync.svg"
+  alt="SYNC pipeline mode"
+/>
 
 To create a `SYNC` pipeline, both source and destination needs to be configured with the same protocol type. VDP supports HTTP and gRPC for a `SYNC` pipeline.
 
@@ -56,9 +57,10 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
 Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
 
-<p align="center">
-  <img src="/docs-assets/core-concepts/async.svg" alt="ASYNC pipeline mode" />
-</p>
+<ZoomableImg
+  src="/docs-assets/core-concepts/async.svg"
+  alt="ASYNC pipeline mode"
+/>
 
 To create an `ASYNC` pipeline, the source can be either HTTP or gRPC, and the destination can be any Airbyte destination connectors.
 
@@ -76,9 +78,10 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 
 A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
 
-<p align="center">
-  <img src="/docs-assets/core-concepts/fetch.svg" alt="FETCH pipeline mode" />
-</p>
+<ZoomableImg
+  src="/docs-assets/core-concepts/fetch.svg"
+  alt="FETCH pipeline mode"
+/>
 
 ## State
 
@@ -93,11 +96,11 @@ A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend
 
 A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `/activate` only when its original state is `INACTIVE`.
 
-<p align="center">
-  <img
+<div align="center">
+  <ZoomableImg
     src="/docs-assets/core-concepts/pipeline-state.svg"
     alt="pipeline state"
-    width="500"
+    width="500px"
   />
   The finite-state-machine (FSM) diagram for the pipeline state transition logic.
-</p>
+</div>
