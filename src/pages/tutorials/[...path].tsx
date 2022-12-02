@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useRef } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";
@@ -25,10 +25,9 @@ import {
   PageHero,
   TableOfContent,
 } from "@/components/ui";
-import { TutorialLabel } from "@/components/tutorial";
+import { TutorialLabel, TutorialThemeImage } from "@/components/tutorial";
 
-import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig } from "../../../docs.config";
+import { RightSidebarProps } from "@/components/docs";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
 import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
 import {
@@ -41,6 +40,7 @@ import { Nullable, TutorialMeta } from "@/types/instill";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@instill-ai/design-system";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
+import { useElementDimension } from "@/hooks/useElementDimension";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -181,6 +181,9 @@ const TutorialPage: FC<TutorialPageProps> & {
     },
   });
 
+  const [articleContainerRef, articleContainerDimension] =
+    useElementDimension();
+
   return (
     <>
       <PageHead
@@ -204,78 +207,71 @@ const TutorialPage: FC<TutorialPageProps> & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
-        <div className="relative mb-10 h-[500px] w-full bg-instillWarmOrange50">
-          <div className="absolute top-5 left-5 flex flex-col gap-y-5">
-            <div className="group flex bg-instillGrey80 bg-opacity-20 px-5 py-2 hover:bg-opacity-75">
-              <Link href="/tutorials">
-                <a className="flex w-full flex-row gap-x-2">
-                  <ArrowLeftIcon
-                    width="w-5"
-                    height="h-5"
-                    color="fill-instillGrey20 group-hover:fill-instillGrey05"
-                    position="my-auto"
-                  />
-                  <p className="inline-flex items-center font-mono text-xs font-normal text-instillGrey20 group-hover:text-instillGrey05">
-                    Back
-                  </p>
-                </a>
-              </Link>
-            </div>
-            <div className="bg-instillGrey80 bg-opacity-20 px-5 py-2">
-              <TutorialLabel
-                icon={icon || undefined}
-                label={label}
-                position="mr-auto"
-                labelTextStyle="font-mono text-xs font-normal text-instillGrey20"
-              />
-            </div>
+        <div className="mx-auto flex max-w-[800px] flex-col">
+          <TutorialThemeImage cvTaskIcon={icon} cvTaskLabel={label} />
+          <div className="mb-2 flex flex-row gap-x-4 pl-1">
+            <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
+              {mdxSource.frontmatter?.sourceConnector}
+            </p>
+            <ArrowRightIcon
+              width="w-5"
+              height="h-5"
+              color="fill-instillSkyBlue"
+              position="my-auto"
+            />
+            <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
+              {mdxSource.frontmatter?.destinationConnector}
+            </p>
+          </div>
+          <PageHero
+            headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
+            subHeadline={
+              <p>
+                {mdxSource.frontmatter ? mdxSource.frontmatter.description : ""}
+              </p>
+            }
+            marginBottom="mb-[120px] xl:mb-40"
+            width="max-w-[1127px]"
+            position="mr-auto"
+            headerColor="text-instillGrey95"
+          />
+          <div
+            ref={articleContainerRef}
+            className="relative flex h-full flex-row"
+          >
+            <article
+              id="content"
+              className="prose prose-black mb-20 mr-auto w-full max-w-none"
+            >
+              <MDXRemote {...mdxSource} components={{ CH }} />
+            </article>
           </div>
         </div>
-        <div className="mb-2 flex flex-row gap-x-4 pl-1">
-          <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
-            {mdxSource.frontmatter?.sourceConnector}
-          </p>
-          <ArrowRightIcon
-            width="w-5"
-            height="h-5"
-            color="fill-instillSkyBlue"
-            position="my-auto"
-          />
-          <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
-            {mdxSource.frontmatter?.destinationConnector}
-          </p>
-        </div>
-        <PageHero
-          headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
-          subHeadline={
-            <p>
-              {mdxSource.frontmatter ? mdxSource.frontmatter.description : ""}
-            </p>
-          }
-          marginBottom="mb-[120px] xl:mb-40"
-          width="max-w-[1127px] w-10/12"
-          position="mr-auto"
-          headerColor="text-instillGrey95"
-        />
-        <div className="relative flex h-full flex-row">
-          <article
-            id="content"
-            className="prose prose-black mb-20 mr-auto w-full max-w-none xl:w-9/12  xl:max-w-[800px]"
-          >
-            <MDXRemote {...mdxSource} components={{ CH }} />
-          </article>
-          <div className="hidden w-3/12 xl:block">
-            <div className="sticky top-[140px]  pr-4">
-              <div className="flex h-full flex-col overflow-auto">
-                <TableOfContent headers={headers} />
-                <ContributeLinks
-                  githubEditUrl={
-                    "https://github.com/instill-ai/instill.tech/edit/main" +
-                    router.asPath +
-                    ".mdx"
-                  }
-                />
-              </div>
+
+        {/* 
+          In current design, we want to make table of content align with the 
+          article container.
+        */}
+        <div
+          className="absolute hidden max:block"
+          style={{
+            top: `${articleContainerDimension.y}px`,
+            left: `${
+              articleContainerDimension.x + articleContainerDimension.width + 40
+            }px`,
+            height: articleContainerDimension.height - 100,
+          }}
+        >
+          <div className="sticky top-[160px]  pr-4">
+            <div className="flex h-full flex-col overflow-auto">
+              <TableOfContent headers={headers} />
+              <ContributeLinks
+                githubEditUrl={
+                  "https://github.com/instill-ai/instill.tech/edit/main" +
+                  router.asPath +
+                  ".mdx"
+                }
+              />
             </div>
           </div>
         </div>

@@ -53,11 +53,14 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
       });
     }
 
-    console.log(tutorials);
-
     return {
       props: {
-        tutorials,
+        tutorials: tutorials.sort((a, b) => {
+          return (
+            new Date(b.publishedAt).getTime() -
+            new Date(a.publishedAt).getTime()
+          );
+        }),
       },
     };
   };
