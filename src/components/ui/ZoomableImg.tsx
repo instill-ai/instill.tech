@@ -1,7 +1,5 @@
-import Image from "next/future/image";
 import { useEffect, useState } from "react";
 import cn from "clsx";
-import Zoom from "react-medium-image-zoom";
 
 export type ZoomableImgProps = {
   src: string;
@@ -11,18 +9,6 @@ export type ZoomableImgProps = {
 };
 
 export const ZoomableImg = ({ src, alt, width, height }: ZoomableImgProps) => {
-  if (!height && width) {
-    throw new Error(
-      "Because you had passed width, you should pass the height at the same time"
-    );
-  }
-
-  if (height && !width) {
-    throw new Error(
-      "Because you had passed height, you should pass the width at the same time"
-    );
-  }
-
   const [isZoom, setIsZoom] = useState(false);
 
   useEffect(() => {
@@ -50,10 +36,13 @@ export const ZoomableImg = ({ src, alt, width, height }: ZoomableImgProps) => {
           onClick={() => setIsZoom(true)}
           src={src}
           className={cn(
-            "w-full cursor-pointer object-contain",
-            isZoom ? "opacity-0" : "opacity-100"
+            "cursor-pointer object-contain",
+            isZoom ? "opacity-0" : "opacity-100",
+            width ? "" : "w-full"
           )}
           alt={alt}
+          width={width}
+          height={height}
         />
       </div>
 
@@ -68,11 +57,16 @@ export const ZoomableImg = ({ src, alt, width, height }: ZoomableImgProps) => {
             onClick={() => setIsZoom(false)}
           >
             <div className="flex min-h-full items-center justify-center p-4 sm:p-0">
-              <div className={cn("relative w-full")}>
+              <div className={cn("relative w-full p-4 xl:p-10")}>
                 <img
                   src={src}
-                  className="w-full cursor-pointer object-contain"
+                  className={cn(
+                    "cursor-pointer object-contain",
+                    width ? "" : "w-full"
+                  )}
                   alt={alt}
+                  width={width}
+                  height={height}
                 />
               </div>
             </div>
