@@ -39,6 +39,25 @@ You could adjust Navbar and Sidebar item in `docs.config.tsx` in the root.
 - Please add every page in the sidebar. 
 - Please follow the type instruction.
 
+### About the regular markdown syntax
+
+#### Image syntax
+
+Normally you can use the image syntax with markdown like the below.
+
+```
+![alt](src)
+```
+
+But we suggest you use our ZoomableImg component to implement img. You could find more instruction in the ZoomableImg component section.
+
+```
+<ZoomableImg 
+  src="src"
+  alt="alt"
+/>
+```
+
 ### About the extended markdown syntax
 
 #### Info-block
@@ -107,3 +126,55 @@ Please follow markdown details syntax like below
 ### About the next-mdx-remote
 
 - We are using MDXProvide at the root of the app. If you want to add new custom components into the MDX, please add the component at the root of the app _app.tsx
+
+### About the MDX component
+
+#### Nested p tag issue
+
+Please don't use p tag to wrap other component in markdown. Because it will cause nested p tag issue.
+
+```mdx
+
+// This is not allowed.
+<p>
+  <ZoomableImg />
+</p>
+
+```
+
+#### ZoomableImg
+
+You can use ZoomableImg to make the image zoomable like Medium
+
+If width is not specificed, the image will expand to the full width of the parent.
+
+```
+<ZoomableImg 
+  src="src"
+  alt="alt"
+/>
+```
+
+You can specific the width of the image, if the width is bigger than the parent, it will be adjusted to the width of the parent. If the widht is smaller than the parent, it will align to left.
+
+Normally you don't need to specific the height.
+
+```
+<ZoomableImg 
+  src="src"
+  alt="alt"
+  width="500px"
+/>
+```
+
+If you want to align the item, for example to center you could use the align attribute.
+
+```
+<div align="center">
+  <ZoomableImg 
+    src="src"
+    alt="alt"
+    width="500px"
+  />
+</div>
+```
