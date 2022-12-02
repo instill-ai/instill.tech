@@ -103,3 +103,7 @@ Please follow markdown details syntax like below
   Content
 </details>
 ```
+
+### About the next-mdx-remote
+
+- We are using MDXProvide at the root of the app. If you want to add new custom components into the MDX, please add the component at the root of the app _app.tsx
