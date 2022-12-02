@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Serialize the mdx file for client
 
-  const mdxSource = serializeMdxRemote(source, true, theme);
+  const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Get prev and next link from sidebar config
 
