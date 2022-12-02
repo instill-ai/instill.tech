@@ -27,24 +27,31 @@ export const validateTutorialMeta = (
     );
   }
 
-  // Validate whether tutorial have necessary fields - cv_task
+  // Validate whether tutorial have necessary fields - cvTask
   if (!data.hasOwnProperty("cvTask")) {
     throw new Error(
       `Error occured when generate tutorials - missing cvTask field at ${path}`
     );
   }
 
-  // Validate whether tutorial have necessary fields - source_connector
+  // Validate whether tutorial have necessary fields - sourceConnector
   if (!data.hasOwnProperty("sourceConnector")) {
     throw new Error(
       `Error occured when generate tutorials - missing sourceConnector field at ${path}`
     );
   }
 
-  // Validate whether tutorial have necessary fields - destination_connector
+  // Validate whether tutorial have necessary fields - destinationConnector
   if (!data.hasOwnProperty("destinationConnector")) {
     throw new Error(
       `Error occured when generate tutorials - missing destinationConnector field at ${path}`
+    );
+  }
+
+  // Validate whether tutorial have necessary fields - publishedAt
+  if (!data.hasOwnProperty("publishedAt")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing publishedAt field at ${path}`
     );
   }
 

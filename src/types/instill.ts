@@ -44,6 +44,7 @@ export type TutorialMeta = {
   destinationConnector: string;
   commit: CommitMeta;
   slug: string;
+  publishedAt: string;
 };
 
 export type CvTask =

@@ -21,7 +21,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
 
   return (
     <Link href={`/tutorials/${tutorial.slug}`}>
-      <a className="flex h-[480px] w-full flex-col hover:shadow-instill-solid-10 xl:h-[520px] xl:w-[360px]">
+      <a className="flex h-[480px] w-full flex-col hover:shadow-instill-solid-10 xl:h-[520px]">
         <div className="min-h-[160px] bg-instillWarmOrange50 xl:min-h-[200px]" />
         <div className="flex h-full w-full flex-col bg-instillGrey05 p-5">
           <TutorialLabel
