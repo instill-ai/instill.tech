@@ -60,13 +60,8 @@ export const ZoomableImg = ({ src, alt, width, height }: ZoomableImgProps) => {
               <div className={cn("relative w-full p-4 xl:p-10")}>
                 <img
                   src={src}
-                  className={cn(
-                    "cursor-pointer object-contain",
-                    width ? "" : "w-full"
-                  )}
+                  className={cn("w-full cursor-pointer object-contain")}
                   alt={alt}
-                  width={width}
-                  height={height}
                 />
               </div>
             </div>
