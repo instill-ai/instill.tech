@@ -14,6 +14,7 @@ import {
 import { TutorialMeta } from "@/types/instill";
 import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
 import { getCommitMeta } from "@/lib/github";
+import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -133,7 +134,12 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
-        <TutorialHero marginBottom="mb-[120px] xl:mb-40" />
+        <TutorialHero marginBottom="mb-10 xl:mb-[60px]" />
+        <TutorialSearch
+          tutorials={filteredTutorials}
+          setResult={setSearchedTutorials}
+          marginBottom="mb-10 xl:mb-[120px]"
+        />
         <div className="flex flex-col xl:flex-row xl:gap-x-10">
           <div className="xl:flex xl:w-3/12">
             <TutorialFilters
@@ -144,7 +150,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
           </div>
 
           <div className="flex xl:w-9/12">
-            <TutorialList tutorials={filteredTutorials} />
+            <TutorialList tutorials={searchedTutorials} />
           </div>
         </div>
       </ContentContainer>

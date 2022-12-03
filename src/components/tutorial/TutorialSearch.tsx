@@ -1,0 +1,64 @@
+import cn from "clsx";
+import { Nullable, TutorialMeta } from "@/types/instill";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import Fuse from "fuse.js";
+
+export type TutorialSearchProps = {
+  tutorials: TutorialMeta[];
+  setResult: Dispatch<SetStateAction<TutorialMeta[]>>;
+  marginBottom?: string;
+};
+
+export const TutorialSearch = ({
+  tutorials,
+  setResult,
+  marginBottom,
+}: TutorialSearchProps) => {
+  const [searchTerm, setSearchTerm] = useState<Nullable<string>>(null);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setResult(tutorials);
+    } else {
+      const fuse = new Fuse(tutorials, {
+        keys: ["title"],
+        includeMatches: true,
+        threshold: 0.5,
+      });
+
+      const result = fuse
+        .search<TutorialMeta[]>(searchTerm)
+        .map((e) => e.item)
+        .flat();
+
+      setResult(result);
+    }
+  }, [tutorials, setResult, searchTerm]);
+
+  return (
+    <div
+      className={cn("flex w-full flex-col xl:mx-auto xl:w-8/12", marginBottom)}
+    >
+      <input
+        placeholder="Search"
+        className="mb-2.5 w-full bg-instillNeonBlue bg-opacity-10 px-4 py-3 text-instill-body-normal focus:outline-instillSkyBlue"
+        onChange={async (e) => {
+          const { value } = e.currentTarget;
+          setSearchTerm(value);
+        }}
+      />
+      <div className="flex w-full flex-row">
+        <a className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70">
+          Request a demo
+        </a>
+        <div className="grid w-10 grid-cols-2 py-2">
+          <div className="block w-full border-r border-instillGrey30" />
+          <div className="block w-full" />
+        </div>
+        <a className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70">
+          Submit a demo
+        </a>
+      </div>
+    </div>
+  );
+};
