@@ -8,3 +8,5 @@ export { TutorialLabel } from "./TutorialLabel";
 export type { TutorialLabellProps } from "./TutorialLabel";
 export { TutorialThemeImage } from "./TutorialThemeImage";
 export type { TutorialThemeImageProps } from "./TutorialThemeImage";
+export { TutorialSearch } from "./TutorialSearch";
+export type { TutorialSearchProps } from "./TutorialSearch";
