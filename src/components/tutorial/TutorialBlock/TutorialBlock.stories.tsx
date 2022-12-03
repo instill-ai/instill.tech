@@ -30,5 +30,6 @@ Playground.args = {
     },
     draft: false,
     slug: "build-an-async-det-pipeline",
+    publishedAt: "2022-10-21T08:00:00",
   },
 };
