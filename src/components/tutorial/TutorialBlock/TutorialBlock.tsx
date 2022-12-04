@@ -11,12 +11,6 @@ export type TutorialBlockProps = {
 export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: tutorial.cvTask,
-    iconStyle: {
-      color: "fill-instillGrey80",
-      width: "w-5",
-      height: "h-5",
-      position: "m-auto",
-    },
   });
 
   return (
@@ -25,7 +19,16 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
         <div className="min-h-[160px] bg-instillWarmOrange50 xl:min-h-[200px]" />
         <div className="flex h-full w-full flex-col bg-instillGrey05 p-5">
           <TutorialLabel
-            icon={icon || undefined}
+            icon={
+              icon
+                ? icon({
+                    color: "fill-instillGrey80",
+                    width: "w-5",
+                    height: "h-5",
+                    position: "m-auto",
+                  })
+                : undefined
+            }
             label={label}
             position="mr-auto"
             marginBottom="mb-2.5"

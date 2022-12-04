@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name, react/no-multi-comp */
+
 import { CvTask, Nullable } from "@/types/instill";
 import { ReactElement } from "react";
 import {
@@ -9,46 +11,59 @@ import {
   SemanticSegmentationIcon,
 } from "@instill-ai/design-system";
 
+type IconStyle = {
+  color: string;
+  width: string;
+  height: string;
+  position?: string;
+};
+
 export type getCvTaskIconAndLabelProps = {
   cvTask: CvTask;
-  iconStyle: {
-    color: string;
-    width: string;
-    height: string;
-    position?: string;
-  };
+};
+
+export type getCvTaskIconAndLabelReturn = {
+  label: string;
+  icon: Nullable<(iconStyle: IconStyle) => ReactElement>;
 };
 
 export const getCvTaskIconAndLabel = ({
   cvTask,
-  iconStyle,
-}: getCvTaskIconAndLabelProps) => {
-  let icon: Nullable<ReactElement> = null;
+}: getCvTaskIconAndLabelProps): getCvTaskIconAndLabelReturn => {
+  let icon: Nullable<(iconStyle: IconStyle) => ReactElement> = null;
   let label: string = "";
 
   switch (cvTask) {
     case "ocr":
-      icon = <OpticalCharacterRecognitionIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => (
+        <OpticalCharacterRecognitionIcon {...iconStyle} />
+      );
       label = "OCR (optical character recognition)";
       break;
     case "imageClassification":
-      icon = <ImageClassificationIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => (
+        <ImageClassificationIcon {...iconStyle} />
+      );
       label = "Image Classification";
       break;
     case "instanceSegmentation":
-      icon = <InstanceSegmentationIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => (
+        <InstanceSegmentationIcon {...iconStyle} />
+      );
       label = "Instance Segmentation";
       break;
     case "keypointDetection":
-      icon = <KeypointDetectionIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => <KeypointDetectionIcon {...iconStyle} />;
       label = "Keypoint Detection (Pose Estimation)";
       break;
     case "objectDetection":
-      icon = <ObjectDetectionIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => <ObjectDetectionIcon {...iconStyle} />;
       label = "Object Detection";
       break;
     case "semanticSegmentation":
-      icon = <SemanticSegmentationIcon {...iconStyle} />;
+      icon = (iconStyle: IconStyle) => (
+        <SemanticSegmentationIcon {...iconStyle} />
+      );
       label = "Semantic Segmentation";
       break;
     default:
