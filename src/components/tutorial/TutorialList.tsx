@@ -7,7 +7,7 @@ export type TutorialListProps = {
 
 export const TutorialList = ({ tutorials }: TutorialListProps) => {
   return (
-    <div className="grid w-full grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">
+    <div className="grid w-full grid-flow-row auto-rows-fr grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">
       {tutorials.map((e) => (
         <TutorialBlock key={e.title} tutorial={e} />
       ))}
