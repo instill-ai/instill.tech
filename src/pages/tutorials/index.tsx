@@ -12,7 +12,7 @@ import {
   TutorialFiltersProps,
 } from "@/components/tutorial";
 import { TutorialMeta } from "@/types/instill";
-import { validateTutorialMeta } from "@/lib/markdown/validateTutorialMeta";
+import { validateTutorialMeta } from "@/lib/instill";
 import { getCommitMeta } from "@/lib/github";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 
@@ -42,8 +42,6 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
         repo: "instill.tech",
         path: "tutorial/" + path.relative + ".mdx",
       });
-
-      console.log(path);
 
       const validatedMeta = validateTutorialMeta(path.absolute, data);
 

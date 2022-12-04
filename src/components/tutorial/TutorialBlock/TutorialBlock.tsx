@@ -2,6 +2,7 @@ import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
+import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
 import { TutorialLabel } from "../TutorialLabel";
 
 export type TutorialBlockProps = {
@@ -16,7 +17,11 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   return (
     <Link href={`/tutorials/${tutorial.slug}`}>
       <a className="flex h-[480px] w-full flex-col hover:shadow-instill-solid-10 xl:h-[520px]">
-        <div className="min-h-[160px] bg-instillWarmOrange50 xl:min-h-[200px]" />
+        <TutorialImagePlaceholder
+          width="w-full"
+          height="min-h-[160px] xl:min-h-[200px]"
+          color={tutorial.placeholderColor}
+        />
         <div className="flex h-full w-full flex-col bg-instillGrey05 p-5">
           <TutorialLabel
             icon={

@@ -2,13 +2,16 @@ import cn from "clsx";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { BackToPreviousPageLink } from "../ui";
+import { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
 
 export type TutorialThemeImageProps = {
   marginBottom?: string;
+  placeholderColor: string;
 };
 
 export const TutorialThemeImage = ({
   marginBottom,
+  placeholderColor,
 }: TutorialThemeImageProps) => {
   const [imgContainerRef, imageContainerDimension] = useElementDimension();
   const windowSize = useWindowSize();
@@ -39,10 +42,13 @@ export const TutorialThemeImage = ({
           )
         ) : null}
       </div>
-      <div
-        ref={imgContainerRef}
-        className="relative h-[450px] w-full bg-instillWarmOrange50"
-      />
+      <div ref={imgContainerRef} className="w-full">
+        <TutorialImagePlaceholder
+          width="w-full"
+          height="h-[450px]"
+          color={placeholderColor}
+        />
+      </div>
     </div>
   );
 };

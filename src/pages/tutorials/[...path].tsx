@@ -19,7 +19,6 @@ import { remark } from "remark";
 
 import {
   ContentContainer,
-  ContributeLinks,
   PageBase,
   PageHead,
   PageHero,
@@ -204,7 +203,12 @@ const TutorialPage: FC<TutorialPageProps> & {
         contentMaxWidth="max-w-[1127px]"
       >
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
-          <TutorialThemeImage marginBottom="mb-10" />
+          <TutorialThemeImage
+            placeholderColor={
+              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
+            }
+            marginBottom="mb-10"
+          />
           <TutorialPipeline
             icon={icon}
             label={label}
