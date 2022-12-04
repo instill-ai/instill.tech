@@ -5,6 +5,17 @@ module.exports = {
     "./node_modules/@instill-ai/design-system/build/*.js",
     "./docs.config.tsx",
   ],
+
+  // We safelist all the theme image placeholder color of tutorial
+  safelist: [
+    "bg-instillWarmOrange50",
+    "bg-instillLemonYellow50",
+    "bg-instillBlue50",
+    "bg-instillRed90",
+    "bg-instillGreen50",
+    "bg-instillNeonBlue50",
+    "bg-instillYellow50",
+  ],
   theme: {
     extend: {
       colors: {
