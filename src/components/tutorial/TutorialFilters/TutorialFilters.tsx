@@ -1,12 +1,5 @@
 import cn from "clsx";
-import {
-  Dispatch,
-  ReactElement,
-  SetStateAction,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { FilterIcon, XIcon } from "@instill-ai/design-system";
 
 import { SingleSelectCheckboxProps } from "@/components/ui";
@@ -15,6 +8,7 @@ import { CvTask, Nullable, TutorialMeta } from "@/types/instill";
 import { TutorialLabel } from "../TutorialLabel";
 import { TutorialFilter } from "./TutorialFilter";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { getCvTaskIconAndLabelReturn } from "@/lib/instill/getCvTaskIconAndLabel";
 
 type Filters = {
   cvTask: CvTask | "All";
@@ -67,7 +61,7 @@ export const TutorialFilters = ({
   }, [tutorials]);
 
   const cvTaskFilterLabel = useMemo<{
-    icon: Nullable<ReactElement>;
+    icon: getCvTaskIconAndLabelReturn["icon"];
     label: string;
   }>(() => {
     if (filters.cvTask === "All") {
@@ -78,12 +72,6 @@ export const TutorialFilters = ({
     } else {
       return getCvTaskIconAndLabel({
         cvTask: filters.cvTask,
-        iconStyle: {
-          color: "fill-instillGrey80",
-          width: "w-5",
-          height: "h-5",
-          position: "my-auto",
-        },
       });
     }
   }, [filters]);
@@ -198,7 +186,16 @@ export const TutorialFilters = ({
           <div className="flex flex-row gap-x-5">
             <p className="font-sans text-base font-medium">CV task:</p>
             <TutorialLabel
-              icon={cvTaskFilterLabel.icon || undefined}
+              icon={
+                cvTaskFilterLabel.icon
+                  ? cvTaskFilterLabel.icon({
+                      color: "fill-instillGrey80",
+                      width: "w-5",
+                      height: "h-5",
+                      position: "my-auto",
+                    })
+                  : undefined
+              }
               label={cvTaskFilterLabel.label}
               labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
               labelBgColor="bg-instillGrey05"

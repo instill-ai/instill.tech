@@ -1,46 +1,48 @@
-import { ReactElement } from "react";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@instill-ai/design-system";
-
-import { Nullable } from "@/types/instill";
-import { TutorialLabel } from "./TutorialLabel";
+import cn from "clsx";
+import { useElementDimension } from "@/hooks/useElementDimension";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { BackToPreviousPageLink } from "../ui";
 
 export type TutorialThemeImageProps = {
-  cvTaskIcon: Nullable<ReactElement>;
-  cvTaskLabel: string;
+  marginBottom?: string;
 };
 
 export const TutorialThemeImage = ({
-  cvTaskIcon,
-  cvTaskLabel,
+  marginBottom,
 }: TutorialThemeImageProps) => {
+  const [imgContainerRef, imageContainerDimension] = useElementDimension();
+  const windowSize = useWindowSize();
+
   return (
-    <div className="relative mb-10 h-[450px] w-full bg-instillWarmOrange50">
-      <div className="absolute top-5 left-5 flex flex-col gap-y-5">
-        <div className="group flex bg-instillGrey80 bg-opacity-20 px-5 py-2 hover:bg-opacity-75">
-          <Link href="/tutorials">
-            <a className="flex w-full flex-row gap-x-2">
-              <ArrowLeftIcon
-                width="w-5"
-                height="h-5"
-                color="fill-instillGrey20 group-hover:fill-instillGrey05"
-                position="my-auto"
-              />
-              <p className="inline-flex items-center font-mono text-xs font-normal text-instillGrey20 group-hover:text-instillGrey05">
-                Back
-              </p>
-            </a>
-          </Link>
-        </div>
-        <div className="bg-instillGrey80 bg-opacity-20 px-5 py-2">
-          <TutorialLabel
-            icon={cvTaskIcon || undefined}
-            label={cvTaskLabel}
-            position="mr-auto"
-            labelTextStyle="font-mono text-xs font-normal text-instillGrey20"
-          />
-        </div>
+    <div className={cn("flex flex-col", marginBottom)}>
+      {/* 
+        The back to previous button will be placed above image when at mobile 
+        view and placed at the left of the image when the size is bigger than
+        1127px.
+      */}
+      <div className="mb-4">
+        {windowSize?.width ? (
+          windowSize?.width > 1127 ? (
+            <div
+              className="absolute hidden xl:flex"
+              style={{
+                top: `${imageContainerDimension.y}px`,
+                left: `${imageContainerDimension.x - 125}px`,
+              }}
+            >
+              <BackToPreviousPageLink url="/tutorials" />
+            </div>
+          ) : (
+            <div className="flex xl:hidden">
+              <BackToPreviousPageLink url="/tutorials" />
+            </div>
+          )
+        ) : null}
       </div>
+      <div
+        ref={imgContainerRef}
+        className="relative h-[450px] w-full bg-instillWarmOrange50"
+      />
     </div>
   );
 };

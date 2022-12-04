@@ -25,7 +25,11 @@ import {
   PageHero,
   TableOfContent,
 } from "@/components/ui";
-import { TutorialLabel, TutorialThemeImage } from "@/components/tutorial";
+import {
+  TutorialPipeline,
+  TutorialTableOfContent,
+  TutorialThemeImage,
+} from "@/components/tutorial";
 
 import { RightSidebarProps } from "@/components/docs";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
@@ -37,8 +41,6 @@ import {
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
-import Link from "next/link";
-import { ArrowLeftIcon, ArrowRightIcon } from "@instill-ai/design-system";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 
@@ -173,12 +175,6 @@ const TutorialPage: FC<TutorialPageProps> & {
 
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
-    iconStyle: {
-      color: "fill-instillGrey05",
-      width: "w-6",
-      height: "h-6",
-      position: "m-auto",
-    },
   });
 
   const [articleContainerRef, articleContainerDimension] =
@@ -207,22 +203,16 @@ const TutorialPage: FC<TutorialPageProps> & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
-        <div className="mx-auto flex max-w-[800px] flex-col">
-          <TutorialThemeImage cvTaskIcon={icon} cvTaskLabel={label} />
-          <div className="mb-2 flex flex-row gap-x-4 pl-1">
-            <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
-              {mdxSource.frontmatter?.sourceConnector}
-            </p>
-            <ArrowRightIcon
-              width="w-5"
-              height="h-5"
-              color="fill-instillSkyBlue"
-              position="my-auto"
-            />
-            <p className="bg-instillSkyBlue px-2 py-1 text-instillGrey05">
-              {mdxSource.frontmatter?.destinationConnector}
-            </p>
-          </div>
+        <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
+          <TutorialThemeImage marginBottom="mb-10" />
+          <TutorialPipeline
+            icon={icon}
+            label={label}
+            sourceConnector={mdxSource.frontmatter?.sourceConnector || null}
+            destinationConnector={
+              mdxSource.frontmatter?.destinationConnector || null
+            }
+          />
           <PageHero
             headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
             subHeadline={
@@ -262,18 +252,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             height: articleContainerDimension.height - 100,
           }}
         >
-          <div className="sticky top-[160px]  pr-4">
-            <div className="flex h-full flex-col overflow-auto">
-              <TableOfContent headers={headers} />
-              <ContributeLinks
-                githubEditUrl={
-                  "https://github.com/instill-ai/instill.tech/edit/main" +
-                  router.asPath +
-                  ".mdx"
-                }
-              />
-            </div>
-          </div>
+          <TutorialTableOfContent headers={headers} />
         </div>
       </ContentContainer>
     </>
