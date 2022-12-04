@@ -204,6 +204,7 @@ const TutorialPage: FC<TutorialPageProps> & {
       >
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
           <TutorialThemeImage
+            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
             placeholderColor={
               mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
             }

@@ -3,18 +3,23 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { BackToPreviousPageLink } from "../ui";
 import { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
+import { useState } from "react";
+import { Nullable } from "@/types/instill";
 
 export type TutorialThemeImageProps = {
   marginBottom?: string;
   placeholderColor: string;
+  imgSrc: Nullable<string>;
 };
 
 export const TutorialThemeImage = ({
   marginBottom,
   placeholderColor,
+  imgSrc,
 }: TutorialThemeImageProps) => {
   const [imgContainerRef, imageContainerDimension] = useElementDimension();
   const windowSize = useWindowSize();
+  const [imageIsError, setImageIsError] = useState(false);
 
   return (
     <div className={cn("flex flex-col", marginBottom)}>
@@ -43,11 +48,33 @@ export const TutorialThemeImage = ({
         ) : null}
       </div>
       <div ref={imgContainerRef} className="w-full">
-        <TutorialImagePlaceholder
-          width="w-full"
-          height="h-[450px]"
-          color={placeholderColor}
-        />
+        {imgSrc ? (
+          imageIsError ? (
+            <TutorialImagePlaceholder
+              width="w-full"
+              height="h-[450px]"
+              color={placeholderColor}
+            />
+          ) : (
+            <img
+              src={imgSrc}
+              alt="The theme image of this tutorial"
+              style={{
+                height: `${(imageContainerDimension.width * 9) / 16}px`,
+              }}
+              className="w-full object-cover"
+              onError={() => {
+                setImageIsError(true);
+              }}
+            />
+          )
+        ) : (
+          <TutorialImagePlaceholder
+            width="w-full"
+            height="h-[450px]"
+            color={placeholderColor}
+          />
+        )}
       </div>
     </div>
   );

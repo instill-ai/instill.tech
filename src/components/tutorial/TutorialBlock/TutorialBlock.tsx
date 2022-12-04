@@ -1,7 +1,9 @@
+import { useElementDimension } from "@/hooks/useElementDimension";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
+import { useState } from "react";
 import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
 import { TutorialLabel } from "../TutorialLabel";
 
@@ -13,16 +15,39 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: tutorial.cvTask,
   });
+  const [imageIsError, setImageIsError] = useState(false);
+  const [blockContainerRef, blockContainerDimension] =
+    useElementDimension<HTMLAnchorElement>();
 
   return (
     <Link href={`/tutorials/${tutorial.slug}`}>
-      <a className="flex h-[480px] w-full flex-col hover:shadow-instill-solid-10 xl:h-[520px]">
-        <TutorialImagePlaceholder
-          width="w-full"
-          height="min-h-[160px] xl:min-h-[200px]"
-          color={tutorial.placeholderColor}
-        />
-        <div className="flex h-full w-full flex-col bg-instillGrey05 p-5">
+      <a
+        ref={blockContainerRef}
+        className="flex w-full flex-col hover:shadow-instill-solid-10"
+      >
+        {imageIsError ? (
+          <div
+            className="w-full"
+            style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
+          >
+            <TutorialImagePlaceholder
+              width="w-full"
+              height="h-full"
+              color={tutorial.placeholderColor}
+            />
+          </div>
+        ) : (
+          <img
+            src={tutorial.themeImgSrc}
+            alt="The theme image of this tutorial"
+            style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
+            className="w-full object-cover"
+            onError={() => {
+              setImageIsError(true);
+            }}
+          />
+        )}
+        <div className="flex w-full flex-1 flex-col bg-instillGrey05 p-5">
           <TutorialLabel
             icon={
               icon
@@ -44,10 +69,10 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           <h3 className="mb-2 break-all text-instillGrey90 text-instill-h3-medium">
             {tutorial.title}
           </h3>
-          <p className="mb-auto w-full text-ellipsis font-sans text-lg font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
+          <p className="mb-10 w-full text-ellipsis font-sans text-lg font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
             {tutorial.description}
           </p>
-          <div className="flex flex-row gap-x-2 py-0.5">
+          <div className="mt-auto flex flex-row gap-x-2 py-0.5">
             <div className="flex flex-row gap-x-[5px]">
               <div className="flex pt-[1px]">
                 <GitHubIcon

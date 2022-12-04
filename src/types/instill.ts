@@ -46,6 +46,7 @@ export type TutorialMeta = {
   slug: string;
   publishedAt: string;
   placeholderColor: TutorialPlaceholderColor;
+  themeImgSrc: string;
 };
 
 export type CvTask =

@@ -102,5 +102,12 @@ export const validateTutorialMeta = (
     );
   }
 
+  // Validate whether tutorial have necessary fields - themeImgSrc
+  if (!data.hasOwnProperty("themeImgSrc")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing themeImgSrc field at ${path}`
+    );
+  }
+
   return data as PartialTutorialMeta;
 };
