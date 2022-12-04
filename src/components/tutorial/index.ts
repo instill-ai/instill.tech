@@ -14,4 +14,6 @@ export { TutorialPipeline } from "./TutorialPipeline";
 export type { TutorialPipelineProps } from "./TutorialPipeline";
 export { TutorialTableOfContent } from "./TutorialTableOfContent";
 export type { TutorialTableOfContentProps } from "./TutorialTableOfContent";
+export { TutorialSimilarUseCases } from "./TutorialSimilarUseCases";
+export type { TutorialSimilarUseCasesProps } from "./TutorialSimilarUseCases";
 export { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";

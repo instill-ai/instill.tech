@@ -62,7 +62,7 @@ export const PageHead = ({
               sizes="16x16"
               href="/instill-ai-favicon-16x16.png"
             />
-            <link rel="shortcut icon" href="instill-ai-favicon.ico" />
+            <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
             <meta
               property="og:image"
               content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
@@ -86,7 +86,7 @@ export const PageHead = ({
               sizes="16x16"
               href="/vdp-favicon-16x16.png"
             />
-            <link rel="shortcut icon" href="vdp-favicon.ico" />
+            <link rel="shortcut icon" href="/vdp-favicon.ico" />
             <meta
               property="og:image"
               content={`${process.env.NEXT_PUBLIC_BASE_URL}/vdp-open-graph.png`}

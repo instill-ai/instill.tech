@@ -155,7 +155,7 @@ If width is not specificed, the image will expand to the full width of the paren
 />
 ```
 
-You can specific the width of the image, if the width is bigger than the parent, it will be adjusted to the width of the parent. If the widht is smaller than the parent, it will align to left.
+You can specific the width of the image, if the width is bigger than the parent, it will be adjusted to the width of the parent. If the width is smaller than the parent, it will align to left.
 
 Normally you don't need to specific the height.
 

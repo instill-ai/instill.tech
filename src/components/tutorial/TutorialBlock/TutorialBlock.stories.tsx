@@ -33,5 +33,6 @@ Playground.args = {
     publishedAt: "2022-10-21T08:00:00",
     placeholderColor: "bg-instillWarmOrange50",
     themeImgSrc: "/tutorial-assets/tutorial-test-img.png",
+    useCase: "Use case 1",
   },
 };

@@ -157,10 +157,6 @@ const HomePage: FC<HomePageProps> & {
     rootMargin: "0px",
   });
 
-  useEffect(() => {
-    console.log(communityIsInView);
-  }, [communityIsInView]);
-
   const [caseStudyIsInViewRef, caseStudyIsInView] = useInView({
     triggerOnce: true,
     rootMargin,

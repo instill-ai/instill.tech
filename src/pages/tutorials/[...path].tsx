@@ -26,6 +26,7 @@ import {
 } from "@/components/ui";
 import {
   TutorialPipeline,
+  TutorialSimilarUseCases,
   TutorialTableOfContent,
   TutorialThemeImage,
 } from "@/components/tutorial";
@@ -42,6 +43,7 @@ import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
+import { prepareTutorial } from "@/lib/instill/prepareTutorial";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -49,6 +51,7 @@ type TutorialPageProps = {
   author: Nullable<string>;
   authorGithubUrl: Nullable<string>;
   headers: RightSidebarProps["headers"];
+  tutorials: TutorialMeta[];
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -154,10 +157,14 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
     .use(remarkGetHeaders, { headers })
     .process(source);
 
+  // We need all the tutorials data
+  const tutorials = await prepareTutorial();
+
   return {
     props: {
       mdxSource,
       headers,
+      tutorials,
       ...commitMeta,
     },
   };
@@ -169,9 +176,14 @@ type GetLayOutProps = {
 
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, lastEditedTime, author, authorGithubUrl, headers }) => {
-  const router = useRouter();
-
+} = ({
+  mdxSource,
+  lastEditedTime,
+  author,
+  authorGithubUrl,
+  headers,
+  tutorials,
+}) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
   });
@@ -190,7 +202,7 @@ const TutorialPage: FC<TutorialPageProps> & {
         pageDescription={
           mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
         }
-        pageType="docs"
+        pageType="main"
         additionMeta={
           <>
             <meta name="docsearch:language" content="en" />
@@ -241,6 +253,20 @@ const TutorialPage: FC<TutorialPageProps> & {
               <MDXRemote {...mdxSource} components={{ CH }} />
             </article>
           </div>
+        </div>
+
+        {/* 
+          The section for Similar use cases
+        */}
+
+        <div>
+          {mdxSource.frontmatter?.useCase ? (
+            <TutorialSimilarUseCases
+              tutorials={tutorials}
+              useCase={mdxSource.frontmatter?.useCase}
+              currentTitle={mdxSource.frontmatter?.title}
+            />
+          ) : null}
         </div>
 
         {/* 
