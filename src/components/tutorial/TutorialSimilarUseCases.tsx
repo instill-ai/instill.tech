@@ -19,7 +19,7 @@ export const TutorialSimilarUseCases = ({
     );
   }, [tutorials, useCase, currentTitle]);
 
-  return (
+  return similarTutorials.length !== 0 ? (
     <div className="flex flex-col">
       <h3 className="mx-auto mb-20 border-b pb-5 text-instillGrey90 xl:font-mono xl:text-3xl ">
         Similar use case
@@ -44,5 +44,5 @@ export const TutorialSimilarUseCases = ({
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
