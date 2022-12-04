@@ -34,6 +34,25 @@ export const validateTutorialMeta = (
     );
   }
 
+  // Validate the cvTask types
+  const supportCvTasks = [
+    "objectDetection",
+    "ocr",
+    "imageClassification",
+    "instanceSegmentation",
+    "keypointDetection",
+    "objectDetection",
+    "semanticSegmentation",
+  ];
+
+  if (!supportCvTasks.includes(data.cvTask)) {
+    throw new Error(
+      `Error occured when generate tutorials - wrong cvTask at ${path}, expect ${supportCvTasks.join(
+        ", "
+      )}. Found ${data.cvTask}`
+    );
+  }
+
   // Validate whether tutorial have necessary fields - sourceConnector
   if (!data.hasOwnProperty("sourceConnector")) {
     throw new Error(
@@ -55,22 +74,31 @@ export const validateTutorialMeta = (
     );
   }
 
-  // Validate the cv_task types
-  const supportCvTasks = [
-    "objectDetection",
-    "ocr",
-    "imageClassification",
-    "instanceSegmentation",
-    "keypointDetection",
-    "objectDetection",
-    "semanticSegmentation",
+  // Validate whether tutorial have necessary fields - placeholderColor
+  if (!data.hasOwnProperty("placeholderColor")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing placeholderColor field at ${path}`
+    );
+  }
+
+  console.log(data);
+
+  // Validate placeholderColor value
+  const colorList = [
+    "bg-instillWarmOrange50",
+    "bg-instillLemonYellow50",
+    "bg-instillBlue50",
+    "bg-instillRed90",
+    "bg-instillGreen50",
+    "bg-instillNeonBlue50",
+    "bg-instillYellow50",
   ];
 
-  if (!supportCvTasks.includes(data.cvTask)) {
+  if (!colorList.includes(data.placeholderColor)) {
     throw new Error(
-      `Error occured when generate tutorials - wrong cvTask at ${path}, expect ${supportCvTasks.join(
+      `Error occured when generate tutorials - wrong placeholderColor at ${path}, expect ${colorList.join(
         ", "
-      )}. Found ${data.cvTask}`
+      )}. Found ${data.placeholderColor}`
     );
   }
 

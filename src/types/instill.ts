@@ -45,6 +45,7 @@ export type TutorialMeta = {
   commit: CommitMeta;
   slug: string;
   publishedAt: string;
+  placeholderColor: TutorialPlaceholderColor;
 };
 
 export type CvTask =
@@ -55,3 +56,12 @@ export type CvTask =
   | "keypointDetection"
   | "objectDetection"
   | "semanticSegmentation";
+
+export type TutorialPlaceholderColor =
+  | "bg-instillWarmOrange50"
+  | "bg-instillLemonYellow50"
+  | "bg-instillBlue50"
+  | "bg-instillRed90"
+  | "bg-instillGreen50"
+  | "bg-instillNeonBlue50"
+  | "bg-instillYellow50";
