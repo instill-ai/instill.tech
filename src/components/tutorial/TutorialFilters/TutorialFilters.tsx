@@ -13,6 +13,7 @@ import { getCvTaskIconAndLabelReturn } from "@/lib/instill/getCvTaskIconAndLabel
 type Filters = {
   cvTask: CvTask | "All";
   connector: string;
+  useCase: string;
 };
 
 export type TutorialFiltersProps = {
@@ -53,6 +54,25 @@ export const TutorialFilters = ({
         options.push({
           label: tutorial.destinationConnector,
           value: tutorial.destinationConnector,
+        });
+      }
+    }
+
+    return options;
+  }, [tutorials]);
+
+  const useCaseOptions = useMemo<SingleSelectCheckboxProps["options"]>(() => {
+    let options: SingleSelectCheckboxProps["options"] = [
+      { label: "All", value: "All" },
+    ];
+
+    for (const tutorial of tutorials) {
+      let existUseCase = options.findIndex((e) => e.value === tutorial.useCase);
+
+      if (existUseCase === -1) {
+        options.push({
+          label: tutorial.useCase,
+          value: tutorial.useCase,
         });
       }
     }
@@ -158,6 +178,15 @@ export const TutorialFilters = ({
             setFilters((prev) => ({ ...prev, connector: value }))
           }
           options={connectorOptions}
+        />
+        <TutorialFilter
+          id="useCase"
+          title="Use cases"
+          value={filters.useCase || ""}
+          setValue={(value) =>
+            setFilters((prev) => ({ ...prev, useCase: value }))
+          }
+          options={useCaseOptions}
         />
       </div>
 

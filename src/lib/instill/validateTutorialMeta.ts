@@ -81,8 +81,6 @@ export const validateTutorialMeta = (
     );
   }
 
-  console.log(data);
-
   // Validate placeholderColor value
   const colorList = [
     "bg-instillWarmOrange50",
@@ -106,6 +104,13 @@ export const validateTutorialMeta = (
   if (!data.hasOwnProperty("themeImgSrc")) {
     throw new Error(
       `Error occured when generate tutorials - missing themeImgSrc field at ${path}`
+    );
+  }
+
+  // Validate whether tutorial have necessary fields - useCase
+  if (!data.hasOwnProperty("useCase")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing useCase field at ${path}`
     );
   }
 

@@ -1,8 +1,4 @@
 import { GetStaticProps } from "next";
-import { join } from "path";
-import glob from "fast-glob";
-import matter from "gray-matter";
-import fs from "fs";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
 import { FC, ReactElement, useMemo, useState } from "react";
 import {
@@ -12,45 +8,12 @@ import {
   TutorialFiltersProps,
 } from "@/components/tutorial";
 import { TutorialMeta } from "@/types/instill";
-import { validateTutorialMeta } from "@/lib/instill";
-import { getCommitMeta } from "@/lib/github";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
+import { prepareTutorial } from "@/lib/instill/prepareTutorial";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
-    // Glob all tutorials and construct full absolute paths
-    const tutorialDir = join(process.cwd(), "tutorials");
-    const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
-
-    let turtoialPaths: { absolute: string; relative: string }[] = [];
-    let tutorials: TutorialMeta[] = [];
-
-    for (const path of tutorialRelativePaths) {
-      turtoialPaths.push({
-        relative: path,
-        absolute: join(process.cwd(), "tutorials", path),
-      });
-    }
-
-    // Read the tutorial file's frontmatter and prepare tutorial meta
-    for (const path of turtoialPaths) {
-      const source = fs.readFileSync(path.absolute, "utf8");
-      const { data } = matter(source);
-
-      const commitMeta = await getCommitMeta({
-        org: "instill-ai",
-        repo: "instill.tech",
-        path: "tutorial/" + path.relative + ".mdx",
-      });
-
-      const validatedMeta = validateTutorialMeta(path.absolute, data);
-
-      tutorials.push({
-        ...validatedMeta,
-        commit: commitMeta,
-        slug: path.relative.split(".")[0],
-      });
-    }
+    const tutorials = await prepareTutorial();
 
     return {
       props: {
@@ -81,6 +44,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   const [filters, setFilters] = useState<TutorialFiltersProps["filters"]>({
     cvTask: "All",
     connector: "All",
+    useCase: "All",
   });
 
   // We don't need to complicate thing at this stage, once
@@ -117,7 +81,21 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       }
     };
 
+    const filterUseCase = (
+      item: TutorialMeta,
+      filters: TutorialFiltersProps["filters"]
+    ) => {
+      if (filters.useCase === "All") {
+        return true;
+      } else {
+        return item.useCase === filters.useCase ? true : false;
+      }
+    };
+
     let filteredTutorials = tutorials.filter((e) => filterCvTask(e, filters));
+    filteredTutorials = filteredTutorials.filter((e) =>
+      filterUseCase(e, filters)
+    );
     return filteredTutorials.filter((e) => filterConnector(e, filters));
   }, [filters, tutorials]);
 

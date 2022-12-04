@@ -47,6 +47,7 @@ export type TutorialMeta = {
   publishedAt: string;
   placeholderColor: TutorialPlaceholderColor;
   themeImgSrc: string;
+  useCase: string;
 };
 
 export type CvTask =

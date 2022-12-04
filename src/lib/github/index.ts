@@ -71,8 +71,6 @@ export const getCommitMeta = async ({
   try {
     const commits = await getRepoFileCommits(org, repo, path);
 
-    console.log(commits);
-
     let lastEditedTime: Nullable<string> = null;
     let author: Nullable<string> = null;
     let authorGithubUrl: Nullable<string> = null;
