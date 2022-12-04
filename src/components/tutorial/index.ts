@@ -10,3 +10,7 @@ export { TutorialThemeImage } from "./TutorialThemeImage";
 export type { TutorialThemeImageProps } from "./TutorialThemeImage";
 export { TutorialSearch } from "./TutorialSearch";
 export type { TutorialSearchProps } from "./TutorialSearch";
+export { TutorialPipeline } from "./TutorialPipeline";
+export type { TutorialPipelineProps } from "./TutorialPipeline";
+export { TutorialTableOfContent } from "./TutorialTableOfContent";
+export type { TutorialTableOfContentProps } from "./TutorialTableOfContent";
