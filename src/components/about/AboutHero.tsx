@@ -10,6 +10,7 @@ export const AboutHero = ({ marginBottom }: AboutHeroProps) => {
     <PageHero
       marginBottom={marginBottom}
       headline="Make Vision AI Accessible to Everyone"
+      headerUppercase={true}
     />
   );
 };

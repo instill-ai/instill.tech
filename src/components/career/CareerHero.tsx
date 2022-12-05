@@ -1,4 +1,3 @@
-import cn from "clsx";
 import { PageHero } from "../ui";
 import {
   ViewJobsScrollButton,
@@ -30,6 +29,7 @@ export const CareerHero = ({
         />
       }
       marginBottom={marginBottom}
+      headerUppercase={true}
     />
   );
 };

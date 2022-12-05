@@ -9,30 +9,23 @@ import { useRouter } from "next/router";
 import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
-import { PageHead } from "@/components/ui";
+import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
 import { docsConfig } from "../../../docs.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
-import { getRepoFileCommits } from "@/lib/github";
+import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
-
-type DocsParams = {
-  params: {
-    path: string[];
-  };
-};
+import { CommitMeta } from "@/lib/github/type";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
   nextArticle: Nullable<SidebarItem>;
   prevArticle: Nullable<SidebarItem>;
-  lastEditedTime: Nullable<string>;
-  author: Nullable<string>;
-  authorGithubUrl: Nullable<string>;
   headers: RightSidebarProps["headers"];
+  commitMeta: Nullable<CommitMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -89,11 +82,9 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
-  const sidebarLinks: SidebarItem[] = [];
-
-  sidebarLinks.concat(
-    ...docsConfig.sidebar.leftSidebar.sections.map((e) => e.items)
-  );
+  const sidebarLinks: SidebarItem[] = docsConfig.sidebar.leftSidebar.sections
+    .map((e) => e.items)
+    .flat();
 
   const currentPageIndex = sidebarLinks.findIndex(
     (e) => e.link === "/docs/" + relativePath
@@ -109,33 +100,19 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Access GitHub API to retrieve the info of Committer
 
-  const commits = await getRepoFileCommits(
-    "instill-ai",
-    "instill.tech",
-    "docs/" + relativePath + ".mdx"
-  );
+  let commitMeta: Nullable<CommitMeta> = null;
 
-  let lastEditedTime: Nullable<string> = null;
-  let author: Nullable<string> = null;
-  let authorGithubUrl: Nullable<string> = null;
-
-  if (commits.length > 0 && commits[0]) {
-    const authorObj = commits[0].commit.author;
-    if (authorObj) {
-      if (authorObj.date) {
-        const time = new Date(authorObj.date).toLocaleString();
-
-        lastEditedTime = time;
-      }
-
-      author = authorObj.name || null;
-    }
-    if (commits[0].author) {
-      authorGithubUrl = commits[0].author.html_url;
-    }
+  try {
+    commitMeta = await getCommitMeta({
+      org: "instill-ai",
+      repo: "instill.tech",
+      path: "docs/" + relativePath + ".mdx",
+    });
+  } catch (err) {
+    console.log(err);
   }
 
-  // We use remark to correctly get the headers
+  // We use remark to get the headers
 
   let headers = [] as RightSidebarProps["headers"];
 
@@ -149,10 +126,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       mdxSource,
       nextArticle,
       prevArticle,
-      lastEditedTime,
-      author,
-      authorGithubUrl,
       headers,
+      commitMeta,
     },
   };
 };
@@ -163,15 +138,7 @@ type GetLayOutProps = {
 
 const DocsPage: FC<DocsPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({
-  mdxSource,
-  nextArticle,
-  prevArticle,
-  lastEditedTime,
-  author,
-  authorGithubUrl,
-  headers,
-}) => {
+} = ({ mdxSource, nextArticle, prevArticle, commitMeta, headers }) => {
   const router = useRouter();
 
   return (
@@ -206,26 +173,10 @@ const DocsPage: FC<DocsPageProps> & {
           >
             <MDXRemote {...mdxSource} />
           </article>
-          <div className="mb-8 flex w-full flex-row gap-x-2 border-b pb-6">
-            {lastEditedTime && author ? (
-              <>
-                <p className="ml-auto text-sm text-instillGrey70">
-                  {`Last updated: ${lastEditedTime}`}
-                </p>
-                <div className="flex flex-row gap-x-1 text-sm ">
-                  <p className="text-instillGrey70">by</p>
-                  <a
-                    className="text-instillBlue50 underline"
-                    href={authorGithubUrl || "/"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {author}
-                  </a>
-                </div>
-              </>
-            ) : null}
-          </div>
+          {commitMeta ? (
+            <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
+          ) : null}
+          <HorizontalLine marginBottom="mb-8" bgColor="bg-instillGrey20" />
           <div className="grid grid-flow-row grid-cols-2 gap-x-5">
             {prevArticle ? (
               <ArticleNavigationButton

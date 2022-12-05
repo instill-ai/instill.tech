@@ -1,5 +1,9 @@
-import { ContributeLinks, ContributeLinksProps } from "./ContributeLinks";
-import { TableOfContent, TableOfContentProps } from "./TableOfContent";
+import {
+  TableOfContent,
+  TableOfContentProps,
+  ContributeLinks,
+  ContributeLinksProps,
+} from "@/components/ui";
 
 export type RightSidebarProps = {
   headers: TableOfContentProps["headers"];

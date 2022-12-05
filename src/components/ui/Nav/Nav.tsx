@@ -10,6 +10,7 @@ import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { GetAccessButton } from "./GetAccessButton";
 import { CareerPageLink } from "./CareerPageLink";
+import { TutorialPageLink } from "./TutorialPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -26,6 +27,7 @@ export const Nav = () => {
   const navbarLinkGroup = (
     <>
       <DocsPageLink />
+      <TutorialPageLink />
       <CareerPageLink hiring={true} />
       <GithubTextLink />
       <GetAccessButton />

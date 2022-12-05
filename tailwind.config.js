@@ -5,6 +5,17 @@ module.exports = {
     "./node_modules/@instill-ai/design-system/build/*.js",
     "./docs.config.tsx",
   ],
+
+  // We safelist all the theme image placeholder color of tutorial
+  safelist: [
+    "bg-instillWarmOrange50",
+    "bg-instillLemonYellow50",
+    "bg-instillBlue50",
+    "bg-instillRed90",
+    "bg-instillGreen50",
+    "bg-instillNeonBlue50",
+    "bg-instillYellow50",
+  ],
   theme: {
     extend: {
       colors: {
@@ -47,6 +58,7 @@ module.exports = {
         instillRed: "#FF5353",
         instillRed10: "#FFF1F1",
         instillRed50: "#FF5353",
+        instillRed90: "#A40000",
         instillGreen: "#28F67E",
         instillGreen05: "#ECFFF0",
         instillGreen50: "#02D12F",
@@ -75,7 +87,7 @@ module.exports = {
       screens: {
         xx: "320px",
         xs: "480px",
-        max: "1440px",
+        max: "1600px",
         xl: "1127px",
         tall: { raw: "(min-height: 800px)" },
         short: { raw: "(min-height: 600px and max-height: 800px)" },
@@ -190,6 +202,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
 
     // We have to use plugin to let intelligence pick up our custom classname's style
     // ref: https://github.com/tailwindlabs/tailwindcss-intellisense/issues/227

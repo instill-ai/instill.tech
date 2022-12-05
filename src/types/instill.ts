@@ -1,3 +1,5 @@
+import { CommitMeta } from "@/lib/github/type";
+
 export type PositionInfo = {
   id: string;
   slug: string;
@@ -31,3 +33,37 @@ export type MemberDetails = {
 };
 
 export type Nullable<T> = T | null;
+
+export type TutorialMeta = {
+  title: string;
+  lang: string;
+  draft: boolean;
+  description: string;
+  cvTask: CvTask;
+  sourceConnector: string;
+  destinationConnector: string;
+  commit: CommitMeta;
+  slug: string;
+  publishedOn: string;
+  placeholderColor: TutorialPlaceholderColor;
+  themeImgSrc: string;
+  useCase: string;
+};
+
+export type CvTask =
+  | "objectDetection"
+  | "ocr"
+  | "imageClassification"
+  | "instanceSegmentation"
+  | "keypointDetection"
+  | "objectDetection"
+  | "semanticSegmentation";
+
+export type TutorialPlaceholderColor =
+  | "bg-instillWarmOrange50"
+  | "bg-instillLemonYellow50"
+  | "bg-instillBlue50"
+  | "bg-instillRed90"
+  | "bg-instillGreen50"
+  | "bg-instillNeonBlue50"
+  | "bg-instillYellow50";

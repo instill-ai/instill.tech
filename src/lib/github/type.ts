@@ -1,3 +1,5 @@
+import { Nullable } from "@/types/instill";
+
 /**
  * Commit
  */
@@ -32,6 +34,13 @@ export type Commit = {
     total?: number;
   };
   files?: DiffEntry[];
+};
+
+export type CommitMeta = {
+  authorGithubUrl: Nullable<string>;
+  authorAvatarUrl: Nullable<string>;
+  author: Nullable<string>;
+  lastEditedTime: Nullable<string>;
 };
 
 /**

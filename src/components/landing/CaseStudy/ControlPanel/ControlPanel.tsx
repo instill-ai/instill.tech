@@ -164,9 +164,6 @@ export const ControlPanel = ({ items, activeIndex }: ControlPanelProps) => {
     }
 
     svg.selectAll("*").remove();
-
-    console.log("height", sourceToModelLineDataset.line[0].height);
-
     svg.style("width", sourceToModelLineDataset.line[0].width);
     svg.style("height", sourceToModelLineDataset.line[0].height);
     svg.style("top", sourceToModelLineDataset.line[0].y);
