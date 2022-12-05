@@ -15,6 +15,7 @@ export const EarlyAccessHero = ({ marginBottom }: EarlyAccessHeroProps) => {
           AI can help adopt Vision AI in your company.
         </p>
       }
+      headerUppercase={true}
     />
   );
 };

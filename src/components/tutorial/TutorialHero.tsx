@@ -15,6 +15,7 @@ export const TutorialHero = ({ marginBottom }: TutorialHeroProps) => {
         </p>
       }
       marginBottom={marginBottom}
+      headerUppercase={true}
     />
   );
 };

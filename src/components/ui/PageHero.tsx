@@ -9,6 +9,7 @@ export type PageHeroProps = {
   width?: string;
   position?: string;
   headerColor?: string;
+  headerUppercase: boolean;
 };
 
 export const PageHero = ({
@@ -19,6 +20,7 @@ export const PageHero = ({
   width,
   position,
   headerColor,
+  headerUppercase,
 }: PageHeroProps) => {
   return (
     <div
@@ -31,8 +33,9 @@ export const PageHero = ({
     >
       <h1
         className={cn(
-          "w-full text-left font-mono text-5xl font-semibold uppercase xl:text-instill-h1",
-          headerColor ? headerColor : "text-instillSkyBlue"
+          "w-full text-left font-mono text-5xl font-semibold xl:text-instill-h1",
+          headerColor ? headerColor : "text-instillSkyBlue",
+          headerUppercase ? "uppercase" : ""
         )}
       >
         {headline}

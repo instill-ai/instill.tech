@@ -29,6 +29,7 @@ export const CareerHero = ({
         />
       }
       marginBottom={marginBottom}
+      headerUppercase={true}
     />
   );
 };
