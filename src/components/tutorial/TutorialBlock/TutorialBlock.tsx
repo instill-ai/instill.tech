@@ -15,7 +15,9 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: tutorial.cvTask,
   });
-  const [imageIsError, setImageIsError] = useState(false);
+  const [themeImageIsError, setThemeImageIsError] = useState(false);
+  const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
+
   const [blockContainerRef, blockContainerDimension] =
     useElementDimension<HTMLAnchorElement>();
 
@@ -25,7 +27,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
         ref={blockContainerRef}
         className="flex w-full flex-col hover:shadow-instill-solid-10"
       >
-        {imageIsError ? (
+        {themeImageIsError ? (
           <div
             className="w-full"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
@@ -37,13 +39,16 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             />
           </div>
         ) : (
+          // The reason we use img not next/Image is because we don't know the
+          // given image's size and we need to adjust it according to the width
+          // of the TutorialBlock
           <img
             src={tutorial.themeImgSrc}
             alt="The theme image of this tutorial"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
             className="w-full object-cover"
             onError={() => {
-              setImageIsError(true);
+              setThemeImageIsError(true);
             }}
           />
         )}
@@ -75,12 +80,35 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           <div className="mt-auto flex flex-row gap-x-2 py-0.5">
             <div className="flex flex-row gap-x-[5px]">
               <div className="flex pt-[1px]">
-                <GitHubIcon
-                  color="fill-instillGrey50"
-                  width="w-5"
-                  height="h-5"
-                  position="my-auto"
-                />
+                {/* 
+                  We display the given author avatar if it is present and display
+                  GitHub icon if the url has issue.
+                */}
+
+                {authorAvatarIsError ? (
+                  <GitHubIcon
+                    color="fill-instillGrey50"
+                    width="w-5"
+                    height="h-5"
+                    position="my-auto"
+                  />
+                ) : tutorial.commit.authorAvatarUrl ? (
+                  <img
+                    src={tutorial.commit.authorAvatarUrl}
+                    alt={`${tutorial.title}'s author's github avatar`}
+                    className="h-10 w-10 object-cover"
+                    onError={() => {
+                      setAuthorAvatarIsError(true);
+                    }}
+                  />
+                ) : (
+                  <GitHubIcon
+                    color="fill-instillGrey50"
+                    width="w-5"
+                    height="h-5"
+                    position="my-auto"
+                  />
+                )}
               </div>
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
                 {tutorial.commit.author}

@@ -19,6 +19,8 @@ import { remark } from "remark";
 
 import {
   ContentContainer,
+  HorizontalLine,
+  LastEditedInfo,
   PageBase,
   PageHead,
   PageHero,
@@ -44,14 +46,13 @@ import { Nullable, TutorialMeta } from "@/types/instill";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorial } from "@/lib/instill/prepareTutorial";
+import { CommitMeta } from "@/lib/github/type";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
-  lastEditedTime: Nullable<string>;
-  author: Nullable<string>;
-  authorGithubUrl: Nullable<string>;
   headers: RightSidebarProps["headers"];
   tutorials: TutorialMeta[];
+  commitMeta: CommitMeta;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -165,7 +166,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
       mdxSource,
       headers,
       tutorials,
-      ...commitMeta,
+      commitMeta,
     },
   };
 };
@@ -176,14 +177,7 @@ type GetLayOutProps = {
 
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({
-  mdxSource,
-  lastEditedTime,
-  author,
-  authorGithubUrl,
-  headers,
-  tutorials,
-}) => {
+} = ({ mdxSource, commitMeta, headers, tutorials }) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
   });
@@ -244,15 +238,17 @@ const TutorialPage: FC<TutorialPageProps> & {
           />
           <div
             ref={articleContainerRef}
-            className="relative flex h-full flex-row"
+            className="relative mb-20 flex h-full flex-row"
           >
             <article
               id="content"
-              className="prose prose-black mb-20 mr-auto w-full max-w-none"
+              className="prose prose-black mr-auto w-full max-w-none"
             >
               <MDXRemote {...mdxSource} components={{ CH }} />
             </article>
           </div>
+          <LastEditedInfo meta={commitMeta} marginBottom="mb-8" />
+          <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
         </div>
 
         {/* 
