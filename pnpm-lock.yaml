@@ -76,9 +76,11 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.1.13
   react: ^17.0.2
   react-dom: ^17.0.2
+  react-gist: ^1.2.4
   react-intersection-observer: ^9.4.1
   react-markdown: ^7.0.1
   react-select: ^5.4.0
+  react-twitter-embed: ^4.0.4
   rehype-autolink-headings: ^6.1.1
   rehype-raw: ^6.1.1
   rehype-slug: ^5.0.1
@@ -120,9 +122,11 @@ dependencies:
   node-html-parser: 5.3.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-gist: 1.2.4_react@17.0.2
   react-intersection-observer: 9.4.1_react@17.0.2
   react-markdown: 7.1.2_sudpmbbyhqtxq6t4xf6jlicdem
   react-select: 5.4.0_r7seuzn7svmgbc4pwdzz2gbp64
+  react-twitter-embed: 4.0.4_sfoxds7t5ydpegc3knd667wn6m
   rehype-raw: 6.1.1
   remark-gfm: 3.0.1
   sharp: 0.31.2
@@ -13757,6 +13761,14 @@ packages:
       react-is: 17.0.2
     dev: true
 
+  /react-gist/1.2.4_react@17.0.2:
+    resolution: {integrity: sha512-uDgPJ08IJsl/7auK3CS53JKGC1P/X7tNCzo9k0r6D/5l+ilsxE1+SAaylJCh0aeyZoJOoxQikKU+MHsAvA9iFw==}
+    peerDependencies:
+      react: 0.14.x || ^15.0.0-rc || ^16.0.0-rc || ^17.0.0-rc
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /react-inspector/5.1.1_react@17.0.2:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
     peerDependencies:
@@ -13862,6 +13874,18 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /react-twitter-embed/4.0.4_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-2JIL7qF+U62zRzpsh6SZDXNI3hRNVYf5vOZ1WRcMvwKouw+xC00PuFaD0aEp2wlyGaZ+f4x2VvX+uDadFQ3HVA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      scriptjs: 2.5.9
     dev: false
 
   /react/17.0.2:
@@ -14516,6 +14540,10 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
+
+  /scriptjs/2.5.9:
+    resolution: {integrity: sha512-qGVDoreyYiP1pkQnbnFAUIS5AjenNwwQBdl7zeos9etl+hYKWahjRTfzAZZYBv5xNHx7vNKCmaLDQZ6Fr2AEXg==}
+    dev: false
 
   /section-matter/1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
