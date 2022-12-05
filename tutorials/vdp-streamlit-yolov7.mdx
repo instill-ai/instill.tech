@@ -1,0 +1,189 @@
+---
+title: "Build a shareable object detection application with VDP and Streamlit"
+lang: "en-US"
+draft: false
+description: "VDP and Streamlit are a perfect match if you work with ML/Data and would like to build Computer Vision prototypes fast to share with your team, clients or the world."
+cvTask: "objectDetection"
+sourceConnector: "HTTP"
+destinationConnector: "HTTP"
+publishedOn: "2022-09-02T02:04:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: ""
+useCase: "Use case 2"
+author: "Xiaofei Du"
+authorAvatarSrc: "/tutorial-assets/author-avatar/xiaofei-du.png"
+---
+
+When YOLOv7 was out, we were so excited to test it out. Therefore, we built a web app to side-by-side compare the classic [YOLOv4](https://github.com/AlexeyAB/darknet) and the freshly released [YOLOv7](https://github.com/WongKinYiu/yolov7). Once completed, we shared the app within our team and then deployed it online to share with the community.
+
+<div align="center">
+  <Tweet tweetId="1546903348355506176" />
+</div>
+
+The app was built with two best-in-class machine learning tools:
+
+- [VDP](https://github.com/instill-ai/vdp?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) as the backbone of the Computer Vision (CV) task solver, and
+- [Streamlit](https://streamlit.io/) as the application framework to build beautiful UI components.
+
+For anyone who is not familiar with VDP, it is an open-source visual data ETL tool that we've been working on. The goal of VDP is to streamline the end-to-end visual data flow, with the transform component being able to flexibly import models to process the unstructured visual data into structured insights for a specific CV task.
+
+> It is the future for unstructured data ETL, where developers won't need to build their own data connectors, high-maintenance model serving platform or ELT pipeline automation tool.
+> — From [Introducing VDP, open-source visual data ETL](https://blog.instill.tech/introducing-vdp/?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+
+Streamlit removes the barriers for Data/ML practitioners to build shareable web apps. No need to write HTML, CSS and Javascript to create beautiful UIs, you can just write everything in pure Python.
+
+This tutorial will demonstrate how to replicate the YOLOv4 vs. YOLOv7 web app. It shows that VDP and Streamlit are a perfect match if you work with ML/Data and would like to build Computer Vision prototypes fast to share with your team, clients or the world.
+
+## Prerequisites
+
+- Docker and Docker Compose
+- Python 3.8+ with an environment-management tool such as [Conda](https://www.anaconda.com/)
+
+## Build object detection pipelines
+
+:::info{type=info}
+[VDP standardises structured outputs for CV Tasks](https://www.instill.tech/docs/core-concepts/cv-task?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7). Therefore, a model is modularised in a pipeline, and model outputs are in standard format for use in data integration or ETL pipeline.
+:::
+
+CV Tasks, a.k.a Vision Tasks, focus on analysing and understanding the content of visual data in the same way as the human visual system does. Some classic CV Tasks include image classification, object detection, image segmentation and keypoint detection. These primitive CV Tasks are the foundation for building many real-world industrial vision applications.
+
+In the following section, we will build two object detection pipelines with YOLOv4 and YOLOv7 in VDP, respectively. The pipelines will serve as the Computer Vision backbone for the Streamlit app.
+
+### Run VDP locally
+
+```bash
+$ git clone https://github.com/instill-ai/vdp.git && cd vdp
+$ make all
+```
+
+Once the services are up, the Console is ready to go at [http://localhost:3000](http://localhost:3000).
+
+### Build a SYNC object detection pipeline with YOLOv4 via no-code Console
+
+A pipeline in SYNC mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](https://www.instill.tech/docs/core-concepts/pipeline?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
+
+:::info{type=info}
+No matter where your model stores, we want to keep your models in the same place without changes. VDP [integrates with many model platforms and tools](https://www.instill.tech/docs/import-models/overview?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) to make importing models as easy as possible.
+:::
+
+After onboarding, you will be redirected to the Pipeline page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [Build a SYNC classification pipeline](https://www.instill.tech/docs/tutorials/build-a-sync-cls-pipeline?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
+
+1. add an `HTTP` source,
+2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov`
+3. deploy a model instance `v1.0-cpu` of the imported model,
+4. add an HTTP data destination, and
+5. set up a pipeline with ID `yolov4`
+
+### Build a SYNC object detection pipeline with YOLOv7 via low-code
+
+You could build a pipeline with YOLOv7 in the same way by importing [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) via no-code Console. Or, you can build it via REST API.
+
+:::info{type=info}
+VDP is implemented with [API-first](https://www.instill.tech/docs/core-concepts/overview?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) design principle. It enables seamless integration to your data stack at any scale.
+:::
+
+**Step 1**: Add an HTTP data source
+
+```bash
+curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+```
+
+**Step 2**: Import a model from the GitHub repository [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
+
+```bash
+curl -X POST http://localhost:8083/v1alpha/models -d '{
+  "id": "yolov7",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-yolov7-dvc"
+  }
+}'
+```
+
+**Step 3**: Deploy a model instance v1.0-cpu of the imported model
+
+```bash
+curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+```
+
+**Step 4**: Add an HTTP data destination
+
+```bash
+curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+  "id": "destination-http",
+  "destination_connector_definition": "destination-connector-definitions/destination-http",
+  "connector": {
+      "configuration": {}
+  }
+}'
+```
+
+**Step 5**: Set up a pipeline with ID yolov7
+
+```bash
+curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
+  "id": "yolov7",
+  "recipe": {
+    "source": "source-connectors/source-http",
+    "model_instances": [
+      "models/yolov7/instances/v1.0-cpu"
+    ],
+    "destination": "destination-connectors/destination-http"
+  }
+}'
+```
+
+Now you should see two pipelines yolov4 and yolov7 in the Console.
+
+In the next section, we will build a Streamlit app to send requests triggering the pipelines and visualise the detection outputs with a beautiful UI.
+
+## Build the app
+
+### Create a Python virtual environment
+
+In this tutorial, we'll use Conda as the package management system. You can install Conda via [anaconda](https://docs.anaconda.com/anaconda/install/silent-mode/) or [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda-on-a-system-that-has-other-python-installations-or-packages). Using a virtual environment is not required but recommended.
+
+Create and activate an environment named `vdp-streamlit` with Python 3.8:
+
+```bash
+conda create --name vdp-streamlit python=3.8 
+conda activate vdp-streamlit
+```
+
+Once activated, you can run scripts from this environment.
+
+### Install app dependencies
+
+Go to /examples/streamlit/yolov7 directory of the VDP project.
+
+```bash
+cd examples/streamlit/yolov7
+```
+
+The directory of the app will look like the following:
+
+```bash
+├── Dockerfile
+├── README.md
+├── main.py
+├── requirements.txt
+└── utils.py
+```
+
+where `requirements.txt`  file contains all the app dependencies. Install all the dependencies required to run the app from the activated virtual environment.
+
+```bash
+pip install -r requirements.txt
+```
+
+### Trigger the VDP pipelines
+
+In the main app script `main.py`, we use a Streamlit `text.input` to enable user to provide an image URL for inference.
+
+<Gist id="32c999596d6d810182cc8b7e59f63895" />

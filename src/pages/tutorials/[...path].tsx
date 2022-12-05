@@ -47,6 +47,7 @@ import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
+import { serializeMdxRemote } from "@/lib/markdown";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -105,41 +106,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
 
   // Serialize the mdx file for client
 
-  const mdxSource = await serialize(source, {
-    parseFrontmatter: true,
-    mdxOptions: {
-      useDynamicImport: true,
-      remarkRehypeOptions: { handlers: { infoBlockHeader, infoBlockChildren } },
-      remarkPlugins: [
-        [
-          remarkCodeHike,
-          {
-            theme,
-            lineNumbers: false,
-            showCopyButton: true,
-            autoImport: false,
-          },
-        ],
-        remarkDirective,
-        remarkInfoBlock,
-        [remarkYoutube, { validateYoutubeLink: true }],
-        remarkGfm,
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "prepend",
-            properties: { class: "heading-anchor" },
-            content() {
-              return h("span", { class: "heading-anchor-hash" }, ["#"]);
-            },
-          },
-        ],
-      ],
-    },
-  });
+  const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Access GitHub API to retrieve the info of Committer
 

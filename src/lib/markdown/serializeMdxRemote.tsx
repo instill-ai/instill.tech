@@ -7,7 +7,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
 import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
-import { remarkTwitter } from "@/lib/markdown/remark-twitter.mjs";
 import {
   infoBlockHeader,
   infoBlockChildren,
@@ -41,7 +40,6 @@ export const serializeMdxRemote = async (
           remarkInfoBlock,
           [remarkYoutube, { validateYoutubeLink: true }],
           remarkGfm,
-          remarkTwitter,
         ],
         rehypePlugins: [
           rehypeSlug,
