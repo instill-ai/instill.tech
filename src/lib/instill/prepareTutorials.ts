@@ -6,7 +6,7 @@ import { getCommitMeta } from "../github";
 import { validateTutorialMeta } from "./validateTutorialMeta";
 import matter from "gray-matter";
 
-export const prepareTutorial = async (): Promise<TutorialMeta[]> => {
+export const prepareTutorials = async (): Promise<TutorialMeta[]> => {
   try {
     // Glob all tutorials and construct full absolute paths
     const tutorialDir = join(process.cwd(), "tutorials");
@@ -30,7 +30,7 @@ export const prepareTutorial = async (): Promise<TutorialMeta[]> => {
       const commitMeta = await getCommitMeta({
         org: "instill-ai",
         repo: "instill.tech",
-        path: "tutorial/" + path.relative + ".mdx",
+        path: "tutorials/" + path.relative,
       });
 
       const validatedMeta = validateTutorialMeta(path.absolute, data);

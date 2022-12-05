@@ -3,13 +3,14 @@ import { ReactNode } from "react";
 
 export type PageHeroProps = {
   headline: string;
+  headerUppercase: boolean;
   marginBottom?: string;
   subHeadline?: ReactNode;
   ctaButton?: ReactNode;
   width?: string;
   position?: string;
   headerColor?: string;
-  headerUppercase: boolean;
+  gapY?: string;
 };
 
 export const PageHero = ({
@@ -21,14 +22,16 @@ export const PageHero = ({
   position,
   headerColor,
   headerUppercase,
+  gapY,
 }: PageHeroProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col gap-y-10",
+        "flex flex-col",
         marginBottom,
         width ? width : "w-full xl:w-8/12",
-        position ? position : "mx-auto"
+        position ? position : "mx-auto",
+        gapY ? gapY : "gap-y-10"
       )}
     >
       <h1

@@ -92,37 +92,28 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                     height="h-5"
                     position="my-auto"
                   />
-                ) : tutorial.commit.authorAvatarUrl ? (
+                ) : (
                   <img
-                    src={tutorial.commit.authorAvatarUrl}
+                    src={tutorial.authorAvatarSrc}
                     alt={`${tutorial.title}'s author's github avatar`}
-                    className="h-10 w-10 object-cover"
+                    className="h-5 w-5 rounded-full object-cover"
                     onError={() => {
                       setAuthorAvatarIsError(true);
                     }}
                   />
-                ) : (
-                  <GitHubIcon
-                    color="fill-instillGrey50"
-                    width="w-5"
-                    height="h-5"
-                    position="my-auto"
-                  />
                 )}
               </div>
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
-                {tutorial.commit.author}
+                {tutorial.author}
               </p>
             </div>
-            <div className="flex">
+            <div className="flex pt-0.5">
               <div className="my-auto min-h-[6px] min-w-[6px] rounded-full bg-instillGrey50 pt-[2.5px]" />
             </div>
             <div className="flex">
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
                 {tutorial.commit.lastEditedTime
-                  ? new Date(
-                      tutorial.commit.lastEditedTime?.split(" ")[0]
-                    ).toLocaleDateString()
+                  ? new Date(tutorial.publishedOn).toLocaleDateString()
                   : ""}
               </p>
             </div>

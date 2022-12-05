@@ -9,11 +9,11 @@ import {
 } from "@/components/tutorial";
 import { TutorialMeta } from "@/types/instill";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
-import { prepareTutorial } from "@/lib/instill/prepareTutorial";
+import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
-    const tutorials = await prepareTutorial();
+    const tutorials = await prepareTutorials();
 
     return {
       props: {

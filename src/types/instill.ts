@@ -48,6 +48,8 @@ export type TutorialMeta = {
   placeholderColor: TutorialPlaceholderColor;
   themeImgSrc: string;
   useCase: string;
+  author: string;
+  authorAvatarSrc: string;
 };
 
 export type CvTask =
