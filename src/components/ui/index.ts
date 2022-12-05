@@ -50,3 +50,7 @@ export { ContributeLinks } from "./ContributeLinks";
 export type { ContributeLinksProps } from "./ContributeLinks";
 export { ZoomableImg } from "./ZoomableImg";
 export type { ZoomableImgProps } from "./ZoomableImg";
+export { LastEditedInfo } from "./LastEditedInfo";
+export type { LastEditedInfoProps } from "./LastEditedInfo";
+export { HorizontalLine } from "./HorizontalLine";
+export type { HorizontalLineProps } from "./HorizontalLine";
