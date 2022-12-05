@@ -38,6 +38,7 @@ export type Commit = {
 
 export type CommitMeta = {
   authorGithubUrl: Nullable<string>;
+  authorAvatarUrl: Nullable<string>;
   author: Nullable<string>;
   lastEditedTime: Nullable<string>;
 };
