@@ -19,8 +19,8 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
       props: {
         tutorials: tutorials.sort((a, b) => {
           return (
-            new Date(b.publishedAt).getTime() -
-            new Date(a.publishedAt).getTime()
+            new Date(b.publishedOn).getTime() -
+            new Date(a.publishedOn).getTime()
           );
         }),
       },

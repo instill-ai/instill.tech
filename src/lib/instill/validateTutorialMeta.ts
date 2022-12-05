@@ -67,10 +67,10 @@ export const validateTutorialMeta = (
     );
   }
 
-  // Validate whether tutorial have necessary fields - publishedAt
-  if (!data.hasOwnProperty("publishedAt")) {
+  // Validate whether tutorial have necessary fields - publishedOn
+  if (!data.hasOwnProperty("publishedOn")) {
     throw new Error(
-      `Error occured when generate tutorials - missing publishedAt field at ${path}`
+      `Error occured when generate tutorials - missing publishedOn field at ${path}`
     );
   }
 

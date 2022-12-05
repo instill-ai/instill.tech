@@ -44,7 +44,7 @@ export type TutorialMeta = {
   destinationConnector: string;
   commit: CommitMeta;
   slug: string;
-  publishedAt: string;
+  publishedOn: string;
   placeholderColor: TutorialPlaceholderColor;
   themeImgSrc: string;
   useCase: string;

@@ -52,7 +52,7 @@ type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
   headers: RightSidebarProps["headers"];
   tutorials: TutorialMeta[];
-  commitMeta: CommitMeta;
+  commitMeta: Nullable<CommitMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -143,11 +143,17 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
 
   // Access GitHub API to retrieve the info of Committer
 
-  const commitMeta = await getCommitMeta({
-    org: "instill-ai",
-    repo: "instill.tech",
-    path: "docs/" + relativePath + ".mdx",
-  });
+  let commitMeta: Nullable<CommitMeta> = null;
+
+  try {
+    commitMeta = await getCommitMeta({
+      org: "instill-ai",
+      repo: "instill.tech",
+      path: "docs/" + relativePath + ".mdx",
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
   // We use remark to get the headers
 
@@ -214,7 +220,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             placeholderColor={
               mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
             }
-            marginBottom="mb-10"
+            marginBottom="mb-20"
           />
           <TutorialPipeline
             icon={icon}
@@ -227,14 +233,23 @@ const TutorialPage: FC<TutorialPageProps> & {
           <PageHero
             headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
             subHeadline={
-              <p>
-                {mdxSource.frontmatter ? mdxSource.frontmatter.description : ""}
-              </p>
+              <div className="flex flex-col gap-y-2">
+                <p className="text-2xl font-normal text-instillGrey80">
+                  {mdxSource.frontmatter
+                    ? mdxSource.frontmatter.description
+                    : ""}
+                </p>
+                <p className="text-xl font-normal text-instillGrey70">{`Published on ${new Date(
+                  mdxSource.frontmatter ? mdxSource.frontmatter.publishedOn : ""
+                ).toDateString()}`}
+                </p>
+              </div>
             }
-            marginBottom="mb-[120px] xl:mb-40"
+            marginBottom="mb-20 xl:mb-40"
             width="max-w-[1127px]"
             position="mr-auto"
             headerColor="text-instillGrey95"
+            headerUppercase={false}
           />
           <div
             ref={articleContainerRef}
@@ -247,8 +262,12 @@ const TutorialPage: FC<TutorialPageProps> & {
               <MDXRemote {...mdxSource} components={{ CH }} />
             </article>
           </div>
-          <LastEditedInfo meta={commitMeta} marginBottom="mb-8" />
-          <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
+          {commitMeta ? (
+            <>
+              <LastEditedInfo meta={commitMeta} marginBottom="mb-8" />
+              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
+            </>
+          ) : null}
         </div>
 
         {/* 

@@ -1,15 +1,15 @@
 ---
-title: "test-1"
+title: "Build a SYNC classification pipeline"
 lang: "en-US"
 draft: false
 description: "Build a SYNC classification pipeline with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
 cvTask: "imageClassification"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
-publishedAt: "2022-10-21T08:00:00"
-placeholderColor: "bg-instillRed90"
-themeImgSrc: "/tutorial-assets/tutorial-test-img.png"
-useCase: "Use case 1"
+publishedOn: "2022-10-21T08:00:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: ""
+useCase: "Use case 2"
 ---
 
 In this tutorial you'll build your first **`SYNC`** classification pipeline and trigger the pipeline to process some images.
@@ -19,7 +19,10 @@ In this tutorial you'll build your first **`SYNC`** classification pipeline and 
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
 where you can build your first VDP pipeline by clicking **Set up your first pipeline** and forever change the way you approach visual data processing workflow development.
 
-![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-empty.png"
+  alt="Empty pipeline list page of the VDP Console"
+/>
 
 :::info{type=tip}
 You can follow the tutorial via the **Pipeline** page. Or, you can navigate to the **Source**, **Model** and **Destination** page to create each component first and use them to configure a pipeline in **Pipeline** page later.
@@ -35,7 +38,10 @@ To set it up,
 2. click the **Source type** ▾ drop-down and choose `HTTP`, and
 3. click **Next**.
 
-![Add a HTTP source to set up a SYNC pipeline in the VDP Console](/docs-assets/tutorials/add-a-sync-source-http.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-sync-source-http.png"
+  alt="Add a HTTP source to set up a SYNC pipeline in the VDP Console"
+/>
 
 :::info{type=info}
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
@@ -53,7 +59,10 @@ To set it up,
 4. fill in the GitHub repository URL `instill-ai/model-mobilenetv2`, and
 5. click **Set up**.
 
-![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-mobilenetv2-model.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-mobilenetv2-model.png"
+  alt="Import a model from a GitHub repo via VDP Console"
+/>
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
 
@@ -69,7 +78,10 @@ Once the model is imported,
 2. pick one model instance, and
 3. click **Deploy** to put it online.
 
-![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/deploy-a-mobilenetv2-model-instance.png"
+  alt="Deploy a model instance via VDP Console"
+/>
 
 ### Add a HTTP destination
 
@@ -79,7 +91,10 @@ Just
 
 1. click **Next**.
 
-![Add a HTTP destination to create a SYNC pipeline in the VDP console](/docs-assets/tutorials/add-a-sync-destination-http.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-sync-destination-http.png"
+  alt="Add a HTTP destination to create a SYNC pipeline in the VDP console"
+/>
 
 :::info{type=info}
 The paired source and destination connectors for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
@@ -96,11 +111,17 @@ Almost done! Just
 2. [optional] add description, and
 3. click **Set up**.
 
-![Set up a pipeline in the VDP Console](/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/set-up-a-sync-cls-pipeline.png"
+  alt="Set up a pipeline in the VDP Console"
+/>
 
 Now you should see the newly created `SYNC` pipeline on the **Pipeline** page 🎉
 
-![Pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-sync-cls.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-sync-cls.png"
+  alt="Pipeline list page of the VDP Console"
+/>
 
 ## Build via low-code
 
@@ -126,7 +147,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu:deploy
+curl -X POST http://localhost:8083/v1alpha/models/mobilenetv2/instances/v1.0-cpu/deploy
 
 curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   "id": "destination-http",
@@ -211,7 +232,7 @@ Now that the `classification` pipeline is automatically activated, you can make 
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -224,7 +245,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -235,7 +256,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger -d '
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8081/v1alpha/pipelines/classification:trigger-multipart \
+curl -X POST http://localhost:8081/v1alpha/pipelines/classification/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"polar-bear.jpg"'
 ```

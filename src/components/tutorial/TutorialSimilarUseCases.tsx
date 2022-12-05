@@ -21,7 +21,7 @@ export const TutorialSimilarUseCases = ({
 
   return similarTutorials.length !== 0 ? (
     <div className="flex flex-col">
-      <h3 className="mx-auto mb-20 border-b pb-5 text-instillGrey90 xl:font-mono xl:text-3xl ">
+      <h3 className="mx-auto mb-20 border-b pb-5 font-mono text-3xl text-instillGrey90 ">
         Similar use case
       </h3>
       <div className="grid gap-x-5 xl:grid-flow-col xl:grid-cols-3">

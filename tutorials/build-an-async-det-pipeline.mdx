@@ -6,13 +6,11 @@ description: "Build an ASYNC object detection pipeline with the open-source visu
 cvTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "PostgreSQL"
-publishedAt: "2022-11-21T08:00:00"
+publishedOn: "2022-11-21T08:00:00"
 placeholderColor: "bg-instillYellow50"
-themeImgSrc: "/tutorial-assets/tutorial-test-img.png"
+themeImgSrc: ""
 useCase: "Use case 2"
 ---
-
-destination_connector: "postgreSQL"
 
 In this tutorial you'll build your first **`ASYNC`** object detection pipeline and trigger the pipeline to process some images.
 
@@ -21,7 +19,10 @@ In this tutorial you'll build your first **`ASYNC`** object detection pipeline a
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar,
 where you can build your first VDP pipeline by clicking **Set up your first pipeline** and forever change the way you approach visual data processing workflow development.
 
-![Empty pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-empty.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-empty.png"
+  alt="Empty pipeline list page of the VDP Console"
+/>
 
 :::info{type=tip}
 You can follow the tutorial via the _Pipeline_ page. Or, you can navigate to the _Source_, _Model_ and _Destination_ page to create each component first and use them to configure a pipeline in _Pipeline_ page later.
@@ -37,7 +38,10 @@ To set it up,
 2. click the **Source type** ▾ drop-down and choose `HTTP`, and
 3. click **Next**.
 
-![Add a HTTP source to set up an async pipeline in the VDP Console](/docs-assets/tutorials/add-an-async-source-http.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-an-async-source-http.png"
+  alt="Add a HTTP source to set up an async pipeline in the VDP Console"
+/>
 
 :::info{type=info}
 Check our growing list of [Source Connectors](/docs/source-connectors/overview).
@@ -55,7 +59,10 @@ To set it up,
 4. fill in the GitHub repository URL `instill-ai/model-yolov7-dvc`, and
 5. click **Set up**.
 
-![Import a model from a GitHub repo via VDP Console](/docs-assets/tutorials/add-a-yolov7-model.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-yolov7-model.png"
+  alt="Import a model from a GitHub repo via VDP Console"
+/>
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
 
@@ -71,7 +78,10 @@ Once the model is imported,
 2. pick one model instance, and
 3. click **Deploy** to put it online.
 
-![Deploy a model instance via VDP Console](/docs-assets/tutorials/deploy-a-yolov7-model-instance.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/deploy-a-yolov7-model-instance.png"
+  alt="Deploy a model instance via VDP Console"
+/>
 
 ### Add a PostgreSQL destination
 
@@ -82,7 +92,10 @@ To set it up,
 3. click the **Destination type** ▾ drop-down and choose `Postgres`, and
 4. fill in the required fields.
 
-![Add a PostgreSQL destination to create a pipeline in the VDP console](/docs-assets/tutorials/add-a-destination-postgres.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/add-a-destination-postgres.png"
+  alt="Add a PostgreSQL destination to create a pipeline in the VDP console"
+/>
 
 :::info{type=info}
 Make sure the PostgreSQL is accessible by VDP using the specified `Host` and `Port`, and the `tutorial` database has been created in advance.
@@ -96,11 +109,17 @@ Almost done! Just
 2. [optional] add description, and
 3. click **Set up**.
 
-![Set up an pipeline in the VDP Console](/docs-assets/tutorials/set-up-an-async-det-pipeline.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/set-up-an-async-det-pipeline.png"
+  alt="Set up an pipeline in the VDP Console"
+/>
 
 Now you should see the newly created `ASYNC` pipeline on the **Pipeline** page 🎉
 
-![Pipeline list page of the VDP Console](/docs-assets/tutorials/pipeline-list-async-det.png)
+<ZoomableImg
+  src="/docs-assets/tutorials/pipeline-list-async-det.png"
+  alt="Pipeline list page of the VDP Console"
+/>
 
 ## Build via low-code
 
@@ -126,7 +145,7 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu:deploy
+curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
 
 curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   "id": "postgres-db",
@@ -217,7 +236,7 @@ You can make a request to trigger the pipeline to process **multiple** images wi
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -230,7 +249,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -241,7 +260,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger -d '{
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection:trigger-multipart \
+curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"bear.jpg"'
 ```
