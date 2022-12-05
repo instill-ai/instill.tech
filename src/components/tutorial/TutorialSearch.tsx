@@ -48,15 +48,21 @@ export const TutorialSearch = ({
         }}
       />
       <div className="flex w-full flex-row">
-        <a className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70">
-          Request a demo
+        <a
+          href="https://github.com/instill-ai/instill.tech/issues/new?assignees=xiaofei-du,EiffelFly&labels=request+a+tutorial"
+          className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
+        >
+          Request a tutorial
         </a>
         <div className="grid w-10 grid-cols-2 py-2">
           <div className="block w-full border-r border-instillGrey30" />
           <div className="block w-full" />
         </div>
-        <a className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70">
-          Submit a demo
+        <a
+          href="https://github.com/instill-ai/instill.tech/issues/new?assignees=xiaofei-du,EiffelFly&labels=submit+a+tutorial"
+          className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
+        >
+          Submit a tutorial
         </a>
       </div>
     </div>

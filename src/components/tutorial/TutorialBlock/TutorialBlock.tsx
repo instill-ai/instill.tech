@@ -71,10 +71,10 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             labelBgColor="bg-instillGrey20"
             labelPadding="py-1 px-2"
           />
-          <h3 className="mb-2 break-all text-instillGrey90 text-instill-h3-medium">
+          <h3 className="mb-2 break-words text-instillGrey90 text-instill-h3-medium">
             {tutorial.title}
           </h3>
-          <p className="mb-10 w-full text-ellipsis font-sans text-lg font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
+          <p className="mb-10 w-full text-ellipsis font-sans text-base font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
             {tutorial.description}
           </p>
           <div className="mt-auto flex flex-row gap-x-2 py-0.5">

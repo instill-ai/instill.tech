@@ -7,11 +7,11 @@ export type TutorialHeroProps = {
 export const TutorialHero = ({ marginBottom }: TutorialHeroProps) => {
   return (
     <PageHero
-      headline="Explore popular use cases to empower your teams"
+      headline="EXPLORE INNOVATIVE USE CASES FOR UNSTRUCTURED DATA ETL"
       subHeadline={
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In est proin
-          ac, est. Consectetur risus montes, etiam ipsum.
+          VDP streamlines the end-to-end unstructured data processing to empower
+          your team and solve your business problems.
         </p>
       }
       marginBottom={marginBottom}
