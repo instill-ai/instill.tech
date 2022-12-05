@@ -35,5 +35,7 @@ Playground.args = {
     placeholderColor: "bg-instillWarmOrange50",
     themeImgSrc: "/tutorial-assets/tutorial-test-img.png",
     useCase: "Use case 1",
+    author: "Xiaofei Du",
+    authorAvatarSrc: "",
   },
 };

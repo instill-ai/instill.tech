@@ -49,11 +49,11 @@ export const ZoomableImg = ({ src, alt, width, height }: ZoomableImgProps) => {
       {isZoom ? (
         <>
           {/** Background backdrop, show/hide based on modal state. */}
-          <div className="fixed inset-0 z-30 bg-white bg-opacity-90 transition-opacity" />
+          <div className="fixed inset-0 z-50 bg-white bg-opacity-90 transition-opacity" />
 
           {/** Modal panel, show/hide based on modal state. */}
           <div
-            className="fixed inset-0 z-50 overflow-y-auto"
+            className="fixed inset-0 z-[70] overflow-y-auto"
             onClick={() => setIsZoom(false)}
           >
             <div className="flex min-h-full items-center justify-center p-4 sm:p-0">

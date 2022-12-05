@@ -45,7 +45,7 @@ import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { prepareTutorial } from "@/lib/instill/prepareTutorial";
+import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
 
 type TutorialPageProps = {
@@ -145,11 +145,13 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
 
   let commitMeta: Nullable<CommitMeta> = null;
 
+  console.log(relativePath);
+
   try {
     commitMeta = await getCommitMeta({
       org: "instill-ai",
       repo: "instill.tech",
-      path: "docs/" + relativePath + ".mdx",
+      path: "tutorials/" + relativePath + ".mdx",
     });
   } catch (err) {
     console.log(err);
@@ -165,7 +167,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
     .process(source);
 
   // We need all the tutorials data
-  const tutorials = await prepareTutorial();
+  const tutorials = await prepareTutorials();
 
   return {
     props: {
@@ -229,19 +231,23 @@ const TutorialPage: FC<TutorialPageProps> & {
             destinationConnector={
               mdxSource.frontmatter?.destinationConnector || null
             }
+            marginBottom="mb-5"
           />
           <PageHero
             headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
             subHeadline={
-              <div className="flex flex-col gap-y-2">
+              <div className="flex flex-col gap-y-3">
                 <p className="text-2xl font-normal text-instillGrey80">
                   {mdxSource.frontmatter
                     ? mdxSource.frontmatter.description
                     : ""}
                 </p>
-                <p className="text-xl font-normal text-instillGrey70">{`Published on ${new Date(
-                  mdxSource.frontmatter ? mdxSource.frontmatter.publishedOn : ""
-                ).toDateString()}`}
+                <p className="text-xl font-normal text-instillGrey70">
+                  {`Published by ${mdxSource.frontmatter?.author} on ${new Date(
+                    mdxSource.frontmatter
+                      ? mdxSource.frontmatter.publishedOn
+                      : ""
+                  ).toLocaleDateString()}`}
                 </p>
               </div>
             }
@@ -249,6 +255,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             width="max-w-[1127px]"
             position="mr-auto"
             headerColor="text-instillGrey95"
+            gapY="gap-y-[30px]"
             headerUppercase={false}
           />
           <div
@@ -264,7 +271,7 @@ const TutorialPage: FC<TutorialPageProps> & {
           </div>
           {commitMeta ? (
             <>
-              <LastEditedInfo meta={commitMeta} marginBottom="mb-8" />
+              <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
               <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
             </>
           ) : null}
