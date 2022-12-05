@@ -15,7 +15,7 @@ import { docsConfig } from "../../../docs.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
-import { getCommitMeta, getRepoFileCommits } from "@/lib/github";
+import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 

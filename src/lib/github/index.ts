@@ -74,6 +74,7 @@ export const getCommitMeta = async ({
     let lastEditedTime: Nullable<string> = null;
     let author: Nullable<string> = null;
     let authorGithubUrl: Nullable<string> = null;
+    let authorAvatarUrl: Nullable<string> = null;
 
     if (commits.length > 0 && commits[0]) {
       const authorObj = commits[0].commit.author;
@@ -88,6 +89,7 @@ export const getCommitMeta = async ({
       }
       if (commits[0].author) {
         authorGithubUrl = commits[0].author.html_url;
+        authorAvatarUrl = commits[0].author.avatar_url;
       }
     }
 
@@ -95,6 +97,7 @@ export const getCommitMeta = async ({
       author,
       authorGithubUrl,
       lastEditedTime,
+      authorAvatarUrl,
     });
   } catch (err) {
     return Promise.reject(err);
