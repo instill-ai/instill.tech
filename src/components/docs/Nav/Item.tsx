@@ -37,7 +37,7 @@ export const Item = ({ item }: ItemProps) => {
       <a
         href={item.href}
         target="_blank"
-        rel="noopener noreferer noreferrer"
+        rel="noopener noreferrer"
         className="my-auto flex"
       >
         {item.icon ? (
