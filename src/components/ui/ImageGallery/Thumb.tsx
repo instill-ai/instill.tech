@@ -32,11 +32,16 @@ export const Thumb = ({ selected, onClick, imgSrc }: ThumbProps) => {
             height: 100%;
             width: 100%;
           }
+
+          .embla__slide--thumb {
+            padding-left: 20px;
+            min-width: 20%;
+          }
         `}
       </style>
       <div
         className={cn(
-          "z-0 min-w-[20%]",
+          "embla__slide--thumb",
           selected ? "opacity-80" : "opacity-20"
         )}
       >

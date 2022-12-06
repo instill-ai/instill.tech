@@ -10,7 +10,7 @@ export type MdxTwitterCardProps = {
 export const MdxTwitterCard = ({ tweetId, position }: MdxTwitterCardProps) => {
   return (
     <MdxComponentBase position={position}>
-      <div className="w-2/3">
+      <div className="w-full max-w-[550px]">
         <TwitterTweetEmbed tweetId={tweetId} />
       </div>
     </MdxComponentBase>

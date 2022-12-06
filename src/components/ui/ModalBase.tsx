@@ -57,10 +57,10 @@ const ModalBase = ({
               className="fixed inset-0 z-[100] w-screen cursor-pointer overflow-y-auto"
               onClick={() => setModalIsOpen(false)}
             >
-              <div className="flex min-h-full w-full">
+              <div className="flex min-h-full w-screen">
                 <div
                   className={cn(
-                    "flex min-h-full items-center justify-center",
+                    "flex min-h-full w-full items-center justify-center",
                     modalBgColor,
                     modalPadding
                   )}
