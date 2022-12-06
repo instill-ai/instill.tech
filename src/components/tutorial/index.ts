@@ -16,4 +16,6 @@ export { TutorialTableOfContent } from "./TutorialTableOfContent";
 export type { TutorialTableOfContentProps } from "./TutorialTableOfContent";
 export { TutorialSimilarUseCases } from "./TutorialSimilarUseCases";
 export type { TutorialSimilarUseCasesProps } from "./TutorialSimilarUseCases";
+export { TutorialPublishInfo } from "./TutorialPublishInfo";
+export type { TutorialPublishInfoProps } from "./TutorialPublishInfo";
 export { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
