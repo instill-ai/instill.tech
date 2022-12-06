@@ -28,6 +28,7 @@ import {
 } from "@/components/ui";
 import {
   TutorialPipeline,
+  TutorialPublishInfo,
   TutorialSimilarUseCases,
   TutorialTableOfContent,
   TutorialThemeImage,
@@ -48,6 +49,7 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
+import { GitHubIcon } from "@instill-ai/design-system";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -209,13 +211,21 @@ const TutorialPage: FC<TutorialPageProps> & {
                     ? mdxSource.frontmatter.description
                     : ""}
                 </p>
-                <p className="text-xl font-normal text-instillGrey70">
-                  {`Published by ${mdxSource.frontmatter?.author} on ${new Date(
+                <TutorialPublishInfo
+                  author={
+                    mdxSource.frontmatter ? mdxSource.frontmatter.author : ""
+                  }
+                  authorAvatarSrc={
+                    mdxSource.frontmatter
+                      ? mdxSource.frontmatter.authorAvatarSrc
+                      : ""
+                  }
+                  publishedOn={
                     mdxSource.frontmatter
                       ? mdxSource.frontmatter.publishedOn
                       : ""
-                  ).toLocaleDateString()}`}
-                </p>
+                  }
+                />
               </div>
             }
             marginBottom="mb-20 xl:mb-40"
@@ -272,7 +282,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             height: articleContainerDimension.height - 100,
           }}
         >
-          <TutorialTableOfContent headers={headers} />
+          <TutorialTableOfContent headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
     </>
