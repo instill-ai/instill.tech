@@ -36,7 +36,7 @@ export const PageHero = ({
     >
       <h1
         className={cn(
-          "w-full text-left font-mono text-5xl font-semibold xl:text-instill-h1",
+          "w-full text-left font-sans text-[42px] font-semibold leading-[42px] xl:text-[64px] xl:leading-[64px]",
           headerColor ? headerColor : "text-instillSkyBlue",
           headerUppercase ? "uppercase" : ""
         )}

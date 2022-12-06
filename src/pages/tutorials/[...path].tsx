@@ -1,30 +1,22 @@
 import { FC, ReactElement, useRef } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
-import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { CH } from "@code-hike/mdx/components";
 import { join } from "path";
 import glob from "fast-glob";
-import remarkDirective from "remark-directive";
-import { remarkCodeHike } from "@code-hike/mdx";
-import remarkGfm from "remark-gfm";
-import { useRouter } from "next/router";
-import { h } from "hastscript";
 import { readFile } from "fs/promises";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 
 import {
+  BackToPreviousPageLink,
   ContentContainer,
   HorizontalLine,
   LastEditedInfo,
   PageBase,
   PageHead,
   PageHero,
-  TableOfContent,
 } from "@/components/ui";
 import {
   TutorialPipeline,
@@ -35,12 +27,6 @@ import {
 } from "@/components/tutorial";
 
 import { RightSidebarProps } from "@/components/docs";
-import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
-import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
-import {
-  infoBlockHeader,
-  infoBlockChildren,
-} from "@/lib/markdown/rehype-info-block-handler.mjs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
@@ -49,7 +35,6 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
-import { GitHubIcon } from "@instill-ai/design-system";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -182,16 +167,13 @@ const TutorialPage: FC<TutorialPageProps> & {
         }
       />
       <ContentContainer
-        margin="my-[120px] xl:my-40"
+        margin="mt-[60px] mb-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
-          <TutorialThemeImage
-            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
-            placeholderColor={
-              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
-            }
-            marginBottom="mb-20"
+          <BackToPreviousPageLink
+            url="/tutorials"
+            marginBottom="mb-5 xl:mb-10"
           />
           <TutorialPipeline
             icon={icon}
@@ -200,7 +182,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             destinationConnector={
               mdxSource.frontmatter?.destinationConnector || null
             }
-            marginBottom="mb-5"
+            marginBottom="mb-2"
           />
           <PageHero
             headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
@@ -233,13 +215,21 @@ const TutorialPage: FC<TutorialPageProps> & {
                 />
               </div>
             }
-            marginBottom="mb-20 xl:mb-40"
+            marginBottom="mb-10"
             width="max-w-[1127px]"
             position="mr-auto"
             headerColor="text-instillGrey95"
             gapY="gap-y-[30px]"
             headerUppercase={false}
           />
+          <TutorialThemeImage
+            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
+            placeholderColor={
+              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
+            }
+            marginBottom="mb-20 xl:mb-40"
+          />
+
           <div
             ref={articleContainerRef}
             className="relative mb-20 flex h-full flex-row"
