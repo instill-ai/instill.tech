@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.22.0](https://github.com/instill-ai/instill.tech/compare/v1.21.0...v1.22.0) (2022-12-06)
+
+
+### Features
+
+* add markdown image gallery component ([#402](https://github.com/instill-ai/instill.tech/issues/402)) ([a078c3e](https://github.com/instill-ai/instill.tech/commit/a078c3eaad55e928512e67271f3c6a2ae880b602))
+* add remark-twitter plugin ([#400](https://github.com/instill-ai/instill.tech/issues/400)) ([bd27114](https://github.com/instill-ai/instill.tech/commit/bd2711401a2b1702423007060eaccbc87a54dcd7))
+* add tutorial to showcase the detail. ([#401](https://github.com/instill-ai/instill.tech/issues/401)) ([ee19269](https://github.com/instill-ai/instill.tech/commit/ee1926910e9381fc086add686700a87f3907ba34))
+* add vdp-cow-counter ([#406](https://github.com/instill-ai/instill.tech/issues/406)) ([c453be9](https://github.com/instill-ai/instill.tech/commit/c453be970dd0fec886cd1f4db64b382ef6337c1b))
+* impl footer text animation ([#387](https://github.com/instill-ai/instill.tech/issues/387)) ([f1e0036](https://github.com/instill-ai/instill.tech/commit/f1e0036bd40c5a5335ff29b202c8126ef8f4566c))
+* Impl youtube block and add themeImgThumbnailSrc meta ([#405](https://github.com/instill-ai/instill.tech/issues/405)) ([ffffe29](https://github.com/instill-ai/instill.tech/commit/ffffe294ebc70a8ead23b27f68050be683dbe2c8))
+* implement tutorial page ([#398](https://github.com/instill-ai/instill.tech/issues/398)) ([88ee81f](https://github.com/instill-ai/instill.tech/commit/88ee81f17e5f0fc2d8b593d84e579813280b1bcf))
+* Implement ZoomableImg ([#390](https://github.com/instill-ai/instill.tech/issues/390)) ([ce8fd33](https://github.com/instill-ai/instill.tech/commit/ce8fd332a3b8dbea50e5f2f97d0072d60e0421d8))
+* update displayed author and their avatar ([#399](https://github.com/instill-ai/instill.tech/issues/399)) ([e6de63b](https://github.com/instill-ai/instill.tech/commit/e6de63bb8062126a620aef6ca2f59d67b6ebaa6b))
+* update img resolution ([#382](https://github.com/instill-ai/instill.tech/issues/382)) ([45db24f](https://github.com/instill-ai/instill.tech/commit/45db24f74756e71ac1547b0ec054a9e329be85fe))
+* update the hero style ([#409](https://github.com/instill-ai/instill.tech/issues/409)) ([9846e42](https://github.com/instill-ai/instill.tech/commit/9846e4249592418cb77e86f0d33460ace606178a))
+* update tutorial and refactor mdx components ([#404](https://github.com/instill-ai/instill.tech/issues/404)) ([fb0c43d](https://github.com/instill-ai/instill.tech/commit/fb0c43d3324b5384fb3e0724d6b004dadc1ad63f))
+
+
+### Bug Fixes
+
+* fix case study position ([#384](https://github.com/instill-ai/instill.tech/issues/384)) ([f0f6945](https://github.com/instill-ai/instill.tech/commit/f0f69456e250d0fb3b4961efd2c2b07ec31d54b6))
+* fix meta title ([#408](https://github.com/instill-ai/instill.tech/issues/408)) ([28f50bb](https://github.com/instill-ai/instill.tech/commit/28f50bba15d60d28a5a7b1675ffd45ae932e906a))
+* fix timestamp typo ([#407](https://github.com/instill-ai/instill.tech/issues/407)) ([6610ce1](https://github.com/instill-ai/instill.tech/commit/6610ce168919750b2be00a81ea082936abf97b48))
+* force strict mode ([#380](https://github.com/instill-ai/instill.tech/issues/380)) ([66161dd](https://github.com/instill-ai/instill.tech/commit/66161ddf5688fdca07f891e21faf827a3197ada1))
+
+
+### Documentation
+
+* update custom endpoints ([#303](https://github.com/instill-ai/instill.tech/issues/303)) ([348e1e1](https://github.com/instill-ai/instill.tech/commit/348e1e1d3f4881aae245305684e1a20a85da3d76))
+
 ## [1.21.0](https://github.com/instill-ai/instill.tech/compare/v1.20.0...v1.21.0) (2022-11-24)
 
 
