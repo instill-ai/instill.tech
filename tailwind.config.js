@@ -98,15 +98,13 @@ module.exports = {
             h1: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              lineHeight: "40px",
-              fontSize: "28px",
+              fontSize: "48px",
               letterSpacing: theme("letterSpacing.tight"),
             },
             h2: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              fontSize: "24px",
-              lineHeight: "32px",
+              fontSize: "36px",
               borderTopWidth: "1px",
               borderStyle: "solid",
               paddingTop: "20px",
@@ -116,13 +114,19 @@ module.exports = {
             h3: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              fontSize: "20px",
+              fontSize: "28px",
               lineHeight: "28px",
             },
             h4: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "500",
-              fontSize: "18px",
+              fontSize: "24px",
+              lineHeight: "20px",
+            },
+            h5: {
+              fontFamily: theme("fontFamily.sans")[0],
+              fontWeight: "500",
+              fontSize: "20px",
               lineHeight: "20px",
             },
             code: {
