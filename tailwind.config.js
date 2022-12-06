@@ -149,6 +149,12 @@ module.exports = {
             "code::after": {
               content: '""',
             },
+            "p": {
+              fontSize: "18px",
+            },
+            "ul > li": {
+              fontSize: "18px",
+            },
 
             // We have implemented rehype-autolink-headings that will wrap a tag in headings
             // This config will cancel natural a tag style under headings
