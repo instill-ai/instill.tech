@@ -4,18 +4,20 @@ import { useState } from "react";
 export type TutorialPublishInfoProps = {
   author: string;
   authorAvatarSrc: string;
+  authorGitHubUrl: string;
   publishedOn: string;
 };
 
 export const TutorialPublishInfo = ({
   author,
   authorAvatarSrc,
+  authorGitHubUrl,
   publishedOn,
 }: TutorialPublishInfoProps) => {
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
 
   return (
-    <div className="flex flex-row gap-x-1">
+    <div className="flex flex-row gap-x-2">
       {authorAvatarIsError ? (
         <GitHubIcon
           color="fill-instillGrey50"
@@ -33,11 +35,15 @@ export const TutorialPublishInfo = ({
           }}
         />
       )}
-      <p className="text-base font-normal text-instillGrey70">
-        {`Published by ${author} on ${new Date(
-          publishedOn
-        ).toLocaleDateString()}`}
-      </p>
+      <div className="flex flex-row gap-x-1 text-base font-normal text-instillGrey70">
+        <p>Published by</p>
+        <a
+          href={authorGitHubUrl}
+          className="cursor-pointer underline hover:text-instillSkyBlue"
+        >{`${author}`}
+        </a>
+        <p>{`on ${new Date(publishedOn).toLocaleDateString()}`}</p>
+      </div>
     </div>
   );
 };

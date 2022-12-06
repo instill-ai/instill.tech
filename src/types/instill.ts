@@ -50,6 +50,7 @@ export type TutorialMeta = {
   useCase: string;
   author: string;
   authorAvatarSrc: string;
+  authorGitHubUrl: string;
 };
 
 export type CvTask =

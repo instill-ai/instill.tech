@@ -12,10 +12,13 @@ import { MDXProvider } from "@mdx-js/react";
 import { CH } from "@code-hike/mdx/components";
 import "intersection-observer";
 import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
-import { ZoomableImg } from "@/components/ui";
-import { MarkdownTwitterCard } from "@/components/ui/MarkdownTwitterCard";
-import { MarkdownGist } from "@/components/ui/MarkdownGist";
-import { MarkdownImgGallery } from "@/components/ui/MarkdownImgGallery/MarkdownImgGallery";
+import {
+  MdxCtaButton,
+  MdxGist,
+  MdxTwitterCard,
+  MdxZoomableImg,
+  MdxImageGallery,
+} from "@/components/ui";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -28,16 +31,28 @@ type AppPropsWithLayout = AppProps & {
 const components = {
   CH,
   ZoomableImg: (props: any) => (
-    <ZoomableImg
+    <MdxZoomableImg
       src={props.src}
       alt={props.alt}
       width={props.width}
       height={props.height}
+      position={props.position}
     />
   ),
-  Tweet: (props: any) => <MarkdownTwitterCard tweetId={props.tweetId} />,
-  Gist: (props: any) => <MarkdownGist id={props.id} />,
-  Gallery: (props: any) => <MarkdownImgGallery images={props.images} />,
+  Tweet: (props: any) => (
+    <MdxTwitterCard tweetId={props.tweetId} position={props.position} />
+  ),
+  Gist: (props: any) => <MdxGist id={props.id} position={props.position} />,
+  Gallery: (props: any) => (
+    <MdxImageGallery images={props.images} position={props.position} />
+  ),
+  CtaButton: (props: any) => (
+    <MdxCtaButton
+      text={props.text}
+      link={props.link}
+      position={props.position}
+    />
+  ),
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
