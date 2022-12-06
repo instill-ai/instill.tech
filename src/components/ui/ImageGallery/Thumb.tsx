@@ -9,29 +9,30 @@ export type ThumbProps = {
 export const Thumb = ({ selected, onClick, imgSrc }: ThumbProps) => {
   return (
     <>
-      <style jsx>{`
-        .embla__slide__inner--thumb {
-          touch-action: manipulation;
-          cursor: pointer;
-          border: 0;
-          outline: 0;
-          margin: 0;
-          padding: 0;
-          height: 150px;
-          width: 100%;
-          background-color: transparent;
-          display: flex;
-          overflow: hidden;
-        }
+      <style jsx>
+        {`
+          .embla__slide__inner--thumb {
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 0;
+            outline: 0;
+            margin: 0;
+            padding: 0;
+            height: 150px;
+            width: 100%;
+            background-color: transparent;
+            display: flex;
+            overflow: hidden;
+          }
 
-        .embla__slide__thumbnail {
-          margin: auto;
-          transition: opacity 0.2s;
-          object-fit: contain;
-          height: 100%;
-          width: 100%;
-        }
-      `}
+          .embla__slide__thumbnail {
+            margin: auto;
+            transition: opacity 0.2s;
+            object-fit: contain;
+            height: 100%;
+            width: 100%;
+          }
+        `}
       </style>
       <div
         className={cn(
