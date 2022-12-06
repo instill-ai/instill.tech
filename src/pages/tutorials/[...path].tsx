@@ -167,8 +167,8 @@ const TutorialPage: FC<TutorialPageProps> & {
       <PageHead
         pageTitle={
           mdxSource.frontmatter
-            ? `${mdxSource.frontmatter.title} | Documentation`
-            : "Documentation"
+            ? `${mdxSource.frontmatter.title} | Tutorial`
+            : "Tutorial"
         }
         pageDescription={
           mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
