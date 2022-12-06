@@ -39,6 +39,7 @@ specifiers:
   '@types/mailchimp__mailchimp_marketing': ^3.0.2
   '@types/node': ^16.9.6
   '@types/react': ^17.0.24
+  '@types/react-dom': ^17.0.17
   '@types/testing-library__jest-dom': ^5.14.5
   '@types/webpack-bundle-analyzer': ^4.4.1
   animejs: ^3.2.1
@@ -50,7 +51,7 @@ specifiers:
   clsx: ^1.2.1
   cross-env: ^7.0.3
   d3: ^7.6.1
-  embla-carousel-react: ^6.2.0
+  embla-carousel-react: ^7.0.5
   eslint: 7.32.0
   eslint-config-next: 11.1.2
   eslint-plugin-storybook: ^0.6.1
@@ -113,7 +114,7 @@ dependencies:
   clsx: 1.2.1
   cross-env: 7.0.3
   d3: 7.6.1
-  embla-carousel-react: 6.2.0_react@17.0.2
+  embla-carousel-react: 7.0.5_react@17.0.2
   gray-matter: 4.0.3
   gsap: 3.10.4
   intersection-observer: 0.12.2
@@ -164,6 +165,7 @@ devDependencies:
   '@types/mailchimp__mailchimp_marketing': 3.0.5
   '@types/node': 16.11.45
   '@types/react': 17.0.47
+  '@types/react-dom': 17.0.17
   '@types/testing-library__jest-dom': 5.14.5
   '@types/webpack-bundle-analyzer': 4.4.1
   autoprefixer: 10.4.7_postcss@8.4.14
@@ -7817,17 +7819,17 @@ packages:
       minimalistic-crypto-utils: 1.0.1
     dev: true
 
-  /embla-carousel-react/6.2.0_react@17.0.2:
-    resolution: {integrity: sha512-XshB7pmmhso/fzENefflWw5/N3HqCjO8H5CkzQxuCQqV9w+bvEaBkjUZ6fxfqLUMMSKFWIQvMD6uo9f8oKS+2g==}
+  /embla-carousel-react/7.0.5_react@17.0.2:
+    resolution: {integrity: sha512-qhw980gKj7G+O5d3WSwj0TyhcbpGP3DqJPiAatt1t3wEEcZqn7csaIfLh4e1N/0kna9sZfZZRzz+//NSrUodSg==}
     peerDependencies:
-      react: ^17.0.2
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 6.2.0
+      embla-carousel: 7.0.5
       react: 17.0.2
     dev: false
 
-  /embla-carousel/6.2.0:
-    resolution: {integrity: sha512-dSNsiQ7nmSQJZgbYfZCLdzrnznHwpaAcdJFcMRKgm/pjH1doOgxmfsvlMy4VfO4J11hLz8jm/W8WxSSDqfuu4w==}
+  /embla-carousel/7.0.5:
+    resolution: {integrity: sha512-loRcu0La0F7bhEMwbvgpi14iaaIEdwacH1xoplnaYfwN4KMgECkiuLgu4lx+v6MYd6lSpg/bw7ZxEuLUwYjavg==}
     dev: false
 
   /emittery/0.8.1:

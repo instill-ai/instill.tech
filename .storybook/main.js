@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  staticDirs: ['../public'],
   webpackFinal: async (config) => {
     config.resolve.alias["@"] = path.resolve(__dirname, "../src");
     config.resolve.alias["@/components"] = path.resolve(
