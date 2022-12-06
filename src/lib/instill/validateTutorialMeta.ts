@@ -114,5 +114,26 @@ export const validateTutorialMeta = (
     );
   }
 
+  // Validate whether tutorial have necessary fields - author
+  if (!data.hasOwnProperty("author")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing author field at ${path}`
+    );
+  }
+
+  // Validate whether tutorial have necessary fields - authorGitHubUrl
+  if (!data.hasOwnProperty("authorGitHubUrl")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing authorGitHubUrl field at ${path}`
+    );
+  }
+
+  // Validate whether tutorial have necessary fields - authorAvatarSrc
+  if (!data.hasOwnProperty("authorAvatarSrc")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing authorAvatarSrc field at ${path}`
+    );
+  }
+
   return data as PartialTutorialMeta;
 };

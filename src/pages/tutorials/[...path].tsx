@@ -225,6 +225,11 @@ const TutorialPage: FC<TutorialPageProps> & {
                       ? mdxSource.frontmatter.publishedOn
                       : ""
                   }
+                  authorGitHubUrl={
+                    mdxSource.frontmatter
+                      ? mdxSource.frontmatter.authorGitHubUrl
+                      : ""
+                  }
                 />
               </div>
             }

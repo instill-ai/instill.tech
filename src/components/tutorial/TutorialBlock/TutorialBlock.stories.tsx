@@ -37,5 +37,6 @@ Playground.args = {
     useCase: "Use case 1",
     author: "Xiaofei Du",
     authorAvatarSrc: "",
+    authorGitHubUrl: "",
   },
 };
