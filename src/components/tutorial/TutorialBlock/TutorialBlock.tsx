@@ -15,7 +15,8 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   const { icon, label } = getCvTaskIconAndLabel({
     cvTask: tutorial.cvTask,
   });
-  const [themeImageIsError, setThemeImageIsError] = useState(false);
+  const [themeImageThumbnailIsError, setThemeImageThumbnailIsError] =
+    useState(false);
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
 
   const [blockContainerRef, blockContainerDimension] =
@@ -27,7 +28,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
         ref={blockContainerRef}
         className="flex w-full flex-col hover:shadow-instill-solid-10"
       >
-        {themeImageIsError ? (
+        {themeImageThumbnailIsError ? (
           <div
             className="w-full"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
@@ -43,12 +44,12 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           // given image's size and we need to adjust it according to the width
           // of the TutorialBlock
           <img
-            src={tutorial.themeImgSrc}
+            src={tutorial.themeImgThumbnailSrc}
             alt="The theme image of this tutorial"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
             className="w-full object-cover"
             onError={() => {
-              setThemeImageIsError(true);
+              setThemeImageThumbnailIsError(true);
             }}
           />
         )}

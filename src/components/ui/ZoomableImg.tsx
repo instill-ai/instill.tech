@@ -42,14 +42,14 @@ export const ZoomableImg = ({
         img right now
       */}
 
-      <div className="reltive w-full">
+      <div className="group h-full w-full">
         <img
           onClick={() => {
             if (!clickButtonOnly) setIsZoom(true);
           }}
           src={src}
           className={cn(
-            "h-full cursor-pointer object-contain",
+            "m-0 h-full cursor-pointer object-contain",
             isZoom ? "opacity-0" : "opacity-100",
             width ? "" : "w-full"
           )}
@@ -62,7 +62,7 @@ export const ZoomableImg = ({
             onClick={() => {
               setIsZoom(true);
             }}
-            className="absolute right-0 bottom-0 flex bg-instillGrey20 bg-opacity-30 p-2 hover:bg-instillGrey90 hover:bg-opacity-10"
+            className="absolute right-0 bottom-0 flex bg-instillGrey20 bg-opacity-30 p-2 opacity-100 hover:bg-instillGrey90 hover:bg-opacity-10 group-hover:opacity-100 xl:opacity-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

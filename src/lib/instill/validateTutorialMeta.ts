@@ -107,6 +107,13 @@ export const validateTutorialMeta = (
     );
   }
 
+  // Validate whether tutorial have necessary fields - themeImgThumbnailSrc
+  if (!data.hasOwnProperty("themeImgThumbnailSrc")) {
+    throw new Error(
+      `Error occured when generate tutorials - missing themeImgThumbnailSrc field at ${path}`
+    );
+  }
+
   // Validate whether tutorial have necessary fields - useCase
   if (!data.hasOwnProperty("useCase")) {
     throw new Error(

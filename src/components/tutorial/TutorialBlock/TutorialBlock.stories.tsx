@@ -34,6 +34,7 @@ Playground.args = {
     publishedOn: "2022-10-21T08:00:00",
     placeholderColor: "bg-instillWarmOrange50",
     themeImgSrc: "/tutorial-assets/tutorial-test-img.png",
+    themeImgThumbnailSrc: "",
     useCase: "Use case 1",
     author: "Xiaofei Du",
     authorAvatarSrc: "",

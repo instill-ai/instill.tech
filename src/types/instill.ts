@@ -47,6 +47,7 @@ export type TutorialMeta = {
   publishedOn: string;
   placeholderColor: TutorialPlaceholderColor;
   themeImgSrc: string;
+  themeImgThumbnailSrc: string;
   useCase: string;
   author: string;
   authorAvatarSrc: string;

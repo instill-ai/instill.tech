@@ -43,8 +43,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
       <style jsx>
         {`
           .embla {
-            padding: 20px;
-            margin: autp;
+            margin: auto;
           }
 
           .embla__viewport {
@@ -78,7 +77,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
 
           .embla__slide__inner {
             display: flex;
-            height: 600px;
+            height: 500px;
           }
 
           .embla__slide__img {
