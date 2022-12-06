@@ -15,6 +15,7 @@ import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
 import { ZoomableImg } from "@/components/ui";
 import { MarkdownTwitterCard } from "@/components/ui/MarkdownTwitterCard";
 import { MarkdownGist } from "@/components/ui/MarkdownGist";
+import { MarkdownImgGallery } from "@/components/ui/MarkdownImgGallery/MarkdownImgGallery";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -36,6 +37,7 @@ const components = {
   ),
   Tweet: (props: any) => <MarkdownTwitterCard tweetId={props.tweetId} />,
   Gist: (props: any) => <MarkdownGist id={props.id} />,
+  Gallery: (props: any) => <MarkdownImgGallery images={props.images} />,
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
@@ -44,6 +46,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <MDXProvider components={components}>
       <AnnouncementBarCtxProvider>
         {getLayout(<Component {...pageProps} />)}
+        <div id="zoomable-image" />
       </AnnouncementBarCtxProvider>
     </MDXProvider>
   );
