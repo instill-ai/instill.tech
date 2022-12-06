@@ -13,6 +13,8 @@ import { CH } from "@code-hike/mdx/components";
 import "intersection-observer";
 import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
 import { ZoomableImg } from "@/components/ui";
+import { MarkdownTwitterCard } from "@/components/ui/MarkdownTwitterCard";
+import { MarkdownGist } from "@/components/ui/MarkdownGist";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -32,6 +34,8 @@ const components = {
       height={props.height}
     />
   ),
+  Tweet: (props: any) => <MarkdownTwitterCard tweetId={props.tweetId} />,
+  Gist: (props: any) => <MarkdownGist id={props.id} />,
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

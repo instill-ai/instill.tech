@@ -54,3 +54,7 @@ export { LastEditedInfo } from "./LastEditedInfo";
 export type { LastEditedInfoProps } from "./LastEditedInfo";
 export { HorizontalLine } from "./HorizontalLine";
 export type { HorizontalLineProps } from "./HorizontalLine";
+export { MarkdownGist } from "./MarkdownGist";
+export type { MarkdownGistProps } from "./MarkdownGist";
+export { MarkdownTwitterCard } from "./MarkdownTwitterCard";
+export type { MarkdownTwitterCardProps } from "./MarkdownTwitterCard";
