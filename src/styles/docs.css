@@ -128,8 +128,8 @@ article > details > summary > strong {
 
 span.heading-anchor-hash {
   transition: color 0.25s, opacity 0.25s;
-  margin-left: -1.5rem;
-  margin-right: 0.5rem;
+  margin-left: -2rem;
+  margin-right: 0rem;
   opacity: 0;
   color: #8C8A8A;
   float: left;
