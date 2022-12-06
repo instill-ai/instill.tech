@@ -18,6 +18,7 @@ import {
   MdxTwitterCard,
   MdxZoomableImg,
   MdxImageGallery,
+  MdxYoutubeEmbed,
 } from "@/components/ui";
 
 type NextPageWithLayout = NextPage & {
@@ -50,6 +51,14 @@ const components = {
     <MdxCtaButton
       text={props.text}
       link={props.link}
+      position={props.position}
+    />
+  ),
+  Youtube: (props: any) => (
+    <MdxYoutubeEmbed
+      id={props.id}
+      width={props.width}
+      height={props.height}
       position={props.position}
     />
   ),
