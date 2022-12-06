@@ -5,6 +5,7 @@ import { Nullable } from "@/types/instill";
 
 export type ModalBaseProps = {
   modalIsOpen: boolean;
+  modalId: string;
   setModalIsOpen: Dispatch<SetStateAction<boolean>>;
   modalBgColor: Nullable<string>;
   modalPadding: Nullable<string>;
@@ -14,6 +15,7 @@ export type ModalBaseProps = {
 };
 
 const ModalBase = ({
+  modalId,
   children,
   modalIsOpen,
   setModalIsOpen,
@@ -29,6 +31,7 @@ const ModalBase = ({
     el.current.setAttribute("role", "dialog");
     el.current.setAttribute("aria-modal", "true");
     el.current.setAttribute("class", "relative z-100");
+    el.current.setAttribute("id", modalId);
 
     const modalRoot = document.querySelector(`#${modalRootId}`);
     if (modalRoot) {

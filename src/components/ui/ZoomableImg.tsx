@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import cn from "clsx";
 import ModalBase from "./ModalBase";
+import { image } from "d3";
 
 export type ZoomableImgProps = {
   src: string;
@@ -75,6 +76,7 @@ export const ZoomableImg = ({
       </div>
 
       <ModalBase
+        modalId={src}
         modalIsOpen={isZoom}
         setModalIsOpen={setIsZoom}
         modalBgColor="bg-white bg-opacity-90"
