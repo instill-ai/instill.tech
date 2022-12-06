@@ -1,16 +1,19 @@
+import cn from "clsx";
 import { ArrowLeftIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 
 export type BackToPreviousPageLinkProps = {
   url: string;
+  marginBottom?: string;
 };
 
 export const BackToPreviousPageLink = ({
   url,
+  marginBottom,
 }: BackToPreviousPageLinkProps) => {
   return (
     <Link href={url}>
-      <a className="group flex flex-row gap-x-5">
+      <a className={cn("group flex flex-row gap-x-5", marginBottom)}>
         <ArrowLeftIcon
           width="w-5"
           height="h-5"
