@@ -10,7 +10,7 @@ export type MdxGistProps = {
 export const MdxGist = ({ id, position }: MdxGistProps) => {
   return (
     <MdxComponentBase position={position}>
-      <Gist id={id} />;
+      <Gist id={id} />
     </MdxComponentBase>
   );
 };

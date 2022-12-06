@@ -69,6 +69,10 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
             margin-left: -10px;
           }
 
+          .embla--thumb {
+            padding-top: 20px;
+          }
+
           .embla__slide {
             padding-left: 10px;
             min-width: 100%;
