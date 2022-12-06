@@ -215,6 +215,7 @@ const TutorialPage: FC<TutorialPageProps> & {
                 />
               </div>
             }
+            headerFontFamily="font-sans"
             marginBottom="mb-10"
             width="max-w-[1127px]"
             position="mr-auto"
