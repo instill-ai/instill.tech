@@ -1,16 +1,25 @@
-import { useEffect, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import cn from "clsx";
 import ModalBase from "./ModalBase";
-import { image } from "d3";
+import { XIcon } from "@instill-ai/design-system";
 
 export type ZoomableImgProps = {
   src: string;
   alt: string;
+  isZoom: boolean;
+  setIsZoom: Dispatch<SetStateAction<boolean>>;
   width?: string;
   height?: string;
-
   // This will make the zoom happened only when user click the button
   clickButtonOnly?: boolean;
+  customZoomElement?: ReactNode;
+  disable?: boolean;
 };
 
 export const ZoomableImg = ({
@@ -19,9 +28,11 @@ export const ZoomableImg = ({
   width,
   height,
   clickButtonOnly,
+  disable,
+  customZoomElement,
+  isZoom,
+  setIsZoom,
 }: ZoomableImgProps) => {
-  const [isZoom, setIsZoom] = useState(false);
-
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isZoom) {
@@ -31,7 +42,7 @@ export const ZoomableImg = ({
 
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
-  }, []);
+  }, [isZoom, setIsZoom]);
 
   return (
     <>
@@ -42,10 +53,12 @@ export const ZoomableImg = ({
         img right now
       */}
 
-      <div className="group h-full w-full">
+      <div className="group relative h-full w-full">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           onClick={() => {
-            if (!clickButtonOnly) setIsZoom(true);
+            if (clickButtonOnly || disable) return;
+            setIsZoom(true);
           }}
           src={src}
           className={cn(
@@ -58,20 +71,23 @@ export const ZoomableImg = ({
           height={height}
         />
         {clickButtonOnly ? (
-          <button
-            onClick={() => {
-              setIsZoom(true);
-            }}
-            className="absolute right-0 bottom-0 flex bg-instillGrey20 bg-opacity-30 p-2 opacity-100 hover:bg-instillGrey90 hover:bg-opacity-10 group-hover:opacity-100 xl:opacity-0"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              className="h-5 w-5 fill-instillGrey90"
+          disable ? null : (
+            <button
+              onClick={() => {
+                if (disable) return;
+                setIsZoom(true);
+              }}
+              className="absolute right-0 bottom-0 flex cursor-pointer bg-instillGrey20 bg-opacity-30 p-2 opacity-100 hover:bg-instillGrey90 hover:bg-opacity-10 group-hover:opacity-100 xl:opacity-0"
             >
-              <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                className="h-5 w-5 fill-instillGrey90"
+              >
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
+              </svg>
+            </button>
+          )
         ) : null}
       </div>
 
@@ -79,15 +95,31 @@ export const ZoomableImg = ({
         modalId={src}
         modalIsOpen={isZoom}
         setModalIsOpen={setIsZoom}
-        modalBgColor="bg-white bg-opacity-90"
+        modalBgColor="bg-instillGrey90"
         modalPadding="p-4 xl:p-10"
         modalRootId="zoomable-image"
+        closeModalWithButton={clickButtonOnly}
+        closeModalButton={
+          <div
+            className={cn(
+              "flex p-2 hover:bg-instillGrey15 hover:bg-opacity-20",
+              clickButtonOnly ? "" : "hidden"
+            )}
+          >
+            <XIcon width="w-5" height="h-5" color="fill-instillGrey05" />
+          </div>
+        }
       >
-        <img
-          src={src}
-          className={cn("w-full cursor-pointer object-contain")}
-          alt={alt}
-        />
+        {customZoomElement ? (
+          customZoomElement
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={src}
+            className={cn("w-full cursor-pointer object-contain")}
+            alt={alt}
+          />
+        )}
       </ModalBase>
     </>
   );

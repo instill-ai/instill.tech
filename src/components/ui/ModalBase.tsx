@@ -12,6 +12,8 @@ export type ModalBaseProps = {
   modalRootId: string;
   children?: ReactNode;
   dataTestId?: string;
+  closeModalWithButton?: boolean;
+  closeModalButton?: ReactNode;
 };
 
 const ModalBase = ({
@@ -23,7 +25,15 @@ const ModalBase = ({
   modalPadding,
   dataTestId,
   modalRootId,
+  closeModalWithButton,
+  closeModalButton,
 }: ModalBaseProps) => {
+  if (closeModalWithButton === true && closeModalButton === undefined) {
+    throw new Error(
+      "Didn't provide closeModalButton when closeModalWithButton is set to true"
+    );
+  }
+
   const el = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -42,7 +52,7 @@ const ModalBase = ({
       if (!el.current || !modalRoot) return;
       modalRoot.removeChild(el.current);
     };
-  }, []);
+  }, [modalRootId, modalId]);
 
   // Instead of `el`, the container is the `ref.current`
   return el.current
@@ -55,8 +65,16 @@ const ModalBase = ({
             {/** Modal panel, show/hide based on modal state. */}
             <div
               className="fixed inset-0 z-[100] w-screen cursor-pointer overflow-y-auto"
-              onClick={() => setModalIsOpen(false)}
+              onClick={() => {
+                if (!closeModalWithButton) setModalIsOpen(false);
+              }}
             >
+              <div
+                className="fixed top-5 right-5"
+                onClick={() => setModalIsOpen(false)}
+              >
+                {closeModalButton || null}
+              </div>
               <div className="flex min-h-full w-screen">
                 <div
                   className={cn(

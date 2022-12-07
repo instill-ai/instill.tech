@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import cn from "clsx";
 
 export type ThumbProps = {

@@ -26,6 +26,7 @@ export const TutorialPublishInfo = ({
           position="my-auto"
         />
       ) : (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={authorAvatarSrc}
           alt={`${author}'s github avatar`}
@@ -40,7 +41,8 @@ export const TutorialPublishInfo = ({
         <a
           href={authorGitHubUrl}
           className="cursor-pointer underline hover:text-instillSkyBlue"
-        >{`${author}`}
+        >
+          {`${author}`}
         </a>
         <p>{`on ${new Date(publishedOn).toLocaleDateString()}`}</p>
       </div>
