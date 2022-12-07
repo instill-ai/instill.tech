@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./Thumb";
 import { ZoomableImg } from "../ZoomableImg";
+import AutoHeight from "embla-carousel-auto-height";
 
 export type ImageGalleryProps = {
   images: {
@@ -12,11 +13,17 @@ export type ImageGalleryProps = {
 
 export const ImageGallery = ({ images }: ImageGalleryProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
-  const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
-    containScroll: "keepSnaps",
-    dragFree: true,
+  const [mainViewportRef, embla] = useEmblaCarousel({
+    skipSnaps: false,
+    axis: "x",
   });
+  const [thumbViewportRef, emblaThumbs] = useEmblaCarousel(
+    {
+      containScroll: "keepSnaps",
+      dragFree: true,
+    },
+    [AutoHeight()]
+  );
 
   const onThumbClick = useCallback(
     (index: number) => {
@@ -37,6 +44,22 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
     onSelect();
     embla.on("select", onSelect);
   }, [embla, onSelect]);
+
+  // When we first enter the page, the image is still loading but the gallery is
+  // ready. This will cause the embla wrongly calculating the position. So we need
+  // to re-initialize it again.
+
+  useEffect(() => {
+    if (embla) {
+      embla.reInit();
+    }
+
+    console.log("init");
+
+    if (emblaThumbs) {
+      emblaThumbs.reInit();
+    }
+  }, [images, embla, emblaThumbs]);
 
   return (
     <>
@@ -62,6 +85,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
 
           .embla__container {
             display: flex;
+            flex-direction: row;
             user-select: none;
             -webkit-touch-callout: none;
             -khtml-user-select: none;
@@ -81,7 +105,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
 
           .embla__slide__inner {
             display: flex;
-            height: 500px;
+            height: 550px;
           }
 
           .embla__slide__img {
