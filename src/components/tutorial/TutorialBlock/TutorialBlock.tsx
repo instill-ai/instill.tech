@@ -43,9 +43,11 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           // The reason we use img not next/Image is because we don't know the
           // given image's size and we need to adjust it according to the width
           // of the TutorialBlock
+
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={tutorial.themeImgThumbnailSrc}
-            alt="The theme image of this tutorial"
+            alt="The theme of this tutorial"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
             className="w-full object-cover"
             onError={() => {
@@ -94,6 +96,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                     position="my-auto"
                   />
                 ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={tutorial.authorAvatarSrc}
                     alt={`${tutorial.title}'s author's github avatar`}

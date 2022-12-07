@@ -1,10 +1,11 @@
 import { MdxComponentPosition } from "@/lib/markdown";
+import { useState } from "react";
 import { MdxComponentBase } from "./MdxComponentBase";
 import { ZoomableImg, ZoomableImgProps } from "./ZoomableImg";
 
 export type MdxZoomableImgProps = {
   position?: MdxComponentPosition;
-} & ZoomableImgProps;
+} & Omit<ZoomableImgProps, "isZoom" | "setIsZoom">;
 
 export const MdxZoomableImg = ({
   position,
@@ -13,9 +14,17 @@ export const MdxZoomableImg = ({
   width,
   height,
 }: MdxZoomableImgProps) => {
+  const [isZoom, setIsZoom] = useState(false);
   return (
     <MdxComponentBase position={position}>
-      <ZoomableImg src={src} alt={alt} width={width} height={height} />
+      <ZoomableImg
+        isZoom={isZoom}
+        setIsZoom={setIsZoom}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+      />
     </MdxComponentBase>
   );
 };

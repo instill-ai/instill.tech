@@ -151,8 +151,12 @@ module.exports = {
             },
             "p": {
               fontSize: "18px",
+              margin: "36px 0px"
             },
             "ul > li": {
+              fontSize: "18px",
+            },
+            "ol > li": {
               fontSize: "18px",
             },
 

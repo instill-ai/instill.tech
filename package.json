@@ -33,6 +33,7 @@
     "clsx": "^1.2.1",
     "cross-env": "^7.0.3",
     "d3": "^7.6.1",
+    "embla-carousel": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
     "gray-matter": "^4.0.3",
     "gsap": "^3.9.1",

@@ -29,9 +29,10 @@ export const TutorialThemeImage = ({
               color={placeholderColor}
             />
           ) : (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={imgSrc}
-              alt="The theme image of this tutorial"
+              alt="The theme of this tutorial"
               style={{
                 height: `${(imageContainerDimension.width * 9) / 16}px`,
               }}

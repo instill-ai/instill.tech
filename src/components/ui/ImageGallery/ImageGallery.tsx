@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./Thumb";
 import { ZoomableImg } from "../ZoomableImg";
+import { ZoomedImageGallery } from "./ZoomedImageGallery";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export type ImageGalleryProps = {
   images: {
@@ -11,8 +13,13 @@ export type ImageGalleryProps = {
 };
 
 export const ImageGallery = ({ images }: ImageGalleryProps) => {
+  const windowSize = useWindowSize();
+  const [isZoom, setIsZoom] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [mainViewportRef, embla] = useEmblaCarousel({
+    skipSnaps: false,
+    axis: "x",
+  });
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
     dragFree: true,
@@ -33,10 +40,30 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
   }, [embla, emblaThumbs, setSelectedIndex]);
 
   useEffect(() => {
+    if (!embla || !emblaThumbs) return;
+    emblaThumbs.scrollTo(selectedIndex);
+    embla.scrollTo(selectedIndex);
+  }, [selectedIndex, embla, emblaThumbs]);
+
+  useEffect(() => {
     if (!embla) return;
     onSelect();
     embla.on("select", onSelect);
   }, [embla, onSelect]);
+
+  // When we first enter the page, the image is still loading but the gallery is
+  // ready. This will cause the embla wrongly calculating the position. So we need
+  // to re-initialize it again.
+
+  useEffect(() => {
+    if (embla) {
+      embla.reInit();
+    }
+
+    if (emblaThumbs) {
+      emblaThumbs.reInit();
+    }
+  }, [images, embla, emblaThumbs]);
 
   return (
     <>
@@ -62,6 +89,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
 
           .embla__container {
             display: flex;
+            flex-direction: row;
             user-select: none;
             -webkit-touch-callout: none;
             -khtml-user-select: none;
@@ -81,13 +109,31 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
 
           .embla__slide__inner {
             display: flex;
-            height: 500px;
+            height: 240px;
           }
 
           .embla__slide__img {
             margin: 0 auto;
             object-fit: contain;
             height: 100%;
+          }
+
+          @media screen and (min-width: 480px) {
+            .embla__slide__inner {
+              height: 400px !important;
+            }
+          }
+
+          @media screen and (min-width: 768px) {
+            .embla__slide__inner {
+              height: 400px !important;
+            }
+          }
+
+          @media screen and (min-width: 1127px) {
+            .embla__slide__inner {
+              height: 550px !important;
+            }
           }
         `}
       </style>
@@ -100,12 +146,32 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
                   <ZoomableImg
                     src={image.src}
                     alt={image.alt}
-                    clickButtonOnly={true}
+                    zoomWithButton={true}
+                    disable={
+                      windowSize
+                        ? windowSize.width > 768
+                          ? false
+                          : true
+                        : true
+                    }
+                    isZoom={isZoom}
+                    setIsZoom={setIsZoom}
+                    customZoomElement={
+                      <ZoomedImageGallery
+                        images={images}
+                        isZoom={isZoom}
+                        selectedIndex={selectedIndex}
+                        setSelectedIndex={setSelectedIndex}
+                      />
+                    }
                   />
                 </div>
               </div>
             ))}
           </div>
+          <p className="mt-2 mb-0 font-sans text-sm text-instillGrey70 md:hidden">
+            Swipe to see other images.
+          </p>
         </div>
       </div>
 
