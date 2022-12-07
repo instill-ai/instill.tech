@@ -146,7 +146,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
                   <ZoomableImg
                     src={image.src}
                     alt={image.alt}
-                    clickButtonOnly={true}
+                    zoomWithButton={true}
                     disable={
                       windowSize
                         ? windowSize.width > 768

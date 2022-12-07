@@ -29,7 +29,6 @@ export const ZoomedImageGallery = ({
 
   const onSelect = useCallback(() => {
     if (!embla) return;
-    console.log("em", embla.selectedScrollSnap());
     setSelectedIndex(embla.selectedScrollSnap());
   }, [setSelectedIndex, embla]);
 
@@ -40,14 +39,14 @@ export const ZoomedImageGallery = ({
 
   // We don't include selectedIndex into this useEffect's deps
   // because we only need to reInit the embla to the desired index
-  // onMount.
+  // once.
 
   useEffect(() => {
     if (embla) {
       embla.reInit({ startIndex: selectedIndex });
     }
     /* eslint-disable-next-line */
-  }, [images, embla]);
+  }, [images, embla, isZoom]);
 
   return (
     <>

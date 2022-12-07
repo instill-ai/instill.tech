@@ -16,8 +16,16 @@ export type ZoomableImgProps = {
   setIsZoom: Dispatch<SetStateAction<boolean>>;
   width?: string;
   height?: string;
-  // This will make the zoom happened only when user click the button
-  clickButtonOnly?: boolean;
+  /**
+   * This will make the zoom happened only when user click the button
+   */
+  zoomWithButton?: boolean;
+
+  /**
+   *  By default the zoomed image is as same as un-zoomed image. But you could provide
+   *  your own zoomed elemeent. We use this props to implement zoomed ImageGallery.
+   */
+
   customZoomElement?: ReactNode;
   disable?: boolean;
 };
@@ -27,7 +35,7 @@ export const ZoomableImg = ({
   alt,
   width,
   height,
-  clickButtonOnly,
+  zoomWithButton,
   disable,
   customZoomElement,
   isZoom,
@@ -47,17 +55,24 @@ export const ZoomableImg = ({
   return (
     <>
       {/* 
-        Because currently there has not way to not specific height
-        and use the h-full on pareent with fill=true to force the 
+        Because currently there has no way to not specific height
+        and use the h-full on parent with fill=true to force the 
         next/image to fill the parent, we have to rely on normal
         img right now
+      */}
+
+      {/* 
+        The default zoom gesture is directly click the image.
+
+        When user specific zoomWithButton, we will display a button to open the
+        ZoomedElement. User can't zoom the image by clicking the image anymore.
       */}
 
       <div className="group relative h-full w-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           onClick={() => {
-            if (clickButtonOnly || disable) return;
+            if (zoomWithButton || disable) return;
             setIsZoom(true);
           }}
           src={src}
@@ -70,7 +85,7 @@ export const ZoomableImg = ({
           width={width}
           height={height}
         />
-        {clickButtonOnly ? (
+        {zoomWithButton ? (
           disable ? null : (
             <button
               onClick={() => {
@@ -98,12 +113,12 @@ export const ZoomableImg = ({
         modalBgColor="bg-instillGrey90"
         modalPadding="p-4 xl:p-10"
         modalRootId="zoomable-image"
-        closeModalWithButton={clickButtonOnly}
+        closeModalWithButton={zoomWithButton}
         closeModalButton={
           <div
             className={cn(
               "flex p-2 hover:bg-instillGrey15 hover:bg-opacity-20",
-              clickButtonOnly ? "" : "hidden"
+              zoomWithButton ? "" : "hidden"
             )}
           >
             <XIcon width="w-5" height="h-5" color="fill-instillGrey05" />
