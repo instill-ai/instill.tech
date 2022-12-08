@@ -48,10 +48,13 @@ Check the [standarised output for image classification](/docs/core-concepts/cv-t
 
 ```json
 {
-  "classification_outputs": [
+  "task": "TASK_CLASSIFICATION",
+  "task_outputs": [
     {
-      "category": "dog",
-      "score": 0.6
+      "classification": {
+        "category": "dog",
+        "score": 0.9
+      }
     }
   ]
 }
@@ -85,26 +88,19 @@ class TritonPythonModel(PostDetectionModel):
 
     def post_process_per_image(self, inputs):
         """`post_process_per_image` must be implemented in every Python model.
-        This function receives a sequence of the input array of the model for
-        one image of a batch, converts and returns the a sequence of array
-        `bboxes` and `labels`.
-          - `bboxes` represents the detected bounding boxes and scores.
-          - `labels` represents the corresponding category label for each bounding box.
+        This function detects objects in one image of a batch.
 
-        Parameters
-        ----------
-        inputs: Tuple[np.ndarray]
-          a sequence of Input array of one image
+        Args:
+            inputs (Tuple[np.ndarray]): a sequence of model input array for one image
 
-        Returns
-        -------
-        Tuple[np.ndarray]
-          - `bboxes`: bounding boxes detected in this image with shape (n,5) or (0,).
-             The bounding box format is [x1, y1, x2, y2, score] in the image.
-          - `labels`: labels corresponding to the bounding boxes with shape (n,) or (0,),
-             where `n` is the number of categories.
+        Raises:
+            NotImplementedError: all subclasses must implement this function of per-image post-processing for `DETECTION` task.
 
-          The length of `bboxes` must be the same as that of `labels`.
+        Returns:
+            Tuple[np.ndarray, np.ndarray]: a tuple of bounding box with label array: (`bboxes`, `labels`).
+                - `bboxes`: the bounding boxes detected in this image with shape (n,5) or (0,). The bounding box format is [x1, y1, x2, y2, score] in the original image. `n` is the number of bounding boxes detected in this image.
+                - `labels`: the labels corresponding to the bounding boxes with shape (n,) or (0,).
+                The length of `bboxes` must be the same as that of `labels`.
         """
         # return np.array([[324, 102, 532, 507, 0.98]]), np.array(["dog"]) # Dummy detection example
 
@@ -114,20 +110,23 @@ Check the [standardised output for object detection](/docs/core-concepts/cv-task
 
 ```json
 {
-  "detection_outputs": [
+  "task": "TASK_DETECTION",
+  "task_outputs": [
     {
-      "bounding_box_objects": [
-        {
-          "bounding_box": {
-            "height": 405,
-            "left": 324,
-            "top": 102,
-            "width": 208
-          },
-          "category": "dog",
-          "score": 0.98
-        }
-      ]
+      "detection": {
+        "objects": [
+          {
+            "category": "dog",
+            "score": 0.98,
+            "bounding_box": {
+              "top": 102,
+              "left": 324,
+              "width": 208,
+              "height": 405
+            }
+          }
+        ]
+      }
     }
   ]
 }
@@ -160,28 +159,17 @@ class TritonPythonModel(PostKeypointDetectionModel):
 
     def post_process_per_image(self, inputs):
         """`post_process_per_image` must be implemented in every Python model.
-        This function receives a sequence of the input array of the model for
-        one image of a batch, converts and returns the a sequence of array
-        `bboxes` and `labels`.
-          - `bboxes` represents the detected bounding boxes and scores.
-          - `labels` represents the corresponding category label for each bounding box.
+        This function detects keypoints of objects in one image of a batch.
 
-        Parameters
-        ----------
-        inputs: Tuple[np.ndarray]
-          a sequence of Input array of one image
+        Args:
+            inputs (Tuple[np.ndarray]): a sequence of model input array for one image
 
-        Returns
-        -------
-        Tuple[np.ndarray]
-          - `bboxes`: bounding boxes detected in this image with shape (n,5) or (0,).
-             The bounding box format is [x1, y1, x2, y2, score] in the image.
-          - `labels`: labels corresponding to the bounding boxes with shape (n,) or (0,),
-             where `n` is the number of categories.
+        Raises:
+            NotImplementedError: all subclasses must implement this function of per-image post-processing for `KEYPOINT` task.
 
-          The length of `bboxes` must be the same as that of `labels`.
+        Returns:
+            np.ndarray: keypoint detection score array `scores` for this image. The shape of `scores` should be (n,), where n is the number of categories.
         """
-        # return np.array([[324, 102, 532, 507, 0.98]]), np.array(["dog"]) # Dummy detection example
 
 ```
 
@@ -189,24 +177,70 @@ Check the [standardised output for keypoint detection](/docs/core-concepts/cv-ta
 
 ```json
 {
-  "keypoint_outputs": [
+  "task": "TASK_KEYPOINT",
+  "task_outputs": [
     {
-      "keypoints": [
-        {
-          "v": 0.53722847,
-          "x": 542.82764,
-          "y": 86.63817
-        },
-        {
-          "v": 0.634061,
-          "x": 553.0073,
-          "y": 79.440636
-        },
-        ...
-      ],
-      "score": 0.94
-    },
-    ...
+      "keypoint": {
+        "objects": [
+          {
+            "keypoints": [
+              {
+                "x": 1052.8419,
+                "y": 610.0058,
+                "v": 0.84
+              },
+              {
+                "x": 1047.5118,
+                "y": 514.04474,
+                "v": 0.81
+              },
+              ...
+            ],
+            "score": 0.99,
+            "bounding_box": {
+              "top": 299,
+              "left": 185,
+              "width": 1130,
+              "height": 1210
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Instance Segmentation CV Task
+
+:::info{type=info}
+Learn more about [Instance Segmentation CV Task](/docs/core-concepts/cv-task#instance-segmentation)
+:::
+
+Check the [standardised output for Instance Segmentation CV Task](/docs/core-concepts/cv-task#instance-segmentation), here shows an output example:
+
+```json
+{
+  "task": "TASK_INSTANCE_SEGMENTATION",
+  "task_outputs": [
+    {
+      "instance_segmentation": {
+        "objects": [
+          {
+            "rle": "2918,12,382,33,...",
+            "score": 0.99,
+            "bounding_box": {
+              "top": 95,
+              "left": 320,
+              "width": 215,
+              "height": 406
+            },
+            "category": "dog"
+          },
+          ...
+        ]
+      }
+    }
   ]
 }
 ```
@@ -225,22 +259,19 @@ Assume we import the above ["cat vs. dog"](#image-classification) model without 
 
 ```json
 {
-  "raw_outputs": [
+  "task": "TASK_UNSPECIFIED",
+  "task_outputs": [
     {
-      "raw_output": [
-        {
-          "data": [0.4, 0.6],
-          "data_type": "FP32",
-          "name": "output_scores",
-          "shape": [2]
-        },
-        {
-          "data": ["cat", "dog"],
-          "data_type": "BYTES",
-          "name": "output_labels",
-          "shape": [2]
-        }
-      ]
+      "unspecified": {
+        "raw_outputs": [
+          {
+            "data": [0, 1],
+            "data_type": "FP32",
+            "name": "output",
+            "shape": [2]
+          }
+        ]
+      }
     }
   ]
 }
