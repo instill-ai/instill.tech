@@ -172,7 +172,7 @@ const NAV: NavConfig = {
         <DiscordIcon
           width="w-[24px]"
           height="h-[24px]"
-          color="fill-instillGrey95 hover:fill-instillBlue50"
+          color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50"
           position="my-auto"
         />
       ),
@@ -187,7 +187,7 @@ const NAV: NavConfig = {
         <GitHubIcon
           width="w-[24px]"
           height="h-[24px]"
-          color="fill-instillGrey95 hover:fill-instillBlue50"
+          color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50"
           position="my-auto"
         />
       ),

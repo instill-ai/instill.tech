@@ -21,6 +21,18 @@
   padding: 0px 12px !important;
 } 
 
+.dark .DocSearch-Button {
+  border-radius: 2px !important;
+  background-color: #1A1A1A !important;
+  column-gap: 20px !important;
+  margin: 0px !important;
+  padding: 0px 12px !important;
+} 
+
+.dark .DocSearch-Button:hover {
+  color: #C0C0C0 !important;
+}
+
 @media screen and (min-width: 768px) {
   .DocSearch-Button {
     padding: 0px 16px !important;
@@ -41,6 +53,10 @@ span.DocSearch-Button-Placeholder {
 
 .DocSearch-Search-Icon {
   width: 14px !important;
+}
+
+.dark .DocSearch-Search-Icon {
+  color: #A5A5A5 !important;
 }
 
 .DocSearch-Button-Container {
@@ -164,6 +180,9 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   display: flex;
   flex-direction: column;
   border-left: 5px solid;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -255,14 +274,30 @@ article > h2:hover span.heading-anchor-hash, h3:hover span.heading-anchor-hash, 
   color: #004477;
 }
 
+.dark .docs-info-block.info {
+  background-color: #2B2B2B;
+  border-color: #40A8F5;
+  color: #40A8F5
+}
+
 .docs-info-block.info a {
   color: #004477;
+}
+
+.dark .docs-info-block.info a {
+  color: #40A8F5;
 }
 
 .docs-info-block.info code {
   background-color: #FAFDFF;
   border-color: #40A8F5;
   color: #004477;
+}
+
+.dark .docs-info-block.info code {
+  background-color: #2B2B2B;
+  border-color: #40A8F5;
+  color: #40A8F5;
 }
 
 .docs-info-block.info blockquote {

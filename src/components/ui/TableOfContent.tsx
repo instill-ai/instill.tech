@@ -34,7 +34,9 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
 
   return (
     <div className="mb-10 flex flex-col">
-      <h2 className="mb-4 font-semibold text-instillGrey95">On this page</h2>
+      <h2 className="mb-4 font-semibold text-instillGrey95 dark:text-instillGrey15">
+        On this page
+      </h2>
       <ul>
         {headers.map((header) => (
           <li

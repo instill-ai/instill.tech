@@ -54,13 +54,23 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
           sectionIsCollapsable ? { "mb-4": !collapsed } : ""
         )}
       >
-        <h2 className="my-auto flex-1 text-sm font-semibold">{text}</h2>
+        <h2 className="my-auto flex-1 text-sm font-semibold text-black dark:text-instillGrey15">
+          {text}
+        </h2>
         {sectionIsCollapsable ? (
-          <div className="my-auto p-[3px] hover:bg-instillGrey20">
+          <div className="my-auto p-[3px] hover:bg-instillGrey20 dark:hover:bg-instillGrey70">
             {collapsed ? (
-              <PlusIcon width="w-4" height="h-4" color="fill-instillGrey95" />
+              <PlusIcon
+                width="w-4"
+                height="h-4"
+                color="fill-instillGrey95 dark:fill-instillGrey05"
+              />
             ) : (
-              <MinusIcon width="w-4" height="h-4" color="fill-instillGrey95" />
+              <MinusIcon
+                width="w-4"
+                height="h-4"
+                color="fill-instillGrey95 dark:fill-instillGrey05"
+              />
             )}
           </div>
         ) : null}
@@ -77,8 +87,8 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
               className={cn(
                 "text-sm font-normal transition duration-300 ease-in-out hover:text-instillBlue50",
                 item.link === router.asPath.split("#")[0]
-                  ? "text-instillBlue50"
-                  : "text-instillGrey80"
+                  ? "text-instillSkyBlue"
+                  : "text-instillGrey80 dark:text-instillGrey30"
               )}
             >
               {item.text}

@@ -15,7 +15,7 @@ export const Item = ({ item }: ItemProps) => {
   if (isBorder(item)) {
     return (
       <div className="grid grid-cols-1 py-2 md:grid-cols-2">
-        <div className="border-b border-black md:border-r" />
+        <div className="border-b border-black dark:border-instillGrey05 md:border-r" />
         <div />
       </div>
     );
@@ -24,7 +24,7 @@ export const Item = ({ item }: ItemProps) => {
   if (isInteriorLink(item)) {
     return (
       <a
-        className="my-auto text-sm font-normal hover:text-instillBlue50"
+        className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15"
         href={item.to}
       >
         {item.label}
@@ -51,7 +51,9 @@ export const Item = ({ item }: ItemProps) => {
         ) : item.iconElement ? (
           item.iconElement
         ) : (
-          <p className="my-auto hover:text-instillBlue50">{item.label}</p>
+          <p className="my-auto text-black hover:text-instillBlue50 dark:text-instillGrey15">
+            {item.label}
+          </p>
         )}
       </a>
     );

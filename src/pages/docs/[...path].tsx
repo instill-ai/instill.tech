@@ -162,21 +162,24 @@ const DocsPage: FC<DocsPageProps> & {
       />
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
-          <h1 className="mb-10 font-sans text-5xl font-semibold">
+          <h1 className="mb-10 font-sans text-5xl font-semibold text-black dark:text-instillGrey15">
             {mdxSource.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
           </h1>
           <article
             id="content"
-            className="DocSearch-content prose prose-black mb-20 max-w-none"
+            className="DocSearch-content prose mb-20 max-w-none dark:prose-white dark:bg-instillGrey90"
           >
             <MDXRemote {...mdxSource} />
           </article>
           {commitMeta ? (
             <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
           ) : null}
-          <HorizontalLine marginBottom="mb-8" bgColor="bg-instillGrey20" />
+          <HorizontalLine
+            marginBottom="mb-8"
+            bgColor="bg-instillGrey20 dark:bg-instillGrey30"
+          />
           <div className="grid grid-flow-row grid-cols-2 gap-x-5">
             {prevArticle ? (
               <ArticleNavigationButton
