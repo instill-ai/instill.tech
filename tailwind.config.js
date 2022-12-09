@@ -197,7 +197,7 @@ module.exports = {
         white: {
           css: {
             "--tw-prose-body": theme("colors.instillGrey30"),
-            "--tw-prose-headings": theme("colors.instillGrey30"),
+            "--tw-prose-headings": theme("colors.instillGrey15"),
             "--tw-prose-lead": theme("colors.instillGrey30"),
             "--tw-prose-links": theme("colors.instillGrey15"),
             "--tw-prose-bold": theme("colors.instillGrey30"),
