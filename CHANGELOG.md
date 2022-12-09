@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.23.0](https://github.com/instill-ai/instill.tech/compare/v1.22.0...v1.23.0) (2022-12-09)
+
+
+### Features
+
+* Implement advanced ImageGallery ([#415](https://github.com/instill-ai/instill.tech/issues/415)) ([b6b69ee](https://github.com/instill-ai/instill.tech/commit/b6b69ee259be9e667dc49149441b42265da74a1d))
+* implement dark mode ([#417](https://github.com/instill-ai/instill.tech/issues/417)) ([9e69844](https://github.com/instill-ai/instill.tech/commit/9e69844d65015a22eb58d0ccd13575bc192bde2c))
+
+
+### Bug Fixes
+
+* fix DocsLayout max breakpoint issue ([#416](https://github.com/instill-ai/instill.tech/issues/416)) ([68dc68b](https://github.com/instill-ai/instill.tech/commit/68dc68b89b635692aa9255389edb3d5badee0dd4))
+
+
+### Miscellaneous
+
+* add documentation of instance segmentation task ([#337](https://github.com/instill-ai/instill.tech/issues/337)) ([94872d7](https://github.com/instill-ai/instill.tech/commit/94872d741835c47ee115c3b2c56d013f4f8bde28))
+* remove unnessary steps in deploy-prod action ([#413](https://github.com/instill-ai/instill.tech/issues/413)) ([4f3651a](https://github.com/instill-ai/instill.tech/commit/4f3651ae87444e65ef2fc45d56f066d28f1d3af0))
+
 ## [1.22.0](https://github.com/instill-ai/instill.tech/compare/v1.21.0...v1.22.0) (2022-12-06)
 
 
