@@ -20,13 +20,13 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
       </style>
       <div
         className={cn(
-          "sub-nav sticky z-10 flex w-full flex-row border-b bg-white py-4 px-8 md:hidden",
+          "sub-nav sticky z-10 flex w-full flex-row border-b bg-white py-4 px-8 dark:bg-instillGrey90 md:hidden",
           marginBottom
         )}
       >
         <button
           onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
-          className="mr-auto text-sm text-instillGrey70"
+          className="mr-auto text-sm text-instillGrey70 hover:text-instillSkyBlue dark:text-instillGrey30 dark:hover:text-instillSkyBlue"
         >
           Menu
         </button>
@@ -35,7 +35,7 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
           onClick={() =>
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
           }
-          className="ml-auto text-sm text-instillGrey70"
+          className="ml-auto text-sm text-instillGrey70 hover:text-instillSkyBlue dark:text-instillGrey30 dark:hover:text-instillSkyBlue"
         >
           Return to top
         </button>

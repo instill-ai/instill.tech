@@ -5,7 +5,9 @@ export type ContributeLinksProps = {
 export const ContributeLinks = ({ githubEditUrl }: ContributeLinksProps) => {
   return (
     <div className="flex flex-col">
-      <h2 className="mb-4 font-semibold text-instillGrey95">Contribution</h2>
+      <h2 className="mb-4 font-semibold text-instillGrey95 dark:text-instillGrey15">
+        Contribution
+      </h2>
       <a
         href={githubEditUrl}
         target="_blank"

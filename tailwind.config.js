@@ -1,5 +1,6 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@instill-ai/design-system/build/*.js",
@@ -134,10 +135,7 @@ module.exports = {
               paddingBottom: "3px",
               paddingRight: "6px",
               paddingLeft: "6px",
-              backgroundColor: theme("colors.instillGrey05"),
-              color: theme("colors.instillGrey95"),
               borderStyle: "solid",
-              borderColor: theme("colors.instillGrey70"),
               borderWidth: "0.5px",
               borderRadius: "4px",
               marginRight: "2px",
@@ -149,9 +147,9 @@ module.exports = {
             "code::after": {
               content: '""',
             },
-            "p": {
+            p: {
               fontSize: "18px",
-              margin: "36px 0px"
+              margin: "36px 0px",
             },
             "ul > li": {
               fontSize: "18px",
@@ -173,7 +171,7 @@ module.exports = {
             "--tw-prose-body": theme("colors.instillGrey95"),
             "--tw-prose-headings": theme("colors.instillGrey95"),
             "--tw-prose-lead": theme("colors.instillGrey95"),
-            "--tw-prose-links": theme("colors.instillBlue50"),
+            "--tw-prose-links": theme("colors.instillGrey95"),
             "--tw-prose-bold": theme("colors.instillGrey95"),
             "--tw-prose-counters": theme("colors.instillGrey95"),
             "--tw-prose-bullets": theme("colors.instillGrey95"),
@@ -186,26 +184,43 @@ module.exports = {
             "--tw-prose-pre-bg": theme("colors.instillGrey95"),
             "--tw-prose-th-borders": theme("colors.instillGrey30"),
             "--tw-prose-td-borders": theme("colors.instillGrey30"),
+            h2: {
+              borderTopColor: theme("colors.instillGrey95"),
+            },
+            code: {
+              backgroundColor: theme("colors.instillGrey05"),
+              color: theme("colors.instillGrey95"),
+              borderColor: theme("colors.instillGrey70"),
+            },
           },
         },
         white: {
           css: {
-            "--tw-prose-body": theme("colors.instillGrey15"),
+            "--tw-prose-body": theme("colors.instillGrey30"),
             "--tw-prose-headings": theme("colors.instillGrey15"),
-            "--tw-prose-lead": theme("colors.instillGrey15"),
-            "--tw-prose-links": theme("colors.instillBlue50"),
-            "--tw-prose-bold": theme("colors.instillGrey15"),
-            "--tw-prose-counters": theme("colors.instillGrey15"),
-            "--tw-prose-bullets": theme("colors.instillGrey95"),
+            "--tw-prose-lead": theme("colors.instillGrey30"),
+            "--tw-prose-links": theme("colors.instillGrey15"),
+            "--tw-prose-bold": theme("colors.instillGrey30"),
+            "--tw-prose-counters": theme("colors.instillGrey30"),
+            "--tw-prose-bullets": theme("colors.instillGrey30"),
             "--tw-prose-hr": theme("colors.instillGrey30"),
-            "--tw-prose-quotes": theme("colors.instillGrey15"),
-            "--tw-prose-quote-borders": theme("colors.instillGrey15"),
+            "--tw-prose-quotes": theme("colors.instillGrey30"),
+            "--tw-prose-quote-borders": theme("colors.instillGrey30"),
             "--tw-prose-captions": theme("colors.instillGrey30"),
-            "--tw-prose-code": theme("colors.instillGrey15"),
+            "--tw-prose-code": theme("colors.instillGrey30"),
             "--tw-prose-pre-code": theme("colors.instillGrey95"),
-            "--tw-prose-pre-bg": theme("colors.instillGrey15"),
+            "--tw-prose-pre-bg": theme("colors.instillGrey30"),
             "--tw-prose-th-borders": theme("colors.instillGrey30"),
             "--tw-prose-td-borders": theme("colors.instillGrey30"),
+            h2: {
+              borderTopColor: theme("colors.instillGrey30"),
+            },
+            code: {
+              backgroundColor: theme("colors.instillGrey80"),
+              color: theme("colors.instillGrey15"),
+              borderColor: theme("colors.instillGrey20"),
+              textDecorationColor: theme("colors.instillGrey15"),
+            },
           },
         },
       }),
