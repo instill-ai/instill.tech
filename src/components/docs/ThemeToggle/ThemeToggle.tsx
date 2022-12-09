@@ -26,7 +26,7 @@ export const ThemeToggle = ({}: ThemeToggleProps) => {
       aria-checked={isDark}
       role="switch"
       type="button"
-      className="my-auto flex h-6 w-[42px] rounded-full border border-instillGrey70 bg-instillGrey05 dark:bg-instillGrey80"
+      className="flex h-6 w-[42px] rounded-full border border-instillGrey70 bg-instillGrey05 dark:bg-instillGrey80"
       onClick={() => toggleTheme()}
     >
       <div

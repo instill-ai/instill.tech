@@ -41,6 +41,10 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           }
         `}
       </style>
+      {/* 
+        min-h-screen and min-w-screen are essential to make the page had 
+        correct height and width
+      */}
       <main className="min-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey90 max:block">
         <aside
           className={cn(

@@ -45,27 +45,27 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         </style>
         <div className="flex md:hidden">
           <button
-            className="my-auto flex h-[36px] w-[36px] rounded-[3px] bg-instillGrey05 hover:bg-instillGrey20"
+            className="my-auto flex h-[36px] w-[36px] rounded-[3px] bg-instillGrey05 hover:bg-instillGrey20 dark:bg-instillGrey95 dark:hover:bg-instillGrey80"
             onClick={() => setMobileNavOpen((prev) => !prev)}
           >
             {mobileNavOpen ? (
               <CrossIcon
                 width="w-6"
                 height="h-6"
-                color="fill-instillGrey90"
+                color="fill-instillGrey90 dark:fill-instillGrey15"
                 position="m-auto"
               />
             ) : (
               <MenuIcon
                 width="w-6"
                 height="h-6"
-                color="fill-instillGrey90"
+                color="fill-instillGrey90 dark:fill-instillGrey15"
                 position="m-auto"
               />
             )}
           </button>
           {mobileNavOpen && (
-            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10">
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey90">
               {items.left.map((item) => (
                 <div key={item.key}>
                   <Item item={item} />
@@ -76,6 +76,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                   <Item item={item} />
                 </div>
               ))}
+              <ThemeToggle />
             </div>
           )}
         </div>
@@ -160,7 +161,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end xl:mr-5">
-            <div className="mr-5">
+            <div className="my-auto mr-5">
               <DocSearch
                 appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
                 apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}

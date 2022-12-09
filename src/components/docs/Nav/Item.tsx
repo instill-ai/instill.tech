@@ -24,7 +24,7 @@ export const Item = ({ item }: ItemProps) => {
   if (isInteriorLink(item)) {
     return (
       <a
-        className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15"
+        className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
         href={item.to}
       >
         {item.label}
@@ -51,7 +51,7 @@ export const Item = ({ item }: ItemProps) => {
         ) : item.iconElement ? (
           item.iconElement
         ) : (
-          <p className="my-auto text-black hover:text-instillBlue50 dark:text-instillGrey15">
+          <p className="my-auto text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
             {item.label}
           </p>
         )}

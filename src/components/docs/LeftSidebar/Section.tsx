@@ -58,7 +58,7 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
           {text}
         </h2>
         {sectionIsCollapsable ? (
-          <div className="my-auto p-[3px] hover:bg-instillGrey20 dark:hover:bg-instillGrey70">
+          <div className="my-auto p-[3px] hover:bg-instillGrey20 dark:hover:bg-instillGrey80">
             {collapsed ? (
               <PlusIcon
                 width="w-4"
@@ -85,7 +85,7 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
             <a
               key={item.text}
               className={cn(
-                "text-sm font-normal transition duration-300 ease-in-out hover:text-instillBlue50",
+                "text-sm font-normal transition duration-300 ease-in-out hover:text-instillBlue50 dark:hover:text-instillBlue50",
                 item.link === router.asPath.split("#")[0]
                   ? "text-instillSkyBlue"
                   : "text-instillGrey80 dark:text-instillGrey30"
