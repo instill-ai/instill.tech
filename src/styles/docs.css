@@ -78,6 +78,40 @@ span.DocSearch-Button-Placeholder {
   background-color: #02D085 !important;
 }
 
+.dark .DocSearch-Hit a {
+  background-color: #1A1A1A !important;
+  box-shadow: none;
+}
+
+.dark .DocSearch-Hit[aria-selected='true'] a {
+  background-color: #02D085 !important;
+}
+
+.dark .DocSearch-Hit-title {
+  color: #C0C0C0 !important;
+}
+
+.dark .DocSearch-Modal {
+  background-color: #2B2B2B !important;
+  box-shadow: none;
+}
+
+.dark .DocSearch-Footer {
+  background-color: #2B2B2B !important;
+}
+
+.dark .DocSearch-Form {
+  background-color: #2B2B2B !important;
+}
+
+.dark .DocSearch-Input {
+  color: #C0C0C0 !important;
+}
+
+.dark .DocSearch-Hit-source {
+  background-color: #2B2B2B !important;
+}
+
 /*
   DocSearch modal search box
 */
