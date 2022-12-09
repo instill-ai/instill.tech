@@ -12,6 +12,8 @@ export type DocsLayoutProps = {
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
   return (
+    // We use this layout to persist the state of the left sidebar. The right
+    // sidebar will stay in the children, not in this layout.
     <>
       <style jsx>
         {`
@@ -39,15 +41,19 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           }
         `}
       </style>
-      <main className="grid w-screen grid-flow-col grid-cols-12 max:block">
+      <main className="min-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey90 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed top-0 z-30 h-full transform bg-instillGrey05 transition-transform md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
+            "docs-left-sidebar fixed top-0 z-30 transform bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
           <LeftSidebar leftSidebar={docsConfig.sidebar.leftSidebar} />
         </aside>
+
+        {/* 
+          Filler area outside of LeftSidebar at mobile view.
+        */}
 
         {leftSidebarIsOpen ? (
           <div
@@ -56,7 +62,11 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           />
         ) : null}
 
-        <div className="docs-content col-span-12 flex w-full flex-col pb-40 md:col-span-9 max:col-span-12">
+        {/* 
+          The main content of the documentation.
+        */}
+
+        <div className="docs-content col-span-12 flex flex-col pb-40 md:col-span-9 max:col-span-12">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
             nav={docsConfig.nav}
