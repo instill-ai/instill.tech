@@ -1,19 +1,19 @@
 import { GitHubIcon } from "@instill-ai/design-system";
 import { useState } from "react";
 
-export type TutorialPublishInfoProps = {
+export type ArticlePublishInfoProps = {
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
   publishedOn: string;
 };
 
-export const TutorialPublishInfo = ({
+export const ArticlePublishInfo = ({
   author,
   authorAvatarSrc,
   authorGitHubUrl,
   publishedOn,
-}: TutorialPublishInfoProps) => {
+}: ArticlePublishInfoProps) => {
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
 
   return (
