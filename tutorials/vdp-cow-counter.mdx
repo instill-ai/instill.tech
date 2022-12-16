@@ -12,7 +12,7 @@ themeImgSrc: "/tutorial-assets/vdp-cow-counter/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-cow-counter/cover-static.png"
 useCase: "Agriculture"
 author: "Xiaofei Du"
-authorAvatarSrc: "/tutorial-assets/author-avatar/xiaofei-du.png"
+authorAvatarSrc: "/author-avatar/xiaofei-du.png"
 authorGitHubUrl: "https://github.com/xiaofei-du"
 ---
 
@@ -69,8 +69,10 @@ Once all the services are up, go to the Console at http://localhost:3000.
 After onboarding, you will be redirected to the Pipeline page. Please follow the steps of [Build an ASYNC detection pipeline](http://go.instill.tech/4gyqg4).
 
 1. add a HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`,
-3. deploy a model instance `v1.0-cpu`  of the imported model,
+2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
+
+   ,
+3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add a PostgreSQL destination, with ID `postgres-db`,
 5. set up a pipeline with ID `detection`.
 
@@ -121,14 +123,14 @@ We'll use Conda as the package management system like we did it in the last [tut
 First, create and activate an environment named `vdp-dashboard` with Python 3.8:
 
 ```bash
-conda create --name vdp-streamlit python=3.8 
+conda create --name vdp-streamlit python=3.8
 conda activate vdp-dashboard
 ```
 
 Then, go to `/examples/async/yolov7` directory of the VDP project to install all dependencies.
 
 ```bash
-cd examples/async/yolov7 
+cd examples/async/yolov7
 pip install -r requirements.txt
 ```
 
@@ -150,7 +152,7 @@ To run the demo for processing the video, we simply do
 python main.py
 ```
 
-You could skip to the next section to create the dashboard. But if you're interested, here we dive into the demo details. 
+You could skip to the next section to create the dashboard. But if you're interested, here we dive into the demo details.
 
 First, the script will download a 1-minute drone video of a cattle farm `cows_dornick.mp4` from a public Google storage bucket.
 
@@ -162,7 +164,7 @@ The video used in the demo is sampled from a public video cows `dornick.mp4` fro
 
 <Youtube id="bIQF2O3Z_xU" />
 
-After finishing downloading the video, `extract_frames_from_video`  function will extract frames from the video into a folder `inputs` at 30 frames per second.
+After finishing downloading the video, `extract_frames_from_video` function will extract frames from the video into a folder `inputs` at 30 frames per second.
 
 <Gist id="e16fbb1cc834f07303bb7982c0776306" />
 
@@ -187,14 +189,14 @@ Metabase is an open-source business intelligence (BI) tool that helps you uncove
 In this tutorial, we [run Metabase on Docker](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker). If you prefer, check out [alternative ways](https://www.metabase.com/docs/latest/installation-and-operation/installing-metabase) to install Metabase.
 
 ```bash
-docker pull metabase/metabase:latest 
+docker pull metabase/metabase:latest
 docker run -d -p 3100:3000 --name metabase metabase/metabase
 ```
 
 Note: If the official Metabase docker image doesn't work on M1 (apple silicon) mac, try to build an image with the `Dockerfile-metabase-m1` file.
 
 ```bash
-docker build -f Dockerfile-metabase-m1 -t metabase/metabase-m1 . 
+docker build -f Dockerfile-metabase-m1 -t metabase/metabase-m1 .
 docker run -d -p 3100:3000 --name metabase metabase/metabase-m1
 ```
 
