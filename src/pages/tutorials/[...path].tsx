@@ -156,12 +156,6 @@ const TutorialPage: FC<TutorialPageProps> & {
           mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
         }
         pageType="main"
-        additionMeta={
-          <>
-            <meta name="docsearch:language" content="en" />
-            <meta name="docsearch:version" content="3.0.0" />
-          </>
-        }
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"
