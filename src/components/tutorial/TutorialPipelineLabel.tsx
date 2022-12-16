@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@instill-ai/design-system";
 import cn from "clsx";
 import { TutorialLabel } from "./TutorialLabel";
 
-export type TutorialPipelineProps = {
+export type TutorialPipelineLabelProps = {
   label: string;
   sourceConnector: Nullable<string>;
   destinationConnector: Nullable<string>;
@@ -12,13 +12,13 @@ export type TutorialPipelineProps = {
   icon?: getCvTaskIconAndLabelReturn["icon"];
 };
 
-export const TutorialPipeline = ({
+export const TutorialPipelineLabel = ({
   marginBottom,
   sourceConnector,
   destinationConnector,
   icon,
   label,
-}: TutorialPipelineProps) => {
+}: TutorialPipelineLabelProps) => {
   return (
     <div className={cn("flex flex-col", marginBottom)}>
       {/* 

@@ -19,7 +19,7 @@ import {
   PageHero,
 } from "@/components/ui";
 import {
-  TutorialPipeline,
+  TutorialPipelineLabel,
   TutorialPublishInfo,
   TutorialSimilarUseCases,
   TutorialTableOfContent,
@@ -175,7 +175,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             url="/tutorials"
             marginBottom="mb-5 xl:mb-10"
           />
-          <TutorialPipeline
+          <TutorialPipelineLabel
             icon={icon}
             label={label}
             sourceConnector={mdxSource.frontmatter?.sourceConnector || null}
