@@ -3,6 +3,7 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
 import { useState } from "react";
 import { Nullable } from "@/types/instill";
+import Image from "next/future/image";
 
 export type TutorialThemeImageProps = {
   marginBottom?: string;
@@ -20,7 +21,15 @@ export const TutorialThemeImage = ({
 
   return (
     <div className={cn("flex flex-col", marginBottom)}>
-      <div ref={imgContainerRef} className="w-full">
+      <div
+        ref={imgContainerRef}
+        className={cn(
+          "w-full",
+          // Because the image container's dimension initial value will be 0
+          // We need to deal with it (This will be fixed soon)
+          imageContainerDimension.width === 0 ? "xl:h-[450px]" : ""
+        )}
+      >
         {imgSrc ? (
           imageIsError ? (
             <TutorialImagePlaceholder
@@ -30,12 +39,11 @@ export const TutorialThemeImage = ({
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={imgSrc}
               alt="The theme of this tutorial"
-              style={{
-                height: `${(imageContainerDimension.width * 9) / 16}px`,
-              }}
+              width={imageContainerDimension.width}
+              height={(imageContainerDimension.width * 9) / 16}
               className="w-full object-cover"
               onError={() => {
                 setImageIsError(true);

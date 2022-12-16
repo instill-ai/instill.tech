@@ -81,7 +81,6 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   const source = fs.readFileSync(fullPath + ".mdx", "utf8");
 
   // Prepare the codeHike theme
-
   const theme = JSON.parse(
     await readFile(
       join(process.cwd(), "src", "styles", "rose-pine-moon.json"),
@@ -92,14 +91,10 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   );
 
   // Serialize the mdx file for client
-
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Access GitHub API to retrieve the info of Committer
-
   let commitMeta: Nullable<CommitMeta> = null;
-
-  console.log(relativePath);
 
   try {
     commitMeta = await getCommitMeta({
@@ -146,6 +141,8 @@ const TutorialPage: FC<TutorialPageProps> & {
 
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
+
+  console.log(articleContainerDimension);
 
   return (
     <>
@@ -268,6 +265,7 @@ const TutorialPage: FC<TutorialPageProps> & {
           In current design, we want to make table of content align with the 
           article container.
         */}
+
         <div
           className="absolute hidden max:block"
           style={{
