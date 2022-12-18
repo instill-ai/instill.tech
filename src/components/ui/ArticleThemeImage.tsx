@@ -1,21 +1,21 @@
 import cn from "clsx";
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
+import { TutorialImagePlaceholder } from "../tutorial/TutorialImagePlaceholder";
 import { useState } from "react";
 import { Nullable } from "@/types/instill";
 import Image from "next/future/image";
 
-export type TutorialThemeImageProps = {
+export type ArticleThemeImageProps = {
   marginBottom?: string;
   placeholderColor: string;
   imgSrc: Nullable<string>;
 };
 
-export const TutorialThemeImage = ({
+export const ArticleThemeImage = ({
   marginBottom,
   placeholderColor,
   imgSrc,
-}: TutorialThemeImageProps) => {
+}: ArticleThemeImageProps) => {
   const [imgContainerRef, imageContainerDimension] = useElementDimension();
   const [imageIsError, setImageIsError] = useState(false);
 
@@ -39,11 +39,12 @@ export const TutorialThemeImage = ({
             />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <Image
+            <img
               src={imgSrc}
               alt="The theme of this tutorial"
-              width={imageContainerDimension.width}
-              height={(imageContainerDimension.width * 9) / 16}
+              style={{
+                height: `${(imageContainerDimension.width * 9) / 16}px`,
+              }}
               className="w-full object-cover"
               onError={() => {
                 setImageIsError(true);
