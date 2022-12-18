@@ -1,4 +1,4 @@
-name: check-main-lighthouse-score
+name: Check Main Lighthouse Score
 
 on:
   pull_request:

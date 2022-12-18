@@ -1,4 +1,4 @@
-name: cron-remove-old-artifacts
+name: Cron Remove Old Artifacts
 
 on:
   schedule:
