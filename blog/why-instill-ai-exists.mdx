@@ -1,0 +1,80 @@
+---
+title: "Why Instill AI exists"
+lang: "en-US"
+draft: false
+description: "We aim to build tools to streamline the process of distilling the value of unstructured visual data across all stakeholders in the modern data stack, to ultimately benefit all size organisations."
+slug: "why-instill-ai-exists"
+publishedOn: "2022-01-16T05:12:00"
+themeImgSrc: "/blog-assets/why-instill-ai-exists/nasa-first-footprint.jpg"
+themeImgAlt: "The first footprint on the moon - Photo by NASA on Unsplash"
+themeImgThumbnailSrc: ""
+placeholderColor: "bg-instillYellow50"
+author: "Ping-Lin Chang"
+authorAvatarSrc: "/author-avatar/pinglin.jpeg"
+authorGitHubUrl: "https://github.com/pinglin"
+---
+
+In this article, we are going to establish the thesis behind Instill AI’s mission.
+
+We believe that Vision AI (a.k.a. Computer Vision) should be as easy to access as other general off-the-shelf cloud services in the software industry nowadays. Our faith comes from not only the technologies readiness but also the significance of having Vision AI highly accessible.
+
+Vision AI is a fundamental building block for an automation system performing all sorts of human visual tasks. We can find instances in autonomous driving, robotic vision, augmented reality, healthcare, smart manufacturing, smart architecture, etc. In essence, Vision AI processes unstructured visual data, making a computer able to understand the content of an image or video.
+
+## Our mission
+
+To date, the industry still harnesses Vision AI in a very inefficient way. Its implementation and deployment are extremely costly. Despite the emergence of new tools for building Vision AI solutions, they are generally too complex, requiring a steep learning curve and multifunctional teams to use. In consequence, only large enterprises with abundant resources can successfully onboard and benefit from Vision AI.
+
+We aim to build tools to streamline the process of distilling the value of unstructured visual data across all stakeholders in the modern data stack, to ultimately benefit all size organisations.
+
+## The challenges of Vision AI
+
+Deep Learning has achieved significant results in the last decade, since AlexNet breaking through the ImageNet challenge in 2012 and the emergence of many even more sophisticated architectures, VGG (2014), Inception (2014–2016), ResNet (2016), MobileNet (2017–2018), EifficentNet (2019–2020), just to name a few representative ones. We have had yet another exciting direction, Vision Transformer (ViT), inspired by the NLP field in 2020. With AI research pushing the limits and new models topping leaderboards every day, you might wonder: Isn’t Vision AI already easy to build and access? Well, the answer is: Not quite.
+
+In reality, building and maintaining an effective AI solution within the data stack of an organisation is surprisingly expensive with a lot of up-front development costs. It can consume millions and take at least a year from forming an AI team to deploy the first working Vision AI model on production. In addition, Vision AI models cannot deliver business value alone. An organisation will need to equip other functional teams, such as backend, infrastructure and data team, around the AI team. This results in low return on investment (ROI) and unavoidably long time-to-market of Vision AI.
+
+To be more elaborate, the challenges are mainly twofold:
+
+### Maintenance and optimisation
+
+While the status quo of AI algorithms still has much room to improve to achieve human-level performance, keeping an AI system to be constantly accurate in production requires continuous effort due to the nature of statistical data-driven algorithms. It might come as a surprise to most AI practitioners, i.e., deployed models will inevitably drift from the training data domain and need to be re-trained with the up-to-date production dataset and re-deployed to production on a regular basis.
+
+A common issue among lab-level models is that they are not optimised for memory footprint and speed. This may cause deployment in production infeasible or the ultimate AI product performance-wise unusable at all. However, to have an optimised inference service on production with constantly high-speed performance is not trivial. An organisation needs to form a team consisting of infrastructure and backend engineers to take care of the production system requirements.
+
+### Silo mentality due to a broken value chain
+
+For running a successful AI project, an AI-capable organisation needs a number of different roles including AI/ML Engineers, AI/ML Researchers, Data Engineers and Data Analyst (it can also include [Analytics Engineers](https://www.getdbt.com/what-is-analytics-engineering/#where-is-this-headed), a new role who owns the end-to-end data stack). If the data flow is complex, it might even need Backend Engineers, Front-end Engineers, DevOps Engineers, and Site-Reliability Engineers to build and maintain the AI system end-to-end.
+
+Despite the fact that the up-to-date Deep Learning frameworks have shown significant progress in usability since 2012, the tools are devised particularly for AI Engineers and AI Researchers who have specialised skill sets that are not available in other roles.
+
+On the other hand, to successfully devise and train an AI model to solve production demands, AI Engineers and AI Researchers need to depend on Data Engineers and Data Scientists to collect production data and prepare training data beforehand. This means an organisation will need to maintain all different function teams, resulting in high communication barriers and cultural silos.
+
+To make the long story short, existing tools mainly focus on model lifecycle management. They can accelerate model development cycles and shorten time-to-market. However, models alone cannot deliver the ultimate business value. Stakeholders in the value chain are thus disjoint. They use hybrid tools and speak in different languages, resulting in aggravating the silo mentality issue.
+
+## What is on the table now?
+
+The AI/ML industry and academia have persistently pushed solutions to tackle the challenges. Research in AI and Deep Learning has its own pace and is continuously developed. In addition, tools for MLOps and AutoML have been prosperously developed particularly for the current best practice of [Software 2.0](https://karpathy.medium.com/software-2-0-a64152b37c35) and [data-centric AI](https://www.forbes.com/sites/gilpress/2021/06/16/andrew-ng-launches-a-campaign-for-data-centric-ai), such as [InfuseAI PrimeHub](https://www.infuseai.io), [Iguazio](https://www.iguazio.com/), [Spell](https://spell.ml/), [Databricks](https://databricks.com/), [Google Vertex](https://cloud.google.com/vertex-ai) and [AWS SageMaker](https://aws.amazon.com/sagemaker/). Furthermore, open-source [TensorRT](https://developer.nvidia.com/tensorrt) and [Apache TVM](https://tvm.apache.org/) are also available for production model optimisation. As the technologies continuously evolve, we can expect to have more efficient and effective tool sets for maintenance and optimisation, resulting in less costly, more accurate and faster Vision AI models in the near future.
+
+## What is missing?
+
+Until recently, most organisations still primarily relied on structured data for data analytics. Unstructured data, like images, videos and text do not have a predefined easy-to-analyse format. In spite of IDC projections showing that 80% of worldwide data will be unstructured by 2025, organisations still can’t tap the value of unstructured data because a) most existing data tools are designed for structured data; b) tech stack silos due to fragmentation: emerging MLOps tools and Vision AI solutions provide different proprietary frameworks. AI practitioners thus need to piece different frameworks together and integrate them with the existing data stack, adding no benefit to creation and deployment, resulting in inefficiency.
+
+Despite the fact that the existing MLOps tools have effectively helped accelerate the ML model development, seamless integration of the Vision AI tech stack and the modern data stack is still missing. The absence has slowed down the Vision AI adoption and broken the data value chain.
+
+## What are we going to build?
+
+We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure. Our tools are built for the modern AI team to reduce team silo and decouple work dependency between different roles to increase work efficiency and capability to be self-service. Developers with various backgrounds can benefit from the tools in different ways:
+
+- AI/ML Engineers: automatic model optimization, simplified and managed model serving, and tools for production model monitoring
+- AI/ML Researchers: easier access to visual data for production experimentation and benchmarking
+- Data Engineers: low-code for integrating with various data sources and destinations, and easier visual data pipeline management
+- Data Scientists: richer insights from unstructured visual data to uncover unknown patterns and produce better analysis
+
+Most importantly, we aim to bring Vision AI into the modern data stack by standardising visual data preparation. Our tools are built within an open and maintainable framework, making it possible for communities to benefit and participate.
+
+## Be a part of the journey
+
+If you have read this far, it is likely that we share some experiences or thoughts in common. Please join our [community](https://discord.gg/sevxWsqpGh), we’d love to exchange with you more ideas of visual data preparation, Vision AI, and MLOps.
+
+---
+
+_Instill Cloud is currently in private alpha, working very closely with early users to build the most effective tool for visual data preparation. Sign in [here](https://www.instill.tech/get-access) if you would like to have a free trial._
