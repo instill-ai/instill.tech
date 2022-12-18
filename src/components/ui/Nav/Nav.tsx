@@ -4,13 +4,14 @@ import cn from "clsx";
 import Link from "next/link";
 import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
-import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
+import { AnnouncementBar } from "@/components/ui";
 import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { GetAccessButton } from "./GetAccessButton";
 import { CareerPageLink } from "./CareerPageLink";
 import { TutorialPageLink } from "./TutorialPageLink";
+import { BlogPageLink } from "./BlogPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -27,6 +28,7 @@ export const Nav = () => {
   const navbarLinkGroup = (
     <>
       <DocsPageLink />
+      <BlogPageLink />
       <TutorialPageLink />
       <CareerPageLink hiring={true} />
       <GithubTextLink />
