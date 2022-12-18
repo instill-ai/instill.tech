@@ -47,8 +47,26 @@ export type TutorialMeta = {
   publishedOn: string;
   placeholderColor: TutorialPlaceholderColor;
   themeImgSrc: string;
+  themeImgAlt?: string;
   themeImgThumbnailSrc: string;
   useCase: string;
+  author: string;
+  authorAvatarSrc: string;
+  authorGitHubUrl: string;
+};
+
+export type BlogMeta = {
+  title: string;
+  lang: string;
+  draft: boolean;
+  description: string;
+  commit: CommitMeta;
+  slug: string;
+  publishedOn: string;
+  themeImgSrc: string;
+  themeImgAlt?: string;
+  themeImgThumbnailSrc: string;
+  placeholderColor: TutorialPlaceholderColor;
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;

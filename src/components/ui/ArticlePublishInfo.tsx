@@ -1,23 +1,26 @@
+import cn from "clsx";
 import { GitHubIcon } from "@instill-ai/design-system";
 import { useState } from "react";
 
-export type TutorialPublishInfoProps = {
+export type ArticlePublishInfoProps = {
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
   publishedOn: string;
+  marginBottom?: string;
 };
 
-export const TutorialPublishInfo = ({
+export const ArticlePublishInfo = ({
   author,
   authorAvatarSrc,
   authorGitHubUrl,
   publishedOn,
-}: TutorialPublishInfoProps) => {
+  marginBottom,
+}: ArticlePublishInfoProps) => {
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
 
   return (
-    <div className="flex flex-row gap-x-2">
+    <div className={cn("flex flex-row gap-x-2", marginBottom)}>
       {authorAvatarIsError ? (
         <GitHubIcon
           color="fill-instillGrey50"

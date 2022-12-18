@@ -1,26 +1,35 @@
 import cn from "clsx";
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
+import { TutorialImagePlaceholder } from "../tutorial/TutorialImagePlaceholder";
 import { useState } from "react";
 import { Nullable } from "@/types/instill";
+import Image from "next/future/image";
 
-export type TutorialThemeImageProps = {
+export type ArticleThemeImageProps = {
   marginBottom?: string;
   placeholderColor: string;
   imgSrc: Nullable<string>;
 };
 
-export const TutorialThemeImage = ({
+export const ArticleThemeImage = ({
   marginBottom,
   placeholderColor,
   imgSrc,
-}: TutorialThemeImageProps) => {
+}: ArticleThemeImageProps) => {
   const [imgContainerRef, imageContainerDimension] = useElementDimension();
   const [imageIsError, setImageIsError] = useState(false);
 
   return (
     <div className={cn("flex flex-col", marginBottom)}>
-      <div ref={imgContainerRef} className="w-full">
+      <div
+        ref={imgContainerRef}
+        className={cn(
+          "w-full",
+          // Because the image container's dimension initial value will be 0
+          // We need to deal with it (This will be fixed soon)
+          imageContainerDimension.width === 0 ? "xl:h-[450px]" : ""
+        )}
+      >
         {imgSrc ? (
           imageIsError ? (
             <TutorialImagePlaceholder
