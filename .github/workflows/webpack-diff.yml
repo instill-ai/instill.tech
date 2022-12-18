@@ -1,4 +1,4 @@
-name: ci-webpack-stats-diff
+name: Webpack Difference
 
 on:
   pull_request:
