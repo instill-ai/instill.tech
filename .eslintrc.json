@@ -1,6 +1,53 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"],
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "ignorePatterns": ["**/node_modules", "**/dist", "**/build"],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "globalReturn": false
+    },
+    "ecmaVersion": 2020,
+    "project": ["./tsconfig.json"],
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+
+    // eslint-plugin-react
+    "plugin:react/recommended",
+
+    // @typescript-eslint/eslint-plugin
+    "plugin:@typescript-eslint/recommended",
+
+    // eslint-import-resolver-typescript
+    "plugin:import/typescript",
+
+    // eslint-plugin-react-hooks
+    "plugin:react-hooks/recommended",
+
+    // eslint-plugin-storybook
+    "plugin:storybook/recommended",
+
+    // nextjs
+    "next/core-web-vitals"
+  ],
   "rules": {
+    // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+    "react/react-in-jsx-scope": "off",
+
     // We have to check this won't affect object iteral
     "no-multi-spaces": "warn",
 
@@ -58,83 +105,69 @@
       }
     ],
 
-    // Will extend when needed
-    // global and jax is for inline style css
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
-    "react/jsx-boolean-value": [
-      "error",
-      "always",
-      { "never": ["global", "jsx"] }
-    ],
-
-    // This is a little complex, please go to its docu to learn how to build around this rule
-    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/alt-text.md
-    "jsx-a11y/alt-text": [
+    // Disable react/no-unknown-property for Nextjs style jsx
+    "react/no-unknown-property": [
       "error",
       {
-        "elements": ["img", "object", "area", "input[type=\"image\"]"],
-        "img": ["Image"],
-        "object": ["Object"],
-        "area": ["Area"],
-        "input[type=\"image\"]": ["InputImage"]
+        "ignore": ["jsx", "global"]
       }
-    ],
-
-    // Will extend when we extend language base
-    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md
-    "jsx-a11y/img-redundant-alt": [
-      "warn",
-      {
-        "components": ["Image"],
-        "words": ["picture", "image", "photo", "照片"]
-      }
-    ],
-
-    // Elements with ARIA roles must use a valid, non-abstract ARIA role.
-    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md
-    "jsx-a11y/aria-role": [
-      "warn",
-      {
-        "ignoreNonDOM": true
-      }
-    ],
-
-    // Enforce no accessKey prop on element.
-    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md
-    "jsx-a11y/no-access-key": ["error"],
-
-    // Prevent usage of Array index in keys
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
-    "react/no-array-index-key": "error",
-
-    // Setting ref with string had already been considered legacy
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md
-    "react/no-string-refs": ["error", { "noTemplateLiterals": true }],
-
-    // We enforce self-close to cut down maintain overhead
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
-    "react/self-closing-comp": [
-      "error",
-      {
-        "component": true,
-        "html": true
-      }
-    ],
-    // Declaring only one component per file improves readability and reusability of components.
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
-    "react/no-multi-comp": ["error", { "ignoreStateless": false }]
+    ]
   },
-  "plugins": ["testing-library"],
   "overrides": [
-    // Only uses Testing Library lint rules in test files
     {
-      "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
+      // For performance run jest/recommended on test files, not regular code
+      "files": ["**/?(*.)+(test).{js,jsx,ts,tsx}"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest-formatting/recommended",
+        "plugin:testing-library/react"
       ],
-      "extends": ["plugin:testing-library/react"],
       "rules": {
-        "testing-library/prefer-presence-queries": ["warn"]
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-object-literal-type-assertion": "off",
+        "@typescript-eslint/no-empty-function": "off"
+      }
+    },
+    {
+      // We use playwright eslint plugin on e2e test
+      "files": ["e2e/*.spec.{js,ts}"],
+      "extends": ["plugin:playwright/playwright-test"]
+    },
+    {
+      // To disambiguate unit from e2e (playwright) test files, the *.spec.ts
+      // is used across this repo, so we can apply a different ruleset.
+      "files": ["*.spec.ts"],
+      "rules": {
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-object-literal-type-assertion": "off",
+        "@typescript-eslint/no-empty-function": "off"
+      }
+    },
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        // Disable React.FC missing in props validation error (react/prop-types)
+        "react/prop-types": "off",
+        "react/require-default-props": "off"
+      }
+    },
+    {
+      "files": ["*.js"],
+      "parser": "espree",
+      "parserOptions": {
+        "ecmaVersion": 2020
+      },
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "sonarjs/no-duplicate-string": "off",
+        "sonarjs/no-all-duplicated-branches": "off",
+        "@typescript-eslint/consistent-type-exports": "off",
+        "@typescript-eslint/consistent-type-imports": "off",
+        "import/order": "off"
       }
     }
   ]
