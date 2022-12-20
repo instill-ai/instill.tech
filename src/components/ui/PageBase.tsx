@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Nav } from "@/components/ui";
 import { useInView } from "react-intersection-observer";
 
+/* eslint-disable-next-line @typescript-eslint/ban-types */
 const Footer = dynamic<{}>(() =>
   import("@/components/ui").then((mod) => mod.Footer)
 );

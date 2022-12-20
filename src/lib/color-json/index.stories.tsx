@@ -7,10 +7,6 @@ import {
   setNumberKv,
 } from "./colorJson";
 
-export default {
-  title: "Components/ColorJson",
-};
-
 const Template = () => {
   return setColorJson({
     id: "color-json-test",
@@ -115,6 +111,10 @@ const Template = () => {
       }),
     ],
   });
+};
+
+export default {
+  title: "Components/ColorJson",
 };
 
 export const Playground = Template.bind({});

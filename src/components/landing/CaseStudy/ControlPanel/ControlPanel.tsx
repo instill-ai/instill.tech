@@ -49,7 +49,7 @@ export const ControlPanel = ({ items, activeIndex }: ControlPanelProps) => {
 
   const [containerRef, containerDimension] = useElementDimension();
   const [sourceRef, sourceDimension] = useElementDimension();
-  const [modelRef, modelDimension] = useElementDimension({ delay: 100 });
+  const [modelRef, modelDimension] = useElementDimension();
   const [destRef, destDimension] = useElementDimension();
 
   const [sourceToModelLineDataset, setSourceToModelLineDataset] =

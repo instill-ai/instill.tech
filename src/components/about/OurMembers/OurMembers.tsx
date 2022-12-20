@@ -133,7 +133,7 @@ export const OurMembers = ({
 
     const paddingBottom = 16;
 
-    let additionalHeight =
+    const additionalHeight =
       memberIntroBlockDimension.height -
       targetPosition.height * leftAvatarBlock -
       coveredGap +

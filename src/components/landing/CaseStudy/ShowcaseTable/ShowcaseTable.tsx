@@ -13,7 +13,7 @@ export const ShowcaseTable = ({ tables, position }: ShowcaseTableProps) => {
         "flex h-[254px] w-[240px] flex-col overflow-hidden sm:h-[355px] sm:w-[336px]"
       )}
     >
-      {tables.map((table, i) => (
+      {tables.map((table) => (
         <table
           key={`case-study-showcase-table-${table.name}`}
           className={cn(

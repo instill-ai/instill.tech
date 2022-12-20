@@ -41,10 +41,12 @@ const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
 );
 
+/* eslint-disable-next-line @typescript-eslint/ban-types */
 const InstillCloud = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.InstillCloud)
 );
 
+/* eslint-disable-next-line @typescript-eslint/ban-types */
 const Community = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
@@ -56,11 +58,11 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
     "config/init/airbyte/seed/destination_definitions.yaml"
   );
 
-  let buf = Buffer.from(destinationDefinitions.content, "base64").toString(
+  const buf = Buffer.from(destinationDefinitions.content, "base64").toString(
     "utf-8"
   );
 
-  let destinationArray: Record<string, string>[] = parse(buf);
+  const destinationArray: Record<string, string>[] = parse(buf);
 
   return {
     props: {

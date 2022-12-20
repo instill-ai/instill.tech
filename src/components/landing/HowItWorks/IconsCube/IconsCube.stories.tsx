@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof IconsCube> = (args) => (
 
 export const Playground: ComponentStory<typeof IconsCube> = Template.bind({});
 
-let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
+const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
 
 Playground.args = {
   cubes: [

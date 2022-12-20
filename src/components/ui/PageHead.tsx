@@ -24,7 +24,7 @@ export const PageHead = ({
     pageDescription,
   };
 
-  let canonicalURL =
+  const canonicalURL =
     router.asPath === "/"
       ? `${process.env.NEXT_PUBLIC_BASE_URL}`
       : `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`;

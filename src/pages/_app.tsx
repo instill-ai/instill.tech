@@ -1,4 +1,4 @@
-/* eslint-disable react/no-multi-comp */
+/* eslint-disable react/no-multi-comp, @typescript-eslint/no-explicit-any */
 
 import { NextPage } from "next";
 import { AppProps } from "next/app";

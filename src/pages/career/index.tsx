@@ -41,7 +41,7 @@ type GetLayOutProps = {
 
 export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
   let tasks: ClickUpTask[];
-  let positions: PositionInfo[] = [];
+  const positions: PositionInfo[] = [];
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");

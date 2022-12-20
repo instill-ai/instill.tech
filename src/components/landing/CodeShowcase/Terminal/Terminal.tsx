@@ -1,7 +1,6 @@
 import {
   setArrayKv,
   setColorJson,
-  setNumberValue,
   setObjectKv,
   setStringKv,
   setStringValue,
@@ -16,9 +15,9 @@ export type TerminalProps = {
 
 export const Terminal = ({ currectResource }: TerminalProps) => {
   let code: Nullable<ReactNode> = null;
-  let indent = "pl-8";
-  let tokenColor = "text-white";
-  let color = {
+  const indent = "pl-8";
+  const tokenColor = "text-white";
+  const color = {
     source: "text-instillNeonGreen",
     destination: "text-instillWarmOrange50",
     model: "text-instillYellow50",

@@ -1,5 +1,4 @@
 import cn from "clsx";
-import { useMemo } from "react";
 
 export type TutorialImagePlaceholderProps = {
   width: string;

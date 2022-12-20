@@ -12,8 +12,8 @@ export const TutorialList = ({ tutorials }: TutorialListProps) => {
         tutorials.length <= 2 ? (
           // This additional wrapper will stop the TutorialBlock from
           // expanding its height to fill the whole container.
-          <div>
-            <TutorialBlock key={e.title} tutorial={e} />
+          <div key={e.title}>
+            <TutorialBlock tutorial={e} />
           </div>
         ) : (
           <TutorialBlock key={e.title} tutorial={e} />

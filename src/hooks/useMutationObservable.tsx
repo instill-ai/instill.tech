@@ -1,5 +1,5 @@
 import { Nullable } from "@/types/instill";
-import { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const DEFAULT_OPTIONS = { attributes: true, childList: true, subtree: true };
 

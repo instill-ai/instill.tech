@@ -16,6 +16,8 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export const serializeMdxRemote = async (
   source: string,
   parseFrontmatter: boolean,
+
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   theme: any
 ): Promise<MDXRemoteSerializeResult> => {
   try {

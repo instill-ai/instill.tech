@@ -45,13 +45,13 @@ export const CommunityBlock = ({
 
   let croppedIcon: Nullable<ReactNode> = null;
   let icon: Nullable<ReactNode> = null;
-  let iconProp = {
+  const iconProp = {
     width: "w-[30px]",
     height: "h-[30px]",
     position: "my-auto",
     color: "fill-white",
   };
-  let croppedIconStyle =
+  const croppedIconStyle =
     "absolute top-1/2 -right-0 -translate-y-1/2 fill-white";
   let blockColor: Nullable<string> = null;
 

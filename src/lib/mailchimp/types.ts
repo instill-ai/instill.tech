@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 type Recipient = {
   list_id: string;
   list_ia_active: boolean;
