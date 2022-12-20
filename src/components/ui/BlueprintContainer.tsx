@@ -69,7 +69,7 @@ export const BlueprintContainer = ({
       const childrenX1 = childrenDimension.x - parentDimension.x;
       const childrenY1 = childrenDimension.y - parentDimension.y;
 
-      let lineDataset: LineData[] = [];
+      const lineDataset: LineData[] = [];
 
       if (alignWith === "children") {
         // Generate the vertical line data from children X1 to parent X2.

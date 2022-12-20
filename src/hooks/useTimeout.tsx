@@ -17,7 +17,7 @@ export const useTimeout = (callback: () => void, delay: number) => {
     };
 
     if (delay !== null) {
-      let timeout = setTimeout(tick, delay);
+      const timeout = setTimeout(tick, delay);
       return () => clearTimeout(timeout);
     }
   }, [delay]);

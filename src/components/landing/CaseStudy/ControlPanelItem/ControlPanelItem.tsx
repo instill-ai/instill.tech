@@ -1,4 +1,3 @@
-import { SingleSelectOption } from "@instill-ai/design-system";
 import cn from "clsx";
 import { ReactElement } from "react";
 import {

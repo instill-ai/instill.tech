@@ -1,10 +1,4 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, ReactNode, SetStateAction, useEffect } from "react";
 import cn from "clsx";
 import ModalBase from "./ModalBase";
 import { XIcon } from "@instill-ai/design-system";

@@ -1,8 +1,4 @@
-import {
-  DiscordIcon,
-  OutlineButton,
-  TextButton,
-} from "@instill-ai/design-system";
+import { DiscordIcon, OutlineButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 
 export type DiscordCtaButtonProps = {

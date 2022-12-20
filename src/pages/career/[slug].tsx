@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { FC, ReactElement, useEffect, useRef, useState } from "react";
+import { FC, ReactElement } from "react";
 import dynamic from "next/dynamic";
 
 import { PositionDetails } from "@/components/career";
@@ -80,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let tasks: ClickUpTask[];
-  let paths = [];
+  const paths = [];
 
   try {
     tasks = await listClickUpTasksInListQuery("175663624");

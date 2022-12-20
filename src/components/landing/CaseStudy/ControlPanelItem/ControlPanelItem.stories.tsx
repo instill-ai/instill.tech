@@ -1,9 +1,4 @@
-import {
-  AwsS3Icon,
-  BasicSingleSelect,
-  GoogleDriveIcon,
-  ModelIcon,
-} from "@instill-ai/design-system";
+import { GoogleDriveIcon, ModelIcon } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ControlPanelItem } from "./ControlPanelItem";
 

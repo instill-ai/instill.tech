@@ -4,9 +4,7 @@ import cn from "clsx";
 import { MoonIcon } from "./MoonIcon";
 import { SunIcon } from "./SunIcon";
 
-export type ThemeToggleProps = {};
-
-export const ThemeToggle = ({}: ThemeToggleProps) => {
+export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = useCallback(() => {

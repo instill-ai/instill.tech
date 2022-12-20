@@ -19,8 +19,8 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const items = useMemo(() => {
-    let left: NavbarItem[] = [];
-    let right: NavbarItem[] = [];
+    const left: NavbarItem[] = [];
+    const right: NavbarItem[] = [];
 
     nav.items.forEach((item) => {
       if (item.position === "right") {

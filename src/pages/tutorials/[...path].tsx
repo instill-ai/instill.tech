@@ -1,4 +1,4 @@
-import { FC, ReactElement, useRef } from "react";
+import { FC, ReactElement } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -108,7 +108,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
 
   // We use remark to get the headers
 
-  let headers = [] as RightSidebarProps["headers"];
+  const headers = [] as RightSidebarProps["headers"];
 
   await remark()
     .use(remarkFrontmatter)

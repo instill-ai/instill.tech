@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   }
 
   // We use remark to get the headers
-  let headers = [] as RightSidebarProps["headers"];
+  const headers = [] as RightSidebarProps["headers"];
 
   await remark()
     .use(remarkFrontmatter)

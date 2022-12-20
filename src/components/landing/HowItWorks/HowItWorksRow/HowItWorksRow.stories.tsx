@@ -20,7 +20,7 @@ export const Playground: ComponentStory<typeof HowItWorksRow> = Template.bind(
   {}
 );
 
-let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
+const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
 
 Playground.args = {
   type: "left",

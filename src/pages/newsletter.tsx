@@ -1,6 +1,7 @@
 import { FC, Fragment, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
 

@@ -14,9 +14,10 @@ export type Position = {
 };
 
 // eslint-disable-next-line
-export const useElementDimension = <
-  T extends HTMLElement = HTMLDivElement
->(options?: {}): [(node: T | null) => void, Position] => {
+export const useElementDimension = <T extends HTMLElement = HTMLDivElement>(): [
+  (node: T | null) => void,
+  Position
+] => {
   // Mutable values like 'ref.current' aren't valid dependencies
   // because mutating them doesn't re-render the component.
   // Instead, we use a state as a ref to be reactive.

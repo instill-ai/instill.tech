@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 import anime, { AnimeTimelineInstance } from "animejs";
 import { Nullable } from "@/types/instill";
 
-export type VdpAnimationProps = {};
-
 type AnimateItem = {
   id: string;
   offset: number;
@@ -13,7 +11,7 @@ type AnimateItem = {
 // animation, right now we just calculate them rougly and adjust the style
 // according to the result.
 
-export const VdpAnimation = ({}: VdpAnimationProps) => {
+export const VdpAnimation = () => {
   const itemAnimationRef = useRef<Nullable<AnimeTimelineInstance>>(null);
   const sourceArrowAnimationRef = useRef<Nullable<AnimeTimelineInstance>>(null);
   const destinationArrowAnimationRef =

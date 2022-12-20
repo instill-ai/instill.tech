@@ -28,7 +28,7 @@ export type HowItWorksProps = {
 
 export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
-    let iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
+    const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
         <div className="mb-20 flex flex-col gap-y-2.5">

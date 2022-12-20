@@ -3,7 +3,6 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { TutorialImagePlaceholder } from "../tutorial/TutorialImagePlaceholder";
 import { useState } from "react";
 import { Nullable } from "@/types/instill";
-import Image from "next/future/image";
 
 export type ArticleThemeImageProps = {
   marginBottom?: string;

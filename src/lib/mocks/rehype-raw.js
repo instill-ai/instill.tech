@@ -4,6 +4,8 @@
  * could find more information here https://github.com/remarkjs/react-markdown/issues/635
  */
 
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 const rehypeRaw = () => {};
 
 export default rehypeRaw;

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import cn from "clsx";
 
 export type SetColorJson = {

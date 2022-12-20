@@ -14,7 +14,7 @@ export const SingleSelectCheckbox = ({
   setValue,
 }: SingleSelectCheckboxProps) => {
   return (
-    <div className="flex flex-col gap-y-5">
+    <div className="flex flex-col gap-y-5" id={id}>
       {options.map((e) => (
         <div key={e.label} className="flex flex-row gap-x-5">
           <div

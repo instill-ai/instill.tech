@@ -31,7 +31,7 @@ export const getCvTaskIconAndLabel = ({
   cvTask,
 }: getCvTaskIconAndLabelProps): getCvTaskIconAndLabelReturn => {
   let icon: Nullable<(iconStyle: IconStyle) => ReactElement> = null;
-  let label: string = "";
+  let label = "";
 
   switch (cvTask) {
     case "ocr":

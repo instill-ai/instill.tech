@@ -4,7 +4,7 @@ import { FilterIcon, XIcon } from "@instill-ai/design-system";
 
 import { SingleSelectCheckboxProps } from "@/components/ui";
 import { getCvTaskIconAndLabel } from "@/lib/instill";
-import { CvTask, Nullable, TutorialMeta } from "@/types/instill";
+import { CvTask, TutorialMeta } from "@/types/instill";
 import { TutorialLabel } from "../TutorialLabel";
 import { TutorialFilter } from "./TutorialFilter";
 import { useWindowSize } from "@/hooks/useWindowSize";
@@ -30,12 +30,12 @@ export const TutorialFilters = ({
   const windowSize = useWindowSize();
 
   const connectorOptions = useMemo<SingleSelectCheckboxProps["options"]>(() => {
-    let options: SingleSelectCheckboxProps["options"] = [
+    const options: SingleSelectCheckboxProps["options"] = [
       { label: "All", value: "All" },
     ];
 
     for (const tutorial of tutorials) {
-      let existSourceIndex = options.findIndex(
+      const existSourceIndex = options.findIndex(
         (e) => e.value === tutorial.sourceConnector
       );
 
@@ -46,7 +46,7 @@ export const TutorialFilters = ({
         });
       }
 
-      let existDestinationIndex = options.findIndex(
+      const existDestinationIndex = options.findIndex(
         (e) => e.value === tutorial.destinationConnector
       );
 
@@ -62,12 +62,14 @@ export const TutorialFilters = ({
   }, [tutorials]);
 
   const useCaseOptions = useMemo<SingleSelectCheckboxProps["options"]>(() => {
-    let options: SingleSelectCheckboxProps["options"] = [
+    const options: SingleSelectCheckboxProps["options"] = [
       { label: "All", value: "All" },
     ];
 
     for (const tutorial of tutorials) {
-      let existUseCase = options.findIndex((e) => e.value === tutorial.useCase);
+      const existUseCase = options.findIndex(
+        (e) => e.value === tutorial.useCase
+      );
 
       if (existUseCase === -1) {
         options.push({

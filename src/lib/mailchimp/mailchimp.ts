@@ -24,6 +24,7 @@ export const addMemberIntoMailchimpList = async (email: string) => {
     );
 
     return Promise.resolve("Success");
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   } catch (error: any) {
     if (error.response && error.response.body.title === "Member Exists") {
       return Promise.reject("MemberExists");
@@ -59,7 +60,7 @@ export const addMemberIntoMailchimpList = async (email: string) => {
 
 export const removePlaceholderAndFooterWords = (content: string): string => {
   // Mailchimp's plain text has lots of template literal, we have to remove that
-  let removeWords = [
+  const removeWords = [
     "\\*\\|FNAME\\|\\*",
     "\\*\\|MC_PREVIEW_TEXT\\|\\*",
     "============================================================",
@@ -78,7 +79,7 @@ export const removePlaceholderAndFooterWords = (content: string): string => {
     "\\*\\*",
   ];
 
-  let re = new RegExp(removeWords.join("|"), "gi");
+  const re = new RegExp(removeWords.join("|"), "gi");
   return content.replace(re, () => {
     return "";
   });

@@ -6,6 +6,7 @@ export const getRepoFileContent = async (
   owner: string,
   repo: string,
   path: string
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 ): Promise<any> => {
   try {
     const octokitOpion = process.env.NEXT_PUBLIC_GITHUB_TOKEN

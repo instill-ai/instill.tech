@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { TutorialMeta } from "@/types/instill";
 
 type PartialTutorialMeta = Omit<TutorialMeta, "commit" | "slug">;
@@ -7,28 +9,28 @@ export const validateTutorialMeta = (
   data: { [key: string]: any }
 ): PartialTutorialMeta => {
   // Validate whether tutorial have necessary fields - title
-  if (!data.hasOwnProperty("title")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "title")) {
     throw new Error(
       `Error occured when generate tutorials - missing title field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - lang
-  if (!data.hasOwnProperty("lang")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "lang")) {
     throw new Error(
       `Error occured when generate tutorials - missing lang field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - description
-  if (!data.hasOwnProperty("description")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "description")) {
     throw new Error(
       `Error occured when generate tutorials - missing description field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - cvTask
-  if (!data.hasOwnProperty("cvTask")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "cvTask")) {
     throw new Error(
       `Error occured when generate tutorials - missing cvTask field at ${path}`
     );
@@ -54,28 +56,28 @@ export const validateTutorialMeta = (
   }
 
   // Validate whether tutorial have necessary fields - sourceConnector
-  if (!data.hasOwnProperty("sourceConnector")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "sourceConnector")) {
     throw new Error(
       `Error occured when generate tutorials - missing sourceConnector field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - destinationConnector
-  if (!data.hasOwnProperty("destinationConnector")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "destinationConnector")) {
     throw new Error(
       `Error occured when generate tutorials - missing destinationConnector field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - publishedOn
-  if (!data.hasOwnProperty("publishedOn")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "publishedOn")) {
     throw new Error(
       `Error occured when generate tutorials - missing publishedOn field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - placeholderColor
-  if (!data.hasOwnProperty("placeholderColor")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "placeholderColor")) {
     throw new Error(
       `Error occured when generate tutorials - missing placeholderColor field at ${path}`
     );
@@ -101,42 +103,42 @@ export const validateTutorialMeta = (
   }
 
   // Validate whether tutorial have necessary fields - themeImgSrc
-  if (!data.hasOwnProperty("themeImgSrc")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "themeImgSrc")) {
     throw new Error(
       `Error occured when generate tutorials - missing themeImgSrc field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - themeImgThumbnailSrc
-  if (!data.hasOwnProperty("themeImgThumbnailSrc")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "themeImgThumbnailSrc")) {
     throw new Error(
       `Error occured when generate tutorials - missing themeImgThumbnailSrc field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - useCase
-  if (!data.hasOwnProperty("useCase")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "useCase")) {
     throw new Error(
       `Error occured when generate tutorials - missing useCase field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - author
-  if (!data.hasOwnProperty("author")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "author")) {
     throw new Error(
       `Error occured when generate tutorials - missing author field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - authorGitHubUrl
-  if (!data.hasOwnProperty("authorGitHubUrl")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "authorGitHubUrl")) {
     throw new Error(
       `Error occured when generate tutorials - missing authorGitHubUrl field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - authorAvatarSrc
-  if (!data.hasOwnProperty("authorAvatarSrc")) {
+  if (!Object.prototype.hasOwnProperty.call(data, "authorAvatarSrc")) {
     throw new Error(
       `Error occured when generate tutorials - missing authorAvatarSrc field at ${path}`
     );

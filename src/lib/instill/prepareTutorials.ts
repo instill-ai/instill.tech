@@ -12,8 +12,8 @@ export const prepareTutorials = async (): Promise<TutorialMeta[]> => {
     const tutorialDir = join(process.cwd(), "tutorials");
     const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
-    let turtoialPaths: { absolute: string; relative: string }[] = [];
-    let tutorials: TutorialMeta[] = [];
+    const turtoialPaths: { absolute: string; relative: string }[] = [];
+    const tutorials: TutorialMeta[] = [];
 
     for (const path of tutorialRelativePaths) {
       turtoialPaths.push({

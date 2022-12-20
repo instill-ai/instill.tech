@@ -30,7 +30,6 @@ import {
   PipelineIcon,
   SingleSelectOption,
 } from "@instill-ai/design-system";
-import cn from "clsx";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
@@ -39,13 +38,12 @@ import { ShowcaseImage } from "./ShowcaseImage";
 import { ShowcaseTable } from "./ShowcaseTable";
 
 export type CaseStudyProps = {
-  marginBottom?: string;
   destinations: { name: string; icon: string }[];
 };
 
 type CustomizableModel = "github" | "artivc" | "local" | "huggingFace";
 
-export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
+export const CaseStudy = ({ destinations }: CaseStudyProps) => {
   const [activeIndex, setActiveIndex] = useState<number[]>([0]);
   const [currentShowcaseFrame, setCurrentShowcaseFrame] = useState<number>(0);
   const [focusedShowcaseFrame, setFocusedShowcaseFrame] =
@@ -712,15 +710,11 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 showcases={[
                   <ShowcaseImage
                     key="case-study-invoice-0"
-                    width={336}
-                    height={355}
                     src="/images/case-study-invoice-0.png"
                     alt="An invoice"
                   />,
                   <ShowcaseImage
                     key="case-study-invoice-1"
-                    width={336}
-                    height={355}
                     src="/images/case-study-invoice-1.png"
                     alt="An invoice processed by OCR and display the detected words"
                   />,
@@ -811,23 +805,17 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 showcases={[
                   <ShowcaseImage
                     key="case-study-workspace-0"
-                    width={336}
-                    height={355}
                     src="/images/case-study-workspace-0.png"
                     alt="Workers with safety helmets"
                   />,
                   <ShowcaseImage
                     key="case-study-workspace-1"
-                    width={336}
-                    height={355}
                     src="/images/case-study-workspace-1.png"
                     alt="Workers with safety helmets processed by object 
                     dection and label the position of the workers."
                   />,
                   <ShowcaseImage
                     key="case-study-workspace-2"
-                    width={336}
-                    height={355}
                     src="/images/case-study-workspace-2.png"
                     alt="Workers with safety helmets processed by pose 
                     estimation and draw the skeleton of the workers"
@@ -917,15 +905,11 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
                 showcases={[
                   <ShowcaseImage
                     key="case-study-ecommerce-0"
-                    width={336}
-                    height={355}
                     src="/images/case-study-ecommerce-0.png"
                     alt="A ecommerce cloth model"
                   />,
                   <ShowcaseImage
                     key="case-study-ecommerce-1"
-                    width={336}
-                    height={355}
                     src="/images/case-study-ecommerce-1.png"
                     alt="A ecommerce cloth model processed by tagging."
                   />,
@@ -1068,7 +1052,7 @@ export const CaseStudy = ({ marginBottom, destinations }: CaseStudyProps) => {
 
     setCurrentShowcaseFrame(focusedShowcaseFrame);
 
-    let timeout = setTimeout(resetClickedShowcaseFrame, 3000);
+    const timeout = setTimeout(resetClickedShowcaseFrame, 3000);
     return () => clearTimeout(timeout);
   }, [focusedShowcaseFrame]);
 
