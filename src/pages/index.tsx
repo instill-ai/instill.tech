@@ -41,11 +41,13 @@ const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
 );
 
-const InstillCloud = dynamic(() =>
+/* eslint-disable-next-line @typescript-eslint/ban-types */
+const InstillCloud = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.InstillCloud)
 );
 
-const Community = dynamic(() =>
+/* eslint-disable-next-line @typescript-eslint/ban-types */
+const Community = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
 
