@@ -72,3 +72,5 @@ export { ArticlePublishInfo } from "./ArticlePublishInfo";
 export type { ArticlePublishInfoProps } from "./ArticlePublishInfo";
 export { ArticleThemeImage } from "./ArticleThemeImage";
 export type { ArticleThemeImageProps } from "./ArticleThemeImage";
+export { ArticleImagePlaceholder } from "./ArticleImagePlaceholder";
+export type { ArticleImagePlaceholderProps } from "./ArticleImagePlaceholder";
