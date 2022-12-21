@@ -15,6 +15,7 @@ describe("Should validate blog article meta", () => {
       author: "Xiaofei Du",
       authorAvatarSrc: "/author-avatar/xiaofei-du.png",
       authorGitHubUrl: "https://github.com/xiaofei-du",
+      category: "insights",
     };
 
     expect(validateBlogArticleMeta("path", meta)).toBe(meta);
@@ -34,6 +35,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -58,6 +60,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -82,6 +85,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -106,6 +110,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -130,6 +135,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -154,6 +160,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -178,6 +185,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -202,6 +210,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -227,6 +236,7 @@ describe("Should validate blog article meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -249,6 +259,7 @@ describe("Should validate blog article meta", () => {
         placeholderColor: "bg-instillYellow50",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -273,6 +284,7 @@ describe("Should validate blog article meta", () => {
         placeholderColor: "bg-instillYellow50",
         author: "Xiaofei Du",
         authorGitHubUrl: "https://github.com/xiaofei-du",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -297,6 +309,7 @@ describe("Should validate blog article meta", () => {
         placeholderColor: "bg-instillYellow50",
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
+        category: "insights",
       };
 
       validateBlogArticleMeta("path", meta);
@@ -304,6 +317,31 @@ describe("Should validate blog article meta", () => {
 
     expect(testFunction).toThrow(
       "Error occured when validate blog article meta - missing authorGitHubUrl field at path"
+    );
+  });
+
+  test("should throw category not found", () => {
+    const testFunction = () => {
+      const meta = {
+        title: "test article",
+        lang: "en-US",
+        draft: false,
+        description: "test",
+        publishedOn: "2022-09-22T14:26:00",
+        themeImgSrc: "",
+        themeImgAlt: "",
+        themeImgThumbnailSrc: "",
+        placeholderColor: "bg-instillYellow50",
+        author: "Xiaofei Du",
+        authorAvatarSrc: "/author-avatar/xiaofei-du.png",
+        authorGitHubUrl: "https://github.com/xiaofei-du",
+      };
+
+      validateBlogArticleMeta("path", meta);
+    };
+
+    expect(testFunction).toThrow(
+      "Error occured when validate blog article meta - missing category field at path"
     );
   });
 });

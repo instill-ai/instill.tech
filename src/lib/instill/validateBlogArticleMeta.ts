@@ -104,5 +104,12 @@ export const validateBlogArticleMeta = (
     );
   }
 
+  // Validate whether blog article have necessary fields - category
+  if (!Object.prototype.hasOwnProperty.call(data, "category")) {
+    throw new Error(
+      `Error occured when validate blog article meta - missing category field at ${path}`
+    );
+  }
+
   return data as PartialBlogArticleMeta;
 };

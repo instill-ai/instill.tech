@@ -55,7 +55,7 @@ export type TutorialMeta = {
   authorGitHubUrl: string;
 };
 
-export type BlogMeta = {
+export type BlogArticleMeta = {
   title: string;
   lang: string;
   draft: boolean;
@@ -70,6 +70,7 @@ export type BlogMeta = {
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
+  category: string;
 };
 
 export type AiTask =
