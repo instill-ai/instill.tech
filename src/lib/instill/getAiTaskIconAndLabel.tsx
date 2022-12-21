@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name, react/no-multi-comp */
 
-import { CvTask, Nullable } from "@/types/instill";
+import { AiTask, Nullable } from "@/types/instill";
 import { ReactElement } from "react";
 import {
   ImageClassificationIcon,
@@ -18,22 +18,22 @@ type IconStyle = {
   position?: string;
 };
 
-export type getCvTaskIconAndLabelProps = {
-  cvTask: CvTask;
+export type getAiTaskIconAndLabelProps = {
+  aiTask: AiTask;
 };
 
-export type getCvTaskIconAndLabelReturn = {
+export type getAiTaskIconAndLabelReturn = {
   label: string;
   icon: Nullable<(iconStyle: IconStyle) => ReactElement>;
 };
 
-export const getCvTaskIconAndLabel = ({
-  cvTask,
-}: getCvTaskIconAndLabelProps): getCvTaskIconAndLabelReturn => {
+export const getAiTaskIconAndLabel = ({
+  aiTask,
+}: getAiTaskIconAndLabelProps): getAiTaskIconAndLabelReturn => {
   let icon: Nullable<(iconStyle: IconStyle) => ReactElement> = null;
   let label = "";
 
-  switch (cvTask) {
+  switch (aiTask) {
     case "ocr":
       icon = (iconStyle: IconStyle) => (
         <OpticalCharacterRecognitionIcon {...iconStyle} />

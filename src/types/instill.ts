@@ -39,7 +39,7 @@ export type TutorialMeta = {
   lang: string;
   draft: boolean;
   description: string;
-  cvTask: CvTask;
+  aiTask: AiTask;
   sourceConnector: string;
   destinationConnector: string;
   commit: CommitMeta;
@@ -72,7 +72,7 @@ export type BlogMeta = {
   authorGitHubUrl: string;
 };
 
-export type CvTask =
+export type AiTask =
   | "objectDetection"
   | "ocr"
   | "imageClassification"

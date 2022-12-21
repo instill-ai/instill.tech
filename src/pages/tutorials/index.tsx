@@ -42,24 +42,24 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
     []
   );
   const [filters, setFilters] = useState<TutorialFiltersProps["filters"]>({
-    cvTask: "All",
+    aiTask: "All",
     connector: "All",
     useCase: "All",
   });
 
   // We don't need to complicate thing at this stage, once
-  // we have many conditinon to filter we can find a lib to
+  // we have many condition to filter we can find a lib to
   // handle it for us.
 
   const filteredTutorials = useMemo(() => {
-    const filterCvTask = (
+    const filterAiTask = (
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.cvTask === "All") {
+      if (filters.aiTask === "All") {
         return true;
       } else {
-        return item.cvTask === filters.cvTask ? true : false;
+        return item.aiTask === filters.aiTask ? true : false;
       }
     };
 
@@ -92,7 +92,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       }
     };
 
-    let filteredTutorials = tutorials.filter((e) => filterCvTask(e, filters));
+    let filteredTutorials = tutorials.filter((e) => filterAiTask(e, filters));
     filteredTutorials = filteredTutorials.filter((e) =>
       filterUseCase(e, filters)
     );

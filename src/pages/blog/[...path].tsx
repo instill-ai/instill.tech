@@ -13,7 +13,7 @@ import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
-import { getCvTaskIconAndLabel } from "@/lib/instill";
+import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
@@ -124,8 +124,8 @@ type GetLayOutProps = {
 const BlogPage: FC<BlogPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ mdxSource, commitMeta, headers, blogs }) => {
-  const { icon, label } = getCvTaskIconAndLabel({
-    cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
+  const { icon, label } = getAiTaskIconAndLabel({
+    aiTask: mdxSource.frontmatter?.aiTask as TutorialMeta["aiTask"],
   });
 
   const [articleContainerRef, articleContainerDimension] =
