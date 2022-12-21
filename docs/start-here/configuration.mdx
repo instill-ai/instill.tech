@@ -2,7 +2,7 @@
 title: "Configuration"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to set up the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
 VDP automatically load a [`.env`](https://github.com/instill-ai/vdp/blob/main/.env) file that contains key/value pairs defining required environment variables.
@@ -90,7 +90,7 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
   - number of Models that have at least one _online_ Model Instance or have no _online_ Model Instances
   - number of _online_ and _offline_ Model Instances
   - array of `ModelDefinition` of the Models
-  - array of CV Tasks of the Model Instances
+  - array of AI tasks of the Model Instances
   - number of processed images for testing models
 - [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L132-L151) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User

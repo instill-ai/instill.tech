@@ -2,7 +2,7 @@
 title: "Add a model card"
 lang: "en-US"
 draft: false
-description: "Learn about how to add a model card for the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to add a model card for the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
 ## Model card
@@ -38,7 +38,7 @@ Start with three `---` at the top, then include all the metadata and close the s
 
 ```yaml README.md
 ---
-Task: "any VDP supported CV Task valid identifier"
+Task: "any VDP supported AI task identifier"
 Tags:
   - tag1
   - tag2
@@ -46,16 +46,16 @@ Tags:
 ---
 ```
 
-### Specify a CV Task
+### Specify an AI task
 
 :::info{type=tip}
-Technically, you can assign different CV Task to model instances of the same model.
-However, this is strongly discouraged. Model instances of a model should be designed to solve the same CV Task.
+Technically, you can assign different AI task to model instances of the same model.
+However, this is strongly discouraged. Model instances of a model should be designed to solve the same task.
 :::
 
-When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the CV Task requirements.
-If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised CV Task format whenever using the model.
-Please check the [supported standarised CV Tasks](/docs/core-concepts/cv-task) and the corresponding output format for each task.
+When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
+If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised AI task format whenever using the model.
+Please check the [supported standarised AI tasks](/docs/core-concepts/ai-task) and the corresponding output format for each task.
 
 <CH.Code>
 
@@ -73,15 +73,15 @@ Task: Keypoint
 
 </CH.Code>
 
-If not specified, the model will be recognised with `Unspecified` CV Task,
-and the raw model output will be wrapped in a [standard format](/docs/core-concepts/cv-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
+If not specified, the model will be recognised with `Unspecified` AI task,
+and the raw model output will be wrapped in a [standard format](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
 
-**❓ How to know if the CV Task metadata is correctly recognised?**
+**❓ How to know if the AI task metadata is correctly recognised?**
 
-If you include valid CV Task metadata, they will show on the Model page of the Console like this:
+If you include valid AI task metadata, they will show on the Model page of the Console like this:
 
 <ZoomableImg
-  src="/docs-assets/prepare-models/console-model-cv-task-label.png"
-  alt="Model CV Task label in VDP Console"
+  src="/docs-assets/prepare-models/console-model-ai-task-label.png"
+  alt="Model AI task label in VDP Console"
   width="500px"
 />

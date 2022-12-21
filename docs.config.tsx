@@ -57,7 +57,7 @@ const SIDEBAR: Sidebar = {
           { text: "Pipeline", link: "/docs/core-concepts/pipeline" },
           { text: "Connector", link: "/docs/core-concepts/connector" },
           { text: "Model", link: "/docs/core-concepts/model" },
-          { text: "CV Task", link: "/docs/core-concepts/cv-task" },
+          { text: "AI task", link: "/docs/core-concepts/ai-task" },
         ],
       },
       {

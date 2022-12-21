@@ -2,10 +2,10 @@
 title: "Model"
 lang: "en-US"
 draft: false
-description: "One-click import and deploy ML models with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "One-click import and deploy ML models with the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-A **Model** component is an algorithm run on unstructured visual data to solve a certain [CV Task](cv-task).
+A **Model** component is an algorithm run on unstructured data to solve a certain [AI task](ai-task).
 
 VDP uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
 Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
@@ -29,7 +29,7 @@ As you use VDP to import your model, different versions of your model are also i
 In this case, you can keep a single history of your models and the original versioning serves as the single source of truth.
 
 Throughout the documentation, we use the two terms _model_ and _model instance_ interchangeably.
-For example, when we say that **Model** is the core component of data pipeline to convert the unstructured visual data to structured insights, what actually happens underneath is the model instances being used to construct a data pipeline.
+For example, when we say that **Model** is the core component of data pipeline to convert the unstructured data to structured insights, what actually happens underneath is the model instances being used to construct a data pipeline.
 
 A VDP pipeline can have multiple model instances. The examples below showcase pipeline recipes that incorporate single or multiple model instances.
 

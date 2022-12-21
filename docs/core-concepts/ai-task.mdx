@@ -1,23 +1,22 @@
 ---
-title: "CV Task"
+title: "AI task"
 lang: "en-US"
 draft: false
-description: "Standardise structured outputs for computer vision tasks the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Standardise structured outputs for AI tasks the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-Computer Vision (CV) Tasks, a.k.a Vision Tasks, focus on analysing and understanding the content of visual data in the same way as human visual system does. The goal is to make a computer/device provide description for the data as complete and accurate as possible.
-Some classic CV Tasks include image classification, object detection, image segmentation and keypoint detection. These primitive tasks are the foundation for building many real-world industrial vision applications.
+The goal of VDP is to streamline the end-to-end unstructured data flow, with the _transform_ component being able to flexibly import AI models to process unstructured data for a specific task for Vision, Language and more.
 
-Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to learn about how to prepare your models for CV Tasks supported by VDP.
+Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to learn about how to prepare your models for AI tasks supported by VDP.
 
-## Standardise CV Tasks
+## Standardise AI tasks
 
-In a data pipeline, model is the core component designed to solve a specific CV Task. By standardising the data format of model outputs into CV Tasks,
+In a data pipeline, model is the core component designed to solve a specific AI task. By standardising the data format of model outputs into AI tasks,
 
-- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same CV Task;
+- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task;
 - VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
 
-At the moment, VDP defines the data interface for popular CV Tasks:
+At the moment, VDP defines the data interface for popular tasks:
 
 - _Image classification_ - classify images into predefined categories
 - _Object detection_ - detect and localise multiple objects in images
@@ -26,19 +25,22 @@ At the moment, VDP defines the data interface for popular CV Tasks:
 - _Instance segmentation_ - detect, localise and delineate multiple objects in images
 - The list is growing ... 🌱
 
-Each CV Task is described in depth in the respective section below.
+The above tasks focus on analysing and understanding the content of data in the same way as human does.
+The goal is to make a computer/device provide description for the data as complete and accurate as possible.
+These primitive tasks are the foundation for building many real-world industrial AI applications.
+Each task is described in depth in the respective section below.
 
-If you'd like to **ask for a new model definition**, you can create a topic in [Discussions](https://github.com/instill-ai/vdp/discussions), or request it in the **#vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
+If you'd like to **support for a new task**, you can create a topic in [Discussions](https://github.com/instill-ai/vdp/discussions), or request it in the **#vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
 
 ## How to standardise
 
 ### Standardise via Protocol Buffers
 
-Currently, the model output is converted to standard format based on the CV Task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
+Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
 
 ### Standardise via VDP Protocol
 
-The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of CV Task output in order to standardise an ETL pipeline for visual data.
+The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of AI task output in order to standardise an ETL pipeline for unstructured data.
 The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
 
 ```yaml
@@ -82,17 +84,17 @@ properties:
     "$ref": "#/definitions/Unspecified"
 ```
 
-To be more specific, the above protocol defines the CV Task output for one input image in a batch produced by the corresponding model instance.
+To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model instance.
 
 The protocol is still under development. Stay tuned on how the protocol will evolve.
 
 ## Image classification
 
-Image classification is a CV Task to assign a single pre-defined category label to an entire input image.
+Image classification is a Vision task to assign a single pre-defined category label to an entire input image.
 Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/cv-task-classification.svg"
+  src="/docs-assets/core-concepts/ai-task-classification.svg"
   alt="Image classification task"
 />
 
@@ -107,11 +109,11 @@ Generally, an image classification model takes an image as the input, and output
 
 ## Object detection
 
-Object detection is a CV Task to localise multiple objects of pre-defined categories in an input image.
+Object detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
 Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/cv-task-detection.svg"
+  src="/docs-assets/core-concepts/ai-task-detection.svg"
   alt="Object detection task"
 />
 
@@ -137,11 +139,11 @@ Generally, an object detection model receives an image as the input, and outputs
 
 ## Keypoint detection
 
-Keypoint detection task is a CV Task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
+Keypoint detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
 Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/cv-task-keypoint.svg"
+  src="/docs-assets/core-concepts/ai-task-keypoint.svg"
   alt="Keypoint detection task"
 />
 
@@ -179,13 +181,13 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 
 ## Optical Character Recognition (OCR)
 
-OCR is a CV Task to localise and recognise text in an input image.
+OCR is a Vision task to localise and recognise text in an input image.
 The task can be done in two steps by multiple models:
 a text detection model to detect bounding boxes containing text and
 a text recognition model to process typed or handwritten text within each bounding box into machine readable text.
 Alternatively, there are deep learning models that can accomplish the task in one single step.
 
-<ZoomableImg src="/docs-assets/core-concepts/cv-task-ocr.svg" alt="OCR task" />
+<ZoomableImg src="/docs-assets/core-concepts/ai-task-ocr.svg" alt="OCR task" />
 
 ```json
 {
@@ -218,12 +220,12 @@ Alternatively, there are deep learning models that can accomplish the task in on
 
 ## Instance Segmentation
 
-Instance segmentation is a CV Task to detect and delineate multiple objects of pre-defined categories in an input image.
+Instance segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
 Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
 with bounding boxes, category labels and confidence scores on detected objects.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/cv-task-instance-segmentation.svg"
+  src="/docs-assets/core-concepts/ai-task-instance-segmentation.svg"
   alt="Instance segmentation task"
 />
 
@@ -233,7 +235,7 @@ It divides a binary mask (must in colume-major order) into a series of piecewise
 
 <div align="center">
   <ZoomableImg
-    src="/docs-assets/core-concepts/cv-task-mask-rle.svg"
+    src="/docs-assets/core-concepts/ai-task-mask-rle.svg"
     alt="Examples of encoding masks into RLEs and decoding masks encoded via RLEs"
     width="320px"
   />
@@ -278,15 +280,15 @@ Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vd
 
 ## What if my task is not standardised by VDP yet?
 
-VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported CV Tasks.
-The model will be classified as an `Unspecified` CV Task. Send an image to the model as the input,
+VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
+The model will be classified as an `Unspecified` task. Send an image to the model as the input,
 VDP will
 
 - check the `config.pbtxt` [model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) file to extract the output names, datatypes and shapes of the model outputs,
 - and wrap these information along with the raw model output in a _standard_ format.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/cv-task-unspecified.svg"
+  src="/docs-assets/core-concepts/ai-task-unspecified.svg"
   alt="Unspecified task"
 />
 
