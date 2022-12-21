@@ -222,21 +222,24 @@ Instance segmentation is a CV Task to detect and delineate multiple objects of p
 Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
 with bounding boxes, category labels and confidence scores on detected objects.
 
-![Instance Segmentation task](/docs-assets/core-concepts/cv-task-instance-segmentation.svg)
+<ZoomableImg
+  src="/docs-assets/core-concepts/cv-task-instance-segmentation.svg"
+  alt="Instance segmentation task"
+/>
 
 Run-length encoding (RLE) is an efficient form to store binary masks. It is commonly used to encode the location of foreground objects in segmentation.
-We adopt [the uncompressed RLE definition used in COCO dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
+We adopt [the uncompressed RLE definition used in the COCO dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
 It divides a binary mask (must in colume-major order) into a series of piecewise constant regions and for each piece simply stores the length of that piece.
 
-<p align="center">
-  <img
+<div align="center">
+  <ZoomableImg
     src="/docs-assets/core-concepts/cv-task-mask-rle.svg"
     alt="Examples of encoding masks into RLEs and decoding masks encoded via RLEs"
-    width="320"
+    width="320px"
   />
-  Examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note
-  that the odd counts in the RLEs are always the numbers of zeros.
-</p>
+</div>
+
+The above image shows examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of zeros.
 
 :::info{type=info}
 Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vdp/blob/30357c0581ecdbb5e74584906cdc547587ca3af7/examples/streamlit/stomata/utils.py#L81-L101) and [decode masks encoded via RLEs](https://github.com/instill-ai/vdp/blob/30357c0581ecdbb5e74584906cdc547587ca3af7/examples/streamlit/stomata/utils.py#L103-L121).
@@ -273,7 +276,7 @@ Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vd
 }
 ```
 
-## What if my task is not standardised by by VDP yet?
+## What if my task is not standardised by VDP yet?
 
 VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported CV Tasks.
 The model will be classified as an `Unspecified` CV Task. Send an image to the model as the input,

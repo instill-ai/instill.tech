@@ -26,7 +26,7 @@ A `recipe` describes a pipeline resource consisting of:
 - `model_instances` - a number of deployed Vision AI models to process the ingested visual data in parallel to generate structured outputs
 - `destination` - where to send the structured outputs
 
-Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `FETCH` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
+Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
 
 ## Mode
 
@@ -74,13 +74,13 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 }
 ```
 
-### `FETCH` mode (coming soon!)
+### `PULL` mode (coming soon!)
 
-A pipeline in the `FETCH` mode performs scheduled workload to regularly fetch data from the **Source** to send to **Model** for inference and write to destination in the end.
+A pipeline in the `PULL` mode performs scheduled workload to regularly pull data from the **Source** to send to **Model** for inference and write to destination in the end.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/fetch.svg"
-  alt="FETCH pipeline mode"
+  src="/docs-assets/core-concepts/pull.svg"
+  alt="Pipeline PULL mode"
 />
 
 ## State
