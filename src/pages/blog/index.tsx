@@ -66,7 +66,10 @@ const BlogIndexPage: FC<BlogIndexPageProps> & {
           setSearchResult={setSearchedBlogArticles}
           marginBottom="mb-10 xl:mb-[120px]"
         />
-        <BlogArticleList articles={searchedBlogArticles} />
+        <BlogArticleList
+          articles={searchedBlogArticles}
+          marginBottom="mb-10 xl:mb-[120px]"
+        />
       </ContentContainer>
     </>
   );
