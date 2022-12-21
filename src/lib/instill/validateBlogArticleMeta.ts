@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { BlogArticleMeta } from "@/types/instill";
+import { BlogCategories } from "../../../content.config";
 
 type PartialBlogArticleMeta = Omit<BlogArticleMeta, "commit" | "slug">;
 
@@ -108,6 +109,14 @@ export const validateBlogArticleMeta = (
   if (!Object.prototype.hasOwnProperty.call(data, "category")) {
     throw new Error(
       `Error occured when validate blog article meta - missing category field at ${path}`
+    );
+  }
+
+  if (!BlogCategories.includes(data.category)) {
+    throw new Error(
+      `Error occured when validate blog article meta - wrong category at ${path}, expect ${BlogCategories.join(
+        ", "
+      )}. Found ${data.placeholderColor}`
     );
   }
 

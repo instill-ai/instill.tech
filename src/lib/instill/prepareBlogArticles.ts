@@ -10,7 +10,7 @@ import { validateBlogArticleMeta } from "./validateBlogArticleMeta";
 export const prepareBlogArticles = async (): Promise<BlogArticleMeta[]> => {
   try {
     // Glob all articles of blog and construct full absolute paths
-    const blogArticleDir = join(process.cwd(), "tutorials");
+    const blogArticleDir = join(process.cwd(), "blog");
     const blogArticleRelativePaths = glob.sync("**/*.mdx", {
       cwd: blogArticleDir,
     });
@@ -21,7 +21,7 @@ export const prepareBlogArticles = async (): Promise<BlogArticleMeta[]> => {
     for (const path of blogArticleRelativePaths) {
       blogArticlePaths.push({
         relative: path,
-        absolute: join(process.cwd(), "tutorials", path),
+        absolute: join(process.cwd(), "blog", path),
       });
     }
 
