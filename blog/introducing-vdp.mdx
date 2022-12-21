@@ -1,0 +1,68 @@
+---
+title: "Introducing VDP: open-source unstructured data ETL"
+lang: "en-US"
+draft: false
+description: "Versatile Data Pipeline (VDP) is the single point of unstructured data integration, where users can sync unstructured data from anywhere into centralised warehouses or applications, just like how the modern data stack handles structured data."
+slug: "introducing-vdp"
+publishedOn: "2022-08-23T18:40:00"
+themeImgSrc: "/blog-assets/introducing-vdp/Overview_with_bg.png"
+themeImgAlt: "Introducing VDP: a general and modularised ETL infrastructure for unstructured data"
+themeImgThumbnailSrc: "/blog-assets/introducing-vdp/Overview_with_bg.png"
+placeholderColor: "bg-instillYellow50"
+author: "Xiaofei Du"
+authorAvatarSrc: "/author-avatar/xiaofei-du.png"
+authorGitHubUrl: "https://github.com/xiaofei-du"
+category: "Product Updates"
+---
+
+<div class="mx-auto">
+  🎉 Check out Versatile Data Pipeline (VDP) on
+  [GitHub](http://go.instill.tech/4em2l4)
+</div>
+
+## What is VDP
+
+A few months ago, we introduced [unstructured data ETL, the missing piece in modern data stack](https://blog.instill.tech/unstructured-data-etl/?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp).
+
+When people say they are data-driven, most of the time it means they are driven by structured data. Although [80% of the world's data are unstructured](https://www.analyticsinsight.net/the-future-of-data-revolution-will-be-unstructured-data/), the reality is that unstructured data are more difficult to analyse and not a lot of companies know or have the resources to deal with them. [We can help with this](https://blog.instill.tech/why-instill-ai-exists/?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp). Specifically, we have built [Versatile Data Pipeline (VDP)](http://go.instill.tech/4em2l4), **a general and modularised ETL infrastructure for unstructured data**, to effectively tackle the problem.
+
+VDP streamlines the end-to-end unstructured data processing pipeline:
+
+- Extract unstructured data from pre-built data sources such as cloud/on-prem storage, or IoT devices
+- Transform it into analysable or meaningful data representations by AI models imported from various ML platforms
+- Load the transformed data into warehouses, applications, or other destinations
+
+_We believe VDP is the future for unstructured data ETL, where developers won't need to build their own data connectors, high-maintenance model serving platform or ELT pipeline automation tool._
+
+Our mission is to make VDP the single point of unstructured data integration, so users can sync unstructured data from anywhere into centralised warehouses or applications and focus on gaining insights across all data sources, just like how the modern data stack handles structured data. Check out [highlights](https://www.instill.tech/docs/start-here/getting-started?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp) and [core concepts](https://www.instill.tech/docs/core-concepts/overview?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp) if you want to learn more about how VDP works.
+
+To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). Click here to [get started](https://www.instill.tech/docs/start-here/getting-started?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp).
+
+If you want to chat about VDP or share your use cases, come and hang out with us in our [Discord community](http://go.instill.tech/4ey9lz).
+
+## What is VDP not?
+
+Many brilliant MLOps platforms/tools providing AI solutions have emerged in the last few years. Most of the tools are built from a **model-centric** perspective and fall into the following categories:
+
+- General ML platforms for model training, experiment tracking, model deployment, etc.
+- Platforms that serve a specific vertical, such as E-commerce, and manufacturing.
+- Platforms that focus on a single component of MLOps, such as data labelling, dataset preparation, and model serving.
+
+VDP is built from a **data-driven** perspective. Although the AI model is the most critical component in an unstructured data ETL pipeline, the ultimate goal of VDP is to streamline the end-to-end unstructured data flow, with the transform component being able to flexibly import AI models from different sources. Please see the detailed [FAQ](https://www.instill.tech/docs/start-here/faq?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp) page.
+
+## Open-source and cloud versions
+
+VDP is in Alpha and under active and heavy development. Check out our open [roadmap](https://www.instill.tech/docs/start-here/roadmap?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp). If you have any questions or feature requests, open a topic in the VDP [Discussions](https://github.com/instill-ai/vdp/discussions) or hop into our [Discord](http://go.instill.tech/4ey9lz) to get help from an active and friendly community!
+
+Our team is working hard to build out a fully-managed cloud product for VDP.
+
+- Painless setup
+- Maintenance-free infrastructure
+- Start for free, pay as you grow
+
+Interested in trying it out? Join the waitlist today and we'll keep you posted on the progress!
+
+<CtaButton
+  text="🚀 Join the Instill Cloud waitlist"
+  link="https://www.instill.tech/get-access/?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp"
+/>
