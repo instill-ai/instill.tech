@@ -3,7 +3,7 @@ title: "Build a Cow Counter dashboard using VDP, Postgres and Metabase"
 lang: "en-US"
 draft: false
 description: "In this tutorial, we showcase how to build an object detection ETL pipeline using VDP and create a Cow Counter dashboard with Metabase to provide farm cattle insights."
-cvTask: "objectDetection"
+aiTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "PostgreSQL"
 publishedOn: "2022-09-22T14:26:00"
@@ -18,7 +18,7 @@ authorGitHubUrl: "https://github.com/xiaofei-du"
 
 ## Herd cattle with drones?
 
-In the recent documentary series Clarkson's Farm (2021), Jeremy Clarkson took us on his journey and showed us how he herded sheep with a barking drone successfully - or maybe not 🤣.
+In the recent documentary series _Clarkson's Farm (2021)_, Jeremy Clarkson took us on his journey and showed us how he herded sheep with a barking drone successfully - or maybe not 🤣.
 
 <Tweet tweetId="1400027716573872128" />
 
@@ -47,7 +47,7 @@ Where there are discrepancies between tutorial and video, please follow the tuto
 
 ## Build an object detection ETL data pipeline
 
-In the [Build a shareable object detection application with VDP and Streamlit](http://go.instill.tech/4grxn9) tutorial, we built a SYNC object detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an object detection pipeline but in ASYNC mode. Unlike a SYNC pipeline, this pipeline
+In the [Build a shareable object detection application with VDP and Streamlit](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` object detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an object detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
 
 - accepts HTTP requests with image payload,
 - transforms the images in the payload into structured insights, and
@@ -66,12 +66,10 @@ Once all the services are up, go to the Console at http://localhost:3000.
 
 ### Build an ASYNC data pipeline with YOLOv7
 
-After onboarding, you will be redirected to the Pipeline page. Please follow the steps of [Build an ASYNC detection pipeline](http://go.instill.tech/4gyqg4).
+After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [Build an ASYNC detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 1. add a HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
-
-   ,
+2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`,
 3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add a PostgreSQL destination, with ID `postgres-db`,
 5. set up a pipeline with ID `detection`.
@@ -105,7 +103,7 @@ After onboarding, you will be redirected to the Pipeline page. Please follow the
   ]}
 />
 
-Alternatively, you could refer to the [low-code example](http://go.instill.tech/4gve72) to build this pipeline programmatically via REST API.
+Alternatively, you could refer to the [low-code example](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter#build-via-low-code) to build this pipeline programmatically via REST API.
 
 Now you should see the pipeline `detection` in the Console.
 
@@ -118,7 +116,7 @@ Now you should see the pipeline `detection` in the Console.
 
 #### Create a virtual environment and install dependencies
 
-We'll use Conda as the package management system like we did it in the last [tutorial](https://blog.instill.tech/vdp-streamlit-yolov7/?utm_source=blog&utm_medium=link&utm_campaign=cow-counter).
+We'll use Conda as the package management system like we did it in the last [tutorial](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 First, create and activate an environment named `vdp-dashboard` with Python 3.8:
 
@@ -127,7 +125,7 @@ conda create --name vdp-streamlit python=3.8
 conda activate vdp-dashboard
 ```
 
-Then, go to `/examples/async/yolov7` directory of the VDP project to install all dependencies.
+Then, go to [/examples/async/yolov7](http://go.instill.tech/4gz2am) directory of the VDP project to install all dependencies.
 
 ```bash
 cd examples/async/yolov7
@@ -159,7 +157,7 @@ First, the script will download a 1-minute drone video of a cattle farm `cows_do
 <Gist id="3617e049a20510117096d0ca6ee12989" />
 
 :::info{type=info}
-The video used in the demo is sampled from a public video cows `dornick.mp4` from [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YFDJRO).
+The video used in the demo is sampled from a public video `cows dornick.mp4` from [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YFDJRO).
 :::
 
 <Youtube id="bIQF2O3Z_xU" />
@@ -211,7 +209,7 @@ During onboarding, add your PostgreSQL database.
   alt="Add your PostgreSQL database during Metabase onboarding"
 />
 
-Then, click Browse data on the left sidebar, choose vdp-postgres ➝ Airbyte Raw Vdp:
+Then, click **Browse data** on the left sidebar, choose **vdp-postgres ➝ Airbyte Raw Vdp**:
 
 <ZoomableImg
   src="/tutorial-assets/vdp-cow-counter/browse-data.png"
@@ -263,7 +261,7 @@ However, if you want to improve the performance, as you can spot that some cows 
   alt="Cows were wrong detected as dogs on some frames. This can be improved by fine-tuning the model on more drone data from the same domain."
 />
 
-We are working closely with our early users to deploy customised models for their use cases. If you're interested, please fill out the [form](http://go.instill.tech/4ghdwp) to tell us about yourself and your project, we will be in touch 👐.
+We are working closely with our early users to deploy customised models for their use cases. If you're interested, please fill out the [form](https://www.instill.tech/get-access?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) to tell us about yourself and your project, we will be in touch 👐.
 
 ## Conclusion
 
@@ -277,7 +275,7 @@ If you enjoyed VDP, we're building a fully managed service for VDP - **Instill C
 
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=blog&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 
 We also invite you to join our [Discord community](http://go.instill.tech/4fajhm) to share your use cases and showcase your work with Data/AI practitioners.
