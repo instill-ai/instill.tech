@@ -202,3 +202,12 @@ export const docsConfig = {
   nav: NAV,
   sidebar: SIDEBAR,
 };
+
+export const BlogCategories = [
+  "Home",
+  "Insights",
+  "Our Story",
+  "Product Updates",
+] as const;
+
+export type BlogCategory = typeof BlogCategories[number];
