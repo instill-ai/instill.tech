@@ -11,7 +11,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig } from "../../../docs.config";
+import { docsConfig } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
