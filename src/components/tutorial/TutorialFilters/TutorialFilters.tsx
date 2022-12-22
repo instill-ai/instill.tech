@@ -3,15 +3,15 @@ import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { FilterIcon, XIcon } from "@instill-ai/design-system";
 
 import { SingleSelectCheckboxProps } from "@/components/ui";
-import { getCvTaskIconAndLabel } from "@/lib/instill";
-import { CvTask, TutorialMeta } from "@/types/instill";
+import { getAiTaskIconAndLabel } from "@/lib/instill";
+import { AiTask, TutorialMeta } from "@/types/instill";
 import { TutorialLabel } from "../TutorialLabel";
 import { TutorialFilter } from "./TutorialFilter";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { getCvTaskIconAndLabelReturn } from "@/lib/instill/getCvTaskIconAndLabel";
+import { getAiTaskIconAndLabelReturn } from "@/lib/instill/getAiTaskIconAndLabel";
 
 type Filters = {
-  cvTask: CvTask | "All";
+  aiTask: AiTask | "All";
   connector: string;
   useCase: string;
 };
@@ -82,18 +82,18 @@ export const TutorialFilters = ({
     return options;
   }, [tutorials]);
 
-  const cvTaskFilterLabel = useMemo<{
-    icon: getCvTaskIconAndLabelReturn["icon"];
+  const aiTaskFilterLabel = useMemo<{
+    icon: getAiTaskIconAndLabelReturn["icon"];
     label: string;
   }>(() => {
-    if (filters.cvTask === "All") {
+    if (filters.aiTask === "All") {
       return {
         icon: null,
         label: "All",
       };
     } else {
-      return getCvTaskIconAndLabel({
-        cvTask: filters.cvTask,
+      return getAiTaskIconAndLabel({
+        aiTask: filters.aiTask,
       });
     }
   }, [filters]);
@@ -141,13 +141,13 @@ export const TutorialFilters = ({
           />
         </div>
         <TutorialFilter
-          id="cvTask"
-          title="CV Task"
-          value={filters.cvTask || ""}
+          id="aiTask"
+          title="AI task"
+          value={filters.aiTask || ""}
           setValue={(value) =>
             setFilters((prev) => ({
               ...prev,
-              cvTask: value as Filters["cvTask"],
+              aiTask: value as Filters["aiTask"],
             }))
           }
           options={[
@@ -215,11 +215,11 @@ export const TutorialFilters = ({
         </div>
         <div className="flex flex-col gap-y-2.5">
           <div className="flex flex-row gap-x-5">
-            <p className="font-sans text-base font-medium">CV task:</p>
+            <p className="font-sans text-base font-medium">AI task:</p>
             <TutorialLabel
               icon={
-                cvTaskFilterLabel.icon
-                  ? cvTaskFilterLabel.icon({
+                aiTaskFilterLabel.icon
+                  ? aiTaskFilterLabel.icon({
                       color: "fill-instillGrey80",
                       width: "w-5",
                       height: "h-5",
@@ -227,7 +227,7 @@ export const TutorialFilters = ({
                     })
                   : undefined
               }
-              label={cvTaskFilterLabel.label}
+              label={aiTaskFilterLabel.label}
               labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
               labelBgColor="bg-instillGrey05"
               labelPadding="py-1 px-2"

@@ -1,5 +1,5 @@
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { getCvTaskIconAndLabel } from "@/lib/instill";
+import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
@@ -12,8 +12,8 @@ export type TutorialBlockProps = {
 };
 
 export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
-  const { icon, label } = getCvTaskIconAndLabel({
-    cvTask: tutorial.cvTask,
+  const { icon, label } = getAiTaskIconAndLabel({
+    aiTask: tutorial.aiTask,
   });
   const [themeImageThumbnailIsError, setThemeImageThumbnailIsError] =
     useState(false);
