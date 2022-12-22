@@ -10,8 +10,4 @@ export { TutorialSearch } from "./TutorialSearch";
 export type { TutorialSearchProps } from "./TutorialSearch";
 export { TutorialPipelineLabel } from "./TutorialPipelineLabel";
 export type { TutorialPipelineLabelProps } from "./TutorialPipelineLabel";
-export { TutorialTableOfContent } from "./TutorialTableOfContent";
-export type { TutorialTableOfContentProps } from "./TutorialTableOfContent";
-export { TutorialSimilarUseCases } from "./TutorialSimilarUseCases";
-export type { TutorialSimilarUseCasesProps } from "./TutorialSimilarUseCases";
 export { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
