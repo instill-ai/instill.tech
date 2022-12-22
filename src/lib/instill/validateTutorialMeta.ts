@@ -56,7 +56,7 @@ export const validateTutorialMeta = (
 
   if (!supportAiTasks.includes(data.aiTask)) {
     throw new Error(
-      `Error occurred when validate tutorial meta - wrong cvTask at ${path}, expect ${supportCvTasks.join(
+      `Error occurred when validate tutorial meta - wrong cvTask at ${path}, expect ${supportAiTasks.join(
         ", "
       )}. Found ${data.aiTask}`
     );
