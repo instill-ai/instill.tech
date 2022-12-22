@@ -10,7 +10,7 @@ export const TutorialHero = ({ marginBottom }: TutorialHeroProps) => {
       headline="EXPLORE INNOVATIVE USE CASES FOR UNSTRUCTURED DATA ETL"
       subHeadline={
         <p>
-          VDP streamlines the end-to-end unstructured data processing to empower
+          VDP streamlines end-to-end unstructured data processing to empower
           your team and solve your business problems.
         </p>
       }

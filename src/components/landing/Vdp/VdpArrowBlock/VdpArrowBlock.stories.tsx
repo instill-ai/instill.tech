@@ -17,7 +17,7 @@ export const Playground: ComponentStory<typeof VdpArrowBlock> = Template.bind(
 
 Playground.args = {
   title: "Extract",
-  description: "Extract unstructured visual data from pre-built data sources",
+  description: "Extract unstructured data from pre-built data sources",
   icon: (
     <Image
       src="/images/vdp-flow-source.svg"

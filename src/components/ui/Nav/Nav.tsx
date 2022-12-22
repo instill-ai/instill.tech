@@ -81,7 +81,7 @@ export const Nav = () => {
               rel="noreferrer noopener"
               href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
             >
-              Introducing VDP: open-source visual data ETL
+              Introducing VDP: open-source unstructured data ETL
             </a>
           </p>
         </AnnouncementBar>

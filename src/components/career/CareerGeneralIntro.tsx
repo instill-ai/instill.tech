@@ -40,9 +40,9 @@ export const CareerGeneralIntro = ({
           with a fast-growing startup at zero to one stage. It is also a
           position for those who value learning for the long term above earning
           in the short term. Your colleagues are a bunch of super self-motivated
-          Vision AI missionaries and data tooling practitioners. You will impact
-          the company direction and help Instill AI build its strong foundation
-          and shape its open-source community.
+          AI missionaries and data tooling practitioners. You will impact the
+          company direction and help Instill AI build its strong foundation and
+          shape its open-source community.
         </p>
       </div>
     </div>

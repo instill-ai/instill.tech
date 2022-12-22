@@ -59,7 +59,7 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
     >
       <VdpArrowBlock
         title="Extract"
-        description="Extract unstructured visual data from pre-built data sources"
+        description="Extract unstructured data from pre-built data sources"
         icon={
           <Image
             src="/images/vdp-flow-source.svg"
@@ -76,7 +76,7 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
       />
       <VdpArrowBlock
         title="Transform"
-        description="Transform it into structured insights by Vision AI models"
+        description="Transform it into meaningful data representations by AI"
         icon={
           <Image
             src="/images/vdp-flow-kernel.svg"

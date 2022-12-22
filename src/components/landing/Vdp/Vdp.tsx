@@ -23,12 +23,12 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
       >
         <div className="mb-10 flex flex-col" ref={ref}>
           <SectionLabel
-            text="Visual data preperation"
+            text="Versatile data pipeline"
             position="mr-auto"
             marginBottom="mb-2.5"
           />
           <SectionHeader
-            header="Fastest way to build end-to-end visual data ETL pipelines"
+            header="Fastest way to build end-to-end unstructured data ETL pipelines"
             headerWidth="w-full xl:w-7/12"
             headerTextColor="text-instillGrey90"
             subElement={

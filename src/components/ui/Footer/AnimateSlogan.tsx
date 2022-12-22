@@ -22,9 +22,9 @@ export const AnimateSlogan = () => {
     <>
       <div
         ref={sloganRef}
-        className="instill-footer-animate-slogan h-[100px] w-[300px] font-mono text-2xl font-medium text-instillGrey05"
+        className="instill-footer-animate-slogan h-[70px] w-[350px] font-mono text-2xl font-medium text-instillGrey05"
       >
-        WHERE VISUAL DATA PREPARATION MADE FOR ALL
+        UNSTRUCTURED DATA ETL MADE FOR ALL
       </div>
     </>
   );

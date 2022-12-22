@@ -133,7 +133,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                         key: "mission",
                         keyColor: defaultTextColor,
                         value:
-                          "Make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!",
+                          "Make Al highly accessible to everyone. Join us and make a dent in the universe!",
                         valueColor: "text-[#FFDF3A]",
                         quoteColor: defaultTextColor,
                         colonColor: defaultTextColor,

@@ -6508,16 +6508,16 @@ export const InstillCloud = () => {
         <div className="z-30 flex max-w-[889px] flex-col bg-instillGrey05 p-10 md:mx-auto md:w-10/12">
           <SectionLabel text="instill cloud" position="mr-auto mb-2.5" />
           <SectionHeader
-            header="Visual Data Preparation without Managing Infrastructure"
+            header="Versatile Data Pipeline without Managing Infrastructure"
             headerTextColor="text-instillGrey90"
             headerWidth="w-full"
             marginBottom="mb-4"
           />
           <p className="font-sans text-lg font-normal text-instillGrey70">
-            Instill Cloud provides production-ready visual data preparation
-            services — hustle-free setup and Vision AI model serving with
-            ready-to-use and custom models. We help you save your time and you
-            focus on the core business.
+            Instill Cloud provides production-ready unstructured data ETL
+            services — hustle-free setup and AI model serving with ready-to-use
+            and custom models. We help you save your time and you focus on the
+            core business.
           </p>
         </div>
 

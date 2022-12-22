@@ -16,7 +16,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
     <div ref={containerRef} className={cn("flex flex-col py-20", marginBottom)}>
       <SectionLabel text="No-code interface" position="mr-auto mb-2.5" />
       <SectionHeader
-        header="Unify all your visual data pipelines in one place"
+        header="Unify all your unstructured data pipelines in one place"
         headerWidth="w-full xl:w-7/12"
         headerTextColor="text-instillGrey90"
         marginBottom="mb-10"

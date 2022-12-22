@@ -59,7 +59,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             bgColor="bg-instillSkyBlue"
             link="/docs/core-concepts/pipeline"
             description="An end-to-end workflow that automates a 
-              sequence of sub-components to process visual data."
+              sequence of sub-components to process unstructured data."
           />
         ),
         bgIcon: <PipelineIcon {...bgIconStyle} />,
@@ -75,7 +75,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             bgColor="bg-instillNatureGreen"
             link="/docs/core-concepts/connector#source"
             description="A data connector in charge of ingesting 
-              unstructured visual data into a Pipeline."
+              unstructured data into a Pipeline."
           />
         ),
         bgIcon: <DataSourceIcon {...bgIconStyle} />,
@@ -91,8 +91,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             bgColor="bg-instillLemonYellow50"
             link="docs/core-concepts/model"
             description="An algorithm that runs on unstructured 
-              visual data to solve a certain Computer Vision (CV) 
-              Task."
+              data to solve a certain AI task."
           />
         ),
         bgIcon: <ModelIcon {...bgIconStyle} />,
@@ -108,7 +107,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
             bgColor="bg-instillWarmOrange50"
             link="/docs/core-concepts/connector#destination"
             description="A data connector to load the standarised 
-              CV Task output from Model to the destination."
+              AI task output from model to the destination."
           />
         ),
         bgIcon: <DataDestinationIcon {...bgIconStyle} />,
@@ -132,8 +131,8 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         <p className="mb-10 text-white text-instill-body-normal">
           A VDP pipeline is configured in a declarative style, allowing for
           human-/machine-friendly management. VDP will proactively allocate
-          compute resource to persistently operate the visual data ETL pipeline,
-          abstracting complex infrastructure from the users.
+          compute resource to persistently operate the unstructured data ETL
+          pipeline, abstracting complex infrastructure from the users.
         </p>
         <CommonCtaButton
           text="See documentation"

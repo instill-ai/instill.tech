@@ -46,7 +46,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
             items={[
               {
                 ...accordionHeaderStyle,
-                header: "Is VDP open source",
+                header: "Is VDP open source?",
                 content: (
                   <FaqContent>{`Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).`}</FaqContent>
                 ),
@@ -56,17 +56,17 @@ export const Faq = ({ marginBottom }: FaqProps) => {
                 header: "Why do you build VDP?",
                 content: (
                   <FaqContent>
-                    {`Modern data stack misses unstructured visual data processing.
+                    {`Modern data stack misses unstructured data processing.
 
-It is non-trivial to process unstructured visual data though.
-We used to suffer enough in devising our own deep learning computer vision models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
+It is non-trivial to process unstructured data though.
+We used to suffer enough in devising our own deep learning models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
 All these happened in-house and were non-scalable.
 
-There must be a better way, and **Visual Data Preparation (VDP)** is the answer.
+There must be a better way, and **Versatile Data Pipeline (VDP)** is the answer.
 
-To prevail Vision AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the computer vision models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
+To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
-You can find more detailed narrative in our blog article [Why Instill AI exists](https://blog.instill.tech/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: visual data preparation](https://blog.instill.tech/visual-data-preparation/?utm_source=documentation&utm_medium=link).`}
+You can find more detailed narrative in our blog article [Why Instill AI exists](https://blog.instill.tech/why-instill-ai-exists/?utm_source=product&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](https://blog.instill.tech/unstructured-data-etl/?utm_source=product&utm_medium=link).`}
                   </FaqContent>
                 ),
               },
@@ -76,17 +76,17 @@ You can find more detailed narrative in our blog article [Why Instill AI exists]
                 content: (
                   <FaqContent>
                     {`We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
-We have in-depth experiences in developing and maintaining a Vision AI system.
+We have in-depth experiences in developing and maintaining sophisticated AI systems.
 
-Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate vision tasks using deep learning-based computer vision models, sweating blood to build everything from scratch.
+Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
                   
 We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
-In the end, we had successfully built a battle-proven Vision AI system in-house and have the system run in production for years.
+In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
                   
-What we had built can actually be modularised into working components to benefit a broader spectrum of vision tasks and industry sectors.
-We believe it's time to apply our experiences to make Vision AI more accessible to everyone especially the data industry.
+What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
+We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
                   
-In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../start-here/getting-started#contribution) section.`}
+In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../docs/start-here/getting-started#contribution) section.`}
                   </FaqContent>
                 ),
               },

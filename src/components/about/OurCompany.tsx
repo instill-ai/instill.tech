@@ -28,10 +28,10 @@ export const OurCompany = ({ marginBottom }: OurCompanyProps) => {
       />
       <p className="mb-4 text-instillGrey95 text-instill-body-normal">
         Instill AI, founded in 2020 (June 11th 2020, to be more specific),
-        provides no-/low-code tools to convert unstructured visual data to
-        meaningful structured representations. Users can integrate our service
-        into their data stack, and start tapping into the wealth of their visual
-        data and benefit from Vision AI in a snap.
+        provides no-/low-code tools to convert unstructured data to meaningful
+        data representations. Users can integrate our service into their data
+        stack, and start tapping into the wealth of their unstructured data and
+        benefit from AI in a snap.
       </p>
       <p className="text-instillGrey95 text-instill-body-normal">
         We are a small and ambitious team of passionate engineers/researchers

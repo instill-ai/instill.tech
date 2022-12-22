@@ -16,10 +16,10 @@ export const Playground: ComponentStory<typeof TutorialBlock> = Template.bind(
 
 Playground.args = {
   tutorial: {
-    cvTask: "ocr",
+    aiTask: "ocr",
     title: "Build a SYNC classification pipeline",
     description:
-      "Build a SYNC classification pipeline with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp",
+      "Build a SYNC classification pipeline with the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp",
     sourceConnector: "http",
     destinationConnector: "http",
     lang: "en-US",

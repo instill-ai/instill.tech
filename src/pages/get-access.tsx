@@ -20,7 +20,7 @@ const GetEarlyAccessPage: FC & {
     <>
       <PageHead
         pageTitle="Get early access | Instill AI"
-        pageDescription=" We're now in private alpha. Join and see first-hand how Instill AI can help adopt Vision AI in your company."
+        pageDescription=" We're now in private alpha. Join as a design partner to adopt AI for unstructured data in your company."
         pageType="main"
       />
       <ContentContainer

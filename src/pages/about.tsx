@@ -86,7 +86,7 @@ const AboutPage: FC<AboutPageProps> & {
     <>
       <PageHead
         pageTitle="About us | Instill AI"
-        pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured visual data to meaningful structured representations."
+        pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured data to meaningful data representations."
         pageType="main"
       />
       <ContentContainer

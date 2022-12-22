@@ -8,7 +8,7 @@ export const AboutHero = ({ marginBottom }: AboutHeroProps) => {
   return (
     <PageHero
       marginBottom={marginBottom}
-      headline="Make Vision AI Accessible to Everyone"
+      headline="Make AI Accessible to Everyone"
       headerUppercase={true}
     />
   );
