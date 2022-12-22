@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
 import { FC, ReactElement, useMemo, useState } from "react";
-import { BlogArticleMeta, TutorialMeta } from "@/types/instill";
+import { BlogArticleMeta } from "@/types/instill";
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleList, BlogHero, BlogSearch } from "@/components/blog";
-import { BlogCategoryNav } from "@/components/blog/BlogCategoryNav";
+import { BlogCategoryNav } from "@/components/blog/BlogCategoryNav/BlogCategoryNav";
 import { BlogCategory } from "../../../content.config";
 
 export const getStaticProps: GetStaticProps<BlogIndexPageProps> = async () => {
@@ -50,13 +50,13 @@ const BlogIndexPage: FC<BlogIndexPageProps> & {
   return (
     <>
       <PageHead
-        pageTitle="Tutorial | Instill AI"
+        pageTitle="Blog | Instill AI"
         pageDescription=""
         pageType="main"
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[1127px]"
+        contentMaxWidth="max-w-[960px]"
       >
         <BlogHero marginBottom="mb-10 xl:mb-[120px]" />
         <BlogCategoryNav

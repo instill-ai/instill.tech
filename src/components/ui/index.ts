@@ -74,3 +74,7 @@ export { ArticleThemeImage } from "./ArticleThemeImage";
 export type { ArticleThemeImageProps } from "./ArticleThemeImage";
 export { ArticleImagePlaceholder } from "./ArticleImagePlaceholder";
 export type { ArticleImagePlaceholderProps } from "./ArticleImagePlaceholder";
+export { ArticleRightSidebar } from "./ArticleRightSidebar";
+export type { ArticleRightSidebarProps } from "./ArticleRightSidebar";
+export { ArticleSimilarPosts } from "./ArticleSimilarPosts";
+export type { ArticleSimilarPostsProps } from "./ArticleSimilarPosts";

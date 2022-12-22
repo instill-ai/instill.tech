@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useMemo } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -12,13 +12,14 @@ import { CH } from "@code-hike/mdx/components";
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { Nullable, TutorialMeta } from "@/types/instill";
-import { getAiTaskIconAndLabel } from "@/lib/instill";
+import { BlogArticleMeta, Nullable, TutorialMeta } from "@/types/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
 import {
   ArticlePublishInfo,
+  ArticleRightSidebar,
+  ArticleSimilarPosts,
   ArticleThemeImage,
   BackToPreviousPageLink,
   ContentContainer,
@@ -28,12 +29,15 @@ import {
   PageHead,
   PageHero,
 } from "@/components/ui";
+import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
+import { BlogArticleCard } from "@/components/blog/BlogArticleCard";
 
 type BlogPageProps = {
   mdxSource: MDXRemoteSerializeResult;
   headers: RightSidebarProps["headers"];
-  blogs: TutorialMeta[];
+  articles: BlogArticleMeta[];
   commitMeta: Nullable<CommitMeta>;
+  currentArticleMeta: Nullable<BlogArticleMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -107,12 +111,16 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
     .use(remarkGetHeaders, { headers })
     .process(source);
 
+  // We need all the articles' meta
+  const articles = await prepareBlogArticles();
+
   return {
     props: {
       mdxSource,
       headers,
-      blogs: [],
+      articles,
       commitMeta,
+      currentArticleMeta: articles.find((e) => e.slug === relativePath) || null,
     },
   };
 };
@@ -123,13 +131,19 @@ type GetLayOutProps = {
 
 const BlogPage: FC<BlogPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, blogs }) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: mdxSource.frontmatter?.aiTask as TutorialMeta["aiTask"],
-  });
-
+} = ({ mdxSource, commitMeta, headers, articles, currentArticleMeta }) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
+
+  const similarArticles = useMemo(() => {
+    if (!currentArticleMeta) return [];
+
+    return articles.filter(
+      (e) =>
+        e.category === currentArticleMeta.category &&
+        e.title !== currentArticleMeta.title
+    );
+  }, [articles, currentArticleMeta]);
 
   return (
     <>
@@ -206,6 +220,45 @@ const BlogPage: FC<BlogPageProps> & {
               <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
             </>
           ) : null}
+        </div>
+
+        {/* 
+          The section for Similar use cases
+        */}
+
+        <div>
+          {currentArticleMeta?.category ? (
+            <ArticleSimilarPosts
+              sectionTitle="Similar Posts"
+              similarArticles={similarArticles}
+              getCardElement={(source, key) => {
+                return (
+                  <BlogArticleCard
+                    key={key}
+                    article={source as BlogArticleMeta}
+                  />
+                );
+              }}
+            />
+          ) : null}
+        </div>
+
+        {/* 
+          In current design, we want to make table of content align with the 
+          article container.
+        */}
+
+        <div
+          className="absolute hidden max:block"
+          style={{
+            top: `${articleContainerDimension.y}px`,
+            left: `${
+              articleContainerDimension.x + articleContainerDimension.width + 40
+            }px`,
+            height: articleContainerDimension.height - 100,
+          }}
+        >
+          <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
     </>

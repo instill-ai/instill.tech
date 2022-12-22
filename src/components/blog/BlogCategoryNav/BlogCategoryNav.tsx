@@ -37,7 +37,13 @@ export const BlogCategoryNav = ({
         <BlogSearch articles={articles} setSearchResult={setSearchResult} />
       </div>
     );
-  }, [BlogCategories, articles, setSearchResult]);
+  }, [
+    BlogCategories,
+    articles,
+    setSearchResult,
+    selectedCategory,
+    setSelectedCategory,
+  ]);
 
   const mobileView = useMemo(() => {
     const arrowStyle = {
@@ -78,7 +84,13 @@ export const BlogCategoryNav = ({
         <BlogSearch articles={articles} setSearchResult={setSearchResult} />
       </div>
     );
-  }, [mobileCategoriesIsOpen]);
+  }, [
+    mobileCategoriesIsOpen,
+    selectedCategory,
+    setSelectedCategory,
+    articles,
+    setSearchResult,
+  ]);
 
   return (
     <div className={cn("flex w-full border-y-2 py-4", marginBottom)}>

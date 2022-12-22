@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useMemo } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -19,12 +19,10 @@ import {
   PageBase,
   PageHead,
   PageHero,
+  ArticleRightSidebar,
+  ArticleSimilarPosts,
 } from "@/components/ui";
-import {
-  TutorialPipelineLabel,
-  TutorialSimilarUseCases,
-  TutorialTableOfContent,
-} from "@/components/tutorial";
+import { TutorialPipelineLabel } from "@/components/tutorial";
 
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
@@ -35,12 +33,14 @@ import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
+import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
   headers: RightSidebarProps["headers"];
   tutorials: TutorialMeta[];
   commitMeta: Nullable<CommitMeta>;
+  currentTutorialMeta: Nullable<TutorialMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -124,6 +124,8 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
       headers,
       tutorials,
       commitMeta,
+      currentTutorialMeta:
+        tutorials.find((e) => e.slug === relativePath) || null,
     },
   };
 };
@@ -134,26 +136,34 @@ type GetLayOutProps = {
 
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, tutorials }) => {
+} = ({ mdxSource, commitMeta, headers, tutorials, currentTutorialMeta }) => {
   const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: mdxSource.frontmatter?.aiTask as TutorialMeta["aiTask"],
+    aiTask: currentTutorialMeta?.aiTask || null,
   });
 
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
-  console.log(articleContainerDimension);
+  const similarTutorials = useMemo(() => {
+    if (!currentTutorialMeta) return [];
+
+    return tutorials.filter(
+      (e) =>
+        e.useCase === currentTutorialMeta.useCase &&
+        e.title !== currentTutorialMeta.title
+    );
+  }, [tutorials, currentTutorialMeta]);
 
   return (
     <>
       <PageHead
         pageTitle={
-          mdxSource.frontmatter
-            ? `${mdxSource.frontmatter.title} | Tutorial`
+          currentTutorialMeta
+            ? `${currentTutorialMeta.title} | Tutorial`
             : "Tutorial"
         }
         pageDescription={
-          mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
+          currentTutorialMeta ? currentTutorialMeta.description : ""
         }
         pageType="main"
       />
@@ -169,16 +179,16 @@ const TutorialPage: FC<TutorialPageProps> & {
           <TutorialPipelineLabel
             icon={icon}
             label={label}
-            sourceConnector={mdxSource.frontmatter?.sourceConnector || null}
+            sourceConnector={currentTutorialMeta?.sourceConnector || null}
             destinationConnector={
-              mdxSource.frontmatter?.destinationConnector || null
+              currentTutorialMeta?.destinationConnector || null
             }
             marginBottom="mb-2"
           />
           <PageHero
-            headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
+            headline={currentTutorialMeta ? currentTutorialMeta.title : ""}
             subHeadline={
-              mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
+              currentTutorialMeta ? currentTutorialMeta.description : ""
             }
             headerFontFamily="font-sans"
             marginBottom="mb-3"
@@ -189,22 +199,22 @@ const TutorialPage: FC<TutorialPageProps> & {
             headerUppercase={false}
           />
           <ArticlePublishInfo
-            author={mdxSource.frontmatter ? mdxSource.frontmatter.author : ""}
+            author={currentTutorialMeta ? currentTutorialMeta.author : ""}
             authorAvatarSrc={
-              mdxSource.frontmatter ? mdxSource.frontmatter.authorAvatarSrc : ""
+              currentTutorialMeta ? currentTutorialMeta.authorAvatarSrc : ""
             }
             publishedOn={
-              mdxSource.frontmatter ? mdxSource.frontmatter.publishedOn : ""
+              currentTutorialMeta ? currentTutorialMeta.publishedOn : ""
             }
             authorGitHubUrl={
-              mdxSource.frontmatter ? mdxSource.frontmatter.authorGitHubUrl : ""
+              currentTutorialMeta ? currentTutorialMeta.authorGitHubUrl : ""
             }
             marginBottom="mb-10"
           />
           <ArticleThemeImage
-            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
+            imgSrc={currentTutorialMeta?.themeImgSrc || null}
             placeholderColor={
-              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
+              currentTutorialMeta?.placeholderColor || "bg-instillBlue50"
             }
             marginBottom="mb-20 xl:mb-40"
           />
@@ -232,11 +242,15 @@ const TutorialPage: FC<TutorialPageProps> & {
         */}
 
         <div>
-          {mdxSource.frontmatter?.useCase ? (
-            <TutorialSimilarUseCases
-              tutorials={tutorials}
-              useCase={mdxSource.frontmatter?.useCase}
-              currentTitle={mdxSource.frontmatter?.title}
+          {currentTutorialMeta?.useCase ? (
+            <ArticleSimilarPosts
+              sectionTitle="Similar Use Cases"
+              similarArticles={similarTutorials}
+              getCardElement={(source, key) => {
+                return (
+                  <TutorialBlock key={key} tutorial={source as TutorialMeta} />
+                );
+              }}
             />
           ) : null}
         </div>
@@ -256,7 +270,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             height: articleContainerDimension.height - 100,
           }}
         >
-          <TutorialTableOfContent headers={headers} maxWidth="max-w-[300px]" />
+          <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
     </>

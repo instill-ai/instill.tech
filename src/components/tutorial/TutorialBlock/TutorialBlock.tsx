@@ -116,7 +116,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             </div>
             <div className="flex">
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
-                {tutorial.commit.lastEditedTime
+                {tutorial.publishedOn
                   ? new Date(tutorial.publishedOn).toLocaleDateString()
                   : ""}
               </p>

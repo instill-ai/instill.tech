@@ -93,7 +93,7 @@ export const BlogArticleCard = ({ article }: BlogArticleCardProps) => {
             </div>
             <div className="flex">
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
-                {article.commit.lastEditedTime
+                {article.publishedOn
                   ? new Date(article.publishedOn).toLocaleDateString()
                   : ""}
               </p>
