@@ -151,10 +151,10 @@ export const validateTutorialMeta = (
     );
   }
 
-  // Validate whether tutorial have necessary fields - cvTask
-  if (!Object.prototype.hasOwnProperty.call(data, "cvTask")) {
+  // Validate whether tutorial have necessary fields - aiTask
+  if (!Object.prototype.hasOwnProperty.call(data, "aiTask")) {
     throw new Error(
-      `Error occurred when validate tutorial meta - missing cvTask field at ${path}`
+      `Error occurred when validate tutorial meta - missing aiTask field at ${path}`
     );
   }
 

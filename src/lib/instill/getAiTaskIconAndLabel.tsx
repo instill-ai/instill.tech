@@ -19,7 +19,7 @@ type IconStyle = {
 };
 
 export type getAiTaskIconAndLabelProps = {
-  aiTask: AiTask;
+  aiTask: Nullable<AiTask>;
 };
 
 export type getAiTaskIconAndLabelReturn = {
