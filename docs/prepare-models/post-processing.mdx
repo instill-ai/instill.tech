@@ -17,7 +17,7 @@ If no task is specified when creating a model, the output will the raw model out
 ### Image classification
 
 :::info{type=info}
-Learn more about [Image classification Task](/docs/core-concepts/ai-task#image-classification)
+Learn more about [Image classification task](/docs/core-concepts/ai-task#image-classification)
 :::
 
 Assume we have a "cat vs. dog" model to infer whether an image is a cat image or dog image. Create a `labels.txt` file to list all the pre-defined categories, with one category label per line. Add the file to the folder of inference model.
@@ -63,7 +63,7 @@ Check the [standarised output for image classification](/docs/core-concepts/ai-t
 ### Object detection
 
 :::info{type=info}
-Learn more about [Object detection Task](/docs/core-concepts/ai-task#object-detection)
+Learn more about [Object detection task](/docs/core-concepts/ai-task#object-detection)
 :::
 
 Create a Python file with a structure similar to below. The file inherits the `PostDetectionModel` class and implement the `post_process_per_image` abstract method.
@@ -135,7 +135,7 @@ Check the [standardised output for object detection](/docs/core-concepts/ai-task
 ### Keypoint detection
 
 :::info{type=info}
-Learn more about [Keypoint detection Task](/docs/core-concepts/ai-task#keypoint-detection)
+Learn more about [Keypoint detection task](/docs/core-concepts/ai-task#keypoint-detection)
 :::
 
 Create a Python file with a structure similar to below and add the file in the post-processing model folder:
@@ -251,7 +251,7 @@ Check the [standardised output for Instance Segmentation task](/docs/core-concep
 Learn more about [Unspecified AI task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
 :::
 
-If your model is imported without specifying any Task metadata, the model will be recognised to solve an `Unspecified` task.
+If your model is imported without specifying any task metadata, the model will be recognised to solve an `Unspecified` task.
 There is no need to prepare your model outputs to fit any format.
 
 Check the [standardised output for Unspecified AI task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
