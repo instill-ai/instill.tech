@@ -153,6 +153,20 @@ const NAV: NavConfig = {
   },
   items: [
     {
+      key: "docs-nav-blog",
+      to: "/blog",
+      className: "",
+      position: "right",
+      label: "Blog",
+    },
+    {
+      key: "docs-nav-tutorials",
+      to: "/tutorials",
+      className: "",
+      position: "right",
+      label: "Tutorial",
+    },
+    {
       key: "docs-nav-product-webiste",
       to: "/",
       className: "",
