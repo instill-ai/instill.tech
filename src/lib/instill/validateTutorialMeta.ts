@@ -39,7 +39,7 @@ export const validateTutorialMeta = (
   // Validate whether tutorial have necessary fields - aiTask
   if (!Object.prototype.hasOwnProperty.call(data, "aiTask")) {
     throw new Error(
-      `Error occurred when validate tutorial meta - missing cvTask field at ${path}`
+      `Error occurred when validate tutorial meta - missing aiTask field at ${path}`
     );
   }
 
@@ -56,7 +56,7 @@ export const validateTutorialMeta = (
 
   if (!supportAiTasks.includes(data.aiTask)) {
     throw new Error(
-      `Error occurred when validate tutorial meta - wrong cvTask at ${path}, expect ${supportAiTasks.join(
+      `Error occurred when validate tutorial meta - wrong aiTask at ${path}, expect ${supportAiTasks.join(
         ", "
       )}. Found ${data.aiTask}`
     );

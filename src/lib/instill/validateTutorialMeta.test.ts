@@ -15,7 +15,7 @@ describe("Should validate tutorial meta", () => {
       author: "Xiaofei Du",
       authorAvatarSrc: "/author-avatar/xiaofei-du.png",
       authorGitHubUrl: "https://github.com/xiaofei-du",
-      cvTask: "objectDetection",
+      aiTask: "objectDetection",
       sourceConnector: "HTTP",
       destinationConnector: "HTTP",
       useCase: "prototype",
@@ -38,7 +38,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -48,7 +48,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing title field at path"
+      "Error occurred when validate tutorial meta - missing title field at path"
     );
   });
 
@@ -66,7 +66,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -76,7 +76,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing lang field at path"
+      "Error occurred when validate tutorial meta - missing lang field at path"
     );
   });
 
@@ -94,7 +94,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -104,7 +104,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing draft field at path"
+      "Error occurred when validate tutorial meta - missing draft field at path"
     );
   });
 
@@ -122,7 +122,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -132,7 +132,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing description field at path"
+      "Error occurred when validate tutorial meta - missing description field at path"
     );
   });
 
@@ -150,7 +150,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -160,7 +160,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing publishedOn field at path"
+      "Error occurred when validate tutorial meta - missing publishedOn field at path"
     );
   });
 
@@ -178,7 +178,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -188,7 +188,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing themeImgSrc field at path"
+      "Error occurred when validate tutorial meta - missing themeImgSrc field at path"
     );
   });
 
@@ -206,7 +206,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -216,7 +216,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing themeImgThumbnailSrc field at path"
+      "Error occurred when validate tutorial meta - missing themeImgThumbnailSrc field at path"
     );
   });
 
@@ -234,7 +234,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -244,7 +244,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing placeholderColor field at path"
+      "Error occurred when validate tutorial meta - missing placeholderColor field at path"
     );
   });
 
@@ -263,7 +263,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -289,7 +289,7 @@ describe("Should validate tutorial meta", () => {
         placeholderColor: "bg-instillYellow50",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -299,7 +299,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing author field at path"
+      "Error occurred when validate tutorial meta - missing author field at path"
     );
   });
 
@@ -317,7 +317,7 @@ describe("Should validate tutorial meta", () => {
         placeholderColor: "bg-instillYellow50",
         author: "Xiaofei Du",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -327,7 +327,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing authorAvatarSrc field at path"
+      "Error occurred when validate tutorial meta - missing authorAvatarSrc field at path"
     );
   });
 
@@ -345,7 +345,7 @@ describe("Should validate tutorial meta", () => {
         placeholderColor: "bg-instillYellow50",
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
         useCase: "prototype",
@@ -355,11 +355,11 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing authorGitHubUrl field at path"
+      "Error occurred when validate tutorial meta - missing authorGitHubUrl field at path"
     );
   });
 
-  test("should throw cvTask not found", () => {
+  test("should throw aiTask not found", () => {
     const testFunction = () => {
       const meta = {
         title: "test article",
@@ -383,7 +383,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing cvTask field at path"
+      "Error occurred when validate tutorial meta - missing aiTask field at path"
     );
   });
 
@@ -402,7 +402,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         destinationConnector: "HTTP",
         useCase: "prototype",
       };
@@ -411,7 +411,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing sourceConnector field at path"
+      "Error occurred when validate tutorial meta - missing sourceConnector field at path"
     );
   });
 
@@ -430,7 +430,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         useCase: "prototype",
       };
@@ -439,7 +439,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing destinationConnector field at path"
+      "Error occurred when validate tutorial meta - missing destinationConnector field at path"
     );
   });
 
@@ -458,7 +458,7 @@ describe("Should validate tutorial meta", () => {
         author: "Xiaofei Du",
         authorAvatarSrc: "/author-avatar/xiaofei-du.png",
         authorGitHubUrl: "https://github.com/xiaofei-du",
-        cvTask: "objectDetection",
+        aiTask: "objectDetection",
         sourceConnector: "HTTP",
         destinationConnector: "HTTP",
       };
@@ -467,7 +467,7 @@ describe("Should validate tutorial meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate tutorial meta - missing useCase field at path"
+      "Error occurred when validate tutorial meta - missing useCase field at path"
     );
   });
 });

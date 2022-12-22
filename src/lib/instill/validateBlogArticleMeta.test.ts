@@ -15,7 +15,7 @@ describe("Should validate blog article meta", () => {
       author: "Xiaofei Du",
       authorAvatarSrc: "/author-avatar/xiaofei-du.png",
       authorGitHubUrl: "https://github.com/xiaofei-du",
-      category: "insights",
+      category: "Insights",
     };
 
     expect(validateBlogArticleMeta("path", meta)).toBe(meta);
@@ -42,7 +42,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing title field at path"
+      "Error occurred when validate blog article meta - missing title field at path"
     );
   });
 
@@ -67,7 +67,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing lang field at path"
+      "Error occurred when validate blog article meta - missing lang field at path"
     );
   });
 
@@ -92,7 +92,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing draft field at path"
+      "Error occurred when validate blog article meta - missing draft field at path"
     );
   });
 
@@ -117,7 +117,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing description field at path"
+      "Error occurred when validate blog article meta - missing description field at path"
     );
   });
 
@@ -142,7 +142,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing publishedOn field at path"
+      "Error occurred when validate blog article meta - missing publishedOn field at path"
     );
   });
 
@@ -167,7 +167,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing themeImgSrc field at path"
+      "Error occurred when validate blog article meta - missing themeImgSrc field at path"
     );
   });
 
@@ -192,7 +192,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing themeImgThumbnailSrc field at path"
+      "Error occurred when validate blog article meta - missing themeImgThumbnailSrc field at path"
     );
   });
 
@@ -217,7 +217,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing placeholderColor field at path"
+      "Error occurred when validate blog article meta - missing placeholderColor field at path"
     );
   });
 
@@ -266,7 +266,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing author field at path"
+      "Error occurred when validate blog article meta - missing author field at path"
     );
   });
 
@@ -291,7 +291,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing authorAvatarSrc field at path"
+      "Error occurred when validate blog article meta - missing authorAvatarSrc field at path"
     );
   });
 
@@ -316,7 +316,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing authorGitHubUrl field at path"
+      "Error occurred when validate blog article meta - missing authorGitHubUrl field at path"
     );
   });
 
@@ -341,7 +341,7 @@ describe("Should validate blog article meta", () => {
     };
 
     expect(testFunction).toThrow(
-      "Error occured when validate blog article meta - missing category field at path"
+      "Error occurred when validate blog article meta - missing category field at path"
     );
   });
 });
