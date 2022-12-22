@@ -2,10 +2,10 @@
 title: "Pipeline"
 lang: "en-US"
 draft: false
-description: "Build end-to-end unstructured visual data pipelines with the open-source visual data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Build end-to-end unstructured data pipelines with the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process visual data.
+A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process unstructured data.
 
 It is defined by a `recipe` which is essentially a JSON object:
 
@@ -22,8 +22,8 @@ It is defined by a `recipe` which is essentially a JSON object:
 
 A `recipe` describes a pipeline resource consisting of:
 
-- `source` - where the pipeline starts to ingest image/video data to be processed
-- `model_instances` - a number of deployed Vision AI models to process the ingested visual data in parallel to generate structured outputs
+- `source` - where the pipeline starts to ingest unstructured data to be processed
+- `model_instances` - a number of deployed AI models to process the ingested unstructured data in parallel to generate structured outputs
 - `destination` - where to send the structured outputs
 
 Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.

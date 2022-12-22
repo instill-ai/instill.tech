@@ -11,33 +11,33 @@ export const validateTutorialMeta = (
   // Validate whether tutorial have necessary fields - title
   if (!Object.prototype.hasOwnProperty.call(data, "title")) {
     throw new Error(
-      `Error occured when generate tutorials - missing title field at ${path}`
+      `Error occurred when generate tutorials - missing title field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - lang
   if (!Object.prototype.hasOwnProperty.call(data, "lang")) {
     throw new Error(
-      `Error occured when generate tutorials - missing lang field at ${path}`
+      `Error occurred when generate tutorials - missing lang field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - description
   if (!Object.prototype.hasOwnProperty.call(data, "description")) {
     throw new Error(
-      `Error occured when generate tutorials - missing description field at ${path}`
+      `Error occurred when generate tutorials - missing description field at ${path}`
     );
   }
 
-  // Validate whether tutorial have necessary fields - cvTask
-  if (!Object.prototype.hasOwnProperty.call(data, "cvTask")) {
+  // Validate whether tutorial have necessary fields - aiTask
+  if (!Object.prototype.hasOwnProperty.call(data, "aiTask")) {
     throw new Error(
-      `Error occured when generate tutorials - missing cvTask field at ${path}`
+      `Error occurred when generate tutorials - missing aiTask field at ${path}`
     );
   }
 
-  // Validate the cvTask types
-  const supportCvTasks = [
+  // Validate the aiTask types
+  const supportAiTasks = [
     "objectDetection",
     "ocr",
     "imageClassification",
@@ -47,39 +47,39 @@ export const validateTutorialMeta = (
     "semanticSegmentation",
   ];
 
-  if (!supportCvTasks.includes(data.cvTask)) {
+  if (!supportAiTasks.includes(data.aiTask)) {
     throw new Error(
-      `Error occured when generate tutorials - wrong cvTask at ${path}, expect ${supportCvTasks.join(
+      `Error occurred when generate tutorials - wrong aiTask at ${path}, expect ${supportAiTasks.join(
         ", "
-      )}. Found ${data.cvTask}`
+      )}. Found ${data.aiTask}`
     );
   }
 
   // Validate whether tutorial have necessary fields - sourceConnector
   if (!Object.prototype.hasOwnProperty.call(data, "sourceConnector")) {
     throw new Error(
-      `Error occured when generate tutorials - missing sourceConnector field at ${path}`
+      `Error occurred when generate tutorials - missing sourceConnector field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - destinationConnector
   if (!Object.prototype.hasOwnProperty.call(data, "destinationConnector")) {
     throw new Error(
-      `Error occured when generate tutorials - missing destinationConnector field at ${path}`
+      `Error occurred when generate tutorials - missing destinationConnector field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - publishedOn
   if (!Object.prototype.hasOwnProperty.call(data, "publishedOn")) {
     throw new Error(
-      `Error occured when generate tutorials - missing publishedOn field at ${path}`
+      `Error occurred when generate tutorials - missing publishedOn field at ${path}`
     );
   }
 
   // Validate whether tutorial have necessary fields - placeholderColor
   if (!Object.prototype.hasOwnProperty.call(data, "placeholderColor")) {
     throw new Error(
-      `Error occured when generate tutorials - missing placeholderColor field at ${path}`
+      `Error occurred when generate tutorials - missing placeholderColor field at ${path}`
     );
   }
 

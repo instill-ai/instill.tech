@@ -1,4 +1,4 @@
-import { getCvTaskIconAndLabelReturn } from "@/lib/instill/getCvTaskIconAndLabel";
+import { getAiTaskIconAndLabelReturn } from "@/lib/instill/getAiTaskIconAndLabel";
 import { Nullable } from "@/types/instill";
 import { ArrowRightIcon } from "@instill-ai/design-system";
 import cn from "clsx";
@@ -9,7 +9,7 @@ export type TutorialPipelineLabelProps = {
   sourceConnector: Nullable<string>;
   destinationConnector: Nullable<string>;
   marginBottom?: string;
-  icon?: getCvTaskIconAndLabelReturn["icon"];
+  icon?: getAiTaskIconAndLabelReturn["icon"];
 };
 
 export const TutorialPipelineLabel = ({

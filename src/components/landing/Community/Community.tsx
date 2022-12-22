@@ -18,7 +18,7 @@ export const Community = () => {
         />
         <p className="text-lg font-normal text-white xl:w-7/12">
           Join 100+ Data/AI practitioners discussing VDP in action and help
-          building the modern ETL infrastructure for unstructured visual data.
+          building the modern ETL infrastructure for unstructured data.
         </p>
       </div>
       <div className="grid-col-1 grid gap-y-5 xl:grid-cols-3 xl:gap-y-0 xl:gap-x-6">

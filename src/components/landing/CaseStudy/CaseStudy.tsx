@@ -961,8 +961,8 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                 source="Source"
                 destination="Destination"
                 description="Stop building data pipelines from scratch. 
-                  Just use VDP to connect your data, import STOA Vision 
-                  AI models, and load the results to 30+ destinations to 
+                  Just use VDP to connect your data, import STOA AI 
+                  models, and load the results to 30+ destinations to 
                   solve your use cases."
                 currentFrame={currentShowcaseFrame}
                 focusedShowcaseFrame={focusedShowcaseFrame}

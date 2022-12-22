@@ -136,7 +136,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
     <>
       <PageHead
         pageTitle={`${position.name} | Instill AI`}
-        pageDescription="We're on a mission to make Vision Al highly accessbile to everyone. Join us and make a dent in the universe!"
+        pageDescription="We're on a mission to make Al highly accessible to everyone. Join us and make a dent in the universe!"
         pageType="main"
       />
       <ContentContainer

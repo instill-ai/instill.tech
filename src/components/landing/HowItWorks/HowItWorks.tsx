@@ -43,7 +43,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           <HowItWorksRow
             type="left"
             title="Pre-built ETL data connectors for extensive data access"
-            description="By leveraging ready-to-use ETL data connectors, VDP is the single point of visual data integration, where you can sync visual data from anywhere into data warehouses or applications. Focus on gaining insights across all your visual data, instead of maintaining connectors."
+            description="By leveraging ready-to-use ETL data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
             learnMoreLink="/docs/core-concepts/connector"
             number={1}
             cubes={[
@@ -79,7 +79,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           />
           <HowItWorksRow
             type="right"
-            title="One-click import and deploy Vision AI models across vendors and frameworks"
+            title="One-click import and deploy AI models across vendors and frameworks"
             description="VDP integrates with the best ML tools and platforms to make importing models super easy. Get access to state-of-the-art models across vendors and your own models without changing your workflow. It supports frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more."
             learnMoreLink="/docs/import-models/overview"
             number={2}
@@ -108,9 +108,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           />
           <HowItWorksRow
             type="left"
-            title="Standardise Computer Vision Tasks for ETL pipelines, data and application integration"
-            description="VDP solves popular Computer Vision Tasks including image classification, object detection, keypoint detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
-            learnMoreLink="/docs/core-concepts/cv-task"
+            title="Standardise AI tasks for ETL pipelines, data and application integration"
+            description="VDP solves popular AI tasks including image classification, object detection, keypoint detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
+            learnMoreLink="/docs/core-concepts/ai-task"
             number={3}
             cubes={[
               {
@@ -157,7 +157,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           />
           <HowItWorksRow
             type="right"
-            title="Build end-to-end ETL pipelines for visual data 10x faster"
+            title="Build end-to-end ETL pipelines for unstructured data 10x faster"
             description={
               <div className="flex flex-col gap-y-5">
                 <p>

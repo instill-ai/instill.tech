@@ -30,7 +30,7 @@ import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
-import { getCvTaskIconAndLabel } from "@/lib/instill";
+import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
@@ -135,8 +135,8 @@ type GetLayOutProps = {
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ mdxSource, commitMeta, headers, tutorials }) => {
-  const { icon, label } = getCvTaskIconAndLabel({
-    cvTask: mdxSource.frontmatter?.cvTask as TutorialMeta["cvTask"],
+  const { icon, label } = getAiTaskIconAndLabel({
+    aiTask: mdxSource.frontmatter?.aiTask as TutorialMeta["aiTask"],
   });
 
   const [articleContainerRef, articleContainerDimension] =

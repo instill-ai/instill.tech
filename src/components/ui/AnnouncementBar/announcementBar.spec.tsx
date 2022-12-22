@@ -8,7 +8,7 @@ matchMedia();
 
 test.skip("should display announcement bar", async () => {
   renderWithContext(withPageBase(<HomePage />), {});
-  await screen.findByText(/Visual Data Preparation Made for All/i);
+  await screen.findByText(/Unstructured Data ETL Made for All/i);
 
   expect(screen.queryByTestId("announcement-bar")).toBeInTheDocument();
 });
