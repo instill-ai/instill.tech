@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.24.0](https://github.com/instill-ai/instill.tech/compare/v1.23.0...v1.24.0) (2022-12-23)
+
+
+### Features
+
+* add blog page ([#421](https://github.com/instill-ai/instill.tech/issues/421)) ([22665e2](https://github.com/instill-ai/instill.tech/commit/22665e22250f515c1d60a28882cf8b61c02ff5fa))
+* Impl blog overview ([#429](https://github.com/instill-ai/instill.tech/issues/429)) ([a362a55](https://github.com/instill-ai/instill.tech/commit/a362a556850c75faf8ceea55ef642cd8ecd58292))
+* update eslint rules ([#425](https://github.com/instill-ai/instill.tech/issues/425)) ([743ddb0](https://github.com/instill-ai/instill.tech/commit/743ddb0dee2f44364eeb30837359a7d3f19f9c3a))
+* update the token action used ([#430](https://github.com/instill-ai/instill.tech/issues/430)) ([4db13a3](https://github.com/instill-ai/instill.tech/commit/4db13a3d1bff2d4281ad6a42f2ea8a0908376a10))
+
+
+### Miscellaneous
+
+* update to Versatile Data Pipeline ([#428](https://github.com/instill-ai/instill.tech/issues/428)) ([2db6d92](https://github.com/instill-ai/instill.tech/commit/2db6d9280a8168997932d0df0d2586b4db0b0813))
+
 ## [1.23.0](https://github.com/instill-ai/instill.tech/compare/v1.22.0...v1.23.0) (2022-12-09)
 
 
