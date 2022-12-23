@@ -185,7 +185,7 @@ module.exports = {
             "--tw-prose-th-borders": theme("colors.instillGrey30"),
             "--tw-prose-td-borders": theme("colors.instillGrey30"),
             h2: {
-              borderTopColor: theme("colors.instillGrey95"),
+              borderTopColor: theme("colors.instillGrey30"),
             },
             code: {
               backgroundColor: theme("colors.instillGrey05"),

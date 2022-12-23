@@ -8,11 +8,11 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
-        "w-full text-left font-mono text-[32px] font-semibold uppercase text-instillNeonBlue xl:text-instill-h1",
+        "w-full text-left font-mono text-[32px] font-semibold uppercase text-instillNeonBlue word-spacing-tight xl:text-instill-h1 xl:word-spacing-super-tight",
         marginBottom
       )}
     >
-      Open-source Unstructured Data ETL
+      Open-source Unstructured Data ETL INFRASTRUCTURE
     </h1>
   );
 };

@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import cn from "clsx";
 
 import { LeftSidebar } from "./LeftSidebar";
-import { docsConfig } from "../../../docs.config";
+import { docsConfig } from "../../../content.config";
 import { Nav } from "./Nav";
 
 export type DocsLayoutProps = {

@@ -1,20 +1,15 @@
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { getAiTaskIconAndLabel } from "@/lib/instill";
-import { TutorialMeta } from "@/types/instill";
+import { BlogArticleMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useState } from "react";
-import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
-import { TutorialLabel } from "../TutorialLabel";
+import { ArticleImagePlaceholder } from "@/components/ui/ArticleImagePlaceholder";
 
-export type TutorialBlockProps = {
-  tutorial: TutorialMeta;
+export type BlogArticleCardProps = {
+  article: BlogArticleMeta;
 };
 
-export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: tutorial.aiTask,
-  });
+export const BlogArticleCard = ({ article }: BlogArticleCardProps) => {
   const [themeImageThumbnailIsError, setThemeImageThumbnailIsError] =
     useState(false);
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
@@ -23,7 +18,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
     useElementDimension<HTMLAnchorElement>();
 
   return (
-    <Link href={`/tutorials/${tutorial.slug}`}>
+    <Link href={`/blog/${article.slug}`}>
       <a
         ref={blockContainerRef}
         className="flex w-full flex-col hover:shadow-instill-solid-10"
@@ -33,10 +28,10 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             className="w-full"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
           >
-            <TutorialImagePlaceholder
+            <ArticleImagePlaceholder
               width="w-full"
               height="h-full"
-              color={tutorial.placeholderColor}
+              color={article.placeholderColor}
             />
           </div>
         ) : (
@@ -46,7 +41,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
 
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={tutorial.themeImgThumbnailSrc}
+            src={article.themeImgThumbnailSrc}
             alt="The theme of this tutorial"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
             className="w-full object-cover"
@@ -56,29 +51,11 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           />
         )}
         <div className="flex w-full flex-1 flex-col bg-instillGrey05 p-5">
-          <TutorialLabel
-            icon={
-              icon
-                ? icon({
-                    color: "fill-instillGrey80",
-                    width: "w-5",
-                    height: "h-5",
-                    position: "m-auto",
-                  })
-                : undefined
-            }
-            label={label}
-            position="mr-auto"
-            marginBottom="mb-2.5"
-            labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
-            labelBgColor="bg-instillGrey20"
-            labelPadding="py-1 px-2"
-          />
           <h3 className="mb-2 break-words text-instillGrey90 text-instill-h3-medium">
-            {tutorial.title}
+            {article.title}
           </h3>
           <p className="mb-10 w-full text-ellipsis font-sans text-base font-normal text-instillGrey70 line-clamp-3 xl:line-clamp-4">
-            {tutorial.description}
+            {article.description}
           </p>
           <div className="mt-auto flex flex-row gap-x-2 py-0.5">
             <div className="flex flex-row gap-x-[5px]">
@@ -98,8 +75,8 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={tutorial.authorAvatarSrc}
-                    alt={`${tutorial.title}'s author's github avatar`}
+                    src={article.authorAvatarSrc}
+                    alt={`${article.title}'s author's github avatar`}
                     className="h-5 w-5 rounded-full object-cover"
                     onError={() => {
                       setAuthorAvatarIsError(true);
@@ -108,7 +85,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                 )}
               </div>
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
-                {tutorial.author}
+                {article.author}
               </p>
             </div>
             <div className="flex pt-0.5">
@@ -116,8 +93,8 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             </div>
             <div className="flex">
               <p className="pt-[3px] font-mono text-xs font-normal text-instillGrey50">
-                {tutorial.publishedOn
-                  ? new Date(tutorial.publishedOn).toLocaleDateString()
+                {article.publishedOn
+                  ? new Date(article.publishedOn).toLocaleDateString()
                   : ""}
               </p>
             </div>

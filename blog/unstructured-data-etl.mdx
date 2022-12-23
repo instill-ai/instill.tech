@@ -1,0 +1,150 @@
+---
+title: "Missing piece in modern data stack: unstructured data ETL"
+lang: "en-US"
+draft: false
+description: "To fix the broken value chain in the modern data stack for unstructured data, we propose integrating with a component, named unstructured data ETL. "
+slug: "unstructured-data-etl"
+publishedOn: "2022-02-03T04:49:00"
+themeImgSrc: "/blog-assets/unstructured-data-etl/theme.jpeg"
+themeImgAlt: "The missing piece - Photo by Odd Sun / Unsplash"
+themeImgThumbnailSrc: "/blog-assets/unstructured-data-etl/theme.jpeg"
+placeholderColor: "bg-instillYellow50"
+author: "Xiaofei Du"
+authorAvatarSrc: "/author-avatar/xiaofei-du.png"
+authorGitHubUrl: "https://github.com/xiaofei-du"
+category: "Insights"
+---
+
+Deep Learning (DL) has achieved significant progress over the last decade. In industry, we have seen impulses in DeepMind AlphaGo, Amazon Alexa, and OpenAI GPT-3. In academia, breakthroughs in artificial neural network architectures have also continually been made from the initial AlexNet to Inception, ResNet, and the recent Vision Transformer (ViT).
+
+While DL has shown its strength in understanding unstructured data (i.e., images, videos, audio, and text data), the data tooling has not caught up (or commoditised) yet. Building in-house AI solutions require not only a tremendous investment in both time and hiring, but also the intrinsic transformation of the team culture. As a result, only big tech companies have the luxury to form a multidisciplinary team to build exclusive functionalities and components to process their unstructured data to distil business insights or deliver AI applications.
+
+> To date, there isn’t any simple tool that can make one easily tap on the value of unstructured data.
+
+In spite of the fact that according to projections from [IDC](https://www.idc.com), 80% of worldwide data will be unstructured by 2025, the current data industry has paid little attention to unstructured data. The data journey of unstructured data mostly ends up at a certain storage component, without being further processed for extracting value. This status quo is counterintuitive.
+
+At Instill AI, we are dedicated to making AI accessible to everyone. To fix the broken value chain in the modern data stack for unstructured data, we propose integrating with a component, named unstructured data ETL (see [Why Instill AI exists](https://blog.instill.tech/why-instill-ai-exists/?utm_source=blog&utm_medium=link&utm_campaign=unstructured_data_etl)). The rest of this post will focus on the components of the modern data stack, the stakeholders, and their role and goal of unstructured data ETL.
+
+## Modern data stack
+
+<ZoomableImg
+  src="/blog-assets/unstructured-data-etl/1_Modern-Data-Stack_transparent.png"
+  alt="The modern data stack processes mostly structured and semi-structured data."
+/>
+
+First and foremost, it is helpful to be knowledgeable of the status quo of the modern data stack, i.e., what we have on the plate if we would like to build a data pipeline to enhance the business. The modern data stack cares mostly about structured and semi-structured data. The data journey begins at Data Sources and then travels through an ETL/ELT, Data Warehouse, Feature Store and MLOps to ultimately deliver value to the business.
+
+### Components
+
+**Data Source** can be any source where the raw data originally comes from. For example, sales/marketing data from Salesforce, Mailchimp, etc., or structured/semi-structured data files such as CVS, JSON or XML from a Data Lake.
+
+**ETL/ELT** is a tool for moving raw data from the source to the destination with necessary data cleansing process. The moving process involves Extract (E), Load (L) and Transform (T). The nuanced difference between ETL and ELT is mainly the place where the transformation happens. ETL transforms data on a separate processing server, while ELT transforms data within the data warehouse itself (the destination).
+
+**Data Warehouse** can be a standalone SQL/NoSQL/key-value/time-series database such as MySQL, MongoDB, Redis, etc., or a cloud-based database solution such as Google BigQuery, Amazon Redshift, etc. It is the hub for data transportation during the data journey.
+
+**Feature Store** is a data management layer for storing commonly used or representative features shared by Data Scientists and Data Engineers. When Data Scientists develop features for a machine learning model, the features can be continually added to the Feature Store to be managed and retrieved later, making the collaboration of feature engineering between the two roles more efficient.
+
+**MLOps** tools are used for developing machine learning (ML) models. It includes the actual codes of the machine learning algorithm and the functionality of model training, model evaluation, model deployment, and post-production model monitoring.
+
+### Stakeholders
+
+<ZoomableImg
+  src="/blog-assets/unstructured-data-etl/1_Modern-Data-Stack_roles_full_width_transparent-1.png"
+  alt="The modern data stack processes mostly structured and semi-structured data."
+/>
+
+**Data Engineers** integrate data pipelines and provide clean data sets to end users (i.e., Data Scientists). They also apply software engineering best practices like version control and continuous integration to the codebase.
+
+**Data Scientists** design and construct new processes for data modelling and production using prototypes, algorithms, predictive models, and custom analysis. Data Scientists are typically aligned with a line of business and remain focused on the goals of that particular business unit or a specific project.
+
+The outputs of the modern data stack are consumed by **Data Analysts**, who examine large data sets to identify trends, develop charts, and create visual presentations to help business decision makers make more strategic decisions.
+
+It is worth mentioning that there is also a new emerging role, [Analytics Engineers](https://www.getdbt.com/what-is-analytics-engineering/), who sit in between Data Engineers and Data Analysts, and deliver lean transformed datasets to end-users, with effective data tooling (e.g., ETL/ELT). While a Data Analyst spends their time analysing data, an Analytics Engineer spends their time transforming, testing, deploying, and documenting data.
+
+The trend of tooling development in the data industry is to empower a certain traditional role to be more versatile, so they can be independent and capable of covering miscellaneous tasks for daily jobs. The same trend applies to the development of unstructured data processing.
+
+## Modern data stack for unstructured data
+
+<ZoomableImg
+  src="/blog-assets/unstructured-data-etl/AI-_-Modern-Data-Stack.png"
+  alt="Adding AI for unstructured data into the modern data stack requires extra functions. We use dash arrows to indicate non-trivial engineering efforts to integrate unstructured data processing with existing stack performed by either Data Engineers or AI Engineers."
+/>
+
+To tap on the value of the unstructured data, having experts and tools for the typical modern data stack is not enough. There are two ways to approach this. Organisations can leverage either off-the-shelf AI as a service or build up an AI team for in-house AI development and deployment.
+
+### Components and stakeholders
+
+<ZoomableImg
+  src="/blog-assets/unstructured-data-etl/2_Vision-AI-_-Modern-Data-Stack_roles_transparent.png"
+  alt="Stakeholders in the modern data stack with AI for unstructured data: they are equipped with different expertise, use different tools and work in their own 'comfort zone'. New tooling is needed to eliminate the disconnection and silos between these roles."
+/>
+
+**AI as a Service** provides Inference API using pre-trained models. A Data Engineer can simply call the API to process the unstructured data. There are many cloud-based solutions in the market now such as Google Vision AI and Amazon Rekognition.
+
+**Data Engineers** can use AI as a service to connect and process unstructured data without any knowledge of building AI/ML models at all.
+
+**Data Scientists** shed light on the high-level project goals and pin down what insights are to be collected from the unstructured data, so Data Engineers can survey suitable AI API to integrate with the data pipeline.
+
+The main issue with the solution of the off-the-shelf AI API is **inflexibility** and **poor performance**. This is mainly because pre-trained models are likely to underperform in a customer's production environment due to domain difference, and the use cases usually simply don’t fit (e.g., desired categories are not defined in the pre-trained image classification model).
+
+**MLOps for Unstructured Data** provides MLOps tooling focusing on AI model development to solve Vision, Language and more. AI Engineers and AI Researchers in a small AI team can adopt specific MLOps platforms such as [Roboflow](https://roboflow.com), [Clarifai](https://clarifai.com) and [V7 Labs](https://www.v7labs.com), [Hugging Face](https://huggingface.co), or, can also employ general-purpose MLOps solutions such as [Google Vertex AI](https://cloud.google.com/vertex-ai) and [Amazon SageMaker](https://aws.amazon.com/sagemaker) to label unstructured data and develop AI models from scratch.
+
+**AI Engineers** are in charge of building data infrastructure and preparing data for AI Researchers. In addition to making POC-level models production-ready, they use modern MLOps tools to collect data, train and evaluate models, and deploy models in production. Furthermore, they monitor the online model performance in production day to day. When the model performance drops (due to domain drift or any unexpected reason), they inform AI Researchers to analyse the potential reasons and bring updated models online by iterating the model lifecycle.
+
+**AI Researchers** are experts proficient in DL and related techniques. They provide guidelines to AI Engineers about what data to collect, use ML frameworks such as TensorFlow or PyTorch to design and train AI models that meet the project requirements, and write research reports to benchmark the trained models on collected datasets. These models are called POC models as they are developed in a lab environment. They have only proved their value in the offline mode, benchmarked by AI Researchers. However, they are not optimised for production and there is no guarantee that they will work as well online as they do offline.
+
+These roles are equipped with different skill sets and expertise. Essentially, Data Engineers are skilful in manipulating structured data using the tooling in modern data stack, but they do not know much about DL and are incapable of devising and prototyping DL models. AI Engineers are good at engineering DL models but lack expertise in data engineering. Despite that both the Data Scientists and AI Researchers adopt MLOps practices, they use different tools, and work separately in their own comfort zone: one with structured data and the other with unstructured data. All the above factors bring disconnection and create silos between roles and need new tooling for the rescue.
+
+## Modern data stack with unstructured data ETL
+
+As discussed above and mentioned in What is missing in [Why Instill AI exists](https://blog.instill.tech/why-instill-ai-exists/?utm_source=blog&utm_medium=link&utm_campaign=unstructured_data_etl), we are in the era of emerging MLOps tools and AI services. On one hand, they make tapping the value of unstructured data possible, but on the other hand, they provide different proprietary frameworks, causing difficulties for AI practitioners to piece them together to build a custom end-to-end solution and integrate with the existing stack. The boundary of the AI/ML tech stack is also aggravating the team silo.
+
+How to solve these issues and seamlessly bring AI into the modern data stack? The answer is by introducing unstructured data ETL.
+
+<ZoomableImg
+  src="/blog-assets/unstructured-data-etl/AI--_-Modern-Data-Stack.png"
+  alt="Unstructured data ETL seamlessly brings AI into the modern data stack. It eliminates team silos by streamlining data processing across different roles with a standardised framework."
+/>
+
+### How unstructured data ETL breaks the tech silo?
+
+Unstructured data ETL and MLOps for unstructured data share a lot in common. However, unlike model-centric MLOps platforms, unstructured data ETL zooms out to take a wider look at the end-to-end unstructured data processing pipeline:
+
+- Extract unstructured data from data sources such as IoT devices or Data Lake;
+- Depending on what insights to be derived, transform unstructured data to meaningful data representations by corresponding AI models;
+- Load the transformed data into Data Warehouse where end-users can access and analyse further with Feature Store, or directly send to AI applications that rely on actionable insights from the unstructured data.
+
+The goal of unstructured data ETL is not just focused on one single step but to streamline the whole process by providing
+
+- **Seamless data access**: rich and robust integration with various data sources/destinations
+- **Moving AI from POC to Production faster**: support deploying models from different DL frameworks to accelerate time-to-value
+
+It unleashes the power of AI in the data stack by connecting the dots and breaking the barriers. To achieve all of this, we propose standardising unstructured data ETL and building tools within an open and maintainable framework, making it possible for communities to benefit and participate.
+
+### How unstructured data ETL breaks the team silo?
+
+Good tooling helps break the team silo. With easy-to-use unstructured data ETL tools:
+
+- **AI Engineers** can have automatic model optimization, simplified and managed model serving, and tools for production model monitoring.
+- **AI Researchers** can have easier access to unstructured data for production experimentation and benchmarking.
+- **Data Engineers** can have low code for integrating with various data sources and destinations, and easier data pipeline management.
+- **Data Scientists** can have richer insights from unstructured data to uncover unknown patterns and produce better analysis with no-code UI.
+
+Like Feature Store which makes the collaboration between Data Engineers and Data Scientists easier, unstructured data ETL eliminates team silos by streamlining data processing across different roles with a standardised framework.
+
+## Conclusions
+
+Unstructured data needs more love, considering the huge volume and untapped value. Unstructured data ETL pushes the modern data stack a step further to seamlessly integrate with the latest AI technologies, so the modern tooling can now process and extract the value of visual, text and audio data more effectively.
+
+To standardise unstructured data ETL, this is an epoch-making attempt. We are thrilled to popularise this concept and build an open platform that encourages all sorts of integration and collaboration across different roles. We’d love to learn your feedback and exchange ideas. Please join [our community](https://discord.gg/sevxWsqpGh) to start getting involved.
+
+Have a nice day!
+
+---
+
+_Instill Cloud is currently in private alpha, working very closely with early users to build the most effective tool for visual data preparation. Sign in [here](https://www.instill.tech/get-access) if you would like to have a free trial._
+
+<CtaButton
+  text="🚀 Join the Instill Cloud waitlist"
+  link="https://www.instill.tech/get-access/?utm_source=blog&utm_medium=link&utm_campaign=introducing-vdp"
+/>

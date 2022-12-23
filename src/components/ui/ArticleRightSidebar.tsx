@@ -1,16 +1,20 @@
 import cn from "clsx";
 import { useRouter } from "next/router";
-import { ContributeLinks, TableOfContent, TableOfContentProps } from "../ui";
+import {
+  ContributeLinks,
+  TableOfContent,
+  TableOfContentProps,
+} from "@/components/ui";
 
-export type TutorialTableOfContentProps = {
+export type ArticleRightSidebarProps = {
   headers: TableOfContentProps["headers"];
   maxWidth?: string;
 };
 
-export const TutorialTableOfContent = ({
+export const ArticleRightSidebar = ({
   headers,
   maxWidth,
-}: TutorialTableOfContentProps) => {
+}: ArticleRightSidebarProps) => {
   const router = useRouter();
   return (
     <div className={cn("sticky top-[160px] pr-4", maxWidth)}>
