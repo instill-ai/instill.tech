@@ -59,7 +59,7 @@ jobs:
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCELTOKEN }}
-          github-token: ${{ secrets.BOTTOKEN }}
+          github-token: ${{ secrets.BOTGITHUBTOKEN }}
           vercel-org-id: ${{ secrets.VERCELORGID }}
           vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID }}
           scope: ${{ secrets.VERCELORGID }}
@@ -80,7 +80,7 @@ jobs:
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCELTOKEN }}
-          github-token: ${{ secrets.BOTTOKEN }}
+          github-token: ${{ secrets.BOTGITHUBTOKEN }}
           vercel-org-id: ${{ secrets.VERCELORGID }}
           vercel-project-id: ${{ secrets.INSTILLTECHSTORYBOOKVERCELPROJECTID }}
           scope: ${{ secrets.VERCELORGID }}

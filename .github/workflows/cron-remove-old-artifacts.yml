@@ -15,4 +15,4 @@ jobs:
         with:
           age: "1 day"
           skip-tags: true
-          GITHUB_TOKEN: ${{ secrets.BOTTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOTGITHUBTOKEN }}

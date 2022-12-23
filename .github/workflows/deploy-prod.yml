@@ -15,7 +15,7 @@ jobs:
       - id: latestRelease
         uses: thebritican/fetch-latest-release@v1.0.3
         with:
-          github_token: ${{ secrets.BOTTOKEN }}
+          github_token: ${{ secrets.BOTGITHUBTOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCELTOKEN }}
-          github-token: ${{ secrets.BOTTOKEN }}
+          github-token: ${{ secrets.BOTGITHUBTOKEN }}
           vercel-args: "--prod"
           vercel-org-id: ${{ secrets.VERCELORGID }}
           vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID}}
@@ -40,7 +40,7 @@ jobs:
         id: lighthouseCheck
         uses: foo-software/lighthouse-check-action@master
         with:
-          accessToken: ${{ secrets.BOTTOKEN }}
+          accessToken: ${{ secrets.BOTGITHUBTOKEN }}
           author: ${{ github.actor }}
           branch: ${{ github.ref }}
           prCommentEnabled: true
