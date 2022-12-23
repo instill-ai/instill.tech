@@ -16,7 +16,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          token: ${{ secrets.BOTTOKEN }}
+          token: ${{ secrets.BOTGITHUBTOKEN }}
           release-type: node
           command: manifest
           config-file: release-please/config.json
