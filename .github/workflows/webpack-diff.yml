@@ -43,6 +43,8 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          NEXT_PUBLIC_GITHUB_TOKEN: ${{ secrets.BOTGITHUBTOKEN }}
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2
@@ -89,6 +91,8 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          NEXT_PUBLIC_GITHUB_TOKEN: ${{ secrets.BOTGITHUBTOKEN }}
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2

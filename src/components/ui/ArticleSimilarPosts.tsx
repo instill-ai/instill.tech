@@ -1,5 +1,5 @@
 import { BlogArticleMeta, TutorialMeta } from "@/types/instill";
-import { ReactElement, useMemo } from "react";
+import { ReactElement } from "react";
 
 export type ArticleSimilarPostsProps = {
   sectionTitle: string;

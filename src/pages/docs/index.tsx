@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       destination: "/docs/start-here/getting-started",

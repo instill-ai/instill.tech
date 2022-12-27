@@ -12,7 +12,7 @@ import { CH } from "@code-hike/mdx/components";
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { BlogArticleMeta, Nullable, TutorialMeta } from "@/types/instill";
+import { BlogArticleMeta, Nullable } from "@/types/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";

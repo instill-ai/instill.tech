@@ -1,5 +1,5 @@
 import cn from "clsx";
-import { BlogArticleMeta, Nullable, TutorialMeta } from "@/types/instill";
+import { BlogArticleMeta, Nullable } from "@/types/instill";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Fuse from "fuse.js";
 

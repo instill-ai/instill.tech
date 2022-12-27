@@ -37,13 +37,7 @@ export const BlogCategoryNav = ({
         <BlogSearch articles={articles} setSearchResult={setSearchResult} />
       </div>
     );
-  }, [
-    BlogCategories,
-    articles,
-    setSearchResult,
-    selectedCategory,
-    setSelectedCategory,
-  ]);
+  }, [articles, setSearchResult, selectedCategory, setSelectedCategory]);
 
   const mobileView = useMemo(() => {
     const arrowStyle = {
