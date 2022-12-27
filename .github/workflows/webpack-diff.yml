@@ -42,7 +42,7 @@ jobs:
         run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm build NEXT_PUBLIC_GITHUB_TOKEN=${{ secrets.BOTGITHUBTOKEN }}
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2
@@ -88,7 +88,7 @@ jobs:
         run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm build NEXT_PUBLIC_GITHUB_TOKEN=${{ secrets.BOTGITHUBTOKEN }}
 
       - name: Upload stats.json
         uses: actions/upload-artifact@v2
