@@ -3,7 +3,7 @@ import { ContentContainer, PageBase, PageHead } from "@/components/ui";
 import { FC, ReactElement, useMemo, useState } from "react";
 import { BlogArticleMeta } from "@/types/instill";
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
-import { BlogArticleList, BlogHero, BlogSearch } from "@/components/blog";
+import { BlogArticleList, BlogHero } from "@/components/blog";
 import { BlogCategoryNav } from "@/components/blog/BlogCategoryNav/BlogCategoryNav";
 import { BlogCategory } from "../../../content.config";
 

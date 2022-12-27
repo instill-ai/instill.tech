@@ -1,3 +1,4 @@
+import { Meta } from "@storybook/react";
 import {
   setColorJson,
   setStringKv,
@@ -6,6 +7,10 @@ import {
   setNumberValue,
   setNumberKv,
 } from "./colorJson";
+
+export default {
+  title: "Components/ColorJson",
+} as Meta;
 
 const Template = () => {
   return setColorJson({
@@ -111,10 +116,6 @@ const Template = () => {
       }),
     ],
   });
-};
-
-export default {
-  title: "Components/ColorJson",
 };
 
 export const Playground = Template.bind({});

@@ -44,7 +44,7 @@ type ConnectionLineDataset = {
 // won't get notified. We need to use useMutationObservable to be reactive
 // about this changes.
 
-export const ControlPanel = ({ items, activeIndex }: ControlPanelProps) => {
+export const ControlPanel = ({ items }: ControlPanelProps) => {
   const windowSize = useWindowSize();
 
   const [containerRef, containerDimension] = useElementDimension();

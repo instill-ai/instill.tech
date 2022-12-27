@@ -3,7 +3,6 @@ import glob from "fast-glob";
 import fs from "fs";
 import { BlogArticleMeta } from "@/types/instill";
 import { getCommitMeta } from "../github";
-import { validateTutorialMeta } from "./validateTutorialMeta";
 import matter from "gray-matter";
 import { validateBlogArticleMeta } from "./validateBlogArticleMeta";
 

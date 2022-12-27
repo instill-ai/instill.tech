@@ -29,6 +29,7 @@ export const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
     );
 
     return res.status(201).json({ status: "success", error: "" });
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   } catch (error: any) {
     if (error.response && error.response.body.title === "Member Exists") {
       return res.status(500).json({ status: "error", error: "MemberExists" });
