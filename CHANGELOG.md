@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.25.0](https://github.com/instill-ai/instill.tech/compare/v1.24.0...v1.25.0) (2022-12-29)
+
+
+### Features
+
+* update CONTRIBUTING guideline ([#431](https://github.com/instill-ai/instill.tech/issues/431)) ([5208969](https://github.com/instill-ai/instill.tech/commit/52089691a6eaf286934901391f3511a9b2427813))
+* update typography style and fix image caption issue for content page ([#433](https://github.com/instill-ai/instill.tech/issues/433)) ([1c98669](https://github.com/instill-ai/instill.tech/commit/1c986695e4db76fb43b5d0d8dc8ecad45c170a79))
+
 ## [1.24.0](https://github.com/instill-ai/instill.tech/compare/v1.23.0...v1.24.0) (2022-12-23)
 
 
