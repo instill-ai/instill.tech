@@ -10,6 +10,7 @@ export type ZoomableImgProps = {
   setIsZoom: Dispatch<SetStateAction<boolean>>;
   width?: string;
   height?: string;
+
   /**
    * This will make the zoom happened only when user click the button
    */
@@ -22,6 +23,7 @@ export type ZoomableImgProps = {
 
   customZoomElement?: ReactNode;
   disable?: boolean;
+  disableCaption?: boolean;
 };
 
 export const ZoomableImg = ({
@@ -34,6 +36,7 @@ export const ZoomableImg = ({
   customZoomElement,
   isZoom,
   setIsZoom,
+  disableCaption,
 }: ZoomableImgProps) => {
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -56,13 +59,13 @@ export const ZoomableImg = ({
       */}
 
       {/* 
-        The default zoom gesture is directly click the image.
+        The default zoom gesture is directly clicking the image.
 
         When user specific zoomWithButton, we will display a button to open the
         ZoomedElement. User can't zoom the image by clicking the image anymore.
       */}
 
-      <div className="group relative h-full w-full">
+      <div className="group relative flex h-full w-full flex-col gap-y-4">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           onClick={() => {
@@ -71,7 +74,7 @@ export const ZoomableImg = ({
           }}
           src={src}
           className={cn(
-            "m-0 h-full cursor-pointer bg-white object-contain dark:bg-instillGrey70",
+            "mx-auto my-0 h-full cursor-pointer bg-white object-contain dark:bg-instillGrey70",
             isZoom ? "opacity-0" : "opacity-100",
             width ? "" : "w-full"
           )}
@@ -79,6 +82,11 @@ export const ZoomableImg = ({
           width={width}
           height={height}
         />
+        {!disableCaption ? (
+          <div className="text-center font-sans text-sm font-normal text-instillGrey70 dark:text-instillGrey50">
+            {alt}
+          </div>
+        ) : null}
         {zoomWithButton ? (
           disable ? null : (
             <button

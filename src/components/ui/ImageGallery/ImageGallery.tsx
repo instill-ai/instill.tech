@@ -10,9 +10,10 @@ export type ImageGalleryProps = {
     src: string;
     alt: string;
   }[];
+  caption?: string;
 };
 
-export const ImageGallery = ({ images }: ImageGalleryProps) => {
+export const ImageGallery = ({ images, caption }: ImageGalleryProps) => {
   const windowSize = useWindowSize();
   const [isZoom, setIsZoom] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -164,6 +165,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
                         setSelectedIndex={setSelectedIndex}
                       />
                     }
+                    disableCaption={true}
                   />
                 </div>
               </div>
@@ -176,7 +178,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
       </div>
 
       <div className="embla embla--thumb hidden xl:block">
-        <div className="embla__viewport" ref={thumbViewportRef}>
+        <div className="embla__viewport mb-5" ref={thumbViewportRef}>
           <div className="embla__container embla__container--thumb">
             {images.map((image, i) => (
               <Thumb
@@ -187,6 +189,9 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
               />
             ))}
           </div>
+        </div>
+        <div className="text-center font-sans text-sm font-normal text-instillGrey70 dark:text-instillGrey50">
+          {caption}
         </div>
       </div>
     </>

@@ -6,11 +6,15 @@ export type MdxImageGalleryProps = {
   position?: MdxComponentPosition;
 } & ImageGalleryProps;
 
-export const MdxImageGallery = ({ position, images }: MdxImageGalleryProps) => {
+export const MdxImageGallery = ({
+  position,
+  images,
+  caption,
+}: MdxImageGalleryProps) => {
   return (
     <MdxComponentBase position={position}>
       <div className="flex flex-col">
-        <ImageGallery images={images} />
+        <ImageGallery images={images} caption={caption} />
       </div>
     </MdxComponentBase>
   );
