@@ -45,7 +45,11 @@ const components = {
   ),
   Gist: (props: any) => <MdxGist id={props.id} position={props.position} />,
   Gallery: (props: any) => (
-    <MdxImageGallery images={props.images} position={props.position} />
+    <MdxImageGallery
+      images={props.images}
+      position={props.position}
+      caption={props.caption}
+    />
   ),
   CtaButton: (props: any) => (
     <MdxCtaButton

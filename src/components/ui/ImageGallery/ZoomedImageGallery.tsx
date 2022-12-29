@@ -92,6 +92,7 @@ export const ZoomedImageGallery = ({
 
           .embla__slide__inner {
             display: flex;
+            flex-direction: column;
             height: 800px;
           }
 
@@ -112,7 +113,7 @@ export const ZoomedImageGallery = ({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={image.src}
-                      className="m-0 h-full w-full cursor-pointer object-contain"
+                      className="mb-20 h-full w-full cursor-pointer object-contain"
                       alt={image.alt}
                     />
                   </div>
