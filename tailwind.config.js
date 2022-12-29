@@ -131,8 +131,8 @@ module.exports = {
               lineHeight: "20px",
             },
             code: {
-              paddingTop: "3px",
-              paddingBottom: "3px",
+              paddingTop: "1.5px",
+              paddingBottom: "1.5px",
               paddingRight: "6px",
               paddingLeft: "6px",
               borderStyle: "solid",
@@ -149,7 +149,7 @@ module.exports = {
             },
             p: {
               fontSize: "18px",
-              margin: "36px 0px",
+              margin: "1.25rem 0px",
             },
             "ul > li": {
               fontSize: "18px",
