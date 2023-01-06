@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.1](https://github.com/instill-ai/instill.tech/compare/v1.25.0...v1.25.1) (2023-01-06)
+
+
+### Documentation
+
+* **blog,start-here:** refactor blog article ([#436](https://github.com/instill-ai/instill.tech/issues/436)) ([5cb049d](https://github.com/instill-ai/instill.tech/commit/5cb049d1a912ae33715e452ec1523b687b762d2b))
+
 ## [1.25.0](https://github.com/instill-ai/instill.tech/compare/v1.24.0...v1.25.0) (2022-12-29)
 
 
