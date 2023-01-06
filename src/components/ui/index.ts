@@ -78,3 +78,5 @@ export { ArticleRightSidebar } from "./ArticleRightSidebar";
 export type { ArticleRightSidebarProps } from "./ArticleRightSidebar";
 export { ArticleSimilarPosts } from "./ArticleSimilarPosts";
 export type { ArticleSimilarPostsProps } from "./ArticleSimilarPosts";
+export { MdxQuoteBlock } from "./MdxQuoteBlock";
+export type { MdxQuoteBlockProps } from "./MdxQuoteBlock";

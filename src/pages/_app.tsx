@@ -19,6 +19,8 @@ import {
   MdxZoomableImg,
   MdxImageGallery,
   MdxYoutubeEmbed,
+  MdxQuoteBlock,
+  MdxQuoteBlockProps,
 } from "@/components/ui";
 
 type NextPageWithLayout = NextPage & {
@@ -31,6 +33,9 @@ type AppPropsWithLayout = AppProps & {
 
 const components = {
   CH,
+  QuoteBlock: (props: MdxQuoteBlockProps) => (
+    <MdxQuoteBlock content={props.content} source={props.source} />
+  ),
   ZoomableImg: (props: any) => (
     <MdxZoomableImg
       src={props.src}
