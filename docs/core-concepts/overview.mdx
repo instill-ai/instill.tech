@@ -55,7 +55,7 @@ VDP implements [Airbyte Protocol](https://docs.airbyte.com/understanding-airbyte
 
 VDP is implemented with **API-first** design principle. It enables seamless integration to your data stack at any scale.
 
-VDP uses [Protobuf Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
+VDP uses [Protocol Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
 The same interface definitions are used for both REST (via [gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC. This enables the access to the API over different protocols:
 
 - JSON over HTTP
