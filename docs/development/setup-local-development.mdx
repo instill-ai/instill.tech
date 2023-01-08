@@ -2,11 +2,13 @@
 title: "Set up local development environment"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to set up the development environment for the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-VDP is built with the microservice architecture. To develop each service independently, we assign [profiles](https://docs.docker.com/compose/profiles) to each service in the [`docker-compose-dev.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose-dev.yml) file in VDP.
-This allows us to selectively enabling services for various usages, e.g., debugging or development.
+VDP is built with the microservice architecture. To develop each service independently,
+we assign [profiles](https://docs.docker.com/compose/profiles) to each service in
+the [`docker-compose.dev.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose.dev.yml) file in VDP.
+This allows us to selectively enable services for various purposes, e.g., debugging, development.
 
 :::info{type=info}
 Services are associated with profiles through the `profiles` attribute, which takes an array of profile names.
@@ -25,20 +27,19 @@ VDP assigns five different profile names:
 Use one of the profile name to develop the corresponding service:
 
 ```shellscript
-# In VDP project
-make build PROFILE=<valid-profile-name>
-make dev PROFILE=<valid-profile-name>
+# In the vdp repository folder
+make build PROFILE=<profile-name>
+make dev PROFILE=<profile-name>
 ```
 
 The following guideline shows detailed guideline about how to develop the `connector-backend`.
 
 ## Start dependent VDP services for `connector-backend`
 
-On the local machine, clone `vdp` repository in your workspace, move to the repository folder, and launch all dependent microservices:
+On the local machine, clone the `vdp` repository in your workspace, move to the repository folder, and launch all dependent services:
 
 ```shellscript
-# Clone VDP project
-cd <your-workspace>
+# Clone the vdp repository
 git clone https://github.com/instill-ai/vdp.git && cd vdp
 
 # Use profile `connector` to launch all dependent services for `connector-backend`
@@ -48,10 +49,9 @@ make dev PROFILE=connector
 
 ## Run dev `connector-backend`
 
-Clone `connector-backend` repository in your workspace and move to the repository folder:
+Clone the `connector-backend` repository in your workspace and move to the repository folder:
 
 ```shellscript
-cd <your-workspace>
 git clone https://github.com/instill-ai/connector-backend.git
 cd connector-backend
 ```
@@ -82,7 +82,8 @@ go run ./cmd/worker
 ```
 
 **Run the integration test**
-During development, you can run the integration test to make sure the updated `connector-backend` works as intended:
+
+During local development, you can run the integration test to make sure your latest `connector-backend` works as intended:
 
 ```shellscript
 docker exec -it connector-backend /bin/bash
@@ -93,4 +94,11 @@ make integration-test
 
 ```shellscript
 make stop
+```
+
+## To shut down all dependent VDP services:
+
+```shellscript
+# In the vdp repository folder
+make down
 ```
