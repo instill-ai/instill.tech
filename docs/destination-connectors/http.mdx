@@ -37,7 +37,7 @@ Now go to the **Destination** page, the corresponding HTTP destination connector
 To create a HTTP destination connector:
 
 ```shellscript cURL
-curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "destination-http",
   "destination_connector_definition": "instill-ai/destination-http",
   "connector": {

@@ -122,7 +122,7 @@ You can programmatically build a `ASYNC` pipeline via REST API.
 
 ```shellscript
 
-curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+curl -k -X POST https://localhost:8080/v1alpha/source-connectors -d '{
     "id": "source-http",
     "source_connector_definition": "source-connector-definitions/source-http",
     "connector": {
@@ -130,7 +130,7 @@ curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
     }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models -d '{
+curl -k -X POST https://localhost:8080/v1alpha/models -d '{
   "id": "yolov7",
   "model_definition": "model-definitions/github",
   "configuration": {
@@ -138,9 +138,9 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+curl -k -X POST https://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
 
-curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "postgres-db",
   "destination_connector_definition": "destination-connector-definitions/destination-postgres",
   "connector": {
@@ -157,7 +157,7 @@ curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   }
 }'
 
-curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
+curl -k -X POST https://localhost:8080/v1alpha/pipelines -d '{
   "id": "detection",
   "description": "A magic pipeline to detect objects in images",
   "recipe": {
@@ -175,8 +175,6 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 
 **Step 1: Add a HTTP source**
 
-`http://localhost:8082` is the `connector-backend` default URL.
-
 ```shellscript focus=1:8
 
 ```
@@ -184,8 +182,6 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 ---
 
 **Step 2: Import a model from GitHub**
-
-`http://localhost:8083` is the `model-backend` default URL.
 
 ```shellscript focus=10:16
 
@@ -213,8 +209,6 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 **Step 5: Set up your first pipeline**
 
-`http://localhost:8081` is the `pipeline-backend` default URL.
-
 ```shellscript focus=36:48
 
 ```
@@ -229,7 +223,7 @@ You can make a request to trigger the pipeline to process **multiple** images wi
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
+curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -242,7 +236,7 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
+curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -253,14 +247,14 @@ curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger -d '{
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8081/v1alpha/pipelines/detection/trigger-multipart \
+curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"bear.jpg"'
 ```
 
 </CH.Code>
 
-in which `http://localhost:8081` is the `pipeline-backend` default URL.
+in which `https://localhost:8080` is the `api-gateway` default URL.
 
 A HTTP response will return
 
