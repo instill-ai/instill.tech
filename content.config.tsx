@@ -132,6 +132,10 @@ const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           {
+            text: "System architecture",
+            link: "/docs/development/system-architecture",
+          },
+          {
             text: "Local setup",
             link: "/docs/development/setup-local-development",
           },
