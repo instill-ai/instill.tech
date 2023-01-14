@@ -122,7 +122,7 @@ You can programmatically build a `ASYNC` pipeline via REST API.
 
 ```shellscript
 
-curl -k -X POST https://localhost:8080/v1alpha/source-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
     "id": "source-http",
     "source_connector_definition": "source-connector-definitions/source-http",
     "connector": {
@@ -130,7 +130,7 @@ curl -k -X POST https://localhost:8080/v1alpha/source-connectors -d '{
     }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/models -d '{
+curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "yolov7",
   "model_definition": "model-definitions/github",
   "configuration": {
@@ -138,9 +138,9 @@ curl -k -X POST https://localhost:8080/v1alpha/models -d '{
   }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
 
-curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "postgres-db",
   "destination_connector_definition": "destination-connector-definitions/destination-postgres",
   "connector": {
@@ -157,7 +157,7 @@ curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
   }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/pipelines -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "detection",
   "description": "A magic pipeline to detect objects in images",
   "recipe": {
@@ -223,7 +223,7 @@ You can make a request to trigger the pipeline to process **multiple** images wi
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -236,7 +236,7 @@ curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
 ```
 
 ```shellscript cURL(base64)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -247,7 +247,7 @@ curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger -d '{
 ```
 
 ```shellscript cURL(multipart)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/detection/trigger-multipart \
+curl -X POST http://localhost:8080/v1alpha/pipelines/detection/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"bear.jpg"'
 ```

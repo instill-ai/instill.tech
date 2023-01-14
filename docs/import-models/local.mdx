@@ -163,7 +163,7 @@ Since a local model has no version control, when the model is successfully impor
 1. Send a HTTP request to the VDP `model-backend` to import a local model.
 
 ```shellscript cURL
-curl -k -X POST https://localhost:8080/v1alpha/models:multipart \
+curl -X POST http://localhost:8080/v1alpha/models:multipart \
 --form 'id="yolov4"' \
 --form 'model_definition="model-definitions/local"' \
 --form 'content=@"yolov4.zip"'
@@ -172,7 +172,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models:multipart \
 2. Deploy the `latest` model instance.
 
 ```shellscript cURL
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/deploy
 ```
 
 3. Perform an inference to test the model
@@ -180,7 +180,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/de
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -190,7 +190,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/te
 ```
 
 ```shellscript cURL(base64)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -200,7 +200,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/te
 ```
 
 ```shellscript cURL(multipart)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/latest/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test-multipart \
 --form 'file=@"dog.jpg"'
 ```
 

@@ -355,7 +355,7 @@ No matter if you are using Git LFS or DVC in the repository, when the model is i
 1. Send a HTTP request to the VDP `model-backend` to import a model from a GitHub repository.
 
 ```shellscript cURL
-curl -k -X POST https://localhost:8080/v1alpha/models -d '{
+curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "yolov4",
   "model_definition": "model-definitions/github",
   "configuration": {
@@ -367,7 +367,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models -d '{
 2. Deploy the `v1.0-cpu` model instance.
 
 ```shellscript cURL
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/deploy
 ```
 
 3. Perform an inference to test the model
@@ -375,7 +375,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -385,7 +385,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/
 ```
 
 ```shellscript cURL(base64)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -395,7 +395,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/
 ```
 
 ```shellscript cURL(multipart)
-curl -k -X POST https://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test-multipart \
 --form 'file=@"dog.jpg"'
 ```
 

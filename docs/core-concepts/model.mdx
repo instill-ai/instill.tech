@@ -107,7 +107,7 @@ The API accepts images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -k -X POST https://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -120,7 +120,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/{model-id}/instances/{inst
 ```
 
 ```shellscript cURL(base64)
-curl -k -X POST https://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -133,7 +133,7 @@ curl -k -X POST https://localhost:8080/v1alpha/models/{model-id}/instances/{inst
 ```
 
 ```shellscript cURL(multipart)
-curl -k -X POST https://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```

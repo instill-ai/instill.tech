@@ -124,7 +124,7 @@ You can programmatically build a `SYNC` pipeline via REST API.
 
 ```shellscript
 
-curl -k -X POST https://localhost:8080/v1alpha/source-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
     "id": "source-http",
     "source_connector_definition": "source-connector-definitions/source-http",
     "connector": {
@@ -132,7 +132,7 @@ curl -k -X POST https://localhost:8080/v1alpha/source-connectors -d '{
     }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/models -d '{
+curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "mobilenetv2",
   "model_definition": "model-definitions/github",
   "configuration": {
@@ -140,9 +140,9 @@ curl -k -X POST https://localhost:8080/v1alpha/models -d '{
   }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/models/mobilenetv2/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/mobilenetv2/instances/v1.0-cpu/deploy
 
-curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "destination-http",
   "destination_connector_definition": "destination-connector-definitions/destination-http",
   "connector": {
@@ -150,7 +150,7 @@ curl -k -X POST https://localhost:8080/v1alpha/destination-connectors -d '{
   }
 }'
 
-curl -k -X POST https://localhost:8080/v1alpha/pipelines -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "classification",
   "description": "A magic pipeline to classify images",
   "recipe": {
@@ -219,7 +219,7 @@ Now that the `classification` pipeline is automatically activated, you can make 
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/classification/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -232,7 +232,7 @@ curl -k -X POST https://localhost:8080/v1alpha/pipelines/classification/trigger 
 ```
 
 ```shellscript cURL(base64)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/classification/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/classification/trigger -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSk...D/2Q=="
@@ -243,7 +243,7 @@ curl -k -X POST https://localhost:8080/v1alpha/pipelines/classification/trigger 
 ```
 
 ```shellscript cURL(multipart)
-curl -k -X POST https://localhost:8080/v1alpha/pipelines/classification/trigger-multipart \
+curl -X POST http://localhost:8080/v1alpha/pipelines/classification/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"polar-bear.jpg"'
 ```
