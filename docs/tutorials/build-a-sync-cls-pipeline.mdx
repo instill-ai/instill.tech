@@ -250,7 +250,11 @@ curl -X POST http://localhost:8080/v1alpha/pipelines/classification/trigger-mult
 
 </CH.Code>
 
-in which `https://localhost:8080` is the `api-gateway` default URL.
+in which `http://localhost:8080` is the `api-gateway` default URL.
+
+:::info{type=info}
+`api-gateway` is the single point of entry into the backend services. Please check the [VDP system architecture](/docs/development/system-architecture).
+:::
 
 A HTTP response will return
 
