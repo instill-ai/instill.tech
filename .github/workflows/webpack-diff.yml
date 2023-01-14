@@ -106,7 +106,7 @@ jobs:
     needs: [build-pr, build-base]
     steps:
       - name: Checkout PR
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Download base artifact
         uses: actions/download-artifact@v2

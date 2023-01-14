@@ -84,11 +84,9 @@ If the state of a model instance ends up with `ERROR`, the model instance is und
 <div align="center">
   <ZoomableImg
     src="/docs-assets/core-concepts/model-instance-state.svg"
-    alt="model instance state"
+    alt="  The finite-state-machine (FSM) diagram for the model instance state transition logic"
     width="500"
   />
-  The finite-state-machine (FSM) diagram for the model instance state transition
-  logic.
 </div>
 
 ## Inference
@@ -109,7 +107,7 @@ The API accepts images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -122,7 +120,7 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -135,11 +133,11 @@ curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8083/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```
 
 </CH.Code>
 
-in which `http://localhost:8083` is the `model-backend` default URL, and `{model-id}` and `{instance-id}` correspond to the model and model instance ID respectively.
+in which `{model-id}` and `{instance-id}` correspond to the model and model instance ID respectively.

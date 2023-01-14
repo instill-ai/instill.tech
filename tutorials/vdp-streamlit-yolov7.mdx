@@ -123,7 +123,7 @@ Programmatically build a `SYNC` pipeline via REST API:
 
 ```shellscript
 
-curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
     "id": "source-http",
     "source_connector_definition": "source-connector-definitions/source-http",
     "connector": {
@@ -131,7 +131,7 @@ curl -X POST http://localhost:8082/v1alpha/source-connectors -d '{
     }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models -d '{
+curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "yolov7",
   "model_definition": "model-definitions/github",
   "configuration": {
@@ -139,9 +139,9 @@ curl -X POST http://localhost:8083/v1alpha/models -d '{
   }
 }'
 
-curl -X POST http://localhost:8083/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
 
-curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "destination-http",
   "destination_connector_definition": "destination-connector-definitions/destination-http",
   "connector": {
@@ -149,7 +149,7 @@ curl -X POST http://localhost:8082/v1alpha/destination-connectors -d '{
   }
 }'
 
-curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "yolov7",
   "recipe": {
     "source": "source-connectors/source-http",
@@ -167,8 +167,6 @@ curl -X POST http://localhost:8081/v1alpha/pipelines -d '{
 **Step 1**:
 
 Add an HTTP data source
-
-`http://localhost:8082` is the `connector-backend` default URL.
 
 ```shellscript focus=1:8
 
