@@ -262,17 +262,24 @@ A HTTP response will return
 
 ```json
 {
+  "data_mapping_indices": [
+    "01GPRNBGGFTE4AWK6RM825RJG0",
+    "01GPRNBGGFTE4AWK6RMB2WXQWA"
+  ],
   "model_instance_outputs": [
     {
+      "model_instance": "models/mobilenetv2/instances/v1.0-cpu",
       "task": "TASK_CLASSIFICATION",
-      "batch_outputs": [
+      "task_outputs": [
         {
+          "index": "01GPRNBGGFTE4AWK6RM825RJG0",
           "classification": {
             "category": "golden retriever",
             "score": 0.898938
           }
         },
         {
+          "index": "01GPRNBGGFTE4AWK6RMB2WXQWA",
           "classification": {
             "category": "ice bear",
             "score": 0.999554
