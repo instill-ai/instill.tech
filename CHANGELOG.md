@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.25.2](https://github.com/instill-ai/instill.tech/compare/v1.25.1...v1.25.2) (2023-01-15)
+
+
+### Documentation
+
+* **core-concepts,destination-conneectors,development,import-models,source-connectors,start-hear,tutorials:** update documentation ([#438](https://github.com/instill-ai/instill.tech/issues/438)) ([d26b3c9](https://github.com/instill-ai/instill.tech/commit/d26b3c9d68075f0f16852a9ce7e63c75571d4334))
+* **start-here:** remove info block ([#444](https://github.com/instill-ai/instill.tech/issues/444)) ([153060b](https://github.com/instill-ai/instill.tech/commit/153060be2181aeda4f4b87ba706693593eb1253a))
+* **tutorials:** update sync pipeline response ([#441](https://github.com/instill-ai/instill.tech/issues/441)) ([d973031](https://github.com/instill-ai/instill.tech/commit/d973031878abab110803d8417a3ef3565462b51a))
+
 ## [1.25.1](https://github.com/instill-ai/instill.tech/compare/v1.25.0...v1.25.1) (2023-01-06)
 
 
