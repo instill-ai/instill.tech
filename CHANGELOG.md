@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.3](https://github.com/instill-ai/instill.tech/compare/v1.25.2...v1.25.3) (2023-01-15)
+
+
+### Documentation
+
+* **development:** fix system arch chart ([#445](https://github.com/instill-ai/instill.tech/issues/445)) ([1317310](https://github.com/instill-ai/instill.tech/commit/13173107caa953f078b4bcfbfb7a5242b934b838))
+
 ## [1.25.2](https://github.com/instill-ai/instill.tech/compare/v1.25.1...v1.25.2) (2023-01-15)
 
 
