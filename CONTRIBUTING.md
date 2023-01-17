@@ -324,7 +324,7 @@ export type BlogArticleMeta = {
 
 ### Nested p tag issue
 
-Please don't use p tag to wrap other component in markdown. Because it will cause nested p tag issue.
+Please don't use p tag to wrap other component in markdown. Because it will cause nested p tag issue. (Because mdx will wrap this line of text into p tag already, another p tag will cause this issue.)
 
 ```mdx
 // This is not allowed.
