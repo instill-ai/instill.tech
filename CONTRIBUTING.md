@@ -40,6 +40,52 @@ There have three content folders and their corresponding page, assets folder.
 
 ### About the `content.config.tsx`
 
+To be documented...
+
+### Support extended markdown syntax
+
+#### Info-block
+
+- We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed. 
+- Please do enclose the info-block with proper syntax, every missed ::: will cause some unwanted behavior.(Currently, we don't have way to detect this kind of syntax error)
+
+
+```md
+:::info{type=info}
+This is info block with info type
+:::
+```
+
+```md
+:::info{type=warning}
+This is info block with warning type
+:::
+```
+
+```md
+:::info{type=danger}
+This is info block with danger type
+:::
+```
+
+```md
+:::info{type=tip}
+This is info block with danger type
+:::
+```
+
+#### Details section
+
+Please follow markdown details syntax like below
+
+```md
+<details>
+  <summary>**Is VDP free?**</summary>
+
+  Content
+</details>
+```
+
 ### Supported MDX components
 
 #### ZoomableImg
@@ -273,3 +319,16 @@ export type BlogArticleMeta = {
 
 - Please group the images by blog article.
 - For example, the images of introducing-vdp.mdx should be put into the `/public/blog-assets/introducing-vdp` folder.
+
+## Caveats
+
+### Nested p tag issue
+
+Please don't use p tag to wrap other component in markdown. Because it will cause nested p tag issue.
+
+```mdx
+// This is not allowed.
+<p>
+  <ZoomableImg />
+</p>
+```
