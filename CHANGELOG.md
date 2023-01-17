@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.4](https://github.com/instill-ai/instill.tech/compare/v1.25.3...v1.25.4) (2023-01-17)
+
+
+### Documentation
+
+* **core-concepts,prepare-models:** fix broken links ([#447](https://github.com/instill-ai/instill.tech/issues/447)) ([6caed92](https://github.com/instill-ai/instill.tech/commit/6caed9232dd7fc561cde80df7b4f0ab75a362f97))
+
 ## [1.25.3](https://github.com/instill-ai/instill.tech/compare/v1.25.2...v1.25.3) (2023-01-15)
 
 
