@@ -1,0 +1,191 @@
+---
+title: "VDP 101 - How to Trigger a SYNC Pipeline?"
+lang: "en-US"
+draft: false
+description: "In the previous tutorial [VDP 101 - Create Your First Pipeline], you have learnt how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step. "
+aiTask: "undefined"
+sourceConnector: "HTTP"
+destinationConnector: "HTTP"
+publishedOn: "2023-01-30T16:26:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
+useCase: "n/a"
+author: "Po-Yu Chen"
+authorAvatarSrc: "/author-avatar/po-yu-chen.png"
+authorGitHubUrl: "https://github.com/bryan107"
+---
+
+keywords: #VDP101 #Pipeline #SYNC #Trigger #HTTP
+
+In the previous tutorial [VDP 101 - Create Your First Pipeline], you have learnt how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step. 
+
+Depending on the use case, users can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Further details can be found in the next tutorial [VDP 101 - SYNC, ASYNC and PULL Mode]. For this tutorial, we use `SYNC` mode for showcasing. 
+
+
+# Prerequisites
+
+## Create a Python virtual enviroment
+
+In this tutorial, we'll use Conda as the package management system. You can install Conda via [anaconda](https://docs.anaconda.com/anaconda/install/silent-mode/) or [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda-on-a-system-that-has-other-python-installations-or-packages). Using a virtual environment is not required but recommended.
+
+Create and activate an environment named `vdp-streamlit` with Python 3.8:
+
+```bash   
+conda create --name vdp-streamlit python=3.8
+conda activate vdp-streamlit
+```
+
+Once activated, you can run scripts from this environment.
+
+
+## Install app dependencies
+
+There are some libarary
+Go to `<path-of-vdp-folder>/examples/simple_examples/sync` directory of the VDP project.
+
+```bash
+# move to the VDP example folder
+cd <path-of-vdp-folder>/examples/simple_examples/sync
+# show all the file in this example
+ls
+```
+
+The directory will look like the following:
+
+```bash
+├── README.md
+├── main.py
+└── requirements.txt          
+```
+
+where `requirements.txt` file contains all the dependencies. Install all the dependencies required to run the app from the activated virtual environment.
+
+```bash
+pip install -r requirements.txt
+```
+
+
+# Let's Start with a Simple Example
+
+To check if you got everything ready, simply run the Python example with the command below.
+
+```bash
+python ./sync_base64.py
+```
+
+WHALA! You just triggered the object detection pipeline! You should see the results below where the input image `dog.png` is stored in your example folder
+
+<img
+  src="/tutorial-assets/vdp-101/create-your-first-pipeline/dog-example.png"
+  alt="An example demonstrating object detection with VDP."
+/>
+
+Let's diving into our example codes to see what actually happend.
+
+
+# Trigger VDP Pipeline
+
+VDP currently support three input protocols to support `HTTP/gRPC` protocols. When triggering the pipeline with HTTP protocols (i.e. RESTful), users can send their data via **HTTP POST Requests** or **HTTP Multipart Requests**. You can find these examples in `/examples/simple-examples/`
+
+
+## HTTP POST Request
+
+**HTTP POST Requests** allows users to tigger the pipeline and upload input data as a JSON object in the message payload. VDP currently support two types of JSON objects:
+
+- **url:** clients pass Internet links service, which will locate and download the image files accordingly. An example can be found in `sync-url.py`
+- **base64:** clients upload image filesin base64 format, encoding images into UTF-8 Strings. In this tutorial example, we convert JPG to BASE64 using **base64** library. An example can be found in `sync-base64.py`.
+
+Below is an example demonstrates the structure of the JSON objects. As can be seen, inputs can be a list consisting of multiple payload if needed.
+
+```python
+# Code can be demonstrated in Code Hike?
+body = {
+	"inputs": [
+		{
+			# payload for URL
+			"image_url": img_url
+			# payload for base64
+			"image_base64": img_string
+		}
+	]
+}
+```
+
+> **NOTE**  
+> although JSON object is commonly used, It not optimal uploading large objects, for which we recommend you triggering the pipeline using **HTTP Multipart Request**.
+
+
+## Tigger pipelines with HTTP POST Requests 
+
+Once we have the JSON object ready, we can trigger the pipeline using standard HTTP POST requests. There are *three* arguments In the HTTP POST messages. They are `pipeline backend URL`, `pipeline_id` and `json`, which is the JSON object prepared above.
+
+```python
+# Post HTTP requests to trigger VDP pipeline
+requests.post(f"{pipeline_backend_url}/pipelines/{pipeline_id}/trigger", json=body)
+```
+
+### Pipeline Backend URL
+
+This is the URL of VDP backend service that tiggers the pipeline. In this example, the URL is defined in variable `{pipeline_backend_url}`, which is 'http://localhost:8081/v1alpha' by default for local installation.
+
+```python
+# Set pipeline backend URL
+pipeline_backend_url = 'http://localhost:8081/v1alpha'
+```
+
+### Pipeline ID
+
+This indicate the pipeline we are going to tigger. The pipeline need to be created on VDP in advance of use. in this example, pipeline id is `yolov7`
+
+```python
+# Set pipeline ID
+pipeline_id = 'yolov7'
+```
+
+## HTTP Multipart Uplaod
+
+If you're uploading **large objects** we recommend you using **HTTP Multipart Requests**. Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. If transmission of any part fails, you can retransmit that part without affecting other parts. 
+
+We recommend that you use multipart uplaod in the following ways:
+- If you're uploading large objects over a **stable high-bandwidth network**, use multipart upload to maximize the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.
+- If you're uploading over a **spotty network**, use multipart upload to increase resiliency to network errors by avoiding upload restarts. When using multipart upload, you need to retry uploading only the parts that are interrupted during the upload. You don't need to restart uploading your object from the beginning.
+
+In `sync-multipart.py` we demonstre how to exploit **Multipart Request** to upload multiple files with a single request.
+
+Below is an example demopnstrate how to prepare the payload for multipart uplaod, where `img_names` is a list consisting of the image-file names.
+
+```python
+body = [("file", (img_name, open(os.path.join(img_folder, img_name), 'rb'))) for img_name in img_names]
+```
+
+
+## Tigger pipelines with HTTP Multipart Upload
+
+The HTTP POST request is similar to the **HTTP POST Request**. the only diferences are:
+
+- `URL`: instead of ending with `tigger` in HTTP POST Request, the URL ends with `tigger-multipart`.
+- `files=body`: instead of passing the files as JSON object (`json=body`), use a dictionary of files. 
+
+```python
+requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart",files=body)
+```
+
+> **NOTE**  
+> For further details of Python requests.post() method, we refer readers to [this documentation](https://www.w3schools.com/python/ref_requests_post.asp).
+
+# Tigger pipeline in command line
+
+In addition to our Python examples, we also provide command line exampels for your pipelines! Choose a pipeline on your [VDP Console](http://localhost:3000/pipelines). You can find the corresponding HTTP request at the bottom of your pipeline page. 
+
+<img
+  src="pipeline-trigger.png"
+  alt="Pipelines can be triggered in command line."
+/>
+
+
+# More Data Object Suported by VDP
+
+In addition to image objects, Versitile Data Pipeline (VDP) supports extensive data types that are commonly used in ML tasks. You can find further details in our [Data Object Documentation], or the Python examples in `vdp/examples/simple-examples/`. 
+
+Okay, we have learnt how to tigger pipelines on VDP. Let's see how to parse pipeline responses in our next tutorial [VDP 101 - How to Parse Responses from SYNC Pipelines]

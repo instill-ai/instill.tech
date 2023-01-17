@@ -1,0 +1,66 @@
+---
+title: "VDP 101 - pipeline Modes - SYNC, ASYNC and PULL"
+lang: "en-US"
+draft: false
+description: "To fulfill diverse application scenarios, VDP provides three different modes. Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode."
+aiTask: "undefined"
+sourceConnector: "HTTP"
+destinationConnector: "HTTP"
+publishedOn: "2023-01-30T18:26:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
+useCase: "n/a"
+author: "Po-Yu Chen"
+authorAvatarSrc: "/author-avatar/po-yu-chen.png"
+authorGitHubUrl: "https://github.com/bryan107"
+---
+
+A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process unstructured data. In the previous tutorials, we demonstrated how to use VDP by creating pipelines in `SYNC` mode. However, To fulfill diverse application scenarios, VDP provides three different modes. Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination.
+
+In the following of this tutorial, we will explain how these modes work and how to choose the most suitable mode for your pipeline.
+
+# `SYNC` Mode
+
+A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern. The request flow when triggering a `SYNC` pipeline is shown below:
+
+<img
+    src="/tutorial-assets/vdp-101/pipeline-modes/sync.svg"
+    alt="In SYNC mode, VDP responses pipeline trigger requests with task outputs."
+/>
+
+To create a `SYNC` pipeline, both source and destination needs to be configured with the same protocol type. At the moment, VDP supports HTTP and gRPC for a `SYNC` pipeline.
+
+
+## When to use `SYNC` mode
+
+`SYNC` mode provide an real-time ETL pipelines where source and desination are the same. This make is particually suitable for coping with smaller data (batchs) and smaller ML models requiring short inference time. However, it is not suitable for large data batch and ML models that yeild long uploading and inference time.
+
+
+# `ASYNC` Mode
+
+A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response. Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
+
+<img
+    src="/tutorial-assets/vdp-101/pipeline-modes/async.svg"
+    alt="In ASYNC mode, VDP responses pipeline trigger requests with simple ACKs. Task outputs are loaded to destinations defined in the pipelines."
+/>
+
+![ASYNC pipeline mode](async.svg)
+
+To create an `ASYNC` pipeline, the source can be either HTTP or gRPC, and the destination can be any [Airbyte destination connectors](https://airbyte.com/).
+
+## When to use `ASYNC` mode
+
+As to the procedure illustrated above, `ASYNC`  mode is more suitable when you have limited computational resources for the ML task. This mode allow you to upload data to the pipelines for inferencing, where the pro cessing may take place later.
+
+
+# `PULL` Mode (coming soon!)
+
+A pipeline in the `PULL` mode performs scheduled workload to regularly pull data from the **Source** to send to **Model** for inference nand write to destination in the end.
+
+![PULL pipeline mode](pull.svg)
+
+## When to use `PULL` mode
+
+Compared to `ASYNC` mode which requires users to trigger the pipeline, the pipeline is triggered by themselves in `PULL` mode. It is, therefore, more suitable for fully automated pipelines where the `PULL` actiion can be scheduled according to computational power and data generation. 
