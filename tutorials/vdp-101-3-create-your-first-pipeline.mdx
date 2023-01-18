@@ -1,28 +1,26 @@
 ---
-title: "VDP 101 - Create Your First Pipeline on VDP"
+title: "VDP 101 - 3. Create Your First Pipeline on VDP"
 lang: "en-US"
 draft: false
 description: "In this tutorial, we are going to build our first ML ETL pipeline with VDP, which allows you to seemlessly run your ML/AI inferences with minimum efforts."
-aiTask: "undefined"
+aiTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
 publishedOn: "2023-01-30T15:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
-useCase: "n/a"
+useCase: "Prototyping"
 author: "Po-Yu Chen"
-authorAvatarSrc: "/author-avatar/po-yu-chen.png"
+authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
-
-Keywords: #VDP #Pipeline #ETL #HTTP #gRPC #source #Model #connector
 
 In this tutorial, we are going to build our first ML ETL pipeline with VDP, which allows you to seemlessly run your ML/AI inferences with minimum efforts.
 
 Before we start creating the first pipeline, please ensure you have VDP services runing on your machine. If not, you can setup your own VDP services with the guidelines in the tutorial [VDP 101 - installation].
 
-# Start Your First Pipeline with VDP
+## Start Your First Pipeline with VDP
 
 If this is your first time setting up VDP, access the VDP Console ([http://localhost:3000](http://localhost:3000/)) and you should see the onboarding page. Please enter your email and you are all set!
 
@@ -36,17 +34,17 @@ As we demonstrated in [VDP 101 - Introduction], VDP aims to streamline the Extra
 
 In the following of this tutorial, we are going to demonstrate how to set up these three comonents and build a `SYNC` object detection pipeline with YOLOv7 via VDP Console. 
 
-## Step 1: Create a New Pipeline
+### Step 1: Create a New Pipeline
 
 Click on the **Pipeline** page on the left sidebar. Since we have yet setup any pipeline, this page will be empty except. To create our first pipeline via VDP Console, click the **Set up your first pipeline** botton, and we are going start.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/pipeline-list-empty.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/pipeline-list-empty.png"
   alt="Empty pipeline list page of the VDP Console."
 />
 
 
-## Step 2: Add a HTTP Source
+### Step 2: Add a HTTP Source
 
 VDP currenly supports two sources, `HTTP` and `gRPC`. A `HTTP` source accepts `HTTP` requests with image payloads to be processed by a pipeline.
 
@@ -60,12 +58,12 @@ To setup a **Source Connector** for ,
 3.  click **Next**.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/add-a-sync-source-http.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/add-a-sync-source-http.png"
   alt="Add a HTTP source to set up a SYNC pipeline in the VIP Console."
 />
 
 
-## Step 3: Import and Deploy a model from GitHub
+### Step 3: Import and Deploy a model from GitHub
 
 To process images, here we import a model from our public GitHub repo [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc).
 
@@ -78,7 +76,7 @@ To set it up,
 5.  click **Set up** to fetch ML model to VDP.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/add-a-model.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/add-a-model.png"
   alt="Import a model from a GitHub repository via VDP Console."
 />
 
@@ -93,17 +91,17 @@ Once the model is imported, we need to the deploy this model on either a `CPU` o
 > **NOTE:** you can deploy model on GPU by deploying ML model on `v1.0-gpu`
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/add-a-model-2.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/add-a-model-2.png"
   alt="Deploy a model instance via VDP Console."
 />
 
 
-## Step 4: Add a HTTP destination
+### Step 4: Add a HTTP destination
 
 Since we are building a `SYNC` pipeline, the `HTTP` destination is automatically paired with the `HTTP` source as we setup for the source. So just simply click **Next**.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/add-a-sync-destination-http.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/add-a-sync-destination-http.png"
   alt="Add a HTTP destination to create a SYNC pipeline in the VDP Console."
 />
 
@@ -113,7 +111,7 @@ Since we are building a `SYNC` pipeline, the `HTTP` destination is automatically
 > - gRPC source → gRPC destination
 
 
-## Step 5: Set up the Pipeline
+### Step 5: Set up the Pipeline
 
 We are almost done! Now we have created `Source`, `Model Instance` and `Destination`. The very last step is to give this pipeline an ID and we are ready to go! Just
 
@@ -122,22 +120,31 @@ We are almost done! Now we have created `Source`, `Model Instance` and `Destinat
 3.  click **Set up**.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/first-pipeline.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/first-pipeline.png"
   alt="Set up a pipeline in the VDP Console."
 />
 
 **CONGRATUATIONS!** You have your first pipeline setup. You should see the pipeline you just created on the **Pipeline** page.
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/first-pipeline-list.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/first-pipeline-list.png"
   alt="Find your first pipeline on the Pipeline page."
 />
 
 You can find further details about this pipeline by clicking on the pipeline you just created. The **green** light indicates the pipeline service is `Active` and can be triggered via sending REST requests (HTTP).
 
 <img
-  src="/tutorial-assets/vdp-101/create-your-first-pipeline/first-pipeline-page.png.png"
+  src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/first-pipeline-page.png"
   alt="Find further details about this pipeline."
 />
 
-You may be aware of the REST examples code that tiggers the pipeline at the bottom of this page. No worry about this now. You will learn how to tigger your piprline in the next tutorial [VDP 101 - How to Tigger a Pipeline].
+You may be aware of the REST examples code that tiggers the pipeline at the bottom of this page. No worry about this now. You will learn how to tigger this piprline in the next tutorial → [VDP 101 - How to Tigger a Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline).
+
+<br/><br/>
+**↓↓↓ VDP 101 TUTORIALS ↓↓↓**
+1. [Introduction to VDP](/tutorials/vdp-101-1-introduction)
+2. [Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
+3. [Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+4. [How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+5. [How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+6. [Pipeline Modes: SYNC, ASYNC and PULL](/tutorials/vdp-101-6-pipeline-modes)

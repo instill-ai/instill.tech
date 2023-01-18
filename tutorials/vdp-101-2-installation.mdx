@@ -1,33 +1,31 @@
 ---
-title: "VDP 101 - Install VDP on Your Local Machine"
+title: "VDP 101 - 2. Install VDP on Your Local Machine"
 lang: "en-US"
 draft: false
 description: "To benefit a broader community, we release VDP under the open-source Apache license 2.0. We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). "
-aiTask: "undefined"
+aiTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
 publishedOn: "2023-01-30T15:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
-useCase: "n/a"
+useCase: "Prototyping"
 author: "Po-Yu Chen"
-authorAvatarSrc: "/author-avatar/po-yu-chen.png"
+authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-Key words: #VDP #ETL #MachlineLearning #ArtificialIntellegence #ML #AI #DataPipeline #Automation #Docker #DockerCompose #Git #Installation  
+In [VDP 101 - 1. Intdocution to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP. To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). 
 
-To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). 
-
-# Prerequisites
+## Prerequisites
 
 Before installing VDP, Make sure you have the prerequisites set up: 
 - **macOS or Linux** - VDP works on macOS or Linux. It does not support Windows at the moment but its coming soon!
 - **Docker and Docker Compose** - VDP uses Docker Compose to run all services at local.
 - **Git** - well...you need Git to download VDP and manage your code. Make sure you have it. 
 
-## Install Docker and Docker Compose
+### Install Docker and Docker Compose
 
 **Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualization](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualization") to deliver software in packages called _[containers](https://en.wikipedia.org/wiki/Container_(virtualization) "Container (virtualization)")_. Users won't need to setup their environment before running services.
 
@@ -38,13 +36,13 @@ Install Docker Desktop:
 - [Install on Linux](https://docs.docker.com/desktop/install/linux-install/) - Make sure your platform is supported.
 - [Install on Windows](https://docs.docker.com/desktop/install/windows-install/) - You can Install Docker Desktop on Windows but is not supported by VDP...... yet ...stay tuned!
 
-## Install Git
+### Install Git
 
 **Git** is a [distributed version control](https://en.wikipedia.org/wiki/Distributed_version_control "Distributed version control") system: tracking changes in any set of [files](https://en.wikipedia.org/wiki/Computer_file "Computer file"), usually used for coordinating work among [programmers](https://en.wikipedia.org/wiki/Programmer "Programmer") collaboratively developing [source code](https://en.wikipedia.org/wiki/Source_code "Source code") during [software development](https://en.wikipedia.org/wiki/Software_development "Software development").
 There are many ways to Install Git. Git provides different [installation options](https://git-scm.com/downloads) for all three OS. Use the one you like the most.You can also [Install Git via Conda](https://www.anaconda.com/products/distribution) if prefered. 
 
 
-# Download and Install VDP
+## Download and Install VDP
 
 VDP is currently an open-source project maintained on our [Github repository](https://github.com/instill-ai/vdp). Don't worry if you are not familiar with it. We have setup everything for you.
 
@@ -61,14 +59,15 @@ make all
 
 WHALA! This may take a while. Have a cup of tea. Once the services are up, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/). You should see the onboarding page. Please enter your email and you are all set!
 
-> **NOTE**  
-> ⚠︎ Downloading the Triton server image will take a while, but it should be just a one-time effort.
+:::info{type=warning}
+⚠︎ Don't be panic if you don't see the Console UI right after `make all`. Downloading the Triton server image will take a while, but it should be just a one-time effort.
+:::
 
 ↓↓ If you see this Console UI, you are ready to go! ↓↓
 
 <img
-  src="/tutorial-assets/vdp-101-introduction/onboarding.png"
-  alt="Pipeline page on the VDP Console"
+  src="/tutorial-assets/vdp-101/2-installation/onboarding.png"
+  alt="Please fill the onboarding information so we can keep you posted with our latest News!"
 />
 
 In some unlikely conditoins, you may wish **shut down** VDP with the `bash` command below:
@@ -82,7 +81,17 @@ make down
 
 You can also check if VDP is running on your machine by looking at the `instill-vdp` Docker Compose is running correctly in your **Docker Desktop**.
 
-> **NOTE**
-> Although not necessary, we highly recommend you give your Docker more memory. Go to `settings > resources` in your **Docker Desktop** app and set memoery to at least **32GB**. You will need to **shut down** and **start** you VDP service after you change your memory setting.
+:::info{type=info}
+Although not necessary, we highly recommend you give your Docker more memory. Go to `settings > resources` in your **Docker Desktop** app and set memoery to at least **32GB**. You will need to **shut down** and **start** you VDP service after you change your memory setting.
+:::
 
-Okay, now you have a VDP running on your machine. Let's create our first pipeline [VDP 101 - Create Your First ML-ETL Pipeline with VDP]
+Okay, now you have a VDP running on your machine. Let's create the first pipeline by following our next tutorial → [VDP 101 - 3. Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+
+<br/><br/>
+**↓↓↓ VDP 101 TUTORIALS ↓↓↓**
+1. [Introduction to VDP](/tutorials/vdp-101-1-introduction)
+2. [Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
+3. [Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+4. [How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+5. [How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+6. [Pipeline Modes: SYNC, ASYNC and PULL](/tutorials/vdp-101-6-pipeline-modes)
