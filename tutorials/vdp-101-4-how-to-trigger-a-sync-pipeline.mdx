@@ -166,7 +166,7 @@ pipeline_id = 'yolov7'
 If you're uploading **large objects**, we recommend you use **HTTP Multipart Requests**. Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. If transmission of any part fails, you can retransmit that part without affecting other parts. 
 
 We recommend that you use multipart upload in the following ways:
-- If you're uploading large objects over a **stable high-bandwidth network**, use multipart upload to maximize the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.
+- If you're uploading large objects over a **stable high-bandwidth network**, use multipart upload to maximise the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.
 - If you're uploading over a **spotty network**, use multipart upload to increase resiliency to network errors by avoiding upload restarts. When using multipart upload, you need to retry uploading only the parts that are interrupted during the upload. You don't need to restart uploading your object from the beginning.
 
 In `sync-http-multipart.py`, we demonstrate how to exploit **Multipart Request**.
@@ -236,7 +236,7 @@ curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance
 
 ## More Data Objects Supported by VDP
 
-In addition to image objects, Versatile Data Pipeline (VDP) supports extensive data types commonly used in AI tasks. You can find further details in our [VDP standardized AI tasks](/docs/core-concepts/ai-task) or the Python examples in `/examples/`. 
+In addition to image objects, Versatile Data Pipeline (VDP) supports extensive data types commonly used in AI tasks. You can find further details in our [VDP standardised AI tasks](/docs/core-concepts/ai-task) or the Python examples in `/examples/`. 
 
 Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse pipeline responses in our following tutorial → [VDP 101 - 5. How to Parse Responses from SYNC Pipelines](/tutorials/vdo-101-5-hoe-to-parse-vdp-responses).
 

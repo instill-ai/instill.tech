@@ -30,7 +30,7 @@ resp = trigger_pipeline_multipart(pipeline_backend_url, pipeline_id, img_folder,
 boxes_ltwh, categories, scores = parse_detection_response(resp)
 ```
 
-Here, the pipeline responds to our HTTP POST request with `resp: request.Response`, which is then passed to a user-defined parser `parse_detection_response(resp)` to extract object detection results. You can find corresponding parsers in our examples per VDP standardized AI task.
+Here, the pipeline responds to our HTTP POST request with `resp: request.Response`, which is then passed to a user-defined parser `parse_detection_response(resp)` to extract object detection results. You can find corresponding parsers in our examples per VDP standardised AI task.
 
 In the parsers, you can write code to convert the JSON object `resp` to a Python object for easy access using the one-line code below, where `resp.text` returns the response's content in Unicode in Python 3.
 
@@ -98,7 +98,7 @@ We will show you how to locate corresponding results in `ASYNC` pipelines in [VD
 #### Model instance outputs
 
 - `model_instance` is the model instance you defined when creating the pipeline.
-- `task` is the name defined by the VDP model backend. You can identify the AI task performed using it. For those unspecified tasks defined by users, VDP returns `TASK_UNSPECIFIED`. Note that when [importing customized models](https://www.instill.tech/docs/import-models/overview), users need to [define model card](/docs/prepare-models/model-card) corresponding to their AI tasks.
+- `task` is the name defined by the VDP model backend. You can identify the AI task performed using it. For those unspecified tasks defined by users, VDP returns `TASK_UNSPECIFIED`. Note that when [importing customised models](https://www.instill.tech/docs/import-models/overview), users need to [define model card](/docs/prepare-models/model-card) corresponding to their AI tasks.
 - `task_outputs`: is a list of outputs given different tasks.
     - `index`: is the same as the `data_mapping_indices` received when triggering pipelines. Users can use it to match trigger queries and task outputs in `ASYNC` and `PULL` modes.
     - `detection`: is the **key** representing the AI task. Here, **detection** indicates this is an **object-detection** task.
@@ -107,7 +107,7 @@ We will show you how to locate corresponding results in `ASYNC` pipelines in [VD
 - `object`: is a list of detection results. VDP defines different JSON objects with which users can easily read/parse the model outputs for popular AI tasks. 
 
 :::info{type=info}
-VDP currently standardizes task outputs for popular AI tasks. You can find details for each AI task in [VDP standardized AI Tasks](/docs/core-concepts/ai-task).
+VDP currently standardises task outputs for popular AI tasks. You can find details for each AI task in [VDP standardised AI Tasks](/docs/core-concepts/ai-task).
 :::
 
 ### Pipeline responses in `ASYNC` and `PULL` modes
@@ -128,8 +128,8 @@ Unlike in `SYNC` mode, the pipeline responses in `ASYNC`  and `PULL` modes are s
 
 ### Unspecified Tasks
 
-VDP can't standardize all possible AI tasks and their inputs and outputs. Therefore, it allows users to deploy their models even if VDP has yet to standardize the task. These models will be classified as `Unspecified` tasks. When an unspecified model in deployed, VDP will
- - check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file when [deploying customized model on VDP] to extract the output names, datatypes, and shapes of the model outputs,
+VDP can't standardise all possible AI tasks and their inputs and outputs. Therefore, it allows users to deploy their models even if VDP has yet to standardise the task. These models will be classified as `Unspecified` tasks. When an unspecified model in deployed, VDP will
+ - check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file when [deploying customised model on VDP] to extract the output names, datatypes, and shapes of the model outputs,
  - and wrap this information along with the raw model output in a _standard_ format, as in the example below.
 
 ```python
@@ -158,19 +158,19 @@ VDP can't standardize all possible AI tasks and their inputs and outputs. Theref
 VDP exploits Triton Inference Server as the model inference backbone. Don't worry about how to import models to VDP just yet. We will discuss this in [VDP 101 - Import Model to VDP]. 
 :::
 
-## AI Tasks currently standardized by VDP
+## AI Tasks currently standardised by VDP
 
-At the moment, VDP standardizes the task outputs for popular AI tasks:
+At the moment, VDP standardises the task outputs for popular AI tasks:
 
 -   _Image classification_ - classify images into predefined categories
--   _Object detection_ - detect and localize multiple objects in images
--   _Keypoint detection_ - detect and localize multiple key points of objects in images
+-   _Object detection_ - detect and localise multiple objects in images
+-   _Keypoint detection_ - detect and localise multiple key points of objects in images
 -   _OCR (Optical Character Recognition)_ - detect and recognise text in images
--   _Instance segmentation_ - detect, localize and delineate multiple objects in images
--   *Semantic Segmentation -* recognize a collection of image pixels that form distinct categories.
+-   _Instance segmentation_ - detect, localise and delineate multiple objects in images
+-   *Semantic Segmentation -* recognise a collection of image pixels that form distinct categories.
 -   The list is growing ... 🌱
 
-A complete list can be found on [VDP standardized AI Tasks](https://www.instill.tech/docs/core-concepts/ai-task).
+A complete list can be found on [VDP standardised AI Tasks](https://www.instill.tech/docs/core-concepts/ai-task).
 
 We have demonstrated how to use VDP step-by-step in `SYNC` mode. However, VDP supports other modes, including `ASYNC` and `PULL`. Before showing how they work, let's closely look at their differences in our following tutorial → [VDP 101 - 6. Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes).
 
