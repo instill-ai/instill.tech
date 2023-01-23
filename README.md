@@ -2,6 +2,10 @@
 
 This repository maintains the Instill AI product website and VDP documentation.
 
+## Prerequisites
+
+1. [pnpm](https://pnpm.io/installation) - MAC OSX and Linux systems should follow the insturction for POSIX systems.
+
 ## Contribution
 1. Clone the github
 2. `pnpm install`

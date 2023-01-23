@@ -1,8 +1,8 @@
 ---
-title: "VDP 101 - 5. How to Parse Responses from SYNC Pipelines"
+title: "VDP 101 [5/7] How to Parse Responses from SYNC Pipelines"
 lang: "en-US"
 draft: false
-description: "In the `SYNC` mode, VDP returns post-processed inference results depending on the protocol (i.e., `HTTP/gRPC`) you use to trigger the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to understand and parse the responses from VDP."
+description: "In the SYNC mode, VDP returns post-processed inference results depending on the protocol (i.e., HTTP/gRPC) you use to trigger the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to understand and parse the responses from VDP."
 aiTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
@@ -16,9 +16,9 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In the previous tutorial [VDP 101 - 4. How to Trigger a SYNC Pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline), you have learned how to trigger and send data to the pipeline. However, we haven't talked about how to process it. In the `SYNC` mode, VDP returns post-processed inference results according to the protocol (i.e., `HTTP/gRPC`) used for triggering the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to parse the responses from a `SYNC` pipeline.
+In the previous tutorial [VDP 101 [4/7] How to Trigger a SYNC Pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline), you have learned how to trigger and send data to the pipeline. However, we haven't talked about how to process it. In the `SYNC` mode, VDP returns post-processed inference results according to the protocol (i.e., `HTTP/gRPC`) used for triggering the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to parse the responses from a `SYNC` pipeline.
 
-## How to process pipeline responses
+## 1. How to process pipeline responses
 
 Let's go back to our code in `sync-http-base64.py`. After triggering a `SYNC` pipeline, the function will return a response from your triggered pipeline. 
 
@@ -40,7 +40,7 @@ r = json.loads(resp.text, object_hook=lambda d: SimpleNamespace(**d))
 ```
 
 
-### Pipeline response in `SYNC` mode
+## 2. Pipeline response in `SYNC` mode
 
 To better understand what is in the `resp`, let's have a closer look at `resp.text`, the content of the `SYNC` mode response in JSON format:
 
@@ -95,7 +95,7 @@ To better understand what is in the `resp`, let's have a closer look at `resp.te
 We will show you how to locate corresponding results in `ASYNC` pipelines in [VDP 101 - 7. Create, Trigger and Retrieve Data from ASYNC pipelines].
 :::
 
-#### Model instance outputs
+### Model instance outputs
 
 - `model_instance` is the model instance you defined when creating the pipeline.
 - `task` is the name defined by the VDP model backend. You can identify the AI task performed using it. For those unspecified tasks defined by users, VDP returns `TASK_UNSPECIFIED`. Note that when [importing customised models](https://www.instill.tech/docs/import-models/overview), users need to [define model card](/docs/prepare-models/model-card) corresponding to their AI tasks.
@@ -103,14 +103,14 @@ We will show you how to locate corresponding results in `ASYNC` pipelines in [VD
     - `index`: is the same as the `data_mapping_indices` received when triggering pipelines. Users can use it to match trigger queries and task outputs in `ASYNC` and `PULL` modes.
     - `detection`: is the **key** representing the AI task. Here, **detection** indicates this is an **object-detection** task.
 
-#### Task outputs `objects`
+### Task outputs `objects`
 - `object`: is a list of detection results. VDP defines different JSON objects with which users can easily read/parse the model outputs for popular AI tasks. 
 
 :::info{type=info}
 VDP currently standardises task outputs for popular AI tasks. You can find details for each AI task in [VDP standardised AI Tasks](/docs/core-concepts/ai-task).
 :::
 
-### Pipeline responses in `ASYNC` and `PULL` modes
+## 3. Pipeline responses in `ASYNC` and `PULL` modes
 
 Unlike in `SYNC` mode, the pipeline responses in `ASYNC`  and `PULL` modes are simple (as in the example shown below).  As seen, `model_instance_outputs` is an **empty** list. Users only receive  `data_mapping_indices`, which can match the outputs in the destinations (e.g., databases or spreadsheets).
 
@@ -126,7 +126,7 @@ Unlike in `SYNC` mode, the pipeline responses in `ASYNC`  and `PULL` modes are s
 ```
 
 
-### Unspecified Tasks
+## 4. Unspecified Tasks
 
 VDP can't standardise all possible AI tasks and their inputs and outputs. Therefore, it allows users to deploy their models even if VDP has yet to standardise the task. These models will be classified as `Unspecified` tasks. When an unspecified model in deployed, VDP will
  - check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file when [deploying customised model on VDP] to extract the output names, datatypes, and shapes of the model outputs,
@@ -158,7 +158,7 @@ VDP can't standardise all possible AI tasks and their inputs and outputs. Theref
 VDP exploits Triton Inference Server as the model inference backbone. Don't worry about how to import models to VDP just yet. We will discuss this in [VDP 101 - Import Model to VDP]. 
 :::
 
-## AI Tasks currently standardised by VDP
+## 5. AI Tasks currently standardised by VDP
 
 At the moment, VDP standardises the task outputs for popular AI tasks:
 
@@ -172,13 +172,14 @@ At the moment, VDP standardises the task outputs for popular AI tasks:
 
 A complete list can be found on [VDP standardised AI Tasks](https://www.instill.tech/docs/core-concepts/ai-task).
 
-We have demonstrated how to use VDP step-by-step in `SYNC` mode. However, VDP supports other modes, including `ASYNC` and `PULL`. Before showing how they work, let's closely look at their differences in our following tutorial → [VDP 101 - 6. Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes).
+We have demonstrated how to use VDP step-by-step in `SYNC` mode. However, VDP supports other modes, including `ASYNC` and `PULL`. Before showing how they work, let's closely look at their differences in our following tutorial → [VDP 101 [6/7] Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes).
 
 <br/><br/>
-**↓↓↓ VDP 101 TUTORIALS ↓↓↓**
-1. [Introduction to VDP](/tutorials/vdp-101-1-introduction)
-2. [Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
-3. [Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
-4. [How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
-5. [How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
-6. [Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
+- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
+- [[2/7] Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
+- [[3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+- [[4/7] How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+- [[5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+- [[6/7] Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+- [[7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)

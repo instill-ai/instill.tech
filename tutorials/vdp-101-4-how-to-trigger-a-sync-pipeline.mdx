@@ -1,8 +1,8 @@
 ---
-title: "VDP 101 - 4. How to Trigger a SYNC Pipeline?"
+title: "VDP 101 [4/7] How to Trigger a SYNC Pipeline?"
 lang: "en-US"
 draft: false
-description: "In the previous tutorial [VDP 101 - Create Your First Pipeline], you learned how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step."
+description: "In this tutorial, we are going to demonstrate how to trigger a SYNC pipeline step-by-step using an objective detection example."
 aiTask: "objectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
@@ -16,12 +16,12 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In the previous tutorial [VDP 101 - 3. Create Your First Pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you learned how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step. 
+In the previous tutorial [VDP 101 [3/7] Create Your First Pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you learned how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step. 
 
-Users can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case. The combination of the selected source and destination determines the pipeline mode (further details can be found in [VDP 101 - 6. Pipeline Modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)). For this tutorial, we use `SYNC` mode for showcasing. Let's not be bothered by the other two modes for just now.
+Users can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case. The combination of the selected source and destination determines the pipeline mode (further details can be found in [VDP 101 [6/7] Pipeline Modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)). For this tutorial, we use `SYNC` mode for showcasing. Let's not be bothered by the other two modes for just now.
 
 
-## Prerequisites
+## 1. Prerequisites
 
 ### Create a Conda virtual environment
 
@@ -72,7 +72,7 @@ The `requirements.txt` file can be found in all of our VDP examples under `/exam
 :::
 
 
-## An Object Detection Example
+## 2. An Object Detection Example
 
 To check if you got everything ready, run the Python example with the command below.
 
@@ -90,7 +90,7 @@ WHALA! You just triggered the object detection pipeline! You should see the resu
 Let's dive into our example codes to see what happened.
 
 
-## Trigger VDP Pipeline
+## 3. Trigger VDP Pipeline
 
 VDP currently supports `HTTP/gRPC` protocols. When triggering the pipeline with HTTP protocols (i.e., RESTful), users can send their data via **HTTP POST Requests** or **HTTP Multipart Requests**. You can find these examples in `/examples/vdp-101/sync/`.
 
@@ -193,7 +193,7 @@ requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-mult
 For further details of the Python `requests.post()` method, we refer readers to [this documentation](https://www.w3schools.com/python/ref_requests_post.asp).
 :::
 
-## Tigger pipeline in the command line
+## 4. Tigger pipeline in the command line
 
 In addition to our Python examples, you can also trigger your pipelines in the command line. Choose a pipeline on your [VDP Console](http://localhost:3000/pipelines). You can find the corresponding HTTP request at the bottom of your pipeline page. 
 
@@ -234,17 +234,18 @@ curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance
 </CH.Code>
 
 
-## More Data Objects Supported by VDP
+## 5. More Data Objects Supported by VDP
 
 In addition to image objects, Versatile Data Pipeline (VDP) supports extensive data types commonly used in AI tasks. You can find further details in our [VDP standardised AI tasks](/docs/core-concepts/ai-task) or the Python examples in `/examples/`. 
 
-Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse pipeline responses in our following tutorial → [VDP 101 - 5. How to Parse Responses from SYNC Pipelines](/tutorials/vdo-101-5-hoe-to-parse-vdp-responses).
+Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse pipeline responses in our following tutorial → [VDP 101 [5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdo-101-5-hoe-to-parse-vdp-responses).
 
 <br/><br/>
-**↓↓↓ VDP 101 TUTORIALS ↓↓↓**
-1. [Introduction to VDP](/tutorials/vdp-101-1-introduction)
-2. [Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
-3. [Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
-4. [How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
-5. [How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
-6. [Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
+- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
+- [[2/7] Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
+- [[3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+- [[4/7] How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+- [[5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+- [[6/7] Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+- [[7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
