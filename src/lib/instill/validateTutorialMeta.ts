@@ -45,13 +45,13 @@ export const validateTutorialMeta = (
 
   // Validate the aiTask types
   const supportAiTasks: AiTask[] = [
-    "objectDetection",
-    "ocr",
-    "imageClassification",
-    "instanceSegmentation",
-    "keypointDetection",
-    "objectDetection",
-    "semanticSegmentation",
+    "ObjectDetection",
+    "Ocr",
+    "ImageClassification",
+    "InstanceSegmentation",
+    "KeypointDetection",
+    "ObjectDetection",
+    "SemanticSegmentation",
     "Null",
   ];
 

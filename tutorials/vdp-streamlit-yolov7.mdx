@@ -3,7 +3,7 @@ title: "Build a shareable object detection application with VDP and Streamlit"
 lang: "en-US"
 draft: false
 description: "VDP and Streamlit are a perfect match if you work with ML/Data and would like to build AI prototypes fast to share with your team, clients or the world."
-aiTask: "objectDetection"
+aiTask: "ObjectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
 publishedOn: "2022-09-02T02:04:00"
@@ -74,7 +74,9 @@ No matter where your model stores, we want to keep your models in the same place
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [Build a SYNC classification pipeline](https://www.instill.tech/docs/tutorials/build-a-sync-cls-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
 
 1. add an HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`,
+2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`
+
+   ,
 3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add an HTTP data destination, and
 5. set up a pipeline with ID `yolov4`.

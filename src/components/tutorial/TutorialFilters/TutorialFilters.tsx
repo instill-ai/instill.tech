@@ -157,23 +157,23 @@ export const TutorialFilters = ({
           }
           options={[
             { label: "All", value: "All" },
-            { label: "Image Classification", value: "imageClassification" },
-            { label: "Instance Segmentation", value: "instanceSegmentation" },
+            { label: "Image Classification", value: "ImageClassification" },
+            { label: "Instance Segmentation", value: "InstanceSegmentation" },
             {
               label: "Keypoint Detection (Pose Estimation)",
-              value: "keypointDetection",
+              value: "KeypointDetection",
             },
             {
               label: "Object Detection",
-              value: "objectDetection",
+              value: "ObjectDetection",
             },
             {
               label: "OCR (optical character recognition)",
-              value: "ocr",
+              value: "Ocr",
             },
             {
               label: "Semantic Segmentation",
-              value: "semanticSegmentation",
+              value: "SemanticSegmentation",
             },
           ]}
         />
