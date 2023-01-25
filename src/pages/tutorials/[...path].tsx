@@ -250,7 +250,7 @@ const TutorialPage: FC<TutorialPageProps> & {
         <div>
           {currentTutorialMeta?.useCase ? (
             <ArticleSimilarPosts
-              sectionTitle="Similar Use Cases"
+              sectionTitle="Similar Articles"
               similarArticles={similarTutorials}
               getCardElement={(source, key) => {
                 return (
