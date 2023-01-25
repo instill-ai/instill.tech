@@ -147,11 +147,16 @@ const TutorialPage: FC<TutorialPageProps> & {
   const similarTutorials = useMemo(() => {
     if (!currentTutorialMeta) return [];
 
-    return tutorials.filter(
-      (e) =>
-        e.useCase === currentTutorialMeta.useCase &&
-        e.title !== currentTutorialMeta.title
-    );
+    return tutorials
+      .filter(
+        (e) =>
+          e.useCase === currentTutorialMeta.useCase &&
+          e.title !== currentTutorialMeta.title
+      )
+      .sort(
+        (a, b) =>
+          new Date(b.publishedOn).getTime() - new Date(a.publishedOn).getTime()
+      );
   }, [tutorials, currentTutorialMeta]);
 
   return (
