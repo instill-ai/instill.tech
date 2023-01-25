@@ -2,6 +2,15 @@
 
 We adapt single framework structure to serve all our content enabled by the Next.js ability of serving web page with different strategy. Including static site generation, server-site generation and incremental static site generation.
 
+## General guideline for setting up project
+
+- Make sure you have up-to-date `Node.js` [^1]
+- Please install up-to-date `pnpm`[^2]
+- Install all the dependencies with `pnpm i`
+- When develop instill.tech at local environment, please create a `./env.local` file and then put into your GitHub personal toke here with this variable name `NEXT_PUBLIC_GITHUB_TOKEN=<your_github_personal_access_token>`
+- Start the development server with `pnpm dev`
+- You should build and lint the whole app before push to origin by `pnpm lint && pnpm build`
+
 ## General guidelines for Docs, Tutorials and Blog
 
 ### Folder structure
@@ -332,3 +341,6 @@ Please don't use p tag to wrap other component in markdown. Because it will caus
   <ZoomableImg />
 </p>
 ```
+
+[^1]: [Nodejs - Downloads](https://nodejs.org/en/download/)
+[^2]: [Pnpm - Installation](https://pnpm.io/installation)
