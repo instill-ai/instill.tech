@@ -1,10 +1,11 @@
 import { getAiTaskIconAndLabelReturn } from "@/lib/instill/getAiTaskIconAndLabel";
-import { Nullable } from "@/types/instill";
+import { AiTask, Nullable } from "@/types/instill";
 import { ArrowRightIcon } from "@instill-ai/design-system";
 import cn from "clsx";
 import { TutorialLabel } from "./TutorialLabel";
 
 export type TutorialPipelineLabelProps = {
+  aiTask: Nullable<AiTask>;
   label: string;
   sourceConnector: Nullable<string>;
   destinationConnector: Nullable<string>;
@@ -13,12 +14,21 @@ export type TutorialPipelineLabelProps = {
 };
 
 export const TutorialPipelineLabel = ({
+  aiTask,
   marginBottom,
   sourceConnector,
   destinationConnector,
   icon,
   label,
 }: TutorialPipelineLabelProps) => {
+  if (
+    aiTask === "Null" ||
+    sourceConnector === "Null" ||
+    destinationConnector === "Null"
+  ) {
+    return <div className={cn("flex flex-col", marginBottom)}></div>;
+  }
+
   return (
     <div className={cn("flex flex-col", marginBottom)}>
       {/* 

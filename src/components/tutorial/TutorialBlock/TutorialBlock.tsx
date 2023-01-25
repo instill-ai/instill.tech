@@ -56,24 +56,28 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           />
         )}
         <div className="flex w-full flex-1 flex-col bg-instillGrey05 p-5">
-          <TutorialLabel
-            icon={
-              icon
-                ? icon({
-                    color: "fill-instillGrey80",
-                    width: "w-5",
-                    height: "h-5",
-                    position: "m-auto",
-                  })
-                : undefined
-            }
-            label={label}
-            position="mr-auto"
-            marginBottom="mb-2.5"
-            labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
-            labelBgColor="bg-instillGrey20"
-            labelPadding="py-1 px-2"
-          />
+          {tutorial.aiTask !== "Null" ? (
+            <TutorialLabel
+              icon={
+                icon
+                  ? icon({
+                      color: "fill-instillGrey80",
+                      width: "w-5",
+                      height: "h-5",
+                      position: "m-auto",
+                    })
+                  : undefined
+              }
+              label={label}
+              position="mr-auto"
+              marginBottom="mb-2.5"
+              labelTextStyle="font-mono text-xs font-normal text-instillGrey80"
+              labelBgColor="bg-instillGrey20"
+              labelPadding="py-1 px-2"
+            />
+          ) : (
+            <div className="mb-2.5 h-7 w-full"></div>
+          )}
           <h3 className="mb-2 break-words text-instillGrey90 text-instill-h3-medium">
             {tutorial.title}
           </h3>

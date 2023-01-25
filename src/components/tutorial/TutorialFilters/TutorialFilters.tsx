@@ -39,7 +39,9 @@ export const TutorialFilters = ({
         (e) => e.value === tutorial.sourceConnector
       );
 
-      if (existSourceIndex === -1) {
+      // We don't want our connector filters have Null option
+
+      if (existSourceIndex === -1 && tutorial.sourceConnector !== "Null") {
         options.push({
           label: tutorial.sourceConnector,
           value: tutorial.sourceConnector,
@@ -50,7 +52,10 @@ export const TutorialFilters = ({
         (e) => e.value === tutorial.destinationConnector
       );
 
-      if (existDestinationIndex === -1) {
+      if (
+        existDestinationIndex === -1 &&
+        tutorial.destinationConnector !== "Null"
+      ) {
         options.push({
           label: tutorial.destinationConnector,
           value: tutorial.destinationConnector,
