@@ -229,7 +229,7 @@ const BlogPage: FC<BlogPageProps> & {
         <div>
           {currentArticleMeta?.category ? (
             <ArticleSimilarPosts
-              sectionTitle="Similar Posts"
+              sectionTitle="Similar Articles"
               similarArticles={similarArticles}
               getCardElement={(source, key) => {
                 return (
