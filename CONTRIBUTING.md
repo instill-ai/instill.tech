@@ -265,7 +265,7 @@ Please add the static file into the sub-folder in `/public/docs-assets` follow t
 - You could find details type definition in the /src/types/instill
 
 ```ts
-export type TutorialMeta = {
+type TutorialMeta = {
   title: string;
   lang: string;
   draft: boolean;
@@ -285,6 +285,25 @@ export type TutorialMeta = {
   authorAvatarSrc: string;
   authorGitHubUrl: string;
 };
+
+type AiTask =
+  | "ObjectDetection"
+  | "Ocr"
+  | "ImageClassification"
+  | "InstanceSegmentation"
+  | "KeypointDetection"
+  | "ObjectDetection"
+  | "SemanticSegmentation"
+  | "Null";
+
+type TutorialPlaceholderColor =
+  | "bg-instillWarmOrange50"
+  | "bg-instillLemonYellow50"
+  | "bg-instillBlue50"
+  | "bg-instillRed90"
+  | "bg-instillGreen50"
+  | "bg-instillNeonBlue50"
+  | "bg-instillYellow50";
 ```
 
 ### Add static file into `/public/tutorial-assets`

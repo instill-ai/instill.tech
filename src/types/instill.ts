@@ -74,13 +74,13 @@ export type BlogArticleMeta = {
 };
 
 export type AiTask =
-  | "objectDetection"
-  | "ocr"
-  | "imageClassification"
-  | "instanceSegmentation"
-  | "keypointDetection"
-  | "objectDetection"
-  | "semanticSegmentation"
+  | "ObjectDetection"
+  | "Ocr"
+  | "ImageClassification"
+  | "InstanceSegmentation"
+  | "KeypointDetection"
+  | "ObjectDetection"
+  | "SemanticSegmentation"
   | "Null";
 
 export type TutorialPlaceholderColor =
