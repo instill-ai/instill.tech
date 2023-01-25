@@ -177,6 +177,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             marginBottom="mb-5 xl:mb-10"
           />
           <TutorialPipelineLabel
+            aiTask={currentTutorialMeta?.aiTask || null}
             icon={icon}
             label={label}
             sourceConnector={currentTutorialMeta?.sourceConnector || null}

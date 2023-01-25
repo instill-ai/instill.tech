@@ -66,6 +66,10 @@ export const getAiTaskIconAndLabel = ({
       );
       label = "Semantic Segmentation";
       break;
+    case "Null":
+      icon = null;
+      label = "General";
+      break;
     default:
       icon = null;
   }

@@ -80,7 +80,8 @@ export type AiTask =
   | "instanceSegmentation"
   | "keypointDetection"
   | "objectDetection"
-  | "semanticSegmentation";
+  | "semanticSegmentation"
+  | "Null";
 
 export type TutorialPlaceholderColor =
   | "bg-instillWarmOrange50"
