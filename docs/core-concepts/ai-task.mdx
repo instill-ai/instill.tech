@@ -23,6 +23,8 @@ At the moment, VDP defines the data interface for popular tasks:
 - _Keypoint detection_ - detect and localise multiple keypoints of objects in images
 - _OCR (Optical Character Recognition)_ - detect and recognise text in images
 - _Instance segmentation_ - detect, localise and delineate multiple objects in images
+- _Semantic segmentation_ - classify image pixels into predefined categories
+- _Text To Image_ - generates images from input text
 - The list is growing ... 🌱
 
 The above tasks focus on analysing and understanding the content of data in the same way as human does.
@@ -62,10 +64,14 @@ anyOf:
   - required:
       - instance_segmentation
   - required:
+      - semantic_segmentation
+  - required:
+      - text_to_image
+  - required:
       - unspecified
 properties:
   classification:
-    description: "Classify into pre-defined categories"
+    description: "Classify an image into pre-defined categories"
     "$ref": "#/definitions/Classification"
   detection:
     description: "Detect and localise multiple objects"
@@ -79,6 +85,12 @@ properties:
   instance_segmentation:
     description: "Detect, localise and delineate multiple objects"
     "$ref": "#/definitions/InstanceSegmentation"
+  semantic_segmentation:
+    description: "Classify image pixels into predefined categories"
+    "$ref": "#/definitions/SemanticSegmentation"
+  text_to_image:
+    description: "Generates images from input text"
+    "$ref": "#/definitions/TextToImage"    
   unspecified:
     description: "Unspecified task with output in the free form"
     "$ref": "#/definitions/Unspecified"
@@ -273,6 +285,70 @@ Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vd
         },
         "category": "dog"
       }
+    ]
+  }
+}
+```
+
+## Semantic Segmentation
+
+Semantic segmentation is a Vision task of assigning a class label to every pixel in the image.
+Normally, the task takes an image as the input, and outputs segmentation mask (RLE) representations (a variable-length comma-delimited string) for each group of pixel objects and category of the group objects.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-semantic-segmentation.svg"
+  alt="Semantic segmentation task"
+/>
+
+Run-length encoding (RLE) is an efficient form to store binary masks. It is commonly used to encode the location of foreground objects in segmentation.
+We adopt [the uncompressed RLE definition used in the COCO dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
+It divides a binary mask (must in colume-major order) into a series of piecewise constant regions and for each piece simply stores the length of that piece.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/ai-task-mask-rle.svg"
+    alt="Examples of encoding masks into RLEs and decoding masks encoded via RLEs"
+    width="320px"
+  />
+</div>
+
+The above image shows examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of zeros.
+
+:::info{type=info}
+Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vdp/blob/30357c0581ecdbb5e74584906cdc547587ca3af7/examples/streamlit/stomata/utils.py#L81-L101) and [decode masks encoded via RLEs](https://github.com/instill-ai/vdp/blob/30357c0581ecdbb5e74584906cdc547587ca3af7/examples/streamlit/stomata/utils.py#L103-L121).
+:::
+
+```json
+{
+  "semantic_segmentation": {
+    "stuffs": [
+      {
+        "rle": "2918,12,382,33,...",
+        "category": "dog"
+      },
+      {
+        "rle": "34,18,230,18,...",
+        "category": "cat"
+      }
+    ]
+  }
+}
+```
+
+## Text To Image
+
+Text to image is a Vision task to creates images from a text description.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-text-to-image.svg"
+  alt="Text to image task"
+/>
+
+```json
+{
+  "text_to_image": {
+    "images": [ "/9j/4AAQSkZJRgABAQAAAQABAAD/...",
+                "oADAMBAAIRAxEAPwD2p76rBDHU2KHMpuE",
     ]
   }
 }
