@@ -266,21 +266,54 @@ Please add the static file into the sub-folder in `/public/docs-assets` follow t
 
 ```ts
 type TutorialMeta = {
-  title: string;
-  lang: string;
-  draft: boolean;
-  description: string;
-  aiTask: AiTask;
-  sourceConnector: string;
+  // The title of the article.
+  title: string; 
+
+  // The language of the article, for example en-US.
+  lang: string; 
+
+  // Whether this article is draft or not.
+  draft: boolean; 
+
+  // The description of this article. This will be put into description related 
+  // meta in the header.
+  description: string; 
+
+  // Please reference the type below.
+  aiTask: AiTask; 
+
+  // Connectors will be display as is on the page. For example, if you have a 
+  // sourceConnector named HTTP, we will display the connector name as HTTP.
+  sourceConnector: string; 
   destinationConnector: string;
-  commit: CommitMeta;
-  slug: string;
-  publishedOn: string;
+
+  // Slug should be as same as the name of the filename of the article. It 
+  // will be the URL fragment of the article too. For example if you have 
+  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the 
+  // URL will be https://instill.tech/tutorials/vdp-101.
+  slug: string; 
+
+  // The published data of this article in UTC timezone
+  publishedOn: string; 
+
+  // The placeholder color of this tutorial, the placeholder will be 
+  // displayed at the index page of tutorials and the detail page of this 
+  // tutorial when the themeImgSrc and themeImgThumbnailSrc is not present.
+  // For example, if themeImgThumbnailSrc is not present we will display a
+  // placeholder card with this color at the tutorials index page.
   placeholderColor: TutorialPlaceholderColor;
+
+  // The themeImg that will be displayed on the page of the tutorial.
   themeImgSrc: string;
   themeImgAlt?: string;
+
+  // The themeImg that will be displayed on the index page of tutorials.
   themeImgThumbnailSrc: string;
-  useCase: string;
+
+  // Use case will be display as is on the page. For example, if you have 
+  // a use case named Prototype, we will display the use case name as 
+  // Prototype.
+  useCase: string; 
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
@@ -324,21 +357,50 @@ type TutorialPlaceholderColor =
 - You could find details type definition in the /src/types/instill
 
 ```ts
+
 export type BlogArticleMeta = {
-  title: string;
-  lang: string;
-  draft: boolean;
-  description: string;
-  commit: CommitMeta;
+  // The title of the article.
+  title: string; 
+
+  // The language of the article, for example en-US.
+  lang: string; 
+
+  // Whether this article is draft or not.
+  draft: boolean; 
+
+  // The description of this article. This will be put into description related 
+  // meta in the header.
+  description: string; 
+
+  // Slug should be as same as the name of the filename of the article. It 
+  // will be the URL fragment of the article too. For example if you have 
+  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the 
+  // URL will be https://instill.tech/tutorials/vdp-101.
   slug: string;
-  publishedOn: string;
+
+  // The published data of this article in UTC timezone
+  publishedOn: string; 
+
+  // The themeImg that will be displayed on the page of the tutorial.
   themeImgSrc: string;
   themeImgAlt?: string;
+
+  // The themeImg that will be displayed on the index page of tutorials.
   themeImgThumbnailSrc: string;
+
+  // The placeholder color of this tutorial, the placeholder will be 
+  // displayed at the index page of tutorials and the detail page of this 
+  // tutorial when the themeImgSrc and themeImgThumbnailSrc is not present.
+  // For example, if themeImgThumbnailSrc is not present we will display a
+  // placeholder card with this color at the tutorials index page.
   placeholderColor: TutorialPlaceholderColor;
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
+
+  // Category will be display as is on the page. For example, if you have 
+  // a category named Our Story, we will display the use case name as 
+  // Our Story.
   category: string;
 };
 ```
