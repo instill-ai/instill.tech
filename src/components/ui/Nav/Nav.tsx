@@ -41,16 +41,13 @@ export const Nav = () => {
       {enableAnnouncementBar && (
         <AnnouncementBar>
           <div className="flex flex-row gap-x-1">
-            <p className="text-base text-instillGrey95">
-              🚀 We&apos;re growing! Check out our
-            </p>
             <a
-              className="mr-1.5 italic underline"
+              className="text-base text-instillGrey95"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
+              href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
             >
-              open roles
+              🚀 Instill AI raises $3.6M seed led by RTP Global
             </a>
           </div>
         </AnnouncementBar>
