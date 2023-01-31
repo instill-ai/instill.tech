@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.26.0](https://github.com/instill-ai/instill.tech/compare/v1.25.4...v1.26.0) (2023-01-31)
+
+
+### Features
+
+* add PR semantic check workflow ([#463](https://github.com/instill-ai/instill.tech/issues/463)) ([ef887c2](https://github.com/instill-ai/instill.tech/commit/ef887c25240e0974bc73b2b07326f104ac3548c1))
+* support Null connectors and aiTask ([#458](https://github.com/instill-ai/instill.tech/issues/458)) ([aaf056c](https://github.com/instill-ai/instill.tech/commit/aaf056c65155fe93c32fbeb80c841c81816a1a46))
+* update contributing guide ([#465](https://github.com/instill-ai/instill.tech/issues/465)) ([b4639db](https://github.com/instill-ai/instill.tech/commit/b4639dbe8b9de61a5ff1da5793c3cc05edbeb158))
+* update CONTRIBUTING guideline ([#457](https://github.com/instill-ai/instill.tech/issues/457)) ([df2e4aa](https://github.com/instill-ai/instill.tech/commit/df2e4aafdf2026cd3f50038a56e4d8d73bf9b08d))
+* update README and CONTRIBUTING guideline ([#449](https://github.com/instill-ai/instill.tech/issues/449)) ([339d83c](https://github.com/instill-ai/instill.tech/commit/339d83c18b63312961ae6160e7b411c0f4f3f97d))
+
+
+### Bug Fixes
+
+* fix similar use case index issue ([#460](https://github.com/instill-ai/instill.tech/issues/460)) ([26403b2](https://github.com/instill-ai/instill.tech/commit/26403b2b70fcbf29579673f3b1f79a9238d6a6ea))
+
+
+### Miscellaneous
+
+* replace aiTask from camelCase to PascalCase ([#459](https://github.com/instill-ai/instill.tech/issues/459)) ([1c0f94b](https://github.com/instill-ai/instill.tech/commit/1c0f94be1ee55c059adaf4e2f989c4517994d085))
+* update footer ([#467](https://github.com/instill-ai/instill.tech/issues/467)) ([b6070ec](https://github.com/instill-ai/instill.tech/commit/b6070ec281eb1942dce66b1c914ea52cdee3a97e))
+* update similar use cases section label at docs and tutorials page ([#462](https://github.com/instill-ai/instill.tech/issues/462)) ([6148116](https://github.com/instill-ai/instill.tech/commit/6148116a5e1ae9c0d6fb0bcdacca22d995043e55))
+
+
+### Documentation
+
+* **blog:** add seed round announcement ([#466](https://github.com/instill-ai/instill.tech/issues/466)) ([49adc01](https://github.com/instill-ai/instill.tech/commit/49adc01ec62be9f1a050f040bd07eb8cdfb8141c))
+* **blog:** update blog cover image to be 16:9 ([#468](https://github.com/instill-ai/instill.tech/issues/468)) ([199149c](https://github.com/instill-ai/instill.tech/commit/199149c86e3e19fbd296d2caf819e85262718843))
+
 ## [1.25.4](https://github.com/instill-ai/instill.tech/compare/v1.25.3...v1.25.4) (2023-01-17)
 
 
