@@ -28,7 +28,7 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
             marginBottom="mb-2.5"
           />
           <SectionHeader
-            header="Fastest way to build end-to-end unstructured data ETL pipelines"
+            header="Fastest way to build end-to-end unstructured data pipelines"
             headerWidth="w-full xl:w-7/12"
             headerTextColor="text-instillGrey90"
             subElement={

@@ -12,9 +12,10 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
         marginBottom
       )}
     >
-      Meet Versatile Data Pipeline (VDP), the future for unstructured data ETL,
-      where developers won’t need to build their own data connectors,
-      high-maintenance model serving platform or ELT pipeline automation tool.
+      Meet Versatile Data Pipeline (VDP), the future for unstructured data
+      infrastructure, where developers won’t need to build their own data
+      connectors, high-maintenance model serving platform or data pipeline
+      automation tool.
     </div>
   );
 };

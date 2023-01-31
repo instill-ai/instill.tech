@@ -6514,7 +6514,7 @@ export const InstillCloud = () => {
             marginBottom="mb-4"
           />
           <p className="font-sans text-lg font-normal text-instillGrey70">
-            Instill Cloud provides production-ready unstructured data ETL
+            Instill Cloud provides production-ready unstructured data pipeline
             services — hustle-free setup and AI model serving with ready-to-use
             and custom models. We help you save your time and you focus on the
             core business.

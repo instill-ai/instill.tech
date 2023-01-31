@@ -12,7 +12,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
         marginBottom
       )}
     >
-      Open-source Unstructured Data ETL INFRASTRUCTURE
+      Open-source Unstructured Data Infrastructure
     </h1>
   );
 };
