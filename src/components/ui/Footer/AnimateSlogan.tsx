@@ -20,11 +20,9 @@ export const AnimateSlogan = () => {
 
   return (
     <>
-      <div
-        ref={sloganRef}
-        className="instill-footer-animate-slogan h-[70px] w-[350px] font-mono text-2xl font-medium text-instillGrey05"
-      >
-        UNSTRUCTURED DATA ETL MADE FOR ALL
+      <div className="instill-footer-animate-slogan h-[100px] w-[350px] font-mono text-2xl font-medium text-instillGrey05">
+        <div ref={sloganRef}>UNSTRUCTURED DATA INFRASTRUCTURE</div>
+        <div>MADE FOR ALL</div>
       </div>
     </>
   );
