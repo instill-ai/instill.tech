@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.1](https://github.com/instill-ai/instill.tech/compare/v1.27.0...v1.27.1) (2023-02-01)
+
+
+### Miscellaneous
+
+* update banner text ([#473](https://github.com/instill-ai/instill.tech/issues/473)) ([7ee0e47](https://github.com/instill-ai/instill.tech/commit/7ee0e47ca62bf91c1775fa76cde5ce3efb3246d1))
+
 ## [1.27.0](https://github.com/instill-ai/instill.tech/compare/v1.26.0...v1.27.0) (2023-02-01)
 
 
