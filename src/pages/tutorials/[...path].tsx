@@ -171,6 +171,7 @@ const TutorialPage: FC<TutorialPageProps> & {
           currentTutorialMeta ? currentTutorialMeta.description : ""
         }
         pageType="main"
+        ogImage={`${process.env.NEXT_PUBLIC_BASE_URL}${mdxSource.frontmatter?.themeImgThumbnailSrc}`}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"

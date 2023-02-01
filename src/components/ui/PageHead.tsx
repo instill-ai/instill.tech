@@ -7,6 +7,7 @@ export type PageHeadProps = {
   pageDescription?: string;
   pageType: "main" | "docs";
   additionMeta?: ReactElement;
+  ogImage?: string;
 };
 
 export const PageHead = ({
@@ -14,6 +15,7 @@ export const PageHead = ({
   pageDescription,
   pageType,
   additionMeta,
+  ogImage,
 }: PageHeadProps) => {
   const router = useRouter();
 
@@ -47,7 +49,6 @@ export const PageHead = ({
         <meta name="twitter:title" content={meta.pageTitle} />
         <meta name="twitter:description" content={meta.pageDescription} />
         {additionMeta}
-
         {pageType === "main" ? (
           <>
             <link
@@ -65,11 +66,19 @@ export const PageHead = ({
             <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
             <meta
               property="og:image"
-              content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
+              content={
+                ogImage
+                  ? ogImage
+                  : `${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`
+              }
             />
             <meta
               property="twitter:image"
-              content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
+              content={
+                ogImage
+                  ? ogImage
+                  : `${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`
+              }
             />
           </>
         ) : (
@@ -89,11 +98,19 @@ export const PageHead = ({
             <link rel="shortcut icon" href="/vdp-favicon.ico" />
             <meta
               property="og:image"
-              content={`${process.env.NEXT_PUBLIC_BASE_URL}/vdp-open-graph.png`}
+              content={
+                ogImage
+                  ? ogImage
+                  : `${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`
+              }
             />
             <meta
               property="twitter:image"
-              content={`${process.env.NEXT_PUBLIC_BASE_URL}/vdp-open-graph.png`}
+              content={
+                ogImage
+                  ? ogImage
+                  : `${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`
+              }
             />
           </>
         )}
