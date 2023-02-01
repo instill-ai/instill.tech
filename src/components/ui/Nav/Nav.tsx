@@ -47,7 +47,7 @@ export const Nav = () => {
               rel="noreferrer noopener"
               href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
             >
-              🚀 Instill AI raises $3.6M seed led by RTP Global
+              🚀 We have secured $3.6M for our seed round!
             </a>
           </div>
         </AnnouncementBar>
@@ -76,7 +76,7 @@ export const Nav = () => {
             rel="noreferrer noopener"
             href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
           >
-            🚀 Instill AI raises $3.6M seed led by RTP Global
+            🚀 We have secured $3.6M for our seed round!
           </a>
         </AnnouncementBar>
       )}
