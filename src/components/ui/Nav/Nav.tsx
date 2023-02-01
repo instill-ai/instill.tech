@@ -42,7 +42,7 @@ export const Nav = () => {
         <AnnouncementBar>
           <div className="flex flex-row gap-x-1">
             <a
-              className="text-base text-instillGrey95"
+              className="text-base text-instillGrey95 underline hover:text-instillBlue50"
               target="_blank"
               rel="noreferrer noopener"
               href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
@@ -70,17 +70,14 @@ export const Nav = () => {
     <>
       {enableAnnouncementBar && (
         <AnnouncementBar>
-          <p className="text-instillGrey95">
-            Check out our new article &nbsp;
-            <a
-              className="mr-1.5 italic underline"
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://blog.instill.tech/introducing-vdp/?utm_source=product&utm_medium=banner"
-            >
-              Introducing VDP: open-source unstructured data ETL
-            </a>
-          </p>
+          <a
+            className="text-base text-instillGrey95 underline hover:text-instillBlue50"
+            target="_blank"
+            rel="noreferrer noopener"
+            href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
+          >
+            🚀 Instill AI raises $3.6M seed led by RTP Global
+          </a>
         </AnnouncementBar>
       )}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
