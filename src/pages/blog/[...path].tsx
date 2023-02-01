@@ -157,6 +157,7 @@ const BlogPage: FC<BlogPageProps> & {
           mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
         }
         pageType="main"
+        ogImage={`${process.env.NEXT_PUBLIC_BASE_URL}${mdxSource.frontmatter?.themeImgThumbnailSrc}`}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"
