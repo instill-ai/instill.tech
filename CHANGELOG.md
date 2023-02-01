@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.27.0](https://github.com/instill-ai/instill.tech/compare/v1.26.0...v1.27.0) (2023-02-01)
+
+
+### Features
+
+* implement dedicated ogimage for tutorial and blog ([#472](https://github.com/instill-ai/instill.tech/issues/472)) ([490dd44](https://github.com/instill-ai/instill.tech/commit/490dd44a7a0fdccaeacf50463705c0abaa4749a4))
+
+
+### Bug Fixes
+
+* fix announcement bar at mobile view ([#469](https://github.com/instill-ai/instill.tech/issues/469)) ([49bf542](https://github.com/instill-ai/instill.tech/commit/49bf5428e20b9beecfaf355538b90f79ee212a89))
+* update og image ([#471](https://github.com/instill-ai/instill.tech/issues/471)) ([60e9d68](https://github.com/instill-ai/instill.tech/commit/60e9d68e689fa82fc391e78b7620e8e52ce90cd5))
+
 ## [1.26.0](https://github.com/instill-ai/instill.tech/compare/v1.25.4...v1.26.0) (2023-01-31)
 
 
