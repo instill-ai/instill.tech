@@ -91,3 +91,9 @@ export type TutorialPlaceholderColor =
   | "bg-instillGreen50"
   | "bg-instillNeonBlue50"
   | "bg-instillYellow50";
+
+export type PageMeta = {
+  pageTitle: string;
+  siteName: string;
+  pageDescription?: string;
+};

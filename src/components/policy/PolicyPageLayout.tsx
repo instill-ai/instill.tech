@@ -13,9 +13,12 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
   return (
     <PageBase>
       <PageHead
+        pageType="main"
         pageTitle={meta.title}
         pageDescription={meta.description}
-        pageType="main"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
