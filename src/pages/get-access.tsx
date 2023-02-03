@@ -19,9 +19,12 @@ const GetEarlyAccessPage: FC & {
   return (
     <>
       <PageHead
+        pageType="main"
         pageTitle="Get early access | Instill AI"
         pageDescription=" We're now in private alpha. Join as a design partner to adopt AI for unstructured data in your company."
-        pageType="main"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"

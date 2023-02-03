@@ -138,6 +138,9 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         pageTitle={`${position.name} | Instill AI`}
         pageDescription="We're on a mission to make Al highly accessible to everyone. Join us and make a dent in the universe!"
         pageType="main"
+        additionMeta={null}
+        currentArticleMeta={null}
+        commitMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"

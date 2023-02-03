@@ -102,9 +102,12 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   return (
     <>
       <PageHead
-        pageTitle="Tutorial | Instill AI"
-        pageDescription=""
         pageType="main"
+        pageTitle="Tutorial | Instill AI"
+        pageDescription={null}
+        commitMeta={null}
+        currentArticleMeta={null}
+        additionMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"

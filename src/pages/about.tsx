@@ -85,9 +85,12 @@ const AboutPage: FC<AboutPageProps> & {
   return (
     <>
       <PageHead
+        pageType="main"
         pageTitle="About us | Instill AI"
         pageDescription="Instill AI, founded in 2020 (June 11th 2020, to be more specific), provides no-/low-code tools to convert unstructured data to meaningful data representations."
-        pageType="main"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"

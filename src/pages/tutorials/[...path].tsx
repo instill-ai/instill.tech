@@ -40,7 +40,7 @@ type TutorialPageProps = {
   headers: RightSidebarProps["headers"];
   tutorials: TutorialMeta[];
   commitMeta: Nullable<CommitMeta>;
-  currentTutorialMeta: Nullable<TutorialMeta>;
+  tutorialMeta: Nullable<TutorialMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -124,8 +124,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
       headers,
       tutorials,
       commitMeta,
-      currentTutorialMeta:
-        tutorials.find((e) => e.slug === relativePath) || null,
+      tutorialMeta: tutorials.find((e) => e.slug === relativePath) || null,
     },
   };
 };
@@ -136,42 +135,39 @@ type GetLayOutProps = {
 
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, tutorials, currentTutorialMeta }) => {
+} = ({ mdxSource, commitMeta, headers, tutorials, tutorialMeta }) => {
   const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: currentTutorialMeta?.aiTask || null,
+    aiTask: tutorialMeta?.aiTask || null,
   });
 
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
   const similarTutorials = useMemo(() => {
-    if (!currentTutorialMeta) return [];
+    if (!tutorialMeta) return [];
 
     return tutorials
       .filter(
         (e) =>
-          e.useCase === currentTutorialMeta.useCase &&
-          e.title !== currentTutorialMeta.title
+          e.useCase === tutorialMeta.useCase && e.title !== tutorialMeta.title
       )
       .sort(
         (a, b) =>
           new Date(b.publishedOn).getTime() - new Date(a.publishedOn).getTime()
       );
-  }, [tutorials, currentTutorialMeta]);
+  }, [tutorials, tutorialMeta]);
 
   return (
     <>
       <PageHead
         pageTitle={
-          currentTutorialMeta
-            ? `${currentTutorialMeta.title} | Tutorial`
-            : "Tutorial"
+          tutorialMeta ? `${tutorialMeta.title} | Tutorial` : "Tutorial"
         }
-        pageDescription={
-          currentTutorialMeta ? currentTutorialMeta.description : ""
-        }
-        pageType="main"
-        ogImage={`${process.env.NEXT_PUBLIC_BASE_URL}${mdxSource.frontmatter?.themeImgThumbnailSrc}`}
+        pageDescription={tutorialMeta ? tutorialMeta.description : ""}
+        pageType="tutorial"
+        currentArticleMeta={tutorialMeta}
+        commitMeta={commitMeta}
+        additionMeta={null}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"
@@ -183,20 +179,16 @@ const TutorialPage: FC<TutorialPageProps> & {
             marginBottom="mb-5 xl:mb-10"
           />
           <TutorialPipelineLabel
-            aiTask={currentTutorialMeta?.aiTask || null}
+            aiTask={tutorialMeta?.aiTask || null}
             icon={icon}
             label={label}
-            sourceConnector={currentTutorialMeta?.sourceConnector || null}
-            destinationConnector={
-              currentTutorialMeta?.destinationConnector || null
-            }
+            sourceConnector={tutorialMeta?.sourceConnector || null}
+            destinationConnector={tutorialMeta?.destinationConnector || null}
             marginBottom="mb-2"
           />
           <PageHero
-            headline={currentTutorialMeta ? currentTutorialMeta.title : ""}
-            subHeadline={
-              currentTutorialMeta ? currentTutorialMeta.description : ""
-            }
+            headline={tutorialMeta ? tutorialMeta.title : ""}
+            subHeadline={tutorialMeta ? tutorialMeta.description : ""}
             headerFontFamily="font-sans"
             marginBottom="mb-3"
             width="max-w-[1127px]"
@@ -206,22 +198,16 @@ const TutorialPage: FC<TutorialPageProps> & {
             headerUppercase={false}
           />
           <ArticlePublishInfo
-            author={currentTutorialMeta ? currentTutorialMeta.author : ""}
-            authorAvatarSrc={
-              currentTutorialMeta ? currentTutorialMeta.authorAvatarSrc : ""
-            }
-            publishedOn={
-              currentTutorialMeta ? currentTutorialMeta.publishedOn : ""
-            }
-            authorGitHubUrl={
-              currentTutorialMeta ? currentTutorialMeta.authorGitHubUrl : ""
-            }
+            author={tutorialMeta ? tutorialMeta.author : ""}
+            authorAvatarSrc={tutorialMeta ? tutorialMeta.authorAvatarSrc : ""}
+            publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
+            authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
             marginBottom="mb-10"
           />
           <ArticleThemeImage
-            imgSrc={currentTutorialMeta?.themeImgSrc || null}
+            imgSrc={tutorialMeta?.themeImgSrc || null}
             placeholderColor={
-              currentTutorialMeta?.placeholderColor || "bg-instillBlue50"
+              tutorialMeta?.placeholderColor || "bg-instillBlue50"
             }
             marginBottom="mb-20 xl:mb-40"
           />
@@ -249,7 +235,7 @@ const TutorialPage: FC<TutorialPageProps> & {
         */}
 
         <div>
-          {currentTutorialMeta?.useCase ? (
+          {tutorialMeta?.useCase ? (
             <ArticleSimilarPosts
               sectionTitle="Similar Articles"
               similarArticles={similarTutorials}

@@ -50,9 +50,12 @@ const BlogIndexPage: FC<BlogIndexPageProps> & {
   return (
     <>
       <PageHead
-        pageTitle="Blog | Instill AI"
-        pageDescription=""
         pageType="main"
+        pageTitle="Blog | Instill AI"
+        pageDescription={null}
+        commitMeta={null}
+        currentArticleMeta={null}
+        additionMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
