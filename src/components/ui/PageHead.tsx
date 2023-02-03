@@ -109,7 +109,7 @@ export const PageHead = ({
           />
           <meta name="twitter:label1" content="Written by" />
           <meta name="twitter:data1" content={meta.author} />
-          <meta name="twitter:label2" content="Category" />
+          <meta name="twitter:label2" content="Use Case" />
           <meta name="twitter:data2" content={meta.useCase} />
           <meta
             property="article:publisher"
