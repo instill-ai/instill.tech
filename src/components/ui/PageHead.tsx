@@ -101,11 +101,11 @@ export const PageHead = ({
           <meta property="og:type" content="article" />
           <meta
             property="og:image"
-            content={`${process.env.NEXT_PUBLIC_BASE_URL}/${meta.themeImgThumbnailSrc}`}
+            content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta.themeImgThumbnailSrc}`}
           />
           <meta
             property="twitter:image"
-            content={`${process.env.NEXT_PUBLIC_BASE_URL}/${meta.themeImgThumbnailSrc}`}
+            content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta.themeImgThumbnailSrc}`}
           />
           <meta name="twitter:label1" content="Written by" />
           <meta name="twitter:data1" content={meta.author} />
@@ -135,11 +135,11 @@ export const PageHead = ({
           <meta property="og:type" content="article" />
           <meta
             property="og:image"
-            content={`${process.env.NEXT_PUBLIC_BASE_URL}/${meta.themeImgThumbnailSrc}`}
+            content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta.themeImgThumbnailSrc}`}
           />
           <meta
             property="twitter:image"
-            content={`${process.env.NEXT_PUBLIC_BASE_URL}/${meta.themeImgThumbnailSrc}`}
+            content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta.themeImgThumbnailSrc}`}
           />
           <meta
             property="article:publisher"
