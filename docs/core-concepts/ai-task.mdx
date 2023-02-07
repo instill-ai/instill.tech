@@ -354,6 +354,24 @@ Text to image is a Vision task to creates images from a text description.
 }
 ```
 
+:::info{type=info}
+In above example, the generated images is a list of base64 encoded images. To obtain the images, we need to decode base64 as below snippet code.
+```json
+import base64
+import numpy as np
+
+# Decode the first image result
+base64_image = out['text_to_image']['images'][0]
+image = base64.b64decode(base64_image)
+
+# Write the decoded image into file
+filename = 'output_text_to_image.jpg' 
+with open(filename, 'wb') as f:
+    f.write(image)
+
+```
+:::
+
 ## What if my task is not standardised by VDP yet?
 
 VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
