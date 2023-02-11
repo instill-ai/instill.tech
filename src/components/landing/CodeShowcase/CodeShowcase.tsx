@@ -131,7 +131,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         <p className="mb-10 text-white text-instill-body-normal">
           A VDP pipeline is configured in a declarative style, allowing for
           human-/machine-friendly management. VDP will proactively allocate
-          compute resource to persistently operate the unstructured data ETL
+          compute resource to persistently operate the unstructured data
           pipeline, abstracting complex infrastructure from the users.
         </p>
         <CommonCtaButton

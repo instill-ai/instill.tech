@@ -38,13 +38,13 @@ The above layout displays a typical VDP model consisting of
 - `<pre-model>` - Python model to pre-process input images
 - `<infer-model>` - Model to convert the unstructured data into structured data output, usually a Deep Learning (DL) / Machine Learning (ML) model
 - `<post-model>` - Python model to post-process the output of the `infer-model` into desired formats
-- `<ensemble-model>` - [Triton ensemble model](https://github.com/triton-inference-server/server/blob/main/docs/architecture.md#ensemble-models) to connect the input and output tensors between the pre-processing, inference and post-processing models.
-- `config.pbtxt` - [Model configuration](https://github.com/triton-inference-server/server/blob/main/docs/model_configuration.md) for each sub model
+- `<ensemble-model>` - [Triton ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to connect the input and output tensors between the pre-processing, inference and post-processing models.
+- `config.pbtxt` - [Model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) for each sub model
 
 You can name `<pre-model>`, `<infer-model>`, `<post-model>` and `<ensemble-model>` folders freely provided that the folder names are clear and semantic. All these models bundle into a deployable model for VDP.
 
 :::info{type=info}
-As long as your model fulfils the required [Triton model repository layout](https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md), it can be safely imported into VDP and deployed online.
+As long as your model fulfils the required [Triton model repository layout](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html), it can be safely imported into VDP and deployed online.
 :::
 
 ## Serve models written in Python
@@ -61,7 +61,7 @@ If your model is not compatible with Python 3.8 or if it requires additional dep
 - Create a [model card](model-card) `README.md` to describe your model
 - Write a [pre-processing model](pre-processing) and a [post-processing model](post-processing) that are compatible with the Triton Python Backend
 - Prepare the model configuration file for your inference model
-- Set up an [ensemble model](https://github.com/triton-inference-server/server/blob/main/docs/architecture.md#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
+- Set up an [ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
 - Organise the model files into [valid VDP model layout](#vdp-model-layout)
 
 🙌 After preparing your model to be VDP compatible, check out [Import Models](/docs/import-models/overview) to learn about how to import the model into VDP from different sources.

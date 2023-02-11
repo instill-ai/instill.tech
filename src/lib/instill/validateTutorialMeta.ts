@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TutorialMeta } from "@/types/instill";
+import { AiTask, TutorialMeta } from "@/types/instill";
 
 type PartialTutorialMeta = Omit<TutorialMeta, "commit" | "slug">;
 
@@ -44,14 +44,15 @@ export const validateTutorialMeta = (
   }
 
   // Validate the aiTask types
-  const supportAiTasks = [
-    "objectDetection",
-    "ocr",
-    "imageClassification",
-    "instanceSegmentation",
-    "keypointDetection",
-    "objectDetection",
-    "semanticSegmentation",
+  const supportAiTasks: AiTask[] = [
+    "ObjectDetection",
+    "Ocr",
+    "ImageClassification",
+    "InstanceSegmentation",
+    "KeypointDetection",
+    "ObjectDetection",
+    "SemanticSegmentation",
+    "Null",
   ];
 
   if (!supportAiTasks.includes(data.aiTask)) {
@@ -148,13 +149,6 @@ export const validateTutorialMeta = (
   if (!Object.prototype.hasOwnProperty.call(data, "authorAvatarSrc")) {
     throw new Error(
       `Error occurred when validate tutorial meta - missing authorAvatarSrc field at ${path}`
-    );
-  }
-
-  // Validate whether tutorial have necessary fields - aiTask
-  if (!Object.prototype.hasOwnProperty.call(data, "aiTask")) {
-    throw new Error(
-      `Error occurred when validate tutorial meta - missing aiTask field at ${path}`
     );
   }
 

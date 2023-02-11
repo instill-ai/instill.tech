@@ -21,8 +21,8 @@ export const ArticleSimilarPosts = ({
         {sectionTitle}
       </h3>
       <div className="grid gap-x-5 xl:grid-flow-col xl:grid-cols-3">
-        {similarArticles.length >= 3 ? (
-          similarArticles.map((e) => getCardElement(e, e.slug))
+        {similarArticles.length > 3 ? (
+          similarArticles.slice(0, 3).map((e) => getCardElement(e, e.slug))
         ) : (
           <>
             {similarArticles.map((e) => getCardElement(e, e.slug))}

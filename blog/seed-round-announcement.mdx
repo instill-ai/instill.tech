@@ -1,0 +1,87 @@
+---
+title: "We Raised a $3.6M Seed Round to Build the Open-Source Unstructured Data Infrastructure"
+lang: "en-US"
+draft: false
+description: "We are announcing a $3.6M seed round led by RTP Global to boost the open-source ML tool for unstructured data and make AI more accessible for everyone."
+slug: "seed-round-announcement"
+publishedOn: "2023-02-01T07:00:00"
+themeImgSrc: "/blog-assets/seed-round-announcement/vdp.png"
+themeImgAlt: "Meet Versatile Data Pipeline (VDP) - the unstructured data infrastructure"
+themeImgThumbnailSrc: "/blog-assets/seed-round-announcement/vdp-thumbnail.png"
+placeholderColor: "bg-instillYellow50"
+author: "Ping-Lin Chang"
+authorAvatarSrc: "/author-avatar/pinglin.jpeg"
+authorGitHubUrl: "https://github.com/pinglin"
+category: "Our Story"
+---
+
+First of all, I would like to express my gratitude to all community members for your participation providing constructive feedback since the very beginning. We wouldn't have been able to reach this far without you.
+
+Also, thank you to the Instill AI team. Your expertise and enthusiasm for open-source software have helped build the virtuous flywheel to develop high-quality software products. And last, but not least, thank you to the investors and advisors who share our vision for their financial support and insightful opinions.
+
+This seed fund fuel is going to be used to boost the development of the unstructured data ML infrastructure.
+
+## How our journey started
+
+It started with a simple idea - how could we alleviate the pain that comes with developing AI products?
+
+My co-founder Xiaofei Du and I knew it was a genuine problem that needed solving because we had first-hand experience with this pain. In 2014, I started a company to build AI-powered smart cameras to automate the video security industry. Xiaofei joined later as one of the first AI Researchers to develop Deep Learning based models for many Computer Vision applications applied to cloud-based products and edge devices.
+
+The use cases determined we'd need to keep the model inference latency low and accuracy high. Therefore, our customers could get accurate alerts in less than three seconds. Back in 2014, every AI company was exploring best practices for building their own AI system. We were just one of them. We ended up with a complex Vision AI solution in-house to process and analyse billions of images a day for our customers.
+
+Looking back, the tremendous amount of effort and resources we poured into building the Vision AI solution was astonishing: setting up cross-functional teams, adopting core AI development practices, developing and maintaining a complete AI lifecycle (i.e., MLOps as it is called nowadays) and, most importantly, assembling all pieces into AI features to serve the customers.
+
+However, AI was only a partial function in the products. At the time, we also had a hardware team focused on designing and producing our own camera hardware specs and a number of general software teams to develop and maintain a portal website for camera management.
+
+Along the way, we encountered several problems that led us to the creation of Instill today:
+
+1. The in-house AI system was bound to specific applications and was not extendable. It could take us months to iterate AI models. The friction was so high that we couldn't even roll out new AI features.
+2. The cross-team members couldn't realise their full potential due to team silos and the lack of tools and collaboration experience.
+
+These problems led to extremely low ROI for the built AI products.
+
+Xiaofei and I believed that we were not alone in terms of the painful experience in developing AI products. Based on the shared vision, in June 2020, we decided to build an AI company that solves these problems once and for all.
+
+So, we set out to build an MLOps platform to shield users from all the heavy lifting. Our users would just need to make simple API calls to benefit from AI without being stuck in development hell.
+
+However, after one year, we realised that even if we could deliver such a platform, it could only solve a part of the problems. The MLOps platform we were building was only for model generation. However, AI models cannot exist alone without taking production data into account. The AI model is just one component in the entire unstructured data pipeline. We need to have a top-down perspective to tackle the problems.
+
+In early 2022, we shifted our approach to a more comprehensive platform. We started working on the unstructured data infrastructure to fulfil our mission of making AI more accessible to everyone.
+
+Enter VDP.
+
+## Where we are today
+
+In August 2022, we launched our minimal viable product - [Versatile Data Pipeline (VDP)](https://www.instill.tech/blog/introducing-vdp). Since then, we have seen growing interest in adoption and feature requirements.
+
+The purpose of VDP is to concretise the concept of unstructured data infrastructure. It is the single point of unstructured data integration, where users can sync unstructured data from anywhere into centralised warehouses or applications. VDP currently supports five AI tasks, and our users have built and triggered the VDPs more than 400,000 times via self-hosted instances or our [demo website](https://demo.instill.tech).
+
+As VDP is an open platform, we are keen to make it integrate with other awesome open-source tooling. Currently, VDP supports 40+ pre-built data connectors integrated with Airbyte and custom models imported from four different sources (e.g., GitHub, Hugging Face). The community and public awareness are growing fast, too. Within the past four months, we have gotten 600+ stars on GitHub and 160+ Community members.
+
+## Why fundraise now
+
+A complete picture of unstructured data infrastructure can be large. It requires a whole MLOps cycle and a variety of modern data tooling. This is because to tackle unstructured data (i.e. to make a computer understand image, audio, or text content), the most effective approach, to date, is Deep Learning.
+
+However, as a statistics-based and data-driven approach, Deep Learning bears several uncertainties from its data observation. This results in problems such as overfitting, underfitting, concept drift, etc., which makes the MLOps cycle an indispensable practice to keep consistent performance. In addition, because of the data-centric process, the modern data stack also plays a crucial role in an effective ETL pipeline for unstructured data.
+
+In spite of the fact that building an effective unstructured data pipeline using VDP is feasible, the most popular feedback we have gotten so far is to support training custom models with VDP. This makes sense as the model component (i.e., the T in ETL) is essential for the transformation quality. We have, therefore, decided to prioritise this feature moving forward.
+
+Furthermore, we want to make the unstructured data infrastructure prevail over the AI and Data industry. In that case, we need more hands to enlarge the coverage of our high-quality codebase and develop a community to build trust.
+
+Xiaofei and I both firmly believe in an open and sharing culture that can bring serendipity as time flows. Moving proactively to secure funding early on would increase the odds of success in executing our vision.
+
+So, when Gareth and the [RTP Global](https://rtp.vc) team reached out to us after seeing our [conceptual post of VDP](https://www.instill.tech/blog/unstructured-data-etl), we immediately realised that we could be a good match. RTP Global invested in companies such as Datadog and DataRobot, Gareth has several previous investments processing large volumes of visual data like fuboTV, and Tom and Joe brought relevant technical and data science expertise that meant they quickly understood the opportunity in unstructured data ML tooling.
+
+In addition to RTP, we are also very fortunate to have a number of specialist VCs and individual angels onboard: [Lunar Ventures](https://lunar.vc), a Berlin-based early-stage deep tech specialist investor; [Hive Ventures](https://www.hiveventures.io), a Taipei-based early-stage data infrastructure specialist investor; Charles Songhurst, former corporate strategy executive and M&A execute at Microsoft; Demetrios Kellari, Head of Systems and Technology Integration at [Cavnue](https://www.cavnue.com); Mehdi Ghissassi, Director of Product for Google's AI/ML Research org. In our pre-seed stage (from 2021 Sep.), we also got supported by [Cornerstone Ventures](https://cornerstonevc.tw/en/mainpage) and High Cosmos. Having these domain experts participate in our journey together can not only foster product development but also help us in go-to-market, talent and customer acquisition, and capitalisation.
+
+## Our future plans for Instill AI
+
+We are going to devote all our efforts to building the open-source infrastructure for unstructured data. To achieve this goal, we will double the size of our team by the end of 2023 (please check our [open roles](https://www.instill.tech/career)).
+
+We will also continue to improve the user experience for each AI and Data practitioner who works on unstructured data or builds AI-first applications. We will release a new usage dashboard for monitoring, logging and auditing, a new component for logic operators to flexibly manipulate the dataflow, a new Drag-and-Drop UI to easily assemble components into pipelines, and more data connectors for unstructured data.
+
+We are also keen to make the model import and deployment more user-friendly. Many new AI tasks will be added, including tasks for Generative AI. To unleash the full power of VDP, model training and evaluation features are planned in the 2023 roadmap. These will close the loop of the MLOps cycle.
+
+Last but not least, [Instill Cloud](https://www.instill.tech/get-access), the fully managed cloud service for the unstructured data infrastructure, will be launched early this year. The goal is to serve the community members who want to explore, process or analyse their unstructured data without ever worrying about the infrastructure maintenance themselves.
+
+It is about time to give unstructured data more love. Unstructured data can be more valuable if AI is more accessible. We at Instill AI are fully committed to solving the problem. Together with the community, I am very much looking forward to what's next.

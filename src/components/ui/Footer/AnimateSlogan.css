@@ -4,7 +4,12 @@
 .instill-footer-animate-slogan-letter-9,
 .instill-footer-animate-slogan-letter-10,
 .instill-footer-animate-slogan-letter-15,
-.instill-footer-animate-slogan-letter-19 {
+.instill-footer-animate-slogan-letter-18,
+.instill-footer-animate-slogan-letter-19,
+.instill-footer-animate-slogan-letter-23,
+.instill-footer-animate-slogan-letter-24,
+.instill-footer-animate-slogan-letter-30,
+.instill-footer-animate-slogan-letter-31 {
   animation: slogan-group-0 3s step-end infinite;
 }
 
@@ -14,15 +19,22 @@
 .instill-footer-animate-slogan-letter-11,
 .instill-footer-animate-slogan-letter-13,
 .instill-footer-animate-slogan-letter-14,
-.instill-footer-animate-slogan-letter-18 {
+.instill-footer-animate-slogan-letter-20, 
+.instill-footer-animate-slogan-letter-21,
+.instill-footer-animate-slogan-letter-25,
+.instill-footer-animate-slogan-letter-26 {
   animation: slogan-group-1 3s step-end infinite;
 }
- 
+
 .instill-footer-animate-slogan-letter-3,
 .instill-footer-animate-slogan-letter-7,
 .instill-footer-animate-slogan-letter-8,
 .instill-footer-animate-slogan-letter-16,
-.instill-footer-animate-slogan-letter-20 {
+.instill-footer-animate-slogan-letter-22,
+.instill-footer-animate-slogan-letter-27,
+.instill-footer-animate-slogan-letter-28, 
+.instill-footer-animate-slogan-letter-29
+{
   animation: slogan-group-2 3s step-end infinite;
 }
 

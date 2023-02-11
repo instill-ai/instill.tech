@@ -56,7 +56,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.aiTask === "All") {
+      if (filters.aiTask === "All" || filters.aiTask === "Null") {
         return true;
       } else {
         return item.aiTask === filters.aiTask ? true : false;
@@ -67,7 +67,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.connector === "All") {
+      if (filters.connector === "All" || filters.connector === "Null") {
         return true;
       } else {
         if (
@@ -85,7 +85,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]
     ) => {
-      if (filters.useCase === "All") {
+      if (filters.useCase === "All" || filters.useCase === "Null") {
         return true;
       } else {
         return item.useCase === filters.useCase ? true : false;
@@ -102,9 +102,12 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   return (
     <>
       <PageHead
-        pageTitle="Tutorial | Instill AI"
-        pageDescription=""
         pageType="main"
+        pageTitle="Tutorial | Instill AI"
+        pageDescription={null}
+        commitMeta={null}
+        currentArticleMeta={null}
+        additionMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
@@ -124,7 +127,6 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
               setFilters={setFilters}
             />
           </div>
-
           <div className="flex xl:w-9/12">
             <TutorialList tutorials={searchedTutorials} />
           </div>

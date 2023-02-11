@@ -1,5 +1,84 @@
 # Changelog
 
+## [1.27.1](https://github.com/instill-ai/instill.tech/compare/v1.27.0...v1.27.1) (2023-02-01)
+
+
+### Miscellaneous
+
+* update banner text ([#473](https://github.com/instill-ai/instill.tech/issues/473)) ([7ee0e47](https://github.com/instill-ai/instill.tech/commit/7ee0e47ca62bf91c1775fa76cde5ce3efb3246d1))
+
+## [1.27.0](https://github.com/instill-ai/instill.tech/compare/v1.26.0...v1.27.0) (2023-02-01)
+
+
+### Features
+
+* implement dedicated ogimage for tutorial and blog ([#472](https://github.com/instill-ai/instill.tech/issues/472)) ([490dd44](https://github.com/instill-ai/instill.tech/commit/490dd44a7a0fdccaeacf50463705c0abaa4749a4))
+
+
+### Bug Fixes
+
+* fix announcement bar at mobile view ([#469](https://github.com/instill-ai/instill.tech/issues/469)) ([49bf542](https://github.com/instill-ai/instill.tech/commit/49bf5428e20b9beecfaf355538b90f79ee212a89))
+* update og image ([#471](https://github.com/instill-ai/instill.tech/issues/471)) ([60e9d68](https://github.com/instill-ai/instill.tech/commit/60e9d68e689fa82fc391e78b7620e8e52ce90cd5))
+
+## [1.26.0](https://github.com/instill-ai/instill.tech/compare/v1.25.4...v1.26.0) (2023-01-31)
+
+
+### Features
+
+* add PR semantic check workflow ([#463](https://github.com/instill-ai/instill.tech/issues/463)) ([ef887c2](https://github.com/instill-ai/instill.tech/commit/ef887c25240e0974bc73b2b07326f104ac3548c1))
+* support Null connectors and aiTask ([#458](https://github.com/instill-ai/instill.tech/issues/458)) ([aaf056c](https://github.com/instill-ai/instill.tech/commit/aaf056c65155fe93c32fbeb80c841c81816a1a46))
+* update contributing guide ([#465](https://github.com/instill-ai/instill.tech/issues/465)) ([b4639db](https://github.com/instill-ai/instill.tech/commit/b4639dbe8b9de61a5ff1da5793c3cc05edbeb158))
+* update CONTRIBUTING guideline ([#457](https://github.com/instill-ai/instill.tech/issues/457)) ([df2e4aa](https://github.com/instill-ai/instill.tech/commit/df2e4aafdf2026cd3f50038a56e4d8d73bf9b08d))
+* update README and CONTRIBUTING guideline ([#449](https://github.com/instill-ai/instill.tech/issues/449)) ([339d83c](https://github.com/instill-ai/instill.tech/commit/339d83c18b63312961ae6160e7b411c0f4f3f97d))
+
+
+### Bug Fixes
+
+* fix similar use case index issue ([#460](https://github.com/instill-ai/instill.tech/issues/460)) ([26403b2](https://github.com/instill-ai/instill.tech/commit/26403b2b70fcbf29579673f3b1f79a9238d6a6ea))
+
+
+### Miscellaneous
+
+* replace aiTask from camelCase to PascalCase ([#459](https://github.com/instill-ai/instill.tech/issues/459)) ([1c0f94b](https://github.com/instill-ai/instill.tech/commit/1c0f94be1ee55c059adaf4e2f989c4517994d085))
+* update footer ([#467](https://github.com/instill-ai/instill.tech/issues/467)) ([b6070ec](https://github.com/instill-ai/instill.tech/commit/b6070ec281eb1942dce66b1c914ea52cdee3a97e))
+* update similar use cases section label at docs and tutorials page ([#462](https://github.com/instill-ai/instill.tech/issues/462)) ([6148116](https://github.com/instill-ai/instill.tech/commit/6148116a5e1ae9c0d6fb0bcdacca22d995043e55))
+
+
+### Documentation
+
+* **blog:** add seed round announcement ([#466](https://github.com/instill-ai/instill.tech/issues/466)) ([49adc01](https://github.com/instill-ai/instill.tech/commit/49adc01ec62be9f1a050f040bd07eb8cdfb8141c))
+* **blog:** update blog cover image to be 16:9 ([#468](https://github.com/instill-ai/instill.tech/issues/468)) ([199149c](https://github.com/instill-ai/instill.tech/commit/199149c86e3e19fbd296d2caf819e85262718843))
+
+## [1.25.4](https://github.com/instill-ai/instill.tech/compare/v1.25.3...v1.25.4) (2023-01-17)
+
+
+### Documentation
+
+* **core-concepts,prepare-models:** fix broken links ([#447](https://github.com/instill-ai/instill.tech/issues/447)) ([6caed92](https://github.com/instill-ai/instill.tech/commit/6caed9232dd7fc561cde80df7b4f0ab75a362f97))
+
+## [1.25.3](https://github.com/instill-ai/instill.tech/compare/v1.25.2...v1.25.3) (2023-01-15)
+
+
+### Documentation
+
+* **development:** fix system arch chart ([#445](https://github.com/instill-ai/instill.tech/issues/445)) ([1317310](https://github.com/instill-ai/instill.tech/commit/13173107caa953f078b4bcfbfb7a5242b934b838))
+
+## [1.25.2](https://github.com/instill-ai/instill.tech/compare/v1.25.1...v1.25.2) (2023-01-15)
+
+
+### Documentation
+
+* **core-concepts,destination-conneectors,development,import-models,source-connectors,start-hear,tutorials:** update documentation ([#438](https://github.com/instill-ai/instill.tech/issues/438)) ([d26b3c9](https://github.com/instill-ai/instill.tech/commit/d26b3c9d68075f0f16852a9ce7e63c75571d4334))
+* **start-here:** remove info block ([#444](https://github.com/instill-ai/instill.tech/issues/444)) ([153060b](https://github.com/instill-ai/instill.tech/commit/153060be2181aeda4f4b87ba706693593eb1253a))
+* **tutorials:** update sync pipeline response ([#441](https://github.com/instill-ai/instill.tech/issues/441)) ([d973031](https://github.com/instill-ai/instill.tech/commit/d973031878abab110803d8417a3ef3565462b51a))
+
+## [1.25.1](https://github.com/instill-ai/instill.tech/compare/v1.25.0...v1.25.1) (2023-01-06)
+
+
+### Documentation
+
+* **blog,start-here:** refactor blog article ([#436](https://github.com/instill-ai/instill.tech/issues/436)) ([5cb049d](https://github.com/instill-ai/instill.tech/commit/5cb049d1a912ae33715e452ec1523b687b762d2b))
+
 ## [1.25.0](https://github.com/instill-ai/instill.tech/compare/v1.24.0...v1.25.0) (2022-12-29)
 
 

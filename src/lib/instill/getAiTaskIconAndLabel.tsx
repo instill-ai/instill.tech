@@ -34,37 +34,41 @@ export const getAiTaskIconAndLabel = ({
   let label = "";
 
   switch (aiTask) {
-    case "ocr":
+    case "Ocr":
       icon = (iconStyle: IconStyle) => (
         <OpticalCharacterRecognitionIcon {...iconStyle} />
       );
       label = "OCR (optical character recognition)";
       break;
-    case "imageClassification":
+    case "ImageClassification":
       icon = (iconStyle: IconStyle) => (
         <ImageClassificationIcon {...iconStyle} />
       );
       label = "Image Classification";
       break;
-    case "instanceSegmentation":
+    case "InstanceSegmentation":
       icon = (iconStyle: IconStyle) => (
         <InstanceSegmentationIcon {...iconStyle} />
       );
       label = "Instance Segmentation";
       break;
-    case "keypointDetection":
+    case "KeypointDetection":
       icon = (iconStyle: IconStyle) => <KeypointDetectionIcon {...iconStyle} />;
       label = "Keypoint Detection (Pose Estimation)";
       break;
-    case "objectDetection":
+    case "ObjectDetection":
       icon = (iconStyle: IconStyle) => <ObjectDetectionIcon {...iconStyle} />;
       label = "Object Detection";
       break;
-    case "semanticSegmentation":
+    case "SemanticSegmentation":
       icon = (iconStyle: IconStyle) => (
         <SemanticSegmentationIcon {...iconStyle} />
       );
       label = "Semantic Segmentation";
+      break;
+    case "Null":
+      icon = null;
+      label = "General";
       break;
     default:
       icon = null;

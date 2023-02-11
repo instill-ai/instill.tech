@@ -39,7 +39,9 @@ export const TutorialFilters = ({
         (e) => e.value === tutorial.sourceConnector
       );
 
-      if (existSourceIndex === -1) {
+      // We don't want our connector filters have Null option
+
+      if (existSourceIndex === -1 && tutorial.sourceConnector !== "Null") {
         options.push({
           label: tutorial.sourceConnector,
           value: tutorial.sourceConnector,
@@ -50,7 +52,10 @@ export const TutorialFilters = ({
         (e) => e.value === tutorial.destinationConnector
       );
 
-      if (existDestinationIndex === -1) {
+      if (
+        existDestinationIndex === -1 &&
+        tutorial.destinationConnector !== "Null"
+      ) {
         options.push({
           label: tutorial.destinationConnector,
           value: tutorial.destinationConnector,
@@ -152,23 +157,23 @@ export const TutorialFilters = ({
           }
           options={[
             { label: "All", value: "All" },
-            { label: "Image Classification", value: "imageClassification" },
-            { label: "Instance Segmentation", value: "instanceSegmentation" },
+            { label: "Image Classification", value: "ImageClassification" },
+            { label: "Instance Segmentation", value: "InstanceSegmentation" },
             {
               label: "Keypoint Detection (Pose Estimation)",
-              value: "keypointDetection",
+              value: "KeypointDetection",
             },
             {
               label: "Object Detection",
-              value: "objectDetection",
+              value: "ObjectDetection",
             },
             {
               label: "OCR (optical character recognition)",
-              value: "ocr",
+              value: "Ocr",
             },
             {
               label: "Semantic Segmentation",
-              value: "semanticSegmentation",
+              value: "SemanticSegmentation",
             },
           ]}
         />

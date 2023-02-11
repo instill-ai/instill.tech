@@ -177,9 +177,12 @@ const HomePage: FC<HomePageProps> & {
   return (
     <>
       <PageHead
+        pageType="main"
         pageTitle="Instill AI"
         pageDescription="Empower modern data stack, tapping the value of unstructured data with our open source community."
-        pageType="main"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
       />
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">

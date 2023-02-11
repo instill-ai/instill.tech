@@ -43,7 +43,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           <HowItWorksRow
             type="left"
             title="Pre-built ETL data connectors for extensive data access"
-            description="By leveraging ready-to-use ETL data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
+            description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
             learnMoreLink="/docs/core-concepts/connector"
             number={1}
             cubes={[
@@ -157,7 +157,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           />
           <HowItWorksRow
             type="right"
-            title="Build end-to-end ETL pipelines for unstructured data 10x faster"
+            title="Build end-to-end unstructured data pipelines 10x faster"
             description={
               <div className="flex flex-col gap-y-5">
                 <p>

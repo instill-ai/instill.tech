@@ -37,7 +37,7 @@ type BlogPageProps = {
   headers: RightSidebarProps["headers"];
   articles: BlogArticleMeta[];
   commitMeta: Nullable<CommitMeta>;
-  currentArticleMeta: Nullable<BlogArticleMeta>;
+  blogMeta: Nullable<BlogArticleMeta>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
       headers,
       articles,
       commitMeta,
-      currentArticleMeta: articles.find((e) => e.slug === relativePath) || null,
+      blogMeta: articles.find((e) => e.slug === relativePath) || null,
     },
   };
 };
@@ -131,23 +131,22 @@ type GetLayOutProps = {
 
 const BlogPage: FC<BlogPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, articles, currentArticleMeta }) => {
+} = ({ mdxSource, commitMeta, headers, articles, blogMeta }) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
   const similarArticles = useMemo(() => {
-    if (!currentArticleMeta) return [];
+    if (!blogMeta) return [];
 
     return articles.filter(
-      (e) =>
-        e.category === currentArticleMeta.category &&
-        e.title !== currentArticleMeta.title
+      (e) => e.category === blogMeta.category && e.title !== blogMeta.title
     );
-  }, [articles, currentArticleMeta]);
+  }, [articles, blogMeta]);
 
   return (
     <>
       <PageHead
+        pageType="blog"
         pageTitle={
           mdxSource.frontmatter
             ? `${mdxSource.frontmatter.title} | Blog`
@@ -156,7 +155,9 @@ const BlogPage: FC<BlogPageProps> & {
         pageDescription={
           mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
         }
-        pageType="main"
+        commitMeta={commitMeta}
+        currentArticleMeta={blogMeta}
+        additionMeta={null}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"
@@ -227,9 +228,9 @@ const BlogPage: FC<BlogPageProps> & {
         */}
 
         <div>
-          {currentArticleMeta?.category ? (
+          {blogMeta?.category ? (
             <ArticleSimilarPosts
-              sectionTitle="Similar Posts"
+              sectionTitle="Similar Articles"
               similarArticles={similarArticles}
               getCardElement={(source, key) => {
                 return (

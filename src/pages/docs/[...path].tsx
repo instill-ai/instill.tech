@@ -159,6 +159,8 @@ const DocsPage: FC<DocsPageProps> & {
             <meta name="docsearch:version" content="3.0.0" />
           </>
         }
+        currentArticleMeta={null}
+        commitMeta={null}
       />
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">

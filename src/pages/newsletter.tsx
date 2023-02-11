@@ -105,9 +105,12 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
   return (
     <>
       <PageHead
+        pageType="main"
         pageTitle="Newsletter Archive | Instill AI"
         pageDescription="Instill AI newsletter archive"
-        pageType="main"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
