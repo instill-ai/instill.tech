@@ -1,22 +1,36 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import cn from "clsx";
 
 import { MoonIcon } from "./MoonIcon";
 import { SunIcon } from "./SunIcon";
 
-export const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+//  Custom Hook for dark mode
+export const useDark = () => {
+  const [value, setValue] = useState(false);
 
-  const toggleTheme = useCallback(() => {
+  useEffect(() => {
+    //  Get value on localstorage
+    const darkMode = localStorage.getItem("dark") === "true";
+    setValue(darkMode);
+  }, []);
+
+  useEffect(() => {
+    //  Add or Remove "dark" classname
     const html = document.querySelector("html");
     if (!html) return;
-    if (isDark) {
-      html.classList.remove("dark");
-      setIsDark(false);
-    } else {
-      html.classList.add("dark");
-      setIsDark(true);
-    }
+    value ? html.classList.add("dark") : html.classList.remove("dark");
+    //  Set value on localstorage
+    localStorage.setItem("dark", value ? "true" : "false");
+  }, [value]);
+
+  return [value, setValue] as const;
+};
+
+export const ThemeToggle = () => {
+  const [isDark, setIsDark] = useDark();
+
+  const toggleTheme = useCallback(() => {
+    setIsDark(!isDark);
   }, [isDark]);
 
   return (
