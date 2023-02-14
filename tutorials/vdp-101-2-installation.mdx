@@ -3,7 +3,7 @@ title: "VDP 101 [2/7] Install VDP on Your Local Machine"
 lang: "en-US"
 draft: false
 description: "To benefit a broader community, we release VDP under the open-source Apache license 2.0. We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). "
-aiTask: "objectDetection"
+aiTask: "Null"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
 publishedOn: "2023-01-30T15:26:00"
@@ -16,30 +16,31 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP. To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon). 
+In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP. To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon).
 
 ## 1. Prerequisites
 
-Before installing VDP, Make sure you have the prerequisites set up: 
+Before installing VDP, Make sure you have the prerequisites set up:
+
 - **macOS or Linux** - VDP works on macOS or Linux. It does not currently support Windows, but it is coming soon!
 - **Docker and Docker Compose** - VDP uses Docker Compose to run all services locally.
-- **Git** - You need Git to download VDP and manage your code. Make sure you have it. 
+- **Git** - You need Git to download VDP and manage your code. Make sure you have it.
 
 ### Install Docker and Docker Compose
 
-**Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualisation](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualisation") to deliver software in packages called [containers](https://en.wikipedia.org/wiki/Container_(virtualization) "Container (virtualisation)"). Users won't need to set up their environment before running services.
+**Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualisation](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualisation") to deliver software in packages called [containers](<https://en.wikipedia.org/wiki/Container_(virtualization)> "Container (virtualisation)"). Users won't need to set up their environment before running services.
 
-VDP uses Docker Compose to run all services locally. 
+VDP uses Docker Compose to run all services locally.
 
 Install Docker Desktop:
+
 - [on Mac](https://docs.docker.com/desktop/install/mac-install/) - Be aware of your Mac model. It could come with an **Intel chip** or **Apple silicon**.
 - [on Linux](https://docs.docker.com/desktop/install/linux-install/) - Make sure your platform is supported.
 - [on Windows](https://docs.docker.com/desktop/install/windows-install/) - You can Install Docker Desktop on Windows, but VDP does not support it...... yet ...stay tuned!
 
 ### Install Git
 
-**Git** is a [distributed version control](https://en.wikipedia.org/wiki/Distributed_version_control "Distributed version control") system: tracking changes in any set of files, usually used for coordinating work among programmers when developing source code. There are many ways to Install Git. Git provides different [installation options](https://git-scm.com/downloads) for all three OS. Use the one you like the most. You can also [install Git via Conda](https://www.anaconda.com/products/distribution). 
-
+**Git** is a [distributed version control](https://en.wikipedia.org/wiki/Distributed_version_control "Distributed version control") system: tracking changes in any set of files, usually used for coordinating work among programmers when developing source code. There are many ways to Install Git. Git provides different [installation options](https://git-scm.com/downloads) for all three OS. Use the one you like the most. You can also [install Git via Conda](https://www.anaconda.com/products/distribution).
 
 ## 2. Download and Install VDP
 
@@ -52,7 +53,7 @@ Execute the following `bash` commands to start pre-built images with all the dep
 cd {directory-for-vdp}
 # clone VDP repository to local
 git clone https://github.com/instill-ai/vdp.git && cd vdp
-# start VDP service 
+# start VDP service
 make all
 ```
 
@@ -80,7 +81,6 @@ You can also check if VDP is running on your machine by looking at whether the `
 Although not necessary, we highly recommend you give your Docker more memory. Go to `settings > resources` in your **Docker Desktop** app and set memory to at least **32GB** for better stability. You will need to **shut down** and **start** your VDP service after you change your memory setting.
 :::
 
-
 ## 3. Uninstall VDP
 
 In some unlikely conditions, you may wish **shut down** VDP with the `bash` command below:
@@ -88,7 +88,7 @@ In some unlikely conditions, you may wish **shut down** VDP with the `bash` comm
 ```bash
 # move to the VDP folder
 cd {vdp directory}
-# shut down VDP services 
+# shut down VDP services
 make down
 ```
 
@@ -96,12 +96,15 @@ We will probably be sad to hear that you wish to uninstall VDP. However, we love
 
 Okay, now you have a VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
 
-<br/><br/>
-**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
-- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
-- [[2/7] Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
-- [[3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
-- [[4/7] How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
-- [[5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
-- [[6/7] Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
-- [[7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
+<br />
+<br />
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓** - [[1/7] Introduction to
+VDP](/tutorials/vdp-101-1-introduction) - [[2/7] Install VDP on Your Local
+Machine](/tutorials/vdp-101-2-installation) - [[3/7] Create Your First Pipeline
+on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) - [[4/7] How to Trigger
+a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline) - [[5/7]
+How to Parse Responses from SYNC
+Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses) - [[6/7] Pipeline
+Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes) - [[7/7]
+Create, Trigger, and Parse an ASYNC
+Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)

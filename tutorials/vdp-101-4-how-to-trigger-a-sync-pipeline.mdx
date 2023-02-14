@@ -3,7 +3,7 @@ title: "VDP 101 [4/7] How to Trigger a SYNC Pipeline?"
 lang: "en-US"
 draft: false
 description: "In this tutorial, we are going to demonstrate how to trigger a SYNC pipeline step-by-step using an objective detection example."
-aiTask: "objectDetection"
+aiTask: "Null"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
 publishedOn: "2023-01-30T16:26:00"
@@ -16,10 +16,9 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In the previous tutorial [VDP 101 [3/7] Create Your First Pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you learned how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step. 
+In the previous tutorial [VDP 101 [3/7] Create Your First Pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you learned how to create a pipeline in `SYNC` mode using VDP Console. Now we are going to learn how to trigger this pipeline step-by-step.
 
 Users can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case. The combination of the selected source and destination determines the pipeline mode (further details can be found in [VDP 101 [6/7] Pipeline Modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)). For this tutorial, we use `SYNC` mode for showcasing. Let's not be bothered by the other two modes for just now.
-
 
 ## 1. Prerequisites
 
@@ -29,13 +28,12 @@ In this tutorial, we'll use Conda as the package management system. You can inst
 
 Create and activate a Conda virtual environment named `vdp-streamlit` with Python 3.8:
 
-```bash   
+```bash
 conda create --name vdp-streamlit python=3.8
 conda activate vdp-streamlit
 ```
 
 Once activated, you can run scripts from this environment.
-
 
 ### Install app dependencies
 
@@ -53,11 +51,11 @@ The directory will look like the following:
 ```bash
 ├── dog.jpg
 ├── README.md
-├── requirements.txt  
+├── requirements.txt
 ├── sync-http-base64.py
 ├── sync-http-multipart.py
 ├── sync-http-url.py
-└── utils.py         
+└── utils.py
 ```
 
 where `requirements.txt` file contains all the dependencies, install all the dependencies required to run the app from the activated virtual environment.
@@ -66,11 +64,9 @@ where `requirements.txt` file contains all the dependencies, install all the dep
 pip install -r requirements.txt
 ```
 
-
 :::info{type=info}
 The `requirements.txt` file can be found in all of our VDP examples under `/examples/`.
 :::
-
 
 ## 2. An Object Detection Example
 
@@ -89,11 +85,9 @@ WHALA! You just triggered the object detection pipeline! You should see the resu
 
 Let's dive into our example codes to see what happened.
 
-
 ## 3. Trigger VDP Pipeline
 
 VDP currently supports `HTTP/gRPC` protocols. When triggering the pipeline with HTTP protocols (i.e., RESTful), users can send their data via **HTTP POST Requests** or **HTTP Multipart Requests**. You can find these examples in `/examples/vdp-101/sync/`.
-
 
 ### HTTP POST Request
 
@@ -103,7 +97,6 @@ VDP currently supports `HTTP/gRPC` protocols. When triggering the pipeline with 
 - **base64:** clients upload image files in base64 format, encoding images into UTF-8 Strings. We convert JPG to BASE64 using the **base64** library in this tutorial example. An example can be found in `sync-http-base64.py`.
 
 Below are examples that demonstrate the structure of the JSON objects. Inputs can be a list of multiple payloads if needed.
-
 
 <CH.Code>
 
@@ -126,15 +119,14 @@ body = {
 	]
 }
 ```
+
 </CH.Code>
-
-
 
 :::info{type=info}
 Although JSON object is commonly used, it is not optimal to upload large objects, for which we recommend you trigger the pipeline using **HTTP Multipart Request**.
 :::
 
-### Tigger pipelines with HTTP POST Requests 
+### Tigger pipelines with HTTP POST Requests
 
 Once the JSON object is ready, we can trigger the pipeline using standard **HTTP POST requests**. There are **three** arguments In the HTTP POST messages. They are `pipeline backend URL`, `pipeline_id`, and `json`, the JSON object prepared above.
 
@@ -163,9 +155,10 @@ pipeline_id = 'yolov7'
 
 ### HTTP Multipart Uplaod
 
-If you're uploading **large objects**, we recommend you use **HTTP Multipart Requests**. Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. If transmission of any part fails, you can retransmit that part without affecting other parts. 
+If you're uploading **large objects**, we recommend you use **HTTP Multipart Requests**. Multipart upload allows you to upload a single object as a set of parts. Each part is a contiguous portion of the object's data. If transmission of any part fails, you can retransmit that part without affecting other parts.
 
 We recommend that you use multipart upload in the following ways:
+
 - If you're uploading large objects over a **stable high-bandwidth network**, use multipart upload to maximise the use of your available bandwidth by uploading object parts in parallel for multi-threaded performance.
 - If you're uploading over a **spotty network**, use multipart upload to increase resiliency to network errors by avoiding upload restarts. When using multipart upload, you need to retry uploading only the parts that are interrupted during the upload. You don't need to restart uploading your object from the beginning.
 
@@ -177,13 +170,12 @@ Below is an example demonstrating how to prepare the payload for multipart uploa
 body = [("file", (img_name, open(os.path.join(img_folder, img_name), 'rb'))) for img_name in img_names]
 ```
 
-
 ### Tigger pipelines with HTTP Multipart Upload
 
 The HTTP POST request is similar to the **HTTP POST Request**. The only differences are:
 
 - `URL`: instead of ending with `trigger` in HTTP POST Request, the URL ends with `trigger-multipart`.
-- `files=body`: instead of passing the files as a JSON object (`json=body`), use a list of files in tuples. 
+- `files=body`: instead of passing the files as a JSON object (`json=body`), use a list of files in tuples.
 
 ```python
 requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart",files=body)
@@ -195,7 +187,7 @@ For further details of the Python `requests.post()` method, we refer readers to 
 
 ## 4. Tigger pipeline in the command line
 
-In addition to our Python examples, you can also trigger your pipelines in the command line. Choose a pipeline on your [VDP Console](http://localhost:3000/pipelines). You can find the corresponding HTTP request at the bottom of your pipeline page. 
+In addition to our Python examples, you can also trigger your pipelines in the command line. Choose a pipeline on your [VDP Console](http://localhost:3000/pipelines). You can find the corresponding HTTP request at the bottom of your pipeline page.
 
 <CH.Code>
 
@@ -233,19 +225,21 @@ curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance
 
 </CH.Code>
 
-
 ## 5. More Data Objects Supported by VDP
 
-In addition to image objects, Versatile Data Pipeline (VDP) supports extensive data types commonly used in AI tasks. You can find further details in our [VDP standardised AI tasks](/docs/core-concepts/ai-task) or the Python examples in `/examples/`. 
+In addition to image objects, Versatile Data Pipeline (VDP) supports extensive data types commonly used in AI tasks. You can find further details in our [VDP standardised AI tasks](/docs/core-concepts/ai-task) or the Python examples in `/examples/`.
 
 Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse pipeline responses in our following tutorial → [VDP 101 [5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdo-101-5-hoe-to-parse-vdp-responses).
 
-<br/><br/>
-**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
-- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
-- [[2/7] Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation)
-- [[3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
-- [[4/7] How to Trigger a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
-- [[5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
-- [[6/7] Pipeline Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
-- [[7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
+<br />
+<br />
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓** - [[1/7] Introduction to
+VDP](/tutorials/vdp-101-1-introduction) - [[2/7] Install VDP on Your Local
+Machine](/tutorials/vdp-101-2-installation) - [[3/7] Create Your First Pipeline
+on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) - [[4/7] How to Trigger
+a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline) - [[5/7]
+How to Parse Responses from SYNC
+Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses) - [[6/7] Pipeline
+Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes) - [[7/7]
+Create, Trigger, and Parse an ASYNC
+Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
