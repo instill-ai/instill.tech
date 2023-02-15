@@ -6,7 +6,7 @@ description: "To benefit a broader community, we release VDP under the open-sour
 aiTask: "Null"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
-publishedOn: "2023-01-30T15:26:00"
+publishedOn: "2023-01-30T15:27:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
@@ -16,85 +16,94 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP. To benefit a broader community, we release VDP under the open-source Apache license 2.0. Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon).
+In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP.
+To benefit a broader community, we release VDP under the open-source Apache license 2.0.
+Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machine and Kubernetes (coming soon).
 
-## 1. Prerequisites
+## Prerequisites
 
 Before installing VDP, Make sure you have the prerequisites set up:
 
 - **macOS or Linux** - VDP works on macOS or Linux. It does not currently support Windows, but it is coming soon!
+- **Git** - You need Git to download VDP and manage your code.
 - **Docker and Docker Compose** - VDP uses Docker Compose to run all services locally.
-- **Git** - You need Git to download VDP and manage your code. Make sure you have it.
-
-### Install Docker and Docker Compose
-
-**Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualisation](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualisation") to deliver software in packages called [containers](<https://en.wikipedia.org/wiki/Container_(virtualization)> "Container (virtualisation)"). Users won't need to set up their environment before running services.
-
-VDP uses Docker Compose to run all services locally.
-
-Install Docker Desktop:
-
-- [on Mac](https://docs.docker.com/desktop/install/mac-install/) - Be aware of your Mac model. It could come with an **Intel chip** or **Apple silicon**.
-- [on Linux](https://docs.docker.com/desktop/install/linux-install/) - Make sure your platform is supported.
-- [on Windows](https://docs.docker.com/desktop/install/windows-install/) - You can Install Docker Desktop on Windows, but VDP does not support it...... yet ...stay tuned!
+- **(Optional) NVIDIA Container Toolkit** - To enable GPU support in VDP, this must be installed for Docker to recognise the GPUs.
 
 ### Install Git
 
 **Git** is a [distributed version control](https://en.wikipedia.org/wiki/Distributed_version_control "Distributed version control") system: tracking changes in any set of files, usually used for coordinating work among programmers when developing source code. There are many ways to Install Git. Git provides different [installation options](https://git-scm.com/downloads) for all three OS. Use the one you like the most. You can also [install Git via Conda](https://www.anaconda.com/products/distribution).
 
-## 2. Download and Install VDP
+### Install Docker and Docker Compose
+
+**Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualisation](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualisation") to deliver software in packages called [containers](<https://en.wikipedia.org/wiki/Container_(virtualization)> "Container (virtualisation)"). Users won't need to set up their environment before running services.
+
+VDP uses Docker Compose (specifically, `Compose V2` and `Compose specification`) to run all services locally.
+
+Install Docker Desktop:
+
+- [on Mac](https://docs.docker.com/desktop/install/mac-install/) - Be aware of your Mac model. It could come with an **Intel chip** or **Apple silicon**.
+- [on Linux](https://docs.docker.com/desktop/install/linux-install/) - Make sure your platform is supported.
+- [on Windows](https://docs.docker.com/desktop/install/windows-install/) - VDP does not support Windows yet. Stay tuned!
+
+To enable GPU support in VDP, please refer to the installation guides of the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide).
+
+## Download and launch VDP
 
 VDP is currently an open-source project maintained on our [Github repository](https://github.com/instill-ai/vdp). Don't worry if you are not familiar with it. We have set up everything for you.
 
 Execute the following `bash` commands to start pre-built images with all the dependencies:
 
 ```bash
-# move to the folder that you intend to install VDP
-cd {directory-for-vdp}
 # clone VDP repository to local
-git clone https://github.com/instill-ai/vdp.git && cd vdp
+$ git clone https://github.com/instill-ai/vdp.git && cd vdp
 # start VDP service
-make all
+$ make all
 ```
 
-The installation may take a while. Have a cup of tea. Once the services are up, WHALA, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/). You should see the onboarding page. Enter your email, and you are all set!
+The installation may take a while. Have a cup of tea 🍵. Once the services are up, WHALA, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/).
 
 :::info{type=warning}
-⚠︎ Don't panic if you don't see the Console UI right after `make all`. Downloading the Triton server image will take a while, but it should be a one-time effort.
+⚠︎ Don't panic if you don't see the Console UI right after `make all`. Downloading the model-backend and Triton Inference Server image will take a while, but it should be a one-time effort.
 :::
 
-↓↓ If you see this Console UI, you are ready to go! ↓↓
+↓↓ You should see the onboarding page. Enter your email, and you are all set! ↓↓
 
-<img
+<ZoomableImg
   src="/tutorial-assets/vdp-101/2-installation/onboarding.png"
-  alt="Please fill in the onboarding information so we can keep you posted with our latest News!"
+  alt="Please fill in the onboarding information so we can keep you posted with our latest news!"
 />
 
-You can also check if VDP is running on your machine by looking at whether the `instill-vdp` Docker Compose is running correctly in your **Docker Desktop**.
+You can also check if VDP is running on your machine by listing the running compose project
 
-<img
+```bash
+$ docker compose ls --filter name=instill-vdp
+NAME            STATUS          CONFIG FILES
+instill-vdp     running         < VDP Docker Compose file paths >
+```
+
+or by checking whether the `instill-vdp` Docker Compose is running correctly in your **Docker Desktop**.
+
+<ZoomableImg
   src="/tutorial-assets/vdp-101/2-installation/docker-desktop.png"
-  alt="VDP should run as a Docker-Compose in your Docker."
+  alt='VDP should run as a compose project named as "instill-vdp"'
 />
 
 :::info{type=info}
-Although not necessary, we highly recommend you give your Docker more memory. Go to `settings > resources` in your **Docker Desktop** app and set memory to at least **32GB** for better stability. You will need to **shut down** and **start** your VDP service after you change your memory setting.
+We highly recommend you allocate at least **32GB** memory to Docker for better stability. Go to `Settings > Resources` of **Docker Desktop** to set it up.
 :::
 
-## 3. Uninstall VDP
+## Shut down VDP
 
-In some unlikely conditions, you may wish **shut down** VDP with the `bash` command below:
+If you don't like what you see and want to **shut down** VDP, please run the `bash` command below:
 
 ```bash
-# move to the VDP folder
-cd {vdp directory}
 # shut down VDP services
-make down
+$ make down
 ```
 
-We will probably be sad to hear that you wish to uninstall VDP. However, we love to hear your feedback and comments on missing features. Please join us in our community on [Discord](https://discord.gg/sevxWsqpGh) and [Github](https://github.com/instill-ai).
+We love to hear your feedback and comments on VDP. Join us in our community on [Discord](https://discord.gg/sevxWsqpGh) or create a discussion on [Github](https://github.com/instill-ai/vdp/discussions).
 
-Okay, now you have a VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+Okay, now you have VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
 
 <br />
 <br />
