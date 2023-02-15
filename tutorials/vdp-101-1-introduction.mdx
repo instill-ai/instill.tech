@@ -2,10 +2,10 @@
 title: "VDP 101 [1/7] Introduction to VDP"
 lang: "en-US"
 draft: false
-description: "*Versatile Data Pipeline (VDP) is an open-source unstructured data Extract-Transform-Load (ETL) tool to streamline the end-to-end unstructured data processing pipeline with Artificial Intelligence (AI)."
+description: "Versatile Data Pipeline (VDP) is an open-source data infrastructure tool to streamline the end-to-end unstructured data pipeline with Artificial Intelligence (AI)."
 aiTask: "Null"
-sourceConnector: "HTTP"
-destinationConnector: "HTTP"
+sourceConnector: "Null"
+destinationConnector: "Null"
 publishedOn: "2023-01-30T14:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
@@ -16,34 +16,42 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-**Versatile Data Pipeline (VDP)** is an open-source unstructured data Extract-Transform-Load (ETL) tool to streamline the end-to-end unstructured data processing pipeline with Artificial Intelligence (AI). Before we start, let's briefly introduce "Why we need VDP?"
+**Versatile Data Pipeline (VDP)** is an open-source data infrastructure tool to streamline the end-to-end unstructured data pipeline with Artificial Intelligence (AI).
+Before we start, let's briefly introduce Why we need VDP.
 
-## 1. What is ETL
+## Why VDP?
 
-When people say they are data-driven, most of the time, it means structured data drive them. Although [80% of the world's data are unstructured](https://www.analyticsinsight.net/the-future-of-data-revolution-will-be-unstructured-data/), the reality is that unstructured data are more challenging to analyse. It requires Iterative ETL procedures (sometimes called data massage) to convert this unstructured data into its structured format ready for further analysis.
+When people say they are data-driven, most of the time, it means structured data, although [80% of the world's data are unstructured](https://www.analyticsinsight.net/the-future-of-data-revolution-will-be-unstructured-data/).
+Due to the proliferation of AI, more and more Organisations wish to adopt AI (especially advanced Deep Learning technologies) to process their growing unstructured data for specific use cases, such as extracting business intelligence or delivering AI features to improve customer experience.
 
-VDP streamlines the end-to-end unstructured Data processing pipeline:
+Unfortunately, unstructured data are more challenging to analyse. It requires a robust and scalable framework that can build flexible data pipelines connecting data from different sources and serve up-to-date AI models converting the unstructured data into meaningful data presentations.
+Not many companies know or have the resources to build this kind of complex framework. That's why we introduce [Versatile Data Pipeline (VDP)](http://go.instill.tech/4em2l4) to tackle the problem.
+
+> We believe VDP is the next-gen AI-powered unstructured data infrastructure.
+>
+> — <cite> Instill AI Team</cite>
+
+<CtaButton
+  text="🎉 Check out VDP on GitHub "
+  link="http://go.instill.tech/4em2l4"
+/>
+
+## What is VDP
+
+VDP streamlines the end-to-end unstructured data pipeline:
 
 - **Extract** unstructured data (e.g., images) from pre-built data sources such as cloud/on-prem storage or IoT devices.
 - **Transform** it into analysable data representations (e.g., labels) with AI models.
 - **Load** the transformed data into warehouses, applications, or other destinations.
 
+With VDP, developers won't need to build or maintain their own data connectors, high-performing model serving platform, or data pipeline automation tools.
+
 <ZoomableImg
-  src="/tutorial-assets/vdp-101/1-introduction/overview-with-bg.png"
-  alt="Pipeline page on the VDP Console."
+  src="/tutorial-assets/vdp-101/1-introduction/overview.png"
+  alt="VDP is a open-source tool to seamlessly integrate AI for unstructured data into the modern data stack."
 />
 
-## 2. Why VDP?
-
-Due to the proliferation of AI, more and more developers and companies wish to include AI models in their ETL pipelines. Unfortunately, building reliable ETL pipelines can be challenging. Not many companies know or have the resources to deal with it. That's why we introduce [Versatile Data Pipeline (VDP)](http://go.instill.tech/4em2l4), **a general and modularised ETL infrastructure powered by AI for unstructured data**.
-
-> We believe VDP is the future Artificial Intelligence ETL for unstructured data.
->
-> -- <cite> Instill AI Team</cite>
-
-Developers won't need to build their data connectors, AI model serving platform (requiring much maintenance), and ELT-pipeline automation tools.\*
-
-## 3. Highlights
+## Highlights
 
 You don't need to know these when using VDP. But we are proud to say VDP is:
 
