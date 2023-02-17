@@ -24,8 +24,8 @@ At the moment, VDP defines the data interface for popular tasks:
 - **OCR (Optical Character Recognition)** - detect and recognise text in images
 - **Instance segmentation** - detect, localise and delineate multiple objects in images
 - **Semantic segmentation** - classify image pixels into predefined categories
-- **Text to Image** - generates images from input text prompts
-- **Text Generation** - generates texts from input text prompts
+- **Text to Image** - generate images from input text prompts
+- **Text generation** - generate texts from input text prompts
 - The list is growing ... 🌱
 
 The above tasks focus on analysing and understanding the content of data in the same way as human does.
@@ -69,7 +69,7 @@ anyOf:
   - required:
       - text_to_image
   - required:
-    - text_generation
+      - text_generation
   - required:
       - unspecified
 properties:
@@ -95,7 +95,7 @@ properties:
     description: "Generates images from input text prompts"
     "$ref": "#/definitions/TextToImage"
   text_generation:
-    description: "Generate natural language from input data"
+    description: "Generate new texts from input text"
     "$ref": "#/definitions/TextGeneration"
   unspecified:
     description: "Unspecified task with output in the free form"
@@ -397,35 +397,34 @@ with open(filename, 'wb') as f:
 
 🔮 [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc)
 
-## Text Generation
+## Text generation
 
-Text Generation is a Generative AI task to predicts the next word given input words.
-Generally it can be used in two major ways when receives text input:
-* Given an incomplete sentence, complete it.
-* Continue a story given the first sentence.
+Text generation is a Generative AI task to generate new text from text inputs.
+Generally, the task takes incomplete text prompts as the input, and produces new text based on the text prompts.
+The task can be used for filling in incomplete sensences or even generating full stories given the first words.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-text-generation.svg"
-  alt="Text to Image task"
+  alt="Text generation task"
 />
 
 ```json
 {
-    "task": "TASK_TEXT_GENERATION",
-    "task_outputs": [
-        {
-            "text_generation": {
-                "text": "The winds of change are blowing strong..."
-            }
-        }
-    ]
+  "task": "TASK_TEXT_GENERATION",
+  "task_outputs": [
+    {
+      "text_generation": {
+        "text": "The winds of change are blowing strong, bring new beginnings, righting wrongs.
+          The world around us is constantly turning, and with each sunrise, our spirits are yearning..."
+      }
+    }
+  ]
 }
 ```
 
 ### Available models
 
 🔮 [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc)
-
 
 ## What if my task is not standardised by VDP yet?
 
