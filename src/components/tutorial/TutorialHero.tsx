@@ -7,7 +7,7 @@ export type TutorialHeroProps = {
 export const TutorialHero = ({ marginBottom }: TutorialHeroProps) => {
   return (
     <PageHero
-      headline="EXPLORE INNOVATIVE USE CASES FOR UNSTRUCTURED DATA ETL"
+      headline="EXPLORE INNOVATIVE USE CASES FOR UNSTRUCTURED DATA PIPELINE"
       subHeadline={
         <p>
           VDP streamlines end-to-end unstructured data processing to empower
