@@ -1,38 +1,39 @@
 ---
-title: "VDP 101 [3/7] Create Your First Pipeline on VDP"
+title: "VDP 101 [3/7] Create your first pipeline on VDP"
 lang: "en-US"
 draft: false
-description: "In this tutorial, we will build our first AI ETL pipeline with VDP, which allows you to run your AI task with minimum effort seamlessly."
+description: "In this tutorial, we will build our first unstructured data pipeline with VDP, which allows you to process your data for a specific AI task with minimum effort."
 aiTask: "Null"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
-publishedOn: "2023-01-30T15:26:00"
+publishedOn: "2023-01-30T15:28:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
-useCase: "Prototyping"
+useCase: "Quickstart"
 author: "Po-Yu Chen"
 authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In this tutorial, we will build our first AI ETL pipeline with VDP, which allows you to run your AI task with minimum effort seamlessly.
+In this tutorial, we will build our first unstructured data pipeline with VDP, which allows you to process your data for a specific AI task with minimum effort.
 
-Before we start creating the first pipeline, please ensure you have VDP services running on your machine. If not, you can set up your own VDP services with the guidelines in the tutorial [VDP 101 [2/7] Install VDP on Your Local Machine](/tutorials/vdp-101-2-installation).
-
-## 1. Start Your First Pipeline with VDP
-
-If this is your first time setting up VDP, access the VDP Console ([http://localhost:3000](http://localhost:3000/)), and you should see the onboarding page. Enter your email, and you are all set!
-
-As we demonstrated in [VDP 101 - Introduction](/tutorials/vdp-101-1-introduction), VDP aims to streamline the Extract-Transform-Load (ETL) tasks. It consists of three components:
+As we demonstrated in [VDP 101 - Introduction](/tutorials/vdp-101-1-introduction), VDP aims to streamline the end-to-end unstructured data pipeline.
+An unstructured data pipeline is defined by a recipe which consists of three components:
 
 - `source` - where the pipeline starts to ingest unstructured data to be processed.
 - `model instances` - several deployed AI models to process the ingested unstructured data and generate structured outputs.
 - `destination` - where to send the structured outputs.
 
-The following tutorial will demonstrate how to set up these three components and build a `SYNC` pipeline for **object detection** with YOLOv7 via VDP Console.
+The following tutorial will demonstrate how to set up these three components and build a `SYNC` pipeline for **object detection** with YOLOv7 via Console.
 
-### Step 1: Create a New Pipeline
+## Prerequisites
+
+Before diving into the details, please ensure you have launched VDP on your machine. If not, you can set it up following the tutorial [VDP 101 [2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart).
+
+After launching VDP, you can access the Console via http://localhost:3000. If this is your first time setting up VDP, you should see the onboarding page. Enter your email, and you are all set!
+
+## Step 1: Create a New Pipeline
 
 Click on the **Pipeline** page on the left sidebar. Since we have not yet set up any pipeline, this page will be empty. To create our first pipeline via VDP Console, click the **Set up your first pipeline** button.
 
@@ -41,7 +42,7 @@ Click on the **Pipeline** page on the left sidebar. Since we have not yet set up
   alt="Empty pipeline list page of the VDP Console."
 />
 
-### Step 2: Add an HTTP Source
+## Step 2: Add an HTTP Source
 
 VDP currently supports two sources, `HTTP` and `gRPC`. An `HTTP` source accepts `HTTP` requests with image payloads to be processed by a pipeline.
 
@@ -60,7 +61,7 @@ To set up a **Source Connector**,
   alt="Add an HTTP source to set up a SYNC pipeline in the VIP Console."
 />
 
-### Step 3: Import and Deploy a model from GitHub
+## Step 3: Import and Deploy a model from GitHub
 
 To fulfil objective detection tasks, we import a model from our public GitHub repository [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc).
 
@@ -94,7 +95,7 @@ You can deploy the model on GPU by deploying the AI model on `v1.0-gpu`.
   alt="Deploy a model instance via VDP Console."
 />
 
-### Step 4: Add an HTTP destination
+## Step 4: Add an HTTP destination
 
 Since we are building a `SYNC` pipeline, the `HTTP` destination is paired automatically with the `HTTP` source as we set up for the source. Click **Next**.
 
@@ -110,7 +111,7 @@ When creating pipelines under `sync` mode, source and destination connectors in 
 - gRPC source → gRPC destination
   :::
 
-### Step 5: Set up the Pipeline
+## Step 5: Set up the Pipeline
 
 We are almost there! We have created `Source`, `Model Instance`, and `Destination`. The last step is to give this pipeline an ID, and we are ready to go! Just
 
@@ -142,12 +143,12 @@ You may notice the REST examples code that triggers the pipeline at the bottom o
 <br />
 <br />
 **↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓** - [[1/7] Introduction to
-VDP](/tutorials/vdp-101-1-introduction) - [[2/7] Install VDP on Your Local
-Machine](/tutorials/vdp-101-2-installation) - [[3/7] Create Your First Pipeline
-on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) - [[4/7] How to Trigger
-a SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline) - [[5/7]
-How to Parse Responses from SYNC
-Pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses) - [[6/7] Pipeline
-Modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes) - [[7/7]
-Create, Trigger, and Parse an ASYNC
+VDP](/tutorials/vdp-101-1-introduction) - [[2/7] Launch VDP on your local
+machine](/tutorials/vdp-101-2-quickstart) - [[3/7] Create your first pipeline on
+VDP](/tutorials/vdp-101-3-create-your-first-pipeline) - [[4/7] How to trigger a
+SYNC Pipeline](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline) - [[5/7] How
+to parse responses from SYNC
+pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses) - [[6/7] Pipeline
+modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes) - [[7/7]
+Create, trigger, and parse an ASYNC
 Pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
