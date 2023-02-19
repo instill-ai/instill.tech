@@ -7,7 +7,7 @@ description: "Standardise structured outputs for AI tasks the open-source unstru
 
 The goal of VDP is to streamline the end-to-end unstructured data flow, with the _transform_ component being able to flexibly import AI models to process unstructured data for a specific task for Vision, Language and more.
 
-Intrigued? Refer to [Prepare Models](/docs/prepare-models/overview) to learn about how to prepare your models for AI tasks supported by VDP.
+Intrigued? Refer to [Import Models](/docs/import-models/overview) on how to use the following available off-the-shelf models and [Prepare Models](/docs/prepare-models/overview) on how to prepare custom models for AI tasks supported by VDP.
 
 ## Standardise AI tasks
 
@@ -428,6 +428,20 @@ with open(filename, 'wb') as f:
 ### Available models
 
 🔮 [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc)
+
+:::info{type=tip}
+
+Importing the [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
+
+**Step 1**: Download **Stable Diffusion v2.1 CPU** sample model.
+
+```bash
+curl -o diffusion.zip  https://artifacts.instill.tech/vdp/sample-models/diffusion.zip
+```
+
+**Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)** to import the downloaded model.
+
+:::
 
 ## Text generation
 

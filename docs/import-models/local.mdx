@@ -33,8 +33,8 @@ Currently, VDP supports importing models from
 
 The `Local` model definition accepts a `.zip` file that contains all files required for a model to be deployed.
 
-**Step 1: Download sample model data**
-In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet). Let's download and extract the contents of the sample data.
+**Step 1: Download sample model**
+In this case, we use the object detection model [YOLOv4](https://github.com/AlexeyAB/darknet). Let's download and extract the contents of the sample model.
 
 ```shellscript
 # Create a folder
@@ -163,7 +163,7 @@ Since a local model has no version control, when the model is successfully impor
 1. Send a HTTP request to the VDP `model-backend` to import a local model.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models:multipart \
+curl -X POST http://localhost:8080/v1alpha/models/multipart \
 --form 'id="yolov4"' \
 --form 'model_definition="model-definitions/local"' \
 --form 'content=@"yolov4.zip"'
