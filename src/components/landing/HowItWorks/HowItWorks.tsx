@@ -109,7 +109,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           <HowItWorksRow
             type="left"
             title="Standardise AI tasks for ETL pipelines, data and application integration"
-            description="VDP solves popular AI tasks including image classification, object detection, keypoint detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
+            description="VDP solves popular AI tasks including Image Classification, Object Detection, Keypoint Detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
             learnMoreLink="/docs/core-concepts/ai-task"
             number={3}
             cubes={[

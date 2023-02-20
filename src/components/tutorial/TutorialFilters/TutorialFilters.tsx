@@ -168,7 +168,7 @@ export const TutorialFilters = ({
               value: "ObjectDetection",
             },
             {
-              label: "OCR (optical character recognition)",
+              label: "OCR (Optical Character Recognition)",
               value: "Ocr",
             },
             {

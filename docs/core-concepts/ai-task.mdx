@@ -18,12 +18,12 @@ In a data pipeline, model is the core component designed to solve a specific AI 
 
 At the moment, VDP defines the data interface for popular tasks:
 
-- **Image classification** - classify images into predefined categories
-- **Object detection** - detect and localise multiple objects in images
-- **Keypoint detection** - detect and localise multiple keypoints of objects in images
+- **Image Classification** - classify images into predefined categories
+- **Object Detection** - detect and localise multiple objects in images
+- **Keypoint Detection** - detect and localise multiple keypoints of objects in images
 - **OCR (Optical Character Recognition)** - detect and recognise text in images
-- **Instance segmentation** - detect, localise and delineate multiple objects in images
-- **Semantic segmentation** - classify image pixels into predefined categories
+- **Instance Segmentation** - detect, localise and delineate multiple objects in images
+- **Semantic Segmentation** - classify image pixels into predefined categories
 - **Text to Image** - generate images from input text prompts
 - **Text generation** - generate texts from input text prompts
 - The list is growing ... 🌱
@@ -106,14 +106,14 @@ To be more specific, the above protocol defines the AI task output for one input
 
 The protocol is still under development. Stay tuned on how the protocol will evolve.
 
-## Image classification
+## Image Classification
 
-Image classification is a Vision task to assign a single pre-defined category label to an entire input image.
-Generally, an image classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
+Image Classification is a Vision task to assign a single pre-defined category label to an entire input image.
+Generally, an Image Classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-classification.svg"
-  alt="Image classification task"
+  alt="Image Classification task"
 />
 
 ```json
@@ -132,18 +132,19 @@ Generally, an image classification model takes an image as the input, and output
 
 ### Available models
 
-🔮 [MobileNetV2](https://github.com/instill-ai/model-mobilenetv2)
+| 🔮 Model                                                                                 | Sources                                                                                                                      | Framework | CPU | GPU |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------- | --- | --- |
+| [MobileNet v2](https://github.com/onnx/models/tree/main/vision/classification/mobilenet) | [GitHub](https://github.com/instill-ai/model-mobilenetv2), [GitHub-DVC](https://github.com/instill-ai/model-mobilenetv2-dvc) | ONNX      | ✅  | ✅  |
+| [Vision Transformer (ViT)](https://huggingface.co/google/vit-base-patch16-224)           | [Hugging Face](https://huggingface.co/google/vit-base-patch16-224)                                                           | ONNX      | ✅  | ❌  |
 
-🔮 [Vision Transformer (ViT)](https://huggingface.co/google/vit-base-patch16-224)
+## Object Detection
 
-## Object detection
-
-Object detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
-Generally, an object detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
+Object Detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
+Generally, an Object Detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-detection.svg"
-  alt="Object detection task"
+  alt="Object Detection task"
 />
 
 ```json
@@ -173,18 +174,19 @@ Generally, an object detection model receives an image as the input, and outputs
 
 ### Available models
 
-🔮 [YOLOv4](https://github.com/instill-ai/model-yolov4-dvc)
+| 🔮 Model                                       | Sources                                                      | Framework | CPU | GPU |
+| ---------------------------------------------- | ------------------------------------------------------------ | --------- | --- | --- |
+| [YOLOv4](https://github.com/AlexeyAB/darknet)  | [GitHub-DVC](https://github.com/instill-ai/model-yolov4-dvc) | ONNX      | ✅  | ✅  |
+| [YOLOv7](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-dvc) | ONNX      | ✅  | ✅  |
 
-🔮 [YOLOv7](https://github.com/instill-ai/model-yolov7-dvc)
+## Keypoint Detection
 
-## Keypoint detection
-
-Keypoint detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
-Normally, a keypoint detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
+Keypoint Detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
+Normally, a Keypoint Detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-keypoint.svg"
-  alt="Keypoint detection task"
+  alt="Keypoint Detection task"
 />
 
 ```json
@@ -226,7 +228,10 @@ Normally, a keypoint detection task takes an image as the input, and outputs the
 
 ### Available models
 
-🔮 [Keypoint R-CNN R50-FPN](https://github.com/instill-ai/model-keypoint-detection-dvc)
+| 🔮 Model                                                                                                                                 | Sources                                                                  | Framework | CPU | GPU |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------- | --- | --- |
+| [Keypoint R-CNN R50-FPN](https://github.com/facebookresearch/detectron2/blob/main/configs/COCO-Keypoints/keypoint_rcnn_R_50_FPN_1x.yaml) | [GitHub-DVC](https://github.com/instill-ai/model-keypoint-detection-dvc) | PyTorch   | ✅  | ✅  |
+| [YOLOv7 W6 Pose](https://github.com/WongKinYiu/yolov7)                                                                                   | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-pose-dvc)        | ONNX      | ✅  | ✅  |
 
 ## Optical Character Recognition (OCR)
 
@@ -274,17 +279,19 @@ Alternatively, there are deep learning models that can accomplish the task in on
 
 ### Available models
 
-🔮 [PSNet + EasyOCR](https://github.com/instill-ai/model-ocr-dvc)
+| 🔮 Model                                                                                                                       | Sources                                                   | Framework | CPU | GPU |
+| ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------- | --- | --- |
+| [PSNet](https://github.com/open-mmlab/mmocr/tree/main/configs/textdet/psenet) + [EasyOCR](https://github.com/JaidedAI/EasyOCR) | [GitHub-DVC](https://github.com/instill-ai/model-ocr-dvc) | ONNX      | ✅  | ✅  |
 
-## Instance segmentation
+## Instance Segmentation
 
-Instance segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
+Instance Segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
 Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
 with bounding boxes, category labels and confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-instance-segmentation.svg"
-  alt="Instance segmentation task"
+  alt="Instance Segmentation task"
 />
 
 Run-length encoding (RLE) is an efficient form to store binary masks. It is commonly used to encode the location of foreground objects in segmentation.
@@ -344,16 +351,18 @@ and [decode masks encoded via RLEs](https://github.com/instill-ai/vdp/blob/e737d
 
 ### Available models
 
-🔮 [Mask R-CNN](https://github.com/instill-ai/model-instance-segmentation-dvc)
+| 🔮 Model                                                                                                                    | Sources                                                                     | Framework | CPU | GPU |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
+| [Mask RCNN](https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-10.onnx) | [GitHub-DVC](https://github.com/instill-ai/model-instance-segmentation-dvc) | PyTorch   | ✅  | ✅  |
 
-## Semantic segmentation
+## Semantic Segmentation
 
-Semantic segmentation is a Vision task of assigning a class label to every pixel in the image.
+Semantic Segmentation is a Vision task of assigning a class label to every pixel in the image.
 Normally, the task takes an image as the input, and outputs segmentation mask (RLE) representations (a variable-length comma-delimited string) for each group of pixel objects and category of the group objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-semantic-segmentation.svg"
-  alt="Semantic segmentation task"
+  alt="Semantic Segmentation task"
 />
 
 ```json
@@ -381,7 +390,9 @@ Normally, the task takes an image as the input, and outputs segmentation mask (R
 
 ### Available models
 
-🔮 [Lite R-ASPP based on MobileNetV3](https://github.com/instill-ai/model-semantic-segmentation-dvc)
+| 🔮 Model                                                                                                                                            | Sources                                                                     | Framework | CPU | GPU |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
+| [Lite R-ASPP based on MobileNetV3](https://github.com/open-mmlab/mmsegmentation/tree/98dfa1749bac0b5281502f4bb3832379da8feb8c/configs/mobilenet_v3) | [GitHub-DVC](https://github.com/instill-ai/model-semantic-segmentation-dvc) | ONNX      | ✅  | ✅  |
 
 ## Text to Image
 
@@ -409,7 +420,7 @@ Generally, the task takes descriptive text prompts as the input, and outputs gen
 :::info{type=info}
 In above example, the generated images is a list of Base64 encoded images. To obtain the images, we need to decode Base64 as below snippet code.
 
-```json
+```python
 import base64
 import numpy as np
 
@@ -427,19 +438,21 @@ with open(filename, 'wb') as f:
 
 ### Available models
 
-🔮 [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc)
+| 🔮 Model                                                                         | Sources                                                                                                                                                      | Framework | CPU | GPU |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
+| [Stable Diffusion v2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-2-1-fp32-cpu.zip) | ONNX      | ✅  | ✅  |
 
 :::info{type=tip}
 
-Importing the [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
+Importing [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
 
 **Step 1**: Download **Stable Diffusion v2.1 CPU** sample model.
 
 ```bash
-curl -o diffusion.zip  https://artifacts.instill.tech/vdp/sample-models/diffusion.zip
+curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-2-1-fp32-cpu.zip --output stable-diffusion-2-1-fp32-cpu.zip
 ```
 
-**Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)** to import the downloaded model.
+**Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
 
 :::
 
@@ -469,7 +482,17 @@ The task can be used for filling in incomplete sensences or even generating full
 
 ### Available models
 
-🔮 [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc)
+| 🔮 Model                                                                            | Sources                                                             | Framework         | CPU | GPU |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- | --- | --- |
+| [Megatron GPT2](https://catalog.ngc.nvidia.com/orgs/nvidia/models/megatron_lm_345m) | [GitHub-DVC](https://github.com/instill-ai/model-gpt2-megatron-dvc) | FasterTransformer | ❌  | ✅  |
+
+:::info{type=tip}
+Depending on your Internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) from GitHub will take a while.
+
+The model only supports GPU deployment. By default, VDP can access all your GPUs.
+Assume that you have **N** GPUs, please pick the corresponding model instance tagged with `fp32-345m-N-gpus` to deploy.
+
+:::
 
 ## What if my task is not standardised by VDP yet?
 
