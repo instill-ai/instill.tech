@@ -40,11 +40,11 @@ const SIDEBAR: Sidebar = {
         collapsible: true,
         items: [
           {
-            text: "Build a SYNC classification pipeline",
+            text: "Build a SYNC Classification pipeline",
             link: "/docs/tutorials/build-a-sync-cls-pipeline",
           },
           {
-            text: "Build an ASYNC object detection pipeline",
+            text: "Build an ASYNC Object Detection pipeline",
             link: "/docs/tutorials/build-an-async-det-pipeline",
           },
         ],

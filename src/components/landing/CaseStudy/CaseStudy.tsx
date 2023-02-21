@@ -776,7 +776,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
             headerInActiveTextColor: "text-instillGrey20",
             content: (
               <AccordionContentLayout
-                title="Object detection & Pose Estimation"
+                title="Object Detection & Pose Estimation"
                 source="Camera (IoT)"
                 destination="BigQuery"
                 description="Spot unsafe behaviours in real-time to lower 

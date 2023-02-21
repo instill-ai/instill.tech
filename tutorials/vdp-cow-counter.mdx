@@ -2,7 +2,7 @@
 title: "Build a Cow Counter dashboard using VDP, Postgres and Metabase"
 lang: "en-US"
 draft: false
-description: "In this tutorial, we showcase how to build an object detection ETL pipeline using VDP and create a Cow Counter dashboard with Metabase to provide farm cattle insights."
+description: "In this tutorial, we showcase how to build an Object Detection ETL pipeline using VDP and create a Cow Counter dashboard with Metabase to provide farm cattle insights."
 aiTask: "ObjectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "PostgreSQL"
@@ -32,7 +32,7 @@ To explain the solutions on a high level, it usually includes the following proc
 - Use AI technology to process and analyse the data for locating, counting or monitoring cattle
 - Provide easy-to-understand insights and takeaways to enable ranchers to make data-driven decisions or take immediate actions when issues arise
 
-To showcase the above processes, read on or watch our video to see how to build an object detection ETL pipeline using [VDP](http://go.instill.tech/4en2fm) to analyse a drone video of a cattle farm, and create a Cow Counter dashboard with [Metabase](https://www.metabase.com/) that provides insights about cattle in the video footage.
+To showcase the above processes, read on or watch our video to see how to build an Object Detection ETL pipeline using [VDP](http://go.instill.tech/4en2fm) to analyse a drone video of a cattle farm, and create a Cow Counter dashboard with [Metabase](https://www.metabase.com/) that provides insights about cattle in the video footage.
 
 :::info{type=warning}
 Where there are discrepancies between tutorial and video, please follow the tutorial.
@@ -45,9 +45,9 @@ Where there are discrepancies between tutorial and video, please follow the tuto
 - Docker and Docker compose
 - Python 3.8+ with an environment-management tool such [Conda](https://www.anaconda.com/)
 
-## Build an object detection ETL data pipeline
+## Build an Object Detection ETL data pipeline
 
-In the [Build a shareable object detection application with VDP and Streamlit](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` object detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an object detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
+In the [Build a shareable Object Detection application with VDP and Streamlit](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` Object Detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an Object Detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
 
 - accepts HTTP requests with image payload,
 - transforms the images in the payload into structured insights, and
@@ -104,7 +104,7 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
       src: "/tutorial-assets/vdp-cow-counter/set-up-an-async-det-pipeline.png",
     },
   ]}
-  caption="Build an ASYNC object detection pipeline with YOLOv7 via no-code Console"
+  caption="Build an ASYNC Object Detection pipeline with YOLOv7 via no-code Console"
 />
 
 Alternatively, you could refer to the [low-code example](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter#build-via-low-code) to build this pipeline programmatically via REST API.
@@ -269,7 +269,7 @@ We are working closely with our early users to deploy customised models for thei
 
 ## Conclusion
 
-In this tutorial, you've built an ASYNC object detection pipeline using VDP to process a video and sent the analysis result to a Postgres database. Also by using Metabase, you've turned the analysis result into an intuitive and interactive dashboard that you can share with stakeholders.
+In this tutorial, you've built an ASYNC Object Detection pipeline using VDP to process a video and sent the analysis result to a Postgres database. Also by using Metabase, you've turned the analysis result into an intuitive and interactive dashboard that you can share with stakeholders.
 
 If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
 

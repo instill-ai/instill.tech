@@ -38,7 +38,7 @@ export const getAiTaskIconAndLabel = ({
       icon = (iconStyle: IconStyle) => (
         <OpticalCharacterRecognitionIcon {...iconStyle} />
       );
-      label = "OCR (optical character recognition)";
+      label = "OCR (Optical Character Recognition)";
       break;
     case "ImageClassification":
       icon = (iconStyle: IconStyle) => (

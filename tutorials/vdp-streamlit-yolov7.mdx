@@ -1,5 +1,5 @@
 ---
-title: "Build a shareable object detection application with VDP and Streamlit"
+title: "Build a shareable Object Detection application with VDP and Streamlit"
 lang: "en-US"
 draft: false
 description: "VDP and Streamlit are a perfect match if you work with ML/Data and would like to build AI prototypes fast to share with your team, clients or the world."
@@ -44,15 +44,15 @@ This tutorial will demonstrate how to replicate the YOLOv4 vs. YOLOv7 web app. I
 - Docker and Docker Compose
 - Python 3.8+ with an environment-management tool such as [Conda](https://www.anaconda.com/)
 
-## Build object detection pipelines
+## Build Object Detection pipelines
 
 :::info{type=info}
 [VDP standardises structured outputs for AI tasks](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7). Therefore, a model is modularised in a pipeline, and model outputs are in standard format for use in data integration or ETL pipeline.
 :::
 
-Vision tasks focus on analysing and understanding the content of unstructured visual data in the same way as the human visual system does. Some classic Vision tasks include image classification, object detection, image segmentation and keypoint detection. These primitive Vision tasks are the foundation for building many real-world industrial computer vision applications.
+Vision tasks focus on analysing and understanding the content of unstructured visual data in the same way as the human visual system does. Some classic Vision tasks include Image Classification, Object Detection, image segmentation and Keypoint Detection. These primitive Vision tasks are the foundation for building many real-world industrial computer vision applications.
 
-In the following section, we will build two object detection pipelines with YOLOv4 and YOLOv7 in VDP, respectively. The pipelines will serve as the AI backbone for the Streamlit app.
+In the following section, we will build two Object Detection pipelines with YOLOv4 and YOLOv7 in VDP, respectively. The pipelines will serve as the AI backbone for the Streamlit app.
 
 ### Run VDP locally
 
@@ -63,7 +63,7 @@ $ make all
 
 Once the services are up, the Console is ready to go at [http://localhost:3000](http://localhost:3000).
 
-### Build a SYNC object detection pipeline with YOLOv4 via no-code Console
+### Build a SYNC Object Detection pipeline with YOLOv4 via no-code Console
 
 A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](https://www.instill.tech/docs/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
 
@@ -77,6 +77,7 @@ After onboarding, you will be redirected to the **Pipeline** page on the left si
 2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`
 
    ,
+
 3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add an HTTP data destination, and
 5. set up a pipeline with ID `yolov4`.
@@ -108,10 +109,10 @@ After onboarding, you will be redirected to the **Pipeline** page on the left si
       src: "/tutorial-assets/vdp-streamlit-yolov7/add-sync-yolov4-pipeline-1.png",
     },
   ]}
-  caption="Build a SYNC object detection pipeline with YOLOv4 via no-code Console"
+  caption="Build a SYNC Object Detection pipeline with YOLOv4 via no-code Console"
 />
 
-### Build a SYNC object detection pipeline with YOLOv7 via low-code
+### Build a SYNC Object Detection pipeline with YOLOv7 via low-code
 
 You could build a pipeline with YOLOv7 in the same way by importing [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) via no-code Console. Or, you can build it via REST API.
 
@@ -274,11 +275,11 @@ The pipelines we built are `SYNC` with HTTP connectors, so we create a `trigger_
 
 <Gist id="26e05e6db00ef4ba41c4f1530170a45b" />
 
-Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising object detection task](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
+Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
 
 <ZoomableImg
   src="/tutorial-assets/vdp-streamlit-yolov7/ai-task-detection.svg"
-  alt="Standardise object detection task in VDP"
+  alt="Standardise Object Detection task in VDP"
 />
 
 <Gist id="57ebe88c43335e962ded50dcbc3cf306" />
@@ -324,7 +325,7 @@ Fill the input field with a random image URL and press **Enter** to see the dete
 
 ### What's next
 
-By the end of the demo, we hint that you can manipulate the detection results using other structured data toolings in the modern data stack. Check the [building an ASYNC object detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) tutorial to transform unstructured images into analysable structured insights, and send the structured insights to a PostgreSQL database.
+By the end of the demo, we hint that you can manipulate the detection results using other structured data toolings in the modern data stack. Check the [building an ASYNC Object Detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) tutorial to transform unstructured images into analysable structured insights, and send the structured insights to a PostgreSQL database.
 
 If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
 
