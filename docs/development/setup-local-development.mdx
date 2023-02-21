@@ -30,10 +30,10 @@ Use one of the profile name to develop the corresponding service:
 ```shellscript
 # In the vdp repository folder
 make build PROFILE=<profile-name>
-make dev PROFILE=<profile-name>
+make dev PROFILE=<profile-name> ITMODE=true
 ```
 
-The following guideline shows detailed guideline about how to develop the `connector-backend`.
+The following guideline shows a specific example of how to develop the `connector-backend`.
 
 ## Start dependent VDP services for `connector-backend`
 
@@ -43,9 +43,11 @@ On the local machine, clone the `vdp` repository in your workspace, move to the 
 # Clone the vdp repository
 git clone https://github.com/instill-ai/vdp.git && cd vdp
 
-# Use profile `connector` to launch all dependent services for `connector-backend`
+# Use profile `connector` to launch all dependent services
+# for `connector-backend` and set ITMODE=true
+# for local integration test
 make build PROFILE=connector
-make dev PROFILE=connector
+make dev PROFILE=connector ITMODE=true
 ```
 
 ## Run dev `connector-backend`
