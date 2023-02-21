@@ -10,8 +10,8 @@ export const ThemeToggle = () => {
   const [isDark, setIsDark] = useDarkTheme();
 
   const toggleTheme = useCallback(() => {
-    setIsDark(state => !state);
-  }, []);
+    setIsDark((state) => !state);
+  }, [setIsDark]);
 
   return (
     <button
