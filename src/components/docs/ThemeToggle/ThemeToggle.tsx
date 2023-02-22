@@ -1,23 +1,17 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import cn from "clsx";
+
+import useDarkTheme from "@/hooks/useDarkTheme";
 
 import { MoonIcon } from "./MoonIcon";
 import { SunIcon } from "./SunIcon";
 
 export const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useDarkTheme();
 
   const toggleTheme = useCallback(() => {
-    const html = document.querySelector("html");
-    if (!html) return;
-    if (isDark) {
-      html.classList.remove("dark");
-      setIsDark(false);
-    } else {
-      html.classList.add("dark");
-      setIsDark(true);
-    }
-  }, [isDark]);
+    setIsDark((state) => !state);
+  }, [setIsDark]);
 
   return (
     <button
