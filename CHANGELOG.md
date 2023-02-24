@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.1](https://github.com/instill-ai/instill.tech/compare/v1.28.0...v1.28.1) (2023-02-24)
+
+
+### Documentation
+
+* **core-concept:** fix ai task model ([#487](https://github.com/instill-ai/instill.tech/issues/487)) ([a5083e8](https://github.com/instill-ai/instill.tech/commit/a5083e85146a14b42e88c98ad62aaca7d0fc96ab))
+
 ## [1.28.0](https://github.com/instill-ai/instill.tech/compare/v1.27.1...v1.28.0) (2023-02-24)
 
 
