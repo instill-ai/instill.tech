@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.28.0](https://github.com/instill-ai/instill.tech/compare/v1.27.1...v1.28.0) (2023-02-24)
+
+
+### Features
+
+* add additional open graph tag ([#476](https://github.com/instill-ai/instill.tech/issues/476)) ([0eb86d8](https://github.com/instill-ai/instill.tech/commit/0eb86d8396b9e6c77274ee60e12d1b2f0ffdce83))
+* enhancement of dark mode ([#479](https://github.com/instill-ai/instill.tech/issues/479)) ([6c07a82](https://github.com/instill-ai/instill.tech/commit/6c07a8221f95740066e1fd246b12ffd6dec2e7aa))
+* remove post date in career list page ([#485](https://github.com/instill-ai/instill.tech/issues/485)) ([f90a70b](https://github.com/instill-ai/instill.tech/commit/f90a70bdc235f069ead2a6e1dfff66801113f403))
+
+
+### Miscellaneous
+
+* **core-concepts:** add semantic segmentation and text to image task ([#464](https://github.com/instill-ai/instill.tech/issues/464)) ([9fc4a1b](https://github.com/instill-ai/instill.tech/commit/9fc4a1b43349778fcd6421d6aaa12f38c3f37622))
+
+
+### Documentation
+
+* **blog,docs,tutorial:** use PascalCase for all AI tasks ([#483](https://github.com/instill-ai/instill.tech/issues/483)) ([28665a3](https://github.com/instill-ai/instill.tech/commit/28665a306136fbb597a3cdf579143ef52e27cdc8))
+* **core-concepts:** add text generation AI task ([#481](https://github.com/instill-ai/instill.tech/issues/481)) ([0b7ad2c](https://github.com/instill-ai/instill.tech/commit/0b7ad2cd40374cabbe387f886bb474c23d9daa51))
+* **core-concepts:** refactor text generation ([#486](https://github.com/instill-ai/instill.tech/issues/486)) ([afb874a](https://github.com/instill-ai/instill.tech/commit/afb874a71d1f10b116907b86603117587e38b23f))
+* **development:** fix make local dev setup guideline ([#480](https://github.com/instill-ai/instill.tech/issues/480)) ([3596acb](https://github.com/instill-ai/instill.tech/commit/3596acb50203864d85e7667413fa49daf52da906))
+* **import-models,core-concepts:** add text to image local model guideline ([#482](https://github.com/instill-ai/instill.tech/issues/482)) ([e41a3e7](https://github.com/instill-ai/instill.tech/commit/e41a3e7d774fc951efdde273e9e90c9d30301127))
+
 ## [1.27.1](https://github.com/instill-ai/instill.tech/compare/v1.27.0...v1.27.1) (2023-02-01)
 
 
