@@ -437,18 +437,18 @@ with open(filename, 'wb') as f:
 
 ### Available models
 
-| 🔮 Model                                                                         | Sources                                                                                                                                                      | Framework | CPU | GPU |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
-| [Stable Diffusion v2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-2-1-fp32-cpu.zip) | ONNX      | ✅  | ✅  |
+| 🔮 Model                                                                  | Sources                                                                                                                                                      | Framework | CPU | GPU |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
+| [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp32-cpu.zip) | ONNX      | ✅  | ✅  |
 
 :::info{type=tip}
 
-Importing [Stable Diffusion v2.1](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
+Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
 
-**Step 1**: Download **Stable Diffusion v2.1 CPU** sample model.
+**Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
 
 ```bash
-curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-2-1-fp32-cpu.zip --output stable-diffusion-2-1-fp32-cpu.zip
+curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp32-cpu.zip --output stable-diffusion-1-5-fp32-cpu.zip
 ```
 
 **Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
@@ -486,10 +486,10 @@ The task can fill in incomplete sentences or even generate full stories given th
 | [Megatron GPT2](https://catalog.ngc.nvidia.com/orgs/nvidia/models/megatron_lm_345m) | [GitHub-DVC](https://github.com/instill-ai/model-gpt2-megatron-dvc) | FasterTransformer | ❌  | ✅  |
 
 :::info{type=tip}
-Depending on your Internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) from GitHub will take a while.
+Depending on your internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
 
 The model only supports GPU deployment. By default, VDP can access all your GPUs.
-Assume that you have **N** GPUs, please pick the corresponding model instance tagged with `fp32-345m-N-gpus` to deploy.
+Assume that you have **N** GPUs, please pick the corresponding model instance tagged with `fp32-345m-N-gpu` to deploy.
 
 :::
 
