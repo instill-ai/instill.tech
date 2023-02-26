@@ -437,9 +437,9 @@ with open(filename, 'wb') as f:
 
 ### Available models
 
-| 🔮 Model                                                                  | Sources                                                                                                                                                      | Framework | CPU | GPU |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
-| [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp32-cpu.zip) | ONNX      | ✅  | ✅  |
+| 🔮 Model                                                                  | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
+| [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local-CPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip), [Local-GPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp16-gpu.zip) | ONNX      | ✅  | ✅  |
 
 :::info{type=tip}
 
@@ -448,7 +448,7 @@ Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) 
 **Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
 
 ```bash
-curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp32-cpu.zip --output stable-diffusion-1-5-fp32-cpu.zip
+curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip --output stable-diffusion-1-5-cpu.zip
 ```
 
 **Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
