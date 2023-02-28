@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.28.2](https://github.com/instill-ai/instill.tech/compare/v1.28.1...v1.28.2) (2023-02-26)
+
+
+### Documentation
+
+* **core-concepts:** fix stable diffusion model names ([#493](https://github.com/instill-ai/instill.tech/issues/493)) ([f7a61d3](https://github.com/instill-ai/instill.tech/commit/f7a61d3a5bb6e29857e82b96572679abd6538f4b))
+* update README.md ([#489](https://github.com/instill-ai/instill.tech/issues/489)) ([ace8458](https://github.com/instill-ai/instill.tech/commit/ace84587f360212c22d35f8d067f50a3ac352500))
+
 ## [1.28.1](https://github.com/instill-ai/instill.tech/compare/v1.28.0...v1.28.1) (2023-02-24)
 
 
