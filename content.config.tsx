@@ -50,6 +50,24 @@ const SIDEBAR: Sidebar = {
         ],
       },
       {
+        text: "Deployment",
+        collapsible: true,
+        items: [
+          {
+            text: "Overview",
+            link: "/docs/deployment/overview",
+          },
+          {
+            text: "Docker Compose",
+            link: "/docs/deployment/docker-compose",
+          },
+          {
+            text: "Kubernetes using Helm",
+            link: "/docs/deployment/kubernetes-using-helm",
+          },
+        ],
+      },
+      {
         text: "Core Concepts",
         collapsible: true,
         items: [
