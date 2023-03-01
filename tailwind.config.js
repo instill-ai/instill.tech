@@ -4,7 +4,7 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@instill-ai/design-system/build/*.js",
-    "./docs.config.tsx",
+    "./content.config.tsx",
   ],
 
   // We safelist all the theme image placeholder color of tutorial
