@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.5](https://github.com/instill-ai/instill.tech/compare/v1.28.4...v1.28.5) (2023-03-01)
+
+
+### Documentation
+
+* **deployment:** refactor how to install VDP via Helm ([#503](https://github.com/instill-ai/instill.tech/issues/503)) ([af5e4ea](https://github.com/instill-ai/instill.tech/commit/af5e4ea07465c86a4e30a7f5174ea9401bc1a6c5))
+
 ## [1.28.4](https://github.com/instill-ai/instill.tech/compare/v1.28.3...v1.28.4) (2023-03-01)
 
 
