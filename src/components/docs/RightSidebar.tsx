@@ -23,7 +23,7 @@ export const RightSidebar = ({ headers, githubEditUrl }: RightSidebarProps) => {
       </style>
       <div className="right-sidebar sticky w-full pr-4">
         <div className="flex h-full flex-col overflow-auto">
-          <TableOfContent headers={headers} />
+          {headers.length > 0 ? <TableOfContent headers={headers} /> : null}
           <ContributeLinks githubEditUrl={githubEditUrl} />
         </div>
       </div>
