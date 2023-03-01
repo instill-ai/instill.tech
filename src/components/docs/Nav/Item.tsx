@@ -16,7 +16,6 @@ export const Item = ({ item }: ItemProps) => {
     return (
       <div className="grid grid-cols-1 py-2 md:grid-cols-2">
         <div className="border-b border-black dark:border-instillGrey05 md:border-r" />
-        <div />
       </div>
     );
   }
@@ -38,7 +37,7 @@ export const Item = ({ item }: ItemProps) => {
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="my-auto flex"
+        className="my-auto block"
       >
         {item.icon ? (
           <Image
