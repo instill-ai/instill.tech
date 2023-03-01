@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.28.3](https://github.com/instill-ai/instill.tech/compare/v1.28.2...v1.28.3) (2023-03-01)
+
+
+### Bug Fixes
+
+* fix tailwind didn't recognize content.config.ts issue ([#497](https://github.com/instill-ai/instill.tech/issues/497)) ([ddccfb1](https://github.com/instill-ai/instill.tech/commit/ddccfb16e8c455a6412497d914da1cbf291faf8d))
+* remove toc when there has no headers ([#500](https://github.com/instill-ai/instill.tech/issues/500)) ([5684e42](https://github.com/instill-ai/instill.tech/commit/5684e424b80116819041b1db75fe652a0e6eecb4))
+
 ## [1.28.2](https://github.com/instill-ai/instill.tech/compare/v1.28.1...v1.28.2) (2023-02-26)
 
 
