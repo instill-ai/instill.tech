@@ -15,7 +15,7 @@ VDP currently supports deploying on local Kubernetes.
 
 We recommend using one of the local Kubernetes solutions:
 
-- [Docker Desktop (macOS)](https://docs.docker.com/desktop/kubernetes)
+- [Docker Desktop (macOS)](https://docs.docker.com/desktop/) with [Kubernetes](https://docs.docker.com/desktop/kubernetes) enabled
 - [minikube](https://minikube.sigs.k8s.io/docs/start)
 - [kind](https://kind.sigs.k8s.io)
 
@@ -58,7 +58,7 @@ to see the charts:
 
 ```bash
 NAME            CHART VERSION   APP VERSION     DESCRIPTION
-instill/vdp     0.1.0-alpha     0.6.0-alpha     Versatile Data Pipeline (VDP) empowers the mode...
+instill/vdp     <chart-version> <app-version>   Versatile Data Pipeline (VDP) empowers the mode...
 ```
 
 :::info{type=info}
@@ -70,7 +70,19 @@ The VDP and its Helm chart are still in a pre-release Alpha version, so the `--d
 To install the chart:
 
 ```bash
-helm install <my-release-name> instill/vdp --devel --namespace <my-namespace> --create-namespace
+helm install vdp instill/vdp --devel --namespace vdp --create-namespace
+```
+
+And Get the application URL by running these commands and visit VDP via `port-forward`:
+
+```bash
+export APIGATEWAY_POD_NAME=$(kubectl get pods --namespace vdp -l "app.kubernetes.io/component=api-gateway,app.kubernetes.io/instance=vdp" -o jsonpath="{.items[0].metadata.name}")
+export APIGATEWAY_CONTAINER_PORT=$(kubectl get pod --namespace vdp $APIGATEWAY_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+export CONSOLE_POD_NAME=$(kubectl get pods --namespace vdp -l "app.kubernetes.io/component=console,app.kubernetes.io/instance=vdp" -o jsonpath="{.items[0].metadata.name}")
+export CONSOLE_CONTAINER_PORT=$(kubectl get pod --namespace vdp $CONSOLE_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit the api-gateway http://localhost:8080 and console http://localhost:3000 by:"
+echo "kubectl --namespace vdp port-forward $APIGATEWAY_POD_NAME 8080:${APIGATEWAY_CONTAINER_PORT}"
+echo "kubectl --namespace vdp port-forward $CONSOLE_POD_NAME 3000:${CONSOLE_CONTAINER_PORT}"
 ```
 
 ## Uninstall
@@ -78,14 +90,14 @@ helm install <my-release-name> instill/vdp --devel --namespace <my-namespace> --
 To uninstall the chart:
 
 ```bash
-helm uninstall <my-release-name> --namespace <my-namespace>
+helm uninstall vdp --namespace vdp
 ```
 
 , and further clean up all VDP-related persistent volumes:
 
 ```bash
-kubectl delete pvc --all -n <my-namespace>
-kubectl delete namespace <my-namespace>
+kubectl delete pvc --all -n vdp
+kubectl delete namespace vdp
 ```
 
 ## Troubleshooting
