@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { h } from "hastscript";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
+// import { remarkInfoBlock } from "@/lib/markdown/remark-info-block.mjs";
 import { remarkYoutube } from "@/lib/markdown/remark-youtube.mjs";
 import {
   infoBlockHeader,
@@ -39,7 +39,7 @@ export const serializeMdxRemote = async (
             },
           ],
           remarkDirective,
-          remarkInfoBlock,
+          // remarkInfoBlock,
           [remarkYoutube, { validateYoutubeLink: true }],
           remarkGfm,
         ],

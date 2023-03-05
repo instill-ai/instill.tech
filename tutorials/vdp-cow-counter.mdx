@@ -34,9 +34,10 @@ To explain the solutions on a high level, it usually includes the following proc
 
 To showcase the above processes, read on or watch our video to see how to build an Object Detection ETL pipeline using [VDP](http://go.instill.tech/4en2fm) to analyse a drone video of a cattle farm, and create a Cow Counter dashboard with [Metabase](https://www.metabase.com/) that provides insights about cattle in the video footage.
 
-:::info{type=warning}
-Where there are discrepancies between tutorial and video, please follow the tutorial.
-:::
+<InfoBlock type="warning" title="warning">
+  Where there are discrepancies between tutorial and video, please follow the
+  tutorial.
+</InfoBlock>
 
 <Youtube id="0Rdv8oqqxfw" />
 
@@ -160,9 +161,11 @@ First, the script will download a 1-minute drone video of a cattle farm `cows_do
 
 <Gist id="3617e049a20510117096d0ca6ee12989" />
 
-:::info{type=info}
-The video used in the demo is sampled from a public video `cows dornick.mp4` from [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YFDJRO).
-:::
+<InfoBlock type="info" title="info">
+  The video used in the demo is sampled from a public video `cows dornick.mp4`
+  from
+  [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YFDJRO).
+</InfoBlock>
 
 <Youtube id="bIQF2O3Z_xU" />
 
@@ -239,9 +242,10 @@ The transformed data counts every time a cow appeared in the video footage.
 
 Click on **Visualization** to open the visualization sidebar and choose **Area**. For **Data** tab, select the fields `processed_at` and `category` for **X-axis**, and select the field `Count` for **Y-axis**. You can customise the area chart as you want. Here we just enabled **Show values on data points** in the **Display** tab.
 
-:::info{type=info}
-Metabase has a hard limitation 2,000 to the number of rows displayed for a table. Therefore, the dashboard won't show all the detections.
-:::
+<InfoBlock type="info" title="info">
+  Metabase has a hard limitation 2,000 to the number of rows displayed for a
+  table. Therefore, the dashboard won't show all the detections.
+</InfoBlock>
 
 To make the dashboard accessible, you can save this question into the **Our analytics** collection by clicking **Save** on the top right and give it a name cow counter.
 
