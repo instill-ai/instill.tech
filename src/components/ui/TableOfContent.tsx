@@ -13,28 +13,48 @@ export type TableOfContentProps = {
 
 export const TableOfContent = ({ headers }: TableOfContentProps) => {
   const router = useRouter();
+  const onThisPageID = "on-this-page-heading";
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
 
   useEffect(() => {
-    const handleHashChange = (event: HashChangeEvent) => {
-      setCurrentHash(event.newURL.split("#")[1]);
+    const setCurrent: IntersectionObserverCallback = (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const { id } = entry.target;
+          if (id === onThisPageID) continue;
+          setCurrentHash(entry.target.id);
+          break;
+        }
+      }
     };
 
-    window.addEventListener("hashchange", handleHashChange);
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+    const observerOptions: IntersectionObserverInit = {
+      // Negative top margin accounts for `scroll-margin`.
+      // Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
+      rootMargin: "-140px 0% -66%",
+      threshold: 1,
     };
-  }, []);
 
-  useEffect(() => {
-    if (!router.isReady) return;
+    const headingsObserver = new IntersectionObserver(
+      setCurrent,
+      observerOptions
+    );
 
-    setCurrentHash(router.asPath.split("#")[1]);
+    // Observe all the headings in the main page content.
+    document
+      .querySelectorAll("article :is(h1,h2,h3,h4,h5)")
+      .forEach((h) => headingsObserver.observe(h));
+
+    // Stop observing when the component is unmounted.
+    return () => headingsObserver.disconnect();
   }, [router]);
 
   return (
     <div className="mb-10 flex flex-col">
-      <h2 className="mb-4 font-semibold text-instillGrey95 dark:text-instillGrey15">
+      <h2
+        className="mb-4 font-semibold text-instillGrey95 dark:text-instillGrey15"
+        id={onThisPageID}
+      >
         On this page
       </h2>
       <ul>
