@@ -9,6 +9,8 @@ import {
   ObjectDetectionIcon,
   OpticalCharacterRecognitionIcon,
   SemanticSegmentationIcon,
+  TextToImageIcon,
+  TextGenerationIcon,
 } from "@instill-ai/design-system";
 
 type IconStyle = {
@@ -65,6 +67,14 @@ export const getAiTaskIconAndLabel = ({
         <SemanticSegmentationIcon {...iconStyle} />
       );
       label = "Semantic Segmentation";
+      break;
+    case "TextGeneration":
+      icon = (iconStyle: IconStyle) => <TextGenerationIcon {...iconStyle} />;
+      label = "Text Generation";
+      break;
+    case "TextToImage":
+      icon = (iconStyle: IconStyle) => <TextToImageIcon {...iconStyle} />;
+      label = "Text to Image";
       break;
     case "Null":
       icon = null;

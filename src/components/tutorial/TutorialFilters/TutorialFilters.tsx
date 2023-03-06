@@ -175,6 +175,14 @@ export const TutorialFilters = ({
               label: "Semantic Segmentation",
               value: "SemanticSegmentation",
             },
+            {
+              label: "Text to Image",
+              value: "TextToImage",
+            },
+            {
+              label: "Text Generation",
+              value: "TextGeneration",
+            },
           ]}
         />
         <TutorialFilter

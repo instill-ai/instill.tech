@@ -81,6 +81,8 @@ export type AiTask =
   | "KeypointDetection"
   | "ObjectDetection"
   | "SemanticSegmentation"
+  | "TextToImage"
+  | "TextGeneration"
   | "Null";
 
 export type TutorialPlaceholderColor =
