@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.28.6](https://github.com/instill-ai/instill.tech/compare/v1.28.5...v1.28.6) (2023-03-06)
+
+
+### Documentation
+
+* refactor deployment doc ([#505](https://github.com/instill-ai/instill.tech/issues/505)) ([953fc90](https://github.com/instill-ai/instill.tech/commit/953fc90112492a21c138eb250804849bbdb9b341))
+* **tutorials:** add new VDP 101 tutorials ([#451](https://github.com/instill-ai/instill.tech/issues/451)) ([ef12893](https://github.com/instill-ai/instill.tech/commit/ef1289394ab89408c97053cbcc5ba0b02c8bae70))
+
+## [1.28.5](https://github.com/instill-ai/instill.tech/compare/v1.28.4...v1.28.5) (2023-03-01)
+
+
+### Documentation
+
+* **deployment:** refactor how to install VDP via Helm ([#503](https://github.com/instill-ai/instill.tech/issues/503)) ([af5e4ea](https://github.com/instill-ai/instill.tech/commit/af5e4ea07465c86a4e30a7f5174ea9401bc1a6c5))
+
+## [1.28.4](https://github.com/instill-ai/instill.tech/compare/v1.28.3...v1.28.4) (2023-03-01)
+
+
+### Documentation
+
+* **deployment:** add deployment chapter ([#494](https://github.com/instill-ai/instill.tech/issues/494)) ([7611316](https://github.com/instill-ai/instill.tech/commit/761131614998e86ad0df6ca35c7a2a5c2e11159b))
+
+## [1.28.3](https://github.com/instill-ai/instill.tech/compare/v1.28.2...v1.28.3) (2023-03-01)
+
+
+### Bug Fixes
+
+* fix tailwind didn't recognize content.config.ts issue ([#497](https://github.com/instill-ai/instill.tech/issues/497)) ([ddccfb1](https://github.com/instill-ai/instill.tech/commit/ddccfb16e8c455a6412497d914da1cbf291faf8d))
+* remove toc when there has no headers ([#500](https://github.com/instill-ai/instill.tech/issues/500)) ([5684e42](https://github.com/instill-ai/instill.tech/commit/5684e424b80116819041b1db75fe652a0e6eecb4))
+
 ## [1.28.2](https://github.com/instill-ai/instill.tech/compare/v1.28.1...v1.28.2) (2023-02-26)
 
 
