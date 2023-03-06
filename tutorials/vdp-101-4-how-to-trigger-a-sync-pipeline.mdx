@@ -6,7 +6,7 @@ description: "In this tutorial, we are going to demonstrate how to trigger a SYN
 aiTask: "ObjectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
-publishedOn: "2023-01-30T16:29:00"
+publishedOn: "2023-03-06T16:29:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
@@ -171,7 +171,6 @@ Once the JSON payload is ready, we can trigger the pipeline using standard **HTT
 requests.post(f"{api_gateway_url}/v1alpha/pipelines/{pipeline_id}/trigger", json=body)
 ```
 
-
 API Gateway is single point of entry for all VDP services. In this example, the API Gateway URL is defined as `{api_gateway_url}`, which is `http://localhost:8080` by default for local deployment, and `v1alpha` shows the VDP version.
 `{pipeline-id}` indicates the pipeline that have been created beforehand for us to trigger. In this example, it is set to `vdp-101-sync`.
 
@@ -213,11 +212,12 @@ Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse th
 
 <br />
 <br />
-**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓** 
-- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction) 
-- [[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart) 
-- [[3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) 
-- [[4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline) 
-- [[5/7] How to parse responses from SYNC pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses) 
-- [[6/7] Pipeline modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes) 
-- [[7/7] Create, trigger, and parse an ASYNC pipeline](/tutorials/vdp-101-7-create-trigger-parse-a-async-pipeline)
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
+
+- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
+- [[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart)
+- [[3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+- [[4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+- [[5/7] How to parse responses from SYNC pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+- [[6/7] Pipeline modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+- [[7/7] Create, trigger, and parse an ASYNC pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline)
