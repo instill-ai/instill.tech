@@ -327,6 +327,8 @@ type AiTask =
   | "KeypointDetection"
   | "ObjectDetection"
   | "SemanticSegmentation"
+  | "TextToImage"
+  | "TextGeneration"
   | "Null";
 
 type TutorialPlaceholderColor =
