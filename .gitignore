@@ -36,3 +36,6 @@ yarn-error.log*
 # Cloudflare wrangler generated folder
 workers-site
 dist
+
+# local env settings
+*.local
