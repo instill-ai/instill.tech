@@ -2,7 +2,7 @@
 title: "VDP 101 [5/7] How to parse responses from SYNC pipelines"
 lang: "en-US"
 draft: false
-description: "In the SYNC mode, VDP returns post-processed inference results depending on the protocol (i.e., HTTP/gRPC) you use to trigger the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to understand and parse the responses from VDP."
+description: "In the SYNC mode, VDP returns triggering pipeline results immediately. In this tutorial, we will use the HTTP protocol to demonstrate how to parse the responses from VDP for analysis."
 aiTask: "ObjectDetection"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
@@ -17,7 +17,7 @@ authorGitHubUrl: "https://github.com/bryan107"
 ---
 
 In the previous tutorial [VDP 101 [4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline), you have learned how to trigger and send data to the pipeline. However, we haven't talked about how to process it.
-In the `SYNC` mode, VDP returns post-processed inference results according to the protocol (i.e., `HTTP/gRPC`) used for triggering the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to parse the responses from a `SYNC` pipeline.
+In the `SYNC` mode, VDP returns the triggering pipeline results according to the protocol (i.e., `HTTP/gRPC`) used for triggering the pipeline. In this tutorial, we will use the HTTP protocol as an example to demonstrate how to parse the responses from a `SYNC` pipeline.
 
 ## How to process pipeline responses
 
