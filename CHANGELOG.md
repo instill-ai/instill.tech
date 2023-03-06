@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.29.0](https://github.com/instill-ai/instill.tech/compare/v1.28.6...v1.29.0) (2023-03-06)
+
+
+### Features
+
+* scroll section detector ([#233](https://github.com/instill-ai/instill.tech/issues/233)) ([#501](https://github.com/instill-ai/instill.tech/issues/501)) ([8168b00](https://github.com/instill-ai/instill.tech/commit/8168b0078b25c72b0a66bac53de6136f8aa6e182))
+
+
+### Bug Fixes
+
+* fix favicon on blog and tutorial ([#507](https://github.com/instill-ai/instill.tech/issues/507)) ([60a3dcc](https://github.com/instill-ai/instill.tech/commit/60a3dcc09d459d4ce1d4be80ea9f7a2210465f79))
+
 ## [1.28.6](https://github.com/instill-ai/instill.tech/compare/v1.28.5...v1.28.6) (2023-03-06)
 
 
