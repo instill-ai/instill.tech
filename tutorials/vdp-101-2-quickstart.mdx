@@ -55,9 +55,9 @@ Execute the following `bash` commands to start pre-built images with all the dep
 
 ```bash
 # clone VDP repository to local
-$ git clone https://github.com/instill-ai/vdp.git && cd vdp
+git clone https://github.com/instill-ai/vdp.git && cd vdp
 # start VDP service
-$ make all
+make all
 ```
 
 The installation may take a while. Have a cup of tea 🍵. Once the services are up, WHALA, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/).
@@ -76,7 +76,8 @@ The installation may take a while. Have a cup of tea 🍵. Once the services are
 You can also check if VDP is running on your machine by listing the running compose project
 
 ```bash
-$ docker compose ls --filter name=instill-vdp
+docker compose ls --filter name=instill-vdp
+
 NAME            STATUS          CONFIG FILES
 instill-vdp     running         < VDP Docker Compose file paths >
 ```
@@ -94,16 +95,18 @@ We highly recommend you allocate at least **32GB** memory and **256GB** disk spa
 
 ## Shut down VDP
 
-If you don't like what you see and want to **shut down** VDP, please run the `bash` command below:
+If you want to **shut down** VDP, please run the `bash` command below:
 
 ```bash
 # shut down VDP services
-$ make down
+make down
 ```
 
 We love to hear your feedback and comments on VDP. Join us in our community on [Discord](https://discord.gg/sevxWsqpGh) or create a discussion on [Github](https://github.com/instill-ai/vdp/discussions).
 
-Okay, now you have VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+## What's next?
+
+Okay, now you have VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline).
 
 <br />
 <br />
