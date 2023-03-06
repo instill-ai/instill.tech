@@ -16,23 +16,6 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
   const onThisPageID = "on-this-page-heading";
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
 
-  // useEffect(() => {
-  //   const handleHashChange = (event: HashChangeEvent) => {
-  //     setCurrentHash(event.newURL.split("#")[1]);
-  //   };
-
-  //   window.addEventListener("hashchange", handleHashChange);
-  //   return () => {
-  //     window.removeEventListener("hashchange", handleHashChange);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-
-  //   setCurrentHash(router.asPath.split("#")[1]);
-  // }, [router]);
-
   useEffect(() => {
     const setCurrent: IntersectionObserverCallback = (entries) => {
       for (const entry of entries) {
@@ -48,7 +31,7 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
     const observerOptions: IntersectionObserverInit = {
       // Negative top margin accounts for `scroll-margin`.
       // Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
-      rootMargin: "-100px 0% -66%",
+      rootMargin: "-140px 0% -66%",
       threshold: 1,
     };
 
@@ -59,7 +42,7 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
 
     // Observe all the headings in the main page content.
     document
-      .querySelectorAll("article :is(h1,h2,h3)")
+      .querySelectorAll("article :is(h1,h2,h3,h4,h5)")
       .forEach((h) => headingsObserver.observe(h));
 
     // Stop observing when the component is unmounted.
