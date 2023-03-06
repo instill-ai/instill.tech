@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.28.6](https://github.com/instill-ai/instill.tech/compare/v1.28.5...v1.28.6) (2023-03-06)
+
+
+### Documentation
+
+* refactor deployment doc ([#505](https://github.com/instill-ai/instill.tech/issues/505)) ([953fc90](https://github.com/instill-ai/instill.tech/commit/953fc90112492a21c138eb250804849bbdb9b341))
+* **tutorials:** add new VDP 101 tutorials ([#451](https://github.com/instill-ai/instill.tech/issues/451)) ([ef12893](https://github.com/instill-ai/instill.tech/commit/ef1289394ab89408c97053cbcc5ba0b02c8bae70))
+
 ## [1.28.5](https://github.com/instill-ai/instill.tech/compare/v1.28.4...v1.28.5) (2023-03-01)
 
 
