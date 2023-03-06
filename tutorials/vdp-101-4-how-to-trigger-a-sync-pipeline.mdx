@@ -16,8 +16,8 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In the previous tutorial [VDP 101 [3/7] Create your first pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you've learnt how to create a pipeline in `SYNC` mode with ID `vdp-101-sync` via VDP Console.
-In this tutorial, we use it to showcase how to trigger a `SYNC` pipeline step-by-step.
+In the previous tutorial [VDP 101 [3/7] Create your first pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you've learnt how to create a pipeline in `SYNC` mode with ID **vdp-101-sync** via VDP Console.
+In this tutorial, we use it to showcase how to trigger this `SYNC` pipeline step-by-step.
 
 :::info{type=info}
 You can create a VDP pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case.
@@ -26,38 +26,47 @@ The combination of selected source and destination determines the pipeline mode.
 
 ## Trigger the pipeline with cURL requests
 
-You can also trigger your pipelines in the command line. Choose a pipeline on your [VDP Console](http://localhost:3000/pipelines). You can find the corresponding HTTP request at the bottom of your pipeline page.
+You can also trigger your pipelines in the command line. Choose a pipeline such as **vdp-101-sync** on your [VDP Console](http://localhost:3000/pipelines).
+You can find the corresponding HTTP request at the bottom of your pipeline page.
 
 <CH.Code>
 
-```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
-  "inputs": [
+```bash cURL(url)
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
+  "task_inputs": [
     {
-      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+      "detection": {
+        "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+      }
     },
     {
-      "image_url": "https://artifacts.instill.tech/imgs/horse.jpg"
+      "detection": {
+        "image_url": "https://artifacts.instill.tech/imgs/polar-bear.jpg"
+      }
     }
   ]
 }'
 ```
 
-```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
-  "inputs": [
+```bash cURL(base64)
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
+  "task_inputs": [
     {
-      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+      "detection": {
+        "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+      }
     },
     {
-      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+      "detection": {
+        "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+      }
     }
   ]
 }'
 ```
 
-```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
+```bash cURL(multipart)
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```
@@ -72,11 +81,11 @@ In addition to the cURL examples above, you can trigger the pipeline in our Pyth
 
 In this tutorial, we'll use Conda as the package management system. You can install Conda via [anaconda](https://docs.anaconda.com/anaconda/install/silent-mode/) or [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda-on-a-system-that-has-other-python-installations-or-packages). Using a virtual environment is not required but recommended.
 
-Create and activate a Conda virtual environment named `vdp-101-trigger` with Python 3.8:
+Create and activate a Conda virtual environment named `vdp-101-sync` with Python 3.8:
 
 ```bash
-conda create --name vdp-101-trigger python=3.8
-conda activate vdp-101-trigger
+conda create --name vdp-101-sync python=3.8
+conda activate vdp-101-sync
 ```
 
 Once activated, you can run scripts from this environment.
@@ -113,10 +122,10 @@ Let's dive into our example codes to see what happened.
 To check if you got everything ready, run the Python example with the command below.
 
 ```bash
-python sync-http-base64.py
+python sync-http-url.py --api-gateway-url=http://localhost:8080 --pipeline-id=vdp-101-sync --image-url=https://artifacts.instill.tech/imgs/dog.jpg
 ```
 
-WHALA! You just triggered the object detection pipeline! You should see the results below where the input image `dog.png` is stored in your example folder
+WHALA! You just triggered the object detection pipeline **vdp-101-sync**! You should see the detection results shown on the input [dog](https://artifacts.instill.tech/imgs/dog.jpg) image:
 
 <img
   src="/tutorial-assets/vdp-101/4-how-to-trigger-a-sync-pipeline/dog-example.png"
@@ -125,7 +134,8 @@ WHALA! You just triggered the object detection pipeline! You should see the resu
 
 ## How to form a trigger request
 
-VDP currently supports HTTP and gRPC protocols. When triggering the pipeline with HTTP protocol, users can send their data via **HTTP POST Requests** or **HTTP Multipart Requests**. You can find these examples in `/examples/vdp-101/sync/`.
+VDP currently supports HTTP and gRPC protocols. When triggering the pipeline with HTTP protocol, users can send their data via **HTTP POST Requests** or **HTTP Multipart Requests**.
+You can find these examples in `/examples/vdp-101/sync/` folder of the VDP project.
 
 ### POST request to send JSON
 
@@ -140,9 +150,11 @@ Below are examples that demonstrate the structure of the JSON objects. Inputs ca
 
 ```python Python(url)
 body = {
-    "inputs": [
+    "task_inputs": [
         {
-            'image_url': img_url
+            "detection": {
+                "image_url": image_url
+            }
         }
     ]
 }
@@ -150,11 +162,13 @@ body = {
 
 ```python Python(base64)
 body = {
-	"inputs": [
-		{
-			"image_base64": img_string
-		}
-	]
+    "task_inputs": [
+        {
+            "detection": {
+                "image_base64": img_string
+            }
+        }
+    ]
 }
 ```
 
@@ -168,10 +182,10 @@ Once the JSON payload is ready, we can trigger the pipeline using standard **HTT
 
 ```python
 # Post HTTP requests to trigger VDP pipeline
-requests.post(f"{api_gateway_url}/v1alpha/pipelines/{pipeline_id}/trigger", json=body)
+requests.post(f"{api_gateway_url}/pipelines/{pipeline_id}/trigger", json=body)
 ```
 
-API Gateway is single point of entry for all VDP services. In this example, the API Gateway URL is defined as `{api_gateway_url}`, which is `http://localhost:8080` by default for local deployment, and `v1alpha` shows the VDP version.
+API Gateway is single point of entry for all VDP services. In this example, the API Gateway URL is defined as `{api_gateway_url}`. The value is set to `http://localhost:8080/v1alpha` by default for local deployment, in which `v1alpha` shows the VDP version.
 `{pipeline-id}` indicates the pipeline that have been created beforehand for us to trigger. In this example, it is set to `vdp-101-sync`.
 
 ### Multipart request to upload a file
@@ -185,30 +199,28 @@ We recommend that you use multipart upload in the following ways:
 
 In `sync-http-multipart.py`, we demonstrate how to exploit **Multipart Request**.
 
-Below is an example demonstrating how to prepare the payload for multipart upload, where `img_names` is a list consisting of the image file names.
+Below is an example demonstrating how to prepare the payload for multipart upload, where `images` is a list consisting of the image file names.
 
 ```python
-body = [("file", (img_name, open(os.path.join(img_folder, img_name), 'rb'))) for img_name in img_names]
+body = [("file", (img, open(img, 'rb'))) for img in images]
 ```
 
 The HTTP POST request is similar to the **HTTP POST Request**. The only differences are:
 
-- `URL`: instead of ending with `trigger` in HTTP POST Request, the URL ends with `trigger-multipart`.
-- `files=body`: instead of passing the files as a JSON object (`json=body`), use a list of files in tuples.
+- `API endpoint URL`: instead of ending with `trigger` in HTTP POST Request, the URL ends with `trigger-multipart`.
+- `files=body`: instead of passing the files as a JSON object, use a list of files in tuples.
 
 ```python
-requests.post(f"{api_gateway_url}/v1alpha/pipelines/{pipeline_id}/trigger-multipart",files=body)
+requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart", files=body)
 ```
 
 :::info{type=info}
-For further details of the Python `requests.post()` method, we refer readers to [here](https://www.w3schools.com/python/ref_requests_post.asp).
+For further details of the Python `requests.post()` method, we refer readers [here](https://www.w3schools.com/python/ref_requests_post.asp).
 :::
 
-## More AI tasks supported by VDP
+## What's next?
 
-In addition to Object Detection, Versatile Data Pipeline (VDP) supports extensive AI tasks. You can find further details in our [VDP standardised AI tasks](/docs/core-concepts/ai-task) or [VDP examples](https://github.com/instill-ai/vdp/tree/main/examples).
-
-Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse the Object Detection pipeline responses in our following tutorial → [VDP 101 [5/7] How to Parse Responses from SYNC Pipelines](/tutorials/vdo-101-5-how-to-parse-vdp-responses).
+Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse the Object Detection pipeline responses in our following tutorial → [VDP 101 [5/7] How to parse responses from SYNC pipelines](/tutorials/vdo-101-5-how-to-parse-vdp-responses).
 
 <br />
 <br />
