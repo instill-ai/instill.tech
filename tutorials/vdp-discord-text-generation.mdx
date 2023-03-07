@@ -6,7 +6,7 @@ description: "In this tutorial, we demonstrate how to deploy a text-generation m
 aiTask: "TextGeneration"
 sourceConnector: "HTTP"
 destinationConnector: "HTTP"
-publishedOn: "2023-03-06T14:26:00"
+publishedOn: "2023-03-07T14:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-discord-text-generation/text-generation-cover-A.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-discord-text-generation/text-generation-cover-A.png"
@@ -14,6 +14,7 @@ useCase: "Quickstart"
 author: "Po-Yu Chen"
 authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
+keywords: ["discord",  "gpt-2"]
 ---
 
 Text generation is one of the most popular AI tasks at the moment. With [Versatile Data Pipeline (VDP)](https://github.com/instill-ai/vdp), you can quickly build a text generator based on state-of-the-art text-generation models. This tutorial will demonstrate how to deploy a text-generation model on VDP and build a Discord app allowing users to trigger the pipeline using Discord's `/slash` commands.
@@ -252,7 +253,7 @@ ngrok http 3069
 
 You shall see a terminal like the one below.
 
-<img
+<ZoomableImg
   src="/tutorial-assets/vdp-discord-text-generation/ngrok.png"
   alt="Trigger text-generation pipeline using slash command /tg in Discord channel."
 />
@@ -277,7 +278,7 @@ The bot should support two /slash commands, `/hello` (hello world) and `/tg` (te
 
 By triggering the pipeline with the above /slash command, you should see a response in which the format is similar to the wine below:
 
-<img
+<ZoomableImg
   src="/tutorial-assets/vdp-discord-text-generation/bot-example.png"
   alt="Trigger text-generation pipeline using slash command /tg in Discord channel."
 />
