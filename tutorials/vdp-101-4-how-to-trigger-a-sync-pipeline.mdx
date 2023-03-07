@@ -19,10 +19,12 @@ authorGitHubUrl: "https://github.com/bryan107"
 In the previous tutorial [VDP 101 [3/7] Create your first pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you've learnt how to create a pipeline in `SYNC` mode with ID **vdp-101-sync** via VDP Console.
 In this tutorial, we use it to showcase how to trigger this `SYNC` pipeline step-by-step.
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 You can create a VDP pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case.
 The combination of selected source and destination determines the pipeline mode. Further details can be found in [VDP 101 [6/7] Pipeline modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes).
-:::
+
+</InfoBlock>
 
 ## Trigger the pipeline with cURL requests
 
@@ -174,9 +176,11 @@ body = {
 
 </CH.Code>
 
-:::info{type=info}
-Although JSON object is commonly used, it is not optimal to upload large objects, for which we recommend you trigger the pipeline using **HTTP Multipart Request**.
-:::
+<InfoBlock type="info" title="info">
+  Although JSON object is commonly used, it is not optimal to upload large
+  objects, for which we recommend you trigger the pipeline using **HTTP
+  Multipart Request**.
+</InfoBlock>
 
 Once the JSON payload is ready, we can trigger the pipeline using standard **HTTP POST requests**. There are **three** arguments In the HTTP POST messages. They are `pipeline backend URL`, `pipeline_id`, and `json`, the JSON object prepared above.
 
@@ -214,9 +218,10 @@ The HTTP POST request is similar to the **HTTP POST Request**. The only differen
 requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart", files=body)
 ```
 
-:::info{type=info}
-For further details of the Python `requests.post()` method, we refer readers [here](https://www.w3schools.com/python/ref_requests_post.asp).
-:::
+<InfoBlock>
+  For further details of the Python `requests.post()` method, we refer readers
+  [here](https://www.w3schools.com/python/ref_requests_post.asp).
+</InfoBlock>
 
 ## What's next?
 
