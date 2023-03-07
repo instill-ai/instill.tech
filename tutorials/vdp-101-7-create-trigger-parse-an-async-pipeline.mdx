@@ -1,0 +1,183 @@
+---
+title: "VDP 101 [7/7] Create, Trigger, and Parse an ASYNC Pipeline"
+lang: "en-US"
+draft: false
+description: "VDP supports pipelines in ASYNC mode. This tutorial will demonstrate how to build an ASYNC pipeline using PostgreSQL database as the destination with the the same Object Detection model."
+aiTask: "ObjectDetection"
+sourceConnector: "HTTP"
+destinationConnector: "PostgreSQL"
+publishedOn: "2023-03-06T19:32:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
+useCase: "Quickstart"
+author: "Po-Yu Chen"
+authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
+authorGitHubUrl: "https://github.com/bryan107"
+---
+
+VDP supports pipelines in `ASYNC` mode. In this mode, users trigger the pipelines by sending requests.
+However, instead of returning the processed results immediately, the processed outputs will be loaded to the configured destination asynchronously.
+This tutorial will demonstrate how to build an `ASYNC` pipeline using PostgreSQL database as the destination with the same Object Detection model.
+
+## Prerequisites
+
+In this tutorial, we'll use the same development environment below as in our previous tutorials.
+
+Launch the VDP following [[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart) and install required dependencies with
+
+```bash
+# move to the example directory for the VDP-101 ASYNC tutorial.
+cd /example/vdp-101/async
+# install dependencies.
+pip install -r requirement.txt
+```
+
+You can manage these dependencies with a Conda environment. For further information, we refer users to [anaconda](https://docs.anaconda.com/anaconda/install/silent-mode/) or [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda-on-a-system-that-has-other-python-installations-or-packages).
+
+## Create a new database in PostgreSQL
+
+Before setting up an `ASYNC` pipeline, we need to set up a database for **loading** our pipeline outputs.
+Here, let's [start a PostgreSQL instance with the official Docker image](https://hub.docker.com/_/postgres) and create the default database named `tutorial`
+
+```bash
+# Start a postgres instance
+docker run -p 5432:5432 --name vdp-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=tutorial -d postgres
+```
+
+In which `POSTGRES_USER` is used in conjunction with `POSTGRES_PASSWORD` to set a user and its password.
+You can login in and check if `tutorial` is successfully created by checking if it is on the list.
+
+```bash
+# Log into Postgres and connect to the tutorial database.
+psql -h localhost -p 5432 -d tutorial -U postgres
+```
+
+↓↓↓ When you list all the databases, you should see a database named `tutorial` in the table below ↓↓↓
+
+```bash
+# list all databases
+tutorial=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ tutorial  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+(4 rows)
+```
+
+Now, we are ready to create our first `ASYNC` pipeline on VDP.
+
+## Create an `ASYNC` pipeline
+
+Open your local VDP console ([http://localhost:3000](http://localhost:3000)), and click `Add new pipeline`. To set up an `ASYNC` pipeline for this tutorial,
+
+1. **Source**: select `Async` for **Pipeline mode** and select `HTTP` for **Source type**.
+2. **Model Instance**: select `yolov7/v1.0-cpu`under **Select an existing online model instance**
+3. **Destination**: set up a new destination to the **Postgres database** we just created (see the screenshot below). **Host** should be your local IP address, while **Port**, **Username**, **Password** and **DB Name** are set according to the launched postgres instance.
+4. **Pipeline**: set **ID** to `vdp-101-async`.
+
+<img
+  src="/tutorial-assets/vdp-101/7-async-pipeline/async-add-destination.png"
+  alt="Set up destination to the database in Postgres DB."
+/>
+
+↓↓↓ Check if the pipeline is activated on the **Pipeline** page ↓↓↓
+
+<img
+  src="/tutorial-assets/vdp-101/7-async-pipeline/async-pipeline-list.png"
+  alt="Set up destination to the database in Postgres DB."
+/>
+
+Suppose you see a green light in front of the `vdp-101-async` pipeline, WHALA! You have just set up an `ASYNC` pipeline.
+
+## Trigger the `ASYNC` pipeline
+
+Now would like to trigger the `ASYNC` pipeline we just created by running the script below.
+
+```bash
+# Trigger the ASYNC pipeline `vdp-101-async`
+#   --api-gateway-url=< VDP API base URL >
+#   --pipeline-id=< Pipeline ID indicates the pipeline to trigger>
+#	  --framerate=< Frame rate of the video file, default is 30 >
+#	  --mapping-file=< File that stores the mapping indices for each processed image, default is 'data-mapping-indices.txt' >
+python trigger.py --api-gateway-url=http://localhost:8080 --pipeline-id=vdp-101-async --framerate=30 --mapping-file=data-mapping-indices.txt
+```
+
+This script first downloads a video `cows_dornick.mp4` to the root folder, extracts image frames from the video file, and saves these image frames to the `inputs` folder. Once the extraction is completed, the script triggers the pipeline with image frame payload using _HTTP Multipart POST Requests_.
+
+The pipeline responds with the **indices** (corresponding to each image), which are ultimately saved to an output file `data-mapping-indices.txt` under the `async` fold by default.
+
+Unlike the responses in the `SYNC` mode, the `ASYNC` pipeline only responds with `data_mapping_indices` for each uploaded data.
+
+```json
+{
+  "data_mapping_indices": ["01GDR4ZW7W4T2H2G8MK79Y49PG"],
+  "model_instance_outputs": []
+}
+```
+
+After All the images are processed by the pipeline, you can check the indices using the command below:
+
+```bash
+# Preview the mapping indice file
+cat data-mapping-indices.txt
+```
+
+## Retrieve and visualise pipeline trigger results from database
+
+After the `vdp-101-async` pipeline has processed all the images for the object detection task, we can fetch all the corresponding inference result from the database by mapping with the trigger operation IDs in the `data-mapping-indices.txt`.
+Run the `process.py` script to fetch the pipeline detection outputs from the database, visualise the fetched detections on the corresponding input image and save to the `outputs` folder.
+
+:::info{type=warning}
+When setting `--pq-host`, users may need to indicate with **actual** IP address instead of **localhost** to access the Postgres database running in a docker container.
+:::
+
+```bash
+# Fetch and visualise the results from the database
+#   --pq-host=< database host >
+#   --pq-port=< database port >
+#   --pq-database=< database name >
+#   --pq-username=< database username >
+#   --pq-password=< database password >
+#   --output-filename=< output image directory, default is set to 'output.mp4' >
+#   --framerate=< frame rate of the video file, default is set to 30 >
+$ python process.py --pq-host=< database host > --pq-port=5432 --pq-database=tutorial --pq-username=postgres --pq-password=password --output-filename=output.mp4 --framerate=30
+```
+
+WHALA! Once everything is processed, you should find a video file `output.mp4` (the same as the youtube video below) created from images in the `outputs` folder with all the images drawn with detected results from triggering the pipeline.
+
+<Youtube id="jokydabr70M" />
+
+## Conclusion
+
+In this tutorial, you've built an `ASYNC` Object Detection pipeline using VDP to process a video and send the analysis result to a PostgreSQL database.
+
+If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
+
+- Painless setup
+- Maintenance-free infrastructure
+- Start for free, pay as you grow
+
+<CtaButton
+  text="🚀 Join the Instill Cloud waitlist"
+  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-101"
+/>
+
+We also invite you to join our [Discord community](https://discord.gg/sevxWsqpGh) to share your use cases and showcase your work with Data/AI practitioners.
+
+<br />
+<br />
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
+
+- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
+- [[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart)
+- [[3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+- [[4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+- [[5/7] How to parse responses from SYNC pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+- [[6/7] Pipeline modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+- [[7/7] Create, trigger, and parse an ASYNC pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline)

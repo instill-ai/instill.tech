@@ -2,19 +2,19 @@ lockfileVersion: 5.4
 
 specifiers:
   '@algolia/client-search': ^4.14.2
-  '@babel/core': ^7.15.5
+  '@babel/core': ^7.18.9
   '@code-hike/mdx': ^0.7.4
   '@commitlint/cli': ^13.2.1
   '@commitlint/config-conventional': ^13.2.0
   '@docsearch/react': ^3.3.0
-  '@instill-ai/design-system': ^0.0.131
-  '@mailchimp/mailchimp_marketing': ^3.0.72
+  '@instill-ai/design-system': ^0.2.0
+  '@mailchimp/mailchimp_marketing': ^3.0.75
   '@mdx-js/loader': ^2.1.2
   '@mdx-js/react': ^2.1.2
   '@next/env': ^12.2.3
   '@next/mdx': ^12.2.3
   '@octokit/core': ^4.1.0
-  '@playwright/test': ^1.17.2
+  '@playwright/test': ^1.24.1
   '@react-hook/resize-observer': ^1.2.6
   '@storybook/addon-actions': ^6.5.9
   '@storybook/addon-essentials': ^6.5.9
@@ -26,28 +26,28 @@ specifiers:
   '@storybook/manager-webpack5': ^6.5.9
   '@storybook/react': ^6.5.9
   '@tailwindcss/line-clamp': ^0.4.2
-  '@tailwindcss/typography': ^0.5.2
+  '@tailwindcss/typography': ^0.5.4
   '@testing-library/dom': ^8.16.0
   '@testing-library/jest-dom': ^5.16.4
-  '@testing-library/react': ^12.1.2
+  '@testing-library/react': ^12.1.5
   '@testing-library/user-event': ^13.5.0
   '@types/animejs': ^3.1.6
   '@types/d3': ^7.4.0
   '@types/github-slugger': ^1.3.0
   '@types/gtag.js': ^0.0.8
   '@types/jest': ^28.1.6
-  '@types/mailchimp__mailchimp_marketing': ^3.0.2
-  '@types/node': ^16.9.6
-  '@types/react': ^17.0.24
+  '@types/mailchimp__mailchimp_marketing': ^3.0.5
+  '@types/node': ^16.11.45
+  '@types/react': ^17.0.47
   '@types/react-dom': ^17.0.17
   '@types/testing-library__jest-dom': ^5.14.5
   '@types/webpack-bundle-analyzer': ^4.4.1
   '@typescript-eslint/eslint-plugin': ^5.47.0
   '@typescript-eslint/parser': ^5.47.0
   animejs: ^3.2.1
-  autoprefixer: ^10.4.2
+  autoprefixer: ^10.4.7
   axios: ^0.21.4
-  babel-loader: ^8.2.2
+  babel-loader: ^8.2.5
   babel-plugin-inline-react-svg: ^2.0.1
   classnames: ^2.3.1
   clsx: ^1.2.1
@@ -65,31 +65,31 @@ specifiers:
   eslint-plugin-react: ^7.31.11
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-storybook: ^0.6.1
-  eslint-plugin-testing-library: ^5.0.3
+  eslint-plugin-testing-library: ^5.5.1
   fast-glob: ^3.2.11
   fuse.js: ^6.6.2
   github-slugger: ^1.4.0
   gray-matter: ^4.0.3
-  gsap: ^3.9.1
+  gsap: ^3.10.4
   hastscript: ^7.0.2
-  husky: ^7.0.0
-  intersection-observer: ^0.12.0
-  jest: ^27.4.7
-  lint-staged: ^11.2.3
+  husky: ^7.0.4
+  intersection-observer: ^0.12.2
+  jest: ^27.5.1
+  lint-staged: ^11.2.6
   mdast-util-to-hast: ^12.2.0
   mdast-util-to-string: ^3.1.0
   next: ^12.2.4
   next-mdx-remote: 4.2.0
   next-sitemap: ^3.1.16
-  node-html-parser: ^5.2.0
-  postcss: ^8.4.5
+  node-html-parser: ^5.3.3
+  postcss: ^8.4.14
   prettier: 2.4.1
   prettier-plugin-tailwindcss: ^0.1.13
   react: ^17.0.2
   react-dom: ^17.0.2
   react-gist: ^1.2.4
   react-intersection-observer: ^9.4.1
-  react-markdown: ^7.0.1
+  react-markdown: ^7.1.2
   react-select: ^5.4.0
   react-twitter-embed: ^4.0.4
   rehype-autolink-headings: ^6.1.1
@@ -103,18 +103,18 @@ specifiers:
   require-from-string: ^2.0.2
   sharp: ^0.31.2
   storybook-addon-next-router: ^4.0.0
-  tailwindcss: ^3.0.13
-  typescript: ^4.4.3
+  tailwindcss: ^3.1.6
+  typescript: ^4.7.4
   unist-util-visit: ^4.1.0
   webpack: ^5.74.0
-  webpack-bundle-analyzer: ^4.3.0
+  webpack-bundle-analyzer: ^4.5.0
   yaml: ^2.1.3
 
 dependencies:
   '@algolia/client-search': 4.14.2
   '@code-hike/mdx': 0.7.4_react@17.0.2
   '@docsearch/react': 3.3.0_bfuehj63lhrswk37rv2llps2f4
-  '@instill-ai/design-system': 0.0.131_b4usidsfzquyh4hx4nnzn3lrei
+  '@instill-ai/design-system': 0.2.0_b4usidsfzquyh4hx4nnzn3lrei
   '@mailchimp/mailchimp_marketing': 3.0.75
   '@octokit/core': 4.1.0
   '@react-hook/resize-observer': 1.2.6_react@17.0.2
@@ -2127,12 +2127,13 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@instill-ai/design-system/0.0.131_b4usidsfzquyh4hx4nnzn3lrei:
-    resolution: {integrity: sha512-9XscRDnWF63/ntbU1OxyFh7XFPZGZH7PDmMhCRMJVjw9spy319mJdWRDCEmTcr5REWkzKbD2Yqm1EY0hmQeW3Q==}
+  /@instill-ai/design-system/0.2.0_b4usidsfzquyh4hx4nnzn3lrei:
+    resolution: {integrity: sha512-crCjm4VbbTtvWXZMm8WpQQ0FHCK7tVDtdZDDHHzn80DsiiT+IuEkERAUn04C04kMPSSxxFcjJJJHYRsB0ME+OQ==}
+    engines: {node: '>=14.6.0'}
     peerDependencies:
       clsx: ^1.1.1
-      react: ^17.0.2
-      react-dom: ^17.0.2
+      react: ^18.2.0
+      react-dom: ^18.2.0
       react-select: ^5.3.2
     dependencies:
       clsx: 1.2.1
@@ -5885,7 +5886,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001370
+      caniuse-lite: 1.0.30001452
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -5898,7 +5899,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001370
+      caniuse-lite: 1.0.30001452
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -6366,7 +6367,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001370
+      caniuse-lite: 1.0.30001452
       electron-to-chromium: 1.4.202
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
@@ -6554,8 +6555,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001370:
-    resolution: {integrity: sha512-3PDmaP56wz/qz7G508xzjx8C+MC2qEm4SYhSEzC9IBROo+dGXFWRuaXkWti0A9tuI00g+toiriVqxtWMgl350g==}
+  /caniuse-lite/1.0.30001452:
+    resolution: {integrity: sha512-Lkp0vFjMkBB3GTpLR8zk4NwW5EdRdnitwYJHDOOKIU85x4ckYCPQ+9WlVvSVClHxVReefkUMtWZH2l9KGlD51w==}
 
   /capture-exit/2.0.0:
     resolution: {integrity: sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g==}
@@ -12735,7 +12736,7 @@ packages:
     dependencies:
       '@next/env': 12.2.4
       '@swc/helpers': 0.4.3
-      caniuse-lite: 1.0.30001370
+      caniuse-lite: 1.0.30001452
       postcss: 8.4.14
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2

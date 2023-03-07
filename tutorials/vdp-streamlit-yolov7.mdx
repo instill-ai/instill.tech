@@ -47,7 +47,7 @@ This tutorial will demonstrate how to replicate the YOLOv4 vs. YOLOv7 web app. I
 ## Build Object Detection pipelines
 
 <InfoBlock type="info" title="info">
-  [VDP standardises structured outputs for AI
+  [VDP standardises outputs for AI
   tasks](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
   Therefore, a model is modularised in a pipeline, and model outputs are in
   standard format for use in data integration or ETL pipeline.
@@ -66,7 +66,7 @@ $ make all
 
 Once the services are up, the Console is ready to go at [http://localhost:3000](http://localhost:3000).
 
-### Build a SYNC Object Detection pipeline with YOLOv4 via no-code Console
+### Build via no-code Console
 
 A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](https://www.instill.tech/docs/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
 
@@ -118,7 +118,7 @@ After onboarding, you will be redirected to the **Pipeline** page on the left si
   caption="Build a SYNC Object Detection pipeline with YOLOv4 via no-code Console"
 />
 
-### Build a SYNC Object Detection pipeline with YOLOv7 via low-code
+### Build via low-code
 
 You could build a pipeline with YOLOv7 in the same way by importing [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) via no-code Console. Or, you can build it via REST API.
 
@@ -252,10 +252,10 @@ Once activated, you can run scripts from this environment.
 
 ### Install app dependencies
 
-Go to `/examples/streamlit/yolov7` directory of the VDP project.
+Go to `/examples/streamlit-object-detection-sync-http-http` directory of the VDP project.
 
 ```bash
-cd examples/streamlit/yolov7
+cd examples/streamlit-object-detection-sync-http-http
 ```
 
 The directory of the app will look like the following:
@@ -278,11 +278,38 @@ pip install -r requirements.txt
 
 In the main app script `main.py`, we use a Streamlit `text.input` to enable user to provide an image URL for inference.
 
-<Gist id="32c999596d6d810182cc8b7e59f63895" />
+```python
+image_url = st.text_input( label="Feed me with an image URL and press ENTER",
+    value="https://artifacts.instill.tech/imgs/dog.jpg")
+```
 
 The pipelines we built are `SYNC` with HTTP connectors, so we create a `trigger_detection_pipeline` function to trigger a pipeline by sending a HTTP request with payload constructed with the provided `image_url`.
 
-<Gist id="26e05e6db00ef4ba41c4f1530170a45b" />
+```python
+def trigger_detection_pipeline(api_gateway_url: str, pipeline_id: str, image_url: str) -> requests.Response:
+    r""" Trigger a pipeline composed with a detection model instance using remote image URL
+
+    Args:
+        api_gateway_url (str): VDP API base URL
+        pipeline_id (str): pipeline ID
+        image_url (str): remote image URL, e.g., `https://artifacts.instill.tech/imgs/dog.jpg`
+
+    Returns: requests.Response
+        pipeline trigger result
+
+    """
+    body = {
+        "task_inputs": [
+            {
+                "detection": {
+                    'image_url': image_url
+                }
+            }
+        ]
+    }
+
+    return requests.post("{}/pipelines/{}/trigger".format(api_gateway_url, pipeline_id), json=body)
+```
 
 Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
 
@@ -291,11 +318,52 @@ Since the pipeline output is standardised, we also create a `parse_detection_res
   alt="Standardise Object Detection task in VDP"
 />
 
-<Gist id="57ebe88c43335e962ded50dcbc3cf306" />
+```python
+def parse_detection_response(resp: requests.Response) -> Tuple[List[Tuple[float]], List[str], List[float]]:
+    r""" Parse a detection response in to bounding boxes, categories and scores
+
+    Args:
+        resp (`requests.Response`): response for standardised object Detection task
+
+    Returns: parsed outputs, a tuple of
+        List[Tuple[float]]: a list of detected bounding boxes in the format of (left, top, width, height)
+        List[str]: a list of category labels, each of which corresponds to a detected bounding box. The length of this list must be the same as the detected bounding boxes.
+        List[float]: a list of scores, each of which corresponds to a detected bounding box. The length of this list must be the same as the detected bounding boxes.
+
+    """
+    if resp.status_code != 200:
+        return [], [], []
+    else:
+        # Parse JSON into an object with attributes corresponding to dict keys.
+        r = json.loads(resp.text, object_hook=lambda d: SimpleNamespace(**d))
+
+        boxes_ltwh = []
+        categories = []
+        scores = []
+        for v in r.model_instance_outputs[0].task_outputs[0].detection.objects:
+            boxes_ltwh.append((
+                v.bounding_box.left,
+                v.bounding_box.top,
+                v.bounding_box.width,
+                v.bounding_box.height))
+            categories.append(v.category)
+            scores.append(v.score)
+
+        return boxes_ltwh, categories, scores
+```
 
 In the main function, the input image is sent to trigger both pipelines for a side-by-side comparison.
 
-<Gist id="739e7f0be64ed6be7698747339afa00f" />
+```python
+# Trigger VDP pipelines
+pipeline_ids = [opt.yolov4, opt.yolov7]
+pipeline_results = []
+for pipeline_id in pipeline_ids:
+    resp = trigger_detection_pipeline(
+        api_gateway_url, pipeline_id, image_url)
+    boxes_ltwh, categories, scores = parse_detection_response(resp)
+    pipeline_results.append((resp, boxes_ltwh, categories, scores))
+```
 
 ### Visualise the detections
 
@@ -304,7 +372,33 @@ Thanks to Streamlit's powerful visualisation features, we create and use functio
 - draw the detections on the input image
 - display the detections as `pandas.Dataframe` in an interactive table
 
-<Gist id="fd9fb7f33158b5653a4eb54e064b2e05" />
+```python
+# Visualise detections on input image
+cols = st.columns(len(pipeline_ids))
+captions = ["YOLOv4", "YOLOv7"]
+for col, (resp, boxes_ltwh, categories, scores), cap in zip(cols, pipeline_results, captions):
+    if resp.status_code == 200:
+        # Show image overlaid with detection results
+        img_draw = draw_detection(img, boxes_ltwh, categories, scores)
+        col.image(img_draw, use_column_width=True, caption=cap)
+    else:
+        col.error("{} inference error".format(cap))
+
+# Display detections with scores >= 0.5 in a table
+cols = st.columns(len(pipeline_ids))
+detection_thres = 0.5
+for col, (resp, boxes_ltwh, categories, scores) in zip(cols, pipeline_results):
+    if resp.status_code == 200:
+        _, df = gen_detection_table(
+            boxes_ltwh, categories, scores)
+        if len(df):
+            col.dataframe(df.style.highlight_between(
+                subset='Score', left=detection_thres, right=1.0))
+        else:
+            col.dataframe(df)
+st.caption(
+    "Highlight detections with score >= {}".format(detection_thres))
+```
 
 ### Run the app
 
@@ -332,7 +426,7 @@ Fill the input field with a random image URL and press **Enter** to see the dete
 
 <CtaButton text="⭐️ Star VDP on GitHub" link="http://go.instill.tech/4e2z9h" />
 
-### What's next
+### What's next?
 
 By the end of the demo, we hint that you can manipulate the detection results using other structured data toolings in the modern data stack. Check the [building an ASYNC Object Detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) tutorial to transform unstructured images into analysable structured insights, and send the structured insights to a PostgreSQL database.
 

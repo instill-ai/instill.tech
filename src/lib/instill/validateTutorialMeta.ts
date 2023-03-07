@@ -52,6 +52,8 @@ export const validateTutorialMeta = (
     "KeypointDetection",
     "ObjectDetection",
     "SemanticSegmentation",
+    "TextToImage",
+    "TextGeneration",
     "Null",
   ];
 
