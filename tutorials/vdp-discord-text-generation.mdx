@@ -42,7 +42,7 @@ Before starting this tutorial, make sure you have the prerequisites set up:
 
 - **A machine with GPUs** - To run the GPT model in this tutorial, you will needs a local machine with GPUs.
 - **Versatile Data Pipeline (VDP)** - VDP works on macOS or Linux. See [VDP 101[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart) for installation instructions.
-- **NVIDIA Container Toolkit** - To enable support in VDP, please refer to [NVIDIA Cloud Native Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install NVIDIA Container Toolkit. If you'd like to specifically allot GPUs to VDP, you can set the environment variable [NVIDIA_VISIBLE_DEVICES](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#gpu-enumeration) in the [.env](https://github.com/instill-ai/vdp/blob/main/.env) file of VDP project.
+- **NVIDIA Container Toolkit** - To enable support in VDP, please refer to [NVIDIA Cloud Native Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install NVIDIA Container Toolkit. If you'd like to specifically allot GPUs to VDP, you can set the environment variable [NVIDIA_VISIBLE_DEVICES](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#gpu-enumeration) in the VDP [.env](https://github.com/instill-ai/vdp/blob/main/.env) file.
 - **NodeJS** - The Discord app is built with [discord-interation](https://github.com/discord/discord-interactions-js), an npm package based on Javacsript. See [download NodeJS](https://nodejs.org/en/download/) for installation instructions.
 
 ## Build Text Generation pipelines
@@ -56,10 +56,7 @@ Therefore, we use [Megatron GPT-2 Medium (345m)](https://github.com/NVIDIA/Megat
 To build a `SYNC` pipeline that supports Discord apps with GTP-2, please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) with a few alterations:
 
 1. add an HTTP source,
-2. import the **Metatron GPT-2 Medium model (345m)** model from the GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID `gpt2`
-
-   ,
-
+2. import the **Metatron GPT-2 Medium model (345m)** model from the GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID `gpt2`,
 3. deploy a model instance that is compatible with GPUs on your machine,
 4. add an HTTP destination, and
 5. set up a pipeline with ID `gpt2`.
@@ -195,13 +192,24 @@ See [Adding scopes and permissions](https://discord.com/developers/docs/getting-
 
 ### Set up your project
 
-We built this tutorial using a customised discord example app. Clone the project we created for this tutorial with the shell command below:
+We built this tutorial using a customised discord app. Clone the GitHub project with the shell command below:
 
 ```shellscript
 # clone vdp-discord-demo repository to local
 git clone https://github.com/instill-ai/vdp-discord-demo && cd vdp-discord-demo
 # install NODEJS depensencies
 npm install
+```
+
+Before running the Discord app, you must set up a few variables in `vdp.js`. These variables indicate your VDP service and the Text Generation pipeline to trigger.
+
+```javascript
+// Set up service URL
+const WEB_ADDR = "https://localhost:3000";
+const PIPE_ADDR = "/v1alpha/pipelines/";
+
+// Set up endpoints
+const GPT2 = "gpt2";
 ```
 
 ### Get app credentials
@@ -238,25 +246,16 @@ These credentials are added in `.env` for local development. Please keep them sa
   caption="Where to find the credentials and set the service endpoint URL."
 />
 
-## Run the Discord app
+### Run the Discord app
 
-Before running the Discord app, you must set up a few variables in `vdp.js`. These variables indicate your VDP service and the Text Generation pipeline to trigger.
-
-```javascript
-// Set up service URL
-const WEB_ADDR = "https://localhost:3000";
-const PIPE_ADDR = "/v1alpha/pipelines/";
-
-// Set up endpoints
-const GPT2 = "gpt2";
-```
-
-Finally, the Discord app is all set, go ahead and run it:
+After your credentials are set, go ahead and run it:
 
 ```shellscript
 # run the app
 node app.js
 ```
+
+### Set up interactivity
 
 The project needs a public endpoint where Discord can send requests. In this tutorial, we use [**ngrok**](https://ngrok.com/) to tunnel HTTP traffic. Use the command below to install or follow the [installation guide](https://ngrok.com/download).
 
@@ -317,14 +316,14 @@ The bot should support the **Text Generation** Slash commands `/tg` consisting o
 - `output_len`: the length of the text to generate (optional, default: 100)
 - `seed`: a random seed between 0 and 65535 (optional, default: random generated seed)
 
+Under the hood, the Discord bot wraps the above Slash command into a HTTP request payload and send the HTTP request to trigger the VDP pipeline `gpt2`.
+
 Now, type some words as the `prompt` and have fun! Write a story or even a poetry and share with your friend 🎉.
 
 <ZoomableImg
   src="/tutorial-assets/vdp-discord-text-generation/bot-example.png"
   alt="Use Slash command /tg in Discord channel and provide some words as prompt"
 />
-
-Under the hood, the Discord bot wraps the above Slash command into a HTTP request payload and send the HTTP request to trigger the VDP pipeline `gpt2`.
 
 ## Conclusion
 
