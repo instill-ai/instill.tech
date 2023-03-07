@@ -10,10 +10,18 @@ publishedOn: "2022-09-22T14:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-cow-counter/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-cow-counter/cover-static.png"
-useCase: "Agriculture"
+useCase: "Application"
 author: "Xiaofei Du"
 authorAvatarSrc: "/author-avatar/xiaofei-du.png"
 authorGitHubUrl: "https://github.com/xiaofei-du"
+keywords:
+  [
+    "metabase",
+    "postgres",
+    "vdp",
+    "unstructured data",
+    "unstructured data pipeline",
+  ]
 ---
 
 ## Herd cattle with drones?
@@ -69,7 +77,10 @@ Once all the services are up, go to the Console at http://localhost:3000.
 After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [Build an ASYNC detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 1. add a HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`,
+2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
+
+   ,
+
 3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add a PostgreSQL destination, with ID `postgres-db`,
 5. set up a pipeline with ID `detection`.

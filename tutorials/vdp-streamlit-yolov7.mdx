@@ -10,10 +10,18 @@ publishedOn: "2022-09-02T02:04:00"
 placeholderColor: "bg-instillRed90"
 themeImgSrc: "/tutorial-assets/vdp-streamlit-yolov7/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-streamlit-yolov7/cover-static.png"
-useCase: "Prototyping"
+useCase: "Application"
 author: "Xiaofei Du"
 authorAvatarSrc: "/author-avatar/xiaofei-du.png"
 authorGitHubUrl: "https://github.com/xiaofei-du"
+keywords:
+  [
+    "streamlit",
+    "yolov7",
+    "yolov4",
+    "unstructured data",
+    "unstructured data pipeline",
+  ]
 ---
 
 When YOLOv7 was out, we were so excited to test it out. Therefore, we built a web app to side-by-side compare the classic [YOLOv4](https://github.com/AlexeyAB/darknet) and the freshly released [YOLOv7](https://github.com/WongKinYiu/yolov7). Once completed, we shared the app with our team and then deployed it online to share with the community.
@@ -74,7 +82,10 @@ No matter where your model stores, we want to keep your models in the same place
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [Build a SYNC classification pipeline](https://www.instill.tech/docs/tutorials/build-a-sync-cls-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
 
 1. add an HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`,
+2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`
+
+   ,
+
 3. deploy a model instance `v1.0-cpu` of the imported model,
 4. add an HTTP data destination, and
 5. set up a pipeline with ID `yolov4`.
