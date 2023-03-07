@@ -204,12 +204,12 @@ npm install
 Before running the Discord app, you must set up a few variables in `vdp.js`. These variables indicate your VDP service and the Text Generation pipeline to trigger.
 
 ```javascript
-// Set up service URL
-const WEB_ADDR = "https://localhost:3000";
-const PIPE_ADDR = "/v1alpha/pipelines/";
+// VDP Text Generation pipeline ID
+const pipelineID = "gpt2";
 
-// Set up endpoints
-const GPT2 = "gpt2";
+// Set up vdp service endpoint
+const vdpConsole = `http://localhost:3000/pipelines/${pipelineID}`;
+const triggerPipelineEndpoint = `http://locallhost:8080/${pipelineID}/trigger`;
 ```
 
 ### Get app credentials
