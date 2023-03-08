@@ -234,9 +234,9 @@ Now you should see two pipelines `yolov4` and `yolov7` in the Console.
 
 In the next section, we will build a Streamlit app to send requests triggering the pipelines and visualise the detection outputs with a beautiful UI.
 
-## Build the app
+## Build the Streamlit app
 
-### Create a Python virtual environment
+### 1. Create a Python virtual environment
 
 In this tutorial, we'll use Conda as the package management system. You can install Conda via [anaconda](https://docs.anaconda.com/anaconda/install/silent-mode/) or [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda-on-a-system-that-has-other-python-installations-or-packages). Using a virtual environment is not required but recommended.
 
@@ -249,7 +249,7 @@ conda activate vdp-streamlit
 
 Once activated, you can run scripts from this environment.
 
-### Install app dependencies
+### 2. Install app dependencies
 
 Go to `/examples/streamlit-object-detection-sync-http-http` directory of the VDP project.
 
@@ -273,7 +273,7 @@ where `requirements.txt` file contains all the app dependencies. Install all the
 pip install -r requirements.txt
 ```
 
-### Trigger the VDP pipelines
+### 3. Trigger the pipelines
 
 In the main app script `main.py`, we use a Streamlit `text.input` to enable user to provide an image URL for inference.
 
@@ -364,7 +364,7 @@ for pipeline_id in pipeline_ids:
     pipeline_results.append((resp, boxes_ltwh, categories, scores))
 ```
 
-### Visualise the detections
+### 4. Visualise the detections
 
 Thanks to Streamlit's powerful visualisation features, we create and use functions in `utils.py` to visualise the detections in different ways:
 
@@ -399,7 +399,7 @@ st.caption(
     "Highlight detections with score >= {}".format(detection_thres))
 ```
 
-### Run the app
+### 5. Run the app
 
 ```bash
 streamlit run main.py

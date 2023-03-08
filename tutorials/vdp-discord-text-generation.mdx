@@ -190,7 +190,7 @@ Discord app is a versatile tool for developers to create interactive interfaces 
 
 See [Adding scopes and permissions](https://discord.com/developers/docs/getting-started#adding-scopes-and-permissions) for detailed instructions.
 
-### Set up your project
+### 1. Set up your project
 
 We built this tutorial using a customised discord app. Clone the GitHub project with the shell command below:
 
@@ -212,7 +212,7 @@ const vdpConsole = `http://localhost:3000/pipelines/${pipelineID}`;
 const triggerPipelineEndpoint = `http://locallhost:8080/${pipelineID}/trigger`;
 ```
 
-### Get app credentials
+### 2. Get app credentials
 
 To connect the service with your Discord app, fetch the credentials from your app's settings and add them to a .env file (see `.env.sample` for an example). You'll need your app ID (`APP_ID`), server ID (`GUILD_ID`), bot token (`DISCORD_TOKEN`), and public key (`PUBLIC_KEY`).
 
@@ -246,7 +246,7 @@ These credentials are added in `.env` for local development. Please keep them sa
   caption="Where to find the credentials and set the service endpoint URL."
 />
 
-### Run the Discord app
+### 3. Run the Discord app
 
 After your credentials are set, go ahead and run it:
 
@@ -255,7 +255,7 @@ After your credentials are set, go ahead and run it:
 node app.js
 ```
 
-### Set up interactivity
+### 4. Set up interactivity
 
 The project needs a public endpoint where Discord can send requests. In this tutorial, we use [**ngrok**](https://ngrok.com/) to tunnel HTTP traffic. Use the command below to install or follow the [installation guide](https://ngrok.com/download).
 
@@ -294,7 +294,7 @@ Version                       3.1.1
 Region                        Europe (eu)
 Latency                       -
 Web Interface                 http://127.0.0.1:4040
-Forwarding                    https://7749-2a02-c7c-6682-3c00-d91f-64ad-552b-798b.eu.ngrok.io -> http://localhost:3069
+Forwarding                    https://ac2e-2a01-4b00-8066-4700-6c3c-765-9d9-f69f.eu.ngrok.io -> http://localhost:3069
 
 Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
@@ -305,6 +305,11 @@ Free version **ngrok** can only be active for two hours. Ensure you update the e
 :::
 
 Finally, go to your application under the **Discord Developer Portal**, copy the endpoint address, the **forwarding address** provided by **ngrok**, and paste it in the `INTERACTION ENDPOINT URL` below the **PUBLIC KEY** in the General Information page.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-discord-text-generation/endpoint-url.png"
+  alt="Set up the interaction endpoint URL on the General information page."
+/>
 
 You should now see a Discord bot being added to your Discord server as a user! Your bot is now a user who can access your Discord channels with default permissions. You can update its access permission by assigning a role or setting up channel permissions. Please read [See Setting up Permission F&Q](https://support.discord.com/hc/en-us/articles/206029707-Setting-Up-Permissions-FAQ) for further details.
 
