@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.29.1](https://github.com/instill-ai/instill.tech/compare/v1.29.0...v1.29.1) (2023-03-08)
+
+
+### Documentation
+
+* add a text-generation tutorial ([#512](https://github.com/instill-ai/instill.tech/issues/512)) ([8a950ad](https://github.com/instill-ai/instill.tech/commit/8a950adf28e1a8b8a2378e7ba08524d2ac6bb2f2))
+
+
+### Miscellaneous
+
+* update design system to include new ai tasks ([#509](https://github.com/instill-ai/instill.tech/issues/509)) ([9f5ee15](https://github.com/instill-ai/instill.tech/commit/9f5ee154a3604ee0c3344e2ec7730dfb0a12e1ea))
+* update the text since k8s is supported ([#511](https://github.com/instill-ai/instill.tech/issues/511)) ([c24cfba](https://github.com/instill-ai/instill.tech/commit/c24cfba53539c6c2e3337989fdc240ed7d0074a4))
+
 ## [1.29.0](https://github.com/instill-ai/instill.tech/compare/v1.28.6...v1.29.0) (2023-03-06)
 
 
