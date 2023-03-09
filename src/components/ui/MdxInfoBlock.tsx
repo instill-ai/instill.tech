@@ -1,7 +1,7 @@
-import { ReactElement } from "react-markdown/lib/react-markdown";
+import { ReactElement } from "react";
 
 export type MdxInfoBlockProps = {
-  type?: string;
+  type: string;
   title: string;
   children: ReactElement;
 };
