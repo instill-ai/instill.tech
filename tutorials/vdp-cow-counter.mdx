@@ -10,10 +10,18 @@ publishedOn: "2022-09-22T14:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-cow-counter/cover-animation.gif"
 themeImgThumbnailSrc: "/tutorial-assets/vdp-cow-counter/cover-static.png"
-useCase: "Agriculture"
+useCase: "Application"
 author: "Xiaofei Du"
 authorAvatarSrc: "/author-avatar/xiaofei-du.png"
 authorGitHubUrl: "https://github.com/xiaofei-du"
+keywords:
+  [
+    "metabase",
+    "postgres",
+    "vdp",
+    "unstructured data",
+    "unstructured data pipeline",
+  ]
 ---
 
 ## Herd cattle with drones?
@@ -46,7 +54,7 @@ To showcase the above processes, read on or watch our video to see how to build 
 - Docker and Docker compose
 - Python 3.8+ with an environment-management tool such [Conda](https://www.anaconda.com/)
 
-## Build an Object Detection ETL data pipeline
+## Build Object Detection pipelines
 
 In the [Build a shareable Object Detection application with VDP and Streamlit](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` Object Detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an Object Detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
 
@@ -65,7 +73,7 @@ make all
 
 Once all the services are up, go to the Console at http://localhost:3000.
 
-### Build an ASYNC data pipeline with YOLOv7
+### Build an ASYNC pipeline via no-code console
 
 After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [Build an ASYNC detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
@@ -117,9 +125,9 @@ Now you should see the pipeline `detection` in the Console.
   alt="Pipeline page on the VDP Console"
 />
 
-### Trigger the pipeline to analyse a drone video
+## Trigger the pipeline
 
-#### Create a virtual environment and install dependencies
+### 1. Create a virtual environment and install dependencies
 
 We'll use Conda as the package management system like we did it in the last [tutorial](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
@@ -137,7 +145,7 @@ cd examples/metabase-object-detection-async-http-postgres
 pip install -r requirements.txt
 ```
 
-#### Trigger the pipeline
+### 2. Trigger the pipeline to analyse a drone video
 
 The directory of the project should look like the following
 
@@ -305,7 +313,7 @@ In the next section, we will setup Metabase to connect to the data in the destin
 
 Metabase is an open-source business intelligence (BI) tool that helps you uncover the data insights like an analyst. Just connect to your database, you can dig deeper into your data, easily build interactive dashboards and share them with stakeholders.
 
-### Run Metabase locally
+### 1. Run Metabase locally
 
 In this tutorial, we [run Metabase on Docker](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker). If you prefer, check out [alternative ways](https://www.metabase.com/docs/latest/installation-and-operation/installing-metabase) to install Metabase.
 
@@ -323,7 +331,7 @@ docker run -d -p 3100:3000 --name metabase metabase/metabase-m1
 
 Once the Metabase startup completes, you can access it at http://localhost:3100.
 
-### Create the dashboard
+### 2. Create the dashboard
 
 During onboarding, add your PostgreSQL database.
 
@@ -341,7 +349,7 @@ Then, click **Browse data** on the left sidebar, choose **vdp-postgres ➝ Airby
 
 As you can see, the pipeline outputs are stored in the `Airbyte Data ➝ Detection ➝ Objects` field with JSON blob format.
 
-#### Convert raw detections into multiple records
+### 3. Convert raw detections into multiple records
 
 To flatten the raw detections (JSON blob) into multiple records for further analysis, Click **+New** on the top right corner, choose **SQL query ➝ Select a database** vdp-postgres, then copy and paste the following SQL query and press **Run query**:
 
@@ -361,7 +369,7 @@ LIMIT 1048575
 
 The transformed data counts every time a cow appeared in the video footage.
 
-### Visualise the data
+### 4. Visualise the data
 
 Click on **Visualization** to open the visualization sidebar and choose **Area**. For **Data** tab, select the fields `processed_at` and `category` for **X-axis**, and select the field `Count` for **Y-axis**. You can customise the area chart as you want. Here we just enabled **Show values on data points** in the **Display** tab.
 
@@ -383,7 +391,7 @@ To make the dashboard accessible, you can save this question into the **Our anal
 
 We use [YOLOv7](https://arxiv.org/abs/2207.02696) in the ETL pipeline, since it is the state-of-the-art object detector that surpasses all known ones in both speed and accuracy. The above video showed that it worked fairly well considering it was only trained on the public [MS COCO dataset](https://cocodataset.org) without any fine-tuning.
 
-### Limitation
+### 5. Limitation
 
 However, if you want to improve the performance, as you can spot that some cows were wrongly detected as "dogs" on a few frames, it is highly recommended to fine-tune the model on labelled drone data collected from the same domain.
 
