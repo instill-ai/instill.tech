@@ -140,7 +140,7 @@ You can embed gallery by using this component, the image will be displayed in a 
   images={[
     {
       alt: "Pipeline is empty view",
-      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
     },
     {
       alt: "Add async http source",
@@ -156,7 +156,7 @@ You can embed gallery by using this component, the image will be displayed in a 
     },
     {
       alt: "Add postgres destination",
-      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres.png",
     },
     {
       alt: "Add async pipeline",
