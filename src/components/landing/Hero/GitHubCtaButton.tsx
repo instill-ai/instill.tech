@@ -25,7 +25,7 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() =>
         router.push(
-          "https://www.instill.tech/docs/start-here/getting-started/?utm_source=product&utm_medium=button"
+          "/docs/start-here/getting-started/?utm_source=product&utm_medium=button"
         )
       }
     >

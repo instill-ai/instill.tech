@@ -173,7 +173,7 @@ You can use this component to implement instill-ai's call to action button.
 ```mdx
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
