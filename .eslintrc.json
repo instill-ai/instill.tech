@@ -98,7 +98,7 @@
           },
           {
             "propName": "className",
-            "allowedFor": ["Image"],
+            "allowedFor": ["Image", "Link"],
             "message": "Avoid using className"
           }
         ]

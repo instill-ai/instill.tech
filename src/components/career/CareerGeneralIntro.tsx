@@ -1,6 +1,6 @@
 import cn from "clsx";
 
-import Image from "next/future/image";
+import Image from "next/image";
 
 export type CareerGeneralIntroProps = {
   marginBottom?: string;

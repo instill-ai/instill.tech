@@ -1,7 +1,7 @@
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import Link from "next/link";
-import Image from "next/future/image";
+import Image from "next/image";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -24,17 +24,18 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       </style>
       <div className="left-sidebar flex h-screen w-full flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
         {leftSidebar.logo ? (
-          <Link href="/docs/start-here/getting-started">
-            <a className="leftsidebar-logo hidden w-full gap-x-3 py-4 md:flex md:flex-row">
-              <Image
-                src={leftSidebar.logo.src}
-                alt={leftSidebar.logo.alt}
-                width={leftSidebar.logo.width}
-                height={leftSidebar.logo.height}
-                sizes={`${leftSidebar.logo.width}px`}
-                className="mr-auto"
-              />
-            </a>
+          <Link
+            href="/docs/start-here/getting-started"
+            className="leftsidebar-logo hidden w-full gap-x-3 py-4 md:flex md:flex-row"
+          >
+            <Image
+              src={leftSidebar.logo.src}
+              alt={leftSidebar.logo.alt}
+              width={leftSidebar.logo.width}
+              height={leftSidebar.logo.height}
+              sizes={`${leftSidebar.logo.width}px`}
+              className="mr-auto"
+            />
           </Link>
         ) : null}
         {leftSidebar.sections.map((section) => (

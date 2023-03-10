@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { MemberDetails, Nullable } from "@/types/instill";
-import Image from "next/future/image";
+import Image from "next/image";
 import cn from "clsx";
 import { CrossIcon } from "@instill-ai/design-system";
 import {

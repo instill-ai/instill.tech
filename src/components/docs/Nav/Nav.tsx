@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import cn from "clsx";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { DocSearch } from "@docsearch/react";
 
@@ -138,23 +138,24 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       >
         {!nav.logo && !nav.title ? null : (
           <div className="logo mr-4 flex md:hidden">
-            <Link href="/docs/start-here/getting-started">
-              <a className="flex flex-row gap-x-3">
-                {nav.logo ? (
-                  <Image
-                    src={nav.logo.src}
-                    alt={nav.logo.alt}
-                    width={nav.logo.width}
-                    height={nav.logo.height}
-                    sizes={`${nav.logo.width}px`}
-                  />
-                ) : null}
-                {nav.title ? (
-                  <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
-                    {nav.title}
-                  </h1>
-                ) : null}
-              </a>
+            <Link
+              href="/docs/start-here/getting-started"
+              className="flex flex-row gap-x-3"
+            >
+              {nav.logo ? (
+                <Image
+                  src={nav.logo.src}
+                  alt={nav.logo.alt}
+                  width={nav.logo.width}
+                  height={nav.logo.height}
+                  sizes={`${nav.logo.width}px`}
+                />
+              ) : null}
+              {nav.title ? (
+                <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
+                  {nav.title}
+                </h1>
+              ) : null}
             </Link>
           </div>
         )}

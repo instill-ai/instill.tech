@@ -5,7 +5,7 @@ import { AnnouncementBarCtxProvider } from "@/contexts/AnnouncementBarContext";
 import { PageBase } from "@/components/ui";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 
-export function createMockRouter(router: Partial<NextRouter>): NextRouter {
+export function createMockRouter(router: Partial<NextRouter>): any {
   return {
     basePath: "",
     pathname: "/",
