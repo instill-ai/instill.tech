@@ -56,7 +56,7 @@ To be documented...
 #### Info-block
 
 - We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed.
-- Please do enclose the info-block with proper syntax, every missed ::: will cause some unwanted behavior.(Currently, we don't have way to detect this kind of syntax error)
+- Please do enclose the info-block with proper syntax. Currently, we don't have way to detect this kind of syntax error.
 
 ```md
 <InfoBlock type="info" title="info">
