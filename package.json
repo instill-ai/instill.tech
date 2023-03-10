@@ -37,6 +37,7 @@
     "d3": "^7.6.1",
     "embla-carousel": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
+    "get-markdown-video-meta": "^0.2.2",
     "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",
     "intersection-observer": "^0.12.2",
@@ -52,6 +53,7 @@
     "react-twitter-embed": "^4.0.4",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
+    "remark-mdx": "^2.3.0",
     "sharp": "^0.31.2",
     "yaml": "^2.1.3"
   },
