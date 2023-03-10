@@ -116,7 +116,106 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
   caption="Build an ASYNC Object Detection pipeline with YOLOv7 via no-code Console"
 />
 
-Alternatively, you could refer to the [low-code example](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter#build-via-low-code) to build this pipeline programmatically via REST API.
+Alternatively, you could build this pipeline programmatically via REST API.
+
+<CH.Scrollycoding>
+
+You can programmatically build a `ASYNC` pipeline via REST API.
+
+```shellscript
+
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models -d '{
+  "id": "yolov7",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-yolov7-dvc"
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
+  "id": "postgres-db",
+  "destination_connector_definition": "destination-connector-definitions/destination-postgres",
+  "connector": {
+    "description": "The PostgreSQL database in my basement",
+    "configuration": {
+      "host": "100.113.68.102",
+      "port": 5432,
+      "database": "tutorial",
+      "schema": "public",
+      "username": "postgres",
+      "password": "password",
+      "ssl": false
+    }
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
+  "id": "detection",
+  "description": "A magic pipeline to detect objects in images",
+  "recipe": {
+    "source": "source-connectors/source-http",
+    "model_instances": [
+      "models/yolov7/instances/v1.0-cpu"
+    ],
+    "destination": "destination-connectors/postgres-db"
+  }
+}'
+
+```
+
+---
+
+**Step 1: Add a HTTP source**
+
+```shellscript focus=1:8
+
+```
+
+---
+
+**Step 2: Import a model from GitHub**
+
+```shellscript focus=10:16
+
+```
+
+---
+
+**Step 3: Deploy a model instance**
+
+Choose the model instance `v1.0-cpu` to deploy.
+
+```shellscript focus=18:18
+
+```
+
+---
+
+**Step 4: Add a PostgreSQL destination**
+
+```shellscript focus=20:35
+
+```
+
+---
+
+**Step 5: Set up your first pipeline**
+
+```shellscript focus=36:48
+
+```
+
+</CH.Scrollycoding>
 
 Now you should see the pipeline `detection` in the Console.
 
