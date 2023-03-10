@@ -46,9 +46,10 @@ Click on the **Pipeline** page on the left sidebar. Since we have not yet set up
 
 VDP currently supports two sources, **HTTP** and **gRPC**. An HTTP source accepts HTTP requests with payloads to be processed by a pipeline.
 
-:::info{type=info}
-Check our growing list of [Source Connectors](/docs/source-connectors/overview).
-:::
+<InfoBlock type="info" title="info">
+  Check our growing list of [Source
+  Connectors](/docs/source-connectors/overview).
+</InfoBlock>
 
 To set up a **Source Connector**,
 
@@ -80,11 +81,13 @@ To set it up,
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one Model Instance, using the release tag as the corresponding model instance ID.
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 A **Model Instance** represents a tagged snapshot of a Model. A model may have multiple model instances.
 The tag of a model instance depends on the model source and what versioning control tool the model source uses.
 Check out the [documentation](/docs/core-concepts/model).
-:::
+
+</InfoBlock>
 
 Once the model is imported, we can choose one model instance to deploy. For simplicity,
 
@@ -106,13 +109,14 @@ Since we are building a `SYNC` pipeline, the `HTTP` destination is paired automa
   alt="Add an HTTP destination to create a SYNC pipeline in the VDP Console."
 />
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 When creating pipelines under `sync` mode, source and destination connectors in VDP must be the same, which means:
 
 - HTTP source → HTTP destination
 - gRPC source → gRPC destination
 
-:::
+</InfoBlock>
 
 ## Step 5: Set up the pipeline
 
@@ -136,9 +140,10 @@ We are almost there! We have created `Source`, `Model`, and `Destination`. The l
 
 You can find further details about this pipeline by clicking on the one you just created. The **green** light indicates the pipeline is `Active` and can be triggered via sending HTTP requests.
 
-:::info{type=info}
-Check out the [documentation](/docs/core-concepts/pipeline#state) to understand all the pipeline states.
-:::
+<InfoBlock type="info" title="info">
+  Check out the [documentation](/docs/core-concepts/pipeline#state) to
+  understand all the pipeline states.
+</InfoBlock>
 
 <img
   src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/first-pipeline-page.png"

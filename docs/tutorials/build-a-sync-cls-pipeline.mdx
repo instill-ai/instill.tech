@@ -17,9 +17,11 @@ where you can build your first VDP pipeline by clicking **Set up your first pipe
   alt="Empty pipeline list page of the VDP Console"
 />
 
-:::info{type=tip}
-You can follow the tutorial via the **Pipeline** page. Or, you can navigate to the **Source**, **Model** and **Destination** page to create each component first and use them to configure a pipeline in **Pipeline** page later.
-:::
+<InfoBlock type="tip" title="tip">
+  You can follow the tutorial via the **Pipeline** page. Or, you can navigate to
+  the **Source**, **Model** and **Destination** page to create each component
+  first and use them to configure a pipeline in **Pipeline** page later.
+</InfoBlock>
 
 ### Add a HTTP source
 
@@ -36,9 +38,10 @@ To set it up,
   alt="Add a HTTP source to set up a SYNC pipeline in the VDP Console"
 />
 
-:::info{type=info}
-Check our growing list of [Source Connectors](/docs/source-connectors/overview).
-:::
+<InfoBlock type="info" title="info">
+  Check our growing list of [Source
+  Connectors](/docs/source-connectors/overview).
+</InfoBlock>
 
 ### Import a model from GitHub
 
@@ -59,9 +62,10 @@ To set it up,
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one model instance, using the release tag as the corresponding model instance ID.
 
-:::info{type=info}
-Check our growing list of [model sources](/docs/import-models/overview) to learn about how to import models from other platforms.
-:::
+<InfoBlock type="info" title="info">
+  Check our growing list of [model sources](/docs/import-models/overview) to
+  learn about how to import models from other platforms.
+</InfoBlock>
 
 ### Deploy a model instance of the imported model
 
@@ -89,12 +93,14 @@ Just
   alt="Add a HTTP destination to create a SYNC pipeline in the VDP console"
 />
 
-:::info{type=info}
-The paired source and destination connectors for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode:
+<InfoBlock type="info" title="info">
+  
+  The paired source and destination connectors for pipelines in [`SYNC`](/docs/core-concepts/pipeline#sync-mode) mode: 
+  
+  - HTTP source → HTTP destination 
+  - gRPC source → gRPC destination
 
-- HTTP source → HTTP destination
-- gRPC source → gRPC destination
-  :::
+</InfoBlock>
 
 ### Set up the pipeline
 
@@ -210,9 +216,9 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 ## Trigger your pipeline for the first time
 
-:::info{type=info}
-All `SYNC` pipelines are automatically activated.
-:::
+<InfoBlock type="info" title="info">
+  All `SYNC` pipelines are automatically activated.
+</InfoBlock>
 
 Now that the `classification` pipeline is automatically activated, you can make a request to trigger the pipeline to process **multiple** images within a batch via remote image URLs, Base64 or multipart:
 
@@ -252,9 +258,10 @@ curl -X POST http://localhost:8080/v1alpha/pipelines/classification/trigger-mult
 
 in which `http://localhost:8080` is the `api-gateway` default URL.
 
-:::info{type=info}
-`api-gateway` is the single point of entry into the backend services. Please check the [VDP system architecture](/docs/development/system-architecture).
-:::
+<InfoBlock type="info" title="info">
+  `api-gateway` is the single point of entry into the backend services. Please
+  check the [VDP system architecture](/docs/development/system-architecture).
+</InfoBlock>
 
 A HTTP response will return
 

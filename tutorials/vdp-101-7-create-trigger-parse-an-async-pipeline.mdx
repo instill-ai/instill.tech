@@ -133,9 +133,10 @@ cat data-mapping-indices.txt
 After the `vdp-101-async` pipeline has processed all the images for the object detection task, we can fetch all the corresponding inference result from the database by mapping with the trigger operation IDs in the `data-mapping-indices.txt`.
 Run the `process.py` script to fetch the pipeline detection outputs from the database, visualise the fetched detections on the corresponding input image and save to the `outputs` folder.
 
-:::info{type=warning}
+<InfoBlock type="warning" title="warning">
 When setting `--pq-host`, users may need to indicate with **actual** IP address instead of **localhost** to access the Postgres database running in a docker container.
-:::
+
+</InfoBlock>
 
 ```bash
 # Fetch and visualise the results from the database
