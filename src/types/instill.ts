@@ -73,6 +73,35 @@ export type BlogArticleMeta = {
   category: string;
 };
 
+export type BlogArticleJsonLD = {
+  "@context": string;
+  "@type": string;
+  headline: string;
+  lang: string;
+  draft: boolean;
+  description: string;
+  slug: string;
+  publishedOn: string;
+  image: string;
+  themeImgAlt?: string;
+  themeImgThumbnailSrc: string;
+  placeholderColor: TutorialPlaceholderColor;
+  category: string;
+  author: {
+    "@type": string;
+    name: Nullable<string>;
+    url: Nullable<string>;
+    authorAvatarUrl: Nullable<string>;
+  };
+  publisher: {
+    "@type": string;
+    author: Nullable<string>;
+    authorAvatarUrl: Nullable<string>;
+    authorGithubUrl: Nullable<string>;
+    lastEditedTime: Nullable<string>;
+  };
+};
+
 export type AiTask =
   | "ObjectDetection"
   | "Ocr"

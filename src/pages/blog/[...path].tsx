@@ -8,11 +8,10 @@ import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { CH } from "@code-hike/mdx/components";
-
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { BlogArticleMeta, Nullable } from "@/types/instill";
+import { BlogArticleJsonLD, BlogArticleMeta, Nullable } from "@/types/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
@@ -143,6 +142,43 @@ const BlogPage: FC<BlogPageProps> & {
     );
   }, [articles, blogMeta]);
 
+  const getJsonLd = (
+    blogMeta: Nullable<BlogArticleMeta>
+  ): Nullable<BlogArticleJsonLD | object> => {
+    if (blogMeta) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: blogMeta.title,
+        lang: blogMeta.lang,
+        draft: blogMeta.draft,
+        description: blogMeta.description,
+        slug: blogMeta.slug,
+        publishedOn: blogMeta.publishedOn,
+        image: process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgSrc,
+        themeImgAlt: blogMeta.themeImgAlt,
+        themeImgThumbnailSrc:
+          process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgThumbnailSrc,
+        placeholderColor: blogMeta.placeholderColor,
+        category: blogMeta.category,
+        author: {
+          "@type": "Person",
+          name: blogMeta.author,
+          url: blogMeta.authorGitHubUrl,
+          authorAvatarUrl: blogMeta.authorGitHubUrl,
+        },
+        publisher: {
+          "@type": "Person",
+          author: blogMeta.author,
+          authorAvatarUrl: blogMeta.commit.authorAvatarUrl,
+          authorGithubUrl: blogMeta.commit.authorGithubUrl,
+          lastEditedTime: blogMeta.commit.lastEditedTime,
+        },
+      };
+    }
+    return {};
+  };
+
   return (
     <>
       <PageHead
@@ -158,6 +194,7 @@ const BlogPage: FC<BlogPageProps> & {
         commitMeta={commitMeta}
         currentArticleMeta={blogMeta}
         additionMeta={null}
+        jsonLd={getJsonLd(blogMeta)}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"
