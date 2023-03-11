@@ -18,11 +18,11 @@ Playground.args = {
   images: [
     {
       alt: "test-1",
-      src: "/docs-assets/tutorials/add-a-yolov7-model.png",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
     },
     {
       alt: "test-2",
-      src: "/docs-assets/tutorials/add-a-destination-postgres.png",
+      src: "/tutorial-assets/vdp-cow-counter/add-an-async-source-http.png",
     },
   ],
 };

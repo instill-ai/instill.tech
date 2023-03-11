@@ -56,7 +56,7 @@ To showcase the above processes, read on or watch our video to see how to build 
 
 ## Build Object Detection pipelines
 
-In the [Build a shareable Object Detection application with VDP and Streamlit](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` Object Detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an Object Detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
+In the [Build a shareable Object Detection application with VDP and Streamlit](/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` Object Detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an Object Detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
 
 - accepts HTTP requests with image payload,
 - transforms the images in the payload into structured insights, and
@@ -73,9 +73,9 @@ make all
 
 Once all the services are up, go to the Console at http://localhost:3000.
 
-### Build an ASYNC pipeline via no-code console
+### Build an ASYNC pipeline
 
-After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [Build an ASYNC detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
+After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [VDP 101 [7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 1. add a HTTP source,
 2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
@@ -90,7 +90,7 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
   images={[
     {
       alt: "Pipeline is empty view",
-      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
     },
     {
       alt: "Add async http source",
@@ -106,7 +106,7 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
     },
     {
       alt: "Add postgres destination",
-      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres.png",
     },
     {
       alt: "Add async pipeline",
@@ -116,7 +116,106 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
   caption="Build an ASYNC Object Detection pipeline with YOLOv7 via no-code Console"
 />
 
-Alternatively, you could refer to the [low-code example](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter#build-via-low-code) to build this pipeline programmatically via REST API.
+Alternatively, you could build this pipeline programmatically via REST API.
+
+<CH.Scrollycoding>
+
+You can programmatically build a `ASYNC` pipeline via REST API.
+
+```shellscript
+
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models -d '{
+  "id": "yolov7",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-yolov7-dvc"
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
+  "id": "postgres-db",
+  "destination_connector_definition": "destination-connector-definitions/destination-postgres",
+  "connector": {
+    "description": "The PostgreSQL database in my basement",
+    "configuration": {
+      "host": "100.113.68.102",
+      "port": 5432,
+      "database": "tutorial",
+      "schema": "public",
+      "username": "postgres",
+      "password": "password",
+      "ssl": false
+    }
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
+  "id": "detection",
+  "description": "A magic pipeline to detect objects in images",
+  "recipe": {
+    "source": "source-connectors/source-http",
+    "model_instances": [
+      "models/yolov7/instances/v1.0-cpu"
+    ],
+    "destination": "destination-connectors/postgres-db"
+  }
+}'
+
+```
+
+---
+
+**Step 1: Add a HTTP source**
+
+```shellscript focus=1:8
+
+```
+
+---
+
+**Step 2: Import a model from GitHub**
+
+```shellscript focus=10:16
+
+```
+
+---
+
+**Step 3: Deploy a model instance**
+
+Choose the model instance `v1.0-cpu` to deploy.
+
+```shellscript focus=18:18
+
+```
+
+---
+
+**Step 4: Add a PostgreSQL destination**
+
+```shellscript focus=20:35
+
+```
+
+---
+
+**Step 5: Set up your first pipeline**
+
+```shellscript focus=36:48
+
+```
+
+</CH.Scrollycoding>
 
 Now you should see the pipeline `detection` in the Console.
 
@@ -129,7 +228,7 @@ Now you should see the pipeline `detection` in the Console.
 
 ### 1. Create a virtual environment and install dependencies
 
-We'll use Conda as the package management system like we did it in the last [tutorial](https://www.instill.tech/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
+We'll use Conda as the package management system like we did it in the last [tutorial](/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 First, create and activate an environment named `vdp-dashboard` with Python 3.8:
 
@@ -400,7 +499,7 @@ However, if you want to improve the performance, as you can spot that some cows 
   alt="Cows were wrong detected as dogs on some frames. This can be improved by fine-tuning the model on more drone data from the same domain."
 />
 
-We are working closely with our early users to deploy customised models for their use cases. If you're interested, please fill out the [form](https://www.instill.tech/get-access?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) to tell us about yourself and your project, we will be in touch 👐.
+We are working closely with our early users to deploy customised models for their use cases. If you're interested, please fill out the [form](/get-access?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) to tell us about yourself and your project, we will be in touch 👐.
 
 ## Conclusion
 
@@ -414,7 +513,7 @@ If you enjoyed VDP, we're building a fully managed service for VDP - **Instill C
 
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-7-create-trigger-parse-an-async-pipeline"
 />
 
 We also invite you to join our [Discord community](http://go.instill.tech/4fajhm) to share your use cases and showcase your work with Data/AI practitioners.

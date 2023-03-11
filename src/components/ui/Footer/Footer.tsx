@@ -68,7 +68,7 @@ export const Footer = () => {
       },
       {
         text: "Blog",
-        href: "https://blog.instill.tech/",
+        href: "/blog",
       },
       {
         text: "Newsletter",

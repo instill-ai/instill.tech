@@ -41,7 +41,7 @@ The app was built with two best-in-class machine learning tools:
 For anyone who is not familiar with VDP, it is an open-source unstructured data ETL tool that we've been working on. The goal of VDP is to streamline the end-to-end unstructured data flow, with the transform component being able to flexibly import AI models to process the unstructured data for a specific task for Vision, Language and more.
 
 > It is the future for unstructured data ETL, where developers won't need to build their own data connectors, high-maintenance model serving platform or ELT pipeline automation tool.
-> — From [Introducing VDP, open-source unstructured data ETL](https://blog.instill.tech/introducing-vdp/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+> — From [Introducing VDP, open-source unstructured data ETL](/blog/introducing-vdp/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
 
 Streamlit removes the barriers for Data/ML practitioners to build shareable web apps. No need to write HTML, CSS and Javascript to create beautiful UIs, you can just write everything in pure Python.
 
@@ -56,7 +56,7 @@ This tutorial will demonstrate how to replicate the YOLOv4 vs. YOLOv7 web app. I
 
 <InfoBlock type="info" title="info">
   [VDP standardises outputs for AI
-  tasks](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
+  tasks](/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
   Therefore, a model is modularised in a pipeline, and model outputs are in
   standard format for use in data integration or ETL pipeline.
 </InfoBlock>
@@ -76,16 +76,16 @@ Once the services are up, the Console is ready to go at [http://localhost:3000](
 
 ### Build via no-code Console
 
-A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](https://www.instill.tech/docs/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
+A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](/docs/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
 
 <InfoBlock type="info" title="info">
   No matter where your model stores, we want to keep your models in the same
   place without changes. VDP [integrates with many model platforms and
-  tools](https://www.instill.tech/docs/import-models/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+  tools](/docs/import-models/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
   to make importing models as easy as possible.
 </InfoBlock>
 
-After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [Build a SYNC classification pipeline](https://www.instill.tech/docs/tutorials/build-a-sync-cls-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
+After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
 
 1. add an HTTP source,
 2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`
@@ -112,15 +112,15 @@ After onboarding, you will be redirected to the **Pipeline** page on the left si
     },
     {
       alt: "Deploy yolov4-cpu model",
-      src: "/tutorial-assets/vdp-streamlit-yolov7/deploy-yolov4-cpu-1.png",
+      src: "/tutorial-assets/vdp-streamlit-yolov7/deploy-yolov4-cpu.png",
     },
     {
       alt: "Add sync http destination",
-      src: "/tutorial-assets/vdp-streamlit-yolov7/add-sync-http-destination-1.png",
+      src: "/tutorial-assets/vdp-streamlit-yolov7/add-sync-http-destination.png",
     },
     {
       alt: "Add sync yolov4 pipeline",
-      src: "/tutorial-assets/vdp-streamlit-yolov7/add-sync-yolov4-pipeline-1.png",
+      src: "/tutorial-assets/vdp-streamlit-yolov7/add-sync-yolov4-pipeline.png",
     },
   ]}
   caption="Build a SYNC Object Detection pipeline with YOLOv4 via no-code Console"
@@ -132,7 +132,7 @@ You could build a pipeline with YOLOv7 in the same way by importing [instill-ai/
 
 <InfoBlock type="info" title="info">
   VDP is implemented with
-  [API-first](https://www.instill.tech/docs/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+  [API-first](/docs/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
   design principle. It enables seamless integration to your data stack at any
   scale.
 </InfoBlock>
@@ -319,7 +319,7 @@ def trigger_detection_pipeline(api_gateway_url: str, pipeline_id: str, image_url
     return requests.post("{}/pipelines/{}/trigger".format(api_gateway_url, pipeline_id), json=body)
 ```
 
-Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](https://www.instill.tech/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
+Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
 
 <ZoomableImg
   src="/tutorial-assets/vdp-streamlit-yolov7/ai-task-detection.svg"
@@ -436,7 +436,7 @@ Fill the input field with a random image URL and press **Enter** to see the dete
 
 ### What's next?
 
-By the end of the demo, we hint that you can manipulate the detection results using other structured data toolings in the modern data stack. Check the [building an ASYNC Object Detection pipeline](https://www.instill.tech/docs/tutorials/build-an-async-det-pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) tutorial to transform unstructured images into analysable structured insights, and send the structured insights to a PostgreSQL database.
+By the end of the demo, we hint that you can manipulate the detection results using other structured data toolings in the modern data stack. Check the [Build a Cow Counter dashboard using VDP, Postgres and Metabase](/tutorials/vdp-cow-counter/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) tutorial to transform unstructured images into analysable structured insights, and send the structured insights to a PostgreSQL database.
 
 If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
 
@@ -446,7 +446,7 @@ If you enjoyed VDP, we're building a fully managed service for VDP - **Instill C
 
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 
 We also invite you to join our [Discord community](http://go.instill.tech/4fajhm) to share your use cases and showcase your work with Data/AI practitioners.

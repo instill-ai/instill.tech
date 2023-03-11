@@ -56,7 +56,7 @@ To be documented...
 #### Info-block
 
 - We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed.
-- Please do enclose the info-block with proper syntax, every missed ::: will cause some unwanted behavior.(Currently, we don't have way to detect this kind of syntax error)
+- Please do enclose the info-block with proper syntax. Currently, we don't have way to detect this kind of syntax error.
 
 ```md
 <InfoBlock type="info" title="info">
@@ -140,7 +140,7 @@ You can embed gallery by using this component, the image will be displayed in a 
   images={[
     {
       alt: "Pipeline is empty view",
-      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
     },
     {
       alt: "Add async http source",
@@ -156,7 +156,7 @@ You can embed gallery by using this component, the image will be displayed in a 
     },
     {
       alt: "Add postgres destination",
-      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres.png",
     },
     {
       alt: "Add async pipeline",
@@ -173,7 +173,7 @@ You can use this component to implement instill-ai's call to action button.
 ```mdx
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
