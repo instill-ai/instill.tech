@@ -311,13 +311,13 @@ module.exports = {
           boxShadow: "0px 0px 0px 3px #FFFCE3",
         },
         ".word-spacing-tight": {
-          wordSpacing: "-0.25rem",
+          wordSpacing: "-0.4rem",
         },
         ".word-spacing-tighter": {
-          wordSpacing: "-0.5rem",
+          wordSpacing: "-0.8rem",
         },
         ".word-spacing-super-tight": {
-          wordSpacing: "-1rem",
+          wordSpacing: "-1.2rem",
         },
         ".word-spacing-normal": {
           wordSpacing: "0rem",
