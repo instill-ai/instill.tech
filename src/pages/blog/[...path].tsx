@@ -150,33 +150,38 @@ const BlogPage: FC<BlogPageProps> & {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         headline: blogMeta.title,
-        lang: blogMeta.lang,
-        draft: blogMeta.draft,
-        description: blogMeta.description,
-        slug: blogMeta.slug,
-        publishedOn: blogMeta.publishedOn,
         image: process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgSrc,
-        themeImgAlt: blogMeta.themeImgAlt,
-        themeImgThumbnailSrc:
-          process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgThumbnailSrc,
-        placeholderColor: blogMeta.placeholderColor,
-        category: blogMeta.category,
+        url: process.env.NEXT_PUBLIC_BASE_URL + "/blog/" + blogMeta.slug,
+        dateCreated: blogMeta.publishedOn,
+        dateModified: blogMeta.commit.lastEditedTime,
+        datePublished: blogMeta.publishedOn,
+        inLanguage: blogMeta.lang,
+        isFamilyFriendly: true,
+        keywords: [blogMeta.slug],
+        articleBody: blogMeta.description,
         author: {
           "@type": "Person",
           name: blogMeta.author,
           url: blogMeta.authorGitHubUrl,
-          authorAvatarUrl: blogMeta.authorGitHubUrl,
         },
         publisher: {
           "@type": "Person",
-          author: blogMeta.author,
-          authorAvatarUrl: blogMeta.commit.authorAvatarUrl,
-          authorGithubUrl: blogMeta.commit.authorGithubUrl,
-          lastEditedTime: blogMeta.commit.lastEditedTime,
+          name: blogMeta.author,
+          url: blogMeta.commit.authorAvatarUrl,
         },
       };
     }
     return {};
+
+    // {
+    //   "contributor" : {},
+    //   "editor" : {},
+    //   "thumbnailUrl" : "string",
+    //   "video" : "string",
+    //   "version" : "string | number",
+    //   "description" : "string",
+    //   "sponsor" : {},
+    // }
   };
 
   return (

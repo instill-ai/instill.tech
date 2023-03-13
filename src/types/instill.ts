@@ -77,28 +77,25 @@ export type BlogArticleJsonLD = {
   "@context": string;
   "@type": string;
   headline: string;
-  lang: string;
-  draft: boolean;
-  description: string;
-  slug: string;
+  image: boolean;
+  url: string;
+  dateCreated: Date;
+  dateModified: Date;
+  datePublished: Date;
+  inLanguage: string;
   publishedOn: string;
-  image: string;
-  themeImgAlt?: string;
-  themeImgThumbnailSrc: string;
-  placeholderColor: TutorialPlaceholderColor;
-  category: string;
+  keywords: string[];
+  isFamilyFriendly: boolean;
+  articleBody: string;
   author: {
     "@type": string;
     name: Nullable<string>;
     url: Nullable<string>;
-    authorAvatarUrl: Nullable<string>;
   };
   publisher: {
     "@type": string;
-    author: Nullable<string>;
-    authorAvatarUrl: Nullable<string>;
-    authorGithubUrl: Nullable<string>;
-    lastEditedTime: Nullable<string>;
+    name: Nullable<string>;
+    url: Nullable<string>;
   };
 };
 
