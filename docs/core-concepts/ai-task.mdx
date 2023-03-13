@@ -307,10 +307,12 @@ It divides a binary mask (must in colume-major order) into a series of piecewise
 
 The above image shows examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of zeros.
 
-:::info{type=info}
-Check out functions to [encode masks into RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
-and [decode masks encoded via RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
-:::
+<InfoBlock type="info" title="info">
+  Check out functions to [encode masks into
+  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
+  and [decode masks encoded via
+  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
+</InfoBlock>
 
 ```json
 {
@@ -416,7 +418,10 @@ Generally, the task takes descriptive text prompts as the input, and outputs gen
 }
 ```
 
-:::info{type=info}
+<InfoBlock
+  type="info"
+  title="info"
+  >
 In above example, the generated images is a list of Base64 encoded images. To obtain the images, we need to decode Base64 as below snippet code.
 
 ```python
@@ -424,16 +429,19 @@ import base64
 import numpy as np
 
 # Decode the first image result
+
 base64_image = out['text_to_image']['images'][0]
 image = base64.b64decode(base64_image)
 
 # Save the decoded image
+
 filename = 'text_to_image.jpg'
 with open(filename, 'wb') as f:
-    f.write(image)
+f.write(image)
+
 ```
 
-:::
+</InfoBlock>
 
 ### Available models
 
@@ -441,8 +449,7 @@ with open(filename, 'wb') as f:
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
 | [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local-CPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip), [Local-GPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp16-gpu.zip) | ONNX      | ✅  | ✅  |
 
-:::info{type=tip}
-
+<InfoBlock type="tip" title="tip">
 Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
 
 **Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
@@ -453,7 +460,7 @@ curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.z
 
 **Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
 
-:::
+</InfoBlock>
 
 ## Text Generation
 
@@ -485,13 +492,13 @@ The task can fill in incomplete sentences or even generate full stories given th
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- | --- | --- |
 | [Megatron GPT2](https://catalog.ngc.nvidia.com/orgs/nvidia/models/megatron_lm_345m) | [GitHub-DVC](https://github.com/instill-ai/model-gpt2-megatron-dvc) | FasterTransformer | ❌  | ✅  |
 
-:::info{type=tip}
+<InfoBlock type="tip" title="tip">
 Depending on your internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
 
 The model only supports GPU deployment. By default, VDP can access all your GPUs.
 Assume that you have **N** GPUs, please pick the corresponding model instance tagged with `fp32-345m-N-gpu` to deploy.
 
-:::
+</InfoBlock>
 
 ## What if my task is not standardised by VDP yet?
 

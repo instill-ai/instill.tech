@@ -30,7 +30,7 @@ Playground.args = {
       authorAvatarUrl: "",
     },
     draft: false,
-    slug: "build-an-async-det-pipeline",
+    slug: "build-a-sync-pipeline",
     publishedOn: "2022-10-21T08:00:00",
     placeholderColor: "bg-instillWarmOrange50",
     themeImgSrc: "/tutorial-assets/tutorial-test-img.png",

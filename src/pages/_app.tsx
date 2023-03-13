@@ -22,6 +22,7 @@ import {
   MdxQuoteBlock,
   MdxQuoteBlockProps,
 } from "@/components/ui";
+import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -35,6 +36,11 @@ const components = {
   CH,
   QuoteBlock: (props: MdxQuoteBlockProps) => (
     <MdxQuoteBlock content={props.content} source={props.source} />
+  ),
+  InfoBlock: (props: MdxInfoBlockProps) => (
+    <MdxInfoBlock type={props?.type} title={props?.title}>
+      {props?.children}
+    </MdxInfoBlock>
   ),
   ZoomableImg: (props: any) => (
     <MdxZoomableImg

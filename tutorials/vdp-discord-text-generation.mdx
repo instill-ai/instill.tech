@@ -56,24 +56,30 @@ Therefore, we use [Megatron GPT-2 Medium (345m)](https://github.com/NVIDIA/Megat
 To build a `SYNC` pipeline that supports Discord apps with GTP-2, please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) with a few alterations:
 
 1. add an HTTP source,
-2. import the **Metatron GPT-2 Medium model (345m)** model from the GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID `gpt2`,
+2. import the **Metatron GPT-2 Medium model (345m)** model from the GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID `gpt2`
+
+   ,
+
 3. deploy a model instance that is compatible with GPUs on your machine,
 4. add an HTTP destination, and
 5. set up a pipeline with ID `gpt2`.
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 Depending on your internet speed, importing [Megatron GPT2 Medium model (345m)](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
 
 The model only supports GPU deployment. By default, VDP can access all your GPUs. Assume that you have N GPUs, please pick the corresponding model instance tagged with fp32-345m-N-gpu to deploy.
-:::
+
+</InfoBlock>
 
 ### Build via low-code
 
 In addition to the no-code console, you can also build the pipeline via REST API.
 
-:::info{type=info}
-VDP is implemented with [API-first](https://www.instill.tech/docs/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) design principle. It enables seamless integration to your data stack at any scale.
-:::
+<InfoBlock type="info" title="info">
+VDP is implemented with [API-first](/docs/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation) design principle. It enables seamless integration to your data stack at any scale.
+
+</InfoBlock>
 
 <CH.Scrollycoding>
 
@@ -224,9 +230,10 @@ Fetching credentials is also covered in detail in [Discord Getting Started](http
 - `DISCORD_TOKEN`: under Developer Portal/Application/Bot.
 - `GUILD_ID` in Discord, right-click on the server you wish to connect to the Discord app and select **Copy ID**.
 
-:::info{type=warning}
+<InfoBlock type="warning" title="warning">
 These credentials are added in `.env` for local development. Please keep them safe!
-:::
+
+</InfoBlock>
 
 <Gallery
   images={[
@@ -300,9 +307,10 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
 Free version **ngrok** can only be active for two hours. Ensure you update the endpoint setting under the **General information** page. Otherwise, you can consider hosting your server or using online services such as [Glitch](https://glitch.com/). Please see [Running your app on Discord](https://glitch.com/) for further details.
-:::
+
+</InfoBlock>
 
 Finally, go to your application under the **Discord Developer Portal**, copy the endpoint address, the **forwarding address** provided by **ngrok**, and paste it in the `INTERACTION ENDPOINT URL` below the **PUBLIC KEY** in the General Information page.
 
@@ -344,7 +352,7 @@ If you enjoyed VDP, we're building a fully managed service for VDP - **Instill C
 
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation?utm_source=blog&utm_medium=link&utm_campaign=vdp-discord-text-generation"
 />
 
 We also invite you to join our [Discord community](https://discord.gg/sevxWsqpGh) to share your use cases and showcase your work with Data/AI practitioners.

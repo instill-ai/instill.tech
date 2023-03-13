@@ -16,7 +16,7 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction), we briefly introduce the high-level concept of VDP.
+In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-2-quickstart), we briefly introduce the high-level concept of VDP.
 To benefit a broader community, we release VDP under the open-source Apache license 2.0.
 Check it out [here](https://github.com/instill-ai/vdp/blob/main/LICENSE). We've made it easy to get started with VDP on your local machines and Kubernetes clusters.
 
@@ -60,11 +60,13 @@ git clone https://github.com/instill-ai/vdp.git && cd vdp
 make all
 ```
 
-The installation may take a while. Have a cup of tea 🍵. Once the services are up, WHALA, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/).
+The installation may take a while. Have a cup of tea 🍵. Once the services are up, Voilà, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/).
 
-:::info{type=warning}
-⚠︎ Don't panic if you don't see the Console UI right after `make all`. Downloading the model-backend and Triton Inference Server image will take a while, but it should be a one-time effort.
-:::
+<InfoBlock type="warning" title="warning">
+  ⚠︎ Don't panic if you don't see the Console UI right after `make all`.
+  Downloading the model-backend and Triton Inference Server image will take a
+  while, but it should be a one-time effort.
+</InfoBlock>
 
 ↓↓ You should see the onboarding page. Enter your email, and you are all set! ↓↓
 
@@ -89,9 +91,11 @@ or by checking whether the `instill-vdp` Docker Compose is running correctly in 
   alt='VDP should run as a compose project named as "instill-vdp"'
 />
 
-:::info{type=info}
-We highly recommend you allocate at least **32GB** memory and **256GB** disk space to Docker for better stability. Go to `Settings > Resources` of **Docker Desktop** to set it up.
-:::
+<InfoBlock type="info" title="info">
+  We highly recommend you allocate at least **32GB** memory and **256GB** disk
+  space to Docker for better stability. Go to `Settings > Resources` of **Docker
+  Desktop** to set it up.
+</InfoBlock>
 
 ## Shut down VDP
 

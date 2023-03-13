@@ -41,7 +41,7 @@ export const addMemberIntoMailchimpList = async (email: string) => {
  * - `*|FNAME|*`
  * - `*|MC_PREVIEW_TEXT|*`
  * - `** GitHub (https://github.com/instill-ai)`
- * - `** Blog (https://blog.instill.tech/)`
+ * - `** Blog (https://www.instill.tech/blog)`
  * - `** Facebook (https://www.facebook.com/instilltech)`
  * - `** Twitter (https://twitter.com/instill_tech)`
  * - `Copyright © *|CURRENT_YEAR\\|* *|LIST:COMPANY|*, All rights reserved.`
@@ -65,7 +65,7 @@ export const removePlaceholderAndFooterWords = (content: string): string => {
     "\\*\\|MC_PREVIEW_TEXT\\|\\*",
     "============================================================",
     "\\*\\* GitHub \\(https://github.com/instill-ai\\)",
-    "\\*\\* Blog \\(https://blog.instill.tech/\\)",
+    "\\*\\* Blog \\(https://www.instill.tech/blog\\)",
     "\\*\\* Facebook \\(https://www.facebook.com/instilltech\\)",
     "\\*\\* Twitter \\(https://twitter.com/instill_tech\\)",
     "Copyright © \\*\\|CURRENT_YEAR\\|\\* \\*\\|LIST:COMPANY\\|\\*, All rights reserved.",

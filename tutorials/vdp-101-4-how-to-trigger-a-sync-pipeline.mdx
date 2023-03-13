@@ -16,13 +16,15 @@ authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
 authorGitHubUrl: "https://github.com/bryan107"
 ---
 
-In the previous tutorial [VDP 101 [3/7] Create your first pipeline on VDP](tutorials/vdp-3-create-your-first-pipeline), you've learnt how to create a pipeline in `SYNC` mode with ID **vdp-101-sync** via VDP Console.
+In the previous tutorial [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-3-create-your-first-pipeline/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-4-how-to-trigger-a-sync-pipeline), you've learnt how to create a pipeline in `SYNC` mode with ID **vdp-101-sync** via VDP Console.
 In this tutorial, we use it to showcase how to trigger this `SYNC` pipeline step-by-step.
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 You can create a VDP pipeline in `SYNC`, `ASYNC`, or `PULL` mode, depending on the use case.
-The combination of selected source and destination determines the pipeline mode. Further details can be found in [VDP 101 [6/7] Pipeline modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes).
-:::
+The combination of selected source and destination determines the pipeline mode. Further details can be found in [VDP 101 [6/7] Pipeline modes - SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-4-how-to-trigger-a-sync-pipeline).
+
+</InfoBlock>
 
 ## Trigger the pipeline with cURL requests
 
@@ -125,7 +127,7 @@ To check if you got everything ready, run the Python example with the command be
 python sync-http-url.py --api-gateway-url=http://localhost:8080 --pipeline-id=vdp-101-sync --image-url=https://artifacts.instill.tech/imgs/dog.jpg
 ```
 
-WHALA! You just triggered the object detection pipeline **vdp-101-sync**! You should see the detection results shown on the input [dog](https://artifacts.instill.tech/imgs/dog.jpg) image:
+Voilà! You just triggered the object detection pipeline **vdp-101-sync**! You should see the detection results shown on the input [dog](https://artifacts.instill.tech/imgs/dog.jpg) image:
 
 <img
   src="/tutorial-assets/vdp-101/4-how-to-trigger-a-sync-pipeline/dog-example.png"
@@ -174,9 +176,11 @@ body = {
 
 </CH.Code>
 
-:::info{type=info}
-Although JSON object is commonly used, it is not optimal to upload large objects, for which we recommend you trigger the pipeline using **HTTP Multipart Request**.
-:::
+<InfoBlock type="info" title="info">
+  Although JSON object is commonly used, it is not optimal to upload large
+  objects, for which we recommend you trigger the pipeline using **HTTP
+  Multipart Request**.
+</InfoBlock>
 
 Once the JSON payload is ready, we can trigger the pipeline using standard **HTTP POST requests**. There are **three** arguments In the HTTP POST messages. They are `pipeline backend URL`, `pipeline_id`, and `json`, the JSON object prepared above.
 
@@ -214,13 +218,14 @@ The HTTP POST request is similar to the **HTTP POST Request**. The only differen
 requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart", files=body)
 ```
 
-:::info{type=info}
-For further details of the Python `requests.post()` method, we refer readers [here](https://www.w3schools.com/python/ref_requests_post.asp).
-:::
+<InfoBlock type="info" title="info">
+  For further details of the Python `requests.post()` method, we refer readers
+  [here](https://www.w3schools.com/python/ref_requests_post.asp).
+</InfoBlock>
 
 ## What's next?
 
-Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse the Object Detection pipeline responses in our following tutorial → [VDP 101 [5/7] How to parse responses from SYNC pipelines](/tutorials/vdo-101-5-how-to-parse-vdp-responses).
+Okay, we have learned how to trigger pipelines on VDP. Let's see how to parse the Object Detection pipeline responses in our following tutorial → [VDP 101 [5/7] How to parse responses from SYNC pipelines](/tutorials/vdo-101-5-how-to-parse-vdp-responses/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-4-how-to-trigger-a-sync-pipeline).
 
 <br />
 <br />

@@ -10,10 +10,12 @@ we assign [profiles](https://docs.docker.com/compose/profiles) to each service i
 the [`docker-compose.dev.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose.dev.yml) file in VDP.
 This allows us to selectively enable services for various purposes, e.g., debugging, development.
 
-:::info{type=info}
-Services are associated with profiles through the `profiles` attribute, which takes an array of profile names.
-A service will be started only if one of its profile names is activated. A service without `profiles` will always be started.
-:::
+<InfoBlock type="info" title="info">
+  Services are associated with profiles through the `profiles` attribute, which
+  takes an array of profile names. A service will be started only if one of its
+  profile names is activated. A service without `profiles` will always be
+  started.
+</InfoBlock>
 
 VDP assigns seven different profile names:
 
