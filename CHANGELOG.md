@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.30.0](https://github.com/instill-ai/instill.tech/compare/v1.29.1...v1.30.0) (2023-03-11)
+
+
+### Features
+
+* replace info block directive with mdx component ([#513](https://github.com/instill-ai/instill.tech/issues/513)) ([969e8c0](https://github.com/instill-ai/instill.tech/commit/969e8c0125c91bc116877143b47e4d317c6e3994))
+
+
+### Documentation
+
+* **blog,documentation,tutorials:** remove tutorials from documentation ([#516](https://github.com/instill-ai/instill.tech/issues/516)) ([a2c2fb6](https://github.com/instill-ai/instill.tech/commit/a2c2fb6967277e4cce22785923dc750804296ac1))
+* **start-here:** update roadmap ([#519](https://github.com/instill-ai/instill.tech/issues/519)) ([c5c2210](https://github.com/instill-ai/instill.tech/commit/c5c2210aa7f7744f55b568e7f51ea9329a844e7a))
+* **tutorial:** fix info block in tutorial ([#518](https://github.com/instill-ai/instill.tech/issues/518)) ([7a1112a](https://github.com/instill-ai/instill.tech/commit/7a1112a302e4b4f22a62d69a5b468ec6b066b151))
+
 ## [1.29.1](https://github.com/instill-ai/instill.tech/compare/v1.29.0...v1.29.1) (2023-03-08)
 
 

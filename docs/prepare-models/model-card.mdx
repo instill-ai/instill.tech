@@ -27,9 +27,10 @@ Here shows a model card example of a model imported from a GitHub repository [mo
   alt="Model card in VDP Console"
 />
 
-:::info{type=info}
-Try our [Import GitHub models](/docs/import-models/github) guideline to import a model from GitHub
-:::
+<InfoBlock type="info" title="info">
+  Try our [Import GitHub models](/docs/import-models/github) guideline to import
+  a model from GitHub
+</InfoBlock>
 
 ## Model card metadata
 
@@ -48,10 +49,11 @@ Tags:
 
 ### Specify an AI task
 
-:::info{type=tip}
-Technically, you can assign different AI task to model instances of the same model.
-However, this is strongly discouraged. Model instances of a model should be designed to solve the same task.
-:::
+<InfoBlock type="tip" title="tip">
+  Technically, you can assign different AI task to model instances of the same
+  model. However, this is strongly discouraged. Model instances of a model
+  should be designed to solve the same task.
+</InfoBlock>
 
 When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
 If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised AI task format whenever using the model.

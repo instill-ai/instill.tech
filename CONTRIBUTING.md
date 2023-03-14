@@ -55,32 +55,31 @@ To be documented...
 
 #### Info-block
 
-- We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed. 
-- Please do enclose the info-block with proper syntax, every missed ::: will cause some unwanted behavior.(Currently, we don't have way to detect this kind of syntax error)
-
+- We offer four info-block variant: info, warning, danger and tip. No custom variant allowed, if you fill in other variant, the build will failed.
+- Please do enclose the info-block with proper syntax. Currently, we don't have way to detect this kind of syntax error.
 
 ```md
-:::info{type=info}
-This is info block with info type
-:::
+<InfoBlock type="info" title="info">
+  This is info block with info type
+</InfoBlock>
 ```
 
 ```md
-:::info{type=warning}
-This is info block with warning type
-:::
+<InfoBlock type="warning" title="warning">
+  This is warning block with warning type
+</InfoBlock>
 ```
 
 ```md
-:::info{type=danger}
-This is info block with danger type
-:::
+<InfoBlock type="danger" title="danger">
+  This is danger block with danger type
+</InfoBlock>
 ```
 
 ```md
-:::info{type=tip}
-This is info block with danger type
-:::
+<InfoBlock type="tip" title="tip">
+  This is tip block with tip type
+</InfoBlock>
 ```
 
 #### Details section
@@ -91,7 +90,8 @@ Please follow markdown details syntax like below
 <details>
   <summary>**Is VDP free?**</summary>
 
-  Content
+Content
+
 </details>
 ```
 
@@ -104,10 +104,7 @@ You can use ZoomableImg to make the image zoomable like Medium
 If width is not specificed, the image will expand to the full width of the parent.
 
 ```mdx
-<ZoomableImg 
-  src="src"
-  alt="alt"
-/>
+<ZoomableImg src="src" alt="alt" />
 ```
 
 You can specific the width of the image, if the width is bigger than the parent, it will be adjusted to the width of the parent. If the width is smaller than the parent, it will align to left.
@@ -115,11 +112,7 @@ You can specific the width of the image, if the width is bigger than the parent,
 Normally you don't need to specific the height.
 
 ```mdx
-<ZoomableImg 
-  src="src"
-  alt="alt"
-  width="500px"
-/>
+<ZoomableImg src="src" alt="alt" width="500px" />
 ```
 
 #### Tweet
@@ -147,7 +140,7 @@ You can embed gallery by using this component, the image will be displayed in a 
   images={[
     {
       alt: "Pipeline is empty view",
-      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
     },
     {
       alt: "Add async http source",
@@ -163,7 +156,7 @@ You can embed gallery by using this component, the image will be displayed in a 
     },
     {
       alt: "Add postgres destination",
-      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres-1.png",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres.png",
     },
     {
       alt: "Add async pipeline",
@@ -180,7 +173,7 @@ You can use this component to implement instill-ai's call to action button.
 ```mdx
 <CtaButton
   text="🚀 Join the Instill Cloud waitlist"
-  link="https://www.instill.tech/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
@@ -198,18 +191,18 @@ You can embed Youtube video by using this component.
 
 ### Add content to the right location
 
-- Please add content into the /docs folder. 
+- Please add content into the /docs folder.
 - For the specific sub-folder you could ask instill-ai's member for advice.
 
 ### Add correct frontmatter
 
-- We require following frontmatter for documentation. 
+- We require following frontmatter for documentation.
 
 ```ts
-title: string
-lang: string
-draft: boolean
-description: string
+title: string;
+lang: string;
+draft: boolean;
+description: string;
 ```
 
 ### Add content into sidebar
@@ -228,7 +221,8 @@ const SIDEBAR: Sidebar = {
       height: 36,
       alt: "VDP's logo",
     },
-    sections: [ // <-- This is the sidebar section
+    sections: [
+      // <-- This is the sidebar section
       {
         text: "Start here",
         collapsible: true,
@@ -261,43 +255,43 @@ Please add the static file into the sub-folder in `/public/docs-assets` follow t
 
 ### Add correct frontmatter
 
-- We require following frontmatter for tutorials. 
+- We require following frontmatter for tutorials.
 - You could find details type definition in the /src/types/instill
 
 ```ts
 type TutorialMeta = {
   // The title of the article.
-  title: string; 
+  title: string;
 
   // The language of the article, for example en-US.
-  lang: string; 
+  lang: string;
 
   // Whether this article is draft or not.
-  draft: boolean; 
+  draft: boolean;
 
-  // The description of this article. This will be put into description related 
+  // The description of this article. This will be put into description related
   // meta in the header.
-  description: string; 
+  description: string;
 
   // Please reference the type below.
-  aiTask: AiTask; 
+  aiTask: AiTask;
 
-  // Connectors will be display as is on the page. For example, if you have a 
+  // Connectors will be display as is on the page. For example, if you have a
   // sourceConnector named HTTP, we will display the connector name as HTTP.
-  sourceConnector: string; 
+  sourceConnector: string;
   destinationConnector: string;
 
-  // Slug should be as same as the name of the filename of the article. It 
-  // will be the URL fragment of the article too. For example if you have 
-  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the 
+  // Slug should be as same as the name of the filename of the article. It
+  // will be the URL fragment of the article too. For example if you have
+  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the
   // URL will be https://instill.tech/tutorials/vdp-101.
-  slug: string; 
+  slug: string;
 
   // The published data of this article in UTC timezone
-  publishedOn: string; 
+  publishedOn: string;
 
-  // The placeholder color of this tutorial, the placeholder will be 
-  // displayed at the index page of tutorials and the detail page of this 
+  // The placeholder color of this tutorial, the placeholder will be
+  // displayed at the index page of tutorials and the detail page of this
   // tutorial when the themeImgSrc and themeImgThumbnailSrc is not present.
   // For example, if themeImgThumbnailSrc is not present we will display a
   // placeholder card with this color at the tutorials index page.
@@ -310,10 +304,10 @@ type TutorialMeta = {
   // The themeImg that will be displayed on the index page of tutorials.
   themeImgThumbnailSrc: string;
 
-  // Use case will be display as is on the page. For example, if you have 
-  // a use case named Prototype, we will display the use case name as 
+  // Use case will be display as is on the page. For example, if you have
+  // a use case named Prototype, we will display the use case name as
   // Prototype.
-  useCase: string; 
+  useCase: string;
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
@@ -355,33 +349,32 @@ type TutorialPlaceholderColor =
 
 ### Add correct frontmatter
 
-- We require following frontmatter for blog. 
+- We require following frontmatter for blog.
 - You could find details type definition in the /src/types/instill
 
 ```ts
-
 export type BlogArticleMeta = {
   // The title of the article.
-  title: string; 
+  title: string;
 
   // The language of the article, for example en-US.
-  lang: string; 
+  lang: string;
 
   // Whether this article is draft or not.
-  draft: boolean; 
+  draft: boolean;
 
-  // The description of this article. This will be put into description related 
+  // The description of this article. This will be put into description related
   // meta in the header.
-  description: string; 
+  description: string;
 
-  // Slug should be as same as the name of the filename of the article. It 
-  // will be the URL fragment of the article too. For example if you have 
-  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the 
+  // Slug should be as same as the name of the filename of the article. It
+  // will be the URL fragment of the article too. For example if you have
+  // a article at /tutorials/vdp-101, the slug should be vdp-101 and the
   // URL will be https://instill.tech/tutorials/vdp-101.
   slug: string;
 
   // The published data of this article in UTC timezone
-  publishedOn: string; 
+  publishedOn: string;
 
   // The themeImg that will be displayed on the page of the tutorial.
   themeImgSrc: string;
@@ -390,8 +383,8 @@ export type BlogArticleMeta = {
   // The themeImg that will be displayed on the index page of tutorials.
   themeImgThumbnailSrc: string;
 
-  // The placeholder color of this tutorial, the placeholder will be 
-  // displayed at the index page of tutorials and the detail page of this 
+  // The placeholder color of this tutorial, the placeholder will be
+  // displayed at the index page of tutorials and the detail page of this
   // tutorial when the themeImgSrc and themeImgThumbnailSrc is not present.
   // For example, if themeImgThumbnailSrc is not present we will display a
   // placeholder card with this color at the tutorials index page.
@@ -400,8 +393,8 @@ export type BlogArticleMeta = {
   authorAvatarSrc: string;
   authorGitHubUrl: string;
 
-  // Category will be display as is on the page. For example, if you have 
-  // a category named Our Story, we will display the use case name as 
+  // Category will be display as is on the page. For example, if you have
+  // a category named Our Story, we will display the use case name as
   // Our Story.
   category: string;
 };
@@ -420,6 +413,7 @@ Please don't use p tag to wrap other component in markdown. Because it will caus
 
 ```mdx
 // This is not allowed.
+
 <p>
   <ZoomableImg />
 </p>

@@ -8,7 +8,7 @@ import { remarkCodeHike } from "@code-hike/mdx";
 import { readFile } from "fs/promises";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { h } from "hastscript";
-import { remarkInfoBlock } from "./src/lib/markdown/remark-info-block.mjs";
+// import { remarkInfoBlock } from "./src/lib/markdown/remark-info-block.mjs";
 import { remarkYoutube } from "./src/lib/markdown/remark-youtube.mjs";
 import {
   infoBlockHeader,
@@ -24,7 +24,7 @@ const withMDX = mdx({
   options: {
     remarkPlugins: [
       remarkDirective,
-      remarkInfoBlock,
+      // remarkInfoBlock,
       [remarkYoutube, { validateYoutubeLink: true }],
       remarkGfm,
       [remarkCodeHike, { theme, lineNumbers: false, showCopyButton: true }],

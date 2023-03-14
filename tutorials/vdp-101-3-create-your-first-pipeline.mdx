@@ -18,7 +18,7 @@ authorGitHubUrl: "https://github.com/bryan107"
 
 In this tutorial, we will build our first unstructured data pipeline with VDP, which allows you to process your data for a specific AI task with minimum effort.
 
-As we demonstrated in [VDP 101 - Introduction](/tutorials/vdp-101-1-introduction), VDP aims to streamline the end-to-end unstructured data pipeline.
+As we demonstrated in [VDP 101 - Introduction](/tutorials/vdp-101-1-introduction?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline), VDP aims to streamline the end-to-end unstructured data pipeline.
 An unstructured data pipeline is defined by a recipe which consists of three components:
 
 - `source` - where the pipeline starts to ingest unstructured data to be processed.
@@ -29,7 +29,7 @@ The following tutorial will demonstrate how to set up these three components and
 
 ## Prerequisites
 
-Before diving into the details, please ensure you have launched VDP on your machine. If not, you can set it up following the tutorial [VDP 101 [2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart).
+Before diving into the details, please ensure you have launched VDP on your machine. If not, you can set it up following the tutorial [VDP 101 [2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline).
 
 After launching VDP, you can access the Console via http://localhost:3000. If this is your first time setting up VDP, you should see the onboarding page. Enter your email, and you are all set!
 
@@ -46,9 +46,10 @@ Click on the **Pipeline** page on the left sidebar. Since we have not yet set up
 
 VDP currently supports two sources, **HTTP** and **gRPC**. An HTTP source accepts HTTP requests with payloads to be processed by a pipeline.
 
-:::info{type=info}
-Check our growing list of [Source Connectors](/docs/source-connectors/overview).
-:::
+<InfoBlock type="info" title="info">
+  Check our growing list of [Source
+  Connectors](/docs/source-connectors/overview/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline).
+</InfoBlock>
 
 To set up a **Source Connector**,
 
@@ -80,11 +81,16 @@ To set it up,
 
 VDP will fetch all the releases of the GitHub repository. Each release is converted into one Model Instance, using the release tag as the corresponding model instance ID.
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 A **Model Instance** represents a tagged snapshot of a Model. A model may have multiple model instances.
 The tag of a model instance depends on the model source and what versioning control tool the model source uses.
-Check out the [documentation](/docs/core-concepts/model).
-:::
+
+</InfoBlock>
+
+Check out the [documentation](/docs/core-concepts/model/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline).
+
+> > > > > > > ff9c78e (chore: update links)
 
 Once the model is imported, we can choose one model instance to deploy. For simplicity,
 
@@ -106,13 +112,14 @@ Since we are building a `SYNC` pipeline, the `HTTP` destination is paired automa
   alt="Add an HTTP destination to create a SYNC pipeline in the VDP Console."
 />
 
-:::info{type=info}
+<InfoBlock type="info" title="info">
+
 When creating pipelines under `sync` mode, source and destination connectors in VDP must be the same, which means:
 
 - HTTP source → HTTP destination
 - gRPC source → gRPC destination
 
-:::
+</InfoBlock>
 
 ## Step 5: Set up the pipeline
 
@@ -136,9 +143,10 @@ We are almost there! We have created `Source`, `Model`, and `Destination`. The l
 
 You can find further details about this pipeline by clicking on the one you just created. The **green** light indicates the pipeline is `Active` and can be triggered via sending HTTP requests.
 
-:::info{type=info}
-Check out the [documentation](/docs/core-concepts/pipeline#state) to understand all the pipeline states.
-:::
+<InfoBlock type="info" title="info">
+  Check out the [documentation](/docs/core-concepts/pipeline#state) to
+  understand all the pipeline states.
+</InfoBlock>
 
 <img
   src="/tutorial-assets/vdp-101/3-create-your-first-pipeline/first-pipeline-page.png"
@@ -147,7 +155,7 @@ Check out the [documentation](/docs/core-concepts/pipeline#state) to understand 
 
 ## What's next?
 
-You may notice the REST request examples to trigger the pipeline in the **Trigger** section at the bottom of the page. No worry about this now. You will learn how to trigger this pipeline in the following tutorial → [VDP 101 [4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline).
+You may notice the REST request examples to trigger the pipeline in the **Trigger** section at the bottom of the page. No worry about this now. You will learn how to trigger this pipeline in the following tutorial → [VDP 101 [4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline).
 
 <br />
 <br />

@@ -36,20 +36,6 @@ const SIDEBAR: Sidebar = {
         ],
       },
       {
-        text: "Tutorials",
-        collapsible: true,
-        items: [
-          {
-            text: "Build a SYNC Classification pipeline",
-            link: "/docs/tutorials/build-a-sync-cls-pipeline",
-          },
-          {
-            text: "Build an ASYNC Object Detection pipeline",
-            link: "/docs/tutorials/build-an-async-det-pipeline",
-          },
-        ],
-      },
-      {
         text: "Deployment",
         collapsible: true,
         items: [

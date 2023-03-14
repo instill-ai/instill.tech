@@ -16,9 +16,10 @@ If no task is specified when creating a model, the output will the raw model out
 
 ### Image Classification
 
-:::info{type=info}
-Learn more about [Image Classification task](/docs/core-concepts/ai-task#image-classification)
-:::
+<InfoBlock type="info" title="info">
+  Learn more about [Image Classification
+  task](/docs/core-concepts/ai-task#image-classification)
+</InfoBlock>
 
 Assume we have a "cat vs. dog" model to infer whether an image is a cat image or dog image. Create a `labels.txt` file to list all the pre-defined categories, with one category label per line. Add the file to the folder of inference model.
 
@@ -62,9 +63,10 @@ Check the [standarised output for Image Classification](/docs/core-concepts/ai-t
 
 ### Object Detection
 
-:::info{type=info}
-Learn more about [Object Detection task](/docs/core-concepts/ai-task#object-detection)
-:::
+<InfoBlock type="info" title="info">
+  Learn more about [Object Detection
+  task](/docs/core-concepts/ai-task#object-detection)
+</InfoBlock>
 
 Create a Python file with a structure similar to below. The file inherits the `PostDetectionModel` class and implement the `post_process_per_image` abstract method.
 Then, add the file in the post-processing model folder:
@@ -134,9 +136,10 @@ Check the [standardised output for Object Detection](/docs/core-concepts/ai-task
 
 ### Keypoint Detection
 
-:::info{type=info}
-Learn more about [Keypoint Detection task](/docs/core-concepts/ai-task#keypoint-detection)
-:::
+<InfoBlock type="info" title="info">
+  Learn more about [Keypoint Detection
+  task](/docs/core-concepts/ai-task#keypoint-detection)
+</InfoBlock>
 
 Create a Python file with a structure similar to below and add the file in the post-processing model folder:
 
@@ -213,9 +216,10 @@ Check the [standardised output for Keypoint Detection](/docs/core-concepts/ai-ta
 
 ### Instance Segmentation task
 
-:::info{type=info}
-Learn more about [Instance Segmentation task](/docs/core-concepts/ai-task#instance-segmentation)
-:::
+<InfoBlock type="info" title="info">
+  Learn more about [Instance Segmentation
+  task](/docs/core-concepts/ai-task#instance-segmentation)
+</InfoBlock>
 
 Check the [standardised output for Instance Segmentation task](/docs/core-concepts/ai-task#instance-segmentation), here shows an output example:
 
@@ -247,9 +251,10 @@ Check the [standardised output for Instance Segmentation task](/docs/core-concep
 
 ### Unspecified AI task
 
-:::info{type=info}
-Learn more about [Unspecified AI task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
-:::
+<InfoBlock type="info" title="info">
+  Learn more about [Unspecified AI
+  task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
+</InfoBlock>
 
 If your model is imported without specifying any task metadata, the model will be recognised to solve an `Unspecified` task.
 There is no need to prepare your model outputs to fit any format.

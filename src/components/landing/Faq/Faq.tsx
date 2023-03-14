@@ -66,7 +66,7 @@ There must be a better way, and **Versatile Data Pipeline (VDP)** is the answer.
 
 To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
-You can find more detailed narrative in our blog article [Why Instill AI exists](https://blog.instill.tech/why-instill-ai-exists/?utm_source=product&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](https://blog.instill.tech/unstructured-data-etl/?utm_source=product&utm_medium=link).`}
+You can find more detailed narrative in our blog article [Why Instill AI exists](https://www.instill.tech/blog/why-instill-ai-exists/?utm_source=product&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](https://www.instill.tech/blog/unstructured-data-etl/?utm_source=product&utm_medium=link).`}
                   </FaqContent>
                 ),
               },
@@ -99,7 +99,7 @@ In spite of all that, VDP is an open-source project. Everyone is more than welco
 
 In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
                   
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](https://www.instill.tech/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
+If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
                   </FaqContent>
                 ),
               },
@@ -110,7 +110,7 @@ If you are interested in the hosting service of VDP, we've started signing up us
                   <FaqContent>
                     {`We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
 
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](https://www.instill.tech/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
+If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
                   </FaqContent>
                 ),
               },
@@ -120,7 +120,7 @@ If you are interested in the hosting service of VDP, we've started signing up us
             withArrow={true}
             position="xl:ml-auto"
             text="See all FAQ"
-            link="https://www.instill.tech/docs/start-here/faq"
+            link="/docs/start-here/faq"
           />
         </div>
       </div>
