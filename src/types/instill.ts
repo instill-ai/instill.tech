@@ -77,25 +77,23 @@ export type BlogArticleJsonLD = {
   "@context": string;
   "@type": string;
   headline: string;
-  image: boolean;
+  image: string;
   url: string;
-  dateCreated: Date;
-  dateModified: Date;
-  datePublished: Date;
+  dateCreated: string;
+  datePublished: string;
   inLanguage: string;
-  publishedOn: string;
-  keywords: string[];
   isFamilyFriendly: boolean;
+  keywords: string[];
   articleBody: string;
   author: {
     "@type": string;
-    name: Nullable<string>;
-    url: Nullable<string>;
+    name: string;
+    url: string;
   };
   publisher: {
     "@type": string;
-    name: Nullable<string>;
-    url: Nullable<string>;
+    name: string;
+    url: string;
   };
 };
 

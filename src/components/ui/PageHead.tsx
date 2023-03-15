@@ -16,7 +16,7 @@ export type PageHeadProps = {
   additionMeta: Nullable<ReactElement>;
   currentArticleMeta: Nullable<TutorialMeta | BlogArticleMeta>;
   commitMeta: Nullable<CommitMeta>;
-  jsonLd?: Nullable<BlogArticleJsonLD | object>;
+  jsonLd?: Nullable<BlogArticleJsonLD>;
 };
 
 export const PageHead = ({

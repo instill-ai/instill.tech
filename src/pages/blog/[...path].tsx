@@ -37,6 +37,7 @@ type BlogPageProps = {
   articles: BlogArticleMeta[];
   commitMeta: Nullable<CommitMeta>;
   blogMeta: Nullable<BlogArticleMeta>;
+  source: string;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -120,6 +121,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
       articles,
       commitMeta,
       blogMeta: articles.find((e) => e.slug === relativePath) || null,
+      source,
     },
   };
 };
@@ -130,7 +132,7 @@ type GetLayOutProps = {
 
 const BlogPage: FC<BlogPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, articles, blogMeta }) => {
+} = ({ mdxSource, commitMeta, headers, articles, blogMeta, source }) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
@@ -144,35 +146,33 @@ const BlogPage: FC<BlogPageProps> & {
 
   const getJsonLd = (
     blogMeta: Nullable<BlogArticleMeta>
-  ): Nullable<BlogArticleJsonLD | object> => {
-    if (blogMeta) {
-      return {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: blogMeta.title,
-        image: process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgSrc,
-        url: process.env.NEXT_PUBLIC_BASE_URL + "/blog/" + blogMeta.slug,
-        dateCreated: blogMeta.publishedOn,
-        dateModified: blogMeta.commit.lastEditedTime,
-        datePublished: blogMeta.publishedOn,
-        inLanguage: blogMeta.lang,
-        isFamilyFriendly: true,
-        keywords: [blogMeta.slug],
-        articleBody: blogMeta.description,
-        author: {
-          "@type": "Person",
-          name: blogMeta.author,
-          url: blogMeta.authorGitHubUrl,
-        },
-        publisher: {
-          "@type": "Person",
-          name: blogMeta.author,
-          url: blogMeta.commit.authorAvatarUrl,
-        },
-      };
+  ): Nullable<BlogArticleJsonLD> => {
+    if (!blogMeta) {
+      return null;
     }
-    return {};
-
+    return {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: blogMeta.title,
+      image: process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgSrc,
+      url: process.env.NEXT_PUBLIC_BASE_URL + "/blog/" + blogMeta.slug,
+      dateCreated: blogMeta.publishedOn,
+      datePublished: blogMeta.publishedOn,
+      inLanguage: blogMeta.lang,
+      isFamilyFriendly: true,
+      keywords: [],
+      articleBody: source,
+      author: {
+        "@type": "Person",
+        name: blogMeta.author,
+        url: blogMeta.authorGitHubUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Instill AI",
+        url: process.env.NEXT_PUBLIC_BASE_URL || "",
+      },
+    };
     // {
     //   "contributor" : {},
     //   "editor" : {},
