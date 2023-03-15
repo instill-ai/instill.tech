@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.instill.tech
+Host: http://localhost:3010
 
 # Sitemaps
-Sitemap: https://www.instill.tech/sitemap.xml
+Sitemap: http://localhost:3010/sitemap.xml

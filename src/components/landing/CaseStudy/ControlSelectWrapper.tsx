@@ -59,12 +59,12 @@ export const ControlSelectWrapper = ({
         key={id}
         id={id}
         instanceId={id}
-        label={label}
+        label={null}
         options={options}
         value={customizable ? selectOption : options[0]}
         onChange={onChangehandler}
         onFocus={selectOnFocus}
-        required={true}
+        required={false}
         disabled={customizable ? false : onChange ? false : true}
       />
       {customizable ? null : (
