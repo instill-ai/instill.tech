@@ -84,7 +84,6 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
           <Link
             key={item.link}
             href={item.link}
-            // key={item.text}
             className={cn(
               "text-sm font-normal transition duration-300 ease-in-out hover:text-instillSkyBlue dark:hover:text-instillSkyBlue",
               item.link === router.asPath.split("#")[0]
