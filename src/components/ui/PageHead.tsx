@@ -16,7 +16,7 @@ export type PageHeadProps = {
   additionMeta: Nullable<ReactElement>;
   currentArticleMeta: Nullable<TutorialMeta | BlogArticleMeta>;
   commitMeta: Nullable<CommitMeta>;
-  jsonLd?: Nullable<BlogArticleJsonLD>;
+  jsonLd: Nullable<BlogArticleJsonLD>;
 };
 
 export const PageHead = ({
@@ -218,7 +218,7 @@ export const PageHead = ({
           </>
         )}
 
-        {pageType === "blog" && (
+        {pageType === "blog" && jsonLd && (
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         )}
       </Head>
