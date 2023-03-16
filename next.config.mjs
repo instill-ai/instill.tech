@@ -53,11 +53,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },

@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "../src/styles/global.css";
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
 // Workaround for next/future/image

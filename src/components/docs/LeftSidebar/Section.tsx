@@ -81,18 +81,17 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
         })}
       >
         {items.map((item) => (
-          <Link key={item.link} href={item.link}>
-            <a
-              key={item.text}
-              className={cn(
-                "text-sm font-normal transition duration-300 ease-in-out hover:text-instillSkyBlue dark:hover:text-instillSkyBlue",
-                item.link === router.asPath.split("#")[0]
-                  ? "text-instillSkyBlue"
-                  : "text-instillGrey80 dark:text-instillGrey30"
-              )}
-            >
-              {item.text}
-            </a>
+          <Link
+            key={item.link}
+            href={item.link}
+            className={cn(
+              "text-sm font-normal transition duration-300 ease-in-out hover:text-instillSkyBlue dark:hover:text-instillSkyBlue",
+              item.link === router.asPath.split("#")[0]
+                ? "text-instillSkyBlue"
+                : "text-instillGrey80 dark:text-instillGrey30"
+            )}
+          >
+            {item.text}
           </Link>
         ))}
       </div>

@@ -133,7 +133,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   {
                     id: "case-study-0-source-control",
                     customizable: false,
-                    label: "Source",
+                    label: null,
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
@@ -167,7 +167,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   {
                     id: "case-study-0-model-control",
                     customizable: false,
-                    label: "Model",
+                    label: null,
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 1
@@ -202,7 +202,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   {
                     id: "case-study-0-destination-control",
                     customizable: false,
-                    label: "Destination",
+                    label: null,
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
@@ -245,7 +245,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                 controls: [
                   {
                     id: "case-study-1-source-control",
-                    label: "Source",
+                    label: null,
                     customizable: false,
                     wrapperOnMouseOver: () => setFocusedShowcaseFrame(0),
                     isActive:
@@ -279,7 +279,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                 controls: [
                   {
                     id: "case-study-1-model-control-0",
-                    label: "Model",
+                    label: null,
                     customizable: false,
                     wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
@@ -302,7 +302,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   },
                   {
                     id: "case-study-1-model-control-1",
-                    label: "Model",
+                    label: null,
                     customizable: false,
                     wrapperOnMouseOver: () => setFocusedShowcaseFrame(2),
                     isActive:
@@ -336,7 +336,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                 controls: [
                   {
                     id: "case-study-1-destination-control",
-                    label: "Destination",
+                    label: null,
                     customizable: false,
                     wrapperOnMouseOver: () => setFocusedShowcaseFrame(3),
                     isActive:
@@ -381,7 +381,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   {
                     id: "case-study-2-source-control",
                     customizable: false,
-                    label: "Source",
+                    label: null,
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 0
@@ -414,7 +414,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                 controls: [
                   {
                     id: "case-study-2-model-control",
-                    label: "Model",
+                    label: null,
                     customizable: false,
                     wrapperOnMouseOver: () => setFocusedShowcaseFrame(1),
                     isActive:
@@ -449,7 +449,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
                   {
                     id: "case-study-2-destination-control",
                     customizable: false,
-                    label: "Destination",
+                    label: null,
                     isActive:
                       focusedShowcaseFrame !== null
                         ? focusedShowcaseFrame === 2
