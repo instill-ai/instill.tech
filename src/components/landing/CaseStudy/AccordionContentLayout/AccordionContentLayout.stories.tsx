@@ -1,6 +1,6 @@
 import { OpticalCharacterRecognitionIcon } from "@instill-ai/design-system";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { AccordionContentLayout } from "./AccordionContentLayout";
 
 export default {

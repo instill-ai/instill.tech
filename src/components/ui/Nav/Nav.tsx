@@ -56,10 +56,8 @@ export const Nav = () => {
         </AnnouncementBar>
       )}
       <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
-        <Link href="/">
-          <a className="my-auto mr-auto flex">
-            <Logo type="ColourLogomarkBlackType" width={158} />
-          </a>
+        <Link href="/" className="my-auto mr-auto flex">
+          <Logo type="ColourLogomarkBlackType" width={158} />
         </Link>
 
         <div className="flex flex-row justify-end gap-x-[60px] lg:ml-auto">
@@ -84,10 +82,8 @@ export const Nav = () => {
         </AnnouncementBar>
       )}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
-        <Link href="/">
-          <a className="flex">
-            <Logo type="ColourLogomarkBlackType" width={159} />
-          </a>
+        <Link href="/" className="flex">
+          <Logo type="ColourLogomarkBlackType" width={159} />
         </Link>
         <button
           className="ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
