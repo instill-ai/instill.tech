@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.31.0](https://github.com/instill-ai/instill.tech/compare/v1.30.0...v1.31.0) (2023-03-16)
+
+
+### Features
+
+* [INS-152] add media kit ([#527](https://github.com/instill-ai/instill.tech/issues/527)) ([7e953c9](https://github.com/instill-ai/instill.tech/commit/7e953c93fb844f6d1e4d2e8b8e91c804cbdddc08))
+* [INS-247] replace jest with vitest ([#526](https://github.com/instill-ai/instill.tech/issues/526)) ([d59cef7](https://github.com/instill-ai/instill.tech/commit/d59cef7e047ad45b1865c1ce658947847b2941cf))
+* upgrade to Nextjs 13 ([#515](https://github.com/instill-ai/instill.tech/issues/515)) ([e62e03c](https://github.com/instill-ai/instill.tech/commit/e62e03c57759b64e4cacd72eb5dc7402e2465dbb))
+
+
+### Bug Fixes
+
+* [INS-237] fix the visual bug of CaseStudy section ([#525](https://github.com/instill-ai/instill.tech/issues/525)) ([aa06caa](https://github.com/instill-ai/instill.tech/commit/aa06caa8b4c8158606ab679d454132fea9ba17f2))
+
+
+### Documentation
+
+* fix typos in VDP 101 tutorials ([#521](https://github.com/instill-ai/instill.tech/issues/521)) ([10d70eb](https://github.com/instill-ai/instill.tech/commit/10d70eb6219476a07c4c6b7782a78ab7be657953))
+
 ## [1.30.0](https://github.com/instill-ai/instill.tech/compare/v1.29.1...v1.30.0) (2023-03-11)
 
 
