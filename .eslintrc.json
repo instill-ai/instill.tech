@@ -4,7 +4,13 @@
     "node": true,
     "es6": true
   },
-  "ignorePatterns": ["**/node_modules", "**/dist", "**/build"],
+  "ignorePatterns": [
+    "**/node_modules",
+    "**/dist",
+    "**/build",
+    "setupTests.ts",
+    "vitest.config.ts"
+  ],
   "parser": "@typescript-eslint/parser",
   "settings": {
     "react": {
@@ -117,11 +123,7 @@
     {
       // For performance run jest/recommended on test files, not regular code
       "files": ["**/?(*.)+(test).{js,jsx,ts,tsx}"],
-      "extends": [
-        "plugin:jest/recommended",
-        "plugin:jest-formatting/recommended",
-        "plugin:testing-library/react"
-      ],
+      "extends": ["plugin:testing-library/react"],
       "rules": {
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-object-literal-type-assertion": "off",

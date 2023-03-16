@@ -1,4 +1,5 @@
 import { validateTutorialMeta } from "./validateTutorialMeta";
+import { describe, test, expect } from "vitest";
 
 describe("Should validate tutorial meta", () => {
   test("Should correctly validate the tutorial meta", () => {
