@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import cn from "clsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Image from "next/future/image";
+import Image from "next/image";
 
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { SecureYourSpot, StayInTheLoop } from "../ui";
