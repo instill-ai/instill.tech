@@ -1,5 +1,5 @@
 import { FC, Fragment, ReactElement } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import matter from "gray-matter";
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const mailchimp = require("@mailchimp/mailchimp_marketing");
@@ -27,7 +27,7 @@ type GetLayOutProps = {
   page: ReactElement;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   // Init mailchimp client
   mailchimp.setConfig({
     apiKey: process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY,
@@ -95,7 +95,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       campaigns: publicCampaigns,
     },
-    revalidate: 10,
   };
 };
 
