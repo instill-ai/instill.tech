@@ -72,8 +72,6 @@ export const DynamicPagination = ({
         Prev
       </p>
 
-      {console.log(pages)}
-
       {pages?.map((page, index) => (
         <p
           key={index}
