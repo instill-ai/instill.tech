@@ -15,6 +15,13 @@ export { PageHead } from "./PageHead";
 export type { PageHeadProps } from "./PageHead";
 export { PageHero } from "./PageHero";
 export type { PageHeroProps } from "./PageHero";
+export {
+  DynamicPagination,
+  getPaginationArrayWithPageScroll,
+  getPageNumber,
+  getTotalPage,
+} from "./DynamicPagination";
+export type { DynamicPaginationProps } from "./DynamicPagination";
 export { ReactMarkdownWrapper } from "./ReactMarkdownWrapper";
 export type { ReactMarkdownWrapperProps } from "./ReactMarkdownWrapper";
 export { SecureYourSpot } from "./SecureYourSpot";

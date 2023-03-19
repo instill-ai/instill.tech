@@ -4,12 +4,15 @@ import matter from "gray-matter";
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 import { parse } from "node-html-parser";
-
 import {
   ContentContainer,
   PageBase,
   PageHead,
   SubscribeNewsletterForm,
+  DynamicPagination,
+  getPaginationArrayWithPageScroll,
+  getPageNumber,
+  getTotalPage,
 } from "@/components/ui";
 import {
   GetCampaignContentResponse,
@@ -21,13 +24,19 @@ import {
 
 type NewsletterArchivePageProps = {
   campaigns: NewsletterPublicCampaign[];
+  totalCounts: number;
+  currentPage: number;
+  totalPage: number;
+  pages: number[];
 };
 
 type GetLayOutProps = {
   page: ReactElement;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query: { page = 1 },
+}) => {
   // Init mailchimp client
   mailchimp.setConfig({
     apiKey: process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY,
@@ -35,6 +44,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   });
 
   let publicCampaigns: NewsletterPublicCampaign[] = [];
+  let totalCounts = 0;
+  const perPageCount = 3;
+  const paginationSize = 4;
+  let totalPage = 0;
+  let currentPage = Number(page);
 
   try {
     // Get campaigns, we only want to display public campaigns in this archive
@@ -44,11 +58,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
         count: 1,
       });
 
-    const totalCounts = getCampaignTotalCounts.total_items;
+    totalCounts = getCampaignTotalCounts.total_items;
+    totalPage = getTotalPage(totalCounts, perPageCount);
+    currentPage = getPageNumber(currentPage, totalPage);
 
     const fullCampaigns: ListCampaignsResponse = await mailchimp.campaigns.list(
       {
-        count: totalCounts,
+        count: perPageCount,
+        offset: currentPage - 1,
       }
     );
 
@@ -94,13 +111,22 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       campaigns: publicCampaigns,
+      totalCounts: totalCounts,
+      currentPage: currentPage,
+      totalPage: totalPage,
+      pages: getPaginationArrayWithPageScroll(
+        totalCounts,
+        perPageCount,
+        paginationSize,
+        currentPage
+      ),
     },
   };
 };
 
 const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ campaigns }) => {
+} = ({ campaigns, totalCounts, currentPage, totalPage, pages }) => {
   return (
     <>
       <PageHead
@@ -142,6 +168,18 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
             </Fragment>
           ))}
         </div>
+
+        {campaigns.length ? (
+          <DynamicPagination
+            route="/newsletter"
+            totalCounts={totalCounts}
+            currentPage={currentPage}
+            pages={pages}
+            totalPage={totalPage}
+          />
+        ) : (
+          ""
+        )}
       </ContentContainer>
     </>
   );
