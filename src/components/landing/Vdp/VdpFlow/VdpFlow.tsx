@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import cn from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { VdpArrowBlock } from "../VdpArrowBlock";

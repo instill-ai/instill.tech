@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useWindowSize } from "@instill-ai/design-system";
 import cn from "clsx";
 

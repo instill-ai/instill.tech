@@ -9,7 +9,7 @@ import { Nullable } from "@/types/instill";
 export type ControlSelectWrapperProps = {
   customizable: boolean;
   id: string;
-  label: string;
+  label: Nullable<string>;
   isActive: boolean;
   options: SingleSelectOption[];
   wrapperOnClick?: () => void;
@@ -64,7 +64,7 @@ export const ControlSelectWrapper = ({
         value={customizable ? selectOption : options[0]}
         onChange={onChangehandler}
         onFocus={selectOnFocus}
-        required={true}
+        required={false}
         disabled={customizable ? false : onChange ? false : true}
       />
       {customizable ? null : (

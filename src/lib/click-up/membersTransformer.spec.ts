@@ -1,5 +1,6 @@
 import { transformClickUpTaskToMemberDetails } from "./clickUp";
 import { ClickUpTask } from "./types";
+import { expect, test } from "vitest";
 
 export const mockClickUpTask: ClickUpTask = {
   id: "240uhne",
