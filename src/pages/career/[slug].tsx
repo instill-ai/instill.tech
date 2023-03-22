@@ -141,6 +141,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         additionMeta={null}
         currentArticleMeta={null}
         commitMeta={null}
+        jsonLd={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
