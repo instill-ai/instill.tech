@@ -1,5 +1,6 @@
 import { transformClickUpTaskToPositionDetails } from "./clickUp";
 import { ClickUpTask } from "./types";
+import { expect, test } from "vitest";
 
 const mockClickUpTask: ClickUpTask = {
   id: "2cr7au1",
