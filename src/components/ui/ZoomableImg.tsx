@@ -74,7 +74,7 @@ export const ZoomableImg = ({
           }}
           src={src}
           className={cn(
-            "mx-auto my-0 h-full cursor-pointer bg-white object-contain dark:bg-instillGrey70",
+            "mx-auto my-0 h-full cursor-pointer bg-white object-contain p-2",
             isZoom ? "opacity-0" : "opacity-100",
             width ? "" : "w-full"
           )}
