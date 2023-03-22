@@ -19,6 +19,7 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         additionMeta={null}
         commitMeta={null}
         currentArticleMeta={null}
+        jsonLd={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"

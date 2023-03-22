@@ -73,6 +73,30 @@ export type BlogArticleMeta = {
   category: string;
 };
 
+export type BlogArticleJsonLD = {
+  "@context": string;
+  "@type": string;
+  headline: string;
+  image: string;
+  url: string;
+  dateCreated: string;
+  datePublished: string;
+  inLanguage: string;
+  isFamilyFriendly: boolean;
+  keywords: string[];
+  articleBody: string;
+  author: {
+    "@type": string;
+    name: string;
+    url: string;
+  };
+  publisher: {
+    "@type": string;
+    name: string;
+    url: string;
+  };
+};
+
 export type AiTask =
   | "ObjectDetection"
   | "Ocr"

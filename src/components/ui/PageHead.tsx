@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { ReactElement } from "react";
-import { BlogArticleMeta, Nullable, TutorialMeta } from "@/types/instill";
+import {
+  BlogArticleJsonLD,
+  BlogArticleMeta,
+  Nullable,
+  TutorialMeta,
+} from "@/types/instill";
 import { CommitMeta } from "@/lib/github/type";
 
 export type PageHeadProps = {
@@ -11,6 +16,7 @@ export type PageHeadProps = {
   additionMeta: Nullable<ReactElement>;
   currentArticleMeta: Nullable<TutorialMeta | BlogArticleMeta>;
   commitMeta: Nullable<CommitMeta>;
+  jsonLd: Nullable<BlogArticleJsonLD>;
 };
 
 export const PageHead = ({
@@ -20,6 +26,7 @@ export const PageHead = ({
   additionMeta,
   currentArticleMeta,
   commitMeta,
+  jsonLd,
 }: PageHeadProps) => {
   const router = useRouter();
 
@@ -209,6 +216,10 @@ export const PageHead = ({
             />
             <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
           </>
+        )}
+
+        {pageType === "blog" && jsonLd && (
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         )}
       </Head>
     </>

@@ -108,6 +108,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
         commitMeta={null}
         currentArticleMeta={null}
         additionMeta={null}
+        jsonLd={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
