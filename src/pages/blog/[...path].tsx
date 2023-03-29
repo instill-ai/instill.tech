@@ -8,11 +8,10 @@ import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { CH } from "@code-hike/mdx/components";
-
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { BlogArticleMeta, Nullable } from "@/types/instill";
+import { BlogArticleJsonLD, BlogArticleMeta, Nullable } from "@/types/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
@@ -38,6 +37,7 @@ type BlogPageProps = {
   articles: BlogArticleMeta[];
   commitMeta: Nullable<CommitMeta>;
   blogMeta: Nullable<BlogArticleMeta>;
+  source: string;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -121,6 +121,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
       articles,
       commitMeta,
       blogMeta: articles.find((e) => e.slug === relativePath) || null,
+      source,
     },
   };
 };
@@ -131,7 +132,7 @@ type GetLayOutProps = {
 
 const BlogPage: FC<BlogPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, articles, blogMeta }) => {
+} = ({ mdxSource, commitMeta, headers, articles, blogMeta, source }) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
@@ -142,6 +143,46 @@ const BlogPage: FC<BlogPageProps> & {
       (e) => e.category === blogMeta.category && e.title !== blogMeta.title
     );
   }, [articles, blogMeta]);
+
+  const getJsonLd = (
+    blogMeta: Nullable<BlogArticleMeta>
+  ): Nullable<BlogArticleJsonLD> => {
+    if (!blogMeta) {
+      return null;
+    }
+    return {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: blogMeta.title,
+      image: process.env.NEXT_PUBLIC_BASE_URL + blogMeta.themeImgSrc,
+      url: process.env.NEXT_PUBLIC_BASE_URL + "/blog/" + blogMeta.slug,
+      dateCreated: blogMeta.publishedOn,
+      datePublished: blogMeta.publishedOn,
+      inLanguage: blogMeta.lang,
+      isFamilyFriendly: true,
+      keywords: [],
+      articleBody: source,
+      author: {
+        "@type": "Person",
+        name: blogMeta.author,
+        url: blogMeta.authorGitHubUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Instill AI",
+        url: process.env.NEXT_PUBLIC_BASE_URL || "",
+      },
+    };
+    // {
+    //   "contributor" : {},
+    //   "editor" : {},
+    //   "thumbnailUrl" : "string",
+    //   "video" : "string",
+    //   "version" : "string | number",
+    //   "description" : "string",
+    //   "sponsor" : {},
+    // }
+  };
 
   return (
     <>
@@ -158,6 +199,7 @@ const BlogPage: FC<BlogPageProps> & {
         commitMeta={commitMeta}
         currentArticleMeta={blogMeta}
         additionMeta={null}
+        jsonLd={getJsonLd(blogMeta)}
       />
       <ContentContainer
         margin="mt-[60px] mb-[120px] xl:my-40"

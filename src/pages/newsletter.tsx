@@ -111,6 +111,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         additionMeta={null}
         commitMeta={null}
         currentArticleMeta={null}
+        jsonLd={null}
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
