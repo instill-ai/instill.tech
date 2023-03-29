@@ -9,7 +9,8 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 ## Essentials
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Why do you build VDP?**</summary>
 
 Modern data stack misses unstructured data processing.
@@ -25,8 +26,10 @@ To prevail AI and to make it accessible to everyone, the point is not merely the
 You can find more detailed narrative in our blog article [Why Instill AI exists](/blog/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](/blog/unstructured-data-etl/?utm_source=documentation&utm_medium=link).
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Who are behind VDP?**</summary>
 
 We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
@@ -43,15 +46,19 @@ We believe it's time to apply our experiences to make AI more accessible to ever
 In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Is VDP open source?**</summary>
 
 Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Is VDP free?**</summary>
 
 Yes. VDP is open source so you can self-host it in your basement for free.
@@ -61,8 +68,10 @@ In addition, Instill Cloud (coming soon!) is our hosting service of VDP which of
 If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**How do you make money?**</summary>
 
 We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
@@ -70,10 +79,12 @@ We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and
 If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
 
 </details>
+</ToggleBlock>
 
 ## Diff
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**VDP vs. Google/Amazon/etc.**</summary>
 
 Amazon Rekognition and Google Vision AI are off-the-shelf Vision AI API services using pre-trained models. If the pre-trained models do not work for your dataset, the APIs are useless for you.
@@ -88,8 +99,10 @@ It is open-source and an API-first open platform. You can self-host VDP in AWS, 
 Last but not least, Instill Cloud offers one order of magnitude lower pay-as-you-go inference price, compared with those major cloud vendors.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**VDP vs. Clarifai/Roboflow/Encord/Datature/Nyckel/Sieve/etc.**</summary>
 
 To the best of our knowledge, these solutions either provide AI API SaaS or AI model generation PaaS.
@@ -104,8 +117,10 @@ That said, we will provide AutoML in VDP for custom model training in the near f
 Find out the supported model sources to import in [Import Models](../import-models/overview) section.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**VDP vs. Seldon/BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
 
 VDP is more than a model serving framework!
@@ -115,10 +130,12 @@ VDP has a model serving component specifically for AI models, but more important
 See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
 
 </details>
+</ToggleBlock>
 
 ## Tech
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**What programming language does VDP use or support?**</summary>
 
 VDP's backend components are Go-based and frontend console is written in Next.js, TypeScript, and TailwindCSS.
@@ -126,8 +143,10 @@ VDP's backend components are Go-based and frontend console is written in Next.js
 Nonetheless, VDP is API-first and cloud-native. You can use cURL or the protobuf auto-generated codes to work with VDP. More developer-friendly multi-language SDKs are on our future roadmap.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**What design principles does VDP adopt?**</summary>
 
 - [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes VDP to be extensible, flexible and reusable for scenarios where new components are constantly added in VDP.
@@ -146,8 +165,10 @@ There are many essential components involved in the MLOps cycle, and notably, th
 We believe tooling development in AI and Data industry is marching toward a completely modularisation future, meaning that components in MLOps need to take into account flexibility, extensibility and composability as the first-class citizen as far as the design principle goes.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <a name="why-triton"></a>
 <summary>**Why does VDP adopt Triton Inference Server?**</summary>
 
@@ -162,8 +183,10 @@ Triton Inference Server provides a native way to make the most of NVIDIA GPU arc
 We are continuously working on new features to help create and import a Triton-based model easier. Please refer to [Prepare Models](/docs/prepare-models/overview) for details.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Why does VDP adopt Airbyte?**</summary>
 
 VDP needs to load the structured data transformed from [Model](../core-concepts/model) to [Destination](../core-concepts/connector#destination).
@@ -177,10 +200,12 @@ In addition, the Airbyte Protocol provides a standardised interface to integrate
 Last but not least, we love open source.
 
 </details>
+</ToggleBlock>
 
 ## Anecdote
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**Why is the company named Instill AI?**</summary>
 
 We have been attempting to land AI products ever since the surge of deep learning in 2014.
@@ -199,8 +224,10 @@ The name is also inspired by a Chinese poem "Delighting in Rain on a Spring Nigh
 It's pretty hard to have this poem precisely translated in English, but anyway the main idea is to express how delightful when hard working finally pays off.
 
 </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+<details> 
 <summary>**What is in the mosaic-style logo?**</summary>
 
 Our visual designer [Wen Chen](https://mrwenchen.com/about) has done a great job to embed Instill AI and the meaning of our effort into the logo.
@@ -214,7 +241,9 @@ Our visual designer [Wen Chen](https://mrwenchen.com/about) has done a great job
 </div>
 
 </details>
+</ToggleBlock>
 
+<ToggleBlock>
 <details>
 
 <summary>**Which one is Instill AI?**</summary>
@@ -224,3 +253,4 @@ Among all the other Instill AIs you could ever find on the Internet, Instill AI 
 If you Google "Instill AI", please always refer to the right one: https://www.instill.tech to find us. 😉
 
 </details>
+</ToggleBlock>

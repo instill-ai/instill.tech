@@ -155,7 +155,7 @@ article > h1, h2, h3, h4 {
   The style of summary block
 */
 
-article > details {
+article > .instill-scoped-info-block > details {
   padding: 20px 25px;
   background-color: #FAFAFA;
   margin-top: 20px;
@@ -164,7 +164,7 @@ article > details {
   border-left: 5px solid #5c5c5c;
 }
 
-.dark article > details {
+.dark article > .instill-scoped-info-block > details {
   padding: 20px 25px;
   background-color: #2B2B2B;
   margin-top: 20px;
@@ -176,11 +176,11 @@ article > details {
   border-bottom: 1px solid #5c5c5c;
 }
 
-article > details > summary {
+article > .instill-scoped-info-block > details > summary {
   cursor: pointer;
 }
 
-article > details > summary > strong {
+article > .instill-scoped-info-block > details > summary > strong {
   padding-left: 10px;
 }
 
