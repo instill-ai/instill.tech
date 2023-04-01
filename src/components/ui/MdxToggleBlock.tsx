@@ -8,7 +8,7 @@ export type MdxToggleBlockProps = {
 
 export const MdxToggleBlock = ({ children, styles }: MdxToggleBlockProps) => {
   return (
-    <div className={classNames.default("instill-scoped-info-block", styles)}>
+    <div className={classNames.default("instill-scoped-toggle-block", styles)}>
       {children}
     </div>
   );
