@@ -9,218 +9,248 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 ## Essentials
 
-<details>
-<summary>**Why do you build VDP?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Why do you build VDP?**</summary>
 
-Modern data stack misses unstructured data processing.
+    Modern data stack misses unstructured data processing.
 
-It is non-trivial to process unstructured data though.
-We used to suffer enough in devising our own deep learning models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
-All these happened in-house and were non-scalable.
+    It is non-trivial to process unstructured data though.
+    We used to suffer enough in devising our own deep learning models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
+    All these happened in-house and were non-scalable.
 
-There must be a better way, and Versatile Data Pipeline (VDP) is the answer.
+    There must be a better way, and Versatile Data Pipeline (VDP) is the answer.
 
-To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
+    To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
-You can find more detailed narrative in our blog article [Why Instill AI exists](/blog/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](/blog/unstructured-data-etl/?utm_source=documentation&utm_medium=link).
+    You can find more detailed narrative in our blog article [Why Instill AI exists](/blog/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](/blog/unstructured-data-etl/?utm_source=documentation&utm_medium=link).
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**Who are behind VDP?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Who are behind VDP?**</summary>
 
-We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
-We have in-depth experiences in developing and maintaining sophisticated AI systems.
+    We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
+    We have in-depth experiences in developing and maintaining sophisticated AI systems.
 
-Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
+    Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
 
-We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
-In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
+    We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
+    In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
 
-What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
-We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
+    What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
+    We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
 
-In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
+    In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**Is VDP open source?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Is VDP open source?**</summary>
 
-Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).
+    Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**Is VDP free?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Is VDP free?**</summary>
 
-Yes. VDP is open source so you can self-host it in your basement for free.
+    Yes. VDP is open source so you can self-host it in your basement for free.
 
-In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
+    In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
 
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
+    If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**How do you make money?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**How do you make money?**</summary>
 
-We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
+    We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
 
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
+    If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
 
-</details>
+  </details>
+</ToggleBlock>
 
 ## Diff
 
-<details>
-<summary>**VDP vs. Google/Amazon/etc.**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**VDP vs. Google/Amazon/etc.**</summary>
 
-Amazon Rekognition and Google Vision AI are off-the-shelf Vision AI API services using pre-trained models. If the pre-trained models do not work for your dataset, the APIs are useless for you.
+    Amazon Rekognition and Google Vision AI are off-the-shelf Vision AI API services using pre-trained models. If the pre-trained models do not work for your dataset, the APIs are useless for you.
 
-To make up the deficiency, Amazon SageMaker and Google Vertex AI alike cloud services offer general-purpose machine learning platform-as-a-service (MLPaaS) which focus on model generation for general machine learning problems.
+    To make up the deficiency, Amazon SageMaker and Google Vertex AI alike cloud services offer general-purpose machine learning platform-as-a-service (MLPaaS) which focus on model generation for general machine learning problems.
 
-In contrast, VDP focuses on unstructured data ETL, in which the goal is to streamline the ETL pipeline components to enable the modern data stack to tap on the value of the unstructured data.
+    In contrast, VDP focuses on unstructured data ETL, in which the goal is to streamline the ETL pipeline components to enable the modern data stack to tap on the value of the unstructured data.
 
-In addition, choosing Google or Amazon alike means choosing a cloud vendor you prefer to be locked in. VDP, on the other hand, is vendor lock-in free.
-It is open-source and an API-first open platform. You can self-host VDP in AWS, GCP, or on-premise, or simply subscribe Instill Cloud to start using VDP in a snap.
+    In addition, choosing Google or Amazon alike means choosing a cloud vendor you prefer to be locked in. VDP, on the other hand, is vendor lock-in free.
+    It is open-source and an API-first open platform. You can self-host VDP in AWS, GCP, or on-premise, or simply subscribe Instill Cloud to start using VDP in a snap.
 
-Last but not least, Instill Cloud offers one order of magnitude lower pay-as-you-go inference price, compared with those major cloud vendors.
+    Last but not least, Instill Cloud offers one order of magnitude lower pay-as-you-go inference price, compared with those major cloud vendors.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**VDP vs. Clarifai/Roboflow/Encord/Datature/Nyckel/Sieve/etc.**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**VDP vs. Clarifai/Roboflow/Encord/Datature/Nyckel/Sieve/etc.**</summary>
 
-To the best of our knowledge, these solutions either provide AI API SaaS or AI model generation PaaS.
+    To the best of our knowledge, these solutions either provide AI API SaaS or AI model generation PaaS.
 
-VDP aims to integrate with tooling in the modern data stack for unstructured data ETL.
+    VDP aims to integrate with tooling in the modern data stack for unstructured data ETL.
 
-While effective AI models are crucial to transform unstructured data, model generation is in fact a task orthogonal to a VDP pipeline.
-The design principle of VDP is to make the use of models as flexible as possible.
+    While effective AI models are crucial to transform unstructured data, model generation is in fact a task orthogonal to a VDP pipeline.
+    The design principle of VDP is to make the use of models as flexible as possible.
 
-That said, we will provide AutoML in VDP for custom model training in the near future. At the moment, the VDP users can freely use their familiar ways to generate models and import the models into a VDP pipeline fairly easily.
+    That said, we will provide AutoML in VDP for custom model training in the near future. At the moment, the VDP users can freely use their familiar ways to generate models and import the models into a VDP pipeline fairly easily.
 
-Find out the supported model sources to import in [Import Models](../import-models/overview) section.
+    Find out the supported model sources to import in [Import Models](../import-models/overview) section.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**VDP vs. Seldon/BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**VDP vs. Seldon/BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
 
-VDP is more than a model serving framework!
+    VDP is more than a model serving framework!
 
-VDP has a model serving component specifically for AI models, but more importantly, the goal of VDP is to streamline the end-to-end unstructured data flow.
+    VDP has a model serving component specifically for AI models, but more importantly, the goal of VDP is to streamline the end-to-end unstructured data flow.
 
-See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
+    See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
 
-</details>
+  </details>
+</ToggleBlock>
 
 ## Tech
 
-<details>
-<summary>**What programming language does VDP use or support?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**What programming language does VDP use or support?**</summary>
 
-VDP's backend components are Go-based and frontend console is written in Next.js, TypeScript, and TailwindCSS.
+    VDP's backend components are Go-based and frontend console is written in Next.js, TypeScript, and TailwindCSS.
 
-Nonetheless, VDP is API-first and cloud-native. You can use cURL or the protobuf auto-generated codes to work with VDP. More developer-friendly multi-language SDKs are on our future roadmap.
+    Nonetheless, VDP is API-first and cloud-native. You can use cURL or the protobuf auto-generated codes to work with VDP. More developer-friendly multi-language SDKs are on our future roadmap.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**What design principles does VDP adopt?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**What design principles does VDP adopt?**</summary>
 
-- [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes VDP to be extensible, flexible and reusable for scenarios where new components are constantly added in VDP.
-  The overall microservice system can be also very efficient at scaling phase to scale each backend instances based on their individual workload.
-  For example. the `connector-backend` might be way less busy compared with the `model-backend` in a `SYNC` VDP pipeline.
+    - [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes VDP to be extensible, flexible and reusable for scenarios where new components are constantly added in VDP.
+      The overall microservice system can be also very efficient at scaling phase to scale each backend instances based on their individual workload.
+      For example. the `connector-backend` might be way less busy compared with the `model-backend` in a `SYNC` VDP pipeline.
 
-- [IDEALS](https://www.infoq.com/articles/microservices-design-ideals) (**I**nterface segregation, **D**eployability, **E**vent-driven, **A**vailability over consistency, **L**oose coupling, and **S**ingle responsibility) design principle sets a rigorous framework when there comes to any VDP design questions in our day-to-day development.
+    - [IDEALS](https://www.infoq.com/articles/microservices-design-ideals) (**I**nterface segregation, **D**eployability, **E**vent-driven, **A**vailability over consistency, **L**oose coupling, and **S**ingle responsibility) design principle sets a rigorous framework when there comes to any VDP design questions in our day-to-day development.
 
-- [API-first](https://swagger.io/resources/articles/adopting-an-api-first-approach) approach comes naturally with the adoption of microservice and IDEALS. All backend components in VDP are implemented with API-first design principle so the contract is firmly established for whatever necessary integration task coming in the future.
+    - [API-first](https://swagger.io/resources/articles/adopting-an-api-first-approach) approach comes naturally with the adoption of microservice and IDEALS. All backend components in VDP are implemented with API-first design principle so the contract is firmly established for whatever necessary integration task coming in the future.
 
-- [The twelve-factor methodology](https://12factor.net) provides a down-to-earth guideline for the development and deployment of VDP components.
+    - [The twelve-factor methodology](https://12factor.net) provides a down-to-earth guideline for the development and deployment of VDP components.
 
-Building an effective and efficient machine learning product requires implementing the cutting-edge best practices of MLOps.
-There are many essential components involved in the MLOps cycle, and notably, these components are still evolving.
+    Building an effective and efficient machine learning product requires implementing the cutting-edge best practices of MLOps.
+    There are many essential components involved in the MLOps cycle, and notably, these components are still evolving.
 
-We believe tooling development in AI and Data industry is marching toward a completely modularisation future, meaning that components in MLOps need to take into account flexibility, extensibility and composability as the first-class citizen as far as the design principle goes.
+    We believe tooling development in AI and Data industry is marching toward a completely modularisation future, meaning that components in MLOps need to take into account flexibility, extensibility and composability as the first-class citizen as far as the design principle goes.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<a name="why-triton"></a>
-<summary>**Why does VDP adopt Triton Inference Server?**</summary>
+<ToggleBlock>
+  <details> 
+    <a name="why-triton"></a>
+    <summary>**Why does VDP adopt Triton Inference Server?**</summary>
 
-There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, Seldon, BentoML and Cortex just to name a few.
+    There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, Seldon, BentoML and Cortex just to name a few.
 
-VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for our users.
+    VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for our users.
 
-AI algorithms can benefit from parallelism by nature, for examples all the pixels/voxels imagined in one 2D/3D image can share the same computing operations.
-We were therefore looking into the highest performant GPU model serving framework to serve in a VDP pipeline.
-Triton Inference Server provides a native way to make the most of NVIDIA GPU architecture (e.g., concurrency, scheduler, batcher) for multiple frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more.
+    AI algorithms can benefit from parallelism by nature, for examples all the pixels/voxels imagined in one 2D/3D image can share the same computing operations.
+    We were therefore looking into the highest performant GPU model serving framework to serve in a VDP pipeline.
+    Triton Inference Server provides a native way to make the most of NVIDIA GPU architecture (e.g., concurrency, scheduler, batcher) for multiple frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more.
 
-We are continuously working on new features to help create and import a Triton-based model easier. Please refer to [Prepare Models](/docs/prepare-models/overview) for details.
+    We are continuously working on new features to help create and import a Triton-based model easier. Please refer to [Prepare Models](/docs/prepare-models/overview) for details.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**Why does VDP adopt Airbyte?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Why does VDP adopt Airbyte?**</summary>
 
-VDP needs to load the structured data transformed from [Model](../core-concepts/model) to [Destination](../core-concepts/connector#destination).
-Since structured data has gained overflowing love in the data industry, instead of reinventing the wheel, what makes more sense is to investigate the best way to plug VDP into the modern data stack for the subsequent structured data journey.
+    VDP needs to load the structured data transformed from [Model](../core-concepts/model) to [Destination](../core-concepts/connector#destination).
+    Since structured data has gained overflowing love in the data industry, instead of reinventing the wheel, what makes more sense is to investigate the best way to plug VDP into the modern data stack for the subsequent structured data journey.
 
-Soon, Airbyte showed up on our radar.
+    Soon, Airbyte showed up on our radar.
 
-Airbyte has provided a good number of destination connectors for structured data.
-In addition, the Airbyte Protocol provides a standardised interface to integrate with VDP.
+    Airbyte has provided a good number of destination connectors for structured data.
+    In addition, the Airbyte Protocol provides a standardised interface to integrate with VDP.
 
-Last but not least, we love open source.
+    Last but not least, we love open source.
 
-</details>
+  </details>
+</ToggleBlock>
 
 ## Anecdote
 
-<details>
-<summary>**Why is the company named Instill AI?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**Why is the company named Instill AI?**</summary>
 
-We have been attempting to land AI products ever since the surge of deep learning in 2014.
-On the way, we have learned how challenging this can be. To build effective AI products, educate the market about the AI, and eventually see the AI products helping people in real life.
-It is fair to say that we, the whole industry, still have a long way to go.
+    We have been attempting to land AI products ever since the surge of deep learning in 2014.
+    On the way, we have learned how challenging this can be. To build effective AI products, educate the market about the AI, and eventually see the AI products helping people in real life.
+    It is fair to say that we, the whole industry, still have a long way to go.
 
-We are enthusiastic about being on the journey, to instill the AI technologies gradually to the industry.
+    We are enthusiastic about being on the journey, to instill the AI technologies gradually to the industry.
 
-The name is also inspired by a Chinese poem "Delighting in Rain on a Spring Night (春夜喜雨)" by Du Fu (杜甫), particularly for reifying the word "instill":
+    The name is also inspired by a Chinese poem "Delighting in Rain on a Spring Night (春夜喜雨)" by Du Fu (杜甫), particularly for reifying the word "instill":
 
-> 好雨知時節，當春乃發生。
-> 隨風潛入夜，潤物細無聲。
-> 野徑雲俱黑，江船火獨明。
-> 曉看紅濕處，花重錦官城。
+    > 好雨知時節，當春乃發生。
+    > 隨風潛入夜，潤物細無聲。
+    > 野徑雲俱黑，江船火獨明。
+    > 曉看紅濕處，花重錦官城。
 
-It's pretty hard to have this poem precisely translated in English, but anyway the main idea is to express how delightful when hard working finally pays off.
+    It's pretty hard to have this poem precisely translated in English, but anyway the main idea is to express how delightful when hard working finally pays off.
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
-<summary>**What is in the mosaic-style logo?**</summary>
+<ToggleBlock>
+  <details> 
+    <summary>**What is in the mosaic-style logo?**</summary>
 
-Our visual designer [Wen Chen](https://mrwenchen.com/about) has done a great job to embed Instill AI and the meaning of our effort into the logo.
+    Our visual designer [Wen Chen](https://mrwenchen.com/about) has done a great job to embed Instill AI and the meaning of our effort into the logo.
 
-<div align="center">
-  <ZoomableImg
-    src="/docs-assets/start-here/why-logo.png"
-    alt="logo"
-    width="400px"
-  />
-</div>
+    <div align="center">
+      <ZoomableImg
+        src="/docs-assets/start-here/why-logo.png"
+        alt="logo"
+        width="400px"
+      />
+    </div>
 
-</details>
+  </details>
+</ToggleBlock>
 
-<details>
+<ToggleBlock>
+  <details>
 
-<summary>**Which one is Instill AI?**</summary>
+    <summary>**Which one is Instill AI?**</summary>
 
-Among all the other Instill AIs you could ever find on the Internet, Instill AI with the domain `instill.tech` is the earliest incorporated company in the UK (on 11 June 2020).
+    Among all the other Instill AIs you could ever find on the Internet, Instill AI with the domain `instill.tech` is the earliest incorporated company in the UK (on 11 June 2020).
 
-If you Google "Instill AI", please always refer to the right one: https://www.instill.tech to find us. 😉
+    If you Google "Instill AI", please always refer to the right one: https://www.instill.tech to find us. 😉
 
-</details>
+  </details>
+</ToggleBlock>
