@@ -56,7 +56,8 @@ Therefore, we use [Megatron GPT-2 Medium (345m)](https://github.com/NVIDIA/Megat
 To build a `SYNC` pipeline that supports Discord apps with GTP-2, please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) with a few alterations:
 
 1. add an HTTP source,
-2. import and deploy the **Metatron GPT-2 Medium model (345m)** model from a specific tag (compatible with GPUs on your machine) of GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID **gpt2**,
+2. import and deploy the **Metatron GPT-2 Medium model (345m)** model from a specific tag of GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID **gpt2**.
+The model only supports GPU deployment. By default, VDP can access all your GPUs. Assume that you have **N** GPUs, please pick the corresponding Git tag named with **fp32-345m-N-gpu** to deploy. we use `fp32-345m-2-gpu` as an example here.
 
 
 3. add an HTTP destination, and
@@ -65,8 +66,6 @@ To build a `SYNC` pipeline that supports Discord apps with GTP-2, please follow 
 <InfoBlock type="info" title="info">
 
 Depending on your internet speed, importing [Megatron GPT2 Medium model (345m)](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
-
-The model only supports GPU deployment. By default, VDP can access all your GPUs. Assume that you have N GPUs, please pick the corresponding Git Tag named with fp32-345m-N-gpu to deploy.
 
 </InfoBlock>
 
