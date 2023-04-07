@@ -151,8 +151,8 @@ You can embed gallery by using this component, the image will be displayed in a 
       src: "/tutorial-assets/vdp-cow-counter/add-a-yolov7-model.png",
     },
     {
-      alt: "Deploy yolov7-cpu model instance",
-      src: "/tutorial-assets/vdp-cow-counter/deploy-a-yolov7-model-instance.png",
+      alt: "Deploy yolov7-cpu model",
+      src: "/tutorial-assets/vdp-cow-counter/deploy-a-yolov7-model.png",
     },
     {
       alt: "Add postgres destination",
