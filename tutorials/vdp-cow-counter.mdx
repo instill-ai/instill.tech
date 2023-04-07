@@ -78,7 +78,7 @@ Once all the services are up, go to the Console at http://localhost:3000.
 After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [VDP 101 [7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 1. add a HTTP source,
-2. import and deploy a model from the `v1.0-cpu` tag of the GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID **yolov7**,
+2. import and deploy a model from the `v1.0-cpu` tag of the GitHub repository [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) with ID **yolov7**,
 
 
 3. add a PostgreSQL destination, with ID `postgres-db`,
@@ -372,31 +372,32 @@ tutorial> \pset border 2
 Border style is 2
 tutorial> \pset format wrapped
 Output format is wrapped
-tutorial> SELECT * FROM _airbyte_raw_detection;
+tutorial> SELECT * FROM _airbyte_raw_vdp;
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+|            _airbyte_ab_id            |                                                                                 _airbyte_data                                                                                 |    _airbyte_emitted_at     |
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| 6b339e9e-c05e-4ba5-87ff-4c653df62ed2 | {"index": "01GXEPT2BTE1WTMGMNTARMZ7SS", "model": "models/yolov7", "pipeline": {"name": "pipelines/detection", "recipe": {"models": ["models/yolov7"], "source": "source-conne.| 2022-09-19 00:44:14.798+00 |
+|                                      |.ctors/source-http", "destination": "destination-connectors/postgres-db"}}, "detection": {"objects": [{"score": 0.9524831, "category": "cow", "bounding_box": {"top": 328, "le.|                            |
+|                                      |.ft": 481, "width": 515, "height": 389}}, {"score": 0.9065536, "category": "cow", "bounding_box": {"top": 133, "left": 1, "width": 405, "height": 273}}, {"score": 0.9017271, .|                            |
+|                                      |."category": "cow", "bounding_box": {"top": 288, "left": 857, "width": 422, "height": 407}}, {"score": 0.89512527, "category": "person", "bounding_box": {"top": 1, "left": 47.|                            |
+|                                      |.4, "width": 112, "height": 197}}, {"score": 0.8950028, "category": "cow", "bounding_box": {"top": 3, "left": 775, "width": 405, "height": 133}}, {"score": 0.8828889, "catego.|                            |
+|                                      |.ry": "cow", "bounding_box": {"top": 99, "left": 795, "width": 483, "height": 237}}, {"score": 0.75729924, "category": "person", "bounding_box": {"top": 0, "left": 627, "widt.|                            |
+|                                      |.h": 48, "height": 75}}, {"score": 0.73897225, "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 172, "height": 131}}, {"score": 0.72232157, "category": "dog".|                            |
+|                                      |., "bounding_box": {"top": 535, "left": 131, "width": 412, "height": 184}}, {"score": 0.59892243, "category": "cow", "bounding_box": {"top": 0, "left": 937, "width": 342, "he.|                            |
+|                                      |.ight": 158}}, {"score": 0.35217348, "category": "cow", "bounding_box": {"top": 1, "left": 940, "width": 131, "height": 53}}]}}                                                |                            |
+| 87dcd548-1323-4ab8-a14f-f899eb32f8a7 | {"index": "01GXEPT48V98QSM80K23NFJ0KC", "model": "models/yolov7", "pipeline": {"name": "pipelines/detection", "recipe": {"models": ["models/yolov7"], "source": "source-conne.| 2022-09-19 00:44:15.317+00 |
+|                                      |.ctors/source-http", "destination": "destination-connectors/postgres-db"}}, "detection": {"objects": [{"score": 0.9425908, "category": "cow", "bounding_box": {"top": 323, "le.|                            |
+|                                      |.ft": 485, "width": 502, "height": 394}}, {"score": 0.9352623, "category": "cow", "bounding_box": {"top": 138, "left": 1, "width": 415, "height": 276}}, {"score": 0.92091024,.|                            |
+|                                      |. "category": "person", "bounding_box": {"top": 0, "left": 476, "width": 114, "height": 194}}, {"score": 0.9091836, "category": "cow", "bounding_box": {"top": 4, "left": 767,.|                            |
+|                                      |. "width": 402, "height": 137}}, {"score": 0.8981973, "category": "cow", "bounding_box": {"top": 289, "left": 852, "width": 427, "height": 408}}, {"score": 0.8769296, "catego.|                            |
+|                                      |.ry": "cow", "bounding_box": {"top": 90, "left": 791, "width": 486, "height": 254}}, {"score": 0.87357014, "category": "cow", "bounding_box": {"top": 521, "left": 125, "width.|                            |
+|                                      |.": 337, "height": 197}}, {"score": 0.8502322, "category": "cow", "bounding_box": {"top": 0, "left": 1, "width": 270, "height": 152}}, {"score": 0.807219, "category": "person.|                            |
+|                                      |.", "bounding_box": {"top": 0, "left": 626, "width": 49, "height": 82}}, {"score": 0.60821855, "category": "cow", "bounding_box": {"top": 0, "left": 946, "width": 332, "heigh.|                            |
+|                                      |.t": 132}}, {"score": 0.53656465, "category": "cow", "bounding_box": {"top": 243, "left": 970, "width": 284, "height": 201}}, {"score": 0.332829, "category": "cow", "bounding.|                            |
+|                                      |._box": {"top": 0, "left": 949, "width": 130, "height": 55}}, {"score": 0.2707027, "category": "cow", "bounding_box": {"top": 19, "left": 1173, "width": 106, "height": 144}}].|                            |
+|                                      |.}}
+| ...
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
-|            _airbyte_ab_id            |                                                                                              _airbyte_data                                                                                               |    _airbyte_emitted_at     |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
-| 749e2ae7-dfc4-4f8d-bc32-01a515aca155 | {"index": "01GD9K7SR21Y507S3XSC350E53", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model":[.| 2022-09-19 00:44:14.414+00 |
-|                                      |."models/yolov7"]}}, "detection": {"objects": [{"score": 0.94767153, "category": "cow", "bounding_box": {"top": 327, "left": 481, "width": 514, "height": 389}}, {"score": .|                            |
-|                                      |.0.90291864, "category": "cow", "bounding_box": {"top": 287, "left": 855, "width": 424, "height": 414}}, {"score": 0.89860874, "category": "cow", "bounding_box": {"top": 164, "left": 776, "width": 491,.|                            |
-|                                      |. "height": 280}}, {"score": 0.89435995, "category": "cow", "bounding_box": {"top": 137, "left": 1, "width": 405, "height": 269}}, {"score": 0.89387643, "category": "cow", "bounding_box": {"top": 3, "l.|                            |
-|                                      |.eft": 774, "width": 407, "height": 135}}, {"score": 0.891987, "category": "person", "bounding_box": {"top": 1, "left": 474, "width": 113, "height": 197}}, {"score": 0.8103352, "category": "dog", "boun.|                            |
-|                                      |.ding_box": {"top": 534, "left": 130, "width": 412, "height": 185}}, {"score": 0.7403712, "category": "person", "bounding_box": {"top": 0, "left": 628, "width": 47, "height": 76}}, {"score": 0.72711104.|                            |
-|                                      |., "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 282, "height": 132}}, {"score": 0.54912615, "category": "cow", "bounding_box": {"top": 1, "left": 1046, "width": 233, "height": 155}.|                            |
-|                                      |.}, {"score": 0.3561234, "category": "cow", "bounding_box": {"top": 0, "left": 937, "width": 138, "height": 56}}, {"score": 0.29841486, "category": "cow", "bounding_box": {"top": 89, "left": 879, "widt.|                            |
-|                                      |.h": 401, "height": 252}}]}, "model": "models/yolov7"}                                                                                                                        |                            |
-| cfb0ee48-6e09-4a61-8095-97eef946686b | {"index": "01GD9K7T9TXP11GQT4VD3YSGTH", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_in.| 2022-09-19 00:44:15.112+00 |
-|                                      |.stances": ["models/yolov7"]}}, "detection": {"objects": [{"score": 0.94896084, "category": "cow", "bounding_box": {"top": 321, "left": 483, "width": 507, "height": 395}}, {"score": .|                            |
-|                                      |.0.9102569, "category": "cow", "bounding_box": {"top": 163, "left": 766, "width": 494, "height": 281}}, {"score": 0.8916002, "category": "person", "bounding_box": {"top": 1, "left": 474, "width": 113, .|                            |
-|                                      |."height": 194}}, {"score": 0.8845787, "category": "cow", "bounding_box": {"top": 290, "left": 855, "width": 424, "height": 398}}, {"score": 0.881902, "category": "cow", "bounding_box": {"top": 96, "le.|                            |
-|                                      |.ft": 849, "width": 429, "height": 243}}, {"score": 0.8450525, "category": "cow", "bounding_box": {"top": 3, "left": 771, "width": 403, "height": 137}}, {"score": 0.8100165, "category": "person", "boun.|                            |
-|                                      |.ding_box": {"top": 0, "left": 627, "width": 49, "height": 79}}, {"score": 0.73371905, "category": "dog", "bounding_box": {"top": 137, "left": 1, "width": 410, "height": 273}}, {"score": 0.7268754, "ca.|                            |
-|                                      |.tegory": "cow", "bounding_box": {"top": 0, "left": 940, "width": 338, "height": 163}}, {"score": 0.7075124, "category": "cow", "bounding_box": {"top": 134, "left": 1, "width": 410, "height": 277}}, {".|                            |
-|                                      |.score": 0.67877483, "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 264, "height": 140}}, {"score": 0.622516, "category": "dog", "bounding_box": {"top": 528, "left": 127, "width": 33.|                            |
-|                                      |.9, "height": 190}}, {"score": 0.54869056, "category": "cow", "bounding_box": {"top": 529, "left": 127, "width": 339, "height": 188}}, {"score": 0.27535558, "category": "cow", "bounding_box": {"top": 7.|                            |
-|                                      |.3, "left": 870, "width": 295, "height": 114}}]}, "model": "models/yolov7"}                                                                                                   |                            |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
-...
 ```
 
 In the next section, we will setup Metabase to connect to the data in the destination PostgreSQL database and build a dashboard based on the analysis results.
