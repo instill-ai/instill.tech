@@ -164,13 +164,15 @@ To import a model managed by ArtiVC in the Console, do the following:
 2. In the **Set Up New Model** page, fill an ID for your model, this will be the unique identifier of this model
 3. Click the **Model type** ▾ drop-down and choose **ArtiVC**
 4. [Optional] Give a short description of your model in the **Description** field
-5. Fill the following information and click **Setup new model**
+5. Fill the following information and click **Deploy**
+
    - Fill the **GCS Bucket Path** where the model is stored, e.g., `gs://mybucket/path/to/mymodel/`
    - If the model is stored in a public GCS bucket, skip this step. Otherwise, get your application default credential or service account credential in JSON format and dump it into the **Credentials JSON** field. See [Find the credentials JSON file](#find-the-credentials-json-file) to find the credentials json file
-6. Once the model is imported, click the **Model instances** ▾ drop-down, pick one model instance and click **Deploy**
-7. Now go to the **Model**, the corresponding model instance should be online
+   - The specific ArtiVC tag to be imported
 
-The setup guide assumes your model is stored in a GCS bucket. When the model is successfully imported, each model instance of the model corresponds to one ArtiVC tag.
+6. Now go to the **Model**, the corresponding model should be online
+
+The setup guide assumes your model is stored in a GCS bucket.
 
 ### Low-code setup
 
@@ -178,10 +180,11 @@ The setup guide assumes your model is stored in a GCS bucket. When the model is 
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models -d '{
-  "id": "yolov4",
+  "id": "yolov4-v1-cpu",
   "model_definition": "model-definitions/artivc",
   "configuration": {
     "url": "gs://public-europe-west2-c-artifacts/vdp/public-artivc-models/mymodel",
+    "tag": "v1.0-cpu",
     "credential": {
       "client_id": "< replace with your client_id  >",
       "client_secret": "< replace with your client_secret >",
@@ -192,10 +195,10 @@ curl -X POST http://localhost:8080/v1alpha/models -d '{
 }'
 ```
 
-2. Deploy the `v1.0-cpu` model instance.
+2. Deploy the imported model `yolov4-v1-cpu`.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/deploy
 ```
 
 3. Perform an inference to test the model
@@ -203,7 +206,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/depl
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -213,7 +216,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -223,7 +226,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test-multipart \
 --form 'file=@"dog.jpg"'
 ```
 

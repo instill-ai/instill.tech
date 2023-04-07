@@ -29,7 +29,7 @@ Currently, VDP supports importing models from
 ### Requirements
 
 - A public GitHub repository where model files are stored
-- The repository has at lease one release
+- The repository has at lease one tag
 
 ### Prepare a GitHub repository and track large model files by Git LFS
 
@@ -152,21 +152,15 @@ After uploading all files successfully, go to your GitHub repository. You should
   alt="Show YOLOv4 tracked by Git LFS"
 />
 
-**Step 4: Create a GitHub release**
+**Step 4: Create a Git tag**
 
-GitHub releases mark specific points in the repository's history. They are based on Git tags and are deployable software iterations for share and re-use. When importing a model from a GitHub repository, VDP creates one model instances per release. So let's tag the current model.
+Git tags mark specific points in the repository's history. They are deployable software iterations for share and re-use.
+When importing a model from a GitHub repository, VDP creates one model according to the specified tag.
 
 ```shellscript
 git tag <tagname>
 git push origin --tags
 ```
-
-Go to your GitHub repository and follow the [GitHub Docs to create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) based on created tag above.
-
-<ZoomableImg
-  src="/docs-assets/import-models/yolov4-dvc-new-release.png"
-  alt="Create a new GitHub release"
-/>
 
 🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to VDP.
 
@@ -323,16 +317,14 @@ git commit -m "feat: add model files"
 git push -u origin main
 ```
 
-**Step 6: Create a GitHub release**
+**Step 6: Create a Git tag**
 
-Follow **Step 4** of the [Prepare a GitHub repository and track large model files by Git LFS](#prepare-a-github-repository-and-track-large-model-files-by-git-lfs) guideline, tag the current model and create a new release based on the tag.
+Follow **Step 4** of the [Prepare a GitHub repository and track large model files by Git LFS](#prepare-a-github-repository-and-track-large-model-files-by-git-lfs) guideline and tag the current model.
 
 ```shellscript
 git tag <tagname>
 git push origin --tags
 ```
-
-Go to your GitHub repository and follow the [GitHub Docs to create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) based on created tag above.
 
 🎉 If you've followed the above steps to store the model in remote storage and version it within a GitHub repository using [DVC](https://dvc.org/doc/user-guide/basic-concepts/dvc-project#dvc-repository), just run the setup guide below, VDP will import the model accordingly.
 
@@ -350,11 +342,8 @@ To import a model from GitHub in the Console, do the following:
 2. In the **Set Up New Model** page, fill an ID for your model, this will be the unique identifier of this model
 3. Click the **Model type** ▾ drop-down and choose **GitHub**
 4. [Optional] Give a short description of your model in the **Description** field
-5. Fill the GitHub repository URL that stores the model files and click **Setup new model**
-6. Once the model is imported, click the **Model instances** ▾ drop-down, pick one model instance and click **Deploy**
-7. Now go to the **Model** page, the corresponding model instance should be online
-
-No matter if you are using Git LFS or DVC in the repository, when the model is imported, each model instance of the model corresponds to one release tag of the GitHub repository.
+5. Fill the GitHub repository URL and the Git tag that stores the model files and click **Deploy**
+6. Now go to the **Model** page, the corresponding model should be online
 
 ### Low-code setup
 
@@ -362,18 +351,19 @@ No matter if you are using Git LFS or DVC in the repository, when the model is i
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models -d '{
-  "id": "yolov4",
+  "id": "yolov4-v1-cpu",
   "model_definition": "model-definitions/github",
   "configuration": {
-    "repository": "instill-ai/model-yolov4"
+    "repository": "instill-ai/model-yolov4-dvc",
+    "tag": "v1.0-cpu"
   }
 }'
 ```
 
-2. Deploy the `v1.0-cpu` model instance.
+2. Deploy the imported model `yolov4-v1-cpu`.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/deploy
 ```
 
 3. Perform an inference to test the model
@@ -381,7 +371,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/depl
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -391,7 +381,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -401,7 +391,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test-multipart \
 --form 'file=@"dog.jpg"'
 ```
 
@@ -409,4 +399,4 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/v1.0-cpu/test
 
 ## Limitations
 
-Current implementation does not support real-time GitHub sync: after you import a model from a GitHub repository, new releases of this GitHub repository won't be synced as new model instances of this model in VDP.
+Current implementation does not support real-time GitHub sync: after you import a model from a specific tag of a GitHub repository, new releases of this GitHub tag won't be synced in VDP.

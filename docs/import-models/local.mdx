@@ -152,11 +152,8 @@ To create a local model in the Console, do the following:
 2. In the **Set Up New Model** page, fill an ID for your model, this will be the unique identifier of this model
 3. Click the **Model type** ▾ drop-down and choose **Local**
 4. [Optional] Give a short description of your model in the **Description** field
-5. Click **Upload** to upload the model `.zip` file and click **Setup new model**
-6. Once the model is imported, click the **Model instances** ▾ drop-down, pick the `latest` model instance and click **Deploy**
-7. Now go to the **Model** page, the corresponding model instance should be online
-
-Since a local model has no version control, when the model is successfully imported, the model will has and only has one model instance tagged with `latest`.
+5. Click **Upload** to upload the model `.zip` file and click **Deploy**
+6. Now go to the **Model** page, the corresponding model should be online
 
 ### Low-code setup
 
@@ -169,10 +166,10 @@ curl -X POST http://localhost:8080/v1alpha/models/multipart \
 --form 'content=@"yolov4.zip"'
 ```
 
-2. Deploy the `latest` model instance.
+2. Deploy the imported model `yolov4`.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/deploy
 ```
 
 3. Perform an inference to test the model
@@ -180,7 +177,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/deploy
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -190,7 +187,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -200,7 +197,7 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test -
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4/instances/latest/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/yolov4/test-multipart \
 --form 'file=@"dog.jpg"'
 ```
 

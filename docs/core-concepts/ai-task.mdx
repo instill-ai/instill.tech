@@ -102,7 +102,7 @@ properties:
     "$ref": "#/definitions/Unspecified"
 ```
 
-To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model instance.
+To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model.
 
 The protocol is still under development. Stay tuned on how the protocol will evolve.
 
@@ -496,7 +496,7 @@ The task can fill in incomplete sentences or even generate full stories given th
 Depending on your internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
 
 The model only supports GPU deployment. By default, VDP can access all your GPUs.
-Assume that you have **N** GPUs, please pick the corresponding model instance tagged with `fp32-345m-N-gpu` to deploy.
+Assume that you have **N** GPUs, please pick the corresponding tag named with `fp32-345m-N-gpu` to import and deploy.
 
 </InfoBlock>
 
