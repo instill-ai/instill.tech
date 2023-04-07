@@ -32,7 +32,7 @@ Use one of the profile name to develop the corresponding service:
 ```shellscript
 # In the vdp repository folder
 make build PROFILE=<profile-name>
-make dev PROFILE=<profile-name> ITMODE=true
+make latest PROFILE=<profile-name> ITMODE=true
 ```
 
 The following guideline shows a specific example of how to develop the `connector-backend`.
@@ -49,7 +49,7 @@ git clone https://github.com/instill-ai/vdp.git && cd vdp
 # for `connector-backend` and set ITMODE=true
 # for local integration test
 make build PROFILE=connector
-make dev PROFILE=connector ITMODE=true
+make latest PROFILE=connector ITMODE=true
 ```
 
 ## Run dev `connector-backend`
