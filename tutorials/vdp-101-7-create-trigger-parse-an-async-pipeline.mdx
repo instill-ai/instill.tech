@@ -41,7 +41,7 @@ Before setting up an `ASYNC` pipeline, we need to set up a database for **loadin
 Here, let's [start a PostgreSQL instance with the official Docker image](https://hub.docker.com/_/postgres) and create the default database named `tutorial`
 
 ```bash
-# Start a postgres instance
+# Start a PostgreSQL instance
 docker run -p 5432:5432 --name vdp-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=tutorial -d postgres
 ```
 
@@ -77,7 +77,7 @@ Now, we are ready to create our first `ASYNC` pipeline on VDP.
 Open your local VDP console ([http://localhost:3000](http://localhost:3000)), and click `Add new pipeline`. To set up an `ASYNC` pipeline for this tutorial,
 
 1. **Source**: select `Async` for **Pipeline mode** and select `HTTP` for **Source type**.
-2. **Model Instance**: select `yolov7/v1.0-cpu`under **Select an existing online model instance**
+2. **Model**: select `yolov7` under **Select an existing online model**
 3. **Destination**: set up a new destination to the **Postgres database** we just created (see the screenshot below). **Host** should be your local IP address, while **Port**, **Username**, **Password** and **DB Name** are set according to the launched postgres instance.
 4. **Pipeline**: set **ID** to `vdp-101-async`.
 
@@ -117,7 +117,7 @@ Unlike the responses in the `SYNC` mode, the `ASYNC` pipeline only responds with
 ```json
 {
   "data_mapping_indices": ["01GDR4ZW7W4T2H2G8MK79Y49PG"],
-  "model_instance_outputs": []
+  "model_outputs": []
 }
 ```
 

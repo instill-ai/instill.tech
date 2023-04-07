@@ -88,13 +88,11 @@ A pipeline in `SYNC` mode responds to a request synchronously. It is suitable fo
 After onboarding, you will be redirected to the **Pipeline** page on the left sidebar, where you can build a `SYNC` pipeline with YOLOv4. Please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) with a few alterations:
 
 1. add an HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID `yolov4`
+2. import and deploy a model from the `v1.0-cpu` tag of the GitHub repository [instill-ai/model-yolov4-dvc](https://github.com/instill-ai/model-yolov4-dvc) with ID **yolov4**,
 
-   ,
 
-3. deploy a model instance `v1.0-cpu` of the imported model,
-4. add an HTTP data destination, and
-5. set up a pipeline with ID `yolov4`.
+3. add an HTTP data destination, and
+4. set up a pipeline with ID `yolov4`.
 
 <Gallery
   images={[
@@ -109,10 +107,6 @@ After onboarding, you will be redirected to the **Pipeline** page on the left si
     {
       alt: "Add yolov4 model",
       src: "/tutorial-assets/vdp-streamlit-yolov7/add-yolov4-model.png",
-    },
-    {
-      alt: "Deploy yolov4-cpu model",
-      src: "/tutorial-assets/vdp-streamlit-yolov7/deploy-yolov4-cpu.png",
     },
     {
       alt: "Add sync http destination",
@@ -155,11 +149,12 @@ curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "yolov7",
   "model_definition": "model-definitions/github",
   "configuration": {
-    "repository": "instill-ai/model-yolov7-dvc"
+    "repository": "instill-ai/model-yolov7-dvc",
+    "tag": "v1.0-cpu"
   }
 }'
 
-curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/deploy
 
 curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "destination-http",
@@ -173,8 +168,8 @@ curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "yolov7",
   "recipe": {
     "source": "source-connectors/source-http",
-    "model_instances": [
-      "models/yolov7/instances/v1.0-cpu"
+    "models": [
+      "models/yolov7"
     ],
     "destination": "destination-connectors/destination-http"
   }
@@ -196,9 +191,9 @@ Add an HTTP data source
 
 **Step 2**:
 
-Import a model from the GitHub repository [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
+Import a model from GitHub
 
-```shellscript focus=10:16
+```shellscript focus=10:17
 
 ```
 
@@ -206,9 +201,9 @@ Import a model from the GitHub repository [instill-ai/model-yolov7-dvc](https://
 
 **Step 3**:
 
-Deploy a model instance `v1.0-cpu` of the imported model
+Deploy the model
 
-```shellscript focus=18:18
+```shellscript focus=19:19
 
 ```
 
@@ -218,7 +213,7 @@ Deploy a model instance `v1.0-cpu` of the imported model
 
 Add a HTTP data destination
 
-```shellscript focus=20:26
+```shellscript focus=21:27
 
 ```
 
@@ -228,7 +223,7 @@ Add a HTTP data destination
 
 Set up a pipeline with ID `yolov7`
 
-```shellscript focus=27:38
+```shellscript focus=28:39
 
 ```
 
@@ -295,7 +290,7 @@ The pipelines we built are `SYNC` with HTTP connectors, so we create a `trigger_
 
 ```python
 def trigger_detection_pipeline(api_gateway_url: str, pipeline_id: str, image_url: str) -> requests.Response:
-    r""" Trigger a pipeline composed with a detection model instance using remote image URL
+    r""" Trigger a pipeline composed with a detection model using remote image URL
 
     Args:
         api_gateway_url (str): VDP API base URL
@@ -348,7 +343,7 @@ def parse_detection_response(resp: requests.Response) -> Tuple[List[Tuple[float]
         boxes_ltwh = []
         categories = []
         scores = []
-        for v in r.model_instance_outputs[0].task_outputs[0].detection.objects:
+        for v in r.model_outputs[0].task_outputs[0].detection.objects:
             boxes_ltwh.append((
                 v.bounding_box.left,
                 v.bounding_box.top,

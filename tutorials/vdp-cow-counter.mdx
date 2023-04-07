@@ -78,13 +78,11 @@ Once all the services are up, go to the Console at http://localhost:3000.
 After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [VDP 101 [7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
 
 1. add a HTTP source,
-2. import a model from GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID `yolov7`
+2. import and deploy a model from the `v1.0-cpu` tag of the GitHub repository [instill-ai/model-yolov7](https://github.com/instill-ai/model-yolov7-dvc) with ID **yolov7**,
 
-   ,
 
-3. deploy a model instance `v1.0-cpu` of the imported model,
-4. add a PostgreSQL destination, with ID `postgres-db`,
-5. set up a pipeline with ID `detection`.
+3. add a PostgreSQL destination, with ID `postgres-db`,
+4. set up a pipeline with ID `detection`.
 
 <Gallery
   images={[
@@ -99,10 +97,6 @@ After onboarding, you will be redirected to the **Pipeline** page. Please follow
     {
       alt: "Add yolov7 model",
       src: "/tutorial-assets/vdp-cow-counter/add-a-yolov7-model.png",
-    },
-    {
-      alt: "Deploy yolov7-cpu model instance",
-      src: "/tutorial-assets/vdp-cow-counter/deploy-a-yolov7-model-instance.png",
     },
     {
       alt: "Add postgres destination",
@@ -136,11 +130,12 @@ curl -X POST http://localhost:8080/v1alpha/models -d '{
   "id": "yolov7",
   "model_definition": "model-definitions/github",
   "configuration": {
-    "repository": "instill-ai/model-yolov7-dvc"
+    "repository": "instill-ai/model-yolov7-dvc",
+    "tag": "v1.0-cpu"
   }
 }'
 
-curl -X POST http://localhost:8080/v1alpha/models/yolov7/instances/v1.0-cpu/deploy
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/deploy
 
 curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
   "id": "postgres-db",
@@ -164,8 +159,8 @@ curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "description": "A magic pipeline to detect objects in images",
   "recipe": {
     "source": "source-connectors/source-http",
-    "model_instances": [
-      "models/yolov7/instances/v1.0-cpu"
+    "models": [
+      "models/yolov7"
     ],
     "destination": "destination-connectors/postgres-db"
   }
@@ -185,17 +180,15 @@ curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
 
 **Step 2: Import a model from GitHub**
 
-```shellscript focus=10:16
+```shellscript focus=10:17
 
 ```
 
 ---
 
-**Step 3: Deploy a model instance**
+**Step 3: Deploy the model**
 
-Choose the model instance `v1.0-cpu` to deploy.
-
-```shellscript focus=18:18
+```shellscript focus=19:19
 
 ```
 
@@ -203,7 +196,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 **Step 4: Add a PostgreSQL destination**
 
-```shellscript focus=20:35
+```shellscript focus=21:36
 
 ```
 
@@ -211,7 +204,7 @@ Choose the model instance `v1.0-cpu` to deploy.
 
 **Step 5: Set up your first pipeline**
 
-```shellscript focus=36:48
+```shellscript focus=37:49
 
 ```
 
@@ -383,17 +376,17 @@ tutorial> SELECT * FROM _airbyte_raw_detection;
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 |            _airbyte_ab_id            |                                                                                              _airbyte_data                                                                                               |    _airbyte_emitted_at     |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
-| 749e2ae7-dfc4-4f8d-bc32-01a515aca155 | {"index": "01GD9K7SR21Y507S3XSC350E53", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_in.| 2022-09-19 00:44:14.414+00 |
-|                                      |.stances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.94767153, "category": "cow", "bounding_box": {"top": 327, "left": 481, "width": 514, "height": 389}}, {"score": .|                            |
+| 749e2ae7-dfc4-4f8d-bc32-01a515aca155 | {"index": "01GD9K7SR21Y507S3XSC350E53", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model":[.| 2022-09-19 00:44:14.414+00 |
+|                                      |."models/yolov7"]}}, "detection": {"objects": [{"score": 0.94767153, "category": "cow", "bounding_box": {"top": 327, "left": 481, "width": 514, "height": 389}}, {"score": .|                            |
 |                                      |.0.90291864, "category": "cow", "bounding_box": {"top": 287, "left": 855, "width": 424, "height": 414}}, {"score": 0.89860874, "category": "cow", "bounding_box": {"top": 164, "left": 776, "width": 491,.|                            |
 |                                      |. "height": 280}}, {"score": 0.89435995, "category": "cow", "bounding_box": {"top": 137, "left": 1, "width": 405, "height": 269}}, {"score": 0.89387643, "category": "cow", "bounding_box": {"top": 3, "l.|                            |
 |                                      |.eft": 774, "width": 407, "height": 135}}, {"score": 0.891987, "category": "person", "bounding_box": {"top": 1, "left": 474, "width": 113, "height": 197}}, {"score": 0.8103352, "category": "dog", "boun.|                            |
 |                                      |.ding_box": {"top": 534, "left": 130, "width": 412, "height": 185}}, {"score": 0.7403712, "category": "person", "bounding_box": {"top": 0, "left": 628, "width": 47, "height": 76}}, {"score": 0.72711104.|                            |
 |                                      |., "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 282, "height": 132}}, {"score": 0.54912615, "category": "cow", "bounding_box": {"top": 1, "left": 1046, "width": 233, "height": 155}.|                            |
 |                                      |.}, {"score": 0.3561234, "category": "cow", "bounding_box": {"top": 0, "left": 937, "width": 138, "height": 56}}, {"score": 0.29841486, "category": "cow", "bounding_box": {"top": 89, "left": 879, "widt.|                            |
-|                                      |.h": 401, "height": 252}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                                                                                        |                            |
+|                                      |.h": 401, "height": 252}}]}, "model": "models/yolov7"}                                                                                                                        |                            |
 | cfb0ee48-6e09-4a61-8095-97eef946686b | {"index": "01GD9K7T9TXP11GQT4VD3YSGTH", "pipeline": {"name": "pipelines/detection", "recipe": {"source": "source-connectors/source-http", "destination": "destination-connectors/postgres-db", "model_in.| 2022-09-19 00:44:15.112+00 |
-|                                      |.stances": ["models/yolov7/instances/v1.0-cpu"]}}, "detection": {"objects": [{"score": 0.94896084, "category": "cow", "bounding_box": {"top": 321, "left": 483, "width": 507, "height": 395}}, {"score": .|                            |
+|                                      |.stances": ["models/yolov7"]}}, "detection": {"objects": [{"score": 0.94896084, "category": "cow", "bounding_box": {"top": 321, "left": 483, "width": 507, "height": 395}}, {"score": .|                            |
 |                                      |.0.9102569, "category": "cow", "bounding_box": {"top": 163, "left": 766, "width": 494, "height": 281}}, {"score": 0.8916002, "category": "person", "bounding_box": {"top": 1, "left": 474, "width": 113, .|                            |
 |                                      |."height": 194}}, {"score": 0.8845787, "category": "cow", "bounding_box": {"top": 290, "left": 855, "width": 424, "height": 398}}, {"score": 0.881902, "category": "cow", "bounding_box": {"top": 96, "le.|                            |
 |                                      |.ft": 849, "width": 429, "height": 243}}, {"score": 0.8450525, "category": "cow", "bounding_box": {"top": 3, "left": 771, "width": 403, "height": 137}}, {"score": 0.8100165, "category": "person", "boun.|                            |
@@ -401,7 +394,7 @@ tutorial> SELECT * FROM _airbyte_raw_detection;
 |                                      |.tegory": "cow", "bounding_box": {"top": 0, "left": 940, "width": 338, "height": 163}}, {"score": 0.7075124, "category": "cow", "bounding_box": {"top": 134, "left": 1, "width": 410, "height": 277}}, {".|                            |
 |                                      |.score": 0.67877483, "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 264, "height": 140}}, {"score": 0.622516, "category": "dog", "bounding_box": {"top": 528, "left": 127, "width": 33.|                            |
 |                                      |.9, "height": 190}}, {"score": 0.54869056, "category": "cow", "bounding_box": {"top": 529, "left": 127, "width": 339, "height": 188}}, {"score": 0.27535558, "category": "cow", "bounding_box": {"top": 7.|                            |
-|                                      |.3, "left": 870, "width": 295, "height": 114}}]}, "model_instance": "models/yolov7/instances/v1.0-cpu"}                                                                                                   |                            |
+|                                      |.3, "left": 870, "width": 295, "height": 114}}]}, "model": "models/yolov7"}                                                                                                   |                            |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 ...
 ```
