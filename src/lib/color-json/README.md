@@ -58,7 +58,7 @@ console.log(example) // "id": "det-pipeline"
 
 ```js
 const example = getArrayProp({
-  key: "model_instances",
+  key: "models",
   keyColor: "text-instillYellow",
   quoteColor: "text-black",
   colonColor: "text-black",

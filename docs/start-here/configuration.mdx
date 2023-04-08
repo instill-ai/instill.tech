@@ -87,14 +87,13 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
   - number of _connected_ or _disconnected_ Destinations
   - array of `SourceConnectorDefinition` of the Sources
   - array of `DestinationConnectorDefinition` of the Destinations
-- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L130) reports data for `model-backend` session of the onboarded User
+- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L129) reports data for `model-backend` session of the onboarded User
   - UUID of the onboarded User
-  - number of Models that have at least one _online_ Model Instance or have no _online_ Model Instances
-  - number of _online_ and _offline_ Model Instances
+  - number of _online_ and _offline_ Models
   - array of `ModelDefinition` of the Models
-  - array of AI tasks of the Model Instances
+  - array of AI tasks of the Models
   - number of processed images for testing models
-- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L132-L151) reports data for `pipeline-backend` session of the onboarded User
+- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _active_ and _inactive_ Pipelines
   - number of `SYNC` and `ASYNC` Pipelines

@@ -7,7 +7,7 @@ description: "Learn about how to add a model card for the open-source unstructur
 
 ## Model card
 
-Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with every model instance of a model.
+Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with a specific model.
 It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in VDP.
 
 In a model card, you can provide information about:
@@ -48,12 +48,6 @@ Tags:
 ```
 
 ### Specify an AI task
-
-<InfoBlock type="tip" title="tip">
-  Technically, you can assign different AI task to model instances of the same
-  model. However, this is strongly discouraged. Model instances of a model
-  should be designed to solve the same task.
-</InfoBlock>
 
 When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
 If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised AI task format whenever using the model.
