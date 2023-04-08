@@ -29,7 +29,7 @@ A VDP pipeline can have multiple models. The examples below showcase pipeline re
 ```json single-model-pipeline
 {
   "source": "source-connectors/source-http",
-  "models": ["models/model-v1"],
+  "models": ["models/stable-diffusion"],
   "destination": "destination-connectors/postgres-db"
 }
 ```
@@ -37,8 +37,8 @@ A VDP pipeline can have multiple models. The examples below showcase pipeline re
 ```json multi-model-pipeline
 {
   "source": "source-connectors/source-http",
-  "models": ["models/model-v1", "models/model-v2"],
-  "destination": "destination-connectors/source-destination"
+  "models": ["models/yolov4", "models/yolov7"],
+  "destination": "destination-connectors/destination-http"
 }
 ```
 
