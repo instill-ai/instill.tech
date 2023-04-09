@@ -32,7 +32,7 @@ In the following of this tutorial, we will explain how these modes work and how 
 
 ## `SYNC` mode
 
-A pipeline in the `SYNC` mode responds to a request synchronously. The result is returned to the user after **model instances** process the data. This mode is for real-time inference where low latency is of concern. The request flow when triggering a `SYNC` pipeline is shown below:
+A pipeline in the `SYNC` mode responds to a request synchronously. The result is returned to the user after **models** process the data. This mode is for real-time inference where low latency is of concern. The request flow when triggering a `SYNC` pipeline is shown below:
 
 <img
   src="/tutorial-assets/vdp-101/6-pipeline-modes/sync.svg"
@@ -45,7 +45,7 @@ The source and destination must be configured with the same protocol type to cre
 
 ## `ASYNC` mode
 
-A pipeline in the `ASYNC` mode performs an asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response. Once **model instances** have processed the data, the results are sent to the **destination**.
+A pipeline in the `ASYNC` mode performs an asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response. Once **models** have processed the data, the results are sent to the **destination**.
 
 <img
   src="/tutorial-assets/vdp-101/6-pipeline-modes/async.svg"
@@ -58,7 +58,7 @@ This mode is for use cases that do not require the inference results immediately
 
 ## `PULL` mode (coming soon!)
 
-A pipeline in the `PULL` mode performs a scheduled workload to regularly pull data from the **source** to send to **model instances** for inference and write to the **destination**.
+A pipeline in the `PULL` mode performs a scheduled workload to regularly pull data from the **source** to send to **models** for inference and write to the **destination**.
 
 <img
   src="/tutorial-assets/vdp-101/6-pipeline-modes/pull.svg"

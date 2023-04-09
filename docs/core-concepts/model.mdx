@@ -18,73 +18,61 @@ Please check out [Import Models](/docs/import-models/overview) to learn more.
 
 Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.
 
-## Model Instance
+## Model
 
-A **Model Instance** represents a tagged snapshot of a Model. A model may have multiple model instances.
-The tag of a model instance depends on the model source and what versioning control tool the model source uses.
+A **Model**, the core component of a VDP data pipeline, is a piece of ML algorithm specific to processs unstructured data for a certain AI task.
 
-_VDP captures the versioning of your models via model instances._
-During model development, ML teams version models to track and manage changes and collaborate between members.
-As you use VDP to import your model, different versions of your model are also imported as tagged model instances.
-In this case, you can keep a single history of your models and the original versioning serves as the single source of truth.
-
-Throughout the documentation, we use the two terms _model_ and _model instance_ interchangeably.
-For example, when we say that **Model** is the core component of data pipeline to convert the unstructured data to structured insights, what actually happens underneath is the model instances being used to construct a data pipeline.
-
-A VDP pipeline can have multiple model instances. The examples below showcase pipeline recipes that incorporate single or multiple model instances.
+A VDP pipeline can have multiple models. The examples below showcase pipeline recipes that incorporate single or multiple models.
 
 <CH.Code>
 
-```json single-model-instance-pipeline
+```json single-model-pipeline
 {
   "source": "source-connectors/source-http",
-  "model_instances": ["models/model-1/instances/v1.0"],
+  "models": ["models/stable-diffusion"],
   "destination": "destination-connectors/postgres-db"
 }
 ```
 
-```json multiple-model-instance-pipeline
+```json multi-model-pipeline
 {
   "source": "source-connectors/source-http",
-  "model_instances": [
-    "models/model-1/instances/v1.0",
-    "models/model-2/instances/v0.3"
-  ],
-  "destination": "destination-connectors/source-destination"
+  "models": ["models/yolov4", "models/yolov7"],
+  "destination": "destination-connectors/destination-http"
 }
 ```
 
 </CH.Code>
 
-## Model deployment
+## Model importing and deployment
 
-When importing a model in VDP, all versions of the model are imported as model instances associated with the original version tags.
+_VDP provides automatic model inference server._ After importing a model from a supported model source (e.g., GitHub and Hugging Face), and deploying it online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
+You can then build end-to-end data pipelines using the models to run ETL operations.
 Please refer to [Import Models](/docs/import-models/overview) to learn about model versioning with supported model sources.
-Among all model instances, you can choose specific ones into the model repository to deploy and then to use in data pipelines.
 
 <ZoomableImg
-  src="/docs-assets/core-concepts/model-and-model-instance.svg"
-  alt="VDP model and model instance"
+  src="/docs-assets/core-concepts/model-import-and-deployment.svg"
+  alt="Import and deploy model on VDP"
 />
 
 ## State
 
-The state of a model instance can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
+The state of a model can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
 
-When a model is initially created, the states of all model instances of this model are by default `OFFLINE`.
+When a model is initially created, the states is by default `OFFLINE`.
 
-A model instance can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
+A model can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
 
-A model instance can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`.
+A model can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`.
 Model deployment operation can take time depending on factors like Internet connection and model size.
-Before a model instance is deployed online, the state of the model instance will be `UNSPECIFIED`.
+Before a model is deployed online, the state will be `UNSPECIFIED`.
 
-If the state of a model instance ends up with `ERROR`, the model instance is undeployable on VDP. Please refer to [Prepare Models](/docs/prepare-models/overview) to make your model VDP-ready.
+If the state of a model ends up with `ERROR`, it is undeployable on VDP. Please refer to [Prepare Models](/docs/prepare-models/overview) to make your model VDP-ready.
 
 <div align="center">
   <ZoomableImg
-    src="/docs-assets/core-concepts/model-instance-state.svg"
-    alt="  The finite-state-machine (FSM) diagram for the model instance state transition logic"
+    src="/docs-assets/core-concepts/model-state.svg"
+    alt="  The finite-state-machine (FSM) diagram for the model state transition logic"
     width="500"
   />
 </div>
@@ -94,12 +82,8 @@ If the state of a model instance ends up with `ERROR`, the model instance is und
 An **inference** is a prediction to a question or task. In the concept of Machine Learning (ML) and Artificial Intelligence (AI), the term inference is often compared with training.
 To put it simple, inference is where capabilities learnt during training are put to analyze data to "infer" a result. Inference can be found and are applied everywhere across industries from photo tagging to autonomous driving.
 
-_VDP provides automatic model inference server._
-After importing a model into VDP and deploying its model instance online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
-You can then build end-to-end data pipelines using the models to run ETL operations.
-
-The API supports batch processing: you can send multiple images of popular formats (PNG and JPEG) in one request. Check the examples below.
-The API accepts images
+After deploying a model, you can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
+Check the examples below. The API accepts batched images
 
 - sent by remote URL and Base64 or
 - uploaded by multipart.
@@ -107,7 +91,7 @@ The API accepts images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -120,7 +104,7 @@ curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test -d '{
+curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -133,11 +117,11 @@ curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/{model-id}/instances/{instance-id}/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/models/{id}/test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```
 
 </CH.Code>
 
-in which `{model-id}` and `{instance-id}` correspond to the model and model instance ID respectively.
+in which `{id}` corresponds to the ID of a model.

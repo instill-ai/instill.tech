@@ -58,8 +58,8 @@ const Template = () => {
             wrap: false,
           }),
           setArrayKv({
-            id: "recipe_model_instances",
-            key: "model_instances",
+            id: "recipe_models",
+            key: "models",
             keyColor: "text-instillYellow",
             quoteColor: "text-black",
             colonColor: "text-black",
@@ -71,14 +71,14 @@ const Template = () => {
             wrap: false,
             children: [
               setNumberValue({
-                id: "model_instances_10",
+                id: "models_10",
                 value: 10,
                 valueColor: "text-instillYellow",
                 trailingComma: true,
                 trailingCommaColor: "text-black",
               }),
               setNumberValue({
-                id: "model_instances_1220",
+                id: "models_1220",
                 value: 1220,
                 valueColor: "text-instillYellow",
                 trailingComma: false,

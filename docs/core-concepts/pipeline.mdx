@@ -12,8 +12,8 @@ It is defined by a `recipe` which is essentially a JSON object:
 ```json
 {
   "source": <source-connector-resource-name>,
-  "model_instances": [
-    <model-instance-resource-name>,
+  "models": [
+    <model-resource-name>,
     ...
   ],
   "destination": <destination-connector-resource-name>
@@ -23,7 +23,7 @@ It is defined by a `recipe` which is essentially a JSON object:
 A `recipe` describes a pipeline resource consisting of:
 
 - `source` - where the pipeline starts to ingest unstructured data to be processed
-- `model_instances` - a number of deployed AI models to process the ingested unstructured data in parallel to generate structured outputs
+- `models` - a number of deployed AI models to process the ingested unstructured data in parallel to generate structured outputs
 - `destination` - where to send the structured outputs
 
 Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
@@ -47,7 +47,7 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 ```json
 {
   "source": "source-connectors/source-grpc",
-  "model_instances": ["models/yolov7/instances/v1.0-cpu"],
+  "models": ["models/yolov7-v1-cpu"],
   "destination": "destination-connectors/destination-grpc"
 }
 ```
@@ -69,7 +69,7 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 ```json
 {
   "source": "source-connectors/source-http",
-  "model_instances": ["models/yolov7/instances/v1.0-cpu"],
+  "models": ["models/yolov7-v1-cpu"],
   "destination": "destination-connectors/postgres"
 }
 ```
