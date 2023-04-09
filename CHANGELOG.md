@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.32.0](https://github.com/instill-ai/instill.tech/compare/v1.31.0...v1.32.0) (2023-04-09)
+
+
+### Features
+
+* add json ld structure data into blog pages ([#523](https://github.com/instill-ai/instill.tech/issues/523)) ([00830b1](https://github.com/instill-ai/instill.tech/commit/00830b1be8c2655c01b1c39de509e8a0b502e667))
+* dark mode aware assets ([#529](https://github.com/instill-ai/instill.tech/issues/529)) ([aaba38c](https://github.com/instill-ai/instill.tech/commit/aaba38c71d407b341a0fc71037bd76a715b6f4cd))
+* dedicated toggle block component ([#531](https://github.com/instill-ai/instill.tech/issues/531)) ([#532](https://github.com/instill-ai/instill.tech/issues/532)) ([637e710](https://github.com/instill-ai/instill.tech/commit/637e7108d46098ceff52f84b1edd9e5621c05bbb))
+
+
+### Documentation
+
+* update system architecture ([#534](https://github.com/instill-ai/instill.tech/issues/534)) ([416d3d7](https://github.com/instill-ai/instill.tech/commit/416d3d74729584267fdd17162ce789d5c5dc9a41))
+* update the documentation, tutorial and website to remove model instance ([#533](https://github.com/instill-ai/instill.tech/issues/533)) ([8d32848](https://github.com/instill-ai/instill.tech/commit/8d328486e5131368c3aa9fbbb045e90df890599e))
+
 ## [1.31.0](https://github.com/instill-ai/instill.tech/compare/v1.30.0...v1.31.0) (2023-03-16)
 
 
