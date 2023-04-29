@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.33.0](https://github.com/instill-ai/instill.tech/compare/v1.32.0...v1.33.0) (2023-04-29)
+
+
+### Features
+
+* [INS-552] add tos link in footer ([#536](https://github.com/instill-ai/instill.tech/issues/536)) ([573e529](https://github.com/instill-ai/instill.tech/commit/573e529654d5b494d2baa71383d8b84c674f519d))
+* dedicated prominent page for video resource ([#514](https://github.com/instill-ai/instill.tech/issues/514)) ([a50c55d](https://github.com/instill-ai/instill.tech/commit/a50c55dc4b515c2a72b45ac0df3192d214d1f918))
+
 ## [1.32.0](https://github.com/instill-ai/instill.tech/compare/v1.31.0...v1.32.0) (2023-04-09)
 
 
