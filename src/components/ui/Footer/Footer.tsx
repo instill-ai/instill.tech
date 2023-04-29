@@ -89,6 +89,10 @@ export const Footer = () => {
         href: "/career",
       },
       {
+        text: "Terms of Service",
+        href: "https://www.iubenda.com/terms-and-conditions/60558066",
+      },
+      {
         text: "Privacy Policy",
         href: "/privacy",
       },
