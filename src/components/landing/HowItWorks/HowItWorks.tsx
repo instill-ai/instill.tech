@@ -44,7 +44,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             type="left"
             title="Pre-built ETL data connectors for extensive data access"
             description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
-            learnMoreLink="/docs/core-concepts/connector"
+            learnMoreLink="/docs/core-concepts/data-connector"
             number={1}
             cubes={[
               {

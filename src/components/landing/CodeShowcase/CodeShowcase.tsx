@@ -73,7 +73,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillNatureGreen"
-            link="/docs/core-concepts/connector#source"
+            link="/docs/core-concepts/data-connector#source"
             description="A data connector in charge of ingesting 
               unstructured data into a Pipeline."
           />
@@ -105,7 +105,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillWarmOrange50"
-            link="/docs/core-concepts/connector#destination"
+            link="/docs/core-concepts/data-connector#destination"
             description="A data connector to load the standarised 
               AI task output from model to the destination."
           />

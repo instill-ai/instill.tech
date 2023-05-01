@@ -77,7 +77,10 @@ const SIDEBAR: Sidebar = {
         items: [
           { text: "Overview", link: "/docs/core-concepts/overview" },
           { text: "Pipeline", link: "/docs/core-concepts/pipeline" },
-          { text: "Connector", link: "/docs/core-concepts/connector" },
+          {
+            text: "Data connector",
+            link: "/docs/core-concepts/data-connector",
+          },
           { text: "Model", link: "/docs/core-concepts/model" },
           { text: "AI task", link: "/docs/core-concepts/ai-task" },
         ],
