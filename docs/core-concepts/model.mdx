@@ -11,6 +11,10 @@ VDP uses Triton Inference server for model serving. It supports multiple deep le
 Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
 To make your models VDP-ready, please refer to [Prepare Models](/docs/prepare-models/overview).
 
+## Model Connector (coming soon!)
+
+VDP uses **ModelConnector** to define how to connect AI models for processing unstructured data from different sources, no matter it is a 3rd party model provider or a in-house model serving platform.
+
 ## Definition
 
 VDP uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model_definition.proto#L30-L76) to define how to configure and import a model from a supported model source.
