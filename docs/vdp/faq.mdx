@@ -2,7 +2,7 @@
 title: "FAQ"
 lang: "en-US"
 draft: false
-description: "Frequently Asked Questions (FAQ): If you have a question about the open-source data ETL tool VDP https://github.com/instill-ai/vdp, you're in the right place"
+description: "Frequently Asked Questions (FAQ): If you have a question about the unstructured data ETL tool VDP https://github.com/instill-ai/vdp, you're in the right place"
 ---
 
 This page curates a list of frequently asked questions from our users, friends, candidates, investors, random people, etc.
@@ -43,8 +43,6 @@ This page curates a list of frequently asked questions from our users, friends, 
     What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
     We believe it's time to apply our experiences to make AI more accessible to everyone, especially the data industry.
 
-    In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any form. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
-
   </details>
 </ToggleBlock>
 
@@ -52,7 +50,9 @@ This page curates a list of frequently asked questions from our users, friends, 
   <details> 
     <summary>**Is VDP open source?**</summary>
 
-    Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).
+    VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
+    Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
+    Please check the [VDP License](/docs/start-here/license) in detail.
 
   </details>
 </ToggleBlock>
@@ -61,7 +61,7 @@ This page curates a list of frequently asked questions from our users, friends, 
   <details> 
     <summary>**Is VDP free?**</summary>
 
-    Yes. VDP is open source so you can self-host it in your basement for free.
+    Yes. VDP is source available so you can self-host it in your basement for free.
 
   </details>
 </ToggleBlock>
@@ -111,41 +111,6 @@ This page curates a list of frequently asked questions from our users, friends, 
     There are many essential components involved in the MLOps cycle, and notably, these components are still evolving.
 
     We believe tooling development in AI and Data industry is marching toward a completely modularisation future, meaning that components in MLOps need to take into account flexibility, extensibility and composability as the first-class citizen as far as the design principle goes.
-
-  </details>
-</ToggleBlock>
-
-<ToggleBlock>
-  <details> 
-    <a name="why-triton"></a>
-    <summary>**Why does VDP adopt Triton Inference Server?**</summary>
-
-    There are many great model serving frameworks out there available for production-level model inference — TorchServe, TensorFlow Serving, Seldon, BentoML and Cortex just to name a few.
-
-    VDP is highly opinionated in inference performance, as we are keen to achieve both high-throughput and low-latency at the same time, to make VDP cost-effective for our users.
-
-    AI algorithms can benefit from parallelism by nature, for examples all the pixels/voxels imagined in one 2D/3D image can share the same computing operations.
-    We were therefore looking into the highest performant GPU model serving framework to serve in a VDP pipeline.
-    Triton Inference Server provides a native way to make the most of NVIDIA GPU architecture (e.g., concurrency, scheduler, batcher) for multiple frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more.
-
-    We are continuously working on new features to help create and import a Triton-based model easier. Please refer to [Prepare Models](/docs/prepare-models/overview) for details.
-
-  </details>
-</ToggleBlock>
-
-<ToggleBlock>
-  <details> 
-    <summary>**Why does VDP adopt Airbyte?**</summary>
-
-    VDP needs to load the structured data transformed from [Model](../core-concepts/model) to [Destination](../core-concepts/connector#destination).
-    Since structured data has gained overflowing love in the data industry, instead of reinventing the wheel, what makes more sense is to investigate the best way to plug VDP into the modern data stack for the subsequent structured data journey.
-
-    Soon, Airbyte showed up on our radar.
-
-    Airbyte has provided a good number of destination connectors for structured data.
-    In addition, the Airbyte Protocol provides a standardised interface to integrate with VDP.
-
-    Last but not least, we love open source.
 
   </details>
 </ToggleBlock>
