@@ -12,7 +12,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
         marginBottom
       )}
     >
-      Open-source Unstructured Data Infrastructure
+      Build Unstructured Data Pipelines 10x Faster
     </h1>
   );
 };
