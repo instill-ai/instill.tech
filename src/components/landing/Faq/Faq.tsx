@@ -48,7 +48,11 @@ export const Faq = ({ marginBottom }: FaqProps) => {
                 ...accordionHeaderStyle,
                 header: "Is VDP open source?",
                 content: (
-                  <FaqContent>{`Yes. VDP is open source under [Apache License 2.0](https://github.com/instill-ai/vdp/blob/main/LICENSE).`}</FaqContent>
+                  <FaqContent>
+                    {`VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
+                  Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
+                  Please check the [VDP License](../docs/start-here/license) in detail.`}
+                  </FaqContent>
                 ),
               },
               {
@@ -84,9 +88,7 @@ We have learned that model serving for an effective end-to-end data flow concern
 In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
                   
 What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
-We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
-                  
-In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../docs/vdp/getting-started#contribution) section.`}
+We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.`}
                   </FaqContent>
                 ),
               },
@@ -95,7 +97,11 @@ In spite of all that, VDP is an open-source project. Everyone is more than welco
                 header: "Is VDP free?",
                 content: (
                   <FaqContent>
-                    {`Yes. VDP is open source so you can self-host it in your basement for free.`}
+                    {`Yes. VDP is source available so you can self-host it in your basement for free.
+
+In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
+                  
+If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
                   </FaqContent>
                 ),
               },
