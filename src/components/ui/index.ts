@@ -15,6 +15,7 @@ export { PageHead } from "./PageHead";
 export type { PageHeadProps } from "./PageHead";
 export { PageHero } from "./PageHero";
 export type { PageHeroProps } from "./PageHero";
+export * from "./PricingPlanLayout";
 export { ReactMarkdownWrapper } from "./ReactMarkdownWrapper";
 export type { ReactMarkdownWrapperProps } from "./ReactMarkdownWrapper";
 export { SecureYourSpot } from "./SecureYourSpot";

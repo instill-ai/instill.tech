@@ -1,0 +1,114 @@
+import { FC, ReactElement } from "react";
+import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import cn from "clsx";
+
+import { MemberDetails } from "@/types/instill";
+import {
+  AboutHero,
+  OurMembers,
+  OurCompany,
+  OurValue,
+} from "@/components/about";
+import {
+  ContentContainer,
+  PageBase,
+  PageHead,
+  PricingPlan,
+  PricingPlanLayout,
+  SecureYourSpotProps,
+  StayInTheLoopProps,
+} from "@/components/ui";
+import {
+  ClickUpTask,
+  listClickUpTasksInListQuery,
+  transformClickUpTaskToMemberDetails,
+} from "@/lib/click-up";
+import { useInView } from "react-intersection-observer";
+
+const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
+  import("@/components/ui").then((mod) => mod.SecureYourSpot)
+);
+
+const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
+  import("@/components/ui").then((mod) => mod.StayInTheLoop)
+);
+
+type GetLayOutProps = {
+  page: ReactElement;
+};
+
+const pricingPlans: PricingPlan[] = [
+  {
+    name: "Open Source",
+    price: "Free",
+    popular: false,
+    description: "Free forever",
+    features: [],
+    ctaLink: "https://github.com/instill-ai/vdp",
+    ctaText: "Start for free",
+  },
+  {
+    name: "Starter",
+    price: 14.99,
+    popular: true,
+    description: "Advanced features and reporting.",
+    features: [],
+    ctaLink: "https://console.instill.tech",
+    ctaText: "Start 30-day free trial",
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    popular: true,
+    description: "Unlimited features.",
+    features: [],
+    ctaLink: "https://console.instill.tech",
+    ctaText: "Book a meeting",
+  },
+];
+
+const PricingPage: FC & {
+  getLayout?: FC<GetLayOutProps>;
+} = () => {
+  return (
+    <>
+      <PageHead
+        pageType="main"
+        pageTitle="Pricing | Instill AI"
+        pageDescription="Instill AI pricing"
+        additionMeta={null}
+        commitMeta={null}
+        currentArticleMeta={null}
+        jsonLd={null}
+      />
+      <ContentContainer
+        margin="my-[120px] xl:my-40"
+        contentMaxWidth="max-w-[1127px]"
+      >
+        <div className="mb-[88px] flex flex-col">
+          <h3 className="mb-3 text-center font-sans text-[32px] font-bold leading-[48px] -tracking-[2%] text-[#1D5BD7]">
+            Pricing
+          </h3>
+          <h2 className="mb-5 text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[1.75%] text-[#101828]">
+            Plans that fit your scale
+          </h2>
+          <p className="text-center font-sans text-2xl font-normal leading-9 -tracking-[1.5%] text-[#475467]">
+            Simple pricing to build your unstructured data infrastructure
+          </p>
+        </div>
+        <div className="grid grid-flow-row grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
+          {pricingPlans.map((plan) => (
+            <PricingPlanLayout key={plan.name} plan={plan} />
+          ))}
+        </div>
+      </ContentContainer>
+    </>
+  );
+};
+
+PricingPage.getLayout = (page) => {
+  return <PageBase>{page}</PageBase>;
+};
+
+export default PricingPage;
