@@ -1,38 +1,12 @@
 import { FC, ReactElement } from "react";
-import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
-import cn from "clsx";
 
-import { MemberDetails } from "@/types/instill";
-import {
-  AboutHero,
-  OurMembers,
-  OurCompany,
-  OurValue,
-} from "@/components/about";
 import {
   ContentContainer,
   PageBase,
   PageHead,
   PricingPlan,
   PricingPlanLayout,
-  SecureYourSpotProps,
-  StayInTheLoopProps,
 } from "@/components/ui";
-import {
-  ClickUpTask,
-  listClickUpTasksInListQuery,
-  transformClickUpTaskToMemberDetails,
-} from "@/lib/click-up";
-import { useInView } from "react-intersection-observer";
-
-const SecureYourSpot = dynamic<SecureYourSpotProps>(() =>
-  import("@/components/ui").then((mod) => mod.SecureYourSpot)
-);
-
-const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/ui").then((mod) => mod.StayInTheLoop)
-);
 
 type GetLayOutProps = {
   page: ReactElement;
@@ -42,28 +16,61 @@ const pricingPlans: PricingPlan[] = [
   {
     name: "Open Source",
     price: "Free",
-    popular: false,
-    description: "Free forever",
-    features: [],
+    subTitle: null,
+    description:
+      "For personal or non-commercial projects without security & scalability features",
+    features: [
+      "End-to-end unstructured data pipelines for diverse scenarios",
+      "Unlimited pre-built data connectors",
+      "One-click import & deploy ML models",
+      "High-performing backends",
+      "Community-based support",
+    ],
+    featureDescription: (
+      <p className="text-base font-normal leading-6 text-[#475467]">
+        Start your unstructured data journey...
+      </p>
+    ),
     ctaLink: "https://github.com/instill-ai/vdp",
     ctaText: "Start for free",
   },
   {
     name: "Starter",
     price: 14.99,
-    popular: true,
-    description: "Advanced features and reporting.",
-    features: [],
+    subTitle: "Open Alpha",
+    description: "For individual or small teams with advanced features",
+    features: [
+      "FREE compute resource during Open Alpha",
+      "Access our pre-trained ML models",
+      "Unlimited API requests",
+      "Community-based support",
+    ],
+    featureDescription: (
+      <p className="text-base font-normal leading-6 text-[#475467]">
+        Everything in <span className="font-semibold">Open Source</span> plus...
+      </p>
+    ),
     ctaLink: "https://console.instill.tech",
     ctaText: "Start 30-day free trial",
   },
   {
     name: "Enterprise",
     price: "Custom",
-    popular: true,
-    description: "Unlimited features.",
-    features: [],
-    ctaLink: "https://console.instill.tech",
+    subTitle: null,
+    description:
+      "For organisations with large data volume or the need for customisation",
+    featureDescription: (
+      <p className="text-base font-normal leading-6 text-[#475467]">
+        Everything in <span className="font-semibold">Starter</span> plus...
+      </p>
+    ),
+    features: [
+      "Custom model deployment",
+      "Dedicated compute resource for high model inference speed",
+      "Keep your cost low",
+      "Premium support",
+    ],
+    ctaLink: "https://calendly.com/instill-ai/chat-with-us",
     ctaText: "Book a meeting",
   },
 ];
