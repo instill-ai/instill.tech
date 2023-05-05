@@ -17,6 +17,7 @@ const pricingPlans: PricingPlan[] = [
     name: "Open Source",
     price: "Free",
     subTitle: null,
+    subTitleLink: null,
     description:
       "For personal or non-commercial projects without security & scalability features",
     features: [
@@ -38,6 +39,7 @@ const pricingPlans: PricingPlan[] = [
     name: "Starter",
     price: 14.99,
     subTitle: "Open Alpha",
+    subTitleLink: "https://www.instill.tech/docs/start-here/faq#essentials",
     description: "For individual or small teams with advanced features",
     features: [
       "FREE compute resource during Open Alpha",
@@ -57,6 +59,7 @@ const pricingPlans: PricingPlan[] = [
     name: "Enterprise",
     price: "Custom",
     subTitle: null,
+    subTitleLink: null,
     description:
       "For organisations with large data volume or the need for customisation",
     featureDescription: (
