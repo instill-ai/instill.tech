@@ -1,5 +1,7 @@
+import cn from "clsx";
 import { Nullable } from "@/types/instill";
 import { ReactElement } from "react";
+import { useRouter } from "next/router";
 
 export type PricingPlanLayoutProps = {
   plan: PricingPlan;
@@ -9,6 +11,7 @@ export type PricingPlan = {
   name: string;
   price: number | string;
   subTitle: Nullable<string>;
+  subTitleLink: Nullable<string>;
   description: string;
   features: string[];
   featureDescription: ReactElement;
@@ -18,6 +21,7 @@ export type PricingPlan = {
 
 export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
   const { plan } = props;
+  const router = useRouter();
   return (
     <div
       style={{ boxShadow: "0px 8px 32px rgba(0, 0, 0, 0.16)" }}
@@ -29,7 +33,22 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
             {plan.name}
           </p>
           {plan.subTitle ? (
-            <span className="rounded-full bg-[#F0F5FF] py-1 px-3 text-[#1D5BD7]">
+            <span
+              onClick={
+                plan.subTitleLink
+                  ? () => {
+                      if (!plan.subTitleLink) return;
+                      router.push(plan.subTitleLink, undefined, {
+                        scroll: false,
+                      });
+                    }
+                  : undefined
+              }
+              className={cn(
+                "rounded-full bg-[#F0F5FF] py-1 px-3 text-[#1D5BD7]",
+                plan.subTitleLink ? "cursor-pointer" : ""
+              )}
+            >
               {plan.subTitle}
             </span>
           ) : null}
