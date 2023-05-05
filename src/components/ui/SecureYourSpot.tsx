@@ -40,8 +40,8 @@ export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
       <CommonCtaButton
         position="mr-auto"
         withArrow={false}
-        text="Get Early Access"
-        link="/get-access"
+        text="Try Instill Cloud Free"
+        link="https://console.instill.tech"
       />
     </div>
   );

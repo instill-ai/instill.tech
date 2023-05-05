@@ -6,7 +6,7 @@ import { HeroAnimation } from "./HeroAnimation";
 import { Headline } from "./Headline";
 import { SubHeadline } from "./SubHeadline";
 import { GitHubCtaButton } from "./GitHubCtaButton";
-import { DiscordCtaButton } from "./DiscordCtaButton";
+import { ConsoleCtaButton } from "./ConsoleCtaButton";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
@@ -20,8 +20,8 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-10" />
           <div className="flex flex-col gap-y-5 xl:flex-row xl:gap-x-5 xl:gap-y-0">
+            <ConsoleCtaButton />
             <GitHubCtaButton />
-            <DiscordCtaButton />
           </div>
         </div>
         <div className="mb-20 xl:my-auto xl:w-[36%]">

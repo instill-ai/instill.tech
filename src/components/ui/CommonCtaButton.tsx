@@ -32,7 +32,7 @@ export const CommonCtaButton = ({
       padding="px-5 py-2.5"
       itemGapX="gap-x-5"
       position={position}
-      onClickHandler={() => router.push(link)}
+      onClickHandler={() => router.push(link, undefined, { scroll: false })}
       hoveredShadow="hover:shadow-instill-solid-5"
     >
       <p className="text-lg font-normal">{text}</p>
