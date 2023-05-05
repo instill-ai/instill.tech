@@ -14,6 +14,7 @@ import {
   infoBlockHeader,
   infoBlockChildren,
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
+import { redirect } from "next/dist/server/api-utils/index.js";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -71,6 +72,15 @@ const nextConfig = {
     }
 
     return config;
+  },
+  async redirects() {
+    return [
+      {
+        source: "/tos",
+        destination: "https://www.iubenda.com/terms-and-conditions/60558066",
+        permanent: false,
+      },
+    ];
   },
 };
 
