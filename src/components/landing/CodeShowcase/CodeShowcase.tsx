@@ -136,7 +136,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         </p>
         <CommonCtaButton
           text="See documentation"
-          link="/docs/start-here/getting-started"
+          link="/docs/welcome"
           withArrow={true}
           position="mr-auto"
         />

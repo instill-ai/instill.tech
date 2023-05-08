@@ -36,7 +36,7 @@ Make sure Helm has been installed in your environment. If not, please follow the
 
 Check out the VDP Helm repository on [ArtifactHub](https://artifacthub.io/packages/helm/instill/vdp).
 
-To add VDP Helm repository, simply run
+To add the VDP Helm repository, simply run
 
 ```bash
 helm repo add instill https://helm.instill.tech
@@ -93,7 +93,7 @@ To uninstall the chart:
 helm uninstall vdp --namespace vdp
 ```
 
-, and further clean up all VDP-related persistent volumes:
+and clean up all VDP-related persistent volumes:
 
 ```bash
 kubectl delete pvc --all -n vdp

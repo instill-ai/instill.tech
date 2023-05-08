@@ -17,7 +17,7 @@ We adapt single framework structure to serve all our content enabled by the Next
 
 There have three content folders and their corresponding page, assets folder.
 
-- Docs folder has nested structure, by default it will accept all kinds of nested structure and compile the path into url. For example. A file in /docs/start-here/getting-started.mdx will be compiled into https://instill.tech/docs/start-here/getting-started.
+- Docs folder has nested structure, by default it will accept all kinds of nested structure and compile the path into url. For example. A file in /docs/vdp/getting-started.mdx will be compiled into https://instill.tech/docs/vdp/getting-started.
 - Blog and tutorials currently only accept **flat** structure. This means it won't accept nested folder strcture likes /tutorial/nested-folder/foo.mdx.
 
 ```
@@ -172,8 +172,8 @@ You can use this component to implement instill-ai's call to action button.
 
 ```mdx
 <CtaButton
-  text="🚀 Join the Instill Cloud waitlist"
-  link="/get-access/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  text="🚀 Try Instill Cloud Free"
+  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
@@ -227,11 +227,10 @@ const SIDEBAR: Sidebar = {
         text: "Start here",
         collapsible: true,
         items: [
-          { text: "Getting started", link: "/docs/start-here/getting-started" }, // <-- This is the item of the section
-          { text: "Configuration", link: "/docs/start-here/configuration" },
-          { text: "Roadmap", link: "/docs/start-here/roadmap" },
-          { text: "FAQ", link: "/docs/start-here/faq" },
-          { text: "Instill Cloud", link: "/docs/start-here/instill-cloud" },
+          { text: "Getting started", link: "/docs/vdp/getting-started" }, // <-- This is the item of the section
+          { text: "Configuration", link: "/docs/vdp/configuration" },
+          { text: "Roadmap", link: "/docs/vdp/roadmap" },
+          { text: "FAQ", link: "/docs/vdp/faq" },
         ],
       },
     ],

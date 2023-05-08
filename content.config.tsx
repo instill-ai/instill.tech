@@ -25,18 +25,36 @@ const SIDEBAR: Sidebar = {
     },
     sections: [
       {
-        text: "Start here",
+        text: "Welcome",
+        link: "/docs/welcome",
+        items: [],
+      },
+      {
+        text: "Instill Cloud",
         collapsible: true,
         items: [
-          { text: "Getting started", link: "/docs/start-here/getting-started" },
-          { text: "Configuration", link: "/docs/start-here/configuration" },
-          { text: "Roadmap", link: "/docs/start-here/roadmap" },
-          { text: "FAQ", link: "/docs/start-here/faq" },
-          { text: "Instill Cloud", link: "/docs/start-here/instill-cloud" },
+          {
+            text: "Getting started",
+            link: "/docs/instill-cloud/getting-started",
+          },
+          {
+            text: "Using Instill Cloud",
+            link: "/docs/instill-cloud/using-instill-cloud",
+          },
         ],
       },
       {
-        text: "Deployment",
+        text: "VDP",
+        collapsible: true,
+        items: [
+          { text: "Getting started", link: "/docs/vdp/getting-started" },
+          { text: "Configuration", link: "/docs/vdp/configuration" },
+          { text: "Roadmap", link: "/docs/vdp/roadmap" },
+          { text: "FAQ", link: "/docs/vdp/faq" },
+        ],
+      },
+      {
+        text: "Deploy VDP",
         collapsible: true,
         items: [
           {
@@ -180,6 +198,13 @@ const NAV: NavConfig = {
       className: "",
       position: "right",
       label: "Product website",
+    },
+    {
+      key: "docs-nav-instill-cloud-link",
+      href: "https://console.instill.tech",
+      className: "",
+      position: "right",
+      label: "Instill Cloud",
     },
     {
       key: "docs-nav-item-1",

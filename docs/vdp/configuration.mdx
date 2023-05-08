@@ -5,12 +5,12 @@ draft: false
 description: "Learn about how to set up the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-VDP automatically load a [`.env`](https://github.com/instill-ai/vdp/blob/main/.env) file that contains key/value pairs defining required environment variables.
+VDP automatically loads a [`.env`](https://github.com/instill-ai/vdp/blob/main/.env) file that contains key/value pairs defining required environment variables.
 You can customize the file based on your configuration.
 
 ## Configuring services
 
-VDP services uses [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and make it available to the service.
+VDP services use [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and makes it available to the service.
 To override the default configuration file, you can set the corresponding environment variable in the [Compose](https://github.com/instill-ai/vdp/blob/main/docker-compose.yml) file in VDP.
 All configuration environment variables for each service are prefixed with `CFG_`.
 
@@ -41,9 +41,9 @@ TEMPORAL_UI_VERSION=<temporal-ui-version>
 ```
 
 The combination of default versions in `.env` file is fully tested for compatibility.
-Unless you are debugging and testing, updating the default versions in `.env` file is discouraged.
+Unless you are debugging and testing, updating the default versions in the `.env` file is discouraged.
 
-### Configuring VDP domain
+### Configuring the VDP domain
 
 Set the domain name to access VDP by overriding the environment variable `DOMAIN`:
 
@@ -65,7 +65,7 @@ To help us better understand how VDP is used and can be improved, VDP collects a
   how to improve VDP without being invasive.
 </InfoBlock>
 
-When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, `model-backend` and `mgmt-backend` in VDP will ask for a new session, respectively.
+When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, `model-backend`, and `mgmt-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
 For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
 
@@ -73,25 +73,25 @@ For each session, we collect [`Session`](https://github.com/instill-ai/protobufs
 - edition of the service to identify the deployment, e.g., `local-ce` for local open-source deployment
 - version of the service, e.g., `0.5.0-alpha`
 - architecture of the system the service is running on, e.g., `amd64`
-- operating system the service is running on, e.g., `linux`
+- operating system the service is running on, e.g., `Linux`
 - uptime in seconds to identify the rough life span of the service
 
-Each session is assigned with a random UUID for tracking and identification.
+Each session is assigned a random UUID for tracking and identification.
 Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every 10 minutes:
 
 - [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
-  - information of the [onboarded User](/docs/start-here/getting-started#start-building-with-vdp)
+  - information of the [onboarded User](/docs/vdp/getting-started#start-building-with-vdp)
 - [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _connected_ or _disconnected_ Sources
   - number of _connected_ or _disconnected_ Destinations
-  - array of `SourceConnectorDefinition` of the Sources
-  - array of `DestinationConnectorDefinition` of the Destinations
+  - an array of `SourceConnectorDefinition` of the Sources
+  - an array of `DestinationConnectorDefinition` of the Destinations
 - [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L129) reports data for `model-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _online_ and _offline_ Models
-  - array of `ModelDefinition` of the Models
-  - array of AI tasks of the Models
+  - the array of `ModelDefinition` of the Models
+  - the array of AI tasks of the Models
   - number of processed images for testing models
 - [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
@@ -100,7 +100,7 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
   - number of images processed by the Pipelines
 
 You can check the full usage data structs in [protobufs](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto).
-These data does not allow us to track Personal Data but enables us to measure session counts and usage statistics.
+These data do not allow us to track Personal Data but enable us to measure session counts and usage statistics.
 
 ### Implementation
 
@@ -112,7 +112,7 @@ Additionally, The frontend Console sends event data to [Amplitude](https://ampli
 
 ### Opting out
 
-VDP usage collection helps the entire community. We'd appreciate if you can leave it on.
+VDP usage collection helps the entire community. We'd appreciate it if you can leave it on.
 However, if you want to opt out, you can disable it by overriding the `.env` file:
 
 ```shellscript .env
@@ -123,4 +123,4 @@ This will disable the VDP usage collection for the entire project.
 
 ## Acknowledgements
 
-Our anonymised usage collection were inspired by KrakenD's [How we built our telemetry service](https://www.krakend.io/blog/building-a-telemetry-service/) and would love to acknowledge that their design has helped us to bootstrap our usage collection project.
+Our anonymised usage collection was inspired by KrakenD's [How we built our telemetry service](https://www.krakend.io/blog/building-a-telemetry-service/) and would love to acknowledge that their design has helped us to bootstrap our usage collection project.
