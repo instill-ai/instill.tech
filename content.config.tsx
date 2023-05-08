@@ -38,7 +38,7 @@ const SIDEBAR: Sidebar = {
             link: "/docs/instill-cloud/getting-started",
           },
           {
-            text: "Use Instill Cloud",
+            text: "Using Instill Cloud",
             link: "/docs/instill-cloud/using-instill-cloud",
           },
         ],
