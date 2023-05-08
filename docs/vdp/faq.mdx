@@ -23,7 +23,7 @@ This page curates a list of frequently asked questions from our users, friends, 
 
     To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
-    You can find more detailed narrative in our blog article [Why Instill AI exists](/blog/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](/blog/unstructured-data-etl/?utm_source=documentation&utm_medium=link).
+    You can find a more detailed narrative in our blog article [Why Instill AI exists](/blog/why-instill-ai-exists/?utm_source=documentation&utm_medium=link) and [Missing piece in modern data stack: unstructured data ETL](/blog/unstructured-data-etl/?utm_source=documentation&utm_medium=link).
 
   </details>
 </ToggleBlock>
@@ -33,17 +33,17 @@ This page curates a list of frequently asked questions from our users, friends, 
     <summary>**Who are behind VDP?**</summary>
 
     We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
-    We have in-depth experiences in developing and maintaining sophisticated AI systems.
+    We have in-depth experience in developing and maintaining sophisticated AI systems.
 
     Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
 
     We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
-    In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
+    In the end, we had successfully built a battle-proven AI system in-house and had the system run in production for years.
 
     What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
-    We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
+    We believe it's time to apply our experiences to make AI more accessible to everyone, especially the data industry.
 
-    In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
+    In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any form. Please refer to the [Contribution](../start-here/getting-started#contribution) section.
 
   </details>
 </ToggleBlock>
@@ -63,10 +63,6 @@ This page curates a list of frequently asked questions from our users, friends, 
 
     Yes. VDP is open source so you can self-host it in your basement for free.
 
-    In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
-
-    If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
-
   </details>
 </ToggleBlock>
 
@@ -74,60 +70,12 @@ This page curates a list of frequently asked questions from our users, friends, 
   <details> 
     <summary>**How do you make money?**</summary>
 
-    We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
+    We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle.
+    It is currently in Open Alpha and we need your feedback to help shape the future of the service.
+    During Open Alpha, we offer a 30-day trial, free pipeline triggers, and free access to pre-trained ML models.
+    For more information, see the [Pricing](/pricing) page.
 
-    If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.
-
-  </details>
-</ToggleBlock>
-
-## Diff
-
-<ToggleBlock>
-  <details> 
-    <summary>**VDP vs. Google/Amazon/etc.**</summary>
-
-    Amazon Rekognition and Google Vision AI are off-the-shelf Vision AI API services using pre-trained models. If the pre-trained models do not work for your dataset, the APIs are useless for you.
-
-    To make up the deficiency, Amazon SageMaker and Google Vertex AI alike cloud services offer general-purpose machine learning platform-as-a-service (MLPaaS) which focus on model generation for general machine learning problems.
-
-    In contrast, VDP focuses on unstructured data ETL, in which the goal is to streamline the ETL pipeline components to enable the modern data stack to tap on the value of the unstructured data.
-
-    In addition, choosing Google or Amazon alike means choosing a cloud vendor you prefer to be locked in. VDP, on the other hand, is vendor lock-in free.
-    It is open-source and an API-first open platform. You can self-host VDP in AWS, GCP, or on-premise, or simply subscribe Instill Cloud to start using VDP in a snap.
-
-    Last but not least, Instill Cloud offers one order of magnitude lower pay-as-you-go inference price, compared with those major cloud vendors.
-
-  </details>
-</ToggleBlock>
-
-<ToggleBlock>
-  <details> 
-    <summary>**VDP vs. Clarifai/Roboflow/Encord/Datature/Nyckel/Sieve/etc.**</summary>
-
-    To the best of our knowledge, these solutions either provide AI API SaaS or AI model generation PaaS.
-
-    VDP aims to integrate with tooling in the modern data stack for unstructured data ETL.
-
-    While effective AI models are crucial to transform unstructured data, model generation is in fact a task orthogonal to a VDP pipeline.
-    The design principle of VDP is to make the use of models as flexible as possible.
-
-    That said, we will provide AutoML in VDP for custom model training in the near future. At the moment, the VDP users can freely use their familiar ways to generate models and import the models into a VDP pipeline fairly easily.
-
-    Find out the supported model sources to import in [Import Models](../import-models/overview) section.
-
-  </details>
-</ToggleBlock>
-
-<ToggleBlock>
-  <details> 
-    <summary>**VDP vs. Seldon/BentoML/TorchServe/TensorFlow Serving/Cortex/Cog/etc.**</summary>
-
-    VDP is more than a model serving framework!
-
-    VDP has a model serving component specifically for AI models, but more importantly, the goal of VDP is to streamline the end-to-end unstructured data flow.
-
-    See [Why is Triton Inference Server adopted?](#why-triton) for further detailed answer about model serving.
+    👉 [Try Instill Cloud free](https://console.instill.tech/?utm_source=documentation&utm_medium=link)
 
   </details>
 </ToggleBlock>
