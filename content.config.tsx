@@ -201,7 +201,7 @@ const NAV: NavConfig = {
     },
     {
       key: "docs-nav-instill-cloud-link",
-      href: "https://www.instill.tech",
+      href: "https://console.instill.tech",
       className: "",
       position: "right",
       label: "Instill Cloud",
