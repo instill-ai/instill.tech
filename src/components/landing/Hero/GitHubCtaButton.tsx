@@ -24,9 +24,7 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       position={position}
       hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() =>
-        router.push(
-          "/docs/start-here/getting-started/?utm_source=product&utm_medium=button"
-        )
+        router.push("/docs/welcome/?utm_source=product&utm_medium=button")
       }
     >
       <div className="flex flex-col">

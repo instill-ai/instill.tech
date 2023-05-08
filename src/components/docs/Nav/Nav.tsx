@@ -138,10 +138,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       >
         {!nav.logo && !nav.title ? null : (
           <div className="logo mr-4 flex md:hidden">
-            <Link
-              href="/docs/start-here/getting-started"
-              className="flex flex-row gap-x-3"
-            >
+            <Link href="/docs/welcome" className="flex flex-row gap-x-3">
               {nav.logo ? (
                 <Image
                   src={nav.logo.src}

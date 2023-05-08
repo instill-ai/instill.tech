@@ -57,14 +57,14 @@ export const Footer = () => {
         href: "https://demo.instill.tech",
       },
       {
-        text: "Join Instill Cloud waitlist",
-        href: "/get-access",
+        text: "Try Instill Cloud free",
+        href: "https://console.instill.tech",
       },
     ],
     resources: [
       {
         text: "Documentation",
-        href: "/docs/start-here/getting-started",
+        href: "/docs",
       },
       {
         text: "Blog",

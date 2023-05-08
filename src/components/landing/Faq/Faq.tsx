@@ -86,7 +86,7 @@ In the end, we had successfully built a battle-proven AI system in-house and hav
 What we had built can actually be modularised into working components to benefit a broader spectrum of AI tasks and industry sectors.
 We believe it's time to apply our experiences to make AI more accessible to everyone especially the data industry.
                   
-In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../docs/start-here/getting-started#contribution) section.`}
+In spite of all that, VDP is an open-source project. Everyone is more than welcome to contribute to VDP in any forms. Please refer to the [Contribution](../docs/vdp/getting-started#contribution) section.`}
                   </FaqContent>
                 ),
               },
@@ -95,11 +95,7 @@ In spite of all that, VDP is an open-source project. Everyone is more than welco
                 header: "Is VDP free?",
                 content: (
                   <FaqContent>
-                    {`Yes. VDP is open source so you can self-host it in your basement for free.
-
-In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
-                  
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
+                    {`Yes. VDP is open source so you can self-host it in your basement for free.`}
                   </FaqContent>
                 ),
               },
@@ -108,9 +104,12 @@ If you are interested in the hosting service of VDP, we've started signing up us
                 header: "How do you make money?",
                 content: (
                   <FaqContent>
-                    {`We offer fully managed VDP service on Instill Cloud (coming soon!) with Team and Enterprise tiers to organisations that want to get all the power of VDP for their teams, without any hassle.
+                    {`We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle.
+It is currently in Open Alpha and we need your feedback to help shape the future of the service.
+During Open Alpha, we offer 30-day trial, free pipeline triggers and free access to pre-trained ML models.
+For more information, see the [Pricing](/pricing) page.
 
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
+👉 [Try Instill Cloud free](https://console.instill.tech/?utm_source=documentation&utm_medium=link)`}
                   </FaqContent>
                 ),
               },
@@ -120,7 +119,7 @@ If you are interested in the hosting service of VDP, we've started signing up us
             withArrow={true}
             position="xl:ml-auto"
             text="See all FAQ"
-            link="/docs/start-here/faq"
+            link="/docs/vdp/faq"
           />
         </div>
       </div>
