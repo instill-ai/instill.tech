@@ -11,6 +11,7 @@ import { DocsPageLink } from "./DocsPageLink";
 import { CareerPageLink } from "./CareerPageLink";
 import { TutorialPageLink } from "./TutorialPageLink";
 import { BlogPageLink } from "./BlogPageLink";
+import { PricingPageLink } from "./PricingPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -31,6 +32,7 @@ export const Nav = () => {
       <TutorialPageLink />
       <CareerPageLink hiring={true} />
       <GithubTextLink />
+      <PricingPageLink />
       <CommonCtaButton
         position="mr-auto"
         withArrow={false}
