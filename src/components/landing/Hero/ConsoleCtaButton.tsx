@@ -1,4 +1,4 @@
-import { OutlineButton } from "@instill-ai/design-system";
+import { SolidButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 
 export type ConsoleCtaButtonProps = {
@@ -8,10 +8,9 @@ export type ConsoleCtaButtonProps = {
 export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
   const router = useRouter();
   return (
-    <OutlineButton
+    <SolidButton
       type="button"
       color="primaryLight"
-      hoveredShadow="hover:shadow-instill-solid-5"
       startIcon={
         <svg
           width="30"
@@ -33,6 +32,7 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       itemGapX="gap-x-2.5"
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
+      hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() => router.push("https://console.instill.tech")}
     >
       <div className="flex flex-col">
@@ -41,6 +41,6 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
         </div>
         <div className="mr-auto text-left text-xs font-normal">Get started</div>
       </div>
-    </OutlineButton>
+    </SolidButton>
   );
 };
