@@ -31,8 +31,8 @@ export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
               Secure Your Spot
             </h3>
             <p className="text-left font-sans text-lg font-normal text-instillGrey70">
-              We&#39;re now in private alpha. Join as a design partner to adopt
-              AI for unstructured data in your company.
+              We&#39;re now in open alpha. Join as a design partner to adopt AI
+              for unstructured data in your company.
             </p>
           </div>
         </div>
