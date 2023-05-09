@@ -37,7 +37,7 @@ const pricingPlans: PricingPlan[] = [
   },
   {
     name: "Starter",
-    price: 14.99,
+    price: 10,
     subTitle: "Open Alpha",
     subTitleLink: "/docs/instill-cloud/getting-started",
     description: "For individual or small teams with advanced features",
