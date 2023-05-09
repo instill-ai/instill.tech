@@ -28,14 +28,16 @@ export const Nav = () => {
   const announcementBar = (
     <AnnouncementBar>
       <div className="flex flex-row gap-x-1">
-        <p className="text-base text-instillGrey95">🚀 We&apos;re growing,</p>
+        <p className="text-base text-instillGrey95">
+          🚀 Build unstructured data pipelines 10x faster with
+        </p>
         <a
           className="text-base text-instillGrey95 underline hover:text-instillBlue50"
           target="_blank"
           rel="noreferrer noopener"
-          href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
+          href="https://console.instill.tech"
         >
-          check out our open roles!
+          Instill Cloud
         </a>
       </div>
     </AnnouncementBar>
