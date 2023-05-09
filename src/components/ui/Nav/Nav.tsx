@@ -25,6 +25,22 @@ export const Nav = () => {
     setOpen(false);
   }, [router]);
 
+  const announcementBar = (
+    <AnnouncementBar>
+      <div className="flex flex-row gap-x-1">
+        <p className="text-base text-instillGrey95">🚀 We&apos;re growing,</p>
+        <a
+          className="text-base text-instillGrey95 underline hover:text-instillBlue50"
+          target="_blank"
+          rel="noreferrer noopener"
+          href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
+        >
+          check out our open roles!
+        </a>
+      </div>
+    </AnnouncementBar>
+  );
+
   const navbarLinkGroup = (
     <>
       <DocsPageLink />
@@ -44,23 +60,7 @@ export const Nav = () => {
 
   const desktopView = (
     <>
-      {enableAnnouncementBar && (
-        <AnnouncementBar>
-          <div className="flex flex-row gap-x-1">
-            <p className="text-base text-instillGrey95">
-              🚀 We&apos;re growing,
-            </p>
-            <a
-              className="text-base text-instillGrey95 underline hover:text-instillBlue50"
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://www.instill.tech/career?utm_source=product&utm_medium=banner"
-            >
-              check out our open roles!
-            </a>
-          </div>
-        </AnnouncementBar>
-      )}
+      {enableAnnouncementBar && announcementBar}
       <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
         <Link href="/" className="my-auto mr-auto flex">
           <Logo type="ColourLogomarkBlackType" width={158} />
@@ -75,18 +75,7 @@ export const Nav = () => {
 
   const mobileView = (
     <>
-      {enableAnnouncementBar && (
-        <AnnouncementBar>
-          <a
-            className="text-base text-instillGrey95 underline hover:text-instillBlue50"
-            target="_blank"
-            rel="noreferrer noopener"
-            href="https://www.instill.tech/blog/seed-round-announcement?utm_source=product&utm_medium=banner"
-          >
-            🚀 We have secured $3.6M for our seed round!
-          </a>
-        </AnnouncementBar>
-      )}
+      {enableAnnouncementBar && announcementBar}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
         <Link href="/" className="flex">
           <Logo type="ColourLogomarkBlackType" width={159} />
