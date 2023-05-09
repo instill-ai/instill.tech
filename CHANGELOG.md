@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.34.0](https://github.com/instill-ai/instill.tech/compare/v1.33.0...v1.34.0) (2023-05-09)
+
+
+### Features
+
+* [INS-327] add pricing page ([#539](https://github.com/instill-ai/instill.tech/issues/539)) ([2b8a43c](https://github.com/instill-ai/instill.tech/commit/2b8a43c2f5e901bdb970d65c1e24b5a97c9a32b4))
+* [INS-595] add redirection of tos page ([#542](https://github.com/instill-ai/instill.tech/issues/542)) ([1869f5f](https://github.com/instill-ai/instill.tech/commit/1869f5f31596e63b760a55f0204e4e8fde40ccd5))
+* [INS-598] update cta to point to console.instill.tech ([#543](https://github.com/instill-ai/instill.tech/issues/543)) ([f074328](https://github.com/instill-ai/instill.tech/commit/f0743288125a1af0de9d84e97d82a4176a84a69d))
+* [INS-598] update landing page hero CTA button ([#549](https://github.com/instill-ai/instill.tech/issues/549)) ([cbb7d24](https://github.com/instill-ai/instill.tech/commit/cbb7d24e5fdbe13cb165e35663996ab4ee0b7efa))
+* [INS-599] update pricing cta link ([#544](https://github.com/instill-ai/instill.tech/issues/544)) ([45774d1](https://github.com/instill-ai/instill.tech/commit/45774d1acf1b54c00ac55892949f81ee155aa5f7))
+* [INS-619] add pricing link on Nav ([#546](https://github.com/instill-ai/instill.tech/issues/546)) ([042a280](https://github.com/instill-ai/instill.tech/commit/042a28002fde59d339b57d01ce4b2ab6ed718598))
+* update announcement bar ([#551](https://github.com/instill-ai/instill.tech/issues/551)) ([02dbdb9](https://github.com/instill-ai/instill.tech/commit/02dbdb98f84a867e2f562bb231fe2291af844bf4))
+
+
+### Bug Fixes
+
+* fix copy right text ([#541](https://github.com/instill-ai/instill.tech/issues/541)) ([57c626e](https://github.com/instill-ai/instill.tech/commit/57c626ec0b7f1f6229f36a67b43da183b0283537))
+
+
+### Miscellaneous
+
+* **docs,tutorial,blog,website:** add instill cloud documentation ([#547](https://github.com/instill-ai/instill.tech/issues/547)) ([955cd2c](https://github.com/instill-ai/instill.tech/commit/955cd2c500710873570fefd2ab5d8a560a385fb8))
+* **pricing:** update starter plan ([#548](https://github.com/instill-ai/instill.tech/issues/548)) ([7f82a49](https://github.com/instill-ai/instill.tech/commit/7f82a49f23b5de36fccde2d14e94469c09eca82d))
+
+
+### Documentation
+
+* add pricing button in nav and open alpha in documentation ([#545](https://github.com/instill-ai/instill.tech/issues/545)) ([1211ba9](https://github.com/instill-ai/instill.tech/commit/1211ba90a8ab6be1b3f773c27107569030ab652f))
+* **documentation:** update roadmap ([#550](https://github.com/instill-ai/instill.tech/issues/550)) ([330f7fb](https://github.com/instill-ai/instill.tech/commit/330f7fb39f270e4c64dc4ea8c836e649ac119144))
+
 ## [1.33.0](https://github.com/instill-ai/instill.tech/compare/v1.32.0...v1.33.0) (2023-04-29)
 
 
