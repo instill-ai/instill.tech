@@ -104,10 +104,9 @@ In spite of all that, VDP is an open-source project. Everyone is more than welco
                 header: "How do you make money?",
                 content: (
                   <FaqContent>
-                    {`We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle.
-It is currently in Open Alpha and we need your feedback to help shape the future of the service.
-During Open Alpha, we offer 30-day trial, free pipeline triggers and free access to pre-trained ML models.
-For more information, see the [Pricing](/pricing) page.
+                    {`We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle. It is currently in **Open Alpha** testing phase - with all features **FREE**. For more information, see the [Pricing](/pricing) page. Rest assured that we will never charge you without your consent.
+
+We are adding new features every day and we need your feedback to help shape the future of the service and build Instill Cloud the best it can be.
 
 👉 [Try Instill Cloud free](https://console.instill.tech/?utm_source=documentation&utm_medium=link)`}
                   </FaqContent>
