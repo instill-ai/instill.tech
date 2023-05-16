@@ -17,6 +17,7 @@ export type PricingPlan = {
   featureDescription: ReactElement;
   ctaLink: string;
   ctaText: string;
+  ctaDescription: string;
 };
 
 export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
@@ -73,7 +74,7 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
         </p>
         <a
           href={plan.ctaLink}
-          className="hover:bg-[#1D5BD] flex  h-12 w-full justify-center rounded bg-[#316FED] align-middle"
+          className="hover:bg-[#1D5BD] mb-4 flex h-12 w-full justify-center rounded bg-[#316FED] align-middle"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -81,6 +82,9 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
             {plan.ctaText}
           </span>
         </a>
+        <p className="text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
+          {plan.ctaDescription}
+        </p>
       </div>
       <div className="flex flex-col p-8">
         <div className="mb-6 flex flex-col gap-y-1">

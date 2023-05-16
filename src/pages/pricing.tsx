@@ -34,6 +34,7 @@ const pricingPlans: PricingPlan[] = [
     ),
     ctaLink: "https://github.com/instill-ai/vdp",
     ctaText: "Start for free",
+    ctaDescription: "Self-host and free forever",
   },
   {
     name: "Starter",
@@ -54,6 +55,7 @@ const pricingPlans: PricingPlan[] = [
     ),
     ctaLink: "https://console.instill.tech",
     ctaText: "Start 30-day free trial",
+    ctaDescription: "No credit card needed",
   },
   {
     name: "Enterprise",
@@ -75,6 +77,7 @@ const pricingPlans: PricingPlan[] = [
     ],
     ctaLink: "https://calendly.com/instill-ai/chat-with-us",
     ctaText: "Book a meeting",
+    ctaDescription: "Get expert advice for free",
   },
 ];
 
