@@ -32,12 +32,22 @@ const pricingPlans: PricingPlan[] = [
         Start your unstructured data journey...
       </p>
     ),
-    ctaLink: "https://github.com/instill-ai/vdp",
-    ctaText: "Start for free",
+    cta: (
+      <a
+        href="https://github.com/instill-ai/vdp"
+        className="mb-4 flex h-12 w-full justify-center rounded border border-[#E1E6EF] align-middle hover:border-[#23272F] hover:bg-[#F1F3F9]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="m-auto font-sans text-base font-semibold leading-4 tracking-[2%] text-[#1D2433]">
+          Deploy Now
+        </span>
+      </a>
+    ),
     ctaDescription: "Self-host and free forever",
   },
   {
-    name: "Starter",
+    name: "Cloud Starter",
     price: 10,
     subTitle: "Open Alpha",
     subTitleLink: "/docs/instill-cloud/getting-started",
@@ -53,12 +63,22 @@ const pricingPlans: PricingPlan[] = [
         Everything in <span className="font-semibold">Open Source</span> plus...
       </p>
     ),
-    ctaLink: "https://console.instill.tech",
-    ctaText: "Start 30-day free trial",
+    cta: (
+      <a
+        href="https://console.instill.tech"
+        className="hover:bg-[#1D5BD] mb-4 flex h-12 w-full justify-center rounded bg-[#316FED] align-middle hover:bg-[#1D5BD7]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="m-auto font-sans text-base font-semibold leading-4 tracking-[2%] text-white">
+          Start For free
+        </span>
+      </a>
+    ),
     ctaDescription: "No credit card needed",
   },
   {
-    name: "Enterprise",
+    name: "Cloud Enterprise",
     price: "Custom",
     subTitle: null,
     subTitleLink: null,
@@ -75,8 +95,18 @@ const pricingPlans: PricingPlan[] = [
       "Keep your cost low",
       "Premium support",
     ],
-    ctaLink: "https://calendly.com/instill-ai/chat-with-us",
-    ctaText: "Book a meeting",
+    cta: (
+      <a
+        href="https://calendly.com/instill-ai/chat-with-us"
+        className="mb-4 flex h-12 w-full justify-center rounded border border-[#E1E6EF] align-middle hover:border-[#23272F] hover:bg-[#F1F3F9]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="m-auto font-sans text-base font-semibold leading-4 tracking-[2%] text-[#1D2433]">
+          Book A Meeting
+        </span>
+      </a>
+    ),
     ctaDescription: "Get expert advice for free",
   },
 ];

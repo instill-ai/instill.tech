@@ -15,8 +15,7 @@ export type PricingPlan = {
   description: string;
   features: string[];
   featureDescription: ReactElement;
-  ctaLink: string;
-  ctaText: string;
+  cta: ReactElement;
   ctaDescription: string;
 };
 
@@ -25,7 +24,12 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
   const router = useRouter();
   return (
     <div
-      style={{ boxShadow: "0px 8px 32px rgba(0, 0, 0, 0.16)" }}
+      style={{
+        boxShadow:
+          plan.name === "Cloud Starter"
+            ? "0px 8px 32px rgba(0, 0, 0, 0.16)"
+            : "0px 4px 12px rgba(0, 0, 0, 0.16)",
+      }}
       className="flex flex-col rounded-2xl border border-[#EAECF0]"
     >
       <div className="flex flex-col border-b border-[#EAECF0] p-8">
@@ -72,16 +76,7 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
         <p className="mb-8 h-[72px] font-sans text-base font-normal leading-6 text-[#1D2433] text-opacity-80">
           {plan.description}
         </p>
-        <a
-          href={plan.ctaLink}
-          className="hover:bg-[#1D5BD] mb-4 flex h-12 w-full justify-center rounded bg-[#316FED] align-middle"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="m-auto font-sans text-base font-semibold leading-4 tracking-[2%] text-white">
-            {plan.ctaText}
-          </span>
-        </a>
+        {plan.cta}
         <p className="text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
           {plan.ctaDescription}
         </p>
