@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.35.0](https://github.com/instill-ai/instill.tech/compare/v1.34.0...v1.35.0) (2023-05-16)
+
+
+### Features
+
+* [INS-677] add cta description into pricing page ([#552](https://github.com/instill-ai/instill.tech/issues/552)) ([e0bcae7](https://github.com/instill-ai/instill.tech/commit/e0bcae7d4377652c11c3df123cc6c026c66aef29))
+
+
+### Bug Fixes
+
+* fix pricing page style ([#555](https://github.com/instill-ai/instill.tech/issues/555)) ([c159e8f](https://github.com/instill-ai/instill.tech/commit/c159e8f18c9e7746282761740fb7949dd7cec9e7))
+
+
+### Documentation
+
+* **blog,docs,product-website:** update Instill Cloud plan info ([#554](https://github.com/instill-ai/instill.tech/issues/554)) ([98304b6](https://github.com/instill-ai/instill.tech/commit/98304b66886218525a7a82b68ca26b7191740d41))
+
 ## [1.34.0](https://github.com/instill-ai/instill.tech/compare/v1.33.0...v1.34.0) (2023-05-09)
 
 
