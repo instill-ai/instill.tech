@@ -167,11 +167,21 @@ curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
 curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "yolov7",
   "recipe": {
-    "source": "source-connectors/source-http",
-    "models": [
-      "models/yolov7"
-    ],
-    "destination": "destination-connectors/destination-http"
+    "version": "v1alpha",
+    "components": [
+      {
+        "id": "source",
+        "resource_name": "source-connectors/source-http"
+      },
+      {
+        "id": "model",
+        "resource_name": "models/yolov7"
+      },
+      {
+        "id": "destination",
+        "resource_name": "destination-connectors/destination-http"
+      }
+    ]
   }
 }'
 
@@ -311,7 +321,7 @@ def trigger_detection_pipeline(api_gateway_url: str, pipeline_id: str, image_url
         ]
     }
 
-    return requests.post("{}/pipelines/{}/trigger".format(api_gateway_url, pipeline_id), json=body)
+    return requests.post("{}/pipelines/{}/triggerSync".format(api_gateway_url, pipeline_id), json=body)
 ```
 
 Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).

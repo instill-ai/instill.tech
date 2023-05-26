@@ -114,11 +114,21 @@ curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
 curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "gpt2",
   "recipe": {
-    "source": "source-connectors/source-http",
-    "models": [
-      "models/gpt2"
-    ],
-    "destination": "destination-connectors/destination-http"
+    "version": "v1alpha",
+    "components": [
+      {
+        "id": "source",
+        "resource_name": "source-connectors/source-http"
+      },
+      {
+        "id": "model",
+        "resource_name": "models/gpt2"
+      },
+      {
+        "id": "source",
+        "resource_name": "destination-connectors/destination-http"
+      }
+    ]
   }
 }'
 
@@ -214,7 +224,7 @@ const pipelineID = "gpt2";
 
 // Set up vdp service endpoint
 const vdpConsole = `http://localhost:3000/pipelines/${pipelineID}`;
-const triggerPipelineEndpoint = `http://locallhost:8080/${pipelineID}/trigger`;
+const triggerPipelineEndpoint = `http://locallhost:8080/${pipelineID}/triggerSync`;
 ```
 
 ### 2. Get app credentials

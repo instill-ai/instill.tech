@@ -158,11 +158,21 @@ curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
   "id": "detection",
   "description": "A magic pipeline to detect objects in images",
   "recipe": {
-    "source": "source-connectors/source-http",
-    "models": [
-      "models/yolov7"
-    ],
-    "destination": "destination-connectors/postgres-db"
+    "version": "v1alpha",
+    "components": [
+      {
+        "id": "source",
+        "resource_name": "source-connectors/source-http"
+      },
+      {
+        "id": "model",
+        "resource_name": "models/yolov7"
+      },
+      {
+        "id": "source",
+        "resource_name": "destination-connectors/postgres-db"
+      }
+    ]
   }
 }'
 
@@ -355,7 +365,7 @@ data_mapping_indices = []
 
 print("\n=====Trigger {} pipeline to process images in '{}'\n".format(opt.pipeline_id, image_dir))
 for files in tqdm(img_batch):
-    resp = requests.post(f'{opt.api_gateway_url}/v1alpha/pipelines/{opt.pipeline_id}/trigger-multipart',
+    resp = requests.post(f'{opt.api_gateway_url}/v1alpha/pipelines/{opt.pipeline_id}/triggerAsyncMultipart',
                     files=[("file", (filename, open(join(image_dir, filename), 'rb'))) for filename in files])
     if resp.status_code == 200:
         data_mapping_indices += resp.json()['data_mapping_indices']

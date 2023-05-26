@@ -19,11 +19,11 @@ authorGitHubUrl: "https://github.com/bryan107"
 In this tutorial, we will build our first unstructured data pipeline with VDP, which allows you to process your data for a specific AI task with minimum effort.
 
 As we demonstrated in [VDP 101 - Introduction](/tutorials/vdp-101-1-introduction?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-3-create-your-first-pipeline), VDP aims to streamline the end-to-end unstructured data pipeline.
-An unstructured data pipeline is defined by a recipe which consists of three components:
+An unstructured data pipeline is defined by a recipe which consists of:
 
-- `source` - where the pipeline starts to ingest unstructured data to be processed.
-- `models` - deployed AI models to process the ingested unstructured data and generate meaningful outputs.
-- `destination` - where to send the processed outputs.
+- `source` component - where the pipeline starts to ingest unstructured data to be processed
+- `model` components - a number of deployed AI models to process the ingested unstructured data in parallel and generate meaningful outputs
+- `destination` components - a number of destinations to send the processed outputs in parallel
 
 The following tutorial will demonstrate how to set up these three components and build a `SYNC` pipeline for **Object Detection** with YOLOv7 via Console.
 
