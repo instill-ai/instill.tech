@@ -7,24 +7,34 @@ description: "Build end-to-end unstructured data pipelines with the open-source 
 
 A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process unstructured data.
 
-It is defined by a `recipe` which is essentially a JSON object:
+It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
 
 ```json
 {
-  "source": <source-connector-resource-name>,
-  "models": [
-    <model-resource-name>,
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": <component-id>,
+      "resource_name": <source-connector-resource-name>
+    },
+    {
+      "id": <component-id>,
+      "resource_name": <model-resource-name>
+    },
     ...
-  ],
-  "destination": <destination-connector-resource-name>
+    {
+      "id": <component-id>,
+      "resource_name": <destination-connector-resource-name>
+    }
+  ]
 }
 ```
 
-A `recipe` describes a pipeline resource consisting of:
+A `recipe` describes a pipeline resource consisting of components including:
 
-- `source` - where the pipeline starts to ingest unstructured data to be processed
-- `models` - a number of deployed AI models to process the ingested unstructured data in parallel to generate structured outputs
-- `destination` - where to send the structured outputs
+- `source` component - where the pipeline starts to ingest unstructured data to be processed
+- `model` components - a number of deployed AI models to process the ingested unstructured data in parallel
+- `destination` components - a number of destinations to send the processed outputs in parallel
 
 Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
 
@@ -46,9 +56,21 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 
 ```json
 {
-  "source": "source-connectors/source-grpc",
-  "models": ["models/yolov7-v1-cpu"],
-  "destination": "destination-connectors/destination-grpc"
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "source-connectors/source-grpc"
+    },
+    {
+      "id": "model",
+      "resource_name": "models/yolov7-v1-cpu"
+    },
+    {
+      "id": "destination",
+      "resource_name": "destination-connectors/destination-grpc"
+    }
+  ]
 }
 ```
 
@@ -68,9 +90,21 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 
 ```json
 {
-  "source": "source-connectors/source-http",
-  "models": ["models/yolov7-v1-cpu"],
-  "destination": "destination-connectors/postgres"
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "source-connectors/source-http"
+    },
+    {
+      "id": "model",
+      "resource_name": "models/yolov7-v1-cpu"
+    },
+    {
+      "id": "destination",
+      "resource_name": "destination-connectors/postgres"
+    }
+  ]
 }
 ```
 

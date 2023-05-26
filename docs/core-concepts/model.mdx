@@ -22,23 +22,51 @@ Instill AI develops and maintains model sources (`ModelDefinition`). We use [rel
 
 A **Model**, the core component of a VDP data pipeline, is a piece of ML algorithm specific to processs unstructured data for a certain AI task.
 
-A VDP pipeline can have multiple models. The examples below showcase pipeline recipes that incorporate single or multiple models.
+A VDP pipeline can have multiple models running in parallel. The examples below showcase pipeline recipes that incorporate single or multiple models.
 
 <CH.Code>
 
 ```json single-model-pipeline
 {
-  "source": "source-connectors/source-http",
-  "models": ["models/stable-diffusion"],
-  "destination": "destination-connectors/postgres-db"
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "source-connectors/source-http"
+    },
+    {
+      "id": "model",
+      "resource_name": "models/stable-diffusion"
+    },
+    {
+      "id": "destination",
+      "resource_name": "destination-connectors/postgres-db"
+    }
+  ]
 }
 ```
 
 ```json multi-model-pipeline
 {
-  "source": "source-connectors/source-http",
-  "models": ["models/yolov4", "models/yolov7"],
-  "destination": "destination-connectors/destination-http"
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "source-connectors/source-http"
+    },
+    {
+      "id": "model1",
+      "resource_name": "models/yolov4"
+    },
+    {
+      "id": "model2",
+      "resource_name": "models/yolov7"
+    },
+    {
+      "id": "destination",
+      "resource_name": "destination-connectors/destination-http"
+    }
+  ]
 }
 ```
 
