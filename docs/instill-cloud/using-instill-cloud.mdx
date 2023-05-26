@@ -113,7 +113,7 @@ Simply copy the cURL request in the Trigger section, and pass your API token as 
 For example, assuming you have created a pipeline for Image Classification, using cURL, you can trigger the pipeline as follows:
 
 ```bash cURL
-curl -X POST https://api-s.instill-inc.tech/v1alpha/pipelines/<pipeline-id>/trigger \
+curl -X POST https://api-s.instill-inc.tech/v1alpha/pipelines/<pipeline-id>/triggerSync \
 -H 'Authorization: Bearer instill_sk_...' \
 ...
 ```

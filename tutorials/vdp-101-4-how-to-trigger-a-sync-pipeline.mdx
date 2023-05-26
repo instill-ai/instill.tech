@@ -34,7 +34,7 @@ You can find the corresponding HTTP request at the bottom of your pipeline page.
 <CH.Code>
 
 ```bash cURL(url)
-curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/triggerSync -d '{
   "task_inputs": [
     {
       "detection": {
@@ -51,7 +51,7 @@ curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
 ```
 
 ```bash cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/triggerSync -d '{
   "task_inputs": [
     {
       "detection": {
@@ -68,7 +68,7 @@ curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger -d '{
 ```
 
 ```bash cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/trigger-multipart \
+curl -X POST http://localhost:8080/v1alpha/pipelines/vdp-101-sync/triggerSyncMultipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```
@@ -215,7 +215,7 @@ The HTTP POST request is similar to the **HTTP POST Request**. The only differen
 - `files=body`: instead of passing the files as a JSON object, use a list of files in tuples.
 
 ```python
-requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/trigger-multipart", files=body)
+requests.post(f"{pipeline_backend_base_url}/pipelines/{pipeline_id}/triggerSyncMultipart", files=body)
 ```
 
 <InfoBlock type="info" title="info">
