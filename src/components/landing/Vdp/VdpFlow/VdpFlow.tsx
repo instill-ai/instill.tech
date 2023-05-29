@@ -24,14 +24,18 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         parseInt(process.env.NEXT_PUBLIC_CONTENT_MAX_WIDTH || "1127") - 10
       ) {
         // The arrow's width is 65px so in order to get the width of the box we have
-        // this function (a) + (a + 65) + (a + 65) = container's width
+        // this function (a + 65) + (a + 65) + (a + 65) = container's width
         // We need to prevent the most right arrow to exceed the boundary too, so we
         // need to further minus 65. The final function will be
-        // (a) + (a + 65) + (a + 65) = container's width - 65
+        // (a + 65) + (a + 65) + (a + 65) = container's width - 65
         const baseWidth = (containerWidth - 130 - 65) / 3;
         setArrowWidth(65);
         setBlocksWidth([baseWidth, baseWidth + 65, baseWidth + 65]);
       } else if (containerWidth < 360) {
+        const baseWidth = containerWidth - 65;
+        setArrowWidth(65);
+        setBlocksWidth([baseWidth, baseWidth, baseWidth]);
+      } else if (containerWidth > 1027 && containerWidth < 1127) {
         const baseWidth = containerWidth - 65;
         setArrowWidth(65);
         setBlocksWidth([baseWidth, baseWidth, baseWidth]);
