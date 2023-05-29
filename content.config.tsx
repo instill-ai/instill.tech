@@ -50,6 +50,7 @@ const SIDEBAR: Sidebar = {
           { text: "Getting started", link: "/docs/vdp/getting-started" },
           { text: "Configuration", link: "/docs/vdp/configuration" },
           { text: "Roadmap", link: "/docs/vdp/roadmap" },
+          { text: "License", link: "/docs/vdp/license" },
           { text: "FAQ", link: "/docs/vdp/faq" },
         ],
       },
@@ -77,7 +78,10 @@ const SIDEBAR: Sidebar = {
         items: [
           { text: "Overview", link: "/docs/core-concepts/overview" },
           { text: "Pipeline", link: "/docs/core-concepts/pipeline" },
-          { text: "Connector", link: "/docs/core-concepts/connector" },
+          {
+            text: "Data connector",
+            link: "/docs/core-concepts/data-connector",
+          },
           { text: "Model", link: "/docs/core-concepts/model" },
           { text: "AI task", link: "/docs/core-concepts/ai-task" },
         ],

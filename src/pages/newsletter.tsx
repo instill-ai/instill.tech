@@ -122,7 +122,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
             Newsletter
           </h1>
           <h3 className="mb-10 font-sans text-lg font-light text-instillGrey70 xl:text-2xl">
-            Get the latest news from Instill AI: open source updates, community
+            Get the latest news from Instill AI: product updates, community
             highlights, blog posts, useful tutorials and more!
           </h3>
           <SubscribeNewsletterForm width="w-full" position="mx-auto" />

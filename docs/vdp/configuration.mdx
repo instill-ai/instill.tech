@@ -2,7 +2,7 @@
 title: "Configuration"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up the open-source unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to set up the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
 VDP automatically loads a [`.env`](https://github.com/instill-ai/vdp/blob/main/.env) file that contains key/value pairs defining required environment variables.
@@ -70,7 +70,7 @@ Our usage server returns a token used for future reporting.
 For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
 
 - name of the service to collect data from, e.g., `SERVICE_CONNECTOR` for `connector-backend`
-- edition of the service to identify the deployment, e.g., `local-ce` for local open-source deployment
+- edition of the service to identify the deployment, e.g., `local-ce` for local community edition deployment
 - version of the service, e.g., `0.5.0-alpha`
 - architecture of the system the service is running on, e.g., `amd64`
 - operating system the service is running on, e.g., `Linux`
@@ -104,7 +104,7 @@ These data do not allow us to track Personal Data but enable us to measure sessi
 
 ### Implementation
 
-The anonymous usage report client library is open-source in [`usage-client`](https://github.com/instill-ai/usage-client).
+The anonymous usage report client library is in [`usage-client`](https://github.com/instill-ai/usage-client).
 To limit risk exposure, we keep the usage server implementation private for now.
 In summary, the Session data and SessionReport sent from each session get updated in the usage server.
 

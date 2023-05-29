@@ -25,7 +25,7 @@ There have three content folders and their corresponding page, assets folder.
 │   ├── introducting-vdp.mdx
 │   └── ...
 ├── docs
-│   ├── start-here
+│   ├── welcome.mdx
 │   └── ...
 ├── tutorials
 │   ├── vdp-cow-counter.mdx
@@ -243,7 +243,7 @@ const SIDEBAR: Sidebar = {
 
 ### Add static file into `/public/docs-assets`
 
-Please add the static file into the sub-folder in `/public/docs-assets` follow the same section. For example, docs in start-here section will put their static file in the `/public/docs-assets/start-here`
+Please add the static file into the sub-folder in `/public/docs-assets` follow the same section. For example, docs in vdp section will put their static file in the `/public/docs-assets/vdp`
 
 ## How to contribute to the tutorial
 

@@ -12,7 +12,7 @@
 <url><loc>http://localhost:3010/tutorials</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>http://localhost:3010/videos.xml</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>http://localhost:3010/docs/core-concepts/ai-task</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/docs/core-concepts/connector</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/docs/core-concepts/data-connector</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>http://localhost:3010/docs/core-concepts/model</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>http://localhost:3010/docs/core-concepts/overview</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>http://localhost:3010/docs/core-concepts/pipeline</loc><lastmod>2023-03-17T20:03:05.834Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
