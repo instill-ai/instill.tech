@@ -97,11 +97,7 @@ We believe it's time to apply our experiences to make AI more accessible to ever
                 header: "Is VDP free?",
                 content: (
                   <FaqContent>
-                    {`Yes. VDP is source available so you can self-host it in your basement for free.
-
-In addition, Instill Cloud (coming soon!) is our hosting service of VDP which offers free-forever tier for hobby projects and prototyping.
-                  
-If you are interested in the hosting service of VDP, we've started signing up users to our private alpha. [Join the waitlist](/get-access/?utm_source=documentation&utm_medium=link) and we'll contact you when we're ready.`}
+                    {`Yes. VDP is source available so you can self-host it in your basement for free.`}
                   </FaqContent>
                 ),
               },
