@@ -14,7 +14,7 @@ type GetLayOutProps = {
 
 const pricingPlans: PricingPlan[] = [
   {
-    name: "Open Source",
+    name: "Self-host",
     price: "Free",
     subTitle: null,
     subTitleLink: null,
@@ -60,7 +60,7 @@ const pricingPlans: PricingPlan[] = [
     ],
     featureDescription: (
       <p className="text-base font-normal leading-6 text-[#475467]">
-        Everything in <span className="font-semibold">Open Source</span> plus...
+        Everything in <span className="font-semibold">Self-host</span> plus...
       </p>
     ),
     cta: (
