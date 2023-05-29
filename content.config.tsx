@@ -50,6 +50,7 @@ const SIDEBAR: Sidebar = {
           { text: "Getting started", link: "/docs/vdp/getting-started" },
           { text: "Configuration", link: "/docs/vdp/configuration" },
           { text: "Roadmap", link: "/docs/vdp/roadmap" },
+          { text: "License", link: "/docs/vdp/license" },
           { text: "FAQ", link: "/docs/vdp/faq" },
         ],
       },
