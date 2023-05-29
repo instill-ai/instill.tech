@@ -49,15 +49,15 @@ export const Footer = () => {
     ],
     products: [
       {
-        text: "Deploy OSS VDP",
+        text: "OSS VDP",
         href: "https://github.com/instill-ai/vdp",
       },
       {
-        text: "Try VDP Demo",
+        text: "VDP Demo",
         href: "https://demo.instill.tech",
       },
       {
-        text: "Try Instill Cloud free",
+        text: "Instill Cloud",
         href: "https://console.instill.tech",
       },
     ],
@@ -67,8 +67,8 @@ export const Footer = () => {
         href: "/docs",
       },
       {
-        text: "Blog",
-        href: "/blog",
+        text: "Tutorial",
+        href: "/tutorials",
       },
       {
         text: "Newsletter",
@@ -79,10 +79,28 @@ export const Footer = () => {
         href: "https://artifacts.instill.tech/instill-ai-media-kit.zip",
       },
     ],
+    support: [
+      {
+        text: "Status",
+        href: "https://status.instill.tech",
+      },
+      {
+        text: "Community",
+        href: "https://discord.gg/sevxWsqpGh",
+      },
+      {
+        text: "Contact",
+        href: "mailto:hello@instill.tech",
+      },
+    ],
     company: [
       {
         text: "About Us",
         href: "/about",
+      },
+      {
+        text: "Blog",
+        href: "/blog",
       },
       {
         text: "Career",
@@ -100,10 +118,6 @@ export const Footer = () => {
         text: "Cookie Policy",
         href: "/cookie",
       },
-      {
-        text: "Contact Us",
-        href: "mailto:hello@instill.tech",
-      },
     ],
   };
 
@@ -115,10 +129,11 @@ export const Footer = () => {
             <AnimateSlogan />
             <Logo type="whiteLogomark" width={30} />
           </div>
-          <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-4 xl:gap-y-0">
+          <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-5 xl:gap-y-0">
             <Tab type="social" header="socials" links={tabs.socialLinks} />
             <Tab type="others" header="product" links={tabs.products} />
             <Tab type="others" header="resources" links={tabs.resources} />
+            <Tab type="others" header="support" links={tabs.support} />
             <Tab type="others" header="company" links={tabs.company} />
           </div>
         </div>

@@ -19,6 +19,7 @@ export type TabLinks = {
   products: TabLink[];
   resources: TabLink[];
   company: TabLink[];
+  support: TabLink[];
 };
 
 export const Tab = ({ header, links, type }: TabProps) => {
