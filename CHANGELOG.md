@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.36.0](https://github.com/instill-ai/instill.tech/compare/v1.35.0...v1.36.0) (2023-05-29)
+
+
+### Features
+
+* [INS-774] add support section into footer ([#558](https://github.com/instill-ai/instill.tech/issues/558)) ([8e52864](https://github.com/instill-ai/instill.tech/commit/8e5286432e7da9840f571d7276dfe67f32a4a11d))
+
+
+### Miscellaneous
+
+* **docs,tutorial,blog,website:** update license and license related content ([#537](https://github.com/instill-ai/instill.tech/issues/537)) ([1600d1c](https://github.com/instill-ai/instill.tech/commit/1600d1c59656011f33e4b8edcf5b37f0c80cd037))
+* **docs,tutorial:** update recipe and trigger endpoints ([#556](https://github.com/instill-ai/instill.tech/issues/556)) ([c531086](https://github.com/instill-ai/instill.tech/commit/c5310865f48324ffa85761a9eeb3b8c4074534a8))
+
 ## [1.35.0](https://github.com/instill-ai/instill.tech/compare/v1.34.0...v1.35.0) (2023-05-16)
 
 
