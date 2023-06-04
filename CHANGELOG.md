@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.36.1](https://github.com/instill-ai/instill.tech/compare/v1.36.0...v1.36.1) (2023-06-04)
+
+
+### Documentation
+
+* **vdp:** fix typo and add observability stack basic configuration ([#559](https://github.com/instill-ai/instill.tech/issues/559)) ([2708499](https://github.com/instill-ai/instill.tech/commit/2708499d0eb7f6db23ab25f5964512a8a586a2cf))
+
 ## [1.36.0](https://github.com/instill-ai/instill.tech/compare/v1.35.0...v1.36.0) (2023-05-29)
 
 
