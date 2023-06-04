@@ -53,6 +53,19 @@ DOMAIN=<domain-name-to-access-vdp>
 
 Without setting `DOMAIN`, the default domain is `localhost`.
 
+### Configuring the observability stack
+
+Observability is critical for distributed microservice architecture.
+Through [OpenTelemetry](https://opentelemetry.io/), we can generate, collect and export metrics, logs and traces to help analyse the performance and behaviour of VDP services.
+
+The observability stack is disabled by default. You can enable the stack setting `ENABLE_OBSERVE=true` in the [`.env`](https://github.com/instill-ai/vdp/blob/main/.env) file.
+The following telemetry tools are supported now:
+
+- [**Jaeger**](https://www.jaegertracing.io/) (`localhost:16686`): OpenTelemetry allows us to export spans to Jaeger. Use Jaeger when you want to debug the complete flow of a request through the VDP services.
+- [**InfluxDB**](https://www.influxdata.com/) (`localhost: 8086`, username:`admin`, password:`password`): detailed metrics are sent to InfluxDB for monitoring, and are imported into the Grafana dashboard
+- [**Grafana**](https://grafana.com/) (`localhost:3002`, username:`admin`, password:`admin`): the Grafana dashboard visualises the metrics to monitor the performance and anomalies of VDP services
+- [**Prometheus**](https://prometheus.io/) (`localhost:9090`): VDP exports metrics like `vdp_pipeline_sync_trigger_counter_total` (total number of triggers from SYNC pipelines) and `vdp_pipeline_async_trigger_counter_total` (total number of triggers from ASYNC pipelines) to Prometheus.
+
 ## Anonymised Usage Collection
 
 To help us better understand how VDP is used and can be improved, VDP collects and reports _anonymised_ usage statistics.
