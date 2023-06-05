@@ -112,11 +112,11 @@ This script first downloads a video `cows_dornick.mp4` to the root folder, extra
 
 The pipeline responds with the **indices** (corresponding to each image), which are ultimately saved to an output file `data-mapping-indices.txt` under the `async` fold by default.
 
-Unlike the responses in the `SYNC` mode, the `ASYNC` pipeline only responds with `data_mapping_indices` for each uploaded data.
+Unlike the responses in the `SYNC` mode, the `ASYNC` pipeline only responds with `data_mapping_indices` that is a list of indices corresponding to all uploaded data and send the analysed results to the configured PostgreSQL database.
 
 ```json
 {
-  "data_mapping_indices": ["01GXEGSAK5HA9G6E4C2R5C3562"],
+  "data_mapping_indices": ["01H1CAXA2R64V1X947CSEECR31"],
   "model_outputs": []
 }
 ```
@@ -126,6 +126,44 @@ After All the images are processed by the pipeline, you can check the indices us
 ```bash
 # Preview the mapping indice file
 cat data-mapping-indices.txt
+```
+
+And you can check the correspnding analysed result in the PostgreSQL database:
+
+```bash
+tutorial> \pset border 2
+Border style is 2
+tutorial> \pset format wrapped
+Output format is wrapped
+tutorial> SELECT * FROM _airbyte_raw_vdp;
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+|            _airbyte_ab_id            |                                                                                 _airbyte_data                                                                                 |    _airbyte_emitted_at     |
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| a0f2ce3e-f539-467a-8b24-6ef9c63ed712 | {"index": "01H1CAXA2R64V1X947CSEECR31", "model": "models/yolov7", "pipeline": {"name": "pipelines/vdp-101-async", "recipe": {"version": "v1alpha", "components": [{"id": "fc0.| 2023-05-26 15:30:26.938+00 |
+|                                      |.b264f-4d2a-4016-b8f5-5f5bb07b683c", "metadata": null, "dependencies": {}, "resource_name": "source-connectors/source-http", "resource_detail": {}}, {"id": "93edf60f-f182-4c4.|                            |
+|                                      |.5-b666-7cf16eb68926", "metadata": null, "dependencies": {}, "resource_name": "models/yolov7", "resource_detail": {}}, {"id": "8327f4cd-6582-48d5-bf9e-963cce30f9c2", "metadat.|                            |
+|                                      |.a": null, "dependencies": {}, "resource_name": "destination-connectors/postgres-db", "resource_detail": {}}]}}, "detection": {"objects": [{"score": 0.9524831, "category": "c.|                            |
+|                                      |.ow", "bounding_box": {"top": 328, "left": 481, "width": 515, "height": 389}}, {"score": 0.9065536, "category": "cow", "bounding_box": {"top": 133, "left": 1, "width": 405, ".|                            |
+|                                      |.height": 273}}, {"score": 0.9017271, "category": "cow", "bounding_box": {"top": 288, "left": 857, "width": 422, "height": 407}}, {"score": 0.89512527, "category": "person", .|                            |
+|                                      |."bounding_box": {"top": 1, "left": 474, "width": 112, "height": 197}}, {"score": 0.8950028, "category": "cow", "bounding_box": {"top": 3, "left": 775, "width": 405, "height".|                            |
+|                                      |.: 133}}, {"score": 0.8828889, "category": "cow", "bounding_box": {"top": 99, "left": 795, "width": 483, "height": 237}}, {"score": 0.75729924, "category": "person", "boundin.|                            |
+|                                      |.g_box": {"top": 0, "left": 627, "width": 48, "height": 75}}, {"score": 0.73897225, "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 172, "height": 131}}, {".|                            |
+|                                      |.score": 0.72232157, "category": "dog", "bounding_box": {"top": 535, "left": 131, "width": 412, "height": 184}}, {"score": 0.59892243, "category": "cow", "bounding_box": {"to.|                            |
+|                                      |.p": 0, "left": 937, "width": 342, "height": 158}}, {"score": 0.35217348, "category": "cow", "bounding_box": {"top": 1, "left": 940, "width": 131, "height": 53}}]}}           |                            |
+| d2a9fa98-ecb8-421b-bf14-bb1de5be6483 | {"index": "01H1CAXA52QRMQ0VGH9T1S5GDX", "model": "models/yolov7", "pipeline": {"name": "pipelines/vdp-101-async", "recipe": {"version": "v1alpha", "components": [{"id": "fc0.| 2023-05-26 15:30:34.149+00 |
+|                                      |.b264f-4d2a-4016-b8f5-5f5bb07b683c", "metadata": null, "dependencies": {}, "resource_name": "source-connectors/source-http", "resource_detail": {}}, {"id": "93edf60f-f182-4c4.|                            |
+|                                      |.5-b666-7cf16eb68926", "metadata": null, "dependencies": {}, "resource_name": "models/yolov7", "resource_detail": {}}, {"id": "8327f4cd-6582-48d5-bf9e-963cce30f9c2", "metadat.|                            |
+|                                      |.a": null, "dependencies": {}, "resource_name": "destination-connectors/postgres-db", "resource_detail": {}}]}}, "detection": {"objects": [{"score": 0.95135015, "category": ".|                            |
+|                                      |.cow", "bounding_box": {"top": 321, "left": 483, "width": 511, "height": 396}}, {"score": 0.92246056, "category": "cow", "bounding_box": {"top": 131, "left": 1, "width": 410,.|                            |
+|                                      |. "height": 279}}, {"score": 0.9212451, "category": "cow", "bounding_box": {"top": 163, "left": 767, "width": 491, "height": 282}}, {"score": 0.9055302, "category": "cow", "b.|                            |
+|                                      |.ounding_box": {"top": 92, "left": 868, "width": 410, "height": 246}}, {"score": 0.89693654, "category": "person", "bounding_box": {"top": 0, "left": 474, "width": 113, "heig.|                            |
+|                                      |.ht": 195}}, {"score": 0.88276064, "category": "cow", "bounding_box": {"top": 290, "left": 857, "width": 423, "height": 404}}, {"score": 0.8695851, "category": "cow", "boundi.|                            |
+|                                      |.ng_box": {"top": 3, "left": 771, "width": 403, "height": 137}}, {"score": 0.8235585, "category": "person", "bounding_box": {"top": 0, "left": 626, "width": 49, "height": 79}.|                            |
+|                                      |.}, {"score": 0.80706304, "category": "cow", "bounding_box": {"top": 528, "left": 126, "width": 340, "height": 190}}, {"score": 0.75044984, "category": "cow", "bounding_box":.|                            |
+|                                      |. {"top": 0, "left": 940, "width": 338, "height": 163}}, {"score": 0.65243214, "category": "cow", "bounding_box": {"top": 1, "left": 1, "width": 284, "height": 140}}, {"score.|                            |
+|                                      |.": 0.25453186, "category": "dog", "bounding_box": {"top": 132, "left": 0, "width": 412, "height": 269}}]}}                                                                    |                            |
+| ...                                  |                                                                                                                                                                               |                            |
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
 ```
 
 ## Retrieve and visualise pipeline trigger results from database
