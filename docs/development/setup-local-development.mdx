@@ -7,7 +7,7 @@ description: "Learn about how to set up the development environment for the unst
 
 VDP is built with the microservice architecture. To develop each service independently,
 we assign [profiles](https://docs.docker.com/compose/profiles) to each service in
-the [`docker-compose.dev.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose.dev.yml) file in VDP.
+the [`docker-compose.latest.yml`](https://github.com/instill-ai/vdp/blob/main/docker-compose.latest.yml) file in VDP.
 This allows us to selectively enable services for various purposes, e.g., debugging, development.
 
 <InfoBlock type="info" title="info">
@@ -25,19 +25,20 @@ VDP assigns seven different profile names:
 - `model` - start all the dependent services for [`model-backend`](https://github.com/instill-ai/model-backend)
 - `pipeline` - start all the dependent services for [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend)
 - `api-gateway` - start all the dependent services for [`api-gateway`](https://github.com/instill-ai/api-gateway)
+- `controller` - start all the dependent services for [`controller`](https://github.com/instill-ai/controller)
 - `all` - start all services
 
 Use one of the profile name to develop the corresponding service:
 
 ```shellscript
 # In the vdp repository folder
-make build PROFILE=<profile-name>
-make latest PROFILE=<profile-name> ITMODE=true
+make build-latest
+make latest PROFILE=<profile-name> ITMODE_ENABLED=true
 ```
 
-The following guideline shows a specific example of how to develop the `connector-backend`.
+The following guideline shows a specific example of how to develop the `pipeline-backend`.
 
-## Start dependent VDP services for `connector-backend`
+## Start dependent VDP services for `pipeline-backend`
 
 On the local machine, clone the `vdp` repository in your workspace, move to the repository folder, and launch all dependent services:
 
@@ -45,20 +46,20 @@ On the local machine, clone the `vdp` repository in your workspace, move to the 
 # Clone the vdp repository
 git clone https://github.com/instill-ai/vdp.git && cd vdp
 
-# Use profile `connector` to launch all dependent services
-# for `connector-backend` and set ITMODE=true
+# Use profile `pipeline` to launch all dependent services
+# for `pipeline-backend` and set ITMODE_ENABLED=true
 # for local integration test
-make build PROFILE=connector
-make latest PROFILE=connector ITMODE=true
+make build-latest
+make latest PROFILE=pipeline ITMODE_ENABLED=true
 ```
 
-## Run dev `connector-backend`
+## Run dev `pipeline-backend`
 
-Clone the `connector-backend` repository in your workspace and move to the repository folder:
+Clone the `pipeline-backend` repository in your workspace and move to the repository folder:
 
 ```shellscript
-git clone https://github.com/instill-ai/connector-backend.git
-cd connector-backend
+git clone https://github.com/instill-ai/pipeline-backend.git
+cd pipeline-backend
 ```
 
 **Build & run the dev image**
@@ -70,28 +71,27 @@ make dev
 
 Now, you have the Go project set up in the container, in which you can compile and run the binaries together with the integration test in each container shell.
 
-**Start the `connector-backend` server**
+**Start the `pipeline-backend` server**
 
 ```shellscript
-docker exec -it connector-backend /bin/bash
+docker exec -it pipeline-backend /bin/bash
 go run ./cmd/migration
-go run ./cmd/init
 go run ./cmd/main
 ```
 
 **Start the Temporal worker**
 
 ```shellscript
-docker exec -it connector-backend /bin/bash
+docker exec -it pipeline-backend /bin/bash
 go run ./cmd/worker
 ```
 
 **Run the integration test**
 
-During local development, you can run the integration test to make sure your latest `connector-backend` works as intended:
+During local development, you can run the integration test to make sure your latest `pipeline-backend` works as intended:
 
 ```shellscript
-docker exec -it connector-backend /bin/bash
+docker exec -it pipeline-backend /bin/bash
 make integration-test
 ```
 
