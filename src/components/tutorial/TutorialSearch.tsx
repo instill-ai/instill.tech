@@ -23,7 +23,7 @@ export const TutorialSearch = ({
       const fuse = new Fuse(tutorials, {
         keys: ["title"],
         includeMatches: true,
-        threshold: 0.5,
+        threshold: 0.6,
       });
 
       const result = fuse
