@@ -13,6 +13,23 @@ We adapt single framework structure to serve all our content enabled by the Next
 
 ## General guidelines for Docs, Tutorials and Blog
 
+### Important note about content moved/deleted/renamed
+
+Whenever you move, delete or rename a content, it will have a new URL and the old URL will be malfunction. Please make sure you correctly set up the redirection rules under `next.config.js`
+
+
+```js
+async redirects() {
+  return [
+    {
+      source: "/old/link",
+      destination: "/new/link",
+      permanent: false,
+    },
+  ];
+},
+```
+
 ### Folder structure
 
 There have three content folders and their corresponding page, assets folder.
