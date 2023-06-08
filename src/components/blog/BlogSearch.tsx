@@ -23,7 +23,7 @@ export const BlogSearch = ({
       const fuse = new Fuse(articles, {
         keys: ["title"],
         includeMatches: true,
-        threshold: 0.5,
+        threshold: 0.6,
       });
 
       const result = fuse
