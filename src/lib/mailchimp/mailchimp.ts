@@ -98,7 +98,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
 
   // Remove mailchimp h3 inline color style
   root.querySelectorAll("h3").forEach((e) => {
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("color:");
     });
@@ -107,7 +107,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
 
   // Remove mailchimp h4 inline color style
   root.querySelectorAll("h4").forEach((e) => {
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("color:");
     });
@@ -116,7 +116,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
 
   // Remove mailchimp p inline color style
   root.querySelectorAll("p").forEach((e) => {
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("color:");
     });
@@ -125,7 +125,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
 
   // Remove mailchimp content divider
   root.querySelectorAll(".mcnDividerContent").forEach((e) => {
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("border-top:");
     });
@@ -135,7 +135,7 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
   // Remove mailchimp content image fixed width
   root.querySelectorAll(".mcnImage").forEach((e) => {
     e.removeAttribute("width");
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("max-width:");
     });
@@ -150,9 +150,18 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
 
   // Remove templateContainer inner style
   root.querySelectorAll(".templateContainer").forEach((e) => {
-    let styleList = e.attributes.style.split(";");
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
     styleList = styleList.filter((style) => {
       return !style.includes("max-width:");
+    });
+    e.setAttribute("style", styleList.join(";"));
+  });
+
+  // Remove span inner style
+  root.querySelectorAll("span").forEach((e) => {
+    let styleList = e.attributes.style ? e.attributes.style.split(";") : [];
+    styleList = styleList.filter((style) => {
+      return !style.includes("font-size:");
     });
     e.setAttribute("style", styleList.join(";"));
   });
