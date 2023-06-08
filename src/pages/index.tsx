@@ -54,8 +54,8 @@ const Community = dynamic<{}>(() =>
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const destinationDefinitions = await getRepoFileContent(
     "instill-ai",
-    "connector-backend",
-    "config/init/airbyte/seed/destination_definitions.yaml"
+    "connector-destination",
+    "pkg/airbyte/config/seed/destination_definitions.yaml"
   );
 
   const buf = Buffer.from(destinationDefinitions.content, "base64").toString(
