@@ -84,8 +84,15 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           />
           {children}
         </div>
+
+        {/* 
+          In order to have correct stacking context, we wrap the footer in a relative position 
+          div element.
+        */}
+        <div className="relative z-50 w-full">
+          <Footer />
+        </div>
       </main>
-      <Footer />
     </>
   );
 };
