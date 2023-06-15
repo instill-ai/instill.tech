@@ -1,16 +1,23 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import cn from "clsx";
 
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
 import { Nav } from "./Nav";
+import { Footer } from "../ui";
+import { useRouter } from "next/router";
+import { getApplicationType } from "@/lib/instill";
 
 export type DocsLayoutProps = {
   children?: ReactNode;
 };
 
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
+  const router = useRouter();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
+
+  const docsConfigration = docsConfig(getApplicationType(router.asPath));
+
   return (
     // We use this layout to persist the state of the left sidebar. The right
     // sidebar will stay in the children, not in this layout.
@@ -48,11 +55,11 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
       <main className="min-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey90 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed top-0 z-30 transform bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
+            "docs-left-sidebar fixed top-0 z-30 transform bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <LeftSidebar leftSidebar={docsConfig.sidebar.leftSidebar} />
+          <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
         </aside>
 
         {/* 
@@ -73,11 +80,12 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
         <div className="docs-content col-span-12 flex flex-col pb-40 md:col-span-9 max:col-span-12">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-            nav={docsConfig.nav}
+            nav={docsConfigration.nav}
           />
           {children}
         </div>
       </main>
+      <Footer />
     </>
   );
 };

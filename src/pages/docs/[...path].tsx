@@ -19,6 +19,7 @@ import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
+import { getApplicationType } from "@/lib/instill";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -82,9 +83,10 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
-  const sidebarLinks: SidebarItem[] = docsConfig.sidebar.leftSidebar.sections
-    .map((e) => e.items)
-    .flat();
+  const docsConfigration = docsConfig(getApplicationType(params.path));
+
+  const sidebarLinks: SidebarItem[] =
+    docsConfigration.sidebar.leftSidebar.sections.map((e) => e.items).flat();
 
   const currentPageIndex = sidebarLinks.findIndex(
     (e) => e.link === "/docs/" + relativePath

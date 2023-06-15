@@ -10,6 +10,7 @@ export type SidebarSections = {
   text: string;
   link?: string;
   items: SidebarItem[];
+  type?: string;
 };
 
 export type SidebarSection = {
