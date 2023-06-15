@@ -10,7 +10,9 @@ export const ThemeToggle = () => {
   const [isDark, setIsDark] = useDarkTheme();
 
   const toggleTheme = useCallback(() => {
-    setIsDark((state) => !state);
+    if (setIsDark) {
+      setIsDark((state) => !state);
+    }
   }, [setIsDark]);
 
   return (

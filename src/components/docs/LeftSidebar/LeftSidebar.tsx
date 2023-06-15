@@ -25,7 +25,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       <div className="left-sidebar flex h-screen w-full flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
         {leftSidebar.logo ? (
           <Link
-            href="/docs/welcome"
+            href={leftSidebar.logo.href}
             className="leftsidebar-logo hidden w-full gap-x-3 py-4 md:flex md:flex-row"
           >
             <Image

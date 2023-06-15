@@ -1,5 +1,4 @@
 import { NavConfig, Sidebar, SidebarSections } from "@/types/docs";
-import { DiscordIcon, GitHubIcon } from "@instill-ai/design-system";
 
 const SITE = {
   title: "Documentation",
@@ -15,35 +14,45 @@ const SITE = {
  *
  */
 
-const getLogo = (appType: string) => {
+const getLogo = (appType: string, isDark: boolean) => {
   if (appType === "vdp") {
     return {
       src: "/images/vdp-logo-white-bg.svg",
       width: 100,
       height: 36,
       alt: "VDP's logo",
+      href: "/docs/vdp/welcome",
     };
   }
   if (appType === "instill-cloud") {
     return {
-      src: "/images/instill-ai-logo-horizontal-black.svg",
-      width: 150,
+      src: isDark
+        ? "/images/instill-ai-logo-horizontal-white.svg"
+        : "/images/instill-ai-logo-horizontal-black.svg",
+      width: 160,
       height: 36,
       alt: "Instill Cloud logo",
+      href: "/docs/instill-cloud/welcome",
     };
   }
 };
 
 const getSidebarSections = (appType: string) => {
-  return SECTIONS.filter((section) => section?.type === appType);
+  return SECTIONS.filter((section) => section?.appType === appType);
 };
 
 const SECTIONS: SidebarSections[] = [
   {
     text: "Welcome",
-    link: "/docs/welcome",
+    link: "/docs/vdp/welcome",
     items: [],
-    type: "vdp",
+    appType: "vdp",
+  },
+  {
+    text: "Welcome",
+    link: "/docs/instill-cloud/welcome",
+    items: [],
+    appType: "instill-cloud",
   },
   {
     text: "Instill Cloud",
@@ -58,7 +67,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/instill-cloud/using-instill-cloud",
       },
     ],
-    type: "instill-cloud",
+    appType: "instill-cloud",
   },
   {
     text: "VDP",
@@ -70,7 +79,7 @@ const SECTIONS: SidebarSections[] = [
       { text: "License", link: "/docs/vdp/license" },
       { text: "FAQ", link: "/docs/vdp/faq" },
     ],
-    type: "vdp",
+    appType: "vdp",
   },
   {
     text: "Deploy VDP",
@@ -89,7 +98,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/deployment/kubernetes-using-helm",
       },
     ],
-    type: "vdp",
+    appType: "vdp",
   },
   {
     text: "Core Concepts",
@@ -188,10 +197,10 @@ const SECTIONS: SidebarSections[] = [
   },
 ];
 
-const SIDEBAR = (type: string): Sidebar => {
+const SIDEBAR = (type: string, isDark: boolean): Sidebar => {
   return {
     leftSidebar: {
-      logo: getLogo(type),
+      logo: getLogo(type, isDark),
       sections: getSidebarSections(type),
     },
     rightSidebar: {
@@ -200,24 +209,10 @@ const SIDEBAR = (type: string): Sidebar => {
   };
 };
 
-const NAV = (type: string): NavConfig => {
+const NAV = (type: string, isDark: boolean): NavConfig => {
   return {
-    logo: getLogo(type),
+    logo: getLogo(type, isDark),
     items: [
-      // {
-      //   key: "docs-nav-tutorials",
-      //   to: "/tutorials",
-      //   className: "",
-      //   position: "right",
-      //   label: "Tutorial",
-      // },
-      // {
-      //   key: "docs-nav-product-webiste",
-      //   to: "/",
-      //   className: "",
-      //   position: "right",
-      //   label: "Product website",
-      // },
       {
         key: "docs-nav-instill-cloud-getting-started",
         to: "/docs/instill-cloud/getting-started",
@@ -232,50 +227,15 @@ const NAV = (type: string): NavConfig => {
         position: "left",
         label: "VDP",
       },
-      // {
-      //   key: "docs-nav-item-1",
-      //   position: "right",
-      //   border: true,
-      // },
-      // {
-      //   key: "docs-nav-item-border-discord-link",
-      //   href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
-      //   className: "discord-social-link",
-      //   iconElement: (
-      //     <DiscordIcon
-      //       width="w-[24px]"
-      //       height="h-[24px]"
-      //       color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
-      //       position="my-auto"
-      //     />
-      //   ),
-      //   position: "right",
-      //   label: "discord",
-      // },
-      // {
-      //   key: "docs-nav-item--github-link",
-      //   href: "https://github.com/instill-ai/vdp",
-      //   className: "github-social-link",
-      //   iconElement: (
-      //     <GitHubIcon
-      //       width="w-[24px]"
-      //       height="h-[24px]"
-      //       color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
-      //       position="my-auto"
-      //     />
-      //   ),
-      //   position: "right",
-      //   label: "github",
-      // },
     ],
   };
 };
 
-export const docsConfig = (appType: string) => {
+export const docsConfig = (appType: string, isDark = false) => {
   return {
     site: SITE,
-    nav: NAV(appType),
-    sidebar: SIDEBAR(appType),
+    nav: NAV(appType, isDark),
+    sidebar: SIDEBAR(appType, isDark),
   };
 };
 

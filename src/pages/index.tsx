@@ -15,7 +15,7 @@ import {
 } from "@/components/landing";
 import { PageBase, PageHead } from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { useAnnouncementBarCtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";

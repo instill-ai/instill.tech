@@ -20,6 +20,7 @@ import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType } from "@/lib/instill";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;

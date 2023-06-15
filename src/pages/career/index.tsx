@@ -19,7 +19,7 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { useAnnouncementBarCtx } from "@/contexts/InstillAIContext";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInView } from "react-intersection-observer";
 
