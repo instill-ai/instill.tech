@@ -15,7 +15,7 @@ import {
 } from "@/components/landing";
 import { PageBase, PageHead } from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
-import { useAnnouncementBarCtx } from "@/contexts/InstillAIContext";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
@@ -88,7 +88,7 @@ const HomePage: FC<HomePageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ destinations }) => {
   const vdpRef = useRef<HTMLDivElement>(null);
-  const { enableAnnouncementBar } = useAnnouncementBarCtx();
+  const { enableAnnouncementBar } = useInstillAICtx();
 
   useEffect(() => {
     // The CaseStudy component can't correctly calculate the element
