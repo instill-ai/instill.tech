@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { useAnnouncementBarCtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { CareerPageLink } from "./CareerPageLink";

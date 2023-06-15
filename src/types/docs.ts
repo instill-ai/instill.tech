@@ -10,7 +10,7 @@ export type SidebarSections = {
   text: string;
   link?: string;
   items: SidebarItem[];
-  type?: string;
+  appType?: string;
 };
 
 export type SidebarSection = {
@@ -25,6 +25,7 @@ export type Logo = {
   srcDark?: string;
   width: number;
   height: number;
+  href: string;
 };
 
 export type Sidebar = {

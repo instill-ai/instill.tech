@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 //  Custom Hook for dark mode
 const useDarkTheme = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, setIsDark } = useInstillAICtx();
 
   useEffect(() => {
     //  Get value on localstorage
     const darkMode = localStorage.getItem("dark") === "true";
-    setIsDark(darkMode);
+    if (setIsDark) {
+      setIsDark(darkMode);
+    }
   }, []);
 
   useEffect(() => {

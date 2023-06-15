@@ -1,12 +1,13 @@
 import { ReactNode, useEffect, useState } from "react";
 import cn from "clsx";
-
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
 import { Nav } from "./Nav";
 import { Footer } from "../ui";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
+import useDarkTheme from "@/hooks/useDarkTheme";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 export type DocsLayoutProps = {
   children?: ReactNode;
@@ -14,9 +15,13 @@ export type DocsLayoutProps = {
 
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const router = useRouter();
+  const { isDark } = useInstillAICtx();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 
-  const docsConfigration = docsConfig(getApplicationType(router.asPath));
+  const docsConfigration = docsConfig(
+    getApplicationType(router.asPath),
+    isDark
+  );
 
   return (
     // We use this layout to persist the state of the left sidebar. The right
