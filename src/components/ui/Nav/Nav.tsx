@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
 
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
-import { useAnnouncementBarCtx } from "@/contexts/InstillAIContext";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { CareerPageLink } from "./CareerPageLink";
@@ -16,7 +16,7 @@ import { PricingPageLink } from "./PricingPageLink";
 export const Nav = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { enableAnnouncementBar } = useAnnouncementBarCtx();
+  const { enableAnnouncementBar } = useInstillAICtx();
 
   useEffect(() => {
     if (!router.isReady) {
