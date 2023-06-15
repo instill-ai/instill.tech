@@ -1,16 +1,23 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import cn from "clsx";
 
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
 import { Nav } from "./Nav";
+import { Footer } from "../ui";
+import { useRouter } from "next/router";
+import { getApplicationType } from "@/lib/instill";
 
 export type DocsLayoutProps = {
   children?: ReactNode;
 };
 
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
+  const router = useRouter();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
+
+  const docsConfigration = docsConfig(getApplicationType(router.asPath));
+
   return (
     // We use this layout to persist the state of the left sidebar. The right
     // sidebar will stay in the children, not in this layout.
@@ -52,7 +59,7 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <LeftSidebar leftSidebar={docsConfig.sidebar.leftSidebar} />
+          <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
         </aside>
 
         {/* 
@@ -73,11 +80,12 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
         <div className="docs-content col-span-12 flex flex-col pb-40 md:col-span-9 max:col-span-12">
           <Nav
             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-            nav={docsConfig.nav}
+            nav={docsConfigration.nav}
           />
           {children}
         </div>
       </main>
+      <Footer />
     </>
   );
 };

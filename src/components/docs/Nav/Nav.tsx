@@ -76,7 +76,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                   <Item item={item} />
                 </div>
               ))}
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
             </div>
           )}
         </div>
@@ -90,7 +90,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         <div className="hidden flex-grow flex-row md:flex">
           <div
             className={cn(
-              "flex flex-row",
+              "flex flex-row gap-x-5",
               items.left.length === 0 ? "flex-shrink" : "grow"
             )}
           >
@@ -108,9 +108,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               <Item key={item.key} item={item} />
             ))}
           </div>
-          <div className="my-auto ml-4">
+          {/* <div className="my-auto ml-4">
             <ThemeToggle />
-          </div>
+          </div> */}
         </div>
       </>
     );
@@ -159,6 +159,8 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end xl:mr-5">
+            {desktopView}
+            {mobileView}
             <div className="my-auto mr-5">
               <DocSearch
                 appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
@@ -166,8 +168,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                 indexName="instill"
               />
             </div>
-            {desktopView}
-            {mobileView}
+            <div className="my-auto ml-4">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </nav>
