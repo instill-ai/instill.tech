@@ -226,35 +226,74 @@ description: string;
 
 Please add documentation page into sidebar.
 
+- Sidebar is distributed into 2 application `vdp` and `instill-cloud`
 - Make sure the page is in the correct section.
 - The order of the list will be the displayed order.
 
+
+for `SECTIONS` important paramter is `appType`, it will decide the menu should be visible under which app.
+
 ```ts
-const SIDEBAR: Sidebar = {
-  leftSidebar: {
-    logo: {
-      src: "/images/vdp-logo-white-bg.svg",
-      width: 100,
-      height: 36,
-      alt: "VDP's logo",
-    },
-    sections: [
-      // <-- This is the sidebar section
+const SECTIONS: SidebarSections[] = [
+  {
+    //  <---- this menu will be added to instill-cloud
+    text: "Instill Cloud",
+    collapsible: true,
+    items: [
       {
-        text: "Start here",
-        collapsible: true,
-        items: [
-          { text: "Getting started", link: "/docs/vdp/getting-started" }, // <-- This is the item of the section
-          { text: "Configuration", link: "/docs/vdp/configuration" },
-          { text: "Roadmap", link: "/docs/vdp/roadmap" },
-          { text: "FAQ", link: "/docs/vdp/faq" },
-        ],
+        text: "Getting started",
+        link: "/docs/instill-cloud/getting-started",
+      },
+      {
+        text: "Using Instill Cloud",
+        link: "/docs/instill-cloud/using-instill-cloud",
       },
     ],
+    appType: "instill-cloud",  
   },
-  rightSidebar: {
-    tableOfContentHeaders: ["h1", "h2", "h3"],
-  },
+  {
+    //  <---- this menu will be added to vdp
+    text: "VDP",
+    collapsible: true,
+    items: [
+      { text: "Getting started", link: "/docs/vdp/getting-started" },
+      { text: "Configuration", link: "/docs/vdp/configuration" },
+      { text: "Roadmap", link: "/docs/vdp/roadmap" },
+      { text: "License", link: "/docs/vdp/license" },
+      { text: "FAQ", link: "/docs/vdp/faq" },
+    ],
+    appType: "vdp",
+  }
+];
+```
+
+take paramaters `appType` and `isDark` and return the logo accordingly. 
+```ts
+const getLogo = (appType: string, isDark: boolean) => {
+
+}
+```
+
+take parameter `appType` and return sidebar sections
+```ts
+const getSidebarSections = (appType: string) => {
+  return SECTIONS.filter((section) => section?.appType === appType);
+};
+
+```
+
+master function for sidebar
+```ts
+const getSideBar = (type: string, isDark: boolean): Sidebar => {
+  return {
+    leftSidebar: {
+      logo: getLogo(type, isDark),
+      sections: getSidebarSections(type),
+    },
+    rightSidebar: {
+      tableOfContentHeaders: ["h1", "h2", "h3"],
+    },
+  };
 };
 ```
 
