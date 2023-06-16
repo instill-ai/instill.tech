@@ -14,33 +14,6 @@ const SITE = {
  *
  */
 
-const getLogo = (appType: string, isDark: boolean) => {
-  if (appType === "vdp") {
-    return {
-      src: "/images/vdp-logo-white-bg.svg",
-      width: 100,
-      height: 36,
-      alt: "VDP's logo",
-      href: "/docs/vdp/welcome",
-    };
-  }
-  if (appType === "instill-cloud") {
-    return {
-      src: isDark
-        ? "/images/instill-ai-logo-horizontal-white.svg"
-        : "/images/instill-ai-logo-horizontal-black.svg",
-      width: 160,
-      height: 36,
-      alt: "Instill Cloud logo",
-      href: "/docs/instill-cloud/welcome",
-    };
-  }
-};
-
-const getSidebarSections = (appType: string) => {
-  return SECTIONS.filter((section) => section?.appType === appType);
-};
-
 const SECTIONS: SidebarSections[] = [
   {
     text: "Welcome",
@@ -197,7 +170,37 @@ const SECTIONS: SidebarSections[] = [
   },
 ];
 
-const SIDEBAR = (type: string, isDark: boolean): Sidebar => {
+// Parse logo a/c to appType
+const getLogo = (appType: string, isDark: boolean) => {
+  if (appType === "vdp") {
+    return {
+      src: "/images/vdp-logo-white-bg.svg",
+      width: 100,
+      height: 36,
+      alt: "VDP's logo",
+      href: "/docs/vdp/welcome",
+    };
+  }
+  if (appType === "instill-cloud") {
+    return {
+      src: isDark
+        ? "/images/instill-ai-logo-horizontal-white.svg"
+        : "/images/instill-ai-logo-horizontal-black.svg",
+      width: 160,
+      height: 36,
+      alt: "Instill Cloud logo",
+      href: "/docs/instill-cloud/welcome",
+    };
+  }
+};
+
+// Parse menu items a/c to appType
+const getSidebarSections = (appType: string) => {
+  return SECTIONS.filter((section) => section?.appType === appType);
+};
+
+// Construct the sidebar items
+const getSideBar = (type: string, isDark: boolean): Sidebar => {
   return {
     leftSidebar: {
       logo: getLogo(type, isDark),
@@ -209,7 +212,8 @@ const SIDEBAR = (type: string, isDark: boolean): Sidebar => {
   };
 };
 
-const NAV = (type: string, isDark: boolean): NavConfig => {
+// Construct the navbar items
+const getNavbar = (type: string, isDark: boolean): NavConfig => {
   return {
     logo: getLogo(type, isDark),
     items: [
@@ -231,11 +235,12 @@ const NAV = (type: string, isDark: boolean): NavConfig => {
   };
 };
 
+// main config function
 export const docsConfig = (appType: string, isDark = false) => {
   return {
     site: SITE,
-    nav: NAV(appType, isDark),
-    sidebar: SIDEBAR(appType, isDark),
+    nav: getNavbar(appType, isDark),
+    sidebar: getSideBar(appType, isDark),
   };
 };
 
