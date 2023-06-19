@@ -14,24 +14,10 @@ export type VideoSiteMapProps = {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const videosMeta = await getMarkdownVideoMeta({
     provider: "youtube",
-    targets: ["blog", "tutorials"],
+    targets: ["/blog", "/tutorials"],
     mdxComponents: [{ componentName: "Youtube", propName: "id" }],
-    // verbose: true,
+    verbose: true,
   });
-
-  // videosMeta = [
-  //   {
-  //     title: "VDP Cow Counter dashboard demo - output video with detections",
-  //     author_name: "Instill AI",
-  //     author_url: "https://www.youtube.com/@instillai6692",
-  //     thumbnail_height: 360,
-  //     thumbnail_width: 480,
-  //     thumbnail_url: "https://i.ytimg.com/vi/jokydabr70M/hqdefault.jpg",
-  //     html: '<iframe width="200" height="113" src="https://www.youtube.com/embed/jokydabr70M?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="VDP Cow Counter dashboard demo - output video with detections"></iframe>',
-  //     id: "jokydabr70M",
-  //     url: "https://www.youtube.com/watch?v=jokydabr70M",
-  //   },
-  // ];
 
   const uniqueIds: string[] = [];
   // remove duplicate object
