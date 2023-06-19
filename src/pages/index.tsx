@@ -1,6 +1,5 @@
 import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { parse } from "yaml";
 import cn from "clsx";
 
 import {
@@ -55,20 +54,20 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const destinationDefinitions = await getRepoFileContent(
     "instill-ai",
     "connector-destination",
-    "pkg/airbyte/config/seed/destination_definitions.yaml"
+    "pkg/airbyte/config/seed/definitions.json"
   );
 
   const buf = Buffer.from(destinationDefinitions.content, "base64").toString(
     "utf-8"
   );
 
-  const destinationArray: Record<string, string>[] = parse(buf);
+  const destinationArray: Record<string, string>[] = JSON.parse(buf);
 
   return {
     props: {
       destinations: destinationArray.map((e) => {
         return {
-          name: e.name,
+          name: e.title,
           icon: e.icon ?? null,
         };
       }),

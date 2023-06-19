@@ -7,4 +7,3 @@ Host: http://localhost:3010
 
 # Sitemaps
 Sitemap: http://localhost:3010/sitemap.xml
-Sitemap: http://localhost:3010/videos.xml

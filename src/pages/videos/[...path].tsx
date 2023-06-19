@@ -17,6 +17,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     verbose: true,
   });
 
+  console.log("metas", metas);
+
   const paths: string[] = [];
   for (const meta of metas) {
     if (meta.id) {
