@@ -1,68 +1,34 @@
-// const { getMarkdownVideoMeta } = require("get-markdown-video-meta");
+/** @type {import('next-sitemap').IConfig} */
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.instill.tech";
 
-// async function getAllVideosMetaData() {
-//   const videosMeta = await getMarkdownVideoMeta({
-//     provider: "youtube",
-//     targets: ["/blog", "/tutorials"],
-//     mdxComponents: [{ componentName: "Youtube", propName: "id" }],
-//     verbose: true,
-//   });
-
-//   return videosMeta;
-// }
-
-// const videosMeta = getAllVideosMetaData();
-const videosMeta = [
-  {
-    title: "VDP Cow Counter dashboard demo - output video with detections",
-    author_name: "Instill AI",
-    author_url: "https://www.youtube.com/@instillai6692",
-    thumbnail_height: 360,
-    thumbnail_width: 480,
-    thumbnail_url: "https://i.ytimg.com/vi/jokydabr70M/hqdefault.jpg",
-    html: '<iframe width="200" height="113" src="https://www.youtube.com/embed/jokydabr70M?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="VDP Cow Counter dashboard demo - output video with detections"></iframe>',
-    id: "jokydabr70M",
-    url: "https://www.youtube.com/watch?v=jokydabr70M",
-  },
-  {
-    title:
-      "How to Build a Cow Counter Dashboard Using VDP, PostgreSQL & Metabase",
-    author_name: "Instill AI",
-    author_url: "https://www.youtube.com/@instillai6692",
-    thumbnail_height: 360,
-    thumbnail_width: 480,
-    thumbnail_url: "https://i.ytimg.com/vi/0Rdv8oqqxfw/hqdefault.jpg",
-    html: '<iframe width="200" height="113" src="https://www.youtube.com/embed/0Rdv8oqqxfw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="How to Build a Cow Counter Dashboard Using VDP, PostgreSQL &amp; Metabase"></iframe>',
-    id: "0Rdv8oqqxfw",
-    url: "https://www.youtube.com/watch?v=0Rdv8oqqxfw",
-  },
-  {
-    title: "VDP Cow Counter dashboard demo - drone video of a cattle farm",
-    author_name: "Instill AI",
-    author_url: "https://www.youtube.com/@instillai6692",
-    thumbnail_height: 360,
-    thumbnail_width: 480,
-    thumbnail_url: "https://i.ytimg.com/vi/bIQF2O3Z_xU/hqdefault.jpg",
-    html: '<iframe width="200" height="113" src="https://www.youtube.com/embed/bIQF2O3Z_xU?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="VDP Cow Counter dashboard demo - drone video of a cattle farm"></iframe>',
-    id: "bIQF2O3Z_xU",
-    url: "https://www.youtube.com/watch?v=bIQF2O3Z_xU",
-  },
-  {
-    title: "VDP Cow Counter dashboard demo - output video with detections",
-    author_name: "Instill AI",
-    author_url: "https://www.youtube.com/@instillai6692",
-    thumbnail_height: 360,
-    thumbnail_width: 480,
-    thumbnail_url: "https://i.ytimg.com/vi/jokydabr70M/hqdefault.jpg",
-    html: '<iframe width="200" height="113" src="https://www.youtube.com/embed/jokydabr70M?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="VDP Cow Counter dashboard demo - output video with detections"></iframe>',
-    id: "jokydabr70M",
-    url: "https://www.youtube.com/watch?v=jokydabr70M",
-  },
-];
-
-/** @type {import('next-sitemap').IConfig} */
+async function getYoutubeMeta(youtubeId) {
+  try {
+    const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
+    const response = await fetch(
+      `https://youtube.com/oembed?url=${videoUrl}&format=json`,
+      { method: "GET" }
+    );
+    if (response.status === 404) {
+      return;
+    }
+    const data = await response.json();
+    const meta = {
+      title: data.title,
+      author_name: data.author_name,
+      author_url: data.author_url,
+      thumbnail_height: data.thumbnail_height,
+      thumbnail_width: data.thumbnail_width,
+      thumbnail_url: data.thumbnail_url,
+      html: data.html,
+      id: youtubeId,
+      url: videoUrl,
+    };
+    return meta;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}
 
 const config = {
   siteUrl: baseUrl,
@@ -76,8 +42,10 @@ const config = {
         lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
       };
     }
+
     if (path.includes("/videos/")) {
-      const meta = videosMeta.find((meta) => path.includes(meta.id));
+      const youtubeId = path.split("/videos/")[1];
+      const meta = await getYoutubeMeta(youtubeId);
       if (meta) {
         return {
           loc: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${meta?.id}`,
