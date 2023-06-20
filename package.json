@@ -17,7 +17,7 @@
     "prettier:check": "prettier --check",
     "test": "vitest --run",
     "test:watch": "vitest --watch",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap --config next-sitemap.config.mjs"
   },
   "dependencies": {
     "@algolia/client-search": "^4.14.2",
@@ -37,7 +37,6 @@
     "d3": "^7.6.1",
     "embla-carousel": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
-    "get-markdown-video-meta": "^0.2.2",
     "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",
     "intersection-observer": "^0.12.2",
@@ -131,7 +130,8 @@
     "vite": "^4.1.4",
     "vitest": "^0.29.3",
     "webpack": "^5.74.0",
-    "webpack-bundle-analyzer": "^4.5.0"
+    "webpack-bundle-analyzer": "^4.5.0",
+    "get-markdown-video-meta": "^0.4.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
