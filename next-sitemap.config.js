@@ -1,15 +1,16 @@
+const { default: axios } = require("axios");
+
 // get metadata for videos
 async function getYoutubeMeta(youtubeId) {
   try {
     const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
-    const response = await fetch(
-      `https://youtube.com/oembed?url=${videoUrl}&format=json`,
-      { method: "GET" }
+    const response = await axios.get(
+      `https://youtube.com/oembed?url=${videoUrl}&format=json`
     );
     if (response.status === 404) {
       return;
     }
-    const data = await response.json();
+    const data = await response.data;
     const meta = {
       title: data.title,
       author_name: data.author_name,
@@ -26,7 +27,6 @@ async function getYoutubeMeta(youtubeId) {
     return Promise.reject(err);
   }
 }
-
 
 // next-sitemap-config.js
 /** @type {import('next-sitemap').IConfig} */
