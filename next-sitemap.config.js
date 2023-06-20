@@ -1,7 +1,4 @@
-/** @type {import('next-sitemap').IConfig} */
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.instill.tech";
-
+// get metadata for videos
 async function getYoutubeMeta(youtubeId) {
   try {
     const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
@@ -29,6 +26,12 @@ async function getYoutubeMeta(youtubeId) {
     return Promise.reject(err);
   }
 }
+
+
+// next-sitemap-config.js
+/** @type {import('next-sitemap').IConfig} */
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.instill.tech";
 
 const config = {
   siteUrl: baseUrl,
