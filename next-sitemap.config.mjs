@@ -29,7 +29,7 @@ const config = {
     if (targetMeta) {
       return {
         loc: `${process.env.NEXT_PUBLIC_BASE_URL}/videos/${targetMeta?.id}`,
-        changefreq: config.changefreq,
+        changefreq: "monthly",
         priority: config.priority,
         lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
         videos: [
