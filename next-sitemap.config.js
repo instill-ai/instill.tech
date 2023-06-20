@@ -36,6 +36,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.instill.tech";
 const config = {
   siteUrl: baseUrl,
   generateRobotsTxt: true,
+  changefreq: "monthly",
   transform: async (config, path) => {
     if (!path.includes("/videos/")) {
       return {
