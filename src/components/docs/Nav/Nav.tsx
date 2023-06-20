@@ -45,7 +45,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         </style>
         <div className="flex md:hidden">
           <button
-            className="my-auto flex h-[36px] w-[36px] rounded-[3px] bg-instillGrey05 hover:bg-instillGrey20 dark:bg-instillGrey95 dark:hover:bg-instillGrey80"
+            className="my-auto flex h-[36px] w-[36px] rounded-[3px] bg-instillGrey05 hover:bg-instillGrey20 dark:bg-instillGrey90 dark:hover:bg-instillGrey80"
             onClick={() => setMobileNavOpen((prev) => !prev)}
           >
             {mobileNavOpen ? (
@@ -65,7 +65,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           </button>
           {mobileNavOpen && (
-            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey90">
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey95">
               {items.left.map((item) => (
                 <div key={item.key}>
                   <Item item={item} />
@@ -133,7 +133,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white py-4 px-8 dark:bg-instillGrey90"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white py-4 px-8 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (

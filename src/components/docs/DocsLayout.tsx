@@ -45,10 +45,10 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
         min-h-screen and min-w-screen are essential to make the page had 
         correct height and width
       */}
-      <main className="min-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey90 max:block">
+      <main className="min-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey95 max:block">
         <aside
           className={cn(
-            "docs-left-sidebar fixed top-0 z-30 transform bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
+            "docs-left-sidebar fixed top-0 z-30 transform bg-instillGrey05 transition-transform dark:bg-instillGrey90 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
             leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
