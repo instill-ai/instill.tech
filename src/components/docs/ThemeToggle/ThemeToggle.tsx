@@ -27,7 +27,7 @@ export const ThemeToggle = () => {
           isDark ? "translate-x-5" : ""
         )}
       >
-        <div className="h-full w-full rounded-full bg-instillGrey15 dark:bg-instillGrey95">
+        <div className="h-full w-full rounded-full bg-instillGrey15 dark:bg-instillGrey90">
           <SunIcon
             width="w-3"
             height="h-3"

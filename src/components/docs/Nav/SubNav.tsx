@@ -20,7 +20,7 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
       </style>
       <div
         className={cn(
-          "sub-nav sticky z-10 flex w-full flex-row border-b bg-white py-4 px-8 dark:bg-instillGrey90 md:hidden",
+          "sub-nav sticky z-10 flex w-full flex-row border-b bg-white py-4 px-8 dark:bg-instillGrey95 md:hidden",
           marginBottom
         )}
       >
