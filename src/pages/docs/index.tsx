@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
-      destination: "/docs/welcome",
+      destination: "/docs/instill-cloud/welcome",
       permanent: false,
     },
   };
