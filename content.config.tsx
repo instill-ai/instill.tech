@@ -86,6 +86,7 @@ const SECTIONS: SidebarSections[] = [
       { text: "Model", link: "/docs/core-concepts/model" },
       { text: "AI task", link: "/docs/core-concepts/ai-task" },
     ],
+    appType: "vdp",
   },
   {
     text: "Source Connectors",
@@ -95,6 +96,7 @@ const SECTIONS: SidebarSections[] = [
       { text: "HTTP", link: "/docs/source-connectors/http" },
       { text: "gRPC", link: "/docs/source-connectors/grpc" },
     ],
+    appType: "vdp",
   },
   {
     text: "Destination Connectors",
@@ -105,6 +107,7 @@ const SECTIONS: SidebarSections[] = [
       { text: "gRPC", link: "/docs/destination-connectors/grpc" },
       { text: "Airbyte", link: "/docs/destination-connectors/airbyte" },
     ],
+    appType: "vdp",
   },
   {
     text: "Prepare Models",
@@ -127,6 +130,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/prepare-models/post-processing",
       },
     ],
+    appType: "vdp",
   },
   {
     text: "Import Models",
@@ -153,6 +157,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/import-models/huggingface",
       },
     ],
+    appType: "vdp",
   },
   {
     text: "Development",
@@ -167,6 +172,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/development/setup-local-development",
       },
     ],
+    appType: "vdp",
   },
 ];
 
@@ -218,15 +224,15 @@ const getNavbar = (type: string, isDark: boolean): NavConfig => {
     logo: getLogo(type, isDark),
     items: [
       {
-        key: "docs-nav-instill-cloud-getting-started",
-        to: "/docs/instill-cloud/getting-started",
+        key: "docs-nav-instill-cloud-welcome",
+        to: "/docs/instill-cloud/welcome",
         className: "",
         position: "left",
         label: "Instill Cloud",
       },
       {
-        key: "docs-nav-vdp-getting-started",
-        to: "/docs/vdp/getting-started",
+        key: "docs-nav-vdp-welcome",
+        to: "/docs/vdp/welcome",
         className: "",
         position: "left",
         label: "VDP",
