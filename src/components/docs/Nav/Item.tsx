@@ -28,10 +28,10 @@ export const Item = ({ item }: ItemProps) => {
     return (
       <a
         className={cn(
-          "my-auto text-sm font-normal  hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50",
+          "text-md my-auto font-normal  hover:text-instillBlue50 dark:hover:text-instillBlue50",
           isRouterActive(router.asPath, item.to)
             ? "text-instillBlue50"
-            : "text-black"
+            : "text-black dark:text-instillGrey15"
         )}
         href={item.to}
       >
