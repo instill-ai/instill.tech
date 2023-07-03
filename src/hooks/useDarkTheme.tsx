@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 // Custom Hook for dark mode
