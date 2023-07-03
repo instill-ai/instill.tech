@@ -75,6 +75,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/docs/welcome",
+        destination: "/docs/instill-cloud/welcome",
+        permanent: false,
+      },
+      {
         source: "/tos",
         destination: "https://www.iubenda.com/terms-and-conditions/60558066",
         permanent: false,

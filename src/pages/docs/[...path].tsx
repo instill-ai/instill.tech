@@ -175,7 +175,7 @@ const DocsPage: FC<DocsPageProps> & {
           </h1>
           <article
             id="content"
-            className="DocSearch-content prose mb-20 max-w-none dark:prose-white dark:bg-instillGrey90"
+            className="DocSearch-content prose mb-20 max-w-none dark:prose-white dark:bg-instillGrey95"
           >
             <MDXRemote {...mdxSource} />
           </article>
