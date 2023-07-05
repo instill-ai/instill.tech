@@ -183,45 +183,46 @@ const SECTIONS: SidebarSections[] = [
 ];
 
 // Parse logo a/c to appType
-const getLogo = (appType: string, isDark: boolean) => {
+export function getLogo(appType: string, isDark: boolean) {
   if (appType === "vdp") {
     return {
-      src: "/images/vdp-logo-white-bg.svg",
       width: 100,
       height: 36,
       alt: "VDP's logo",
       href: "/docs/vdp/welcome",
+      name: "vdp",
+      isDark: isDark,
     };
   }
   if (appType === "instill-cloud") {
     return {
-      src: isDark
-        ? "/images/instill-ai-logo-horizontal-white.svg"
-        : "/images/instill-ai-logo-horizontal-black.svg",
       width: 160,
       height: 36,
       alt: "Instill Cloud logo",
       href: "/docs/instill-cloud/welcome",
+      name: "instill-cloud",
+      isDark: isDark,
     };
   }
   if (appType === "model") {
     return {
-      src: "/images/vdp-logo-white-bg.svg",
       width: 100,
       height: 36,
       alt: "VDP's logo",
       href: "/docs/model/welcome",
+      name: "model",
+      isDark: false,
     };
   }
-};
+}
 
 // Parse menu items a/c to appType
-const getSidebarSections = (appType: string) => {
+export function getSidebarSections(appType: string) {
   return SECTIONS.filter((section) => section?.appType === appType);
-};
+}
 
 // Construct the sidebar items
-const getSideBar = (type: string, isDark: boolean): Sidebar => {
+export function getSideBar(type: string, isDark: boolean): Sidebar {
   return {
     leftSidebar: {
       logo: getLogo(type, isDark),
@@ -231,10 +232,10 @@ const getSideBar = (type: string, isDark: boolean): Sidebar => {
       tableOfContentHeaders: ["h1", "h2", "h3"],
     },
   };
-};
+}
 
 // Construct the navbar items
-const getNavbar = (type: string, isDark: boolean): NavConfig => {
+export function getNavbar(type: string, isDark: boolean): NavConfig {
   return {
     logo: getLogo(type, isDark),
     items: [
@@ -261,16 +262,16 @@ const getNavbar = (type: string, isDark: boolean): NavConfig => {
       },
     ],
   };
-};
+}
 
 // main config function
-export const docsConfig = (appType: string, isDark = false) => {
+export function docsConfig(appType: string, isDark = false) {
   return {
     site: SITE,
     nav: getNavbar(appType, isDark),
     sidebar: getSideBar(appType, isDark),
   };
-};
+}
 
 export const BlogCategories = [
   "Home",

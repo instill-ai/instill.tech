@@ -1,3 +1,4 @@
+import { LogoColorVariant } from "@instill-ai/design-system";
 import { ReactElement } from "react";
 
 export type SidebarItem = {
@@ -21,11 +22,13 @@ export type SidebarSection = {
 
 export type Logo = {
   alt: string;
-  src: string;
+  src?: string;
   srcDark?: string;
   width: number;
   height: number;
   href: string;
+  name: string;
+  isDark: boolean;
 };
 
 export type Sidebar = {

@@ -1,7 +1,7 @@
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import Link from "next/link";
-import Image from "next/image";
+import { Logo, ModelLogo, VdpLogo } from "@instill-ai/design-system";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -12,6 +12,26 @@ export const LeftSidebar = ({
   leftSidebar,
   footerViewHeight,
 }: LeftSidebarProps) => {
+  const getLogoByName = (name: string, isDark: boolean) => {
+    switch (name) {
+      case "vdp":
+        return <VdpLogo width={128} variant="expand" />;
+      case "instill-cloud":
+        return (
+          <Logo
+            variant={
+              isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"
+            }
+            width={180}
+          />
+        );
+      case "model":
+        return <ModelLogo variant="expand" width={128} />;
+      default:
+        return <VdpLogo width={128} variant="expand" />;
+    }
+  };
+
   return (
     <>
       <style>
@@ -33,14 +53,16 @@ export const LeftSidebar = ({
             href={leftSidebar.logo.href}
             className="leftsidebar-logo hidden w-full gap-x-3 py-4 md:flex md:flex-row"
           >
-            <Image
+            {/* <Image
               src={leftSidebar.logo.src}
               alt={leftSidebar.logo.alt}
               width={leftSidebar.logo.width}
               height={leftSidebar.logo.height}
               sizes={`${leftSidebar.logo.width}px`}
               className="mr-auto"
-            />
+            /> */}
+
+            {getLogoByName(leftSidebar.logo.name, leftSidebar.logo.isDark)}
           </Link>
         ) : null}
         {leftSidebar.sections.map((section) => (
