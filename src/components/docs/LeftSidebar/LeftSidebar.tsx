@@ -5,9 +5,13 @@ import Image from "next/image";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
+  footerViewHeight: number;
 };
 
-export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
+export const LeftSidebar = ({
+  leftSidebar,
+  footerViewHeight,
+}: LeftSidebarProps) => {
   return (
     <>
       <style>
@@ -18,7 +22,8 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         }
 
         .left-sidebar {
-          max-width: var(--docs-left-sidebar-max-width)
+          max-width: var(--docs-left-sidebar-max-width);
+          height: calc(100vh - ${footerViewHeight}px)
         }
       `}
       </style>
