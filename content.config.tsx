@@ -28,6 +28,12 @@ const SECTIONS: SidebarSections[] = [
     appType: "instill-cloud",
   },
   {
+    text: "Welcome",
+    link: "/docs/model/welcome",
+    items: [],
+    appType: "model",
+  },
+  {
     text: "Instill Cloud",
     collapsible: true,
     items: [
@@ -198,6 +204,15 @@ const getLogo = (appType: string, isDark: boolean) => {
       href: "/docs/instill-cloud/welcome",
     };
   }
+  if (appType === "model") {
+    return {
+      src: "/images/vdp-logo-white-bg.svg",
+      width: 100,
+      height: 36,
+      alt: "VDP's logo",
+      href: "/docs/model/welcome",
+    };
+  }
 };
 
 // Parse menu items a/c to appType
@@ -236,6 +251,13 @@ const getNavbar = (type: string, isDark: boolean): NavConfig => {
         className: "",
         position: "left",
         label: "VDP",
+      },
+      {
+        key: "docs-nav-model-welcome",
+        to: "/docs/model/welcome",
+        className: "",
+        position: "left",
+        label: "Model",
       },
     ],
   };

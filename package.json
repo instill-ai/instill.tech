@@ -23,7 +23,7 @@
     "@algolia/client-search": "^4.14.2",
     "@code-hike/mdx": "^0.7.4",
     "@docsearch/react": "^3.3.0",
-    "@instill-ai/design-system": "^0.6.0",
+    "@instill-ai/design-system": "^0.19.0",
     "@mailchimp/mailchimp_marketing": "^3.0.75",
     "@octokit/core": "^4.1.0",
     "@react-hook/resize-observer": "^1.2.6",

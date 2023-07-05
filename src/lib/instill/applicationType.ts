@@ -5,6 +5,9 @@ export function getApplicationType(path: string | Array<string>): string {
   if (path.includes("instill-cloud")) {
     return "instill-cloud";
   }
+  if (path.includes("model")) {
+    return "model";
+  }
   return "vdp";
 }
 
