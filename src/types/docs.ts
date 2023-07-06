@@ -1,4 +1,3 @@
-import { LogoColorVariant } from "@instill-ai/design-system";
 import { ReactElement } from "react";
 
 export type SidebarItem = {

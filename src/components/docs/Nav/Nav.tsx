@@ -9,6 +9,7 @@ import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
 import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { getLogoByName } from "../LeftSidebar";
 
 export type NavProps = {
   nav: NavConfig;
@@ -142,15 +143,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               href="/docs/instill-cloud/welcome"
               className="flex flex-row gap-x-3"
             >
-              {nav.logo ? (
-                <Image
-                  src={nav.logo.src}
-                  alt={nav.logo.alt}
-                  width={nav.logo.width}
-                  height={nav.logo.height}
-                  sizes={`${nav.logo.width}px`}
-                />
-              ) : null}
+              {nav.logo && getLogoByName(nav.logo.name, nav.logo.isDark)}
               {nav.title ? (
                 <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
                   {nav.title}
