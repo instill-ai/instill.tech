@@ -1,9 +1,10 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
+  presets: [require("@instill-ai/design-tokens/dist/tailwind.config.cjs")],
   darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@instill-ai/design-system/build/*.js",
+    "./node_modules/@instill-ai/design-system/dist/*.{js,mjs}",
     "./content.config.tsx",
   ],
 

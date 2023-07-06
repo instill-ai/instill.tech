@@ -1,15 +1,19 @@
 import { ReactElement } from "react";
+import { InstillAppType } from "./instill";
 
 export type SidebarItem = {
   link: string;
   text: string;
 };
 
+export type LogoConfig = { element: ReactElement; href: string };
+
 export type SidebarSections = {
   collapsible?: boolean;
   text: string;
   link?: string;
   items: SidebarItem[];
+  appType?: InstillAppType;
 };
 
 export type SidebarSection = {
@@ -18,18 +22,10 @@ export type SidebarSection = {
   children: SidebarItem[];
 };
 
-export type Logo = {
-  alt: string;
-  src: string;
-  srcDark?: string;
-  width: number;
-  height: number;
-};
-
 export type Sidebar = {
   leftSidebar: {
     sections: SidebarSections[];
-    logo?: Logo;
+    logo?: LogoConfig;
   };
   rightSidebar: {
     tableOfContentHeaders: string[];
@@ -38,7 +34,7 @@ export type Sidebar = {
 
 export type NavConfig = {
   title?: string;
-  logo?: Logo;
+  logo?: LogoConfig;
   items: NavbarItem[];
 };
 

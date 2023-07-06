@@ -1,9 +1,5 @@
 import cn from "clsx";
-import { useCallback, useState } from "react";
-import {
-  BasicSingleSelect,
-  SingleSelectOption,
-} from "@instill-ai/design-system";
+import { Select, SingleSelectOption } from "@instill-ai/design-system";
 import { Nullable } from "@/types/instill";
 
 export type ControlSelectWrapperProps = {
@@ -22,31 +18,12 @@ export type ControlSelectWrapperProps = {
 
 export const ControlSelectWrapper = ({
   customizable,
-  id,
-  label,
   isActive,
   options,
   wrapperOnClick,
-  selectOnFocus,
   minWidth,
-  menuPlacement,
-  onChange,
   wrapperOnMouseOver,
 }: ControlSelectWrapperProps) => {
-  const [selectOption, setSelectOption] = useState<SingleSelectOption>(
-    options[0]
-  );
-
-  const onChangehandler = useCallback(
-    (option: Nullable<SingleSelectOption>) => {
-      if (option) {
-        if (onChange) onChange(option);
-        setSelectOption(option);
-      }
-    },
-    [onChange]
-  );
-
   return (
     <div
       onClick={wrapperOnClick}
@@ -54,23 +31,27 @@ export const ControlSelectWrapper = ({
         "cursor-pointer": wrapperOnClick,
       })}
     >
-      <BasicSingleSelect
-        menuPlacement={menuPlacement ?? "auto"}
-        key={id}
-        id={id}
-        instanceId={id}
-        label={label}
-        options={options}
-        value={customizable ? selectOption : options[0]}
-        onChange={onChangehandler}
-        onFocus={selectOnFocus}
-        required={false}
-        disabled={customizable ? false : onChange ? false : true}
-      />
+      <Select.Root defaultValue={options[0].value}>
+        <Select.Trigger className="w-full !rounded-none">
+          <Select.Value placeholder="Select a connector" />
+        </Select.Trigger>
+        <Select.Content className="bg-white">
+          <Select.Group>
+            {options.map((option) => (
+              <Select.Item key={option.value} value={option.value}>
+                <div className="flex flex-row gap-x-2">
+                  {option.startIcon}
+                  <p className="my-auto">{option.label}</p>
+                </div>
+              </Select.Item>
+            ))}
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
       {customizable ? null : (
         <div
           className={cn(
-            "absolute top-0 bottom-0 right-0 left-0 cursor-pointer border-2",
+            "absolute bottom-0 left-0 right-0 top-0 cursor-pointer border-2",
             isActive ? "border-instillNatureGreen" : "border-instillGrey20"
           )}
           onMouseOver={wrapperOnMouseOver}

@@ -8,37 +8,44 @@ import {
   useState,
 } from "react";
 
-type AnnouncementBarCtxValue = {
+type InstillAICtxValue = {
   enableAnnouncementBar: boolean;
   setEnableAnnouncementBar: Nullable<Dispatch<SetStateAction<boolean>>>;
+  isDark: boolean;
+  setIsDark: Nullable<Dispatch<SetStateAction<boolean>>>;
 };
 
-const defaultAnnouncementBarCtxValue: AnnouncementBarCtxValue = {
+const defaultInstillAICtxValue: InstillAICtxValue = {
   enableAnnouncementBar: true,
   setEnableAnnouncementBar: null,
+  isDark: false,
+  setIsDark: null,
 };
 
-export const announcementBarCtx = createContext(defaultAnnouncementBarCtxValue);
+export const InstillAICtx = createContext(defaultInstillAICtxValue);
 
-export const useAnnouncementBarCtx = () => useContext(announcementBarCtx);
+export const useInstillAICtx = () => useContext(InstillAICtx);
 
-type AnnouncementBarCtxProviderProps = {
+type InstillAICtxProviderProps = {
   children?: ReactNode;
 };
 
-export const AnnouncementBarCtxProvider = ({
+export const InstillAICtxProvider = ({
   children,
-}: AnnouncementBarCtxProviderProps) => {
+}: InstillAICtxProviderProps) => {
   const [enableAnnouncementBar, setEnableAnnouncementBar] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   return (
-    <announcementBarCtx.Provider
+    <InstillAICtx.Provider
       value={{
         enableAnnouncementBar,
         setEnableAnnouncementBar,
+        isDark,
+        setIsDark,
       }}
     >
       {children}
-    </announcementBarCtx.Provider>
+    </InstillAICtx.Provider>
   );
 };

@@ -6,12 +6,17 @@ import {
   isInteriorLink,
   NavbarItem,
 } from "@/types/docs";
+import { useRouter } from "next/router";
+import cn from "clsx";
+import { isRouterActive } from "@/lib/instill";
+import Link from "next/link";
 
 export type ItemProps = {
   item: NavbarItem;
 };
 
 export const Item = ({ item }: ItemProps) => {
+  const router = useRouter();
   if (isBorder(item)) {
     return (
       <div className="grid grid-cols-1 py-2 md:grid-cols-2">
@@ -22,12 +27,17 @@ export const Item = ({ item }: ItemProps) => {
 
   if (isInteriorLink(item)) {
     return (
-      <a
-        className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+      <Link
+        className={cn(
+          "text-md my-auto font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
+          isRouterActive(router.asPath, item.to)
+            ? "text-instillBlue50"
+            : "text-black dark:text-instillGrey15"
+        )}
         href={item.to}
       >
         {item.label}
-      </a>
+      </Link>
     );
   }
 

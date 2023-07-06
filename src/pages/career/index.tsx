@@ -19,7 +19,7 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInView } from "react-intersection-observer";
 
@@ -82,7 +82,7 @@ const CareerPage: FC<CareerPageProps> & {
     triggerOnce: true,
   });
 
-  const { enableAnnouncementBar } = useAnnouncementBarCtx();
+  const { enableAnnouncementBar } = useInstillAICtx();
 
   const scrollHandler = useCallback(() => {
     if (!window || !positionListRef.current) return;

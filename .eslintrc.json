@@ -90,26 +90,27 @@
     // We are still considering about this rule
     // "react/forbid-dom-props": ["error", { "forbid": [] }],
 
+    // Because we are going to use compound component. We will close this lint rule.
     // Need to find best practice around this rule
     // We let nextjs Image use className and style
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md
-    "react/forbid-component-props": [
-      "error",
-      {
-        "forbid": [
-          {
-            "propName": "style",
-            "allowedFor": ["Image"],
-            "message": "Avoid using style"
-          },
-          {
-            "propName": "className",
-            "allowedFor": ["Image", "Link"],
-            "message": "Avoid using className"
-          }
-        ]
-      }
-    ],
+    // "react/forbid-component-props": [
+    //   "error",
+    //   {
+    //     "forbid": [
+    //       {
+    //         "propName": "style",
+    //         "allowedFor": ["Image"],
+    //         "message": "Avoid using style"
+    //       },
+    //       {
+    //         "propName": "className",
+    //         "allowedFor": ["Image", "Link"],
+    //         "message": "Avoid using className"
+    //       }
+    //     ]
+    //   }
+    // ],
 
     // Disable react/no-unknown-property for Nextjs style jsx
     "react/no-unknown-property": [

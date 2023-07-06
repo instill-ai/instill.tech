@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import cn from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { DocSearch } from "@docsearch/react";
 
@@ -76,7 +75,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                   <Item item={item} />
                 </div>
               ))}
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
             </div>
           )}
         </div>
@@ -90,7 +89,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         <div className="hidden flex-grow flex-row md:flex">
           <div
             className={cn(
-              "flex flex-row",
+              "flex flex-row gap-x-5",
               items.left.length === 0 ? "flex-shrink" : "grow"
             )}
           >
@@ -108,9 +107,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               <Item key={item.key} item={item} />
             ))}
           </div>
-          <div className="my-auto ml-4">
+          {/* <div className="my-auto ml-4">
             <ThemeToggle />
-          </div>
+          </div> */}
         </div>
       </>
     );
@@ -133,21 +132,16 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white py-4 px-8 dark:bg-instillGrey95"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white px-8 py-4 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (
           <div className="logo mr-4 flex md:hidden">
-            <Link href="/docs/welcome" className="flex flex-row gap-x-3">
-              {nav.logo ? (
-                <Image
-                  src={nav.logo.src}
-                  alt={nav.logo.alt}
-                  width={nav.logo.width}
-                  height={nav.logo.height}
-                  sizes={`${nav.logo.width}px`}
-                />
-              ) : null}
+            <Link
+              href="/docs/instill-cloud/welcome"
+              className="flex flex-row gap-x-3"
+            >
+              {nav.logo ? nav.logo.element : null}
               {nav.title ? (
                 <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
                   {nav.title}
@@ -159,6 +153,8 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end xl:mr-5">
+            {desktopView}
+            {mobileView}
             <div className="my-auto mr-5">
               <DocSearch
                 appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
@@ -166,8 +162,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
                 indexName="instill"
               />
             </div>
-            {desktopView}
-            {mobileView}
+            <div className="my-auto ml-4">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </nav>

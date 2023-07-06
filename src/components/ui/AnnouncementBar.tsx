@@ -1,14 +1,13 @@
 import { ReactNode, useCallback } from "react";
 import { CrossIcon } from "@instill-ai/design-system";
-
-import { useAnnouncementBarCtx } from "@/contexts/AnnouncementBarContext";
+import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 export type AnnouncementBarProps = {
   children?: ReactNode;
 };
 
 export const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
-  const { setEnableAnnouncementBar } = useAnnouncementBarCtx();
+  const { setEnableAnnouncementBar } = useInstillAICtx();
 
   const handleClick = useCallback(() => {
     if (setEnableAnnouncementBar) {

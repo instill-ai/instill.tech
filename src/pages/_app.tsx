@@ -11,7 +11,7 @@ import "@/components/ui/Footer/AnimateSlogan.css";
 import { MDXProvider } from "@mdx-js/react";
 import { CH } from "@code-hike/mdx/components";
 import "intersection-observer";
-import { AnnouncementBarCtxProvider } from "../contexts/AnnouncementBarContext";
+import { InstillAICtxProvider } from "../contexts/InstillAIContext";
 import {
   MdxCtaButton,
   MdxGist,
@@ -90,10 +90,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <MDXProvider components={components}>
-      <AnnouncementBarCtxProvider>
+      <InstillAICtxProvider>
         {getLayout(<Component {...pageProps} />)}
         <div id="zoomable-image" />
-      </AnnouncementBarCtxProvider>
+      </InstillAICtxProvider>
     </MDXProvider>
   );
 }

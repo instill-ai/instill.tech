@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { NextRouter } from "next/router";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { render } from "@testing-library/react";
-import { AnnouncementBarCtxProvider } from "@/contexts/AnnouncementBarContext";
+import { InstillAICtxProvider } from "@/contexts/InstillAIContext";
 import { PageBase } from "@/components/ui";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 
@@ -43,7 +45,7 @@ export function renderWithContext(
 ) {
   const { rerender, ...result } = render(
     <RouterContext.Provider value={createMockRouter({ ...router })}>
-      <AnnouncementBarCtxProvider>{ui}</AnnouncementBarCtxProvider>
+      <InstillAICtxProvider>{ui}</InstillAICtxProvider>
     </RouterContext.Provider>
   );
   return {
@@ -51,7 +53,7 @@ export function renderWithContext(
     rerender: (rerenderUi: React.ReactElement) =>
       rerender(
         <RouterContext.Provider value={createMockRouter({ ...router })}>
-          <AnnouncementBarCtxProvider>{rerenderUi}</AnnouncementBarCtxProvider>
+          <InstillAICtxProvider>{rerenderUi}</InstillAICtxProvider>
         </RouterContext.Provider>
       ),
   };
