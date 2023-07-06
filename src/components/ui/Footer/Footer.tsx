@@ -127,7 +127,7 @@ export const Footer = () => {
         <div className="mb-[120px] flex flex-col gap-x-10 xl:mb-[180px] xl:flex-row">
           <div className="mb-[120px] flex flex-col space-y-5 xl:mb-0">
             <AnimateSlogan />
-            <Logo type="whiteLogomark" width={30} />
+            <Logo variant="whiteLogomark" width={30} />
           </div>
           <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-5 xl:gap-y-0">
             <Tab type="social" header="socials" links={tabs.socialLinks} />

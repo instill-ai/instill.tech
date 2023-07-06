@@ -33,14 +33,18 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
             headerTextColor="text-instillGrey90"
             subElement={
               <div className="hidden w-full xl:my-auto xl:flex">
-                <VdpLogo type="expand" width={340} position="ml-auto my-auto" />
+                <VdpLogo
+                  variant="expand"
+                  width={340}
+                  className="my-auto ml-auto"
+                />
               </div>
             }
           />
         </div>
         <div className="mb-10 flex">
           <VdpLogo
-            type="expand"
+            variant="expand"
             width={
               containerDimension
                 ? containerDimension.width > 360
@@ -48,7 +52,7 @@ export const Vdp = forwardRef<HTMLDivElement, VdpProps>(
                   : containerDimension.width * 0.8
                 : 0
             }
-            position="mr-auto my-auto xl:hidden"
+            className="my-auto mr-auto xl:hidden"
           />
         </div>
         <VdpFlow marginBottom="mb-5" />
