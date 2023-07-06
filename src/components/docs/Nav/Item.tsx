@@ -8,7 +8,7 @@ import {
 } from "@/types/docs";
 import { useRouter } from "next/router";
 import cn from "clsx";
-import { getApplicationType, isRouterActive } from "@/lib/instill";
+import { isRouterActive } from "@/lib/instill";
 import Link from "next/link";
 
 export type ItemProps = {
@@ -29,7 +29,7 @@ export const Item = ({ item }: ItemProps) => {
     return (
       <Link
         className={cn(
-          "text-md my-auto font-normal  hover:text-instillBlue50 dark:hover:text-instillBlue50",
+          "text-md my-auto font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
           isRouterActive(router.asPath, item.to)
             ? "text-instillBlue50"
             : "text-black dark:text-instillGrey15"

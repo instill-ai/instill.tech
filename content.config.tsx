@@ -1,4 +1,6 @@
-import { NavConfig, Sidebar, SidebarSections } from "@/types/docs";
+import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
+import { InstillAppType } from "@/types/instill";
+import { Logo, ModelLogo, VdpLogo } from "@instill-ai/design-system";
 
 const SITE = {
   title: "Documentation",
@@ -31,7 +33,7 @@ const SECTIONS: SidebarSections[] = [
     text: "Welcome",
     link: "/docs/model/welcome",
     items: [],
-    appType: "model",
+    appType: "instill-model",
   },
   {
     text: "Instill Cloud",
@@ -183,50 +185,52 @@ const SECTIONS: SidebarSections[] = [
 ];
 
 // Parse logo a/c to appType
-export function getLogo(appType: string, isDark: boolean) {
+export function getLogoConfig(
+  appType: InstillAppType,
+  isDark: boolean
+): LogoConfig {
   if (appType === "vdp") {
     return {
-      width: 100,
-      height: 36,
-      alt: "VDP's logo",
+      element: <VdpLogo variant="expand" width={128} />,
       href: "/docs/vdp/welcome",
-      name: "vdp",
-      isDark: isDark,
     };
   }
+
   if (appType === "instill-cloud") {
     return {
-      width: 160,
-      height: 36,
-      alt: "Instill Cloud logo",
+      element: (
+        <Logo
+          variant={
+            isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"
+          }
+          width={180}
+        />
+      ),
       href: "/docs/instill-cloud/welcome",
-      name: "instill-cloud",
-      isDark: isDark,
     };
   }
-  if (appType === "model") {
+
+  if (appType === "instill-model") {
     return {
-      width: 100,
-      height: 36,
-      alt: "VDP's logo",
+      element: <ModelLogo variant="expand" width={128} />,
       href: "/docs/model/welcome",
-      name: "model",
-      isDark: false,
     };
   }
+
+  throw new Error("Invalid appType");
 }
 
 // Parse menu items a/c to appType
-export function getSidebarSections(appType: string) {
+export function getSidebarSections(appType: InstillAppType) {
   return SECTIONS.filter((section) => section?.appType === appType);
 }
 
 // Construct the sidebar items
-export function getSideBar(type: string, isDark: boolean): Sidebar {
+export function getSideBar(appType: InstillAppType, isDark: boolean): Sidebar {
   return {
     leftSidebar: {
-      logo: getLogo(type, isDark),
-      sections: getSidebarSections(type),
+      logo: getLogoConfig(appType, isDark),
+      sections: getSidebarSections(appType),
     },
     rightSidebar: {
       tableOfContentHeaders: ["h1", "h2", "h3"],
@@ -235,9 +239,9 @@ export function getSideBar(type: string, isDark: boolean): Sidebar {
 }
 
 // Construct the navbar items
-export function getNavbar(type: string, isDark: boolean): NavConfig {
+export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
   return {
-    logo: getLogo(type, isDark),
+    logo: getLogoConfig(appType, isDark),
     items: [
       {
         key: "docs-nav-instill-cloud-welcome",
@@ -265,7 +269,7 @@ export function getNavbar(type: string, isDark: boolean): NavConfig {
 }
 
 // main config function
-export function docsConfig(appType: string, isDark = false) {
+export function docsConfig(appType: InstillAppType, isDark = false) {
   return {
     site: SITE,
     nav: getNavbar(appType, isDark),

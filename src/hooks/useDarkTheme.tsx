@@ -11,7 +11,7 @@ const useDarkTheme = () => {
     if (setIsDark) {
       setIsDark(darkMode);
     }
-  }, []);
+  }, [setIsDark]);
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -31,7 +31,7 @@ const useDarkTheme = () => {
         return prevIsDark;
       });
     }
-  }, [isDark]);
+  }, [isDark, setIsDark]);
 
   return [isDark, setIsDark] as const;
 };

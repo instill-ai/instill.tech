@@ -63,9 +63,9 @@ export const Nav = () => {
   const desktopView = (
     <>
       {enableAnnouncementBar && announcementBar}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-row py-5 px-[30px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-row px-[30px] py-5">
         <Link href="/" className="my-auto mr-auto flex">
-          <Logo type="ColourLogomarkBlackType" width={158} />
+          <Logo variant="ColourLogomarkBlackType" width={158} />
         </Link>
 
         <div className="flex flex-row justify-end gap-x-[60px] lg:ml-auto">
@@ -80,7 +80,7 @@ export const Nav = () => {
       {enableAnnouncementBar && announcementBar}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
         <Link href="/" className="flex">
-          <Logo type="ColourLogomarkBlackType" width={159} />
+          <Logo variant="ColourLogomarkBlackType" width={159} />
         </Link>
         <button
           className="ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
@@ -105,7 +105,7 @@ export const Nav = () => {
       </div>
       <div className="relative w-full">
         {open && (
-          <div className="absolute top-0 left-0 flex w-full flex-col gap-y-[50px] bg-white py-[50px] px-4">
+          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-white px-4 py-[50px]">
             {navbarLinkGroup}
           </div>
         )}
@@ -123,7 +123,7 @@ export const Nav = () => {
         <div
           className={cn(
             "flex h-full w-full flex-col lg:hidden",
-            open ? "fixed top-0 left-0 z-50 bg-white" : ""
+            open ? "fixed left-0 top-0 z-50 bg-white" : ""
           )}
         >
           {mobileView}

@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import cn from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { DocSearch } from "@docsearch/react";
 
@@ -9,7 +8,6 @@ import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
 import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
-import { getLogoByName } from "../LeftSidebar";
 
 export type NavProps = {
   nav: NavConfig;
@@ -134,7 +132,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white py-4 px-8 dark:bg-instillGrey95"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white px-8 py-4 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (
@@ -143,7 +141,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               href="/docs/instill-cloud/welcome"
               className="flex flex-row gap-x-3"
             >
-              {nav.logo && getLogoByName(nav.logo.name, nav.logo.isDark)}
+              {nav.logo ? nav.logo.element : null}
               {nav.title ? (
                 <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
                   {nav.title}

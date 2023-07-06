@@ -1,4 +1,8 @@
-export function getApplicationType(path: string | Array<string>): string {
+import { InstillAppType } from "@/types/instill";
+
+export function getApplicationType(
+  path: string | Array<string>
+): InstillAppType {
   if (path.includes("vdp")) {
     return "vdp";
   }
@@ -6,7 +10,7 @@ export function getApplicationType(path: string | Array<string>): string {
     return "instill-cloud";
   }
   if (path.includes("model")) {
-    return "model";
+    return "instill-model";
   }
   return "vdp";
 }
