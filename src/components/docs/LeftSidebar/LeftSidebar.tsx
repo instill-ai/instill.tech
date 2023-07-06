@@ -1,7 +1,25 @@
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import Link from "next/link";
-import { Logo, ModelLogo, VdpLogo } from "@instill-ai/design-system";
+import { Logo, VdpLogo } from "@instill-ai/design-system";
+
+export const getLogoByName = (name: string, isDark: boolean) => {
+  switch (name) {
+    case "vdp":
+      return <VdpLogo width={128} type="expand" />;
+    case "instill-cloud":
+      return (
+        <Logo
+          type={isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"}
+          width={180}
+        />
+      );
+    // case "model":
+    //   return <ModelLogo variant="expand" width={128} />;
+    default:
+      return <VdpLogo width={128} type="expand" />;
+  }
+};
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -12,26 +30,6 @@ export const LeftSidebar = ({
   leftSidebar,
   footerViewHeight,
 }: LeftSidebarProps) => {
-  const getLogoByName = (name: string, isDark: boolean) => {
-    switch (name) {
-      case "vdp":
-        return <VdpLogo width={128} variant="expand" />;
-      case "instill-cloud":
-        return (
-          <Logo
-            variant={
-              isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"
-            }
-            width={180}
-          />
-        );
-      case "model":
-        return <ModelLogo variant="expand" width={128} />;
-      default:
-        return <VdpLogo width={128} variant="expand" />;
-    }
-  };
-
   return (
     <>
       <style>

@@ -1,2 +1,2 @@
-export { LeftSidebar } from "./LeftSidebar";
+export { LeftSidebar, getLogoByName } from "./LeftSidebar";
 export type { LeftSidebarProps } from "./LeftSidebar";
