@@ -264,6 +264,13 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         position: "left",
         label: "Model",
       },
+      {
+        key: "product-website-home",
+        to: "/",
+        className: "",
+        position: "left",
+        label: "Home",
+      },
     ],
   };
 }
