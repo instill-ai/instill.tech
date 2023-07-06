@@ -24,6 +24,7 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
     isDark
   );
 
+  //  the bellow useEffect is added to calculated the sidebar height acording to the footer vissible in view screen
   useEffect(() => {
     const handleScroll = () => {
       const footerElement = document.getElementById("footer");
