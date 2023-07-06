@@ -1,10 +1,5 @@
 import cn from "clsx";
-import { useCallback, useState } from "react";
-import {
-  BasicSingleSelect,
-  Select,
-  SingleSelectOption,
-} from "@instill-ai/design-system";
+import { Select, SingleSelectOption } from "@instill-ai/design-system";
 import { Nullable } from "@/types/instill";
 
 export type ControlSelectWrapperProps = {
@@ -23,29 +18,12 @@ export type ControlSelectWrapperProps = {
 
 export const ControlSelectWrapper = ({
   customizable,
-  id,
-  label,
   isActive,
   options,
   wrapperOnClick,
   minWidth,
-  onChange,
   wrapperOnMouseOver,
 }: ControlSelectWrapperProps) => {
-  const [selectOption, setSelectOption] = useState<SingleSelectOption>(
-    options[0]
-  );
-
-  const onChangehandler = useCallback(
-    (option: Nullable<SingleSelectOption>) => {
-      if (option) {
-        if (onChange) onChange(option);
-        setSelectOption(option);
-      }
-    },
-    [onChange]
-  );
-
   return (
     <div
       onClick={wrapperOnClick}
@@ -70,16 +48,6 @@ export const ControlSelectWrapper = ({
           </Select.Group>
         </Select.Content>
       </Select.Root>
-      {/* <BasicSingleSelect
-        key={id}
-        id={id}
-        label={label}
-        options={options}
-        value={customizable ? selectOption : options[0]}
-        onChange={onChangehandler}
-        required={false}
-        disabled={customizable ? false : onChange ? false : true}
-      /> */}
       {customizable ? null : (
         <div
           className={cn(

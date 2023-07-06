@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { NextRouter } from "next/router";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { render } from "@testing-library/react";
