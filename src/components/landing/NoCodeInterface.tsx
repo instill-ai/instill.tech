@@ -28,7 +28,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
             </p>
             <CommonCtaButton
               position="mr-auto"
-              link="https://demo.instill.tech/"
+              link="https://console.instill.tech"
               withArrow={true}
               text="Learn more"
             />
