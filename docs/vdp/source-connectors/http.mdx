@@ -1,0 +1,48 @@
+---
+title: "HTTP Source Connector"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a HTTP source connector for the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+## Description
+
+- When a HTTP source connector is paired with a HTTP destination connector, the pipeline will be in the `SYNC` mode.
+- When a HTTP source connector is paired with an Airbyte connector, the pipeline will be in the `ASYNC` mode.
+- An HTTP source connector cannot be paired with a gRPC destination connector.
+- A HTTP source connector is always in the `CONNECTED` state.
+- A HTTP source connector's ID must be `source-http`
+- A user account can set up only one HTTP source connector.
+
+## Release stage
+
+`Generally Available`
+
+## Configuration
+
+| Field | Type | Note                                                                                                  |
+| :---- | :--- | :---------------------------------------------------------------------------------------------------- |
+| N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |
+
+## No-code setup
+
+To create a HTTP source connector:
+
+1. Go to the **Source** page and click **Set up new source**
+2. Click the **Source type** ▾ drop-down and choose **HTTP**
+
+Now go to the **Source** page, the corresponding HTTP source connector should be connected.
+
+## Low-code setup
+
+To create a HTTP source connector:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "source-http",
+  "connector_definition_name": "connector-definitions/source-http",
+  "configuration": {}
+}'
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

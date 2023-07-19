@@ -1,0 +1,47 @@
+---
+title: "gRPC Destination Connector"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a gRPC destination connector for the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+## Description
+
+- A gRPC destination connector is for pairing with a gRPC source connector to set up a `SYNC` pipeline.
+- A gRPC destination connector is always in the `CONNECTED` state.
+- A gRPC destination connector's ID must be `destination-grpc`
+- A user account can set up only one gRPC destination connector.
+
+## Release stage
+
+`Generally Available`
+
+## Configuration
+
+| Field | Type | Note                                                                                                  |
+| :---- | :--- | :---------------------------------------------------------------------------------------------------- |
+| N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |
+
+## No-code setup
+
+To create a gRPC destination connector:
+
+1. Go to the **Destination** page and click **Set up new destination**
+2. Click the **Destination type** ▾ drop-down and choose **gRPC**
+3. [Optional] Give a short description in the **Description** field
+
+Now go to the **Destination** page, the corresponding gRPC destination connector should be connected.
+
+## Low-code setup
+
+To create a gRPC destination connector:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "destination-grpc",
+  "connector_definition_name": "connector-definitions/destination-grpc",
+  "configuration": {}
+}'
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

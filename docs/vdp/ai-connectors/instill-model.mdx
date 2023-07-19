@@ -1,0 +1,100 @@
+---
+title: "Instill Model"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up an Instill Model AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
+---
+
+## Description
+
+The Instill Model Connector enables you to connect the AI models served on the Instill Model Platform for various AI tasks.
+
+## Release stage
+
+`Alpha`
+
+## Configuration
+
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/instill/config/seed/definitions.json).
+
+| Field        | Type   | Note                                                                                                                                                                                                                                      |
+| :----------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_token    | string | To access models on **Instill Cloud**, enter your Instill Cloud API Token. You can find your tokens by visiting your **Instill Cloud's Settings > API Tokens** page. Leave this field empty to access models on your local Instill Model. |
+| server_url\* | string | Base URL for the Instill Model API. To access models on Instill Cloud, use the base URL `https://api-model.instill.tech`. To access models on your local Instill Model, use the base URL `http://localhost:9080`.                         |
+| model_id\*   | string | ID of the Instill Model model to be used.                                                                                                                                                                                                 |
+
+## No-code setup
+
+<InfoBlock type="info" title="info">
+  
+Comparing to launching a local Instill Model, **Instill Cloud** is the fastest way to create an Instill Model AI Connector.
+  
+👉 You can try out [Instill Cloud](https://console.instill.tech) to use our pre-created Instill Model AI connector for FREE during Open Alpha.
+
+</InfoBlock>
+
+To create an Instill Model AI connector from [Instill Cloud](https://console.instill.tech),
+you'll first need to create an Instill Cloud account by visiting [console.instill.tech](https://console.instill.tech).
+
+1. Visit [Model Hub](https://console.instill.tech/model-hub) on Instill Cloud to explore available models
+2. Go to the **AI** page of your [local Console](http://localhost:3000) and click **Set up new AI**
+3. In the **Set Up New AI Connector** page, fill an ID for your model, this will be the unique identifier of this connector
+4. [Optional] Give a short description of your connector in the **Description** field
+5. Click the **AI Connector Type** ▾ drop-down and choose **Instill Model**
+6. Fill in the following information and click **Set up**
+
+   - Enter **API Key**. You can find your Instill Cloud API tokens by visiting your [**Settings**](https://console.instill.tech/settings) > **API Tokens** page.
+   - Set the the Server URL https://api-model.instill.tech to access models on Instill Cloud
+   - Enter the ID of the model from Model Hub on Instill Cloud that you want to use
+
+7. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
+
+To create an Instill Model AI connector from local Instill Model, follow the same steps, follow the same steps as above, but with the following difference in step 1 and 6:
+
+1. Visit local Instill Model from local Console](http://localhost:3000/model-hub) to create and deploy your models
+
+and
+
+5. Fill the following information and click **Set up**
+
+   - Leave the **API Key** field empty to access models on your local Instill Model
+   - Set the Server URL to http://localhost:9080 to access models on your local Instill Model.
+   - Enter the ID of the model served on your local Instill Model that you want to use
+
+## Low-code setup
+
+1. Create an Instill Model AI connector from Instill Cloud
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "my-instill-model",
+  "connector_definition_name": "connector-definitions/ai-instill-model",
+  "configuration": {
+    "api_token": "<instill-cloud-api-token>",
+    "server_url": "https://api-model.instill.tech",
+    "model_id": "yolov7"
+  }
+}'
+```
+
+Or create an Instill Model AI connector from local Instill Model
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "my-instill-model",
+  "connector_definition_name": "connector-definitions/ai-instill-model",
+  "configuration": {
+    "api_token": "",
+    "server_url": "http://localhost:9080",
+    "model_id": "<id-of-the-model-served-on-your-local-instill-model>"
+  }
+}'
+```
+
+2. Connect the connector `my-instill-model`
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors/my-instill-model/connect
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

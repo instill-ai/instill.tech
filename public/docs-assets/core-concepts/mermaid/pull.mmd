@@ -1,0 +1,31 @@
+%%{
+  init: {
+    'themeVariables': {
+      'primaryBorderColor': '#1A1A1A',
+      'secondaryBorderColor': '#1A1A1A',
+      'tertiaryBorderColor': '#1A1A1A',
+      'lineColor': '#1A1A1A',
+      'actorBkg': '#80A8F5',
+      'actorBorder': '#1A1A1A',
+      'actorTextColor': '#1A1A1A',
+      'actorLineColor': '#1A1A1A',
+      'noteBkgColor': '#FFDF3A',
+      'noteBorderColor': '#1A1A1A',
+      'noteTextColor': '#1A1A1A',
+      'activationBkgColor': '#28F67E',
+      'activationBorderColor': '#1A1A1A',
+      'sequenceNumberColor': '#FFFFFF',
+      'textColor': '#1A1A1A'
+    },
+    'themeCSS': 'background-color: white;'
+  }
+}%%
+sequenceDiagram  
+  autonumber
+  Note left of Source Connector: Scheduled pull
+  rect rgb(190, 222, 255)  
+  Note over Source Connector,AI Connector: Pipeline  
+  Source Connector->>+AI Connector: ASYNC gRPC request (Inference)
+  Note over AI Connector,Destination Connector: Pipeline 
+  AI Connector->>+Destination Connector: ASYNC gRPC request (Result)
+  end

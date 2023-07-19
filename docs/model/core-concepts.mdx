@@ -1,0 +1,110 @@
+---
+title: "Core Concepts Overview"
+lang: "en-US"
+draft: false
+description: "One-click import and deploy ML models with the MLOps tool Instill Model https://github.com/instill-ai/model"
+---
+
+Instill Model uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
+Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
+To make your models Instill Model ready, please refer to [Prepare Models](/docs/model/prepare-models/overview).
+
+Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.
+
+## Model
+
+A **Model** is a piece of ML algorithm run on data to solve a certain AI task for Vision, Language and more.
+
+### AI task
+
+When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks of VDP by identifing the [relevant metadata in the model card](/docs/model/prepare-models/model-card#model-card-metadata).
+To learn more about VDP and its core concepts, you can visit the [AI tasks](/docs/vdp/core-concepts/ai-task) section.
+
+### Model Definition
+
+Instill Model uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/model/model/v1alpha/model_definition.proto) to define how to configure and import a model from a supported model source.
+Different approaches can provide different features. For example, some approaches support version control but some do not.
+It is up to the users to adopt approach they are already familiar with. We strive to support as many popular model sources as possible.
+Please check out [Import Models](/docs/model/import-models/overview) to learn more.
+
+### State
+
+The state of a model can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
+
+When a model is initially created, the states is by default `OFFLINE`.
+
+A model can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
+
+A model can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`.
+Model deployment operation can take time depending on factors like Internet connection and model size.
+Before a model is deployed online, the state will be `UNSPECIFIED`.
+
+If the state of a model ends up with `ERROR`, it is undeployable on Instill Model. Please refer to [Prepare Models](/docs/model/prepare-models/overview) to make your model Instill Model ready.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/model-state.svg"
+    alt="  The finite-state-machine (FSM) diagram for the model state transition logic"
+    width="500"
+  />
+</div>
+
+## Model importing and deployment
+
+_Instill Model provides automatic model inference server._ After importing a model from a supported model source (e.g., GitHub and Hugging Face), and deploying it online, Instill Model dynamically generate dedicated API endpoints for _model testing and debugging_.
+You can then build end-to-end data pipelines using the models to run ETL operations.
+Please refer to [Import Models](/docs/model/import-models/overview) to learn about model versioning with supported model sources.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/model-import-and-deployment.svg"
+  alt="Import and deploy model on Instill Model"
+/>
+
+## Inference
+
+An **inference** is a prediction to a question or task. In the concept of Machine Learning (ML) and Artificial Intelligence (AI), the term inference is often compared with training.
+To put it simple, inference is where capabilities learnt during training are put to analyze data to "infer" a result. Inference can be found and are applied everywhere across industries from photo tagging to autonomous driving.
+
+After deploying a model, you can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
+Check the examples below. The API accepts batched images
+
+- sent by remote URL and Base64 or
+- uploaded by multipart.
+
+<CH.Code>
+
+```shellscript cURL(url)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+    },
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/horse.jpg"
+    }
+  ]
+}'
+```
+
+```shellscript cURL(base64)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+    },
+    {
+      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+    }
+  ]
+}'
+```
+
+```shellscript cURL(multipart)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test-multipart \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"horse.jpg"'
+```
+
+</CH.Code>
+
+in which `{id}` corresponds to the ID of a model.

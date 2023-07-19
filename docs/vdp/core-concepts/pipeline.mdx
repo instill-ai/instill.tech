@@ -1,0 +1,142 @@
+---
+title: "Pipeline"
+lang: "en-US"
+draft: false
+description: "Build end-to-end unstructured data pipelines with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process unstructured data.
+
+It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
+
+- Source connector - where the pipeline starts to ingest unstructured data to be processed
+- AI, Blockchain connectors - a number of connectors to process the ingested unstructured data
+- Destination connectors - a number of destinations to send the processed outputs in parallel
+
+```json
+{
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": <component-id>,
+      "resource_name": <connector-resource-name>  // Source connector
+    },
+    {
+      "id": <component-id>,
+      "resource_name": <connector-resource-name>  // AI or Blockchain connector
+    },
+    ...
+    {
+      "id": <component-id>,
+      "resource_name": <connector-resource-name> // Destination connector
+    }
+  ]
+}
+```
+
+Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
+
+## Mode
+
+### `SYNC` mode
+
+A pipeline in the `SYNC` mode responds to a request synchronously.
+The result is sent back to the user right after the data is processed.
+This mode is for real-time inference where low latency is of concern.
+The request flow when triggering a `SYNC` pipeline is shown below:
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/sync.svg"
+  alt="SYNC pipeline mode"
+/>
+
+To create a `SYNC` pipeline, both source and destination needs to be configured with the same protocol type. VDP supports HTTP and gRPC for a `SYNC` pipeline.
+
+For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 inference:
+
+```json
+{
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "connectors/source-grpc"
+    },
+    {
+      "id": "ai",
+      "resource_name": "connectors/yolov7-v1-cpu"
+    },
+    {
+      "id": "destination",
+      "resource_name": "connectors/destination-grpc"
+    }
+  ]
+}
+```
+
+### `ASYNC` mode
+
+A pipeline in the `ASYNC` mode performs asynchronous workload.
+The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
+Once the data has been processed, the result is sent to the data destination.
+This mode is for use cases that do not require inference results immediately.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/async.svg"
+  alt="ASYNC pipeline mode"
+/>
+
+To create an `ASYNC` pipeline, the source can be either HTTP or gRPC, and the destination can be any Airbyte destination connectors.
+
+For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7 via HTTP request and write the structured detection output into a PostgreSQL database:
+
+```json
+{
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": "source",
+      "resource_name": "connectors/source-http"
+    },
+    {
+      "id": "ai",
+      "resource_name": "connectors/yolov7-v1-cpu"
+    },
+    {
+      "id": "destination",
+      "resource_name": "connectors/postgres"
+    }
+  ]
+}
+```
+
+### `PULL` mode (coming soon!)
+
+A pipeline in the `PULL` mode performs scheduled workload to regularly pull data
+from the **Source** to process and write to destinations in the end.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/pull.svg"
+  alt="Pipeline PULL mode"
+/>
+
+## State
+
+When a pipeline is initially created, the pipeline state is determined by the pipeline's sub-components with the precedence:
+
+- `ERROR` if **ANY** of its sub-components are in their `ERROR` state
+- `UNSPECIFIED` if **ANY** of its sub-components are in their `UNSPECIFIED` state
+- `INACTIVE` if **ANY** of its sub-components are in their negative state
+- `ACTIVE` if **ALL** of its sub-components are in their positive state
+
+A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend` endpoint `/deactivate` only when its original state is `ACTIVE`.
+
+A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `/activate` only when its original state is `INACTIVE`.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/pipeline-state.svg"
+    alt="The finite-state-machine (FSM) diagram for the pipeline state transition logic"
+    width="500px"
+  />
+</div>
