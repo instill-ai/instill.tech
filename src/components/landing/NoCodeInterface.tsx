@@ -46,7 +46,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
             <div className="flex flex-1">
               <div className="mx-auto flex w-8/12 bg-instillGrey05 py-[3px]">
                 <p className="mx-auto font-sans text-xs font-normal text-instillGrey70">
-                  demo.instill.tech
+                  console.instill.tech
                 </p>
               </div>
             </div>
