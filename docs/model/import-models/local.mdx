@@ -2,14 +2,14 @@
 title: "Import Local Models"
 lang: "en-US"
 draft: false
-description: "Learn about how to import local models into the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to import local models into the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 The `Local` model definition enables you to import a model from your local machine.
 
 ## Feature
 
-Currently, VDP supports importing models from
+Currently, Instill Model supports importing models from
 
 - ✅ A local `.zip` file
 
@@ -79,7 +79,7 @@ In `/local-model` directory
 zip -r "yolov4.zip" .
 ```
 
-🎉 The model is ready, just run the setup guide below, VDP wll import it accordingly.
+🎉 The model is ready, just run the setup guide below, Instill Model wll import it accordingly.
 
 **Caveat**
 
@@ -157,7 +157,7 @@ To create a local model in the Console, do the following:
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a local model.
+1. Send a HTTP request to the Instill Model `model-backend` to import a local model.
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models/multipart \

@@ -2,14 +2,14 @@
 title: "Import Models from GitHub"
 lang: "en-US"
 draft: false
-description: "Learn about how to import models from GitHub into the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to import models from GitHub into the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 The `GitHub` model definition allows you to import models from a [GitHub](https://github.com/) repository. Your model files can be tracked with [Git LFS](https://git-lfs.github.com/) or [DVC](https://dvc.org/).
 
 ## Feature
 
-Currently, VDP supports importing models from
+Currently, Instill Model supports importing models from
 
 - ✅ Public GitHub repository
 - 🚧 Private GitHub repository (coming soon!)
@@ -155,14 +155,14 @@ After uploading all files successfully, go to your GitHub repository. You should
 **Step 4: Create a Git tag**
 
 Git tags mark specific points in the repository's history. They are deployable software iterations for share and re-use.
-When importing a model from a GitHub repository, VDP creates one model according to the specified tag.
+When importing a model from a GitHub repository, Instill Model creates one model according to the specified tag.
 
 ```shellscript
 git tag <tagname>
 git push origin --tags
 ```
 
-🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to VDP.
+🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to Instill Model.
 
 ### Prepare a GitHub repository and manage large model files by DVC
 
@@ -275,7 +275,7 @@ git commit -m "feat: add model file"
 
 **Step 5: Push the large model files to DVC remote storage**
 
-Currently, VDP supports fetching models from public Google Cloud Storage (GCS). Let's set up the [remote storage location with a public GCS bucket](https://dvc.org/doc/command-reference/remote/add#google-cloud-storage):
+Currently, Instill Model supports fetching models from public Google Cloud Storage (GCS). Let's set up the [remote storage location with a public GCS bucket](https://dvc.org/doc/command-reference/remote/add#google-cloud-storage):
 
 <InfoBlock type="info" title="info">
 
@@ -326,7 +326,7 @@ git tag <tagname>
 git push origin --tags
 ```
 
-🎉 If you've followed the above steps to store the model in remote storage and version it within a GitHub repository using [DVC](https://dvc.org/doc/user-guide/basic-concepts/dvc-project#dvc-repository), just run the setup guide below, VDP will import the model accordingly.
+🎉 If you've followed the above steps to store the model in remote storage and version it within a GitHub repository using [DVC](https://dvc.org/doc/user-guide/basic-concepts/dvc-project#dvc-repository), just run the setup guide below, Instill Model will import the model accordingly.
 
 <InfoBlock type="tip" title="tip">
   Use `dvc pull` to retrieve DVC-tracked files from remote storage. See
@@ -347,7 +347,7 @@ To import a model from GitHub in the Console, do the following:
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a model from a GitHub repository.
+1. Send a HTTP request to the Instill Model `model-backend` to import a model from a GitHub repository.
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models -d '{
@@ -399,4 +399,4 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test-multipart \
 
 ## Limitations
 
-Current implementation does not support real-time GitHub sync: after you import a model from a specific tag of a GitHub repository, new releases of this GitHub tag won't be synced in VDP.
+Current implementation does not support real-time GitHub sync: after you import a model from a specific tag of a GitHub repository, new releases of this GitHub tag won't be synced in Instill Model.

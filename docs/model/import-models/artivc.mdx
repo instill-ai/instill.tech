@@ -2,14 +2,14 @@
 title: "Import ArtiVC Managed Models"
 lang: "en-US"
 draft: false
-description: "Learn about how to import ArtiVC managed models into the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to import ArtiVC managed models into the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 The `ArtiVC` model definition allows you to import models versioned by [ArtiVC](https://artivc.io/).
 
 ## Feature
 
-Currently, VDP supports importing models from
+Currently, Instill Model supports importing models from
 
 - ✅ Google Cloud Storage (GCS)
 - 🚧 Local Filesystem (coming soon!)
@@ -35,7 +35,7 @@ Currently, VDP supports importing models from
 
 - A model versioned by ArtiVC and stored in an ArtiVC supported storage backend
 - The model should be tagged by ArtiVC at least once
-- Allow VDP to access data in the storage backend
+- Allow Instill Model to access data in the storage backend
 
 ### Prepare a model managed by ArtiVC
 
@@ -149,7 +149,7 @@ If you list the files in the remote storage repository, the file structure will 
         └── v1.0-cpu
 ```
 
-🎉 If you've followed the above steps, just run the setup guide below, VDP wll import the model accordingly.
+🎉 If you've followed the above steps, just run the setup guide below, Instill Model wll import the model accordingly.
 
 <InfoBlock type="tip" title="tip">
   Use `avc get` to download data. See
@@ -175,7 +175,7 @@ The setup guide assumes your model is stored in a GCS bucket.
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a model from GCS bucket managed by ArtiVC.
+1. Send a HTTP request to the Instill Model `model-backend` to import a model from GCS bucket managed by ArtiVC.
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models -d '{

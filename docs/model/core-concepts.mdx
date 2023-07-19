@@ -2,90 +2,32 @@
 title: "Core Concepts Overview"
 lang: "en-US"
 draft: false
-description: "One-click import and deploy ML models with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "One-click import and deploy ML models with the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
-A **Model** component is an algorithm run on unstructured data to solve a certain [AI task](ai-task).
-
-VDP uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
+Instill Model uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
 Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
-To make your models VDP-ready, please refer to [Prepare Models](/docs/prepare-models/overview).
-
-## Definition
-
-VDP uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model_definition.proto#L30-L76) to define how to configure and import a model from a supported model source.
-Different approaches can provide different features. For example, some approaches support version control but some do not.
-It is up to the users to adopt approach they are already familiar with. We strive to support as many popular model sources as possible.
-Please check out [Import Models](/docs/import-models/overview) to learn more.
+To make your models Instill Model ready, please refer to [Prepare Models](/docs/model/prepare-models/overview).
 
 Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.
 
 ## Model
 
-A **Model**, the core component of a VDP data pipeline, is a piece of ML algorithm specific to processs unstructured data for a certain AI task.
+A **Model** is a piece of ML algorithm run on data to solve a certain AI task for Vision, Language and more.
 
-A VDP pipeline can have multiple models running in parallel. The examples below showcase pipeline recipes that incorporate single or multiple models.
+### AI task
 
-<CH.Code>
+When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks of VDP by identifing the [relevant metadata in the model card](/docs/model/prepare-models/model-card#model-card-metadata).
+To learn more about VDP and its core concepts, you can visit the [AI tasks](/docs/vdp/core-concepts/ai-task) section.
 
-```json single-model-pipeline
-{
-  "version": "v1alpha",
-  "components": [
-    {
-      "id": "source",
-      "resource_name": "source-connectors/source-http"
-    },
-    {
-      "id": "model",
-      "resource_name": "models/stable-diffusion"
-    },
-    {
-      "id": "destination",
-      "resource_name": "destination-connectors/postgres-db"
-    }
-  ]
-}
-```
+### Model Definition
 
-```json multi-model-pipeline
-{
-  "version": "v1alpha",
-  "components": [
-    {
-      "id": "source",
-      "resource_name": "source-connectors/source-http"
-    },
-    {
-      "id": "model1",
-      "resource_name": "models/yolov4"
-    },
-    {
-      "id": "model2",
-      "resource_name": "models/yolov7"
-    },
-    {
-      "id": "destination",
-      "resource_name": "destination-connectors/destination-http"
-    }
-  ]
-}
-```
+Instill Model uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/model/model/v1alpha/model_definition.proto) to define how to configure and import a model from a supported model source.
+Different approaches can provide different features. For example, some approaches support version control but some do not.
+It is up to the users to adopt approach they are already familiar with. We strive to support as many popular model sources as possible.
+Please check out [Import Models](/docs/model/import-models/overview) to learn more.
 
-</CH.Code>
-
-## Model importing and deployment
-
-_VDP provides automatic model inference server._ After importing a model from a supported model source (e.g., GitHub and Hugging Face), and deploying it online, VDP dynamically generate dedicated API endpoints for _model testing and debugging_.
-You can then build end-to-end data pipelines using the models to run ETL operations.
-Please refer to [Import Models](/docs/import-models/overview) to learn about model versioning with supported model sources.
-
-<ZoomableImg
-  src="/docs-assets/core-concepts/model-import-and-deployment.svg"
-  alt="Import and deploy model on VDP"
-/>
-
-## State
+### State
 
 The state of a model can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
 
@@ -97,7 +39,7 @@ A model can be switch to `ONLINE` state by invoking the `model-backend` endpoint
 Model deployment operation can take time depending on factors like Internet connection and model size.
 Before a model is deployed online, the state will be `UNSPECIFIED`.
 
-If the state of a model ends up with `ERROR`, it is undeployable on VDP. Please refer to [Prepare Models](/docs/prepare-models/overview) to make your model VDP-ready.
+If the state of a model ends up with `ERROR`, it is undeployable on Instill Model. Please refer to [Prepare Models](/docs/model/prepare-models/overview) to make your model Instill Model ready.
 
 <div align="center">
   <ZoomableImg
@@ -106,6 +48,17 @@ If the state of a model ends up with `ERROR`, it is undeployable on VDP. Please 
     width="500"
   />
 </div>
+
+## Model importing and deployment
+
+_Instill Model provides automatic model inference server._ After importing a model from a supported model source (e.g., GitHub and Hugging Face), and deploying it online, Instill Model dynamically generate dedicated API endpoints for _model testing and debugging_.
+You can then build end-to-end data pipelines using the models to run ETL operations.
+Please refer to [Import Models](/docs/model/import-models/overview) to learn about model versioning with supported model sources.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/model-import-and-deployment.svg"
+  alt="Import and deploy model on Instill Model"
+/>
 
 ## Inference
 
@@ -121,7 +74,7 @@ Check the examples below. The API accepts batched images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
   "inputs": [
     {
       "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
@@ -134,7 +87,7 @@ curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
   "inputs": [
     {
       "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
@@ -147,7 +100,7 @@ curl -X POST http://localhost:8080/v1alpha/models/{id}/test -d '{
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/{id}/test-multipart \
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test-multipart \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"horse.jpg"'
 ```

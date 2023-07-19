@@ -2,7 +2,7 @@
 title: "Prepare post-processing model"
 lang: "en-US"
 draft: false
-description: "Learn about how to prepare a post-processing Python model for the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to prepare a post-processing Python model for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 ## Standardise post-processing output format
@@ -253,13 +253,13 @@ Check the [standardised output for Instance Segmentation task](/docs/core-concep
 
 <InfoBlock type="info" title="info">
   Learn more about [Unspecified AI
-  task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet)
+  task](/docs/vdp/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-vdp-yet)
 </InfoBlock>
 
 If your model is imported without specifying any task metadata, the model will be recognised to solve an `Unspecified` task.
 There is no need to prepare your model outputs to fit any format.
 
-Check the [standardised output for Unspecified AI task](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
+Check the [standardised output for Unspecified AI task](/docs/vdp/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-vdp-yet).
 Assume we import the above ["cat vs. dog"](#image-classification) model without specifying the AI task metadata, here shows an output example:
 
 ```json

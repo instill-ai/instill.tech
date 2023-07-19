@@ -1,0 +1,55 @@
+---
+title: "Getting started with Instill Model"
+lang: "en-US"
+draft: false
+description: "Getting started with the MLOps tool Instill Model https://github.com/instill-ai/model"
+---
+
+We've made it easy to get started with Instill Model either on a local machine.
+
+## Local run
+
+Make sure you have the prerequisites set up:
+
+- **macOS or Linux** - Instill Model works on macOS or Linux, but does not support Windows at the moment.
+- **Docker and Docker Compose** - Instill Model uses Docker Compose to run all services at local.
+
+Get started locally by running:
+
+```shellscript
+git clone https://github.com/instill-ai/model.git && cd model
+make all
+```
+
+Once the services are up, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000).
+
+⚠︎ Downloading the Triton server image will take a while, but it should be just a one-time effort.
+
+To shut down all running services:
+
+```shellscript
+make down
+```
+
+## Deploy on Kubernetes
+
+Please follow the [instructions](/docs/model/deployment/kubernetes-using-helm) to deploy Instill Model on local Kubernetes using Helm.
+
+## Start building with Instill Model
+
+If this is your first time setting up Instill Model, access the Console (http://localhost:3000) and you should see the onboarding page. Please enter your email and you are all set!
+
+<ZoomableImg
+  src="/docs-assets/vdp/onboarding.png"
+  alt="Onboarding page of the Console"
+/>
+
+## Learn Instill Model
+
+📔 Dive into the [core concepts](/docs/model/core-concepts)
+
+📔 Check out the [FAQ](faq) and [tutorials](/tutorials)
+
+📔 Explore the [Prepare Models](/docs/model/prepare-models/overview) and [Import Models](/docs/model/import-models/overview)
+
+📔 Explore the APIs of [Protobufs](https://buf.build/instill-ai/protobufs) or [OpenAPI](http://localhost:3001) (after `make all` or `make doc`)

@@ -2,14 +2,14 @@
 title: "Import Models from Hugging Face"
 lang: "en-US"
 draft: false
-description: "Learn about how to import models from Hugging Face into the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to import models from Hugging Face into the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 The `Hugging Face` model definition allows you to import models from a [Hugging Face](https://huggingface.co/models) repository.
 
 ## Feature
 
-Currently, VDP supports importing models tagged with the following tasks
+Currently, Instill Model supports importing models tagged with the following tasks
 
 - ✅ [Image Classification](https://huggingface.co/models?pipeline_tag=image-classification&sort=downloads)
 
@@ -42,7 +42,7 @@ To import a model from Hugging Face in the Console, do the following:
 
 ### Low-code setup
 
-1. Send a HTTP request to the VDP `model-backend` to import a model from Hugging Face.
+1. Send a HTTP request to the Instill Model `model-backend` to import a model from Hugging Face.
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/models -d '{

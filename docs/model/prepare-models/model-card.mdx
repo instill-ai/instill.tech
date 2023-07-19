@@ -2,13 +2,13 @@
 title: "Add a model card"
 lang: "en-US"
 draft: false
-description: "Learn about how to add a model card for the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to add a model card for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
 ## Model card
 
 Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with a specific model.
-It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in VDP.
+It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in Instill Model.
 
 In a model card, you can provide information about:
 
@@ -19,12 +19,12 @@ In a model card, you can provide information about:
 - benchmarking and evaluation results
 - reference materials
 
-After importing a model into VDP, the model card will be rendered in the Console on the Model page.
+After importing a model into Instill Model, the model card will be rendered in the Console on the Model page.
 Here shows a model card example of a model imported from a GitHub repository [model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
 
 <ZoomableImg
   src="/docs-assets/prepare-models/console-model-card.png"
-  alt="Model card in VDP Console"
+  alt="Model card in Console"
 />
 
 <InfoBlock type="info" title="info">
@@ -39,7 +39,7 @@ Start with three `---` at the top, then include all the metadata and close the s
 
 ```yaml README.md
 ---
-Task: "any VDP supported AI task identifier"
+Task: "any Instill Model supported AI task identifier"
 Tags:
   - tag1
   - tag2
@@ -49,9 +49,9 @@ Tags:
 
 ### Specify an AI task
 
-When importing the model, VDP will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
-If the model is verified, VDP will automatically convert the model output into format of the corresponding standardised AI task format whenever using the model.
-Please check the [supported standarised AI tasks](/docs/core-concepts/ai-task) and the corresponding output format for each task.
+When importing the model, Instill Model will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
+If the model is verified, Instill Model will automatically convert the model output into format of the corresponding standardised VDP AI task format whenever using the model.
+Please check the [supported standarised AI tasks in VDP](/docs/vdp/core-concepts/ai-task) and the corresponding output format for each task.
 
 <CH.Code>
 
@@ -70,7 +70,7 @@ Task: Keypoint
 </CH.Code>
 
 If not specified, the model will be recognised with `Unspecified` AI task,
-and the raw model output will be wrapped in a [standard format](/docs/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-by-vdp-yet).
+and the raw model output will be wrapped in a [standard format](/docs/vdp/core-concepts/ai-task#what-if-my-task-is-not-standardised-by-vdp-yet).
 
 **❓ How to know if the AI task metadata is correctly recognised?**
 
@@ -78,6 +78,6 @@ If you include valid AI task metadata, they will show on the Model page of the C
 
 <ZoomableImg
   src="/docs-assets/prepare-models/console-model-ai-task-label.png"
-  alt="Model AI task label in VDP Console"
+  alt="AI task label in Console"
   width="500px"
 />
