@@ -53,6 +53,10 @@ export const Footer = () => {
         href: "https://github.com/instill-ai/vdp",
       },
       {
+        text: "OSS Instill Model",
+        href: "https://github.com/instill-ai/model",
+      },
+      {
         text: "Instill Cloud",
         href: "https://console.instill.tech",
       },
