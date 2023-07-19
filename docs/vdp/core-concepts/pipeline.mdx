@@ -5,9 +5,15 @@ draft: false
 description: "Build end-to-end unstructured data pipelines with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
+TODO: test the recipes on this page
+
 A **Pipeline** component is an end-to-end workflow that automates a sequence of sub-components to process unstructured data.
 
 It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
+
+- Source connector - where the pipeline starts to ingest unstructured data to be processed
+- AI, Blockchain connectors - a number of connectors to process the ingested unstructured data
+- Destination connectors - a number of destinations to send the processed outputs in parallel
 
 ```json
 {
@@ -15,26 +21,20 @@ It is defined by a `recipe` which is essentially a JSON object componsed of mult
   "components": [
     {
       "id": <component-id>,
-      "resource_name": <source-connector-resource-name>
+      "resource_name": <connector-resource-name>  // Source connector
     },
     {
       "id": <component-id>,
-      "resource_name": <model-resource-name>
+      "resource_name": <connector-resource-name>  // AI or Blockchain connector
     },
     ...
     {
       "id": <component-id>,
-      "resource_name": <destination-connector-resource-name>
+      "resource_name": <connector-resource-name> // Destination connector
     }
   ]
 }
 ```
-
-A `recipe` describes a pipeline resource consisting of components including:
-
-- `source` component - where the pipeline starts to ingest unstructured data to be processed
-- `model` components - a number of deployed AI models to process the ingested unstructured data in parallel
-- `destination` components - a number of destinations to send the processed outputs in parallel
 
 Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or `PULL` mode. The pipeline mode is determined by the combination of selected source and destination. Continue to read for more details.
 
@@ -42,7 +42,9 @@ Depending on the use case, the user can create a pipeline in `SYNC`, `ASYNC`, or
 
 ### `SYNC` mode
 
-A pipeline in the `SYNC` mode responds to a request synchronously. The result is sent back to the user right after the data is processed by **Model**. This mode is for real-time inference where low latency is of concern.
+A pipeline in the `SYNC` mode responds to a request synchronously.
+The result is sent back to the user right after the data is processed.
+This mode is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
 
 <ZoomableImg
@@ -60,15 +62,15 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
   "components": [
     {
       "id": "source",
-      "resource_name": "source-connectors/source-grpc"
+      "resource_name": "connectors/source-grpc"
     },
     {
-      "id": "model",
-      "resource_name": "models/yolov7-v1-cpu"
+      "id": "ai",
+      "resource_name": "connectors/yolov7-v1-cpu"
     },
     {
       "id": "destination",
-      "resource_name": "destination-connectors/destination-grpc"
+      "resource_name": "connectors/destination-grpc"
     }
   ]
 }
@@ -76,8 +78,10 @@ For example, this `recipe` defines a gRPC `SYNC` pipeline for real-time YOLOv7 i
 
 ### `ASYNC` mode
 
-A pipeline in the `ASYNC` mode performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
-Once the data has been processed by **Model**, the result is sent to the data destination. This mode is for use cases that do not require inference results immediately.
+A pipeline in the `ASYNC` mode performs asynchronous workload.
+The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
+Once the data has been processed, the result is sent to the data destination.
+This mode is for use cases that do not require inference results immediately.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/async.svg"
@@ -94,15 +98,15 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
   "components": [
     {
       "id": "source",
-      "resource_name": "source-connectors/source-http"
+      "resource_name": "connectors/source-http"
     },
     {
-      "id": "model",
-      "resource_name": "models/yolov7-v1-cpu"
+      "id": "ai",
+      "resource_name": "connectors/yolov7-v1-cpu"
     },
     {
       "id": "destination",
-      "resource_name": "destination-connectors/postgres"
+      "resource_name": "connectors/postgres"
     }
   ]
 }
@@ -110,7 +114,8 @@ For example, this `recipe` defines an`ASYNC` pipeline to detect images by YOLOv7
 
 ### `PULL` mode (coming soon!)
 
-A pipeline in the `PULL` mode performs scheduled workload to regularly pull data from the **Source** to send to **Model** for inference and write to destination in the end.
+A pipeline in the `PULL` mode performs scheduled workload to regularly pull data
+from the **Source** to process and write to destinations in the end.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/pull.svg"

@@ -24,30 +24,25 @@ description: "Learn about how to set up a gRPC source connector for the unstruct
 | :---- | :--- | :---------------------------------------------------------------------------------------------------- |
 | N/A   | N/A  | This connector doesn't take any configuration so the configuration field is an empty JSON object `{}` |
 
-### No-code setup
+## No-code setup
 
 To create a gRPC source connector:
 
-1. Go to the **Source** page and click **Add new source**
+1. Go to the **Source** page and click **Set up new source**
 2. Click the **Source type** ▾ drop-down and choose **gRPC**
-3. [Optional] Give a short description in the **Description** field
 
 Now go to the **Source** page, the corresponding gRPC source connector should be connected.
 
-### Low-code setup
+## Low-code setup
 
 To create a gRPC source connector:
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
   "id": "source-grpc",
-  "source_connector_definition": "instill-ai/source-grpc",
-  "connector": {
-    "configuration": {}
-  }
+  "connector_definition_name": "connector-definitions/source-grpc",
+  "configuration": {}
 }'
 ```
-
-where `localhost:8082` is the `connector-backend` default URL.
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

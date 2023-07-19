@@ -88,9 +88,9 @@ GRAFANA_VERSION=<grafana-version>
 
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
-- [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend/blob/main/config/config.yaml)(`localhost:8081`): a service to build and manage unstructured data pipelines
-- [`connector-backend`](https://github.com/instill-ai/connector-backend/blob/main/config/config.yaml)(`localhost:8082`): a service to create and manage connectors for composing data pipelines
-- [`controller-vdp`](https://github.com/instill-ai/controller-vdp/blob/main/config/config.yaml): a non-public service to monitor the states of pipeline and connector resources
+- [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend/blob/main/config/config.yaml)(`localhost:8081`):
+- [`connector-backend`](https://github.com/instill-ai/connector-backend/blob/main/config/config.yaml)(`localhost:8082`):
+- [`controller-vdp`](https://github.com/instill-ai/controller-vdp/blob/main/config/config.yaml):
 
 ### Configuring VDP service version
 
@@ -120,7 +120,7 @@ To help us better understand how VDP is used and can be improved, VDP collects a
   how to improve VDP without being invasive.
 </InfoBlock>
 
-When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, and `mgmt-backend` in VDP will ask for a new session, respectively.
+When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, `model-backend`, and `mgmt-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
 For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
 
@@ -142,6 +142,12 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
   - number of _connected_ or _disconnected_ Destinations
   - an array of `SourceConnectorDefinition` of the Sources
   - an array of `DestinationConnectorDefinition` of the Destinations
+- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L105-L129) reports data for `model-backend` session of the onboarded User
+  - UUID of the onboarded User
+  - number of _online_ and _offline_ Models
+  - the array of `ModelDefinition` of the Models
+  - the array of AI tasks of the Models
+  - number of processed images for testing models
 - [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _active_ and _inactive_ Pipelines

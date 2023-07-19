@@ -22,11 +22,11 @@
 }%%
 sequenceDiagram
   autonumber
-  User->>+Source: HTTP/gRPC
-  Source-->>-User: HTTP/gRPC (Ack)
+  User->>+Source Connector: HTTP/gRPC
+  Source Connector-->>-User: HTTP/gRPC (Ack)
   rect rgb(190, 222, 255)
-  Note over Source,Model: Pipeline  
-  Source->>+Model: ASYNC gRPC request (Inference)
-  Note over Model,Destination: Pipeline 
-  Model->>+Destination: ASYNC gRPC requset (Result)
+  Note over Source Connector,AI Connector: Pipeline  
+  Source Connector->>+AI Connector: ASYNC gRPC request (Inference)
+  Note over AI Connector,Destination Connector: Pipeline 
+  AI Connector->>+Destination Connector: ASYNC gRPC request (Result)
   end

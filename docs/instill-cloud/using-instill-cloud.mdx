@@ -5,34 +5,9 @@ draft: false
 description: "Instill Cloud is a fully-managed public cloud service for VDP. You can try Instill Cloud for free at https://console.instill.tech using your email address, Google, or GitHub social login."
 ---
 
-Instill Cloud enables you to build pipelines specifically for unstructured data.
-
-## Get access to pre-trained ML models
-
-A **Model** component is an algorithm run on unstructured data to solve a certain [AI task](/docs/core-concepts/ai-task).
-
-Deploying and maintaining ML models in a production environment is hard!
-It often takes more effort and a lot longer to deploy a model to production than to develop it offline.
-
-Therefore, we have deployed a list of pre-trained ML models on Instill Cloud. They are ready for use and are totally free during Open Alpha.
-On the Instill Cloud console, click **Model** to access all the pre-deployed ML models for different AI tasks.
-To get the details of a specific model, click on the model ID and see the **Description** and **Setting** sections.
-
-<InfoBlock type="info" title="Instill Model">
-
-You may find that Import models are disabled in Instill Cloud. It is because
-we are rapidly refactoring Instill Cloud to offer a more stable user
-experience.
-
-We will decouple the model deployment feature from VDP soon. One
-is to make the decoupled model deployment feature into a standalone ModelOps
-platform **Instill Model** to provide a more stable user experience. The other is to provide an
-abstract layer in VDP to access remote models. This will open up a lot of
-opportunities for VDP to integrate with any model-serving platform.
-
-</InfoBlock>
-
 ## Set up your first pipeline
+
+Instill Cloud enables you to build pipelines specifically for unstructured data via VDP.
 
 First, follow the [Get access to pre-trained ML models](#get-access-to-pre-trained-ml-models) to check the details of each model and find the model you want.
 In case the model is not yet supported, consider reporting to our [Discord community](http://go.instill.tech/4ey9lz).
@@ -46,7 +21,7 @@ To create your first pipeline via VDP Console, click **Add new pipeline**.
 
 </InfoBlock>
 
-### Step 1: Add an HTTP source
+**Step 1: Add an HTTP source**
 
 VDP currently supports two sources, HTTP and gRPC for **SYNC** pipeline. An HTTP source accepts HTTP requests with payloads to be processed by a pipeline.
 
@@ -56,11 +31,11 @@ To set up a **Source Connector**,
 2. click the **Source type** ▾ drop-down and choose HTTP, and
 3. click **Next**.
 
-### Step 2: Set up a Model
+**Step 2: Set up a Model**
 
 Click the **Online models** ▾ drop-down and choose the model you want
 
-### Step 3: Add an HTTP destination
+**Step 3: Add an HTTP destination**
 
 Since we are building a **SYNC** pipeline, the `HTTP` destination is paired automatically with the `HTTP` source as we set up for the source. Click **Next**.
 
@@ -73,7 +48,7 @@ When creating pipelines under **SYNC** mode, source and destination connectors i
 
 </InfoBlock>
 
-### Step 4: Set up a pipeline
+**Step 4: Set up a pipeline**
 
 We are almost there! We have created `Source`, `Model`, and `Destination`. The last step is to give this pipeline an ID, and we are ready to go! Just
 
@@ -89,14 +64,14 @@ The **green** light indicates the pipeline is Active and can be triggered via se
   pipeline states.
 </InfoBlock>
 
-## Trigger the pipeline with the API token
+## Trigger the pipeline
 
 VDP automatically generates a dedicated trigger endpoint for each pipeline to process unstructured data.
 
 Click the newly created pipeline on the **Pipeline** page, you will find further details about this pipeline including
 the corresponding HTTP request examples to trigger the pipeline at the bottom of the page.
 
-### Create an API token
+**Create an API token**
 
 In order to trigger the pipeline, you will need a valid API token.
 If you don't yet have a token, Click the **Settings** on the left sidebar, and navigate to the **API tokens** page.
@@ -107,7 +82,7 @@ If your token is ever compromised, choose that token and click **Delete**.
 But be careful when you delete an API token. This operation can not be undone.
 All your apps using this token will stop working.
 
-### Trigger the pipeline
+**Trigger the pipeline**
 
 Simply copy the cURL request in the Trigger section, and pass your API token as a Bearer token in the authorization headers.
 For example, assuming you have created a pipeline for Image Classification, using cURL, you can trigger the pipeline as follows:
@@ -121,4 +96,23 @@ curl -X POST https://api-s.instill-inc.tech/v1alpha/pipelines/<pipeline-id>/trig
 <InfoBlock type="info" title="standardise AI task">
   We have standardised the input and output format of each AI task. Check out
   the supported [AI task](/docs/core-concepts/ai-task).
+</InfoBlock>
+
+## Get access to pre-trained ML models
+
+A **Model** component is an algorithm run on unstructured data to solve a certain [AI task](/docs/core-concepts/ai-task).
+
+Deploying and maintaining ML models in a production environment is hard!
+It often takes more effort and a lot longer to deploy a model to production than to develop it offline.
+
+Therefore, we have deployed a list of pre-trained ML models on Instill Cloud. They are ready for use and are totally free during Open Alpha.
+On the Instill Cloud console, click **Model** to access all the pre-deployed ML models for different AI tasks.
+To get the details of a specific model, click on the model ID and see the **Description** and **Setting** sections.
+
+<InfoBlock type="info" title="Notice">
+
+You may find that Import models are disabled in Instill Cloud. It is because
+we are rapidly refactoring Model service to offer a more stable user
+experience.
+
 </InfoBlock>

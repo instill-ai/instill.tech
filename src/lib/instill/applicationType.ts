@@ -10,7 +10,7 @@ export function getApplicationType(
     return "instill-cloud";
   }
   if (path.includes("model")) {
-    return "instill-model";
+    return "model";
   }
   return "vdp";
 }

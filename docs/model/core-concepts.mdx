@@ -1,5 +1,5 @@
 ---
-title: "Model"
+title: "Core Concepts Overview"
 lang: "en-US"
 draft: false
 description: "One-click import and deploy ML models with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
@@ -11,13 +11,11 @@ VDP uses Triton Inference server for model serving. It supports multiple deep le
 Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
 To make your models VDP-ready, please refer to [Prepare Models](/docs/prepare-models/overview).
 
-## Model Connector (coming soon!)
-
-VDP uses **ModelConnector** to define how to connect AI models for processing unstructured data from different sources, no matter it is a 3rd party model provider or a in-house model serving platform.
-
 ## Definition
 
 VDP uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/vdp/model/v1alpha/model_definition.proto#L30-L76) to define how to configure and import a model from a supported model source.
+Different approaches can provide different features. For example, some approaches support version control but some do not.
+It is up to the users to adopt approach they are already familiar with. We strive to support as many popular model sources as possible.
 Please check out [Import Models](/docs/import-models/overview) to learn more.
 
 Instill AI develops and maintains model sources (`ModelDefinition`). We use [release stage](overview#release-stage) to indicate a model source's readiness.

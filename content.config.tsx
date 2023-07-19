@@ -33,7 +33,13 @@ const SECTIONS: SidebarSections[] = [
     text: "Welcome",
     link: "/docs/model/welcome",
     items: [],
-    appType: "instill-model",
+    appType: "model",
+  },
+  {
+    text: "Core Concepts",
+    link: "/docs/model/core-concepts",
+    items: [],
+    appType: "model",
   },
   {
     text: "Instill Cloud",
@@ -68,15 +74,15 @@ const SECTIONS: SidebarSections[] = [
     items: [
       {
         text: "Overview",
-        link: "/docs/deployment/overview",
+        link: "/docs/vdp/deployment/overview",
       },
       {
         text: "Docker Compose",
-        link: "/docs/deployment/docker-compose",
+        link: "/docs/vdp/deployment/docker-compose",
       },
       {
         text: "Kubernetes using Helm",
-        link: "/docs/deployment/kubernetes-using-helm",
+        link: "/docs/vdp/deployment/kubernetes-using-helm",
       },
     ],
     appType: "vdp",
@@ -85,14 +91,13 @@ const SECTIONS: SidebarSections[] = [
     text: "Core Concepts",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/core-concepts/overview" },
-      { text: "Pipeline", link: "/docs/core-concepts/pipeline" },
+      { text: "Overview", link: "/docs/vdp/core-concepts/overview" },
+      { text: "Pipeline", link: "/docs/vdp/core-concepts/pipeline" },
       {
-        text: "Data connector",
-        link: "/docs/core-concepts/data-connector",
+        text: "Connector",
+        link: "/docs/vdp/core-concepts/connector",
       },
-      { text: "Model", link: "/docs/core-concepts/model" },
-      { text: "AI task", link: "/docs/core-concepts/ai-task" },
+      { text: "AI task", link: "/docs/vdp/core-concepts/ai-task" },
     ],
     appType: "vdp",
   },
@@ -100,9 +105,19 @@ const SECTIONS: SidebarSections[] = [
     text: "Source Connectors",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/source-connectors/overview" },
-      { text: "HTTP", link: "/docs/source-connectors/http" },
-      { text: "gRPC", link: "/docs/source-connectors/grpc" },
+      { text: "Overview", link: "/docs/vdp/source-connectors/overview" },
+      { text: "HTTP", link: "/docs/vdp/source-connectors/http" },
+      { text: "gRPC", link: "/docs/vdp/source-connectors/grpc" },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "AI Connectors",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/vdp/ai-connectors/overview" },
+      { text: "Instill Model", link: "/docs/vdp/ai-connectors/instill-model" },
+      { text: "Stability AI", link: "/docs/vdp/ai-connectors/stability-ai" },
     ],
     appType: "vdp",
   },
@@ -110,10 +125,10 @@ const SECTIONS: SidebarSections[] = [
     text: "Destination Connectors",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/destination-connectors/overview" },
-      { text: "HTTP", link: "/docs/destination-connectors/http" },
-      { text: "gRPC", link: "/docs/destination-connectors/grpc" },
-      { text: "Airbyte", link: "/docs/destination-connectors/airbyte" },
+      { text: "Overview", link: "/docs/vdp/destination-connectors/overview" },
+      { text: "HTTP", link: "/docs/vdp/destination-connectors/http" },
+      { text: "gRPC", link: "/docs/vdp/destination-connectors/grpc" },
+      { text: "Airbyte", link: "/docs/vdp/destination-connectors/airbyte" },
     ],
     appType: "vdp",
   },
@@ -123,22 +138,22 @@ const SECTIONS: SidebarSections[] = [
     items: [
       {
         text: "Overview",
-        link: "/docs/prepare-models/overview",
+        link: "/docs/model/prepare-models/overview",
       },
       {
         text: "Model card",
-        link: "/docs/prepare-models/model-card",
+        link: "/docs/model/prepare-models/model-card",
       },
       {
         text: "Pre-processing",
-        link: "/docs/prepare-models/pre-processing",
+        link: "/docs/model/prepare-models/pre-processing",
       },
       {
         text: "Post-processing",
-        link: "/docs/prepare-models/post-processing",
+        link: "/docs/model/prepare-models/post-processing",
       },
     ],
-    appType: "vdp",
+    appType: "model",
   },
   {
     text: "Import Models",
@@ -146,26 +161,26 @@ const SECTIONS: SidebarSections[] = [
     items: [
       {
         text: "Overview",
-        link: "/docs/import-models/overview",
+        link: "/docs/model/import-models/overview",
       },
       {
         text: "Local",
-        link: "/docs/import-models/local",
+        link: "/docs/model/import-models/local",
       },
       {
         text: "GitHub",
-        link: "/docs/import-models/github",
+        link: "/docs/model/import-models/github",
       },
       {
         text: "ArtiVC",
-        link: "/docs/import-models/artivc",
+        link: "/docs/model/import-models/artivc",
       },
       {
         text: "Hugging Face",
-        link: "/docs/import-models/huggingface",
+        link: "/docs/model/import-models/huggingface",
       },
     ],
-    appType: "vdp",
+    appType: "model",
   },
   {
     text: "Development",
@@ -173,11 +188,11 @@ const SECTIONS: SidebarSections[] = [
     items: [
       {
         text: "System architecture",
-        link: "/docs/development/system-architecture",
+        link: "/docs/vdp/development/system-architecture",
       },
       {
         text: "Local setup",
-        link: "/docs/development/setup-local-development",
+        link: "/docs/vdp/development/setup-local-development",
       },
     ],
     appType: "vdp",
@@ -210,7 +225,7 @@ export function getLogoConfig(
     };
   }
 
-  if (appType === "instill-model") {
+  if (appType === "model") {
     return {
       element: <ModelLogo variant="expand" width={128} />,
       href: "/docs/model/welcome",

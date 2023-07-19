@@ -1,11 +1,19 @@
 ---
-title: "Data connector"
+title: "Connector"
 lang: "en-US"
 draft: false
-description: "Pre-built ETL data connectors for extensive data access with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Pre-built ETL connectors with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
+Based on the TODO,
 At the two ends of a VDP pipeline, there are **Source** component (i.e., the E in ETL) and **Destination** component (i.e., the L in ETL).
+
+## Definition
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto)
+to define the basic properties and detailed configuration of a connector.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema.
 
 ## Source
 
@@ -33,11 +41,6 @@ As far as [Airbyte connections and sync modes](https://docs.airbyte.com/understa
 VDP currently does not support Airbyte's [Namespaces](https://docs.airbyte.com/understanding-airbyte/namespaces).
 
 The release stages of destination connectors developed and maintained by Airbyte community are reported [here](https://docs.airbyte.com/integrations/#destinations).
-
-## Definition
-
-VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto#L63-L102) to define the basic properties and detailed configuration of **Source** and **Destination**.
-Please check out [Source Connectors](../source-connectors/overview) and [Destination Connectors](../destination-connectors/overview) to learn more.
 
 ## State
 

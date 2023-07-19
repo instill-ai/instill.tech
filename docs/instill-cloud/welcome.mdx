@@ -5,44 +5,70 @@ draft: false
 description: "Getting started with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-**Instill Cloud** is a fully-managed public cloud service for VDP.
-The service is currently in Open Alpha.
-Follow the [guideline](/docs/instill-cloud/getting-started) to register and use an Instill Cloud account.
+## What is VDP?
 
-Next, dive into the VDP [core cocepts](/docs/core-concepts/overview), explore the [Source Connectors](/docs/source-connectors/overview) and [Destinations Connectors](/docs/destination-connectors/overview) to find the connectors you want,
-and build unstructured data pipelines for your use cases.
+[**Versatile Data Pipeline (VDP)**](https://github.com/instill-ai/vdp) is a source available unstructured data infrastructure tool to streamline the end-to-end unstructured data processing pipeline:
+
+- **Extract** unstructured data from pre-built data sources such as cloud/on-prem storage, or IoT devices
+- **Transform** it into analysable or meaningful data representations by AI models
+- **Load** the transformed data into warehouses, applications, or other destinations
+
+We've made it easy to get started with VDP either through Instill Cloud or self-hosting Instill Core.
+
+## What is Model?
+
+[**Model**](https://github.com/instill-ai/model), also referred to as **Instill Model** in the documentation, is a ModelOps platform that
+allows you to import and serve Machine Learning (ML) models for inference. It is also source vailable.
+
+## What is Base?
+
+[**Base**](https://github.com/instill-ai/base), also referred to as **Instill Base** in the documentation,
+runs essential services like a user management server, databases, and third-party observability tools necessary for launching VDP and Model.
+Additionally, it incorporates [Console](https://github.com/instill-ai/console), a user-friendly web-based UI application that enhances the accessibility of VDP and Model.
+
+## Instill products
+
+You can access VDP and Model using Instill Core or Instill Cloud. Instill Cloud is built upon Instill core, and additionally provides:
+
+- Painless setup
+- Maintenance-free infrastructure
+- Production-ready services
+- Start for free, pay as you grow
+
+👉 [Try Instill Cloud today](https://console.instill.tech/?utm_source=documentation&utm_medium=link&utm_campaign=23q2-instill-cloud-launch) using your email address, Google or GitHub social login.
+We're adding new features every day and we need your feedback to help shape the future of Instill Cloud.
+
+### What is Instill Core?
+
+Instill Core empowers you to deploy Base, Model and VDP products, enabling you to build AI pipelines for unstructured data.
+Learn more with [how to deploy VDP](/docs/vdp/deployment/overview) and [how to deploy Model](/docs/model/deployment/overview).
+
+### What is Instill Cloud?
+
+☁️ Instill Cloud is a fully-managed public cloud service for Instill Core.
+It is the easiest and most reliable way to access VDP and Model.
+The service is currently in **Open Alpha** testing phase - with all features **FREE**.
+Follow the [guideline](/docs/instill-cloud/getting-started) to register and use an Instill Cloud account.
 
 ## Community support
 
-VDP is still in Alpha. If you encounter any issues, we'd love to help. Join us on [Discord](https://discord.gg/sevxWsqpGh) to share with and get help from an active and friendly community!
+VDP and Model are still in Alpha. If you encounter any issues, we'd love to help. Join us on [Discord](https://discord.gg/sevxWsqpGh) to share with and get help from an active and friendly community!
 
 👋 Pick a role in **#welcome** and say hi in **#introduce-yourself** channel
 
 👋 Ask VDP questions in our **#vdp** channel
 
+👋 Ask Model questions in our **#model** channel
+
+👋 Ask Instill Cloud questions in our **#instill-cloud** channel
+
 👋 Share what you've been working on with VDP in the **#showcase** channel
-
-## Contribution
-
-👐 We love contribution to [VDP](https://github.com/instill-ai/vdp) in any forms:
-
-- Please refer to the [guideline](/docs/development/setup-local-development) for local development
-- Please open a topic in the repository [Discussions](https://github.com/instill-ai/vdp/discussions) for any feature requests
-- Please open issues for bug reports in the repository
-  - [vdp](https://github.com/instill-ai/vdp) for general issues;
-  - [pipeline-backend](https://github.com/instill-ai/pipeline-backend), [connector-backend](https://github.com/instill-ai/connector-backend), [model-backend](https://github.com/instill-ai/model-backend), [mgmt-backend](https://github.com/instill-ai/mgmt-backend), [console](https://github.com/instill-ai/console), etc., for specific issues.
-- Please refer to the [VDP project board](https://github.com/orgs/instill-ai/projects/5) to track progress.
-
-<InfoBlock type="warning" title="WARNING">
-  Code in the main branch tracks under-development progress towards the next
-  release and may not work as expected. If you are looking for a stable alpha
-  version, please use [latest
-  release](https://github.com/instill-ai/vdp/releases).
-</InfoBlock>
 
 ## Learn more
 
-🌟 [GitHub](https://github.com/instill-ai/vdp)
+🌟 [VDP on GitHub](https://github.com/instill-ai/vdp)
+
+🌟 [Model on GitHub](https://github.com/instill-ai/model)
 
 📚 [Blog](/blog/?utm_source=documentation&utm_medium=link)
 

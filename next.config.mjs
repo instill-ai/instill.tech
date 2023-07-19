@@ -86,7 +86,7 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/connector",
-        destination: "/docs/core-concepts/data-connector",
+        destination: "/docs/vdp/core-concepts/connector",
         permanent: false,
       },
       {
@@ -107,6 +107,141 @@ const nextConfig = {
       {
         source: "/docs/start-here/roadmap",
         destination: "/docs/vdp/roadmap",
+        permanent: false,
+      },
+      {
+        source: "/docs/deployment/overview",
+        destination: "/docs/vdp/deployment/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/deployment/docker-compose",
+        destination: "/docs/vdp/deployment/docker-compose",
+        permanent: false,
+      },
+      {
+        source: "/docs/deployment/kubernetes-using-helm",
+        destination: "/docs/vdp/deployment/kubernetes-using-helm",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/overview",
+        destination: "/docs/vdp/core-concepts/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/ai-task",
+        destination: "/docs/vdp/core-concepts/ai-task",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/data-connector",
+        destination: "/docs/vdp/core-concepts/connector",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/model",
+        destination: "/docs/model/core-concepts",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/pipeline",
+        destination: "/docs/vdp/core-concepts/pipeline",
+        permanent: false,
+      },
+      {
+        source: "/docs/core-concepts/pipeline",
+        destination: "/docs/vdp/core-concepts/pipeline",
+        permanent: false,
+      },
+      {
+        source: "/docs/source-connectors/overview",
+        destination: "/docs/vdp/source-connectors/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/source-connectors/http",
+        destination: "/docs/vdp/source-connectors/http",
+        permanent: false,
+      },
+      {
+        source: "/docs/source-connectors/grpc",
+        destination: "/docs/vdp/source-connectors/grpc",
+        permanent: false,
+      },
+      {
+        source: "/docs/destination-connectors/overview",
+        destination: "/docs/vdp/destination-connectors/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/destination-connectors/http",
+        destination: "/docs/vdp/destination-connectors/http",
+        permanent: false,
+      },
+      {
+        source: "/docs/destination-connectors/grpc",
+        destination: "/docs/vdp/destination-connectors/grpc",
+        permanent: false,
+      },
+      {
+        source: "/docs/destination-connectors/airbyte",
+        destination: "/docs/vdp/destination-connectors/airbyte",
+        permanent: false,
+      },
+      {
+        source: "/docs/prepare-models/overview",
+        destination: "/docs/model/prepare-models/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/prepare-models/model-card",
+        destination: "/docs/model/prepare-models/model-card",
+        permanent: false,
+      },
+      {
+        source: "/docs/prepare-models/pre-processing",
+        destination: "/docs/model/prepare-models/pre-processing",
+        permanent: false,
+      },
+      {
+        source: "/docs/prepare-models/post-processing",
+        destination: "/docs/model/prepare-models/post-processing",
+        permanent: false,
+      },
+      {
+        source: "/docs/import-models/overview",
+        destination: "/docs/model/import-models/overview",
+        permanent: false,
+      },
+      {
+        source: "/docs/import-models/artivc",
+        destination: "/docs/model/import-models/artivc",
+        permanent: false,
+      },
+      {
+        source: "/docs/import-models/github",
+        destination: "/docs/model/import-models/github",
+        permanent: false,
+      },
+      {
+        source: "/docs/import-models/huggingface",
+        destination: "/docs/model/import-models/huggingface",
+        permanent: false,
+      },
+      {
+        source: "/docs/import-models/local",
+        destination: "/docs/model/import-models/local",
+        permanent: false,
+      },
+      {
+        source: "/docs/development/system-architecture",
+        destination: "/docs/vdp/development/system-architecture",
+        permanent: false,
+      },
+      {
+        source: "/docs/development/setup-local-development",
+        destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
     ];

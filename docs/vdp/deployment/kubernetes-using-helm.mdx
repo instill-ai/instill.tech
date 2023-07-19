@@ -1,0 +1,103 @@
+---
+title: "Kubernetes Using Helm"
+lang: "en-US"
+draft: false
+description: "Learn about how to deploy VDP https://github.com/instill-ai/vdp in Kubernetes using Helm"
+---
+
+Kubernetes offers an elastic way of managing VDP to persist the services and scale resources horizontally and vertically.
+
+## Setup
+
+VDP currently supports deploying on Kubernetes.
+
+### Cluster setup
+
+We recommend using one of the local Kubernetes solutions:
+
+- [Docker Desktop (macOS)](https://docs.docker.com/desktop/) with [Kubernetes](https://docs.docker.com/desktop/kubernetes) enabled
+- [minikube](https://minikube.sigs.k8s.io/docs/start)
+- [kind](https://kind.sigs.k8s.io)
+
+### `kubectl` setup
+
+Make sure the Kubernetes CLI tool `kubectl` has been installed in your environment.
+If not, please follow the official [instructions](https://kubernetes.io/docs/tasks/tools/#kubectl) to install.
+
+Make sure `kubectl` is configured to connect to the local cluster by
+
+```bash
+kubectl use-context <cluster-name>
+```
+
+### Helm setup
+
+Make sure Helm has been installed in your environment. If not, please follow the official [instructions](https://helm.sh/docs/intro/install) to install.
+
+Check out the VDP Helm repository on [ArtifactHub](https://artifacthub.io/packages/helm/instill/vdp).
+
+To add the VDP Helm repository, simply run
+
+```bash
+helm repo add instill https://helm.instill.tech
+```
+
+, and
+
+```bash
+helm repo update
+```
+
+You can then run
+
+```bash
+helm search repo vdp --devel
+```
+
+to see the charts:
+
+```bash
+NAME            CHART VERSION   APP VERSION     DESCRIPTION
+instill/vdp     <chart-version> <app-version>   Versatile Data Pipeline (VDP) empowers the mode...
+```
+
+<InfoBlock type="info" title="info">
+  The VDP and its Helm chart are still in a pre-release Alpha version, so the
+  `--devel` flag is necessary for the access of Helm charts.
+</InfoBlock>
+
+## Install
+
+To install the chart:
+
+```bash
+helm install vdp instill/vdp --devel --namespace instill-ai --create-namespace
+```
+
+And visit the `api-gateway` ([http://localhost:8080](http://localhost:8080)) and Console ([http://localhost:3000](http://localhost:3000)) by port forwarding:
+
+```bash
+export API_GATEWAY_VDP_POD_NAME=$(kubectl get pods --namespace vdp -l "app.kubernetes.io/component=api-gateway-vdp,app.kubernetes.io/instance=vdp" -o jsonpath="{.items[0].metadata.name}")
+export API_GATEWAY_VDP_CONTAINER_PORT=$(kubectl get pod --namespace vdp $API_GATEWAY_VDP_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+kubectl --namespace vdp port-forward $API_GATEWAY_VDP_POD_NAME 8080:${API_GATEWAY_VDP_CONTAINER_PORT}
+```
+
+## Uninstall
+
+To uninstall the chart:
+
+```bash
+helm uninstall vdp --namespace instill-ai
+```
+
+and clean up all VDP-related persistent volumes:
+
+```bash
+kubectl delete pvc --all -n instill-ai
+kubectl delete namespace instill-ai
+```
+
+## Troubleshooting
+
+If you encounter any issues, please [create an issue on GitHub](https://github.com/instill-ai/vdp/issues)
+or come to our [Discord](https://discord.gg/sevxWsqpGh) channel **#ask-for-help**. The community loves to help!

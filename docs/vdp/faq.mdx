@@ -16,7 +16,8 @@ This page curates a list of frequently asked questions from our users, friends, 
     Modern data stack misses unstructured data processing.
 
     It is non-trivial to process unstructured data though.
-    We used to suffer enough in devising our own deep learning models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
+    We used to suffer enough in connecting datas from different sources, devising our own deep learning models, putting the models in production, running the day-to-day operation,
+    and endlessly building the peripheral MLOps tools to keep the production data pipeline resilient and AI performance consistent.
     All these happened in-house and were non-scalable.
 
     There must be a better way, and Versatile Data Pipeline (VDP) is the answer.
@@ -99,7 +100,6 @@ This page curates a list of frequently asked questions from our users, friends, 
 
     - [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes VDP to be extensible, flexible and reusable for scenarios where new components are constantly added in VDP.
       The overall microservice system can be also very efficient at scaling phase to scale each backend instances based on their individual workload.
-      For example. the `connector-backend` might be way less busy compared with the `model-backend` in a `SYNC` VDP pipeline.
 
     - [IDEALS](https://www.infoq.com/articles/microservices-design-ideals) (**I**nterface segregation, **D**eployability, **E**vent-driven, **A**vailability over consistency, **L**oose coupling, and **S**ingle responsibility) design principle sets a rigorous framework when there comes to any VDP design questions in our day-to-day development.
 
