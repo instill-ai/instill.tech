@@ -19,27 +19,9 @@ const SITE = {
 const SECTIONS: SidebarSections[] = [
   {
     text: "Welcome",
-    link: "/docs/vdp/welcome",
-    items: [],
-    appType: "vdp",
-  },
-  {
-    text: "Welcome",
     link: "/docs/instill-cloud/welcome",
     items: [],
     appType: "instill-cloud",
-  },
-  {
-    text: "Welcome",
-    link: "/docs/model/welcome",
-    items: [],
-    appType: "model",
-  },
-  {
-    text: "Core Concepts",
-    link: "/docs/model/core-concepts",
-    items: [],
-    appType: "model",
   },
   {
     text: "Instill Cloud",
@@ -57,6 +39,12 @@ const SECTIONS: SidebarSections[] = [
     appType: "instill-cloud",
   },
   {
+    text: "Welcome",
+    link: "/docs/vdp/welcome",
+    items: [],
+    appType: "vdp",
+  },
+  {
     text: "VDP",
     collapsible: true,
     items: [
@@ -65,25 +53,6 @@ const SECTIONS: SidebarSections[] = [
       { text: "Roadmap", link: "/docs/vdp/roadmap" },
       { text: "License", link: "/docs/vdp/license" },
       { text: "FAQ", link: "/docs/vdp/faq" },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "Deploy VDP",
-    collapsible: true,
-    items: [
-      {
-        text: "Overview",
-        link: "/docs/vdp/deployment/overview",
-      },
-      {
-        text: "Docker Compose",
-        link: "/docs/vdp/deployment/docker-compose",
-      },
-      {
-        text: "Kubernetes using Helm",
-        link: "/docs/vdp/deployment/kubernetes-using-helm",
-      },
     ],
     appType: "vdp",
   },
@@ -98,6 +67,25 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/vdp/core-concepts/connector",
       },
       { text: "AI task", link: "/docs/vdp/core-concepts/ai-task" },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "Deployment",
+    collapsible: true,
+    items: [
+      {
+        text: "Overview",
+        link: "/docs/vdp/deployment/overview",
+      },
+      {
+        text: "Docker Compose",
+        link: "/docs/vdp/deployment/docker-compose",
+      },
+      {
+        text: "Kubernetes using Helm",
+        link: "/docs/vdp/deployment/kubernetes-using-helm",
+      },
     ],
     appType: "vdp",
   },
@@ -131,6 +119,46 @@ const SECTIONS: SidebarSections[] = [
       { text: "Airbyte", link: "/docs/vdp/destination-connectors/airbyte" },
     ],
     appType: "vdp",
+  },
+  {
+    text: "Welcome",
+    link: "/docs/model/welcome",
+    items: [],
+    appType: "model",
+  },
+  {
+    text: "Instill Model",
+    collapsible: true,
+    items: [
+      { text: "Getting started", link: "/docs/model/getting-started" },
+      { text: "Roadmap", link: "/docs/model/roadmap" },
+    ],
+    appType: "model",
+  },
+  {
+    text: "Core Concepts",
+    link: "/docs/model/core-concepts",
+    items: [],
+    appType: "model",
+  },
+  {
+    text: "Deployment",
+    collapsible: true,
+    items: [
+      {
+        text: "Overview",
+        link: "/docs/model/deployment/overview",
+      },
+      {
+        text: "Docker Compose",
+        link: "/docs/model/deployment/docker-compose",
+      },
+      {
+        text: "Kubernetes using Helm",
+        link: "/docs/model/deployment/kubernetes-using-helm",
+      },
+    ],
+    appType: "model",
   },
   {
     text: "Prepare Models",
