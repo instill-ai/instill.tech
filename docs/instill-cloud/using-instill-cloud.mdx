@@ -5,25 +5,25 @@ draft: false
 description: "Instill Cloud is a fully-managed public cloud service for VDP. You can try Instill Cloud for free at https://console.instill.tech using your email address, Google, or GitHub social login."
 ---
 
-## Set up your first pipeline
+## Use VDP on Instill Cloud
+
+### Set up your first pipeline
 
 Instill Cloud enables you to build pipelines specifically for unstructured data via VDP.
-
-First, follow the [Get access to pre-trained ML models](#get-access-to-pre-trained-ml-models) to check the details of each model and find the model you want.
-In case the model is not yet supported, consider reporting to our [Discord community](http://go.instill.tech/4ey9lz).
+In case the model connector is not yet supported, consider reporting to our [Discord community](http://go.instill.tech/4ey9lz).
 
 Click on the **Pipeline** page on the left sidebar. Since we have not yet set up any pipeline, this page will be empty.
 To create your first pipeline via VDP Console, click **Add new pipeline**.
 
 <InfoBlock type="info" title="info">
 
-**Pipeline** is the most important concept in VDP. Check the [documentation](/docs/core-concepts/pipeline) for more details.
+**Pipeline** is the most important concept in VDP. Check the [documentation](/docs/vdp/core-concepts/pipeline) for more details.
 
 </InfoBlock>
 
 **Step 1: Add an HTTP source**
 
-VDP currently supports two sources, HTTP and gRPC for **SYNC** pipeline. An HTTP source accepts HTTP requests with payloads to be processed by a pipeline.
+VDP currently supports two sources, HTTP and gRPC for pipeline. An HTTP source accepts HTTP requests with payloads to be processed by a pipeline.
 
 To set up a **Source Connector**,
 
@@ -31,24 +31,11 @@ To set up a **Source Connector**,
 2. click the **Source type** ▾ drop-down and choose HTTP, and
 3. click **Next**.
 
-**Step 2: Set up a Model**
+**Step 2: Set up a AI Connector**
 
-Click the **Online models** ▾ drop-down and choose the model you want
+Click the **AI Connector** ▾ drop-down and choose the AI connector you want
 
-**Step 3: Add an HTTP destination**
-
-Since we are building a **SYNC** pipeline, the `HTTP` destination is paired automatically with the `HTTP` source as we set up for the source. Click **Next**.
-
-<InfoBlock type="info" title="paired data connectors">
-
-When creating pipelines under **SYNC** mode, source and destination connectors in VDP must be the same, which means:
-
-- HTTP source → HTTP destination
-- gRPC source → gRPC destination
-
-</InfoBlock>
-
-**Step 4: Set up a pipeline**
+**Step 3: Set up a pipeline**
 
 We are almost there! We have created `Source`, `Model`, and `Destination`. The last step is to give this pipeline an ID, and we are ready to go! Just
 
@@ -64,7 +51,7 @@ The **green** light indicates the pipeline is Active and can be triggered via se
   pipeline states.
 </InfoBlock>
 
-## Trigger the pipeline
+### Trigger the pipeline
 
 VDP automatically generates a dedicated trigger endpoint for each pipeline to process unstructured data.
 
@@ -87,10 +74,29 @@ All your apps using this token will stop working.
 Simply copy the cURL request in the Trigger section, and pass your API token as a Bearer token in the authorization headers.
 For example, assuming you have created a pipeline for Image Classification, using cURL, you can trigger the pipeline as follows:
 
-```bash cURL
-curl -X POST https://api-s.instill-inc.tech/v1alpha/pipelines/<pipeline-id>/triggerSync \
--H 'Authorization: Bearer instill_sk_...' \
-...
+```shellscript cURL(url)
+// Please put your data to the appropriate field based on its data type:
+//   - "texts": an array containing your text data to be processed
+//   - "images": an array containing your image data to be processed
+//   - "metadata": a JSON object containing metadata for the data to be processed
+
+curl -X POST https://api-vdp.instill.tech/v1alpha/pipelines/<pipeline-id>/trigger \
+-H 'Authorization: Bearer instill_sk_...' -d '{
+  "inputs": [
+    {
+      "texts": [
+        "once upon a time"
+      ],
+      "images": [
+        {
+          "url": "https://artifacts.instill.tech/imgs/dog.jpg"
+        }
+      ],
+      "metadata": {}
+    }
+  ]
+}
+
 ```
 
 <InfoBlock type="info" title="standardise AI task">
@@ -98,21 +104,26 @@ curl -X POST https://api-s.instill-inc.tech/v1alpha/pipelines/<pipeline-id>/trig
   the supported [AI task](/docs/core-concepts/ai-task).
 </InfoBlock>
 
-## Get access to pre-trained ML models
+## Use Instill Model on Instill Cloud
 
-A **Model** component is an algorithm run on unstructured data to solve a certain [AI task](/docs/core-concepts/ai-task).
-
-Deploying and maintaining ML models in a production environment is hard!
-It often takes more effort and a lot longer to deploy a model to production than to develop it offline.
-
-Therefore, we have deployed a list of pre-trained ML models on Instill Cloud. They are ready for use and are totally free during Open Alpha.
-On the Instill Cloud console, click **Model** to access all the pre-deployed ML models for different AI tasks.
-To get the details of a specific model, click on the model ID and see the **Description** and **Setting** sections.
+We deploy our source available product [Instill Model](https://github.com/instill-ai/model) on Instill Cloud.
 
 <InfoBlock type="info" title="Notice">
 
-You may find that Import models are disabled in Instill Cloud. It is because
+You may find that _importing your own models_ are disabled in the Model Hub of Instill Cloud. It is because
 we are rapidly refactoring Model service to offer a more stable user
 experience.
 
 </InfoBlock>
+
+### Get access to pre-trained ML models
+
+Deploying and maintaining ML models in a production environment is hard!
+It often takes more effort and a lot longer to deploy a model to production than to develop it offline.
+Therefore, we have deployed a list of pre-trained ML models on Instill Cloud. They are ready for use and are totally free during Open Alpha.
+
+On the Instill Cloud console, click **Model Hub** to access all the pre-deployed ML models for different AI tasks.
+A model in the Model Hub is an algorithm run on unstructured data to solve a certain [AI task](/docs/core-concepts/ai-task).
+
+To get the details of a specific model, click on the model ID and see the **Description** and **Setting** sections.
+To import the model into VDP, check out the VDP documentation on [Instill Model AI connector](/docs/vdp/ai-connectors/instill-model).
