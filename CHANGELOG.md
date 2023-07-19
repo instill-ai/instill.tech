@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.37.0](https://github.com/instill-ai/instill.tech/compare/v1.36.1...v1.37.0) (2023-07-19)
+
+
+### Features
+
+* namananand/ins 880 revamp documentation website for the new product structure ([#571](https://github.com/instill-ai/instill.tech/issues/571)) ([de5f357](https://github.com/instill-ai/instill.tech/commit/de5f357d0150fe827dfe6902bad7587a5b549ec7))
+
+
+### Bug Fixes
+
+* airbyte config path update because build is failing ([#568](https://github.com/instill-ai/instill.tech/issues/568)) ([b96613f](https://github.com/instill-ai/instill.tech/commit/b96613f20731d4ef08eef4f8f64597ba0fa346a3))
+* **content:** fix fuzzy search too restrict issue ([#566](https://github.com/instill-ai/instill.tech/issues/566)) ([7c0759c](https://github.com/instill-ai/instill.tech/commit/7c0759c65ccd938c5759ed7512b3c43244a42a7e))
+* fix broken link by correctly setting up redirection rules ([#565](https://github.com/instill-ai/instill.tech/issues/565)) ([1fe5670](https://github.com/instill-ai/instill.tech/commit/1fe5670d1b797cf26927de90e88ea61e0703b6bb))
+* sitemap path fix ([#538](https://github.com/instill-ai/instill.tech/issues/538)) ([#567](https://github.com/instill-ai/instill.tech/issues/567)) ([7fce143](https://github.com/instill-ai/instill.tech/commit/7fce1430013610e5fa89e455e37e328e2416095c))
+
+
+### Miscellaneous
+
+* change the link to demo with link to console ([#573](https://github.com/instill-ai/instill.tech/issues/573)) ([629312e](https://github.com/instill-ai/instill.tech/commit/629312e900efc43e8fe619bf1a42b6a0594256c9))
+* remove the demo website from our Footer ([#572](https://github.com/instill-ai/instill.tech/issues/572)) ([4e04d73](https://github.com/instill-ai/instill.tech/commit/4e04d732960cc6bd23432c5e530693da4b9c1dac))
+* update Airbyte destination configuration file path ([#564](https://github.com/instill-ai/instill.tech/issues/564)) ([9750e68](https://github.com/instill-ai/instill.tech/commit/9750e68efdc5a9ed8b7caa6bc7fcf42eaec0d46b))
+
+
+### Documentation
+
+* refactor the documentation structure ([#574](https://github.com/instill-ai/instill.tech/issues/574)) ([a4e90b5](https://github.com/instill-ai/instill.tech/commit/a4e90b5c738c07cf6ce70e2f40c1b83b5a2aaf0c))
+* **tutorial:** fix table border and add table in 101 tutorial ([#561](https://github.com/instill-ai/instill.tech/issues/561)) ([2f9a7b8](https://github.com/instill-ai/instill.tech/commit/2f9a7b81594d9b4b0fae87c7ac5f14900adcd743))
+* **vdp,development:** update configuration and local development ([#562](https://github.com/instill-ai/instill.tech/issues/562)) ([01ae591](https://github.com/instill-ai/instill.tech/commit/01ae5916a48f4354db639e30189ab19326089288))
+
 ## [1.36.1](https://github.com/instill-ai/instill.tech/compare/v1.36.0...v1.36.1) (2023-06-04)
 
 
