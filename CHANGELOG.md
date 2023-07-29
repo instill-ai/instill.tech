@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.37.1](https://github.com/instill-ai/instill.tech/compare/v1.37.0...v1.37.1) (2023-07-29)
+
+
+### Documentation
+
+* **instill-cloud,vdp:** add blockchain connector ([#575](https://github.com/instill-ai/instill.tech/issues/575)) ([952032b](https://github.com/instill-ai/instill.tech/commit/952032bf88a3f427cdd5a54eb69e7a0c60fb32c0))
+
 ## [1.37.0](https://github.com/instill-ai/instill.tech/compare/v1.36.1...v1.37.0) (2023-07-19)
 
 
