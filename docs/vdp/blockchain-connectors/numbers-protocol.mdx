@@ -1,0 +1,172 @@
+---
+title: "Numbers Protocol"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a Numbers Protocol blockchain connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
+---
+
+The [Numbers Protocol](https://numbersprotocol.io/) is a groundbreaking asset-centric cross-network protocol that has gained trust and usage in various domains such as art, music, NFT platforms, and the metaverse.
+It is also venturing into applications for AI companies to trace digital media provenance.
+With the Numbers Protocol blockchain connector integrated into VDP, developers can seamlessly integrate third-party blockchain services.
+This integration brings data verifiability and traceability, marking a significant advancement in secure data management.
+
+The Numbers Protocol blockchain connector allows users to convert a wide range of data into Web3 assets.
+By utilizing this connector, your data file will be pinned on the IPFS network with on-chain records through the [Numbers Gateway](https://ipfs-pin.numbersprotocol.io/ipfs/), ensuring permanent storage.
+Additionally, the assets generated can be easily accessed and explored using the [Numbers Search Engine](https://nftsearch.site).
+To see an example of a Web3 asset created using this connector, click [here](https://nftsearch.site/asset-profile?cid=bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte).
+
+<ZoomableImg
+  src="/docs-assets/vdp/numbers-web3-asset-example.png"
+  alt="Generated Web3 asset sample using Stability AI AI connector (Stable Diffusion XL 0.9) on Numbers Search Engine using Numbers blockchain connector"
+/>
+
+## Release stage
+
+`Alpha`
+
+## Configuration
+
+For the up-to-date configuration, refer to [here](https://github.com/instill-ai/connector-blockchain/blob/main/pkg/numbers/config/seed/definitions.json).
+
+| Field                      | Type   | Note                                                                                                                                                                                                    |
+| :------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| capture_token\*            | string | Fill your Capture token in the [Capture App](https://captureapp.xyz/). To access your tokens, you need a Capture App account, and you can sign in with an email or wallet to acquire the Capture Token. |
+| asset_type\*               | string | The type of asset to be added to the blockchain. The default is "images".                                                                                                                               |
+| metadata_texts\*           | bool   | A flag to indicate whether to include the `texts` input in the asset metadata on the blockchain. The default is false.                                                                                  |
+| metadata_structured_data\* | bool   | A flag to indicate whether to include the `structured_data` input in the asset metadata on the blockchain. The default is false.                                                                        |
+| metadata_metadata\*        | bool   | A flag to indicate whether to include the `metadata` input in the asset metadata on the blockchain. The default is true.                                                                                |
+
+### No-code setup
+
+<InfoBlock type="info" title="Prerequisites">
+
+To create a Numbers Protocol blockchain connector, you'll first need to create a [Capture Account](https://captureapp.xyz/).
+Then, check the documentation about [how to aquire Capture Token](https://docs.captureapp.xyz/about-capture/capture-account-and-wallet/capture-token).
+
+New accounts are granted 3 [NUM](https://num.numbersprotocol.io/) credits, the native token of the decentralized photo network.
+NUM tokens are used in the process of converting data into Web3 assets, and new users can register up to 120 assets at no cost.
+
+👉 Alternatively, you can try out [Instill Cloud](https://console.instill.tech)
+to use our pre-created Numbers Protocol blockchain connector for FREE during Open Alpha.
+
+</InfoBlock>
+
+To create a Numbers Protocol blockchain connector on VDP:
+
+1. Go to the **Blockchain** page and click **Set up new Blockchain**
+2. In the **Set Up New Blockchain Connector** page, fill an ID for your model, this will be the unique identifier of this connector
+3. [Optional] Give a short description of your connector in the **Description** field
+4. Click the **Blockchain Connector Type** ▾ drop-down and choose **Numbers Protocol**
+5. Fill the following information and click **Set up**
+
+   - Fill **Capture token**. Follow the Capture App [documentation](https://docs.captureapp.xyz/about-capture/capture-account-and-wallet/capture-token) to aquire your capture token
+   - Click **Asset type** ▾ drop-down and choose **images**
+   - Toggle **'texts' input as asset metadata** to true, if you want to link this connector's `texts` field to another component, the linked `texts` data will be uploaded to the blockchain as part of the asset metadata
+   - Toggle **'structured_data' input as asset metadata** to true, if you want to link this connector's `structured_data` field to another component, the linked `structured_data` data will be uploaded to the blockchain as part of the asset metadata
+   - Toggle **'metadata' input as asset metadata** to true, if you want to link this connector's `metadata` field to another component, the linked `metadata` data will be uploaded to the blockchain as part of the asset metadata
+
+6. By default, the connector is disconnected. To connect and use blockchain connector, go to the connector page and click **Connect**.
+
+### Low-code setup
+
+1. Create a Numbers Protocol blockchain connector:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "my-numbers",
+  "connector_definition_name": "connector-definitions/blockchain-numbers",
+  "configuration": {
+    "capture_token": "<capture-token>",
+    "asset_type": "images",
+    "metadata_texts": true,
+    "metadata_structured_data": false,
+    "metadata_metadata": true
+  }
+}'
+```
+
+2. Connect the connector `my-numbers`:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors/my-numbers/connect
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+
+## Expected inputs and outputs
+
+When using the Numbers Protocol blockchain connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+Here are the expected input and output data fields for the Numbers Protocol blockchain connector.
+
+### Expected input data fields
+
+| Input data field                         | Type          | Description                                                                                                 |
+| :--------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| images\*                                 | array[image]  | Image data to be uploaded to the blockchain                                                                 |
+| texts                                    | array[string] | Add to the asset metadata under "texts" field if `metadata_texts` is set to true                            |
+| metadata.numbers.capture_token           | string        | Fill this field to overwrite the connector's original capture token                                         |
+| metadata.numbers.asset_creator           | string        | Name of the asset creator                                                                                   |
+| metadata.numbers.abstract                | string        | A summary or abstract of the asset to be created                                                            |
+| metadata.numbers.custom.creator_wallet   | string        | Wallet address of the asset creator                                                                         |
+| metadata.numbers.custom.generated_by     | string        | The AI model used to generate the content                                                                   |
+| metadata.numbers.custom.license.name     | string        | Your preferred license for your asset, e.g., "CC BY-SA"                                                     |
+| metadata.numbers.custom.license.document | string        | URL of the license file, e.g., [url](https://creativecommons.org/licenses/by-sa/4.0) for "CC BY-SA" license |
+
+Example input data:
+
+```shellscript
+{
+  "images": [
+    {
+      "blob": "..."
+    }
+  ],
+  "metadata": {
+    "numbers": {
+      "asset_creator": "Xiaofei Du",
+      "abstract": "Xiaofei's Web3 creation",
+      "custom": {
+        "generated_by": "Stability AI's Stable Diffusion XL 0.9",
+        "license": {
+          "name": "CC BY-SA",
+          "document": "https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      }
+    }
+  }
+}
+```
+
+### Expected output data fields
+
+| Output data field               | Type          | Description                                                        |
+| :------------------------------ | ------------- | ------------------------------------------------------------------ |
+| metadata.asset_cids\*           | array[string] | Numbers ID (Nid) of the asset files on blockchain                  |
+| metadata.asset_urls\*           | array[string] | Asset profile links on Numbers Search Engine                       |
+| metadata.pipeline.id\*          | string        | ID of the pipeline that uploaded the data the blockchain           |
+| metadata.pipeline.uid\*         | string        | UUID of the pipeline that uploaded the data the blockchain         |
+| metadata.pipeline.owner\*       | string        | Owner of the pipeline that uploaded the data to the blockchain     |
+| metadata.pipeline.trigger_uid\* | string        | ID of the pipeline triggering that uploaded the data to blockchain |
+
+Example output data:
+
+```shellscript
+{
+  "metadata": {
+    "asset_cids": [
+      "bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte"
+    ],
+    "asset_urls": [
+      "https://nftsearch.site/asset-profile?cid=bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte"
+    ],
+    "pipeline": {
+      "id": "web3-aigc-asset",
+      "owner": "users/41db6f86-97b3-4374-8678-67ae639400f8",
+      "trigger_id": "4bd0a4cc-ff2f-415e-a96e-9176564f20d3",
+      "uid": "6a35cbc8-9799-4390-80ce-30c13fdd58e5"
+    }
+  }
+}
+```
+
+By following the guideline, you can effectively integrate with the Numbers Protocol to register your assets on the blockchain.
