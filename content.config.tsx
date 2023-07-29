@@ -110,6 +110,18 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
+    text: "Blockchain Connectors",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/vdp/blockchain-connectors/overview" },
+      {
+        text: "Numbers Protocol",
+        link: "/docs/vdp/blockchain-connectors/numbers-protocol",
+      },
+    ],
+    appType: "vdp",
+  },
+  {
     text: "Destination Connectors",
     collapsible: true,
     items: [
