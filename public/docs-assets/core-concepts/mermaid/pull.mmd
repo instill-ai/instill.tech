@@ -22,10 +22,8 @@
 }%%
 sequenceDiagram  
   autonumber
-  Note left of Source Connector: Scheduled pull
+  Note left of Pipeline: Scheduled pull
   rect rgb(190, 222, 255)  
-  Note over Source Connector,AI Connector: Pipeline  
-  Source Connector->>+AI Connector: ASYNC gRPC request (Inference)
-  Note over AI Connector,Destination Connector: Pipeline 
-  AI Connector->>+Destination Connector: ASYNC gRPC request (Result)
+  Note over Pipeline,Connectors/Operators: Pipeline  
+  Pipeline->>+Connectors/Operators: ASYNC gRPC request
   end

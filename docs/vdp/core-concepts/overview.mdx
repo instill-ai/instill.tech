@@ -2,63 +2,38 @@
 title: "Core Concepts Overview"
 lang: "en-US"
 draft: false
-description: "Core concepts of the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Core concepts of VDP https://github.com/instill-ai/vdp"
 ---
 
-Modern data stack misses unstructured data processing.
+The modern data stack often lacks efficient processing capabilities for unstructured data, creating significant barriers for developers aiming to build AI-first applications that involve such data.
 
-[**Versatile Data Pipeline (VDP)**](https://github.com/instill-ai/vdp) is to fill in the missing piece. At a high-level perspective, VDP streamlines processing unstructured data from various data sources by AI models and sending results to pre-configured data destinations.
+To address this challenge, [**Versatile Data Pipeline (VDP)**](https://github.com/instill-ai/vdp) was created.
+VDP serves as the missing piece in the data stack, streamlining the process of designing, building and testing the foundation of AI-first applications, particularly those dealing with unstructured data.
 
-In other words, VDP is a tool to extract, transform and load (ETL) unstructured data to their meaningful representations.
-
-To benefit a broader set of users and maximise the tool's usability and affordability, VDP is built with an open heart in each component:
-
-<ZoomableImg src="/docs-assets/core-concepts/overview.svg" alt="VDP overview" />
+VDP provides a streamlined solution for connecting unstructured data from various sources, integrating AI models from different vendors, and interfacing with 3rd-party services.
+In essence, VDP serves as a tool to extract, transform, and load (ETL) unstructured data into meaningful representations that cater to users' specific use cases.
 
 ## Pipeline
 
-**Pipeline** consists of different types of Connectors, altogether defined in a `recipe`. A pipeline can be in either `SYNC` or `ASYNC` mode, depending on whether the pipeline workflow is time-critical or not. See [Pipeline](pipeline) for more details.
+The foundation of VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
+A pipeline can be triggered using either SYNC APIs (for synchronous responses) or ASYNC APIs (ideal for long-running workloads).
+More detailed information about pipelines can be found in the [Pipeline](pipeline) section.
 
-**Pipeline** is maintained in [pipeline-backend](https://github.com/instill-ai/pipeline-backend).
+The implementation of the Pipeline concept is managed in the [pipeline-backend](https://github.com/instill-ai/pipeline-backend) repository.
 
-## Connector
+### Connector
 
-**Connector** is the basic component to construct a pipeline. There are different types of pipelines, dpending on the functionalities.
+A **Connector** is a fundamental building block used to construct a pipeline in VDP.
+The system offers various types of connectors, each catering to specific functionalities.
 
-Connector is created and maintained in [connector-backend](https://github.com/instill-ai/connector-backend).
+Connectors empower VDP pipelines to perform unstructured data ETL (Extract, Transform, Load).
+These tasks encompass data extraction, transformation using AI models, and uploading to blockchains, third-party apps, or data warehouses.
 
-### Source Connector
+### Operator
 
-**Source Connector** is the component at the beginning of a VDP pipeline, which streams unstructured data (e.g., image, video, text, audio) from IoT devices (e.g., IP cameras) or cloud storage services (e.g., GCP Cloud Storage, AWS S3).
-
-In VDP, the unstructured data source connectors are developed and maintained by the VDP community.
-
-Source Connector is maintained in [connector-source](https://github.com/instill-ai/connector-source).
-
-### Destination Connector
-
-**Destination Connector** is the component at the end of a VDP pipeline, which loads the structured data provided by the Model component to a target destination.
-
-VDP implements [Airbyte Protocol](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol) to adopt Airbyte's 30+ destination connectors to write the structured data result from **Model** to the destination. VDP users can thus directly benefit from the abundant community resources from there to further perform data movement or transformation.
-Future unstructured data destination connectors will be developped and maintained by the VDP community.
-
-Destination Connector is maintained in [connector-destination](https://github.com/instill-ai/connector-destination).
-
-### AI Connector
-
-**AI Connector** provides a framework to connect AI models for processing unstructured data from various sources,
-no matter they come from third-party model providers or in-house model serving platforms.
-
-This unlocks numerous opportunities for VDP to integrate with popular open model providers like OpenAI, Stability AI, Hugging Face, and, of course, Instill Model.
-
-AI Connector is maintained in [connector-ai](https://github.com/instill-ai/connector-ai).
-
-### Blockchain Connector
-
-**Blockchain Connector** integrates with Blockchain services to convert your data into Web3 assets.
-A typical use case is to upload AI-generated or AI-assisted content on the blockchain to ensure transparency and trust in the ownership of the content and establish a tamper-proof record of the content's origin, creation, and subsequent modifications.
-
-Blockchain Connector is maintained in [connector-blockchain](https://github.com/instill-ai/connector-blockchain).
+To facilitate more flexible and fine-grained data injection and manipulation, **Operator** is introduced.
+Operators allow users to run customized code without the need for server management or pre-provisioning.
+This enables code execution whenever the pipeline is triggered and data flows into the connector.
 
 ## Console
 
@@ -86,8 +61,10 @@ The genuine protobuf documentation can be found in our [Buf Scheme Registry (BSR
 
 For Instill AI developed and maintained components, we use release stage defined as below to indicate their readiness:
 
-| Stage                   | Description                                                                                                                                                                                                                                                     |
-| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Alpha**               | An alpha component indicates the component is under development and Instill AI is collecting its early feedback and issues reported by early adopters. We strongly discourage using alpha components for production.                                            |
-| **Beta**                | A beta component is considered stable and reliable with no further backwards incompatible changes but has not been validated by a broader group of users. We expect to find and fix a few issues and bugs in the release before it is ready for the next stage. |
-| **Generally Available** | A generally available component has been thoroughly tested in the battlefield and is ready for use in a production environment. Its documentation is considered sufficient to support widespread adoption.                                                      |
+| Stage                   | Description                                                                                                                                                                                                                                                                  |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
+| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
+| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |
+
+Feel free to explore VDP and leverage its open components to build AI-first applications for unstructured data processing.

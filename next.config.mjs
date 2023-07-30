@@ -86,7 +86,7 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/connector",
-        destination: "/docs/vdp/core-concepts/connector",
+        destination: "/docs/vdp/connectors/overview",
         permanent: false,
       },
       {
@@ -96,7 +96,12 @@ const nextConfig = {
       },
       {
         source: "/docs/start-here/faq",
-        destination: "/docs/vdp/faq",
+        destination: "/docs/instill-cloud/faq",
+        permanent: false,
+      },
+      {
+        source: "/docs/vdp/faq",
+        destination: "/docs/instill-cloud/faq",
         permanent: false,
       },
       {
@@ -131,7 +136,7 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/ai-task",
-        destination: "/docs/vdp/core-concepts/ai-task",
+        destination: "/docs/model/core-concepts/ai-task",
         permanent: false,
       },
       {
@@ -156,37 +161,17 @@ const nextConfig = {
       },
       {
         source: "/docs/source-connectors/overview",
-        destination: "/docs/vdp/source-connectors/overview",
-        permanent: false,
-      },
-      {
-        source: "/docs/source-connectors/http",
-        destination: "/docs/vdp/source-connectors/http",
-        permanent: false,
-      },
-      {
-        source: "/docs/source-connectors/grpc",
-        destination: "/docs/vdp/source-connectors/grpc",
+        destination: "/docs/vdp/data-connectors/overview",
         permanent: false,
       },
       {
         source: "/docs/destination-connectors/overview",
-        destination: "/docs/vdp/destination-connectors/overview",
-        permanent: false,
-      },
-      {
-        source: "/docs/destination-connectors/http",
-        destination: "/docs/vdp/destination-connectors/http",
-        permanent: false,
-      },
-      {
-        source: "/docs/destination-connectors/grpc",
-        destination: "/docs/vdp/destination-connectors/grpc",
+        destination: "/docs/vdp/data-connectors/overview",
         permanent: false,
       },
       {
         source: "/docs/destination-connectors/airbyte",
-        destination: "/docs/vdp/destination-connectors/airbyte",
+        destination: "/docs/vdp/data-connectors/airbyte",
         permanent: false,
       },
       {
@@ -244,6 +229,7 @@ const nextConfig = {
         destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
+
     ];
   },
 };
