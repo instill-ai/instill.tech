@@ -2,7 +2,7 @@
 title: "FAQ"
 lang: "en-US"
 draft: false
-description: "Frequently Asked Questions (FAQ): If you have a question about the unstructured data ETL tool VDP https://github.com/instill-ai/vdp, you're in the right place"
+description: "Frequently Asked Questions (FAQ): If you have a question about Instill products, you're in the right place"
 ---
 
 This page curates a list of frequently asked questions from our users, friends, candidates, investors, random people, etc.
@@ -11,7 +11,7 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 <ToggleBlock>
   <details> 
-    <summary>**Why do you build VDP?**</summary>
+    <summary>**Why do you build Instill Core?**</summary>
 
     Modern data stack misses unstructured data processing.
 
@@ -20,7 +20,7 @@ This page curates a list of frequently asked questions from our users, friends, 
     and endlessly building the peripheral MLOps tools to keep the production data pipeline resilient and AI performance consistent.
     All these happened in-house and were non-scalable.
 
-    There must be a better way, and Versatile Data Pipeline (VDP) is the answer.
+    There must be a better way, and [Instill Core](welcome#instill-core-foundation-for-ai-first-applications) is the answer.
 
     To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
@@ -31,12 +31,12 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 <ToggleBlock>
   <details> 
-    <summary>**Who are behind VDP?**</summary>
+    <summary>**Who are behind Instill Core?**</summary>
 
     We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
     We have in-depth experience in developing and maintaining sophisticated AI systems.
 
-    Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
+    Before we started to build Instill Core, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
 
     We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
     In the end, we had successfully built a battle-proven AI system in-house and had the system run in production for years.
@@ -49,10 +49,10 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 <ToggleBlock>
   <details> 
-    <summary>**Is VDP open source?**</summary>
+    <summary>**Is Instill Core open source?**</summary>
 
-    VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
-    Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
+    Instill Core uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
+    Our mission is to make AI accessible to everyone. The best way to achieve this is to make Instill Core free to use and source available to everyone, while ensuring we safely create a sustainable business.
     Please check the [VDP License](/docs/vdp/license) in detail.
 
   </details>
@@ -60,9 +60,9 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 <ToggleBlock>
   <details> 
-    <summary>**Is VDP free?**</summary>
+    <summary>**Is Instill Core free?**</summary>
 
-    Yes. VDP is source available so you can self-host it in your basement for free.
+    Yes. It is source available so you can self-host it in your basement for free.
 
   </details>
 </ToggleBlock>
@@ -71,7 +71,8 @@ This page curates a list of frequently asked questions from our users, friends, 
   <details> 
     <summary>**How do you make money?**</summary>
 
-    We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle.
+    We offer fully managed cloud service **Instill Cloud** to users who want to get all the power of Instill Core without any hassle.
+
     It is currently in **Open Alpha** testing phase - with all features **FREE**. For more information, see the [Pricing](/pricing) page. Rest assured that we will never charge you without your consent.
 
     We are adding new features every day and we need your feedback to help shape the future of the service and build Instill Cloud the best it can be.
@@ -85,27 +86,27 @@ This page curates a list of frequently asked questions from our users, friends, 
 
 <ToggleBlock>
   <details> 
-    <summary>**What programming language does VDP use or support?**</summary>
+    <summary>**What programming language does Instill Core use or support?**</summary>
 
-    VDP's backend components are Go-based and frontend console is written in Next.js, TypeScript, and TailwindCSS.
+    Instill Core's backend components are Go-based and frontend console is written in Next.js, TypeScript, and TailwindCSS.
 
-    Nonetheless, VDP is API-first and cloud-native. You can use cURL or the protobuf auto-generated codes to work with VDP. More developer-friendly multi-language SDKs are on our future roadmap.
+    Nonetheless, Instill Core is API-first and cloud-native. You can use cURL or the protobuf auto-generated codes to work with Instill Core. More developer-friendly multi-language SDKs are on our future roadmap.
 
   </details>
 </ToggleBlock>
 
 <ToggleBlock>
   <details> 
-    <summary>**What design principles does VDP adopt?**</summary>
+    <summary>**What design principles does Instill Core adopt?**</summary>
 
-    - [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes VDP to be extensible, flexible and reusable for scenarios where new components are constantly added in VDP.
+    - [Microservice](https://en.wikipedia.org/wiki/Microservices) architecture makes Instill Core to be extensible, flexible and reusable for scenarios where new components are constantly added in Instill Core.
       The overall microservice system can be also very efficient at scaling phase to scale each backend instances based on their individual workload.
 
-    - [IDEALS](https://www.infoq.com/articles/microservices-design-ideals) (**I**nterface segregation, **D**eployability, **E**vent-driven, **A**vailability over consistency, **L**oose coupling, and **S**ingle responsibility) design principle sets a rigorous framework when there comes to any VDP design questions in our day-to-day development.
+    - [IDEALS](https://www.infoq.com/articles/microservices-design-ideals) (**I**nterface segregation, **D**eployability, **E**vent-driven, **A**vailability over consistency, **L**oose coupling, and **S**ingle responsibility) design principle sets a rigorous framework when there comes to any Instill Core design questions in our day-to-day development.
 
-    - [API-first](https://swagger.io/resources/articles/adopting-an-api-first-approach) approach comes naturally with the adoption of microservice and IDEALS. All backend components in VDP are implemented with API-first design principle so the contract is firmly established for whatever necessary integration task coming in the future.
+    - [API-first](https://swagger.io/resources/articles/adopting-an-api-first-approach) approach comes naturally with the adoption of microservice and IDEALS. All backend components in Instill Core are implemented with API-first design principle so the contract is firmly established for whatever necessary integration task coming in the future.
 
-    - [The twelve-factor methodology](https://12factor.net) provides a down-to-earth guideline for the development and deployment of VDP components.
+    - [The twelve-factor methodology](https://12factor.net) provides a down-to-earth guideline for the development and deployment of Instill Core components.
 
     Building an effective and efficient machine learning product requires implementing the cutting-edge best practices of MLOps.
     There are many essential components involved in the MLOps cycle, and notably, these components are still evolving.
@@ -147,7 +148,7 @@ This page curates a list of frequently asked questions from our users, friends, 
 
     <div align="center">
       <ZoomableImg
-        src="/docs-assets/vdp/why-logo.png"
+        src="/docs-assets/instill-cloud/why-logo.png"
         alt="logo"
         width="400px"
       />

@@ -35,6 +35,7 @@ const SECTIONS: SidebarSections[] = [
         text: "Using Instill Cloud",
         link: "/docs/instill-cloud/using-instill-cloud",
       },
+      { text: "FAQ", link: "/docs/instill-cloud/faq" },
     ],
     appType: "instill-cloud",
   },
@@ -52,21 +53,6 @@ const SECTIONS: SidebarSections[] = [
       { text: "Configuration", link: "/docs/vdp/configuration" },
       { text: "Roadmap", link: "/docs/vdp/roadmap" },
       { text: "License", link: "/docs/vdp/license" },
-      { text: "FAQ", link: "/docs/vdp/faq" },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "Core Concepts",
-    collapsible: true,
-    items: [
-      { text: "Overview", link: "/docs/vdp/core-concepts/overview" },
-      { text: "Pipeline", link: "/docs/vdp/core-concepts/pipeline" },
-      {
-        text: "Connector",
-        link: "/docs/vdp/core-concepts/connector",
-      },
-      { text: "AI task", link: "/docs/vdp/core-concepts/ai-task" },
     ],
     appType: "vdp",
   },
@@ -90,17 +76,27 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
-    text: "Source Connectors",
+    text: "Core Concepts",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/vdp/source-connectors/overview" },
-      { text: "HTTP", link: "/docs/vdp/source-connectors/http" },
-      { text: "gRPC", link: "/docs/vdp/source-connectors/grpc" },
+      { text: "Overview", link: "/docs/vdp/core-concepts/overview" },
+      { text: "Pipeline", link: "/docs/vdp/core-concepts/pipeline" },
+      { text: "Connector", link: "/docs/vdp/connectors/overview" },
     ],
     appType: "vdp",
   },
   {
-    text: "AI Connectors",
+    text: "Operators",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/vdp/operators/overview" },
+      { text: "Trigger", link: "/docs/vdp/operators/trigger" },
+      { text: "Response", link: "/docs/vdp/operators/response" },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "AI Connector",
     collapsible: true,
     items: [
       { text: "Overview", link: "/docs/vdp/ai-connectors/overview" },
@@ -110,7 +106,7 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
-    text: "Blockchain Connectors",
+    text: "Blockchain Connector",
     collapsible: true,
     items: [
       { text: "Overview", link: "/docs/vdp/blockchain-connectors/overview" },
@@ -122,13 +118,11 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
-    text: "Destination Connectors",
+    text: "Data Connector",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/vdp/destination-connectors/overview" },
-      { text: "HTTP", link: "/docs/vdp/destination-connectors/http" },
-      { text: "gRPC", link: "/docs/vdp/destination-connectors/grpc" },
-      { text: "Airbyte", link: "/docs/vdp/destination-connectors/airbyte" },
+      { text: "Overview", link: "/docs/vdp/data-connectors/overview" },
+      { text: "Airbyte", link: "/docs/vdp/data-connectors/airbyte" },
     ],
     appType: "vdp",
   },
@@ -148,12 +142,6 @@ const SECTIONS: SidebarSections[] = [
     appType: "model",
   },
   {
-    text: "Core Concepts",
-    link: "/docs/model/core-concepts",
-    items: [],
-    appType: "model",
-  },
-  {
     text: "Deployment",
     collapsible: true,
     items: [
@@ -169,6 +157,15 @@ const SECTIONS: SidebarSections[] = [
         text: "Kubernetes using Helm",
         link: "/docs/model/deployment/kubernetes-using-helm",
       },
+    ],
+    appType: "model",
+  },
+  {
+    text: "Core Concepts",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/model/core-concepts/overview" },
+      { text: "AI task", link: "/docs/model/core-concepts/ai-task" },
     ],
     appType: "model",
   },

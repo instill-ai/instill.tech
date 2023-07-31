@@ -22,8 +22,8 @@
 }%%
 sequenceDiagram
   autonumber
-  User->>+Source/Destination Connector: HTTP/gRPC
-  Note over Source/Destination Connector,AI Connector: Pipeline
-  Source/Destination Connector->>+AI Connector: SYNC gRPC request (Inference)
-  AI Connector-->>-Source/Destination Connector: SYNC gRPC response (Result)
-  Source/Destination Connector-->>-User: HTTP/gRPC
+  User->>+Pipeline: HTTP/gRPC
+  Note over Pipeline,Connectors/Operators: Pipeline
+  Pipeline->>+Connectors/Operators: SYNC gRPC request
+  Connectors/Operators-->>-Pipeline: SYNC gRPC response
+  Pipeline-->>-User: HTTP/gRPC
