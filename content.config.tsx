@@ -81,6 +81,7 @@ const SECTIONS: SidebarSections[] = [
     items: [
       { text: "Overview", link: "/docs/vdp/core-concepts/overview" },
       { text: "Pipeline", link: "/docs/vdp/core-concepts/pipeline" },
+      { text: "Connector", link: "/docs/vdp/connectors/overview" },
     ],
     appType: "vdp",
   },
@@ -95,41 +96,33 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
-    text: "Connectors",
+    text: "AI Connector",
     collapsible: true,
     items: [
+      { text: "Overview", link: "/docs/vdp/ai-connectors/overview" },
+      { text: "Instill Model", link: "/docs/vdp/ai-connectors/instill-model" },
+      { text: "Stability AI", link: "/docs/vdp/ai-connectors/stability-ai" },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "Blockchain Connector",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/vdp/blockchain-connectors/overview" },
       {
-        text: "Overview",
-        link: "/docs/vdp/connectors/overview",
-      },
-      {
-        text: "AI Connector",
-        link: "/docs/vdp/ai-connectors/overview",
-      },
-      {
-        text: "- Instill Model",
-        link: "/docs/vdp/ai-connectors/instill-model",
-      },
-      {
-        text: "- Stability AI 🔥",
-        link: "/docs/vdp/ai-connectors/stability-ai",
-      },
-      {
-        text: "Blockchain Connector",
-        link: "/docs/vdp/blockchain-connectors/overview",
-      },
-      {
-        text: "- Numbers Protocol 🔥",
+        text: "Numbers Protocol",
         link: "/docs/vdp/blockchain-connectors/numbers-protocol",
       },
-      {
-        text: "Data Connector",
-        link: "/docs/vdp/data-connectors/overview",
-      },
-      {
-        text: "- Airbyte",
-        link: "/docs/vdp/data-connectors/airbyte",
-      },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "Data Connector",
+    collapsible: true,
+    items: [
+      { text: "Overview", link: "/docs/vdp/data-connectors/overview" },
+      { text: "Airbyte", link: "/docs/vdp/data-connectors/airbyte" },
     ],
     appType: "vdp",
   },
