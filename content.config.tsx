@@ -246,7 +246,7 @@ export function getLogoConfig(
 ): LogoConfig {
   if (appType === "vdp") {
     return {
-      element: <VdpLogo variant="expand" width={128} />,
+      element: <VdpLogo variant="expand" width={105} />,
       href: "/docs/vdp/welcome",
     };
   }
@@ -267,7 +267,7 @@ export function getLogoConfig(
 
   if (appType === "model") {
     return {
-      element: <ModelLogo variant="expand" width={128} />,
+      element: <ModelLogo variant="expand" width={105} />,
       href: "/docs/model/welcome",
     };
   }
