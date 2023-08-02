@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.37.2](https://github.com/instill-ai/instill.tech/compare/v1.37.1...v1.37.2) (2023-08-02)
+
+
+### Miscellaneous
+
+* update model and vdp logo ([#578](https://github.com/instill-ai/instill.tech/issues/578)) ([fa61edd](https://github.com/instill-ai/instill.tech/commit/fa61edd970268bd1a4bceec4dea1a684b6b5b621))
+
+
+### Documentation
+
+* **instill-cloud,vdp,model:** refactor outdated documentation ([#577](https://github.com/instill-ai/instill.tech/issues/577)) ([b6ab69a](https://github.com/instill-ai/instill.tech/commit/b6ab69af111f7e6976a34857a0f114832775cc4d))
+* **tutorial:** add tutorial on aigc x web3 ([#580](https://github.com/instill-ai/instill.tech/issues/580)) ([a0680df](https://github.com/instill-ai/instill.tech/commit/a0680df616365b912d28f1a6ea50612fe5328173))
+
 ## [1.37.1](https://github.com/instill-ai/instill.tech/compare/v1.37.0...v1.37.1) (2023-07-29)
 
 
