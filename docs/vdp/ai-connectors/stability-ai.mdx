@@ -13,12 +13,12 @@ The Stability AI AI connector enables you to connect the AI models served on the
 
 ## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/stabilityai/config/definitions.json).
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/stabilityai/config/seed/definitions.json).
 
 | Field     | Type   | Note                                                                                       |
 | :-------- | :----- | :----------------------------------------------------------------------------------------- |
 | api_key\* | string | Enter your Stability AI API key. To find your keys, go to your DreamStudio's Account page. |
-| task\*    | string | AI task type. Allowed tasks include "Text to Image".                                       |
+| task\*    | string | AI task type. Allowed tasks include "Text to Image" and "Image to Image".                  |
 | engine\*  | string | Stability AI Engine (model) to be used. The default is "stable-diffusion-xl-beta-v2-2-2".  |
 
 ### No-code setup
@@ -75,15 +75,81 @@ For other operations, please refer to the [VDP Protobufs](https://buf.build/inst
 
 ## Expected inputs and outputs
 
-When using the Numbers Protocol blockchain connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+When using the Stability AI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
 Here are the expected input and output data fields for the Stability AI AI connector.
 
 ### Expected input data fields
 
-| Input data field | Type | Description |
-| :--------------- | ---- | ----------- |
+| Input data field               | Type          | Description                                                                                                  |
+| :----------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------ |
+| images                         | array[image]  | This is only required for "Image to Image" task to specify initial image                                     |
+| texts                          | array[string] | This has the text prompt, required for all tasks.                                                            |
+| metadata.cfg_scale             | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.                       |
+| metadata.clip_guidance_preset  | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.                |
+| metadata.sampler               | string        | Which sampler to use for the diffusion process, optional for all tasks.                                      |
+| metadata.samples               | integer       | Number of images to generate, optional for all tasks.                                                        |
+| metadata.seed                  | integer       | Random noise seed, optional for all tasks.                                                                   |
+| metadata.steps                 | integer       | Number of diffusion steps to run, optional for all tasks.                                                    |
+| metadata.style_preset          | string        | To guide the image model towards a particular style, optional for all tasks.                                 |
+| metadata.weights               | array[number] | Weights for each of the prompts in texts, optional for all tasks.                                             |
+| metadata.height                | integer       | Height of the output image, optional but only for "Text to Image" task.                                      |
+| metadata.width                 | integer       | Width of the output image, optional but only for "Text to Image" task.                                       |
+| metadata.init_image_mode       | string        | Whether to use image_strength or step_schedule, optional but only for "Image to Image" task.                 |
+| metadata.image_strength        | number        | How much influence the init_image has on the diffusion process, optional but only for "Image to Image" task. |
+
+Example input data for Text to Image task:
+
+```json
+{
+  "texts": [
+    "prompt1",
+    "prompt2",
+    ...
+  ],
+  "metadata": {
+    "cfg_scale": 7.0,
+    "clip_guidance_preset": "SLOWER",
+    "samples": 3,
+    "style_preset": "cinematic",
+    "weights": [0.5, 0.7],
+    "height": 512,
+    "width": 512
+  }
+}
+```
+
+Example input data for Image to Image task:
+
+```json
+{
+  "images": [
+    {
+      "blob": "..."
+    }
+  ],
+  "metadata": {
+    "cfg_scale": 7.0,
+    "clip_guidance_preset": "SIMPLE",
+    "samples": 1,
+    "style_preset": "anime",
+    "init_image_mode": "IMAGE_STRENGTH",
+    "image_strength": 0.35
+  }
+}
+```
 
 ### Expected output data fields
 
-| Output data field | Type | Description |
-| :---------------- | ---- | ----------- |
+| Output data field | Type          | Description                                                  |
+| :---------------- | ------------- | ------------------------------------------------------------ |
+| images            | array[image]  | This will contain the output image as base64 encoded string. |
+
+Example output data:
+
+```json
+{
+  "images": [
+    "base64 string"
+  ]
+}
+```
