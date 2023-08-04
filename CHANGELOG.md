@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.37.3](https://github.com/instill-ai/instill.tech/compare/v1.37.2...v1.37.3) (2023-08-02)
+
+
+### Documentation
+
+* **tutorial:** remove out-dated connector setup ([#581](https://github.com/instill-ai/instill.tech/issues/581)) ([8d7a468](https://github.com/instill-ai/instill.tech/commit/8d7a4686f5857a7cf608a6d54da140a49b37947a))
+
 ## [1.37.2](https://github.com/instill-ai/instill.tech/compare/v1.37.1...v1.37.2) (2023-08-02)
 
 
