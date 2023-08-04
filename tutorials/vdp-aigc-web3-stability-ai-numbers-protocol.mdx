@@ -100,9 +100,9 @@ To set up the Start and End Operators:
 
 Instill Cloud offers a list of public AI Connectors, which are ready to use, eliminating the need to create accounts for third-party AI services.
 
-For this example, click **AI** on the left sidebar and drag the pre-created Stability AI AI Connector with ID **instill-stable-diffusion-xl-1024-v0-9** into the canvas.
-This connector is linked to the [Stable Diffusion XL 0.9](https://stability.ai/blog/sdxl-09-stable-diffusion) model,
-capable of generating hyper-realistic creations for films, television, music, and instructional videos, as well as offering advancements for design and industrial use.
+For this example, click **AI** on the left sidebar and drag the pre-created Stability AI AI Connector with ID **instill-stable-diffusion-xl-1024-v1-0** into the canvas.
+This connector is linked to the [Stable Diffusion XL 1.0](https://stability.ai/blog/stable-diffusion-sdxl-1-announcement) model,
+the flagship image model from Stability AI and the best open model for image generation.
 
 **Setup from scratch**
 
@@ -114,7 +114,7 @@ Then, proceed to create a Stability AI AI Connector on the Console from scratch 
 
    - Fill **API Key**. Following the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key
    - Click **Task** ▾ drop-down and choose **Text to Image**
-   - Click **Engine** ▾ drop-down and choose the AI model you want to use. check [here](https://platform.stability.ai/docs/features/api-parameters#engine) to get the model details. Let's use the same model **stable-diffusion-xl-1024-v0-9** (Stable Diffusion XL 0.9) as above
+   - Click **Engine** ▾ drop-down and choose the AI model you want to use. check [here](https://platform.stability.ai/docs/features/api-parameters#engine) to get the model details. Let's use the same model **stable-diffusion-xl-1024-v1-0** (Stable Diffusion XL 1.0) as above
    - A randomly unique ID is assigned to the connector, which you can modify to your preferred ID
 
 3. Click on the **Create** button and then **Connect** to utilize the connector
@@ -223,7 +223,7 @@ curl -X POST 'https://api-vdp.instill.tech/v1alpha/pipelines/aigc-web3/trigger' 
           "custom": {
             "digital_source_type": "trainedAlgorithmicMedia",
             "mining_preference": "notAllowed",
-            "generated_by": "Stability AI: Stable Diffusion XL 0.9",
+            "generated_by": "Stability AI: Stable Diffusion XL 1.0",
             "license": {
               "name": "CC BY-SA",
               "document": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -257,7 +257,7 @@ curl -X POST 'http://localhost:8080/v1alpha/pipelines/aigc-web3/trigger' \
           "custom": {
             "digital_source_type": "trainedAlgorithmicMedia",
             "mining_preference": "notAllowed",
-            "generated_by": "Stability AI: Stable Diffusion XL 0.9",
+            "generated_by": "Stability AI: Stable Diffusion XL 1.0",
             "license": {
               "name": "CC BY-SA",
               "document": "https://creativecommons.org/licenses/by-sa/4.0"
@@ -292,7 +292,7 @@ Please be patient as the request may take a a dozen seconds to process. Once com
 {
     "outputs": [
         {
-            "data_mapping_index": "01H6Z2NYFN3M7331A3WPKHFAZV",
+            "data_mapping_index": "01H6Z3ED5JKE5P7D00667XE5R6",
             "texts": [],
             "images": [
                 {
@@ -301,10 +301,10 @@ Please be patient as the request may take a a dozen seconds to process. Once com
             "structured_data": null,
             "metadata": {
                 "asset_cids": [
-                    "bafybeiewttrmbdc2jvdh2j5azxqqhbqhpjssj42nzdfjzczqtwnwwketsa"
+                    "bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia"
                 ],
                 "asset_urls": [
-                    "https://nftsearch.site/asset-profile?cid=bafybeiewttrmbdc2jvdh2j5azxqqhbqhpjssj42nzdfjzczqtwnwwketsa"
+                    "https://nftsearch.site/asset-profile?cid=bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia"
                 ],
                 "pipeline": {
                     "id": "aigc-web3",
@@ -319,9 +319,9 @@ Please be patient as the request may take a a dozen seconds to process. Once com
 ```
 
 The generated assets can be easily accessed and explored using the [Numbers Search Engine](https://nftsearch.site/).
-To view the Web3 asset created above, navigate to the [link](https://nftsearch.site/asset-profile?cid=bafybeiewttrmbdc2jvdh2j5azxqqhbqhpjssj42nzdfjzczqtwnwwketsa) in `asset_urls`.
+To view the Web3 asset created above, navigate to the [link](https://nftsearch.site/asset-profile?cid=bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia) in `asset_urls`.
 
-By clicking on the [Asset ID](https://ipfs-pin.numbersprotocol.io/ipfs/bafkreihseqnog43ylusn7rprkyzioafvf44bu57hwxq2v6x6yn7lmezhwm), you can see the the asset creator, license details and information about the prompt, model and pipeline for creating this image.
+By clicking on the [Asset ID](https://ipfs-pin.numbersprotocol.io/ipfs/bafkreieeoz7jdioc6o7folyecsetj4tfpa6cotyaw2p43mnavhv4sotuoq), you can see the the asset creator, license details and information about the prompt, model and pipeline for creating this image.
 This ensures a traceable content history for the asset.
 
 <ZoomableImg
