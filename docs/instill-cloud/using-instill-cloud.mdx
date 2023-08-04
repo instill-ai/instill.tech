@@ -35,7 +35,7 @@ To set up a Trigger operator,
 Instill Cloud provides a list of public AI connectors (under **Instill Connectors** section) that are ready to use,
 so you don't need to create accounts for third-party AI services.
 
-For this example, click the **AI** and drag a Stability AI AI connector with ID **instill-stable-diffusion-xl-1024-v0-9** into the canvas.
+For this example, click the **AI** and drag a Stability AI AI connector with ID **instill-stable-diffusion-xl-1024-v1-0** into the canvas.
 
 **Step 3: Set up a Response Operator**
 
@@ -50,15 +50,15 @@ To set up a Response operator,
 
 We are almost there! The final step is to link the components, and your pipeline will be ready to go:
 
-1. Link the "texts" and "metadata" outputs of **trigger** component with the corresponding inputs of **instill-stable-diffusion-xl-1024-v0-9** component
-2. Link the "images" and "metadata" output of **instill-stable-diffusion-xl-1024-v0-9** component to the corresponding input of **response** component
+1. Link the "texts" and "metadata" outputs of **trigger** component with the corresponding inputs of **instill-stable-diffusion-xl-1024-v1-0** component
+2. Link the "images" and "metadata" output of **instill-stable-diffusion-xl-1024-v1-0** component to the corresponding input of **response** component
 3. Link the "texts" output of **trigger** component to the corresponding input of **response** component
 4. The pipeline will be assigned a randomly generated unique ID. You can change it on the right panel, e.g., "aigc". Optionally, you can add a description
 5. Click **Create** to create the pipeline, and the click **Activate** to activate it
 
 <ZoomableImg
   src="/docs-assets/vdp/aigc-pipeline.png"
-  alt="Your first pipeline using Stability AI AI connector (Stable Diffusion XL 0.9)"
+  alt="Your first pipeline using Stability AI AI connector (Stable Diffusion XL 1.0)"
 />
 
 🎉 Congratulations!
@@ -150,7 +150,7 @@ To obtain the generated image, decode the "images" field of the response from Ba
 
 <ZoomableImg
   src="/docs-assets/vdp/aigc-pipeline-output.png"
-  alt="Generated sample using Stability AI AI connector (Stable Diffusion XL 0.9)"
+  alt="Generated sample using Stability AI AI connector (Stable Diffusion XL 1.0)"
 />
 
 ## Using Model on Instill Cloud
