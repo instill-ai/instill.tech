@@ -17,7 +17,7 @@ To see an example of a Web3 asset created using this connector, click [here](htt
 
 <ZoomableImg
   src="/docs-assets/vdp/numbers-web3-asset-example.png"
-  alt="Generated Web3 asset sample using Stability AI AI connector (Stable Diffusion XL 0.9) on Numbers Search Engine using Numbers blockchain connector"
+  alt="Generated Web3 asset sample using Stability AI AI connector (Stable Diffusion XL) on Numbers Search Engine using Numbers blockchain connector"
 />
 
 ## Release stage
@@ -100,17 +100,19 @@ Here are the expected input and output data fields for the Numbers Protocol bloc
 
 ### Expected input data fields
 
-| Input data field                         | Type          | Description                                                                                                 |
-| :--------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
-| images\*                                 | array[image]  | Image data to be uploaded to the blockchain                                                                 |
-| texts                                    | array[string] | Add to the asset metadata under "texts" field if `metadata_texts` is set to true                            |
-| metadata.numbers.capture_token           | string        | Fill this field to overwrite the connector's original capture token                                         |
-| metadata.numbers.asset_creator           | string        | Name of the asset creator                                                                                   |
-| metadata.numbers.abstract                | string        | A summary or abstract of the asset to be created                                                            |
-| metadata.numbers.custom.creator_wallet   | string        | Wallet address of the asset creator                                                                         |
-| metadata.numbers.custom.generated_by     | string        | The AI model used to generate the content                                                                   |
-| metadata.numbers.custom.license.name     | string        | Your preferred license for your asset, e.g., "CC BY-SA"                                                     |
-| metadata.numbers.custom.license.document | string        | URL of the license file, e.g., [url](https://creativecommons.org/licenses/by-sa/4.0) for "CC BY-SA" license |
+| Input data field                            | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :------------------------------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| images\*                                    | array[image]  | Image data to be uploaded to the blockchain                                                                                                                                                                                                                                                                                                                                                                      |
+| texts                                       | array[string] | Add to the asset metadata under "texts" field if `metadata_texts` is set to true                                                                                                                                                                                                                                                                                                                                 |
+| metadata.numbers.capture_token              | string        | Fill this field to overwrite the connector's original capture token                                                                                                                                                                                                                                                                                                                                              |
+| metadata.numbers.asset_creator              | string        | Name of the asset creator                                                                                                                                                                                                                                                                                                                                                                                        |
+| metadata.numbers.abstract                   | string        | A summary or abstract of the asset to be created                                                                                                                                                                                                                                                                                                                                                                 |
+| metadata.numbers.custom.creator_wallet      | string        | Wallet address of the asset creator                                                                                                                                                                                                                                                                                                                                                                              |
+| metadata.numbers.custom.digital_source_type | string        | For AI-generated images or videos, the value should be "trainedAlgorithmicMedia". Check [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/digitalsourcetype) for other supported types                                                                                                                                                                         |
+| metadata.numbers.custom.mining_preference   | string        | This is designates the selection made by the asset creators or licensed owners to decide if the asset is suitable for inclusion in a data mining or AI/ML training workflow. Set it to "notAllowed" if the image is not authorized to be used as AI training data. Check [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/miningpreference) for other options |
+| metadata.numbers.custom.generated_by        | string        | The AI model used to generate the content                                                                                                                                                                                                                                                                                                                                                                        |
+| metadata.numbers.custom.license.name        | string        | Your preferred license for your asset, e.g., "CC BY-SA"                                                                                                                                                                                                                                                                                                                                                          |
+| metadata.numbers.custom.license.document    | string        | URL of the license file, e.g., [url](https://creativecommons.org/licenses/by-sa/4.0) for "CC BY-SA" license                                                                                                                                                                                                                                                                                                      |
 
 Example input data:
 
@@ -126,7 +128,9 @@ Example input data:
       "asset_creator": "Xiaofei Du",
       "abstract": "Xiaofei's Web3 creation",
       "custom": {
-        "generated_by": "Stability AI's Stable Diffusion XL 0.9",
+        "digital_source_type": "trainedAlgorithmicMedia",
+        "mining_preference": "notAllowed",
+        "generated_by": "Stability AI's Stable Diffusion XL 1.0",
         "license": {
           "name": "CC BY-SA",
           "document": "https://creativecommons.org/licenses/by-sa/4.0"

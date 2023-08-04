@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to set up a OpenAI AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
 ---
 
-The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **Text to Image** AI task.
+The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **Text Generation**, **Text Embeddings**, and **Speech Recognition** AI tasks.
 
 ## Release stage
 
@@ -13,22 +13,21 @@ The OpenAI AI connector enables you to connect the AI models served on the OpenA
 
 ## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/definitions.json).
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/seed/definitions.json).
 
-| Field     | Type   | Note                                                                                 |
-| :-------- | :----- | :----------------------------------------------------------------------------------- |
-| api_key\* | string | Enter your OpenAI API key. To find your keys, go to your DreamStudio's Account page. |
-| task\*    | string | AI task type. Allowed tasks include "Text to Image".                                 |
-| engine\*  | string | OpenAI Engine (model) to be used. The default is "stable-diffusion-xl-beta-v2-2-2".  |
+| Field     | Type   | Note                                                                                            |
+| :-------- | :----- | :---------------------------------------------------------------------------------------------- |
+| api_key\* | string | Enter your OpenAI API key. To find your keys, go to your OpenAI's Account page.                 |
+| task\*    | string | AI task type. Allowed tasks include "Text Generation", "Text Embeddings", "Speech Recognition". |
 
 ### No-code setup
 
 <InfoBlock type="info" title="Prerequisites">
 
 To create a OpenAI AI connector, you'll first need to create a
-OpenAI account by visiting [dreamstudio.ai](https://dreamstudio.ai).
-Access to your API keys can then be managed through DreamStudio's Account
-page. All new users are granted 25 free credits upon creating an account.
+OpenAI account by visiting [openai.com](https://openai.com).
+Access to your API keys can then be managed through OpenAI's Account
+page.
 
 👉 Alternatively, you can try out [Instill Cloud](https://console.instill.tech)
 to use our pre-created OpenAI AI connector for FREE during Open Alpha.
@@ -43,9 +42,9 @@ To create a OpenAI AI connector:
 4. Click the **AI Connector Type** ▾ drop-down and choose **OpenAI**
 5. Fill the following information and click **Set up**
 
-   - Fill **API Key**. Follow the OpenAI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key
-   - Click **Task** ▾ drop-down and choose **Text to Image**
-   - Click **Engine** ▾ drop-down and choose the AI model you want to use. check [here](https://platform.stability.ai/docs/features/api-parameters#engine) to get the model details
+   - Fill **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key
+   - Click **Task** ▾ drop-down and choose the task you would like to use, e.g., **Text Generation**
+   - Click the **Model** ▾ drop-down and choose the model you want to use, e.g., gpt-3.5-turbo, and fill other optional fields
 
 6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
 
@@ -53,37 +52,121 @@ To create a OpenAI AI connector:
 
 1. Create a OpenAI AI connector
 
-```shellscript cURL
+<CH.Code>
+```shellscript cURL(text-generation)
 curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-stable-diffusion-xl-1024-v0-9",
-  "connector_definition_name": "connector-definitions/ai-stability-ai",
+  "id": "my-gpt",
+  "connector_definition_name": "connector-definitions/ai-openai",
   "configuration": {
-    "api_key": "<stability-ai-api-key>",
-    "task": "Text to Image",
-    "engine": "stable-diffusion-xl-1024-v0-9"
+    "api_key": "<open-ai-api-key>",
+    "task": "Text Generation",
+    "model": "gpt-3.5-turbo",
+    "system_message": "You are a helpful assistant.",
+    "temperature": 1,
+    "n": 1
   }
 }'
 ```
-
-2. Connect the connector `my-stable-diffusion-xl-1024-v0-9`
-
-```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors/my-stable-diffusion-xl-1024-v0-9/connect
+```shellscript cURL(text-embeddings)
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "my-embeddings",
+  "connector_definition_name": "connector-definitions/ai-openai",
+  "configuration": {
+    "api_key": "<open-ai-api-key>",
+    "task": "Text Embeddings",
+    "model": "text-embedding-ada-002"
+  }
+}'
 ```
+```shellscript cURL(speech-recognition)
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "my-whisper",
+  "connector_definition_name": "connector-definitions/ai-openai",
+  "configuration": {
+    "api_key": "<open-ai-api-key>",
+    "task": "Speech Recognition",
+    "model": "whisper-1"
+  }
+}'
+```
+</ CH.Code>
+
+1. Connect the connector
+
+<CH.Code>
+
+```shellscript cURL(text-generation)
+curl -X POST http://localhost:8080/v1alpha/connectors/my-gpt/connect
+```
+
+```shellscript cURL(text-embeddings)
+curl -X POST http://localhost:8080/v1alpha/connectors/my-embeddings/connect
+```
+
+```shellscript cURL(speech-recognition)
+curl -X POST http://localhost:8080/v1alpha/connectors/my-whisper/connect
+```
+
+</ CH.Code>
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
 
 ## Expected inputs and outputs
 
-When using the Numbers Protocol blockchain connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+When using the OpenAI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
 Here are the expected input and output data fields for the OpenAI AI connector.
 
 ### Expected input data fields
 
-| Input data field | Type | Description |
-| :--------------- | ---- | ----------- |
+| Input data field | Type          | Description                                                                        |
+| :--------------- | ------------- | ---------------------------------------------------------------------------------- |
+| texts            | array[string] | This has the text prompt, required for "Text Generation", "Text Embeddings" tasks. |
+| audios           | array[audio]  | This has the audio recording, required for "Speech Recognition" task.              |
+
+Example input data for **Text Generation** and **Text Embeddings** task:
+
+```json
+{
+  "texts": ["..."]
+}
+```
+
+Example input data for Speech Recognition task:
+
+```json
+{
+  "audios": ["<base64 encoded audio>"]
+}
+```
 
 ### Expected output data fields
 
-| Output data field | Type | Description |
-| :---------------- | ---- | ----------- |
+| Output data field | Type          | Description                                                                                |
+| :---------------- | ------------- | ------------------------------------------------------------------------------------------ |
+| texts             | array[string] | This has the output text, applicable for "Text Generation" and "Speech Recognition" tasks. |
+| structured_data   | object        | This has the embeddings object, applicable only for "Text Embeddings" task.                |
+
+Example output data for **Text Generation** and **Speech Recognition** task:
+
+```json
+{
+  "texts": ["..."]
+}
+```
+
+Example output data for **Text Embeddings** task:
+
+```json
+{
+  "structured_data": {
+      "object": "embedding",
+      "embedding": [
+        0.0023064255,
+        -0.009327292,
+        .... (1536 floats total for ada-002)
+        -0.0028842222,
+      ],
+      "index": 0
+    }
+}
+```

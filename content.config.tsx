@@ -102,6 +102,7 @@ const SECTIONS: SidebarSections[] = [
       { text: "Overview", link: "/docs/vdp/ai-connectors/overview" },
       { text: "Instill Model", link: "/docs/vdp/ai-connectors/instill-model" },
       { text: "Stability AI", link: "/docs/vdp/ai-connectors/stability-ai" },
+      { text: "Open AI", link: "/docs/vdp/ai-connectors/openai" },
     ],
     appType: "vdp",
   },
