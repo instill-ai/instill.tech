@@ -127,7 +127,7 @@ Example input data for **Text Generation** and **Text Embeddings** task:
 
 ```json
 {
-  "texts": ["..."]
+  "texts": ["Can you prove the existence of God?"]
 }
 ```
 
@@ -135,7 +135,11 @@ Example input data for Speech Recognition task:
 
 ```json
 {
-  "audios": ["<base64 encoded audio>"]
+  "audios": [
+    {
+      "url": "http://englishus.voiceoversamples.com/ENG_US_M_KevinS.mp3"
+    }
+  ]
 }
 ```
 
@@ -150,7 +154,7 @@ Example output data for **Text Generation** and **Speech Recognition** task:
 
 ```json
 {
-  "texts": ["..."]
+  "texts": ["Over the past 32 years, the university of Florida..."]
 }
 ```
 
