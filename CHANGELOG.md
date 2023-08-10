@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.37.5](https://github.com/instill-ai/instill.tech/compare/v1.37.4...v1.37.5) (2023-08-10)
+
+
+### Miscellaneous
+
+* update prompt ([#586](https://github.com/instill-ai/instill.tech/issues/586)) ([322294b](https://github.com/instill-ai/instill.tech/commit/322294b894ef2493291cee5a9a39160c3ec60e0b))
+
 ## [1.37.4](https://github.com/instill-ai/instill.tech/compare/v1.37.3...v1.37.4) (2023-08-04)
 
 
