@@ -132,7 +132,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white px-8 py-4 dark:bg-instillGrey95"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95 dark:bg-opacity-80"
         )}
       >
         {!nav.logo && !nav.title ? null : (
@@ -152,17 +152,17 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         )}
 
         <div className="flex flex-1 flex-row">
-          <div className="flex flex-grow flex-row justify-end xl:mr-5">
+          <div className="flex flex-grow flex-row justify-end">
             {desktopView}
             {mobileView}
-            <div className="my-auto mr-5">
+            <div className="mx-5 my-auto">
               <DocSearch
                 appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
                 apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
                 indexName="instill"
               />
             </div>
-            <div className="my-auto ml-4">
+            <div className="my-auto">
               <ThemeToggle />
             </div>
           </div>

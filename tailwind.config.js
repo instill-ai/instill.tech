@@ -100,13 +100,14 @@ module.exports = {
             h1: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              fontSize: "48px",
+              fontSize: "38px",
+              lineHeight: "1.4",
               letterSpacing: theme("letterSpacing.tight"),
             },
             h2: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              fontSize: "36px",
+              fontSize: "24px",
               borderTopWidth: "1px",
               borderStyle: "solid",
               paddingTop: "20px",
@@ -116,20 +117,17 @@ module.exports = {
             h3: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "600",
-              fontSize: "28px",
-              lineHeight: "28px",
+              fontSize: "19px",
             },
             h4: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "500",
-              fontSize: "24px",
-              lineHeight: "20px",
+              fontSize: "18px",
             },
             h5: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "500",
-              fontSize: "20px",
-              lineHeight: "20px",
+              fontSize: "18px",
             },
             code: {
               paddingTop: "1.5px",
@@ -149,14 +147,14 @@ module.exports = {
               content: '""',
             },
             p: {
-              fontSize: "18px",
+              fontSize: "16px",
               margin: "1.25rem 0px",
             },
             "ul > li": {
-              fontSize: "18px",
+              fontSize: "16px",
             },
             "ol > li": {
-              fontSize: "18px",
+              fontSize: "16px",
             },
 
             // We have implemented rehype-autolink-headings that will wrap a tag in headings

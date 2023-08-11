@@ -15,7 +15,7 @@ export const ArticleNavigationButton = ({
   return (
     <Link
       href={link}
-      className="flex flex-col gap-y-1.5 rounded-md border p-2.5 transition duration-300 ease-in-out hover:border-instillBlue50"
+      className="flex flex-col gap-y-1.5 rounded-[6px] border p-2.5 transition duration-300 ease-in-out hover:border-instillBlue50"
     >
       <p
         className={cn(
