@@ -167,7 +167,7 @@ const DocsPage: FC<DocsPageProps> & {
       />
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
-          <h1 className="mb-10 font-sans text-5xl font-semibold text-black dark:text-instillGrey15">
+          <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
             {mdxSource.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
