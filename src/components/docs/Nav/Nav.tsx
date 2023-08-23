@@ -126,7 +126,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95 dark:bg-opacity-80"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (

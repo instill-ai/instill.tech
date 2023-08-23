@@ -1,16 +1,11 @@
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
-import Link from "next/link";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
-  footerViewHeight: number;
 };
 
-export const LeftSidebar = ({
-  leftSidebar,
-  footerViewHeight,
-}: LeftSidebarProps) => {
+export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
   return (
     <>
       <style>
@@ -22,11 +17,10 @@ export const LeftSidebar = ({
 
         .left-sidebar {
           max-width: var(--docs-left-sidebar-max-width);
-          height: calc(100vh - ${footerViewHeight}px)
         }
       `}
       </style>
-      <div className="left-sidebar flex h-screen w-full flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
+      <div className="left-sidebar flex h-screen w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
         {leftSidebar.sections.map((section) => (
           <div key={section.text} className="w-full">
             <Section

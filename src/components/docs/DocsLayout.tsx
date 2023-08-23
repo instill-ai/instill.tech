@@ -52,12 +52,12 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   //       {`
   //         @media screen and (min-width: 1440px) {
   //           .docs-left-sidebar {
-  //             width: calc((100vw - 1140px + 300px) / 2);
+  //             width: calc((100vw - 1540px + 300px) / 2);
   //           }
 
   //           .docs-content {
-  //             margin-left: calc((100vw - 1140px + 300px) / 2);
-  //             margin-right: calc((100vw - 1140px) / 2);
+  //             margin-left: calc((100vw - 1540px + 300px) / 2);
+  //             margin-right: calc((100vw - 1540px) / 2);
   //             max-width: var(--docs-content-max-width);
   //           }
   //         }
@@ -80,6 +80,12 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   //     */}
 
   //     <main className="flex flex-col">
+  //       <div>
+  //         <Nav
+  //           setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+  //           nav={docsConfigration.nav}
+  //         />
+  //       </div>
   //       <div className="max-w-screen grid min-h-screen grid-flow-col grid-cols-12 bg-white dark:bg-instillGrey95 max:block">
   //         <aside
   //           className={cn(
@@ -108,13 +114,7 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   //         The main content of the documentation.
   //       */}
 
-  //         <div className="docs-content col-span-12 flex flex-col pb-40 md:col-span-9 max:col-span-12">
-  //           <Nav
-  //             setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-  //             nav={docsConfigration.nav}
-  //           />
-  //           {children}
-  //         </div>
+  //         {children}
   //       </div>
   //       {/*
   //         In order to have correct stacking context, we wrap the footer in a flex-col position
@@ -128,51 +128,35 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   // );
 
   return (
-    <>
-      {/* <style jsx>
-        {`
-          @media screen and (min-width: 1440px) {
-            .docs-left-sidebar {
-              width: calc((100vw - 1140px + 300px) / 2);
-            }
+    <div className="flex min-h-screen flex-col">
+      <Nav
+        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+        nav={docsConfigration.nav}
+      />
 
-            .docs-content {
-              margin-left: calc((100vw - 1140px + 300px) / 2);
-              margin-right: calc((100vw - 1140px) / 2);
-              max-width: var(--docs-content-max-width);
-            }
-          }
-        `}
-      </style> */}
+      <div className="flex flex-grow dark:bg-instillGrey95">
+        <aside
+          // className={cn(
+          //   "docs-left-sidebar top-18 fixed border-r border-gray-300"
+          // )}
 
-      <div className="flex min-h-screen flex-col">
-        {/* <header className="sticky bg-white"> */}
-        <Nav
-          setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-          nav={docsConfigration.nav}
-        />
-        {/* </header> */}
+          className={cn(
+            "docs-left-sidebar top-18 fixed z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
+            leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
+          )}
+        >
+          <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
+        </aside>
 
-        <div className="flex flex-grow">
-          <aside
-            className={cn(
-              "docs-left-sidebar relative top-0 z-10 transform bg-instillGrey05 transition-transform dark:bg-instillGrey90 md:col-span-3 md:flex md:transform-none",
-              leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
-            )}
-          >
-            <LeftSidebar
-              leftSidebar={docsConfigration.sidebar.leftSidebar}
-              footerViewHeight={footerViewHeight}
-            />
-          </aside>
-
-          {children}
-        </div>
-
-        <footer className="mt-auto bg-white">
-          <Footer />
-        </footer>
+        <div className="ml-60">{children}</div>
       </div>
-    </>
+
+      {leftSidebarIsOpen ? (
+        <div
+          onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
+          className="fixed bottom-0 left-0 right-0 top-0 z-20 bg-instillGrey70 opacity-80"
+        />
+      ) : null}
+    </div>
   );
 };

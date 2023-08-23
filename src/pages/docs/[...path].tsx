@@ -207,7 +207,7 @@ const DocsPage: FC<DocsPageProps> & {
           </div>
         </div>
 
-        <aside className="hidden xl:col-span-2 xl:block">
+        <aside className="hidden pb-10 xl:col-span-2 xl:block">
           <RightSidebar
             githubEditUrl={
               "https://github.com/instill-ai/instill.tech/edit/main" +
