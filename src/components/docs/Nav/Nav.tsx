@@ -126,7 +126,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
+          "nav fixed top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (
@@ -158,7 +158,10 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           </div>
         </div>
       </nav>
-      <SubNav marginBottom={null} setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
+      <SubNav
+        marginBottom={"my-4"}
+        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+      />
     </>
   );
 };
