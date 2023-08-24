@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import cn from "clsx";
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
@@ -15,32 +15,11 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const router = useRouter();
   const { isDark } = useInstillAICtx();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
-  const [footerViewHeight, setFooterViewHeight] = useState(0);
 
   const docsConfigration = docsConfig(
     getApplicationType(router.asPath),
     isDark
   );
-
-  //  the bellow useEffect is added to calculated the sidebar height acording to the footer vissible in view screen
-  useEffect(() => {
-    const handleScroll = () => {
-      const footerElement = document.getElementById("footer");
-      if (footerElement) {
-        const { top, height } = footerElement.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const visiblePortion = Math.max(
-          0,
-          Math.min(height, windowHeight - top)
-        );
-        setFooterViewHeight(visiblePortion);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
