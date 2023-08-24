@@ -158,7 +158,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           </div>
         </div>
       </nav>
-      <SubNav marginBottom="mb-5" setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
+      <SubNav marginBottom={null} setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
     </>
   );
 };

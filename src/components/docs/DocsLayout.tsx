@@ -128,35 +128,50 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   // );
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Nav
-        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
-        nav={docsConfigration.nav}
-      />
+    <>
+      <style jsx>
+        {`
+          @media screen and (min-width: 1440px) and (max-width: 1599px) {
+            .docs-content {
+              margin-left: calc((100vw - 1340px + 300px) / 2);
+              margin-right: calc((100vw - 1340px) / 2);
+            }
+          }
+          @media screen and (min-width: 1600px) and (max-width: 2000px) {
+            .docs-content {
+              margin-left: calc((100vw - 1540px + 300px) / 2);
+              margin-right: calc((100vw - 1540px) / 2);
+            }
+          }
+        `}
+      </style>
 
-      <div className="flex flex-grow dark:bg-instillGrey95">
-        <aside
-          // className={cn(
-          //   "docs-left-sidebar top-18 fixed border-r border-gray-300"
-          // )}
-
-          className={cn(
-            "docs-left-sidebar top-18 fixed z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:col-span-3 md:flex md:transform-none max:fixed",
-            leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
-          )}
-        >
-          <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
-        </aside>
-
-        <div className="ml-60">{children}</div>
-      </div>
-
-      {leftSidebarIsOpen ? (
-        <div
-          onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
-          className="fixed bottom-0 left-0 right-0 top-0 z-20 bg-instillGrey70 opacity-80"
+      <div className="flex min-h-screen flex-col">
+        <Nav
+          setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+          nav={docsConfigration.nav}
         />
-      ) : null}
-    </div>
+
+        <div className="flex flex-grow dark:bg-instillGrey95">
+          <aside
+            className={cn(
+              "docs-left-sidebar fixed top-0 z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:top-0 md:col-span-3 md:flex md:transform-none xl:top-[72px] max:fixed",
+              leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
+            )}
+          >
+            <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
+          </aside>
+
+          <div className="docs-content pt-8">{children}</div>
+        </div>
+
+        {leftSidebarIsOpen ? (
+          <div
+            onClick={() => setLeftSidebarIsOpen((prev) => !prev)}
+            className="fixed bottom-0 left-0 right-0 top-0 z-20 bg-instillGrey70 opacity-80"
+          />
+        ) : null}
+      </div>
+    </>
   );
 };

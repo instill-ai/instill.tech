@@ -14,13 +14,19 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
           min-height: var(--docs-left-sidebar-logo-height);
           margin-bottom: var(--docs-left-sidebar-logo-margin-bottom)
         }
-
         .left-sidebar {
           max-width: var(--docs-left-sidebar-max-width);
+          height: calc(100vh - 72px)
+        }
+
+        @media screen and (max-width: 768px){
+          .left-sidebar {
+            height : 100vh
+          }
         }
       `}
       </style>
-      <div className="left-sidebar flex h-screen w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
+      <div className="left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
         {leftSidebar.sections.map((section) => (
           <div key={section.text} className="w-full">
             <Section
