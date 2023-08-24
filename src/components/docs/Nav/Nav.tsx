@@ -148,23 +148,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           />
         </div>
 
-        {/* <div className="my-auto">
-          <Select.Root>
-            <Select.Trigger className="w-full !border-0">
-              <Select.Value placeholder={items.right[0].key} />
-            </Select.Trigger>
-            <Select.Content className="bg-white">
-              <Select.Group>
-                {items.right.map((item) => (
-                  <Select.Item value={item.key} key={item.key}>
-                    <Item key={item.key} item={item} />
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            </Select.Content>
-          </Select.Root>
-        </div> */}
-
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end">
             {desktopView}
