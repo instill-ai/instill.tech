@@ -16,7 +16,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         }
         .left-sidebar {
           max-width: var(--docs-left-sidebar-max-width);
-          height: calc(100vh - 72px)
+          height: calc(100vh - 65px)
         }
 
         @media screen and (max-width: 768px){

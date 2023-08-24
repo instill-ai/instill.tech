@@ -6,7 +6,7 @@ import { DocSearch } from "@docsearch/react";
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
+import { CrossIcon, MenuIcon, Select } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export type NavProps = {
@@ -126,7 +126,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (
@@ -146,6 +146,23 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
             indexName="instill"
           />
+        </div>
+
+        <div className="my-auto">
+          <Select.Root>
+            <Select.Trigger className="w-full !border-0">
+              <Select.Value placeholder={items.right[0].key} />
+            </Select.Trigger>
+            <Select.Content className="bg-white">
+              <Select.Group>
+                {items.right.map((item) => (
+                  <Select.Item value={item.key} key={item.key}>
+                    <Item key={item.key} item={item} />
+                  </Select.Item>
+                ))}
+              </Select.Group>
+            </Select.Content>
+          </Select.Root>
         </div>
 
         <div className="flex flex-1 flex-row">

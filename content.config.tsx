@@ -6,6 +6,7 @@ import {
   Logo,
   ModelLogo,
   VdpLogo,
+  Logos,
 } from "@instill-ai/design-system";
 
 const SITE = {
@@ -250,28 +251,21 @@ export function getLogoConfig(
 ): LogoConfig {
   if (appType === "vdp") {
     return {
-      element: <VdpLogo variant="expand" width={105} />,
+      element: <Logos.VDPSquare className="h-12 w-12" />,
       href: "/docs/vdp/welcome",
     };
   }
 
   if (appType === "instill-cloud") {
     return {
-      element: (
-        <Logo
-          variant={
-            isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"
-          }
-          width={180}
-        />
-      ),
+      element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/docs/instill-cloud/welcome",
     };
   }
 
   if (appType === "model") {
     return {
-      element: <ModelLogo variant="expand" width={105} />,
+      element: <Logos.MDLSquare className="h-12 w-12" />,
       href: "/docs/model/welcome",
     };
   }

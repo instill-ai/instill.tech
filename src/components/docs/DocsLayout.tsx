@@ -155,7 +155,7 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
         <div className="flex flex-grow dark:bg-instillGrey95">
           <aside
             className={cn(
-              "docs-left-sidebar fixed top-0 z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:top-0 md:col-span-3 md:flex md:transform-none xl:top-[72px] max:fixed",
+              "docs-left-sidebar fixed top-0 z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:bg-instillGrey95 md:sticky md:top-0 md:col-span-3 md:flex md:transform-none xl:top-[65px] max:fixed",
               leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
             )}
           >
