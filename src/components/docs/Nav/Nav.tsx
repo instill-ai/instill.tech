@@ -148,7 +148,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           />
         </div>
 
-        <div className="my-auto">
+        {/* <div className="my-auto">
           <Select.Root>
             <Select.Trigger className="w-full !border-0">
               <Select.Value placeholder={items.right[0].key} />
@@ -163,7 +163,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               </Select.Group>
             </Select.Content>
           </Select.Root>
-        </div>
+        </div> */}
 
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end">
