@@ -6,7 +6,7 @@ import { DocSearch } from "@docsearch/react";
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
+import { CrossIcon, MenuIcon, Select } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export type NavProps = {
@@ -122,53 +122,43 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           .nav {
             min-height: var(--docs-nav-height);
           }
-
-          @media screen and (min-width: 768px) {
-            .nav {
-              margin-bottom: var(--docs-nav-margin-bottom);
-            }
-          }
         `}
       </style>
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95 dark:bg-opacity-80"
+          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
         {!nav.logo && !nav.title ? null : (
-          <div className="logo mr-4 flex md:hidden">
+          <div className="logo mr-4 flex">
             <Link
-              href="/docs/instill-cloud/welcome"
+              href={nav.logo ? nav.logo?.href : ""}
               className="flex flex-row gap-x-3"
             >
               {nav.logo ? nav.logo.element : null}
-              {nav.title ? (
-                <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
-                  {nav.title}
-                </h1>
-              ) : null}
             </Link>
           </div>
         )}
+
+        <div className="mx-5 my-auto">
+          <DocSearch
+            appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
+            apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
+            indexName="instill"
+          />
+        </div>
 
         <div className="flex flex-1 flex-row">
           <div className="flex flex-grow flex-row justify-end">
             {desktopView}
             {mobileView}
             <div className="mx-5 my-auto">
-              <DocSearch
-                appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
-                apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
-                indexName="instill"
-              />
-            </div>
-            <div className="my-auto">
               <ThemeToggle />
             </div>
           </div>
         </div>
       </nav>
-      <SubNav marginBottom="mb-5" setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
+      <SubNav marginBottom={null} setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
     </>
   );
 };

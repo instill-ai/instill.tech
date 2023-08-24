@@ -166,7 +166,7 @@ const DocsPage: FC<DocsPageProps> & {
         jsonLd={null}
       />
       <div className="grid grid-cols-8">
-        <div className="col-span-8 px-6 xl:col-span-6 xl:px-8 max:px-16">
+        <div className="col-span-8 px-6 pb-10 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
             {mdxSource.frontmatter
               ? mdxSource.frontmatter.title
@@ -207,7 +207,7 @@ const DocsPage: FC<DocsPageProps> & {
           </div>
         </div>
 
-        <aside className="hidden xl:col-span-2 xl:block">
+        <aside className="hidden pb-10 xl:col-span-2 xl:block">
           <RightSidebar
             githubEditUrl={
               "https://github.com/instill-ai/instill.tech/edit/main" +

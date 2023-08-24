@@ -1,6 +1,13 @@
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType } from "@/types/instill";
-import { Logo, ModelLogo, VdpLogo } from "@instill-ai/design-system";
+import {
+  DiscordIcon,
+  GitHubIcon,
+  Logo,
+  ModelLogo,
+  VdpLogo,
+  Logos,
+} from "@instill-ai/design-system";
 
 const SITE = {
   title: "Documentation",
@@ -244,28 +251,21 @@ export function getLogoConfig(
 ): LogoConfig {
   if (appType === "vdp") {
     return {
-      element: <VdpLogo variant="expand" width={105} />,
+      element: <Logos.VDPSquare className="h-12 w-12" />,
       href: "/docs/vdp/welcome",
     };
   }
 
   if (appType === "instill-cloud") {
     return {
-      element: (
-        <Logo
-          variant={
-            isDark ? "ColourLogomarkWhiteType" : "ColourLogomarkBlackType"
-          }
-          width={180}
-        />
-      ),
+      element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/docs/instill-cloud/welcome",
     };
   }
 
   if (appType === "model") {
     return {
-      element: <ModelLogo variant="expand" width={105} />,
+      element: <Logos.MDLSquare className="h-12 w-12" />,
       href: "/docs/model/welcome",
     };
   }
@@ -295,34 +295,84 @@ export function getSideBar(appType: InstillAppType, isDark: boolean): Sidebar {
 export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
   return {
     logo: getLogoConfig(appType, isDark),
+    title: appType,
     items: [
+      {
+        key: "product-website-home",
+        to: "/",
+        className: "",
+        position: "right",
+        label: "Home",
+      },
       {
         key: "docs-nav-instill-cloud-welcome",
         to: "/docs/instill-cloud/welcome",
         className: "",
-        position: "left",
+        position: "right",
         label: "Instill Cloud",
       },
       {
         key: "docs-nav-vdp-welcome",
         to: "/docs/vdp/welcome",
         className: "",
-        position: "left",
+        position: "right",
         label: "VDP",
       },
       {
         key: "docs-nav-model-welcome",
         to: "/docs/model/welcome",
         className: "",
-        position: "left",
+        position: "right",
         label: "Model",
       },
       {
-        key: "product-website-home",
-        to: "/",
+        key: "docs-nav-blog",
+        to: "/blog",
         className: "",
-        position: "left",
-        label: "Home",
+        position: "right",
+        label: "Blog",
+      },
+      {
+        key: "docs-nav-tutorials",
+        to: "/tutorials",
+        className: "",
+        position: "right",
+        label: "Tutorial",
+      },
+      {
+        key: "docs-nav-item-1",
+        position: "right",
+        border: true,
+      },
+      {
+        key: "docs-nav-item-border-discord-link",
+        href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
+        className: "discord-social-link",
+        iconElement: (
+          <DiscordIcon
+            width="w-[24px]"
+            height="h-[24px]"
+            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
+            position="my-auto"
+          />
+        ),
+        position: "right",
+        label: "discord",
+      },
+      {
+        key: "docs-nav-item--github-link",
+        href: "https://github.com/instill-ai/vdp",
+        className: "github-social-link",
+        iconElement: (
+          <GitHubIcon
+            width="w-[24px]"
+            height="h-[24px]"
+            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
+            position="my-auto"
+          />
+        ),
+        position: "right",
+        label: "github",
       },
     ],
   };
