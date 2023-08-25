@@ -62,7 +62,6 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           }
         `}
       </style>
-
       <div className="flex min-h-screen flex-col">
         <Nav
           setLeftSidebarIsOpen={setLeftSidebarIsOpen}

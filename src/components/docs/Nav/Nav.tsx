@@ -6,7 +6,12 @@ import { DocSearch } from "@docsearch/react";
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import { CrossIcon, MenuIcon, Select } from "@instill-ai/design-system";
+import {
+  CrossIcon,
+  MenuIcon,
+  Dropdown,
+  Icons,
+} from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export type NavProps = {
@@ -93,9 +98,26 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.left.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.left.map((item) => (
-              <Item key={item.key} item={item} />
-            ))}
+            {items.left.map((item) => {
+              if (item.items) {
+                return (
+                  <Dropdown.Menu key={item.key}>
+                    <Dropdown.MenuTrigger className="my-auto flex flex-row gap-x-1 focus:outline-none">
+                      <Item key={item.key} item={item} />
+                    </Dropdown.MenuTrigger>
+                    <Dropdown.MenuContent className="dark:bg-instillGrey95">
+                      {item.items.map((item) => (
+                        <Dropdown.MenuItem key={item.key}>
+                          <Item key={item.key} item={item} />
+                        </Dropdown.MenuItem>
+                      ))}
+                    </Dropdown.MenuContent>
+                  </Dropdown.Menu>
+                );
+              } else {
+                return <Item key={item.key} item={item} />;
+              }
+            })}
           </div>
           <div
             className={cn(
@@ -103,9 +125,39 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.right.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.right.map((item) => (
-              <Item key={item.key} item={item} />
-            ))}
+            {items.right.map((item) => {
+              if (item.items) {
+                return (
+                  <Dropdown.Menu key={item.key}>
+                    <Dropdown.MenuTrigger className="my-auto flex flex-row gap-x-1 focus:outline-none">
+                      <Item key={item.key} item={item} />
+                    </Dropdown.MenuTrigger>
+                    <Dropdown.MenuContent className="dark:bg-instillGrey95">
+                      {item.items.map((item) => {
+                        if (item.border) {
+                          return (
+                            <Dropdown.MenuLabel
+                              className="dark:text-instillGrey15"
+                              key={item.key}
+                            >
+                              {item.label}
+                            </Dropdown.MenuLabel>
+                          );
+                        } else {
+                          return (
+                            <Dropdown.MenuItem key={item.key}>
+                              <Item key={item.key} item={item} />
+                            </Dropdown.MenuItem>
+                          );
+                        }
+                      })}
+                    </Dropdown.MenuContent>
+                  </Dropdown.Menu>
+                );
+              } else {
+                return <Item key={item.key} item={item} />;
+              }
+            })}
           </div>
           {/* <div className="my-auto ml-4">
             <ThemeToggle />
@@ -124,40 +176,44 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           }
         `}
       </style>
+
       <nav
         className={cn(
-          "nav fixed top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
+          "nav fixed top-0 z-10 mx-auto w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
-        {!nav.logo && !nav.title ? null : (
-          <div className="logo mr-4 flex">
-            <Link
-              href={nav.logo ? nav.logo?.href : ""}
-              className="flex flex-row gap-x-3"
-            >
-              {nav.logo ? nav.logo.element : null}
-            </Link>
+        <div className="container flex">
+          {!nav.logo && !nav.title ? null : (
+            <div className="logo mr-4 flex">
+              <Link
+                href={nav.logo ? nav.logo?.href : ""}
+                className="flex flex-row gap-x-3"
+              >
+                {nav.logo ? nav.logo.element : null}
+              </Link>
+            </div>
+          )}
+
+          <div className="mx-5 my-auto">
+            <DocSearch
+              appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
+              apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
+              indexName="instill"
+            />
           </div>
-        )}
 
-        <div className="mx-5 my-auto">
-          <DocSearch
-            appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
-            apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
-            indexName="instill"
-          />
-        </div>
-
-        <div className="flex flex-1 flex-row">
-          <div className="flex flex-grow flex-row justify-end">
-            {desktopView}
-            {mobileView}
-            <div className="mx-5 my-auto">
-              <ThemeToggle />
+          <div className="flex flex-1 flex-row">
+            <div className="flex flex-grow flex-row justify-end">
+              {desktopView}
+              {mobileView}
+              <div className="mx-5 my-auto">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>
       </nav>
+
       <SubNav
         marginBottom={"my-4"}
         setLeftSidebarIsOpen={setLeftSidebarIsOpen}

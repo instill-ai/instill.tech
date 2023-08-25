@@ -7,6 +7,7 @@ import {
   ModelLogo,
   VdpLogo,
   Logos,
+  Icons,
 } from "@instill-ai/design-system";
 
 const SITE = {
@@ -298,52 +299,147 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
     title: appType,
     items: [
       {
-        key: "product-website-home",
-        to: "/",
+        key: "docs-nav-docs",
+        href: "/docs/vdp/welcome",
         className: "",
-        position: "right",
-        label: "Home",
+        position: "left",
+        label: "Docs",
+        iconElement: (
+          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        ),
+        items: [
+          {
+            key: "docs-nav-vdp-welcome",
+            to: "/docs/vdp/welcome",
+            className: "",
+            position: "right",
+            label: "VDP",
+          },
+          {
+            key: "docs-nav-model-welcome",
+            to: "/docs/model/welcome",
+            className: "",
+            position: "right",
+            label: "Model",
+          },
+          {
+            key: "docs-nav-core-welcome",
+            to: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "Instill Core",
+          },
+        ],
       },
       {
         key: "docs-nav-instill-cloud-welcome",
         to: "/docs/instill-cloud/welcome",
         className: "",
-        position: "right",
+        position: "left",
         label: "Instill Cloud",
       },
       {
         key: "docs-nav-vdp-welcome",
-        to: "/docs/vdp/welcome",
+        href: "/docs/vdp/welcome",
         className: "",
         position: "right",
-        label: "VDP",
+        label: "",
+        iconElement: (
+          <Icons.Menu01 className="my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        ),
+        items: [
+          {
+            key: "docs-nav-item-1",
+            position: "right",
+            border: true,
+            label: "Resources",
+          },
+          {
+            key: "docs-nav-product-website",
+            href: "/",
+            className: "",
+            position: "right",
+            label: "Product Website",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-tutorials",
+            href: "/tutorials",
+            className: "",
+            position: "right",
+            label: "Tutorials",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-blog",
+            href: "/blog",
+            className: "",
+            position: "right",
+            label: "Blog",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-newsletter",
+            href: "/newsletter",
+            className: "",
+            position: "right",
+            label: "Newsletter",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-item-2",
+            position: "right",
+            border: true,
+            label: "Help",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-core-welcome",
+            href: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "Discord",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-core-welcome",
+            href: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "GitHub Disussions",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+          {
+            key: "docs-nav-core-welcome",
+            href: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "GitHub Issues",
+            iconElement: (
+              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+            ),
+          },
+        ],
       },
-      {
-        key: "docs-nav-model-welcome",
-        to: "/docs/model/welcome",
-        className: "",
-        position: "right",
-        label: "Model",
-      },
-      {
-        key: "docs-nav-blog",
-        to: "/blog",
-        className: "",
-        position: "right",
-        label: "Blog",
-      },
-      {
-        key: "docs-nav-tutorials",
-        to: "/tutorials",
-        className: "",
-        position: "right",
-        label: "Tutorial",
-      },
-      {
-        key: "docs-nav-item-1",
-        position: "right",
-        border: true,
-      },
+      // {
+      //   key: "docs-nav-item-1",
+      //   position: "right",
+      //   border: true,
+      // },
       {
         key: "docs-nav-item-border-discord-link",
         href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
@@ -357,7 +453,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           />
         ),
         position: "right",
-        label: "discord",
+        label: "",
       },
       {
         key: "docs-nav-item--github-link",
@@ -372,7 +468,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           />
         ),
         position: "right",
-        label: "github",
+        label: "",
       },
     ],
   };
