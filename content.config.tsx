@@ -124,6 +124,7 @@ const SECTIONS: SidebarSections[] = [
     items: [
       { text: "Overview", link: "/docs/vdp/data-connectors/overview" },
       { text: "Airbyte", link: "/docs/vdp/data-connectors/airbyte" },
+      { text: "Pinecone", link: "/docs/vdp/data-connectors/pinecone" },
     ],
     appType: "vdp",
   },
