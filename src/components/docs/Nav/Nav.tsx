@@ -179,10 +179,10 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
       <nav
         className={cn(
-          "nav fixed top-0 z-10 mx-auto w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
+          "nav fixed top-0 z-10 w-full border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
         )}
       >
-        <div className="container flex">
+        <div className="container mx-auto flex flex-row">
           {!nav.logo && !nav.title ? null : (
             <div className="logo mr-4 flex">
               <Link

@@ -323,7 +323,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             label: "Model",
           },
           {
-            key: "docs-nav-core-welcome",
+            key: "docs-nav-instill-core-welcome",
             to: "/docs/core/welcome",
             className: "",
             position: "right",
@@ -339,8 +339,8 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         label: "Instill Cloud",
       },
       {
-        key: "docs-nav-vdp-welcome",
-        href: "/docs/vdp/welcome",
+        key: "docs-nav-dropdown-menu",
+        href: "/",
         className: "",
         position: "right",
         label: "",
@@ -349,13 +349,13 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         ),
         items: [
           {
-            key: "docs-nav-item-1",
+            key: "docs-nav-dropdown-resources",
             position: "right",
             border: true,
             label: "Resources",
           },
           {
-            key: "docs-nav-product-website",
+            key: "docs-nav-dropdown-product-website",
             href: "/",
             className: "",
             position: "right",
@@ -365,7 +365,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-tutorials",
+            key: "docs-nav-dropdown-tutorials",
             href: "/tutorials",
             className: "",
             position: "right",
@@ -375,7 +375,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-blog",
+            key: "docs-nav-dropdown-blog",
             href: "/blog",
             className: "",
             position: "right",
@@ -385,7 +385,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-newsletter",
+            key: "docs-nav-dropdown-newsletter",
             href: "/newsletter",
             className: "",
             position: "right",
@@ -395,7 +395,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-item-2",
+            key: "docs-nav-dropdown-help",
             position: "right",
             border: true,
             label: "Help",
@@ -404,8 +404,8 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-core-welcome",
-            href: "/docs/core/welcome",
+            key: "docs-nav-dropdown-discord",
+            href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
             className: "",
             position: "right",
             label: "Discord",
@@ -414,8 +414,8 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-core-welcome",
-            href: "/docs/core/welcome",
+            key: "docs-nav-dropdown-github-disussions",
+            href: "https://github.com/instill-ai/vdp/discussions",
             className: "",
             position: "right",
             label: "GitHub Disussions",
@@ -424,8 +424,8 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             ),
           },
           {
-            key: "docs-nav-core-welcome",
-            href: "/docs/core/welcome",
+            key: "docs-nav-dropdown-github-issues",
+            href: "https://github.com/instill-ai/model/discussions",
             className: "",
             position: "right",
             label: "GitHub Issues",
@@ -435,11 +435,6 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           },
         ],
       },
-      // {
-      //   key: "docs-nav-item-1",
-      //   position: "right",
-      //   border: true,
-      // },
       {
         key: "docs-nav-item-border-discord-link",
         href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
