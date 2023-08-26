@@ -60,7 +60,7 @@ export const Item = ({ item }: ItemProps) => {
         ) : item.iconElement ? (
           <div className="flex flex-row gap-x-1">
             {item.label && (
-              <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+              <p className="text-md my-auto font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
                 {item.label}
               </p>
             )}
