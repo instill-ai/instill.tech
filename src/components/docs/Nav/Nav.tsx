@@ -1,22 +1,80 @@
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import {
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useMemo,
+  useState,
+} from "react";
 import cn from "clsx";
 import Link from "next/link";
 import { DocSearch } from "@docsearch/react";
-
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import {
-  CrossIcon,
-  MenuIcon,
-  Dropdown,
-  Icons,
-} from "@instill-ai/design-system";
+import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export type NavProps = {
   nav: NavConfig;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+const ItemList = ({
+  items,
+  isMobile,
+}: NavConfig & { isMobile: boolean }): ReactElement => {
+  const renderedItems = items.map((item) => {
+    if (item.items) {
+      return (
+        <Dropdown.Menu key={item.key}>
+          <Dropdown.MenuTrigger className="flex flex-row gap-x-1 focus:outline-none">
+            {isMobile ? (
+              <div key={item.key}>
+                <Item item={item} />
+              </div>
+            ) : (
+              <Item key={item.key} item={item} />
+            )}
+          </Dropdown.MenuTrigger>
+          <Dropdown.MenuContent
+            className="dark:bg-instillGrey95"
+            side="bottom"
+            align="start"
+          >
+            {item.items.map((item) => {
+              if (item.border) {
+                return (
+                  <Dropdown.MenuLabel
+                    className="dark:text-instillGrey15"
+                    key={item.key}
+                  >
+                    {item.label}
+                  </Dropdown.MenuLabel>
+                );
+              } else {
+                return (
+                  <Dropdown.MenuItem key={item.key}>
+                    <Item key={item.key} item={item} />
+                  </Dropdown.MenuItem>
+                );
+              }
+            })}
+          </Dropdown.MenuContent>
+        </Dropdown.Menu>
+      );
+    } else {
+      if (isMobile) {
+        return (
+          <div key={item.key}>
+            <Item item={item} />
+          </div>
+        );
+      }
+      return <Item key={item.key} item={item} />;
+    }
+  });
+
+  return <>{renderedItems}</>; // Wrap the array of JSX elements in a fragment and return
 };
 
 export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
@@ -70,16 +128,8 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           </button>
           {mobileNavOpen && (
             <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey95">
-              {items.left.map((item) => (
-                <div key={item.key}>
-                  <Item item={item} />
-                </div>
-              ))}
-              {items.right.map((item) => (
-                <div key={item.key}>
-                  <Item item={item} />
-                </div>
-              ))}
+              <ItemList items={items.left} isMobile={true} />
+              <ItemList items={items.right} isMobile={true} />
               {/* <ThemeToggle /> */}
             </div>
           )}
@@ -98,26 +148,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.left.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.left.map((item) => {
-              if (item.items) {
-                return (
-                  <Dropdown.Menu key={item.key}>
-                    <Dropdown.MenuTrigger className="my-auto flex flex-row gap-x-1 focus:outline-none">
-                      <Item key={item.key} item={item} />
-                    </Dropdown.MenuTrigger>
-                    <Dropdown.MenuContent className="dark:bg-instillGrey95">
-                      {item.items.map((item) => (
-                        <Dropdown.MenuItem key={item.key}>
-                          <Item key={item.key} item={item} />
-                        </Dropdown.MenuItem>
-                      ))}
-                    </Dropdown.MenuContent>
-                  </Dropdown.Menu>
-                );
-              } else {
-                return <Item key={item.key} item={item} />;
-              }
-            })}
+            <ItemList items={items.left} isMobile={false} />
           </div>
           <div
             className={cn(
@@ -125,39 +156,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.right.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.right.map((item) => {
-              if (item.items) {
-                return (
-                  <Dropdown.Menu key={item.key}>
-                    <Dropdown.MenuTrigger className="my-auto flex flex-row gap-x-1 focus:outline-none">
-                      <Item key={item.key} item={item} />
-                    </Dropdown.MenuTrigger>
-                    <Dropdown.MenuContent className="dark:bg-instillGrey95">
-                      {item.items.map((item) => {
-                        if (item.border) {
-                          return (
-                            <Dropdown.MenuLabel
-                              className="dark:text-instillGrey15"
-                              key={item.key}
-                            >
-                              {item.label}
-                            </Dropdown.MenuLabel>
-                          );
-                        } else {
-                          return (
-                            <Dropdown.MenuItem key={item.key}>
-                              <Item key={item.key} item={item} />
-                            </Dropdown.MenuItem>
-                          );
-                        }
-                      })}
-                    </Dropdown.MenuContent>
-                  </Dropdown.Menu>
-                );
-              } else {
-                return <Item key={item.key} item={item} />;
-              }
-            })}
+            <ItemList items={items.right} isMobile={false} />
           </div>
           {/* <div className="my-auto ml-4">
             <ThemeToggle />
