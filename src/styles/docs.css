@@ -483,3 +483,17 @@ h4:hover span.heading-anchor-hash {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover-bg, #5c5c5c);
 }
+
+.navbar-dropdown-menu:hover p {
+  color: #40a8f5;
+}
+.navbar-dropdown-menu:hover svg {
+  stroke: #40a8f5;
+}
+
+.dark .navbar-dropdown-menu:hover p {
+  color: #40a8f5;
+}
+.dark .navbar-dropdown-menu:hover svg {
+  stroke: #40a8f5;
+}

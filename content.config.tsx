@@ -8,6 +8,7 @@ import {
   VdpLogo,
   Logos,
   Icons,
+  TwitterIcon,
 } from "@instill-ai/design-system";
 
 const SITE = {
@@ -308,9 +309,12 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
       {
         key: "docs-nav-docs",
         href: "/",
-        className: "",
+        className: "navbar-dropdown-menu",
         position: "left",
         label: "Docs",
+        iconElement: (
+          <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        ),
         items: [
           {
             key: "docs-nav-instill-core-welcome",
@@ -361,7 +365,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-product-website",
             href: "/",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "Product Website",
             iconElement: (
@@ -371,7 +375,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-tutorials",
             href: "/tutorials",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "Tutorials",
             iconElement: (
@@ -381,7 +385,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-blog",
             href: "/blog",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "Blog",
             iconElement: (
@@ -391,7 +395,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-newsletter",
             href: "/newsletter",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "Newsletter",
             iconElement: (
@@ -416,7 +420,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-discord",
             href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "Discord",
             iconElement: (
@@ -426,7 +430,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-github-disussions",
             href: "https://github.com/orgs/instill-ai/discussions",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "GitHub Disussions",
             iconElement: (
@@ -436,7 +440,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           {
             key: "docs-nav-dropdown-github-issues",
             href: "https://github.com/instill-ai/community/issues",
-            className: "",
+            className: "navbar-dropdown-menu",
             position: "right",
             label: "GitHub Issues",
             iconElement: (
@@ -466,6 +470,21 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         className: "github-social-link",
         iconElement: (
           <GitHubIcon
+            width="w-[24px]"
+            height="h-[24px]"
+            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
+            position="my-auto"
+          />
+        ),
+        position: "right",
+        label: "",
+      },
+      {
+        key: "docs-nav-item--twitter-link",
+        href: "https://twitter.com/instill_tech",
+        className: "twitter-social-link",
+        iconElement: (
+          <TwitterIcon
             width="w-[24px]"
             height="h-[24px]"
             color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"

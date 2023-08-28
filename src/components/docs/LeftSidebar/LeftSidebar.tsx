@@ -30,7 +30,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       </style>
       <div
         className={cn(
-          "left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto"
+          "left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 pt-5 md:sticky md:top-0 md:ml-auto"
         )}
       >
         {leftSidebar.sections.map((section) => (
