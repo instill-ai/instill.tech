@@ -71,10 +71,10 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
           nav={docsConfigration.nav}
         />
 
-        <div className="flex flex-grow dark:bg-instillGrey95">
+        <div className="flex flex-grow dark:bg-instillGrey90">
           <aside
             className={cn(
-              "docs-left-sidebar fixed z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:border-gray-900 dark:bg-instillGrey95 sm:top-0 md:fixed md:top-[65px] md:col-span-3 md:flex md:transform-none xl:top-[65px] max:fixed",
+              "docs-left-sidebar fixed z-30 transform border-r border-gray-300 bg-instillGrey05 transition-transform dark:border-gray-500 dark:bg-instillGrey90 sm:top-0 md:fixed md:top-[65px] md:col-span-3 md:flex md:transform-none xl:top-[65px] max:fixed",
               leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
             )}
           >

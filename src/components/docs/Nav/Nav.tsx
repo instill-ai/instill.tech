@@ -41,7 +41,7 @@ const DropdownMenu = ({
         )}
       </Dropdown.MenuTrigger>
       <Dropdown.MenuContent
-        className="dark:bg-instillGrey95"
+        className="dark:bg-instillGrey90"
         side="bottom"
         align="start"
         key={item.key + "dropdown-menu-content"}
@@ -145,7 +145,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           </button>
           {mobileNavOpen && (
-            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey95">
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey90">
               <ItemList items={items.left} isMobile={true} />
               <ItemList items={items.right} isMobile={true} />
               {/* <ThemeToggle /> */}
@@ -196,7 +196,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
       <nav
         className={cn(
-          "nav fixed top-0 z-10 w-screen border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95"
+          "nav fixed top-0 z-10 w-screen border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey90"
         )}
       >
         <div className="container mx-auto flex flex-row">

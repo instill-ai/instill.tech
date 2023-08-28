@@ -20,7 +20,7 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
       </style>
       <div
         className={cn(
-          "sub-nav fixed top-[65px] z-10 flex w-full flex-row border-b border-b-instillGrey30 bg-white px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95 md:hidden",
+          "sub-nav fixed top-[65px] z-10 flex w-full flex-row border-b border-b-instillGrey30 bg-white px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey90 md:hidden",
           marginBottom
         )}
       >
