@@ -15,6 +15,9 @@ export function getApplicationType(
   if (path.includes("core")) {
     return "core";
   }
+  if (path.includes("base")) {
+    return "base";
+  }
   return "vdp";
 }
 

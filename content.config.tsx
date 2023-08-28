@@ -279,6 +279,13 @@ export function getLogoConfig(
     };
   }
 
+  if (appType === "base") {
+    return {
+      element: <Logos.InstillSquare className="h-12 w-12" />,
+      href: "/docs/base/welcome",
+    };
+  }
+
   throw new Error("Invalid appType");
 }
 
@@ -317,18 +324,32 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         ),
         items: [
           {
+            key: "docs-nav-instill-core-welcome",
+            to: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "Instill Core",
+          },
+          {
+            key: "docs-nav-instill-core-welcome",
+            to: "/docs/base/welcome",
+            className: "",
+            position: "right",
+            label: "Instill Base",
+          },
+          {
             key: "docs-nav-vdp-welcome",
             to: "/docs/vdp/welcome",
             className: "",
             position: "right",
-            label: "VDP",
+            label: "Instill VDP",
           },
           {
             key: "docs-nav-model-welcome",
             to: "/docs/model/welcome",
             className: "",
             position: "right",
-            label: "Model",
+            label: "Instill Model",
           },
         ],
       },
