@@ -16,7 +16,7 @@ export type PricingPlan = {
   features: string[];
   featureDescription: ReactElement;
   cta: ReactElement;
-  ctaDescription: string;
+  ctaDescription: string | ReactElement;
 };
 
 export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
@@ -50,7 +50,7 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
                   : undefined
               }
               className={cn(
-                "rounded-full bg-[#F0F5FF] py-1 px-3 text-[#1D5BD7]",
+                "rounded-full bg-[#F0F5FF] px-3 py-1 text-[#1D5BD7]",
                 plan.subTitleLink ? "cursor-pointer" : ""
               )}
             >
@@ -77,7 +77,7 @@ export const PricingPlanLayout = (props: PricingPlanLayoutProps) => {
           {plan.description}
         </p>
         {plan.cta}
-        <p className="text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
+        <p className="h-8 text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
           {plan.ctaDescription}
         </p>
       </div>
