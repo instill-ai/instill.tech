@@ -32,7 +32,9 @@ const DropdownMenu = ({
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
   const dropdownMenus = item.items?.filter(
-    (item) => item.label !== applicattionName[appType]
+    (item) =>
+      item.label !==
+      applicattionName[appType === "instill-cloud" ? "core" : appType]
   );
   return (
     <Dropdown.Menu key={item.key}>
