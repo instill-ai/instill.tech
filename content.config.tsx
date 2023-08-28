@@ -1,5 +1,3 @@
-import { getApplicationType } from "@/lib/instill";
-import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType } from "@/types/instill";
 import {
