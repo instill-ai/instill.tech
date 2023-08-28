@@ -122,12 +122,12 @@ module.exports = {
             h4: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "500",
-              fontSize: "18px",
+              fontSize: "16px",
             },
             h5: {
               fontFamily: theme("fontFamily.sans")[0],
               fontWeight: "500",
-              fontSize: "18px",
+              fontSize: "16px",
             },
             code: {
               paddingTop: "1.5px",
@@ -147,14 +147,14 @@ module.exports = {
               content: '""',
             },
             p: {
-              fontSize: "16px",
+              fontSize: "14px",
               margin: "1.25rem 0px",
             },
             "ul > li": {
-              fontSize: "16px",
+              fontSize: "14px",
             },
             "ol > li": {
-              fontSize: "16px",
+              fontSize: "14px",
             },
 
             // We have implemented rehype-autolink-headings that will wrap a tag in headings
@@ -258,12 +258,12 @@ module.exports = {
         },
         ".text-instill-body-normal": {
           fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "18px",
+          fontSize: "16px",
           fontWeight: 400,
         },
         ".text-instill-body-light": {
           fontFamily: `IBM Plex Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-          fontSize: "18px",
+          fontSize: "16px",
           fontWeight: 300,
         },
         ".instill-input-focus-shadow": {
