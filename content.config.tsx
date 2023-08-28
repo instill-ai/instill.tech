@@ -273,8 +273,8 @@ export function getLogoConfig(
 
   if (appType === "core") {
     return {
-      element: <Logos.MDLSquare className="h-12 w-12" />,
-      href: "/docs/model/welcome",
+      element: <Logos.InstillSquare className="h-12 w-12" />,
+      href: "/docs/core/welcome",
     };
   }
 
