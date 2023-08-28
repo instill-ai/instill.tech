@@ -304,9 +304,9 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         className: "",
         position: "left",
         label: "Docs",
-        iconElement: (
-          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
-        ),
+        // iconElement: (
+        //   <Icons.ChevronDown className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        // ),
         items: [
           {
             key: "docs-nav-vdp-welcome",
@@ -393,6 +393,12 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             iconElement: (
               <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+          },
+          {
+            key: "docs-nav-dropdown-help",
+            position: "right",
+            border: false,
+            label: "Help",
           },
           {
             key: "docs-nav-dropdown-help",

@@ -1,4 +1,4 @@
-import {
+import React, {
   Dispatch,
   ReactElement,
   SetStateAction,
@@ -19,49 +19,67 @@ export type NavProps = {
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
+const DropdownMenu = ({
+  item,
+  isMobile,
+}: {
+  item: NavbarItem;
+  isMobile: boolean;
+}) => {
+  return (
+    <Dropdown.Menu key={item.key}>
+      <Dropdown.MenuTrigger
+        data-state="open"
+        className="flex flex-row gap-x-1 focus:outline-none"
+      >
+        {isMobile ? (
+          <div key={item.key}>
+            <Item item={item} />
+          </div>
+        ) : (
+          <Item item={item} key={item.key} />
+        )}
+      </Dropdown.MenuTrigger>
+      <Dropdown.MenuContent
+        className="dark:bg-instillGrey95"
+        side="bottom"
+        align="start"
+        key={item.key + "dropdown-menu-content"}
+      >
+        {item?.items?.map((subItem) => {
+          const subItemKey = subItem.key;
+          if (subItem.border) {
+            return (
+              <Dropdown.MenuLabel
+                className="dark:text-instillGrey15"
+                key={subItemKey}
+              >
+                {subItem.label}
+              </Dropdown.MenuLabel>
+            );
+          }
+          if (subItem.border === false) {
+            return <Dropdown.MenuSeparator key={item.key} />;
+          } else {
+            return (
+              <Dropdown.MenuItem key={subItemKey}>
+                <Item key={subItemKey} item={subItem} />
+              </Dropdown.MenuItem>
+            );
+          }
+        })}
+      </Dropdown.MenuContent>
+    </Dropdown.Menu>
+  );
+};
+
 const ItemList = ({
   items,
   isMobile,
 }: NavConfig & { isMobile: boolean }): ReactElement => {
   const renderedItems = items.map((item) => {
     if (item.items) {
-      return (
-        <Dropdown.Menu key={item.key}>
-          <Dropdown.MenuTrigger className="flex flex-row gap-x-1 focus:outline-none">
-            {isMobile ? (
-              <div key={item.key}>
-                <Item item={item} />
-              </div>
-            ) : (
-              <Item key={item.key} item={item} />
-            )}
-          </Dropdown.MenuTrigger>
-          <Dropdown.MenuContent
-            className="dark:bg-instillGrey95"
-            side="bottom"
-            align="start"
-          >
-            {item.items.map((item) => {
-              if (item.border) {
-                return (
-                  <Dropdown.MenuLabel
-                    className="dark:text-instillGrey15"
-                    key={item.key}
-                  >
-                    {item.label}
-                  </Dropdown.MenuLabel>
-                );
-              } else {
-                return (
-                  <Dropdown.MenuItem key={item.key}>
-                    <Item key={item.key} item={item} />
-                  </Dropdown.MenuItem>
-                );
-              }
-            })}
-          </Dropdown.MenuContent>
-        </Dropdown.Menu>
-      );
+      return <DropdownMenu item={item} isMobile={isMobile} key={item.key} />;
     } else {
       if (isMobile) {
         return (

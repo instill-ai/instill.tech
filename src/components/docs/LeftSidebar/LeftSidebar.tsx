@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
+import cn from "clsx";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -26,7 +28,11 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         }
       `}
       </style>
-      <div className="left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto">
+      <div
+        className={cn(
+          "left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 md:sticky md:top-0 md:ml-auto"
+        )}
+      >
         {leftSidebar.sections.map((section) => (
           <div key={section.text} className="w-full">
             <Section

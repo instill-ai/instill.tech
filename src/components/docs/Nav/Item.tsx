@@ -29,7 +29,7 @@ export const Item = ({ item }: ItemProps) => {
     return (
       <Link
         className={cn(
-          "text-md my-auto font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
+          "my-auto text-sm font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
           isRouterActive(router.asPath, item.to)
             ? "text-instillBlue50"
             : "text-black dark:text-instillGrey15"
@@ -60,7 +60,7 @@ export const Item = ({ item }: ItemProps) => {
         ) : item.iconElement ? (
           <div className="flex flex-row gap-x-1">
             {item.label && (
-              <p className="text-md my-auto font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+              <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
                 {item.label}
               </p>
             )}
