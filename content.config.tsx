@@ -271,6 +271,13 @@ export function getLogoConfig(
     };
   }
 
+  if (appType === "core") {
+    return {
+      element: <Logos.MDLSquare className="h-12 w-12" />,
+      href: "/docs/model/welcome",
+    };
+  }
+
   throw new Error("Invalid appType");
 }
 
@@ -300,14 +307,18 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
     items: [
       {
         key: "docs-nav-docs",
-        href: "/docs/vdp/welcome",
+        href: "/",
         className: "",
         position: "left",
         label: "Docs",
-        // iconElement: (
-        //   <Icons.ChevronDown className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
-        // ),
         items: [
+          {
+            key: "docs-nav-instill-core-welcome",
+            to: "/docs/core/welcome",
+            className: "",
+            position: "right",
+            label: "Instill Core",
+          },
           {
             key: "docs-nav-vdp-welcome",
             to: "/docs/vdp/welcome",
@@ -321,13 +332,6 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             className: "",
             position: "right",
             label: "Model",
-          },
-          {
-            key: "docs-nav-instill-core-welcome",
-            to: "/docs/core/welcome",
-            className: "",
-            position: "right",
-            label: "Instill Core",
           },
         ],
       },
@@ -421,7 +425,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           },
           {
             key: "docs-nav-dropdown-github-disussions",
-            href: "https://github.com/instill-ai/vdp/discussions",
+            href: "https://github.com/orgs/instill-ai/discussions",
             className: "",
             position: "right",
             label: "GitHub Disussions",
@@ -431,7 +435,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
           },
           {
             key: "docs-nav-dropdown-github-issues",
-            href: "https://github.com/instill-ai/model/discussions",
+            href: "https://github.com/instill-ai/community/issues",
             className: "",
             position: "right",
             label: "GitHub Issues",
