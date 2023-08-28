@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.38.0](https://github.com/instill-ai/instill.tech/compare/v1.37.5...v1.38.0) (2023-08-28)
+
+
+### Features
+
+* update the nav and font style ([#588](https://github.com/instill-ai/instill.tech/issues/588)) ([1b41da4](https://github.com/instill-ai/instill.tech/commit/1b41da44d10d40aa566e2aa847be9789c7f3fd31))
+
+
+### Miscellaneous
+
+* added docs for pinecone ([#592](https://github.com/instill-ai/instill.tech/issues/592)) ([dd3273c](https://github.com/instill-ai/instill.tech/commit/dd3273ca71392fa6a27c107dd3cc7582154ba1b5))
+* update pricing page ([#593](https://github.com/instill-ai/instill.tech/issues/593)) ([cbbf0b0](https://github.com/instill-ai/instill.tech/commit/cbbf0b04780d842e1c54333fe68ef8434a272f6a))
+
 ## [1.37.5](https://github.com/instill-ai/instill.tech/compare/v1.37.4...v1.37.5) (2023-08-10)
 
 
