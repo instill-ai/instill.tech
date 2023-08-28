@@ -147,14 +147,14 @@ module.exports = {
               content: '""',
             },
             p: {
-              fontSize: "14px",
+              fontSize: "16px",
               margin: "1.25rem 0px",
             },
             "ul > li": {
-              fontSize: "14px",
+              fontSize: "16px",
             },
             "ol > li": {
-              fontSize: "14px",
+              fontSize: "16px",
             },
 
             // We have implemented rehype-autolink-headings that will wrap a tag in headings
