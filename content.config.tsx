@@ -1,3 +1,4 @@
+import { applicattionName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType } from "@/types/instill";
 import {
@@ -318,7 +319,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         href: "/docs/core/welcome",
         className: "navbar-dropdown-menu",
         position: "left",
-        label: "Instill Core",
+        label: applicattionName[appType],
         iconElement: (
           <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),

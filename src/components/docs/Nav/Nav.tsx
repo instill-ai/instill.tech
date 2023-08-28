@@ -13,6 +13,9 @@ import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
 import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { useRouter } from "next/router";
+import { getApplicationType } from "@/lib/instill";
+import { applicattionName } from "@/lib/instill/applicationType";
 
 export type NavProps = {
   nav: NavConfig;
@@ -26,6 +29,11 @@ const DropdownMenu = ({
   item: NavbarItem;
   isMobile: boolean;
 }) => {
+  const router = useRouter();
+  const appType = getApplicationType(router.asPath);
+  const dropdownMenus = item.items?.filter(
+    (item) => item.label !== applicattionName[appType]
+  );
   return (
     <Dropdown.Menu key={item.key}>
       <Dropdown.MenuTrigger
@@ -46,7 +54,7 @@ const DropdownMenu = ({
         align="start"
         key={item.key + "dropdown-menu-content"}
       >
-        {item?.items?.map((subItem) => {
+        {dropdownMenus?.map((subItem) => {
           const subItemKey = subItem.key;
           if (subItem.border) {
             return (
