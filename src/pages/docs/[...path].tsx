@@ -4,7 +4,6 @@ import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
-
 import { useRouter } from "next/router";
 import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
@@ -20,6 +19,7 @@ import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType } from "@/lib/instill";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -29,23 +29,38 @@ type DocsPageProps = {
   commitMeta: Nullable<CommitMeta>;
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+type Props = {
+  locales: string[];
+};
+
+export const getStaticPaths: GetStaticPaths<Props> = async ({
+  locales = [],
+}) => {
   const docsDir = join(process.cwd(), "docs");
   const docsPaths = glob.sync("**/*.mdx", { cwd: docsDir });
 
-  return {
-    paths: docsPaths.map((path) => ({
-      params: {
-        path: path.replace(".mdx", "").split("/"),
-      },
-    })),
+  const paths: any = [];
 
-    fallback: false,
+  docsPaths.forEach((path) =>
+    locales?.forEach((locale) => {
+      paths.push({
+        params: {
+          path: path.replace(".mdx", "").split("/"),
+          locale,
+        },
+      });
+    })
+  );
+
+  return {
+    paths: paths,
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
+  locale,
 }) => {
   if (!params || !params.path) {
     return {
@@ -130,6 +145,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       prevArticle,
       headers,
       commitMeta,
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
   };
 };
@@ -147,12 +163,12 @@ const DocsPage: FC<DocsPageProps> & {
     <>
       <PageHead
         pageTitle={
-          mdxSource.frontmatter
+          mdxSource?.frontmatter
             ? `${mdxSource.frontmatter.title} | Documentation`
             : "Documentation"
         }
         pageDescription={
-          mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
+          mdxSource?.frontmatter ? mdxSource.frontmatter.description : ""
         }
         pageType="docs"
         additionMeta={
@@ -168,7 +184,7 @@ const DocsPage: FC<DocsPageProps> & {
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 pb-10 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
-            {mdxSource.frontmatter
+            {mdxSource?.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
           </h1>

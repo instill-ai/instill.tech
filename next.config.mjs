@@ -53,6 +53,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  i18n: {
+    locales: ["en", "chi", "fr"],
+    defaultLocale: "en",
+  },
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },
@@ -229,7 +233,6 @@ const nextConfig = {
         destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
-
     ];
   },
 };

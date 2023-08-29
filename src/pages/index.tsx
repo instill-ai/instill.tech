@@ -18,6 +18,7 @@ import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
+// to detect language and automatically redirect to the approprate/[locale] page
 
 const FaqHeader = dynamic<FaqHeaderProps>(() =>
   import("@/components/landing").then((mod) => mod.FaqHeader)
@@ -235,7 +236,7 @@ const HomePage: FC<HomePageProps> & {
         </div>
         <div
           ref={faqIsInViewRef}
-          className="mb-20 -mt-0.5 flex w-full flex-col"
+          className="-mt-0.5 mb-20 flex w-full flex-col"
         >
           {codeShowcaseIsInView ? (
             <>
