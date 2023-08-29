@@ -1,3 +1,4 @@
+import { applicattionName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType } from "@/types/instill";
 import {
@@ -253,7 +254,7 @@ export function getLogoConfig(
 ): LogoConfig {
   if (appType === "vdp") {
     return {
-      element: <Logos.VDPSquare className="h-12 w-12" />,
+      element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/docs/vdp/welcome",
     };
   }
@@ -267,7 +268,7 @@ export function getLogoConfig(
 
   if (appType === "model") {
     return {
-      element: <Logos.MDLSquare className="h-12 w-12" />,
+      element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/docs/model/welcome",
     };
   }
@@ -276,6 +277,13 @@ export function getLogoConfig(
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/docs/core/welcome",
+    };
+  }
+
+  if (appType === "base") {
+    return {
+      element: <Logos.InstillSquare className="h-12 w-12" />,
+      href: "/docs/base/welcome",
     };
   }
 
@@ -308,10 +316,10 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
     items: [
       {
         key: "docs-nav-docs",
-        href: "/",
+        href: "/docs/core/welcome",
         className: "navbar-dropdown-menu",
         position: "left",
-        label: "Docs",
+        label: applicattionName[appType === "instill-cloud" ? "core" : appType],
         iconElement: (
           <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
@@ -324,18 +332,25 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             label: "Instill Core",
           },
           {
+            key: "docs-nav-instill-core-welcome",
+            to: "/docs/base/welcome",
+            className: "",
+            position: "right",
+            label: "Instill Base",
+          },
+          {
             key: "docs-nav-vdp-welcome",
             to: "/docs/vdp/welcome",
             className: "",
             position: "right",
-            label: "VDP",
+            label: "Instill VDP",
           },
           {
             key: "docs-nav-model-welcome",
             to: "/docs/model/welcome",
             className: "",
             position: "right",
-            label: "Model",
+            label: "Instill Model",
           },
         ],
       },
