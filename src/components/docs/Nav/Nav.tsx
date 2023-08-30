@@ -16,8 +16,7 @@ import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
 import { applicattionName } from "@/lib/instill/applicationType";
-import LocaleSwitcher from "../locale-switcher";
-import { useTranslation } from "next-i18next";
+import LocaleSwitcher from "../LocaleSwitcher";
 
 export type NavProps = {
   nav: NavConfig;
@@ -108,8 +107,6 @@ const ItemList = ({
 };
 
 export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
-  const { t } = useTranslation();
-
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const items = useMemo(() => {
@@ -238,7 +235,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               {desktopView}
               {mobileView}
 
-              {t("common:testString")}
               <div className="mx-5 my-auto">
                 <ThemeToggle />
               </div>

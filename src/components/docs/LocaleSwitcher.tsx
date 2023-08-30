@@ -3,9 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export const languages: { [key: string]: string } = {
-  fr: "French",
   en: "English",
-  chi: "Chinese",
+  cn: "Chinese",
 };
 
 export default function LocaleSwitcher() {

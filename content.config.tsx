@@ -4,13 +4,12 @@ import { InstillAppType } from "@/types/instill";
 import {
   DiscordIcon,
   GitHubIcon,
-  Logo,
-  ModelLogo,
-  VdpLogo,
   Logos,
   Icons,
   TwitterIcon,
 } from "@instill-ai/design-system";
+
+import { useTranslation } from "next-i18next";
 
 const SITE = {
   title: "Documentation",
@@ -359,7 +358,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         to: "/docs/instill-cloud/welcome",
         className: "",
         position: "left",
-        label: "Instill Cloud",
+        label: "common:instillCloud",
       },
       {
         key: "docs-nav-dropdown-menu",

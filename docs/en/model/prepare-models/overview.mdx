@@ -1,0 +1,69 @@
+---
+title: "Prepare Models Overview"
+lang: "en-US"
+draft: false
+description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
+---
+
+Instill Model uses [Triton Inference server](https://github.com/triton-inference-server/server) for model serving. It supports multiple deep learning frameworks including TensorFlow, PyTorch, TensorRT, ONNX and OpenVINO.
+Besides, the [Triton Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
+
+## Model layout
+
+To deploy a model on Instill Model, we suggest you to prepare the model files following the layout:
+
+```shellscript
+├── README.md
+├── <pre-model>
+│   ├── 1
+│   │   └── model.py
+│   └── config.pbtxt
+├── <infer-model>
+│   ├── 1
+│   │   └── <model-file>
+│   └── config.pbtxt
+├── <post-model>
+│   ├── 1
+│   │   └── model.py 
+│   └── config.pbtxt
+└── <ensemble-model>
+    ├── 1
+    │   └── .keep
+    └── config.pbtxt
+```
+
+The above layout displays a typical Instill Model model consisting of
+
+- `README.md` - model card to embed the metadata in front matter and descriptions in Markdown format
+- `<pre-model>` - Python model to pre-process input images
+- `<infer-model>` - Model to convert the unstructured data into structured data output, usually a Deep Learning (DL) / Machine Learning (ML) model
+- `<post-model>` - Python model to post-process the output of the `infer-model` into desired formats
+- `<ensemble-model>` - [Triton ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to connect the input and output tensors between the pre-processing, inference and post-processing models.
+- `config.pbtxt` - [Model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) for each sub model
+
+You can name `<pre-model>`, `<infer-model>`, `<post-model>` and `<ensemble-model>` folders freely provided that the folder names are clear and semantic. All these models bundle into a deployable model for Instill Model.
+
+<InfoBlock type="info" title="info">
+  As long as your model fulfils the required [Triton model repository
+  layout](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html),
+  it can be safely imported into Instill Model and deployed online.
+</InfoBlock>
+
+## Serve models written in Python
+
+To deploy your pre-processing and post-processing models with Python code, use [Triton Python Backend](https://github.com/triton-inference-server/python_backend) that supports `conda-pack` to deploy Python models with dependencies.
+We have prepared a [custom Conda environment](https://github.com/instill-ai/triton-python-model) with pre-installed libraries including
+[scikit-learn](https://github.com/scikit-learn/scikit-learn), [Pillow](https://github.com/python-pillow/Pillow), [PyTorch](https://github.com/pytorch/pytorch), [torchvision](https://pytorch.org/vision/stable/index.html), [Transformers](https://github.com/huggingface/transformers) and [triton_python_model](https://github.com/instill-ai/triton-python-model).
+It is shipped with the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers using Python 3.8.
+
+If your model is not compatible with Python 3.8 or if it requires additional dependencies, you could [create your own Conda environment](https://github.com/triton-inference-server/python_backend#2-packaging-the-conda-environment) and configure the `config.pbtext` to point to the custom conda-pack tar file accordingly.
+
+## Prepare your model to be Instill Model compatible
+
+- Create a [model card](model-card) `README.md` to describe your model
+- Write a [pre-processing model](pre-processing) and a [post-processing model](post-processing) that are compatible with the Triton Python Backend
+- Prepare the model configuration file for your inference model
+- Set up an [ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
+- Organise the model files into [valid Instill Model model layout](#model-layout)
+
+🙌 After preparing your model to be Instill Model compatible, check out [Import Models](/docs/import-models/overview) to learn about how to import the model into Instill Model from different sources.

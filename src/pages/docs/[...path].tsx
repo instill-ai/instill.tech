@@ -72,10 +72,10 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   let relativePath: string;
 
   if (Array.isArray(params.path)) {
-    fullPath = join(process.cwd(), "docs", ...params.path);
+    fullPath = join(process.cwd(), "docs/" + locale || "", ...params.path);
     relativePath = join(...params.path);
   } else {
-    fullPath = join(process.cwd(), "docs", params.path);
+    fullPath = join(process.cwd(), "docs/" + locale || "", params.path);
     relativePath = join(params.path);
   }
 
