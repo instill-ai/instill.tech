@@ -2,7 +2,7 @@ import { Dropdown } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const languages = {
+export const languages: { [key: string]: string } = {
   fr: "French",
   en: "English",
   chi: "Chinese",
@@ -20,7 +20,7 @@ export default function LocaleSwitcher() {
     <Dropdown.Menu>
       <Dropdown.MenuTrigger className="flex flex-row gap-x-2 focus:outline-none">
         <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
-          {languages[locale]}
+          {locale ? languages[locale] : ""}
         </p>
       </Dropdown.MenuTrigger>
       <Dropdown.MenuContent>
