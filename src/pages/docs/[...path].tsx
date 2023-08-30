@@ -140,12 +140,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
       mdxSource,
       nextArticle,
       prevArticle,
       headers,
       commitMeta,
-      ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
   };
 };
@@ -192,7 +192,7 @@ const DocsPage: FC<DocsPageProps> & {
             id="content"
             className="DocSearch-content prose mb-20 max-w-none dark:prose-white dark:bg-instillGrey90"
           >
-            <MDXRemote {...mdxSource} />
+            {mdxSource ? <MDXRemote {...mdxSource} /> : null}
           </article>
           {commitMeta ? (
             <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
@@ -224,14 +224,16 @@ const DocsPage: FC<DocsPageProps> & {
         </div>
 
         <aside className="hidden pb-10 xl:col-span-2 xl:block">
-          <RightSidebar
-            githubEditUrl={
-              "https://github.com/instill-ai/instill.tech/edit/main" +
-              router.asPath +
-              ".mdx"
-            }
-            headers={headers}
-          />
+          {headers ? (
+            <RightSidebar
+              githubEditUrl={
+                "https://github.com/instill-ai/instill.tech/edit/main" +
+                router.asPath +
+                ".mdx"
+              }
+              headers={headers}
+            />
+          ) : null}
         </aside>
       </div>
     </>
