@@ -20,6 +20,7 @@ import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import i18n from "../../../next-i18next.config";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -140,7 +141,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+      ...(await serverSideTranslations(locale ?? "en", ["common"], i18n)),
       mdxSource,
       nextArticle,
       prevArticle,
