@@ -55,5 +55,10 @@
     "discord": "Discord",
     "gitHubDisussion": "GitHub Disussion",
     "gitHubIssues": "GitHub Issues"
-  }
+  },
+  "nextPage": "Next Page",
+  "previousPage": "Previous Page",
+  "onThisPage": "On this page",
+  "contribution": "Contribution",
+  "editThisPage": "Edit this page"
 }

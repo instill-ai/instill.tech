@@ -1,10 +1,10 @@
 import { InstillAppType } from "@/types/instill";
 
 export const applicattionName = {
-  vdp: "Instill VDP",
-  core: "Instill Core",
-  base: "Instill Base",
-  model: "Instill Model",
+  vdp: "common:navbar.instillVDP",
+  core: "common:navbar.instillCore",
+  base: "common:navbar.instillBase",
+  model: "common:navbar.instillModel",
   "instill-cloud": "Instill Cloud",
 };
 
