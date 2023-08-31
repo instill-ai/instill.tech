@@ -65,6 +65,12 @@ const nextConfig = {
     //   require("./lib/generate-sitemap");
     // }
 
+    if (!isServer) {
+      config.node = {
+        fs: "empty",
+      };
+    }
+
     if (!dev) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
