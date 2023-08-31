@@ -38,7 +38,8 @@
     "huggingFace": "Hugging Face",
     "development": "开发",
     "systemArchitecture": "系统架构",
-    "localSetup": "本地设置"
+    "localSetup": "本地设置",
+    "aiTask": "AI 任务"
   },
   "navbar": {
     "instillCore": "灌输核心",

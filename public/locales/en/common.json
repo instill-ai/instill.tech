@@ -38,7 +38,8 @@
     "huggingFace": "Hugging Face",
     "development": "Development",
     "systemArchitecture": "System architecture",
-    "localSetup": "Local setup"
+    "localSetup": "Local setup",
+    "aiTask": "AI task"
   },
   "navbar": {
     "instillCore": "Instill Core",

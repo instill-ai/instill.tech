@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     relativePath = join(params.path);
   }
 
-  const source = fs.readFileSync(fullPath + ".mdx", "utf8");
+  const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 
   // Prepare the codeHike theme
 
