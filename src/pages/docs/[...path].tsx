@@ -34,6 +34,19 @@ type Props = {
   locales: string[];
 };
 
+function getLocale(
+  path: string[] | string,
+  locales: string[],
+  locale: string
+): string {
+  for (const element of path) {
+    if (locales.includes(element)) {
+      return "";
+    }
+  }
+  return `/${locale}`;
+}
+
 export const getStaticPaths: GetStaticPaths<Props> = async ({
   locales = [],
 }) => {
@@ -44,12 +57,14 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 
   docsPaths.forEach((path) =>
     locales?.forEach((locale) => {
-      paths.push({
-        params: {
-          path: path.replace(".mdx", "").split("/"),
-          locale,
-        },
-      });
+      if (path.includes(`${locale}/`)) {
+        paths.push({
+          params: {
+            path: path.replace(".mdx", "").split("/"),
+            locale,
+          },
+        });
+      }
     })
   );
 
@@ -62,6 +77,7 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
   locale,
+  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -72,11 +88,17 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   let fullPath: string;
   let relativePath: string;
 
+  const localeString = getLocale(
+    params.path,
+    locales ? locales : [],
+    locale ?? "en"
+  );
+
   if (Array.isArray(params.path)) {
-    fullPath = join(process.cwd(), "docs/" + locale || "", ...params.path);
+    fullPath = join(process.cwd(), "docs" + localeString, ...params.path);
     relativePath = join(...params.path);
   } else {
-    fullPath = join(process.cwd(), "docs/" + locale || "", params.path);
+    fullPath = join(process.cwd(), "docs" + localeString, params.path);
     relativePath = join(params.path);
   }
 
