@@ -54,7 +54,7 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   i18n: {
-    locales: ["en", "cn"],
+    locales: ["en", "zh_CN"],
     defaultLocale: "en",
   },
   images: {

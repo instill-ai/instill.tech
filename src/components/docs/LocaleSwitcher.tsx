@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 export const languages: { [key: string]: string } = {
   en: "English",
-  cn: "Chinese",
+  zh_CN: "Chinese(zh_CH)",
 };
 
 export default function LocaleSwitcher() {
