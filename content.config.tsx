@@ -6,7 +6,6 @@ import {
   GitHubIcon,
   Logos,
   Icons,
-  TwitterIcon,
 } from "@instill-ai/design-system";
 
 import { useTranslation } from "next-i18next";
@@ -446,7 +445,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.productWebsite",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -456,7 +455,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.tutorials",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -466,7 +465,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.blog",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -476,7 +475,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.newsletter",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -491,7 +490,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             border: true,
             label: "common:navbar.help",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -501,7 +500,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.discord",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -511,7 +510,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.gitHubDisussions",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
           {
@@ -521,7 +520,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             position: "right",
             label: "common:navbar.gitHubIssues",
             iconElement: (
-              <Icons.ArrowUpRight className="h-4 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
           },
         ],
@@ -560,14 +559,12 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         key: "docs-nav-item--twitter-link",
         href: "https://twitter.com/instill_tech",
         className: "twitter-social-link",
-        iconElement: (
-          <TwitterIcon
-            width="w-[24px]"
-            height="h-[24px]"
-            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
-            position="my-auto"
-          />
+        iconElement: isDark ? (
+          <Logos.TwitterLight className="h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        ) : (
+          <Logos.TwitterDark className="h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
+
         position: "right",
         label: "",
       },
