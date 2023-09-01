@@ -13,7 +13,7 @@ export type TableOfContentProps = {
 };
 
 export const TableOfContent = ({ headers }: TableOfContentProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const router = useRouter();
   const onThisPageID = "on-this-page-heading";
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
