@@ -44,17 +44,27 @@ type TutorialPageProps = {
   tutorialMeta: Nullable<TutorialMeta>;
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const tutorialDir = join(process.cwd(), "tutorials");
   const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
-  return {
-    paths: tutorialRelativePaths.map((path) => ({
-      params: {
-        path: path.replace(".mdx", "").split("/"),
-      },
-    })),
+  const paths: any = [];
 
+  tutorialRelativePaths.forEach((path) =>
+    locales?.forEach((locale) => {
+      if (path.includes(`${locale}/`)) {
+        paths.push({
+          params: {
+            path: path.replace(".mdx", "").split("/"),
+            locale,
+          },
+        });
+      }
+    })
+  );
+
+  return {
+    paths: paths,
     fallback: "blocking",
   };
 };

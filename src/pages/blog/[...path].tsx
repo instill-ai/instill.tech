@@ -41,17 +41,27 @@ type BlogPageProps = {
   source: string;
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const blogDir = join(process.cwd(), "blog");
   const blogRelativePaths = glob.sync("**/*.mdx", { cwd: blogDir });
 
-  return {
-    paths: blogRelativePaths.map((path) => ({
-      params: {
-        path: path.replace(".mdx", "").split("/"),
-      },
-    })),
+  const paths: any = [];
 
+  blogRelativePaths.forEach((path) =>
+    locales?.forEach((locale) => {
+      if (path.includes(`${locale}/`)) {
+        paths.push({
+          params: {
+            path: path.replace(".mdx", "").split("/"),
+            locale,
+          },
+        });
+      }
+    })
+  );
+
+  return {
+    paths: paths,
     fallback: "blocking",
   };
 };
