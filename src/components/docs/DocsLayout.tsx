@@ -13,6 +13,7 @@ export type DocsLayoutProps = {
 
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const router = useRouter();
+
   const { isDark } = useInstillAICtx();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 

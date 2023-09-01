@@ -53,6 +53,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  i18n: {
+    locales: ["en", "zh_CN"],
+    defaultLocale: "en",
+  },
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },
@@ -60,6 +64,8 @@ const nextConfig = {
     // if (isServer) {
     //   require("./lib/generate-sitemap");
     // }
+
+    config.resolve.fallback = { fs: false };
 
     if (!dev) {
       config.plugins.push(
@@ -229,7 +235,6 @@ const nextConfig = {
         destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
-
     ];
   },
 };

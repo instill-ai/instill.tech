@@ -4,7 +4,6 @@ import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
-
 import { useRouter } from "next/router";
 import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
@@ -20,6 +19,7 @@ import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType } from "@/lib/instill";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -29,23 +29,54 @@ type DocsPageProps = {
   commitMeta: Nullable<CommitMeta>;
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+type Props = {
+  locales: string[];
+};
+
+function getLocale(
+  path: string[] | string,
+  locales: string[],
+  locale: string
+): string {
+  for (const element of path) {
+    if (locales.includes(element)) {
+      return "";
+    }
+  }
+  return `/${locale}`;
+}
+
+export const getStaticPaths: GetStaticPaths<Props> = async ({
+  locales = [],
+}) => {
   const docsDir = join(process.cwd(), "docs");
   const docsPaths = glob.sync("**/*.mdx", { cwd: docsDir });
 
-  return {
-    paths: docsPaths.map((path) => ({
-      params: {
-        path: path.replace(".mdx", "").split("/"),
-      },
-    })),
+  const paths: any = [];
 
-    fallback: false,
+  docsPaths.forEach((path) =>
+    locales?.forEach((locale) => {
+      if (path.includes(`${locale}/`)) {
+        paths.push({
+          params: {
+            path: path.replace(".mdx", "").split("/"),
+            locale,
+          },
+        });
+      }
+    })
+  );
+
+  return {
+    paths: paths,
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
+  locale,
+  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -56,6 +87,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   let fullPath: string;
   let relativePath: string;
 
+  const localeString = getLocale(
+    params.path,
+    locales ? locales : [],
+    locale ?? "en"
+  );
+
   if (Array.isArray(params.path)) {
     fullPath = join(process.cwd(), "docs", ...params.path);
     relativePath = join(...params.path);
@@ -64,7 +101,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     relativePath = join(params.path);
   }
 
-  const source = fs.readFileSync(fullPath + ".mdx", "utf8");
+  const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 
   // Prepare the codeHike theme
 
@@ -125,6 +162,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
       mdxSource,
       nextArticle,
       prevArticle,
@@ -147,12 +185,12 @@ const DocsPage: FC<DocsPageProps> & {
     <>
       <PageHead
         pageTitle={
-          mdxSource.frontmatter
+          mdxSource?.frontmatter
             ? `${mdxSource.frontmatter.title} | Documentation`
             : "Documentation"
         }
         pageDescription={
-          mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
+          mdxSource?.frontmatter ? mdxSource.frontmatter.description : ""
         }
         pageType="docs"
         additionMeta={
@@ -168,7 +206,7 @@ const DocsPage: FC<DocsPageProps> & {
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 pb-10 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
-            {mdxSource.frontmatter
+            {mdxSource?.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
           </h1>
@@ -176,7 +214,7 @@ const DocsPage: FC<DocsPageProps> & {
             id="content"
             className="DocSearch-content prose mb-20 max-w-none dark:prose-white dark:bg-instillGrey90"
           >
-            <MDXRemote {...mdxSource} />
+            {mdxSource ? <MDXRemote {...mdxSource} /> : null}
           </article>
           {commitMeta ? (
             <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
@@ -208,14 +246,16 @@ const DocsPage: FC<DocsPageProps> & {
         </div>
 
         <aside className="hidden pb-10 xl:col-span-2 xl:block">
-          <RightSidebar
-            githubEditUrl={
-              "https://github.com/instill-ai/instill.tech/edit/main" +
-              router.asPath +
-              ".mdx"
-            }
-            headers={headers}
-          />
+          {headers ? (
+            <RightSidebar
+              githubEditUrl={
+                "https://github.com/instill-ai/instill.tech/edit/main" +
+                router.asPath +
+                ".mdx"
+              }
+              headers={headers}
+            />
+          ) : null}
         </aside>
       </div>
     </>

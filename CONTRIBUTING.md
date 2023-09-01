@@ -17,7 +17,6 @@ We adapt single framework structure to serve all our content enabled by the Next
 
 Whenever you move, delete or rename a content, it will have a new URL and the old URL will be malfunction. Please make sure you correctly set up the redirection rules under `next.config.js`
 
-
 ```js
 async redirects() {
   return [
@@ -230,7 +229,6 @@ Please add documentation page into sidebar.
 - Make sure the page is in the correct section.
 - The order of the list will be the displayed order.
 
-
 for `SECTIONS` important paramter is `appType`, it will decide the menu should be visible under which app.
 
 ```ts
@@ -249,7 +247,7 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/instill-cloud/using-instill-cloud",
       },
     ],
-    appType: "instill-cloud",  
+    appType: "instill-cloud",
   },
   {
     //  <---- this menu will be added to vdp
@@ -263,26 +261,26 @@ const SECTIONS: SidebarSections[] = [
       { text: "FAQ", link: "/docs/vdp/faq" },
     ],
     appType: "vdp",
-  }
+  },
 ];
 ```
 
-take paramaters `appType` and `isDark` and return the logo accordingly. 
-```ts
-const getLogo = (appType: string, isDark: boolean) => {
+take paramaters `appType` and `isDark` and return the logo accordingly.
 
-}
+```ts
+const getLogo = (appType: string, isDark: boolean) => {};
 ```
 
 take parameter `appType` and return sidebar sections
+
 ```ts
 const getSidebarSections = (appType: string) => {
   return SECTIONS.filter((section) => section?.appType === appType);
 };
-
 ```
 
 master function for sidebar
+
 ```ts
 const getSideBar = (type: string, isDark: boolean): Sidebar => {
   return {
@@ -473,6 +471,68 @@ Please don't use p tag to wrap other component in markdown. Because it will caus
   <ZoomableImg />
 </p>
 ```
+
+## Translation (i18n)
+
+- We are using `Next.js` [Internationalization (i18n) Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization)
+
+### Library used
+
+```
+react-i18next
+next-i18next
+i18next
+```
+
+### Folder Structure 
+
+```
+├── docs
+│   ├── welcome.en.mdx
+│   └── welcome.zh_CN.mdx
+├── content.config.tsx
+├── public
+│   └── locales
+│        ├── en
+│              └── common.json
+│        └── zh_CN
+│             └── common.json
+└── pages
+    └── docs
+        ├── [...path].tsx
+        └── index.tsx
+```
+### Want to add new langauge
+
+add your langauge
+
+- https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/next.config.mjs#L56
+
+- https://github.com/instill-ai/instill.tech/blob/namananand/ins-1624-we-will-need-to-introduce-i18n-for-chinese-japanese-etc-for/next-i18next.config.js
+
+### Example
+
+```
+import { useTranslation } from "next-i18next";
+const { t } = useTranslation();
+
+
+export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
+  locale
+}) => {
+  
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"]))
+    },
+  };
+};
+
+```
+ ### Example used in project
+ - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L76
+ - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
+
 
 [^1]: [Nodejs - Downloads](https://nodejs.org/en/download/)
 [^2]: [Pnpm - Installation](https://pnpm.io/installation)

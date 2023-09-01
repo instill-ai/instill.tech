@@ -1,6 +1,10 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-export const Document = () => {
+type DocumentProps = {
+  locale?: string;
+};
+
+export const Document = ({ locale }: DocumentProps) => {
   return (
     <Html>
       <Head>

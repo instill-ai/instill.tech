@@ -10,12 +10,14 @@ import { useRouter } from "next/router";
 import cn from "clsx";
 import { isRouterActive } from "@/lib/instill";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 export type ItemProps = {
   item: NavbarItem;
 };
 
 export const Item = ({ item }: ItemProps) => {
+  const { t } = useTranslation();
   const router = useRouter();
   if (isBorder(item)) {
     return (
@@ -36,7 +38,7 @@ export const Item = ({ item }: ItemProps) => {
         )}
         href={item.to}
       >
-        {item.label}
+        {t(item.label)}
       </Link>
     );
   }
@@ -61,7 +63,7 @@ export const Item = ({ item }: ItemProps) => {
           <div className={cn("flex flex-row gap-x-1", item.className)}>
             {item.label && (
               <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
-                {item.label}
+                {t(item.label)}
               </p>
             )}
 
@@ -69,7 +71,7 @@ export const Item = ({ item }: ItemProps) => {
           </div>
         ) : (
           <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
-            {item.label}
+            {t(item.label)}
           </p>
         )}
       </a>

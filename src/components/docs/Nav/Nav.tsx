@@ -16,6 +16,8 @@ import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
 import { applicattionName } from "@/lib/instill/applicationType";
+import LocaleSwitcher from "../LocaleSwitcher";
+import { useTranslation } from "next-i18next";
 
 export type NavProps = {
   nav: NavConfig;
@@ -29,6 +31,7 @@ const DropdownMenu = ({
   item: NavbarItem;
   isMobile: boolean;
 }) => {
+  const { t } = useTranslation();
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
   const dropdownMenus = item.items?.filter(
@@ -64,7 +67,7 @@ const DropdownMenu = ({
                 className="dark:text-instillGrey15"
                 key={subItemKey}
               >
-                {subItem.label}
+                {t(subItem.label)}
               </Dropdown.MenuLabel>
             );
           }
@@ -233,8 +236,12 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             <div className="flex flex-grow flex-row justify-end">
               {desktopView}
               {mobileView}
+
               <div className="mx-5 my-auto">
                 <ThemeToggle />
+              </div>
+              <div className="mx-1 my-auto">
+                <LocaleSwitcher />
               </div>
             </div>
           </div>

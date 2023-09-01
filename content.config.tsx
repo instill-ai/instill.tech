@@ -8,6 +8,8 @@ import {
   Icons,
 } from "@instill-ai/design-system";
 
+import { useTranslation } from "next-i18next";
+
 const SITE = {
   title: "Documentation",
   description: "Your website description.",
@@ -24,218 +26,281 @@ const SITE = {
 
 const SECTIONS: SidebarSections[] = [
   {
-    text: "Welcome",
+    text: "common:sidebarSections.welcome",
     link: "/docs/instill-cloud/welcome",
     items: [],
     appType: "instill-cloud",
   },
   {
-    text: "Instill Cloud",
+    text: "common:sidebarSections.instillCloud",
     collapsible: true,
     items: [
       {
-        text: "Getting started",
+        text: "common:sidebarSections.gettingStarted",
         link: "/docs/instill-cloud/getting-started",
       },
       {
-        text: "Using Instill Cloud",
+        text: "common:sidebarSections.usingInstillCloud",
         link: "/docs/instill-cloud/using-instill-cloud",
       },
-      { text: "FAQ", link: "/docs/instill-cloud/faq" },
+      {
+        text: "common:sidebarSections.faq",
+        link: "/docs/instill-cloud/faq",
+      },
     ],
     appType: "instill-cloud",
   },
   {
-    text: "Welcome",
+    text: "common:sidebarSections.welcome",
     link: "/docs/vdp/welcome",
     items: [],
     appType: "vdp",
   },
   {
-    text: "VDP",
+    text: "common:sidebarSections.vdp",
     collapsible: true,
     items: [
-      { text: "Getting started", link: "/docs/vdp/getting-started" },
-      { text: "Configuration", link: "/docs/vdp/configuration" },
-      { text: "Roadmap", link: "/docs/vdp/roadmap" },
-      { text: "License", link: "/docs/vdp/license" },
+      {
+        text: "common:sidebarSections.gettingStarted",
+        link: "/docs/vdp/getting-started",
+      },
+      {
+        text: "common:sidebarSections.configuration",
+        link: "/docs/vdp/configuration",
+      },
+      {
+        text: "common:sidebarSections.roadmap",
+        link: "/docs/vdp/roadmap",
+      },
+      {
+        text: "common:sidebarSections.license",
+        link: "/docs/vdp/license",
+      },
     ],
     appType: "vdp",
   },
   {
-    text: "Deployment",
+    text: "common:sidebarSections.deployment",
     collapsible: true,
     items: [
       {
-        text: "Overview",
+        text: "common:sidebarSections.overview",
         link: "/docs/vdp/deployment/overview",
       },
       {
-        text: "Docker Compose",
+        text: "common:sidebarSections.dockerCompose",
         link: "/docs/vdp/deployment/docker-compose",
       },
       {
-        text: "Kubernetes using Helm",
+        text: "common:sidebarSections.kubernetesUsingHelm",
         link: "/docs/vdp/deployment/kubernetes-using-helm",
       },
     ],
     appType: "vdp",
   },
   {
-    text: "Core Concepts",
+    text: "common:sidebarSections.coreConcepts",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/vdp/core-concepts/overview" },
-      { text: "Pipeline", link: "/docs/vdp/core-concepts/pipeline" },
-      { text: "Connector", link: "/docs/vdp/connectors/overview" },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "Operators",
-    collapsible: true,
-    items: [
-      { text: "Overview", link: "/docs/vdp/operators/overview" },
-      { text: "Trigger", link: "/docs/vdp/operators/trigger" },
-      { text: "Response", link: "/docs/vdp/operators/response" },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "AI Connector",
-    collapsible: true,
-    items: [
-      { text: "Overview", link: "/docs/vdp/ai-connectors/overview" },
-      { text: "Instill Model", link: "/docs/vdp/ai-connectors/instill-model" },
-      { text: "Stability AI", link: "/docs/vdp/ai-connectors/stability-ai" },
-      { text: "Open AI", link: "/docs/vdp/ai-connectors/openai" },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "Blockchain Connector",
-    collapsible: true,
-    items: [
-      { text: "Overview", link: "/docs/vdp/blockchain-connectors/overview" },
       {
-        text: "Numbers Protocol",
+        text: "common:sidebarSections.overview",
+        link: "/docs/vdp/core-concepts/overview",
+      },
+      {
+        text: "common:sidebarSections.pipeline",
+        link: "/docs/vdp/core-concepts/pipeline",
+      },
+      {
+        text: "common:sidebarSections.connector",
+        link: "/docs/vdp/connectors/overview",
+      },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "common:sidebarSections.operators",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/vdp/operators/overview",
+      },
+      {
+        text: "common:sidebarSections.trigger",
+        link: "/docs/vdp/operators/trigger",
+      },
+      {
+        text: "common:sidebarSections.response",
+        link: "/docs/vdp/operators/response",
+      },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "common:sidebarSections.aiConnector",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/vdp/ai-connectors/overview",
+      },
+      {
+        text: "common:sidebarSections.instillModel",
+        link: "/docs/vdp/ai-connectors/instill-model",
+      },
+      {
+        text: "common:sidebarSections.stabilityAI",
+        link: "/docs/vdp/ai-connectors/stability-ai",
+      },
+      {
+        text: "common:sidebarSections.openAI",
+        link: "/docs/vdp/ai-connectors/openai",
+      },
+    ],
+    appType: "vdp",
+  },
+  {
+    text: "common:sidebarSections.blockchainConnector",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/vdp/blockchain-connectors/overview",
+      },
+      {
+        text: "common:sidebarSections.numbersProtocol",
         link: "/docs/vdp/blockchain-connectors/numbers-protocol",
       },
     ],
     appType: "vdp",
   },
   {
-    text: "Data Connector",
+    text: "common:sidebarSections.dataConnector",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/vdp/data-connectors/overview" },
-      { text: "Airbyte", link: "/docs/vdp/data-connectors/airbyte" },
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/vdp/data-connectors/overview",
+      },
+      {
+        text: "common:sidebarSections.airbyte",
+        link: "/docs/vdp/data-connectors/airbyte",
+      },
     ],
     appType: "vdp",
   },
   {
-    text: "Welcome",
+    text: "common:sidebarSections.welcome",
     link: "/docs/model/welcome",
     items: [],
     appType: "model",
   },
   {
-    text: "Instill Model",
+    text: "common:sidebarSections.instillModel",
     collapsible: true,
     items: [
-      { text: "Getting started", link: "/docs/model/getting-started" },
-      { text: "Roadmap", link: "/docs/model/roadmap" },
+      {
+        text: "common:sidebarSections.gettingStarted",
+        link: "/docs/model/getting-started",
+      },
+      { text: "common:sidebarSections.roadmap", link: "/docs/model/roadmap" },
     ],
     appType: "model",
   },
   {
-    text: "Deployment",
+    text: "common:sidebarSections.deployment",
     collapsible: true,
     items: [
       {
-        text: "Overview",
+        text: "common:sidebarSections.overview",
         link: "/docs/model/deployment/overview",
       },
       {
-        text: "Docker Compose",
+        text: "common:sidebarSections.dockerCompose",
         link: "/docs/model/deployment/docker-compose",
       },
       {
-        text: "Kubernetes using Helm",
+        text: "common:sidebarSections.kubernetesUsingHelm",
         link: "/docs/model/deployment/kubernetes-using-helm",
       },
     ],
     appType: "model",
   },
   {
-    text: "Core Concepts",
+    text: "common:sidebarSections.coreConcepts",
     collapsible: true,
     items: [
-      { text: "Overview", link: "/docs/model/core-concepts/overview" },
-      { text: "AI task", link: "/docs/model/core-concepts/ai-task" },
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/model/core-concepts/overview",
+      },
+      {
+        text: "common:sidebarSections.aiTask",
+        link: "/docs/model/core-concepts/ai-task",
+      },
     ],
     appType: "model",
   },
   {
-    text: "Prepare Models",
+    text: "common:sidebarSections.prepareModels",
     collapsible: true,
     items: [
       {
-        text: "Overview",
+        text: "common:sidebarSections.overview",
         link: "/docs/model/prepare-models/overview",
       },
       {
-        text: "Model card",
+        text: "common:sidebarSections.modelCard",
         link: "/docs/model/prepare-models/model-card",
       },
       {
-        text: "Pre-processing",
+        text: "common:sidebarSections.preProcessing",
         link: "/docs/model/prepare-models/pre-processing",
       },
       {
-        text: "Post-processing",
+        text: "common:sidebarSections.postProcessing",
         link: "/docs/model/prepare-models/post-processing",
       },
     ],
     appType: "model",
   },
   {
-    text: "Import Models",
+    text: "common:sidebarSections.importModels",
     collapsible: true,
     items: [
       {
-        text: "Overview",
+        text: "common:sidebarSections.overview",
         link: "/docs/model/import-models/overview",
       },
       {
-        text: "Local",
+        text: "common:sidebarSections.local",
         link: "/docs/model/import-models/local",
       },
       {
-        text: "GitHub",
+        text: "common:sidebarSections.github",
         link: "/docs/model/import-models/github",
       },
       {
-        text: "ArtiVC",
+        text: "common:sidebarSections.artivc",
         link: "/docs/model/import-models/artivc",
       },
       {
-        text: "Hugging Face",
+        text: "common:sidebarSections.huggingFace",
         link: "/docs/model/import-models/huggingface",
       },
     ],
     appType: "model",
   },
   {
-    text: "Development",
+    text: "common:sidebarSections.development",
     collapsible: true,
     items: [
       {
-        text: "System architecture",
+        text: "common:sidebarSections.systemArchitecture",
         link: "/docs/vdp/development/system-architecture",
       },
       {
-        text: "Local setup",
+        text: "common:sidebarSections.localSetup",
         link: "/docs/vdp/development/setup-local-development",
       },
     ],
@@ -325,28 +390,28 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             to: "/docs/core/welcome",
             className: "",
             position: "right",
-            label: "Instill Core",
+            label: "common:navbar.instillCore",
           },
           {
             key: "docs-nav-instill-core-welcome",
             to: "/docs/base/welcome",
             className: "",
             position: "right",
-            label: "Instill Base",
+            label: "common:navbar.instillBase",
           },
           {
             key: "docs-nav-vdp-welcome",
             to: "/docs/vdp/welcome",
             className: "",
             position: "right",
-            label: "Instill VDP",
+            label: "common:navbar.instillVDP",
           },
           {
             key: "docs-nav-model-welcome",
             to: "/docs/model/welcome",
             className: "",
             position: "right",
-            label: "Instill Model",
+            label: "common:navbar.instillModel",
           },
         ],
       },
@@ -355,7 +420,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         to: "/docs/instill-cloud/welcome",
         className: "",
         position: "left",
-        label: "Instill Cloud",
+        label: "common:navbar.instillCloud",
       },
       {
         key: "docs-nav-dropdown-menu",
@@ -371,14 +436,14 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             key: "docs-nav-dropdown-resources",
             position: "right",
             border: true,
-            label: "Resources",
+            label: "common:navbar.resources",
           },
           {
             key: "docs-nav-dropdown-product-website",
             href: "/",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "Product Website",
+            label: "common:navbar.productWebsite",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -388,7 +453,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: "/tutorials",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "Tutorials",
+            label: "common:navbar.tutorials",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -398,7 +463,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: "/blog",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "Blog",
+            label: "common:navbar.blog",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -408,7 +473,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: "/newsletter",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "Newsletter",
+            label: "common:navbar.newsletter",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -417,13 +482,13 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             key: "docs-nav-dropdown-help",
             position: "right",
             border: false,
-            label: "Help",
+            label: "common:navbar.help",
           },
           {
             key: "docs-nav-dropdown-help",
             position: "right",
             border: true,
-            label: "Help",
+            label: "common:navbar.help",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -433,7 +498,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "Discord",
+            label: "common:navbar.discord",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -443,7 +508,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: "https://github.com/orgs/instill-ai/discussions",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "GitHub Disussions",
+            label: "common:navbar.gitHubDisussions",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
@@ -453,7 +518,7 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
             href: "https://github.com/instill-ai/community/issues",
             className: "navbar-dropdown-menu",
             position: "right",
-            label: "GitHub Issues",
+            label: "common:navbar.gitHubIssues",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
