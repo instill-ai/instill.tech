@@ -38,6 +38,7 @@
     "d3": "^7.6.1",
     "embla-carousel": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
+    "fs": "0.0.1-security",
     "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",
     "i18next": "^23.4.6",
