@@ -1,6 +1,5 @@
 import Link from "next/link";
 import cn from "clsx";
-import { useTranslation } from "next-i18next";
 
 export type ArticleNavigationButtonProps = {
   text: string;
@@ -13,7 +12,6 @@ export const ArticleNavigationButton = ({
   link,
   type,
 }: ArticleNavigationButtonProps) => {
-  const { t } = useTranslation();
   return (
     <Link
       href={link}
@@ -25,7 +23,7 @@ export const ArticleNavigationButton = ({
           type === "prev" ? "mr-auto" : "ml-auto"
         )}
       >
-        {type === "next" ? t("common:nextPage") : t("common:previousPage")}
+        {type === "next" ? "Next page" : "Previous page"}
       </p>
       <p
         className={cn(
@@ -33,7 +31,7 @@ export const ArticleNavigationButton = ({
           type === "prev" ? "mr-auto" : "ml-auto"
         )}
       >
-        {t(text)}
+        {text}
       </p>
     </Link>
   );
