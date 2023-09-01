@@ -6,13 +6,12 @@ import { Nav } from "./Nav";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
-import { useTranslation } from "next-i18next";
+
 export type DocsLayoutProps = {
   children?: ReactNode;
 };
 
 export const DocsLayout = ({ children }: DocsLayoutProps) => {
-  const { t } = useTranslation();
   const router = useRouter();
 
   const { isDark } = useInstillAICtx();
