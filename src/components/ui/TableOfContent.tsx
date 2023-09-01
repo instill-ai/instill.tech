@@ -2,7 +2,6 @@ import cn from "clsx";
 import { useEffect, useState } from "react";
 import { Nullable } from "@/types/instill";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 
 export type TableOfContentProps = {
   headers: {
@@ -13,7 +12,6 @@ export type TableOfContentProps = {
 };
 
 export const TableOfContent = ({ headers }: TableOfContentProps) => {
-  const { t } = useTranslation("common");
   const router = useRouter();
   const onThisPageID = "on-this-page-heading";
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
@@ -57,7 +55,7 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
         className="mb-4 font-semibold text-instillGrey95 dark:text-instillGrey15"
         id={onThisPageID}
       >
-        {t("common:onThisPage")}
+        On this page
       </h2>
       <ul>
         {headers.map((header) => (
