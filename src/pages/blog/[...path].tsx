@@ -30,6 +30,7 @@ import {
 } from "@/components/ui";
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleCard } from "@/components/blog/BlogArticleCard";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type BlogPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -57,6 +58,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   params,
+  locale,
+  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -116,6 +119,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
       mdxSource,
       headers,
       articles,

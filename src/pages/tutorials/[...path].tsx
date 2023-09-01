@@ -34,6 +34,7 @@ import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -60,6 +61,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   params,
+  locale,
+  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -120,6 +123,7 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
       mdxSource,
       headers,
       tutorials,
