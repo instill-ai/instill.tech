@@ -186,6 +186,7 @@ const SECTIONS: SidebarSections[] = [
         text: "common:sidebarSections.airbyte",
         link: "/docs/vdp/data-connectors/airbyte",
       },
+      { text: "Pinecone", link: "/docs/vdp/data-connectors/pinecone" },
     ],
     appType: "vdp",
   },
