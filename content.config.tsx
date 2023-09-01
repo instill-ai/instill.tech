@@ -316,35 +316,35 @@ export function getLogoConfig(
   if (appType === "vdp") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
-      href: "/docs/vdp/welcome",
+      href: "/",
     };
   }
 
   if (appType === "instill-cloud") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
-      href: "/docs/instill-cloud/welcome",
+      href: "/",
     };
   }
 
   if (appType === "model") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
-      href: "/docs/model/welcome",
+      href: "/",
     };
   }
 
   if (appType === "core") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
-      href: "/docs/core/welcome",
+      href: "/",
     };
   }
 
   if (appType === "base") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
-      href: "/docs/base/welcome",
+      href: "/",
     };
   }
 
