@@ -65,11 +65,7 @@ const nextConfig = {
     //   require("./lib/generate-sitemap");
     // }
 
-    if (!isServer) {
-      config.node = {
-        fs: "empty",
-      };
-    }
+    config.resolve.fallback = { fs: false };
 
     if (!dev) {
       config.plugins.push(
