@@ -22,7 +22,7 @@ export default function LocaleSwitcher() {
           {locale ? languages[locale] : ""}
         </p>
       </Dropdown.MenuTrigger>
-      <Dropdown.MenuContent>
+      <Dropdown.MenuContent className="dark:bg-instillGrey90">
         {otherLocales.map((locale, index) => {
           const { pathname, query, asPath } = router;
           return (
@@ -32,6 +32,7 @@ export default function LocaleSwitcher() {
                 as={asPath}
                 locale={locale}
                 legacyBehavior
+                className=""
               >
                 <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
                   {languages[locale]}
