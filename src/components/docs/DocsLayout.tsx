@@ -55,7 +55,16 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
               margin-right: calc((100vw - 1340px) / 2);
             }
           }
-          @media screen and (min-width: 1600px) and (max-width: 2000px) {
+          @media screen and (min-width: 1600px) and (max-width: 1999px) {
+            .docs-left-sidebar {
+              width: calc((100vw - 1430px + 300px) / 2);
+            }
+            .docs-content {
+              margin-left: calc((100vw - 1440px + 300px) / 2);
+              margin-right: calc((100vw - 1720px) / 2);
+            }
+          }
+          @media screen and (min-width: 2000px) {
             .docs-left-sidebar {
               width: calc((100vw - 1430px + 300px) / 2);
             }
