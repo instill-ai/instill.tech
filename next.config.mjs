@@ -14,6 +14,7 @@ import {
   infoBlockHeader,
   infoBlockChildren,
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
+import path from "path";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -57,6 +58,7 @@ const nextConfig = {
     locales: ["en", "zh_CN"],
     defaultLocale: "en",
   },
+  localePath: path.resolve("./public/locales"),
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },
