@@ -184,39 +184,19 @@ export const PageHead = ({
         {baseOpenGraph}
         {openGraph}
         {additionMeta}
-        {pageType === "docs" ? (
-          <>
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="/vdp-favicon-32x32.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="/vdp-favicon-16x16.png"
-            />
-            <link rel="shortcut icon" href="/vdp-favicon.ico" />
-          </>
-        ) : (
-          <>
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="/instill-ai-favicon-32x32.png"
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="/instill-ai-favicon-16x16.png"
-            />
-            <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
-          </>
-        )}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/instill-ai-favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/instill-ai-favicon-16x16.png"
+        />
+        <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
 
         {pageType === "blog" && jsonLd && (
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
