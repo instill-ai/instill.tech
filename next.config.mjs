@@ -67,8 +67,6 @@ const nextConfig = {
     //   require("./lib/generate-sitemap");
     // }
 
-    config.resolve.fallback = { fs: false };
-
     if (!dev) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
