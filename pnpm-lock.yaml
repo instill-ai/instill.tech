@@ -5,8 +5,8 @@ dependencies:
     specifier: ^4.14.2
     version: 4.14.2
   '@code-hike/mdx':
-    specifier: ^0.9.0
-    version: 0.9.0(react@18.2.0)
+    specifier: ^0.8.0
+    version: 0.8.0(react@18.2.0)
   '@docsearch/react':
     specifier: ^3.3.0
     version: 3.3.0(@algolia/client-search@4.14.2)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
@@ -3069,18 +3069,19 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /@code-hike/lighter@0.7.0:
-    resolution: {integrity: sha512-64O07rIORKQLB+5T/GKAmKcD9sC0N9yHFJXa0Hs+0Aee1G+I4bSXxTccuDFP6c/G/3h5Pk7yv7PoX9/SpzaeiQ==}
+  /@code-hike/lighter@0.2.6:
+    resolution: {integrity: sha512-930ImSV4LTFcYLyiKpJ1SPfU9dpJKwvMJNzBFqDYprkcPaZVHNEt+AqTqMkPSPdyRYnMuAAkX7opKwuPX/79zg==}
     dev: false
 
-  /@code-hike/mdx@0.9.0(react@18.2.0):
-    resolution: {integrity: sha512-0wg68ZCjVWAkWT4gBUZJ8Mwktjen/XeWyqBQCrhA2IZSbZZnMYsEI6JJEFb/nZoNI3comB3JdxPLykZRq3qT2A==}
+  /@code-hike/mdx@0.8.0(react@18.2.0):
+    resolution: {integrity: sha512-L0fpDHbpVtRUfNbbP5rXYxx0N63JqH+PJS03vsSShvHL+QBotx4XjrjGdEgusYd7PFqRgbcj5LIfSyB9vEK5xw==}
     peerDependencies:
       react: ^16.8.3 || ^17 || ^18
     dependencies:
-      '@code-hike/lighter': 0.7.0
+      '@code-hike/lighter': 0.2.6
       node-fetch: 2.6.7
       react: 18.2.0
+      shiki: 0.10.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -18090,6 +18091,14 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
+  /shiki@0.10.1:
+    resolution: {integrity: sha512-VsY7QJVzU51j5o1+DguUd+6vmCmZ5v/6gYu4vyYAhzjuNQU6P/vmSy4uQaOhvje031qQMiW0d2BwgMH52vqMng==}
+    dependencies:
+      jsonc-parser: 3.2.0
+      vscode-oniguruma: 1.7.0
+      vscode-textmate: 5.2.0
+    dev: false
+
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
@@ -19943,6 +19952,14 @@ packages:
   /void-elements@3.1.0:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /vscode-oniguruma@1.7.0:
+    resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
+    dev: false
+
+  /vscode-textmate@5.2.0:
+    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
     dev: false
 
   /w3c-hr-time@1.0.2:
