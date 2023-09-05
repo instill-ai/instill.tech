@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.14.2",
-    "@code-hike/mdx": "^0.7.4",
+    "@code-hike/mdx": "^0.9.0",
     "@docsearch/react": "^3.3.0",
     "@instill-ai/design-system": "^0.47.1",
     "@instill-ai/design-tokens": "^0.3.2",
