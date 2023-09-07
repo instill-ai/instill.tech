@@ -1,6 +1,7 @@
 import { Dropdown } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export const languages: { [key: string]: string } = {
   en: "English",
@@ -11,14 +12,19 @@ export default function LocaleSwitcher() {
   const router = useRouter();
   const { locales, locale: activeLocale, locale } = router;
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const otherLocales = (locales || []).filter(
     (locale) => locale !== activeLocale
   );
 
   return (
-    <Dropdown.Menu>
+    <Dropdown.Menu open={isOpen}>
       <Dropdown.MenuTrigger className="flex flex-row gap-x-2 focus:outline-none">
-        <p className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+        <p
+          className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {locale ? languages[locale] : ""}
         </p>
       </Dropdown.MenuTrigger>
@@ -34,7 +40,10 @@ export default function LocaleSwitcher() {
                 legacyBehavior
                 className=""
               >
-                <p className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+                <p
+                  className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
                   {languages[locale]}
                 </p>
               </Link>
