@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@instill-ai/design-system";
 
 import { SidebarItem } from "@/types/docs";
+import { useTranslation } from "next-i18next";
 
 export type SectionProps = {
   text: string;
@@ -14,6 +15,7 @@ export type SectionProps = {
 };
 
 export const Section = ({ text, items, collapsible, link }: SectionProps) => {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
 
   const toggle = () => {
@@ -55,7 +57,7 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
         )}
       >
         <h2 className="my-auto flex-1 text-sm font-semibold text-black dark:text-instillGrey15">
-          {text}
+          {t(text)}
         </h2>
         {sectionIsCollapsable ? (
           <div className="my-auto p-[3px] hover:bg-instillGrey20 dark:hover:bg-instillGrey80">
@@ -85,13 +87,13 @@ export const Section = ({ text, items, collapsible, link }: SectionProps) => {
             key={item.link}
             href={item.link}
             className={cn(
-              "text-sm font-normal transition duration-300 ease-in-out hover:text-instillSkyBlue dark:hover:text-instillSkyBlue",
+              "text-sm font-normal transition duration-300 ease-in-out hover:text-instillBlue50 dark:hover:text-instillBlue50",
               item.link === router.asPath.split("#")[0]
-                ? "text-instillSkyBlue"
+                ? "text-instillBlue50"
                 : "text-instillGrey80 dark:text-instillGrey30"
             )}
           >
-            {item.text}
+            {t(item.text)}
           </Link>
         ))}
       </div>

@@ -1,17 +1,110 @@
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import React, {
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useMemo,
+  useState,
+} from "react";
 import cn from "clsx";
 import Link from "next/link";
 import { DocSearch } from "@docsearch/react";
-
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import { CrossIcon, MenuIcon } from "@instill-ai/design-system";
+import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { useRouter } from "next/router";
+import { getApplicationType } from "@/lib/instill";
+import { applicationName } from "@/lib/instill/applicationType";
+import LocaleSwitcher from "../LocaleSwitcher";
+import { useTranslation } from "next-i18next";
 
 export type NavProps = {
   nav: NavConfig;
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+const DropdownMenu = ({
+  item,
+  isMobile,
+}: {
+  item: NavbarItem;
+  isMobile: boolean;
+}) => {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const appType = getApplicationType(router.asPath);
+  const dropdownMenus = item.items?.filter(
+    (item) =>
+      item.label !== applicationName[appType === "cloud" ? "core" : appType]
+  );
+  return (
+    <Dropdown.Menu key={item.key}>
+      <Dropdown.MenuTrigger
+        data-state="open"
+        className="flex flex-row gap-x-1 focus:outline-none"
+      >
+        {isMobile ? (
+          <div key={item.key}>
+            <Item item={item} />
+          </div>
+        ) : (
+          <Item item={item} key={item.key} />
+        )}
+      </Dropdown.MenuTrigger>
+      <Dropdown.MenuContent
+        className="dark:bg-instillGrey90"
+        side="bottom"
+        align="start"
+        key={item.key + "dropdown-menu-content"}
+      >
+        {dropdownMenus?.map((subItem) => {
+          const subItemKey = subItem.key;
+          if (subItem.border) {
+            return (
+              <Dropdown.MenuLabel
+                className="dark:text-instillGrey15"
+                key={subItemKey}
+              >
+                {t(subItem.label)}
+              </Dropdown.MenuLabel>
+            );
+          }
+          if (subItem.border === false) {
+            return <Dropdown.MenuSeparator key={item.key} />;
+          } else {
+            return (
+              <Dropdown.MenuItem key={subItemKey}>
+                <Item key={subItemKey} item={subItem} />
+              </Dropdown.MenuItem>
+            );
+          }
+        })}
+      </Dropdown.MenuContent>
+    </Dropdown.Menu>
+  );
+};
+
+const ItemList = ({
+  items,
+  isMobile,
+}: NavConfig & { isMobile: boolean }): ReactElement => {
+  const renderedItems = items.map((item) => {
+    if (item.items) {
+      return <DropdownMenu item={item} isMobile={isMobile} key={item.key} />;
+    } else {
+      if (isMobile) {
+        return (
+          <div key={item.key}>
+            <Item item={item} />
+          </div>
+        );
+      }
+      return <Item key={item.key} item={item} />;
+    }
+  });
+
+  return <>{renderedItems}</>; // Wrap the array of JSX elements in a fragment and return
 };
 
 export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
@@ -64,17 +157,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             )}
           </button>
           {mobileNavOpen && (
-            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey95">
-              {items.left.map((item) => (
-                <div key={item.key}>
-                  <Item item={item} />
-                </div>
-              ))}
-              {items.right.map((item) => (
-                <div key={item.key}>
-                  <Item item={item} />
-                </div>
-              ))}
+            <div className="docs-mobile-nav-list fixed left-0 z-40 flex h-screen w-full flex-col gap-y-4 bg-white px-4 py-10 dark:bg-instillGrey90">
+              <ItemList items={items.left} isMobile={true} />
+              <ItemList items={items.right} isMobile={true} />
               {/* <ThemeToggle /> */}
             </div>
           )}
@@ -93,9 +178,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.left.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.left.map((item) => (
-              <Item key={item.key} item={item} />
-            ))}
+            <ItemList items={items.left} isMobile={false} />
           </div>
           <div
             className={cn(
@@ -103,9 +186,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               items.right.length === 0 ? "flex-shrink" : "grow"
             )}
           >
-            {items.right.map((item) => (
-              <Item key={item.key} item={item} />
-            ))}
+            <ItemList items={items.right} isMobile={false} />
           </div>
           {/* <div className="my-auto ml-4">
             <ThemeToggle />
@@ -122,53 +203,54 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           .nav {
             min-height: var(--docs-nav-height);
           }
-
-          @media screen and (min-width: 768px) {
-            .nav {
-              margin-bottom: var(--docs-nav-margin-bottom);
-            }
-          }
         `}
       </style>
+
       <nav
         className={cn(
-          "nav sticky top-0 z-10 mx-auto flex w-full flex-row border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-4 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey95 dark:bg-opacity-80"
+          "nav fixed top-0 z-10 w-screen border-b border-b-instillGrey30 bg-white bg-opacity-80 px-8 py-2 backdrop-blur-sm dark:border-b-instillGrey80 dark:bg-instillGrey90"
         )}
       >
-        {!nav.logo && !nav.title ? null : (
-          <div className="logo mr-4 flex md:hidden">
-            <Link
-              href="/docs/instill-cloud/welcome"
-              className="flex flex-row gap-x-3"
-            >
-              {nav.logo ? nav.logo.element : null}
-              {nav.title ? (
-                <h1 className="my-auto text-xl font-bold text-black dark:text-instillGrey05">
-                  {nav.title}
-                </h1>
-              ) : null}
-            </Link>
-          </div>
-        )}
-
-        <div className="flex flex-1 flex-row">
-          <div className="flex flex-grow flex-row justify-end">
-            {desktopView}
-            {mobileView}
-            <div className="mx-5 my-auto">
-              <DocSearch
-                appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
-                apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
-                indexName="instill"
-              />
+        <div className="container mx-auto flex flex-row">
+          {!nav.logo && !nav.title ? null : (
+            <div className="logo mr-4 flex">
+              <Link
+                href={nav.logo ? nav.logo?.href : ""}
+                className="flex flex-row gap-x-3"
+              >
+                {nav.logo ? nav.logo.element : null}
+              </Link>
             </div>
-            <div className="my-auto">
-              <ThemeToggle />
+          )}
+
+          <div className="mx-5 my-auto">
+            <DocSearch
+              appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
+              apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
+              indexName="instill"
+            />
+          </div>
+
+          <div className="flex flex-1 flex-row">
+            <div className="flex flex-grow flex-row justify-end">
+              {desktopView}
+              {mobileView}
+
+              <div className="mx-5 my-auto">
+                <ThemeToggle />
+              </div>
+              <div className="mx-1 my-auto">
+                <LocaleSwitcher />
+              </div>
             </div>
           </div>
         </div>
       </nav>
-      <SubNav marginBottom="mb-5" setLeftSidebarIsOpen={setLeftSidebarIsOpen} />
+
+      <SubNav
+        marginBottom={"my-4"}
+        setLeftSidebarIsOpen={setLeftSidebarIsOpen}
+      />
     </>
   );
 };

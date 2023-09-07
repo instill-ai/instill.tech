@@ -50,6 +50,8 @@ export type NavInteriorLinkItem = {
     height: number;
     alt: string;
   };
+  border?: boolean;
+  items?: NavbarItem[];
 };
 
 export type NavExteriorLinkItem = {
@@ -66,12 +68,17 @@ export type NavExteriorLinkItem = {
     height: number;
     alt: string;
   };
+  border?: boolean;
+  items?: NavbarItem[];
 };
 
 export type NavbarBorderItem = {
   key: string;
   position: "right" | "left";
   border: boolean;
+  label: string;
+  iconElement?: ReactElement;
+  items?: NavbarItem[];
 };
 
 export type NavbarItem =

@@ -14,6 +14,7 @@ import {
   infoBlockHeader,
   infoBlockChildren,
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
+import path from "path";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -53,6 +54,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  i18n: {
+    locales: ["en", "zh_CN"],
+    defaultLocale: "en",
+  },
+  localePath: path.resolve("./public/locales"),
   images: {
     domains: ["t2564371.p.clickup-attachments.com"],
   },
@@ -60,6 +66,8 @@ const nextConfig = {
     // if (isServer) {
     //   require("./lib/generate-sitemap");
     // }
+
+    config.resolve.fallback = { fs: false };
 
     if (!dev) {
       config.plugins.push(
@@ -76,7 +84,7 @@ const nextConfig = {
     return [
       {
         source: "/docs/welcome",
-        destination: "/docs/instill-cloud/welcome",
+        destination: "/docs/cloud/welcome",
         permanent: false,
       },
       {
@@ -96,12 +104,12 @@ const nextConfig = {
       },
       {
         source: "/docs/start-here/faq",
-        destination: "/docs/instill-cloud/faq",
+        destination: "/docs/cloud/faq",
         permanent: false,
       },
       {
         source: "/docs/vdp/faq",
-        destination: "/docs/instill-cloud/faq",
+        destination: "/docs/cloud/faq",
         permanent: false,
       },
       {
@@ -229,7 +237,6 @@ const nextConfig = {
         destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
-
     ];
   },
 };
