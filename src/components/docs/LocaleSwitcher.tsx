@@ -18,7 +18,7 @@ export default function LocaleSwitcher() {
   return (
     <Dropdown.Menu>
       <Dropdown.MenuTrigger className="flex flex-row gap-x-2 focus:outline-none">
-        <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+        <p className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
           {locale ? languages[locale] : ""}
         </p>
       </Dropdown.MenuTrigger>
@@ -34,7 +34,7 @@ export default function LocaleSwitcher() {
                 legacyBehavior
                 className=""
               >
-                <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+                <p className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
                   {languages[locale]}
                 </p>
               </Link>
