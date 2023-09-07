@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.39.0](https://github.com/instill-ai/instill.tech/compare/v1.38.0...v1.39.0) (2023-09-07)
+
+
+### Features
+
+* refactor documentation website layout ([#591](https://github.com/instill-ai/instill.tech/issues/591)) ([018e959](https://github.com/instill-ai/instill.tech/commit/018e959997c67d200c617703892e78f64b30f03a))
+* update links of docs entry point ([#596](https://github.com/instill-ai/instill.tech/issues/596)) ([cf76493](https://github.com/instill-ai/instill.tech/commit/cf7649353aeb64e50fa08c4682a7fa5f8240e0f5))
+
 ## [1.38.0](https://github.com/instill-ai/instill.tech/compare/v1.37.5...v1.38.0) (2023-08-28)
 
 
