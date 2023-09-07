@@ -1,4 +1,4 @@
-import { applicattionName } from "@/lib/instill/applicationType";
+import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType } from "@/types/instill";
 import {
@@ -27,28 +27,51 @@ const SITE = {
 const SECTIONS: SidebarSections[] = [
   {
     text: "common:sidebarSections.welcome",
-    link: "/docs/instill-cloud/welcome",
+    link: "/docs/cloud/welcome",
     items: [],
-    appType: "instill-cloud",
+    appType: "cloud",
   },
   {
-    text: "common:sidebarSections.instillCloud",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.gettingStarted",
-        link: "/docs/instill-cloud/getting-started",
-      },
-      {
-        text: "common:sidebarSections.usingInstillCloud",
-        link: "/docs/instill-cloud/using-instill-cloud",
-      },
-      {
-        text: "common:sidebarSections.faq",
-        link: "/docs/instill-cloud/faq",
-      },
-    ],
-    appType: "instill-cloud",
+    text: "common:sidebarSections.gettingStarted",
+    link: "/docs/cloud/getting-started",
+    items: [],
+    appType: "cloud",
+  },
+  {
+    text: "common:sidebarSections.usingInstillCloud",
+    link: "/docs/cloud/using-instill-cloud",
+    items: [],
+    appType: "cloud",
+  },
+  {
+    text: "common:sidebarSections.welcome",
+    link: "/docs/core/welcome",
+    items: [],
+    appType: "core",
+  },
+  {
+    text: "common:sidebarSections.gettingStarted",
+    link: "/docs/core/getting-started",
+    items: [],
+    appType: "core",
+  },
+  {
+    text: "common:sidebarSections.faq",
+    link: "/docs/core/faq",
+    items: [],
+    appType: "core",
+  },
+  {
+    text: "common:sidebarSections.contributingGuideline",
+    link: "/docs/core/contributing-guideline",
+    items: [],
+    appType: "core",
+  },
+  {
+    text: "common:sidebarSections.systemArchitecture",
+    link: "/docs/core/system-architecture",
+    items: [],
+    appType: "core",
   },
   {
     text: "common:sidebarSections.welcome",
@@ -118,7 +141,7 @@ const SECTIONS: SidebarSections[] = [
     appType: "vdp",
   },
   {
-    text: "common:sidebarSections.operators",
+    text: "common:sidebarSections.operator",
     collapsible: true,
     items: [
       {
@@ -126,12 +149,12 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/vdp/operators/overview",
       },
       {
-        text: "common:sidebarSections.trigger",
-        link: "/docs/vdp/operators/trigger",
+        text: "common:sidebarSections.start",
+        link: "/docs/vdp/operators/start",
       },
       {
-        text: "common:sidebarSections.response",
-        link: "/docs/vdp/operators/response",
+        text: "common:sidebarSections.end",
+        link: "/docs/vdp/operators/end",
       },
     ],
     appType: "vdp",
@@ -183,10 +206,13 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/vdp/data-connectors/overview",
       },
       {
+        text: "common:sidebarSections.pinecone",
+        link: "/docs/vdp/data-connectors/pinecone",
+      },
+      {
         text: "common:sidebarSections.airbyte",
         link: "/docs/vdp/data-connectors/airbyte",
       },
-      { text: "Pinecone", link: "/docs/vdp/data-connectors/pinecone" },
     ],
     appType: "vdp",
   },
@@ -297,15 +323,62 @@ const SECTIONS: SidebarSections[] = [
     collapsible: true,
     items: [
       {
-        text: "common:sidebarSections.systemArchitecture",
-        link: "/docs/vdp/development/system-architecture",
-      },
-      {
         text: "common:sidebarSections.localSetup",
         link: "/docs/vdp/development/setup-local-development",
       },
     ],
     appType: "vdp",
+  },
+  {
+    text: "common:sidebarSections.welcome",
+    link: "/docs/base/welcome",
+    items: [],
+    appType: "base",
+  },
+  {
+    text: "common:sidebarSections.instillBase",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.gettingStarted",
+        link: "/docs/base/getting-started",
+      },
+      {
+        text: "common:sidebarSections.configuration",
+        link: "/docs/base/configuration",
+      },
+    ],
+    appType: "base",
+  },
+  {
+    text: "common:sidebarSections.deployment",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.overview",
+        link: "/docs/base/deployment/overview",
+      },
+      {
+        text: "common:sidebarSections.dockerCompose",
+        link: "/docs/base/deployment/docker-compose",
+      },
+      {
+        text: "common:sidebarSections.kubernetesUsingHelm",
+        link: "/docs/base/deployment/kubernetes-using-helm",
+      },
+    ],
+    appType: "base",
+  },
+  {
+    text: "common:sidebarSections.development",
+    collapsible: true,
+    items: [
+      {
+        text: "common:sidebarSections.localSetup",
+        link: "/docs/base/development/setup-local-development",
+      },
+    ],
+    appType: "base",
   },
 ];
 
@@ -321,7 +394,7 @@ export function getLogoConfig(
     };
   }
 
-  if (appType === "instill-cloud") {
+  if (appType === "cloud") {
     return {
       element: <Logos.InstillSquare className="h-12 w-12" />,
       href: "/",
@@ -381,20 +454,20 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         href: "/docs/core/welcome",
         className: "navbar-dropdown-menu",
         position: "left",
-        label: applicattionName[appType === "instill-cloud" ? "core" : appType],
+        label: applicationName[appType === "cloud" ? "core" : appType],
         iconElement: (
           <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
         items: [
           {
-            key: "docs-nav-instill-core-welcome",
+            key: "docs-nav-core-welcome",
             to: "/docs/core/welcome",
             className: "",
             position: "right",
             label: "common:navbar.instillCore",
           },
           {
-            key: "docs-nav-instill-core-welcome",
+            key: "docs-nav-base-welcome",
             to: "/docs/base/welcome",
             className: "",
             position: "right",
@@ -417,8 +490,8 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         ],
       },
       {
-        key: "docs-nav-instill-cloud-welcome",
-        to: "/docs/instill-cloud/welcome",
+        key: "docs-nav-cloud-welcome",
+        to: "/docs/cloud/welcome",
         className: "",
         position: "left",
         label: "common:navbar.instillCloud",

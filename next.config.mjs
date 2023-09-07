@@ -84,7 +84,7 @@ const nextConfig = {
     return [
       {
         source: "/docs/welcome",
-        destination: "/docs/instill-cloud/welcome",
+        destination: "/docs/cloud/welcome",
         permanent: false,
       },
       {
@@ -104,12 +104,12 @@ const nextConfig = {
       },
       {
         source: "/docs/start-here/faq",
-        destination: "/docs/instill-cloud/faq",
+        destination: "/docs/cloud/faq",
         permanent: false,
       },
       {
         source: "/docs/vdp/faq",
-        destination: "/docs/instill-cloud/faq",
+        destination: "/docs/cloud/faq",
         permanent: false,
       },
       {

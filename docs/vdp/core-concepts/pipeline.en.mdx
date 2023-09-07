@@ -9,8 +9,8 @@ A **Pipeline** is an end-to-end workflow that automates a sequence of sub-compon
 
 It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
 
-- Trigger operator - where the pipeline starts to ingest data to be processed
-- AI, Blockchain, Data connectors - a number of connectors to process or send the ingested unstructured data
+- Operators - where the pipeline starts to ingest data to be processed or returns data as response
+- Connectors - a number of connectors to query, process, or send the ingested unstructured data
 
 ```json
 {
@@ -18,17 +18,18 @@ It is defined by a `recipe` which is essentially a JSON object componsed of mult
   "components": [
     {
       "id": <component-id>,
-      "resource_name": <connector-resource-name>  // Source connector
-    },
+      "definition_name": <operator-definition-name>,  // Operator
+      "configuration": {...},
+      ...
+    }
     {
       "id": <component-id>,
-      "resource_name": <connector-resource-name>  // AI or Blockchain connector
+      "resource_name": <connector-resource-name>,
+      "definition_name": <connector-definition-name>,  // Connector
+      "configuration": {...},
+      ...
     },
     ...
-    {
-      "id": <component-id>,
-      "resource_name": <connector-resource-name> // Destination connector
-    }
   ]
 }
 ```

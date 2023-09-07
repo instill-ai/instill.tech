@@ -336,7 +336,7 @@ export const VdpAnimation = () => {
            *   trajectory is 40px, so the scale will be 2x.
            */
 
-          #model_kernel {
+          #instill-model_kernel {
             animation: float-40 4s ease-in-out infinite;
           }
 

@@ -1,11 +1,11 @@
 ---
-title: "Trigger"
+title: "End"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a VDP Trigger operator https://github.com/instill-ai/vdp"
+description: "Learn about how to set up a VDP End operator https://github.com/instill-ai/vdp"
 ---
 
-[**Trigger**](trigger) enables users to define data formats customized for their AI-first applications.
+An [**End**](end) operator is to control the data received as a response when a pipeline trigger via SYNC API.
 
 ## Release stage
 
@@ -19,21 +19,21 @@ description: "Learn about how to set up a VDP Trigger operator https://github.co
 
 ### No-code setup
 
-To create a Trigger operator:
+To create an End operator:
 
 1. Go to the **Operator** page and click **Set up new operator**
-2. Click the **Operator type** ▾ drop-down and choose **Trigger**
+2. Click the **Operator type** ▾ drop-down and choose **End**
 
-Now go to the **Operator** page, the corresponding operator with ID `trigger` should be connected.
+Now go to the **Operator** page, the corresponding operator with ID `end` should be connected.
 
 ### Low-code setup
 
-To create a Trigger operator:
+To create an End operator:
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/operators -d '{
-  "id": "trigger",
-  "operator_definition_name": "operator-definitions/trigger",
+  "id": "end",
+  "operator_definition_name": "operator-definitions/end",
   "configuration": {}
 }'
 ```

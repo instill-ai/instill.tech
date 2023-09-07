@@ -1,11 +1,11 @@
 ---
-title: "Response"
+title: "Start"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a VDP Response operator https://github.com/instill-ai/vdp"
+description: "Learn about how to set up a VDP Start operator https://github.com/instill-ai/vdp"
 ---
 
-A [**Response**](response) operator is to control the data received as a response when a pipeline trigger via SYNC API.
+[**Start**](start) enables users to define data formats customized for their AI-first applications.
 
 ## Release stage
 
@@ -19,21 +19,21 @@ A [**Response**](response) operator is to control the data received as a respons
 
 ### No-code setup
 
-To create a Response operator:
+To create a Start operator:
 
 1. Go to the **Operator** page and click **Set up new operator**
-2. Click the **Operator type** ▾ drop-down and choose **Response**
+2. Click the **Operator type** ▾ drop-down and choose **Start**
 
-Now go to the **Operator** page, the corresponding operator with ID `response` should be connected.
+Now go to the **Operator** page, the corresponding operator with ID `start` should be connected.
 
 ### Low-code setup
 
-To create a Response operator:
+To create a Start operator:
 
 ```shellscript cURL
 curl -X POST http://localhost:8080/v1alpha/operators -d '{
-  "id": "response",
-  "operator_definition_name": "operator-definitions/response",
+  "id": "start",
+  "operator_definition_name": "operator-definitions/start",
   "configuration": {}
 }'
 ```

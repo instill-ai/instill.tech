@@ -225,7 +225,7 @@ description: string;
 
 Please add documentation page into sidebar.
 
-- Sidebar is distributed into 2 application `vdp` and `instill-cloud`
+- Sidebar is distributed into 2 application `vdp` and `cloud`
 - Make sure the page is in the correct section.
 - The order of the list will be the displayed order.
 
@@ -234,20 +234,20 @@ for `SECTIONS` important paramter is `appType`, it will decide the menu should b
 ```ts
 const SECTIONS: SidebarSections[] = [
   {
-    //  <---- this menu will be added to instill-cloud
+    //  <---- this menu will be added to cloud
     text: "Instill Cloud",
     collapsible: true,
     items: [
       {
         text: "Getting started",
-        link: "/docs/instill-cloud/getting-started",
+        link: "/docs/cloud/getting-started",
       },
       {
         text: "Using Instill Cloud",
-        link: "/docs/instill-cloud/using-instill-cloud",
+        link: "/docs/cloud/using-instill-cloud",
       },
     ],
-    appType: "instill-cloud",
+    appType: "cloud",
   },
   {
     //  <---- this menu will be added to vdp

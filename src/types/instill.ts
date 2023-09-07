@@ -124,9 +124,4 @@ export type PageMeta = {
   pageDescription?: string;
 };
 
-export type InstillAppType =
-  | "vdp"
-  | "instill-cloud"
-  | "model"
-  | "core"
-  | "base";
+export type InstillAppType = "vdp" | "cloud" | "model" | "core" | "base";

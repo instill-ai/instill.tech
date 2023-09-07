@@ -1,11 +1,11 @@
 import { InstillAppType } from "@/types/instill";
 
-export const applicattionName = {
+export const applicationName = {
   vdp: "common:navbar.instillVDP",
   core: "common:navbar.instillCore",
   base: "common:navbar.instillBase",
   model: "common:navbar.instillModel",
-  "instill-cloud": "Instill Cloud",
+  cloud: "common:navbar.instillCloud",
 };
 
 export function getApplicationType(
@@ -14,8 +14,8 @@ export function getApplicationType(
   if (path.includes("vdp")) {
     return "vdp";
   }
-  if (path.includes("instill-cloud")) {
-    return "instill-cloud";
+  if (path.includes("cloud")) {
+    return "cloud";
   }
   if (path.includes("model")) {
     return "model";

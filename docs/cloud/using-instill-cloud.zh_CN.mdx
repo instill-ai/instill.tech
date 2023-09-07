@@ -21,13 +21,13 @@ Click on the **Pipeline** page on the left sidebar. As you haven't set up any pi
 To create your first pipeline through the VDP Console, click on **Add new pipeline**. This will redirect you to the no-code pipeline builder.
 In the canvas, you can drag and drop connectors and operators to construct your pipeline.
 
-**Step 1: Add a Trigger Operator**
+**Step 1: Add a Start Operator**
 
-The Trigger Operator serves as the starting point of a VDP pipeline.
+The Start Operator serves as the starting point of a VDP pipeline.
 
-To set up a Trigger operator,
+To set up a Start operator,
 
-1. Click the **Operator** on the left and drag **Trigger** into the canvas
+1. Click the **Operator** on the left and drag **Start** into the canvas
 2. Click **Create**
 
 **Step 2: Set up an AI Connector**
@@ -37,13 +37,13 @@ so you don't need to create accounts for third-party AI services.
 
 For this example, click the **AI** and drag a Stability AI AI connector with ID **instill-stable-diffusion-xl-1024-v1-0** into the canvas.
 
-**Step 3: Set up a Response Operator**
+**Step 3: Set up an End Operator**
 
-The Response Operator is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
+The End Operator is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
 
-To set up a Response operator,
+To set up an End operator,
 
-1. Click the **Operator** on the left and drag **Response** into the canvas
+1. Click the **Operator** on the left and drag **End** into the canvas
 2. Click **Create**
 
 **Step 4: Construct a pipeline**
@@ -51,8 +51,8 @@ To set up a Response operator,
 We are almost there! The final step is to link the components, and your pipeline will be ready to go:
 
 1. Link the "texts" and "metadata" outputs of **trigger** component with the corresponding inputs of **instill-stable-diffusion-xl-1024-v1-0** component
-2. Link the "images" and "metadata" output of **instill-stable-diffusion-xl-1024-v1-0** component to the corresponding input of **response** component
-3. Link the "texts" output of **trigger** component to the corresponding input of **response** component
+2. Link the "images" and "metadata" output of **instill-stable-diffusion-xl-1024-v1-0** component to the corresponding input of **end** component
+3. Link the "texts" output of **trigger** component to the corresponding input of **end** component
 4. The pipeline will be assigned a randomly generated unique ID. You can change it on the right panel, e.g., "aigc". Optionally, you can add a description
 5. Click **Create** to create the pipeline, and the click **Activate** to activate it
 

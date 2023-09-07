@@ -15,7 +15,7 @@ import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
-import { applicattionName } from "@/lib/instill/applicationType";
+import { applicationName } from "@/lib/instill/applicationType";
 import LocaleSwitcher from "../LocaleSwitcher";
 import { useTranslation } from "next-i18next";
 
@@ -36,8 +36,7 @@ const DropdownMenu = ({
   const appType = getApplicationType(router.asPath);
   const dropdownMenus = item.items?.filter(
     (item) =>
-      item.label !==
-      applicattionName[appType === "instill-cloud" ? "core" : appType]
+      item.label !== applicationName[appType === "cloud" ? "core" : appType]
   );
   return (
     <Dropdown.Menu key={item.key}>
