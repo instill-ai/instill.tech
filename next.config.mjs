@@ -237,6 +237,13 @@ const nextConfig = {
         destination: "/docs/vdp/development/setup-local-development",
         permanent: false,
       },
+
+      // New documentation refactor 20230907
+      {
+        source: "/docs",
+        destination: "/docs/core/welcome",
+        permanent: false,
+      },
     ];
   },
 };
