@@ -122,8 +122,15 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   const docsConfigration = docsConfig(getApplicationType(params.path));
 
-  const sidebarLinks: SidebarItem[] =
-    docsConfigration.sidebar.leftSidebar.sections.map((e) => e.items).flat();
+  const sidebarLinks: SidebarItem[] = [];
+  docsConfigration.sidebar.leftSidebar.sections.forEach((e) => {
+    if (e.link) {
+      sidebarLinks.push({ link: e.link, text: e.text });
+    }
+    if (e.items) {
+      sidebarLinks.push(...e.items.flat());
+    }
+  });
 
   const currentPageIndex = sidebarLinks.findIndex(
     (e) => e.link === "/docs/" + relativePath
@@ -251,6 +258,7 @@ const DocsPage: FC<DocsPageProps> & {
               githubEditUrl={
                 "https://github.com/instill-ai/instill.tech/edit/main" +
                 router.asPath +
+                `.${router.locale}` +
                 ".mdx"
               }
               headers={headers}
