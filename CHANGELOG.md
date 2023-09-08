@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.39.1](https://github.com/instill-ai/instill.tech/compare/v1.39.0...v1.39.1) (2023-09-07)
+
+
+### Bug Fixes
+
+* gitHub edit path, prev and next page, lang switch dropdown, docs default redirect ([#597](https://github.com/instill-ai/instill.tech/issues/597)) ([270d6eb](https://github.com/instill-ai/instill.tech/commit/270d6ebb6c3a0dfdb638c4e966c2f7d70110fc90))
+
 ## [1.39.0](https://github.com/instill-ai/instill.tech/compare/v1.38.0...v1.39.0) (2023-09-07)
 
 
