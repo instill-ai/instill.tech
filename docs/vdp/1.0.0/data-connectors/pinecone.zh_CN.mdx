@@ -1,0 +1,61 @@
+---
+title: "Pinecone Data Connector"
+lang: "en-US"
+draft: true
+description: "Learn about how to set up a Pinecone data connector for VDP https://github.com/instill-ai/vdp"
+---
+
+The Pinecone Data Connector allows users to store and query text embeddings as vectors. Users can then perform similarity search operations on stored vectors.
+
+## Configuration
+
+There are two things needed to configure a Pinecone connector: Pinecone URL (corresponding to your index) and an API key. Firstly, users need to create an index on https://www.pinecone.io. Once an index is created, the URL and API key can be used to configure a connector as mentioned below -
+
+### No-code setup
+
+To create a Pinecone data connector effortlessly, follow these steps:
+
+1. Go to the **Data** page and click **Set up new data connector**
+2. Click the **Data connector type** ▾ drop-down and choose **Pinecone**
+3. Fill in the required fields
+4. Optionally, give a short description in the **Description** field
+
+Now go to the **Data** page, the corresponding Pinecone data connector should be connected.
+
+### Low-code setup
+
+For advanced users who prefer a more hands-on approach, you can create a Pinecone data connector using the following cURL commands:
+
+1. Create a Pinecone data connector:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors -d '{
+  "id": "pinecone",
+  "connector_definition_name": "connector-definitions/data-pinecone",
+  "description": "The Pinecone vector database",
+  "configuration": {
+    "url": <Pinecone host address>,
+    "api_key": <api key>
+  }
+}'
+```
+
+2. Connect the connector `pinecone`:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/connectors/pinecone/connect
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+
+## Supported operations
+
+The Pinecone connector supports two operations: UPSERT and QUERY.
+
+1. UPSERT - use this to insert a new vector embedding or modify existing ones. It accepts an array of `vectors` as a required parameter. Where each `vector` is an object with an `id` and an array of floating point numbers.
+
+   Ref: https://docs.pinecone.io/reference/upsert
+
+2. QUERY - use this to perform a similarity search on stored vectors. It requires 2 parameters: `topK` - the number of matches to return, and `vector` - the query vector which is an array of floating point numbers.
+
+    Ref: https://docs.pinecone.io/reference/query

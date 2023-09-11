@@ -1,0 +1,137 @@
+---
+title: "Kubernetes Using Helm"
+lang: "en-US"
+draft: false
+description: "Learn about how to deploy VDP https://github.com/instill-ai/vdp in Kubernetes using Helm"
+---
+
+Kubernetes offers an elastic way of managing VDP to persist the services and scale resources horizontally and vertically.
+
+## Setup
+
+VDP currently supports deploying on Kubernetes.
+
+### Cluster setup
+
+We recommend using one of the local Kubernetes solutions:
+
+- [Docker Desktop (macOS)](https://docs.docker.com/desktop/) with [Kubernetes](https://docs.docker.com/desktop/kubernetes) enabled
+- [minikube](https://minikube.sigs.k8s.io/docs/start)
+- [kind](https://kind.sigs.k8s.io)
+
+### `kubectl` setup
+
+Make sure the Kubernetes CLI tool `kubectl` has been installed in your environment.
+If not, please follow the official [instructions](https://kubernetes.io/docs/tasks/tools/#kubectl) to install.
+
+Make sure `kubectl` is configured to connect to the local cluster by
+
+```bash
+kubectl use-context <cluster-name>
+```
+
+### Helm setup
+
+Make sure Helm has been installed in your environment. If not, please follow the official [instructions](https://helm.sh/docs/intro/install) to install.
+
+Check out the VDP Helm repository on [ArtifactHub](https://artifacthub.io/packages/helm/instill-ai/vdp).
+
+To add the VDP Helm repository, simply run
+
+```bash
+helm repo add instill-ai https://helm.instill.tech
+```
+
+, and
+
+```bash
+helm repo update
+```
+
+You can then run
+
+```bash
+helm search repo instill-ai --devel
+```
+
+to see the charts:
+
+```bash
+NAME            CHART VERSION   APP VERSION     DESCRIPTION
+instill-ai/base 	<chart-version> <app-version> 	The Helm chart of Instill Base
+instill-ai/model	<chart-version> <app-version> 	The Helm chart of Instill Model
+instill-ai/vdp  	<chart-version> <app-version>	The Helm chart of Instill VDP
+```
+
+<InfoBlock type="info" title="info">
+  The VDP and its Helm chart are still in a pre-release Alpha version, so the
+  `--devel` flag is necessary for the access of Helm charts.
+</InfoBlock>
+
+## Install
+
+First, install the Instill Base chart:
+
+```bash
+helm install base instill-ai/base --devel --namespace instill-ai --create-namespace
+```
+
+And visit the `api-gateway-base` ([http://localhost:7080](http://localhost:7080)) and Console ([http://localhost:3000](http://localhost:3000)) by port forwarding:
+
+```bash
+  export API_GATEWAY_BASE_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/component=api-gateway-base,app.kubernetes.io/instance=base" -o jsonpath="{.items[0].metadata.name}")
+  export API_GATEWAY_BASE_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $API_GATEWAY_BASE_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  export CONSOLE_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/component=console,app.kubernetes.io/instance=base" -o jsonpath="{.items[0].metadata.name}")
+  export CONSOLE_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $CONSOLE_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  export JAEGER_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/component=query,app.kubernetes.io/instance=base" -o jsonpath="{.items[0].metadata.name}")
+  export JAEGER_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $JAEGER_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  export PROMETHEUS_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=base" -o jsonpath="{.items[0].metadata.name}")
+  export PROMETHEUS_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $PROMETHEUS_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  export GRAFANA_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=base" -o jsonpath="{.items[0].metadata.name}")
+  export GRAFANA_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $GRAFANA_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  kubectl --namespace instill-ai port-forward $API_GATEWAY_BASE_POD_NAME 7080:${API_GATEWAY_BASE_CONTAINER_PORT}
+  kubectl --namespace instill-ai port-forward $CONSOLE_POD_NAME 3000:${CONSOLE_CONTAINER_PORT}
+```
+
+Access to the observability stack Jaeger([http://localhost:16686](http://localhost:16686)), Prometheus([http://localhost:9090](http://localhost:9090)) and [Grafana](<[http://localhost:3002](http://localhost:3002)>) by port forwarding:
+
+```bash
+  kubectl --namespace instill-ai port-forward $JAEGER_POD_NAME 16686:${JAEGER_CONTAINER_PORT}
+  kubectl --namespace instill-ai port-forward $PROMETHEUS_POD_NAME 9090:${PROMETHEUS_CONTAINER_PORT}
+  kubectl --namespace instill-ai port-forward $GRAFANA_POD_NAME 3002:${GRAFANA_CONTAINER_PORT}
+```
+
+Then, install the VDP chart:
+
+```bash
+helm install vdp instill-ai/vdp --devel --namespace instill-ai --create-namespace
+```
+
+And visit the `api-gateway-vdp` ([http://localhost:8080](http://localhost:8080)) and Console ([http://localhost:3000](http://localhost:3000)) by port forwarding:
+
+```bash
+export API_GATEWAY_VDP_POD_NAME=$(kubectl get pods --namespace instill-ai -l "app.kubernetes.io/component=api-gateway-vdp,app.kubernetes.io/instance=vdp" -o jsonpath="{.items[0].metadata.name}")
+export API_GATEWAY_VDP_CONTAINER_PORT=$(kubectl get pod --namespace instill-ai $API_GATEWAY_VDP_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+kubectl --namespace instill-ai port-forward $API_GATEWAY_VDP_POD_NAME 8080:${API_GATEWAY_VDP_CONTAINER_PORT}
+```
+
+## Uninstall
+
+To uninstall the chart:
+
+```bash
+helm uninstall vdp --namespace instill-ai
+helm uninstall base --namespace instill-ai
+```
+
+and clean up all VDP-related persistent volumes:
+
+```bash
+kubectl delete pvc --all -n instill-ai
+kubectl delete namespace instill-ai
+```
+
+## Troubleshooting
+
+If you encounter any issues, please [create an issue on GitHub](https://github.com/instill-ai/community/issues)
+or come to our [Discord](https://discord.gg/sevxWsqpGh) channel **#ask-for-help**. The community loves to help!

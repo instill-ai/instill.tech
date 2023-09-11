@@ -18,7 +18,7 @@ import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
-import { getApplicationType } from "@/lib/instill";
+import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type DocsPageProps = {
@@ -78,6 +78,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   locale,
   locales,
 }) => {
+  console.log("params", params);
+
   if (!params || !params.path) {
     return {
       notFound: true,
@@ -101,6 +103,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     relativePath = join(params.path);
   }
 
+  console.log("params", fullPath);
+
   const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 
   // Prepare the codeHike theme
@@ -120,7 +124,10 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
-  const docsConfigration = docsConfig(getApplicationType(params.path));
+  const docsConfigration = docsConfig(
+    getApplicationType(params.path),
+    getApplicationVersion(params.path)
+  );
 
   const sidebarLinks: SidebarItem[] = [];
   docsConfigration.sidebar.leftSidebar.sections.forEach((e) => {

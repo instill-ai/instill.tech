@@ -1,0 +1,41 @@
+---
+title: "End"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP End operator https://github.com/instill-ai/vdp"
+---
+
+An [**End**](end) operator is to control the data received as a response when a pipeline trigger via SYNC API.
+
+## Release stage
+
+`Alpha`
+
+## Configuration
+
+| Field | Type | Note                                                                                                 |
+| :---- | :--- | :--------------------------------------------------------------------------------------------------- |
+| N/A   | N/A  | This operator doesn't take any configuration so the configuration field is an empty JSON object `{}` |
+
+### No-code setup
+
+To create an End operator:
+
+1. Go to the **Operator** page and click **Set up new operator**
+2. Click the **Operator type** ▾ drop-down and choose **End**
+
+Now go to the **Operator** page, the corresponding operator with ID `end` should be connected.
+
+### Low-code setup
+
+To create an End operator:
+
+```shellscript cURL
+curl -X POST http://localhost:8080/v1alpha/operators -d '{
+  "id": "end",
+  "operator_definition_name": "operator-definitions/end",
+  "configuration": {}
+}'
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

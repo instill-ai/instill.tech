@@ -14,6 +14,7 @@ export type SidebarSections = {
   link?: string;
   items: SidebarItem[];
   appType?: InstillAppType;
+  versions?: number[] | string[];
 };
 
 export type SidebarSection = {
@@ -51,6 +52,7 @@ export type NavInteriorLinkItem = {
     alt: string;
   };
   border?: boolean;
+  appType?: string;
   items?: NavbarItem[];
 };
 
@@ -69,6 +71,7 @@ export type NavExteriorLinkItem = {
     alt: string;
   };
   border?: boolean;
+  appType?: string;
   items?: NavbarItem[];
 };
 
@@ -78,6 +81,7 @@ export type NavbarBorderItem = {
   border: boolean;
   label: string;
   iconElement?: ReactElement;
+  appType?: string;
   items?: NavbarItem[];
 };
 

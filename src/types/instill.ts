@@ -125,3 +125,5 @@ export type PageMeta = {
 };
 
 export type InstillAppType = "vdp" | "cloud" | "model" | "core" | "base";
+
+export type InstillAppVersion = "1.37.0" | "1.35.0" | "1.0.0";

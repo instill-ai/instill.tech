@@ -34,10 +34,11 @@ const DropdownMenu = ({
   const { t } = useTranslation();
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
-  const dropdownMenus = item.items?.filter(
-    (item) =>
-      item.label !== applicationName[appType === "cloud" ? "core" : appType]
-  );
+
+  const dropdownMenus = item.items?.filter((item) => item.appType !== appType);
+
+  console.log("item.items", item.items);
+
   return (
     <Dropdown.Menu key={item.key}>
       <Dropdown.MenuTrigger
