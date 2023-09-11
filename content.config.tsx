@@ -1,14 +1,12 @@
 import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
-import { InstillAppType } from "@/types/instill";
+import { InstillAppType, InstillAppVersion } from "@/types/instill";
 import {
   DiscordIcon,
   GitHubIcon,
   Logos,
   Icons,
 } from "@instill-ai/design-system";
-
-import { useTranslation } from "next-i18next";
 
 const SITE = {
   title: "Documentation",
@@ -24,363 +22,395 @@ const SITE = {
  *
  */
 
-const SECTIONS: SidebarSections[] = [
-  {
-    text: "common:sidebarSections.welcome",
-    link: "/docs/cloud/welcome",
-    items: [],
-    appType: "cloud",
-  },
-  {
-    text: "common:sidebarSections.gettingStarted",
-    link: "/docs/cloud/getting-started",
-    items: [],
-    appType: "cloud",
-  },
-  {
-    text: "common:sidebarSections.usingInstillCloud",
-    link: "/docs/cloud/using-instill-cloud",
-    items: [],
-    appType: "cloud",
-  },
-  {
-    text: "common:sidebarSections.welcome",
-    link: "/docs/core/welcome",
-    items: [],
-    appType: "core",
-  },
-  {
-    text: "common:sidebarSections.gettingStarted",
-    link: "/docs/core/getting-started",
-    items: [],
-    appType: "core",
-  },
-  {
-    text: "common:sidebarSections.faq",
-    link: "/docs/core/faq",
-    items: [],
-    appType: "core",
-  },
-  {
-    text: "common:sidebarSections.contributingGuideline",
-    link: "/docs/core/contributing-guideline",
-    items: [],
-    appType: "core",
-  },
-  {
-    text: "common:sidebarSections.systemArchitecture",
-    link: "/docs/core/system-architecture",
-    items: [],
-    appType: "core",
-  },
-  {
-    text: "common:sidebarSections.welcome",
-    link: "/docs/vdp/welcome",
-    items: [],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.vdp",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.gettingStarted",
-        link: "/docs/vdp/getting-started",
-      },
-      {
-        text: "common:sidebarSections.configuration",
-        link: "/docs/vdp/configuration",
-      },
-      {
-        text: "common:sidebarSections.roadmap",
-        link: "/docs/vdp/roadmap",
-      },
-      {
-        text: "common:sidebarSections.license",
-        link: "/docs/vdp/license",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.deployment",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/deployment/overview",
-      },
-      {
-        text: "common:sidebarSections.dockerCompose",
-        link: "/docs/vdp/deployment/docker-compose",
-      },
-      {
-        text: "common:sidebarSections.kubernetesUsingHelm",
-        link: "/docs/vdp/deployment/kubernetes-using-helm",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.coreConcepts",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/core-concepts/overview",
-      },
-      {
-        text: "common:sidebarSections.pipeline",
-        link: "/docs/vdp/core-concepts/pipeline",
-      },
-      {
-        text: "common:sidebarSections.connector",
-        link: "/docs/vdp/connectors/overview",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.operator",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/operators/overview",
-      },
-      {
-        text: "common:sidebarSections.start",
-        link: "/docs/vdp/operators/start",
-      },
-      {
-        text: "common:sidebarSections.end",
-        link: "/docs/vdp/operators/end",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.aiConnector",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/ai-connectors/overview",
-      },
-      {
-        text: "common:sidebarSections.instillModel",
-        link: "/docs/vdp/ai-connectors/instill-model",
-      },
-      {
-        text: "common:sidebarSections.stabilityAI",
-        link: "/docs/vdp/ai-connectors/stability-ai",
-      },
-      {
-        text: "common:sidebarSections.openAI",
-        link: "/docs/vdp/ai-connectors/openai",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.blockchainConnector",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/blockchain-connectors/overview",
-      },
-      {
-        text: "common:sidebarSections.numbersProtocol",
-        link: "/docs/vdp/blockchain-connectors/numbers-protocol",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.dataConnector",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/vdp/data-connectors/overview",
-      },
-      {
-        text: "common:sidebarSections.pinecone",
-        link: "/docs/vdp/data-connectors/pinecone",
-      },
-      {
-        text: "common:sidebarSections.airbyte",
-        link: "/docs/vdp/data-connectors/airbyte",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.welcome",
-    link: "/docs/model/welcome",
-    items: [],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.instillModel",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.gettingStarted",
-        link: "/docs/model/getting-started",
-      },
-      { text: "common:sidebarSections.roadmap", link: "/docs/model/roadmap" },
-    ],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.deployment",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/model/deployment/overview",
-      },
-      {
-        text: "common:sidebarSections.dockerCompose",
-        link: "/docs/model/deployment/docker-compose",
-      },
-      {
-        text: "common:sidebarSections.kubernetesUsingHelm",
-        link: "/docs/model/deployment/kubernetes-using-helm",
-      },
-    ],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.coreConcepts",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/model/core-concepts/overview",
-      },
-      {
-        text: "common:sidebarSections.aiTask",
-        link: "/docs/model/core-concepts/ai-task",
-      },
-    ],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.prepareModels",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/model/prepare-models/overview",
-      },
-      {
-        text: "common:sidebarSections.modelCard",
-        link: "/docs/model/prepare-models/model-card",
-      },
-      {
-        text: "common:sidebarSections.preProcessing",
-        link: "/docs/model/prepare-models/pre-processing",
-      },
-      {
-        text: "common:sidebarSections.postProcessing",
-        link: "/docs/model/prepare-models/post-processing",
-      },
-    ],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.importModels",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/model/import-models/overview",
-      },
-      {
-        text: "common:sidebarSections.local",
-        link: "/docs/model/import-models/local",
-      },
-      {
-        text: "common:sidebarSections.github",
-        link: "/docs/model/import-models/github",
-      },
-      {
-        text: "common:sidebarSections.artivc",
-        link: "/docs/model/import-models/artivc",
-      },
-      {
-        text: "common:sidebarSections.huggingFace",
-        link: "/docs/model/import-models/huggingface",
-      },
-    ],
-    appType: "model",
-  },
-  {
-    text: "common:sidebarSections.development",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.localSetup",
-        link: "/docs/vdp/development/setup-local-development",
-      },
-    ],
-    appType: "vdp",
-  },
-  {
-    text: "common:sidebarSections.welcome",
-    link: "/docs/base/welcome",
-    items: [],
-    appType: "base",
-  },
-  {
-    text: "common:sidebarSections.instillBase",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.gettingStarted",
-        link: "/docs/base/getting-started",
-      },
-      {
-        text: "common:sidebarSections.configuration",
-        link: "/docs/base/configuration",
-      },
-    ],
-    appType: "base",
-  },
-  {
-    text: "common:sidebarSections.deployment",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.overview",
-        link: "/docs/base/deployment/overview",
-      },
-      {
-        text: "common:sidebarSections.dockerCompose",
-        link: "/docs/base/deployment/docker-compose",
-      },
-      {
-        text: "common:sidebarSections.kubernetesUsingHelm",
-        link: "/docs/base/deployment/kubernetes-using-helm",
-      },
-    ],
-    appType: "base",
-  },
-  {
-    text: "common:sidebarSections.development",
-    collapsible: true,
-    items: [
-      {
-        text: "common:sidebarSections.localSetup",
-        link: "/docs/base/development/setup-local-development",
-      },
-    ],
-    appType: "base",
-  },
-];
+const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
+  return [
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/cloud/${appVersion}/welcome`,
+      items: [],
+      appType: "cloud",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.gettingStarted",
+      link: `/docs/cloud/${appVersion}/getting-started`,
+      items: [],
+      appType: "cloud",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.usingInstillCloud",
+      link: `/docs/cloud/${appVersion}/using-instill-cloud`,
+      items: [],
+      appType: "cloud",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/core/${appVersion}/welcome`,
+      items: [],
+      appType: "core",
+      versions: ["1.39.0"],
+    },
+    {
+      text: "common:sidebarSections.gettingStarted",
+      link: `/docs/core/${appVersion}/getting-started`,
+      items: [],
+      appType: "core",
+      versions: ["1.39.0"],
+    },
+    {
+      text: "common:sidebarSections.faq",
+      link: `/docs/core/${appVersion}/faq`,
+      items: [],
+      appType: "core",
+      versions: ["1.39.0"],
+    },
+    {
+      text: "common:sidebarSections.contributingGuideline",
+      link: `/docs/core/${appVersion}/contributing-guideline`,
+      items: [],
+      appType: "core",
+      versions: ["1.39.0"],
+    },
+    {
+      text: "common:sidebarSections.systemArchitecture",
+      link: `/docs/core/${appVersion}/system-architecture`,
+      items: [],
+      appType: "core",
+      versions: ["1.39.0"],
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/vdp/${appVersion}/welcome`,
+      items: [],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.vdp",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.gettingStarted",
+          link: `/docs/vdp/${appVersion}/getting-started`,
+        },
+        {
+          text: "common:sidebarSections.configuration",
+          link: `/docs/vdp/${appVersion}/configuration`,
+        },
+        {
+          text: "common:sidebarSections.roadmap",
+          link: `/docs/vdp/${appVersion}/roadmap`,
+        },
+        {
+          text: "common:sidebarSections.license",
+          link: `/docs/vdp/${appVersion}/license`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.deployment",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/deployment/overview`,
+        },
+        {
+          text: "common:sidebarSections.dockerCompose",
+          link: `/docs/vdp/${appVersion}/deployment/docker-compose`,
+        },
+        {
+          text: "common:sidebarSections.kubernetesUsingHelm",
+          link: `/docs/vdp/${appVersion}/deployment/kubernetes-using-helm`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.coreConcepts",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/core-concepts/overview`,
+        },
+        {
+          text: "common:sidebarSections.pipeline",
+          link: `/docs/vdp/${appVersion}/core-concepts/pipeline`,
+        },
+        {
+          text: "common:sidebarSections.connector",
+          link: `/docs/vdp/${appVersion}/connectors/overview`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.operator",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/operators/overview`,
+        },
+        {
+          text: "common:sidebarSections.start",
+          link: `/docs/vdp/${appVersion}/operators/start`,
+        },
+        {
+          text: "common:sidebarSections.end",
+          link: `/docs/vdp/${appVersion}/operators/end`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.aiConnector",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/ai-connectors/overview`,
+        },
+        {
+          text: "common:sidebarSections.instillModel",
+          link: `/docs/vdp/${appVersion}/ai-connectors/instill-model`,
+        },
+        {
+          text: "common:sidebarSections.stabilityAI",
+          link: `/docs/vdp/${appVersion}/ai-connectors/stability-ai`,
+        },
+        {
+          text: "common:sidebarSections.openAI",
+          link: `/docs/vdp/${appVersion}/ai-connectors/openai`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.blockchainConnector",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/blockchain-connectors/overview`,
+        },
+        {
+          text: "common:sidebarSections.numbersProtocol",
+          link: `/docs/vdp/${appVersion}/blockchain-connectors/numbers-protocol`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.dataConnector",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/data-connectors/overview`,
+        },
+        {
+          text: "common:sidebarSections.pinecone",
+          link: `/docs/vdp/${appVersion}/data-connectors/pinecone`,
+        },
+        {
+          text: "common:sidebarSections.airbyte",
+          link: `/docs/vdp/${appVersion}/data-connectors/airbyte`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/model/${appVersion}/welcome`,
+      items: [],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.instillModel",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.gettingStarted",
+          link: `/docs/model/${appVersion}/getting-started`,
+        },
+        {
+          text: "common:sidebarSections.roadmap",
+          link: `/docs/model/${appVersion}/roadmap`,
+        },
+      ],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.deployment",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/model/${appVersion}/deployment/overview`,
+        },
+        {
+          text: "common:sidebarSections.dockerCompose",
+          link: `/docs/model/${appVersion}/deployment/docker-compose`,
+        },
+        {
+          text: "common:sidebarSections.kubernetesUsingHelm",
+          link: `/docs/model/${appVersion}/deployment/kubernetes-using-helm`,
+        },
+      ],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.coreConcepts",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/model/${appVersion}/core-concepts/overview`,
+        },
+        {
+          text: "common:sidebarSections.aiTask",
+          link: `/docs/model/${appVersion}/core-concepts/ai-task`,
+        },
+      ],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.prepareModels",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/model/${appVersion}/prepare-models/overview`,
+        },
+        {
+          text: "common:sidebarSections.modelCard",
+          link: `/docs/model/${appVersion}/prepare-models/model-card`,
+        },
+        {
+          text: "common:sidebarSections.preProcessing",
+          link: `/docs/model/${appVersion}/prepare-models/pre-processing`,
+        },
+        {
+          text: "common:sidebarSections.postProcessing",
+          link: `/docs/model/${appVersion}/prepare-models/post-processing`,
+        },
+      ],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.importModels",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/model/${appVersion}/import-models/overview`,
+        },
+        {
+          text: "common:sidebarSections.local",
+          link: `/docs/model/${appVersion}/import-models/local`,
+        },
+        {
+          text: "common:sidebarSections.github",
+          link: `/docs/model/${appVersion}/import-models/github`,
+        },
+        {
+          text: "common:sidebarSections.artivc",
+          link: `/docs/model/${appVersion}/import-models/artivc`,
+        },
+        {
+          text: "common:sidebarSections.huggingFace",
+          link: `/docs/model/${appVersion}/import-models/huggingface`,
+        },
+      ],
+      appType: "model",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.development",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.localSetup",
+          link: `/docs/vdp/${appVersion}/development/setup-local-development`,
+        },
+      ],
+      appType: "vdp",
+      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/base/${appVersion}/welcome`,
+      items: [],
+      appType: "base",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.instillBase",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.gettingStarted",
+          link: `/docs/base/${appVersion}/getting-started`,
+        },
+        {
+          text: "common:sidebarSections.configuration",
+          link: `/docs/base/${appVersion}/configuration`,
+        },
+      ],
+      appType: "base",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.deployment",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/base/${appVersion}/deployment/overview`,
+        },
+        {
+          text: "common:sidebarSections.dockerCompose",
+          link: `/docs/base/${appVersion}/deployment/docker-compose`,
+        },
+        {
+          text: "common:sidebarSections.kubernetesUsingHelm",
+          link: `/docs/base/${appVersion}/deployment/kubernetes-using-helm`,
+        },
+      ],
+      appType: "base",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+    {
+      text: "common:sidebarSections.development",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.localSetup",
+          link: `/docs/base/${appVersion}/development/setup-local-development`,
+        },
+      ],
+      appType: "base",
+      versions: ["1.39.0", "v1.37.0"],
+    },
+  ];
+};
 
 // Parse logo a/c to appType
 export function getLogoConfig(
@@ -426,16 +456,24 @@ export function getLogoConfig(
 }
 
 // Parse menu items a/c to appType
-export function getSidebarSections(appType: InstillAppType) {
-  return SECTIONS.filter((section) => section?.appType === appType);
+export function getSidebarSections(
+  appType: InstillAppType,
+  appVersion: InstillAppVersion
+) {
+  const sections = getSections(appVersion);
+  return sections.filter((section) => section?.appType === appType);
 }
 
 // Construct the sidebar items
-export function getSideBar(appType: InstillAppType, isDark: boolean): Sidebar {
+export function getSideBar(
+  appType: InstillAppType,
+  appVersion: InstillAppVersion,
+  isDark: boolean
+): Sidebar {
   return {
     leftSidebar: {
       logo: getLogoConfig(appType, isDark),
-      sections: getSidebarSections(appType),
+      sections: getSidebarSections(appType, appVersion),
     },
     rightSidebar: {
       tableOfContentHeaders: ["h1", "h2", "h3"],
@@ -444,14 +482,18 @@ export function getSideBar(appType: InstillAppType, isDark: boolean): Sidebar {
 }
 
 // Construct the navbar items
-export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
+export function getNavbar(
+  appType: InstillAppType,
+  appVersion: InstillAppVersion,
+  isDark: boolean
+): NavConfig {
   return {
     logo: getLogoConfig(appType, isDark),
     title: appType,
     items: [
       {
         key: "docs-nav-docs",
-        href: "/docs/core/welcome",
+        href: `/docs/core/${appVersion}/welcome`,
         className: "navbar-dropdown-menu",
         position: "left",
         label: applicationName[appType === "cloud" ? "core" : appType],
@@ -461,37 +503,41 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         items: [
           {
             key: "docs-nav-core-welcome",
-            to: "/docs/core/welcome",
+            to: `/docs/core/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillCore",
+            appType: "core",
           },
           {
             key: "docs-nav-base-welcome",
-            to: "/docs/base/welcome",
+            to: `/docs/base/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillBase",
+            appType: "base",
           },
           {
             key: "docs-nav-vdp-welcome",
-            to: "/docs/vdp/welcome",
+            to: `/docs/vdp/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillVDP",
+            appType: "vdp",
           },
           {
             key: "docs-nav-model-welcome",
-            to: "/docs/model/welcome",
+            to: `/docs/model/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillModel",
+            appType: "model",
           },
         ],
       },
       {
         key: "docs-nav-cloud-welcome",
-        to: "/docs/cloud/welcome",
+        to: `/docs/cloud/${appVersion}/welcome`,
         className: "",
         position: "left",
         label: "common:navbar.instillCloud",
@@ -638,8 +684,155 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
         ) : (
           <Logos.TwitterDark className="h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
-
         position: "right",
+        label: "",
+      },
+      {
+        key: "docs-nav-item-1",
+        position: "right",
+        border: true,
+        label: "",
+      },
+      {
+        key: "docs-nav-dropdown-version-menu",
+        href: "/",
+        className: "navbar-dropdown-menu !pl-1",
+        position: "right",
+        label: `${applicationName[appType]} v${appVersion}`,
+        iconElement: (
+          <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+        ),
+        items: [
+          {
+            key: "docs-nav-dropdown-version-VDP",
+            position: "right",
+            border: true,
+            label: "VDP",
+          },
+          {
+            key: "docs-nav-dropdown-version-vdp-v1.37.0",
+            to: "/docs/vdp/1.37.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.37.0",
+          },
+          {
+            key: "docs-nav-dropdown-version-vdp-v1.35.0",
+            to: "/docs/vdp/1.35.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.35.0",
+          },
+          {
+            key: "docs-nav-dropdown-version-vdp-v1.0.0",
+            to: "/docs/vdp/1.0.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.0.0",
+          },
+          {
+            key: "docs-nav-dropdown-border-1",
+            position: "right",
+            border: false,
+            label: "",
+          },
+          {
+            key: "docs-nav-dropdown-version-model",
+            position: "right",
+            border: true,
+            label: "Model",
+          },
+          {
+            key: "docs-nav-dropdown-version-model-v1.37.0",
+            to: "/docs/model/1.37.0/welcome",
+            className: "",
+            position: "right",
+            label: "v1.37.0",
+          },
+          {
+            key: "docs-nav-dropdown-version-model-v1.35.0",
+            to: "/docs/model/1.35.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.35.0",
+          },
+          {
+            key: "docs-nav-dropdown-border-2",
+            position: "right",
+            border: false,
+            label: "",
+          },
+          {
+            key: "docs-nav-dropdown-version-cloud",
+            position: "right",
+            border: true,
+            label: "Cloud",
+          },
+          {
+            key: "docs-nav-dropdown-version-cloud-v1.37.0",
+            to: "/docs/cloud/1.37.0/welcome",
+            className: "",
+            position: "right",
+            label: "v1.37.0",
+          },
+          {
+            key: "docs-nav-dropdown-version-cloud-v1.35.0",
+            to: "/docs/cloud/1.35.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.35.0",
+          },
+          {
+            key: "docs-nav-dropdown-border-3",
+            position: "right",
+            border: false,
+            label: "",
+          },
+          {
+            key: "docs-nav-dropdown-version-base",
+            position: "right",
+            border: true,
+            label: "Base",
+          },
+          {
+            key: "docs-nav-dropdown-version-base-v1.37.0",
+            to: "/docs/base/1.37.0/welcome",
+            className: "",
+            position: "right",
+            label: "v1.37.0",
+          },
+          {
+            key: "docs-nav-dropdown-version-base-v1.35.0",
+            to: "/docs/base/1.35.0/welcome",
+            className: "navbar-dropdown-menu",
+            position: "right",
+            label: "v1.35.0",
+          },
+          {
+            key: "docs-nav-dropdown-border-4",
+            position: "right",
+            border: false,
+            label: "",
+          },
+          {
+            key: "docs-nav-dropdown-version-model",
+            position: "right",
+            border: true,
+            label: "Core",
+          },
+          {
+            key: "docs-nav-dropdown-version-core-v1.37.0",
+            to: "/docs/core/1.37.0/welcome",
+            className: "",
+            position: "right",
+            label: "v1.37.0",
+          },
+        ],
+      },
+      {
+        key: "docs-nav-item-2",
+        position: "right",
+        border: true,
         label: "",
       },
     ],
@@ -647,11 +840,15 @@ export function getNavbar(appType: InstillAppType, isDark: boolean): NavConfig {
 }
 
 // main config function
-export function docsConfig(appType: InstillAppType, isDark = false) {
+export function docsConfig(
+  appType: InstillAppType,
+  appVersion: InstillAppVersion,
+  isDark = false
+) {
   return {
     site: SITE,
-    nav: getNavbar(appType, isDark),
-    sidebar: getSideBar(appType, isDark),
+    nav: getNavbar(appType, appVersion, isDark),
+    sidebar: getSideBar(appType, appVersion, isDark),
   };
 }
 

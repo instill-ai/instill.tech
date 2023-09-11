@@ -1,0 +1,47 @@
+---
+title: "Connector"
+lang: "en-US"
+draft: false
+description: "Pre-built ETL connectors with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+A **Connector** is a fundamental building block used to construct a pipeline in VDP. The system offers various types of connectors, each catering to specific functionalities:
+
+- [**AI Connector**](/docs/vdp/ai-connectors): Connect to remote models from model providers like Instill Model, OpenAI, Stability AI, etc.
+- [**Blockchain Connector**](/docs/vdp/blockchain-connectors): Connect to Blockchain services like Numbers, etc.
+- [**Data Connector**](/docs/vdp/data-connectors): Connect to remote data sources like MySQL, PostgreSQL, Pinecone, etc.
+- ...
+
+Each type of connector requires specific configuration to connect to the respective remote service.
+
+Connector is created and maintained in the [`connector-backend`](https://github.com/instill-ai/connector-backend) repository.
+
+## Definition
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto)
+to define the basic properties and detailed configuration of a connector.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema.
+
+## State
+
+When a connector is initially created, the connector state is checked by the connector container `check` operation.
+
+The exit code of the container `check` operation decides the connector state.
+If the exit code is 0, the state will be `CONNECTED`.
+If the exit code is 1, the state will be `ERROR`.
+Before the container `check` return the result, the connector state will remain `UNSPECIFIED`.
+
+A connector can be switched to `DISCONNECTED` state by invoking the `connector-backend` endpoint `/disconnect` only when its original state is `CONNECTED`.
+
+A connector can be switched to `CONNECTED` state by invoking the `connector-backend` endpoint `/connect` only when its original state is `DISCONNECTED`.
+
+If the connector state ends up with `ERROR`, the connector configuration will need to be updated via the UPDATE `connector-backend` endpoint.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/connector-state.svg"
+    alt="The finite-state-machine (FSM) diagram for the connector state transition logic"
+    width="500px"
+  />
+</div>
