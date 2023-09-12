@@ -37,8 +37,6 @@ const DropdownMenu = ({
 
   const dropdownMenus = item.items?.filter((item) => item.appType !== appType);
 
-  console.log("item.items", item.items);
-
   return (
     <Dropdown.Menu key={item.key}>
       <Dropdown.MenuTrigger

@@ -33,7 +33,6 @@ export function getApplicationType(
 export function isRouterActive(currentPath: string, routerPath: string) {
   const applicattionType = getApplicationType(currentPath);
   const applicationVersion = getApplicationVersion(currentPath);
-  console.log({ applicattionType, applicationVersion }, routerPath);
 
   if (
     routerPath.includes(applicattionType) &&

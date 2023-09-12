@@ -534,6 +534,7 @@ export function getNavbar(
             appType: "model",
           },
         ],
+        appType: null,
       },
       {
         key: "docs-nav-cloud-welcome",
@@ -541,6 +542,7 @@ export function getNavbar(
         className: "",
         position: "left",
         label: "common:navbar.instillCloud",
+        appType: "cloud",
       },
       {
         key: "docs-nav-dropdown-menu",
@@ -551,12 +553,14 @@ export function getNavbar(
         iconElement: (
           <Icons.Menu01 className="my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
+        appType: null,
         items: [
           {
             key: "docs-nav-dropdown-resources",
             position: "right",
             border: true,
             label: "common:navbar.resources",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-product-website",
@@ -567,6 +571,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-tutorials",
@@ -577,6 +582,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-blog",
@@ -587,6 +593,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-newsletter",
@@ -597,12 +604,14 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-help",
             position: "right",
             border: false,
             label: "common:navbar.help",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-help",
@@ -612,6 +621,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-discord",
@@ -622,6 +632,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-github-disussions",
@@ -632,6 +643,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-github-issues",
@@ -642,6 +654,7 @@ export function getNavbar(
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
             ),
+            appType: null,
           },
         ],
       },
@@ -659,6 +672,7 @@ export function getNavbar(
         ),
         position: "right",
         label: "",
+        appType: null,
       },
       {
         key: "docs-nav-item--github-link",
@@ -674,6 +688,7 @@ export function getNavbar(
         ),
         position: "right",
         label: "",
+        appType: null,
       },
       {
         key: "docs-nav-item--twitter-link",
@@ -686,12 +701,14 @@ export function getNavbar(
         ),
         position: "right",
         label: "",
+        appType: null,
       },
       {
         key: "docs-nav-item-1",
         position: "right",
         border: true,
         label: "",
+        appType: null,
       },
       {
         key: "docs-nav-dropdown-version-menu",
@@ -708,6 +725,7 @@ export function getNavbar(
             position: "right",
             border: true,
             label: "VDP",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-version-vdp-v1.37.0",
@@ -715,6 +733,7 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.37.0",
+            appType: "vdp",
           },
           {
             key: "docs-nav-dropdown-version-vdp-v1.35.0",
@@ -722,6 +741,7 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.35.0",
+            appType: "vdp",
           },
           {
             key: "docs-nav-dropdown-version-vdp-v1.0.0",
@@ -729,18 +749,21 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.0.0",
+            appType: "vdp",
           },
           {
             key: "docs-nav-dropdown-border-1",
             position: "right",
             border: false,
             label: "",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-version-model",
             position: "right",
             border: true,
             label: "Model",
+            appType: "model",
           },
           {
             key: "docs-nav-dropdown-version-model-v1.37.0",
@@ -748,6 +771,7 @@ export function getNavbar(
             className: "",
             position: "right",
             label: "v1.37.0",
+            appType: "model",
           },
           {
             key: "docs-nav-dropdown-version-model-v1.35.0",
@@ -755,18 +779,21 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.35.0",
+            appType: "model",
           },
           {
             key: "docs-nav-dropdown-border-2",
             position: "right",
             border: false,
             label: "",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-version-cloud",
             position: "right",
             border: true,
             label: "Cloud",
+            appType: "cloud",
           },
           {
             key: "docs-nav-dropdown-version-cloud-v1.37.0",
@@ -774,6 +801,7 @@ export function getNavbar(
             className: "",
             position: "right",
             label: "v1.37.0",
+            appType: "cloud",
           },
           {
             key: "docs-nav-dropdown-version-cloud-v1.35.0",
@@ -781,18 +809,21 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.35.0",
+            appType: "cloud",
           },
           {
             key: "docs-nav-dropdown-border-3",
             position: "right",
             border: false,
             label: "",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-version-base",
             position: "right",
             border: true,
             label: "Base",
+            appType: "base",
           },
           {
             key: "docs-nav-dropdown-version-base-v1.37.0",
@@ -800,6 +831,7 @@ export function getNavbar(
             className: "",
             position: "right",
             label: "v1.37.0",
+            appType: "base",
           },
           {
             key: "docs-nav-dropdown-version-base-v1.35.0",
@@ -807,18 +839,21 @@ export function getNavbar(
             className: "navbar-dropdown-menu",
             position: "right",
             label: "v1.35.0",
+            appType: "base",
           },
           {
             key: "docs-nav-dropdown-border-4",
             position: "right",
             border: false,
             label: "",
+            appType: null,
           },
           {
             key: "docs-nav-dropdown-version-model",
             position: "right",
             border: true,
             label: "Core",
+            appType: "core",
           },
           {
             key: "docs-nav-dropdown-version-core-v1.37.0",
@@ -826,14 +861,17 @@ export function getNavbar(
             className: "",
             position: "right",
             label: "v1.37.0",
+            appType: "core",
           },
         ],
+        appType: "core",
       },
       {
         key: "docs-nav-item-2",
         position: "right",
         border: true,
         label: "",
+        appType: "core",
       },
     ],
   };
