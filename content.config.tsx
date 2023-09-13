@@ -716,7 +716,7 @@ export function getNavbar(
         href: "/",
         className: "navbar-dropdown-menu !pl-1",
         position: "right",
-        label: `${applicationName[appType]} v${appVersion}`,
+        label: `${applicationName[appType]} (${appVersion})`,
         iconElement: (
           <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
@@ -735,11 +735,6 @@ export function getNavbar(
             position: "right",
             label: "latest",
             appType: null,
-            iconElement: (
-              <Tag variant="lightBlue" size="sm">
-                latest
-              </Tag>
-            ),
           },
           {
             key: "docs-nav-dropdown-border-3",
@@ -762,11 +757,6 @@ export function getNavbar(
             position: "right",
             label: "latest",
             appType: null,
-            iconElement: (
-              <Tag variant="lightBlue" size="sm">
-                latest
-              </Tag>
-            ),
           },
         ],
         appType: "core",
