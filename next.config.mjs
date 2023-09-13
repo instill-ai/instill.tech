@@ -244,289 +244,46 @@ const nextConfig = {
         destination: "/docs/core/welcome",
         permanent: false,
       },
-
-      [
-        {
-          source: "/docs/base/configuration",
-          destination: "/docs/base/1.37.0/configuration",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/getting-started",
-          destination: "/docs/base/1.37.0/getting-started",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/welcome",
-          destination: "/docs/base/1.37.0/welcome",
-          permanent: false,
-        },
-        {
-          source: "/docs/cloud/getting-started",
-          destination: "/docs/cloud/1.37.0/getting-started",
-          permanent: false,
-        },
-        {
-          source: "/docs/cloud/using-instill-cloud",
-          destination: "/docs/cloud/1.37.0/using-instill-cloud",
-          permanent: false,
-        },
-        {
-          source: "/docs/cloud/welcome",
-          destination: "/docs/cloud/1.37.0/welcome",
-          permanent: false,
-        },
-        {
-          source: "/docs/core/contributing-guideline",
-          destination: "/docs/core/1.37.0/contributing-guideline",
-          permanent: false,
-        },
-        {
-          source: "/docs/core/faq",
-          destination: "/docs/core/1.37.0/faq",
-          permanent: false,
-        },
-        {
-          source: "/docs/core/getting-started",
-          destination: "/docs/core/1.37.0/getting-started",
-          permanent: false,
-        },
-        {
-          source: "/docs/core/system-architecture",
-          destination: "/docs/core/1.37.0/system-architecture",
-          permanent: false,
-        },
-        {
-          source: "/docs/core/welcome",
-          destination: "/docs/core/1.37.0/welcome",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/getting-started",
-          destination: "/docs/model/1.37.0/getting-started",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/roadmap",
-          destination: "/docs/model/1.37.0/roadmap",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/welcome",
-          destination: "/docs/model/1.37.0/welcome",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/configuration",
-          destination: "/docs/vdp/1.37.0/configuration",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/getting-started",
-          destination: "/docs/vdp/1.37.0/getting-started",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/license",
-          destination: "/docs/vdp/1.37.0/license",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/roadmap",
-          destination: "/docs/vdp/1.37.0/roadmap",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/welcome",
-          destination: "/docs/vdp/1.37.0/welcome",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/deployment/docker-compose",
-          destination: "/docs/base/1.37.0/deployment/docker-compose",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/deployment/kubernetes-using-helm",
-          destination: "/docs/base/1.37.0/deployment/kubernetes-using-helm",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/deployment/overview",
-          destination: "/docs/base/1.37.0/deployment/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/base/development/setup-local-development",
-          destination: "/docs/base/1.37.0/development/setup-local-development",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/core-concepts/ai-task",
-          destination: "/docs/model/1.37.0/core-concepts/ai-task",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/core-concepts/overview",
-          destination: "/docs/model/1.37.0/core-concepts/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/deployment/docker-compose",
-          destination: "/docs/model/1.37.0/deployment/docker-compose",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/deployment/kubernetes-using-helm",
-          destination: "/docs/model/1.37.0/deployment/kubernetes-using-helm",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/deployment/overview",
-          destination: "/docs/model/1.37.0/deployment/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/import-models/artivc",
-          destination: "/docs/model/1.37.0/import-models/artivc",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/import-models/github",
-          destination: "/docs/model/1.37.0/import-models/github",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/import-models/huggingface",
-          destination: "/docs/model/1.37.0/import-models/huggingface",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/import-models/local",
-          destination: "/docs/model/1.37.0/import-models/local",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/import-models/overview",
-          destination: "/docs/model/1.37.0/import-models/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/prepare-models/model-card",
-          destination: "/docs/model/1.37.0/prepare-models/model-card",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/prepare-models/overview",
-          destination: "/docs/model/1.37.0/prepare-models/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/prepare-models/post-processing",
-          destination: "/docs/model/1.37.0/prepare-models/post-processing",
-          permanent: false,
-        },
-        {
-          source: "/docs/model/prepare-models/pre-processing",
-          destination: "/docs/model/1.37.0/prepare-models/pre-processing",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/ai-connectors/instill-model",
-          destination: "/docs/vdp/1.37.0/ai-connectors/instill-model",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/ai-connectors/openai",
-          destination: "/docs/vdp/1.37.0/ai-connectors/openai",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/ai-connectors/overview",
-          destination: "/docs/vdp/1.37.0/ai-connectors/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/ai-connectors/stability-ai",
-          destination: "/docs/vdp/1.37.0/ai-connectors/stability-ai",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/blockchain-connectors/numbers-protocol",
-          destination: "/docs/vdp/1.37.0/blockchain-connectors/numbers-protocol",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/blockchain-connectors/overview",
-          destination: "/docs/vdp/1.37.0/blockchain-connectors/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/connectors/overview",
-          destination: "/docs/vdp/1.37.0/connectors/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/core-concepts/overview",
-          destination: "/docs/vdp/1.37.0/core-concepts/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/core-concepts/pipeline",
-          destination: "/docs/vdp/1.37.0/core-concepts/pipeline",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/data-connectors/airbyte",
-          destination: "/docs/vdp/1.37.0/data-connectors/airbyte",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/data-connectors/overview",
-          destination: "/docs/vdp/1.37.0/data-connectors/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/data-connectors/pinecone",
-          destination: "/docs/vdp/1.37.0/data-connectors/pinecone",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/deployment/docker-compose",
-          destination: "/docs/vdp/1.37.0/deployment/docker-compose",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/deployment/kubernetes-using-helm",
-          destination: "/docs/vdp/1.37.0/deployment/kubernetes-using-helm",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/deployment/overview",
-          destination: "/docs/vdp/1.37.0/deployment/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/development/setup-local-development",
-          destination: "/docs/vdp/1.37.0/development/setup-local-development",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/operators/end",
-          destination: "/docs/vdp/1.37.0/operators/end",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/operators/overview",
-          destination: "/docs/vdp/1.37.0/operators/overview",
-          permanent: false,
-        },
-        {
-          source: "/docs/vdp/operators/start",
-          destination: "/docs/vdp/1.37.0/operators/start",
-          permanent: false,
-        },
-      ],
+      {
+        source: "/docs/cloud/getting-started",
+        destination: "/docs/cloud/latest/getting-started",
+        permanent: false,
+      },
+      {
+        source: "/docs/cloud/using-instill-cloud",
+        destination: "/docs/cloud/latest/using-instill-cloud",
+        permanent: false,
+      },
+      {
+        source: "/docs/cloud/welcome",
+        destination: "/docs/cloud/latest/welcome",
+        permanent: false,
+      },
+      {
+        source: "/docs/core/contributing-guideline",
+        destination: "/docs/core/latest/contributing-guideline",
+        permanent: false,
+      },
+      {
+        source: "/docs/core/faq",
+        destination: "/docs/core/latest/faq",
+        permanent: false,
+      },
+      {
+        source: "/docs/core/getting-started",
+        destination: "/docs/core/latest/getting-started",
+        permanent: false,
+      },
+      {
+        source: "/docs/core/system-architecture",
+        destination: "/docs/core/latest/system-architecture",
+        permanent: false,
+      },
+      {
+        source: "/docs/core/welcome",
+        destination: "/docs/core/latest/welcome",
+        permanent: false,
+      },
     ];
   },
 };

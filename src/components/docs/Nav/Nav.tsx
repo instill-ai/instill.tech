@@ -35,7 +35,9 @@ const DropdownMenu = ({
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
 
-  const dropdownMenus = item.items?.filter((item) => item.appType !== appType);
+  const dropdownMenus = item.items?.filter(
+    (item) => item.appType !== (appType === "cloud" ? "core" : appType)
+  );
 
   return (
     <Dropdown.Menu key={item.key}>

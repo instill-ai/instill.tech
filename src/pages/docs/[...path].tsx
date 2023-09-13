@@ -78,8 +78,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   locale,
   locales,
 }) => {
-  console.log("params", params);
-
   if (!params || !params.path) {
     return {
       notFound: true,
@@ -102,8 +100,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     fullPath = join(process.cwd(), "docs", params.path);
     relativePath = join(params.path);
   }
-
-  console.log("params", fullPath);
 
   const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 

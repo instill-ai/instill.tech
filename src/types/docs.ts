@@ -44,6 +44,7 @@ export type NavInteriorLinkItem = {
   key: string;
   to: string;
   label: string;
+  className: string;
   position: "right" | "left";
   iconElement?: ReactElement;
   icon?: {

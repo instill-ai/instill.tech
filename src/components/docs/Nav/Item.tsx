@@ -38,7 +38,15 @@ export const Item = ({ item }: ItemProps) => {
         )}
         href={item.to}
       >
-        {t(item.label)}
+        <div className={cn("flex flex-row gap-x-1", item.className)}>
+          {item.label && (
+            <p className="my-auto text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50">
+              {t(item.label)}
+            </p>
+          )}
+
+          {item.iconElement ? item.iconElement : null}
+        </div>
       </Link>
     );
   }

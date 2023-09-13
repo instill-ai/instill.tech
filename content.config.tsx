@@ -6,6 +6,7 @@ import {
   GitHubIcon,
   Logos,
   Icons,
+  Tag,
 } from "@instill-ai/design-system";
 
 const SITE = {
@@ -29,63 +30,63 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       link: `/docs/cloud/${appVersion}/welcome`,
       items: [],
       appType: "cloud",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.gettingStarted",
       link: `/docs/cloud/${appVersion}/getting-started`,
       items: [],
       appType: "cloud",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.usingInstillCloud",
       link: `/docs/cloud/${appVersion}/using-instill-cloud`,
       items: [],
       appType: "cloud",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.welcome",
       link: `/docs/core/${appVersion}/welcome`,
       items: [],
       appType: "core",
-      versions: ["1.39.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.gettingStarted",
       link: `/docs/core/${appVersion}/getting-started`,
       items: [],
       appType: "core",
-      versions: ["1.39.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.faq",
       link: `/docs/core/${appVersion}/faq`,
       items: [],
       appType: "core",
-      versions: ["1.39.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.contributingGuideline",
       link: `/docs/core/${appVersion}/contributing-guideline`,
       items: [],
       appType: "core",
-      versions: ["1.39.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.systemArchitecture",
       link: `/docs/core/${appVersion}/system-architecture`,
       items: [],
       appType: "core",
-      versions: ["1.39.0"],
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.welcome",
-      link: `/docs/vdp/${appVersion}/welcome`,
+      link: `/docs/vdp/welcome`,
       items: [],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.vdp",
@@ -93,23 +94,23 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.gettingStarted",
-          link: `/docs/vdp/${appVersion}/getting-started`,
+          link: `/docs/vdp/getting-started`,
         },
         {
           text: "common:sidebarSections.configuration",
-          link: `/docs/vdp/${appVersion}/configuration`,
+          link: `/docs/vdp/configuration`,
         },
         {
           text: "common:sidebarSections.roadmap",
-          link: `/docs/vdp/${appVersion}/roadmap`,
+          link: `/docs/vdp/roadmap`,
         },
         {
           text: "common:sidebarSections.license",
-          link: `/docs/vdp/${appVersion}/license`,
+          link: `/docs/vdp/license`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.deployment",
@@ -117,19 +118,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/deployment/overview`,
+          link: `/docs/vdp/deployment/overview`,
         },
         {
           text: "common:sidebarSections.dockerCompose",
-          link: `/docs/vdp/${appVersion}/deployment/docker-compose`,
+          link: `/docs/vdp/deployment/docker-compose`,
         },
         {
           text: "common:sidebarSections.kubernetesUsingHelm",
-          link: `/docs/vdp/${appVersion}/deployment/kubernetes-using-helm`,
+          link: `/docs/vdp/deployment/kubernetes-using-helm`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.coreConcepts",
@@ -137,19 +138,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/core-concepts/overview`,
+          link: `/docs/vdp/core-concepts/overview`,
         },
         {
           text: "common:sidebarSections.pipeline",
-          link: `/docs/vdp/${appVersion}/core-concepts/pipeline`,
+          link: `/docs/vdp/core-concepts/pipeline`,
         },
         {
           text: "common:sidebarSections.connector",
-          link: `/docs/vdp/${appVersion}/connectors/overview`,
+          link: `/docs/vdp/connectors/overview`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.operator",
@@ -157,19 +158,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/operators/overview`,
+          link: `/docs/vdp/operators/overview`,
         },
         {
           text: "common:sidebarSections.start",
-          link: `/docs/vdp/${appVersion}/operators/start`,
+          link: `/docs/vdp/operators/start`,
         },
         {
           text: "common:sidebarSections.end",
-          link: `/docs/vdp/${appVersion}/operators/end`,
+          link: `/docs/vdp/operators/end`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.aiConnector",
@@ -177,23 +178,23 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/ai-connectors/overview`,
+          link: `/docs/vdp/ai-connectors/overview`,
         },
         {
           text: "common:sidebarSections.instillModel",
-          link: `/docs/vdp/${appVersion}/ai-connectors/instill-model`,
+          link: `/docs/vdp/ai-connectors/instill-model`,
         },
         {
           text: "common:sidebarSections.stabilityAI",
-          link: `/docs/vdp/${appVersion}/ai-connectors/stability-ai`,
+          link: `/docs/vdp/ai-connectors/stability-ai`,
         },
         {
           text: "common:sidebarSections.openAI",
-          link: `/docs/vdp/${appVersion}/ai-connectors/openai`,
+          link: `/docs/vdp/ai-connectors/openai`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.blockchainConnector",
@@ -201,15 +202,15 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/blockchain-connectors/overview`,
+          link: `/docs/vdp/blockchain-connectors/overview`,
         },
         {
           text: "common:sidebarSections.numbersProtocol",
-          link: `/docs/vdp/${appVersion}/blockchain-connectors/numbers-protocol`,
+          link: `/docs/vdp/blockchain-connectors/numbers-protocol`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.dataConnector",
@@ -217,26 +218,26 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/data-connectors/overview`,
+          link: `/docs/vdp/data-connectors/overview`,
         },
         {
           text: "common:sidebarSections.pinecone",
-          link: `/docs/vdp/${appVersion}/data-connectors/pinecone`,
+          link: `/docs/vdp/data-connectors/pinecone`,
         },
         {
           text: "common:sidebarSections.airbyte",
-          link: `/docs/vdp/${appVersion}/data-connectors/airbyte`,
+          link: `/docs/vdp/data-connectors/airbyte`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.welcome",
-      link: `/docs/model/${appVersion}/welcome`,
+      link: `/docs/model/welcome`,
       items: [],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.instillModel",
@@ -244,15 +245,15 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.gettingStarted",
-          link: `/docs/model/${appVersion}/getting-started`,
+          link: `/docs/model/getting-started`,
         },
         {
           text: "common:sidebarSections.roadmap",
-          link: `/docs/model/${appVersion}/roadmap`,
+          link: `/docs/model/roadmap`,
         },
       ],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.deployment",
@@ -260,19 +261,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/model/${appVersion}/deployment/overview`,
+          link: `/docs/model/deployment/overview`,
         },
         {
           text: "common:sidebarSections.dockerCompose",
-          link: `/docs/model/${appVersion}/deployment/docker-compose`,
+          link: `/docs/model/deployment/docker-compose`,
         },
         {
           text: "common:sidebarSections.kubernetesUsingHelm",
-          link: `/docs/model/${appVersion}/deployment/kubernetes-using-helm`,
+          link: `/docs/model/deployment/kubernetes-using-helm`,
         },
       ],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.coreConcepts",
@@ -280,15 +281,15 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/model/${appVersion}/core-concepts/overview`,
+          link: `/docs/model/core-concepts/overview`,
         },
         {
           text: "common:sidebarSections.aiTask",
-          link: `/docs/model/${appVersion}/core-concepts/ai-task`,
+          link: `/docs/model/core-concepts/ai-task`,
         },
       ],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.prepareModels",
@@ -296,23 +297,23 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/model/${appVersion}/prepare-models/overview`,
+          link: `/docs/model/prepare-models/overview`,
         },
         {
           text: "common:sidebarSections.modelCard",
-          link: `/docs/model/${appVersion}/prepare-models/model-card`,
+          link: `/docs/model/prepare-models/model-card`,
         },
         {
           text: "common:sidebarSections.preProcessing",
-          link: `/docs/model/${appVersion}/prepare-models/pre-processing`,
+          link: `/docs/model/prepare-models/pre-processing`,
         },
         {
           text: "common:sidebarSections.postProcessing",
-          link: `/docs/model/${appVersion}/prepare-models/post-processing`,
+          link: `/docs/model/prepare-models/post-processing`,
         },
       ],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.importModels",
@@ -320,27 +321,27 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/model/${appVersion}/import-models/overview`,
+          link: `/docs/model/import-models/overview`,
         },
         {
           text: "common:sidebarSections.local",
-          link: `/docs/model/${appVersion}/import-models/local`,
+          link: `/docs/model/import-models/local`,
         },
         {
           text: "common:sidebarSections.github",
-          link: `/docs/model/${appVersion}/import-models/github`,
+          link: `/docs/model/import-models/github`,
         },
         {
           text: "common:sidebarSections.artivc",
-          link: `/docs/model/${appVersion}/import-models/artivc`,
+          link: `/docs/model/import-models/artivc`,
         },
         {
           text: "common:sidebarSections.huggingFace",
-          link: `/docs/model/${appVersion}/import-models/huggingface`,
+          link: `/docs/model/import-models/huggingface`,
         },
       ],
       appType: "model",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.development",
@@ -348,18 +349,18 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.localSetup",
-          link: `/docs/vdp/${appVersion}/development/setup-local-development`,
+          link: `/docs/vdp/development/setup-local-development`,
         },
       ],
       appType: "vdp",
-      versions: ["1.39.0", "v1.37.0", "v1.0.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.welcome",
-      link: `/docs/base/${appVersion}/welcome`,
+      link: `/docs/base/welcome`,
       items: [],
       appType: "base",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.instillBase",
@@ -367,15 +368,15 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.gettingStarted",
-          link: `/docs/base/${appVersion}/getting-started`,
+          link: `/docs/base/getting-started`,
         },
         {
           text: "common:sidebarSections.configuration",
-          link: `/docs/base/${appVersion}/configuration`,
+          link: `/docs/base/configuration`,
         },
       ],
       appType: "base",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.deployment",
@@ -383,19 +384,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.overview",
-          link: `/docs/base/${appVersion}/deployment/overview`,
+          link: `/docs/base/deployment/overview`,
         },
         {
           text: "common:sidebarSections.dockerCompose",
-          link: `/docs/base/${appVersion}/deployment/docker-compose`,
+          link: `/docs/base/deployment/docker-compose`,
         },
         {
           text: "common:sidebarSections.kubernetesUsingHelm",
-          link: `/docs/base/${appVersion}/deployment/kubernetes-using-helm`,
+          link: `/docs/base/deployment/kubernetes-using-helm`,
         },
       ],
       appType: "base",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
     {
       text: "common:sidebarSections.development",
@@ -403,11 +404,11 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.localSetup",
-          link: `/docs/base/${appVersion}/development/setup-local-development`,
+          link: `/docs/base/development/setup-local-development`,
         },
       ],
       appType: "base",
-      versions: ["1.39.0", "v1.37.0"],
+      versions: [],
     },
   ];
 };
@@ -511,7 +512,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-base-welcome",
-            to: `/docs/base/${appVersion}/welcome`,
+            to: `/docs/base/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillBase",
@@ -519,7 +520,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-vdp-welcome",
-            to: `/docs/vdp/${appVersion}/welcome`,
+            to: `/docs/vdp/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillVDP",
@@ -527,7 +528,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-model-welcome",
-            to: `/docs/model/${appVersion}/welcome`,
+            to: `/docs/model/welcome`,
             className: "",
             position: "right",
             label: "common:navbar.instillModel",
@@ -721,128 +722,27 @@ export function getNavbar(
         ),
         items: [
           {
-            key: "docs-nav-dropdown-version-VDP",
-            position: "right",
-            border: true,
-            label: "VDP",
-            appType: null,
-          },
-          {
-            key: "docs-nav-dropdown-version-vdp-v1.37.0",
-            to: "/docs/vdp/1.37.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.37.0",
-            appType: "vdp",
-          },
-          {
-            key: "docs-nav-dropdown-version-vdp-v1.35.0",
-            to: "/docs/vdp/1.35.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.35.0",
-            appType: "vdp",
-          },
-          {
-            key: "docs-nav-dropdown-version-vdp-v1.0.0",
-            to: "/docs/vdp/1.0.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.0.0",
-            appType: "vdp",
-          },
-          {
-            key: "docs-nav-dropdown-border-1",
-            position: "right",
-            border: false,
-            label: "",
-            appType: null,
-          },
-          {
-            key: "docs-nav-dropdown-version-model",
-            position: "right",
-            border: true,
-            label: "Model",
-            appType: "model",
-          },
-          {
-            key: "docs-nav-dropdown-version-model-v1.37.0",
-            to: "/docs/model/1.37.0/welcome",
-            className: "",
-            position: "right",
-            label: "v1.37.0",
-            appType: "model",
-          },
-          {
-            key: "docs-nav-dropdown-version-model-v1.35.0",
-            to: "/docs/model/1.35.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.35.0",
-            appType: "model",
-          },
-          {
-            key: "docs-nav-dropdown-border-2",
-            position: "right",
-            border: false,
-            label: "",
-            appType: null,
-          },
-          {
             key: "docs-nav-dropdown-version-cloud",
             position: "right",
             border: true,
             label: "Cloud",
-            appType: "cloud",
-          },
-          {
-            key: "docs-nav-dropdown-version-cloud-v1.37.0",
-            to: "/docs/cloud/1.37.0/welcome",
-            className: "",
-            position: "right",
-            label: "v1.37.0",
-            appType: "cloud",
-          },
-          {
-            key: "docs-nav-dropdown-version-cloud-v1.35.0",
-            to: "/docs/cloud/1.35.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.35.0",
-            appType: "cloud",
-          },
-          {
-            key: "docs-nav-dropdown-border-3",
-            position: "right",
-            border: false,
-            label: "",
             appType: null,
           },
           {
-            key: "docs-nav-dropdown-version-base",
-            position: "right",
-            border: true,
-            label: "Base",
-            appType: "base",
-          },
-          {
-            key: "docs-nav-dropdown-version-base-v1.37.0",
-            to: "/docs/base/1.37.0/welcome",
+            key: "docs-nav-dropdown-version-cloud-latest",
+            to: "/docs/cloud/latest/welcome",
             className: "",
             position: "right",
-            label: "v1.37.0",
-            appType: "base",
+            label: "latest",
+            appType: null,
+            iconElement: (
+              <Tag variant="lightBlue" size="sm">
+                latest
+              </Tag>
+            ),
           },
           {
-            key: "docs-nav-dropdown-version-base-v1.35.0",
-            to: "/docs/base/1.35.0/welcome",
-            className: "navbar-dropdown-menu",
-            position: "right",
-            label: "v1.35.0",
-            appType: "base",
-          },
-          {
-            key: "docs-nav-dropdown-border-4",
+            key: "docs-nav-dropdown-border-3",
             position: "right",
             border: false,
             label: "",
@@ -853,15 +753,20 @@ export function getNavbar(
             position: "right",
             border: true,
             label: "Core",
-            appType: "core",
+            appType: null,
           },
           {
-            key: "docs-nav-dropdown-version-core-v1.37.0",
-            to: "/docs/core/1.37.0/welcome",
+            key: "docs-nav-dropdown-version-core-latest",
+            to: "/docs/core/latest/welcome",
             className: "",
             position: "right",
-            label: "v1.37.0",
-            appType: "core",
+            label: "latest",
+            appType: null,
+            iconElement: (
+              <Tag variant="lightBlue" size="sm">
+                latest
+              </Tag>
+            ),
           },
         ],
         appType: "core",
