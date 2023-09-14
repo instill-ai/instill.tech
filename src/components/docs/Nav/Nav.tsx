@@ -35,9 +35,15 @@ const DropdownMenu = ({
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
 
-  const dropdownMenus = item.items?.filter(
-    (item) => item.appType !== (appType === "cloud" ? "core" : appType)
-  );
+  let dropdownMenus: NavbarItem[] | undefined = [];
+
+  if (item.key === "docs-nav-dropdown-version-menu") {
+    dropdownMenus = item.items?.filter((item) => item.appType === appType);
+  } else {
+    dropdownMenus = item.items?.filter(
+      (item) => item.appType !== (appType === "cloud" ? "core" : appType)
+    );
+  }
 
   return (
     <Dropdown.Menu key={item.key}>
