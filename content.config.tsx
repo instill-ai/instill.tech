@@ -1,3 +1,4 @@
+import { getApplicationVersion } from "@/lib/instill";
 import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType, InstillAppVersion } from "@/types/instill";
@@ -8,6 +9,10 @@ import {
   Icons,
   Tag,
 } from "@instill-ai/design-system";
+
+export const VERSIONS: any = {
+  latest: "1.0.0",
+};
 
 const SITE = {
   title: "Documentation",
@@ -716,14 +721,14 @@ export function getNavbar(
         href: "/",
         className: "navbar-dropdown-menu",
         position: "right",
-        label: `${appVersion}`,
+        label: `${appVersion === VERSIONS["latest"] ? "latest" : appVersion}`,
         // iconElement: (
         //   <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         // ),
         items: [
           {
             key: "docs-nav-dropdown-version-cloud-latest",
-            to: "/docs/cloud/latest/welcome",
+            to: `/docs/cloud/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "latest",
@@ -731,7 +736,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: "/docs/core/latest/welcome",
+            to: `/docs/core/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "latest",
@@ -739,7 +744,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: "/docs/model/${appVersion}/latest/welcome",
+            to: `/docs/model/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "latest",
@@ -747,7 +752,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: "/docs/base/${appVersion}/latest/welcome",
+            to: `/docs/base/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "latest",
@@ -755,7 +760,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: "/docs/vdp/${appVersion}/latest/welcome",
+            to: `/docs/vdp/${appVersion}/welcome`,
             className: "",
             position: "right",
             label: "latest",
