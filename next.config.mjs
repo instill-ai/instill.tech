@@ -15,8 +15,7 @@ import {
   infoBlockChildren,
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
 import path from "path";
-import { LATEST_VERSION } from "./version.mjs";
-
+import { VERSIONS } from "./version.mjs";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -248,102 +247,102 @@ const nextConfig = {
       },
       {
         source: "/docs/base/configuration",
-        destination: `/docs/base/${LATEST_VERSION}/configuration`,
+        destination: `/docs/base/${VERSIONS["base"]}/configuration`,
         permanent: false,
       },
       {
         source: "/docs/base/getting-started",
-        destination: `/docs/base/${LATEST_VERSION}/getting-started`,
+        destination: `/docs/base/${VERSIONS["base"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/base/welcome",
-        destination: `/docs/base/${LATEST_VERSION}/welcome`,
+        destination: `/docs/base/${VERSIONS["base"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/cloud/getting-started",
-        destination: `/docs/cloud/${LATEST_VERSION}/getting-started`,
+        destination: `/docs/cloud/${VERSIONS["cloud"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/cloud/using-instill-cloud",
-        destination: `/docs/cloud/${LATEST_VERSION}/using-instill-cloud`,
+        destination: `/docs/cloud/${VERSIONS["cloud"]}/using-instill-cloud`,
         permanent: false,
       },
       {
         source: "/docs/cloud/welcome",
-        destination: `/docs/cloud/${LATEST_VERSION}/welcome`,
+        destination: `/docs/cloud/${VERSIONS["cloud"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/core/contributing-guideline",
-        destination: `/docs/core/${LATEST_VERSION}/contributing-guideline`,
+        destination: `/docs/core/${VERSIONS["core"]}/contributing-guideline`,
         permanent: false,
       },
       {
         source: "/docs/core/faq",
-        destination: `/docs/core/${LATEST_VERSION}/faq`,
+        destination: `/docs/core/${VERSIONS["core"]}/faq`,
         permanent: false,
       },
       {
         source: "/docs/core/getting-started",
-        destination: `/docs/core/${LATEST_VERSION}/getting-started`,
+        destination: `/docs/core/${VERSIONS["core"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/core/system-architecture",
-        destination: `/docs/core/${LATEST_VERSION}/system-architecture`,
+        destination: `/docs/core/${VERSIONS["core"]}/system-architecture`,
         permanent: false,
       },
       {
         source: "/docs/core/welcome",
-        destination: `/docs/core/${LATEST_VERSION}/welcome`,
+        destination: `/docs/core/${VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/vdp/configuration",
-        destination: `/docs/vdp/${LATEST_VERSION}/configuration`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/configuration`,
         permanent: false,
       },
       {
         source: "/docs/vdp/license",
-        destination: `/docs/vdp/${LATEST_VERSION}/license`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/license`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/docker-compose",
-        destination: `/docs/vdp/${LATEST_VERSION}/deployment/docker-compose`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/docker-compose`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/kubernetes-using-helm",
-        destination: `/docs/vdp/${LATEST_VERSION}/deployment/kubernetes-using-helm`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/kubernetes-using-helm`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/overview",
-        destination: `/docs/vdp/${LATEST_VERSION}/deployment/overview`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/development/setup-local-development",
-        destination: `/docs/vdp/${LATEST_VERSION}/development/setup-local-development`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/development/setup-local-development`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/end",
-        destination: `/docs/vdp/${LATEST_VERSION}/operators/end`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/end`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/overview",
-        destination: `/docs/vdp/${LATEST_VERSION}/operators/overview`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/start",
-        destination: `/docs/vdp/${LATEST_VERSION}/operators/start`,
+        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/start`,
         permanent: false,
       },
     ];

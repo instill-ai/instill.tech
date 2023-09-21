@@ -7,7 +7,7 @@ import {
   Logos,
   Icons,
 } from "@instill-ai/design-system";
-import { LATEST_VERSION } from "./version.mjs";
+import { VERSIONS } from "./version.mjs";
 
 const SITE = {
   title: "Documentation",
@@ -716,8 +716,8 @@ export function getNavbar(
         href: "/",
         className: "navbar-dropdown-menu",
         position: "right",
-        label: `v${appVersion} ${
-          appVersion === LATEST_VERSION ? "(latest)" : ""
+        label: `${appVersion} ${
+          appVersion === VERSIONS[appType] ? "(latest)" : ""
         }`,
         // iconElement: (
         //   <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />

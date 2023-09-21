@@ -120,9 +120,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
+  const appType = getApplicationType(params.path);
+
   const docsConfigration = docsConfig(
-    getApplicationType(params.path),
-    getApplicationVersion(params.path)
+    appType,
+    getApplicationVersion(params.path, appType)
   );
 
   const sidebarLinks: SidebarItem[] = [];

@@ -17,9 +17,11 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const { isDark } = useInstillAICtx();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 
+  const appType = getApplicationType(router.asPath);
+
   const docsConfigration = docsConfig(
-    getApplicationType(router.asPath),
-    getApplicationVersion(router.asPath),
+    appType,
+    getApplicationVersion(router.asPath, appType),
     isDark
   );
 
