@@ -2,33 +2,10 @@
 
 This repository maintains the Instill AI product website and VDP documentation.
 
-## Prerequisites
+## Contributing
 
-1. [pnpm](https://pnpm.io/installation) - MAC OSX and Linux systems should follow the insturction for POSIX systems.
-
-## Contribution
-1. Clone the github
-2. `pnpm install`
-
-### Reminder
-
-1. We mainly have singular major breakpoint right now: xl: (1127px)
-  - OurMember component is still under re-construction.
-  - InstillCloud use md breakpoint because it makes more sense.
-2. The max-width of context is 1127px
-
-## Build up next app
-```bash
-pnpm run dev
-```
-
-Then, go to `http://localhost:3010`. You can add `-p <port number>` to the command to deploy on a different port.
-
-## Build up storybook
-```bash
-pnpm run storybook
-```
+Please refer to the [General Contributing Guidelines](./.github/CONTRIBUTING.md) for more details.
 
 ## About how to contribute to Documentation, Tutorials and blog
 
-Please refer to contributing guideline [here](CONTRIBUTING.md)
+Please refer to the [Docs Contributing Guidelines](./.github/DOCS-CONTRIBUTING.md) for more details.
