@@ -1,10 +1,10 @@
 import { GetServerSideProps } from "next";
-import { VERSIONS } from "../../../content.config";
+import { LATEST_VERSION } from "../../../version.mjs";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
-      destination: `/docs/core/${VERSIONS["latest"]}/welcome`,
+      destination: `/docs/core/${LATEST_VERSION}/welcome`,
       permanent: false,
     },
   };

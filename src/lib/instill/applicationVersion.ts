@@ -1,11 +1,11 @@
-import { InstillAppVersion, Nullable } from "@/types/instill";
-import { VERSIONS } from "../../../content.config";
+import { InstillAppVersion } from "@/types/instill";
+import { LATEST_VERSION } from "../../../version.mjs";
 
 export function getApplicationVersion(
   path: string | Array<string>
 ): InstillAppVersion {
-  if (path.includes("1.0.0")) {
-    return VERSIONS["latest"];
+  if (path.includes(LATEST_VERSION)) {
+    return LATEST_VERSION;
   }
-  return VERSIONS["latest"];
+  return LATEST_VERSION;
 }

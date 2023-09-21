@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>http://localhost:3010</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/about</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/blog</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/cookie</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/docs</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/newsletter</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/pricing</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/privacy</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/tutorials</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN/about</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN/career</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN/tutorials</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN/newsletter</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/zh_CN/blog</loc><lastmod>2023-09-18T13:32:52.847Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/videos/jokydabr70M</loc><lastmod>2023-09-18T13:32:53.466Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>VDP Cow Counter dashboard demo &#45; output video with detections</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/jokydabr70M/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
-<url><loc>http://localhost:3010/videos/0Rdv8oqqxfw</loc><lastmod>2023-09-18T13:32:53.920Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>How to Build a Cow Counter Dashboard Using VDP&#44; PostgreSQL &#38; Metabase</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/0Rdv8oqqxfw/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
-<url><loc>http://localhost:3010/videos/bIQF2O3Z_xU</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>VDP Cow Counter dashboard demo &#45; drone video of a cattle farm</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/bIQF2O3Z_xU/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
-<url><loc>http://localhost:3010/career/862k2km1n-sr-ai-researcher</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career/32yr3b8-sr-frontend-engineer</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career/32yr2xb-sr-ai-engineer</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career/32yr292-sr-backend-engineer</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career/32yr0b7-sr-devops-engineer</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>http://localhost:3010/career/32yqzg8-sr-product-manager</loc><lastmod>2023-09-18T13:32:54.383Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/about</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/blog</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/cookie</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/docs</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/newsletter</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/pricing</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/privacy</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/tutorials</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN/blog</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN/career</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN/newsletter</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN/about</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/zh_CN/tutorials</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/862k2km1n-sr-ai-researcher</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/32yr3b8-sr-frontend-engineer</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/32yr2xb-sr-ai-engineer</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/32yr292-sr-backend-engineer</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/32yr0b7-sr-devops-engineer</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/career/32yqzg8-sr-product-manager</loc><lastmod>2023-09-21T09:00:47.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3010/videos/jokydabr70M</loc><lastmod>2023-09-21T09:00:47.788Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>VDP Cow Counter dashboard demo &#45; output video with detections</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/jokydabr70M/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
+<url><loc>http://localhost:3010/videos/0Rdv8oqqxfw</loc><lastmod>2023-09-21T09:00:48.268Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>How to Build a Cow Counter Dashboard Using VDP&#44; PostgreSQL &#38; Metabase</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/0Rdv8oqqxfw/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
+<url><loc>http://localhost:3010/videos/bIQF2O3Z_xU</loc><lastmod>2023-09-21T09:00:48.757Z</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><video:video><video:title>VDP Cow Counter dashboard demo &#45; drone video of a cattle farm</video:title><video:thumbnail_loc>https://i.ytimg.com/vi/bIQF2O3Z_xU/hqdefault.jpg</video:thumbnail_loc><video:description></video:description></video:video></url>
 </urlset>

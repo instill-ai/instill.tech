@@ -10,7 +10,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { VERSIONS, docsConfig } from "../../../content.config";
+import { docsConfig } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
@@ -57,8 +57,6 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
   docsPaths.forEach((path) =>
     locales?.forEach((locale) => {
       if (path.includes(`${locale}/`)) {
-        let updatedPath = path.replace(".mdx", "");
-        updatedPath = updatedPath.replace(VERSIONS["latest"], "latest");
         paths.push({
           params: {
             path: path.replace(".mdx", "").split("/"),
@@ -102,9 +100,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     fullPath = join(process.cwd(), "docs", params.path);
     relativePath = join(params.path);
   }
-
-  fullPath = fullPath.replace(VERSIONS["latest"], "latest");
-  relativePath = relativePath.replace(VERSIONS["latest"], "latest");
 
   const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 

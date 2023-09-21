@@ -126,4 +126,4 @@ export type PageMeta = {
 
 export type InstillAppType = "vdp" | "cloud" | "model" | "core" | "base";
 
-export type InstillAppVersion = "latest";
+export type InstillAppVersion = "1.0.0";

@@ -1,4 +1,3 @@
-import { getApplicationVersion } from "@/lib/instill";
 import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType, InstillAppVersion } from "@/types/instill";
@@ -7,12 +6,8 @@ import {
   GitHubIcon,
   Logos,
   Icons,
-  Tag,
 } from "@instill-ai/design-system";
-
-export const VERSIONS: any = {
-  latest: "1.0.0",
-};
+import { LATEST_VERSION } from "./version.mjs";
 
 const SITE = {
   title: "Documentation",
@@ -721,7 +716,9 @@ export function getNavbar(
         href: "/",
         className: "navbar-dropdown-menu",
         position: "right",
-        label: `${appVersion === VERSIONS["latest"] ? "latest" : appVersion}`,
+        label: `v${appVersion} ${
+          appVersion === LATEST_VERSION ? "(latest)" : ""
+        }`,
         // iconElement: (
         //   <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         // ),
