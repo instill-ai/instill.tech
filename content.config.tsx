@@ -659,7 +659,7 @@ export const BlogCategories = [
   "Home",
   "Insights",
   "Our Story",
-  "Event",
+  "Events",
   "Product Updates",
 ] as const;
 
