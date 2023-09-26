@@ -152,7 +152,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     commitMeta = await getCommitMeta({
       org: "instill-ai",
       repo: "instill.tech",
-      path: "docs/" + relativePath + ".mdx",
+      path: "docs/" + relativePath + "." + locale + ".mdx",
     });
   } catch (err) {
     console.log(err);
