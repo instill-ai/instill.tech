@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
-import { InstillAppType } from "./instill";
-import { Nullable } from "vitest";
+import { InstillAppType, Nullable } from "./instill";
 
 export type SidebarItem = {
   link: string;
