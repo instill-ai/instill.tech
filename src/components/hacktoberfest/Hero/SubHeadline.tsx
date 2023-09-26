@@ -8,7 +8,7 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(
-        "text-center font-sans text-lg font-light text-instillGrey90",
+        "text-center font-sans text-lg font-light text-white",
         marginBottom
       )}
     >

@@ -51,7 +51,7 @@ export const Nav = () => {
       {enableAnnouncementBar && announcementBar}
       <div className="mx-auto flex w-full flex-row px-[30px] py-2.5">
         <Link href="/" className="my-auto mr-auto flex">
-          <Logo variant="ColourLogomarkBlackType" width={158} />
+          <Logo variant="ColourLogomarkWhiteType" width={158} />
         </Link>
 
         <div className="flex flex-row justify-end gap-x-10 lg:ml-auto">
@@ -102,7 +102,7 @@ export const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-white lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-instillBlue90 lg:sticky lg:top-0 lg:z-50"
     >
       <div className="flex w-full flex-col">
         <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>

@@ -3,6 +3,8 @@ module.exports = {
   presets: [require("@instill-ai/design-tokens/dist/tailwind.config.cjs")],
   darkMode: "class",
   content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@instill-ai/design-system/dist/*.{js,mjs}",
     "./content.config.tsx",
@@ -31,6 +33,7 @@ module.exports = {
         instill_red: "#FF5353",
         instill_yellow: "#FFDF3A",
         instill_light_blue: "#F4FBFF",
+
         instill_light_yellow: "#FFFCEB",
         instillGrey95: "#1A1A1A",
         instillGrey90: "#2B2B2B",
@@ -43,6 +46,7 @@ module.exports = {
         instillGrey05: "#F6F6F6",
         instillGrey01: "#FAFAFA",
         instillBlue: "#0000FF",
+        instillBlue90: "#1C2433",
         instillBlue85: "#002050",
         instillBlue80: "#0268B5",
         instillBlue70: "#003381",

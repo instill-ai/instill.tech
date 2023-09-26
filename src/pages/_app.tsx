@@ -28,6 +28,10 @@ import {
   MdxToggleBlockProps,
 } from "@/components/ui/MdxToggleBlock";
 import { appWithTranslation } from "next-i18next";
+import "@instill-ai/design-system/dist/index.css";
+import "@instill-ai/design-tokens/dist/theme/root.css";
+import "@instill-ai/design-tokens/dist/theme/light.css";
+import "@instill-ai/design-tokens/dist/theme/dark.css";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
