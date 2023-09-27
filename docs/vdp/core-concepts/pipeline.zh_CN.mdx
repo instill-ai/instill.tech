@@ -34,6 +34,17 @@ It is defined by a `recipe` which is essentially a JSON object componsed of mult
 }
 ```
 
+Inside the recipe, we have four important fields:
+- `id`: a unique identifier inside the recipe
+- `resource_name`: 
+  - the connector resource, please refer to [AI Connectors](/docs/vdp/ai-connectors/overview), [Data Connectors](/docs/vdp/data-connectors/overview) or [Blockchain Connectors](/docs/vdp/blockchain-connectors/overview)
+  - the format is `users/<user_id>/connector-resources/<connector-resource-id>`
+- `definition_name`:
+  - the connector or operator definition name
+  - the format is `connector-definitions/<connector-definition-id>` or `operator-definitions/<operator-definition-id>`
+- `configuration`: setting up the input data and parameters of the component
+
+
 ## Trigger pipeline
 
 ### Trigger via SYNC API
@@ -68,23 +79,3 @@ from the **Source** to process and write to destinations in the end.
   alt="Pipeline PULL mode"
 />
 
-## State
-
-When a pipeline is initially created, the pipeline state is determined by the pipeline's sub-components with the precedence:
-
-- `ERROR` if **ANY** of its sub-components are in their `ERROR` state
-- `UNSPECIFIED` if **ANY** of its sub-components are in their `UNSPECIFIED` state
-- `INACTIVE` if **ANY** of its sub-components are in their negative state
-- `ACTIVE` if **ALL** of its sub-components are in their positive state
-
-A pipeline can be switched to `INACTIVE` state by invoking the `pipeline-backend` endpoint `/deactivate` only when its original state is `ACTIVE`.
-
-A pipeline can be switched to `ACTIVE` state by invoking the `pipeline-backend` endpoint `/activate` only when its original state is `INACTIVE`.
-
-<div align="center">
-  <ZoomableImg
-    src="/docs-assets/core-concepts/pipeline-state.svg"
-    alt="The finite-state-machine (FSM) diagram for the pipeline state transition logic"
-    width="500px"
-  />
-</div>
