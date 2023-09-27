@@ -9,6 +9,24 @@ jobs:
   build-test-lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Import Vault secrets
+        id: vault
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://vault.instill.tech
+          method: approle
+          roleId: ${{ secrets.vaultAppRoleRoleId }}
+          secretId: ${{ secrets.vaultAppRoleSecretId }}
+          tlsSkipVerify: false
+          extraHeaders: |
+            CF-Access-Client-Id: ${{ secrets.cfAccessClientId }}
+            CF-Access-Client-Secret: ${{ secrets.cfAccessClientSecret }}
+          # A magic json output trick: https://github.com/hashicorp/vault-action/issues/153#issuecomment-824329289
+          secrets: |
+            secret/data/devops/vercel/github-action instill-tech-project-id | INSTILL_TECH_ID;
+            secret/data/devops/vercel/github-action vercel-token | VERCEL_TOKEN;
+            secret/data/devops/vercel/github-action vercel-org-id | VERCEL_ORG_ID;
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -58,11 +76,11 @@ jobs:
         id: deploy-to-vercel-staging
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ secrets.VERCELTOKEN }}
+          vercel-token: ${{ steps.vault.outputs.VERCEL_TOKEN }}
           github-token: ${{ secrets.BOTGITHUBTOKEN }}
-          vercel-org-id: ${{ secrets.VERCELORGID }}
-          vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID }}
-          scope: ${{ secrets.VERCELORGID }}
+          vercel-org-id: ${{ steps.vault.outputs.VERCEL_TOKEN }}
+          vercel-project-id: ${{ steps.vault.outputs.INSTILL_TECH_ID }}
+          scope: ${{ steps.secrets.outputs.VERCEL_ORG_ID }}
           github-comment: false
           alias-domains: |
             www.instill-inc.tech
