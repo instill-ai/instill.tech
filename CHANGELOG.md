@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.40.3](https://github.com/instill-ai/instill.tech/compare/v1.40.2...v1.40.3) (2023-09-27)
+
+
+### Documentation
+
+* **blog:** include orientation video and refactor content of blog article ([#614](https://github.com/instill-ai/instill.tech/issues/614)) ([73478fe](https://github.com/instill-ai/instill.tech/commit/73478fe5c8517603b035f6c61b319361901a4594))
+
 ## [1.40.2](https://github.com/instill-ai/instill.tech/compare/v1.40.1...v1.40.2) (2023-09-27)
 
 
