@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.40.0](https://github.com/instill-ai/instill.tech/compare/v1.39.1...v1.40.0) (2023-09-26)
+
+
+### Features
+
+* **docs:** add new blog - Hacktoberfest Participation ([#605](https://github.com/instill-ai/instill.tech/issues/605)) ([aebf3bf](https://github.com/instill-ai/instill.tech/commit/aebf3bfb2304650cf838798be996266f30581cf9))
+* **docs:** update contribution docs ([#602](https://github.com/instill-ai/instill.tech/issues/602)) ([ff129a0](https://github.com/instill-ai/instill.tech/commit/ff129a07a7f3f9a1ce36c6ea5cf30fcd24e56259))
+
+
+### Bug Fixes
+
+* update docs path for commit Meta ([#604](https://github.com/instill-ai/instill.tech/issues/604)) ([b18b726](https://github.com/instill-ai/instill.tech/commit/b18b726dca9b9bc645af3058c5715648d2b78d7a))
+
+
+### Documentation
+
+* **blog:** update hacktoberfest blog article ([#606](https://github.com/instill-ai/instill.tech/issues/606)) ([254b091](https://github.com/instill-ai/instill.tech/commit/254b09143b2d7a8e8387b3e139b753a61ff666df))
+
 ## [1.39.1](https://github.com/instill-ai/instill.tech/compare/v1.39.0...v1.39.1) (2023-09-07)
 
 
