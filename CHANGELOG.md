@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.40.1](https://github.com/instill-ai/instill.tech/compare/v1.40.0...v1.40.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* **cicd:** fix deployment workflow issue ([#609](https://github.com/instill-ai/instill.tech/issues/609)) ([48d664a](https://github.com/instill-ai/instill.tech/commit/48d664aebd55ecf314c03cc5b7284d27fd13586a))
+
+
+### Documentation
+
+* **blog:** update blog image background ([#608](https://github.com/instill-ai/instill.tech/issues/608)) ([b71a543](https://github.com/instill-ai/instill.tech/commit/b71a543d94698aa137411f7be7d222d180f8c036))
+
 ## [1.40.0](https://github.com/instill-ai/instill.tech/compare/v1.39.1...v1.40.0) (2023-09-26)
 
 
