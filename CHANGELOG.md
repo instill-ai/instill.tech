@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.40.2](https://github.com/instill-ai/instill.tech/compare/v1.40.1...v1.40.2) (2023-09-27)
+
+
+### Documentation
+
+* **blog:** fix dates and indents ([#611](https://github.com/instill-ai/instill.tech/issues/611)) ([524fbfe](https://github.com/instill-ai/instill.tech/commit/524fbfee92e5eb25dc8ea5128cfa7f3c7aede786))
+
 ## [1.40.1](https://github.com/instill-ai/instill.tech/compare/v1.40.0...v1.40.1) (2023-09-27)
 
 
