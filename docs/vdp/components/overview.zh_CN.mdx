@@ -1,0 +1,29 @@
+---
+title: "Component"
+lang: "en-US"
+draft: false
+description: "Pre-built ETL components with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of **Components**: **Connectors** and **Operators**. The system offers various types of **Connectors** and **Operators**, each catering to specific functionalities:
+
+- [**AI Connector**](/docs/vdp/ai-connectors): Connect to remote models from model providers like Instill Model, OpenAI, Stability AI, etc.
+- [**Blockchain Connector**](/docs/vdp/blockchain-connectors): Connect to Blockchain services like Numbers, etc.
+- [**Data Connector**](/docs/vdp/data-connectors): Connect to remote data sources like MySQL, PostgreSQL, Pinecone, etc.
+- [**Operator**](/docs/vdp/operators): Facilitate more flexible and fine-grained data injection and manipulation.
+- ...
+
+Each type of connector requires specific configuration to connect to the respective remote service.
+
+Connector is served by the [`connector-backend`](https://github.com/instill-ai/connector-backend), [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend) will communicate with [`connector-backend`](https://github.com/instill-ai/connector-backend) via gRPC.
+Operator is directly served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
+
+## Definition
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto) and [`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+to define the basic properties and detailed configuration of a connector or a operator.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema, including resource configuration, component configuration and OpenAPI schemas.
+The inner field [`operator_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+defines the operator configuration JSON Schema, including component configuration and OpenAPI schemas.
+

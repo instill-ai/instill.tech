@@ -134,8 +134,8 @@ const SECTIONS: SidebarSections[] = [
         link: "/docs/vdp/core-concepts/pipeline",
       },
       {
-        text: "common:sidebarSections.connector",
-        link: "/docs/vdp/connectors/overview",
+        text: "common:sidebarSections.component",
+        link: "/docs/vdp/components/overview",
       },
     ],
     appType: "vdp",
