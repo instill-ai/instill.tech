@@ -93,6 +93,14 @@ The component configuration is used for setting up the input data and parameters
 When using the Numbers Protocol blockchain connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
 Here are the expected input and output data fields for the Numbers Protocol blockchain connector.
 
+
+### No-code setup
+
+
+### Low-code setup
+
+This is a sample `configuration` in the pipeline recipe.
+
 ```json
 {
   "configuration": {
@@ -113,9 +121,25 @@ Here are the expected input and output data fields for the Numbers Protocol bloc
   }
 }
 ```
+
 ### Expected input data fields
 
-The expected input data fields is the same strucutre as `input` fields of [Component Configuration](#component-configuration).
+The expected input data fields has similar strucutre as `input` fields of [Component Configuration](#component-configuration).
+
+
+| Field                                       | Type          | Note                                                                                                                                                                                                    |
+| :------------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| inputs[idx].images\*                        | array[string] | The images you want to upload to blockchain in base64 format
+| inputs[idx].asset_creator                   | string        | Name of the asset creator.                                                                                                                                                                                                                                                                                   |
+| inputs[idx].abstract                        | string        | A summary or abstract of the asset.                                                                                                                                                                                                                                                                          |
+| inputs[idx].custom.digital_source_type      | string        | Specify the type of the source. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/digitalsourcetype)                                                                                                                                      |
+| inputs[idx].custom.mining_preference        | string        | Designates the selection made by the asset creators or licensed owners to decide if the asset is suitable for inclusion in a data mining or AI/ML training workflow. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/miningpreference)  |
+| inputs[idx].custom.generated_through        | string        | URL of the service that is used to generate the content.                                                                                                                                                                                                                                                     |
+| inputs[idx].custom.generated_by             | string        | The AI model used to generate the content.                                                                                                                                                                                                                                                                   |
+| inputs[idx].custom.creator_wallet           | string        | The Wallet address of the asset creator.                                                                                                                                                                                                                                                                     |
+| inputs[idx].custom.license.name             | string        | License of the asset file.                                                                                                                                                                                                                                                                                   |
+| inputs[idx].custom.license.document         | string        | URL of the asset file.                                                                                                                                                                                                                                                                                       |
+
 
 ```json
 {
