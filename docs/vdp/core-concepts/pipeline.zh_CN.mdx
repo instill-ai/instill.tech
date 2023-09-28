@@ -9,7 +9,7 @@ A **Pipeline** is an end-to-end workflow that automates a sequence of sub-compon
 
 It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
 
-- Operators - where the pipeline starts to ingest data to be processed or returns data as response
+- Operators - a numbers of operators to do flexible and fine-grained data injection and manipulation
 - Connectors - a number of connectors to query, process, or send the ingested unstructured data
 
 ```json
@@ -34,214 +34,162 @@ It is defined by a `recipe` which is essentially a JSON object componsed of mult
 }
 ```
 
-Inside the recipe, we have four important fields:
-- **id**: a unique identifier inside the recipe
-- **resource_name**: 
-  - the connector resource, please refer to [AI Connectors](/docs/vdp/ai-connectors/overview), [Data Connectors](/docs/vdp/data-connectors/overview) or [Blockchain Connectors](/docs/vdp/blockchain-connectors/overview)
-  - the format is `users/<user_id>/connector-resources/<connector-resource-id>`
-- **definition_name**:
-  - the connector or operator definition name
-  - the format is `connector-definitions/<connector-definition-id>` or `operator-definitions/<operator-definition-id>`
-- **configuration**: setting up the input data and parameters of the component. Please check the section below for more details.
+Within the recipe, we have four essential fields:
 
-## Data flow
+1. **id**: This serves as a unique identifier within the recipe.
 
-Inside the pipeline component, we have a Json field **configuration**, which is used for configuring the parameters and data input of the component.
+2. **resource_name**: 
+   - Refers to the connector resource. For more information, please refer to [AI Connectors](/docs/vdp/ai-connectors/overview), [Data Connectors](/docs/vdp/data-connectors/overview), or [Blockchain Connectors](/docs/vdp/blockchain-connectors/overview).
+   - The format for this field is `users/<user_id>/connector-resources/<connector-resource-id>`.
 
-For example, if a **configuration** is:
+3. **definition_name**:
+   - Represents the name of the connector or operator definition.
+   - The format for this field is `connector-definitions/<connector-definition-id>` or `operator-definitions/<operator-definition-id>`.
+
+4. **configuration**: This field is used to set up the input data and parameters for the component. Detailed information can be found in the section below.
+
+
+## Data Flow and Configuration in Pipeline Components
+
+Within pipeline components, data flow is facilitated through a JSON field called **configuration**, which serves as the means to configure both parameters and data input for the component. Understanding this field is essential for customizing the behavior of each component in a pipeline.
+
+
+**Example Configuration**
+
+Let's begin with an example of a **configuration**:
+
 ```json
 {
   "input": {
-    "field_1_primitvie_value": "this is a book",
-    "field_2_primitvie_value": 1.0,
+    "field_1_primitive_value": "this is a book",
+    "field_2_primitive_value": 1.0,
     "field_3_reference": "{ start.a_string_field }",
     "field_4_reference": "{ componentA.output.a_string_field }",
     "field_5_reference": "{ componentA.output.a_number_array }",
     "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
   }
 }
+
 ```
 
-The VDP will render the `configuration.input` into a real data input based on the data configuration.
-We have three ways to configure the data:
+This `configuration.input` field allows us to define data input and parameter settings. The VDP will interpret and render this configuration into actual data inputs based on the specified data configuration. There are three fundamental ways to configure data:
 
-### Primitive value
-  - Just like regular Json data, it can be `string`, `number`, `integer`, `array`, `object`
-  - After rendering, the value will exactly the same as the configured one.
+### Primitive Value
 
-    For example,
-    This is the component configuration
-    ```json
+- Data configurations can include common JSON data types such as `string`, `number`, `integer`, `array`, and `object`.
+- After rendering, the value remains exactly as configured.
+
+**Example:**
+
+Consider this component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_1_primitive_value": "this is a book",
+    "field_2_primitive_value": 1.0
+  }
+}
+
+```
+
+When utilizing batch triggering in VDP, where each component processes an array of inputs, the rendered data input for this component, with batch 2 as an example, appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
     {
-      "input": {
-        "field_1_primitvie_value": "this is a book",
-        "field_2_primitvie_value": 1.0
-      }
-    }
-
-    ```
-    
-    We support batch trigger in VDP, so data input of each component is a array of input. Let's use batch 2 for example.
-    Then it is the data input of this component after rendering.
-
-    ```json
+      "field_1_primitive_value": "this is a book",
+      "field_2_primitive_value": 1.0
+    },
     {
-      "inputs": [
-        {
-          "field_1_primitvie_value": "this is a book",
-          "field_2_primitvie_value": 1.0
-        },
-        {
-          "field_1_primitvie_value": "this is a book",
-          "field_2_primitvie_value": 1.0
-        }
-      ]
+      "field_1_primitive_value": "this is a book",
+      "field_2_primitive_value": 1.0
     }
-    ```
+  ]
+}
+
+```
 
 ### Reference
 
-  - A **Reference** is a special syntax that starts and ends with single curly bracket `{` and `}`.
-  - A **Reference** is like a variable reference.
-  - The strucutre of a **Reference** is `{ <upstream_component_id>.<json_path_to_the_data> }`
-  - After rendering, the VDP will search the value in upstream_component and copy it to the data input, and it will also keep the original data type. 
-  
+- A Reference employs special syntax enclosed in single curly brackets, e.g., `{ start.a_string_field }`.
+- It functions as a variable reference, copying the value from an upstream component to the data input while preserving the original data type.
 
-    For example,
-    This is the component configuration
-    ```json
+**Example:**
+
+Suppose we have the following component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_3_reference": "{ start.a_string_field }",
+    "field_4_reference": "{ componentA.output.a_string_field }",
+    "field_5_reference": "{ componentA.output.a_number_array }"
+  }
+}
+```
+
+Given the provided upstream component data, the rendered data input for this component appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
     {
-      "input": {
-        "field_3_reference": "{ start.a_string_field }",
-        "field_4_reference": "{ componentA.output.a_string_field }",
-        "field_5_reference": "{ componentA.output.a_number_array }",
-      }
-    }
-    ```
-
-    These are the upstream components data
-
-    ```json
-    // Data from start operator with id `start`
-    [
-      {
-        "a_string_field": "hello world"
-      },
-      {
-        "a_string_field": "how are you"
-      }
-    ]
-    // Data from component with id `componentA`
-    [
-      "inputs": [
-        {...}
-        {...}
-      ],
-      "outputs": [
-        {
-          "a_string_field": "cat is good",
-          "a_number_array": [1.0, 1.5, 2.0]
-        },
-        {
-          "a_string_field": "dog is good",
-          "a_number_array": [-1.0, -1.5, -2.0]
-        }
-      ]
-      
-    ]
-
-    ```
-    
-    Then it is the data input of this component after rendering.
-    ```json
+      "field_3_reference": "hello world",
+      "field_4_reference": "cat is good",
+      "field_5_reference": [1.0, 1.5, 2.0]
+    },
     {
-      "inputs": [
-        {
-          "field_3_reference": "hello world",
-          "field_4_reference": "cat is good",
-          "field_5_reference": [1.0, 1.5, 2.0]
-        },
-        {
-          "field_3_reference": "how are you",
-          "field_4_reference": "dog is good",
-          "field_5_reference": [-1.0, -1.5, -2.0]
-        }
-      ]
+      "field_3_reference": "how are you",
+      "field_4_reference": "dog is good",
+      "field_5_reference": [-1.0, -1.5, -2.0]
     }
-    ```
+  ]
+}
+```
 
 ### Template
 
-  - A **Template** is a a string consists of one or more **String Literal**.
-  - A **String Literal** is a syntax that starts and ends with double curly bracket `{{` and `}}`.
-  - A **Template** is like a variable reference.
-  - The strucutre of a **Template** is `Any string {{ <upstream_component_id>.<json_path_to_the_data> }} Any string {{ <upstream_component_id>.<json_path_to_the_data> }} Any string`
-  - After rendering, the VDP will search the value in upstream_component and rendor it to the data input, and it will also be converted to string type. 
-  - You can refer to [Liquid](https://shopify.github.io/liquid/) for more details
-  
+- A **Template** is a string comprising one or more **String Literals**, enclosed in double curly brackets, e.g., `{{ componentA.output.a_string_field }}`.
+- It retrieves values from upstream components and converts them to string type for the data input.
 
-    For example,
-    This is the component configuration
-    ```json
+**Example:**
+
+Consider the following component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
+  }
+}
+
+```
+
+Based on the provided upstream component data, the rendered data input for this component appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
     {
-      "input": {
-        "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
-      }
-    }
-    ```
-
-    These are the upstream components data
-
-    ```json
-    // Data from component with id `componentA`
-    [
-      "inputs": [
-        {...}
-        {...}
-      ],
-      "outputs": [
-        {
-          "a_string_field": "cat is good",
-          "a_number_array": [1.0, 1.5, 2.0]
-        },
-        {
-          "a_string_field": "dog is good",
-          "a_number_array": [-1.0, -1.5, -2.0]
-        }
-      ] 
-    ]
-
-    // Data from component with id `componentB`
-    [
-      "inputs": [
-        {...}
-        {...}
-      ],
-      "outputs": [
-        {
-          "a_number_field": 1.0
-        },
-        {
-          "a_number_field": 2.0
-        }
-      ] 
-    ]
-
-    ```
-    
-    Then it is the data input of this component after rendering.
-    ```json
+      "field_6_template": "cat is good and we have 1"
+    },
     {
-      "inputs": [
-        {
-          "field_6_template": "cat is good and we have 1"
-        },
-        {
-          "field_6_template": "dog is good and we have 2"
-        }
-      ]
+      "field_6_template": "dog is good and we have 2"
     }
-    ```
+  ]
+}
+
+```
+
+For a more detailed understanding of the **String Literal** syntax, you can refer to [Liquid](https://shopify.github.io/liquid/).
 
 ## Trigger pipeline
 
