@@ -54,22 +54,22 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 
   const paths: any = [];
 
-  docsPaths.forEach((path) =>
+  docsPaths.forEach((path) => {
     locales?.forEach((locale) => {
-      if (path.includes(`${locale}/`)) {
+      if (path.includes(`${locale}`)) {
         paths.push({
           params: {
-            path: path.replace(".mdx", "").split("/"),
+            path: path.replace(`.${locale}.mdx`, "").split("/"),
             locale,
           },
         });
       }
-    })
-  );
+    });
+  });
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
