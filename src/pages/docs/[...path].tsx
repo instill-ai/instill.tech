@@ -56,7 +56,7 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 
   docsPaths.forEach((path) => {
     locales?.forEach((locale) => {
-      if (path.includes(`${locale}`)) {
+      if (path.includes(`.${locale}.`)) {
         paths.push({
           params: {
             path: path.replace(`.${locale}.mdx`, "").split("/"),
