@@ -29,7 +29,7 @@ Use one of the profile name to develop the corresponding service:
 ```shellscript
 # In the base repository folder
 make build-latest
-make latest PROFILE=<profile-name> ITMODE_ENABLED=true
+make latest PROFILE=<profile-name>
 ```
 
 The following guideline shows a specific example of how to develop the `mgmt-backend`.
@@ -43,10 +43,9 @@ On the local machine, clone the `base` repository in your workspace, move to the
 git clone https://github.com/instill-ai/base.git && cd base
 
 # Use profile `mgmt` to launch all dependent services
-# for `mgmt-backend` and set ITMODE_ENABLED=true
-# for local integration test
+# for `mgmt-backend`
 make build-latest
-make latest PROFILE=mgmt ITMODE_ENABLED=true
+make latest PROFILE=mgmt
 ```
 
 ## Run dev `mgmt-backend`

@@ -31,7 +31,7 @@ jobs:
           vercel-args: "--prod"
           vercel-org-id: ${{ secrets.VERCELORGID }}
           vercel-project-id: ${{ secrets.INSTILLTECHVERCELPROJECTID}}
-          scope: ${{ steps.secrets.outputs.VERCELORGID }}
+          scope: ${{ secrets.VERCELORGID }}
 
       - name: Create temporary folder for artifacts
         run: mkdir -p ${{ github.workspace }}/tmp/artifacts

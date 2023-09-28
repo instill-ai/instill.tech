@@ -145,8 +145,8 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
           link: `/docs/vdp/${appVersion}/core-concepts/pipeline`,
         },
         {
-          text: "common:sidebarSections.connector",
-          link: `/docs/vdp/${appVersion}/connectors/overview`,
+          text: "common:sidebarSections.component",
+          link: `/docs/vdp/${appVersion}/components/overview`,
         },
       ],
       appType: "vdp",
@@ -794,6 +794,7 @@ export const BlogCategories = [
   "Home",
   "Insights",
   "Our Story",
+  "Events",
   "Product Updates",
 ] as const;
 
