@@ -27,7 +27,7 @@ To see an example of a Web3 asset created using this connector, click [here](htt
 ## Resource configuration
 
 The resource configuration is used for setting up the connection to NumbersProtocol.
-For the up-to-date configuration, refer to [here](https://github.com/instill-ai/connector-blockchain/blob/main/pkg/numbers/config/seed/definitions.json).
+For the up-to-date configuration, refer to [here](https://github.com/instill-ai/connector-blockchain/blob/main/pkg/numbers/config/definitions.json).
 
 | Field                      | Type   | Note                                                                                                                                                                                                    |
 | :------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -60,7 +60,7 @@ To create a Numbers Protocol blockchain connector on VDP:
 1. Create a Numbers Protocol blockchain connector:
 
 ```shellscript cURL
-curl --location 'http://localhost:8080/vdp/v1alpha/connecotor-resources'
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user_id>/connecotor-resources'
      --header 'Authorization: Bearer <Your-API-Token>'
      --data '{
        "id": "my-numbers",

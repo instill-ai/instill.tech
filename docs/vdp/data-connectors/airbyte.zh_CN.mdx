@@ -12,7 +12,7 @@ VDP implements the [Airbyte Protocol](https://docs.airbyte.com/understanding-air
 
 To check the current release status and supported connectors, please consult the [Airbyte Destinations Connector Catalog](https://docs.airbyte.com/integrations/#destinations) table.
 
-## Configuration
+## Resource Configuration
 
 Please refer to each of Airbyte [Destinations](https://docs.airbyte.com/category/destinations) for configuration details.
 
@@ -20,14 +20,10 @@ Please refer to each of Airbyte [Destinations](https://docs.airbyte.com/category
 
 To create an Airbyte data connector (e.g., PostgreSQL) effortlessly, follow these steps:
 
-1. Go to the **Data** page and click **Set up new data connector**
-2. Click the **Data connector type** ▾ drop-down and choose **Postgres**
+1. Go to the **Resource** page and click **Add Resource**
+2. Select **Airbyte PostgreSQL**
 3. Fill in the required fields
 4. Optionally, give a short description in the **Description** field
-
-Now go to the **Data** page, the corresponding PostgresSQL data connector should be connected.
-
-An Airbyte data connector is in `CONNECTED` state only when its configuration is validated. Otherwise, the state will be either `ERROR` or `UNSPECIFIED`.
 
 ### Low-code setup
 
@@ -36,31 +32,52 @@ For advanced users who prefer a more hands-on approach, you can create a Postgre
 1. Create a Postgres data connector:
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "postgres-db",
-  "connector_definition_name": "connector-definitions/data-postgres",
-  "description": "The PostgreSQL database in your basement",
-  "configuration": {
-    "host": <PostgreSQL host address>,
-    "port": <port>,
-    "database": <database>,
-    "schema": "public",
-    "username": <username>,
-    "password": <password>,
-    "ssl": false
-  }
-}'
-```
-
-2. Connect the connector `postgres-db`:
-
-```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors/postgres-db/connect
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources 
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "postgres-db",
+        "connector_definition_name": "connector-definitions/airbyte-destination-postgres",
+        "description": "The PostgreSQL database in your basement",
+        "configuration": {
+          "host": <PostgreSQL host address>,
+          "port": <port>,
+          "database": <database>,
+          "schema": "public",
+          "username": <username>,
+          "password": <password>,
+          "ssl": false
+        }
+      }'
 ```
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
 
-## Writing data to an Airbyte data connector
+## Component configuration
+
+The component configuration is used for setting up the input data of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
+
+| Field                                 | Type          | Note                                                                                                                                                                                                    |
+| :------------------------------------ | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| input.\<key\>\*                       | any           | The data you want to write into Airbyte destination
+
+
+### No-code setup
+
+
+### Low-code setup
+
+This is a sample `configuration` in the pipeline recipe.
+
+```json
+{
+  "configuration": {
+    "input": {
+      "a_text_field": "{ start.prompt }",
+      "a_object_field": "{ compA.object }"
+    }
+  }
+}
+```
 
 To enable Airbyte destination connectors and inject data, VDP utilizes the [AirbyteRecordMessage](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#airbyterecordmessage) JSON object.
 This facilitates triggering the container's [`write`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#write) operation for the Airbyte destination connector.
@@ -68,7 +85,5 @@ This facilitates triggering the container's [`write`](https://docs.airbyte.com/u
 For this purpose, `connector-backend` assembles the [ConfiguredAirbyteCatalog](https://docs.airbyte.com/understanding-airbyte/beginners-guide-to-catalog/#configuredairbytecatalog) on-the-fly,
 utilizing the corresponding connector configuration JSON object used in the [`check`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#check) operation.
 This initiates a Temporal workflow to write the structured data to the destination.
-
-Regarding Airbyte connections and sync modes, VDP currently supports the `full_refresh` sync mode and the `append` destination sync mode.
 
 Please note that VDP does not currently support Airbyte's [Namespaces](https://docs.airbyte.com/understanding-airbyte/namespaces).
