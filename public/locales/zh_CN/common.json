@@ -31,6 +31,8 @@
     "dataConnector": "Data 连接组件",
     "pinecone": "Pinecone",
     "airbyte": "Airbyte",
+    "airbyte": "Airbyte",
+    "bigquery": "BigQuery",
     "prepareModels": "准备模型",
     "modelCard": "模型卡片",
     "preProcessing": "预处理",
