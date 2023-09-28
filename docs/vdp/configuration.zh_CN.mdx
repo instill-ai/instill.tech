@@ -33,7 +33,7 @@ Set the environment variable for a specific service to determine which version t
 
 ```shellscript .env
 # Set the version of individual VDP service
-API_GATEWAY_BASE_VERSION=<api-gateway-base-version>
+API_GATEWAY_VERSION=<api-gateway-version>
 MGMT_BACKEND_VERSION=<mgmt-backend-version>
 CONSOLE_VERSION=<console-version>
 
@@ -54,8 +54,7 @@ Unless you are debugging and testing, updating the default versions in the `.env
 To access Base and VDP via Console, set the hosts by overriding the environment variables:
 
 ```shellscript .env
-CONSOLE_PUBLIC_API_GATEWAY_BASE_HOST=<hostname-to-access-base>
-CONSOLE_PUBLIC_API_GATEWAY_VDP_HOST=<hostname-to-access-vdp>
+CONSOLE_PUBLIC_API_GATEWAY_HOST=<hostname-to-access-base-and-vdp>
 ```
 
 By default they are set to `localhost`.

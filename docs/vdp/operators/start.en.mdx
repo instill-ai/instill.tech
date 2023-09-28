@@ -11,30 +11,54 @@ description: "Learn about how to set up a VDP Start operator https://github.com/
 
 `Alpha`
 
-## Configuration
+## Component configuration
 
-| Field | Type | Note                                                                                                 |
-| :---- | :--- | :--------------------------------------------------------------------------------------------------- |
-| N/A   | N/A  | This operator doesn't take any configuration so the configuration field is an empty JSON object `{}` |
+The component configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
+
+| Field                                 | Type                   | Note                                                                                                                                                                           |
+| :------------------------------------ | :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| metadata\*                            | map\<string, object\>  | You can setup the pipeline trigger request fields here                                                                                                                         |
+| metadata.\<key\>.title\*              | string                 | The title of the field                                                                                                                                                         |
+| metadata.\<key\>.type\*               | string                 | The type of the field. Available types: `text`, `image`, `audio`, `number`, `integer`, `boolean`, `text_array`, `image_array`, `audio_array`, `number_array`, `integer_array`  |
+| metadata.\<key\>.description          | string                 | The description of the field.                                                                                                                                                  |
 
 ### No-code setup
 
-To create a Start operator:
-
-1. Go to the **Operator** page and click **Set up new operator**
-2. Click the **Operator type** ▾ drop-down and choose **Start**
-
-Now go to the **Operator** page, the corresponding operator with ID `start` should be connected.
 
 ### Low-code setup
 
-To create a Start operator:
+This is a sample `configuration` in the pipeline recipe.
 
-```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/operators -d '{
-  "id": "start",
-  "operator_definition_name": "operator-definitions/start",
-  "configuration": {}
+```json
+{
+  "configuration": {
+    "metadata": {
+      "prompt": {
+        "title": "Prompt",
+        "type": "text"
+      },
+      "number": {
+        "title": "Number",
+        "type": "number"
+      }
+    }
+  }
+}
+```
+
+When you send the request, you can use this request format
+
+```shell
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user_id>/pipelines/<pipeline_id>/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data '{
+    "inputs": [
+      {
+        "prompt": "How are you",
+        "number": 10
+      }
+    ]
 }'
 ```
 
