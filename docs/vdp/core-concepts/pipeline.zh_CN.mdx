@@ -174,9 +174,8 @@ We have three ways to configure the data:
 
   - A **Template** is a a string consists of one or more **String Literal**.
   - A **String Literal** is a syntax that starts and ends with double curly bracket `{{` and `}}`.
-  - A **Template** is like a variable reference.
-  - The strucutre of a **Template** is `Any string {{ <upstream_component_id>.<json_path_to_the_data> }} Any string {{ <upstream_component_id>.<json_path_to_the_data> }} Any string`
-  - After rendering, the VDP will search the value in upstream_component and rendor it to the data input, and it will also be converted to string type. 
+  - The strucutre of a **Template** is `Any string {{ <upstream_component_id>.<json_path_to_the_data> }} any string {{ <upstream_component_id>.<json_path_to_the_data> }} any string`
+  - After rendering, the VDP will search the value in upstream_component and render it as the data input, and it will also be converted to string type. 
   - You can refer to [Liquid](https://shopify.github.io/liquid/) for more details
   
 
