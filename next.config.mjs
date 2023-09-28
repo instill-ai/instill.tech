@@ -241,8 +241,8 @@ const nextConfig = {
 
       // New documentation refactor 20230907
       {
-        source: "/docs",
-        destination: "/docs/core/welcome",
+        source: "/docs/",
+        destination: `/docs/core/${VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
