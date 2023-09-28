@@ -12,7 +12,9 @@ import {
   Icons,
   Input,
   Logos,
+  Tag,
 } from "@instill-ai/design-system";
+import Image from "next/image";
 // to detect language and automatically redirect to the approprate/[locale] page
 
 export const getStaticProps: GetStaticProps<HacktoberfestPageProps> =
@@ -91,6 +93,65 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               will find open source projects that enable you to construct robust
               AI pipelines for unstructured data.
             </div>
+            <div className="flex flex-row">
+              <div className="my-auto flex w-1/5 justify-center">
+                <p className="text-white product-body-text-3-medium">
+                  Various AI applications for diverse use cases
+                </p>
+              </div>
+
+              <div className="w-3/5">
+                <div className="flex flex-col">
+                  <div className="flex justify-center">
+                    <div className="flex w-3/5 flex-col pt-5">
+                      <div className="mb-2 flex flex-wrap justify-center gap-2">
+                        <Tag variant="darkNeutral">LLM apps</Tag>
+                        <Tag variant="darkNeutral">Vision apps</Tag>
+                        <Tag variant="darkNeutral">Image generators</Tag>
+                        <Tag variant="darkNeutral">Audio apps</Tag>
+                        <Tag variant="darkNeutral">More</Tag>
+                      </div>
+                      <div className="flex justify-center gap-x-2.5"></div>
+                    </div>
+                  </div>
+                  <div className="flex justify-center pt-5">
+                    <div className="flex w-5/6 flex-col">
+                      <div className="mb-2 flex flex-wrap justify-center gap-2">
+                        <Tag variant="lightNeutral">Data extraction</Tag>
+                        <Tag variant="lightNeutral">
+                          Data transform via AI model inference
+                        </Tag>
+                        <Tag variant="lightNeutral">Customizable data flow</Tag>
+                        <Tag variant="lightNeutral">
+                          Flexible flow orchestration
+                        </Tag>
+                        <Tag variant="lightNeutral">Troubleshooting</Tag>
+                        <Tag variant="lightNeutral">Evaluation</Tag>
+                        <Tag variant="lightNeutral">Version Control</Tag>
+                        <Tag variant="lightNeutral">Access Control</Tag>
+                        <Tag variant="lightNeutral">Monitoring & Logging</Tag>
+                        <Tag variant="lightNeutral">Data management</Tag>
+                        <Tag variant="lightNeutral">Model deployment</Tag>
+                        <Tag variant="lightNeutral">Model training</Tag>
+                        <Tag variant="lightNeutral">
+                          Scalability & Reliability
+                        </Tag>
+                        <Tag variant="lightNeutral">
+                          Extend to new use cases
+                        </Tag>
+                        <Tag variant="lightNeutral">More</Tag>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex w-1/5 items-end justify-center text-white">
+                <p className="text-white product-body-text-3-medium">
+                  The backbone of these apps is the AI-powered unstructured data
+                  infrastructure, which should effectively handle...
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -162,7 +223,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
         {/* Section 4 */}
 
         <div className="py-20">
-          <div className="flex flex-row">
+          <div className="flex flex-row gap-x-10">
             <div className="w-1/2">
               <div className="flex flex-row gap-x-7 py-3">
                 <div className="rounded-md bg-white">
@@ -221,7 +282,82 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               </div>
             </div>
 
-            <div className="w-1/2">Extract, transaform, load</div>
+            <div className="w-1/2">
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <Image
+                    src="/hacktoberfest/extract.svg"
+                    alt="Extraction Logo"
+                    className="w-full"
+                    width={500}
+                    height={100}
+                  />
+                </div>
+                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.Type02 className="h-3 w-3 stroke-white" />
+                    Text
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.Image01 className="h-3 w-3 stroke-white" />
+                    Image
+                  </Tag>
+                  <Tag variant="darkYellow">
+                    <Icons.SpeechRecognition className="h-3 w-3 stroke-white" />
+                    Audio
+                  </Tag>
+                  <Tag variant="darkYellow">Video</Tag>
+                  <Tag variant="darkYellow">PDF</Tag>
+                  <Tag variant="darkYellow">JSON</Tag>
+                  <Tag variant="darkYellow">CSV</Tag>
+                  <Tag variant="darkYellow">Parquet</Tag>
+                  <Tag variant="darkYellow">More</Tag>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <Image
+                    src="/hacktoberfest/transform.svg"
+                    alt="Transform Logo"
+                    className="w-full"
+                    width={500}
+                    height={100}
+                  />
+                </div>
+                <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="lightGreen">Instill Model</Tag>
+                  <Tag variant="lightGreen">OpenAI: GPT</Tag>
+                  <Tag variant="lightGreen">OpenAI: Embeddings</Tag>
+                  <Tag variant="lightGreen">OpenAI: Whisper</Tag>
+                  <Tag variant="lightGreen">Stability AI: SDXL</Tag>
+                  <Tag variant="lightGreen">Anthropic: Claude</Tag>
+                  <Tag variant="lightGreen">Hugging Face</Tag>
+                  <Tag variant="lightGreen">cohere: Command</Tag>
+                  <Tag variant="lightGreen">cohere: Embeddings</Tag>
+                  <Tag variant="lightGreen">More</Tag>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <Image
+                    src="/hacktoberfest/load.svg"
+                    alt="Load Logo"
+                    className="w-full"
+                    width={500}
+                    height={100}
+                  />
+                </div>
+                <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="darkBlue">Pinecone</Tag>
+                  <Tag variant="darkBlue">BigQuery</Tag>
+                  <Tag variant="darkBlue">Postgres</Tag>
+                  <Tag variant="darkBlue">Google Drive</Tag>
+                  <Tag variant="darkBlue">Google Sheets</Tag>
+                  <Tag variant="darkBlue">REST API</Tag>
+                  <Tag variant="darkBlue">More</Tag>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -229,7 +365,60 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         <div className="py-20">
           <div className="flex flex-row">
-            <div className="w-1/2">Extract, transaform, load</div>
+            <div className="w-1/2">
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <p className="text-emerald-300 product-body-text-1-semibold">
+                    Model Deployment
+                  </p>
+                </div>
+                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="lightGreen">Stable Diffusion</Tag>
+                  <Tag variant="lightGreen">GPT</Tag>
+                  <Tag variant="lightGreen">Llama 2</Tag>
+                  <Tag variant="lightGreen">MPT</Tag>
+                  <Tag variant="lightGreen">Falcon</Tag>
+                  <Tag variant="lightGreen">Segment Anything</Tag>
+                  <Tag variant="lightGreen">CLIP</Tag>
+                  <Tag variant="lightGreen">Mask RCNN</Tag>
+                  <Tag variant="lightGreen">YOLOv7</Tag>
+                  <Tag variant="lightGreen">YOLOv7 Pose</Tag>
+                  <Tag variant="lightGreen">More</Tag>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <p className="text-violet-300 product-body-text-1-semibold">
+                    AI Tasks
+                  </p>
+                </div>
+                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="lightPurple">Text Generation</Tag>
+                  <Tag variant="lightPurple">Text to Image</Tag>
+                  <Tag variant="lightPurple">Audio Recognition</Tag>
+                  <Tag variant="lightPurple">Image Classification</Tag>
+                  <Tag variant="lightPurple">Object Detection</Tag>
+                  <Tag variant="lightPurple">Keypoint Detection</Tag>
+                  <Tag variant="lightPurple">OCR</Tag>
+                  <Tag variant="lightPurple">Instance Segmentation</Tag>
+                  <Tag variant="lightPurple">Semantic Segmentation</Tag>
+                  <Tag variant="lightPurple">More</Tag>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="my-3">
+                  <p className="text-slate-300 product-body-text-1-semibold">
+                    ML Frameworks
+                  </p>
+                </div>
+                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                  <Tag variant="darkNeutral">PyTorch</Tag>
+                  <Tag variant="darkNeutral">TensorFlow</Tag>
+                  <Tag variant="darkNeutral">ONNX</Tag>
+                  <Tag variant="darkNeutral">Python</Tag>
+                </div>
+              </div>
+            </div>
             <div className="w-1/2">
               <div className="flex flex-row gap-x-7 py-3">
                 <div className="rounded-md bg-white">
