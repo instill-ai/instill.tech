@@ -88,10 +88,22 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
         {/* Section 2 */}
         <div className="flex justify-center py-20">
           <div className="flex flex-col gap-y-5">
+            {/* <SectionLabel text="Do You Know?" position="mx-auto !text-white" /> */}
+
             <div className="flex justify-center">
-              <Button variant="secondarySuccess" size="lg" className="my-auto">
+              {/* <Button variant="secondarySuccess" size="lg" className="my-auto">
                 DO YOU KNOW?
-              </Button>
+              </Button> */}
+
+              <div
+                className={cn(
+                  "flex flex-shrink rounded bg-semantic-success-bg px-4 py-3"
+                )}
+              >
+                <div className="my-auto text-base font-normal uppercase text-semantic-success-default product-button-button-1">
+                  Do You Know?
+                </div>
+              </div>
             </div>
             <h1
               className={cn(
@@ -299,8 +311,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       className="mt-1"
                     />
                     Build versatile data pipelines for your journey with
-                    unstructured data. This has to be filled. This has to be
-                    filled.
+                    unstructured data
                   </li>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -321,8 +332,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       alt="Console Cloud Dashboard"
                       className="mt-1"
                     />
-                    Test. This has to be filled. This has to be filled. This has
-                    to be filled.
+                    Test. This has to be filled.
                   </li>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -383,40 +393,67 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.Type02 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.Type02 className="h-3 w-3 stroke-instillGrey95" />
                     Text
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.Image01 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.Image01 className="h-3 w-3 stroke-instillGrey95" />
                     Image
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.Speaker01 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.Speaker01 className="h-3 w-3 stroke-instillGrey95" />
                     Audio
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.VideoRecorder className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
                     Video
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.File05 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     PDF
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.File05 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     JSON
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.File05 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     CSV
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <Icons.File05 className="h-3 w-3 stroke-white" />
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     Parquet
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1 border-none">
-                    <div className="h-2 w-2 rounded-lg bg-white"></div>
+                  <Tag
+                    variant="darkYellow"
+                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                  >
+                    <div className="h-2 w-2 rounded-lg bg-black"></div>
                     More
                   </Tag>
                 </div>
@@ -792,7 +829,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <div className="flex flex-row gap-x-7">
                       <div>
                         <div className="rounded-md bg-white p-3">
-                          <Icons.Mail01 className="h-10 w-10 stroke-black" />
+                          <Icons.Mail01 className="h-10 w-10 stroke-instillGrey95" />
                         </div>
                       </div>
                       <div className="my-auto flex flex-row">
