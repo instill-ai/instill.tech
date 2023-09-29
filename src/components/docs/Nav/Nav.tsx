@@ -34,29 +34,36 @@ const DropdownMenu = ({
   const { t } = useTranslation();
   const router = useRouter();
   const appType = getApplicationType(router.asPath);
-  const dropdownMenus = item.items?.filter(
-    (item) =>
-      item.label !== applicationName[appType === "cloud" ? "core" : appType]
-  );
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  let dropdownMenus: NavbarItem[] | undefined = [];
+
+  if (item.key === "docs-nav-dropdown-version-menu") {
+    dropdownMenus = item.items?.filter((item) => item.appType === appType);
+  } else {
+    dropdownMenus = item.items?.filter(
+      (item) => item.appType !== (appType === "cloud" ? "core" : appType)
+    );
+  }
+
   return (
-    <Dropdown.Menu key={item.key}>
-      <Dropdown.MenuTrigger
-        data-state="open"
-        className="flex flex-row gap-x-1 focus:outline-none"
-      >
-        {isMobile ? (
-          <div key={item.key}>
-            <Item item={item} />
-          </div>
-        ) : (
-          <Item item={item} key={item.key} />
-        )}
+    <Dropdown.Menu key={item.key} open={isOpen}>
+      <Dropdown.MenuTrigger className="flex flex-row gap-x-1 focus:outline-none">
+        <p
+          onClick={() => setIsOpen(!isOpen)}
+          className="navbar-dropdown-menu my-auto flex flex-row gap-x-1 text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+        >
+          {item.label}
+          {item.iconElement ? item.iconElement : null}
+        </p>
       </Dropdown.MenuTrigger>
       <Dropdown.MenuContent
         className="dark:bg-instillGrey90"
         side="bottom"
         align="start"
         key={item.key + "dropdown-menu-content"}
+        onPointerDownOutside={() => setIsOpen(!isOpen)}
       >
         {dropdownMenus?.map((subItem) => {
           const subItemKey = subItem.key;
@@ -65,6 +72,7 @@ const DropdownMenu = ({
               <Dropdown.MenuLabel
                 className="dark:text-instillGrey15"
                 key={subItemKey}
+                onClick={() => setIsOpen(!isOpen)}
               >
                 {t(subItem.label)}
               </Dropdown.MenuLabel>
@@ -74,7 +82,10 @@ const DropdownMenu = ({
             return <Dropdown.MenuSeparator key={item.key} />;
           } else {
             return (
-              <Dropdown.MenuItem key={subItemKey}>
+              <Dropdown.MenuItem
+                key={subItemKey}
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <Item key={subItemKey} item={subItem} />
               </Dropdown.MenuItem>
             );

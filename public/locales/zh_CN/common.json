@@ -18,7 +18,7 @@
     "kubernetesUsingHelm": "Kubernetes",
     "coreConcepts": "核心概念",
     "pipeline": "管道 (Pipeline)",
-    "connector": "连接组件 (Connector)",
+    "component": "组件 (Component)",
     "operator": "運算组件 (Operator)",
     "start": "開端 (Start)",
     "end": "末端 (End)",

@@ -1,0 +1,132 @@
+---
+title: "Configuration"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up Instill Base https://github.com/instill-ai/base"
+---
+
+Instill Base automatically loads a [`.env`](https://github.com/instill-ai/base/blob/main/.env) file that contains key/value pairs defining required environment variables.
+You can customize the file based on your configuration.
+
+Besides, they use [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and makes it available to the service.
+To override the default configuration file, you can set the corresponding environment variable in the compose file in [Base](https://github.com/instill-ai/base/blob/main/docker-compose.yml).
+All configuration environment variables for each service are prefixed with `CFG_`.
+
+## Configuring Base services
+
+Read the default configuration files for a full overview of all supported configuration options of each service:
+
+- [`mgmt-backend`](https://github.com/instill-ai/mgmt-backend/blob/main/config/config.yaml)(`localhost:8084`): a service to handle user management, token management, and metrics
+- [`console`](https://github.com/instill-ai/console/blob/main/.env)(`localhost:3000`): a Web-based UI app to provide a unified, clean, and intuitive user experience of Instill Core
+
+### Configuring service version
+
+Set the environment variable for a specific service to determine which version to use in Base.
+
+```shellscript .env
+# Set the version of individual Base service
+API_GATEWAY_VERSION=<api-gateway-version>
+MGMT_BACKEND_VERSION=<mgmt-backend-version>
+CONSOLE_VERSION=<console-version>
+
+# Set the version of 3rd party tools
+REDIS_VERSION=<redis-version>
+POSTGRESQL_VERSION=<postgresql-version>
+TEMPORAL_VERSION=<temporal-version>
+TEMPORAL_UI_VERSION=<temporal-ui-version>
+ELASTICSEARCH_VERSION=<elasticsearch-version>
+ETCD_VERSION=<etcd-version>
+```
+
+The combination of default versions in `.env` file is fully tested for compatibility.
+Unless you are debugging and testing, updating the default versions in the `.env` file is discouraged.
+
+### Configuring how to access Base via Console
+
+To access Base via Console, set the hosts by overriding the environment variables:
+
+```shellscript .env
+CONSOLE_PUBLIC_API_GATEWAY_HOST=<hostname-to-access-base>
+```
+
+By default they are set to `localhost`.
+
+### Configuring the observability stack
+
+Observability is critical for distributed microservice architecture.
+Through [OpenTelemetry](https://opentelemetry.io/), we can generate, collect and export metrics, logs and traces to help analyse the performance and behaviour of Instill Core services.
+
+The observability stack is disabled by default. You can enable the stack setting `OBSERVE_ENABLED=true` in the [`.env`](https://github.com/instill-ai/base/blob/main/.env) file.
+The following telemetry tools are supported now:
+
+- [**Jaeger**](https://www.jaegertracing.io/) (`localhost:16686`): OpenTelemetry allows us to export spans to Jaeger. Use Jaeger when you want to debug the complete flow of a request through the Instill Core services.
+- [**InfluxDB**](https://www.influxdata.com/) (`localhost: 8086`, username:`admin`, password:`password`): detailed metrics are sent to InfluxDB for monitoring, and are imported into the Grafana dashboard
+- [**Grafana**](https://grafana.com/) (`localhost:3002`, username:`admin`, password:`admin`): the Grafana dashboard visualises the metrics to monitor the performance and anomalies of Instill Core services
+- [**Prometheus**](https://prometheus.io/) (`localhost:9090`): VDP exports metrics like `vdp_pipeline_sync_trigger_counter_total` (total number of sync pipeline triggers) and `vdp_pipeline_async_trigger_counter_total` (total number of async pipeline triggers) to Prometheus.
+
+Set the environment variable for a specific telemetry tool to determine which version to use in Base.
+
+```shellscript .env
+# Set the version of the observability stack
+INFLUXDB_VERSION=<influxdb-version>
+OTEL_COLLECTOR_VERSION=<otel-collector-version>
+JAEGER_VERSION=<jaeger-version>
+PROMETHEUS_VERSION=<prometheus-version>
+GRAFANA_VERSION=<grafana-version>
+```
+
+## Anonymised Usage Collection
+
+To help us better understand how Base is used and can be improved, Base collects and reports _anonymised_ usage statistics.
+
+### What data is collected
+
+<InfoBlock type="info" title="info">
+  We value your privacy. So, we went for the anonymous data and selected a set
+  of details to share from your Instill Core instance that would give us
+  insights about how to improve Instill Core without being invasive.
+</InfoBlock>
+
+When a new Base is running, the usage client in services including `mgmt-backend` in Base will ask for a new session, respectively.
+Our usage server returns a token used for future reporting.
+For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/base/usage/v1alpha/usage.proto) data including some basic information about the service and the system details the service is running on:
+
+- name of the service to collect data from, e.g., `SERVICE_MGMT` for `mgmt-backend`
+- edition of the service to identify the deployment, e.g., `local-ce` for local community edition deployment
+- version of the service, e.g., `0.5.0-alpha`
+- architecture of the system the service is running on, e.g., `amd64`
+- operating system the service is running on, e.g., `Linux`
+- uptime in seconds to identify the rough life span of the service
+
+Each session is assigned a random UUID for tracking and identification.
+Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/base/usage/v1alpha/usage.proto) data every 10 minutes:
+
+- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/base/usage/v1alpha/usage.proto) reports data for `mgmt-backend` session
+  - information of the [onboarded User](/docs/vdp/getting-started#start-building-with-vdp)
+
+You can check the full usage data structs in [protobufs](https://github.com/instill-ai/protobufs/blob/main/base/usage/v1alpha/usage.proto).
+These data do not allow us to track Personal Data but enable us to measure session counts and usage statistics.
+
+### Implementation
+
+The anonymous usage report client library is in [`usage-client`](https://github.com/instill-ai/usage-client).
+To limit risk exposure, we keep the usage server implementation private for now.
+In summary, the Session data and SessionReport sent from each session get updated in the usage server.
+
+Additionally, The frontend Console sends event data to [Amplitude](https://amplitude.com).
+
+### Opting out
+
+Instill Core usage collection helps the entire community. We'd appreciate it if you can leave it on.
+However, if you want to opt out, you can disable it by overriding the `.env` file in Base:
+
+```shellscript .env
+USAGE_ENABLED=false
+```
+
+This will disable the Base usage collection.
+
+## Acknowledgements
+
+Our anonymised usage collection was inspired by KrakenD's [How we built our telemetry service](https://www.krakend.io/blog/building-a-telemetry-service/)
+and would love to acknowledge that their design has helped us to bootstrap our usage collection project.
