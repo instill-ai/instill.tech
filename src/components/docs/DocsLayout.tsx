@@ -4,7 +4,7 @@ import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
 import { Nav } from "./Nav";
 import { useRouter } from "next/router";
-import { getApplicationType } from "@/lib/instill";
+import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 export type DocsLayoutProps = {
@@ -17,8 +17,11 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
   const { isDark } = useInstillAICtx();
   const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
 
+  const appType = getApplicationType(router.asPath);
+
   const docsConfigration = docsConfig(
-    getApplicationType(router.asPath),
+    appType,
+    getApplicationVersion(router.asPath, appType),
     isDark
   );
 
