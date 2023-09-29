@@ -13,7 +13,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className="my-10 flex justify-center">
-        <div className="flex flex-col gap-y-5">
+        <div className="flex flex-row gap-x-5">
           <Button variant="primary" size="lg">
             Try Instill Cloud Free
           </Button>

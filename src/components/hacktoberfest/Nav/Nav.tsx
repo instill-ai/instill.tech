@@ -102,7 +102,7 @@ export const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-instillBlue90 lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-instillGrey90 lg:sticky lg:top-0 lg:z-50"
     >
       <div className="flex w-full flex-col">
         <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>

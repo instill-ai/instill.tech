@@ -6,13 +6,26 @@ import { getRepoFileContent } from "@/lib/github";
 import cn from "clsx";
 import { BaseLayout, Hero } from "@/components/hacktoberfest";
 import {
+  BigQueryIcon,
   Button,
+  ComplicateIcons,
   DiscordIcon,
   GitHubIcon,
+  GoogleDriveIcon,
+  GoogleSheetIcon,
   Icons,
+  ImageClassificationIcon,
   Input,
+  InstanceSegmentationIcon,
   Logos,
+  ObjectDetectionIcon,
+  OnnxIcon,
+  PostgreSqlIcon,
+  PyTorchIcon,
+  PythonIcon,
+  SemanticSegmentationIcon,
   Tag,
+  TensorFlowIcon,
 } from "@instill-ai/design-system";
 import Image from "next/image";
 // to detect language and automatically redirect to the approprate/[locale] page
@@ -94,10 +107,19 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               AI pipelines for unstructured data.
             </div>
             <div className="flex flex-row">
-              <div className="my-auto flex w-1/5 justify-center">
-                <p className="text-white product-body-text-3-medium">
-                  Various AI applications for diverse use cases
-                </p>
+              <div className="flex justify-center">
+                <div className="flex flex-col text-center">
+                  <Image
+                    src="/hacktoberfest/arrow-right.svg"
+                    width={200}
+                    height={112}
+                    alt="Console Cloud Dashboard"
+                    className="ml-12"
+                  />
+                  <p className="text-white product-body-text-3-medium">
+                    Various AI applications for diverse use cases
+                  </p>
+                </div>
               </div>
 
               <div className="w-3/5">
@@ -146,10 +168,18 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
               <div className="flex w-1/5 items-end justify-center text-white">
-                <p className="text-white product-body-text-3-medium">
-                  The backbone of these apps is the AI-powered unstructured data
-                  infrastructure, which should effectively handle...
-                </p>
+                <div className="flex flex-col">
+                  <Image
+                    src="/hacktoberfest/arrow-left.svg"
+                    width={120}
+                    height={212}
+                    alt="hacktoberfest arrow left"
+                  />
+                  <p className="text-white product-body-text-3-medium">
+                    The backbone of these apps is the AI-powered unstructured
+                    data infrastructure, which should effectively handle...
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -243,23 +273,58 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               </div>
               <div className="font-['IBM Plex Sans'] px-4 py-7 text-lg font-normal leading-relaxed text-white">
                 <ul>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Build versatile data pipelines for your journey with
                     unstructured data. This has to be filled. This has to be
                     filled.
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Connect to your data, transform by the STOA models and load
                     the results into your desired destination.
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Test. This has to be filled. This has to be filled. This has
                     to be filled.
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Share built pipelines with anyone to showcase your work
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Clone shared pipelines without building from scratch
                   </li>
                 </ul>
@@ -302,16 +367,34 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.Image01 className="h-3 w-3 stroke-white" />
                     Image
                   </Tag>
-                  <Tag variant="darkYellow">
-                    <Icons.SpeechRecognition className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    {/* <Icons.Speaker01 className="h-3 w-3 stroke-white" /> */}
                     Audio
                   </Tag>
-                  <Tag variant="darkYellow">Video</Tag>
-                  <Tag variant="darkYellow">PDF</Tag>
-                  <Tag variant="darkYellow">JSON</Tag>
-                  <Tag variant="darkYellow">CSV</Tag>
-                  <Tag variant="darkYellow">Parquet</Tag>
-                  <Tag variant="darkYellow">More</Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.Recording02 className="h-3 w-3 stroke-white" />
+                    Video
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                    PDF
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                    JSON
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                    CSV
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                    Parquet
+                  </Tag>
+                  <Tag variant="darkYellow" className="gap-x-1">
+                    <div className="h-2 w-2 rounded-lg bg-white"></div>
+                    More
+                  </Tag>
                 </div>
               </div>
               <div className="flex flex-col">
@@ -325,16 +408,46 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="lightGreen">Instill Model</Tag>
-                  <Tag variant="lightGreen">OpenAI: GPT</Tag>
-                  <Tag variant="lightGreen">OpenAI: Embeddings</Tag>
-                  <Tag variant="lightGreen">OpenAI: Whisper</Tag>
-                  <Tag variant="lightGreen">Stability AI: SDXL</Tag>
-                  <Tag variant="lightGreen">Anthropic: Claude</Tag>
-                  <Tag variant="lightGreen">Hugging Face</Tag>
-                  <Tag variant="lightGreen">cohere: Command</Tag>
-                  <Tag variant="lightGreen">cohere: Embeddings</Tag>
-                  <Tag variant="lightGreen">More</Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.MDLSquare className="h-3 w-3" />
+                    Instill Model
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.OpenAI className="h-3 w-3" />
+                    OpenAI: GPT
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.OpenAI className="h-3 w-3" />
+                    OpenAI: Embeddings
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.OpenAI className="h-3 w-3" />
+                    OpenAI: Whisper
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.StabilityAI className="h-3 w-3" />
+                    Stability AI: SDXL
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    {/* <Logos.Anthropic className="h-3 w-3" /> */}
+                    Anthropic: Claude
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <Logos.HuggingFace className="h-3 w-3" />
+                    Hugging Face
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    {/* <Logos.Cohere className="h-3 w-3" /> */}
+                    cohere: Command
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    {/* <Logos.Cohere className="h-3 w-3" /> */}
+                    cohere: Embeddings
+                  </Tag>
+                  <Tag variant="lightGreen" className="gap-x-1">
+                    <div className="h-2 w-2 rounded-lg bg-emerald-300"></div>
+                    More
+                  </Tag>
                 </div>
               </div>
               <div className="flex flex-col">
@@ -348,13 +461,50 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkBlue">Pinecone</Tag>
-                  <Tag variant="darkBlue">BigQuery</Tag>
-                  <Tag variant="darkBlue">Postgres</Tag>
-                  <Tag variant="darkBlue">Google Drive</Tag>
-                  <Tag variant="darkBlue">Google Sheets</Tag>
-                  <Tag variant="darkBlue">REST API</Tag>
-                  <Tag variant="darkBlue">More</Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    {/* <Logos.Pinecone className="h-3 w-3" /> */}
+                    Pinecone
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <BigQueryIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    BigQuery
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <PostgreSqlIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Postgres
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <GoogleDriveIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Google Drive
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <GoogleSheetIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Google Sheets
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <div className="h-2 w-2 rounded-lg bg-white"></div>
+                    REST API
+                  </Tag>
+                  <Tag variant="darkBlue" className="gap-x-1">
+                    <div className="h-2 w-2 rounded-lg bg-white"></div>
+                    More
+                  </Tag>
                 </div>
               </div>
             </div>
@@ -393,16 +543,76 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </p>
                 </div>
                 <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="lightPurple">Text Generation</Tag>
-                  <Tag variant="lightPurple">Text to Image</Tag>
-                  <Tag variant="lightPurple">Audio Recognition</Tag>
-                  <Tag variant="lightPurple">Image Classification</Tag>
-                  <Tag variant="lightPurple">Object Detection</Tag>
-                  <Tag variant="lightPurple">Keypoint Detection</Tag>
-                  <Tag variant="lightPurple">OCR</Tag>
-                  <Tag variant="lightPurple">Instance Segmentation</Tag>
-                  <Tag variant="lightPurple">Semantic Segmentation</Tag>
-                  <Tag variant="lightPurple">More</Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <ComplicateIcons.TextGeneration
+                      fillAreaColor="fill-semantic-fg-secondary"
+                      className="h-3 w-3"
+                    />
+                    Text Generation
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <ComplicateIcons.TextToImage
+                      fillAreaColor="fill-semantic-fg-secondary"
+                      className="h-3 w-3"
+                    />
+                    Text to Image
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <Icons.SpeechRecognition className="h-3 w-3 bg-white" />
+                    Audio Recognition
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <ImageClassificationIcon
+                      color="fill-instillGrey50"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Image Classification
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <ObjectDetectionIcon
+                      color="fill-instillGrey50"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Object Detection
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <ObjectDetectionIcon
+                      color="fill-instillGrey50"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Keypoint Detection
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    OCR
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <InstanceSegmentationIcon
+                      color="fill-instillGrey50"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Instance Segmentation
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <SemanticSegmentationIcon
+                      color="fill-instillGrey50"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Semantic Segmentation
+                  </Tag>
+                  <Tag variant="lightPurple" className="gap-x-1">
+                    <div className="h-2 w-2 rounded-lg bg-violet-300"></div>
+                    More
+                  </Tag>
                 </div>
               </div>
               <div className="flex flex-col">
@@ -412,10 +622,38 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </p>
                 </div>
                 <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkNeutral">PyTorch</Tag>
-                  <Tag variant="darkNeutral">TensorFlow</Tag>
-                  <Tag variant="darkNeutral">ONNX</Tag>
-                  <Tag variant="darkNeutral">Python</Tag>
+                  <Tag variant="darkNeutral" className="gap-x-1">
+                    <PyTorchIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    PyTorch
+                  </Tag>
+                  <Tag variant="darkNeutral" className="gap-x-1">
+                    <TensorFlowIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    TensorFlow
+                  </Tag>
+                  <Tag variant="darkNeutral" className="gap-x-1">
+                    <OnnxIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    ONNX
+                  </Tag>
+                  <Tag variant="darkNeutral" className="gap-x-1">
+                    <PythonIcon
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
+                    Python
+                  </Tag>
                 </div>
               </div>
             </div>
@@ -437,15 +675,36 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               </div>
               <div className="font-['IBM Plex Sans'] px-4 py-7 text-lg font-normal leading-relaxed text-white">
                 <ul>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Import and deploy AI models and dynamically generate
                     inference API endpoints.
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Standardize AI tasks for ETL pipelines, application and data
                     integration.
                   </li>
-                  <li className="ml-4 pl-1">
+                  <li className="flex items-start gap-x-3">
+                    <Image
+                      src="/hacktoberfest/check-icon.svg"
+                      width={20}
+                      height={20}
+                      alt="Console Cloud Dashboard"
+                      className="mt-1"
+                    />
                     Customize LLM, Diffusion or other AI models to your data and
                     use cases.
                   </li>

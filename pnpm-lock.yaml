@@ -11,8 +11,8 @@ dependencies:
     specifier: ^3.3.0
     version: 3.3.0(@algolia/client-search@4.14.2)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
   '@instill-ai/design-system':
-    specifier: ^0.47.1
-    version: 0.47.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+    specifier: ^0.55.1
+    version: 0.55.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
   '@instill-ai/design-tokens':
     specifier: ^0.3.2
     version: 0.3.2(tailwindcss@3.3.2)
@@ -3635,8 +3635,8 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@instill-ai/design-system@0.47.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-ro6iQw4CIBtUigVSthV5KhR1Ei8i+nNXYCnCcp9vCOH0Az/cGfbKopYhKf5cE+moFnDFuVK/eyxC7ep0aBniCw==}
+  /@instill-ai/design-system@0.55.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-TM9AgHbYhrRDiW0PMdDg/WQAkM66d67n1wwmkez95bwWNR27lLwX2AX1hDPfHPEqwJjPi3j9TIFry7ZS7tyceQ==}
     engines: {node: '>=14.6.0'}
     peerDependencies:
       react: ^18.2.0
@@ -3654,6 +3654,7 @@ packages:
       '@radix-ui/react-separator': 1.0.3(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot': 1.0.2(@types/react@17.0.47)(react@18.2.0)
       '@radix-ui/react-switch': 1.0.3(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-tabs': 1.0.4(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-toast': 1.1.4(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-tooltip': 1.0.6(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-table': 8.9.3(react-dom@18.2.0)(react@18.2.0)
@@ -5139,6 +5140,34 @@ packages:
       '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@17.0.47)(react@18.2.0)
       '@radix-ui/react-use-previous': 1.0.1(@types/react@17.0.47)(react@18.2.0)
       '@radix-ui/react-use-size': 1.0.1(@types/react@17.0.47)(react@18.2.0)
+      '@types/react': 17.0.47
+      '@types/react-dom': 17.0.17
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@radix-ui/react-tabs@1.0.4(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-egZfYY/+wRNCflXNHx+dePvnz9FbmssDTJBtgRfDY7e8SE5oIo3Py2eCB1ckAbh1Q7cQ/6yJZThJ++sgbxibog==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.11
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-context': 1.0.1(@types/react@17.0.47)(react@18.2.0)
+      '@radix-ui/react-direction': 1.0.1(@types/react@17.0.47)(react@18.2.0)
+      '@radix-ui/react-id': 1.0.1(@types/react@17.0.47)(react@18.2.0)
+      '@radix-ui/react-presence': 1.0.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-roving-focus': 1.0.4(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@17.0.47)(react@18.2.0)
       '@types/react': 17.0.47
       '@types/react-dom': 17.0.17
       react: 18.2.0
