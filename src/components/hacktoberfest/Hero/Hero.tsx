@@ -10,7 +10,7 @@ export const Hero = () => {
         <div className="flex flex-col xl:my-auto">
           <div className="flex justify-center">
             <div className="w-3/5">
-              <Headline marginBottom="mb-5" />
+              <Headline marginBottom="mb-0" />
               <Image
                 src="/hacktoberfest/curved-line.svg"
                 width={1128}
@@ -28,7 +28,13 @@ export const Hero = () => {
       <div className="my-10 flex justify-center">
         <div className="flex flex-row gap-x-5">
           <Button variant="primary" size="lg">
-            Try Instill Cloud Free
+            <a
+              href="https://console.instill.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try Instill Cloud Free
+            </a>
           </Button>
 
           <Button
@@ -36,13 +42,25 @@ export const Hero = () => {
             size="lg"
             className="flex items-center gap-x-2 border-semantic-bg-primary"
           >
-            Self-hosted
+            <a
+              href="https://www.instill.tech/docs/core/welcome/?utm_source=product&utm_medium=button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Self-hosted
+            </a>
             <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
           </Button>
         </div>
       </div>
 
-      <div className="my-20 flex rounded-sm bg-instillGrey80 p-3">
+      <div
+        className="my-20 flex rounded-sm bg-instillGrey80 p-3"
+        style={{
+          boxShadow:
+            "0px 16px 32px 0px rgba(49, 111, 237, 0.15), 0px 7px 7px 12px rgba(59, 122, 247, 0.05)",
+        }}
+      >
         <Image
           src="/hacktoberfest/demo.gif"
           width={1128}

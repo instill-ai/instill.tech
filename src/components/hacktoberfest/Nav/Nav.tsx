@@ -21,14 +21,14 @@ export const Nav = () => {
   }, [router]);
 
   const announcementBar = (
-    <AnnouncementBar className="bg-instill_green">
+    <AnnouncementBar className="bg-instill_green" close={false}>
       <div className="flex flex-row gap-x-1">
         <p className="text-base text-instillGrey95">👉 Check out</p>
         <a
           className="text-base text-instillGrey95 underline hover:text-instillBlue50"
           target="_blank"
           rel="noreferrer noopener"
-          href="https://hacktoberfest.com"
+          href="https://www.instill.tech/blog/celebrate-Hacktoberfest-2023/?utm_source=product&utm_medium=link"
         >
           Instill Hacktoberfest 2023
         </a>
@@ -41,7 +41,13 @@ export const Nav = () => {
       <DocsPageLink />
       <GithubTextLink />
       <Button variant="primary" size="lg">
-        Try Instill Cloud Free
+        <a
+          href="https://console.instill.tech"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Try Instill Cloud Free
+        </a>
       </Button>
     </>
   );

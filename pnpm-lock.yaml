@@ -11,8 +11,8 @@ dependencies:
     specifier: ^3.3.0
     version: 3.3.0(@algolia/client-search@4.14.2)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)
   '@instill-ai/design-system':
-    specifier: ^0.55.1
-    version: 0.55.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+    specifier: ^0.55.3
+    version: 0.55.3(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
   '@instill-ai/design-tokens':
     specifier: ^0.3.2
     version: 0.3.2(tailwindcss@3.3.2)
@@ -3635,8 +3635,8 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@instill-ai/design-system@0.55.1(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-TM9AgHbYhrRDiW0PMdDg/WQAkM66d67n1wwmkez95bwWNR27lLwX2AX1hDPfHPEqwJjPi3j9TIFry7ZS7tyceQ==}
+  /@instill-ai/design-system@0.55.3(@types/react-dom@17.0.17)(@types/react@17.0.47)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-Rhsb7stiPRzDVkdX5zB75AUUkahuVY1PAc3PFb675LIlOVT7anagEpWriHuh8oxRPI3uqV27n0AVhIXgNZCuWg==}
     engines: {node: '>=14.6.0'}
     peerDependencies:
       react: ^18.2.0

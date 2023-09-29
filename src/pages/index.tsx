@@ -17,6 +17,7 @@ import {
   ImageClassificationIcon,
   Input,
   InstanceSegmentationIcon,
+  KeypointDetectionIcon,
   Logos,
   ObjectDetectionIcon,
   OnnxIcon,
@@ -87,13 +88,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
         {/* Section 2 */}
         <div className="flex justify-center py-20">
           <div className="flex flex-col gap-y-5">
-            <SectionLabel text="Do You Know?" position="mx-auto" />
+            <div className="flex justify-center">
+              <Button variant="secondarySuccess" size="lg" className="my-auto">
+                DO YOU KNOW?
+              </Button>
+            </div>
             <h1
               className={cn(
                 "font-['IBM Plex Sans'] w-full text-center text-[56px] font-bold leading-[78px] text-semantic-fg-primary-on-bg-secondary"
               )}
             >
-              The Backbone for All Your AI Needs
+              The AI Applications are All About Unstructured Data Infrastructure
             </h1>
             <div
               className={cn(
@@ -171,7 +176,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <div className="flex flex-col">
                   <Image
                     src="/hacktoberfest/arrow-left.svg"
-                    width={120}
+                    width={100}
                     height={212}
                     alt="hacktoberfest arrow left"
                   />
@@ -218,17 +223,23 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-white"
                     position="my-auto"
                   />
-                  Join Community
+                  <a
+                    href="https://discord.gg/sevxWsqpGh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Join Community
+                  </a>
                 </Button>
 
                 <Button
                   variant="white"
                   size="lg"
-                  className="flex items-center gap-x-2 border-semantic-bg-primary"
+                  className="items-center gap-x-2 border-semantic-bg-primary"
                 >
                   <svg
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +253,13 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  Read our Docs
+                  <a
+                    href="https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read our Docs
+                  </a>
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
@@ -342,7 +359,14 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-                  Star Instill VDP
+
+                  <a
+                    href="https://github.com/instill-ai/vdp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Star Instill VDP
+                  </a>
                 </Button>
               </div>
             </div>
@@ -359,39 +383,39 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkYellow" className="gap-x-1">
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
                     <Icons.Type02 className="h-3 w-3 stroke-white" />
                     Text
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
                     <Icons.Image01 className="h-3 w-3 stroke-white" />
                     Image
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    {/* <Icons.Speaker01 className="h-3 w-3 stroke-white" /> */}
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.Speaker01 className="h-3 w-3 stroke-white" />
                     Audio
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    <Icons.Recording02 className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.VideoRecorder className="h-3 w-3 stroke-white" />
                     Video
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.File05 className="h-3 w-3 stroke-white" />
                     PDF
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.File05 className="h-3 w-3 stroke-white" />
                     JSON
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.File05 className="h-3 w-3 stroke-white" />
                     CSV
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
-                    <Icons.File04 className="h-3 w-3 stroke-white" />
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
+                    <Icons.File05 className="h-3 w-3 stroke-white" />
                     Parquet
                   </Tag>
-                  <Tag variant="darkYellow" className="gap-x-1">
+                  <Tag variant="darkYellow" className="gap-x-1 border-none">
                     <div className="h-2 w-2 rounded-lg bg-white"></div>
                     More
                   </Tag>
@@ -408,43 +432,43 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.MDLSquare className="h-3 w-3" />
                     Instill Model
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.OpenAI className="h-3 w-3" />
                     OpenAI: GPT
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.OpenAI className="h-3 w-3" />
                     OpenAI: Embeddings
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.OpenAI className="h-3 w-3" />
                     OpenAI: Whisper
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.StabilityAI className="h-3 w-3" />
                     Stability AI: SDXL
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
-                    {/* <Logos.Anthropic className="h-3 w-3" /> */}
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
+                    <Logos.Anthropic className="h-3 w-3" />
                     Anthropic: Claude
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.HuggingFace className="h-3 w-3" />
                     Hugging Face
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
-                    {/* <Logos.Cohere className="h-3 w-3" /> */}
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
+                    <Logos.Cohere className="h-3 w-3" />
                     cohere: Command
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
-                    {/* <Logos.Cohere className="h-3 w-3" /> */}
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
+                    <Logos.Cohere className="h-3 w-3" />
                     cohere: Embeddings
                   </Tag>
-                  <Tag variant="lightGreen" className="gap-x-1">
+                  <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <div className="h-2 w-2 rounded-lg bg-emerald-500"></div>
                     More
                   </Tag>
@@ -461,11 +485,11 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   />
                 </div>
                 <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkBlue" className="gap-x-1">
-                    {/* <Logos.Pinecone className="h-3 w-3" /> */}
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
+                    <Logos.Pinecode className="h-3 w-3" />
                     Pinecone
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <BigQueryIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -473,7 +497,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     BigQuery
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <PostgreSqlIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -481,7 +505,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Postgres
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <GoogleDriveIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -489,7 +513,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Google Drive
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <GoogleSheetIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -497,11 +521,11 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Google Sheets
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
-                    <div className="h-2 w-2 rounded-lg bg-white"></div>
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
+                    <Icons.CodeSnippet02 className="h-3 w-3 stroke-white" />
                     REST API
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1">
+                  <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <div className="h-2 w-2 rounded-lg bg-white"></div>
                     More
                   </Tag>
@@ -558,12 +582,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     Text to Image
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
-                    <Icons.SpeechRecognition className="h-3 w-3 bg-white" />
+                    <Icons.SpeechRecognition className="h-3 w-3 stroke-semantic-fg-secondary" />
                     Audio Recognition
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <ImageClassificationIcon
-                      color="fill-instillGrey50"
+                      color="fill-instillGrey90"
                       height="h-[12px]"
                       position="my-auto"
                       width="w-[12px]"
@@ -572,7 +596,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <ObjectDetectionIcon
-                      color="fill-instillGrey50"
+                      color="fill-instillGrey90"
                       height="h-[12px]"
                       position="my-auto"
                       width="w-[12px]"
@@ -580,8 +604,8 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     Object Detection
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
-                    <ObjectDetectionIcon
-                      color="fill-instillGrey50"
+                    <KeypointDetectionIcon
+                      color="fill-instillGrey90"
                       height="h-[12px]"
                       position="my-auto"
                       width="w-[12px]"
@@ -589,11 +613,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     Keypoint Detection
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
+                    <ObjectDetectionIcon
+                      color="fill-instillGrey90"
+                      height="h-[12px]"
+                      position="my-auto"
+                      width="w-[12px]"
+                    />
                     OCR
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <InstanceSegmentationIcon
-                      color="fill-instillGrey50"
+                      color="fill-instillGrey90"
                       height="h-[12px]"
                       position="my-auto"
                       width="w-[12px]"
@@ -602,7 +632,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <SemanticSegmentationIcon
-                      color="fill-instillGrey50"
+                      color="fill-instillGrey90"
                       height="h-[12px]"
                       position="my-auto"
                       width="w-[12px]"
@@ -622,7 +652,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </p>
                 </div>
                 <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
-                  <Tag variant="darkNeutral" className="gap-x-1">
+                  <Tag variant="darkNeutral" className="gap-x-1 border-none">
                     <PyTorchIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -630,7 +660,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     PyTorch
                   </Tag>
-                  <Tag variant="darkNeutral" className="gap-x-1">
+                  <Tag variant="darkNeutral" className="gap-x-1 border-none">
                     <TensorFlowIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -638,7 +668,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     TensorFlow
                   </Tag>
-                  <Tag variant="darkNeutral" className="gap-x-1">
+                  <Tag variant="darkNeutral" className="gap-x-1 border-none">
                     <OnnxIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -646,7 +676,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     ONNX
                   </Tag>
-                  <Tag variant="darkNeutral" className="gap-x-1">
+                  <Tag variant="darkNeutral" className="gap-x-1 border-none">
                     <PythonIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -723,14 +753,27 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-                  Star Instill Model
+
+                  <a
+                    href="https://github.com/instill-ai/model"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Star Instill Model
+                  </a>
                 </Button>
                 <Button
                   variant="white"
                   size="lg"
                   className="flex items-center gap-x-2"
                 >
-                  Access early on instill Cloud
+                  <a
+                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Access early on instill Cloud
+                  </a>
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
@@ -749,7 +792,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <div className="flex flex-row gap-x-7">
                       <div>
                         <div className="rounded-md bg-white p-3">
-                          <Icons.Box className="h-10 w-10 stroke-black" />
+                          <Icons.Mail01 className="h-10 w-10 stroke-black" />
                         </div>
                       </div>
                       <div className="my-auto flex flex-row">
@@ -791,7 +834,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
         </div>
 
         {/* Section 8 */}
-        <div className="flex justify-center py-20">
+        <div className="flex justify-center pb-32 pt-20">
           <div className="flex flex-col gap-y-5">
             <h1
               className={cn(
@@ -811,7 +854,13 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
             <div className="flex justify-center">
               <div className="flex flex-row gap-x-5">
                 <Button variant="primary" size="lg">
-                  Try Instill Cloud Free
+                  <a
+                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Try Instill Cloud Free
+                  </a>
                 </Button>
 
                 <Button
@@ -835,7 +884,14 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  Read our Docs
+                  <a
+                    href="https://www.instill.tech/docs/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read our Docs
+                  </a>
+
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
