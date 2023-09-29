@@ -445,7 +445,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     cohere: Embeddings
                   </Tag>
                   <Tag variant="lightGreen" className="gap-x-1">
-                    <div className="h-2 w-2 rounded-lg bg-emerald-300"></div>
+                    <div className="h-2 w-2 rounded-lg bg-emerald-500"></div>
                     More
                   </Tag>
                 </div>
@@ -518,7 +518,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
             <div className="w-1/2">
               <div className="flex flex-col">
                 <div className="my-3">
-                  <p className="text-emerald-300 product-body-text-1-semibold">
+                  <p className="text-emerald-500 product-body-text-1-semibold">
                     Model Deployment
                   </p>
                 </div>
@@ -538,7 +538,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               </div>
               <div className="flex flex-col">
                 <div className="my-3">
-                  <p className="text-violet-300 product-body-text-1-semibold">
+                  <p className="text-violet-500 product-body-text-1-semibold">
                     AI Tasks
                   </p>
                 </div>
@@ -610,14 +610,14 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     Semantic Segmentation
                   </Tag>
                   <Tag variant="lightPurple" className="gap-x-1">
-                    <div className="h-2 w-2 rounded-lg bg-violet-300"></div>
+                    <div className="h-2 w-2 rounded-lg bg-violet-500"></div>
                     More
                   </Tag>
                 </div>
               </div>
               <div className="flex flex-col">
                 <div className="my-3">
-                  <p className="text-slate-300 product-body-text-1-semibold">
+                  <p className="text-slate-500 product-body-text-1-semibold">
                     ML Frameworks
                   </p>
                 </div>

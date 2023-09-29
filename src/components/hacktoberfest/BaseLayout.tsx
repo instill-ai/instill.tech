@@ -19,7 +19,10 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-instillGrey90">
+    <div
+      className="flex min-h-screen flex-col bg-instillGrey90 bg-top bg-no-repeat"
+      style={{ backgroundImage: 'url("/hacktoberfest/background.svg")' }}
+    >
       <Nav />
       <div ref={contentRef} className="flex flex-1 flex-col">
         {children}
