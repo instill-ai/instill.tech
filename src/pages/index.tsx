@@ -310,8 +310,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       alt="Console Cloud Dashboard"
                       className="mt-1"
                     />
-                    Build versatile data pipelines for your journey with
-                    unstructured data
+                    Connect to your unstructured data effortlessly
                   </li>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -321,8 +320,8 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       alt="Console Cloud Dashboard"
                       className="mt-1"
                     />
-                    Connect to your data, transform by the STOA models and load
-                    the results into your desired destination.
+                    Build pipelines to power versatile AI features in your
+                    applications
                   </li>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -332,8 +331,10 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       alt="Console Cloud Dashboard"
                       className="mt-1"
                     />
-                    Test. This has to be filled.
+                    Test pipelines visually with a single click to see output at
+                    each step
                   </li>
+
                   <li className="flex items-start gap-x-3">
                     <Image
                       src="/hacktoberfest/check-icon.svg"
@@ -343,16 +344,6 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       className="mt-1"
                     />
                     Share built pipelines with anyone to showcase your work
-                  </li>
-                  <li className="flex items-start gap-x-3">
-                    <Image
-                      src="/hacktoberfest/check-icon.svg"
-                      width={20}
-                      height={20}
-                      alt="Console Cloud Dashboard"
-                      className="mt-1"
-                    />
-                    Clone shared pipelines without building from scratch
                   </li>
                 </ul>
               </div>
@@ -392,7 +383,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-2 flex w-full flex-wrap justify-start gap-x-3 gap-y-2">
                   <Tag
                     variant="darkYellow"
                     className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
@@ -468,7 +459,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-8 flex w-5/6 flex-wrap justify-start gap-2">
                   <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.MDLSquare className="h-3 w-3" />
                     Instill Model
@@ -521,7 +512,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-8 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-8 flex w-5/6 flex-wrap justify-start gap-2">
                   <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <Logos.Pinecode className="h-3 w-3" />
                     Pinecone
@@ -603,7 +594,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     AI Tasks
                   </p>
                 </div>
-                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-2 flex w-5/6 flex-wrap justify-start gap-2">
                   <Tag variant="lightPurple" className="gap-x-1">
                     <ComplicateIcons.TextGeneration
                       fillAreaColor="fill-semantic-fg-secondary"
