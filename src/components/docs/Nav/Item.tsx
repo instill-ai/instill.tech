@@ -29,16 +29,23 @@ export const Item = ({ item }: ItemProps) => {
 
   if (isInteriorLink(item)) {
     return (
-      <Link
-        className={cn(
-          "my-auto text-sm font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
-          isRouterActive(router.asPath, item.to)
-            ? "text-instillBlue50"
-            : "text-black dark:text-instillGrey15"
-        )}
-        href={item.to}
-      >
-        {t(item.label)}
+      <Link href={item.to} className="my-auto">
+        <div className={cn("flex flex-row gap-x-1", item.className)}>
+          {item.label && (
+            <p
+              className={cn(
+                "my-auto text-sm font-normal hover:text-instillBlue50 dark:hover:text-instillBlue50",
+                isRouterActive(router.asPath, item.to)
+                  ? "text-instillBlue50"
+                  : "text-black dark:text-instillGrey15"
+              )}
+            >
+              {t(item.label)}
+            </p>
+          )}
+
+          {item.iconElement ? item.iconElement : null}
+        </div>
       </Link>
     );
   }

@@ -28,7 +28,10 @@ export default function LocaleSwitcher() {
           {locale ? languages[locale] : ""}
         </p>
       </Dropdown.MenuTrigger>
-      <Dropdown.MenuContent className="dark:bg-instillGrey90">
+      <Dropdown.MenuContent
+        className="dark:bg-instillGrey90"
+        onPointerDownOutside={() => setIsOpen(!isOpen)}
+      >
         {otherLocales.map((locale, index) => {
           const { pathname, query, asPath } = router;
           return (
