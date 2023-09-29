@@ -55,34 +55,32 @@ To create a Stability AI AI connector:
 
 <CH.Code>
 ```shellscript cURL(text-to-image)
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-stable-diffusion-xl-1024-v1-0",
-  "connector_definition_name": "connector-definitions/ai-stability-ai",
-  "configuration": {
-    "api_key": "<stability-ai-api-key>",
-    "task": "Text to Image",
-    "engine": "stable-diffusion-xl-1024-v1-0"
-  }
-}'
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-stable-diffusion-xl-1024-v1-0",
+        "connector_definition_name": "connector-definitions/ai-stability-ai",
+        "configuration": {
+          "api_key": "<stability-ai-api-key>",
+          "task": "Text to Image",
+          "engine": "stable-diffusion-xl-1024-v1-0"
+        }
+      }'
 ```
 ```shellscript cURL(image-to-image)
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-stable-diffusion-xl-1024-v1-0",
-  "connector_definition_name": "connector-definitions/ai-stability-ai",
-  "configuration": {
-    "api_key": "<stability-ai-api-key>",
-    "task": "Image to Image",
-    "engine": "stable-diffusion-xl-1024-v1-0"
-  }
-}'
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-stable-diffusion-xl-1024-v1-0",
+        "connector_definition_name": "connector-definitions/ai-stability-ai",
+        "configuration": {
+          "api_key": "<stability-ai-api-key>",
+          "task": "Image to Image",
+          "engine": "stable-diffusion-xl-1024-v1-0"
+        }
+      }'
 ```
 </ CH.Code>
-
-2. Connect the connector `my-stable-diffusion-xl-1024-v1-0`
-
-```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors/my-stable-diffusion-xl-1024-v1-0/connect
-```
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
 

@@ -32,23 +32,19 @@ For advanced users who prefer a more hands-on approach, you can create a BigQuer
 1. Create a BigQuery data connector:
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "bigquery",
-  "connector_definition_name": "connector-definitions/data-bigquery",
-  "description": "BigQuery connector",
-  "configuration": {
-    "json_key": "<JSON key file contents here>"
-    "project_id": "<project id>",
-    "dataset_id": "<dataset id>",
-    "table_name": "<table name>"
-  }
-}'
-```
-
-2. Connect the connector `bigquery`:
-
-```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/connectors/pinecone/connect
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "bigquery",
+        "connector_definition_name": "connector-definitions/data-bigquery",
+        "description": "BigQuery connector",
+        "configuration": {
+          "json_key": "<JSON key file contents here>"
+          "project_id": "<project id>",
+          "dataset_id": "<dataset id>",
+          "table_name": "<table name>"
+        }
+      }'
 ```
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
