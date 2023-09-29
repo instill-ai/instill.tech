@@ -386,63 +386,63 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <div className="mb-2 flex w-full flex-wrap justify-start gap-x-3 gap-y-2">
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.Type02 className="h-3 w-3 stroke-instillGrey95" />
                     Text
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.Image01 className="h-3 w-3 stroke-instillGrey95" />
                     Image
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.Speaker01 className="h-3 w-3 stroke-instillGrey95" />
                     Audio
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
                     Video
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     PDF
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     JSON
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     CSV
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     Parquet
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none bg-[#FDCF72] !text-instillGrey95"
+                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
                   >
                     <div className="h-2 w-2 rounded-lg bg-black"></div>
                     More
