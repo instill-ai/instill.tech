@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to set up a OpenAI AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
 ---
 
-The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **Text Generation**, **Text Embeddings**, and **Speech Recognition** AI tasks.
+The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **TASK_TEXT_GENERATION**, **TASK_TEXT_EMBEDDINGS**, and **TASK_SPEECH_RECOGNITION** AI tasks.
 
 ## Release stage
 
@@ -18,7 +18,6 @@ The up-to-date configuration is maintained [here](https://github.com/instill-ai/
 | Field     | Type   | Note                                                                                            |
 | :-------- | :----- | :---------------------------------------------------------------------------------------------- |
 | api_key\* | string | Enter your OpenAI API key. To find your keys, go to your OpenAI's Account page.                 |
-| task\*    | string | AI task type. Allowed tasks include "Text Generation", "Text Embeddings", "Speech Recognition". |
 
 ### No-code setup
 
@@ -43,8 +42,6 @@ To create a OpenAI AI connector:
 5. Fill the following information and click **Set up**
 
    - Fill **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key
-   - Click **Task** ▾ drop-down and choose the task you would like to use, e.g., **Text Generation**
-   - Click the **Model** ▾ drop-down and choose the model you want to use, e.g., gpt-3.5-turbo, and fill other optional fields
 
 6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
 
@@ -53,45 +50,14 @@ To create a OpenAI AI connector:
 1. Create a OpenAI AI connector
 
 <CH.Code>
-```shellscript cURL(text-generation)
+```shellscript cURL
 curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
       --header 'Authorization: Bearer <Your-API-Token>' \
       --data '{
         "id": "my-gpt",
         "connector_definition_name": "connector-definitions/ai-openai",
         "configuration": {
-          "api_key": "<open-ai-api-key>",
-          "task": "Text Generation",
-          "model": "gpt-3.5-turbo",
-          "system_message": "You are a helpful assistant.",
-          "temperature": 1,
-          "n": 1
-        }
-      }'
-```
-```shellscript cURL(text-embeddings)
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "my-embeddings",
-        "connector_definition_name": "connector-definitions/ai-openai",
-        "configuration": {
-          "api_key": "<open-ai-api-key>",
-          "task": "Text Embeddings",
-          "model": "text-embedding-ada-002"
-        }
-      }'
-```
-```shellscript cURL(speech-recognition)
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "my-whisper",
-        "connector_definition_name": "connector-definitions/ai-openai",
-        "configuration": {
-          "api_key": "<open-ai-api-key>",
-          "task": "Speech Recognition",
-          "model": "whisper-1"
+          "api_key": "<open-ai-api-key>"
         }
       }'
 ```
@@ -106,28 +72,40 @@ Here are the expected input and output data fields for the OpenAI AI connector.
 
 ### Expected input data fields
 
-| Input data field | Type          | Description                                                                        |
-| :--------------- | ------------- | ---------------------------------------------------------------------------------- |
-| texts            | array[string] | This has the text prompt, required for "Text Generation", "Text Embeddings" tasks. |
-| audios           | array[audio]  | This has the audio recording, required for "Speech Recognition" task.              |
+| Input data field | Type          | Description                                                                                  |
+| :--------------- | ------------- | -------------------------------------------------------------------------------------------- |
+| task             | string        | "TASK_TEXT_GENERATION", "TASK_TEXT_EMBEDDINGS", or "TASK_SPEECH_RECOGNITION"                 |
+| prompt           | string        | This has the text prompt, required for "TASK_TEXT_GENERATION" task.                          |
+| text             | string        | This has the text prompt, required for "TASK_TEXT_EMBEDDINGS" tasks.                         |
+| model            | string        | The model that you want to use. eg. gpt-3.5-turbo                                            |
+| audio            | string        | Base64 encoded audio recording, required for "TASK_SPEECH_RECOGNITION"                       |
 
-Example input data for **Text Generation** and **Text Embeddings** task:
+Example input data for **TASK_TEXT_GENERATION**:
 
 ```json
 {
-  "texts": ["Who is the President of United States?"]
+  "task": "TASK_TEXT_GENERATION",
+  "model": "gpt-3.5-turbo",
+  "prompt": "Who is the President of United States?"
 }
 ```
 
-Example input data for Speech Recognition task:
+Example input data for **TASK_TEXT_EMBEDDINGS**:
+```json
+{
+  "task": "TASK_TEXT_EMBEDDINGS",
+  "model": "text-embedding-ada-002",
+  "text": ["I love programming"]
+}
+```
+
+Example input data for **TASK_SPEECH_RECOGNITION**:
 
 ```json
 {
-  "audios": [
-    {
-      "url": "http://englishus.voiceoversamples.com/ENG_US_M_KevinS.mp3"
-    }
-  ]
+  "task": "TASK_SPEECH_RECOGNITION",
+  "model": "whisper-1",
+  "audio": "<base64 value>"
 }
 ```
 
@@ -135,10 +113,11 @@ Example input data for Speech Recognition task:
 
 | Output data field | Type          | Description                                                                                |
 | :---------------- | ------------- | ------------------------------------------------------------------------------------------ |
-| texts             | array[string] | This has the output text, applicable for "Text Generation" and "Speech Recognition" tasks. |
-| structured_data   | object        | This has the embeddings object, applicable only for "Text Embeddings" task.                |
+| texts             | array[string] | This has the output text, applicable only for "TASK_TEXT_GENERATION"                       |
+| text              | string        | This has the output text, applicable only for "TASK_SPEECH_RECOGNITION"                    |
+| embedding         | array[float]  | This has the embeddings array, applicable only for "TASK_TEXT_EMBEDDINGS" task.            |
 
-Example output data for **Text Generation** and **Speech Recognition** task:
+Example output data for **TASK_TEXT_GENERATION**:
 
 ```json
 {
@@ -146,19 +125,23 @@ Example output data for **Text Generation** and **Speech Recognition** task:
 }
 ```
 
-Example output data for **Text Embeddings** task:
+Example output data for **TASK_SPEECH_RECOGNITION**:
+```json
+{
+  "text": "Can you transcribe what I am saying?"
+}
+```
+
+Example output data for **TASK_TEXT_EMBEDDINGS**:
 
 ```json
 {
-  "structured_data": {
-      "object": "embedding",
-      "embedding": [
-        0.0023064255,
-        -0.009327292,
-        .... (1536 floats total for ada-002)
-        -0.0028842222,
-      ],
-      "index": 0
-    }
+  "embedding": [
+    0.0023064255,
+    -0.009327292,
+    .... (1536 floats total for ada-002)
+    -0.0028842222,
+  ],
+  "index": 0
 }
 ```
