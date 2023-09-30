@@ -25,7 +25,7 @@
     "base64": "Base64",
     "json": "JSON",
     "rest": "REST",
-    "texextraction": "Text Extraction",
+    "textextraction": "Text Extraction",
     "aiConnector": "AI 连接组件",
     "instillModel": "Instill Model",
     "stabilityAI": "Stability AI",
