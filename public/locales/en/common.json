@@ -36,7 +36,7 @@
     "pinecone": "Pinecone",
     "airbyte": "Airbyte",
     "bigquery": "BigQuery",
-    "gcs": "Google Clous Storage (GCS)",
+    "gcs": "Google Cloud Storage (GCS)",
     "prepareModels": "Prepare Models",
     "modelCard": "Model Card",
     "preProcessing": "Pre-Processing",
