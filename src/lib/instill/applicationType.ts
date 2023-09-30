@@ -1,11 +1,12 @@
 import { InstillAppType } from "@/types/instill";
+import { getApplicationVersion } from "./applicationVersion";
 
 export const applicationName = {
-  vdp: "common:navbar.instillVDP",
-  core: "common:navbar.instillCore",
-  base: "common:navbar.instillBase",
-  model: "common:navbar.instillModel",
-  cloud: "common:navbar.instillCloud",
+  vdp: "Instill VDP",
+  core: "Instill Core",
+  base: "Instill Base",
+  model: "Instill Model",
+  cloud: "Instill Cloud",
 };
 
 export function getApplicationType(
@@ -30,8 +31,16 @@ export function getApplicationType(
 }
 
 export function isRouterActive(currentPath: string, routerPath: string) {
-  const applicattionType = getApplicationType(currentPath);
-  if (routerPath.includes(applicattionType)) {
+  const applicationType = getApplicationType(currentPath);
+  const applicationVersion = getApplicationVersion(
+    currentPath,
+    applicationType
+  );
+
+  if (
+    routerPath.includes(applicationType) &&
+    routerPath.includes(applicationVersion)
+  ) {
     return true;
   }
   return false;

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { InstillAppType } from "./instill";
+import { InstillAppType, Nullable } from "./instill";
 
 export type SidebarItem = {
   link: string;
@@ -13,7 +13,8 @@ export type SidebarSections = {
   text: string;
   link?: string;
   items: SidebarItem[];
-  appType?: InstillAppType;
+  appType: InstillAppType;
+  versions: Nullable<number>[] | Nullable<string>[];
 };
 
 export type SidebarSection = {
@@ -42,6 +43,7 @@ export type NavInteriorLinkItem = {
   key: string;
   to: string;
   label: string;
+  className: string;
   position: "right" | "left";
   iconElement?: ReactElement;
   icon?: {
@@ -51,6 +53,7 @@ export type NavInteriorLinkItem = {
     alt: string;
   };
   border?: boolean;
+  appType: Nullable<InstillAppType>;
   items?: NavbarItem[];
 };
 
@@ -69,6 +72,7 @@ export type NavExteriorLinkItem = {
     alt: string;
   };
   border?: boolean;
+  appType: Nullable<InstillAppType>;
   items?: NavbarItem[];
 };
 
@@ -78,6 +82,7 @@ export type NavbarBorderItem = {
   border: boolean;
   label: string;
   iconElement?: ReactElement;
+  appType: Nullable<InstillAppType>;
   items?: NavbarItem[];
 };
 

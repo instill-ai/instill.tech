@@ -18,7 +18,7 @@ import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
-import { getApplicationType } from "@/lib/instill";
+import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type DocsPageProps = {
@@ -54,22 +54,22 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 
   const paths: any = [];
 
-  docsPaths.forEach((path) =>
+  docsPaths.forEach((path) => {
     locales?.forEach((locale) => {
-      if (path.includes(`${locale}/`)) {
+      if (path.includes(`.${locale}.`)) {
         paths.push({
           params: {
-            path: path.replace(".mdx", "").split("/"),
+            path: path.replace(`.${locale}.mdx`, "").split("/"),
             locale,
           },
         });
       }
-    })
-  );
+    });
+  });
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -120,7 +120,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Get prev and next link from sidebar config
 
-  const docsConfigration = docsConfig(getApplicationType(params.path));
+  const appType = getApplicationType(params.path);
+
+  const docsConfigration = docsConfig(
+    appType,
+    getApplicationVersion(params.path, appType)
+  );
 
   const sidebarLinks: SidebarItem[] = [];
   docsConfigration.sidebar.leftSidebar.sections.forEach((e) => {
