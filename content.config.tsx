@@ -168,6 +168,22 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
           text: "common:sidebarSections.end",
           link: `/docs/vdp/${appVersion}/operators/end`,
         },
+        {
+          text: "common:sidebarSections.base64",
+          link: `/docs/vdp/${appVersion}/operators/base64`,
+        },
+        {
+          text: "common:sidebarSections.json",
+          link: `/docs/vdp/${appVersion}/operators/json`,
+        },
+        {
+          text: "common:sidebarSections.rest",
+          link: `/docs/vdp/${appVersion}/operators/rest`,
+        },
+        {
+          text: "common:sidebarSections.textextraction",
+          link: `/docs/vdp/${appVersion}/operators/textextraction`,
+        },
       ],
       appType: "vdp",
       versions: [],
@@ -227,6 +243,14 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
         {
           text: "common:sidebarSections.airbyte",
           link: `/docs/vdp/${appVersion}/data-connectors/airbyte`,
+        },
+        {
+          text: "common:sidebarSections.bigquery",
+          link: `/docs/vdp/${appVersion}/data-connectors/bigquery`,
+        },
+        {
+          text: "common:sidebarSections.gcs",
+          link: `/docs/vdp/${appVersion}/data-connectors/gcs`,
         },
       ],
       appType: "vdp",

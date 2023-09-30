@@ -13,7 +13,7 @@ The OpenAI AI connector enables you to connect the AI models served on the OpenA
 
 ## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/seed/definitions.json).
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/definitions.json).
 
 | Field     | Type   | Note                                                                                            |
 | :-------- | :----- | :---------------------------------------------------------------------------------------------- |
@@ -54,59 +54,47 @@ To create a OpenAI AI connector:
 
 <CH.Code>
 ```shellscript cURL(text-generation)
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-gpt",
-  "connector_definition_name": "connector-definitions/ai-openai",
-  "configuration": {
-    "api_key": "<open-ai-api-key>",
-    "task": "Text Generation",
-    "model": "gpt-3.5-turbo",
-    "system_message": "You are a helpful assistant.",
-    "temperature": 1,
-    "n": 1
-  }
-}'
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-gpt",
+        "connector_definition_name": "connector-definitions/ai-openai",
+        "configuration": {
+          "api_key": "<open-ai-api-key>",
+          "task": "Text Generation",
+          "model": "gpt-3.5-turbo",
+          "system_message": "You are a helpful assistant.",
+          "temperature": 1,
+          "n": 1
+        }
+      }'
 ```
 ```shellscript cURL(text-embeddings)
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-embeddings",
-  "connector_definition_name": "connector-definitions/ai-openai",
-  "configuration": {
-    "api_key": "<open-ai-api-key>",
-    "task": "Text Embeddings",
-    "model": "text-embedding-ada-002"
-  }
-}'
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-embeddings",
+        "connector_definition_name": "connector-definitions/ai-openai",
+        "configuration": {
+          "api_key": "<open-ai-api-key>",
+          "task": "Text Embeddings",
+          "model": "text-embedding-ada-002"
+        }
+      }'
 ```
 ```shellscript cURL(speech-recognition)
-curl -X POST http://localhost:8080/v1alpha/connectors -d '{
-  "id": "my-whisper",
-  "connector_definition_name": "connector-definitions/ai-openai",
-  "configuration": {
-    "api_key": "<open-ai-api-key>",
-    "task": "Speech Recognition",
-    "model": "whisper-1"
-  }
-}'
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-whisper",
+        "connector_definition_name": "connector-definitions/ai-openai",
+        "configuration": {
+          "api_key": "<open-ai-api-key>",
+          "task": "Speech Recognition",
+          "model": "whisper-1"
+        }
+      }'
 ```
-</ CH.Code>
-
-1. Connect the connector
-
-<CH.Code>
-
-```shellscript cURL(text-generation)
-curl -X POST http://localhost:8080/v1alpha/connectors/my-gpt/connect
-```
-
-```shellscript cURL(text-embeddings)
-curl -X POST http://localhost:8080/v1alpha/connectors/my-embeddings/connect
-```
-
-```shellscript cURL(speech-recognition)
-curl -X POST http://localhost:8080/v1alpha/connectors/my-whisper/connect
-```
-
 </ CH.Code>
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
