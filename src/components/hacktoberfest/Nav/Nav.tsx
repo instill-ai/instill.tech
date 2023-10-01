@@ -72,24 +72,24 @@ export const Nav = () => {
       {enableAnnouncementBar && announcementBar}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
         <Link href="/" className="flex">
-          <Logo variant="ColourLogomarkBlackType" width={159} />
+          <Logo variant="ColourLogomarkWhiteType" width={159} />
         </Link>
         <button
-          className="ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-instillGrey30 hover:bg-opacity-10"
+          className="ml-auto flex h-[30px] w-[30px] rounded-[3px] hover:bg-white hover:bg-opacity-10"
           onClick={() => setOpen(!open)}
         >
           {open ? (
             <CrossIcon
               width="w-6"
               height="h-6"
-              color="fill-instillGrey90"
+              color="fill-white"
               position="m-auto"
             />
           ) : (
             <MenuIcon
               width="w-6"
               height="h-6"
-              color="fill-instillGrey90"
+              color="fill-white"
               position="m-auto"
             />
           )}
@@ -97,7 +97,7 @@ export const Nav = () => {
       </div>
       <div className="relative w-full">
         {open && (
-          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-white px-4 py-[50px]">
+          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-instillGrey90 px-4 py-[50px]">
             {navbarLinkGroup}
           </div>
         )}
@@ -115,7 +115,7 @@ export const Nav = () => {
         <div
           className={cn(
             "flex h-full w-full flex-col lg:hidden",
-            open ? "fixed left-0 top-0 z-50 bg-white" : ""
+            open ? "fixed left-0 top-0 z-50 bg-instillGrey90" : ""
           )}
         >
           {mobileView}
