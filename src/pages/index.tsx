@@ -86,15 +86,9 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
         <Hero />
 
         {/* Section 2 */}
-        <div className="flex justify-center py-20">
+        <div className="flex justify-center py-10 xl:py-20">
           <div className="flex flex-col gap-y-5">
-            {/* <SectionLabel text="Do You Know?" position="mx-auto !text-white" /> */}
-
             <div className="flex justify-center">
-              {/* <Button variant="secondarySuccess" size="lg" className="my-auto">
-                DO YOU KNOW?
-              </Button> */}
-
               <div
                 className={cn(
                   "flex flex-shrink rounded bg-semantic-success-bg px-4 py-3"
@@ -107,14 +101,14 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
             </div>
             <h1
               className={cn(
-                "font-['IBM Plex Sans'] w-full text-center text-[56px] font-bold leading-[78px] text-semantic-fg-primary-on-bg-secondary"
+                "font-['IBM Plex Sans'] w-full text-center text-2xl font-semibold leading-7 text-semantic-fg-primary-on-bg-secondary xl:text-[56px] xl:font-bold xl:leading-[78px]"
               )}
             >
               The AI Applications are All About Unstructured Data Infrastructure
             </h1>
             <div
               className={cn(
-                "mb-20 text-center font-sans text-[18px] text-lg font-light text-white"
+                "mb-20 hidden text-center font-sans text-[18px] text-lg font-light text-white xl:block"
               )}
             >
               Instill Core - where the world of AI-first applications come
@@ -123,26 +117,31 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               will find open source projects that enable you to construct robust
               AI pipelines for unstructured data.
             </div>
-            <div className="flex flex-row">
-              <div className="flex justify-center">
+            <div className="flex flex-col xl:flex-row">
+              <div className="flex w-full justify-center xl:w-1/5">
                 <div className="flex flex-col text-center">
                   <Image
                     src="/hacktoberfest/arrow-right.svg"
                     width={200}
                     height={112}
                     alt="Console Cloud Dashboard"
-                    className="ml-12"
+                    className="ml-12 hidden xl:block"
                   />
-                  <p className="text-white product-body-text-3-medium">
+                  <p className="hidden text-white product-body-text-3-medium xl:block">
                     Various AI applications for diverse use cases
                   </p>
                 </div>
               </div>
 
-              <div className="w-3/5">
+              <div className="w-full xl:w-3/5">
                 <div className="flex flex-col">
+                  <div className="mb-5 mt-10 w-full text-center xl:hidden">
+                    <h1 className="font-['IBM Plex Sans'] text-lg font-semibold leading-tight text-white">
+                      AI apps for diverse use cases
+                    </h1>
+                  </div>
                   <div className="flex justify-center">
-                    <div className="flex w-3/5 flex-col pt-5">
+                    <div className="flex w-full flex-col pt-5 xl:w-3/5">
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
                         <Tag variant="darkNeutral">LLM apps</Tag>
                         <Tag variant="darkNeutral">Vision apps</Tag>
@@ -153,8 +152,14 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       <div className="flex justify-center gap-x-2.5"></div>
                     </div>
                   </div>
+                  <div className="my-5 w-full text-center xl:hidden">
+                    <h1 className="font-['IBM Plex Sans'] text-lg font-semibold leading-tight text-white">
+                      AI-powered unstructured data infrastructure forms the
+                      backbone
+                    </h1>
+                  </div>
                   <div className="flex justify-center pt-5">
-                    <div className="flex w-5/6 flex-col">
+                    <div className="flex w-full flex-col xl:w-5/6">
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
                         <Tag variant="lightNeutral">Data extraction</Tag>
                         <Tag variant="lightNeutral">
@@ -184,18 +189,21 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </div>
                 </div>
               </div>
-              <div className="flex w-1/5 items-end justify-center text-white">
-                <div className="flex flex-col">
-                  <Image
-                    src="/hacktoberfest/arrow-left.svg"
-                    width={100}
-                    height={212}
-                    alt="hacktoberfest arrow left"
-                  />
-                  <p className="text-white product-body-text-3-medium">
-                    The backbone of these apps is the AI-powered unstructured
-                    data infrastructure, which should effectively handle...
-                  </p>
+              <div className="flex w-full justify-end xl:w-1/5">
+                <div className="flex items-end justify-center text-white">
+                  <div className="flex flex-col">
+                    <Image
+                      src="/hacktoberfest/arrow-left.svg"
+                      width={100}
+                      height={212}
+                      alt="hacktoberfest arrow left"
+                      className="hidden xl:block"
+                    />
+                    <p className="hidden text-white product-body-text-3-medium xl:block">
+                      The backbone of these apps is the AI-powered unstructured
+                      data infrastructure, which should effectively handle...
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -204,18 +212,18 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         {/* Section 3 */}
 
-        <div className="flex justify-center py-20">
+        <div className="flex justify-center py-10 xl:py-20">
           <div className="flex flex-col gap-y-5">
             <h1
               className={cn(
-                "font-['IBM Plex Sans'] w-full text-center text-[42px] font-semibold leading-[45px] text-semantic-fg-primary-on-bg-secondary"
+                "font-['IBM Plex Sans'] w-full text-center text-2xl font-semibold leading-7 text-semantic-fg-primary-on-bg-secondary xl:text-[42px] xl:leading-[45px]"
               )}
             >
               Meet Our Open Source Unstructured Data ETL Stack
             </h1>
             <div
               className={cn(
-                "mb-20 text-center font-sans text-[18px] text-lg font-light text-white"
+                "mb-20 hidden text-center font-sans text-[18px] text-lg font-light text-white xl:block"
               )}
             >
               Instill Core - where the world of AI-first applications come
@@ -226,8 +234,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               cases.
             </div>
 
+            <div className="font-['IBM Plex Sans'] text-center text-lg font-normal leading-7 text-white text-opacity-75 xl:hidden">
+              Instill Core - Powering AI-first applications
+            </div>
+
             <div className="flex justify-center">
-              <div className="flex flex-row gap-x-5">
+              <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button variant="primary" size="lg" className="gap-x-2">
                   <DiscordIcon
                     width="w-5"
@@ -281,26 +293,37 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         {/* Section 4 */}
 
-        <div className="py-20">
-          <div className="flex flex-row gap-x-10">
-            <div className="w-1/2">
-              <div className="flex flex-row gap-x-7 py-3">
-                <div className="rounded-md bg-white">
-                  <Logos.VDPSquare className="h-20 w-20" />
-                </div>
-                <div className="my-auto">
-                  <h1 className="font-['IBM Plex Sans'] text-[42px] font-semibold leading-[45px] text-white">
-                    Instill VDP
-                  </h1>
+        <div className="py-10 xl:py-20">
+          <div className="flex flex-col gap-x-10 xl:flex-row">
+            <div className="w-full xl:w-1/2">
+              <div className="flex flex-row justify-center">
+                <div className="flex gap-x-7 gap-y-3 py-3 xl:justify-start">
+                  <div className="rounded bg-white xl:rounded-md">
+                    <Logos.VDPSquare className="h-10 w-10 xl:h-20 xl:w-20" />
+                  </div>
+                  <div className="my-auto">
+                    <h1 className="font-['IBM Plex Sans'] text-2xl font-semibold leading-7 text-white xl:text-[42px] xl:leading-[45px]">
+                      Instill VDP
+                    </h1>
+                  </div>
                 </div>
               </div>
+              <div className="xl:hidden">
+                <h1 className="font-['IBM Plex Sans'] mb-4 text-center text-2xl font-semibold leading-7 text-white">
+                  Build Versatile AI Faster
+                </h1>
+                <p className="font-['IBM Plex Sans'] text-center text-lg font-normal leading-snug text-white">
+                  Effortless data connection, versatile AI pipelines, visual
+                  testing, and easy sharing
+                </p>
+              </div>
               <div>
-                <p className="font-['IBM Plex Sans'] text-[28px] font-medium text-white">
+                <p className="font-['IBM Plex Sans'] hidden text-lg font-medium leading-snug text-white xl:block xl:text-[28px]">
                   Simplify building the unstructured data journey for your AI
                   apps from start to finish.
                 </p>
               </div>
-              <div className="font-['IBM Plex Sans'] px-4 py-7 text-lg font-normal leading-relaxed text-white">
+              <div className="font-['IBM Plex Sans'] hidden px-4 py-7 text-lg font-normal leading-relaxed text-white xl:block">
                 <ul>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -348,7 +371,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </ul>
               </div>
 
-              <div className="my-7">
+              <div className="my-7 flex flex-col xl:flex-row">
                 <Button
                   variant="secondaryGrey"
                   size="lg"
@@ -372,9 +395,9 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               </div>
             </div>
 
-            <div className="w-1/2">
+            <div className="w-full xl:w-1/2">
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <Image
                     src="/hacktoberfest/extract.svg"
                     alt="Extraction Logo"
@@ -383,7 +406,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-2 flex w-full flex-wrap justify-start gap-x-3 gap-y-2">
+                <div className="mb-2 flex w-full flex-wrap justify-center gap-x-3 gap-y-2 xl:justify-start">
                   <Tag
                     variant="darkYellow"
                     className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
@@ -450,7 +473,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <Image
                     src="/hacktoberfest/transform.svg"
                     alt="Transform Logo"
@@ -459,7 +482,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-8 flex w-5/6 flex-wrap justify-start gap-2">
+                <div className="mb-8 flex w-full flex-wrap justify-center gap-2 xl:w-5/6 xl:justify-start">
                   <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <Logos.MDLSquare className="h-3 w-3" />
                     Instill Model
@@ -503,7 +526,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <Image
                     src="/hacktoberfest/load.svg"
                     alt="Load Logo"
@@ -512,7 +535,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     height={100}
                   />
                 </div>
-                <div className="mb-8 flex w-5/6 flex-wrap justify-start gap-2">
+                <div className="mb-8 flex w-full flex-wrap justify-center gap-2 xl:w-5/6 xl:justify-start">
                   <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <Logos.Pinecode className="h-3 w-3" />
                     Pinecone
@@ -565,16 +588,16 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         {/* Section 5 */}
 
-        <div className="py-20">
-          <div className="flex flex-row">
-            <div className="w-1/2">
+        <div className="py-10 xl:py-20">
+          <div className="flex flex-col xl:flex-row">
+            <div className="w-full xl:w-1/2">
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <p className="text-emerald-500 product-body-text-1-semibold">
                     Model Deployment
                   </p>
                 </div>
-                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-2 flex w-full flex-wrap justify-center gap-2 xl:w-3/4 xl:justify-start">
                   <Tag variant="lightGreen">Stable Diffusion</Tag>
                   <Tag variant="lightGreen">GPT</Tag>
                   <Tag variant="lightGreen">Llama 2</Tag>
@@ -589,12 +612,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <p className="text-violet-500 product-body-text-1-semibold">
                     AI Tasks
                   </p>
                 </div>
-                <div className="mb-2 flex w-5/6 flex-wrap justify-start gap-2">
+                <div className="mb-2 flex w-full flex-wrap justify-center gap-2 xl:w-5/6 xl:justify-start">
                   <Tag variant="lightPurple" className="gap-x-1">
                     <ComplicateIcons.TextGeneration
                       fillAreaColor="fill-semantic-fg-secondary"
@@ -674,12 +697,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="my-3">
+                <div className="my-3 flex justify-center xl:justify-start">
                   <p className="text-slate-500 product-body-text-1-semibold">
                     ML Frameworks
                   </p>
                 </div>
-                <div className="mb-2 flex w-3/4 flex-wrap justify-start gap-2">
+                <div className="mb-2 flex w-full flex-wrap justify-center gap-2 xl:w-3/4 xl:justify-start">
                   <Tag variant="darkNeutral" className="gap-x-1 border-none">
                     <PyTorchIcon
                       height="h-[12px]"
@@ -715,23 +738,34 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
             </div>
-            <div className="w-1/2">
-              <div className="flex flex-row gap-x-7 py-3">
-                <div className="rounded-md bg-white">
-                  <Logos.MDLSquare className="h-20 w-20" />
+            <div className="mt-20 w-full xl:mt-0 xl:w-1/2">
+              <div className="flex flex-row justify-center gap-x-7 py-3 xl:justify-start">
+                <div className="rounded bg-white xl:rounded-md">
+                  <Logos.MDLSquare className="h-10 w-10 xl:h-20 xl:w-20" />
                 </div>
                 <div className="my-auto">
-                  <h1 className="font-['IBM Plex Sans'] text-[42px] font-semibold leading-[45px] text-white">
+                  <h1 className="font-['IBM Plex Sans'] text-2xl font-semibold leading-7 text-white xl:text-[42px] xl:leading-[45px]">
                     Instill Model
                   </h1>
                 </div>
               </div>
-              <div>
+
+              <div className="xl:hidden">
+                <h1 className="font-['IBM Plex Sans'] mb-4 text-center text-2xl font-semibold leading-7 text-white">
+                  AI models transform your apps
+                </h1>
+                <p className="font-['IBM Plex Sans'] text-center text-lg font-normal leading-snug text-white">
+                  Deploy and customize AI models to your data, standardize AI
+                  tasks.
+                </p>
+              </div>
+
+              <div className="hidden xl:block">
                 <p className="font-['IBM Plex Sans'] text-[28px] font-medium text-white">
                   Transform your apps with AI models
                 </p>
               </div>
-              <div className="font-['IBM Plex Sans'] px-4 py-7 text-lg font-normal leading-relaxed text-white">
+              <div className="font-['IBM Plex Sans'] hidden px-4 py-7 text-lg font-normal leading-relaxed text-white xl:block">
                 <ul>
                   <li className="flex items-start gap-x-3">
                     <Image
@@ -769,7 +803,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </ul>
               </div>
 
-              <div className="my-7 flex flex-row gap-x-5">
+              <div className="my-7 flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button
                   variant="secondaryGrey"
                   size="lg"
@@ -781,7 +815,6 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-
                   <a
                     href="https://github.com/instill-ai/model"
                     target="_blank"
@@ -811,11 +844,11 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         {/* Section 6 */}
 
-        <div className="py-20">
+        <div className="py-10 xl:py-20">
           <div className="flex flex-row justify-center">
-            <div className="w-3/4">
-              <div className="flex flex-row">
-                <div className="w-1/2">
+            <div className="w-full xl:w-3/4">
+              <div className="flex flex-col gap-y-10 xl:flex-row">
+                <div className="w-full xl:w-1/2">
                   <div className="flex justify-center">
                     <div className="flex flex-row gap-x-7">
                       <div>
@@ -836,7 +869,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     </div>
                   </div>
                 </div>
-                <div className="my-auto w-1/2">
+                <div className="my-auto w-full xl:w-1/2">
                   <div className="flex justify-center">
                     <div className="flex flex-row">
                       <Input.Root className="!rounded-none !rounded-l-sm !px-4">
@@ -866,21 +899,21 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
           <div className="flex flex-col gap-y-5">
             <h1
               className={cn(
-                "font-['IBM Plex Sans'] w-full text-center text-[42px] font-semibold leading-[45px] text-semantic-fg-primary-on-bg-secondary"
+                "font-['IBM Plex Sans'] w-full text-center text-2xl font-semibold text-semantic-fg-primary-on-bg-secondary xl:text-[42px] xl:leading-[45px]"
               )}
             >
               Start building AI applications with Instill Cloud
             </h1>
             <div
               className={cn(
-                "mb-20 text-center font-sans text-[18px] text-lg font-light text-white"
+                "md-10 text-center font-sans text-[18px] text-lg font-light text-white xl:mb-20"
               )}
             >
               Build, test and share your AI applications in a few minutes.
             </div>
 
             <div className="flex justify-center">
-              <div className="flex flex-row gap-x-5">
+              <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button variant="primary" size="lg">
                   <a
                     href="https://console.instill.tech/?utm_source=product&utm_medium=button"

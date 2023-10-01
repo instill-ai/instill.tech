@@ -8,7 +8,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
-        "font-['IBM Plex Sans'] w-full text-center text-[74px] font-bold leading-[78px] text-semantic-fg-primary-on-bg-secondary",
+        "font-['IBM Plex Sans'] w-full text-center text-[32px] font-bold leading-9 text-semantic-fg-primary-on-bg-secondary xl:text-[74px] xl:leading-[78px]",
         marginBottom
       )}
     >
