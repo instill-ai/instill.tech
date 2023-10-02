@@ -4,4 +4,5 @@ export const VERSIONS = {
   model: "v1.0.0",
   cloud: "v1.0.0",
   core: "v1.0.0",
+  sdk: "v1.0.0",
 };

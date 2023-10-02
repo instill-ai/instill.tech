@@ -65,7 +65,10 @@
     "help": "Help",
     "discord": "Discord",
     "gitHubDisussions": "GitHub Disussions",
-    "gitHubIssues": "GitHub Issues"
+    "gitHubIssues": "GitHub Issues",
+    "sdk": "SDK",
+    "typescriptSDK": "Typescript SDK",
+    "pythonSDK": "Python SDK"
   },
   "nextPage": "Next Page",
   "previousPage": "Previous Page",

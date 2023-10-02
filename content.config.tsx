@@ -27,6 +27,27 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
   return [
     {
       text: "common:sidebarSections.welcome",
+      link: `/docs/sdk/${appVersion}/welcome`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+    },
+    {
+      text: "common:navbar.pythonSDK",
+      link: `/docs/sdk/${appVersion}/python`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+    },
+    {
+      text: "common:navbar.typescriptSDK",
+      link: `/docs/sdk/${appVersion}/typescript`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.welcome",
       link: `/docs/cloud/${appVersion}/welcome`,
       items: [],
       appType: "cloud",
@@ -476,6 +497,12 @@ export function getLogoConfig(
       href: "/",
     };
   }
+  if (appType === "sdk") {
+    return {
+      element: <Logos.InstillSquare className="h-12 w-12" />,
+      href: "/",
+    };
+  }
 
   throw new Error("Invalid appType");
 }
@@ -521,7 +548,10 @@ export function getNavbar(
         href: `/docs/core/${appVersion}/welcome`,
         className: "navbar-dropdown-menu",
         position: "left",
-        label: applicationName[appType === "cloud" ? "core" : appType],
+        label:
+          applicationName[
+            appType === "cloud" || appType === "sdk" ? "core" : appType
+          ],
         iconElement: (
           <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
         ),
@@ -568,6 +598,14 @@ export function getNavbar(
         position: "left",
         label: "common:navbar.instillCloud",
         appType: "cloud",
+      },
+      {
+        key: "docs-nav-sdk",
+        to: `/docs/sdk/${VERSIONS[appType]}/welcome`,
+        className: "",
+        position: "left",
+        label: "SDK",
+        appType: null,
       },
       {
         key: "docs-nav-dropdown-menu",
