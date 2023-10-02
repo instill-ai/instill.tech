@@ -238,9 +238,13 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               Instill Core - Powering AI-first applications
             </div>
 
-            <div className="flex justify-center">
+            <div className="xl:flex xl:justify-center">
               <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
-                <Button variant="primary" size="lg" className="gap-x-2">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full gap-x-2 xl:w-auto"
+                >
                   <DiscordIcon
                     width="w-5"
                     height="h-5"
@@ -259,7 +263,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <Button
                   variant="white"
                   size="lg"
-                  className="items-center gap-x-2 border-semantic-bg-primary"
+                  className="w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
                 >
                   <svg
                     width="20"
@@ -588,8 +592,52 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
         {/* Section 5 */}
 
-        <div className="py-10 xl:py-20">
+        <div className="pb-10 xl:py-20">
           <div className="flex flex-col xl:flex-row">
+            <div className="mt-10 w-full xl:mt-0 xl:hidden xl:w-1/2">
+              <div className="flex flex-row justify-center gap-x-7 py-3 xl:justify-start">
+                <div className="rounded bg-white xl:rounded-md">
+                  <Logos.MDLSquare className="h-10 w-10 xl:h-20 xl:w-20" />
+                </div>
+                <div className="my-auto">
+                  <h1 className="font-['IBM Plex Sans'] text-2xl font-semibold leading-7 text-white xl:text-[42px] xl:leading-[45px]">
+                    Instill Model
+                  </h1>
+                </div>
+              </div>
+
+              <div className="xl:hidden">
+                <h1 className="font-['IBM Plex Sans'] mb-4 text-center text-2xl font-semibold leading-7 text-white">
+                  AI models transform your apps
+                </h1>
+                <p className="font-['IBM Plex Sans'] text-center text-lg font-normal leading-snug text-white">
+                  Deploy and customize AI models to your data, standardize AI
+                  tasks.
+                </p>
+              </div>
+
+              <div className="my-7 flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
+                <Button
+                  variant="secondaryGrey"
+                  size="lg"
+                  className="flex items-center gap-x-2"
+                >
+                  <GitHubIcon
+                    width="w-5"
+                    height="h-5"
+                    color="fill-[#000]"
+                    position="my-auto"
+                  />
+                  <a
+                    href="https://github.com/instill-ai/model"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Star Instill Model
+                  </a>
+                </Button>
+              </div>
+            </div>
             <div className="w-full xl:w-1/2">
               <div className="flex flex-col">
                 <div className="my-3 flex justify-center xl:justify-start">
@@ -738,7 +786,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 </div>
               </div>
             </div>
-            <div className="mt-20 w-full xl:mt-0 xl:w-1/2">
+            <div className="mt-20 hidden w-full xl:mt-0 xl:block xl:w-1/2">
               <div className="flex flex-row justify-center gap-x-7 py-3 xl:justify-start">
                 <div className="rounded bg-white xl:rounded-md">
                   <Logos.MDLSquare className="h-10 w-10 xl:h-20 xl:w-20" />
@@ -912,9 +960,13 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
               Build, test and share your AI applications in a few minutes.
             </div>
 
-            <div className="flex justify-center">
+            <div className="xl:flex xl:justify-center">
               <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
-                <Button variant="primary" size="lg">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full xl:w-auto"
+                >
                   <a
                     href="https://console.instill.tech/?utm_source=product&utm_medium=button"
                     target="_blank"
@@ -927,7 +979,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <Button
                   variant="white"
                   size="lg"
-                  className="flex items-center gap-x-2 border-semantic-bg-primary"
+                  className="flex w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
                 >
                   <svg
                     width="24"
