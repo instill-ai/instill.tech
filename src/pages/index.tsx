@@ -161,26 +161,34 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   <div className="flex justify-center pt-5">
                     <div className="flex w-full flex-col xl:w-5/6">
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
-                        <Tag variant="lightNeutral">Data extraction</Tag>
-                        <Tag variant="lightNeutral">
+                        <Tag variant="lightNeutral" className="hidden xl:block">
+                          Data extraction
+                        </Tag>
+                        <Tag variant="lightNeutral" className="hidden xl:block">
                           Data transform via AI model inference
                         </Tag>
                         <Tag variant="lightNeutral">Customizable data flow</Tag>
-                        <Tag variant="lightNeutral">
+                        <Tag variant="lightNeutral" className="hidden xl:block">
                           Flexible flow orchestration
                         </Tag>
                         <Tag variant="lightNeutral">Troubleshooting</Tag>
-                        <Tag variant="lightNeutral">Evaluation</Tag>
+                        <Tag variant="lightNeutral" className="hidden xl:block">
+                          Evaluation
+                        </Tag>
                         <Tag variant="lightNeutral">Version Control</Tag>
                         <Tag variant="lightNeutral">Access Control</Tag>
-                        <Tag variant="lightNeutral">Monitoring & Logging</Tag>
-                        <Tag variant="lightNeutral">Data management</Tag>
+                        <Tag variant="lightNeutral" className="hidden xl:block">
+                          Monitoring & Logging
+                        </Tag>
+                        <Tag variant="lightNeutral" className="hidden xl:block">
+                          Data management
+                        </Tag>
                         <Tag variant="lightNeutral">Model deployment</Tag>
                         <Tag variant="lightNeutral">Model training</Tag>
                         <Tag variant="lightNeutral">
                           Scalability & Reliability
                         </Tag>
-                        <Tag variant="lightNeutral">
+                        <Tag variant="lightNeutral" className="hidden xl:block">
                           Extend to new use cases
                         </Tag>
                         <Tag variant="lightNeutral">More</Tag>
@@ -434,7 +442,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
                   >
                     <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
                     Video
@@ -448,7 +456,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     JSON
@@ -462,7 +470,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   </Tag>
                   <Tag
                     variant="darkYellow"
-                    className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
                   >
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     Parquet
@@ -515,11 +523,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Logos.HuggingFace className="h-3 w-3" />
                     Hugging Face
                   </Tag>
-                  <Tag variant="darkGreen" className="gap-x-1 border-none">
+                  <Tag
+                    variant="darkGreen"
+                    className="hidden gap-x-1 border-none xl:block"
+                  >
                     <Logos.Cohere className="h-3 w-3" />
                     cohere: Command
                   </Tag>
-                  <Tag variant="darkGreen" className="gap-x-1 border-none">
+                  <Tag
+                    variant="darkGreen"
+                    className="hidden gap-x-1 border-none xl:block"
+                  >
                     <Logos.Cohere className="h-3 w-3" />
                     cohere: Embeddings
                   </Tag>
@@ -568,7 +582,10 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Google Drive
                   </Tag>
-                  <Tag variant="darkBlue" className="gap-x-1 border-none">
+                  <Tag
+                    variant="darkBlue"
+                    className="hidden gap-x-1 border-none xl:block"
+                  >
                     <GoogleSheetIcon
                       height="h-[12px]"
                       position="my-auto"
@@ -649,13 +666,25 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   <Tag variant="lightGreen">Stable Diffusion</Tag>
                   <Tag variant="lightGreen">GPT</Tag>
                   <Tag variant="lightGreen">Llama 2</Tag>
-                  <Tag variant="lightGreen">MPT</Tag>
-                  <Tag variant="lightGreen">Falcon</Tag>
-                  <Tag variant="lightGreen">Segment Anything</Tag>
-                  <Tag variant="lightGreen">CLIP</Tag>
-                  <Tag variant="lightGreen">Mask RCNN</Tag>
+                  <Tag variant="lightGreen" className="hidden xl:block">
+                    MPT
+                  </Tag>
+                  <Tag variant="lightGreen" className="hidden xl:block">
+                    Falcon
+                  </Tag>
+                  <Tag variant="lightGreen" className="">
+                    Segment Anything
+                  </Tag>
+                  <Tag variant="lightGreen" className="hidden xl:block">
+                    CLIP
+                  </Tag>
+                  <Tag variant="lightGreen" className="hidden xl:block">
+                    Mask RCNN
+                  </Tag>
                   <Tag variant="lightGreen">YOLOv7</Tag>
-                  <Tag variant="lightGreen">YOLOv7 Pose</Tag>
+                  <Tag variant="lightGreen" className="hidden xl:block">
+                    YOLOv7 Pose
+                  </Tag>
                   <Tag variant="lightGreen">More</Tag>
                 </div>
               </div>
@@ -684,7 +713,10 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.SpeechRecognition className="h-3 w-3 stroke-semantic-fg-secondary" />
                     Audio Recognition
                   </Tag>
-                  <Tag variant="lightPurple" className="gap-x-1">
+                  <Tag
+                    variant="lightPurple"
+                    className="hidden gap-x-1 xl:block"
+                  >
                     <ImageClassificationIcon
                       color="fill-instillGrey90"
                       height="h-[12px]"
@@ -711,7 +743,10 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Keypoint Detection
                   </Tag>
-                  <Tag variant="lightPurple" className="gap-x-1">
+                  <Tag
+                    variant="lightPurple"
+                    className="hidden gap-x-1 xl:block"
+                  >
                     <ObjectDetectionIcon
                       color="fill-instillGrey90"
                       height="h-[12px]"
@@ -729,7 +764,10 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Instance Segmentation
                   </Tag>
-                  <Tag variant="lightPurple" className="gap-x-1">
+                  <Tag
+                    variant="lightPurple"
+                    className="hidden gap-x-1 xl:block"
+                  >
                     <SemanticSegmentationIcon
                       color="fill-instillGrey90"
                       height="h-[12px]"
