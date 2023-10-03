@@ -64,6 +64,24 @@ accessToken: Nullable<string>
   - production
     - go the setting page and create a access token. `https://console.instill.tech/settings`
 
+### Connet with console
+```typescript
+const client = new InstillClient(
+    "https://api.instill.tech", // baseUrl
+    "v1alpha", // appVersion
+    "" // accessToken get it console API token from `https://console.instill.tech/settings`
+);
+```
+
+### Connect with local
+```typescript
+const client = new InstillClient(
+    "http://localhost:8080", // baseUrl
+     "v1alpha", // appVersion
+     token // accessToken
+);
+ ```   
+
 ## Example apps
 
 ### Connect SDK with console
