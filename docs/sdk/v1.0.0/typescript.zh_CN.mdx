@@ -1,0 +1,300 @@
+---
+title: "Introduction to the Instill TypeScript SDK"
+lang: "en-US"
+draft: false
+description: "Welcome to Instill SDK - Where the world of AI-first applications comes alive"
+---
+
+<InfoBlock type="warning" title="warning">
+    **This SDK tool is under heavy development!!**  
+    Currently there has yet to be a stable version release, please feel free to open any issue regarding this `SDK` in our [community](https://github.com/instill-ai/community/issues) repo
+</InfoBlock>
+
+
+## Setup
+
+### Requirements
+
+- `Node 16+`
+- `npm 7+ | pnpm 6+ | yarn 1+`
+
+### installation
+
+```shellscript
+npm i @instill-ai/typescript-sdk
+```
+
+```shellscript
+yarn add @instill-ai/typescript-sdk
+```
+
+```shellscript
+pnpm add @instill-ai/typescript-sdk
+```
+
+## Usage
+
+### next.js
+
+```typescript
+import InstillClient from "@instill-ai/typescript-sdk";
+```
+
+### node.js
+
+```typescript
+const InstillClient = require("@instill-ai/typescript-sdk").default;
+```
+
+## Configuration
+
+```shellscript
+baseUrl: string
+appVersion: string
+accessToken: Nullable<string>
+```
+
+- baseUrl
+  - local: `http://localhost:8080`
+  - production: `https://api.instill.tech`
+- appVersion
+  - `v1alpha`
+- accessToken
+  - local
+    - username: `admin`
+    - password: `password`
+  - production
+    - go the setting page and create a access token. `https://console.instill.tech/settings`
+
+### Connet with console
+```typescript
+const client = new InstillClient(
+    "https://api.instill.tech", // baseUrl
+    "v1alpha", // appVersion
+    "" // accessToken get it console API token from `https://console.instill.tech/settings`
+);
+```
+
+### Connect with local
+```typescript
+const client = new InstillClient(
+    "http://localhost:8080", // baseUrl
+     "v1alpha", // appVersion
+     token // accessToken
+);
+ ```   
+
+## Example apps
+
+### Connect SDK with console
+
+```typescript
+import { useEffect, useState } from "react";
+import InstillClient, { User } from "@instill-ai/typescript-sdk";
+
+export default function TypescriptSdkDemo() {
+  const [user, setUser] = useState<User[]>([]);
+
+  const client = new InstillClient(
+    "https://api.instill.tech",
+    "v1alpha",
+    "" // get console API token from `https://console.instill.tech/settings`
+  );
+
+  useEffect(() => {
+    client.Auth.getUserQuery()
+      .then((data: any) => {
+        console.log("data", data);
+        setUser(data);
+      })
+      .catch((error: any) => {
+        console.log("error", error);
+      });
+  }, []);
+
+  return (
+    <>
+      <h1>User Data</h1>
+      <pre style={{ backgroundColor: "white" }}>
+        {JSON.stringify(user, null, 4)}
+      </pre>
+    </>
+  );
+}
+```
+
+### Connect with local `VDP`
+
+<InfoBlock type="info" title="info">
+  Make sure you have vdp upruning in your local.
+  To run the `VDP` locally check the repository for [VDP](https://github.com/instill-ai/vdp)
+</InfoBlock>
+
+
+
+```typescript
+import { useEffect, useState } from "react";
+import InstillClient, { Nullable, User } from "@instill-ai/typescript-sdk";
+
+export default function TypescriptSdkDemo() {
+  const [user, setUser] = useState<User[]>([]);
+  const [token, setToken] = useState<Nullable<string>>(null);
+
+  const client = new InstillClient("http://localhost:8080", "v1alpha", token);
+
+  const login = async () => {
+    const userToken = await client.Auth.authLoginAction({
+      payload: {
+        username: "admin",
+        password: "password",
+      },
+    });
+
+    setToken(userToken);
+  };
+
+  useEffect(() => {
+    login();
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      client.Auth.getUserQuery()
+        .then((data: any) => {
+          console.log("data", data);
+          setUser(data);
+        })
+        .catch((error: any) => {
+          console.log("error", error);
+        });
+    }
+  }, [token]);
+
+  return (
+    <>
+      <h1>User Data</h1>
+      <pre style={{ backgroundColor: "white" }}>
+        {JSON.stringify(user, null, 4)}
+      </pre>
+    </>
+  );
+}
+```
+
+## Example templetes
+
+### Next APP
+
+- [next-app](https://github.com/instill-ai/typescript-sdk/tree/main/examples/next-app)
+
+### Node APP
+
+- [node-app](https://github.com/instill-ai/typescript-sdk/tree/main/examples/node-app)
+
+## API Reference
+
+### Pipelines
+
+| Function                              |                     Params                      |
+| :------------------------------------ | :---------------------------------------------  |
+| `listPipelinesQuery`                    |             pageSize, nextPageToken             |
+| `listUserPipelinesQuery`                |        pageSize, nextPageToken, userName        |
+| `getUserPipelineQuery`                  |                  pipelineName                   |
+| `ListUserPipelineReleasesQuery`         | userName, pipelineName, pageSize, nextPageToken |
+| `getUserPipelineReleaseQuery`           |               pipelineReleaseName               |
+| `watchUserPipelineReleaseQuery`         |               pipelineReleaseName               |
+| `createUserPipelineMutation`            |                userName, payload                |
+| `updateUserPipelineMutation`            |                     payload                     |
+| `deleteUserPipelineMutation`            |                  pipelineName                   |
+| `renameUserPipelineMutation`            |                     payload                     |
+| `createUserPipelineReleaseMutation`     |              pipelineName, payload              |
+| `updateUserPipelineReleaseMutation`     |          pipelineReleaseName, payload           |
+| `deleteUserPipelineReleaseMutation`     |               pipelineReleaseName               |
+| `triggerUserPipelineAction`             |       pipelineName, payload, returnTraces       |
+| `triggerAsyncUserPipelineAction`        |       pipelineName, payload, returnTraces       |
+| `setDefaultUserPipelineReleaseMutation` |               pipelineReleaseName               |
+| `restoreUserPipelineReleaseMutation`    |               pipelineReleaseName               |
+| `triggerUserPipelineReleaseAction`      |   pipelineReleaseName, payload, returnTraces    |
+| `triggerAsyncUserPipelineReleaseAction` |   pipelineReleaseName, payload, returnTraces    |
+
+### Connector
+
+| Function                                  |                  Params                   |
+| :---------------------------------------- | :---------------------------------------  |
+| `listConnectorResourcesQuery`               | userName, pageSize, nextPageToken, filter |
+| `listUserConnectorResourcesQuery`           |      pageSize, nextPageToken, filter      |
+| `listConnectorDefinitionsQuery`             |          connectorDefinitionName          |
+| `getConnectorDefinitionQuery`               |          connectorDefinitionName          |
+| `getUserConnectorResourceQuery`             |          connectorDefinitionName          |
+| `watchUserConnectorResource`                |             userName, payload             |
+| `createUserConnectorResourceMutation`       |          connectorDefinitionName          |
+| `deleteUserConnectorResourceMutation`       |                  payload                  |
+| `updateUserConnectorResourceMutation`       |                  payload                  |
+| `renameUserConnectorResource`               |                  payload                  |
+| `testUserConnectorResourceConnectionAction` |          connectorDefinitionName          |
+| `connectUserConnectorResourceAction`        |          connectorDefinitionName          |
+| `disconnectUserConnectorResourceAction`     |          connectorDefinitionName          |
+
+### Metric
+
+| Function                        |             Params              |
+| :------------------------------ | :-----------------------------  |
+| `listPipelineTriggerRecordsQuery` | pageSize, nextPageToken, filter |
+| `listTriggeredPipelineQuery`      | pageSize, nextPageToken, filter |
+| `listTriggeredPipelineChartQuery` | pageSize, nextPageToken, filter |
+
+modelDefinitionName,
+
+### Model
+
+| Function                  |              Params               |
+| :------------------------ | :-------------------------------  |
+| `getModelDefinitionQuery`   |        modelDefinitionName        |
+| `listModelDefinitionsQuery` |      pageSize, nextPageToken      |
+| `getUserModelQuery`         |             modelName             |
+| `listModelsQuery`           |      pageSize, nextPageToken      |
+| `listUserModelsQuery`       | userName, pageSize, nextPageToken |
+| `getUserModelReadmeQuery`   |             modelName             |
+| `watchUserModel`            |             modelName             |
+| `createUserModelMutation`   |         userName, payload         |
+| `updateModelMutation`       |              payload              |
+| `deleteUserModelMutation`   |             modelName             |
+| `deployUserModelAction`     |             modelName             |
+| `undeployUserModeleAction`  |             modelName             |
+
+### Operation
+
+| Function                  |    Params     |
+| :------------------------ | :-----------  |
+| `getOperationQuery`         | operationName |
+| `checkUntilOperationIsDoen` | operationName |
+
+### Mgmt
+
+| Function               |         Params          |
+| :--------------------- | :---------------------  |
+| `getUserQuery`           |       accessToken       |
+| `checkUserIdExist`       |           id            |
+| `getApiTokenQuery`     |        tokenName        |
+| `listApiTokensQuery`     | pageSize, nextPageToken |
+| `updateUserMutation`     |         payload         |
+| `createApiTokenMutation` |         payload         |
+| `deleteApiTokenMutation` |        tokenName        |
+
+## Contribution Guidelines:
+
+Please refer to the [Contributing Guidelines](./.github/CONTRIBUTING.md) for more details.
+
+## Release Notes:
+
+[Release](./CHANGELOG.md)
+
+## Genrate proto-ts 
+```shellscript
+./generate_proto.sh
+```
+- it will genrate protobuf into `dist/protogen-ts` folder
+
+## Support:
+
+Contact details for help and support resources. This list isn't exhaustive but covers major aspects usually included in most SDK design documents.
