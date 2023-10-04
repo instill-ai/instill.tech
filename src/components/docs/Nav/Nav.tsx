@@ -51,7 +51,7 @@ const DropdownMenu = ({
     <Dropdown.Menu key={item.key} open={isOpen}>
       <Dropdown.MenuTrigger className="flex flex-row gap-x-1 focus:outline-none">
         <p
-          onClick={() => setIsOpen(!isOpen)}
+          onMouseEnter={() => setIsOpen(!isOpen)}
           className="navbar-dropdown-menu my-auto flex flex-row gap-x-1 text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
         >
           {item.label}
