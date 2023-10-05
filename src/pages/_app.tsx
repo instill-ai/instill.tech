@@ -28,6 +28,7 @@ import {
   MdxToggleBlockProps,
 } from "@/components/ui/MdxToggleBlock";
 import { appWithTranslation } from "next-i18next";
+import Feedback from "@/components/ui/Feedback";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -94,6 +95,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <InstillAICtxProvider>
         {getLayout(<Component {...pageProps} />)}
         <div id="zoomable-image" />
+        <Feedback />
       </InstillAICtxProvider>
     </MDXProvider>
   );
