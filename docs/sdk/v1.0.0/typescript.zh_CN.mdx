@@ -66,7 +66,7 @@ const InstillClient = require("@instill-ai/typescript-sdk").default;
 const client = new InstillClient(
   "https://api.instill.tech", // baseUrl
   "v1alpha", // appVersion
-  "" // "<your_api_token>" get console API token from `https://console.instill.tech/settings`
+  "<your_api_token>" // get console API token from `https://console.instill.tech/settings`
 );
 ```
 
@@ -76,7 +76,7 @@ const client = new InstillClient(
 const client = new InstillClient(
   "http://localhost:8080", // baseUrl
   "v1alpha", // appVersion
-  "" // "<your_api_token>" get console API token from `http://localhost:3000/settings`
+  "<your_api_token>" // get console API token from `http://localhost:3000/settings`
 );
 ```
 
@@ -94,7 +94,7 @@ export default function TypescriptSdkDemo() {
   const client = new InstillClient(
     "https://api.instill.tech",
     "v1alpha",
-    "" // "<your_api_token>" get console API token from `https://console.instill.tech/settings`
+    "<your_api_token>" // get console API token from `https://console.instill.tech/settings`
   );
 
   useEffect(() => {
@@ -136,7 +136,7 @@ export default function TypescriptSdkDemo() {
   const client = new InstillClient(
     "http://localhost:8080",
     "v1alpha",
-    "" // "<your_api_token>" get console API token from `http://localhost:3000/settings`
+    "<your_api_token>" // get console API token from `http://localhost:3000/settings`
   );
 
   useEffect(() => {
