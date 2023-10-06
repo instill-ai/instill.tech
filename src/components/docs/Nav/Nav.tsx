@@ -43,7 +43,9 @@ const DropdownMenu = ({
     dropdownMenus = item.items?.filter((item) => item.appType === appType);
   } else {
     dropdownMenus = item.items?.filter(
-      (item) => item.appType !== (appType === "cloud" ? "core" : appType)
+      (item) =>
+        item.appType !==
+        (appType === "cloud" || appType === "sdk" ? "core" : appType)
     );
   }
 
