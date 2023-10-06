@@ -6,10 +6,10 @@ description: "Welcome to Instill SDK - Where the world of AI-first applications 
 ---
 
 <InfoBlock type="warning" title="warning">
-    **This SDK tool is under heavy development!!**  
-    Currently there has yet to be a stable version release, please feel free to open any issue regarding this `SDK` in our [community](https://github.com/instill-ai/community/issues) repo
+  **This SDK tool is still working in progress!!** Currently there has yet to be
+  a stable version release, please feel free to open any issue regarding this
+  `SDK` in our [community](https://github.com/instill-ai/community/issues) repo
 </InfoBlock>
-
 
 ## Setup
 
@@ -51,7 +51,7 @@ const InstillClient = require("@instill-ai/typescript-sdk").default;
 ```shellscript
 baseUrl: string
 appVersion: string
-accessToken: Nullable<string>
+apiToken: Nullable<string>
 ```
 
 - baseUrl
@@ -59,30 +59,32 @@ accessToken: Nullable<string>
   - production: `https://api.instill.tech`
 - appVersion
   - `v1alpha`
-- accessToken
+- apiToken
   - local
     - username: `admin`
-    - password: `password`
+    - password: `password` // This is the initial password, once they login for the first time, they will need to change it to other password
   - production
-    - go the setting page and create a access token. `https://console.instill.tech/settings`
+    - go the setting page and create a api token. `https://console.instill.tech/settings`
 
 ### Connet with console
+
 ```typescript
 const client = new InstillClient(
-    "https://api.instill.tech", // baseUrl
-    "v1alpha", // appVersion
-    "" // accessToken get it console API token from `https://console.instill.tech/settings`
+  "https://api.instill.tech", // baseUrl
+  "v1alpha", // appVersion
+  "" // <your_api_token> get it console API token from `https://console.instill.tech/settings`
 );
 ```
 
 ### Connect with local
+
 ```typescript
 const client = new InstillClient(
-    "http://localhost:8080", // baseUrl
-     "v1alpha", // appVersion
-     token // accessToken
+  "http://localhost:8080", // baseUrl
+  "v1alpha", // appVersion
+  token // <your_api_token>
 );
- ```   
+```
 
 ## Example apps
 
@@ -126,11 +128,9 @@ export default function TypescriptSdkDemo() {
 ### Connect with local `VDP`
 
 <InfoBlock type="info" title="info">
-  Make sure you have vdp upruning in your local.
-  To run the `VDP` locally check the repository for [VDP](https://github.com/instill-ai/vdp)
+  Make sure you have vdp upruning in your local. To run the `VDP` locally please
+  follow our tutorial on [VDP](https://github.com/instill-ai/vdp)
 </InfoBlock>
-
-
 
 ```typescript
 import { useEffect, useState } from "react";
@@ -138,37 +138,23 @@ import InstillClient, { Nullable, User } from "@instill-ai/typescript-sdk";
 
 export default function TypescriptSdkDemo() {
   const [user, setUser] = useState<User[]>([]);
-  const [token, setToken] = useState<Nullable<string>>(null);
 
-  const client = new InstillClient("http://localhost:8080", "v1alpha", token);
-
-  const login = async () => {
-    const userToken = await client.Auth.authLoginAction({
-      payload: {
-        username: "admin",
-        password: "password",
-      },
-    });
-
-    setToken(userToken);
-  };
+  const client = new InstillClient(
+    "http://localhost:8080",
+    "v1alpha",
+    "" // get console API token from `http://localhost:3000/settings`
+  );
 
   useEffect(() => {
-    login();
+    client.Auth.getUserQuery()
+      .then((data: any) => {
+        console.log("data", data);
+        setUser(data);
+      })
+      .catch((error: any) => {
+        console.log("error", error);
+      });
   }, []);
-
-  useEffect(() => {
-    if (token) {
-      client.Auth.getUserQuery()
-        .then((data: any) => {
-          console.log("data", data);
-          setUser(data);
-        })
-        .catch((error: any) => {
-          console.log("error", error);
-        });
-    }
-  }, [token]);
 
   return (
     <>
@@ -195,50 +181,50 @@ export default function TypescriptSdkDemo() {
 
 ### Pipelines
 
-| Function                              |                     Params                      |
-| :------------------------------------ | :---------------------------------------------  |
-| `listPipelinesQuery`                    |             pageSize, nextPageToken             |
-| `listUserPipelinesQuery`                |        pageSize, nextPageToken, userName        |
-| `getUserPipelineQuery`                  |                  pipelineName                   |
+| Function                                | Params                                          |
+| :-------------------------------------- | :---------------------------------------------- |
+| `listPipelinesQuery`                    | pageSize, nextPageToken                         |
+| `listUserPipelinesQuery`                | pageSize, nextPageToken, userName               |
+| `getUserPipelineQuery`                  | pipelineName                                    |
 | `ListUserPipelineReleasesQuery`         | userName, pipelineName, pageSize, nextPageToken |
-| `getUserPipelineReleaseQuery`           |               pipelineReleaseName               |
-| `watchUserPipelineReleaseQuery`         |               pipelineReleaseName               |
-| `createUserPipelineMutation`            |                userName, payload                |
-| `updateUserPipelineMutation`            |                     payload                     |
-| `deleteUserPipelineMutation`            |                  pipelineName                   |
-| `renameUserPipelineMutation`            |                     payload                     |
-| `createUserPipelineReleaseMutation`     |              pipelineName, payload              |
-| `updateUserPipelineReleaseMutation`     |          pipelineReleaseName, payload           |
-| `deleteUserPipelineReleaseMutation`     |               pipelineReleaseName               |
-| `triggerUserPipelineAction`             |       pipelineName, payload, returnTraces       |
-| `triggerAsyncUserPipelineAction`        |       pipelineName, payload, returnTraces       |
-| `setDefaultUserPipelineReleaseMutation` |               pipelineReleaseName               |
-| `restoreUserPipelineReleaseMutation`    |               pipelineReleaseName               |
-| `triggerUserPipelineReleaseAction`      |   pipelineReleaseName, payload, returnTraces    |
-| `triggerAsyncUserPipelineReleaseAction` |   pipelineReleaseName, payload, returnTraces    |
+| `getUserPipelineReleaseQuery`           | pipelineReleaseName                             |
+| `watchUserPipelineReleaseQuery`         | pipelineReleaseName                             |
+| `createUserPipelineMutation`            | userName, payload                               |
+| `updateUserPipelineMutation`            | payload                                         |
+| `deleteUserPipelineMutation`            | pipelineName                                    |
+| `renameUserPipelineMutation`            | payload                                         |
+| `createUserPipelineReleaseMutation`     | pipelineName, payload                           |
+| `updateUserPipelineReleaseMutation`     | pipelineReleaseName, payload                    |
+| `deleteUserPipelineReleaseMutation`     | pipelineReleaseName                             |
+| `triggerUserPipelineAction`             | pipelineName, payload, returnTraces             |
+| `triggerAsyncUserPipelineAction`        | pipelineName, payload, returnTraces             |
+| `setDefaultUserPipelineReleaseMutation` | pipelineReleaseName                             |
+| `restoreUserPipelineReleaseMutation`    | pipelineReleaseName                             |
+| `triggerUserPipelineReleaseAction`      | pipelineReleaseName, payload, returnTraces      |
+| `triggerAsyncUserPipelineReleaseAction` | pipelineReleaseName, payload, returnTraces      |
 
 ### Connector
 
-| Function                                  |                  Params                   |
-| :---------------------------------------- | :---------------------------------------  |
+| Function                                    | Params                                    |
+| :------------------------------------------ | :---------------------------------------- |
 | `listConnectorResourcesQuery`               | userName, pageSize, nextPageToken, filter |
-| `listUserConnectorResourcesQuery`           |      pageSize, nextPageToken, filter      |
-| `listConnectorDefinitionsQuery`             |          connectorDefinitionName          |
-| `getConnectorDefinitionQuery`               |          connectorDefinitionName          |
-| `getUserConnectorResourceQuery`             |          connectorDefinitionName          |
-| `watchUserConnectorResource`                |             userName, payload             |
-| `createUserConnectorResourceMutation`       |          connectorDefinitionName          |
-| `deleteUserConnectorResourceMutation`       |                  payload                  |
-| `updateUserConnectorResourceMutation`       |                  payload                  |
-| `renameUserConnectorResource`               |                  payload                  |
-| `testUserConnectorResourceConnectionAction` |          connectorDefinitionName          |
-| `connectUserConnectorResourceAction`        |          connectorDefinitionName          |
-| `disconnectUserConnectorResourceAction`     |          connectorDefinitionName          |
+| `listUserConnectorResourcesQuery`           | pageSize, nextPageToken, filter           |
+| `listConnectorDefinitionsQuery`             | connectorDefinitionName                   |
+| `getConnectorDefinitionQuery`               | connectorDefinitionName                   |
+| `getUserConnectorResourceQuery`             | connectorDefinitionName                   |
+| `watchUserConnectorResource`                | userName, payload                         |
+| `createUserConnectorResourceMutation`       | connectorDefinitionName                   |
+| `deleteUserConnectorResourceMutation`       | payload                                   |
+| `updateUserConnectorResourceMutation`       | payload                                   |
+| `renameUserConnectorResource`               | payload                                   |
+| `testUserConnectorResourceConnectionAction` | connectorDefinitionName                   |
+| `connectUserConnectorResourceAction`        | connectorDefinitionName                   |
+| `disconnectUserConnectorResourceAction`     | connectorDefinitionName                   |
 
 ### Metric
 
-| Function                        |             Params              |
-| :------------------------------ | :-----------------------------  |
+| Function                          | Params                          |
+| :-------------------------------- | :------------------------------ |
 | `listPipelineTriggerRecordsQuery` | pageSize, nextPageToken, filter |
 | `listTriggeredPipelineQuery`      | pageSize, nextPageToken, filter |
 | `listTriggeredPipelineChartQuery` | pageSize, nextPageToken, filter |
@@ -247,39 +233,39 @@ modelDefinitionName,
 
 ### Model
 
-| Function                  |              Params               |
-| :------------------------ | :-------------------------------  |
-| `getModelDefinitionQuery`   |        modelDefinitionName        |
-| `listModelDefinitionsQuery` |      pageSize, nextPageToken      |
-| `getUserModelQuery`         |             modelName             |
-| `listModelsQuery`           |      pageSize, nextPageToken      |
+| Function                    | Params                            |
+| :-------------------------- | :-------------------------------- |
+| `getModelDefinitionQuery`   | modelDefinitionName               |
+| `listModelDefinitionsQuery` | pageSize, nextPageToken           |
+| `getUserModelQuery`         | modelName                         |
+| `listModelsQuery`           | pageSize, nextPageToken           |
 | `listUserModelsQuery`       | userName, pageSize, nextPageToken |
-| `getUserModelReadmeQuery`   |             modelName             |
-| `watchUserModel`            |             modelName             |
-| `createUserModelMutation`   |         userName, payload         |
-| `updateModelMutation`       |              payload              |
-| `deleteUserModelMutation`   |             modelName             |
-| `deployUserModelAction`     |             modelName             |
-| `undeployUserModeleAction`  |             modelName             |
+| `getUserModelReadmeQuery`   | modelName                         |
+| `watchUserModel`            | modelName                         |
+| `createUserModelMutation`   | userName, payload                 |
+| `updateModelMutation`       | payload                           |
+| `deleteUserModelMutation`   | modelName                         |
+| `deployUserModelAction`     | modelName                         |
+| `undeployUserModeleAction`  | modelName                         |
 
 ### Operation
 
-| Function                  |    Params     |
-| :------------------------ | :-----------  |
+| Function                    | Params        |
+| :-------------------------- | :------------ |
 | `getOperationQuery`         | operationName |
 | `checkUntilOperationIsDoen` | operationName |
 
 ### Mgmt
 
-| Function               |         Params          |
-| :--------------------- | :---------------------  |
-| `getUserQuery`           |       accessToken       |
-| `checkUserIdExist`       |           id            |
-| `getApiTokenQuery`     |        tokenName        |
+| Function                 | Params                  |
+| :----------------------- | :---------------------- |
+| `getUserQuery`           | apiToken                |
+| `checkUserIdExist`       | id                      |
+| `getApiTokenQuery`       | tokenName               |
 | `listApiTokensQuery`     | pageSize, nextPageToken |
-| `updateUserMutation`     |         payload         |
-| `createApiTokenMutation` |         payload         |
-| `deleteApiTokenMutation` |        tokenName        |
+| `updateUserMutation`     | payload                 |
+| `createApiTokenMutation` | payload                 |
+| `deleteApiTokenMutation` | tokenName               |
 
 ## Contribution Guidelines:
 
@@ -289,10 +275,12 @@ Please refer to the [Contributing Guidelines](./.github/CONTRIBUTING.md) for mor
 
 [Release](./CHANGELOG.md)
 
-## Genrate proto-ts 
+## Genrate proto-ts
+
 ```shellscript
 ./generate_proto.sh
 ```
+
 - it will genrate protobuf into `dist/protogen-ts` folder
 
 ## Support:
