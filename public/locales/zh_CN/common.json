@@ -65,7 +65,10 @@
     "help": "帮助",
     "discord": "Discord",
     "gitHubDisussions": "GitHub Discussions",
-    "gitHubIssues": "GitHub Issues"
+    "gitHubIssues": "GitHub Issues",
+    "sdk": "SDK",
+    "typescriptSDK": "Typescript SDK",
+    "pythonSDK": "Python SDK"
   },
   "nextPage": "下一页",
   "previousPage": "上一页",
