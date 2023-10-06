@@ -48,11 +48,11 @@ const InstillClient = require("@instill-ai/typescript-sdk").default;
 
 ## Configuration
 
-```shellscript
-baseUrl: string
-appVersion: string
-apiToken: Nullable<string>
-```
+### Data types
+
+- baseUrl: `string`
+- appVersion: `string`
+- apiToken: `string`
 
 - baseUrl
   - local: `http://localhost:8080`
@@ -66,13 +66,13 @@ apiToken: Nullable<string>
   - production
     - go the setting page and create a api token. `https://console.instill.tech/settings`
 
-### Connet with console
+### Connect with console
 
 ```typescript
 const client = new InstillClient(
   "https://api.instill.tech", // baseUrl
   "v1alpha", // appVersion
-  "" // <your_api_token> get it console API token from `https://console.instill.tech/settings`
+  "" // "<your_api_token>" get console API token from `https://console.instill.tech/settings`
 );
 ```
 
@@ -82,7 +82,7 @@ const client = new InstillClient(
 const client = new InstillClient(
   "http://localhost:8080", // baseUrl
   "v1alpha", // appVersion
-  token // <your_api_token>
+  "" // "<your_api_token>" get console API token from `http://localhost:3000/settings`
 );
 ```
 
@@ -100,7 +100,7 @@ export default function TypescriptSdkDemo() {
   const client = new InstillClient(
     "https://api.instill.tech",
     "v1alpha",
-    "" // get console API token from `https://console.instill.tech/settings`
+    "" // "<your_api_token>" get console API token from `https://console.instill.tech/settings`
   );
 
   useEffect(() => {
@@ -134,7 +134,7 @@ export default function TypescriptSdkDemo() {
 
 ```typescript
 import { useEffect, useState } from "react";
-import InstillClient, { Nullable, User } from "@instill-ai/typescript-sdk";
+import InstillClient, { User } from "@instill-ai/typescript-sdk";
 
 export default function TypescriptSdkDemo() {
   const [user, setUser] = useState<User[]>([]);
@@ -142,7 +142,7 @@ export default function TypescriptSdkDemo() {
   const client = new InstillClient(
     "http://localhost:8080",
     "v1alpha",
-    "" // get console API token from `http://localhost:3000/settings`
+    "" // "<your_api_token>" get console API token from `http://localhost:3000/settings`
   );
 
   useEffect(() => {
