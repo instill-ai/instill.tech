@@ -21,7 +21,7 @@ export const Nav = () => {
   }, [router]);
 
   const announcementBar = (
-    <AnnouncementBar className="bg-instill_green" close={false}>
+    <AnnouncementBar className="bg-emerald-400" close={false}>
       <div className="flex flex-row gap-x-1">
         <p className="text-base text-instillGrey95">👉 Check out</p>
         <a

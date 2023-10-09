@@ -62,7 +62,7 @@ export const Hero = () => {
         style={{
           boxShadow:
             "0px 16px 32px 0px rgba(49, 111, 237, 0.15), 0px 7px 7px 12px rgba(59, 122, 247, 0.05)",
-          backgroundColor: "rgba(92, 92, 92, 0.5)",
+          backgroundColor: "rgba(255, 255, 255, 0.20)",
         }}
       >
         <Image
