@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.41.0](https://github.com/instill-ai/instill.tech/compare/v1.40.3...v1.41.0) (2023-10-09)
+
+
+### Features
+
+* documentation versioning implementation ([#600](https://github.com/instill-ai/instill.tech/issues/600)) ([76eb84b](https://github.com/instill-ai/instill.tech/commit/76eb84b3fa55145a24013258341661bd26a6e508))
+* Namananand/ins 2236 update sdk documentation on docs website ([#622](https://github.com/instill-ai/instill.tech/issues/622)) ([3227420](https://github.com/instill-ai/instill.tech/commit/3227420e038b513d24118e5c60ae01e1c97f1084))
+
+
+### Miscellaneous
+
+* add docs for new operators and connectors ([#617](https://github.com/instill-ai/instill.tech/issues/617)) ([e96f5ad](https://github.com/instill-ai/instill.tech/commit/e96f5adf53a63c810668d07b460dd6e986d790a0))
+* Namananand/ins 2103 landing page hackoctober ([#619](https://github.com/instill-ai/instill.tech/issues/619)) ([6ad6874](https://github.com/instill-ai/instill.tech/commit/6ad6874da898431bcc56fd17d59b83ca4ec6e2e3))
+* update docs ([#620](https://github.com/instill-ai/instill.tech/issues/620)) ([8cd1e76](https://github.com/instill-ai/instill.tech/commit/8cd1e761f1c6d90b1cd42305f53f990aef5805ea))
+
+
+### Documentation
+
+* **vdp:** improve VDP documents ([#613](https://github.com/instill-ai/instill.tech/issues/613)) ([577aa3e](https://github.com/instill-ai/instill.tech/commit/577aa3ee7addcec8b6592d43b7e5c1fa5457fa78))
+* **vdp:** update pipeline doc ([#618](https://github.com/instill-ai/instill.tech/issues/618)) ([c0e1896](https://github.com/instill-ai/instill.tech/commit/c0e1896703a0606a20244b04d7b16ad51430816d))
+
 ## [1.40.3](https://github.com/instill-ai/instill.tech/compare/v1.40.2...v1.40.3) (2023-09-27)
 
 
