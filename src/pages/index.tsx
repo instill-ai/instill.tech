@@ -256,6 +256,9 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   variant="primary"
                   size="lg"
                   className="w-full gap-x-2 xl:w-auto"
+                  onClick={() => {
+                    window.open("https://discord.gg/sevxWsqpGh", "_blank");
+                  }}
                 >
                   <DiscordIcon
                     width="w-5"
@@ -263,19 +266,19 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-white"
                     position="my-auto"
                   />
-                  <a
-                    href="https://discord.gg/sevxWsqpGh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Join Community
-                  </a>
+                  Join Community
                 </Button>
 
                 <Button
                   variant="white"
                   size="lg"
                   className="w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
+                  onClick={() => {
+                    window.open(
+                      "https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button",
+                      "_blank"
+                    );
+                  }}
                 >
                   <svg
                     width="20"
@@ -293,13 +296,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <a
-                    href="https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read our Docs
-                  </a>
+                  Read our Docs
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
@@ -392,6 +389,9 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
+                  onClick={() => {
+                    window.open("https://github.com/instill-ai/vdp", "_blank");
+                  }}
                 >
                   <GitHubIcon
                     width="w-5"
@@ -399,14 +399,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-
-                  <a
-                    href="https://github.com/instill-ai/vdp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Star Instill VDP
-                  </a>
+                  Star Instill VDP
                 </Button>
               </div>
             </div>
@@ -642,6 +635,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
+                  onClick={() => {
+                    window.open(
+                      "https://github.com/instill-ai/model",
+                      "_blank"
+                    );
+                  }}
                 >
                   <GitHubIcon
                     width="w-5"
@@ -649,13 +648,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-                  <a
-                    href="https://github.com/instill-ai/model"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Star Instill Model
-                  </a>
+                  Star Instill Model
                 </Button>
               </div>
             </div>
@@ -898,6 +891,12 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
+                  onClick={() => {
+                    window.open(
+                      "https://github.com/instill-ai/model",
+                      "_blank"
+                    );
+                  }}
                 >
                   <GitHubIcon
                     width="w-5"
@@ -905,26 +904,20 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     color="fill-[#000]"
                     position="my-auto"
                   />
-                  <a
-                    href="https://github.com/instill-ai/model"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Star Instill Model
-                  </a>
+                  Star Instill Model
                 </Button>
                 <Button
                   variant="white"
                   size="lg"
                   className="flex items-center gap-x-2"
+                  onClick={() => {
+                    window.open(
+                      "https://console.instill.tech/?utm_source=product&utm_medium=button",
+                      "_blank"
+                    );
+                  }}
                 >
-                  <a
-                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Access early on instill Cloud
-                  </a>
+                  Access early on instill Cloud
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
@@ -962,21 +955,6 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <div className="my-auto w-full xl:w-1/2">
                   <div className="flex justify-center">
                     <div className="flex flex-row">
-                      {/* <Input.Root className="!rounded-none !rounded-l-sm !px-4">
-                        <Input.Core
-                          disabled={false}
-                          type="text"
-                          placeholder="Your email address"
-                        />
-                      </Input.Root>
-
-                      <Button
-                        variant="primary"
-                        className="!rounded-none !rounded-r-sm"
-                      >
-                        Subscribe
-                      </Button> */}
-
                       <SubscribeNewsletterForm />
                     </div>
                   </div>
@@ -1010,20 +988,26 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   variant="primary"
                   size="lg"
                   className="w-full xl:w-auto"
+                  onClick={() => {
+                    window.open(
+                      "https://console.instill.tech/?utm_source=product&utm_medium=button",
+                      "_blank"
+                    );
+                  }}
                 >
-                  <a
-                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Try Instill Cloud Free
-                  </a>
+                  Try Instill Cloud Free
                 </Button>
 
                 <Button
                   variant="white"
                   size="lg"
                   className="flex w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
+                  onClick={() => {
+                    window.open(
+                      "https://www.instill.tech/docs/?utm_source=product&utm_medium=button",
+                      "_blank"
+                    );
+                  }}
                 >
                   <svg
                     width="24"
@@ -1041,14 +1025,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <a
-                    href="https://www.instill.tech/docs/?utm_source=product&utm_medium=button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read our Docs
-                  </a>
-
+                  Read our Docs
                   <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
                 </Button>
               </div>
