@@ -55,7 +55,7 @@ export const Nav = () => {
   const desktopView = (
     <>
       {enableAnnouncementBar && announcementBar}
-      <div className="mx-auto flex w-full flex-row px-[30px] py-2.5">
+      <div className="mx-auto flex w-full flex-row bg-instillGrey90 px-[30px] py-2.5">
         <Link href="/" className="my-auto mr-auto flex">
           <Logo variant="ColourLogomarkWhiteType" width={158} />
         </Link>
