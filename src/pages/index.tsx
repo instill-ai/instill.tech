@@ -253,51 +253,56 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
             <div className="xl:flex xl:justify-center">
               <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button
+                  asChild
                   variant="primary"
                   size="lg"
                   className="w-full gap-x-2 xl:w-auto"
-                  onClick={() => {
-                    window.open("https://discord.gg/sevxWsqpGh", "_blank");
-                  }}
                 >
-                  <DiscordIcon
-                    width="w-5"
-                    height="h-5"
-                    color="fill-white"
-                    position="my-auto"
-                  />
-                  Join Community
+                  <a
+                    href="https://discord.gg/sevxWsqpGh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <DiscordIcon
+                      width="w-5"
+                      height="h-5"
+                      color="fill-white"
+                      position="my-auto"
+                    />
+                    Join Community
+                  </a>
                 </Button>
 
                 <Button
+                  asChild
                   variant="white"
                   size="lg"
                   className="w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
-                  onClick={() => {
-                    window.open(
-                      "https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button",
-                      "_blank"
-                    );
-                  }}
                 >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <a
+                    href="https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <path
-                      d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M14 17H8M16 13H8M20 9.98822V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2H12.0118C12.7455 2 13.1124 2 13.4577 2.08289C13.7638 2.15638 14.0564 2.27759 14.3249 2.44208C14.6276 2.6276 14.887 2.88703 15.4059 3.40589L18.5941 6.59411C19.113 7.11297 19.3724 7.3724 19.5579 7.67515C19.7224 7.94356 19.8436 8.2362 19.9171 8.5423C20 8.88757 20 9.25445 20 9.98822Z"
-                      stroke="#fff"
-                      strokeOpacity="0.8"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Read our Docs
-                  <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M14 17H8M16 13H8M20 9.98822V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2H12.0118C12.7455 2 13.1124 2 13.4577 2.08289C13.7638 2.15638 14.0564 2.27759 14.3249 2.44208C14.6276 2.6276 14.887 2.88703 15.4059 3.40589L18.5941 6.59411C19.113 7.11297 19.3724 7.3724 19.5579 7.67515C19.7224 7.94356 19.8436 8.2362 19.9171 8.5423C20 8.88757 20 9.25445 20 9.98822Z"
+                        stroke="#fff"
+                        strokeOpacity="0.8"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Read our Docs
+                    <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -386,20 +391,24 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
               <div className="my-7 flex flex-col xl:flex-row">
                 <Button
+                  asChild
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
-                  onClick={() => {
-                    window.open("https://github.com/instill-ai/vdp", "_blank");
-                  }}
                 >
-                  <GitHubIcon
-                    width="w-5"
-                    height="h-5"
-                    color="fill-[#000]"
-                    position="my-auto"
-                  />
-                  Star Instill VDP
+                  <a
+                    href="https://github.com/instill-ai/vdp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHubIcon
+                      width="w-5"
+                      height="h-5"
+                      color="fill-[#000]"
+                      position="my-auto"
+                    />
+                    Star Instill VDP
+                  </a>
                 </Button>
               </div>
             </div>
@@ -437,13 +446,15 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.Speaker01 className="h-3 w-3 stroke-instillGrey95" />
                     Audio
                   </Tag>
-                  <Tag
-                    variant="darkYellow"
-                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
-                  >
-                    <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
-                    Video
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
+                      Video
+                    </Tag>
+                  </div>
                   <Tag
                     variant="darkYellow"
                     className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
@@ -451,13 +462,15 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     PDF
                   </Tag>
-                  <Tag
-                    variant="darkYellow"
-                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
-                  >
-                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
-                    JSON
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                      JSON
+                    </Tag>
+                  </div>
                   <Tag
                     variant="darkYellow"
                     className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
@@ -465,13 +478,15 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
                     CSV
                   </Tag>
-                  <Tag
-                    variant="darkYellow"
-                    className="hidden gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95 xl:block"
-                  >
-                    <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
-                    Parquet
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                      Parquet
+                    </Tag>
+                  </div>
                   <Tag
                     variant="darkYellow"
                     className="gap-x-1 border-none !bg-[#FDCF72] !text-instillGrey95"
@@ -520,20 +535,18 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Logos.HuggingFace className="h-3 w-3" />
                     Hugging Face
                   </Tag>
-                  <Tag
-                    variant="darkGreen"
-                    className="hidden gap-x-1 border-none xl:block"
-                  >
-                    <Logos.Cohere className="h-3 w-3" />
-                    cohere: Command
-                  </Tag>
-                  <Tag
-                    variant="darkGreen"
-                    className="hidden gap-x-1 border-none xl:block"
-                  >
-                    <Logos.Cohere className="h-3 w-3" />
-                    cohere: Embeddings
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="darkGreen" className="gap-x-1 border-none">
+                      <Logos.Cohere className="h-3 w-3" />
+                      cohere: Command
+                    </Tag>
+                  </div>
+                  <div className="hidden xl:block">
+                    <Tag variant="darkGreen" className="gap-x-1 border-none">
+                      <Logos.Cohere className="h-3 w-3" />
+                      cohere: Embeddings
+                    </Tag>
+                  </div>
                   <Tag variant="darkGreen" className="gap-x-1 border-none">
                     <div className="h-2 w-2 rounded-lg bg-emerald-500"></div>
                     More
@@ -579,17 +592,16 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Google Drive
                   </Tag>
-                  <Tag
-                    variant="darkBlue"
-                    className="hidden gap-x-1 border-none xl:block"
-                  >
-                    <GoogleSheetIcon
-                      height="h-[12px]"
-                      position="my-auto"
-                      width="w-[12px]"
-                    />
-                    Google Sheets
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="darkBlue" className="gap-x-1 border-none">
+                      <GoogleSheetIcon
+                        height="h-[12px]"
+                        position="my-auto"
+                        width="w-[12px]"
+                      />
+                      Google Sheets
+                    </Tag>
+                  </div>
                   <Tag variant="darkBlue" className="gap-x-1 border-none">
                     <Icons.CodeSnippet02 className="h-3 w-3 stroke-white" />
                     REST API
@@ -632,23 +644,24 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
               <div className="my-7 flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button
+                  asChild
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
-                  onClick={() => {
-                    window.open(
-                      "https://github.com/instill-ai/model",
-                      "_blank"
-                    );
-                  }}
                 >
-                  <GitHubIcon
-                    width="w-5"
-                    height="h-5"
-                    color="fill-[#000]"
-                    position="my-auto"
-                  />
-                  Star Instill Model
+                  <a
+                    href="https://github.com/instill-ai/model"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHubIcon
+                      width="w-5"
+                      height="h-5"
+                      color="fill-[#000]"
+                      position="my-auto"
+                    />
+                    Star Instill Model
+                  </a>
                 </Button>
               </div>
             </div>
@@ -663,25 +676,25 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                   <Tag variant="lightGreen">Stable Diffusion</Tag>
                   <Tag variant="lightGreen">GPT</Tag>
                   <Tag variant="lightGreen">Llama 2</Tag>
-                  <Tag variant="lightGreen" className="hidden xl:block">
-                    MPT
-                  </Tag>
-                  <Tag variant="lightGreen" className="hidden xl:block">
-                    Falcon
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightGreen">MPT</Tag>
+                  </div>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightGreen">Falcon</Tag>
+                  </div>
                   <Tag variant="lightGreen" className="">
                     Segment Anything
                   </Tag>
-                  <Tag variant="lightGreen" className="hidden xl:block">
-                    CLIP
-                  </Tag>
-                  <Tag variant="lightGreen" className="hidden xl:block">
-                    Mask RCNN
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightGreen">CLIP</Tag>
+                  </div>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightGreen">Mask RCNN</Tag>
+                  </div>
                   <Tag variant="lightGreen">YOLOv7</Tag>
-                  <Tag variant="lightGreen" className="hidden xl:block">
-                    YOLOv7 Pose
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightGreen">YOLOv7 Pose</Tag>
+                  </div>
                   <Tag variant="lightGreen">More</Tag>
                 </div>
               </div>
@@ -710,18 +723,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     <Icons.SpeechRecognition className="h-3 w-3 stroke-semantic-fg-secondary" />
                     Audio Recognition
                   </Tag>
-                  <Tag
-                    variant="lightPurple"
-                    className="hidden gap-x-1 xl:block"
-                  >
-                    <ImageClassificationIcon
-                      color="fill-instillGrey90"
-                      height="h-[12px]"
-                      position="my-auto"
-                      width="w-[12px]"
-                    />
-                    Image Classification
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightPurple" className="gap-x-1">
+                      <ImageClassificationIcon
+                        color="fill-instillGrey90"
+                        height="h-[12px]"
+                        position="my-auto"
+                        width="w-[12px]"
+                      />
+                      Image Classification
+                    </Tag>
+                  </div>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <ObjectDetectionIcon
                       color="fill-instillGrey90"
@@ -740,18 +752,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Keypoint Detection
                   </Tag>
-                  <Tag
-                    variant="lightPurple"
-                    className="hidden gap-x-1 xl:block"
-                  >
-                    <ObjectDetectionIcon
-                      color="fill-instillGrey90"
-                      height="h-[12px]"
-                      position="my-auto"
-                      width="w-[12px]"
-                    />
-                    OCR
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightPurple" className="gap-x-1">
+                      <ObjectDetectionIcon
+                        color="fill-instillGrey90"
+                        height="h-[12px]"
+                        position="my-auto"
+                        width="w-[12px]"
+                      />
+                      OCR
+                    </Tag>
+                  </div>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <InstanceSegmentationIcon
                       color="fill-instillGrey90"
@@ -761,18 +772,17 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                     />
                     Instance Segmentation
                   </Tag>
-                  <Tag
-                    variant="lightPurple"
-                    className="hidden gap-x-1 xl:block"
-                  >
-                    <SemanticSegmentationIcon
-                      color="fill-instillGrey90"
-                      height="h-[12px]"
-                      position="my-auto"
-                      width="w-[12px]"
-                    />
-                    Semantic Segmentation
-                  </Tag>
+                  <div className="hidden xl:block">
+                    <Tag variant="lightPurple" className="gap-x-1">
+                      <SemanticSegmentationIcon
+                        color="fill-instillGrey90"
+                        height="h-[12px]"
+                        position="my-auto"
+                        width="w-[12px]"
+                      />
+                      Semantic Segmentation
+                    </Tag>
+                  </div>
                   <Tag variant="lightPurple" className="gap-x-1">
                     <div className="h-2 w-2 rounded-lg bg-violet-500"></div>
                     More
@@ -888,37 +898,39 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
 
               <div className="my-7 flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button
+                  asChild
                   variant="secondaryGrey"
                   size="lg"
                   className="flex items-center gap-x-2"
-                  onClick={() => {
-                    window.open(
-                      "https://github.com/instill-ai/model",
-                      "_blank"
-                    );
-                  }}
                 >
-                  <GitHubIcon
-                    width="w-5"
-                    height="h-5"
-                    color="fill-[#000]"
-                    position="my-auto"
-                  />
-                  Star Instill Model
+                  <a
+                    href="https://github.com/instill-ai/model"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <GitHubIcon
+                      width="w-5"
+                      height="h-5"
+                      color="fill-[#000]"
+                      position="my-auto"
+                    />
+                    Star Instill Model
+                  </a>
                 </Button>
                 <Button
+                  asChild
                   variant="white"
                   size="lg"
                   className="flex items-center gap-x-2"
-                  onClick={() => {
-                    window.open(
-                      "https://console.instill.tech/?utm_source=product&utm_medium=button",
-                      "_blank"
-                    );
-                  }}
                 >
-                  Access early on instill Cloud
-                  <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                  <a
+                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Access early on instill Cloud
+                    <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -985,48 +997,50 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
             <div className="xl:flex xl:justify-center">
               <div className="flex flex-col gap-y-3 xl:flex-row xl:gap-x-5">
                 <Button
+                  asChild
                   variant="primary"
                   size="lg"
                   className="w-full xl:w-auto"
-                  onClick={() => {
-                    window.open(
-                      "https://console.instill.tech/?utm_source=product&utm_medium=button",
-                      "_blank"
-                    );
-                  }}
                 >
-                  Try Instill Cloud Free
+                  <a
+                    href="https://console.instill.tech/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Try Instill Cloud Free
+                  </a>
                 </Button>
 
                 <Button
+                  asChild
                   variant="white"
                   size="lg"
                   className="flex w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
-                  onClick={() => {
-                    window.open(
-                      "https://www.instill.tech/docs/?utm_source=product&utm_medium=button",
-                      "_blank"
-                    );
-                  }}
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <a
+                    href="https://www.instill.tech/docs/?utm_source=product&utm_medium=button"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <path
-                      d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M14 17H8M16 13H8M20 9.98822V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2H12.0118C12.7455 2 13.1124 2 13.4577 2.08289C13.7638 2.15638 14.0564 2.27759 14.3249 2.44208C14.6276 2.6276 14.887 2.88703 15.4059 3.40589L18.5941 6.59411C19.113 7.11297 19.3724 7.3724 19.5579 7.67515C19.7224 7.94356 19.8436 8.2362 19.9171 8.5423C20 8.88757 20 9.25445 20 9.98822Z"
-                      stroke="#fff"
-                      strokeOpacity="0.8"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Read our Docs
-                  <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M14 17H8M16 13H8M20 9.98822V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2H12.0118C12.7455 2 13.1124 2 13.4577 2.08289C13.7638 2.15638 14.0564 2.27759 14.3249 2.44208C14.6276 2.6276 14.887 2.88703 15.4059 3.40589L18.5941 6.59411C19.113 7.11297 19.3724 7.3724 19.5579 7.67515C19.7224 7.94356 19.8436 8.2362 19.9171 8.5423C20 8.88757 20 9.25445 20 9.98822Z"
+                        stroke="#fff"
+                        strokeOpacity="0.8"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Read our Docs
+                    <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
+                  </a>
                 </Button>
               </div>
             </div>
