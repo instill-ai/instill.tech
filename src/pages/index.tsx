@@ -1,10 +1,14 @@
 import { FC, ReactElement } from "react";
 import { CaseStudyProps } from "@/components/landing";
-import { PageHead, SectionLabel } from "@/components/ui";
+import { PageHead } from "@/components/ui";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import cn from "clsx";
-import { BaseLayout, Hero } from "@/components/hacktoberfest";
+import {
+  BaseLayout,
+  Hero,
+  SubscribeNewsletterForm,
+} from "@/components/hacktoberfest";
 import {
   BigQueryIcon,
   Button,
@@ -958,7 +962,7 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                 <div className="my-auto w-full xl:w-1/2">
                   <div className="flex justify-center">
                     <div className="flex flex-row">
-                      <Input.Root className="!rounded-none !rounded-l-sm !px-4">
+                      {/* <Input.Root className="!rounded-none !rounded-l-sm !px-4">
                         <Input.Core
                           disabled={false}
                           type="text"
@@ -971,7 +975,9 @@ const HacktoberfestPage: FC<HacktoberfestPageProps> & {
                         className="!rounded-none !rounded-r-sm"
                       >
                         Subscribe
-                      </Button>
+                      </Button> */}
+
+                      <SubscribeNewsletterForm />
                     </div>
                   </div>
                 </div>
