@@ -35,43 +35,13 @@ import {
 import Image from "next/image";
 // to detect language and automatically redirect to the approprate/[locale] page
 
-export const getStaticProps: GetStaticProps<HacktoberfestPageProps> =
-  async () => {
-    const destinationDefinitions = await getRepoFileContent(
-      "instill-ai",
-      "connector-destination",
-      "pkg/airbyte/config/seed/definitions.json"
-    );
-
-    const buf = Buffer.from(destinationDefinitions.content, "base64").toString(
-      "utf-8"
-    );
-
-    const destinationArray: Record<string, string>[] = JSON.parse(buf);
-
-    return {
-      props: {
-        destinations: destinationArray.map((e) => {
-          return {
-            name: e.title,
-            icon: e.icon ?? null,
-          };
-        }),
-      },
-    };
-  };
-
-type HacktoberfestPageProps = {
-  destinations: CaseStudyProps["destinations"];
-};
-
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const HacktoberfestPage: FC<HacktoberfestPageProps> & {
+const HacktoberfestPage: FC & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ destinations }) => {
+} = () => {
   return (
     <>
       <PageHead
