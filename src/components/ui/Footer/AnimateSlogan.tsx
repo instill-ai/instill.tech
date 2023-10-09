@@ -20,7 +20,7 @@ export const AnimateSlogan = () => {
 
   return (
     <>
-      <div className="instill-footer-animate-slogan h-[100px] w-[350px] font-mono text-2xl font-medium text-instillGrey05">
+      <div className="instill-footer-animate-slogan h-[130px] w-[330px] font-mono text-2xl font-medium text-instillGrey05 xl:h-[100px] xl:w-[350px]">
         <div ref={sloganRef}>UNSTRUCTURED DATA INFRASTRUCTURE</div>
         <div>MADE FOR ALL</div>
       </div>
