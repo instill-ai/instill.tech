@@ -24,28 +24,29 @@ export const Hero = () => {
 
       <div className="my-8 xl:my-10 xl:flex xl:justify-center">
         <div className="flex flex-col gap-y-5 xl:flex-row xl:gap-x-3">
-          <Button variant="primary" size="lg" className="w-full xl:w-auto">
-            <a
-              href="https://console.instill.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try Instill Cloud Free
-            </a>
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full xl:w-auto"
+            onClick={() => {
+              window.open("https://console.instill.tech", "_blank");
+            }}
+          >
+            Try Instill Cloud Free
           </Button>
 
           <Button
             variant="white"
             size="lg"
             className="border-semantic-bg-primar flex w-full items-center gap-x-2 xl:w-auto"
+            onClick={() => {
+              window.open(
+                "https://www.instill.tech/docs/core/welcome/?utm_source=product&utm_medium=button",
+                "_blank"
+              );
+            }}
           >
-            <a
-              href="https://www.instill.tech/docs/core/welcome/?utm_source=product&utm_medium=button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Self-hosted
-            </a>
+            Self-hosted
             <Icons.ArrowRight className="h-5 w-5 stroke-semantic-bg-primary" />
           </Button>
         </div>
