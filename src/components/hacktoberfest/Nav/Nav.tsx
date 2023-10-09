@@ -25,7 +25,7 @@ export const Nav = () => {
       <div className="flex flex-row gap-x-1">
         <p className="text-base text-instillGrey95">👉 Check out</p>
         <a
-          className="text-base text-instillGrey95 underline hover:text-instillBlue50"
+          className="text-base text-instillGrey95 underline hover:text-white"
           target="_blank"
           rel="noreferrer noopener"
           href="https://www.instill.tech/blog/celebrate-Hacktoberfest-2023/?utm_source=product&utm_medium=link"
