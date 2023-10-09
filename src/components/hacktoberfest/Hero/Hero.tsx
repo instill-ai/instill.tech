@@ -58,7 +58,7 @@ export const Hero = () => {
       </div>
 
       <div
-        className="my-10 flex rounded-sm bg-instillGrey80 p-3 xl:my-20"
+        className="my-10 flex rounded xl:my-20"
         style={{
           boxShadow:
             "0px 16px 32px 0px rgba(49, 111, 237, 0.15), 0px 7px 7px 12px rgba(59, 122, 247, 0.05)",
@@ -69,7 +69,7 @@ export const Hero = () => {
           width={1128}
           height={612}
           alt="Console Cloud Dashboard"
-          className="w-full"
+          className="w-full rounded-sm"
         />
       </div>
     </div>
