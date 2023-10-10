@@ -67,6 +67,8 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
     });
   });
 
+  console.log("getStaticPaths", getStaticPaths);
+
   return {
     paths: paths,
     fallback: "blocking",
@@ -86,12 +88,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   let fullPath: string;
   let relativePath: string;
-
-  const localeString = getLocale(
-    params.path,
-    locales ? locales : [],
-    locale ?? "en"
-  );
 
   if (Array.isArray(params.path)) {
     fullPath = join(process.cwd(), "docs", ...params.path);
@@ -151,17 +147,17 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Access GitHub API to retrieve the info of Committer
 
-  let commitMeta: Nullable<CommitMeta> = null;
+  // let commitMeta: Nullable<CommitMeta> = null;
 
-  try {
-    commitMeta = await getCommitMeta({
-      org: "instill-ai",
-      repo: "instill.tech",
-      path: "docs/" + relativePath + "." + locale + ".mdx",
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  // try {
+  //   commitMeta = await getCommitMeta({
+  //     org: "instill-ai",
+  //     repo: "instill.tech",
+  //     path: "docs/" + relativePath + "." + locale + ".mdx",
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
 
   // We use remark to get the headers
 
@@ -174,12 +170,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: {
-      // ...(await serverSideTranslations(locale ?? "en", ["common"])),
-      mdxSource,
-      nextArticle,
-      prevArticle,
-      headers,
-      commitMeta,
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+      mdxSource: mdxSource,
+      nextArticle: nextArticle,
+      prevArticle: prevArticle,
+      headers: headers,
+      commitMeta: null,
     },
   };
 };
