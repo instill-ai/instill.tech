@@ -174,7 +174,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+      // ...(await serverSideTranslations(locale ?? "en", ["common"])),
       mdxSource,
       nextArticle,
       prevArticle,
