@@ -78,19 +78,9 @@ const HacktoberfestPage: FC & {
                 "font-['IBM Plex Sans'] w-full text-center text-2xl font-semibold leading-7 text-semantic-fg-primary-on-bg-secondary xl:text-[56px] xl:font-bold xl:leading-[78px]"
               )}
             >
-              The AI Applications are All About Unstructured Data Infrastructure
+              AI Apps Rely on Unstructured Data InfrastructureF
             </h1>
-            <div
-              className={cn(
-                "mb-20 hidden text-center font-sans text-[18px] text-lg font-light text-white xl:block"
-              )}
-            >
-              Instill Core - where the world of AI-first applications come
-              alive. Instill Core lays the foundation for AI-powered pipelines
-              designed to handle unstructured data. Within this ecosystem, you
-              will find open source projects that enable you to construct robust
-              AI pipelines for unstructured data.
-            </div>
+
             <div className="flex flex-col xl:flex-row">
               <div className="flex w-full justify-center xl:w-1/5">
                 <div className="flex flex-col text-center">
@@ -208,12 +198,9 @@ const HacktoberfestPage: FC & {
                 "mb-20 hidden text-center font-sans text-[18px] text-lg font-light text-white xl:block"
               )}
             >
-              Instill Core - where the world of AI-first applications come
-              alive. Instill Core lays the foundation for AI-powered
-              infrastructure designed for unstructured data. Within this
-              ecosystem, you will find open source projects that enable you to
-              build AI applications to handle unstructured data for your use
-              cases.
+              Instill Core - Powering AI-first applications. It provides an
+              open-source AI infrastructure tailored for unstructured data,
+              enabling versatile AI application development.
             </div>
 
             <div className="font-['IBM Plex Sans'] text-center text-lg font-normal leading-7 text-white text-opacity-75 xl:hidden">
@@ -284,8 +271,8 @@ const HacktoberfestPage: FC & {
         <div className="py-10 xl:py-20">
           <div className="flex flex-col gap-x-10 xl:flex-row">
             <div className="w-full xl:w-1/2">
-              <div className="flex flex-row justify-center">
-                <div className="flex gap-x-7 gap-y-3 py-3 xl:justify-start">
+              <div className="flex flex-row justify-center xl:justify-start">
+                <div className="flex gap-x-7 gap-y-3 py-3">
                   <div className="rounded bg-white xl:rounded-md">
                     <Logos.VDPSquare className="h-10 w-10 xl:h-20 xl:w-20" />
                   </div>
@@ -307,8 +294,7 @@ const HacktoberfestPage: FC & {
               </div>
               <div>
                 <p className="font-['IBM Plex Sans'] hidden text-lg font-medium leading-snug text-white xl:block xl:text-[28px]">
-                  Simplify building the unstructured data journey for your AI
-                  apps from start to finish.
+                  Simplify unstructured data journey for AI apps
                 </p>
               </div>
               <div className="font-['IBM Plex Sans'] hidden px-4 py-7 text-lg font-normal leading-relaxed text-white xl:block">
