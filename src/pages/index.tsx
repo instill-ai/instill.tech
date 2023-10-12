@@ -78,7 +78,7 @@ const HacktoberfestPage: FC & {
                 "font-['IBM Plex Sans'] w-full text-center text-2xl font-semibold leading-7 text-semantic-fg-primary-on-bg-secondary xl:text-[56px] xl:font-bold xl:leading-[78px]"
               )}
             >
-              AI Apps Rely on Unstructured Data InfrastructureF
+              AI Apps Rely on Unstructured Data Infrastructure
             </h1>
 
             <div className="flex flex-col xl:flex-row">
@@ -107,10 +107,10 @@ const HacktoberfestPage: FC & {
                   <div className="flex justify-center">
                     <div className="flex w-full flex-col pt-5 xl:w-3/5">
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
-                        <Tag variant="darkNeutral">LLM apps</Tag>
-                        <Tag variant="darkNeutral">Vision apps</Tag>
-                        <Tag variant="darkNeutral">Image generators</Tag>
-                        <Tag variant="darkNeutral">Audio apps</Tag>
+                        <Tag variant="darkNeutral">LLM Apps</Tag>
+                        <Tag variant="darkNeutral">Vision Apps</Tag>
+                        <Tag variant="darkNeutral">Image Aenerators</Tag>
+                        <Tag variant="darkNeutral">Audio Apps</Tag>
                         <Tag variant="darkNeutral">More</Tag>
                       </div>
                       <div className="flex justify-center gap-x-2.5"></div>
@@ -126,14 +126,14 @@ const HacktoberfestPage: FC & {
                     <div className="flex w-full flex-col xl:w-5/6">
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Data extraction
+                          Data Extraction
                         </Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Data transform via AI model inference
+                          Data Transform Via AI Model Inference
                         </Tag>
-                        <Tag variant="lightNeutral">Customizable data flow</Tag>
+                        <Tag variant="lightNeutral">Customizable Data Flow</Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Flexible flow orchestration
+                          Flexible Flow Orchestration
                         </Tag>
                         <Tag variant="lightNeutral">Troubleshooting</Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
@@ -145,15 +145,15 @@ const HacktoberfestPage: FC & {
                           Monitoring & Logging
                         </Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Data management
+                          Data Management
                         </Tag>
-                        <Tag variant="lightNeutral">Model deployment</Tag>
-                        <Tag variant="lightNeutral">Model training</Tag>
+                        <Tag variant="lightNeutral">Model Deployment</Tag>
+                        <Tag variant="lightNeutral">Model Training</Tag>
                         <Tag variant="lightNeutral">
                           Scalability & Reliability
                         </Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Extend to new use cases
+                          Extend to Mew Use Cases
                         </Tag>
                         <Tag variant="lightNeutral">More</Tag>
                       </div>
