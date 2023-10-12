@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.41.1](https://github.com/instill-ai/instill.tech/compare/v1.41.0...v1.41.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* In dark mode the search bar placeholder color not visible ([#625](https://github.com/instill-ai/instill.tech/issues/625)) ([6b0376d](https://github.com/instill-ai/instill.tech/commit/6b0376dd888039e695127a2cd4bf20a3e4e2df0a))
+
+
+### Miscellaneous
+
+* replace gif with video ([#629](https://github.com/instill-ai/instill.tech/issues/629)) ([54f6b59](https://github.com/instill-ai/instill.tech/commit/54f6b5907046a6bd235709db1ff3f21ab6631ec9))
+* update landing page content ([#627](https://github.com/instill-ai/instill.tech/issues/627)) ([4d9b158](https://github.com/instill-ai/instill.tech/commit/4d9b1585cb212cec1f3ffc3a22e1074ca7f6c670))
+
 ## [1.41.0](https://github.com/instill-ai/instill.tech/compare/v1.40.3...v1.41.0) (2023-10-09)
 
 
