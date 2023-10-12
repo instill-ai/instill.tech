@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.2](https://github.com/instill-ai/instill.tech/compare/v1.41.1...v1.41.2) (2023-10-12)
+
+
+### Miscellaneous
+
+* fix names ([#630](https://github.com/instill-ai/instill.tech/issues/630)) ([5d1c632](https://github.com/instill-ai/instill.tech/commit/5d1c63234977edd64c1277e188f692c6958550b7))
+
 ## [1.41.1](https://github.com/instill-ai/instill.tech/compare/v1.41.0...v1.41.1) (2023-10-12)
 
 
