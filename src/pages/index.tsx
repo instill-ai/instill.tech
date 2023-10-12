@@ -129,7 +129,7 @@ const HacktoberfestPage: FC & {
                           Data Extraction
                         </Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Data Transform Via AI Model Inference
+                          Data Transform via AI Model Inference
                         </Tag>
                         <Tag variant="lightNeutral">Customizable Data Flow</Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
@@ -153,7 +153,7 @@ const HacktoberfestPage: FC & {
                           Scalability & Reliability
                         </Tag>
                         <Tag variant="lightNeutral" className="hidden xl:block">
-                          Extend to Mew Use Cases
+                          Extend to new Use Cases
                         </Tag>
                         <Tag variant="lightNeutral">More</Tag>
                       </div>
