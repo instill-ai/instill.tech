@@ -65,13 +65,10 @@ export const Hero = () => {
           backgroundColor: "rgba(255, 255, 255, 0.20)",
         }}
       >
-        <Image
-          src="/hacktoberfest/demo.gif"
-          width={1128}
-          height={612}
-          alt="Console Cloud Dashboard"
-          className="w-full"
-        />
+        <video playsInline autoPlay muted loop>
+          <source src="/hacktoberfest/demo.mp4" type="video/mp4" />
+          Console Cloud Dashboard
+        </video>
       </div>
     </div>
   );
