@@ -91,7 +91,7 @@ export const Section = ({
             key={item.link}
             href={item.link}
             className={cn(
-              "ml-4 py-1.5 pl-2.5 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
+              "py-1.5 pl-6 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
               item.link === router.asPath.split("#")[0]
                 ? "rounded bg-instillGrey20 text-instillGrey95"
                 : "text-instillGrey80 dark:text-instillGrey30"
