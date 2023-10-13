@@ -15,6 +15,7 @@ export type SidebarSections = {
   items: SidebarItem[];
   appType: InstillAppType;
   versions: Nullable<number>[] | Nullable<string>[];
+  isHeader?: boolean;
 };
 
 export type SidebarSection = {

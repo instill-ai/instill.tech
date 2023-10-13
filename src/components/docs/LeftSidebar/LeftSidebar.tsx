@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import cn from "clsx";
+import { DocSearch } from "@docsearch/react";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -30,9 +31,17 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       </style>
       <div
         className={cn(
-          "left-sidebar flex w-96 flex-col overflow-auto px-8 pb-10 pt-5 md:sticky md:top-0 md:ml-auto"
+          "left-sidebar flex w-96 flex-col overflow-auto px-2 pb-10 pt-5 md:sticky md:top-0 md:ml-auto"
         )}
       >
+        <div className="mx-0 mb-5">
+          <DocSearch
+            appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
+            apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
+            indexName="instill"
+          />
+        </div>
+
         {leftSidebar.sections.map((section) => (
           <div key={section.text} className="w-full">
             <Section
@@ -40,6 +49,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
               text={section.text}
               collapsible={section.collapsible}
               link={section.link}
+              isHeader={section.isHeader}
             />
           </div>
         ))}

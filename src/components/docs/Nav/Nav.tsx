@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import cn from "clsx";
 import Link from "next/link";
-import { DocSearch } from "@docsearch/react";
+
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
@@ -226,7 +226,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       >
         <div className="container mx-auto flex flex-row">
           {!nav.logo && !nav.title ? null : (
-            <div className="logo mr-4 flex">
+            <div className="logo mr-10 flex">
               <Link
                 href={nav.logo ? nav.logo?.href : ""}
                 className="flex flex-row gap-x-3"
@@ -235,14 +235,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               </Link>
             </div>
           )}
-
-          <div className="mx-5 my-auto">
-            <DocSearch
-              appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
-              apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
-              indexName="instill"
-            />
-          </div>
 
           <div className="flex flex-1 flex-row">
             <div className="flex flex-grow flex-row justify-end">

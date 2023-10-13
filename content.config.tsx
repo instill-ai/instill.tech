@@ -26,46 +26,12 @@ const SITE = {
 const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
   return [
     {
-      text: "common:sidebarSections.welcome",
-      link: `/docs/sdk/${appVersion}/welcome`,
+      text: "Instill Core",
+      link: `/docs/core/${appVersion}/welcome`,
       items: [],
-      appType: "sdk",
-      versions: ["latest"],
-    },
-    {
-      text: "common:navbar.pythonSDK",
-      link: `/docs/sdk/${appVersion}/python`,
-      items: [],
-      appType: "sdk",
-      versions: ["latest"],
-    },
-    {
-      text: "common:navbar.typescriptSDK",
-      link: `/docs/sdk/${appVersion}/typescript`,
-      items: [],
-      appType: "sdk",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.welcome",
-      link: `/docs/cloud/${appVersion}/welcome`,
-      items: [],
-      appType: "cloud",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.gettingStarted",
-      link: `/docs/cloud/${appVersion}/getting-started`,
-      items: [],
-      appType: "cloud",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.usingInstillCloud",
-      link: `/docs/cloud/${appVersion}/using-instill-cloud`,
-      items: [],
-      appType: "cloud",
-      versions: ["latest"],
+      appType: "core",
+      versions: [],
+      isHeader: true,
     },
     {
       text: "common:sidebarSections.welcome",
@@ -103,6 +69,44 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: ["latest"],
     },
     {
+      text: "Instill Cloud",
+      link: `/docs/cloud/${appVersion}/welcome`,
+      items: [],
+      appType: "cloud",
+      versions: ["latest"],
+      isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/cloud/${appVersion}/welcome`,
+      items: [],
+      appType: "cloud",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.gettingStarted",
+      link: `/docs/cloud/${appVersion}/getting-started`,
+      items: [],
+      appType: "cloud",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.usingInstillCloud",
+      link: `/docs/cloud/${appVersion}/using-instill-cloud`,
+      items: [],
+      appType: "cloud",
+      versions: ["latest"],
+    },
+
+    {
+      text: "Instill VDP",
+      link: `/docs/vdp/${appVersion}/welcome`,
+      items: [],
+      appType: "vdp",
+      versions: [],
+      isHeader: true,
+    },
+    {
       text: "common:sidebarSections.welcome",
       link: `/docs/vdp/${appVersion}/welcome`,
       items: [],
@@ -133,26 +137,7 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       appType: "vdp",
       versions: [],
     },
-    {
-      text: "common:sidebarSections.deployment",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.overview",
-          link: `/docs/vdp/${appVersion}/deployment/overview`,
-        },
-        {
-          text: "common:sidebarSections.dockerCompose",
-          link: `/docs/vdp/${appVersion}/deployment/docker-compose`,
-        },
-        {
-          text: "common:sidebarSections.kubernetesUsingHelm",
-          link: `/docs/vdp/${appVersion}/deployment/kubernetes-using-helm`,
-        },
-      ],
-      appType: "vdp",
-      versions: [],
-    },
+
     {
       text: "common:sidebarSections.coreConcepts",
       collapsible: true,
@@ -278,6 +263,35 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
+      text: "common:sidebarSections.deployment",
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.overview",
+          link: `/docs/vdp/${appVersion}/deployment/overview`,
+        },
+        {
+          text: "common:sidebarSections.dockerCompose",
+          link: `/docs/vdp/${appVersion}/deployment/docker-compose`,
+        },
+        {
+          text: "common:sidebarSections.kubernetesUsingHelm",
+          link: `/docs/vdp/${appVersion}/deployment/kubernetes-using-helm`,
+        },
+      ],
+      appType: "vdp",
+      versions: [],
+    },
+
+    {
+      text: "Instill Model",
+      link: `/docs/model/${appVersion}/welcome`,
+      items: [],
+      appType: "model",
+      versions: [],
+      isHeader: true,
+    },
+    {
       text: "common:sidebarSections.welcome",
       link: `/docs/model/${appVersion}/welcome`,
       items: [],
@@ -401,6 +415,14 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
+      text: "Instill Base",
+      link: `/docs/base/${appVersion}/welcome`,
+      items: [],
+      appType: "base",
+      versions: [],
+      isHeader: true,
+    },
+    {
       text: "common:sidebarSections.welcome",
       link: `/docs/base/${appVersion}/welcome`,
       items: [],
@@ -454,6 +476,35 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       ],
       appType: "base",
       versions: [],
+    },
+    {
+      text: "SDK",
+      link: `/docs/sdk/${appVersion}/welcome`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+      isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.welcome",
+      link: `/docs/sdk/${appVersion}/welcome`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+    },
+    {
+      text: "common:navbar.pythonSDK",
+      link: `/docs/sdk/${appVersion}/python`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
+    },
+    {
+      text: "common:navbar.typescriptSDK",
+      link: `/docs/sdk/${appVersion}/typescript`,
+      items: [],
+      appType: "sdk",
+      versions: ["latest"],
     },
   ];
 };
@@ -512,8 +563,7 @@ export function getSidebarSections(
   appType: InstillAppType,
   appVersion: InstillAppVersion
 ) {
-  const sections = getSections(appVersion);
-  return sections.filter((section) => section?.appType === appType);
+  return getSections(appVersion);
 }
 
 // Construct the sidebar items
@@ -544,69 +594,101 @@ export function getNavbar(
     title: appType,
     items: [
       {
-        key: "docs-nav-docs",
-        href: `/docs/core/${appVersion}/welcome`,
-        className: "navbar-dropdown-menu",
+        key: "docs-nav-overview",
+        to: `/docs/overview`,
+        className: "",
         position: "left",
-        label:
-          applicationName[
-            appType === "cloud" || appType === "sdk" ? "core" : appType
-          ],
-        iconElement: (
-          <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
-        ),
-        items: [
-          {
-            key: "docs-nav-core-welcome",
-            to: `/docs/core/${appVersion}/welcome`,
-            className: "",
-            position: "right",
-            label: "common:navbar.instillCore",
-            appType: "core",
-          },
-          {
-            key: "docs-nav-base-welcome",
-            to: `/docs/base/${appVersion}/welcome`,
-            className: "",
-            position: "right",
-            label: "common:navbar.instillBase",
-            appType: "base",
-          },
-          {
-            key: "docs-nav-vdp-welcome",
-            to: `/docs/vdp/${appVersion}/welcome`,
-            className: "",
-            position: "right",
-            label: "common:navbar.instillVDP",
-            appType: "vdp",
-          },
-          {
-            key: "docs-nav-model-welcome",
-            to: `/docs/model/${appVersion}/welcome`,
-            className: "",
-            position: "right",
-            label: "common:navbar.instillModel",
-            appType: "model",
-          },
-        ],
+        label: "Overview",
         appType: null,
       },
       {
-        key: "docs-nav-cloud-welcome",
-        to: `/docs/cloud/${appVersion}/welcome`,
+        key: "docs-nav-documentation",
+        to: `/docs/documentation`,
         className: "",
         position: "left",
-        label: "common:navbar.instillCloud",
-        appType: "cloud",
-      },
-      {
-        key: "docs-nav-sdk",
-        to: `/docs/sdk/${VERSIONS[appType]}/welcome`,
-        className: "",
-        position: "left",
-        label: "SDK",
+        label: "Documentation",
         appType: null,
       },
+      {
+        key: "docs-nav-api-reference",
+        to: `/docs/api-reference`,
+        className: "",
+        position: "left",
+        label: "API reference",
+        appType: null,
+      },
+      {
+        key: "docs-nav-example",
+        to: `/docs/example`,
+        className: "",
+        position: "left",
+        label: "Example",
+        appType: null,
+      },
+      // {
+      //   key: "docs-nav-docs",
+      //   href: `/docs/core/${appVersion}/welcome`,
+      //   className: "navbar-dropdown-menu",
+      //   position: "left",
+      //   label:
+      //     applicationName[
+      //       appType === "cloud" || appType === "sdk" ? "core" : appType
+      //     ],
+      //   iconElement: (
+      //     <Icons.ChevronDown className="navbar-dropdown-menu my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+      //   ),
+      //   items: [
+      //     {
+      //       key: "docs-nav-core-welcome",
+      //       to: `/docs/core/${appVersion}/welcome`,
+      //       className: "",
+      //       position: "right",
+      //       label: "common:navbar.instillCore",
+      //       appType: "core",
+      //     },
+      //     {
+      //       key: "docs-nav-base-welcome",
+      //       to: `/docs/base/${appVersion}/welcome`,
+      //       className: "",
+      //       position: "right",
+      //       label: "common:navbar.instillBase",
+      //       appType: "base",
+      //     },
+      //     {
+      //       key: "docs-nav-vdp-welcome",
+      //       to: `/docs/vdp/${appVersion}/welcome`,
+      //       className: "",
+      //       position: "right",
+      //       label: "common:navbar.instillVDP",
+      //       appType: "vdp",
+      //     },
+      //     {
+      //       key: "docs-nav-model-welcome",
+      //       to: `/docs/model/${appVersion}/welcome`,
+      //       className: "",
+      //       position: "right",
+      //       label: "common:navbar.instillModel",
+      //       appType: "model",
+      //     },
+      //   ],
+      //   appType: null,
+      // },
+      // {
+      //   key: "docs-nav-cloud-welcome",
+      //   to: `/docs/cloud/${appVersion}/welcome`,
+      //   className: "",
+      //   position: "left",
+      //   label: "common:navbar.instillCloud",
+      //   appType: "cloud",
+      // },
+      // {
+      //   key: "docs-nav-sdk",
+      //   to: `/docs/sdk/${VERSIONS[appType]}/welcome`,
+      //   className: "",
+      //   position: "left",
+      //   label: "SDK",
+      //   appType: null,
+      // },
       {
         key: "docs-nav-dropdown-menu",
         href: "/",
