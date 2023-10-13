@@ -73,109 +73,142 @@ Once all the services are up, access the no-code Console at http://localhost:300
 
 With these options, you can conveniently access Instill VDP according to your preference - via the user-friendly Instill Cloud or by self-hosting Instill Core on your local system.
 
-## Build the pipeline
+## Build the pipeline using no-code method
 
-We will guide you through the process of building a VDP pipeline, focusing on a basic generative pipeline.
-To accomplish this, we will be using the **Stability AI AI Connector**, which seamlessly integrates with Stability AI's services,
-and the **Numbers Protocol Blockchain Connector** to convert data into Web3 assets.
+We will guide you through the process of building a VDP pipeline, focusing on a basic generative pipeline using no-code method. To accomplish this, we will be using the **Stability AI AI Connector**, which seamlessly integrates with Stability AI's services, and the **Numbers Protocol Blockchain Connector** to convert data into Web3 assets.
 
-After onboarding, you will be redirected to the **Pipeline** page.
-If you haven't set up any pipelines yet, the page will be empty.
-To create a pipeline through the Console, click on **Add new pipeline**. This will redirect you to the _no-code pipeline builder_.
-On the canvas, you can drag and drop connectors and operators to construct your pipeline.
+### Step 0/4: Create a new Pipeline
 
-### Step 1/4: Set up a Start Operator and an End Operator
+After onboarding, you will be redirected to the **Pipeline** page. If you haven't set up any pipelines yet, the page will be empty. To create a pipeline with template through the Console, click on `Turn your AI art into Web3 asset` . This will redirect you to the no-code pipeline builder with several nodes shown in the beginning.
 
-The Start Operator serves as the initial point of the VDP pipeline, while the End Operator is used at the pipeline's end to receive the output as a response when triggering the pipeline.
-To set up the Start and End Operators:
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step0-template.png"
+  alt="Select a template"
+/>
 
-1. On the no-code pipeline builder, click **Operator** on the left sidebar and drag **Start** Operator into the canvas
-2. Click **Create** on the right panel to create the Start Operator
-3. Click **Operator** on the left again and drag **End** Operator into the canvas
-4. Click **Create** on the right panel to create the End Operator
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step0-pipeline.png"
+  alt="Start with the template"
+/>
 
-### Step 2/4: Set up a Stability AI AI Connector
+### Step 1/4: Create Resource for each connector
 
-**Use a pre-created connector on Instill Cloud**
+For make the pipeline workable, we need to first fill in your **API Key** for each connector. 
 
-Instill Cloud offers a list of public AI Connectors, which are ready to use, eliminating the need to create accounts for third-party AI services.
+For this example, we have Stability AI connector and Numbers Protocol connector. For Stability AI, follow the Stability AI **[documentation](https://platform.stability.ai/docs/getting-started/authentication)** to find your API keycreate resource. For Numbers Protocol, check out their [documentation](https://dia-backend.numbersprotocol.io/api/v3/redoc/) for capture token resource.
 
-For this example, click **AI** on the left sidebar and drag the pre-created Stability AI AI Connector with ID **instill-stable-diffusion-xl-1024-v1-0** into the canvas.
-This connector is linked to the [Stable Diffusion XL 1.0](https://stability.ai/blog/stable-diffusion-sdxl-1-announcement) model,
-the flagship image model from Stability AI and the best open model for image generation.
+1. Click **Create Resource**.
 
-**Setup from scratch**
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step1-create-resource-1.png"
+  alt="Click Create Resource"
+/>
 
-Optionally, if you are using Instill Core or prefer to use different models from Stability AI, you can set up a Stability AI account by visiting [dreamstudio.ai](https://dreamstudio.ai).
-Then, proceed to create a Stability AI AI Connector on the Console from scratch by following the guidelines [here](https://www.instill.tech/docs/vdp/ai-connectors/stability-ai/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol).
+2. Select **Existing Resource** or **Create new resource** by entering ID and API Key/Capture Token.
 
-1. Click **AI** on the left and drag **Stability AI** under the Popular Presets into the canvas
-2. Fill in the following information on the right panel
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step1-create-resource-2.png"
+  alt="Enter necessary information to create resource"
+/>
 
-   - Fill **API Key**. Following the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key
-   - Click **Task** ▾ drop-down and choose **Text to Image**
-   - Click **Engine** ▾ drop-down and choose the AI model you want to use. check [here](https://platform.stability.ai/docs/features/api-parameters#engine) to get the model details. Let's use the same model **stable-diffusion-xl-1024-v1-0** (Stable Diffusion XL 1.0) as above
-   - A randomly unique ID is assigned to the connector, which you can modify to your preferred ID
+### Step 2/4: Set up a Stability AI Connector
 
-3. Click on the **Create** button and then **Connect** to utilize the connector
+Instill Cloud provides a Stability AI Connector that is readily available for all users. We can adjust the functionality and parameters of the Stability AI Connector according to our own needs.
+
+In this example,
+
+1. Click **⚙️ icon** in the control panel on the top-right corner of the connector.
+
+2. Click **Task ▾** drop-down and choose **Text to Image**
+
+3. Click **Engine ▾** drop-down and choose the AI model you want to use. Check **[here](https://platform.stability.ai/docs/features/api-parameters#engine)** to get the model details. Let's use **[stable-diffusion-xl-1024-v1-0** (Stable Diffusion XL 1.0)](https://stability.ai/blog/stable-diffusion-sdxl-1-announcement) for example.
+
+4. Fill in all other necessary fields and optional fields as desired.
+
+5. Click **save** at the bottom-right of the right side bar to save the settings.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step2-set-stability-ai.png"
+    alt="Set up Stability AI connector"
+/>
 
 ### Step 3/4: Set up a Numbers Protocol Blockchain Connector
 
-**Use a pre-created connector on Instill Cloud**
-
 Similar to the previous connector, Instill Cloud provides a Numbers Protocol Blockchain Connector that is readily available for all users.
 
-Click **Blockchain** on the left sidebar and drag the pre-created Numbers Protocol Blockchain Connector with ID **instill-number** into the canvas.
-This connector ensures your data file will be pinned on the IPFS network with on-chain records through the [Numbers Gateway](https://ipfs-pin.numbersprotocol.io/ipfs/), ensuring permanent storage.
+In this example,
 
-<InfoBlock type="info" title="info">
-  Rest assured, if you are hesitant about using the pre-created shared Numbers
-  Protocol Blockchain Connector to register your assets, we have good news. In
-  the near future, a transfer API will be introduced, enabling the smooth
-  transfer of all Web3 assets to your Capture Account. If you prefer not to
-  register your data under our shared account, please refer to the following
-  section for alternative options.
-</InfoBlock>
+1. Click **⚙️ icon** in the control panel on the top-right corner of the connector.
 
-**Setup from scratch**
+2. Enter the referenced image you would like to turn into Web3 asset.
 
-Optionally, if you are using Instill Core or you want to register the AI-generated content under your personal account, you'll first need to create a [Capture Account](https://captureapp.xyz/).
-Then, you can set up a Numbers Protocol Blockchain Connector from scratch by following the [documentation](https://www.instill.tech/docs/vdp/blockchain-connectors/numbers-protocol/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol):
+3. Fill in all other fields as desired.
+    
+    Note: The license used for this asset is **`CC BY-SA`**, which is a highly permissive license. For more information about this license, you can check **[here](https://creativecommons.org/licenses/by-sa/4.0/)**.
 
-1. Click **Blockchain** on the left sidebar and drag **Numbers** under Popular Presets into the canvas
-2. Fill in the following information on the right panel
+4. Click **save** at the bottom-right of the right side bar to save the settings.
 
-   - Fill **Capture token**. Follow the Capture App [documentation](https://docs.captureapp.xyz/about-capture/capture-account-and-wallet/capture-token) to acquire your capture token
-   - Click **Asset type** ▾ drop-down and choose **images**
-   - Toggle **'texts' input as asset metadata** to `true`. This will link to the `texts` output of another component and upload the `texts` data to the blockchain as part of the asset metadata
-   - Toggle **'structured_data' input as asset metadata** to `false`
-   - Toggle **'metadata' input as asset metadata** to `true`. This will link the `metadata` output of another component, the upload the `metadata` to the blockchain as part of the asset metadata
-
-3. Click on the **Create** button and then **Connect** to utilize the connector
-
-### Step 4/4: Construct a pipeline
-
-Almost there! The final step is to link the components to control the data flow in a fine-grained manner, and your pipeline will be ready to go:
-
-1. Link the components
-
-   - Connect the `texts` and `metadata` outputs of Start Operator with the corresponding inputs of the Stability AI AI Connector and the Numbers Protocol Blockchain Connector
-   - Connect the `images` output of the Stability AI AI Connector to the corresponding input of the Numbers Protocol Blockchain Connector and the End Operator
-   - Connect the `metadata` output of the Numbers Protocol Blockchain Connector to the corresponding input of the End Operator
-
-2. The pipeline will be assigned a randomly generated unique ID, which you can change on the right panel, for example, **aigc-web3**. Optionally, you can add a description
-3. Finally, click **Create** on the bottom to create the pipeline, and then click **Activate** to activate it
+This connector ensures your data file will be pinned on the IPFS network with on-chain records through the Numbers Gateway, ensuring permanent storage.
 
 <ZoomableImg
-  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/aigc-web3-pipeline.png"
-  alt="Link the components to create the AIGC x Web3 pipeline on the no-code pipeline builder."
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step3-set-numbers.png"
+  alt="Set up Numbers Protocol connector"
 />
 
-## Trigger the pipeline to generate and register AI-generated content into Web3 asset
+### Step 4/4: Test the pipeline
 
-VDP automatically generates a dedicated endpoint for each pipeline to process your data. Here's a step-by-step guide on how to trigger the pipeline and create your Web3 asset.
+Almost there! All connectors will be automatically linked if successfully referencing connecters and operators. Then your pipeline will be ready to go!
 
-Start by clicking on the right panel to reveal the **Pipeline Properties**. This will show you the necessary details to trigger the pipeline.
+Now, 
+
+1. Click **Save 💾** on the top-right corner of the console to save the pipeline.
+
+2. Click **Test ▶︎** to enter test mode.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step4-save-test.png"
+  alt="Save and test the pipeline"
+/>
+
+3. Enter empty fields in Start Operator.
+    
+    Note: Don't forget to personalize the **`asset_creator`** field by using your own name to claim ownership of the generated asset. 
+    
+4. Click **Run** to trigger the pipeline.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step4-trigger.png"
+  alt="Trigger the pipeline by clicking Run"
+/>
+
+5. The result for AI generated Art and Web3 Asset URLs will be shown at the End Operator. 
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step4-result.png"
+  alt="Final result of the pipeline"
+/>
+
+6. Copy the URL and paste it onto the search bar to learn about the details of the Web3 asset generated.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/registered-web3-asset.png"
+  alt="Check out the registered Web3 asset by entering URL"
+/>
+
+The generated assets can be easily accessed and explored using the Numbers **[Search Engine](https://nftsearch.site/)**. To view the Web3 asset created above, navigate to the **[link](https://nftsearch.site/asset-profile?cid=bafybeie2chfgffhtuicd5anygryd6bebnb3dewtnqc2coe3vfkj5lxx7lu)** in `asset_urls`.
+
+<Youtube id="dkXiBisM5nk" width="800" height="450" />
+
+## Trigger the pipeline to generate and register AI-generated content into Web3 asset with low-code method
+
+VDP automatically generates a dedicated endpoint for each pipeline to process your data. Here's a step-by-step guide on how to trigger the pipeline and create your Web3 asset using low-code method.
+
+Start by clicking on the bottom-right icon in console to reveal the **Pipeline Properties**. This will show you the necessary details to trigger the pipeline.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/pipeline-property.gif"
+  alt="Pipeline Property on the bottom right"
+/>
 
 ### Create an API token (only for Instill Cloud users)
 
@@ -184,7 +217,8 @@ However, for Instill Cloud users, you will need a valid API token to trigger the
 
 To create an API token, follow these steps:
 
-1. Click **Settings** ⚙️ on the top sidebar
+1. Go to the **[homepage](https://console.instill.tech/)** of the console.
+1. Click **Settings** ⚙️ on the bottom-left
 2. Navigate to the **API Tokens** page
 3. Just give it an ID and click **Create Token**
 4. The API token will be generated and displayed in the table. Keep this token safe as it does not expire.
@@ -199,134 +233,65 @@ To create an API token, follow these steps:
 
 To trigger the pipeline, you can use cURL with the provided API token as a Bearer token in the authorization headers (required only for Instill Cloud). Here's an example of how to do it:
 
-<CH.Code>
 
 ```shellscript Trigger-via-Instill-Cloud
-curl -X POST 'https://api-vdp.instill.tech/v1alpha/pipelines/aigc-web3/trigger' \
---header 'Authorization: Bearer <Instill Cloud API TOKEN>' \
---data-raw '{
-  "inputs": [
-    {
-      "texts": [
-        "a highly detailed matte painting of team members on a hill watching a rocket launched in the distance with a moon by studio ghibli, makoto shinkai, by artgerm, by greg rutkowski, volumetric lighting, octane render, 4k resolution, trending on artstation, masterpiece"
-      ],
-      "metadata": {
-        "width": 1536,
-        "height": 640,
-        "steps": 50,
-        "cfg_scale": 20,
-        "seed": 16258,
-        "samples": 1,
-        "numbers": {
-          "asset_creator": "Xiaofei Du",
-          "abstract": "AIGC Web3 creation using Instill VDP by Xiaofei Du",
-          "custom": {
-            "digital_source_type": "trainedAlgorithmicMedia",
-            "mining_preference": "notAllowed",
-            "generated_by": "Stability AI: Stable Diffusion XL 1.0",
-            "license": {
-              "name": "CC BY-SA",
-              "document": "https://creativecommons.org/licenses/by-sa/4.0"
-            }
-          }
-        }
-      }
-    }
-  ]
+curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/shihchun-h/pipelines/aigc-web3/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data  '{
+	"inputs": [
+		{
+			"asset_creator": "Hi",
+			"prompts": [
+				"Super Cute Combat"
+			]
+		}
+	]
 }'
 ```
+
 
 ```shellscript Trigger-via-Instill-Core
 curl -X POST 'http://localhost:8080/v1alpha/pipelines/aigc-web3/trigger' \
---data-raw '{
-  "inputs": [
-    {
-      "texts": [
-        "a highly detailed matte painting of team members on a hill watching a rocket launched in the distance with a moon by studio ghibli, makoto shinkai, by artgerm, by greg rutkowski, volumetric lighting, octane render, 4k resolution, trending on artstation, masterpiece"
-      ],
-      "metadata": {
-        "width": 1536,
-        "height": 640,
-        "steps": 50,
-        "cfg_scale": 20,
-        "seed": 16258,
-        "samples": 1,
-        "numbers": {
-          "asset_creator": "Xiaofei Du",
-          "abstract": "AIGC Web3 creation using Instill VDP by Xiaofei Du",
-          "custom": {
-            "digital_source_type": "trainedAlgorithmicMedia",
-            "mining_preference": "notAllowed",
-            "generated_by": "Stability AI: Stable Diffusion XL 1.0",
-            "license": {
-              "name": "CC BY-SA",
-              "document": "https://creativecommons.org/licenses/by-sa/4.0"
-            }
-          }
-        }
-      }
-    }
-  ]
+--data  '{
+	"inputs": [
+		{
+			"asset_creator": "Hi",
+			"prompts": [
+				"Super Cute Combat"
+			]
+		}
+	]
 }'
 ```
 
-</CH.Code>
-
-Don't forget to personalize the `asset_creator` field by using your own name to claim ownership of the generated asset.
-The license used for this asset is `CC BY-SA`, which is a highly permissive license.
-For more information about this license, you can check [here](https://creativecommons.org/licenses/by-sa/4.0/).
-
-Feel free to change the `texts` field to use different prompts or adjust the Stability AI parameters (`width`, `height`, `steps`, `cfg_scale` or `seed`) to
-generate the desired image. Unleash your creativity!
 
 <InfoBlock type="info" title="info">
   To understand the Numbers Protocol related parameters in the `metadata` field,
   including details about the asset creator and license, you can refer to the
-  [documentation](https://www.instill.tech/docs/vdp/blockchain-connectors/numbers-protocol#expected-input-data-fields/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol)
+  [documentation](https://www.instill.tech/docs/vdp/v1.0.0/blockchain-connectors/numbers-protocol)
   for comprehensive information.
 </InfoBlock>
 
 Please be patient as the request may take a a dozen seconds to process. Once completed, you will receive a response.
 
 ```shellscript
-{
-    "outputs": [
-        {
-            "data_mapping_index": "01H6Z3ED5JKE5P7D00667XE5R6",
-            "texts": [],
-            "images": [
-                {
-                    "blob": "iVBORw0KGgoAAAANSUhEUgAABg...",
-                }
-            "structured_data": null,
-            "metadata": {
-                "asset_cids": [
-                    "bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia"
-                ],
-                "asset_urls": [
-                    "https://nftsearch.site/asset-profile?cid=bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia"
-                ],
-                "pipeline": {
-                    "id": "aigc-web3",
-                    "owner": "users/41db6f86-97b3-4374-8678-67ae639400f8",
-                    "trigger_id": "3b28d466-9d05-4cec-82ab-33c0a39b2796",
-                    "uid": "3f889711-35a0-40c7-975f-eafe89f53df2"
-                }
-            }
-        }
-    ]
+{"outputs":[
+  {"asset_urls":["https://nftsearch.site/asset-profile?cid=bafybeif32uuelkrzrt33lbxmu4ws6hm6n5sbr4h57aekhygof35tb5qzhe"],
+  "images":["iVBORw0KGgoAAAANSUhEUgAA..."]}
+  ]
 }
 ```
 
 The generated assets can be easily accessed and explored using the [Numbers Search Engine](https://nftsearch.site/).
 To view the Web3 asset created above, navigate to the [link](https://nftsearch.site/asset-profile?cid=bafybeigsm77s5f4guckxvrjyo255fac53two66tcbmebw37oxufv7ipaia) in `asset_urls`.
 
-By clicking on the [Asset ID](https://ipfs-pin.numbersprotocol.io/ipfs/bafkreieeoz7jdioc6o7folyecsetj4tfpa6cotyaw2p43mnavhv4sotuoq), you can see the the asset creator, license details and information about the prompt, model and pipeline for creating this image.
+By clicking entering the [URL](https://nftsearch.site/asset-profile?cid=bafybeif32uuelkrzrt33lbxmu4ws6hm6n5sbr4h57aekhygof35tb5qzhe), you can see the the asset creator, license details and information about the prompt, model and pipeline for creating this image.
 This ensures a traceable content history for the asset.
 
 <ZoomableImg
   src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/registered-web3-asset.png"
-  alt="Check the registered Web3 asset by Instill VDP on Numbers Search Engine."
+  alt="Check the registered Web3 asset by Instill VDP on Numbers Search Engine"
 />
 
 # What's next?
