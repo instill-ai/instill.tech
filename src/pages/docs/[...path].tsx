@@ -1,11 +1,10 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
 import { useRouter } from "next/router";
-import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
@@ -14,7 +13,6 @@ import { docsConfig } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
-import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
@@ -32,19 +30,6 @@ type DocsPageProps = {
 type Props = {
   locales: string[];
 };
-
-function getLocale(
-  path: string[] | string,
-  locales: string[],
-  locale: string
-): string {
-  for (const element of path) {
-    if (locales.includes(element)) {
-      return "";
-    }
-  }
-  return `/${locale}`;
-}
 
 export const getStaticPaths: GetStaticPaths<Props> = async ({
   locales = [],
@@ -67,8 +52,6 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
     });
   });
 
-  console.log("getStaticPaths", getStaticPaths);
-
   return {
     paths: paths,
     fallback: "blocking",
@@ -78,7 +61,6 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
   locale,
-  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -100,31 +82,24 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 
   // Prepare the codeHike theme
-
   const theme = JSON.parse(
-    await readFile(
+    fs.readFileSync(
       join(process.cwd(), "src", "styles", "rose-pine-moon.json"),
-      {
-        encoding: "utf-8",
-      }
+      "utf-8"
     )
   );
 
-  // Serialize the mdx file for client
-
+  // Serialize the mdx file for the client
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
-  // Get prev and next link from sidebar config
-
+  // Get prev and next links from sidebar config
   const appType = getApplicationType(params.path);
-
-  const docsConfigration = docsConfig(
+  const docsConfiguration = docsConfig(
     appType,
     getApplicationVersion(params.path, appType)
   );
-
   const sidebarLinks: SidebarItem[] = [];
-  docsConfigration.sidebar.leftSidebar.sections.forEach((e) => {
+  docsConfiguration.sidebar.leftSidebar.sections.forEach((e) => {
     if (e.link) {
       sidebarLinks.push({ link: e.link, text: e.text });
     }
@@ -134,7 +109,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   });
 
   const currentPageIndex = sidebarLinks.findIndex(
-    (e) => e.link === "/docs/" + relativePath
+    (e) => e.link === `/docs/${relativePath}`
   );
 
   const nextArticle =
@@ -145,24 +120,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const prevArticle =
     currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
 
-  // Access GitHub API to retrieve the info of Committer
-
-  // let commitMeta: Nullable<CommitMeta> = null;
-
-  // try {
-  //   commitMeta = await getCommitMeta({
-  //     org: "instill-ai",
-  //     repo: "instill.tech",
-  //     path: "docs/" + relativePath + "." + locale + ".mdx",
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
-
   // We use remark to get the headers
-
   const headers = [] as RightSidebarProps["headers"];
-
   await remark()
     .use(remarkFrontmatter)
     .use(remarkGetHeaders, { headers })
@@ -182,12 +141,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 };
 
 type GetLayOutProps = {
-  page: ReactElement;
+  page: FC;
 };
 
 const DocsPage: FC<DocsPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, nextArticle, prevArticle, commitMeta, headers }) => {
+} = ({ mdxSource, nextArticle, prevArticle, headers }) => {
   const router = useRouter();
 
   return (
@@ -225,9 +184,6 @@ const DocsPage: FC<DocsPageProps> & {
           >
             {mdxSource ? <MDXRemote {...mdxSource} /> : null}
           </article>
-          {commitMeta ? (
-            <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
-          ) : null}
           <HorizontalLine
             marginBottom="mb-8"
             bgColor="bg-instillGrey20 dark:bg-instillGrey30"
