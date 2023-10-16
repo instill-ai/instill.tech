@@ -177,6 +177,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       headers: headers,
       commitMeta: null,
     },
+    revalidate: 60 * 60,
   };
 };
 
