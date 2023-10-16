@@ -604,7 +604,7 @@ export function getNavbar(
         to: `/docs/sdk/${VERSIONS[appType]}/welcome`,
         className: "",
         position: "left",
-        label: "SDK",
+        label: "SDKs",
         appType: null,
       },
       {
