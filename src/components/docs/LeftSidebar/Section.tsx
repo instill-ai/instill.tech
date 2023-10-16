@@ -50,7 +50,7 @@ export const Section = ({
 
   if (isHeader) {
     return (
-      <h1 className="Dflex-1 mb-3 mt-4 text-sm font-semibold uppercase text-black dark:text-instillGrey15">
+      <h1 className="mb-3 mt-4 flex-1 text-sm font-semibold uppercase text-black dark:text-instillGrey15">
         {t(text)}
       </h1>
     );
@@ -62,12 +62,12 @@ export const Section = ({
         onClick={link ? toLink : toggle}
         role="button"
         className={cn(
-          "flex flex-row px-1.5 py-1.5 hover:rounded hover:bg-instillGrey20",
+          "flex flex-row px-2 py-1.5 hover:rounded hover:bg-instillGrey20",
           sectionIsCollapsable ? { "mb-1": !collapsed } : "",
           link === router.asPath && !isHeader ? "rounded bg-instillGrey20" : ""
         )}
       >
-        <p className="my-auto flex-1 pl-2 text-sm font-normal text-black dark:text-instillGrey15">
+        <p className="my-auto flex-1 pl-1 text-sm font-normal text-black dark:text-instillGrey15">
           {t(text)}
         </p>
 
@@ -91,7 +91,7 @@ export const Section = ({
             key={item.link}
             href={item.link}
             className={cn(
-              "py-1.5 pl-6 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
+              "py-1.5 pl-5 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
               item.link === router.asPath.split("#")[0]
                 ? "rounded bg-instillGrey20 text-instillGrey95"
                 : "text-instillGrey80 dark:text-instillGrey30"
