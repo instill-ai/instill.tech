@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.3](https://github.com/instill-ai/instill.tech/compare/v1.41.2...v1.41.3) (2023-10-18)
+
+
+### Miscellaneous
+
+* newsletter support update for new Builder in mailchip ([#633](https://github.com/instill-ai/instill.tech/issues/633)) ([f866600](https://github.com/instill-ai/instill.tech/commit/f8666004f03ed09a18c22412dfbf4ea0afeecc06))
+
 ## [1.41.2](https://github.com/instill-ai/instill.tech/compare/v1.41.1...v1.41.2) (2023-10-12)
 
 
