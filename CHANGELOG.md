@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.4](https://github.com/instill-ai/instill.tech/compare/v1.41.3...v1.41.4) (2023-10-20)
+
+
+### Documentation
+
+* **tutorial:** update AIGC-Web3 tutorial ([#632](https://github.com/instill-ai/instill.tech/issues/632)) ([f1f636b](https://github.com/instill-ai/instill.tech/commit/f1f636bed40d0ee8ebfad9c9ec1d987bc6c59be3))
+
 ## [1.41.3](https://github.com/instill-ai/instill.tech/compare/v1.41.2...v1.41.3) (2023-10-18)
 
 
