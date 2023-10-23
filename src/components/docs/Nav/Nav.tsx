@@ -87,8 +87,9 @@ const DropdownMenu = ({
               <Dropdown.MenuItem
                 key={subItemKey}
                 onClick={() => setIsOpen(!isOpen)}
+                className="dark:focus:bg-blue-500"
               >
-                <Item key={subItemKey} item={subItem} />
+                <Item key={subItemKey} item={subItem} isDropdownItem={true} />
               </Dropdown.MenuItem>
             );
           }
