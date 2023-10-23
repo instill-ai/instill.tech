@@ -61,7 +61,7 @@ export const Section = ({
       <div
         role="button"
         className={cn(
-          "flex flex-row px-2 py-1.5 hover:rounded hover:bg-instillGrey20",
+          "flex flex-row px-1 py-1.5 hover:rounded hover:bg-instillGrey20",
           collapsible ? { "mb-1": !collapsed } : "",
           link === router.asPath && !isHeader
             ? "rounded bg-instillBlue10 !font-bold text-instillBlue50 hover:bg-instillBlue10"
@@ -110,18 +110,21 @@ export const Section = ({
         ) : null}
       </div>
       <div
-        className={cn("flex flex-col gap-y-1", {
-          hidden: collapsed,
-        })}
+        className={cn(
+          "ml-3 flex flex-col gap-y-1 border-l-[1px] border-instillGrey30",
+          {
+            hidden: collapsed,
+          }
+        )}
       >
         {items.map((item) => (
           <Link
             key={item.link}
             href={item.link}
             className={cn(
-              "py-1.5 pl-5 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
+              "ml-2 py-1.5 pl-2 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
               item.link === router.asPath.split("#")[0]
-                ? "rounded bg-instillBlue10 !font-bold text-instillBlue50"
+                ? "rounded bg-instillBlue10 !font-bold text-instillBlue50 hover:bg-instillBlue10"
                 : "text-instillGrey80 dark:text-instillGrey30"
             )}
           >

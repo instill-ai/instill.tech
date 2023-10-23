@@ -1,4 +1,3 @@
-import { applicationName } from "@/lib/instill/applicationType";
 import { LogoConfig, NavConfig, Sidebar, SidebarSections } from "@/types/docs";
 import { InstillAppType, InstillAppVersion } from "@/types/instill";
 import {
