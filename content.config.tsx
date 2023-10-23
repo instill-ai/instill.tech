@@ -84,6 +84,7 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
     {
       text: "common:sidebarSections.deployment",
       collapsible: true,
+      link: `/docs/${appVersion}/core/deployment/cli`,
       items: [
         {
           text: "common:sidebarSections.cli",

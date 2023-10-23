@@ -40,12 +40,12 @@ export const Section = ({
   };
 
   const sectionIsCollapsable = useMemo(() => {
-    if (!link) {
-      if (items.length === 0) return false;
-      return collapsible;
-    } else {
-      return false;
-    }
+    // if (!link) {
+    if (items.length === 0) return false;
+    return collapsible;
+    // } else {
+    // return false;
+    // }
   }, [link, collapsible, items]);
 
   if (isHeader) {
@@ -59,24 +59,52 @@ export const Section = ({
   return (
     <section className={cn("flex w-full flex-col pb-1 pt-1")}>
       <div
-        onClick={link ? toLink : toggle}
         role="button"
         className={cn(
           "flex flex-row px-2 py-1.5 hover:rounded hover:bg-instillGrey20",
-          sectionIsCollapsable ? { "mb-1": !collapsed } : "",
-          link === router.asPath && !isHeader ? "rounded bg-instillGrey20" : ""
+          collapsible ? { "mb-1": !collapsed } : "",
+          link === router.asPath && !isHeader
+            ? "rounded bg-instillBlue10 !font-bold text-instillBlue50 hover:bg-instillBlue10"
+            : ""
         )}
       >
-        <p className="my-auto flex-1 pl-1 text-sm font-normal text-black dark:text-instillGrey15">
+        <Link
+          href={link || ""}
+          key={link + "header-key"}
+          className="my-auto flex-1 pl-1 text-sm dark:text-instillGrey15"
+        >
           {t(text)}
-        </p>
+        </Link>
 
-        {sectionIsCollapsable ? (
-          <div className="my-auto hover:bg-instillGrey20 dark:hover:bg-instillGrey80">
+        {collapsible ? (
+          <div
+            className={cn(
+              "my-auto dark:hover:bg-instillGrey80",
+              link === router.asPath
+                ? "bg-instillBlue10 hover:bg-instillBlue10"
+                : " hover:bg-instillGrey20"
+            )}
+          >
             {collapsed ? (
-              <Icons.ChevronRight className="h-5 w-5 stroke-slate-500" />
+              <Icons.ChevronRight
+                className={cn(
+                  "h-5 w-5 ",
+                  link === router.asPath
+                    ? "stroke-instillBlue50"
+                    : "stroke-slate-500"
+                )}
+                onClick={toggle}
+              />
             ) : (
-              <Icons.ChevronDown className="h-5 w-5 stroke-slate-500" />
+              <Icons.ChevronDown
+                className={cn(
+                  "h-5 w-5 stroke-slate-500",
+                  link === router.asPath
+                    ? "stroke-instillBlue50"
+                    : "stroke-slate-500"
+                )}
+                onClick={toggle}
+              />
             )}
           </div>
         ) : null}
@@ -93,7 +121,7 @@ export const Section = ({
             className={cn(
               "py-1.5 pl-5 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
               item.link === router.asPath.split("#")[0]
-                ? "rounded bg-instillGrey20 text-instillGrey95"
+                ? "rounded bg-instillBlue10 !font-bold text-instillBlue50"
                 : "text-instillGrey80 dark:text-instillGrey30"
             )}
           >
