@@ -1,0 +1,192 @@
+---
+title: "Prepare Models Overview"
+lang: "en-US"
+draft: false
+description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
+---
+
+Instill Model uses [Triton Inference server](https://github.com/triton-inference-server/server) for model serving. It supports multiple deep learning frameworks including TensorFlow, PyTorch, TensorRT, ONNX and OpenVINO.
+Besides, the [Triton Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
+
+Instill Model uses Triton Inference server for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
+Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
+To make your models Instill Model ready, please refer to [Prepare Models](/docs/model/prepare-models/overview).
+
+### Model
+
+A **Model** is a piece of ML algorithm run on data to solve a certain AI task for Vision, Language and more.
+
+### How to im
+
+Instill Model uses [ModelDefinition](https://github.com/instill-ai/protobufs/blob/main/model/model/v1alpha/model_definition.proto) to define how to configure and import a model from a supported model source.
+Different approaches can provide different features. For example, some approaches support version control but some do not.
+It is up to the users to adopt approach they are already familiar with. We strive to support as many popular model sources as possible.
+Please check out [Import Models](/docs/model/import-models/overview) to learn more.
+
+No matter where your model stores, we want to keep your models in the same place without changes and make the process of importing the models into Instill Model very easy.
+That's why Instill Model has integrated many model platforms and tools as _model sources_. We strive to support as many popular _model sources_ as possible.
+
+A _model source_ in Instill Model is defined by [`ModelDefinition`](https://github.com/instill-ai/protobufs/blob/main/model/model/v1alpha/model_definition.proto). The JSON Schema of a `ModelDefinition` defines how to configure and import a _model source_.
+Currently, Instill Model supports importing models using the following sources:
+
+- [ArtiVC](artivc)
+- [GitHub](github)
+  - Track model files using [Git-LFS](/docs/import-models/github#prepare-a-github-repository-and-track-large-model-files-by-git-lfs)
+  - Track model files using [DVC](/docs/import-models/github#prepare-a-github-repository-and-manage-large-model-files-by-dvc)
+- [Hugging Face](huggingface)
+- [Local](local)
+
+If you'd like to **ask for a new model definition**, you can create an [issue](https://github.com/instill-ai/community/issues) or
+request it in the **#give-feedback** channel on our [Discord](https://discord.gg/sevxWsqpGh).
+
+## Release stage
+
+We use release stage to indicate a model source's readiness.
+
+| Stage                   | Description                                                                                                                                                                                                                                                                  |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
+| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
+| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |
+
+#### State
+
+The state of a model can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
+
+When a model is initially created, the states is by default `OFFLINE`.
+
+A model can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
+
+A model can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`.
+Model deployment operation can take time depending on factors like Internet connection and model size.
+Before a model is deployed online, the state will be `UNSPECIFIED`.
+
+If the state of a model ends up with `ERROR`, it is undeployable on Instill Model. Please refer to [Prepare Models](/docs/model/prepare-models/overview) to make your model Instill Model ready.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/model-state.svg"
+    alt="  The finite-state-machine (FSM) diagram for the model state transition logic"
+    width="500"
+  />
+</div>
+
+### Model importing and deployment
+
+_Instill Model provides automatic model inference server._ After importing a model from a supported model source (e.g., GitHub and Hugging Face), and deploying it online, Instill Model dynamically generate dedicated API endpoints for _model testing and debugging_.
+You can then build end-to-end data pipelines using the models to run ETL operations.
+Please refer to [Import Models](/docs/model/import-models/overview) to learn about model versioning with supported model sources.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/model-import-and-deployment.svg"
+  alt="Import and deploy model on Instill Model"
+/>
+
+### Inference
+
+An **inference** is a prediction to a question or task. In the concept of Machine Learning (ML) and Artificial Intelligence (AI), the term inference is often compared with training.
+To put it simple, inference is where capabilities learnt during training are put to analyze data to "infer" a result. Inference can be found and are applied everywhere across industries from photo tagging to autonomous driving.
+
+After deploying a model, you can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
+Check the examples below. The API accepts batched images
+
+- sent by remote URL and Base64 or
+- uploaded by multipart.
+
+<CH.Code>
+
+```shellscript cURL(url)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
+  "inputs": [
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+    },
+    {
+      "image_url": "https://artifacts.instill.tech/imgs/horse.jpg"
+    }
+  ]
+}'
+```
+
+```shellscript cURL(base64)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test -d '{
+  "inputs": [
+    {
+      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+    },
+    {
+      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
+    }
+  ]
+}'
+```
+
+```shellscript cURL(multipart)
+curl -X POST http://localhost:9080/v1alpha/models/{id}/test-multipart \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"horse.jpg"'
+```
+
+</CH.Code>
+
+in which `{id}` corresponds to the ID of a model.
+
+## Model layout
+
+To deploy a model on Instill Model, we suggest you to prepare the model files following the layout:
+
+```shellscript
+├── README.md
+├── <pre-model>
+│   ├── 1
+│   │   └── model.py
+│   └── config.pbtxt
+├── <infer-model>
+│   ├── 1
+│   │   └── <model-file>
+│   └── config.pbtxt
+├── <post-model>
+│   ├── 1
+│   │   └── model.py 
+│   └── config.pbtxt
+└── <ensemble-model>
+    ├── 1
+    │   └── .keep
+    └── config.pbtxt
+```
+
+The above layout displays a typical Instill Model model consisting of
+
+- `README.md` - model card to embed the metadata in front matter and descriptions in Markdown format
+- `<pre-model>` - Python model to pre-process input images
+- `<infer-model>` - Model to convert the unstructured data into structured data output, usually a Deep Learning (DL) / Machine Learning (ML) model
+- `<post-model>` - Python model to post-process the output of the `infer-model` into desired formats
+- `<ensemble-model>` - [Triton ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to connect the input and output tensors between the pre-processing, inference and post-processing models.
+- `config.pbtxt` - [Model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) for each sub model
+
+You can name `<pre-model>`, `<infer-model>`, `<post-model>` and `<ensemble-model>` folders freely provided that the folder names are clear and semantic. All these models bundle into a deployable model for Instill Model.
+
+<InfoBlock type="info" title="info">
+  As long as your model fulfils the required [Triton model repository
+  layout](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html),
+  it can be safely imported into Instill Model and deployed online.
+</InfoBlock>
+
+## Serve models written in Python
+
+To deploy your pre-processing and post-processing models with Python code, use [Triton Python Backend](https://github.com/triton-inference-server/python_backend) that supports `conda-pack` to deploy Python models with dependencies.
+We have prepared a [custom Conda environment](https://github.com/instill-ai/triton-python-model) with pre-installed libraries including
+[scikit-learn](https://github.com/scikit-learn/scikit-learn), [Pillow](https://github.com/python-pillow/Pillow), [PyTorch](https://github.com/pytorch/pytorch), [torchvision](https://pytorch.org/vision/stable/index.html), [Transformers](https://github.com/huggingface/transformers) and [triton_python_model](https://github.com/instill-ai/triton-python-model).
+It is shipped with the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers using Python 3.8.
+
+If your model is not compatible with Python 3.8 or if it requires additional dependencies, you could [create your own Conda environment](https://github.com/triton-inference-server/python_backend#2-packaging-the-conda-environment) and configure the `config.pbtext` to point to the custom conda-pack tar file accordingly.
+
+## Prepare your model to be Instill Model compatible
+
+- Create a [model card](model-card) `README.md` to describe your model
+- Write a [pre-processing model](pre-processing) and a [post-processing model](post-processing) that are compatible with the Triton Python Backend
+- Prepare the model configuration file for your inference model
+- Set up an [ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
+- Organise the model files into [valid Instill Model model layout](#instill-model-layout)
+
+🙌 After preparing your model to be Instill Model compatible, check out [Import Models](/docs/import-models/overview) to learn about how to import the model into Instill Model from different sources.

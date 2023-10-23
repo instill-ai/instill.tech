@@ -1,0 +1,106 @@
+---
+title: "OpenAI Whisper"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a OpenAI AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
+---
+
+The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **TASK_SPEECH_RECOGNITION** AI task.
+
+## Release stage
+
+`Alpha`
+
+## Configuration
+
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/definitions.json).
+
+| Field     | Type   | Note                                                                            |
+| :-------- | :----- | :------------------------------------------------------------------------------ |
+| api_key\* | string | Enter your OpenAI API key. To find your keys, go to your OpenAI's Account page. |
+
+### No-code setup
+
+<InfoBlock type="info" title="Prerequisites">
+
+To create a OpenAI AI connector, you'll first need to create a
+OpenAI account by visiting [openai.com](https://openai.com).
+Access to your API keys can then be managed through OpenAI's Account
+page.
+
+👉 Alternatively, you can try out [Instill Cloud](https://console.instill.tech)
+to use our pre-created OpenAI AI connector for FREE during Open Alpha.
+
+</InfoBlock>
+
+To create a OpenAI AI connector:
+
+1. Go to the **AI** page and click **Set up new AI**
+2. In the **Set Up New AI Connector** page, fill an ID for your model, this will be the unique identifier of this connector
+3. [Optional] Give a short description of your connector in the **Description** field
+4. Click the **AI Connector Type** ▾ drop-down and choose **OpenAI**
+5. Fill the following information and click **Set up**
+
+   - Fill **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key
+
+6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
+
+### Low-code setup
+
+1. Create a OpenAI AI connector
+
+<CH.Code>
+```shellscript cURL
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-whisper",
+        "connector_definition_name": "connector-definitions/ai-openai",
+        "configuration": {
+          "api_key": "<open-ai-api-key>"
+        }
+      }'
+```
+</ CH.Code>
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+
+## Expected inputs and outputs
+
+When using the OpenAI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+Here are the expected input and output data fields for the OpenAI AI connector.
+
+### Expected input data fields
+
+| Input data field | Type   | Description                                                                                                                                                                                                                                                                                                                                               |
+| :--------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| task             | string | "TASK_SPEECH_RECOGNITION"                                                                                                                                                                                                                                                                                                                                 |
+| model            | string | The model that you want to use. eg. `whisper-1`                                                                                                                                                                                                                                                                                                           |
+| audio            | string | Base64 encoded audio recording to transcribe                                                                                                                                                                                                                                                                                                              |
+| temperature      | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit. |
+| language         | string | The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.                                                                                                                                                                             |
+| prompt           | string | An optional text to guide the model's style or continue a previous audio segment. The [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting) should match the audio language.                                                                                                                                                         |
+
+Example input data for **TASK_SPEECH_RECOGNITION**:
+
+```json
+{
+  "task": "TASK_SPEECH_RECOGNITION",
+  "model": "whisper-1",
+  "audio": "<base64 value>"
+}
+```
+
+### Expected output data fields
+
+| Output data field | Type   | Description      |
+| :---------------- | ------ | ---------------- |
+| text              | string | Transcribed text |
+
+Example output data for **TASK_SPEECH_RECOGNITION**:
+
+```json
+{
+  "text": "Can you transcribe what I am saying?"
+}
+```

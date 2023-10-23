@@ -1,0 +1,109 @@
+---
+title: "OpenAI GPT"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a OpenAI AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
+---
+
+The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the **TASK_TEXT_GENERATION** AI task.
+
+## Release stage
+
+`Alpha`
+
+## Configuration
+
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/openai/config/definitions.json).
+
+| Field     | Type   | Note                                                                            |
+| :-------- | :----- | :------------------------------------------------------------------------------ |
+| api_key\* | string | Enter your OpenAI API key. To find your keys, go to your OpenAI's Account page. |
+
+### No-code setup
+
+<InfoBlock type="info" title="Prerequisites">
+
+To create a OpenAI AI connector, you'll first need to create a
+OpenAI account by visiting [openai.com](https://openai.com).
+Access to your API keys can then be managed through OpenAI's Account
+page.
+
+👉 Alternatively, you can try out [Instill Cloud](https://console.instill.tech)
+to use our pre-created OpenAI AI connector for FREE during Open Alpha.
+
+</InfoBlock>
+
+To create a OpenAI AI connector:
+
+1. Go to the **AI** page and click **Set up new AI**
+2. In the **Set Up New AI Connector** page, fill an ID for your model, this will be the unique identifier of this connector
+3. [Optional] Give a short description of your connector in the **Description** field
+4. Click the **AI Connector Type** ▾ drop-down and choose **OpenAI**
+5. Fill the following information and click **Set up**
+
+   - Fill **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key
+
+6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
+
+### Low-code setup
+
+1. Create a OpenAI AI connector
+
+<CH.Code>
+```shellscript cURL
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+      --header 'Authorization: Bearer <Your-API-Token>' \
+      --data '{
+        "id": "my-gpt",
+        "connector_definition_name": "connector-definitions/ai-openai",
+        "configuration": {
+          "api_key": "<open-ai-api-key>"
+        }
+      }'
+```
+</ CH.Code>
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+
+## Expected inputs and outputs
+
+When using the OpenAI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+Here are the expected input and output data fields for the OpenAI AI connector.
+
+### Expected input data fields
+
+| Input data field | Type   | Description                                                                                                                                                                                                                                                                                                                                                |
+| :--------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| task             | string | "TASK_TEXT_GENERATION"                                                                                                                                                                                                                                                                                                                                     |
+| prompt           | string | This has the text prompt, required for "TASK_TEXT_GENERATION" task.                                                                                                                                                                                                                                                                                        |
+| model            | string | The model that you want to use. eg., `gpt-4` and `gpt-3.5-turbo `.                                                                                                                                                                                                                                                                                         |
+| system_message   | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model's behavior is using a generic message as "You are a helpful assistant."                                            |
+| temperature      | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  |
+| n                | int    | How many chat completion choices to generate for each input message.                                                                                                                                                                                                                                                                                       |
+| max_tokens       | int    | The maximum number of [tokens](https://platform.openai.com/tokenizer) to generate in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens. |
+
+Example input data for **TASK_TEXT_GENERATION**:
+
+```json
+{
+  "task": "TASK_TEXT_GENERATION",
+  "model": "gpt-3.5-turbo",
+  "prompt": "Write me a story about London"
+}
+```
+
+### Expected output data fields
+
+| Output data field | Type          | Description          |
+| :---------------- | ------------- | -------------------- |
+| texts             | array[string] | Generated text array |
+
+Example output data for **TASK_TEXT_GENERATION**:
+
+```json
+{
+  "texts": [
+    "Once upon a time, in the heart of England, there stood a vibrant city named London. It was a place of rich history, diverse culture, and endless possibilities. From its iconic landmarks to its bustling streets, the city had a unique charm that drew people from all walks of life..."
+  ]
+}
+```

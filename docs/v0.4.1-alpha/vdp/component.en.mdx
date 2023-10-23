@@ -1,0 +1,99 @@
+---
+title: "Component"
+lang: "en-US"
+draft: false
+description: "Pre-built ETL components with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of **Components**: **Connectors** and **Operators**. The system offers various types of **Connectors** and **Operators**, each catering to specific functionalities:
+
+- [**AI Connector**](../connectors/overview#ai-connector): Connect to remote models from model providers like Instill Model, OpenAI, Stability AI, etc.
+- [**Data Connector**](../connectors/overview#data-connector): Connect to remote data sources like MySQL, PostgreSQL, Pinecone, etc.
+- [**App Connector**](../connectors/overview#app-connectors): Connect to 3rd-party services like Numbers, etc.
+- [**Operator**](/docs/vdp/operators): Facilitate more flexible and fine-grained data injection and manipulation.
+- ...
+
+Each type of connector requires specific configuration to connect to the respective remote service.
+
+Connector is served by the [`connector-backend`](https://github.com/instill-ai/connector-backend), [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend) will communicate with [`connector-backend`](https://github.com/instill-ai/connector-backend) via gRPC.
+Operator is directly served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
+
+## Definition
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto) and [`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+to define the basic properties and detailed configuration of a connector or a operator.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema, including resource configuration, component configuration and OpenAPI schemas.
+The inner field [`operator_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+defines the operator configuration JSON Schema, including component configuration and OpenAPI schemas.
+
+## Release stage
+
+For Instill AI developed and maintained components, we use release stage defined as below to indicate their readiness:
+
+| Stage                   | Description                                                                                                                                                                                                                                                                  |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
+| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
+| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |
+
+Feel free to explore VDP and leverage its open components to build AI-first applications for unstructured data processing.
+
+## AI Connector
+
+The **AI Connector** provides an integration framework to connect AI models from various sources,
+no matter first-party ModelOps platform **Instill Model** and third-party model vendors, as well as in-house model serving platforms.
+
+The AI connectors play a crucial role in VDP pipelines to transform unstructured data into meaningful and analysable representations,
+making it easier to extract valuable insights.
+
+Here is a list of the supported AI connectors that you can leverage for your projects. You can find detailed information about each connector in the [connector-ai](https://github.com/instill-ai/connector-ai) repository:
+
+- [Instill Model](instill-model)
+- [Stability AI](stability-ai)
+- [OpenAI](openai)
+- 🔜 **Hugging Face**
+
+## Data Connector
+
+**Data Connectors** play a crucial role in establishing connections with remote data sources, such as IoT devices (e.g., IP cameras), cloud storage services (e.g., GCP Cloud Storage, AWS S3), data warehouses, or vector databases.
+
+These connectors act as the bridge between VDP and various external data sources.
+Their primary function is to enable seamless data exchange, enhancing VDP's capability to work with diverse data sources effectively.
+The VDP community is continuously working to expand the range of available connectors.
+Detailed information about each specific connector is available in the [connector-data](https://github.com/instill-ai/connector-data) repository:
+
+- [Pinecone](pinecone)
+- [Airbyte Data Connectors](airbyte)
+- [BigQuery](bigquery)
+- [Google Cloude Storage (GCS)](gcs)
+- 🔜 **AWS S3**
+- 🔜 **Snowflake**
+- 🔜 **Milvus**
+
+## App Connector
+
+The App Connector is to seamlessly integrate various 3rd-party application services.
+
+Here is a list of the supported connectors that you can leverage for your projects. You can find detailed information about each connector in the connector-blockchain repository:
+
+- [Numbers Protocol](numbers-protocol)
+
+## Operator
+
+To facilitate more flexible and fine-grained data injection and manipulation, **Operators** allow users to run data manipulation without the need for server management or pre-provisioning.
+
+Currently, VDP supports the following operators:
+
+- [**Start**](start)
+- [**End**](end)
+- [**Base64**](base64)
+- [**JSON**](json)
+- [**REST**](rest)
+- [**Text Extraction**](textextraction)
+- The list is growing ... 🌱
+
+## Suggest a New Component
+
+If you'd like to **ask for a new connector or operator**, you can create an [issue](https://github.com/instill-ai/community/issues) or
+request it in the **#give-feedback** channel on our [Discord](https://discord.gg/sevxWsqpGh).

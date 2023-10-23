@@ -124,12 +124,6 @@ export type PageMeta = {
   pageDescription?: string;
 };
 
-export type InstillAppType =
-  | "vdp"
-  | "cloud"
-  | "model"
-  | "core"
-  | "base"
-  | "sdk";
+export type InstillAppType = "core";
 
-export type InstillAppVersion = "v1.0.0" | string;
+export type InstillAppVersion = "v0.4.1-alpha" | string;

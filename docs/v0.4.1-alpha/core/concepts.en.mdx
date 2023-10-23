@@ -1,0 +1,70 @@
+---
+title: "Core Concepts"
+lang: "en-US"
+draft: false
+description: "Concepts of Instill Core"
+---
+
+💧 [**Instill VDP**](https://github.com/instill-ai/vdp), or **VDP (Versatile Data Pipeline)**, is no-code/low-code pipeline builder that allows you to build, test, release and share AI workflows for unstructured data.
+It empowers you to rapidly develop versatile AI capabilities with exceptional speed.
+
+If your goal is to develop versatile AI features using Large Language Models (LLM), Generative AI, Vision, or Audio models, Instill VDP empowers you to:
+
+- Effortlessly **connect** to your unstructured data
+- **Build** pipelines to enable diverse AI functionalities in your applications
+- Visually **test** pipelines with a single click, viewing output at each stage
+- Easily **share** your pipelines to showcase your work
+
+<ZoomableImg
+  src="https://raw.githubusercontent.com/instill-ai/.github/main/img/instill-cloud-demo-generative-art-template.gif"
+  alt="Build, test and share your pipelines - No code required!"
+  width="600px"
+/>
+
+### Pipeline
+
+The foundation of VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
+A pipeline can be triggered using either SYNC APIs (for synchronous responses) or ASYNC APIs (ideal for long-running workloads).
+More detailed information about pipelines can be found in the [Pipeline](pipeline) section.
+
+The implementation of the Pipeline concept is managed in the [pipeline-backend](https://github.com/instill-ai/pipeline-backend) repository.
+
+#### Component
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP.
+The system offers various types of components, each catering to specific functionalities.
+Components empower VDP pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
+
+#### Connector
+
+To connect numerous providers of abilities around the world, **Connector** is introduced.
+Connectors allow users to connect to different types of providers and vendors.
+These tasks encompass data extraction, transformation using AI models, and uploading to blockchains, third-party apps, or data warehouses.
+
+#### Operator
+
+To facilitate more flexible and fine-grained data injection and manipulation, **Operator** is introduced.
+Operators allow users to run customized code without the need for server management or pre-provisioning.
+This enables code execution whenever the pipeline is triggered and data flows into the connector.
+
+### Console
+
+**Console** is a web-based UI application, designed to provide convenient access to Base, VDP and Model.
+One of its key features is a _no-code_ drag-and-drop pipeline builder.
+This means that even non-technical users can effortlessly build flexible VDP pipelines by simply dragging and dropping components.
+By emphasizing simplicity and ease of use, the goal is to provide a unified and intuitive user experience.
+
+Console is maintained in [console](https://github.com/instill-ai/console).
+
+### API
+
+VDP is implemented with **API-first** design principle. It enables seamless integration to your data stack at any scale.
+
+VDP uses [Protocol Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
+The same interface definitions are used for both REST (via [gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC. This enables the access to the API over different protocols:
+
+- JSON over HTTP
+- Protocol Buffers over gRPC
+
+The interface definitions are maintained in [protobufs](https://github.com/instill-ai/protobufs) with auto-generated Go codes in [protogen-go](https://github.com/instill-ai/protogen-go) and Python code in [protogen-python](https://github.com/instill-ai/protogen-python).
+The genuine protobuf documentation can be found in our [Buf Scheme Registry (BSR)](https://buf.build/instill-ai/protobufs).
