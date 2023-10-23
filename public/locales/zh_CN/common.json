@@ -34,7 +34,7 @@
     "stabilityAI": "Stability AI",
     "openAI": "OpenAI",
     "numbersProtocol": "Numbers Protocol",
-    "dataConnector": "數據庫",
+    "dataConnector": "数据连接组件",
     "vectordatabaseConnector": "矢量数据库",
     "appConnector": "第三方应用",
     "pinecone": "Pinecone",

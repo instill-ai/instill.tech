@@ -34,7 +34,7 @@
     "stabilityAI": "Stability AI",
     "openAI": "OpenAI",
     "numbersProtocol": "Numbers Protocol",
-    "dataConnector": "Databases",
+    "dataConnector": "Data Connector",
     "vectordatabaseConnector": "Vector Databases",
     "appConnector": "3rd Party Applications",
     "pinecone": "Pinecone",

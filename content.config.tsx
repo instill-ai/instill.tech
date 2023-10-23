@@ -160,7 +160,7 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "🧰 Operator",
+      text: "⚙️ Operators",
       items: [],
       appType: "core",
       versions: [],
@@ -209,21 +209,14 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "🔌 Connect to data",
+      text: "🔌 Connectors",
       items: [],
       appType: "core",
       versions: [],
       isHeader: true,
     },
     {
-      text: "🔌 Transform data",
-      items: [],
-      appType: "core",
-      versions: [],
-      isHeader: true,
-    },
-    {
-      text: "Model Serving Platforms",
+      text: "AI Connectors",
       collapsible: true,
       items: [
         {
@@ -231,29 +224,9 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
           link: `/docs/${appVersion}/vdp/connectors/instill-model`,
         },
         {
-          text: "Hugging Face",
-          link: `/docs/${appVersion}/vdp/connectors/instill-model`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.llm",
-      collapsible: true,
-      items: [
-        {
           text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-text-generation`,
+          link: `/docs/${appVersion}/vdp/connectors/openai`,
         },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.imageGeneration",
-      collapsible: true,
-      items: [
         {
           text: "common:sidebarSections.stabilityAI",
           link: `/docs/${appVersion}/vdp/connectors/stability-ai`,
@@ -263,45 +236,13 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "common:sidebarSections.speechRecognition",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-speech-recognition`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.embeddings",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-text-embeddings`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.vectordatabaseConnector",
+      text: "common:sidebarSections.dataConnector",
       collapsible: true,
       items: [
         {
           text: "common:sidebarSections.pinecone",
           link: `/docs/${appVersion}/vdp/connectors/pinecone`,
         },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.dataConnector",
-      collapsible: true,
-      items: [
         {
           text: "common:sidebarSections.airbyte",
           link: `/docs/${appVersion}/vdp/connectors/airbyte`,
