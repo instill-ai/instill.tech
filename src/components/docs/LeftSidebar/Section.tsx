@@ -33,24 +33,9 @@ export const Section = ({
 
   const router = useRouter();
 
-  const toLink = () => {
-    if (link) {
-      router.push(link);
-    }
-  };
-
-  const sectionIsCollapsable = useMemo(() => {
-    // if (!link) {
-    if (items.length === 0) return false;
-    return collapsible;
-    // } else {
-    // return false;
-    // }
-  }, [link, collapsible, items]);
-
   if (isHeader) {
     return (
-      <h1 className="mb-3 mt-4 flex-1 text-sm font-semibold uppercase text-black dark:text-instillGrey15">
+      <h1 className="mb-3 mt-4 flex-1 text-sm font-semibold uppercase text-black dark:text-instillGrey05">
         {t(text)}
       </h1>
     );
@@ -61,17 +46,17 @@ export const Section = ({
       <div
         role="button"
         className={cn(
-          "flex flex-row px-1 py-1.5 hover:rounded hover:bg-instillGrey20",
+          "flex flex-row px-1 py-1.5 hover:rounded hover:bg-instillGrey05 dark:text-instillGrey05 dark:hover:bg-instillGrey80",
           collapsible ? { "mb-1": !collapsed } : "",
           link === router.asPath && !isHeader
-            ? "rounded bg-instillBlue10 !font-bold text-instillBlue50 hover:bg-instillBlue10"
+            ? "rounded bg-instillBlue10 !font-bold !text-instillBlue50 hover:!bg-instillBlue10"
             : ""
         )}
       >
         <Link
           href={link || ""}
           key={link + "header-key"}
-          className="my-auto flex-1 pl-1 text-sm dark:text-instillGrey15"
+          className="my-auto flex-1 pl-1 text-sm"
         >
           {t(text)}
         </Link>
@@ -79,10 +64,10 @@ export const Section = ({
         {collapsible ? (
           <div
             className={cn(
-              "my-auto dark:hover:bg-instillGrey80",
+              "my-auto",
               link === router.asPath
                 ? "bg-instillBlue10 hover:bg-instillBlue10"
-                : " hover:bg-instillGrey20"
+                : " hover:bg-instillGrey05 dark:hover:bg-instillGrey80"
             )}
           >
             {collapsed ? (
@@ -122,10 +107,10 @@ export const Section = ({
             key={item.link}
             href={item.link}
             className={cn(
-              "ml-2 py-1.5 pl-2 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey20 dark:hover:text-instillBlue50",
+              "ml-2 py-1.5 pl-2 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey05 dark:text-instillGrey05 dark:hover:bg-instillGrey80",
               item.link === router.asPath.split("#")[0]
-                ? "rounded bg-instillBlue10 !font-bold text-instillBlue50 hover:bg-instillBlue10"
-                : "text-instillGrey80 dark:text-instillGrey30"
+                ? "rounded bg-instillBlue10 !font-bold !text-instillBlue50 hover:!bg-instillBlue10"
+                : ""
             )}
           >
             {t(item.text)}
