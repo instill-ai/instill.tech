@@ -6,7 +6,7 @@
     "buildAiWorkflows": "💧 Build AI Workflows",
     "instillSdk": "📦 Instill SDK",
     "welcome": "Welcome",
-    "quickstart":"Quickstart",
+    "quickstart": "Quickstart",
     "contributing": "Contributing",
     "guideline": "Guideline",
     "instillCore": "Instill Core",
@@ -91,7 +91,9 @@
     "blog": "Blog",
     "newsletter": "Newsletter",
     "help": "Help",
-    "discord": "Discord"
+    "discord": "Discord",
+    "gitHubDisussions": "GitHub Disussions",
+    "gitHubIssues": "GitHub Issues"
   },
   "nextPage": "Next Page",
   "previousPage": "Previous Page",

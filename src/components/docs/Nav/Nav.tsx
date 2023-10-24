@@ -41,6 +41,8 @@ const DropdownMenu = ({
 
   if (item.key === "docs-nav-dropdown-version-menu") {
     dropdownMenus = item.items?.filter((item) => item.appType === appType);
+  } else {
+    dropdownMenus = item.items;
   }
 
   return (
