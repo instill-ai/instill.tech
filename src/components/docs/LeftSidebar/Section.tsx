@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import cn from "clsx";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -32,6 +32,14 @@ export const Section = ({
   };
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (link && router.asPath) {
+      if (!router.asPath.includes(link) === false) {
+        setCollapsed(false);
+      }
+    }
+  }, [link, router.asPath]);
 
   if (isHeader) {
     return (
