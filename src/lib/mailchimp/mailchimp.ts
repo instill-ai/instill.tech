@@ -166,5 +166,8 @@ export const removeMailchimpStyleAndMeta = (root: HTMLElement): HTMLElement => {
     e.setAttribute("style", styleList.join(";"));
   });
 
+  // Remove mailchip footer of address
+  root.querySelectorAll(".mceLayoutContainer").forEach((e) => e.remove());
+
   return root;
 };
