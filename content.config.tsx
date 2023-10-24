@@ -442,7 +442,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.productWebsite",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -453,7 +453,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.tutorials",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -464,7 +464,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.blog",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -475,7 +475,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.newsletter",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -492,7 +492,7 @@ export function getNavbar(
             border: true,
             label: "common:navbar.help",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -503,7 +503,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.discord",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -514,7 +514,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.gitHubDisussions",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
@@ -525,7 +525,7 @@ export function getNavbar(
             position: "right",
             label: "common:navbar.gitHubIssues",
             iconElement: (
-              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+              <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
             appType: null,
           },
