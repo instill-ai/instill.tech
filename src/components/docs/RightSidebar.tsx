@@ -8,9 +8,10 @@ import {
 export type RightSidebarProps = {
   headers: TableOfContentProps["headers"];
   githubEditUrl: ContributeLinksProps["githubEditUrl"];
+  feedbackUrl: ContributeLinksProps["feedbackUrl"];
 };
 
-export const RightSidebar = ({ headers, githubEditUrl }: RightSidebarProps) => {
+export const RightSidebar = ({ headers, githubEditUrl, feedbackUrl }: RightSidebarProps) => {
   return (
     <>
       <style jsx>
@@ -25,6 +26,7 @@ export const RightSidebar = ({ headers, githubEditUrl }: RightSidebarProps) => {
         <div className="flex h-full flex-col overflow-auto">
           {headers.length > 0 ? <TableOfContent headers={headers} /> : null}
           <ContributeLinks githubEditUrl={githubEditUrl} />
+          <ContributeLinks feedbackUrl={feedbackUrl} />
         </div>
       </div>
     </>
