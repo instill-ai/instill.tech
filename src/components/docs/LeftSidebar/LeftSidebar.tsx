@@ -3,6 +3,7 @@ import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import cn from "clsx";
 import { DocSearch } from "@docsearch/react";
+import { ScrollArea } from "@instill-ai/design-system";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -29,11 +30,8 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         }
       `}
       </style>
-      <div
-        className={cn(
-          "left-sidebar flex w-96 flex-col overflow-auto px-2 pb-10 pt-5 md:sticky md:top-0 md:ml-auto"
-        )}
-      >
+
+      <ScrollArea.Root className="left-sidebar flex w-96 flex-col overflow-auto px-2 pb-10 pt-5 md:sticky md:top-0 md:ml-auto">
         <div className="mx-0 mb-5">
           <DocSearch
             appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
@@ -53,7 +51,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
             />
           </div>
         ))}
-      </div>
+      </ScrollArea.Root>
     </>
   );
 };
