@@ -11,7 +11,7 @@ The OpenAI AI connector enables you to connect the AI models served on the OpenA
 - [Text Embeddings](#text-embeddings)
 - [Speech Recognition](#speech-recognition)
 
-## Release stage
+## Release Stage
 
 `Alpha`
 
@@ -51,20 +51,31 @@ To create a OpenAI AI connector:
 
 ### Low-code Setup
 
-1. Create a OpenAI AI connector
-
 <CH.Code>
-```shellscript cURL
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "my-openai",
-        "connector_definition_name": "connector-definitions/ai-openai",
-        "configuration": {
-          "api_key": "<open-ai-api-key>"
-        }
-      }'
+
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user_id>/connector-resources \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-openai",
+  "connector_definition_name": "connector-definitions/ai-openai",
+  "configuration": {
+    "api_key": "<open-ai-api-key>"
+  }
+}'
 ```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources \
+--data '{
+  "id": "my-openai",
+  "connector_definition_name": "connector-definitions/ai-openai",
+  "configuration": {
+    "api_key": "<open-ai-api-key>"
+  }
+}'
+```
+
 </ CH.Code>
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
@@ -118,6 +129,8 @@ If `task` is set to **TASK_TEXT_GENERATION**
 | Output | Type   | Description      |
 | :----- | ------ | ---------------- |
 | text   | string | Transcribed text |
+
+## Example
 
 Example input and output data for each task:
 

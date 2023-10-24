@@ -5,9 +5,25 @@ draft: false
 description: "Build end-to-end unstructured data pipelines with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
 ---
 
-A **Pipeline** is an end-to-end workflow that automates a sequence of sub-components to process unstructured data.
+A **Pipeline** is an end-to-end workflow that automates a sequence of pipeline components to process data.
 
-It is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
+## Pipeline Component
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of components: **Connectors** and **Operators**.
+
+Connector is served by the [`connector-backend`](https://github.com/instill-ai/connector-backend), [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend) will communicate with [`connector-backend`](https://github.com/instill-ai/connector-backend) via gRPC.
+Operator is directly served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto) and [`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+to define the basic properties and detailed configuration of a connector or a operator.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema, including resource configuration, component configuration and OpenAPI schemas.
+The inner field [`operator_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+defines the operator configuration JSON Schema, including component configuration and OpenAPI schemas.
+
+## Pipeline Recipe
+
+A pipeline is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
 
 - Operators - a numbers of operators to do flexible and fine-grained data injection and manipulation
 - Connectors - a number of connectors to query, process, or send the ingested unstructured data
@@ -38,21 +54,21 @@ Within the recipe, we have four essential fields:
 
 1. **id**: This serves as a unique identifier within the recipe.
 
-2. **resource_name**: 
+2. **resource_name**:
+
    - Refers to the connector resource. For more information, please refer to [AI Connectors](/docs/vdp/ai-connectors/overview), [Data Connectors](/docs/vdp/data-connectors/overview), or [Blockchain Connectors](/docs/vdp/blockchain-connectors/overview).
    - The format for this field is `users/<user_id>/connector-resources/<connector-resource-id>`.
 
 3. **definition_name**:
+
    - Represents the name of the connector or operator definition.
    - The format for this field is `connector-definitions/<connector-definition-id>` or `operator-definitions/<operator-definition-id>`.
 
 4. **configuration**: This field is used to set up the input data and parameters for the component. Detailed information can be found in the section below.
 
-
 ## Data Flow and Configuration in Pipeline Components
 
 Within pipeline components, data flow is facilitated through a JSON field called **configuration**, which serves as the means to configure both parameters and data input for the component. Understanding this field is essential for customizing the behavior of each component in a pipeline.
-
 
 **Example Configuration**
 
@@ -69,7 +85,6 @@ Let's begin with an example of a **configuration**:
     "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
   }
 }
-
 ```
 
 This `configuration.input` field allows us to define data input and parameter settings. The VDP will interpret and render this configuration into actual data inputs based on the specified data configuration. There are three fundamental ways to configure data:
@@ -91,7 +106,6 @@ Consider this component configuration:
     "field_2_primitive_value": 1.0
   }
 }
-
 ```
 
 When utilizing batch triggering in VDP, where each component processes an array of inputs, the rendered data input for this component, with batch 2 as an example, appears as follows:
@@ -110,7 +124,6 @@ When utilizing batch triggering in VDP, where each component processes an array 
     }
   ]
 }
-
 ```
 
 ### Reference
@@ -169,7 +182,6 @@ Consider the following component configuration:
     "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
   }
 }
-
 ```
 
 Based on the provided upstream component data, the rendered data input for this component appears as follows:
@@ -186,12 +198,11 @@ Based on the provided upstream component data, the rendered data input for this 
     }
   ]
 }
-
 ```
 
 For a more detailed understanding of the **String Literal** syntax, you can refer to [Liquid](https://shopify.github.io/liquid/).
 
-## Trigger pipeline
+## Trigger Pipeline
 
 ### Trigger via SYNC API
 
@@ -200,7 +211,11 @@ The result is sent back to the user right after the data is processed.
 This is for real-time inference where low latency is of concern.
 The request flow when triggering a `SYNC` pipeline is shown below:
 
-<ZoomableImg src="/docs-assets/core-concepts/sync.svg" alt="SYNC trigger" />
+<ZoomableImg
+  src="/docs-assets/core-concepts/sync.svg"
+  alt="SYNC trigger"
+  width="600px"
+/>
 
 VDP supports trigger a pipeline via HTTP and gRPC protocols.
 
@@ -213,6 +228,7 @@ This mode is for use cases that requires long running workloads.
 <ZoomableImg
   src="/docs-assets/core-concepts/async.svg"
   alt="ASYNC pipeline mode"
+  width="600px"
 />
 
 ### Trigger via PULL schedular (coming soon)
@@ -223,5 +239,5 @@ from the **Source** to process and write to destinations in the end.
 <ZoomableImg
   src="/docs-assets/core-concepts/pull.svg"
   alt="Pipeline PULL mode"
+  width="600px"
 />
-

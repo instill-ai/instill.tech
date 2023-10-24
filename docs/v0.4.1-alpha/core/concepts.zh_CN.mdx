@@ -1,43 +1,9 @@
 ---
-title: "Core Concepts Overview"
+title: "Core Concepts"
 lang: "en-US"
 draft: false
-description: "Core concepts of VDP https://github.com/instill-ai/vdp"
+description: "Concepts of Instill Core"
 ---
-
-The modern data stack often lacks efficient processing capabilities for unstructured data, creating significant barriers for developers aiming to build AI-first applications that involve such data.
-
-To address this challenge, [**Versatile Data Pipeline (VDP)**](https://github.com/instill-ai/vdp) was created.
-VDP serves as the missing piece in the data stack, streamlining the process of designing, building and testing the foundation of AI-first applications, particularly those dealing with unstructured data.
-
-VDP provides a streamlined solution for connecting unstructured data from various sources, integrating AI models from different vendors, and interfacing with 3rd-party services.
-In essence, VDP serves as a tool to extract, transform, and load (ETL) unstructured data into meaningful representations that cater to users' specific use cases.
-
-## Pipeline
-
-The foundation of VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
-A pipeline can be triggered using either SYNC APIs (for synchronous responses) or ASYNC APIs (ideal for long-running workloads).
-More detailed information about pipelines can be found in the [Pipeline](pipeline) section.
-
-The implementation of the Pipeline concept is managed in the [pipeline-backend](https://github.com/instill-ai/pipeline-backend) repository.
-
-### Component
-
-A **Component** is a fundamental building block used to construct a pipeline in VDP.
-The system offers various types of components, each catering to specific functionalities.
-Components empower VDP pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
-
-### Connector
-
-To connect numerous providers of abilities around the world, **Connector** is introduced.
-Connectors allow users to connect to different types of providers and vendors.
-These tasks encompass data extraction, transformation using AI models, and uploading to blockchains, third-party apps, or data warehouses.
-
-### Operator
-
-To facilitate more flexible and fine-grained data injection and manipulation, **Operator** is introduced.
-Operators allow users to run customized code without the need for server management or pre-provisioning.
-This enables code execution whenever the pipeline is triggered and data flows into the connector.
 
 ## Console
 
@@ -60,3 +26,43 @@ The same interface definitions are used for both REST (via [gRPC-Gateway](https:
 
 The interface definitions are maintained in [protobufs](https://github.com/instill-ai/protobufs) with auto-generated Go codes in [protogen-go](https://github.com/instill-ai/protogen-go) and Python code in [protogen-python](https://github.com/instill-ai/protogen-python).
 The genuine protobuf documentation can be found in our [Buf Scheme Registry (BSR)](https://buf.build/instill-ai/protobufs).
+
+## Pipeline
+
+The foundation of VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
+A pipeline can be triggered using either SYNC APIs (for synchronous responses) or ASYNC APIs (ideal for long-running workloads).
+More detailed information about pipelines can be found in the [Pipeline](pipeline) section.
+
+The implementation of the Pipeline concept is managed in the [pipeline-backend](https://github.com/instill-ai/pipeline-backend) repository.
+
+## Component
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP.
+The system offers various types of components, each catering to specific functionalities.
+Components empower VDP pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
+
+### Connector
+
+To connect numerous providers of abilities around the world, **Connector** is introduced.
+Connectors allow users to connect to different types of providers and vendors.
+These tasks encompass data extraction, transformation using AI models, and uploading to blockchains, third-party apps, or data warehouses.
+
+### Operator
+
+To facilitate more flexible and fine-grained data injection and manipulation, **Operator** is introduced.
+Operators allow users to run customized code without the need for server management or pre-provisioning.
+This enables code execution whenever the pipeline is triggered and data flows into the connector.
+
+## Model
+
+A **Model** in Instill Model is a piece of ML algorithm run on data to solve a certain AI task for Vision, Language and more.
+
+## Release stage
+
+For Instill AI developed and maintained vdp connectors, operators and model sources, we use release stage defined as below to indicate their readiness:
+
+| Stage                   | Description                                                                                                                                                                                                                                                                  |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
+| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
+| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |

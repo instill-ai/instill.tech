@@ -1,5 +1,5 @@
 ---
-title: "Introduction to the Instill Python SDK"
+title: "Python SDK"
 lang: "en-US"
 draft: false
 description: "Welcome to Instill SDK - Where the world of AI-first applications comes alive"
@@ -11,49 +11,50 @@ description: "Welcome to Instill SDK - Where the world of AI-first applications 
   `SDK` in our [community](https://github.com/instill-ai/community/issues) repo
 </InfoBlock>
 
-## Setup
-
-### Requirements
+## Requirements
 
 - Python 3.8+
+- Pip | Poetry
 
-### Installation
+## Installation
+
+Install it directly into an activated virtual environment:
+
+<CH.Code>
+
+```shellscript pip
+pip install instill-sdk
+```
+
+```shellscript poetry
+poetry add instill-sdk
+```
+
+</ CH.Code>
 
 <InfoBlock type="warning" title="warning">
-  If your host machine is on arm64 architecture(including Apple silicon
+  If your host machine is on arm64 architecture (including Apple silicon
   machines, equipped with m1/m2 processors), there are some issues when
   installing `grpcio` within `conda` environment. You will have to manually
   build and install it like below. Read more about this issue
   [here](https://github.com/grpc/grpc/issues/33714).
 </InfoBlock>
 
-```bash
-$ GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation" pip install grpcio --no-binary :all:
-```
-
-Install it directly into an activated virtual environment:
-
-```text
-$ pip install instill-sdk
-```
-
-or add it to your [Poetry](https://poetry.eustace.io/) project:
-
-```text
-$ poetry add instill-sdk
+```shellscript
+GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation" pip install grpcio --no-binary :all:
 ```
 
 ### Check Import
 
 After installation, you can check if it has been installed correctly:
 
-```text
-$ python
+```shellscript
+python
 >>> import instill
 >>> instill.__version__
 ```
 
-### Config `Instill Core` or `Instill Cloud` instance
+### Config Instill Core or Instill Cloud instance
 
 Before we can start using this SDK, you will need to create a config file under this path `${HOME}/.config/instill/config.yaml`, and within that path you will need to fill in some basic parameters for your desired host.[^1]
 
@@ -406,15 +407,3 @@ i.update(
 # verify the output
 instill_model_pipeline([i])[0][0]["output"][0]["category"] == "dog"
 ```
-
-## Contributing
-
-Please refer to the [Contributing Guidelines](https://github.com/instill-ai/python-sdk/blob/main/.github/CONTRIBUTING.md) for more details.
-
-## Community support
-
-Please refer to the [community](https://github.com/instill-ai/community) repository.
-
-## License
-
-See the [LICENSE](./LICENSE) file for licensing information.

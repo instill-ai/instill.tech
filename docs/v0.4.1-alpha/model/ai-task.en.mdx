@@ -1,20 +1,18 @@
 ---
-title: "AI task"
+title: "Supported AI Tasks"
 lang: "en-US"
 draft: false
-description: "Standardise structured outputs for AI tasks the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Model Overview"
 ---
 
-The goal of VDP is to streamline the end-to-end unstructured data flow, with the _transform_ component being able to flexibly connect AI models to process unstructured data for a specific task for Vision, Language and more.
-
-## Standardise AI tasks
+When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks by identifing the [relevant metadata in the model card](prepare-models#model-card-metadata).
 
 In a data pipeline, model is the core component designed to solve a specific AI task. By standardising the data format of model outputs into AI tasks,
 
 - model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task;
 - VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
 
-At the moment, VDP defines the data interface for popular tasks:
+At the moment, Instill Model defines the data interface for popular tasks:
 
 - **Image Classification** - classify images into predefined categories
 - **Object Detection** - detect and localise multiple objects in images
@@ -30,79 +28,6 @@ The above tasks focus on analysing and understanding the content of data in the 
 The goal is to make a computer/device provide description for the data as complete and accurate as possible.
 These primitive tasks are the foundation for building many real-world industrial AI applications.
 Each task is described in depth in the respective section below.
-
-If you'd like to **support for a new task**, you can create an [issue](https://github.com/instill-ai/community/issues) or request it in the **#instill-vdp** channel on [Discord](https://discord.gg/sevxWsqpGh).
-
-## How to standardise
-
-### Standardise via Protocol Buffers
-
-Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
-
-### Standardise via VDP Protocol
-
-The [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of AI task output in order to standardise an ETL pipeline for unstructured data.
-The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
-
-```yaml
-"$schema": http://json-schema.org/draft-07/schema#
-"$id": https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml
-title: VDP Protocol
-type: object
-description: VDP Protocol structs
-additionalProperties: true
-anyOf:
-  - required:
-      - classification
-  - required:
-      - detection
-  - required:
-      - keypoint
-  - required:
-      - ocr
-  - required:
-      - instance_segmentation
-  - required:
-      - semantic_segmentation
-  - required:
-      - text_to_image
-  - required:
-      - text_generation
-  - required:
-      - unspecified
-properties:
-  classification:
-    description: "Classify an image into pre-defined categories"
-    "$ref": "#/definitions/Classification"
-  detection:
-    description: "Detect and localise multiple objects"
-    "$ref": "#/definitions/Detection"
-  keypoint:
-    description: "Detect and localise keypoints of multiple objects"
-    "$ref": "#/definitions/Keypoint"
-  ocr:
-    description: "Detect, localise and recognise texts"
-    "$ref": "#/definitions/Ocr"
-  instance_segmentation:
-    description: "Detect, localise and delineate multiple objects"
-    "$ref": "#/definitions/InstanceSegmentation"
-  semantic_segmentation:
-    description: "Classify image pixels into predefined categories"
-    "$ref": "#/definitions/SemanticSegmentation"
-  text_to_image:
-    description: "Generates images from input text prompts"
-    "$ref": "#/definitions/TextToImage"
-  text_generation:
-    description: "Generate new texts from input text"
-    "$ref": "#/definitions/TextGeneration"
-  unspecified:
-    description: "Unspecified task with output in the free form"
-    "$ref": "#/definitions/Unspecified"
-```
-
-To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model.
-
-The protocol is still under development. Stay tuned on how the protocol will evolve.
 
 ## Image Classification
 
@@ -128,7 +53,7 @@ Generally, an Image Classification model takes an image as the input, and output
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                                 | Sources                                                                                                                      | Framework | CPU | GPU |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------- | --- | --- |
@@ -170,7 +95,7 @@ Generally, an Object Detection model receives an image as the input, and outputs
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                       | Sources                                                      | Framework | CPU | GPU |
 | ---------------------------------------------- | ------------------------------------------------------------ | --------- | --- | --- |
@@ -224,7 +149,7 @@ Normally, a Keypoint Detection task takes an image as the input, and outputs the
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                               | Sources                                                           | Framework | CPU | GPU |
 | ------------------------------------------------------ | ----------------------------------------------------------------- | --------- | --- | --- |
@@ -274,7 +199,7 @@ Alternatively, there are deep learning models that can accomplish the task in on
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                                                                       | Sources                                                   | Framework | CPU | GPU |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------- | --- | --- |
@@ -348,7 +273,7 @@ The above image shows examples of encoding masks into RLEs and decoding masks en
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                                                                    | Sources                                                                     | Framework | CPU | GPU |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
@@ -387,7 +312,7 @@ Normally, the task takes an image as the input, and outputs segmentation mask (R
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                                                                                            | Sources                                                                     | Framework | CPU | GPU |
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
@@ -439,7 +364,7 @@ f.write(image)
 
 </InfoBlock>
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                  | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
@@ -454,7 +379,7 @@ Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) 
 curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip --output stable-diffusion-1-5-cpu.zip
 ```
 
-**Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
+**Step2**: Refer to the guideline on **importing local models via [no-code](./import-models/local#no-code-setup) or [low-code](./import-models/local#low-code-setup)**.
 
 </InfoBlock>
 
@@ -482,7 +407,7 @@ The task can fill in incomplete sentences or even generate full stories given th
 }
 ```
 
-### Available models
+**Available models**
 
 | 🔮 Model                                                                            | Sources                                                             | Framework         | CPU | GPU |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- | --- | --- |
@@ -496,9 +421,9 @@ Assume that you have **N** GPUs, please pick the corresponding tag named with `f
 
 </InfoBlock>
 
-## What if my task is not standardised by VDP yet?
+## Unspecified Task
 
-VDP is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
+Instill Model is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
 The model will be classified as an `Unspecified` task. Send an image to the model as the input,
 VDP will
 
@@ -530,3 +455,19 @@ VDP will
   }
 }
 ```
+
+## Suggest a New Task
+
+<InfoBlock type="info" title="info">
+  The
+  [Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml)
+  is still under development. Stay tuned on how the protocol will evolve.
+</InfoBlock>
+
+Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
+
+Additionally, the [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of AI task output in order to standardise an ETL pipeline for unstructured data.
+The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
+To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model.
+
+If you'd like to **support for a new task**, you can create an [issue](https://github.com/instill-ai/community/issues) or request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).

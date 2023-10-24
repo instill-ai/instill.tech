@@ -1,57 +1,11 @@
 ---
-title: "Overview"
+title: "Supported AI Tasks"
 lang: "en-US"
 draft: false
-description: "Instill Model Overview"
+description: "Model Overview"
 ---
 
-Instill Model uses [Triton Inference server](https://github.com/triton-inference-server/server) for model serving. It supports multiple deep learning frameworks including [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt) and [ONNX](https://onnx.ai).
-Besides, the [Python Backend](https://github.com/triton-inference-server/python_backend) enables Triton to support any model written in Python.
-
-A **Model** is a piece of ML algorithm run on data to solve a certain AI task for Vision, Language and more.
-
-## Importing Model
-
-No matter where your model stores, we want to keep your models in the same place without changes and make the process of importing the models into Instill Model very easy.
-That's why Instill Model has integrated many model platforms and tools as _model sources_. We strive to support as many popular _model sources_ as possible.
-
-A _model source_ in Instill Model is defined by [`ModelDefinition`](https://github.com/instill-ai/protobufs/blob/main/model/model/v1alpha/model_definition.proto).
-The JSON Schema of a `ModelDefinition` defines how to configure and import a _model source_.
-Different approaches can provide different features. For example, some approaches support version control but some do not.
-It is up to the users to adopt approach they are already familiar with.
-Please check out [Import Models](./import-models/local) to learn more.
-
-If you'd like to **ask for a new model source**, you can create an [issue](https://github.com/instill-ai/community/issues) or
-request it in the **#give-feedback** channel on our [Discord](https://discord.gg/sevxWsqpGh).
-
-We use release stage to indicate a model source's readiness.
-
-| Stage                   | Description                                                                                                                                                                                                                                                                  |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
-| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
-| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |
-
-## Model State
-
-The state of a model can be `UNSPECIFIED`, `OFFLINE`, `ONLINE` or `ERROR`.
-
-- When a model is initially created, the states is by default `OFFLINE`.
-- A model can be switched to `OFFLINE` state by invoking the `model-backend` endpoint `/undeploy` only when its original state is `ONLINE`.
-- A model can be switch to `ONLINE` state by invoking the `model-backend` endpoint `/deploy` only when its original state is `OFFLINE`. Model deployment operation can take time depending on factors like Internet connection and model size. Before a model is deployed online, the state will be `UNSPECIFIED`.
-- If the state of a model ends up with `ERROR`, it is undeployable on Instill Model. Please refer to [Prepare Models](/docs/model/prepare-models/overview) to make your model Instill Model ready.
-
-<div align="center">
-  <ZoomableImg
-    src="/docs-assets/core-concepts/model-state.svg"
-    alt="  The finite-state-machine (FSM) diagram for the model state transition logic"
-    width="500"
-  />
-</div>
-
-## Supported AI Tasks
-
-When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks by identifing the [relevant metadata in the model card](./prepare-models/model-card#instill-model-card-metadata).
+When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks by identifing the [relevant metadata in the model card](prepare-models#model-card-metadata).
 
 In a data pipeline, model is the core component designed to solve a specific AI task. By standardising the data format of model outputs into AI tasks,
 
@@ -75,7 +29,7 @@ The goal is to make a computer/device provide description for the data as comple
 These primitive tasks are the foundation for building many real-world industrial AI applications.
 Each task is described in depth in the respective section below.
 
-### Image Classification
+## Image Classification
 
 Image Classification is a Vision task to assign a single pre-defined category label to an entire input image.
 Generally, an Image Classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
@@ -106,7 +60,7 @@ Generally, an Image Classification model takes an image as the input, and output
 | [MobileNet v2](https://github.com/onnx/models/tree/main/vision/classification/mobilenet) | [GitHub](https://github.com/instill-ai/model-mobilenetv2), [GitHub-DVC](https://github.com/instill-ai/model-mobilenetv2-dvc) | ONNX      | ✅  | ✅  |
 | [Vision Transformer (ViT)](https://huggingface.co/google/vit-base-patch16-224)           | [Hugging Face](https://huggingface.co/google/vit-base-patch16-224)                                                           | ONNX      | ✅  | ❌  |
 
-### Object Detection
+## Object Detection
 
 Object Detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
 Generally, an Object Detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
@@ -148,7 +102,7 @@ Generally, an Object Detection model receives an image as the input, and outputs
 | [YOLOv4](https://github.com/AlexeyAB/darknet)  | [GitHub-DVC](https://github.com/instill-ai/model-yolov4-dvc) | ONNX      | ✅  | ✅  |
 | [YOLOv7](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-dvc) | ONNX      | ✅  | ✅  |
 
-### Keypoint Detection
+## Keypoint Detection
 
 Keypoint Detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
 Normally, a Keypoint Detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
@@ -201,7 +155,7 @@ Normally, a Keypoint Detection task takes an image as the input, and outputs the
 | ------------------------------------------------------ | ----------------------------------------------------------------- | --------- | --- | --- |
 | [YOLOv7 W6 Pose](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-pose-dvc) | ONNX      | ✅  | ✅  |
 
-### Optical Character Recognition (OCR)
+## Optical Character Recognition (OCR)
 
 OCR is a Vision task to localise and recognise text in an input image.
 The task can be done in two steps by multiple models:
@@ -251,7 +205,7 @@ Alternatively, there are deep learning models that can accomplish the task in on
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------- | --- | --- |
 | [PSNet](https://github.com/open-mmlab/mmocr/tree/main/configs/textdet/psenet) + [EasyOCR](https://github.com/JaidedAI/EasyOCR) | [GitHub-DVC](https://github.com/instill-ai/model-ocr-dvc) | ONNX      | ✅  | ✅  |
 
-### Instance Segmentation
+## Instance Segmentation
 
 Instance Segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
 Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
@@ -325,7 +279,7 @@ The above image shows examples of encoding masks into RLEs and decoding masks en
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
 | [Mask RCNN](https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-10.onnx) | [GitHub-DVC](https://github.com/instill-ai/model-instance-segmentation-dvc) | PyTorch   | ✅  | ✅  |
 
-### Semantic Segmentation
+## Semantic Segmentation
 
 Semantic Segmentation is a Vision task of assigning a class label to every pixel in the image.
 Normally, the task takes an image as the input, and outputs segmentation mask (RLE) representations (a variable-length comma-delimited string) for each group of pixel objects and category of the group objects.
@@ -364,7 +318,7 @@ Normally, the task takes an image as the input, and outputs segmentation mask (R
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
 | [Lite R-ASPP based on MobileNetV3](https://github.com/open-mmlab/mmsegmentation/tree/98dfa1749bac0b5281502f4bb3832379da8feb8c/configs/mobilenet_v3) | [GitHub-DVC](https://github.com/instill-ai/model-semantic-segmentation-dvc) | ONNX      | ✅  | ✅  |
 
-### Text to Image
+## Text to Image
 
 Text to Image is a Generative AI task to generate images from text inputs.
 Generally, the task takes descriptive text prompts as the input, and outputs generated images in Base64 format based on the text prompts.
@@ -425,11 +379,11 @@ Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) 
 curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip --output stable-diffusion-1-5-cpu.zip
 ```
 
-**Step2**: Refer to the guideline on **importing local models via [no-code](/docs/import-models/local#no-code-setup) or [low-code](/docs/import-models/local#low-code-setup)**.
+**Step2**: Refer to the guideline on **importing local models via [no-code](./import-models/local#no-code-setup) or [low-code](./import-models/local#low-code-setup)**.
 
 </InfoBlock>
 
-### Text Generation
+## Text Generation
 
 Text Generation is a Generative AI task to generate new text from text inputs.
 Generally, the task takes incomplete text prompts as the input, and produces new text based on the prompts.
@@ -467,7 +421,7 @@ Assume that you have **N** GPUs, please pick the corresponding tag named with `f
 
 </InfoBlock>
 
-### Unspecified Task
+## Unspecified Task
 
 Instill Model is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
 The model will be classified as an `Unspecified` task. Send an image to the model as the input,
@@ -502,7 +456,7 @@ VDP will
 }
 ```
 
-### Suggest a New Task
+## Suggest a New Task
 
 <InfoBlock type="info" title="info">
   The
