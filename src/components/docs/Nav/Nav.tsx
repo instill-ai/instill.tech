@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import cn from "clsx";
 import Link from "next/link";
-
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
@@ -15,7 +14,6 @@ import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
-import { applicationName } from "@/lib/instill/applicationType";
 import LocaleSwitcher from "../LocaleSwitcher";
 import { useTranslation } from "next-i18next";
 
