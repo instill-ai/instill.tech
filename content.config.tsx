@@ -6,7 +6,7 @@ import {
   Logos,
   Icons,
 } from "@instill-ai/design-system";
-import { VERSIONS } from "./version.mjs";
+import { LATEST_VERSIONS } from "./version.mjs";
 
 const SITE = {
   title: "Documentation",
@@ -557,7 +557,7 @@ export function getNavbar(
         className: "navbar-dropdown-menu",
         position: "right",
         label: `${appVersion} ${
-          appVersion === VERSIONS[appType] ? "(latest)" : ""
+          appVersion === LATEST_VERSIONS[appType] ? "(latest)" : ""
         }`,
         items: [
           {

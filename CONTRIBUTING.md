@@ -540,7 +540,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 ```
 update the values of versions
 
-export const VERSIONS = {
+export const LATEST_VERSIONS = {
   vdp: "v1.0.0",
   base: "v1.0.0",
   model: "v1.0.0",
