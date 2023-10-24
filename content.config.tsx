@@ -386,38 +386,6 @@ export function getNavbar(
     title: appType,
     items: [
       {
-        key: "docs-nav-overview",
-        to: `/docs/overview`,
-        className: "",
-        position: "left",
-        label: "common:sidebarSections.overview",
-        appType: null,
-      },
-      {
-        key: "docs-nav-documentation",
-        to: `/docs/${appVersion}/welcome`,
-        className: "",
-        position: "left",
-        label: "Documentation",
-        appType: null,
-      },
-      {
-        key: "docs-nav-api-reference",
-        to: `/docs/api-reference`,
-        className: "",
-        position: "left",
-        label: "API reference",
-        appType: null,
-      },
-      {
-        key: "docs-nav-example",
-        to: `/docs/example`,
-        className: "",
-        position: "left",
-        label: "Example",
-        appType: null,
-      },
-      {
         key: "docs-nav-dropdown-menu",
         href: "/",
         className: "",

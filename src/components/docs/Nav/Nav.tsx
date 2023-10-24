@@ -213,6 +213,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           .nav {
             min-height: var(--docs-nav-height);
           }
+          .container {
+            max-width: 1600px;
+          }
         `}
       </style>
 
