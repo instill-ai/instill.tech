@@ -25,7 +25,7 @@ const SITE = {
 const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
   return [
     {
-      text: "👋 Get Started",
+      text: "common:sidebarSections.getStarted",
       items: [],
       appType: "core",
       versions: [],
@@ -41,13 +41,6 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
     {
       text: "common:sidebarSections.quickstart",
       link: `/docs/${appVersion}/quickstart`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.deploymentIntroduction",
-      link: `/docs/${appVersion}/deployment`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -74,16 +67,29 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "🔮 Deployment",
+      text: "common:sidebarSections.selfhostInstillCore",
       items: [],
       appType: "core",
       versions: [],
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.deployment",
+      text: "common:sidebarSections.coreConcepts",
+      link: `/docs/${appVersion}/core/concepts`,
       collapsible: true,
-      link: `/docs/${appVersion}/core/deployment/cli`,
+      items: [
+        {
+          text: "common:sidebarSections.pipeline",
+          link: `/docs/${appVersion}/core/pipeline`,
+        },
+      ],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.deployment",
+      link: `/docs/${appVersion}/core/deployment`,
+      collapsible: true,
       items: [
         {
           text: "common:sidebarSections.cli",
@@ -102,13 +108,6 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "common:sidebarSections.authorisation",
-      link: `/docs/${appVersion}/core/authorisation`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
       text: "common:sidebarSections.configuration",
       link: `/docs/${appVersion}/core/configuration`,
       items: [],
@@ -117,12 +116,9 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
     },
     {
       text: "common:sidebarSections.contributing",
+      link: `/docs/${appVersion}/core/contributing`,
       collapsible: true,
       items: [
-        {
-          text: "common:sidebarSections.guideline",
-          link: `/docs/${appVersion}/core/contributing/guideline`,
-        },
         {
           text: "common:sidebarSections.development",
           link: `/docs/${appVersion}/core/contributing/setup-local-development`,
@@ -132,98 +128,76 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "💧 Build AI Pipelines",
+      text: "common:sidebarSections.buildAiWorkflows",
       items: [],
       appType: "core",
       versions: [],
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.overview",
-      link: `/docs/${appVersion}/core/concepts`,
+      text: "common:sidebarSections.buildPipeline",
+      link: `/docs/${appVersion}/vdp/build`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.pipeline",
-      link: `/docs/${appVersion}/vdp/pipeline`,
+      text: "common:sidebarSections.testPipeline",
+      link: `/docs/${appVersion}/vdp/test`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.component",
-      link: `/docs/${appVersion}/vdp/component`,
+      text: "common:sidebarSections.releasePipeline",
+      link: `/docs/${appVersion}/vdp/release`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "🧰 Operator",
+      text: "common:sidebarSections.sharePipeline",
+      link: `/docs/${appVersion}/vdp/share`,
       items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.operators",
+      link: `/docs/${appVersion}/vdp/operator`,
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.start",
+          link: `/docs/${appVersion}/vdp/operators/start`,
+        },
+        {
+          text: "common:sidebarSections.end",
+          link: `/docs/${appVersion}/vdp/operators/end`,
+        },
+        {
+          text: "common:sidebarSections.base64",
+          link: `/docs/${appVersion}/vdp/operators/base64`,
+        },
+        {
+          text: "common:sidebarSections.json",
+          link: `/docs/${appVersion}/vdp/operators/json`,
+        },
+        {
+          text: "common:sidebarSections.rest",
+          link: `/docs/${appVersion}/vdp/operators/rest`,
+        },
+        {
+          text: "common:sidebarSections.textextraction",
+          link: `/docs/${appVersion}/vdp/operators/textextraction`,
+        },
+      ],
       appType: "core",
       versions: [],
-      isHeader: true,
     },
     {
-      text: "common:sidebarSections.start",
-      link: `/docs/${appVersion}/vdp/operators/start`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.end",
-      link: `/docs/${appVersion}/vdp/operators/end`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.base64",
-      link: `/docs/${appVersion}/vdp/operators/base64`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.json",
-      link: `/docs/${appVersion}/vdp/operators/json`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.rest",
-      link: `/docs/${appVersion}/vdp/operators/rest`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.textextraction",
-      link: `/docs/${appVersion}/vdp/operators/textextraction`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "🔌 Connect to data",
-      items: [],
-      appType: "core",
-      versions: [],
-      isHeader: true,
-    },
-    {
-      text: "🔌 Transform data",
-      items: [],
-      appType: "core",
-      versions: [],
-      isHeader: true,
-    },
-    {
-      text: "Model Serving Platforms",
+      text: "common:sidebarSections.aiConnectors",
+      link: `/docs/${appVersion}/vdp/ai-connector`,
       collapsible: true,
       items: [
         {
@@ -231,29 +205,9 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
           link: `/docs/${appVersion}/vdp/connectors/instill-model`,
         },
         {
-          text: "Hugging Face",
-          link: `/docs/${appVersion}/vdp/connectors/instill-model`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.llm",
-      collapsible: true,
-      items: [
-        {
           text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-text-generation`,
+          link: `/docs/${appVersion}/vdp/connectors/openai`,
         },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.imageGeneration",
-      collapsible: true,
-      items: [
         {
           text: "common:sidebarSections.stabilityAI",
           link: `/docs/${appVersion}/vdp/connectors/stability-ai`,
@@ -263,45 +217,14 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "common:sidebarSections.speechRecognition",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-speech-recognition`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.embeddings",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai/task-text-embeddings`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.vectordatabaseConnector",
+      text: "common:sidebarSections.dataConnectors",
+      link: `/docs/${appVersion}/vdp/data-connector`,
       collapsible: true,
       items: [
         {
           text: "common:sidebarSections.pinecone",
           link: `/docs/${appVersion}/vdp/connectors/pinecone`,
         },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.dataConnector",
-      collapsible: true,
-      items: [
         {
           text: "common:sidebarSections.airbyte",
           link: `/docs/${appVersion}/vdp/connectors/airbyte`,
@@ -319,7 +242,8 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "common:sidebarSections.appConnector",
+      text: "common:sidebarSections.appConnectors",
+      link: `/docs/${appVersion}/vdp/app-connector`,
       collapsible: true,
       items: [
         {
@@ -331,73 +255,67 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "⚗️ Custom Models",
+      text: "common:sidebarSections.serveModels",
       items: [],
       appType: "core",
       versions: [],
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.overview",
-      link: `/docs/${appVersion}/model/overview`,
+      text: "common:sidebarSections.prepareModels",
+      link: `/docs/${appVersion}/model/prepare`,
+      items: [],
+      appType: "core",
+      versions: [],
+    },
+    {
+      text: "common:sidebarSections.aiTasks",
+      link: `/docs/${appVersion}/model/ai-task`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.prepareModels",
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.overview",
-          link: `/docs/${appVersion}/model/prepare-models/overview`,
-        },
-        {
-          text: "common:sidebarSections.modelCard",
-          link: `/docs/${appVersion}/model/prepare-models/model-card`,
-        },
-        {
-          text: "common:sidebarSections.preProcessing",
-          link: `/docs/${appVersion}/model/prepare-models/pre-processing`,
-        },
-        {
-          text: "common:sidebarSections.postProcessing",
-          link: `/docs/${appVersion}/model/prepare-models/post-processing`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
       text: "common:sidebarSections.importModels",
+      link: `/docs/${appVersion}/model/import`,
       collapsible: true,
       items: [
-        {
-          text: "common:sidebarSections.overview",
-          link: `/docs/${appVersion}/model/import-models/overview`,
-        },
         {
           text: "common:sidebarSections.local",
-          link: `/docs/${appVersion}/model/import-models/local`,
+          link: `/docs/${appVersion}/model/import/local`,
         },
         {
           text: "common:sidebarSections.github",
-          link: `/docs/${appVersion}/model/import-models/github`,
+          link: `/docs/${appVersion}/model/import/github`,
         },
         {
           text: "common:sidebarSections.artivc",
-          link: `/docs/${appVersion}/model/import-models/artivc`,
+          link: `/docs/${appVersion}/model/import/artivc`,
         },
         {
           text: "common:sidebarSections.huggingFace",
-          link: `/docs/${appVersion}/model/import-models/huggingface`,
+          link: `/docs/${appVersion}/model/import/huggingface`,
         },
       ],
       appType: "core",
       versions: [],
     },
     {
-      text: "📦 Instill SDK",
+      text: "common:sidebarSections.deployModels",
+      link: `/docs/${appVersion}/model/deployment`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.inference",
+      link: `/docs/${appVersion}/model/inference`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillSdk",
       items: [],
       appType: "core",
       versions: ["latest"],

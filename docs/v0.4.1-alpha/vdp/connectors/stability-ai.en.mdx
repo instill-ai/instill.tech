@@ -5,13 +5,16 @@ draft: false
 description: "Learn about how to set up a Stability AI AI connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
 ---
 
-The Stability AI AI connector enables you to connect the AI models served on the Stability AI Platform for the **Text to Image** and **Image to Image** AI tasks.
+The Stability AI AI connector enables you to connect the AI models served on the Stability AI Platform for the following tasks:
 
-## Release stage
+- [Text to Image](#text-to-image)
+- [Image to Image](#image-to-image)
+
+## Release Stage
 
 `Alpha`
 
-## Configuration
+## Resource Configuration
 
 The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector-ai/blob/main/pkg/stabilityai/config/definitions.json).
 
@@ -19,7 +22,7 @@ The up-to-date configuration is maintained [here](https://github.com/instill-ai/
 | :-------- | :----- | :----------------------------------------------------------------------------------------- |
 | api_key\* | string | Enter your Stability AI API key. To find your keys, go to your DreamStudio's Account page. |
 
-### No-code setup
+### No-code Setup
 
 <InfoBlock type="info" title="Prerequisites">
 
@@ -45,61 +48,100 @@ To create a Stability AI AI connector:
 
 6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
 
-### Low-code setup
-
-1. Create a Stability AI AI connector
+### Low-code Setup
 
 <CH.Code>
-```shellscript cURL
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "my-stable-diffusion-xl-1024-v1-0",
-        "connector_definition_name": "connector-definitions/ai-stability-ai",
-        "configuration": {
-          "api_key": "<stability-ai-api-key>"
-        }
-      }'
-```
-</ CH.Code>
 
+```shellscript cURL(Instill-Cloud)
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-stable-diffusion",
+  "connector_definition_name": "connector-definitions/ai-stability-ai",
+  "configuration": {
+    "api_key": "<stability-ai-api-key>"
+  }
+}'
+```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources \
+--data '{
+  "id": "my-stable-diffusion",
+  "connector_definition_name": "connector-definitions/ai-stability-ai",
+  "configuration": {
+    "api_key": "<stability-ai-api-key>"
+  }
+}'
+```
+
+</ CH.Code>
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
 
-## Expected inputs and outputs
+## Connector Configuration
 
 When using the Stability AI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
 Here are the expected input and output data fields for the Stability AI AI connector.
 
-### Expected input data fields
+### Text to Image
 
-| Input data field              | Type          | Description                                                                                                       |
-| :---------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------- |
-| task                          | string        | "TASK_TEXT_TO_IMAGE" or "TASK_IMAGE_TO_IMAGE"                                                                     |
-| engine                        | string        | Stability AI Engine (model) to be used. eg. stable-diffusion-xl-1024-v1-0, stable-diffusion-v1                    |
-| init_image                    | string        | This is only required for "TASK_IMAGE_TO_IMAGE" task to specify initial image                                     |
-| prompts                       | array[string] | This has the text prompt, required for all tasks.                                                                 |
-| cfg_scale                     | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.                            |
-| clip_guidance_preset          | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.                     |
-| sampler                       | string        | Which sampler to use for the diffusion process, optional for all tasks.                                           |
-| samples                       | integer       | Number of images to generate, optional for all tasks.                                                             |
-| seed                          | integer       | Random noise seed, optional for all tasks.                                                                        |
-| steps                         | integer       | Number of diffusion steps to run, optional for all tasks.                                                         |
-| style_preset                  | string        | To guide the image model towards a particular style, optional for all tasks.                                      |
-| weights                       | array[number] | Weights for each of the prompts in texts, optional for all tasks.                                                 |
-| height                        | integer       | Height of the output image, optional but only for "TASK_TEXT_TO_IMAGE" task.                                      |
-| width                         | integer       | Width of the output image, optional but only for "TASK_TEXT_TO_IMAGE" task.                                       |
-| init_image_mode               | string        | Whether to use image_strength or step_schedule, optional but only for "TASK_IMAGE_TO_IMAGE" task.                 |
-| image_strength                | number        | How much influence the init_image has on the diffusion process, optional but only for "TASK_IMAGE_TO_IMAGE" task. |
+| Input                | Type          | Description                                                                                    |
+| :------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| task                 | string        | `TASK_TEXT_TO_IMAGE`                                                                           |
+| engine               | string        | Stability AI Engine (model) to be used. eg. stable-diffusion-xl-1024-v1-0, stable-diffusion-v1 |
+| prompts              | array[string] | This has the text prompt, required for all tasks.                                              |
+| cfg_scale            | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.         |
+| clip_guidance_preset | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.  |
+| sampler              | string        | Which sampler to use for the diffusion process, optional for all tasks.                        |
+| samples              | integer       | Number of images to generate, optional for all tasks.                                          |
+| seed                 | integer       | Random noise seed, optional for all tasks.                                                     |
+| steps                | integer       | Number of diffusion steps to run, optional for all tasks.                                      |
+| style_preset         | string        | To guide the image model towards a particular style, optional for all tasks.                   |
+| weights              | array[number] | Weights for each of the prompts in texts, optional for all tasks.                              |
+| height               | integer       | Height of the output image, optional.                                                          |
+| width                | integer       | Width of the output image, optional.                                                           |
 
-Example input data for **TASK_TEXT_TO_IMAGE** and **TASK_IMAGE_TO_IMAGE** tasks:
+| Output | Type           | Description                             |
+| :----- | -------------- | --------------------------------------- |
+| images | array[image]   | Output images as base64 encoded string. |
+| seeds  | array[integer] | Seeds for output images.                |
+
+### Image to Image
+
+| Input                | Type          | Description                                                                                    |
+| :------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| task                 | string        | `TASK_IMAGE_TO_IMAGE`                                                                          |
+| engine               | string        | Stability AI Engine (model) to be used. eg. stable-diffusion-xl-1024-v1-0, stable-diffusion-v1 |
+| init_image           | string        | Specify initial image                                                                          |
+| prompts              | array[string] | This has the text prompt                                                                       |
+| cfg_scale            | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.         |
+| clip_guidance_preset | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.  |
+| sampler              | string        | Which sampler to use for the diffusion process, optional for all tasks.                        |
+| samples              | integer       | Number of images to generate, optional for all tasks.                                          |
+| seed                 | integer       | Random noise seed, optional for all tasks.                                                     |
+| steps                | integer       | Number of diffusion steps to run, optional for all tasks.                                      |
+| style_preset         | string        | To guide the image model towards a particular style, optional for all tasks.                   |
+| weights              | array[number] | Weights for each of the prompts in texts, optional for all tasks.                              |
+| height               | integer       | Height of the output image, optional.                                                          |
+| width                | integer       | Width of the output image, optional.                                                           |
+| init_image_mode      | string        | Whether to use image_strength or step_schedule, optional.                                      |
+| image_strength       | number        | How much influence the init_image has on the diffusion process, optional.                      |
+
+| Output | Type           | Description                                                   |
+| :----- | -------------- | ------------------------------------------------------------- |
+| images | array[image]   | This will contain the output images as base64 encoded string. |
+| seeds  | array[integer] | This will contain the seeds for output images.                |
+
+## Example
+
+Example input and output data for each task:
 
 <CH.Code>
-```json text-to-image
+```json TASK_TEXT_TO_IMAGE
+// Input
 {
-  "prompts": [
-    "black dog",
-  ],
+  "prompts": ["A blue cat bakes a birthday cake"],
   "cfg_scale": 7.0,
   "clip_guidance_preset": "SLOWER",
   "samples": 3,
@@ -108,9 +150,15 @@ Example input data for **TASK_TEXT_TO_IMAGE** and **TASK_IMAGE_TO_IMAGE** tasks:
   "height": 512,
   "width": 512
 }
-```
+// Output
+{
+  "images": ["<base64-encoded image>"],
+  "seeds": [1769541116]
+}
+````
 
-```json image-to-image(with-url)
+```json TASK_IMAGE_TO_IMAGE
+// Input
 {
   "prompts": ["crayon drawing of dogs sit in the snow"],
   "init_image": "<base64 encode string>",
@@ -124,20 +172,11 @@ Example input data for **TASK_TEXT_TO_IMAGE** and **TASK_IMAGE_TO_IMAGE** tasks:
   "image_strength": 0.35,
   "weights": [0.65]
 }
-```
-</ CH.Code>
-
-### Expected output data fields
-
-| Output data field | Type            | Description                                                  |
-| :---------------- | --------------- | ------------------------------------------------------------ |
-| images            | array[image]    | This will contain the output images as base64 encoded string.|
-| seeds             | array[integer]  | This will contain the seeds for output images.               |
-
-Example output data:
-
-```json
+// Output
 {
-  "images": ["<base64-encoded image>"]
+  "images": ["<base64-encoded image>"],
+  "seeds": [16258]
 }
 ```
+
+</ CH.Code>

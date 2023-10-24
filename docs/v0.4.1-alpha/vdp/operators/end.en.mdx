@@ -10,21 +10,20 @@ An [**End**](end) operator is to control the data received as a response when a 
 ## Release stage
 
 `Alpha`
-## Component configuration
 
-The component configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
+## Operator Configuration
 
-| Field                                 | Type                   | Note                                                                                                                                                                           |
-| :------------------------------------ | :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| metadata\*                            | map\<string, object\>  | You can setup the pipeline trigger request fields here                                                                                                                         |
-| metadata.\<key\>.title\*              | string                 | The title of the field                                                                                                                                                         |
-| metadata.\<key\>.type\*               | string                 | The type of the field. Available types: `text`, `image`, `audio`, `number`, `integer`, `boolean`, `text_array`, `image_array`, `audio_array`, `number_array`, `integer_array`  |
-| metadata.\<key\>.description          | string                 | The description of the field.                                                                                                                                                  |
-| input.\<key\>                         | string                 | You can setup the pipeline trigger response fields here via `reference` or `template`                                                                                          |
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
 
+| Field                        | Type                  | Note                                                                                                                                                                          |
+| :--------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| metadata\*                   | map\<string, object\> | You can setup the pipeline trigger request fields here                                                                                                                        |
+| metadata.\<key\>.title\*     | string                | The title of the field                                                                                                                                                        |
+| metadata.\<key\>.type\*      | string                | The type of the field. Available types: `text`, `image`, `audio`, `number`, `integer`, `boolean`, `text_array`, `image_array`, `audio_array`, `number_array`, `integer_array` |
+| metadata.\<key\>.description | string                | The description of the field.                                                                                                                                                 |
+| input.\<key\>                | string                | You can setup the pipeline trigger response fields here via `reference` or `template`                                                                                         |
 
 ### No-code setup
-
 
 ### Low-code setup
 
@@ -35,7 +34,7 @@ This is a sample `configuration` in the pipeline recipe.
   "configuration": {
     "metadata": {
       "texts": {
-        "title": "Texts",
+        "title": "Texts"
       },
       "size": {
         "title": "Size"

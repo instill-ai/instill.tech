@@ -11,19 +11,18 @@ description: "Learn about how to set up a VDP Text Extraction operator https://g
 
 `Alpha`
 
-## Component configuration
+## Operator Configuration
 
-The component configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/vdp/core-concepts/pipeline) for more details.
 
-| Field                                 | Type                   | Note                                                                                                     |
-| :------------------------------------ | :--------------------- | :------------------------------------------------------------------------------------------------------- |
-| task\*                                | string                 | TASK_EXTRACT_FROM_PATH or TASK_EXTRACT_FROM_FILE                                                         |
-| path\*                                | string                 | Path of the content. Could be a local file path or web URL. Required when task is TASK_EXTRACT_FROM_PATH |
-| file_contents\*                       | string                 | Base64 encoded file. Required when task is TASK_EXTRACT_FROM_FILE                                        |
-| content_type\*                        | string                 | Mime type of the file. Required when task is TASK_EXTRACT_FROM_FILE. eg. application/pdf, text/html etc  |
+| Field           | Type   | Note                                                                                                     |
+| :-------------- | :----- | :------------------------------------------------------------------------------------------------------- |
+| task\*          | string | TASK_EXTRACT_FROM_PATH or TASK_EXTRACT_FROM_FILE                                                         |
+| path\*          | string | Path of the content. Could be a local file path or web URL. Required when task is TASK_EXTRACT_FROM_PATH |
+| file_contents\* | string | Base64 encoded file. Required when task is TASK_EXTRACT_FROM_FILE                                        |
+| content_type\*  | string | Mime type of the file. Required when task is TASK_EXTRACT_FROM_FILE. eg. application/pdf, text/html etc  |
 
 ### No-code setup
-
 
 ### Low-code setup
 
@@ -33,7 +32,7 @@ This is a sample `configuration` in the pipeline recipe.
 {
   "configuration": {
     "task": "TASK_EXTRACT_FROM_PATH",
-    "path": "{ start.path }",
+    "path": "{ start.path }"
   }
 }
 ```
