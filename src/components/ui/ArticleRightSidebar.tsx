@@ -25,6 +25,8 @@ export const ArticleRightSidebar = ({
             "https://github.com/instill-ai/instill.tech/edit/main" +
             router.asPath +
             ".mdx"
+          feedbackUrl={
+            "https://github.com/instill-ai/community/issues/new/choose"
           }
         />
       </div>
