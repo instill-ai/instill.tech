@@ -51,7 +51,7 @@ const OverviewPage: FC & {
 };
 
 OverviewPage.getLayout = (page) => {
-  return <DocsLayout isSidebar={false}>{page}</DocsLayout>;
+  return <DocsLayout hasSidebar={false}>{page}</DocsLayout>;
 };
 
 export default OverviewPage;
