@@ -1,0 +1,243 @@
+---
+title: "Pipeline"
+lang: "en-US"
+draft: false
+description: "Build end-to-end unstructured data pipelines with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+A **Pipeline** is an end-to-end workflow that automates a sequence of pipeline components to process data.
+
+## Pipeline Component
+
+A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of components: **Connectors** and **Operators**.
+
+Connector is served by the [`connector-backend`](https://github.com/instill-ai/connector-backend), [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend) will communicate with [`connector-backend`](https://github.com/instill-ai/connector-backend) via gRPC.
+Operator is directly served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
+
+VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto) and [`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+to define the basic properties and detailed configuration of a connector or a operator.
+The inner field [`connector_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/spec.proto)
+defines the connector configuration JSON Schema, including resource configuration, component configuration and OpenAPI schemas.
+The inner field [`operator_definition.spec.connection_specification`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
+defines the operator configuration JSON Schema, including component configuration and OpenAPI schemas.
+
+## Pipeline Recipe
+
+A pipeline is defined by a `recipe` which is essentially a JSON object componsed of multiple components:
+
+- Operators - a numbers of operators to do flexible and fine-grained data injection and manipulation
+- Connectors - a number of connectors to query, process, or send the ingested unstructured data
+
+```json
+{
+  "version": "v1alpha",
+  "components": [
+    {
+      "id": <component-id>,
+      "definition_name": <operator-definition-name>,  // Operator
+      "configuration": {...},
+      ...
+    }
+    {
+      "id": <component-id>,
+      "resource_name": <connector-resource-name>,
+      "definition_name": <connector-definition-name>,  // Connector
+      "configuration": {...},
+      ...
+    },
+    ...
+  ]
+}
+```
+
+Within the recipe, we have four essential fields:
+
+1. **id**: This serves as a unique identifier within the recipe.
+
+2. **resource_name**:
+
+   - Refers to the connector resource. For more information, please refer to [AI Connectors](/docs/vdp/ai-connectors/overview), [Data Connectors](/docs/vdp/data-connectors/overview), or [Blockchain Connectors](/docs/vdp/blockchain-connectors/overview).
+   - The format for this field is `users/<user_id>/connector-resources/<connector-resource-id>`.
+
+3. **definition_name**:
+
+   - Represents the name of the connector or operator definition.
+   - The format for this field is `connector-definitions/<connector-definition-id>` or `operator-definitions/<operator-definition-id>`.
+
+4. **configuration**: This field is used to set up the input data and parameters for the component. Detailed information can be found in the section below.
+
+## Data Flow and Configuration in Pipeline Components
+
+Within pipeline components, data flow is facilitated through a JSON field called **configuration**, which serves as the means to configure both parameters and data input for the component. Understanding this field is essential for customizing the behavior of each component in a pipeline.
+
+**Example Configuration**
+
+Let's begin with an example of a **configuration**:
+
+```json
+{
+  "input": {
+    "field_1_primitive_value": "this is a book",
+    "field_2_primitive_value": 1.0,
+    "field_3_reference": "{ start.a_string_field }",
+    "field_4_reference": "{ componentA.output.a_string_field }",
+    "field_5_reference": "{ componentA.output.a_number_array }",
+    "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
+  }
+}
+```
+
+This `configuration.input` field allows us to define data input and parameter settings. The VDP will interpret and render this configuration into actual data inputs based on the specified data configuration. There are three fundamental ways to configure data:
+
+### Primitive Value
+
+- Data configurations can include common JSON data types such as `string`, `number`, `integer`, `array`, and `object`.
+- After rendering, the value remains exactly as configured.
+
+**Example:**
+
+Consider this component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_1_primitive_value": "this is a book",
+    "field_2_primitive_value": 1.0
+  }
+}
+```
+
+When utilizing batch triggering in VDP, where each component processes an array of inputs, the rendered data input for this component, with batch 2 as an example, appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
+    {
+      "field_1_primitive_value": "this is a book",
+      "field_2_primitive_value": 1.0
+    },
+    {
+      "field_1_primitive_value": "this is a book",
+      "field_2_primitive_value": 1.0
+    }
+  ]
+}
+```
+
+### Reference
+
+- A Reference employs special syntax enclosed in single curly brackets, e.g., `{ start.a_string_field }`.
+- It functions as a variable reference, copying the value from an upstream component to the data input while preserving the original data type.
+
+**Example:**
+
+Suppose we have the following component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_3_reference": "{ start.a_string_field }",
+    "field_4_reference": "{ componentA.output.a_string_field }",
+    "field_5_reference": "{ componentA.output.a_number_array }"
+  }
+}
+```
+
+Given the provided upstream component data, the rendered data input for this component appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
+    {
+      "field_3_reference": "hello world",
+      "field_4_reference": "cat is good",
+      "field_5_reference": [1.0, 1.5, 2.0]
+    },
+    {
+      "field_3_reference": "how are you",
+      "field_4_reference": "dog is good",
+      "field_5_reference": [-1.0, -1.5, -2.0]
+    }
+  ]
+}
+```
+
+### Template
+
+- A **Template** is a string comprising one or more **String Literals**, enclosed in double curly brackets, e.g., `{{ componentA.output.a_string_field }}`.
+- It retrieves values from upstream components and converts them to string type for the data input.
+
+**Example:**
+
+Consider the following component configuration:
+
+```json
+// Component configuration
+{
+  "input": {
+    "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
+  }
+}
+```
+
+Based on the provided upstream component data, the rendered data input for this component appears as follows:
+
+```json
+// Data input of the component
+{
+  "inputs": [
+    {
+      "field_6_template": "cat is good and we have 1"
+    },
+    {
+      "field_6_template": "dog is good and we have 2"
+    }
+  ]
+}
+```
+
+For a more detailed understanding of the **String Literal** syntax, you can refer to [Liquid](https://shopify.github.io/liquid/).
+
+## Trigger Pipeline
+
+### Trigger via SYNC API
+
+A pipeline in the `SYNC` mode responds to a request synchronously.
+The result is sent back to the user right after the data is processed.
+This is for real-time inference where low latency is of concern.
+The request flow when triggering a `SYNC` pipeline is shown below:
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/sync.svg"
+  alt="SYNC trigger"
+  width="600px"
+/>
+
+VDP supports trigger a pipeline via HTTP and gRPC protocols.
+
+### Trigger via ASYNC API
+
+A pipeline in the `ASYNC` mode performs asynchronous workload.
+The user triggers the pipeline with an asynchronous request and only receives an acknowledged response.
+This mode is for use cases that requires long running workloads.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/async.svg"
+  alt="ASYNC pipeline mode"
+  width="600px"
+/>
+
+### Trigger via PULL schedular (coming soon)
+
+A pipeline in the `PULL` mode performs scheduled workload to regularly pull data
+from the **Source** to process and write to destinations in the end.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/pull.svg"
+  alt="Pipeline PULL mode"
+  width="600px"
+/>

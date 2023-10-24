@@ -9,9 +9,10 @@ import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 export type DocsLayoutProps = {
   children?: ReactNode;
+  isSidebar: boolean;
 };
 
-export const DocsLayout = ({ children }: DocsLayoutProps) => {
+export const DocsLayout = ({ children, isSidebar }: DocsLayoutProps) => {
   const router = useRouter();
 
   const { isDark } = useInstillAICtx();
@@ -85,14 +86,16 @@ export const DocsLayout = ({ children }: DocsLayoutProps) => {
         />
 
         <div className="flex flex-grow dark:bg-instillGrey90">
-          <aside
-            className={cn(
-              "docs-left-sidebar fixed z-30 transform border-r border-gray-300 bg-white bg-opacity-80 transition-transform dark:border-gray-500 dark:bg-instillGrey90 sm:top-0 md:fixed md:top-[65px] md:col-span-3 md:flex md:transform-none xl:top-[65px] max:fixed",
-              leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
-            )}
-          >
-            <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
-          </aside>
+          {isSidebar ? (
+            <aside
+              className={cn(
+                "docs-left-sidebar fixed z-30 transform border-r border-gray-300 bg-white bg-opacity-80 transition-transform dark:border-gray-500 dark:bg-instillGrey90 sm:top-0 md:fixed md:top-[65px] md:col-span-3 md:flex md:transform-none xl:top-[65px] max:fixed",
+                leftSidebarIsOpen ? "translate-x-0" : "-translate-x-full"
+              )}
+            >
+              <LeftSidebar leftSidebar={docsConfigration.sidebar.leftSidebar} />
+            </aside>
+          ) : null}
 
           <div className="docs-content md:pd-20 sm:pt-25 xs:pt-30 pt-32 lg:pt-20 xl:pt-20">
             {children}

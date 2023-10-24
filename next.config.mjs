@@ -84,11 +84,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/docs/welcome",
-        destination: "/docs/cloud/welcome",
-        permanent: false,
-      },
-      {
         source: "/tos",
         destination: "https://www.iubenda.com/terms-and-conditions/60558066",
         permanent: false,
@@ -241,23 +236,28 @@ const nextConfig = {
 
       // New documentation refactor 20230907
       {
-        source: "/docs/",
-        destination: `/docs/core/${VERSIONS["core"]}/welcome`,
+        source: "/docs/welcome",
+        destination: `/docs/${VERSIONS["get-started"]}/welcome`,
+        permanent: false,
+      },
+      {
+        source: "/docs/quickstart",
+        destination: `/docs/${VERSIONS["get-started"]}/quickstart`,
         permanent: false,
       },
       {
         source: "/docs/base/configuration",
-        destination: `/docs/base/${VERSIONS["base"]}/configuration`,
+        destination: `/docs/base/${VERSIONS["core"]}/configuration`,
         permanent: false,
       },
       {
         source: "/docs/base/getting-started",
-        destination: `/docs/base/${VERSIONS["base"]}/getting-started`,
+        destination: `/docs/base/${VERSIONS["core"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/base/welcome",
-        destination: `/docs/base/${VERSIONS["base"]}/welcome`,
+        destination: `/docs/base/${VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
@@ -317,32 +317,37 @@ const nextConfig = {
       },
       {
         source: "/docs/vdp/deployment/kubernetes-using-helm",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/kubernetes-using-helm`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/deployment/kubernetes-using-helm`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/overview",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/overview`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/deployment/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/development/setup-local-development",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/development/setup-local-development`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/development/setup-local-development`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/end",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/end`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/operators/end`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/overview",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/overview`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/operators/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/start",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/start`,
+        destination: `/docs/${VERSIONS["vdp"]}/vdp/operators/start`,
+        permanent: false,
+      },
+      {
+        source: "/docs/sdk/overview",
+        destination: `/docs/${VERSIONS["vdp"]}/sdk/overview`,
         permanent: false,
       },
     ];
