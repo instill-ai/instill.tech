@@ -438,7 +438,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-product-website",
             href: "/",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.productWebsite",
             iconElement: (
@@ -449,7 +449,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-tutorials",
             href: "/tutorials",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.tutorials",
             iconElement: (
@@ -460,7 +460,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-blog",
             href: "/blog",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.blog",
             iconElement: (
@@ -471,7 +471,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-newsletter",
             href: "/newsletter",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.newsletter",
             iconElement: (
@@ -499,7 +499,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-discord",
             href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.discord",
             iconElement: (
@@ -510,7 +510,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-github-disussions",
             href: "https://github.com/orgs/instill-ai/discussions",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.gitHubDisussions",
             iconElement: (
@@ -521,7 +521,7 @@ export function getNavbar(
           {
             key: "docs-nav-dropdown-github-issues",
             href: "https://github.com/instill-ai/community/issues",
-            className: "navbar-dropdown-menu",
+            className: "",
             position: "right",
             label: "common:navbar.gitHubIssues",
             iconElement: (
