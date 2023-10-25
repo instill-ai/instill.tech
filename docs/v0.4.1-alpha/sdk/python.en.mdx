@@ -190,7 +190,7 @@ yolov7 = GithubModel(
 
 After the creation is done, we can check the state of the model[^3]
 
-[^3]: [State definition](https://www.instill.tech/docs/model/core-concepts/overview#state)
+[^3]: [State definition](https://www.instill.tech/docs/model/prepare)
 
 ```python
 yolov7.get_state()
@@ -214,7 +214,7 @@ yolov7.get_state()
 
 Trigger the model with the correct `task` type[^4]
 
-[^4]: Check out our [task protocol](https://www.instill.tech/docs/model/core-concepts/ai-task) to learn more, or read our [json schema](https://raw.githubusercontent.com/instill-ai/connector-ai/main/pkg/instill/config/seed/data.json) directly
+[^4]: Check out our [task protocol](https://www.instill.tech/docs/model/ai-task) to learn more, or read our [json schema](https://raw.githubusercontent.com/instill-ai/connector-ai/main/pkg/instill/config/seed/data.json) directly
 
 ```python
 from instill.resources import model_pb, task_detection

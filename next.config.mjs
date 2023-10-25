@@ -140,7 +140,7 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/ai-task",
-        destination: "/docs/model/core-concepts/ai-task",
+        destination: "/docs/model/ai-task",
         permanent: false,
       },
       {
@@ -155,12 +155,12 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/vdp/core-concepts/pipeline",
+        destination: "/docs/core/pipeline",
         permanent: false,
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/vdp/core-concepts/pipeline",
+        destination: "/docs/core/pipeline",
         permanent: false,
       },
       {
