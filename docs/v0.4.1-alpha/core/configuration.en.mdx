@@ -1,0 +1,173 @@
+---
+title: "Configuration"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+---
+
+<InfoBlock type="info" title="info">
+  [**Core**](https://github.com/instill-ai/core) runs essential services like a
+  user management server, databases, and third-party observability tools
+  necessary for launching VDP.
+</InfoBlock>
+
+Instill Core automatically load a [`.env`](https://github.com/instill-ai/core/blob/main/.env) file that contains key/value pairs defining required environment variables.
+You can customize the file based on your configuration.
+
+Besides, they use [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and makes it available to the service.
+To override the default configuration file, you can set the corresponding environment variable in the compose file in [core](https://github.com/instill-ai/core/blob/main/docker-compose.yml).
+All configuration environment variables for each service are prefixed with `CFG_`.
+
+## Configuring Core Services
+
+Read the default configuration files for a full overview of all supported configuration options of each service:
+
+- [`mgmt-backend`](https://github.com/instill-ai/mgmt-backend/blob/main/config/config.yaml)(`localhost:8084`): a service to handle user management, token management, and metrics
+- [`console`](https://github.com/instill-ai/console/blob/main/.env)(`localhost:3000`): a Web-based UI app to provide a unified, clean, and intuitive user experience of Instill VDP and Model
+
+### Configuring Service Version
+
+Set the environment variable for a specific service to determine which version to use in Core.
+
+```shellscript .env
+# Set the version of individual Core service
+API_GATEWAY_VERSION=<api-gateway-version>
+MGMT_BACKEND_VERSION=<mgmt-backend-version>
+CONSOLE_VERSION=<console-version>
+
+# Set the version of 3rd party tools
+REDIS_VERSION=<redis-version>
+POSTGRESQL_VERSION=<postgresql-version>
+TEMPORAL_VERSION=<temporal-version>
+TEMPORAL_UI_VERSION=<temporal-ui-version>
+ELASTICSEARCH_VERSION=<elasticsearch-version>
+ETCD_VERSION=<etcd-version>
+```
+
+The combination of default versions in `.env` file is fully tested for compatibility.
+Unless you are debugging and testing, updating the default versions in the `.env` file is discouraged.
+
+### Configuring the Console
+
+To access Core via Console, set the hosts by overriding the environment variables:
+
+```shellscript .env
+CONSOLE_PUBLIC_API_GATEWAY_HOST=<hostname-to-access-core>
+```
+
+By default they are set to `localhost`.
+
+### Configuring the Observability Stack
+
+Observability is critical for distributed microservice architecture.
+Through [OpenTelemetry](https://opentelemetry.io/), we can generate, collect and export metrics, logs and traces to help analyse the performance and behaviour of VDP services.
+
+The observability stack is disabled by default. You can enable the stack setting `OBSERVE_ENABLED=true` in the [`.env`](https://github.com/instill-ai/core/blob/main/.env) file.
+The following telemetry tools are supported now:
+
+- [**Jaeger**](https://www.jaegertracing.io/) (`localhost:16686`): OpenTelemetry allows us to export spans to Jaeger. Use Jaeger when you want to debug the complete flow of a request through the VDP services.
+- [**InfluxDB**](https://www.influxdata.com/) (`localhost: 8086`, username:`admin`, password:`password`): detailed metrics are sent to InfluxDB for monitoring, and are imported into the Grafana dashboard
+- [**Grafana**](https://grafana.com/) (`localhost:3002`, username:`admin`, password:`admin`): the Grafana dashboard visualises the metrics to monitor the performance and anomalies of VDP services
+- [**Prometheus**](https://prometheus.io/) (`localhost:9090`): VDP exports metrics like `vdp_pipeline_sync_trigger_counter_total` (total number of triggers from SYNC pipelines) and `vdp_pipeline_async_trigger_counter_total` (total number of triggers from ASYNC pipelines) to Prometheus.
+
+Set the environment variable for a specific telemetry tool to determine which version to use in Core.
+
+```shellscript .env
+# Set the version of the observability stack
+INFLUXDB_VERSION=<influxdb-version>
+OTEL_COLLECTOR_VERSION=<otel-collector-version>
+JAEGER_VERSION=<jaeger-version>
+PROMETHEUS_VERSION=<prometheus-version>
+GRAFANA_VERSION=<grafana-version>
+```
+
+## Configuring VDP Services
+
+Read the default configuration files for a full overview of all supported configuration options of each service:
+
+- [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend/blob/main/config/config.yaml)(`localhost:8081`): a service to build and manage unstructured data pipelines
+- [`connector-backend`](https://github.com/instill-ai/connector-backend/blob/main/config/config.yaml)(`localhost:8082`): a service to create and manage connectors for composing data pipelines
+- [`controller-vdp`](https://github.com/instill-ai/controller-vdp/blob/main/config/config.yaml): a non-public service to monitor the states of pipeline and connector resources
+
+### Configuring VDP Service Version
+
+Set the environment variable for a specific service to determine which version to use in VDP.
+
+```shellscript .env
+# Set the version of individual VDP service
+INSTILL_CORE_VERSION=<core-version>
+API_GATEWAY_VDP_VERSION=<api-gateway-vdp-version>
+PIPELINE_BACKEND_VERSION=<pipeline-backend-version>
+CONNECTOR_BACKEND_VERSION=<connector-backend-version>
+CONTROLLER_VDP_VERSION=<controller-version>
+```
+
+The combination of default versions in `.env` file is fully tested for compatibility.
+Unless you are debugging and testing, updating the default versions in the `.env` file is discouraged.
+
+## Anonymised Usage Collection
+
+To help us better understand how VDP is used and can be improved, VDP collects and reports _anonymised_ usage statistics.
+
+### What Data is Collected
+
+<InfoBlock type="info" title="info">
+  We value your privacy. So, we went for the anonymous data and selected a set
+  of details to share from your VDP instance that would give us insights about
+  how to improve VDP without being invasive.
+</InfoBlock>
+
+When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, and `mgmt-backend` in VDP will ask for a new session, respectively.
+Our usage server returns a token used for future reporting.
+For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
+
+- name of the service to collect data from, e.g., `SERVICE_CONNECTOR` for `connector-backend`
+- edition of the service to identify the deployment, e.g., `local-ce` for local community edition deployment
+- version of the service, e.g., `0.5.0-alpha`
+- architecture of the system the service is running on, e.g., `amd64`
+- operating system the service is running on, e.g., `Linux`
+- uptime in seconds to identify the rough life span of the service
+
+Each session is assigned a random UUID for tracking and identification.
+Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every 10 minutes:
+
+- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
+  - information of the [onboarded User](/docs/latest/vdp/getting-started#start-building-with-vdp)
+- [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
+  - UUID of the onboarded User
+  - number of _connected_ or _disconnected_ Sources
+  - number of _connected_ or _disconnected_ Destinations
+  - an array of `SourceConnectorDefinition` of the Sources
+  - an array of `DestinationConnectorDefinition` of the Destinations
+- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
+  - UUID of the onboarded User
+  - number of _active_ and _inactive_ Pipelines
+  - number of `SYNC` and `ASYNC` Pipelines
+  - number of images processed by the Pipelines
+
+You can check the full usage data structs in [protobufs](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto).
+These data do not allow us to track Personal Data but enable us to measure session counts and usage statistics.
+
+### Implementation
+
+The anonymous usage report client library is in [`usage-client`](https://github.com/instill-ai/usage-client).
+To limit risk exposure, we keep the usage server implementation private for now.
+In summary, the Session data and SessionReport sent from each session get updated in the usage server.
+
+Additionally, The frontend Console sends event data to [Amplitude](https://amplitude.com).
+
+### Opting out
+
+VDP usage collection helps the entire community. We'd appreciate it if you can leave it on.
+However, if you want to opt out, you can disable it by overriding the `.env` file in Core:
+
+```shellscript .env
+USAGE_ENABLED=false
+```
+
+This will disable the VDP usage collection for the entire project.
+
+### Acknowledgements
+
+Our anonymised usage collection was inspired by KrakenD's [How we built our telemetry service](https://www.krakend.io/blog/building-a-telemetry-service/)
+and would love to acknowledge that their design has helped us to bootstrap our usage collection project.

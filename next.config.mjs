@@ -15,7 +15,7 @@ import {
   infoBlockChildren,
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
 import path from "path";
-import { VERSIONS } from "./version.mjs";
+import { LATEST_VERSIONS } from "./version.mjs";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -84,11 +84,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/docs/welcome",
-        destination: "/docs/cloud/welcome",
-        permanent: false,
-      },
-      {
         source: "/tos",
         destination: "https://www.iubenda.com/terms-and-conditions/60558066",
         permanent: false,
@@ -145,7 +140,7 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/ai-task",
-        destination: "/docs/model/core-concepts/ai-task",
+        destination: "/docs/model/ai-task",
         permanent: false,
       },
       {
@@ -160,12 +155,12 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/vdp/core-concepts/pipeline",
+        destination: "/docs/core/pipeline",
         permanent: false,
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/vdp/core-concepts/pipeline",
+        destination: "/docs/core/pipeline",
         permanent: false,
       },
       {
@@ -241,108 +236,118 @@ const nextConfig = {
 
       // New documentation refactor 20230907
       {
-        source: "/docs/",
-        destination: `/docs/core/${VERSIONS["core"]}/welcome`,
+        source: "/docs/welcome",
+        destination: `/docs/${LATEST_VERSIONS["get-started"]}/welcome`,
+        permanent: false,
+      },
+      {
+        source: "/docs/quickstart",
+        destination: `/docs/${LATEST_VERSIONS["get-started"]}/quickstart`,
         permanent: false,
       },
       {
         source: "/docs/base/configuration",
-        destination: `/docs/base/${VERSIONS["base"]}/configuration`,
+        destination: `/docs/base/${LATEST_VERSIONS["core"]}/configuration`,
         permanent: false,
       },
       {
         source: "/docs/base/getting-started",
-        destination: `/docs/base/${VERSIONS["base"]}/getting-started`,
+        destination: `/docs/base/${LATEST_VERSIONS["core"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/base/welcome",
-        destination: `/docs/base/${VERSIONS["base"]}/welcome`,
+        destination: `/docs/base/${LATEST_VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/cloud/getting-started",
-        destination: `/docs/cloud/${VERSIONS["cloud"]}/getting-started`,
+        destination: `/docs/cloud/${LATEST_VERSIONS["cloud"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/cloud/using-instill-cloud",
-        destination: `/docs/cloud/${VERSIONS["cloud"]}/using-instill-cloud`,
+        destination: `/docs/cloud/${LATEST_VERSIONS["cloud"]}/using-instill-cloud`,
         permanent: false,
       },
       {
         source: "/docs/cloud/welcome",
-        destination: `/docs/cloud/${VERSIONS["cloud"]}/welcome`,
+        destination: `/docs/cloud/${LATEST_VERSIONS["cloud"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/core/contributing-guideline",
-        destination: `/docs/core/${VERSIONS["core"]}/contributing-guideline`,
+        destination: `/docs/core/${LATEST_VERSIONS["core"]}/contributing-guideline`,
         permanent: false,
       },
       {
         source: "/docs/core/faq",
-        destination: `/docs/core/${VERSIONS["core"]}/faq`,
+        destination: `/docs/core/${LATEST_VERSIONS["core"]}/faq`,
         permanent: false,
       },
       {
         source: "/docs/core/getting-started",
-        destination: `/docs/core/${VERSIONS["core"]}/getting-started`,
+        destination: `/docs/core/${LATEST_VERSIONS["core"]}/getting-started`,
         permanent: false,
       },
       {
         source: "/docs/core/system-architecture",
-        destination: `/docs/core/${VERSIONS["core"]}/system-architecture`,
+        destination: `/docs/core/${LATEST_VERSIONS["core"]}/system-architecture`,
         permanent: false,
       },
       {
         source: "/docs/core/welcome",
-        destination: `/docs/core/${VERSIONS["core"]}/welcome`,
+        destination: `/docs/core/${LATEST_VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/vdp/configuration",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/configuration`,
+        destination: `/docs/vdp/${LATEST_VERSIONS["vdp"]}/configuration`,
         permanent: false,
       },
       {
         source: "/docs/vdp/license",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/license`,
+        destination: `/docs/vdp/${LATEST_VERSIONS["vdp"]}/license`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/docker-compose",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/docker-compose`,
+        destination: `/docs/vdp/${LATEST_VERSIONS["vdp"]}/deployment/docker-compose`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/kubernetes-using-helm",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/kubernetes-using-helm`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/deployment/kubernetes-using-helm`,
         permanent: false,
       },
       {
         source: "/docs/vdp/deployment/overview",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/deployment/overview`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/deployment/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/development/setup-local-development",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/development/setup-local-development`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/development/setup-local-development`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/end",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/end`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/operators/end`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/overview",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/overview`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/operators/overview`,
         permanent: false,
       },
       {
         source: "/docs/vdp/operators/start",
-        destination: `/docs/vdp/${VERSIONS["vdp"]}/operators/start`,
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/vdp/operators/start`,
+        permanent: false,
+      },
+      {
+        source: "/docs/sdk/overview",
+        destination: `/docs/${LATEST_VERSIONS["vdp"]}/sdk/overview`,
         permanent: false,
       },
     ];

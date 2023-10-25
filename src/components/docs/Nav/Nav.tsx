@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import cn from "clsx";
 import Link from "next/link";
-import { DocSearch } from "@docsearch/react";
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
@@ -15,7 +14,6 @@ import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
-import { applicationName } from "@/lib/instill/applicationType";
 import LocaleSwitcher from "../LocaleSwitcher";
 import { useTranslation } from "next-i18next";
 
@@ -42,11 +40,7 @@ const DropdownMenu = ({
   if (item.key === "docs-nav-dropdown-version-menu") {
     dropdownMenus = item.items?.filter((item) => item.appType === appType);
   } else {
-    dropdownMenus = item.items?.filter(
-      (item) =>
-        item.appType !==
-        (appType === "cloud" || appType === "sdk" ? "core" : appType)
-    );
+    dropdownMenus = item.items;
   }
 
   return (
@@ -87,8 +81,9 @@ const DropdownMenu = ({
               <Dropdown.MenuItem
                 key={subItemKey}
                 onClick={() => setIsOpen(!isOpen)}
+                className="dark:focus:bg-instillBlue50"
               >
-                <Item key={subItemKey} item={subItem} />
+                <Item key={subItemKey} item={subItem} isDropdownItem={true} />
               </Dropdown.MenuItem>
             );
           }
@@ -216,6 +211,9 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
           .nav {
             min-height: var(--docs-nav-height);
           }
+          .container {
+            max-width: 1600px;
+          }
         `}
       </style>
 
@@ -226,7 +224,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
       >
         <div className="container mx-auto flex flex-row">
           {!nav.logo && !nav.title ? null : (
-            <div className="logo mr-4 flex">
+            <div className="logo mr-10 flex">
               <Link
                 href={nav.logo ? nav.logo?.href : ""}
                 className="flex flex-row gap-x-3"
@@ -235,14 +233,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
               </Link>
             </div>
           )}
-
-          <div className="mx-5 my-auto">
-            <DocSearch
-              appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
-              apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
-              indexName="instill"
-            />
-          </div>
 
           <div className="flex flex-1 flex-row">
             <div className="flex flex-grow flex-row justify-end">

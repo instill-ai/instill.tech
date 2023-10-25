@@ -1,0 +1,473 @@
+---
+title: "Supported AI Tasks"
+lang: "en-US"
+draft: false
+description: "Model Overview"
+---
+
+When you import a model into Instill Model, it is automatically categorized into one of the standardised AI tasks by identifing the [relevant metadata in the model card](prepare-models#model-card-metadata).
+
+In a data pipeline, model is the core component designed to solve a specific AI task. By standardising the data format of model outputs into AI tasks,
+
+- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task;
+- VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
+
+At the moment, Instill Model defines the data interface for popular tasks:
+
+- **Image Classification** - classify images into predefined categories
+- **Object Detection** - detect and localise multiple objects in images
+- **Keypoint Detection** - detect and localise multiple keypoints of objects in images
+- **OCR (Optical Character Recognition)** - detect and recognise text in images
+- **Instance Segmentation** - detect, localise and delineate multiple objects in images
+- **Semantic Segmentation** - classify image pixels into predefined categories
+- **Text to Image** - generate images from input text prompts
+- **Text Generation** - generate texts from input text prompts
+- The list is growing ... 🌱
+
+The above tasks focus on analysing and understanding the content of data in the same way as human does.
+The goal is to make a computer/device provide description for the data as complete and accurate as possible.
+These primitive tasks are the foundation for building many real-world industrial AI applications.
+Each task is described in depth in the respective section below.
+
+## Image Classification
+
+Image Classification is a Vision task to assign a single pre-defined category label to an entire input image.
+Generally, an Image Classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-classification.svg"
+  alt="Image Classification task"
+/>
+
+```json
+{
+  "task": "TASK_CLASSIFICATION",
+  "task_outputs": [
+    {
+      "classification": {
+        "category": "golden retriever",
+        "score": 0.98
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                                                 | Sources                                                                                                                      | Framework | CPU | GPU |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------- | --- | --- |
+| [MobileNet v2](https://github.com/onnx/models/tree/main/vision/classification/mobilenet) | [GitHub](https://github.com/instill-ai/model-mobilenetv2), [GitHub-DVC](https://github.com/instill-ai/model-mobilenetv2-dvc) | ONNX      | ✅  | ✅  |
+| [Vision Transformer (ViT)](https://huggingface.co/google/vit-base-patch16-224)           | [Hugging Face](https://huggingface.co/google/vit-base-patch16-224)                                                           | ONNX      | ✅  | ❌  |
+
+## Object Detection
+
+Object Detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
+Generally, an Object Detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-detection.svg"
+  alt="Object Detection task"
+/>
+
+```json
+{
+  "task": "TASK_DETECTION",
+  "task_outputs": [
+    {
+      "detection": {
+        "objects": [
+          {
+            "category": "dog",
+            "score": 0.97,
+            "bounding_box": {
+              "top": 102,
+              "left": 324,
+              "width": 208,
+              "height": 405
+            }
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                       | Sources                                                      | Framework | CPU | GPU |
+| ---------------------------------------------- | ------------------------------------------------------------ | --------- | --- | --- |
+| [YOLOv4](https://github.com/AlexeyAB/darknet)  | [GitHub-DVC](https://github.com/instill-ai/model-yolov4-dvc) | ONNX      | ✅  | ✅  |
+| [YOLOv7](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-dvc) | ONNX      | ✅  | ✅  |
+
+## Keypoint Detection
+
+Keypoint Detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
+Normally, a Keypoint Detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-keypoint.svg"
+  alt="Keypoint Detection task"
+/>
+
+```json
+{
+  "task": "TASK_KEYPOINT",
+  "task_outputs": [
+    {
+      "keypoint": {
+        "objects": [
+          {
+            "keypoints": [
+              {
+                "v": 0.53722847,
+                "x": 542.82764,
+                "y": 86.63817
+              },
+              {
+                "v": 0.634061,
+                "x": 553.0073,
+                "y": 79.440636
+              },
+              ...
+            ],
+            "score": 0.94,
+            "bounding_box": {
+              "top": 86,
+              "left": 185,
+              "width": 571,
+              "height": 203
+            }
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                               | Sources                                                           | Framework | CPU | GPU |
+| ------------------------------------------------------ | ----------------------------------------------------------------- | --------- | --- | --- |
+| [YOLOv7 W6 Pose](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-pose-dvc) | ONNX      | ✅  | ✅  |
+
+## Optical Character Recognition (OCR)
+
+OCR is a Vision task to localise and recognise text in an input image.
+The task can be done in two steps by multiple models:
+a text detection model to detect bounding boxes containing text and
+a text recognition model to process typed or handwritten text within each bounding box into machine readable text.
+Alternatively, there are deep learning models that can accomplish the task in one single step.
+
+<ZoomableImg src="/docs-assets/core-concepts/ai-task-ocr.svg" alt="OCR task" />
+
+```json
+{
+  "task": "TASK_OCR",
+  "task_outputs": [
+    {
+      "ocr": {
+        "objects": [
+          {
+            "text": "ENDS",
+            "score": 0.99,
+            "bounding_box": {
+              "top": 298,
+              "left": 279,
+              "width": 134,
+              "height": 59
+            }
+          },
+          {
+            "text": "PAVEMENT",
+            "score": 0.99,
+            "bounding_box": {
+              "top": 228,
+              "left": 216,
+              "width": 255,
+              "height": 65
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                                                                                       | Sources                                                   | Framework | CPU | GPU |
+| ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------- | --- | --- |
+| [PSNet](https://github.com/open-mmlab/mmocr/tree/main/configs/textdet/psenet) + [EasyOCR](https://github.com/JaidedAI/EasyOCR) | [GitHub-DVC](https://github.com/instill-ai/model-ocr-dvc) | ONNX      | ✅  | ✅  |
+
+## Instance Segmentation
+
+Instance Segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
+Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
+with bounding boxes, category labels and confidence scores on detected objects.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-instance-segmentation.svg"
+  alt="Instance Segmentation task"
+/>
+
+Run-length encoding (RLE) is an efficient form to store binary masks. It is commonly used to encode the location of foreground objects in segmentation.
+We adopt [the uncompressed RLE definition used in the COCO dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
+It divides a binary mask (must in colume-major order) into a series of piecewise constant regions and for each piece simply stores the length of that piece.
+
+<div align="center">
+  <ZoomableImg
+    src="/docs-assets/core-concepts/ai-task-mask-rle.svg"
+    alt="Examples of encoding masks into RLEs and decoding masks encoded via RLEs"
+    width="320px"
+  />
+</div>
+
+The above image shows examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of zeros.
+
+<InfoBlock type="info" title="info">
+  Check out functions to [encode masks into
+  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
+  and [decode masks encoded via
+  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
+</InfoBlock>
+
+```json
+{
+  "task": "TASK_INSTANCE_SEGMENTATION",
+  "task_outputs": [
+    {
+      "instance_segmentation": {
+        "objects": [
+          {
+            "rle": "2918,12,382,33,...",
+            "score": 0.99,
+            "bounding_box": {
+              "top": 95,
+              "left": 320,
+              "width": 215,
+              "height": 406
+            },
+            "category": "dog"
+          },
+          {
+            "rle": "34,18,230,18,...",
+            "score": 0.97,
+            "bounding_box": {
+              "top": 194,
+              "left": 130,
+              "width": 197,
+              "height": 248
+            },
+            "category": "dog"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                                                                                    | Sources                                                                     | Framework | CPU | GPU |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
+| [Mask RCNN](https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-10.onnx) | [GitHub-DVC](https://github.com/instill-ai/model-instance-segmentation-dvc) | PyTorch   | ✅  | ✅  |
+
+## Semantic Segmentation
+
+Semantic Segmentation is a Vision task of assigning a class label to every pixel in the image.
+Normally, the task takes an image as the input, and outputs segmentation mask (RLE) representations (a variable-length comma-delimited string) for each group of pixel objects and category of the group objects.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-semantic-segmentation.svg"
+  alt="Semantic Segmentation task"
+/>
+
+```json
+{
+  "task": "TASK_SEMANTIC_SEGMENTATION",
+  "task_outputs": [
+    {
+      "semantic_segmentation": {
+        "stuffs": [
+          {
+            "rle": "2918,12,382,33,...",
+            "category": "person"
+          },
+          {
+            "rle": "34,18,230,18,...",
+            "category": "sky"
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                                                                                                            | Sources                                                                     | Framework | CPU | GPU |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
+| [Lite R-ASPP based on MobileNetV3](https://github.com/open-mmlab/mmsegmentation/tree/98dfa1749bac0b5281502f4bb3832379da8feb8c/configs/mobilenet_v3) | [GitHub-DVC](https://github.com/instill-ai/model-semantic-segmentation-dvc) | ONNX      | ✅  | ✅  |
+
+## Text to Image
+
+Text to Image is a Generative AI task to generate images from text inputs.
+Generally, the task takes descriptive text prompts as the input, and outputs generated images in Base64 format based on the text prompts.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-text-to-image.svg"
+  alt="Text to Image task"
+/>
+
+```json
+{
+  "task": "TASK_TEXT_TO_IMAGE",
+  "task_outputs": [
+    {
+      "text_to_image": {
+        "images": ["/9j/4AAQSkZJRgABAQAAAQABAAD/..."]
+      }
+    }
+  ]
+}
+```
+
+<InfoBlock type="info" title="decode base64 images">
+
+In above example, the generated images is a list of Base64 encoded images. To obtain the images, we need to decode Base64 as below snippet code.
+
+```python
+import base64
+import numpy as np
+
+# Decode the first image result
+
+base64_image = out['text_to_image']['images'][0]
+image = base64.b64decode(base64_image)
+
+# Save the decoded image
+
+filename = 'text_to_image.jpg'
+with open(filename, 'wb') as f:
+f.write(image)
+
+```
+
+</InfoBlock>
+
+**Available models**
+
+| 🔮 Model                                                                  | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
+| [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local-CPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip), [Local-GPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp16-gpu.zip) | ONNX      | ✅  | ✅  |
+
+<InfoBlock type="tip" title="tip">
+Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
+
+**Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
+
+```bash
+curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip --output stable-diffusion-1-5-cpu.zip
+```
+
+**Step2**: Refer to the guideline on **importing local models via [no-code](./import-models/local#no-code-setup) or [low-code](./import-models/local#low-code-setup)**.
+
+</InfoBlock>
+
+## Text Generation
+
+Text Generation is a Generative AI task to generate new text from text inputs.
+Generally, the task takes incomplete text prompts as the input, and produces new text based on the prompts.
+The task can fill in incomplete sentences or even generate full stories given the first words.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-text-generation.svg"
+  alt="Text Generation task"
+/>
+
+```json
+{
+  "task": "TASK_TEXT_GENERATION",
+  "task_outputs": [
+    {
+      "text_generation": {
+        "text": "The winds of change are blowing strong, bring new beginnings, righting wrongs. The world around us is constantly turning, and with each sunrise, our spirits are yearning."
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                                            | Sources                                                             | Framework         | CPU | GPU |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- | --- | --- |
+| [Megatron GPT2](https://catalog.ngc.nvidia.com/orgs/nvidia/models/megatron_lm_345m) | [GitHub-DVC](https://github.com/instill-ai/model-gpt2-megatron-dvc) | FasterTransformer | ❌  | ✅  |
+
+<InfoBlock type="tip" title="tip">
+Depending on your internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
+
+The model only supports GPU deployment. By default, VDP can access all your GPUs.
+Assume that you have **N** GPUs, please pick the corresponding tag named with `fp32-345m-N-gpu` to import and deploy.
+
+</InfoBlock>
+
+## Unspecified Task
+
+Instill Model is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
+The model will be classified as an `Unspecified` task. Send an image to the model as the input,
+VDP will
+
+- check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file to extract the output names, datatypes and shapes of the model outputs,
+- and wrap these information along with the raw model output in a _standard_ format.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-unspecified.svg"
+  alt="Unspecified task"
+/>
+
+```json
+{
+  "unspecified": {
+    "raw_outputs": [
+      {
+        "data": [0.85, 0.1, 0.05],
+        "data_type": "FP32",
+        "name": "output_scores",
+        "shape": [3]
+      },
+      {
+        "data": ["dog", "cat", "rabbit"],
+        "data_type": "BYTES",
+        "name": "output_labels",
+        "shape": [3]
+      }
+    ]
+  }
+}
+```
+
+## Suggest a New Task
+
+<InfoBlock type="info" title="info">
+  The
+  [Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml)
+  is still under development. Stay tuned on how the protocol will evolve.
+</InfoBlock>
+
+Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
+
+Additionally, the [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of AI task output in order to standardise an ETL pipeline for unstructured data.
+The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
+To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model.
+
+If you'd like to **support for a new task**, you can create an [issue](https://github.com/instill-ai/community/issues) or request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).

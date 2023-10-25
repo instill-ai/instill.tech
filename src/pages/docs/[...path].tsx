@@ -276,7 +276,7 @@ const DocsPage: FC<DocsPageProps> & {
 };
 
 DocsPage.getLayout = (page) => {
-  return <DocsLayout>{page}</DocsLayout>;
+  return <DocsLayout hasSidebar={true}>{page}</DocsLayout>;
 };
 
 export default DocsPage;

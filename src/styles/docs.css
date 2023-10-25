@@ -19,6 +19,8 @@
   column-gap: 20px !important;
   margin: 0px !important;
   padding: 0px 12px !important;
+  border-radius: 5px !important;
+  width: 100%;
 }
 
 .dark .DocSearch-Button {
@@ -40,7 +42,7 @@
 }
 
 span.DocSearch-Button-Keys {
-  min-width: 32px !important;
+  min-width: 35px !important;
   border-width: 1px !important;
   border-color: #a5a5a5 !important;
   border-radius: 4px !important;
@@ -466,7 +468,7 @@ h4:hover span.heading-anchor-hash {
 
 /* Add custom scrollbar styles */
 .dark ::-webkit-scrollbar {
-  width: 12px;
+  width: 13px;
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -475,8 +477,8 @@ h4:hover span.heading-anchor-hash {
 
 .dark ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb-bg, #2b2b2b);
-  border-radius: 6px;
-  border: 2px #949494 solid;
+  border-radius: 10px;
+  border: 2.5px #949494 solid;
   background-clip: padding-box;
 }
 

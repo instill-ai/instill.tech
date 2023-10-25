@@ -57,7 +57,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillSkyBlue"
-            link="/docs/core-concepts/pipeline"
+            link="/docs/latest/core/pipeline"
             description="An end-to-end workflow that automates a 
               sequence of sub-components to process unstructured data."
           />
@@ -73,7 +73,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillNatureGreen"
-            link="/docs/core-concepts/vdp/connector#source"
+            link="/docs/latest/core-concepts/vdp/connector#source"
             description="A data connector in charge of ingesting 
               unstructured data into a Pipeline."
           />
@@ -105,7 +105,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillWarmOrange50"
-            link="/docs/core-concepts/vdp/connector#destination"
+            link="/docs/latest/core-concepts/vdp/connector#destination"
             description="A data connector to load the standarised 
               AI task output from model to the destination."
           />
@@ -136,7 +136,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         </p>
         <CommonCtaButton
           text="See documentation"
-          link="/docs/vdp/welcome"
+          link="/docs/latest/vdp/welcome"
           withArrow={true}
           position="mr-auto"
         />
