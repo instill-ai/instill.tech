@@ -56,7 +56,7 @@ This tutorial will demonstrate how to replicate the YOLOv4 vs. YOLOv7 web app. I
 
 <InfoBlock type="info" title="info">
   [VDP standardises outputs for AI
-  tasks](/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
+  tasks](/docs/latest/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
   Therefore, a model is modularised in a pipeline, and model outputs are in
   standard format for use in data integration or ETL pipeline.
 </InfoBlock>
@@ -76,12 +76,12 @@ Once the services are up, the Console is ready to go at [http://localhost:3000](
 
 ### Build via no-code Console
 
-A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](/docs/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
+A pipeline in `SYNC` mode responds to a request synchronously. It is suitable for our Streamlit app to perform real-time inference where low latency is of concern. Check [here](/docs/latest/core-concepts/pipeline?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7) for more details.
 
 <InfoBlock type="info" title="info">
   No matter where your model stores, we want to keep your models in the same
   place without changes. VDP [integrates with many model platforms and
-  tools](/docs/import-models/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+  tools](/docs/latest/import-models/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
   to make importing models as easy as possible.
 </InfoBlock>
 
@@ -126,7 +126,7 @@ You could build a pipeline with YOLOv7 in the same way by importing [instill-ai/
 
 <InfoBlock type="info" title="info">
   VDP is implemented with
-  [API-first](/docs/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
+  [API-first](/docs/latest/core-concepts/overview?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7)
   design principle. It enables seamless integration to your data stack at any
   scale.
 </InfoBlock>
@@ -324,7 +324,7 @@ def trigger_detection_pipeline(api_gateway_url: str, pipeline_id: str, image_url
     return requests.post("{}/pipelines/{}/triggerSync".format(api_gateway_url, pipeline_id), json=body)
 ```
 
-Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](/docs/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
+Since the pipeline output is standardised, we also create a `parse_detection_response` function to parse the response into a list of bounding boxes, categories and scores according to the standardised format. Learn more about [standardising Object Detection task](/docs/latest/core-concepts/ai-task?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7).
 
 <ZoomableImg
   src="/tutorial-assets/vdp-streamlit-yolov7/ai-task-detection.svg"

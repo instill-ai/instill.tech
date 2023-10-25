@@ -132,7 +132,7 @@ Each session is assigned a random UUID for tracking and identification.
 Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every 10 minutes:
 
 - [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
-  - information of the [onboarded User](/docs/vdp/getting-started#start-building-with-vdp)
+  - information of the [onboarded User](/docs/latest/vdp/getting-started#start-building-with-vdp)
 - [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _connected_ or _disconnected_ Sources
