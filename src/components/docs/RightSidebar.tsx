@@ -25,8 +25,10 @@ export const RightSidebar = ({ headers, githubEditUrl, feedbackUrl }: RightSideb
       <div className="right-sidebar sticky w-full pr-4">
         <div className="flex h-full flex-col overflow-auto">
           {headers.length > 0 ? <TableOfContent headers={headers} /> : null}
-          <ContributeLinks githubEditUrl={githubEditUrl} />
-          <ContributeLinks feedbackUrl={feedbackUrl} />
+          <ContributeLinks 
+              githubEditUrl={githubEditUrl}
+              feedbackUrl={feedbackUrl} 
+          />
         </div>
       </div>
     </>
