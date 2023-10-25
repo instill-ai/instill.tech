@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
-import cn from "clsx";
 import { DocSearch } from "@docsearch/react";
 import { ScrollArea } from "@instill-ai/design-system";
 

@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import cn from "clsx";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Icons, MinusIcon, PlusIcon } from "@instill-ai/design-system";
-
+import { Icons } from "@instill-ai/design-system";
 import { SidebarItem } from "@/types/docs";
 import { useTranslation } from "next-i18next";
 
@@ -55,7 +54,7 @@ export const Section = ({
         role="button"
         className={cn(
           "flex flex-row px-1 py-1.5 hover:rounded hover:bg-instillGrey05 dark:text-instillGrey05 dark:hover:bg-instillGrey80",
-          collapsible ? { "mb-1": !collapsed } : "",
+          { "mb-1": !collapsed },
           link === router.asPath && !isHeader
             ? "rounded bg-instillBlue10 !font-bold !text-instillBlue50 hover:!bg-instillBlue10"
             : ""
