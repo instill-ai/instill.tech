@@ -49,7 +49,7 @@ export const TutorialSearch = ({
       />
       <div className="flex w-full flex-row">
         <a
-          href="https://github.com/instill-ai/community/issues/new?assignees=xiaofei-du,EiffelFly&labels=request+a+tutorial"
+          href="https://github.com/instill-ai/community/issues/new?labels=tutorial%2Cdocumentation%2Cneed-triage&template=tutorial_request.yaml&title=%5BTutorial%5D+%3Ctitle%3E"
           className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
         >
           Request a tutorial
@@ -59,7 +59,7 @@ export const TutorialSearch = ({
           <div className="block w-full" />
         </div>
         <a
-          href="https://github.com/instill-ai/community/issues/new?labels=tutorial%2Cdocumentation%2Cneed-triage&template=tutorial_request.yaml&title=%5BTutorial%5D+%3Ctitle%3E"
+          href="https://github.com/instill-ai/community/issues/new?assignees=xiaofei-du,EiffelFly&labels=request+a+tutorial"
           className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
         >
           Submit a tutorial
