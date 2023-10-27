@@ -54,7 +54,7 @@ python
 >>> instill.__version__
 ```
 
-### Config Instill Core or Instill Cloud instance
+### Config Instill Core or Instill Cloud Instance
 
 Before we can start using this SDK, you will need to create a config file under this path `${HOME}/.config/instill/config.yaml`, and within that path you will need to fill in some basic parameters for your desired host.[^1]
 
@@ -161,7 +161,7 @@ newsletter_subscription: true
 cookie_token: ""
 ```
 
-### Create Resources
+### Create Resource
 
 #### Create Model
 
@@ -190,7 +190,7 @@ yolov7 = GithubModel(
 
 After the creation is done, we can check the state of the model[^3]
 
-[^3]: [State definition](https://www.instill.tech/docs/model/prepare)
+[^3]: [Deploy model](../model/deploy)
 
 ```python
 yolov7.get_state()
@@ -214,7 +214,7 @@ yolov7.get_state()
 
 Trigger the model with the correct `task` type[^4]
 
-[^4]: Check out our [task protocol](https://www.instill.tech/docs/model/ai-task) to learn more, or read our [json schema](https://raw.githubusercontent.com/instill-ai/connector-ai/main/pkg/instill/config/seed/data.json) directly
+[^4]: Check out our [supported tasks](../model/ai-task) to learn more, or read our [json schema](https://raw.githubusercontent.com/instill-ai/connector-ai/main/pkg/instill/config/seed/data.json) directly
 
 ```python
 from instill.resources import model_pb, task_detection

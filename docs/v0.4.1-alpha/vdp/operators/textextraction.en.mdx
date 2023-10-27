@@ -5,15 +5,15 @@ draft: false
 description: "Learn about how to set up a VDP Text Extraction operator https://github.com/instill-ai/vdp"
 ---
 
-[**Text Extraction**](textextraction) enables users to extract text from URLs, local file paths and base64 encoded file contents. It supports formats like - doc, docx, odt, pages, pdf, pptx, rtf, xml, html, txt.
+The Text Extraction Operator enables users to extract text from URLs, local file paths and base64 encoded file contents. It supports formats like - doc, docx, odt, pages, pdf, pptx, rtf, xml, html, txt.
 
-## Release stage
+## Release Stage
 
 `Alpha`
 
 ## Operator Configuration
 
-The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/latest/core/pipeline) for more details.
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/pipeline) for more details.
 
 | Field           | Type   | Note                                                                                                     |
 | :-------------- | :----- | :------------------------------------------------------------------------------------------------------- |
@@ -22,9 +22,9 @@ The operator configuration is used for setting up the input data and parameters 
 | file_contents\* | string | Base64 encoded file. Required when task is TASK_EXTRACT_FROM_FILE                                        |
 | content_type\*  | string | Mime type of the file. Required when task is TASK_EXTRACT_FROM_FILE. eg. application/pdf, text/html etc  |
 
-### No-code setup
+### No-code Setup
 
-### Low-code setup
+### Low-code Setup
 
 This is a sample `configuration` in the pipeline recipe.
 
@@ -40,7 +40,7 @@ This is a sample `configuration` in the pipeline recipe.
 When you send the request, you can use this request format
 
 ```shell
-curl --location 'http://localhost:8080/vdp/v1alpha/users/<user_id>/pipelines/<pipeline_id>/trigger' \
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <api_token>' \
 --data '{

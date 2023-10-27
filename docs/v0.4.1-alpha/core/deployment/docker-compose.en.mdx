@@ -18,7 +18,8 @@ Docker Compose is the a straightforward way to set up Instill Core in local mach
 Make sure you have the prerequisites set up:
 
 - **macOS or Linux** - Instill Core works on macOS or Linux, but does not support Windows at the moment.
-- **Docker and Docker Compose** - Instill Core uses Docker Compose to run all services at local. See the official [instructions](https://docs.docker.com/compose/install).
+- **Docker and Docker Compose** - Instill Core uses Docker Compose to run all services at local. See the official [instructions](https://docs.docker.com/compose/install)
+  and the [Docker Resource Requirements for Instill Core](../deployment#docker-resource-requirements).
 
 ## Setup
 
@@ -37,24 +38,32 @@ make all
 
 Running this command will launch both Instill VDP and Instill Model simultaneously.
 
-If you're interested in building AI applications without the hassle of model serving, visit the [vdp](https://github.com/instill-ai/vdp) repository and follow the instructions to launch Instill VDP.
-On the other hand, if your focus is solely on model serving, head over to the [model](https://github.com/instill-ai/model) repository to launch Instill Model.
+Here's a handy tip: You can launch individual Instill projects by specifying the project name using the `PROJECT` parameter.
+If you're interested in creating AI workflows without the complexities of model serving,
+use the following command to launch Instill VDP:
 
-<CH.Code>
-```shellscript Launch-VDP
-git clone -b v0.16.0-alpha https://github.com/instill-ai/vdp.git && cd vdp
-make all
+```shellscript core
+# Launch Instill VDP only
+make all PROJECT=vdp
 ```
 
-```shellscript Launch-Model
-git clone -b v0.2.2-alpha https://github.com/instill-ai/model.git && cd model
-make all
+Alternatively, if your primary focus is on building AI models, you can launch Instill Model with the following command:
+
+```shellscript
+# Launch Instill Model only
+make all PROJECT=model
 ```
 
-</CH.Code>
+For launching the foundational services, you can use the following command:
 
+```shellscript
+# Launch the foundation services
+make all PROJECT=core
+```
+
+These commands provide you with the flexibility to deploy the specific components you need for your AI projects.
 Feel free to make your choice, and once all services are up and running,the Console UI is ready to go at [http://localhost:3000](http://localhost:3000).
-Proceed by following the [authorisation guide](../authorisation).
+Proceed by following the [authorisation guide](../../quickstart#Authorisation).
 
 ## Shutdown
 

@@ -53,7 +53,7 @@ To create a Stability AI AI connector:
 <CH.Code>
 
 ```shellscript cURL(Instill-Cloud)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources \
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connector-resources \
 --header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
 --data '{
   "id": "my-stable-diffusion",
@@ -65,7 +65,7 @@ curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resourc
 ```
 
 ```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources \
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connector-resources \
 --data '{
   "id": "my-stable-diffusion",
   "connector_definition_name": "connector-definitions/ai-stability-ai",

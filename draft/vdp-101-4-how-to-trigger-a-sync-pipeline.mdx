@@ -190,7 +190,7 @@ requests.post(f"{api_gateway_url}/pipelines/{pipeline_id}/trigger", json=body)
 ```
 
 API Gateway is single point of entry for all VDP services. In this example, the API Gateway URL is defined as `{api_gateway_url}`. The value is set to `http://localhost:8080/v1alpha` by default for local deployment, in which `v1alpha` shows the VDP version.
-`{pipeline-id}` indicates the pipeline that have been created beforehand for us to trigger. In this example, it is set to `vdp-101-sync`.
+`<pipeline-id>` indicates the pipeline that have been created beforehand for us to trigger. In this example, it is set to `vdp-101-sync`.
 
 ### Multipart request to upload a file
 

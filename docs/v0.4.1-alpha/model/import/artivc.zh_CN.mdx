@@ -18,7 +18,7 @@ Currently, Instill Model supports importing models from
 - 🚧 Azure Blob Storage (coming soon)
 - 🚧 Rclone (coming soon)
 
-## Release stage
+## Release Stage
 
 `Alpha`
 
@@ -29,7 +29,7 @@ Currently, Instill Model supports importing models from
 | `url`\*      | string | Cloud storage URL where the model is stored                                                 |
 | `credential` | string | Credentials to access with cloud storage in JSON schema format if the GCS bucket is private |
 
-## Getting started
+## Getting Started
 
 ### Requirements
 
@@ -37,7 +37,7 @@ Currently, Instill Model supports importing models from
 - The model should be tagged by ArtiVC at least once
 - Allow Instill Model to access data in the storage backend
 
-### Prepare a model managed by ArtiVC
+### Prepare a Model Managed by ArtiVC
 
 If your models are stored in cloud storage, [ArtiVC](https://artivc.io/) is a handy tool to do data versioning directly on cloud without additional dependency.
 
@@ -156,7 +156,7 @@ If you list the files in the remote storage repository, the file structure will 
   [here](https://artivc.io/usage/getting-started) for more information.
 </InfoBlock>
 
-### No-code setup
+### No-code Setup
 
 To import a model managed by ArtiVC in the Console, do the following:
 
@@ -173,7 +173,7 @@ To import a model managed by ArtiVC in the Console, do the following:
 
 The setup guide assumes your model is stored in a GCS bucket.
 
-### Low-code setup
+### Low-code Setup
 
 1. Send a HTTP request to the Instill Model `model-backend` to import a model from GCS bucket managed by ArtiVC.
 
@@ -231,6 +231,6 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test-multipart \
 
 </ CH.Code>
 
-### Find the credentials JSON file
+### Find the Credentials JSON File
 
 If you are using the application default credentials in a local development environment, the credentials is stored in a `application_default_credentials.json` file under the Google Cloud user configuration directory. See [here](https://cloud.google.com/sdk/docs/authorizing#find_your_credential_files) to find the credential directory.

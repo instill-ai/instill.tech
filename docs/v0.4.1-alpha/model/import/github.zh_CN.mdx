@@ -14,7 +14,7 @@ Currently, Instill Model supports importing models from
 - ✅ Public GitHub repository
 - 🚧 Private GitHub repository (coming soon)
 
-## Release stage
+## Release Stage
 
 `Alpha`
 
@@ -24,14 +24,14 @@ Currently, Instill Model supports importing models from
 | :------------- | :----- | :------------------------------------------------------------------ |
 | `repository`\* | string | Name of a public GitHub repository, e.g., `instill-ai/model-yolov4` |
 
-## Getting started
+## Getting Started
 
 ### Requirements
 
 - A public GitHub repository where model files are stored
 - The repository has at lease one tag
 
-### Prepare a GitHub repository and track large model files by Git LFS
+### Prepare a GitHub Repository and Track Large Model Files by Git LFS
 
 GitHub limits the size of files ([max 100 MB](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#file-size-limits)) allowed in repositories. But the size of the model files can be large. To track large model files beyond the limit, you can use [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage).
 
@@ -164,7 +164,7 @@ git push origin --tags
 
 🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to Instill Model.
 
-### Prepare a GitHub repository and manage large model files by DVC
+### Prepare a GitHub Repository and Manage Large Model Files by DVC
 
 Besides Git LFS, a good alternative is to use [DVC](https://dvc.org/) within a Github repository.
 
@@ -334,7 +334,7 @@ git push origin --tags
   more information.
 </InfoBlock>
 
-### No-code setup
+### No-code Setup
 
 To import a model from GitHub in the Console, do the following:
 
@@ -345,7 +345,7 @@ To import a model from GitHub in the Console, do the following:
 5. Fill the GitHub repository URL and the Git tag that stores the model files and click **Set up**
 6. Now go to the **Model** page, the corresponding model should be there. Note that it may take some time for the model to be deployed online.
 
-### Low-code setup
+### Low-code Setup
 
 1. Send a HTTP request to the Instill Model `model-backend` to import a model from a GitHub repository.
 
