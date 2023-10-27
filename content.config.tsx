@@ -163,39 +163,6 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.operators",
-      link: `/docs/${appVersion}/vdp/operator`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.start",
-          link: `/docs/${appVersion}/vdp/operators/start`,
-        },
-        {
-          text: "common:sidebarSections.end",
-          link: `/docs/${appVersion}/vdp/operators/end`,
-        },
-        {
-          text: "common:sidebarSections.base64",
-          link: `/docs/${appVersion}/vdp/operators/base64`,
-        },
-        {
-          text: "common:sidebarSections.json",
-          link: `/docs/${appVersion}/vdp/operators/json`,
-        },
-        {
-          text: "common:sidebarSections.rest",
-          link: `/docs/${appVersion}/vdp/operators/rest`,
-        },
-        {
-          text: "common:sidebarSections.textextraction",
-          link: `/docs/${appVersion}/vdp/operators/textextraction`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
       text: "common:sidebarSections.aiConnectors",
       link: `/docs/${appVersion}/vdp/ai-connector`,
       collapsible: true,
@@ -255,7 +222,40 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       versions: [],
     },
     {
-      text: "common:sidebarSections.serveModels",
+      text: "common:sidebarSections.operators",
+      link: `/docs/${appVersion}/vdp/operator`,
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.start",
+          link: `/docs/${appVersion}/vdp/operators/start`,
+        },
+        {
+          text: "common:sidebarSections.end",
+          link: `/docs/${appVersion}/vdp/operators/end`,
+        },
+        {
+          text: "common:sidebarSections.base64",
+          link: `/docs/${appVersion}/vdp/operators/base64`,
+        },
+        {
+          text: "common:sidebarSections.json",
+          link: `/docs/${appVersion}/vdp/operators/json`,
+        },
+        {
+          text: "common:sidebarSections.rest",
+          link: `/docs/${appVersion}/vdp/operators/rest`,
+        },
+        {
+          text: "common:sidebarSections.textextraction",
+          link: `/docs/${appVersion}/vdp/operators/textextraction`,
+        },
+      ],
+      appType: "core",
+      versions: [],
+    },
+    {
+      text: "common:sidebarSections.buildAiModels",
       items: [],
       appType: "core",
       versions: [],
@@ -302,14 +302,14 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
     },
     {
       text: "common:sidebarSections.deployModels",
-      link: `/docs/${appVersion}/model/deployment`,
+      link: `/docs/${appVersion}/model/deploy`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.inference",
-      link: `/docs/${appVersion}/model/inference`,
+      text: "common:sidebarSections.useModels",
+      link: `/docs/${appVersion}/model/use`,
       items: [],
       appType: "core",
       versions: ["latest"],
