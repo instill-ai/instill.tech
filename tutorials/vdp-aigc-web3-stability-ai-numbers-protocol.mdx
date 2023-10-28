@@ -47,12 +47,12 @@ Let's dive into the tutorial and start building this powerful AIGC x Web3 pipeli
 ## Preparation
 
 You have two options to access Instill VDP: via the cloud platform Instill Cloud or by self-hosting Instill Core.
-For more information on each option, please refer to the documentation [here](https://www.instill.tech/docs/cloud/welcome/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol).
+For more information on each option, please refer to the documentation [here](/docs/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol).
 
 ### Access Instill VDP via Instill Cloud (Recommended)
 
 [Instill Cloud](https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol) is the recommended method for accessing Instill VDP, offering ease of use and reliability.
-To get started, all you need is an Instill Cloud account. Follow these steps to [set up your Instill Cloud account and log in to the Instill Cloud Console](https://www.instill.tech/docs/cloud/getting-started/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol).
+To get started, all you need is an Instill Cloud account. Follow these steps to [set up your Instill Cloud account and log in to the Instill Cloud Console](/docs/latest/quickstart/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-aigc-web3-stability-ai-numbers-protocol).
 
 ### Run Instill VDP via Instill Core locally
 
@@ -93,7 +93,7 @@ After onboarding, you will be redirected to the **Pipeline** page. If you have
 
 ### Step 1/4: Create Resource for each connector
 
-For make the pipeline workable, we need to first fill in your **API Key** for each connector. 
+For make the pipeline workable, we need to first fill in your **API Key** for each connector.
 
 For this example, we have Stability AI connector and Numbers Protocol connector. For Stability AI, follow the Stability AI **[documentation](https://platform.stability.ai/docs/getting-started/authentication)** to find your API keycreate resource. For Numbers Protocol, check out their [documentation](https://dia-backend.numbersprotocol.io/api/v3/redoc/) for capture token resource.
 
@@ -129,7 +129,7 @@ In this example,
 
 <ZoomableImg
   src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step2-set-stability-ai.png"
-    alt="Set up Stability AI connector"
+  alt="Set up Stability AI connector"
 />
 
 ### Step 3/4: Set up a Numbers Protocol Blockchain Connector
@@ -143,8 +143,8 @@ In this example,
 2. Enter the referenced image you would like to turn into Web3 asset.
 
 3. Fill in all other fields as desired.
-    
-    Note: The license used for this asset is **`CC BY-SA`**, which is a highly permissive license. For more information about this license, you can check **[here](https://creativecommons.org/licenses/by-sa/4.0/)**.
+
+   Note: The license used for this asset is **`CC BY-SA`**, which is a highly permissive license. For more information about this license, you can check **[here](https://creativecommons.org/licenses/by-sa/4.0/)**.
 
 4. Click **save** at the bottom-right of the right side bar to save the settings.
 
@@ -159,7 +159,7 @@ This connector ensures your data file will be pinned on the IPFS network with on
 
 Almost there! All connectors will be automatically linked if successfully referencing connecters and operators. Then your pipeline will be ready to go!
 
-Now, 
+Now,
 
 1. Click **Save 💾** on the top-right corner of the console to save the pipeline.
 
@@ -171,9 +171,9 @@ Now,
 />
 
 3. Enter empty fields in Start Operator.
-    
-    Note: Don't forget to personalize the **`asset_creator`** field by using your own name to claim ownership of the generated asset. 
-    
+
+   Note: Don't forget to personalize the **`asset_creator`** field by using your own name to claim ownership of the generated asset.
+
 4. Click **Run** to trigger the pipeline.
 
 <ZoomableImg
@@ -181,7 +181,7 @@ Now,
   alt="Trigger the pipeline by clicking Run"
 />
 
-5. The result for AI generated Art and Web3 Asset URLs will be shown at the End Operator. 
+5. The result for AI generated Art and Web3 Asset URLs will be shown at the End Operator.
 
 <ZoomableImg
   src="/tutorial-assets/vdp-aigc-web3-stability-ai-numbers-protocol/step4-result.png"
@@ -219,9 +219,9 @@ To create an API token, follow these steps:
 
 1. Go to the **[homepage](https://console.instill.tech/)** of the console.
 1. Click **Settings** ⚙️ on the bottom-left
-2. Navigate to the **API Tokens** page
-3. Just give it an ID and click **Create Token**
-4. The API token will be generated and displayed in the table. Keep this token safe as it does not expire.
+1. Navigate to the **API Tokens** page
+1. Just give it an ID and click **Create Token**
+1. The API token will be generated and displayed in the table. Keep this token safe as it does not expire.
 
 <InfoBlock type="tip" title="tip">
   If your token is compromised, choose that token and click Delete. But be
@@ -232,7 +232,6 @@ To create an API token, follow these steps:
 ### Trigger the pipeline
 
 To trigger the pipeline, you can use cURL with the provided API token as a Bearer token in the authorization headers (required only for Instill Cloud). Here's an example of how to do it:
-
 
 ```shellscript Trigger-via-Instill-Cloud
 curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/shihchun-h/pipelines/aigc-web3/trigger' \
@@ -250,7 +249,6 @@ curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/shihchun-h/pipelines/ai
 }'
 ```
 
-
 ```shellscript Trigger-via-Instill-Core
 curl -X POST 'http://localhost:8080/v1alpha/pipelines/aigc-web3/trigger' \
 --data  '{
@@ -265,12 +263,11 @@ curl -X POST 'http://localhost:8080/v1alpha/pipelines/aigc-web3/trigger' \
 }'
 ```
 
-
 <InfoBlock type="info" title="info">
   To understand the Numbers Protocol related parameters in the `metadata` field,
   including details about the asset creator and license, you can refer to the
-  [documentation](https://www.instill.tech/docs/vdp/v1.0.0/blockchain-connectors/numbers-protocol)
-  for comprehensive information.
+  [documentation](/docs/latest/vdp/connectors/numbers-protocol) for
+  comprehensive information.
 </InfoBlock>
 
 Please be patient as the request may take a a dozen seconds to process. Once completed, you will receive a response.
