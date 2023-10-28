@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.41.5](https://github.com/instill-ai/instill.tech/compare/v1.41.4...v1.41.5) (2023-10-28)
+
+
+### Miscellaneous
+
+* Namananand/ins 2332 documentation sidebar restructure and versioning  ([#642](https://github.com/instill-ai/instill.tech/issues/642)) ([461b51a](https://github.com/instill-ai/instill.tech/commit/461b51a444d18b76f487bb10ecbab1ffa3b80397))
+
+
+### Documentation
+
+* **blog:** create a blog post for closing hacktoberfest ([#636](https://github.com/instill-ai/instill.tech/issues/636)) ([f85c7bb](https://github.com/instill-ai/instill.tech/commit/f85c7bb24f657efd065d3fa6f30fc8ca89b81cd1))
+* **v0.4.1-alpha:** fix outdated links ([#643](https://github.com/instill-ai/instill.tech/issues/643)) ([e7c4e2f](https://github.com/instill-ai/instill.tech/commit/e7c4e2fcbb491c26eecc853ff0d0f682a9d1204e))
+
 ## [1.41.4](https://github.com/instill-ai/instill.tech/compare/v1.41.3...v1.41.4) (2023-10-20)
 
 
