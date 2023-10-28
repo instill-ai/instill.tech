@@ -46,7 +46,7 @@ export const Hero = () => {
             className="border-semantic-bg-primar flex w-full items-center gap-x-2 xl:w-auto"
           >
             <a
-              href="https://www.instill.tech/docs/core/welcome/?utm_source=product&utm_medium=button"
+              href="https://www.instill.tech/docs/latest/core/deployment/?utm_source=product&utm_medium=button"
               target="_blank"
               rel="noopener noreferrer"
             >

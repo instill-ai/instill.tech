@@ -237,7 +237,7 @@ const HacktoberfestPage: FC & {
                   className="w-full items-center gap-x-2 border-semantic-bg-primary xl:w-auto"
                 >
                   <a
-                    href="https://www.instill.tech/docs/core/welcome?utm_source=product&utm_medium=button"
+                    href="https://www.instill.tech/docs/?utm_source=product&utm_medium=button"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
