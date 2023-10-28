@@ -51,7 +51,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
                   <FaqContent>
                     {`VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
                   Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
-                  Please check the [VDP License](../docs/vdp/license) in detail.`}
+                  Please check the [VDP License](../docs/latest/license) in detail.`}
                   </FaqContent>
                 ),
               },
@@ -120,7 +120,7 @@ We are adding new features every day and we need your feedback to help shape the
             withArrow={true}
             position="xl:ml-auto"
             text="See all FAQ"
-            link="/docs/latest/vdp/faq"
+            link="/docs/latest/faq"
           />
         </div>
       </div>

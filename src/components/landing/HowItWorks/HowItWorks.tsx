@@ -44,7 +44,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             type="left"
             title="Pre-built ETL data connectors for extensive data access"
             description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
-            learnMoreLink="/docs/latest/core-concepts/vdp/connector"
+            learnMoreLink="/docs/latest/vdp/data-connector"
             number={1}
             cubes={[
               {
@@ -81,7 +81,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             type="right"
             title="One-click import and deploy AI models across vendors and frameworks"
             description="VDP integrates with the best ML tools and platforms to make importing models super easy. Get access to state-of-the-art models across vendors and your own models without changing your workflow. It supports frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more."
-            learnMoreLink="/docs/latest/import-models/overview"
+            learnMoreLink="/docs/latest/model/import"
             number={2}
             cubes={[
               {
