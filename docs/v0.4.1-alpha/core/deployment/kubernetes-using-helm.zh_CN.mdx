@@ -91,7 +91,7 @@ And visit the `api-gateway` ([http://localhost:8080](http://localhost:8080)) and
   kubectl --namespace instill-ai port-forward $CONSOLE_POD_NAME 3000:${CONSOLE_CONTAINER_PORT}
 ```
 
-Access to the observability stack Jaeger([http://localhost:16686](http://localhost:16686)), Prometheus([http://localhost:9090](http://localhost:9090)) and [Grafana](<[http://localhost:3002](http://localhost:3002)>) by port forwarding:
+Access to the observability stack Jaeger ([http://localhost:16686](http://localhost:16686)), Prometheus ([http://localhost:9090](http://localhost:9090)) and Grafana ([http://localhost:3002](http://localhost:3002)) by port forwarding:
 
 ```bash
   kubectl --namespace instill-ai port-forward $JAEGER_POD_NAME 16686:${JAEGER_CONTAINER_PORT}

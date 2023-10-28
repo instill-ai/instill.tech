@@ -5,15 +5,15 @@ draft: false
 description: "Learn about how to set up a VDP REST operator https://github.com/instill-ai/vdp"
 ---
 
-[**REST**](rest) enables users to make requests to http endpoints.
+The REST Operator enables users to make requests to http endpoints.
 
-## Release stage
+## Release Stage
 
 `Alpha`
 
 ## Operator Configuration
 
-The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](/docs/latest/core/pipeline) for more details.
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/pipeline) for more details.
 
 | Field        | Type                  | Note                                     |
 | :----------- | :-------------------- | :--------------------------------------- |
@@ -23,9 +23,9 @@ The operator configuration is used for setting up the input data and parameters 
 | headers      | map\<string, string\> | Key-value pair map for Request Headers   |
 | request_body | string                | The HTTP request body                    |
 
-### No-code setup
+### No-code Setup
 
-### Low-code setup
+### Low-code Setup
 
 This is a sample `configuration` in the pipeline recipe.
 
@@ -43,7 +43,7 @@ This is a sample `configuration` in the pipeline recipe.
 When you send the request, you can use this request format
 
 ```shell
-curl --location 'http://localhost:8080/vdp/v1alpha/users/<user_id>/pipelines/<pipeline_id>/trigger' \
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <api_token>' \
 --data '{

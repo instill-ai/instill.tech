@@ -1,7 +1,7 @@
 {
   "sidebarSections": {
     "getStarted": "👋 Get Started",
-    "serveModels": "⚗️ Serve Models",
+    "buildAiModels": "⚗️ Build AI Models",
     "selfhostInstillCore": "🔮 Self-host Instill Core",
     "buildAiWorkflows": "💧 Build AI Workflows",
     "instillSdk": "📦 Instill SDK",
@@ -64,7 +64,7 @@
     "postProcessing": "Post-processing",
     "importModels": "Import Models",
     "deployModels": "Deploy Models",
-    "inference": "Inference",
+    "useModels": "Use Models",
     "local": "Local",
     "github": "Github",
     "artivc": "ArtiVC",

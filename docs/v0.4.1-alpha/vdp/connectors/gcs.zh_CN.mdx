@@ -14,7 +14,7 @@ Latest configuration is maintained [here](https://github.com/instill-ai/connecto
 There are two things needed to configure a GCS connector: Bucket name and JSON Key (for auth).
 To get these details, visit https://console.cloud.google.com/storage/browser and navigate to your bucket.
 
-### No-code setup
+### No-code Setup
 
 To create a GCS data connector effortlessly, follow these steps:
 
@@ -25,14 +25,14 @@ To create a GCS data connector effortlessly, follow these steps:
 
 Now go to the **Data** page, the corresponding GCS data connector should be connected.
 
-### Low-code setup
+### Low-code Setup
 
 For advanced users who prefer a more hands-on approach, you can create a GCS data connector using the following cURL commands:
 
 1. Create a GCS data connector:
 
 ```shellscript cURL
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-resources
+curl  --location http://localhost:8080/vdp/v1alpha/users/<user-id>/connector-resources
       --header 'Authorization: Bearer <Your-API-Token>' \
       --data '{
         "id": "gcs-connector",
@@ -47,11 +47,11 @@ curl  --location http://localhost:8080/vdp/v1alpha/users/<user_id>/connector-res
 
 For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
 
-## Supported operations
+## Supported Tasks
 
-The GCS connector supports these operations: UPLOAD
+The GCS connector supports these tasks: **Upload**.
 
-1. UPLOAD - use this to upload the contents to the given bucket. The input should look something like -
+1. **Upload** - use this to upload the contents to the given bucket. The input should look something like -
 
 ```json
 {

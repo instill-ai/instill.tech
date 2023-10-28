@@ -15,9 +15,30 @@ You have the option to self-host locally using Instill CLI, Docker Compose, Kube
 We are continually optimizing the self-hosting process to get you up and running with our services in just a few minutes.
 If you encounter any challenges with self-deployment, please don't hesitate to reach out to us on [GitHub](https://github.com/instill-ai/community/issues/new/choose) or join our [Discord](https://discord.gg/sevxWsqpGh) community for assistance.
 
+### Docker Resource Requirements
+
+To successfully launch Instill Core, it's essential to meet the following Docker Engine resource requirements.
+Typically, launch failures occur due to inadequate virtual disk size.
+We strongly recommend configuring the Docker Engine with the following settings for optimal performance:
+
+In order to launch Instill Core successfully, it's imperative to ensure that your Docker Engine meets the following resource requirements.
+Often, launch failures are attributed to insufficient virtual disk space.
+To achieve optimal performance, we strongly recommend configuring your Docker Engine with the following settings:
+
+| Docker Engine Resource | Minimal Requirements | Recommended Requirements |
+| :--------------------- | :------------------- | :----------------------- |
+| CPU Limit              | 2                    | 8                        |
+| Memory Limit           | 2 GB                 | 32 GB                    |
+| Swap                   | 1 GB                 | 1 GB                     |
+| Virtual Disk Limit     | 64 GB                | 256 GB                   |
+
+Please note that the initial launch process may take up to 1 hour, contingent on your internet speed.
+The most time-consuming aspect of the launch is the download of the Triton Inference Server image for Instill Model,
+which is approximately 11 GB in size. Subsequent launches will be considerably quicker, usually completing in under 5 minutes.
+
 ### Deploy with Instill CLI
 
-Please checkout [Instill CLI](/docs/latest/cli). This is the recommended way to access both Instill Core and Instill Cloud.
+Please checkout [Instill CLI](./deployment/cli). This is the recommended way to access both Instill Core and Instill Cloud.
 For the best experience accessing both Instill Core and Instill Cloud, we recommend using the [Instill CLI](./deployment/cli).
 
 ### Deploy with other methods

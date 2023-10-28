@@ -8,12 +8,12 @@ description: "Learn about how to prepare your models for the MLOps tool Instill 
 To prepare a model for Instill Model:
 
 - Create a [model card](#model-card) `README.md` to describe your model
-- Write a [pre-processing model](#pre-processing) and a [post-processing model](#post-processing) that are compatible with the Triton Python Backend
+- Write a [pre-processing model](#pre-processing-model) and a [post-processing model](#post-processing-model) that are compatible with the Triton Python Backend
 - Prepare the model configuration file for your inference model
 - Set up an [ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
 - Organise the model files into [valid Instill Model model layout](#model-layout)
 
-## Model card
+## Model Card
 
 Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with a specific model.
 It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in Instill Model.
@@ -36,11 +36,11 @@ Here shows a model card example of a model imported from a GitHub repository [mo
 />
 
 <InfoBlock type="info" title="info">
-  Try our [Import GitHub models](./import-models/github) guideline to import a
-  model from GitHub
+  Try our [Import GitHub models](./import/github) guideline to import a model
+  from GitHub
 </InfoBlock>
 
-### Model card metadata
+### Model Card Metadata
 
 You can insert Front Matter in a model card to define the model metadata.
 Start with three `---` at the top, then include all the metadata and close the section with `---` like the example below.
@@ -55,7 +55,7 @@ Tags:
 ---
 ```
 
-### Specify an AI task
+### Specify an AI Task
 
 When importing the model, Instill Model will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
 If the model is verified, Instill Model will automatically convert the model output into format of the corresponding standardised VDP AI task format whenever using the model.
@@ -78,7 +78,7 @@ Task: Keypoint
 </CH.Code>
 
 If not specified, the model will be recognised with `Unspecified` AI task,
-and the raw model output will be wrapped in a [standard format](/ai-task#unspecified-ai-task).
+and the raw model output will be wrapped in a [standard format](ai-task#unspecified-task).
 
 **❓ How to know if the AI task metadata is correctly recognised?**
 
@@ -143,9 +143,9 @@ It is shipped with the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers us
 
 If your model is not compatible with Python 3.8 or if it requires additional dependencies, you could [create your own Conda environment](https://github.com/triton-inference-server/python_backend#2-packaging-the-conda-environment) and configure the `config.pbtext` to point to the custom conda-pack tar file accordingly.
 
-## Prepare pre-processing model
+## Prepare Pre-processing Model
 
-🙌 After preparing your model to be Instill Model compatible, check out [Import Models](/docs/latest/import-models/overview) to learn about how to import the model into Instill Model from different sources.
+🙌 After preparing your model to be Instill Model compatible, check out [Import Models](import) to learn about how to import the model into Instill Model from different sources.
 
 To prepare pre-processing model in Python, create a Python file with a [structure](https://github.com/triton-inference-server/python_backend#usage) similar to below:
 
@@ -241,9 +241,9 @@ class TritonPythonModel(ABC):
 
 Follow the above structure and implement the abstract method `pre_process_batch_request` to pre-process the input images in a batch request.
 
-## Prepare post-processing model
+## Prepare Post-processing Model
 
-You can prepare the post-processing model the same way as the [pre-processing model](#pre-processing).
+You can prepare the post-processing model the same way as the [pre-processing model](#pre-processing-model).
 However, to get the model inference output in a standarised format you can
 
 - specify a [supported AI task](ai-task) when creating the [model card](#model-card)
@@ -448,7 +448,7 @@ Check the [standardised output for Keypoint Detection](ai-task#keypoint-detectio
 }
 ```
 
-### Instance Segmentation task
+### Instance Segmentation
 
 <InfoBlock type="info" title="info">
   Learn more about [Instance Segmentation task](ai-task#instance-segmentation)
@@ -482,7 +482,7 @@ Check the [standardised output for Instance Segmentation task](ai-task#instance-
 }
 ```
 
-### Unspecified AI task
+### Unspecified
 
 <InfoBlock type="info" title="info">
   Learn more about [Unspecified AI task](ai-task#unspecified-ai-task)
@@ -491,7 +491,7 @@ Check the [standardised output for Instance Segmentation task](ai-task#instance-
 If your model is imported without specifying any task metadata, the model will be recognised to solve an `Unspecified` task.
 There is no need to prepare your model outputs to fit any format.
 
-Check the [standardised output for Unspecified AI task](ai-task#unspecified-ai-task).
+Check the [standardised output for Unspecified AI task](ai-task#unspecified-task).
 Assume we import the above ["cat vs. dog"](#image-classification) model without specifying the AI task metadata, here shows an output example:
 
 ```json
