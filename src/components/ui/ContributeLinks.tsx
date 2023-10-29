@@ -13,7 +13,7 @@ export const ContributeLinks = ({ githubEditUrl, feedbackUrl }: ContributeLinksP
         href={githubEditUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex flex-row gap-x-2.5 mt-2"
+        className="group flex flex-row gap-x-2.5"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ export const ContributeLinks = ({ githubEditUrl, feedbackUrl }: ContributeLinksP
         href={feedbackUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex flex-row gap-x-2.5 mt-4"
+        className="group flex flex-row gap-x-2.5 mt-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
