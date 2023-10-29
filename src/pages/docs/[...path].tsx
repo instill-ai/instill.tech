@@ -266,13 +266,6 @@ const DocsPage: FC<DocsPageProps> & {
                 `.${router.locale}` +
                 ".mdx"
               }
-              headers={headers}
-            />
-          ) : null}
-        </aside>
-        <aside className="hidden pb-10 xl:col-span-2 xl:block">
-          {headers ? (
-            <RightSidebar
               feedbackUrl={
                 "https://github.com/instill-ai/community/issues/new/choose"
               }
