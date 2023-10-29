@@ -266,6 +266,9 @@ const DocsPage: FC<DocsPageProps> & {
                 `.${router.locale}` +
                 ".mdx"
               }
+              feedbackUrl={
+                "https://github.com/instill-ai/community/issues/new/choose"
+              }
               headers={headers}
             />
           ) : null}
