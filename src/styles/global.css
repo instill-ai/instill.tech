@@ -124,3 +124,14 @@ table.mcnCaptionTopContent {
   text-decoration: underline;
   direction: ltr;
 }
+
+.mceText h3 {
+  color: rgb(0, 0, 0);
+  font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0px;
+  direction: ltr;
+}
