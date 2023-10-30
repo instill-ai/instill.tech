@@ -149,9 +149,38 @@ Click **Run**.
 
 As you can see, the End operator shows the text generation result of each LLM:
 
+<CH.Code>
+
+```python MPT-7B
+def hello_world():
+      print("Hello World!")
+
+hello_world()
 ```
-TODO
+
+```python Llama2-7B
+def hello_world():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    hello_world()
 ```
+
+```python Mistral-7B
+def hello_world():
+    print("Hello World")
+
+def hello_name(name):
+    print("Hello " + name)
+
+def hello_name_and_age(name, age):
+    print("Hello " + name + " you are " + str(age) + " years old")
+
+def hello_name_and_age_and_city(name, age, city):
+    print("Hello " + name + " you are "
+```
+
+</ CH.Code>
 
 Give it a try, but note that these LLMs models are base models and are not fine-tuned for chat-like dialogue generation.
 
