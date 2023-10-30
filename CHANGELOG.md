@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.41.6](https://github.com/instill-ai/instill.tech/compare/v1.41.5...v1.41.6) (2023-10-30)
+
+
+### Miscellaneous
+
+* update outdated links in product website ([#644](https://github.com/instill-ai/instill.tech/issues/644)) ([1ac7ade](https://github.com/instill-ai/instill.tech/commit/1ac7ade5036a8c8a1cd457f9bc7b8e4024bf12eb))
+
+
+### Documentation
+
+* refactor quickstart tutorial ([#646](https://github.com/instill-ai/instill.tech/issues/646)) ([47d8110](https://github.com/instill-ai/instill.tech/commit/47d8110268a22d425367ac4b10d18ceafbe50cba))
+
 ## [1.41.5](https://github.com/instill-ai/instill.tech/compare/v1.41.4...v1.41.5) (2023-10-28)
 
 
