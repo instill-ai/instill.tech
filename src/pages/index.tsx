@@ -109,7 +109,7 @@ const HacktoberfestPage: FC & {
                       <div className="mb-2 flex flex-wrap justify-center gap-2">
                         <Tag variant="darkNeutral">LLM Apps</Tag>
                         <Tag variant="darkNeutral">Vision Apps</Tag>
-                        <Tag variant="darkNeutral">Image Aenerators</Tag>
+                        <Tag variant="darkNeutral">Image Generators</Tag>
                         <Tag variant="darkNeutral">Audio Apps</Tag>
                         <Tag variant="darkNeutral">More</Tag>
                       </div>
