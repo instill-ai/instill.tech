@@ -80,7 +80,7 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.pipeline",
-          link: `/docs/${appVersion}/core/pipeline`,
+          link: `/docs/${appVersion}/core/concepts/pipeline`,
         },
       ],
       appType: "core",
@@ -169,15 +169,15 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.instillModel",
-          link: `/docs/${appVersion}/vdp/connectors/instill-model`,
+          link: `/docs/${appVersion}/vdp/ai-connectors/instill-model`,
         },
         {
           text: "common:sidebarSections.openAI",
-          link: `/docs/${appVersion}/vdp/connectors/openai`,
+          link: `/docs/${appVersion}/vdp/ai-connectors/openai`,
         },
         {
           text: "common:sidebarSections.stabilityAI",
-          link: `/docs/${appVersion}/vdp/connectors/stability-ai`,
+          link: `/docs/${appVersion}/vdp/ai-connectors/stability-ai`,
         },
       ],
       appType: "core",
@@ -190,19 +190,19 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.pinecone",
-          link: `/docs/${appVersion}/vdp/connectors/pinecone`,
+          link: `/docs/${appVersion}/vdp/data-connectors/pinecone`,
         },
         {
           text: "common:sidebarSections.airbyte",
-          link: `/docs/${appVersion}/vdp/connectors/airbyte`,
+          link: `/docs/${appVersion}/vdp/data-connectors/airbyte`,
         },
         {
           text: "common:sidebarSections.bigquery",
-          link: `/docs/${appVersion}/vdp/connectors/bigquery`,
+          link: `/docs/${appVersion}/vdp/data-connectors/bigquery`,
         },
         {
           text: "common:sidebarSections.gcs",
-          link: `/docs/${appVersion}/vdp/connectors/gcs`,
+          link: `/docs/${appVersion}/vdp/data-connectors/gcs`,
         },
       ],
       appType: "core",
@@ -215,7 +215,7 @@ const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.numbersProtocol",
-          link: `/docs/${appVersion}/vdp/connectors/numbers-protocol`,
+          link: `/docs/${appVersion}/vdp/app-connectors/numbers-protocol`,
         },
       ],
       appType: "core",

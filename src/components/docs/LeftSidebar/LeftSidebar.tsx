@@ -29,6 +29,8 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       `}
       </style>
 
+      {console.log("leftSidebar.sections", leftSidebar.sections)}
+
       <ScrollArea.Root className="left-sidebar flex w-96 flex-col overflow-auto px-2 pb-10 pt-5 md:sticky md:top-0 md:ml-auto">
         <div className="mx-0 mb-5">
           <DocSearch

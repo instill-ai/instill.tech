@@ -38,6 +38,9 @@ export const Section = ({
         setCollapsed(false);
       }
     }
+
+    console.log("link", link);
+    console.log("router.asPath", router.asPath);
   }, [link, router.asPath]);
 
   if (isHeader) {
