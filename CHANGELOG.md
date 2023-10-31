@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.41.7](https://github.com/instill-ai/instill.tech/compare/v1.41.6...v1.41.7) (2023-10-31)
+
+
+### Miscellaneous
+
+* update docs folder structure for sidebar expand ([#651](https://github.com/instill-ai/instill.tech/issues/651)) ([44592a2](https://github.com/instill-ai/instill.tech/commit/44592a2200ff70a4c9a1699f986b7cbe8a0dce54))
+* update newsletter css ([#647](https://github.com/instill-ai/instill.tech/issues/647)) ([78966b8](https://github.com/instill-ai/instill.tech/commit/78966b8e26db8a88f6622adee01bcb2a95755c1d))
+
+
+### Documentation
+
+* **tutorial:** add tutorial on open-source llms ([#648](https://github.com/instill-ai/instill.tech/issues/648)) ([e8cbf12](https://github.com/instill-ai/instill.tech/commit/e8cbf128e64b29baa57ba4ac87f50a4d38a71b2d))
+* **tutorial:** polish model open-source LLMs ([#650](https://github.com/instill-ai/instill.tech/issues/650)) ([f00d42a](https://github.com/instill-ai/instill.tech/commit/f00d42a0c17ff6f21292b8aa13946dc68225d854))
+
 ## [1.41.6](https://github.com/instill-ai/instill.tech/compare/v1.41.5...v1.41.6) (2023-10-30)
 
 
