@@ -18,6 +18,7 @@ import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { getCommitMeta } from "@/lib/github";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -83,9 +84,9 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   // Prepare the codeHike theme
   const theme = JSON.parse(
-    fs.readFileSync(
+    await fs.readFileSync(
       join(process.cwd(), "src", "styles", "rose-pine-moon.json"),
-      "utf-8"
+      { encoding: "utf-8" }
     )
   );
 
@@ -120,6 +121,20 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const prevArticle =
     currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
 
+  // Access GitHub API to retrieve the info of Committer
+
+  let commitMeta: Nullable<CommitMeta> = null;
+
+  try {
+    commitMeta = await getCommitMeta({
+      org: "instill-ai",
+      repo: "instill.tech",
+      path: "docs/" + relativePath + "." + locale + ".mdx",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
   // We use remark to get the headers
   const headers = [] as RightSidebarProps["headers"];
   await remark()
@@ -130,13 +145,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   return {
     props: {
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
-      mdxSource: mdxSource,
-      nextArticle: nextArticle,
-      prevArticle: prevArticle,
-      headers: headers,
-      commitMeta: null,
+      mdxSource,
+      nextArticle,
+      prevArticle,
+      headers,
+      commitMeta,
     },
-    revalidate: 60 * 60,
   };
 };
 
