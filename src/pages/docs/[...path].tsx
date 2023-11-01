@@ -9,7 +9,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig } from "../../../content.config";
+import { docsConfig, getSections } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
@@ -94,46 +94,29 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Get prev and next links from sidebar config
-  const appType = getApplicationType(params.path);
-  const docsConfiguration = docsConfig(
-    appType,
-    getApplicationVersion(params.path, appType)
-  );
-  const sidebarLinks: SidebarItem[] = [];
-  docsConfiguration.sidebar.leftSidebar.sections.forEach((e) => {
-    if (e.link) {
-      sidebarLinks.push({ link: e.link, text: e.text });
-    }
-    if (e.items) {
-      sidebarLinks.push(...e.items.flat());
-    }
-  });
+  // const sidebars = getSections(getApplicationVersion(params.path, "core"));
 
-  const currentPageIndex = sidebarLinks.findIndex(
-    (e) => e.link === `/docs/${relativePath}`
-  );
+  // const sidebarLinks: SidebarItem[] = [];
+  // sidebars.forEach((e) => {
+  //   if (e.link) {
+  //     sidebarLinks.push({ link: e.link, text: e.text });
+  //   }
+  //   if (e.items) {
+  //     sidebarLinks.push(...e.items.flat());
+  //   }
+  // });
 
-  const nextArticle =
-    currentPageIndex + 1 >= sidebarLinks.length
-      ? null
-      : sidebarLinks[currentPageIndex + 1];
+  // const currentPageIndex = sidebarLinks.findIndex(
+  //   (e) => e.link === `/docs/${relativePath}`
+  // );
 
-  const prevArticle =
-    currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
+  // const nextArticle =
+  //   currentPageIndex + 1 >= sidebarLinks.length
+  //     ? null
+  //     : sidebarLinks[currentPageIndex + 1];
 
-  // Access GitHub API to retrieve the info of Committer
-
-  let commitMeta: Nullable<CommitMeta> = null;
-
-  try {
-    commitMeta = await getCommitMeta({
-      org: "instill-ai",
-      repo: "instill.tech",
-      path: "docs/" + relativePath + "." + locale + ".mdx",
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  // const prevArticle =
+  //   currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
 
   // We use remark to get the headers
   const headers = [] as RightSidebarProps["headers"];
@@ -145,11 +128,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   return {
     props: {
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
-      mdxSource,
-      nextArticle,
-      prevArticle,
-      headers,
-      commitMeta,
+      mdxSource: mdxSource,
+      nextArticle: null,
+      prevArticle: null,
+      headers: headers,
+      commitMeta: null,
     },
   };
 };
