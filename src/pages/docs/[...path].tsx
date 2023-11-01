@@ -94,29 +94,41 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Get prev and next links from sidebar config
-  // const sidebars = getSections(getApplicationVersion(params.path, "core"));
+  const sidebars = getSections(getApplicationVersion(params.path, "core"));
 
-  // const sidebarLinks: SidebarItem[] = [];
-  // sidebars.forEach((e) => {
-  //   if (e.link) {
-  //     sidebarLinks.push({ link: e.link, text: e.text });
-  //   }
-  //   if (e.items) {
-  //     sidebarLinks.push(...e.items.flat());
-  //   }
-  // });
+  const sidebarLinks: SidebarItem[] = [];
+  sidebars.forEach((e) => {
+    if (e.link) {
+      sidebarLinks.push({ link: e.link, text: e.text });
+    }
+    if (e.items) {
+      sidebarLinks.push(...e.items.flat());
+    }
+  });
 
-  // const currentPageIndex = sidebarLinks.findIndex(
-  //   (e) => e.link === `/docs/${relativePath}`
-  // );
+  const currentPageIndex = sidebarLinks.findIndex(
+    (e) => e.link === `/docs/${relativePath}`
+  );
 
-  // const nextArticle =
-  //   currentPageIndex + 1 >= sidebarLinks.length
-  //     ? null
-  //     : sidebarLinks[currentPageIndex + 1];
+  const nextArticle =
+    currentPageIndex + 1 >= sidebarLinks.length
+      ? null
+      : sidebarLinks[currentPageIndex + 1];
 
-  // const prevArticle =
-  //   currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
+  const prevArticle =
+    currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
+
+  let commitMeta: Nullable<CommitMeta> = null;
+
+  try {
+    commitMeta = await getCommitMeta({
+      org: "instill-ai",
+      repo: "instill.tech",
+      path: "docs/" + relativePath + "." + locale + ".mdx",
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
   // We use remark to get the headers
   const headers = [] as RightSidebarProps["headers"];
@@ -128,11 +140,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   return {
     props: {
       ...(await serverSideTranslations(locale ?? "en", ["common"])),
-      mdxSource: mdxSource,
-      nextArticle: null,
-      prevArticle: null,
-      headers: headers,
-      commitMeta: null,
+      mdxSource,
+      nextArticle,
+      prevArticle,
+      headers,
+      commitMeta,
     },
   };
 };
@@ -143,7 +155,7 @@ type GetLayOutProps = {
 
 const DocsPage: FC<DocsPageProps> & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, nextArticle, prevArticle, headers }) => {
+} = ({ mdxSource, nextArticle, prevArticle, commitMeta, headers }) => {
   const router = useRouter();
 
   return (
@@ -181,6 +193,9 @@ const DocsPage: FC<DocsPageProps> & {
           >
             {mdxSource ? <MDXRemote {...mdxSource} /> : null}
           </article>
+          {commitMeta ? (
+            <LastEditedInfo marginBottom="mb-8" meta={commitMeta} />
+          ) : null}
           <HorizontalLine
             marginBottom="mb-8"
             bgColor="bg-instillGrey20 dark:bg-instillGrey30"
