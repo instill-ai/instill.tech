@@ -33,7 +33,7 @@ async redirects() {
 
 There have three content folders and their corresponding page, assets folder.
 
-- Docs folder has nested structure, by default it will accept all kinds of nested structure and compile the path into url. For example. A file in /docs/vdp/getting-started.mdx will be compiled into https://instill.tech/docs/vdp/getting-started.
+- Docs folder has nested structure, by default it will accept all kinds of nested structure and compile the path into url. For example. A file in /docs/v0.4.1-alpha/welcome.mdx will be compiled into https://instill.tech/docs/v0.4.1-alpha/welcome.
 - Blog and tutorials currently only accept **flat** structure. This means it won't accept nested folder strcture likes /tutorial/nested-folder/foo.mdx.
 
 ```
@@ -236,31 +236,24 @@ const SECTIONS: SidebarSections[] = [
   {
     //  <---- this menu will be added to cloud
     text: "Instill Cloud",
+    link: `/docs/${appVersion}/cloud`
     collapsible: true,
     items: [
-      {
-        text: "Getting started",
-        link: "/docs/cloud/getting-started",
+     {
+        text: "CLI",
+        link: `/docs/${appVersion}/core/deployment/cli`,
       },
       {
-        text: "Using Instill Cloud",
-        link: "/docs/cloud/using-instill-cloud",
+        text: "Docker Compose",
+        link: `/docs/${appVersion}/core/deployment/docker-compose`,
+      },
+      {
+        text: "Kubernetes",
+        link: `/docs/${appVersion}/core/deployment/kubernetes-using-helm`,
       },
     ],
-    appType: "cloud",
-  },
-  {
-    //  <---- this menu will be added to vdp
-    text: "VDP",
-    collapsible: true,
-    items: [
-      { text: "Getting started", link: "/docs/vdp/getting-started" },
-      { text: "Configuration", link: "/docs/vdp/configuration" },
-      { text: "Roadmap", link: "/docs/vdp/roadmap" },
-      { text: "License", link: "/docs/vdp/license" },
-      { text: "FAQ", link: "/docs/vdp/faq" },
-    ],
-    appType: "vdp",
+    appType: "core",
+    versions: [],
   },
 ];
 ```

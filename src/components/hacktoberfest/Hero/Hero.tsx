@@ -46,7 +46,7 @@ export const Hero = () => {
             className="border-semantic-bg-primar flex w-full items-center gap-x-2 xl:w-auto"
           >
             <a
-              href="https://www.instill.tech/docs/core/welcome/?utm_source=product&utm_medium=button"
+              href="https://www.instill.tech/docs/latest/core/deployment/?utm_source=product&utm_medium=button"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,13 +65,10 @@ export const Hero = () => {
           backgroundColor: "rgba(255, 255, 255, 0.20)",
         }}
       >
-        <Image
-          src="/hacktoberfest/demo.gif"
-          width={1128}
-          height={612}
-          alt="Console Cloud Dashboard"
-          className="w-full"
-        />
+        <video playsInline autoPlay muted loop>
+          <source src="/hacktoberfest/demo.mp4" type="video/mp4" />
+          Console Cloud Dashboard
+        </video>
       </div>
     </div>
   );

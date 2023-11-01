@@ -24,7 +24,7 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       padding="pl-[15px] pr-[56px] py-[7px]"
       position={position}
       onClickHandler={() =>
-        router.push("/docs/vdp/welcome/?utm_source=product&utm_medium=button")
+        router.push("/docs/?utm_source=product&utm_medium=button")
       }
     >
       <div className="flex flex-col">

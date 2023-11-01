@@ -219,6 +219,9 @@ const DocsPage: FC<DocsPageProps> & {
                 `.${router.locale}` +
                 ".mdx"
               }
+              feedbackUrl={
+                "https://github.com/instill-ai/community/issues/new/choose"
+              }
               headers={headers}
             />
           ) : null}
@@ -229,7 +232,7 @@ const DocsPage: FC<DocsPageProps> & {
 };
 
 DocsPage.getLayout = (page) => {
-  return <DocsLayout>{page}</DocsLayout>;
+  return <DocsLayout hasSidebar={true}>{page}</DocsLayout>;
 };
 
 export default DocsPage;

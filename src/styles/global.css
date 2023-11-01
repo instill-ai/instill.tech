@@ -41,11 +41,9 @@
       format("woff");
 }
 
-
 /*
   Mailchimp content
 */
-
 
 /*
   This is for special mailchimp quote block
@@ -53,7 +51,7 @@
 */
 
 td[style*="color: #40A8F5"] > em {
-  color: #40A8F5;
+  color: #40a8f5;
 }
 
 /* table[style*="border: 2px dashed"] {
@@ -61,8 +59,9 @@ td[style*="color: #40A8F5"] > em {
   background-color: #1A1A1A !important;
 } */
 
-.mcnTextContent {
-  color: #1A1A1A !important;
+.mcnTextContent,
+.mceText {
+  color: #1a1a1a !important;
 }
 
 table.templateContainer {
@@ -70,40 +69,69 @@ table.templateContainer {
 }
 
 h3.null {
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
 }
 
 .mcnButtonContent {
-  background-color: #23C4E7 !important;
-
+  background-color: #23c4e7 !important;
 }
 
-td.mcnTextContent > ul {
-  list-style-type: circle;
+td.mcnTextContent > ul,
+div.mceText > ul {
+  list-style-type: circle !important;
   padding-left: 16px;
 }
 
 table.mcnCaptionBottomContent {
-  width: 100% !important
+  width: 100% !important;
 }
 
 table.mcnCaptionTopContent {
-  width: 100% !important
+  width: 100% !important;
 }
 
 .mcnTextContent > p,
 .mcnTextContent > h3,
 .mcnTextContent > h4,
-.mcnTextContent > li {
-  color: #1A1A1A;
+.mcnTextContent > li,
+.mceText > p,
+.mceText > h3,
+.mceText > h4,
+.mceText > li {
+  color: #1a1a1a;
 }
 
-.mcnTextContent > ul > li {
+.mcnTextContent > ul > li,
+.mceText > ul > li {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.mcnTextContent > ul {
+.mcnTextContent > ul,
+.mceText > ul {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.mceWrapperInner {
+  background: transparent !important;
+}
+
+.mceText a {
+  color: rgb(0, 0, 0);
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: underline;
+  direction: ltr;
+}
+
+.mceText h3 {
+  color: rgb(0, 0, 0);
+  font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0px;
+  direction: ltr;
 }

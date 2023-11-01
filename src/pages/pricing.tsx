@@ -50,7 +50,7 @@ const pricingPlans: PricingPlan[] = [
     name: "Cloud Starter",
     price: "Free",
     subTitle: null,
-    subTitleLink: "/docs/cloud/getting-started",
+    subTitleLink: "/docs/latest/quickstart",
     description: "For individual or small teams with advanced features",
     features: [
       "FREE compute resource during Open Alpha",

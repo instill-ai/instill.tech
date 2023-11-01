@@ -21,7 +21,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
 
   return (
     <div className={cn("flex w-full flex-col py-20", marginBottom)}>
-      <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-y-0 xl:gap-x-10">
+      <div className="flex flex-col gap-y-10 xl:flex-row xl:gap-x-10 xl:gap-y-0">
         <div className="flex w-full flex-col xl:w-1/3">
           <SectionLabel text="Got a question?" position="mr-auto mb-2.5" />
           <SectionHeader
@@ -51,7 +51,7 @@ export const Faq = ({ marginBottom }: FaqProps) => {
                   <FaqContent>
                     {`VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
                   Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
-                  Please check the [VDP License](../docs/vdp/license) in detail.`}
+                  Please check the [VDP License](../docs/latest/license) in detail.`}
                   </FaqContent>
                 ),
               },
@@ -120,7 +120,7 @@ We are adding new features every day and we need your feedback to help shape the
             withArrow={true}
             position="xl:ml-auto"
             text="See all FAQ"
-            link="/docs/vdp/faq"
+            link="/docs/latest/faq"
           />
         </div>
       </div>
