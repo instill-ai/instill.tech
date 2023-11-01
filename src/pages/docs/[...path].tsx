@@ -19,6 +19,7 @@ import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCommitMeta } from "@/lib/github";
+import { readFile } from "fs/promises";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -83,10 +84,13 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
 
   // Prepare the codeHike theme
+
   const theme = JSON.parse(
-    await fs.readFileSync(
+    await readFile(
       join(process.cwd(), "src", "styles", "rose-pine-moon.json"),
-      { encoding: "utf-8" }
+      {
+        encoding: "utf-8",
+      }
     )
   );
 
