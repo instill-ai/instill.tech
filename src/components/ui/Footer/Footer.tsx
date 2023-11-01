@@ -11,6 +11,7 @@ import { CopyRightText } from "..";
 import { AnimateSlogan } from "./AnimateSlogan";
 import { Tab } from "./Tab";
 import { TabLinks } from "./Tab";
+import { LATEST_VERSIONS } from "../../../../version.mjs";
 
 export const Footer = () => {
   const socialIconStyle = {
@@ -64,7 +65,7 @@ export const Footer = () => {
     resources: [
       {
         text: "Documentation",
-        href: "/docs",
+        href: `/docs/${LATEST_VERSIONS["core"]}/welcome`,
       },
       {
         text: "Tutorial",
