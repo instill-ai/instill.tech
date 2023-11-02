@@ -57,7 +57,7 @@ export const CodeShowcase = ({ marginBottom }: CodeShowcaseProps) => {
         content: (
           <AccordionContent
             bgColor="bg-instillSkyBlue"
-            link="/docs/latest/core/pipeline"
+            link="/docs/latest/core/concepts/pipeline"
             description="An end-to-end workflow that automates a 
               sequence of sub-components to process unstructured data."
           />
