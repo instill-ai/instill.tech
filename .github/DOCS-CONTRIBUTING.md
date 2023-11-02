@@ -527,5 +527,44 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
  - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
 
 
+### Version in documentation
+
+### want to add new version
+
+- modify [latest versions](./version.mjs)
+
+```
+update the values of latest versions
+
+export const LATEST_VERSIONS = {
+  core: "v0.4.1-alpha",
+};
+```
+
+- need to add new version as folder name
+
+```
+├── docs
+│   └── v0.4.1-alpha // version as folder
+│   │      └── vdp  // appType as folder
+│   │      │     ├── welcome.en.mdx
+│   │      │     └── welcome.zh_CN.mdx
+│   │      └── core  // appType as folder
+│   │            ├── welcome.en.mdx
+│   │            └── welcome.zh_CN.mdx
+│   │ 
+│   └── v0.0.1-alpha // version as folder
+│        └── vdp  // appType as folder
+│        │     ├── welcome.en.mdx
+│        │     └── welcome.zh_CN.mdx
+│        └── core  // appType as folder
+│               ├── welcome.en.mdx
+│               └── welcome.zh_CN.mdx
+│
+└── version.mjs
+```
+
+- Now you will have 2 version in the version dropdown `v0.4.1-alpha` and `v0.0.1-alpha` and the `latest` version is `v0.4.1-alpha`
+
 [^1]: [Nodejs - Downloads](https://nodejs.org/en/download/)
 [^2]: [Pnpm - Installation](https://pnpm.io/installation)

@@ -477,7 +477,7 @@ next-i18next
 i18next
 ```
 
-### Folder Structure 
+### Folder Structure
 
 ```
 ├── docs
@@ -495,6 +495,7 @@ i18next
         ├── [...path].tsx
         └── index.tsx
 ```
+
 ### Want to add new langauge
 
 add your langauge
@@ -513,7 +514,7 @@ const { t } = useTranslation();
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   locale
 }) => {
-  
+
   return {
     props: {
       ...(await serverSideTranslations(locale ?? "en", ["common"]))
@@ -522,40 +523,50 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 };
 
 ```
- ### Example used in project
- - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L76
- - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
 
+### Example used in project
+
+- https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L76
+- https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
 
 ### Version in documentation
-- can modify [latest versions](./version.mjs)
+
+### want to add new version
+
+- modify [latest versions](./version.mjs)
 
 ```
-update the values of versions
+update the values of latest versions
 
 export const LATEST_VERSIONS = {
-  vdp: "v1.0.0",
-  base: "v1.0.0",
-  model: "v1.0.0",
-  cloud: "v1.0.0",
-  core: "v1.0.0",
+  core: "v0.4.1-alpha",
 };
 ```
 
-- need to add new version
+- need to add new version as folder name
 
 ```
 ├── docs
-│   └── vdp 
-│         └── v1.0.0  // version number as a folder
-│         │     ├── welcome.en.mdx
-│         │     └── welcome.zh_CN.mdx
-│         └── v1.0.5  // version number as a folder
+│   └── v0.4.1-alpha // version as folder
+│   │      └── vdp  // appType as folder
+│   │      │     ├── welcome.en.mdx
+│   │      │     └── welcome.zh_CN.mdx
+│   │      └── core  // appType as folder
+│   │            ├── welcome.en.mdx
+│   │            └── welcome.zh_CN.mdx
+│   │
+│   └── v0.0.1-alpha // version as folder
+│        └── vdp  // appType as folder
+│        │     ├── welcome.en.mdx
+│        │     └── welcome.zh_CN.mdx
+│        └── core  // appType as folder
 │               ├── welcome.en.mdx
 │               └── welcome.zh_CN.mdx
+│
 └── version.mjs
-
 ```
+
+- Now you will have 2 version in the version dropdown `v0.4.1-alpha` and `v0.0.1-alpha` and the `latest` version is `v0.4.1-alpha`
 
 [^1]: [Nodejs - Downloads](https://nodejs.org/en/download/)
 [^2]: [Pnpm - Installation](https://pnpm.io/installation)
