@@ -172,7 +172,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </p>
               </div>
             }
-            learnMoreLink="/docs/latest/core/pipeline"
+            learnMoreLink="/docs/latest/core/concepts/pipeline"
             number={4}
             cubes={[
               {

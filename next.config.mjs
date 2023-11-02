@@ -155,12 +155,12 @@ const nextConfig = {
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/core/pipeline",
+        destination: "/docs/core/concepts/pipeline",
         permanent: false,
       },
       {
         source: "/docs/core-concepts/pipeline",
-        destination: "/docs/core/pipeline",
+        destination: "/docs/core/concepts/pipeline",
         permanent: false,
       },
       {
@@ -237,12 +237,12 @@ const nextConfig = {
       // New documentation refactor 20230907
       {
         source: "/docs/welcome",
-        destination: `/docs/${LATEST_VERSIONS["get-started"]}/welcome`,
+        destination: `/docs/${LATEST_VERSIONS["core"]}/welcome`,
         permanent: false,
       },
       {
         source: "/docs/quickstart",
-        destination: `/docs/${LATEST_VERSIONS["get-started"]}/quickstart`,
+        destination: `/docs/${LATEST_VERSIONS["core"]}/quickstart`,
         permanent: false,
       },
       {
