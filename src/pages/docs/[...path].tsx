@@ -42,7 +42,7 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
   const paths: any = [];
 
   docsPaths.forEach((path) => {
-    locales?.forEach((locale) => {
+    locales.forEach((locale) => {
       if (path.includes(`.${locale}.`)) {
         paths.push({
           params: {
@@ -166,12 +166,12 @@ const DocsPage: FC<DocsPageProps> & {
     <>
       <PageHead
         pageTitle={
-          mdxSource?.frontmatter
+          mdxSource.frontmatter
             ? `${mdxSource.frontmatter.title} | Documentation`
             : "Documentation"
         }
         pageDescription={
-          mdxSource?.frontmatter ? mdxSource.frontmatter.description : ""
+          mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
         }
         pageType="docs"
         additionMeta={
@@ -187,7 +187,7 @@ const DocsPage: FC<DocsPageProps> & {
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 pb-10 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
-            {mdxSource?.frontmatter
+            {mdxSource.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
           </h1>
