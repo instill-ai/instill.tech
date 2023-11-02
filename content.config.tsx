@@ -22,7 +22,9 @@ const SITE = {
  *
  */
 
-const getSections = (appVersion: InstillAppVersion): SidebarSections[] => {
+export const getSections = (
+  appVersion: InstillAppVersion
+): SidebarSections[] => {
   return [
     {
       text: "common:sidebarSections.getStarted",

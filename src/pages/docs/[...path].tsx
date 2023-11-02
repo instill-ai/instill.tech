@@ -1,25 +1,25 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { join } from "path";
 import glob from "fast-glob";
 import { useRouter } from "next/router";
-import { readFile } from "fs/promises";
 import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig } from "../../../content.config";
+import { docsConfig, getSections } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
-import { getCommitMeta } from "@/lib/github";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
 import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { getCommitMeta } from "@/lib/github";
+import { readFile } from "fs/promises";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -33,19 +33,6 @@ type Props = {
   locales: string[];
 };
 
-function getLocale(
-  path: string[] | string,
-  locales: string[],
-  locale: string
-): string {
-  for (const element of path) {
-    if (locales.includes(element)) {
-      return "";
-    }
-  }
-  return `/${locale}`;
-}
-
 export const getStaticPaths: GetStaticPaths<Props> = async ({
   locales = [],
 }) => {
@@ -55,7 +42,7 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
   const paths: any = [];
 
   docsPaths.forEach((path) => {
-    locales?.forEach((locale) => {
+    locales.forEach((locale) => {
       if (path.includes(`.${locale}.`)) {
         paths.push({
           params: {
@@ -69,14 +56,13 @@ export const getStaticPaths: GetStaticPaths<Props> = async ({
 
   return {
     paths: paths,
-    fallback: "blocking",
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
   locale,
-  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -86,12 +72,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   let fullPath: string;
   let relativePath: string;
-
-  const localeString = getLocale(
-    params.path,
-    locales ? locales : [],
-    locale ?? "en"
-  );
 
   if (Array.isArray(params.path)) {
     fullPath = join(process.cwd(), "docs", ...params.path);
@@ -114,21 +94,14 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     )
   );
 
-  // Serialize the mdx file for client
-
+  // Serialize the mdx file for the client
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
-  // Get prev and next link from sidebar config
-
-  const appType = getApplicationType(params.path);
-
-  const docsConfigration = docsConfig(
-    appType,
-    getApplicationVersion(params.path, appType)
-  );
+  // Get prev and next links from sidebar config
+  const sidebars = getSections(getApplicationVersion(params.path, "core"));
 
   const sidebarLinks: SidebarItem[] = [];
-  docsConfigration.sidebar.leftSidebar.sections.forEach((e) => {
+  sidebars.forEach((e) => {
     if (e.link) {
       sidebarLinks.push({ link: e.link, text: e.text });
     }
@@ -138,7 +111,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   });
 
   const currentPageIndex = sidebarLinks.findIndex(
-    (e) => e.link === "/docs/" + relativePath
+    (e) => e.link === `/docs/${relativePath}`
   );
 
   const nextArticle =
@@ -148,8 +121,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   const prevArticle =
     currentPageIndex - 1 < 0 ? null : sidebarLinks[currentPageIndex - 1];
-
-  // Access GitHub API to retrieve the info of Committer
 
   let commitMeta: Nullable<CommitMeta> = null;
 
@@ -164,9 +135,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   }
 
   // We use remark to get the headers
-
   const headers = [] as RightSidebarProps["headers"];
-
   await remark()
     .use(remarkFrontmatter)
     .use(remarkGetHeaders, { headers })
@@ -185,7 +154,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 };
 
 type GetLayOutProps = {
-  page: ReactElement;
+  page: FC;
 };
 
 const DocsPage: FC<DocsPageProps> & {
@@ -197,12 +166,14 @@ const DocsPage: FC<DocsPageProps> & {
     <>
       <PageHead
         pageTitle={
-          mdxSource?.frontmatter
+          mdxSource && mdxSource.frontmatter
             ? `${mdxSource.frontmatter.title} | Documentation`
             : "Documentation"
         }
         pageDescription={
-          mdxSource?.frontmatter ? mdxSource.frontmatter.description : ""
+          mdxSource && mdxSource.frontmatter
+            ? mdxSource.frontmatter.description
+            : ""
         }
         pageType="docs"
         additionMeta={
@@ -218,7 +189,7 @@ const DocsPage: FC<DocsPageProps> & {
       <div className="grid grid-cols-8">
         <div className="col-span-8 px-6 pb-10 xl:col-span-6 xl:px-8 max:px-16">
           <h1 className="mb-10 font-sans text-[38px] font-semibold text-black dark:text-instillGrey15">
-            {mdxSource?.frontmatter
+            {mdxSource && mdxSource.frontmatter
               ? mdxSource.frontmatter.title
               : "Documentation"}
           </h1>

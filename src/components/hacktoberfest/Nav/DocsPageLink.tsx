@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { LATEST_VERSIONS } from "../../../../version.mjs";
 
 export const DocsPageLink = () => {
   return (
     <Link
-      href="/docs"
+      href={`/docs/${LATEST_VERSIONS["core"]}/welcome`}
       className="instill-text-body flex text-white hover:text-instillBlue50"
     >
       <p className="my-auto">Documentation</p>

@@ -46,6 +46,7 @@
     "next": "^13.2.4",
     "next-i18next": "^14.0.0",
     "next-mdx-remote": "4.2.0",
+    "nextjs-toploader": "^1.6.4",
     "node-html-parser": "^5.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
