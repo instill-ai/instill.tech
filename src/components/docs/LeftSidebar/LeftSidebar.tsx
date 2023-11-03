@@ -30,7 +30,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
       </style>
 
       <ScrollArea.Root className="left-sidebar flex w-96 flex-col overflow-auto px-2 pb-10 pt-5 md:sticky md:top-0 md:ml-auto">
-        <div className="mx-0 mb-5">
+        <div className="mb-5 ml-0 mr-1.5">
           <DocSearch
             appId={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_ID || ""}
             apiKey={process.env.NEXT_PUBLIC_ALGOLIA_DOCSEARCH_APP_KEY || ""}
@@ -39,7 +39,7 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
         </div>
 
         {leftSidebar.sections.map((section) => (
-          <div key={section.text} className="w-full">
+          <div key={section.text} className="ml-0 mr-1.5">
             <Section
               items={section.items}
               text={section.text}
