@@ -151,8 +151,10 @@ table.mcnCaptionTopContent {
   height: 700px !important;
 }
 
-.swiper-slide img {
-  display: block !important;
-  width: 500px !important;
-  height: 700px !important;
+.swiper-slide-prev {
+  filter: blur(1px);
+}
+
+.swiper-slide-next {
+  filter: blur(1px);
 }

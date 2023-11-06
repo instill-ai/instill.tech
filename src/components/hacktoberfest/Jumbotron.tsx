@@ -14,6 +14,7 @@ import {
   Navigation,
   Scrollbar,
   A11y,
+  Autoplay,
 } from "swiper/modules";
 import SwiperButtonNext from "@/components/hacktoberfest/SwiperButtonNext";
 import SwiperButtonPrev from "@/components/hacktoberfest/SwiperButtonPrev";
@@ -24,6 +25,13 @@ export default function Jumbotron() {
   return (
     <>
       <Swiper
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        speed={500}
+        loop={true}
+        initialSlide={2}
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
@@ -36,7 +44,14 @@ export default function Jumbotron() {
           slideShadows: true,
         }}
         navigation={true}
-        modules={[EffectCoverflow, Pagination, Navigation, Scrollbar, A11y]}
+        modules={[
+          Autoplay,
+          EffectCoverflow,
+          Pagination,
+          Navigation,
+          Scrollbar,
+          A11y,
+        ]}
         className="mySwiper relative"
       >
         <SwiperButtonPrev>
@@ -48,32 +63,32 @@ export default function Jumbotron() {
             <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
           </Button>
         </SwiperButtonPrev>
-        <SwiperSlide className="relative">
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        <SwiperSlide>
+          <div className="h-[700px] w-[500px] rounded-sm bg-white p-6">
+            <h3 className="font-semibold leading-none">Llava-13B</h3>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <div className="h-[700px] w-[500px] rounded-sm bg-white p-6">
+            <h3 className="font-semibold leading-none">Llama2-7B-chat</h3>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <div className="h-[700px] w-[500px] rounded-sm bg-white p-6">
+            <h3 className="font-semibold leading-none">
+              Stability AI + Open AI for Sticker
+            </h3>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <div className="h-[700px] w-[500px] rounded-sm bg-white p-6">
+            <h3 className="font-semibold leading-none">YOLOv7</h3>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <div className="h-[700px] w-[500px] rounded-sm bg-white p-6">
+            <h3 className="font-semibold leading-none">SEO article writer</h3>
+          </div>
         </SwiperSlide>
         <SwiperButtonNext>
           <Button
