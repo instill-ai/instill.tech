@@ -1,6 +1,6 @@
 import React from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,12 +16,12 @@ import {
   A11y,
   Autoplay,
 } from "swiper/modules";
-import SwiperButtonNext from "@/components/hacktoberfest/SwiperButtonNext";
-import SwiperButtonPrev from "@/components/hacktoberfest/SwiperButtonPrev";
 import { Button, Icons, Input } from "@instill-ai/design-system";
+import { SwiperButtonPrev } from "./SwiperButtonPrev";
+import { SwiperButtonNext } from "./SwiperButtonNext";
+import { Llama2Chat } from "./Llama2Chat";
 
-export default function Jumbotron() {
-  const swiper = useSwiper();
+export const Jumbotron = () => {
   return (
     <>
       <Swiper
@@ -64,35 +64,11 @@ export default function Jumbotron() {
           </Button>
         </SwiperButtonPrev>
         <SwiperSlide>
-          <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6 ">
-            <h3 className="mb-3 font-semibold leading-none">Llava-13B</h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-600">
-              Create and inspire using the worlds fastest growing open source AI
-              platform
-            </p>
-
-            <div className="my-6 flex gap-x-4">
-              <Input.Root className="w-full">
-                <Input.Core
-                  disabled={false}
-                  type="text"
-                  placeholder="Send a message"
-                  value="Tell me a short story"
-                />
-              </Input.Root>
-              <Button variant="primary" size="lg">
-                Genrate
-              </Button>
-            </div>
-
-            <div>
-              <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-            </div>
-          </div>
+          <Llama2Chat />
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="font-semibold leading-none">Llama2-7B-chat</h3>
+            <h3 className="mb-3 font-semibold leading-none">Llama2-7B-chat</h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-600">
               Create and inspire using the worlds fastest growing open source AI
               platform
@@ -107,8 +83,9 @@ export default function Jumbotron() {
                   value="Tell me a short story"
                 />
               </Input.Root>
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" className="gap-x-2">
                 Genrate
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
               </Button>
             </div>
 
@@ -119,7 +96,7 @@ export default function Jumbotron() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="font-semibold leading-none">
+            <h3 className="mb-3 font-semibold leading-none">
               Stability AI + Open AI for Sticker
             </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-600">
@@ -136,8 +113,9 @@ export default function Jumbotron() {
                   value="Tell me a short story"
                 />
               </Input.Root>
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" className="gap-x-2">
                 Genrate
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
               </Button>
             </div>
 
@@ -148,7 +126,7 @@ export default function Jumbotron() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="font-semibold leading-none">YOLOv7</h3>
+            <h3 className="mb-3 font-semibold leading-none">YOLOv7</h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-600">
               Create and inspire using the worlds fastest growing open source AI
               platform
@@ -163,8 +141,9 @@ export default function Jumbotron() {
                   value="Tell me a short story"
                 />
               </Input.Root>
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" className="gap-x-2">
                 Genrate
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
               </Button>
             </div>
 
@@ -175,7 +154,9 @@ export default function Jumbotron() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="font-semibold leading-none">SEO article writer</h3>
+            <h3 className="mb-3 font-semibold leading-none">
+              SEO article writer
+            </h3>
             <p className="text-sm text-zinc-500 dark:text-zinc-600">
               Create and inspire using the worlds fastest growing open source AI
               platform
@@ -190,8 +171,9 @@ export default function Jumbotron() {
                   value="Tell me a short story"
                 />
               </Input.Root>
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" className="gap-x-2">
                 Genrate
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
               </Button>
             </div>
 
@@ -212,4 +194,4 @@ export default function Jumbotron() {
       </Swiper>
     </>
   );
-}
+};

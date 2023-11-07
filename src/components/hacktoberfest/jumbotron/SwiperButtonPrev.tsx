@@ -5,9 +5,7 @@ export type SwiperButtonProps = {
   children: ReactElement | string;
 };
 
-const SwiperButtonPrev = ({ children }: SwiperButtonProps) => {
+export const SwiperButtonPrev = ({ children }: SwiperButtonProps) => {
   const swiper = useSwiper();
   return <button onClick={() => swiper.slidePrev()}>{children}</button>;
 };
-
-export default SwiperButtonPrev;
