@@ -16,10 +16,14 @@ import {
   A11y,
   Autoplay,
 } from "swiper/modules";
-import { Button, Icons, Input } from "@instill-ai/design-system";
+import { Button, Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
 import { SwiperButtonNext } from "./SwiperButtonNext";
 import { Llama2Chat } from "./Llama2Chat";
+import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
+import { YOLOv7 } from "./YOLOv7";
+import { SEOArticleWriter } from "./SEOArticleWriter";
+import { Llava13B } from "./Llava13B";
 
 export const Jumbotron = () => {
   return (
@@ -28,6 +32,7 @@ export const Jumbotron = () => {
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         speed={500}
         loop={true}
@@ -64,123 +69,19 @@ export const Jumbotron = () => {
           </Button>
         </SwiperButtonPrev>
         <SwiperSlide>
+          <Llava13B />
+        </SwiperSlide>
+        <SwiperSlide>
           <Llama2Chat />
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="mb-3 font-semibold leading-none">Llama2-7B-chat</h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-600">
-              Create and inspire using the worlds fastest growing open source AI
-              platform
-            </p>
-
-            <div className="my-6 flex gap-x-4">
-              <Input.Root className="w-full">
-                <Input.Core
-                  disabled={false}
-                  type="text"
-                  placeholder="Send a message"
-                  value="Tell me a short story"
-                />
-              </Input.Root>
-              <Button variant="primary" size="lg" className="gap-x-2">
-                Genrate
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-              </Button>
-            </div>
-
-            <div>
-              <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-            </div>
-          </div>
+          <StabilityAIOpenAISticker />
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="mb-3 font-semibold leading-none">
-              Stability AI + Open AI for Sticker
-            </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-600">
-              Create and inspire using the worlds fastest growing open source AI
-              platform
-            </p>
-
-            <div className="my-6 flex gap-x-4">
-              <Input.Root className="w-full">
-                <Input.Core
-                  disabled={false}
-                  type="text"
-                  placeholder="Send a message"
-                  value="Tell me a short story"
-                />
-              </Input.Root>
-              <Button variant="primary" size="lg" className="gap-x-2">
-                Genrate
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-              </Button>
-            </div>
-
-            <div>
-              <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-            </div>
-          </div>
+          <YOLOv7 />
         </SwiperSlide>
         <SwiperSlide>
-          <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="mb-3 font-semibold leading-none">YOLOv7</h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-600">
-              Create and inspire using the worlds fastest growing open source AI
-              platform
-            </p>
-
-            <div className="my-6 flex gap-x-4">
-              <Input.Root className="w-full">
-                <Input.Core
-                  disabled={false}
-                  type="text"
-                  placeholder="Send a message"
-                  value="Tell me a short story"
-                />
-              </Input.Root>
-              <Button variant="primary" size="lg" className="gap-x-2">
-                Genrate
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-              </Button>
-            </div>
-
-            <div>
-              <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-            <h3 className="mb-3 font-semibold leading-none">
-              SEO article writer
-            </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-600">
-              Create and inspire using the worlds fastest growing open source AI
-              platform
-            </p>
-
-            <div className="my-6 flex gap-x-4">
-              <Input.Root className="w-full">
-                <Input.Core
-                  disabled={false}
-                  type="text"
-                  placeholder="Send a message"
-                  value="Tell me a short story"
-                />
-              </Input.Root>
-              <Button variant="primary" size="lg" className="gap-x-2">
-                Genrate
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-              </Button>
-            </div>
-
-            <div>
-              <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-            </div>
-          </div>
+          <SEOArticleWriter />
         </SwiperSlide>
         <SwiperButtonNext>
           <Button
