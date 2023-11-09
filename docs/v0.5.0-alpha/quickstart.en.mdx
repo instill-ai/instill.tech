@@ -1,0 +1,392 @@
+---
+title: "Quickstart Guide"
+lang: "en-US"
+draft: false
+description: "Try Instill Cloud for free at https://console.instill.tech. Start building, testing and sharing your AI applications in minutes."
+---
+
+## Authorisation
+
+### Instill Cloud
+
+To get started with Instill Cloud, you'll need to create an account if you haven't already. If you already have an account, simply log in to begin your journey with Instill Cloud.
+Experience the power of Instill Cloud by clicking the link below:
+
+<CtaButton
+  text="🚀 Try Instill Cloud Free"
+  link="https://console.instill.tech/?utm_source=documentation&utm_medium=link"
+/>
+
+When signing up, you have three options:
+
+- Sign in with your Google account
+- Sign in with your GitHub account
+- Use your email address and password
+
+<InfoBlock type="tip" title="tip">
+  If you choose to sign up with your email address and password, we will send
+  you a verification email. Please check your inbox, and if you don't find the
+  email, make sure to check your spam folder. If it's in the spam folder, mark
+  it as "Not Spam".
+</InfoBlock>
+
+### Self-hosted Instill Core
+
+If you're configuring Instill Core for the first time, please visit the Console (http://localhost:3000) and use the following initial login details to initiate the password reset process for onboarding:
+
+- Username: `admin`
+- Password: `password`
+
+This protects Instill Core from being acceesible by anyone when deployed.
+
+<ZoomableImg
+  src="/docs-assets/core/onboarding.png"
+  alt="Provide the initial username `admin` and password `password` to reset the password for onboarding"
+  width="600px"
+/>
+
+Instill Cloud empowers you to build pipelines tailored for processing unstructured data using Versatile Data Pipeline (VDP).
+The central concept in VDP is the Pipeline, which automates a sequence of sub-components to process unstructured data.
+A pipeline comprises different types of Connectors and Operators.
+
+## Build Your First AI Workflow
+
+<InfoBlock type="info" title="Prerequisites">
+
+To get started with this tutorial, you'll need both an OpenAI account and a Stability AI account. Here's how to set them up:
+
+- Create an OpenAI account by visiting [openai.com](https://openai.com). Access to your API keys can then be managed through OpenAI's Account page.
+- Create a Stability AI account by visiting [dreamstudio.ai](https://dreamstudio.ai). Access to your API keys can then be managed through DreamStudio's Account page. All new users are granted 25 free credits upon creating an account.
+
+</InfoBlock>
+
+### Build the Pipeline
+
+In this guide, we'll walk you through creating your first AI pipeline,
+specifically focusing on a generative pipeline using the [OpenAI](./vdp/ai-connectors/openai) and [Stability AI](./vdp/ai-connectors/stability-ai) Connectors to generate digital stickers.
+
+**Step1: Add Connector Resources**
+
+Begin by navigating to the **Resources** page on the left sidebar.
+Since you haven't set up any pipelines yet, this page will be empty.
+
+To set up an OpenAI connector resource, follow these steps:
+
+1. Click on **+ Add Resource**, add select **OpenAI** on the Modal.
+2. Provide a unique ID for the resource. Here we use _openai_. Optionally, you can add a description.
+3. Fill in the **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key.
+4. Optionally, specify which organization is used for the request.
+5. Click **Save**.
+
+Next, set up a Stability AI connector resource:
+
+1. Click on **+ Add Resource**, add select **Stability AI** on the Modal.
+2. Assign a unique ID for the resource. Here we use _stability-ai_, and you can Optionally add a description.
+3. Provide the **API Key**. Follow the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key.
+4. Click **Save**.
+
+Now, head to the Pipelines page on the left sidebar.
+To create your first pipeline through the Console, click on **+ Add Pipeline**.
+This will redirect you to the no-code pipeline builder.
+The pipeline will be assigned a randomly generated unique ID. You can change it on the right, for example, _digital-sticker-maker_.
+On the canvas, you can drag and drop connectors and operators to construct your pipeline.
+
+**Step 2: Build the Pipeline in the No-code Pipeline Builder**
+
+The Start Operator serves as the starting point of a VDP pipeline, where you can define the input data for your application.
+
+To set up a Start operator:
+
+1. Locate the **start** operator on canvas
+2. Click **Add Field +** and select **Text**. Fill in the **Title** with _Prompt_ and **Key** with _prompt_.
+3. Click **Add Field +** and select **Text**, Fill in the **Title** with _Sticker Shape_ and **Key** with _shape_.
+4. Click **Save**.
+
+This configuration requires two inputs: a prompt to generate the idea for the sticker and a shape parameter to control the sticker's appearance.
+
+To configure an OpenAI connector:
+
+1. Click **Add Connector +** and choose **openai** from existing resource. This will add a OpenAI connector `ai_0` to the canvas.
+2. Click the ⚙️ icon on the `ai_0` to open configuration right panel.
+3. Select _TASK_TEXT_GENERATION_ from the dropdown of the **Task** field.
+4. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_.
+5. Set **N** to in the _1_ to indicate only one chat completion.
+6. Fill **System Message** to set the behavior of the model. Here we set the value to:
+
+```
+You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images
+```
+
+7. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
+
+```
+Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut {{start.shape}} sticker with white border".
+
+Prompt: a bear
+Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut {{start.shape}} sticker with white border
+Prompt: a dog writes code
+Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut {{start.shape}} sticker with white border
+Prompt: {{start.prompt}}
+Output:
+```
+
+8. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
+9. Click **Save**.
+
+The OpenAI connector will automatically link to the Start operator
+since we have used `{{start.shape}}` and `{{start.prompt}}` in the OpenAI connector configuration.
+The `{{}}` placeholders represent **string values** to be filled during pipeline triggering.
+
+To set up an Stability AI connector:
+
+1. Click **+ Add Resource** and choose **stability-ai** from existing resource. This will add a OpenAI connector `ai_1` to the canvas.
+2. Click the ⚙️ icon on the `ai_1` to open configuration right panel.
+3. Select _TASK_TEXT_TO_IMAGE_ from the dropdown of the **Task** field.
+4. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
+5. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
+6. In the **Prompts** field, specify the generated text array from the OpenAI connector output `{ai_0.output.texts}`.
+7. Set **Samples** to _1_ to indicate generating only one image.
+8. Specify a **Seed** with _0_ for a randomization.
+9. Fill **Steps** to _30_ to indicate the number of diffusion steps to run.
+10. Click **Save**.
+
+You will see that the Stability AI connector is automatically linked to the OpenAI connector
+since we have used `{ai_0.output.texts}` in the Stability AI connector configuration.
+
+<InfoBlock type="tip" title="Tip">
+  The `{}` placeholders are used to reference values from previous connectors.
+  Unlike the `{{}}` placeholders, `{}` retains the type of the referenced value.
+</InfoBlock>
+
+The End Operator is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
+
+To set up an End operator:
+
+1. Find the **end** operator on canvas.
+2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, **Key** with _my_original_prompt_ and **Value** with `{start.prompt}`.
+3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, **Key** with _sticker_shape_ and **Value** with `{start.shape}`.
+4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, **Key** with _llm_powered_prompt_ and **Value** with `{ai_0.output.texts}`.
+5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, **Key** with _digital_sticker_ and **Value** with `{ai_0.output.images}`.
+6. Click **Save**.
+
+You will see that the End operator is automatically linked to multiple components: `start`, `ai_0` and `ai_1`.
+
+Click **Save** on the top right corner, and your pipeline is ready to be tested.
+
+### Test the Pipeline via No-Code
+
+🎉 Congratulations! Your first VDP pipeline is all set up and ready to go. Now, simply click on the **Test** button located in the top right corner.
+
+You can now put your pipeline to the test using real data. For instance, let's create a sticker featuring a yellow plane in the sky.
+
+```
+Prompt: yellow plane on the sky
+Shape: round
+```
+
+Click **Run**.
+
+<ZoomableImg
+  src="/docs-assets/core/test-pipeline.png"
+  alt="Test the pipeline with real data"
+/>
+
+As you can see, the OpenAI ChatGPT model has expanded our initial prompt, turning it into:
+
+```
+a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border
+```
+
+Give it a try!
+
+### Use the Pipeline via Low-Code
+
+To triggering the pipeline, you need a valid API token.
+If you don't have one yet, follow these steps:
+
+1. Click on **Settings** on the left sidebar
+2. Navigate to the **API Tokens** page
+3. Click **Create Token** and give it an ID
+
+The API tokens do not expire, so keep them safe.
+If a token is compromised, select it and click **Delete**.
+Be cautious, as this operation cannot be undone, and apps using the token will stop working.
+
+VDP automatically generates a dedicated trigger endpoint for each pipeline to process data.
+To trigger the pipeline, follow these steps:
+
+1. Click the bottom right icon to display the Pipeline toolkit
+2. Copy the cURL request in the **Trigger Snippet** section and pass your API token as a Bearer token in the Authorization header
+3. Adjust and ingest your data accordingly in the example request
+
+Here is an example trigger request for the pipeline:
+
+```shellscript
+
+curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/xiaofei/pipelines/<pipeline-id>/trigger' \
+-H 'Authorization: Bearer <api_token>' \
+--data  '{
+	"inputs": [
+		{
+			"prompt": "yellow plane on the sky",
+			"shape": "round"
+		}
+	]
+}'
+
+```
+
+You should receive the following response:
+
+```shellscript
+{
+    "outputs": [
+        {
+            "digital_sticker": [
+                "iVBORw0KGgo...SUVORK5CYII="
+            ],
+            "llm_powered_prompt": [
+                "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
+            ],
+            "prompt": "yellow plane on the sky",
+            "shape": "round"
+        }
+    ],
+    "metadata": {
+        "traces": {
+            "ai_0": {
+                "success": true,
+                "inputs": [
+                    {
+                        "model": "gpt-3.5-turbo",
+                        "n": 1,
+                        "prompt": "Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt \"sticker style, flat icon, vector, die-cut round sticker with white border\".  Prompt: a bear Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut round sticker with white border Prompt: a dog writes code Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut round sticker with white border Prompt: blue plane, fluffy cloud Output:",
+                        "system_message": "You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images",
+                        "temperature": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "texts": [
+                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
+                        ]
+                    }
+                ],
+                "error": null,
+                "compute_time_in_seconds": 1.5167731
+            },
+            "ai_1": {
+                "success": true,
+                "inputs": [
+                    {
+                        "cfg_scale": 8,
+                        "engine": "stable-diffusion-xl-1024-v1-0",
+                        "prompts": [
+                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
+                        ],
+                        "samples": 1,
+                        "seed": 0,
+                        "steps": 30
+                    }
+                ],
+                "outputs": [
+                    {
+                        "images": [
+                            "iVBORw0KGgoA...SUVORK5CYII="
+                        ],
+                        "seeds": [
+                            3441170612
+                        ]
+                    }
+                ],
+                "error": null,
+                "compute_time_in_seconds": 14.07415
+            },
+            "end": {
+                "success": true,
+                "inputs": [
+                    {
+                        "digital_sticker": [
+                            "iVBORw0KGgoA...SUVORK5CYII="
+                        ],
+                        "llm_powered_prompt": [
+                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
+                        ],
+                        "prompt": "yellow plane on the sky",
+                        "shape": "round"
+                    }
+                ],
+                "outputs": [
+                    {}
+                ],
+                "error": null,
+                "compute_time_in_seconds": 0
+            },
+            "start": {
+                "success": true,
+                "inputs": [],
+                "outputs": [],
+                "error": null,
+                "compute_time_in_seconds": 0
+            }
+        }
+    }
+}
+```
+
+To obtain the generated image, decode the "digital_sticker" field of the response from Base64 format.
+
+<ZoomableImg
+  src="/docs-assets/core/decoded-digital-sticker.png"
+  alt="Decoded digital sticker image"
+  width="600px"
+/>
+
+### Generate Stickers in Batch
+
+Interested in generating multiple stickers at once? You can do this by adjusting the Stability AI connector configuration and setting **Samples** to _4_.
+
+Save your changes and test the pipeline again with the following prompt:
+
+```
+Prompt: cat reads a book
+Shape: round
+```
+
+<ZoomableImg
+  src="/docs-assets/core/batched-sticker-pipeline.png"
+  alt="Generate four stickers in a batch"
+/>
+
+## Create Pipelines from Templates
+
+No need to start from scratch! Take advantage of our pre-made templates available in the Console.
+We've curated a selection of templates for various common use cases. Simply choose the one that suits your needs and start building pipelines effortlessly.
+
+<ZoomableImg
+  src="/docs-assets/core/use-pipeline-templates-dark-720p.gif"
+  alt="You don't have to reinvent the wheel; explore the Templates and pick the ones that pique your interest."
+/>
+
+## Use Models on Instill Cloud
+
+We deploy our source available product [Model](https://github.com/instill-ai/model) on Instill Cloud.
+
+<InfoBlock type="info" title="Notice">
+
+You may notice that _importing your own models_ is currently disabled in the Model Hub of Instill Cloud.
+We are actively working on refining the Model service to offer a more stable user experience.
+
+</InfoBlock>
+
+### Access Pre-trained ML Models
+
+Deploying and maintaining ML models in a production environment can be challenging.
+To simplify this process, we have deployed a list of pre-trained ML models on Instill Cloud.
+These models are ready for use and are entirely free during Open Alpha.
+
+To explore the available pre-deployed ML models for different AI tasks, navigate to the **Model Hub** on the Instill Cloud console.
+Each model in the Model Hub is designed to handle a specific [AI task](./model/ai-task).
+
+For detailed information about a specific model, click on its ID and review the Description and Setting sections.
+If you want to import the model into VDP, refer to the VDP documentation on the [Instill Model AI connector](./vdp/ai-connectors/instill-model).
