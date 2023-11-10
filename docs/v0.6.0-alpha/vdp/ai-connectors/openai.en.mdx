@@ -85,15 +85,19 @@ Here are the expected input and output data fields for the OpenAI AI connector.
 
 If `task` is set to **TASK_TEXT_GENERATION**
 
-| Input          | Type   | Description                                                                                                                                                                                                                                                                                                                                                |
-| :------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| task           | string | `TASK_TEXT_GENERATION`                                                                                                                                                                                                                                                                                                                                     |
-| prompt         | string | Text prompt                                                                                                                                                                                                                                                                                                                                                |
-| model          | string | The model that you want to use. eg., `gpt-4` and `gpt-3.5-turbo `.                                                                                                                                                                                                                                                                                         |
-| system_message | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model's behavior is using a generic message as "You are a helpful assistant."                                            |
-| temperature    | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  |
-| n              | int    | How many chat completion choices to generate for each input message.                                                                                                                                                                                                                                                                                       |
-| max_tokens     | int    | The maximum number of [tokens](https://platform.openai.com/tokenizer) to generate in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens. |
+| Input                | Type   | Description                                                                                                                                                                                                                                                                                                                                                |
+| :------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| task                 | string | `TASK_TEXT_GENERATION`                                                                                                                                                                                                                                                                                                                                     |
+| prompt               | string | Text prompt                                                                                                                                                                                                                                                                                                                                                |
+| model                | string | The model that you want to use. eg., `gpt-4` and `gpt-3.5-turbo `.                                                                                                                                                                                                                                                                                         |
+| system_message       | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model's behavior is using a generic message as "You are a helpful assistant."                                            |
+| temperature          | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  |
+| n                    | int    | How many chat completion choices to generate for each input message.                                                                                                                                                                                                                                                                                       |
+| max_tokens           | int    | The maximum number of [tokens](https://platform.openai.com/tokenizer) to generate in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens. |
+| top_p                | float  | An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.                                            |
+| presence_penalty     | float  | Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics. [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)                                                                           |
+| frequency_penalty    | float  | Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim. [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)                                                              |
+| response_format.type | string | Setting to `json_object` enables JSON mode.                                                                                                                                                                                                                                                                                                                |
 
 | Output | Type          | Description          |
 | :----- | ------------- | -------------------- |
@@ -128,7 +132,18 @@ If `task` is set to **TASK_TEXT_GENERATION**
 
 ### Text to Image
 
-TO ADD
+| Input       | Type   | Description                                                                                              |
+| :---------- | ------ | ---------------------------------------------------------------------------------------------------------|
+| task        | string | `TASK_TEXT_TO_IMAGE`                                                                                     |
+| model       | string | ID of the model to use                                                                                   |
+| prompt      | string | A text description of the desired image(s).                                                              |
+| n           | float  | The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported.     |
+| size        | string | The size of the generated images.                                                                        |
+| style       | string | The style of the generated images.                                                                       |
+
+| Output    | Type          | Description      |
+| :-------- | ------------- | ---------------- |
+| results   | array[object] | Generated images |
 
 ## Example
 
@@ -184,7 +199,21 @@ Example input and output data for each task:
 ```
 
 ```json TASK_TEXT_TO_IMAGE
-TO ADD
+// Input
+{
+  "task": "TEXT_TEXT_TO_IMAGE",
+  "model": "dall-e-3",
+  "prompt": "A dog is running after a cat"
+}
+// Output
+{
+  "results": [
+    {
+      "image": "<base64 value>",
+      "revised_prompt": "A playful scene unfolds in an expansive field of vibrant green grass, under a clear, cerulean sky. A brown, shaggy dog, its ears flapped backwards with the speed, and tongue lolling out to the side, sprints across the field with a joyous energy. It's behind, but clearly attempting to catch up with a quick, nimble orange tabby cat running ahead. The cat, with its golden eyes wide and tail puffed up, darts forward as swiftly as the wind, leaving little paws of dust behind. Despite their chase, both display an essence of playful camaraderie in this lively image."
+    }
+  ]
+}
 ```
 
 </ CH.Code>
