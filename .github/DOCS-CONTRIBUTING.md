@@ -564,6 +564,11 @@ export const LATEST_VERSIONS = {
 └── version.mjs
 ```
 
+- update the dropdown items for versions [here](https://github.com/instill-ai/instill.tech/blob/fa31d955d704b1a02fb9405e91019a38e0387ed1/content.config.tsx#L564)
+
+- update the version parser values [here](https://github.com/instill-ai/instill.tech/blob/fa31d955d704b1a02fb9405e91019a38e0387ed1/src/lib/instill/applicationVersion.ts#L8)
+
+
 - Now you will have 2 version in the version dropdown `v0.4.1-alpha` and `v0.0.1-alpha` and the `latest` version is `v0.4.1-alpha`
 
 [^1]: [Nodejs - Downloads](https://nodejs.org/en/download/)
