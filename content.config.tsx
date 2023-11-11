@@ -191,10 +191,6 @@ export const getSections = (
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.pinecone",
-          link: `/docs/${appVersion}/vdp/data-connectors/pinecone`,
-        },
-        {
           text: "common:sidebarSections.airbyte",
           link: `/docs/${appVersion}/vdp/data-connectors/airbyte`,
         },
@@ -205,6 +201,14 @@ export const getSections = (
         {
           text: "common:sidebarSections.gcs",
           link: `/docs/${appVersion}/vdp/data-connectors/gcs`,
+        },
+        {
+          text: "common:sidebarSections.googlesearch",
+          link: `/docs/${appVersion}/vdp/data-connectors/google-search`,
+        },
+        {
+          text: "common:sidebarSections.pinecone",
+          link: `/docs/${appVersion}/vdp/data-connectors/pinecone`,
         },
       ],
       appType: "core",
@@ -564,10 +568,26 @@ export function getNavbar(
         items: [
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: `/docs/${appVersion}/welcome`,
+            to: `/docs/v0.6.0-alpha/welcome`,
             className: "",
             position: "right",
-            label: "latest",
+            label: "v0.6.0-alpha (latest)",
+            appType: "core",
+          },
+          {
+            key: "docs-nav-dropdown-version-core-latest",
+            to: `/docs/v0.5.0-alpha/welcome`,
+            className: "",
+            position: "right",
+            label: "v0.5.0-alpha",
+            appType: "core",
+          },
+          {
+            key: "docs-nav-dropdown-version-core-latest",
+            to: `/docs/v0.4.1-alpha/welcome`,
+            className: "",
+            position: "right",
+            label: "v0.4.1-alpha",
             appType: "core",
           },
         ],

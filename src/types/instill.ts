@@ -126,4 +126,4 @@ export type PageMeta = {
 
 export type InstillAppType = "core";
 
-export type InstillAppVersion = "v0.4.1-alpha" | string;
+export type InstillAppVersion = "v0.6.0-alpha" | string;

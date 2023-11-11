@@ -57,6 +57,7 @@
     "airbyte": "Airbyte",
     "bigquery": "BigQuery",
     "gcs": "Google Cloud Storage (GCS)",
+    "googlesearch": "Google Search",
     "prepareModels": "Prepare Models",
     "model": "Model",
     "modelCard": "Model Card",

@@ -1,0 +1,118 @@
+---
+title: "Google Search"
+lang: "en-US"
+draft: true
+description: "Learn about how to set up a Google Search data connector for VDP https://github.com/instill-ai/vdp"
+---
+
+The Google Search data connector allows users to leverage the [Google Search engine](https://www.google.com).
+
+- [Search](#search)
+
+## Release Stage
+
+`Alpha`
+
+## Resource Configuration
+
+The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector/blob/main/pkg/googlesearch/config/definitions.json)
+
+| Field     | Type   | Note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| :-------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_key\* | string | API Key for the Google Custom Search API. You can create one [here](https://developers.google.com/custom-search/v1/overview#api_key)                                                                                                                                                                                                                                                                                                                                                                                                          |
+| cse_id\*  | string | ID of the Search Engine to use. Before using the Custom Search JSON API you will first need to create and configure your Programmable Search Engine. If you have not already created a Programmable Search Engine, you can start by visiting the [Programmable Search Engine control panel](https://programmablesearchengine.google.com/controlpanel/all). You can find this in the URL of your Search Engine. For example, if the URL of your search engine is https://cse.google.com/cse.js?cx=012345678910, the ID value is: 012345678910" |
+
+### No-code Setup
+
+To create a Google Search connector effortlessly, follow these steps:
+
+1. Go to the **Resource** page and click **Add Resource**
+2. Select **Google Search**
+3. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field
+4. Fill in the required fields.
+   - Fill **API Key**. You'll need to set up a proper API key in the [Google Cloud credential console](https://console.cloud.google.com/apis/credentials).
+   - Fill **Search Engine ID**. To set up a Google Search connector, you will need to create a [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/create). Please follow the [instructions](https://developers.google.com/custom-search/docs/tutorial/creatingcse#using_the_engine) and find the **Search engine ID** in the overview page.
+
+### Low-code Setup
+
+<CH.Code>
+
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user-id>/connector-resources \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-google-search-engine",
+  "connector_definition_name": "connector-definitions/data-google-search",
+  "configuration": {
+    "api_key": "<open-ai-api-key>",
+    "cse_id": "<search-engine-id>"
+  }
+}'
+```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connector-resources \
+--data '{
+  "id": "my-google-search-engine",
+  "connector_definition_name": "connector-definitions/data-google-search",
+  "configuration": {
+    "api_key": "<open-ai-api-key>",
+    "cse_id": "<search-engine-id>"
+  }
+}'
+```
+
+</ CH.Code>
+
+## Connector Configuration
+
+When using the Google Search connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+Here are the expected input and output data fields for the connector.
+
+### Search
+
+If `task` is set to **TASK_SEARCH**
+
+| Input             | Type    | Description                                                                                                                                                |
+| :---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| task\*            | string  | `TASK_TEXT_GENERATION`                                                                                                                                     |
+| query\*           | string  | The search query for Google.                                                                                                                               |
+| top_k             | int     | The number of results to return for each query. Default to `10`.                                                                                           |
+| include_link_text | boolean | Indicate whether to scrape the link and include the text of the link associated with this search result in the 'link_text' field". Default to `false`.     |
+| include_link_html | boolean | Indicate whether to scrape the link and include the raw HTML of the link associated with this search result in the 'link_html' field". Default to `false`. |
+
+| Output  | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| :------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| results | array[object] | The returned search results from Google. Each result include the following fields: <br /> - **title**: The title of a search result, in plain text; <br /> - **link**: The full URL to which the search result is pointing, e.g., http://www.example.com/foo/bar <br /> - **snippet**: The snippet from the page associated with this search result, in plain text <br /> - **link_text**: The scraped text of the link associated with this search result, in plain text <br /> - **link_html**: The scraped raw HTML of the link associated with this search result |
+
+## Example
+
+Example input and output data for each task:
+
+<CH.Code>
+
+```json TASK_SEARCH
+// Input
+{
+  "task": "TASK_SEARCH",
+  "query": "What's today's date?",
+  "top_k": 5,
+  "include_link_text": true,
+  "include_link_html": true
+}
+// Output
+{
+  "results": [
+    {
+      "link": "https://www.saturdaygift.com/todays-date/",
+      "snippet": "Thursday, November 09, 2023 · Today's day number is: 313 (of 365) · There are 52 days remaining in this year 2023. · The current week number: 45 (of 52) · The ...",
+      "title": "What Is Today's Date? What Day Is It?",
+      "link_html": "<!DOCTYPE html><html lang=\"en-US\" class=\"no-js...",
+      "link_text": "On This Day - What Happened Today In History | Britannica\n  Subscribe Subscribe Ho..."
+    },
+    ...
+  ]
+}
+```
+
+</ CH.Code>
