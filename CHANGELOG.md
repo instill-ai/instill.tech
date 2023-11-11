@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.41.8](https://github.com/instill-ai/instill.tech/compare/v1.41.7...v1.41.8) (2023-11-11)
+
+
+### Miscellaneous
+
+* fix broken links on .mdx files ([#654](https://github.com/instill-ai/instill.tech/issues/654)) ([afceadb](https://github.com/instill-ai/instill.tech/commit/afceadbfd44d4f7783f5a26165651e69d6d707b8))
+* translation mechanism optimization  ([#626](https://github.com/instill-ai/instill.tech/issues/626)) ([357dee3](https://github.com/instill-ai/instill.tech/commit/357dee3ba178b800904d8e7c206be1296dd0ba66))
+* update left sidebar margin scrollbar ([#655](https://github.com/instill-ai/instill.tech/issues/655)) ([1842584](https://github.com/instill-ai/instill.tech/commit/1842584ba088473605eee3e3d914f7ffc81a0d91))
+* update the docs numbering ([#658](https://github.com/instill-ai/instill.tech/issues/658)) ([fa31d95](https://github.com/instill-ai/instill.tech/commit/fa31d955d704b1a02fb9405e91019a38e0387ed1))
+* update versioning docs ([#652](https://github.com/instill-ai/instill.tech/issues/652)) ([e5019bf](https://github.com/instill-ai/instill.tech/commit/e5019bfebbbcea5ee12ae34856343b66fb90d150))
+
+
+### Documentation
+
+* **blog:** Update hacktoberfest 2023 closing blog post ([#657](https://github.com/instill-ai/instill.tech/issues/657)) ([7b776b2](https://github.com/instill-ai/instill.tech/commit/7b776b2c1808fc317054e4928896b96d86f31176))
+* **docs,tutorial:** add low-code section tutorials/model-oss-llm.mdx ([#656](https://github.com/instill-ai/instill.tech/issues/656)) ([582bfbd](https://github.com/instill-ai/instill.tech/commit/582bfbdb7c224f79a711a8f706da57d0edabc9a4))
+* **v0.5.0-alpha,v0.6.0-alpha:** add Google Search connector documentation ([#659](https://github.com/instill-ai/instill.tech/issues/659)) ([cb16dd2](https://github.com/instill-ai/instill.tech/commit/cb16dd23e26d66674388bd7609c9b3d76bd3cec9))
+
 ## [1.41.7](https://github.com/instill-ai/instill.tech/compare/v1.41.6...v1.41.7) (2023-10-31)
 
 
