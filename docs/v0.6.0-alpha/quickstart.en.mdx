@@ -223,7 +223,7 @@ Here is an example trigger request for the pipeline:
 
 ```shellscript
 
-curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/xiaofei/pipelines/<pipeline-id>/trigger' \
+curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
 -H 'Authorization: Bearer <api_token>' \
 --data  '{
 	"inputs": [
@@ -235,6 +235,8 @@ curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/xiaofei/pipelines/<pipe
 }'
 
 ```
+
+Where `<user-id>` represents your username, and `<pipeline-id>` corresponds to the pipeline ID.
 
 You should receive the following response:
 
@@ -253,83 +255,7 @@ You should receive the following response:
         }
     ],
     "metadata": {
-        "traces": {
-            "ai_0": {
-                "success": true,
-                "inputs": [
-                    {
-                        "model": "gpt-3.5-turbo",
-                        "n": 1,
-                        "prompt": "Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt \"sticker style, flat icon, vector, die-cut round sticker with white border\".  Prompt: a bear Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut round sticker with white border Prompt: a dog writes code Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut round sticker with white border Prompt: blue plane, fluffy cloud Output:",
-                        "system_message": "You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images",
-                        "temperature": 1
-                    }
-                ],
-                "outputs": [
-                    {
-                        "texts": [
-                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
-                        ]
-                    }
-                ],
-                "error": null,
-                "compute_time_in_seconds": 1.5167731
-            },
-            "ai_1": {
-                "success": true,
-                "inputs": [
-                    {
-                        "cfg_scale": 8,
-                        "engine": "stable-diffusion-xl-1024-v1-0",
-                        "prompts": [
-                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
-                        ],
-                        "samples": 1,
-                        "seed": 0,
-                        "steps": 30
-                    }
-                ],
-                "outputs": [
-                    {
-                        "images": [
-                            "iVBORw0KGgoA...SUVORK5CYII="
-                        ],
-                        "seeds": [
-                            3441170612
-                        ]
-                    }
-                ],
-                "error": null,
-                "compute_time_in_seconds": 14.07415
-            },
-            "end": {
-                "success": true,
-                "inputs": [
-                    {
-                        "digital_sticker": [
-                            "iVBORw0KGgoA...SUVORK5CYII="
-                        ],
-                        "llm_powered_prompt": [
-                            "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
-                        ],
-                        "prompt": "yellow plane on the sky",
-                        "shape": "round"
-                    }
-                ],
-                "outputs": [
-                    {}
-                ],
-                "error": null,
-                "compute_time_in_seconds": 0
-            },
-            "start": {
-                "success": true,
-                "inputs": [],
-                "outputs": [],
-                "error": null,
-                "compute_time_in_seconds": 0
-            }
-        }
+        "traces": {}
     }
 }
 ```

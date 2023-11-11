@@ -182,6 +182,88 @@ def hello_name_and_age_and_city(name, age, city):
 
 Please give it a try, but note that these LLMs models are base models and are not fine-tuned for chat-like dialogue generation.
 
+## Build Your App using the Pipeline
+
+To triggering the pipeline, you need a valid API token.
+If you don't have one yet, follow these steps:
+
+1. Click on **Settings** on the left sidebar
+2. Navigate to the **API Tokens** page
+3. Click **Create Token** and give it an ID
+
+<InfoBlock type="info" title="Keep Your API Token Safe">
+  The API tokens do not expire, so keep them safe. If a token is compromised,
+  select it and click **Delete**. Be cautious, as this operation cannot be
+  undone, and apps using the token will stop working.
+</InfoBlock>
+
+VDP automatically generates a dedicated trigger endpoint for each pipeline to process data.
+To trigger the pipeline, follow these steps:
+
+1. Click the bottom right icon to display the Pipeline toolkit
+2. Copy the cURL request in the **Trigger Snippet** section and pass your API token as a Bearer token `<api_token>` in the Authorization header
+3. Adjust and ingest your data accordingly in the example request
+
+Here are the triggering pipeline example cURL command and example with [`instill-sdk`](/docs/latest/sdk/python) Python Package:
+
+<CH.Code>
+
+```python Python
+from google.protobuf.struct_pb2 import Struct
+from instill.clients import get_client
+from instill.resources import Pipeline
+
+# Get the pipeline
+client = get_client()
+llm_pipeline = Pipeline(client=get_client(),
+                        name="test-pipeline", recipe=None)
+
+# Input
+input = Struct()
+input.update(
+    {
+        "prompt": "Once upon a time,"
+    }
+)
+
+# Trigger the pipeline
+outputs = llm_pipeline([input])
+```
+
+```shellscript cURL
+curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/<user-id>/pipelines/test-oss-llms/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data  '{
+	"inputs": [
+		{
+			"prompt": "Once upon a time,"
+		}
+	]
+}'
+```
+
+</ CH.Code>
+
+Where `<user-id>` represents your username.
+
+You should receive the following response:
+
+```shellscript
+{
+    "outputs": [
+        {
+            "llama2_7b_result": "Once upon a time, there was a little girl who loved to read. She loved to read so much that she would read anything she could get her hands on. She would read the cereal box, the back of the cereal box, the back of the cereal box again, and then she would read the cereal box again. She would read the cereal box so much that she would read the cereal box until she was sick of reading the cereal box.\n",
+            "mistral_7b_result": "Once upon a time, there was a little girl who loved to read. She loved to read so much that she would read books over and over again. She would read books about princesses, books about fairies, books about mermaids, and books about unicorns. She would read books about dragons, books about wizards, books about witches, and books about goblins. She would read books about knights, books about kings, books about queens, and books about cast",
+            "mpt_7b_result": "Once upon a time, there was a little girl who loved to play with her dolls. She would dress them up in pretty clothes and put them to bed. She would play with them and talk to them. She would even take them to the park and play with them.\nOne day, the little girl was playing with her dolls in the park. She was having a great time, until she saw a boy playing with his toy cars. She was jealous of the boy and wanted to play with his toy cars"
+        }
+    ],
+    "metadata": {
+        "traces": {}
+    }
+}
+```
+
 ## What's Next?
 
 Our journey with Instill Model is just beginning!

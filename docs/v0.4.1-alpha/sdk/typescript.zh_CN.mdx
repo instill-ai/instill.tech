@@ -62,9 +62,11 @@ const InstillClient = require("@instill-ai/typescript-sdk").default;
   - production
     - go the setting page and create a api token. `https://console.instill.tech/settings`
 
-### Connect with Instill Cloud
+### Connect with Instill Cloud/Core
 
-```typescript
+<CH.Code>
+
+```typescript Instill-Cloud
 const client = new InstillClient(
   "https://api.instill.tech", // baseUrl
   "v1alpha", // appVersion
@@ -72,9 +74,7 @@ const client = new InstillClient(
 );
 ```
 
-### Connect with Instill Core
-
-```typescript
+```typescript Instill-Core
 const client = new InstillClient(
   "http://localhost:8080", // baseUrl
   "v1alpha", // appVersion
@@ -82,11 +82,15 @@ const client = new InstillClient(
 );
 ```
 
+</ CH.Code>
+
 ## Example Apps
 
-### Connect SDK with Instill Cloud
+### Connect SDK with Instill Cloud/Core
 
-```typescript
+<CH.Code>
+
+```typescript Instill-Cloud
 import { useEffect, useState } from "react";
 import InstillClient, { User } from "@instill-ai/typescript-sdk";
 
@@ -121,15 +125,13 @@ export default function TypescriptSdkDemo() {
 }
 ```
 
-### Connect with Instill Core
-
 <InfoBlock type="info" title="info">
   Make sure you have Instill Core upruning in your local machine. To run the
   `VDP` locally please follow our tutorial on
   [VDP](https://github.com/instill-ai/vdp)
 </InfoBlock>
 
-```typescript
+```typescript Instill-Core
 import { useEffect, useState } from "react";
 import InstillClient, { User } from "@instill-ai/typescript-sdk";
 
@@ -163,6 +165,8 @@ export default function TypescriptSdkDemo() {
   );
 }
 ```
+
+</ CH.Code>
 
 ## Example Templetes
 
