@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.41.9](https://github.com/instill-ai/instill.tech/compare/v1.41.8...v1.41.9) (2023-11-13)
+
+
+### Miscellaneous
+
+* update twitter status link ([#662](https://github.com/instill-ai/instill.tech/issues/662)) ([8fa99bd](https://github.com/instill-ai/instill.tech/commit/8fa99bda608e6b9327f9486d4e04090181a5da82))
+
+
+### Documentation
+
+* **blog:** delete old hacktoberfest blog ([#660](https://github.com/instill-ai/instill.tech/issues/660)) ([2470d33](https://github.com/instill-ai/instill.tech/commit/2470d33c6f6b99a037625c17529669c972ea045e))
+
 ## [1.41.8](https://github.com/instill-ai/instill.tech/compare/v1.41.7...v1.41.8) (2023-11-11)
 
 
