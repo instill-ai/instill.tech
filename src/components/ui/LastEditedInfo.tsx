@@ -1,5 +1,6 @@
 import cn from "clsx";
 import { CommitMeta } from "@/lib/github/type";
+import React from "react";
 
 export type LastEditedInfoProps = {
   meta: CommitMeta;
@@ -12,7 +13,7 @@ export const LastEditedInfo = ({ meta, marginBottom }: LastEditedInfoProps) => {
   return (
     <div className={cn("flex w-full flex-row gap-x-2", marginBottom)}>
       {lastEditedTime && author ? (
-        <>
+        <React.Fragment>
           <p className="ml-auto text-sm text-instillGrey70">
             {`Last updated: ${lastEditedTime}`}
           </p>
@@ -27,7 +28,7 @@ export const LastEditedInfo = ({ meta, marginBottom }: LastEditedInfoProps) => {
               {author}
             </a>
           </div>
-        </>
+        </React.Fragment>
       ) : null}
     </div>
   );

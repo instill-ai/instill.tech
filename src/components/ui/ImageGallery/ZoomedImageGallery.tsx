@@ -2,7 +2,7 @@ import cn from "clsx";
 
 import { ImageGalleryProps } from "./ImageGallery";
 import useEmblaCarousel from "embla-carousel-react";
-import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
+import React, { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 
 export type ZoomedImageGalleryProps = {
   images: ImageGalleryProps["images"];
@@ -49,7 +49,7 @@ export const ZoomedImageGallery = ({
   }, [images, embla, isZoom]);
 
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .embla {
@@ -135,6 +135,6 @@ export const ZoomedImageGallery = ({
           ))}
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

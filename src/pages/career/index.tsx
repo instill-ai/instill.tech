@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import { FC, ReactElement, useCallback, useRef } from "react";
+import React, { FC, ReactElement, useCallback, useRef } from "react";
 
 import {
   ContentContainer,
@@ -97,7 +97,7 @@ const CareerPage: FC<CareerPageProps> & {
   }, [enableAnnouncementBar]);
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Career | Instill AI"
@@ -131,7 +131,7 @@ const CareerPage: FC<CareerPageProps> & {
           {stayInTheLoopInView && <StayInTheLoop />}
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

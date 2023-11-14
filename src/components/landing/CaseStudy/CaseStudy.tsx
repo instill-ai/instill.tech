@@ -31,7 +31,7 @@ import {
   SingleSelectOption,
 } from "@instill-ai/design-system";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { AccordionContentLayout } from "./AccordionContentLayout";
 import { ControlPanel } from "./ControlPanel";
 import { ShowcaseImage } from "./ShowcaseImage";
@@ -1059,7 +1059,7 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
   // The blueprint location is onl
 
   return (
-    <>
+    <React.Fragment>
       <BlueprintContainer
         alignWith="container"
         padding="py-[60px]"
@@ -1100,6 +1100,6 @@ export const CaseStudy = ({ destinations }: CaseStudyProps) => {
         />
         {caseAccordion}
       </div>
-    </>
+    </React.Fragment>
   );
 };

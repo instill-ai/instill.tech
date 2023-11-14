@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import anime, { AnimeTimelineInstance } from "animejs";
 import { Nullable } from "@/types/instill";
 
@@ -326,7 +326,7 @@ export const VdpAnimation = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <style jsx global>
         {`
           /**
@@ -4841,6 +4841,6 @@ export const VdpAnimation = () => {
           </clipPath>
         </defs>
       </svg>
-    </>
+    </React.Fragment>
   );
 };

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import cn from "clsx";
+import React from "react";
 
 export type ThumbProps = {
   selected: boolean;
@@ -10,7 +11,7 @@ export type ThumbProps = {
 
 export const Thumb = ({ selected, onClick, imgSrc }: ThumbProps) => {
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .embla__slide__inner--thumb {
@@ -59,6 +60,6 @@ export const Thumb = ({ selected, onClick, imgSrc }: ThumbProps) => {
           />
         </button>
       </div>
-    </>
+    </React.Fragment>
   );
 };

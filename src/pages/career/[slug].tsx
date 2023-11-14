@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import dynamic from "next/dynamic";
 
 import { PositionDetails } from "@/components/career";
@@ -133,7 +133,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
   });
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageTitle={`${position.name} | Instill AI`}
         pageDescription="We're on a mission to make Al highly accessible to everyone. Join us and make a dent in the universe!"
@@ -155,7 +155,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
           {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

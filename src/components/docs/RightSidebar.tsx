@@ -4,6 +4,7 @@ import {
   ContributeLinks,
   ContributeLinksProps,
 } from "@/components/ui";
+import React from "react";
 
 export type RightSidebarProps = {
   headers: TableOfContentProps["headers"];
@@ -17,7 +18,7 @@ export const RightSidebar = ({
   feedbackUrl,
 }: RightSidebarProps) => {
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .right-sidebar {
@@ -35,6 +36,6 @@ export const RightSidebar = ({
           />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

@@ -1,6 +1,6 @@
 import { Nullable } from "@/types/instill";
 import { ElementPosition } from "@instill-ai/design-system";
-import {
+import React, {
   ReactElement,
   useRef,
   useState,
@@ -255,7 +255,7 @@ export const ControlPanel = ({ items }: ControlPanelProps) => {
   const destination = <ControlPanelItem {...items.destination} />;
 
   return (
-    <>
+    <React.Fragment>
       <div
         ref={containerRef}
         className="relative hidden w-full flex-col justify-between xl:flex"
@@ -266,6 +266,6 @@ export const ControlPanel = ({ items }: ControlPanelProps) => {
         <svg className="absolute" ref={modelToDestLineSvgRef} />
         <div ref={destRef}>{destination}</div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

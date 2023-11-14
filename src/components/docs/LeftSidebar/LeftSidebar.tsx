@@ -2,6 +2,7 @@ import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import { DocSearch } from "@docsearch/react";
 import { ScrollArea } from "@instill-ai/design-system";
+import React from "react";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];
@@ -9,7 +10,7 @@ export type LeftSidebarProps = {
 
 export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
   return (
-    <>
+    <React.Fragment>
       <style>
         {`
         .leftsidebar-logo {
@@ -50,6 +51,6 @@ export const LeftSidebar = ({ leftSidebar }: LeftSidebarProps) => {
           </div>
         ))}
       </ScrollArea.Root>
-    </>
+    </React.Fragment>
   );
 };

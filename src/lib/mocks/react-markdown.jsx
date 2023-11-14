@@ -7,7 +7,7 @@
 import React from "react";
 
 function ReactMarkdown({ children }) {
-  return <>{children}</>;
+  return <React.Fragment>{children}</React.Fragment>;
 }
 
 export default ReactMarkdown;

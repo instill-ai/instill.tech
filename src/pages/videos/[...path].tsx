@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getMarkdownVideoMeta } from "get-markdown-video-meta";
 import Head from "next/head";
+import React from "react";
 
 export type VideoPageProps = {
   title: string;
@@ -74,7 +75,7 @@ export const getStaticProps: GetStaticProps<VideoPageProps> = async ({
 
 const VideoPage = ({ title, html, id }: VideoPageProps) => {
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>Video Page</title>
         <meta name="description" content="Blog Video Example" />
@@ -100,7 +101,7 @@ const VideoPage = ({ title, html, id }: VideoPageProps) => {
           )}
         </div>
       </main>
-    </>
+    </React.Fragment>
   );
 };
 

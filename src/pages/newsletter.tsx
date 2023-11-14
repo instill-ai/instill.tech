@@ -1,4 +1,4 @@
-import { FC, Fragment, ReactElement } from "react";
+import React, { FC, Fragment, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
@@ -103,7 +103,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ campaigns }) => {
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Newsletter Archive | Instill AI"
@@ -130,7 +130,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="mr-auto mb-5 bg-instillNatureGreen py-[5px] px-2.5">
+              <div className="mb-5 mr-auto bg-instillNatureGreen px-2.5 py-[5px]">
                 {`${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
@@ -138,14 +138,14 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
                   .join(" ")}`}
               </div>
               <div
-                className="mb-[120px] w-full bg-instillGrey05 py-10 px-4 shadow-instill-solid-10 xl:px-10 xl:shadow-instill-solid-20"
+                className="mb-[120px] w-full bg-instillGrey05 px-4 py-10 shadow-instill-solid-10 xl:px-10 xl:shadow-instill-solid-20"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
             </Fragment>
           ))}
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

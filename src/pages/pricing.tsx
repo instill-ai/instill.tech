@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 
 import {
   ContentContainer,
@@ -76,7 +76,7 @@ const pricingPlans: PricingPlan[] = [
       </a>
     ),
     ctaDescription: (
-      <>
+      <React.Fragment>
         <p className="text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
           Free During{" "}
           <a
@@ -90,7 +90,7 @@ const pricingPlans: PricingPlan[] = [
         <p className="text-center text-sm font-medium leading-5 text-[#1D2433] text-opacity-80">
           No credit card needed
         </p>
-      </>
+      </React.Fragment>
     ),
   },
   {
@@ -131,7 +131,7 @@ const PricingPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Pricing | Instill AI"
@@ -162,7 +162,7 @@ const PricingPage: FC & {
           ))}
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

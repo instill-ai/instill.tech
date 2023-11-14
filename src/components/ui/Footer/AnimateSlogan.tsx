@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export const AnimateSlogan = () => {
   const sloganRef = useRef<HTMLDivElement>(null);
@@ -19,11 +19,11 @@ export const AnimateSlogan = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className="instill-footer-animate-slogan h-[130px] w-[330px] font-mono text-2xl font-medium text-instillGrey05 xl:h-[100px] xl:w-[350px]">
         <div ref={sloganRef}>UNSTRUCTURED DATA INFRASTRUCTURE</div>
         <div>MADE FOR ALL</div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

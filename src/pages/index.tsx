@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { CaseStudyProps } from "@/components/landing";
 import { PageHead } from "@/components/ui";
 import { GetStaticProps } from "next";
@@ -43,7 +43,7 @@ const HacktoberfestPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Instill AI"
@@ -1003,7 +1003,7 @@ const HacktoberfestPage: FC & {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

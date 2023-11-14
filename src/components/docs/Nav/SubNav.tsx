@@ -1,6 +1,6 @@
 import { Nullable } from "@/types/instill";
 import cn from "clsx";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 export type SubNavProps = {
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -9,7 +9,7 @@ export type SubNavProps = {
 
 export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .sub-nav {
@@ -40,6 +40,6 @@ export const SubNav = ({ marginBottom, setLeftSidebarIsOpen }: SubNavProps) => {
           Return to top
         </button>
       </div>
-    </>
+    </React.Fragment>
   );
 };

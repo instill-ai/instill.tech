@@ -1,4 +1,10 @@
-import { useRef, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
+import React, {
+  useRef,
+  useEffect,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { createPortal } from "react-dom";
 import cn from "clsx";
 import { Nullable } from "@/types/instill";
@@ -58,7 +64,7 @@ const ModalBase = ({
   return el.current
     ? modalIsOpen
       ? createPortal(
-          <>
+          <React.Fragment>
             {/** Background backdrop, show/hide based on modal state. */}
             <div className="fixed inset-0 z-[100] transition-opacity" />
 
@@ -70,7 +76,7 @@ const ModalBase = ({
               }}
             >
               <div
-                className="fixed top-5 right-5"
+                className="fixed right-5 top-5"
                 onClick={() => setModalIsOpen(false)}
               >
                 {closeModalButton || null}
@@ -88,7 +94,7 @@ const ModalBase = ({
                 </div>
               </div>
             </div>
-          </>,
+          </React.Fragment>,
           el.current
         )
       : null

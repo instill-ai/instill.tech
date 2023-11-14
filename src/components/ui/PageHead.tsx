@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import {
   BlogArticleJsonLD,
   BlogArticleMeta,
@@ -49,7 +49,7 @@ export const PageHead = ({
   };
 
   const baseOpenGraph = (
-    <>
+    <React.Fragment>
       <meta property="og:site_name" content={pageMeta.siteName} />
       <meta
         property="og:description"
@@ -63,7 +63,7 @@ export const PageHead = ({
         name="twitter:description"
         content={pageDescription || pageMeta.defaultDescription}
       />
-    </>
+    </React.Fragment>
   );
 
   let openGraph: Nullable<ReactElement> = null;
@@ -71,7 +71,7 @@ export const PageHead = ({
   switch (pageType) {
     case "main": {
       openGraph = (
-        <>
+        <React.Fragment>
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
@@ -81,13 +81,13 @@ export const PageHead = ({
             property="twitter:image"
             content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
           />
-        </>
+        </React.Fragment>
       );
       break;
     }
     case "docs": {
       openGraph = (
-        <>
+        <React.Fragment>
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
@@ -97,14 +97,14 @@ export const PageHead = ({
             property="twitter:image"
             content={`${process.env.NEXT_PUBLIC_BASE_URL}/instill-ai-open-graph.png`}
           />
-        </>
+        </React.Fragment>
       );
       break;
     }
     case "tutorial": {
       const meta = currentArticleMeta as TutorialMeta;
       openGraph = (
-        <>
+        <React.Fragment>
           <meta property="og:type" content="article" />
           <meta
             property="og:image"
@@ -130,14 +130,14 @@ export const PageHead = ({
               content={commitMeta.lastEditedTime}
             />
           ) : null}
-        </>
+        </React.Fragment>
       );
       break;
     }
     case "blog": {
       const meta = currentArticleMeta as BlogArticleMeta;
       openGraph = (
-        <>
+        <React.Fragment>
           {baseOpenGraph}
           <meta property="og:type" content="article" />
           <meta
@@ -164,7 +164,7 @@ export const PageHead = ({
               content={commitMeta.lastEditedTime}
             />
           ) : null}
-        </>
+        </React.Fragment>
       );
       break;
     }
@@ -173,7 +173,7 @@ export const PageHead = ({
   }
 
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>{pageTitle}</title>
         {pageDescription && (
@@ -202,6 +202,6 @@ export const PageHead = ({
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         )}
       </Head>
-    </>
+    </React.Fragment>
   );
 };

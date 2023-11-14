@@ -1,5 +1,5 @@
 import { BlogArticleMeta, TutorialMeta } from "@/types/instill";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 export type ArticleSimilarPostsProps = {
   sectionTitle: string;
@@ -24,7 +24,7 @@ export const ArticleSimilarPosts = ({
         {similarArticles.length > 3 ? (
           similarArticles.slice(0, 3).map((e) => getCardElement(e, e.slug))
         ) : (
-          <>
+          <React.Fragment>
             {similarArticles.map((e) => getCardElement(e, e.slug))}
             {Array.from(Array(3 - similarArticles.length).keys()).map((e) => (
               <div
@@ -32,7 +32,7 @@ export const ArticleSimilarPosts = ({
                 key={`tutorial-similar-use-case-skeleton-${e}`}
               />
             ))}
-          </>
+          </React.Fragment>
         )}
       </div>
     </div>

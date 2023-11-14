@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { MemberDetails, Nullable } from "@/types/instill";
 import Image from "next/image";
 import cn from "clsx";
@@ -120,7 +120,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
           >
             {member ? (
               member.type === "open_role" ? (
-                <>
+                <React.Fragment>
                   <div className={defaultTextColor}>Open Roles</div>
                   {setColorJson({
                     id: "open-roles-json",
@@ -220,9 +220,9 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                       }),
                     ],
                   })}
-                </>
+                </React.Fragment>
               ) : (
-                <>
+                <React.Fragment>
                   <div className={defaultTextColor}>{member.name}</div>
                   {setColorJson({
                     id: `${member.name}-json`,
@@ -319,10 +319,10 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                       }),
                     ],
                   })}
-                </>
+                </React.Fragment>
               )
             ) : (
-              <>
+              <React.Fragment>
                 <div className={defaultTextColor}>No Detection</div>
                 {setColorJson({
                   id: "no-detection-json",
@@ -410,7 +410,7 @@ export const MemberIntro = forwardRef<HTMLDivElement, MemberIntroProps>(
                     }),
                   ],
                 })}
-              </>
+              </React.Fragment>
             )}
           </div>
         </div>

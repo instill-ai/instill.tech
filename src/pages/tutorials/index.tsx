@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import { FC, ReactElement, useMemo, useState } from "react";
+import React, { FC, ReactElement, useMemo, useState } from "react";
 import {
   TutorialHero,
   TutorialList,
@@ -100,7 +100,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
   }, [filters, tutorials]);
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Tutorial | Instill AI"
@@ -133,7 +133,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
           </div>
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 
