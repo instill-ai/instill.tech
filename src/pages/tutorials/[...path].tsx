@@ -1,4 +1,4 @@
-import { FC, ReactElement, useMemo } from "react";
+import React, { FC, ReactElement, useMemo } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -172,7 +172,7 @@ const TutorialPage: FC<TutorialPageProps> & {
   }, [tutorials, tutorialMeta]);
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageTitle={
           tutorialMeta ? `${tutorialMeta.title} | Tutorial` : "Tutorial"
@@ -238,10 +238,10 @@ const TutorialPage: FC<TutorialPageProps> & {
             </article>
           </div>
           {commitMeta ? (
-            <>
+            <React.Fragment>
               <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
               <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
-            </>
+            </React.Fragment>
           ) : null}
         </div>
 
@@ -281,7 +281,7 @@ const TutorialPage: FC<TutorialPageProps> & {
           <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

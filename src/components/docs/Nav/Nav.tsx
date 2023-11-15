@@ -112,7 +112,7 @@ const ItemList = ({
     }
   });
 
-  return <>{renderedItems}</>; // Wrap the array of JSX elements in a fragment and return
+  return <React.Fragment>{renderedItems}</React.Fragment>; // Wrap the array of JSX elements in a fragment and return
 };
 
 export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
@@ -135,7 +135,7 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
 
   const mobileView = useMemo(() => {
     return (
-      <>
+      <React.Fragment>
         <style jsx>
           {`
             .docs-mobile-nav-list {
@@ -172,13 +172,13 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             </div>
           )}
         </div>
-      </>
+      </React.Fragment>
     );
   }, [mobileNavOpen, items.left, items.right]);
 
   const desktopView = useMemo(() => {
     return (
-      <>
+      <React.Fragment>
         <div className="hidden flex-grow flex-row md:flex">
           <div
             className={cn(
@@ -200,12 +200,12 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
             <ThemeToggle />
           </div> */}
         </div>
-      </>
+      </React.Fragment>
     );
   }, [items]);
 
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .nav {
@@ -254,6 +254,6 @@ export const Nav = ({ nav, setLeftSidebarIsOpen }: NavProps) => {
         marginBottom={"my-4"}
         setLeftSidebarIsOpen={setLeftSidebarIsOpen}
       />
-    </>
+    </React.Fragment>
   );
 };

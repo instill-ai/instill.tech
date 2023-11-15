@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -163,7 +163,7 @@ const DocsPage: FC<DocsPageProps> & {
   const router = useRouter();
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageTitle={
           mdxSource && mdxSource.frontmatter
@@ -177,10 +177,10 @@ const DocsPage: FC<DocsPageProps> & {
         }
         pageType="docs"
         additionMeta={
-          <>
+          <React.Fragment>
             <meta name="docsearch:language" content="en" />
             <meta name="docsearch:version" content="3.0.0" />
-          </>
+          </React.Fragment>
         }
         currentArticleMeta={null}
         commitMeta={null}
@@ -245,7 +245,7 @@ const DocsPage: FC<DocsPageProps> & {
           ) : null}
         </aside>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import cn from "clsx";
@@ -83,7 +83,7 @@ const AboutPage: FC<AboutPageProps> & {
   });
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="About us | Instill AI"
@@ -129,7 +129,7 @@ const AboutPage: FC<AboutPageProps> & {
           {stayInTheLoopIsInView && <StayInTheLoop />}
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

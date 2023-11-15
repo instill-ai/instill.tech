@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import cn from "clsx";
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
@@ -27,7 +27,7 @@ export const DocsLayout = ({ children, hasSidebar }: DocsLayoutProps) => {
   );
 
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           @media screen and (min-width: 769px) and (max-width: 900px) {
@@ -107,6 +107,6 @@ export const DocsLayout = ({ children, hasSidebar }: DocsLayoutProps) => {
           />
         ) : null}
       </div>
-    </>
+    </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, ReactElement, useMemo } from "react";
+import React, { FC, ReactElement, useMemo } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -199,7 +199,7 @@ const BlogPage: FC<BlogPageProps> & {
   };
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="blog"
         pageTitle={
@@ -272,10 +272,10 @@ const BlogPage: FC<BlogPageProps> & {
             </article>
           </div>
           {commitMeta ? (
-            <>
+            <React.Fragment>
               <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
               <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
-            </>
+            </React.Fragment>
           ) : null}
         </div>
 
@@ -318,7 +318,7 @@ const BlogPage: FC<BlogPageProps> & {
           <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

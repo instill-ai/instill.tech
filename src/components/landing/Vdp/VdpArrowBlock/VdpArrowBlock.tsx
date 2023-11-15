@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import cn from "clsx";
 
 export type VdpArrowBlockProps = {
@@ -25,7 +25,7 @@ export const VdpArrowBlock = ({
   arrowWidth,
 }: VdpArrowBlockProps) => {
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .arrow-block-${title} {
@@ -62,6 +62,6 @@ export const VdpArrowBlock = ({
           <div className="font-sans text-lg font-normal">{description}</div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

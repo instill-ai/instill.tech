@@ -1,5 +1,11 @@
 import cn from "clsx";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { FilterIcon, XIcon } from "@instill-ai/design-system";
 
 import { SingleSelectCheckboxProps } from "@/components/ui";
@@ -120,7 +126,7 @@ export const TutorialFilters = ({
   }, [windowSize?.width]);
 
   return (
-    <>
+    <React.Fragment>
       {/* 
         This component is complicated. It serves two things, the first one
         is the normal filter view when the window size is bigger than 1127.
@@ -130,7 +136,7 @@ export const TutorialFilters = ({
       */}
       <div
         className={cn(
-          "fixed top-0 left-0 z-[60] flex h-screen w-full flex-col gap-y-10 bg-white py-5 px-4 xl:static xl:z-auto xl:h-full xl:px-0 xl:py-0",
+          "fixed left-0 top-0 z-[60] flex h-screen w-full flex-col gap-y-10 bg-white px-4 py-5 xl:static xl:z-auto xl:h-full xl:px-0 xl:py-0",
           filterIsOpen ? "" : "hidden"
         )}
       >
@@ -258,6 +264,6 @@ export const TutorialFilters = ({
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

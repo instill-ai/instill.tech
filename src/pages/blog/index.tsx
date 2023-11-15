@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import { FC, ReactElement, useMemo, useState } from "react";
+import React, { FC, ReactElement, useMemo, useState } from "react";
 import { BlogArticleMeta } from "@/types/instill";
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleList, BlogHero } from "@/components/blog";
@@ -48,7 +48,7 @@ const BlogIndexPage: FC<BlogIndexPageProps> & {
   }, [articles, selectedCategory]);
 
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageType="main"
         pageTitle="Blog | Instill AI"
@@ -75,7 +75,7 @@ const BlogIndexPage: FC<BlogIndexPageProps> & {
           marginBottom="mb-10 xl:mb-[120px]"
         />
       </ContentContainer>
-    </>
+    </React.Fragment>
   );
 };
 

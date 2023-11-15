@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export const Nav = () => {
   );
 
   const navbarLinkGroup = (
-    <>
+    <React.Fragment>
       <DocsPageLink />
       <GithubTextLink />
       <Button asChild variant="primary" size="lg">
@@ -49,11 +49,11 @@ export const Nav = () => {
           Try Instill Cloud Free
         </a>
       </Button>
-    </>
+    </React.Fragment>
   );
 
   const desktopView = (
-    <>
+    <React.Fragment>
       {enableAnnouncementBar && announcementBar}
       <div className="mx-auto flex w-full flex-row bg-instillGrey90 px-[30px] py-2.5">
         <Link href="/" className="my-auto mr-auto flex">
@@ -64,11 +64,11 @@ export const Nav = () => {
           {navbarLinkGroup}
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 
   const mobileView = (
-    <>
+    <React.Fragment>
       {enableAnnouncementBar && announcementBar}
       <div className="flex w-full flex-row p-4 lg:mb-[60px]">
         <Link href="/" className="flex">
@@ -102,7 +102,7 @@ export const Nav = () => {
           </div>
         )}
       </div>
-    </>
+    </React.Fragment>
   );
 
   return (

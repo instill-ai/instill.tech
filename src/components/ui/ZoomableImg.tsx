@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, useEffect } from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useEffect } from "react";
 import cn from "clsx";
 import ModalBase from "./ModalBase";
 import { XIcon } from "@instill-ai/design-system";
@@ -50,7 +50,7 @@ export const ZoomableImg = ({
   }, [isZoom, setIsZoom]);
 
   return (
-    <>
+    <React.Fragment>
       {/* 
         Because currently there has no way to not specific height
         and use the h-full on parent with fill=true to force the 
@@ -94,7 +94,7 @@ export const ZoomableImg = ({
                 if (disable) return;
                 setIsZoom(true);
               }}
-              className="absolute right-0 bottom-0 flex cursor-pointer bg-instillGrey20 bg-opacity-30 p-2 opacity-100 hover:bg-instillGrey90 hover:bg-opacity-10 group-hover:opacity-100 xl:opacity-0"
+              className="absolute bottom-0 right-0 flex cursor-pointer bg-instillGrey20 bg-opacity-30 p-2 opacity-100 hover:bg-instillGrey90 hover:bg-opacity-10 group-hover:opacity-100 xl:opacity-0"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,6 +138,6 @@ export const ZoomableImg = ({
           />
         )}
       </ModalBase>
-    </>
+    </React.Fragment>
   );
 };

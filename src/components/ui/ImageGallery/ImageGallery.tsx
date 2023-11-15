@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./Thumb";
 import { ZoomableImg } from "../ZoomableImg";
@@ -67,7 +67,7 @@ export const ImageGallery = ({ images, caption }: ImageGalleryProps) => {
   }, [images, embla, emblaThumbs]);
 
   return (
-    <>
+    <React.Fragment>
       <style jsx>
         {`
           .embla {
@@ -171,7 +171,7 @@ export const ImageGallery = ({ images, caption }: ImageGalleryProps) => {
               </div>
             ))}
           </div>
-          <p className="mt-2 mb-0 font-sans text-sm text-instillGrey70 md:hidden">
+          <p className="mb-0 mt-2 font-sans text-sm text-instillGrey70 md:hidden">
             Swipe to see other images.
           </p>
         </div>
@@ -194,6 +194,6 @@ export const ImageGallery = ({ images, caption }: ImageGalleryProps) => {
           {caption}
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

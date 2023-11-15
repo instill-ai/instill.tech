@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { GetStaticProps } from "next";
 import { PageHead } from "@/components/ui";
 import { DocsLayout } from "@/components/docs";
@@ -24,16 +24,16 @@ const OverviewPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   return (
-    <>
+    <React.Fragment>
       <PageHead
         pageTitle={"Overview"}
         pageDescription={null}
         pageType="docs"
         additionMeta={
-          <>
+          <React.Fragment>
             <meta name="docsearch:language" content="en" />
             <meta name="docsearch:version" content="3.0.0" />
-          </>
+          </React.Fragment>
         }
         currentArticleMeta={null}
         commitMeta={null}
@@ -46,7 +46,7 @@ const OverviewPage: FC & {
           </h1>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
