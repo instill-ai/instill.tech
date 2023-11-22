@@ -33,6 +33,7 @@ import {
   TensorFlowIcon,
 } from "@instill-ai/design-system";
 import Image from "next/image";
+import { Jumbotron } from "@/components/hacktoberfest/jumbotron";
 // to detect language and automatically redirect to the approprate/[locale] page
 
 interface GetLayOutProps {
@@ -56,6 +57,8 @@ const HacktoberfestPage: FC & {
 
       <div className="mx-auto w-full max-w-[1127px] px-4 xl:px-0">
         {/* Section 1 */}
+
+        <Jumbotron />
 
         <Hero />
 
