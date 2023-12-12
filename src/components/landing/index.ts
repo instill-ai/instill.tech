@@ -1,6 +1,7 @@
 export { Hero } from "./Hero";
 export type { HeroProps } from "./Hero";
 export { InstillCloud } from "./InstillCloud";
+export { InstillHero } from "./InstillHero";
 export { Community } from "./Community";
 export { Faq } from "./Faq/Faq";
 export type { FaqProps } from "./Faq/Faq";

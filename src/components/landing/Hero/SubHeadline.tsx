@@ -8,14 +8,17 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(
-        "text-left font-sans text-lg font-light text-instillGrey90",
+        "font-['IBM Plex Sans'] text-lg font-light leading-7 text-zinc-800",
         marginBottom
       )}
     >
-      Meet Versatile Data Pipeline (VDP), the future for unstructured data
-      infrastructure, where developers won’t need to build their own data
-      connectors, high-maintenance model serving platform or data pipeline
-      automation tool.
+      <span className="font-bold">Unstructured Data Pipelines</span> and{" "}
+      <span className="font-bold">Gen AI Apps</span> within minutes; with
+      no-code. We provide the{" "}
+      <span className="font-bold">Model Infrastructure</span> and{" "}
+      <span className="font-bold">Production-Ready</span> Services.{" "}
+      <span className="font-bold">Scale</span> with just a few lines of
+      auto-generated code.
     </div>
   );
 };

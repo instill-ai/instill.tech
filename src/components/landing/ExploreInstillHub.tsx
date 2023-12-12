@@ -1,11 +1,11 @@
 import { Icons, SolidButton } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 
-export type ConsoleCtaButtonProps = {
+export type ExploreInstillHubProps = {
   position?: string;
 };
 
-export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
+export const ExploreInstillHub = ({ position }: ExploreInstillHubProps) => {
   const router = useRouter();
   return (
     <SolidButton
@@ -18,14 +18,13 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       onClickHandler={() => router.push("https://console.instill.tech")}
     >
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-row text-left uppercase">
-          <p className="font-bold">Start Building</p>
+        <div className="flex flex-row gap-x-3 text-left">
+          <p className="font-['IBM Plex Sans'] my-auto text-[24px] font-normal leading-7">
+            Explore on Instill Hub
+          </p>
           <div className="ml-auto">
             <Icons.ArrowRight className="my-auto h-7 w-7 stroke-[#23C4E7]" />
           </div>
-        </div>
-        <div className="font-['IBM Plex Mono'] mr-auto text-left text-xs font-normal ">
-          Free, until you’re ready to upgrade
         </div>
       </div>
     </SolidButton>
