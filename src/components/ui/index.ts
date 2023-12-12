@@ -81,3 +81,5 @@ export { ArticleSimilarPosts } from "./ArticleSimilarPosts";
 export type { ArticleSimilarPostsProps } from "./ArticleSimilarPosts";
 export { MdxQuoteBlock } from "./MdxQuoteBlock";
 export type { MdxQuoteBlockProps } from "./MdxQuoteBlock";
+export { LoadingSpin } from "./LoadingSpin";
+export type { LoadingSpinProps } from "./LoadingSpin";

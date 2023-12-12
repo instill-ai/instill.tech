@@ -135,3 +135,26 @@ table.mcnCaptionTopContent {
   letter-spacing: 0px;
   direction: ltr;
 }
+
+/* Swiper slider css */
+
+.swiper {
+  width: 800px !important;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+.swiper-slide {
+  background-position: center !important;
+  background-size: cover !important;
+  width: 500px !important;
+  height: 660px !important;
+}
+
+.swiper-slide-prev {
+  filter: blur(1px);
+}
+
+.swiper-slide-next {
+  filter: blur(1px);
+}
