@@ -17,7 +17,7 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() => router.push("https://console.instill.tech")}
     >
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-3">
         <div className="flex flex-row text-left uppercase">
           <p className="font-bold">Start Building</p>
           <div className="ml-auto">

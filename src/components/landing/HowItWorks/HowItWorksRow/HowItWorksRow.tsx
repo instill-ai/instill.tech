@@ -9,8 +9,8 @@ export type HowItWorksRowProps = {
   description: ReactElement | string;
   learnMoreLink: string;
   cubes: IconsCubeProps["cubes"];
-  number: number;
   type: "right" | "left";
+  icon?: ReactElement;
 };
 
 export const HowItWorksRow = ({
@@ -19,7 +19,7 @@ export const HowItWorksRow = ({
   description,
   learnMoreLink,
   cubes,
-  number,
+  icon,
 }: HowItWorksRowProps) => {
   return (
     <div
@@ -30,18 +30,12 @@ export const HowItWorksRow = ({
     >
       <div
         className={cn(
-          "mt-10 flex flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
+          "mt-10 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >
-        <NumberCube
-          number={number}
-          color="bg-instillNeonBlue"
-          width="w-20"
-          height="h-20"
-        />
         <div className="flex flex-col">
-          <h3 className="mb-7 text-2xl font-medium text-instillGrey90">
+          <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
             {title}
           </h3>
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
@@ -55,13 +49,18 @@ export const HowItWorksRow = ({
           />
         </div>
       </div>
+
       <div className="flex">
-        <IconsCube
-          cubes={cubes}
-          position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
-          width="xl:w-[360px]"
-          height="xl:h-[360px]"
-        />
+        {icon ? (
+          icon
+        ) : (
+          <IconsCube
+            cubes={cubes}
+            position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
+            width="xl:w-[360px]"
+            height="xl:h-[360px]"
+          />
+        )}
       </div>
     </div>
   );

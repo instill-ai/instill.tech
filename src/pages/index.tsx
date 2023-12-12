@@ -187,20 +187,21 @@ const HomePage: FC<HomePageProps> & {
         currentArticleMeta={null}
         jsonLd={null}
       />
+
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
           <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
             {vdpIsInView ? <Vdp ref={vdpRef} /> : null}
           </div>
-          <div className="mx-auto w-full">
-            {/* <div className="flex w-full justify-center"> */}
-            {/* <div className="w-2/3"> */}
+
+          <div className="mx-auto w-full max-w-[1127px] px-4 xl:px-0">
             <Jumbotron />
-            {/* </div> */}
-            {/* </div> */}
-            <ExploreInstillHub />
+            <div className="my-4">
+              <ExploreInstillHub />
+            </div>
           </div>
+
           <div
             ref={howItWorksIsInViewRef}
             className={vdpIsInView ? "" : "mb-20"}
