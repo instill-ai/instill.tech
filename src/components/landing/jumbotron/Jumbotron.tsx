@@ -14,7 +14,6 @@ import {
   Navigation,
   Scrollbar,
   A11y,
-  Autoplay,
 } from "swiper/modules";
 import { Button, Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
@@ -23,19 +22,13 @@ import { Llama2Chat } from "./Llama2Chat";
 import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 import { YOLOv7 } from "./YOLOv7";
 import { SEOArticleWriter } from "./SEOArticleWriter";
-import { Llava13B } from "./Llava13B";
 
 export const Jumbotron = () => {
   return (
     <>
       <Swiper
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
         speed={500}
-        loop={true}
+        loop={false}
         initialSlide={2}
         effect={"coverflow"}
         grabCursor={true}
@@ -49,14 +42,7 @@ export const Jumbotron = () => {
           slideShadows: true,
         }}
         navigation={true}
-        modules={[
-          Autoplay,
-          EffectCoverflow,
-          Pagination,
-          Navigation,
-          Scrollbar,
-          A11y,
-        ]}
+        modules={[EffectCoverflow, Pagination, Navigation, Scrollbar, A11y]}
         className="mySwiper relative"
       >
         <SwiperButtonPrev>
@@ -68,9 +54,6 @@ export const Jumbotron = () => {
             <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
           </Button>
         </SwiperButtonPrev>
-        <SwiperSlide>
-          <Llava13B />
-        </SwiperSlide>
         <SwiperSlide>
           <Llama2Chat />
         </SwiperSlide>
