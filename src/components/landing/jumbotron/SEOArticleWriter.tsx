@@ -64,62 +64,68 @@ export const SEOArticleWriter = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-      <h3 className="mb-3 font-semibold leading-none">SEO article writer</h3>
-      <p className="text-sm text-zinc-500 dark:text-zinc-600">
-        Create and inspire using the worlds fastest growing open source AI
-        platform
-      </p>
-
-      <div className="my-6 flex gap-x-4">
-        <div className="w-2/3 space-y-2">
-          <Input.Root className="w-full">
-            <Input.Core
-              disabled={false}
-              type="text"
-              placeholder="Tell me a short story"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </Input.Root>
-          <Input.Root className="w-full">
-            <Input.Core
-              disabled={false}
-              type="text"
-              placeholder="Section number"
-              value={sectionNumber}
-              onChange={(e) => setSectionNumber(e.target.value)}
-            />
-          </Input.Root>
-        </div>
-        <div className="w-1/3">
-          <Button
-            variant="primary"
-            size="md"
-            className="my-auto w-full gap-x-2"
-            onClick={() => handleGenrate()}
-            disabled={input && sectionNumber ? false : true}
-          >
-            Genrate
-            {spinner ? (
-              <LoadingSpin />
-            ) : (
-              <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-            )}
-          </Button>
-        </div>
+    <div className="h-[660px] w-[500px] border bg-white">
+      <div className="bg-[#F8F9FC] p-3">
+        <h3 className="my-auto product-body-text-1-semibold">
+          SEO article writer
+        </h3>
       </div>
+      <div className="px-3 pt-3">
+        <p className="text-sm text-zinc-500 dark:text-zinc-600">
+          Create and inspire using the worlds fastest growing open source AI
+          platform
+        </p>
 
-      <div className="flex min-h-[400px] items-center justify-center">
-        {spinner ? (
-          <div>Generating...</div>
-        ) : (
-          <div className="h-[400px] w-full overflow-y-auto">
-            <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-              {article ? article : defaultArticle}
-            </pre>
+        <div className="my-6 flex gap-x-4">
+          <div className="w-2/3 space-y-2">
+            <Input.Root className="w-full">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Tell me a short story"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </Input.Root>
+            <Input.Root className="w-full">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Section number"
+                value={sectionNumber}
+                onChange={(e) => setSectionNumber(e.target.value)}
+              />
+            </Input.Root>
           </div>
-        )}
+          <div className="w-1/3">
+            <Button
+              variant="primary"
+              size="md"
+              className="my-auto w-full gap-x-2"
+              onClick={() => handleGenrate()}
+              disabled={input && sectionNumber ? false : true}
+            >
+              Generate
+              {spinner ? (
+                <LoadingSpin />
+              ) : (
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex min-h-[400px] items-center justify-center">
+          {spinner ? (
+            <div>Generating...</div>
+          ) : (
+            <div className="h-[400px] w-full overflow-y-auto">
+              <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                {article ? article : defaultArticle}
+              </pre>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

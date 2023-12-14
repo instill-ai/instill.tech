@@ -22,6 +22,10 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
           <SubHeadline marginBottom="mb-10" />
           <div className="flex flex-col gap-y-5 xl:flex-row xl:gap-x-5 xl:gap-y-0">
             <ConsoleCtaButton />
+
+            <p className="my-auto font-mono text-[14px] text-instillNeonBlue">
+              Free, until you’re ready to upgrade
+            </p>
           </div>
         </div>
         <div className="mb-20 xl:my-auto xl:w-[36%]">

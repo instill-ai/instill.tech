@@ -8,17 +8,12 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(
-        "font-['IBM Plex Sans'] text-lg font-light leading-7 text-zinc-800",
+        "text-left font-sans text-lg font-light text-instillGrey90",
         marginBottom
       )}
     >
-      <span className="font-bold">Unstructured Data Pipelines</span> and{" "}
-      <span className="font-bold">Gen AI Apps</span> within minutes; with
-      no-code. We provide the{" "}
-      <span className="font-bold">Model Infrastructure</span> and{" "}
-      <span className="font-bold">Production-Ready</span> Services.{" "}
-      <span className="font-bold">Scale</span> with just a few lines of
-      auto-generated code.
+      Meet Instill Cloud, a no-code/low-code platform to build AI workflows for
+      unstructured data 10x faster.
     </div>
   );
 };

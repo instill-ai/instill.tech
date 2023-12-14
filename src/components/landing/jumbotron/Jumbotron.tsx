@@ -4,8 +4,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-coverflow";
+// import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import "swiper/css/effect-cards";
+
+// effect={"cards"}
+// grabCursor={true}
+// modules={[EffectCards, Navigation]}
+// className="mySwiper"
+// navigation={true}
 
 // import required modules
 import {
@@ -14,6 +21,8 @@ import {
   Navigation,
   Scrollbar,
   A11y,
+  Autoplay,
+  EffectCards,
 } from "swiper/modules";
 import { Button, Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
@@ -22,28 +31,41 @@ import { Llama2Chat } from "./Llama2Chat";
 import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 import { YOLOv7 } from "./YOLOv7";
 import { SEOArticleWriter } from "./SEOArticleWriter";
+import { Llava13B } from "./Llava13B";
 
 export const Jumbotron = () => {
   return (
     <>
       <Swiper
-        speed={500}
-        loop={false}
-        initialSlide={2}
-        effect={"coverflow"}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter: true,
+        // }}
+        // speed={500}
+        // loop={false}
+        initialSlide={0}
+        effect={"cards"}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        navigation={true}
-        modules={[EffectCoverflow, Pagination, Navigation, Scrollbar, A11y]}
-        className="mySwiper relative"
+        // coverflowEffect={{
+        //   rotate: 50,
+        //   stretch: 0,
+        //   depth: 100,
+        //   modifier: 1,
+        //   slideShadows: true,
+        // }}
+        modules={[
+          // Autoplay,
+          // EffectCoverflow,
+          Pagination,
+          Navigation,
+          EffectCards,
+          // Scrollbar,
+          // A11y,
+        ]}
+        className="mySwiper"
       >
         <SwiperButtonPrev>
           <Button
@@ -54,17 +76,21 @@ export const Jumbotron = () => {
             <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
           </Button>
         </SwiperButtonPrev>
-        <SwiperSlide>
-          <Llama2Chat />
-        </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
+          <Llava13B />
+        </SwiperSlide> */}
+
+        <SwiperSlide className="shadow-lg">
           <StabilityAIOpenAISticker />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="shadow-lg">
           <YOLOv7 />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="shadow-lg">
           <SEOArticleWriter />
+        </SwiperSlide>
+        <SwiperSlide className="shadow-lg">
+          <Llama2Chat />
         </SwiperSlide>
         <SwiperButtonNext>
           <Button

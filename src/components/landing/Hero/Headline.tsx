@@ -8,11 +8,11 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
   return (
     <h1
       className={cn(
-        "font-['IBM Plex Mono'] text-[64px] font-semibold uppercase leading-[72px] text-gray-800",
+        "w-full text-left font-mono text-[32px] font-semibold uppercase text-instillNeonBlue word-spacing-tight xl:text-instill-h1 xl:word-spacing-super-tight",
         marginBottom
       )}
     >
-      Open source based backbone for all your ai needs
+      The backbone for all your ai needs
     </h1>
   );
 };

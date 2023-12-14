@@ -17,15 +17,14 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() => router.push("https://console.instill.tech")}
     >
-      <div className="flex flex-col space-y-3">
-        <div className="flex flex-row text-left uppercase">
-          <p className="font-bold">Start Building</p>
+      <div className="flex flex-col space-y-4">
+        <div className="flex flex-row gap-x-3 text-left">
+          <p className="my-auto font-sans text-[24px] font-normal leading-7">
+            Start Building
+          </p>
           <div className="ml-auto">
-            <Icons.ArrowRight className="my-auto h-7 w-7 stroke-[#23C4E7]" />
+            <Icons.ArrowRight className="my-auto h-7 w-7 stroke-instillNeonBlue" />
           </div>
-        </div>
-        <div className="font-['IBM Plex Mono'] mr-auto text-left text-xs font-normal ">
-          Free, until you’re ready to upgrade
         </div>
       </div>
     </SolidButton>

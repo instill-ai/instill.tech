@@ -64,113 +64,117 @@ export const Llama2Chat = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-      <h3 className="mb-3 font-semibold leading-none">Llama2-7B-chat</h3>
-      <p className="text-sm text-zinc-500 dark:text-zinc-600">
-        Create and inspire using the worlds fastest growing open source AI
-        platform
-      </p>
+    <div className="h-[660px] w-[500px] border bg-white">
+      <div className="bg-[#F8F9FC] p-3">
+        <h3 className="my-auto product-body-text-1-semibold">Llama2-7B-chat</h3>
+      </div>
+      <div className="px-3 pt-3">
+        <p className="text-sm text-zinc-500 dark:text-zinc-600">
+          Create and inspire using the worlds fastest growing open source AI
+          platform
+        </p>
 
-      <div className="my-6 flex gap-x-4">
-        <div className="w-2/3 space-y-2">
-          <Input.Root className="my-auto w-full">
-            <Input.Core
-              disabled={false}
-              type="text"
-              placeholder="Question"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-            />
-          </Input.Root>
+        <div className="my-6 flex gap-x-4">
+          <div className="w-2/3 space-y-2">
+            <Input.Root className="my-auto w-full">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Question"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+              />
+            </Input.Root>
+          </div>
+          <div className="w-1/3">
+            {article ? (
+              <Button
+                variant="primary"
+                size="md"
+                className="my-auto w-full gap-x-2"
+                onClick={() => {
+                  setArticle("");
+                  handleDelete();
+                }}
+              >
+                Reset
+              </Button>
+            ) : (
+              <Button
+                variant="primary"
+                size="md"
+                className="my-auto w-full gap-x-2"
+                onClick={() => {
+                  handleGenrate();
+                }}
+                disabled={imagePreview && question ? false : true}
+              >
+                Generate
+                {spinner ? (
+                  <LoadingSpin />
+                ) : (
+                  <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                )}
+              </Button>
+            )}
+          </div>
         </div>
-        <div className="w-1/3">
-          {article ? (
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => {
-                setArticle("");
-                handleDelete();
-              }}
-            >
-              Reset
-            </Button>
+
+        <div className="flex h-[450px] items-center justify-center">
+          {spinner ? (
+            <div>Generating...</div>
           ) : (
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => {
-                handleGenrate();
-              }}
-              disabled={imagePreview && question ? false : true}
-            >
-              Genrate
-              {spinner ? (
-                <LoadingSpin />
+            <React.Fragment>
+              {article ? (
+                <div className="min-h-[450px] w-full overflow-y-auto">
+                  <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                    {article}
+                  </pre>
+                </div>
               ) : (
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                <div className="w-full space-y-3">
+                  <div className="my-auto h-[450px] cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                    {imagePreview && (
+                      <Icons.Trash01
+                        onClick={() => handleDelete()}
+                        className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
+                      />
+                    )}
+
+                    {imagePreview ? (
+                      <div className="p-5">
+                        <img
+                          src={imagePreview}
+                          alt="Image Preview"
+                          className="mx-auto h-[370px]"
+                        />
+                      </div>
+                    ) : (
+                      <label
+                        htmlFor="fileInput"
+                        className="flex cursor-pointer flex-col"
+                      >
+                        <div className="cursor-pointer space-y-4 px-10 py-10">
+                          <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
+                          <p className="mx-auto product-body-text-4-regular">
+                            Drag-and-drop file, or browse computer
+                          </p>
+                        </div>
+                      </label>
+                    )}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      id="fileInput"
+                      onChange={(e) => handleFileChange(e)}
+                    />
+                  </div>
+                </div>
               )}
-            </Button>
+            </React.Fragment>
           )}
         </div>
-      </div>
-
-      <div className="flex h-[450px] items-center justify-center">
-        {spinner ? (
-          <div>Generating...</div>
-        ) : (
-          <React.Fragment>
-            {article ? (
-              <div className="min-h-[450px] w-full overflow-y-auto">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-                  {article}
-                </pre>
-              </div>
-            ) : (
-              <div className="w-full space-y-3">
-                <div className="my-auto h-[450px] cursor-pointer rounded border border-dashed bg-slate-50 text-center">
-                  {imagePreview && (
-                    <Icons.Trash01
-                      onClick={() => handleDelete()}
-                      className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
-                    />
-                  )}
-
-                  {imagePreview ? (
-                    <div className="p-5">
-                      <img
-                        src={imagePreview}
-                        alt="Image Preview"
-                        className="mx-auto h-[370px]"
-                      />
-                    </div>
-                  ) : (
-                    <label
-                      htmlFor="fileInput"
-                      className="flex cursor-pointer flex-col"
-                    >
-                      <div className="cursor-pointer space-y-4 px-10 py-10">
-                        <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
-                        <p className="mx-auto product-body-text-4-regular">
-                          Drag-and-drop file, or browse computer
-                        </p>
-                      </div>
-                    </label>
-                  )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    id="fileInput"
-                    onChange={(e) => handleFileChange(e)}
-                  />
-                </div>
-              </div>
-            )}
-          </React.Fragment>
-        )}
       </div>
     </div>
   );

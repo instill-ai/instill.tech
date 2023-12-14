@@ -33,66 +33,70 @@ export const StabilityAIOpenAISticker = () => {
   };
 
   return (
-    <div className="h-[700px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
-      <h3 className="mb-3 font-semibold leading-none">
-        Stability AI + Open AI for Sticker
-      </h3>
-      <p className="text-sm text-zinc-500 dark:text-zinc-600">
-        Create and inspire using the worlds fastest growing open source AI
-        platform
-      </p>
-
-      <div className="my-6 flex gap-x-4">
-        <div className="w-2/3 space-y-2">
-          <Input.Root className="w-full">
-            <Input.Core
-              disabled={false}
-              type="text"
-              placeholder="Prompt"
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-            />
-          </Input.Root>
-          <Input.Root className="w-full">
-            <Input.Core
-              disabled={false}
-              type="text"
-              placeholder="Shape"
-              value={shape}
-              onChange={(e) => setShape(e.target.value)}
-            />
-          </Input.Root>
-        </div>
-        <div className="w-1/3">
-          <Button
-            variant="primary"
-            size="md"
-            className="my-auto w-full gap-x-2"
-            onClick={() => handleGenrate()}
-            disabled={prompt && shape ? false : true}
-          >
-            Genrate
-            {spinner ? (
-              <LoadingSpin />
-            ) : (
-              <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
-            )}
-          </Button>
-        </div>
+    <div className="h-[660px] w-[500px] border bg-white">
+      <div className="bg-[#F8F9FC] p-3">
+        <p className="my-auto product-body-text-1-semibold">
+          Stability AI + Open AI for Sticker
+        </p>
       </div>
+      <div className="px-3 pt-3">
+        <p className="text-sm text-zinc-500 dark:text-zinc-600">
+          Create and inspire using the worlds fastest growing open source AI
+          platform
+        </p>
 
-      <div className="flex h-[430px] items-center justify-center">
-        {spinner ? (
-          <div>Generating...</div>
-        ) : (
-          <React.Fragment>
-            {article ? (
-              <img src={article} className="my-auto h-[430px]" />
-            ) : (
-              <img src="/images/cat.png" className="my-auto h-[430px]" />
-            )}
-          </React.Fragment>
-        )}
+        <div className="my-6 flex gap-x-4">
+          <div className="w-2/3 space-y-2">
+            <Input.Root className="w-full">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Prompt"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+              />
+            </Input.Root>
+            <Input.Root className="w-full">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Shape"
+                value={shape}
+                onChange={(e) => setShape(e.target.value)}
+              />
+            </Input.Root>
+          </div>
+          <div className="w-1/3">
+            <Button
+              variant="primary"
+              size="md"
+              className="my-auto w-full gap-x-2"
+              onClick={() => handleGenrate()}
+              disabled={prompt && shape ? false : true}
+            >
+              Generate
+              {spinner ? (
+                <LoadingSpin />
+              ) : (
+                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex h-[400px] items-center justify-center">
+          {spinner ? (
+            <div>Generating...</div>
+          ) : (
+            <React.Fragment>
+              {article ? (
+                <img src={article} className="my-auto h-[400px]" />
+              ) : (
+                <img src="/images/cat.png" className="my-auto h-[400px]" />
+              )}
+            </React.Fragment>
+          )}
+        </div>
       </div>
     </div>
   );

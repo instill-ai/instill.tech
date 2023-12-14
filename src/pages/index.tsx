@@ -13,7 +13,12 @@ import {
   NoCodeInterfaceProps,
   Vdp,
 } from "@/components/landing";
-import { PageBase, PageHead } from "@/components/ui";
+import {
+  PageBase,
+  PageHead,
+  SectionHeader,
+  SectionLabel,
+} from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
@@ -191,12 +196,30 @@ const HomePage: FC<HomePageProps> & {
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
-          <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
+          {/* <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
             {vdpIsInView ? <Vdp ref={vdpRef} /> : null}
-          </div>
+          </div> */}
 
           <div className="mx-auto w-full max-w-[1127px] px-4 xl:px-0">
-            <Jumbotron />
+            <div className="flex flex-row">
+              <div className={cn("flex w-2/5 flex-col py-20")}>
+                <div className="mb-10 flex flex-col">
+                  <SectionLabel
+                    text="VDP IN ACTION"
+                    position="mr-auto"
+                    marginBottom="mb-2.5"
+                  />
+                  <SectionHeader
+                    header="See AI Apps in Action with VDP"
+                    headerWidth="text-zinc-800 text-5xl font-medium font-['IBM Plex Mono'] capitalize"
+                    headerTextColor="text-instillGrey90"
+                  />
+                </div>
+              </div>
+              <div className="w-3/5">
+                <Jumbotron />
+              </div>
+            </div>
             <div className="my-4">
               <ExploreInstillHub />
             </div>
