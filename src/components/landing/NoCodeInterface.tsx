@@ -14,26 +14,15 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
 
   return (
     <div ref={containerRef} className={cn("flex flex-col py-20", marginBottom)}>
-      <SectionLabel text="What makes us different" position="mr-auto mb-2.5" />
+      <SectionLabel
+        text="Our Open source FOUNDATION"
+        position="mr-auto mb-2.5"
+      />
       <SectionHeader
-        header="Designed for Flexibility and Scale."
-        headerWidth="w-full xl:w-7/12"
-        headerTextColor="text-instillGrey90"
+        header="Drag-and-Drop No-code Console"
+        headerWidth="w-full"
+        headerTextColor="text-instillNeonBlue"
         marginBottom="mb-10"
-        subElement={
-          <div className="flex w-full flex-col">
-            <p className="mb-10 text-lg font-normal text-instillGrey90 xl:mb-[45px]">
-              The no-code interface helps provides a unified, clean and
-              intuitive user experience of VDP.
-            </p>
-            <CommonCtaButton
-              position="mr-auto"
-              link="https://console.instill.tech"
-              withArrow={true}
-              text="Learn more"
-            />
-          </div>
-        }
       />
       <div className="w-full pr-2.5 xl:pr-5">
         <div className="flex flex-col shadow-instill-solid-10-grey xl:shadow-instill-solid-20-grey">
@@ -52,7 +41,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
             </div>
           </div>
           <Image
-            src="/images/no-code-interface.png"
+            src="/images/no-code-interface.svg"
             width={containerDimension ? containerDimension.width : 0}
             height={containerDimension ? containerDimension.width * 0.54 : 0}
             sizes="100vw"

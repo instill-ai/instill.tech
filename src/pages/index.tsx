@@ -19,7 +19,7 @@ import {
   SectionHeader,
   SectionLabel,
 } from "@/components/ui";
-import { getElementPosition } from "@instill-ai/design-system";
+import { Icons, Tag, getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
@@ -196,13 +196,10 @@ const HomePage: FC<HomePageProps> & {
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
-          {/* <div ref={vdpIsInViewRef} className={vdpIsInView ? "" : "mb-20"}>
-            {vdpIsInView ? <Vdp ref={vdpRef} /> : null}
-          </div> */}
 
-          <div className="mx-auto w-full max-w-[1127px] px-4 xl:px-0">
+          <div className="mx-auto w-full px-4 xl:px-0">
             <div className="flex flex-row">
-              <div className={cn("flex w-2/5 flex-col py-20")}>
+              <div className={cn("flex w-2/5 flex-col")}>
                 <div className="mb-10 flex flex-col">
                   <SectionLabel
                     text="VDP IN ACTION"
@@ -215,27 +212,97 @@ const HomePage: FC<HomePageProps> & {
                     headerTextColor="text-instillGrey90"
                   />
                 </div>
+                <div className="flex flex-col">
+                  <div className="mb-2 flex w-full flex-wrap justify-center gap-x-3 gap-y-2 xl:justify-start">
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.Type02 className="h-3 w-3 stroke-instillGrey95" />
+                      Text
+                    </Tag>
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.Image01 className="h-3 w-3 stroke-instillGrey95" />
+                      Image
+                    </Tag>
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.Speaker01 className="h-3 w-3 stroke-instillGrey95" />
+                      Audio
+                    </Tag>
+                    <div className="hidden xl:block">
+                      <Tag
+                        variant="darkYellow"
+                        className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                      >
+                        <Icons.VideoRecorder className="h-3 w-3 stroke-instillGrey95" />
+                        Video
+                      </Tag>
+                    </div>
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                      PDF
+                    </Tag>
+                    <div className="hidden xl:block">
+                      <Tag
+                        variant="darkYellow"
+                        className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                      >
+                        <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                        JSON
+                      </Tag>
+                    </div>
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                      CSV
+                    </Tag>
+                    <div className="hidden xl:block">
+                      <Tag
+                        variant="darkYellow"
+                        className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                      >
+                        <Icons.File05 className="h-3 w-3 stroke-instillGrey95" />
+                        Parquet
+                      </Tag>
+                    </div>
+                    <Tag
+                      variant="darkYellow"
+                      className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"
+                    >
+                      <div className="h-2 w-2 rounded-lg bg-black"></div>
+                      More
+                    </Tag>
+                  </div>
+                </div>
               </div>
               <div className="w-3/5">
                 <Jumbotron />
               </div>
             </div>
-            <div className="my-4">
-              <ExploreInstillHub />
-            </div>
           </div>
 
-          <div
-            ref={howItWorksIsInViewRef}
-            className={vdpIsInView ? "" : "mb-20"}
-          >
-            {vdpIsInView ? <HowItWorks /> : null}
-          </div>
           <div
             ref={noCodeInterfaceIsInViewRef}
             className={howItWorksIsInView ? "" : "mb-20"}
           >
             {howItWorksIsInView ? <NoCodeInterface /> : null}
+          </div>
+
+          <div >
+            {/* {vdpIsInView ?  */}
+            <HowItWorks />
+            {/* : null} */}
           </div>
         </div>
 

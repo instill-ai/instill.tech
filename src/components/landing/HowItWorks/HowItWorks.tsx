@@ -46,14 +46,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             title="Instill VDP Pipeline Builder"
             description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
             learnMoreLink="/docs/latest/vdp/data-connector"
-            icon={
-              <VdpLogo
-                {...iconProps}
-                className="m-auto"
-                variant="expand"
-                width={340}
-              />
-            }
+            icon={<img src={"./images/console-flow.svg"} />}
             cubes={[]}
           />
           <HowItWorksRow
