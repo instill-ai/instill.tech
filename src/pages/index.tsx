@@ -14,6 +14,7 @@ import {
   Vdp,
 } from "@/components/landing";
 import {
+  CommonCtaButton,
   PageBase,
   PageHead,
   SectionHeader,
@@ -25,6 +26,7 @@ import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
 import { ExploreInstillHub } from "@/components/landing/ExploreInstillHub";
+import Social from "@/components/landing/Social";
 // to detect language and automatically redirect to the approprate/[locale] page
 
 const FaqHeader = dynamic<FaqHeaderProps>(() =>
@@ -207,10 +209,28 @@ const HomePage: FC<HomePageProps> & {
                     marginBottom="mb-2.5"
                   />
                   <SectionHeader
-                    header="See AI Apps in Action with VDP"
-                    headerWidth="text-zinc-800 text-5xl font-medium font-['IBM Plex Mono'] capitalize"
+                    header="Unlock Limitless AI Potential"
+                    headerWidth="text-zinc-800 !text-[36px] font-medium font-mono capitalize"
                     headerTextColor="text-instillGrey90"
                   />
+                </div>
+                <div className="mb-10 space-y-4">
+                  <p className="font-sans font-normal">
+                    Boost Your AI Development with Our Versatile Data Pipeline!{" "}
+                  </p>
+                  <p>
+                    Our Versatile Data Pipeline powers your AI apps with
+                    virtually endless data, regardless of use case. Seamlessly
+                    integrate your unstructured data and harness the versatility
+                    of AI with Instill AIs rapidly expanding community of data
+                    connectors.
+                  </p>
+                  <p>Build apps in half the time</p>
+                  <p>
+                    Unrestricted access to perfectly structured data means
+                    unmatched experimentation power and lighter workloads.
+                  </p>
+                  <p>Experience the future with our interactive demo ⚡️.</p>
                 </div>
                 <div className="flex flex-col">
                   <div className="mb-2 flex w-full flex-wrap justify-center gap-x-3 gap-y-2 xl:justify-start">
@@ -291,41 +311,62 @@ const HomePage: FC<HomePageProps> & {
               </div>
             </div>
           </div>
-
-          <div
+          {/* <div
             ref={noCodeInterfaceIsInViewRef}
             className={howItWorksIsInView ? "" : "mb-20"}
-          >
-            {howItWorksIsInView ? <NoCodeInterface /> : null}
-          </div>
+          > */}
+          {/* {howItWorksIsInView ?  */}
 
-          <div >
+          <NoCodeInterface />
+          {/* : null} */}
+          {/* </div> */}
+
+          <div>
             {/* {vdpIsInView ?  */}
             <HowItWorks />
             {/* : null} */}
+          </div>
+
+          <div className="my-10 flex flex-col space-y-10">
+            <div className="mx-auto">
+              <p className="font-mono text-[36px] font-semibold">
+                Want to self-host?
+              </p>
+            </div>
+            <div className="mx-auto">
+              <p>
+                You can self-host Instill VDP and Instill model via Instill
+                Core. It provides an open-source AI infrastructure tailored for
+                unstructured data, enabling versatile AI application
+                development.
+              </p>
+            </div>
+
+            <div className="mx-auto">
+              <CommonCtaButton withArrow={true} link={"/"} text="Learn more" />
+            </div>
           </div>
         </div>
 
         <div className="bg-instillGrey90">
           <div
-            ref={communityIsInViewRef}
-            className={cn(
-              "mx-auto max-w-[1127px] px-4 xl:px-0",
-              noCodeInterfaceIsInView ? "" : "mb-20"
-            )}
+            // ref={communityIsInViewRef}
+            className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}
           >
-            {noCodeInterfaceIsInView ? <Community /> : null}
+            {/* {noCodeInterfaceIsInView ?  */}
+            <Community />
+            {/* : null} */}
           </div>
-          <div
+          {/* <div
             ref={caseStudyIsInViewRef}
             className={communityIsInView ? "" : "mb-20"}
           >
             {communityIsInView ? (
               <CaseStudy destinations={destinations} />
             ) : null}
-          </div>
+          </div> */}
 
-          <div
+          {/* <div
             ref={codeShowcaseIsInViewRef}
             className={cn(
               "mx-auto max-w-[1127px] px-4 xl:px-0",
@@ -333,7 +374,11 @@ const HomePage: FC<HomePageProps> & {
             )}
           >
             {caseStudyIsInView ? <CodeShowcase /> : null}
-          </div>
+          </div> */}
+        </div>
+
+        <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
+          <Social />
         </div>
         <div
           ref={faqIsInViewRef}
@@ -348,7 +393,7 @@ const HomePage: FC<HomePageProps> & {
             </>
           ) : null}
         </div>
-        <div>{faqIsInView ? <InstillCloud /> : null}</div>
+        {/* <div>{faqIsInView ? <InstillCloud /> : null}</div> */}
       </div>
     </>
   );

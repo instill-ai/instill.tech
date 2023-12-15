@@ -1,7 +1,7 @@
 import cn from "clsx";
 import { ReactElement } from "react";
 
-import { CommonCtaButton, NumberCube } from "@/components/ui";
+import { CommonCtaButton, NumberCube, SectionLabel } from "@/components/ui";
 import { IconsCubeProps, IconsCube } from "../IconsCube";
 
 export type HowItWorksRowProps = {
@@ -11,6 +11,7 @@ export type HowItWorksRowProps = {
   cubes: IconsCubeProps["cubes"];
   type: "right" | "left";
   icon?: ReactElement;
+  sectionTitle?: string;
 };
 
 export const HowItWorksRow = ({
@@ -20,6 +21,7 @@ export const HowItWorksRow = ({
   learnMoreLink,
   cubes,
   icon,
+  sectionTitle,
 }: HowItWorksRowProps) => {
   return (
     <div
@@ -35,9 +37,17 @@ export const HowItWorksRow = ({
         )}
       >
         <div className="flex flex-col">
-          <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
-            {title}
-          </h3>
+          {sectionTitle ? (
+            <SectionLabel
+              text={sectionTitle}
+              position="mr-auto"
+              marginBottom="mb-2.5"
+            />
+          ) : (
+            <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
+              {title}
+            </h3>
+          )}
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
             {description}
           </div>

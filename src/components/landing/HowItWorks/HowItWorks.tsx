@@ -43,102 +43,61 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         <div className="flex flex-col gap-y-20">
           <HowItWorksRow
             type="left"
-            title="Instill VDP Pipeline Builder"
-            description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
+            title="Instill VDP"
+            description={
+              <div>
+                <li>Connect to your unstructured data effortlessly.</li>
+                <li className="mb-4">
+                  Build pipelines to power versatile AI features in your
+                  applications.
+                </li>
+                <li>
+                  Test pipelines visually with a single click to see output at
+                  each step.
+                </li>
+              </div>
+            }
             learnMoreLink="/docs/latest/vdp/data-connector"
             icon={<img src={"./images/console-flow.svg"} />}
             cubes={[]}
           />
           <HowItWorksRow
             type="right"
-            title="Various Connectors and Operators"
-            description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
+            title="Pre-built Connectors and Operators"
+            description={
+              <div className="space-y-4">
+                <p>
+                  To extract and load data: Pinecone, BigQuery, Postgres, Google
+                  Drive, Google Sheets, RESP API connectors and more.
+                </p>
+                <p>
+                  To transform data: Text Operator to parse unstructured data in
+                  various document types, and many more.
+                </p>
+              </div>
+            }
             learnMoreLink="/docs/latest/vdp/data-connector"
-            cubes={[
-              {
-                id: "httpIcon",
-                icon: (
-                  <HttpIcon
-                    {...iconProps}
-                    color="fill-instillBlue50"
-                    position="m-auto"
-                  />
-                ),
-                color: "bg-instillBlue10",
-              },
-              {
-                id: "grpcIcon",
-                icon: (
-                  <GrpcIcon {...iconProps} color="fill-instillWarmOrange50" />
-                ),
-                color: "bg-instillWarmOrange05",
-              },
-              {
-                id: "airbyteIcon",
-                icon: <AirbyteIcon {...iconProps} />,
-                color: "bg-[#ECEBFF]",
-              },
-              {
-                id: "plusIcon",
-                icon: <PlusIcon {...iconProps} color="fill-instillGrey50" />,
-                color: "bg-instillGrey05",
-              },
-            ]}
+            cubes={[]}
+            icon={<img src={"/images/connectors.svg"} alt="" sizes="" />}
           />
           <HowItWorksRow
             type="left"
-            title="Instill Model"
+            sectionTitle="Instill Model"
+            title=" Open-source models or deploy your own"
             description={
-              <div className="space-y-20">
-                <div className="h-[300px]">
-                  <div className="my-auto">
-                    <p className="font-['IBM Plex Sans'] mb-6 text-[30px] font-bold leading-7 text-[#E05243]">
-                      1. Our Models or Yours
+              <div>
+                <div className="flex h-[300px] items-center">
+                  <div className="my-auto space-y-4">
+                    <p>
+                      Model Deployment: Stable Diffusion, GPT, Llama 2, MPT,
+                      Falcon, CLIP, Mask RCNN, YOLOv7, YOLOv7 Pose, and more.
                     </p>
-
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                  </div>
-                </div>
-                <div className="h-[300px]">
-                  <div className="my-auto">
-                    <p className="font-['IBM Plex Sans'] mb-6 text-[30px] font-bold leading-7 text-[#E05243]">
-                      1. Our Models or Yours
+                    <p>
+                      AI Tasks: Text Generation, Text to Image, Audio
+                      Recognition, Image Classification, Object Detection,
+                      Keypoint Detection, OCR, Instance Segmentation, and
+                      Semantic Segmentation.
                     </p>
-
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                  </div>
-                </div>
-                <div className="h-[300px]">
-                  <div className="my-auto">
-                    <p className="font-['IBM Plex Sans'] mb-6 text-[30px] font-bold leading-7 text-[#E05243]">
-                      1. Our Models or Yours
-                    </p>
-
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
-                    <li className="font-['IBM Plex Sans'] text-[20px] leading-7">
-                      Point 1, get started with our open source projects to
-                    </li>
                   </div>
                 </div>
               </div>
@@ -147,19 +106,42 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             cubes={[]}
             icon={
               <div className="space-y-8">
-                <img src="/images/our-model.svg" alt="" />
-                <img src="/images/infrastructure-auto-scale.svg" alt="" />
-                <img src="/images/logging-and-monitoring.svg" alt="" />
+                <img src={"/images/models.svg"} alt="" sizes="" />
               </div>
             }
           />
           <HowItWorksRow
             type="right"
-            title="Instill SDKs for Scale"
-            description="VDP solves popular AI tasks including Image Classification, Object Detection, Keypoint Detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
+            title="Ready to use in Production"
+            description={
+              <div className="space-y-4">
+                <p>
+                  All the pipelines and models actually work and have
+                  production-ready APIs.
+                </p>
+                <p>Integrate with your system via Instill SDKs.</p>
+              </div>
+            }
             learnMoreLink="/docs/latest/model/ai-task"
             cubes={[]}
-            icon={<img src="/images/sdk-for-scale.svg" alt="" />}
+            icon={<img src="/images/sdk.svg" alt="" />}
+          />
+          <div className="my-10"></div>
+          <HowItWorksRow
+            type="left"
+            title="Leave the Infrastructure Worries Behind with Instill Cloud"
+            description={
+              <div className="space-y-4">
+                <p>
+                  With Instill Cloud, We handle the servers, dependencies, GPUs,
+                  batching, and everything else so you can focus on getting
+                  things done.
+                </p>
+              </div>
+            }
+            learnMoreLink="/docs/latest/model/ai-task"
+            cubes={[]}
+            icon={<img src="/images/instill-cloud.svg" alt="" />}
           />
         </div>
       </div>

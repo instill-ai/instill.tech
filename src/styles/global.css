@@ -138,13 +138,13 @@ table.mcnCaptionTopContent {
 
 /* Swiper slider css */
 
-.swiper {
+.jumbotron > .swiper {
   width: 800px !important;
   /* padding-top: 50px !important; */
   padding-bottom: 50px !important;
 }
 
-.swiper-slide {
+.jumbotron > .swiper > .swiper-wrapper > .swiper-slide {
   background-position: center !important;
   background-size: cover !important;
   width: 500px !important;

@@ -35,7 +35,7 @@ import { Llava13B } from "./Llava13B";
 
 export const Jumbotron = () => {
   return (
-    <>
+    <div className="jumbotron">
       <Swiper
         // autoplay={{
         //   delay: 3000,
@@ -102,6 +102,6 @@ export const Jumbotron = () => {
           </Button>
         </SwiperButtonNext>
       </Swiper>
-    </>
+    </div>
   );
 };

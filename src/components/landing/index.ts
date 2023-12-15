@@ -18,3 +18,4 @@ export type { CaseStudyProps } from "./CaseStudy";
 export { FaqHeader } from "./FaqHeader";
 export type { FaqHeaderProps } from "./FaqHeader";
 export * from "./jumbotron";
+export * from "./Social";
