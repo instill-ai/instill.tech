@@ -63,7 +63,7 @@ export const Nav = () => {
   const desktopView = (
     <React.Fragment>
       {enableAnnouncementBar && announcementBar}
-      <div className="mx-auto flex w-full flex-row px-[30px] py-5">
+      <div className="mx-auto flex w-full flex-row px-[30px] py-2.5">
         <Link href="/" className="my-auto mr-auto flex">
           <Logo variant="ColourLogomarkBlackType" width={158} />
         </Link>
