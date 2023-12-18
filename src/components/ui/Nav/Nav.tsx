@@ -45,16 +45,16 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
-      <DocsPageLink />
       <BlogPageLink />
-      <TutorialPageLink />
-      <CareerPageLink hiring={true} />
+      <DocsPageLink />
       <GithubTextLink />
-      <PricingPageLink />
+      {/* <TutorialPageLink /> */}
+      {/* <CareerPageLink hiring={true} /> */}
+      {/* <PricingPageLink /> */}
       <CommonCtaButton
         position="mr-auto"
         withArrow={false}
-        text="Try Instill Cloud Free"
+        text="Instill Hub"
         link="https://console.instill.tech"
       />
     </React.Fragment>
@@ -63,7 +63,7 @@ export const Nav = () => {
   const desktopView = (
     <React.Fragment>
       {enableAnnouncementBar && announcementBar}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-row px-[30px] py-5">
+      <div className="mx-auto flex w-full flex-row px-[30px] py-5">
         <Link href="/" className="my-auto mr-auto flex">
           <Logo variant="ColourLogomarkBlackType" width={158} />
         </Link>
