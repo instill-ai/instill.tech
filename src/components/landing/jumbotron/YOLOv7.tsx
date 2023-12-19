@@ -61,7 +61,7 @@ export const YOLOv7 = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] bg-white">
+    <div className="h-[660px] w-[500px] border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">YOLOv7</h3>
       </div>

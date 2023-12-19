@@ -158,3 +158,19 @@ table.mcnCaptionTopContent {
 .swiper-slide-next {
   filter: blur(1px);
 } */
+
+.jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(1n) {
+  top: 0;
+}
+
+.jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(2n) {
+  top: 10px; /* Adjust the negative top value to control the stacking */
+}
+
+.jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(3n) {
+  top: 20px; /* Adjust the negative top value to control the stacking */
+}
+
+.jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(4n) {
+  top: 30px; /* Adjust the negative top value to control the stacking */
+}

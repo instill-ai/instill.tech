@@ -5,6 +5,7 @@ import {
   AsyncIcon,
   GrpcIcon,
   HttpIcon,
+  Icons,
   ImageClassificationIcon,
   KeypointDetectionIcon,
   ObjectDetectionIcon,
@@ -13,6 +14,7 @@ import {
   PlusIcon,
   PythonIcon,
   PyTorchIcon,
+  Separator,
   SyncArrowsIcon,
   SyncIcon,
   TensorFlowIcon,
@@ -22,6 +24,7 @@ import {
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
 import { forwardRef } from "react";
+import Link from "next/link";
 
 export type HowItWorksProps = {
   marginBottom?: string;
@@ -124,7 +127,71 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             }
             learnMoreLink="/docs/latest/model/ai-task"
             cubes={[]}
-            icon={<img src="/images/sdk.svg" alt="" />}
+            icon={
+              <div className="inline-flex h-[432px] w-[570px] flex-col items-end justify-start shadow-instill-solid-20">
+                <div className="flex flex-col items-end justify-start gap-2">
+                  <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
+                    <div className="flex h-[69px] flex-col items-start justify-start self-stretch">
+                      <div className="inline-flex w-[400px] items-center justify-start gap-4 px-6 pt-6">
+                        <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                          <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                            Python
+                          </div>
+                        </div>
+                      </div>
+                      <Separator className="mt-5" />
+                    </div>
+                    <div className="flex h-[147px] flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
+                      <div className="flex h-[107px] flex-col items-start justify-start gap-5 self-stretch">
+                        <div className="font-sans text-4xl font-medium text-black">
+                          pip install instill-sdk
+                        </div>
+                        <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                          <Link
+                            href={"https://github.com/instill-ai/python-sdk"}
+                          >
+                            <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                              Go to library
+                              <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                            </div>
+                          </Link>
+                          <div className="relative h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
+                  <div className="flex h-[69px] flex-col items-start justify-start self-stretch">
+                    <div className="inline-flex w-[400px] items-center justify-start gap-4 px-6 pt-6">
+                      <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                        <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                          Typescript
+                        </div>
+                      </div>
+                    </div>
+                    <Separator className="mt-5" />
+                  </div>
+                  <div className="flex w-[570px] flex-col items-start justify-start gap-5 px-6 py-5">
+                    <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
+                      <div className="w-[522px] shrink grow basis-0 font-sans text-4xl font-medium text-black">
+                        npm i @instill-ai/typescript-sdk
+                      </div>
+                      <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                        <Link
+                          href={"https://github.com/instill-ai/typescript-sdk"}
+                        >
+                          <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                            <p className="my-auto">Go to library</p>
+                            <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
           />
           <div className="my-10"></div>
           <HowItWorksRow
