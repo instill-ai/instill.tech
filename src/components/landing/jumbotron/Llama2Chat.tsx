@@ -28,7 +28,13 @@ export const Llama2Chat = () => {
       const sticker: string = apiResponse.data.outputs[0].answer;
       setArticle(sticker);
     } else {
-      console.error("API Error:", apiResponse.error);
+      toast({
+        title: "Error!",
+        description: apiResponse.error,
+        size: "large",
+        variant: "alert-error",
+      });
+      setArticle("");
     }
     setTimeout(() => {
       setSpinner(false);

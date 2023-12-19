@@ -1,6 +1,6 @@
 import { LoadingSpin } from "@/components/ui";
 import yolov7 from "@/lib/jumbotron/yolov7";
-import { Button, Icons, Input } from "@instill-ai/design-system";
+import { Button, Icons, Input, toast } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import React, { useState } from "react";
 
@@ -22,10 +22,17 @@ export const YOLOv7 = () => {
     });
 
     if (apiResponse.status === "success") {
-      const result: string = apiResponse.data.outputs[0].result[0];
+      const result: string = apiResponse.data.outputs[0].draw;
       setArticle(result);
     } else {
       console.error("API Error:", apiResponse.error);
+      toast({
+        title: "Error!",
+        description: apiResponse.error,
+        size: "large",
+        variant: "alert-error",
+      });
+      setArticle("");
     }
     setTimeout(() => {
       setSpinner(false);
@@ -110,8 +117,8 @@ export const YOLOv7 = () => {
           ) : (
             <React.Fragment>
               {article ? (
-                <div className="jumbotron-file-uploader w-full overflow-y-auto">
-                  <pre>{JSON.stringify(article, null, 4)}</pre>
+                <div className="flex w-full flex-wrap">
+                  <img src={article} className="my-auto object-contain" />
                 </div>
               ) : (
                 <div className="w-full space-y-3">

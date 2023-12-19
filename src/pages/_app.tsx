@@ -33,6 +33,7 @@ import "@instill-ai/design-tokens/dist/theme/root.css";
 import "@instill-ai/design-tokens/dist/theme/light.css";
 import "@instill-ai/design-tokens/dist/theme/dark.css";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "@instill-ai/design-system";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -100,6 +101,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <InstillAICtxProvider>
         {getLayout(<Component {...pageProps} />)}
         <div id="zoomable-image" />
+        <Toaster />
       </InstillAICtxProvider>
     </MDXProvider>
   );

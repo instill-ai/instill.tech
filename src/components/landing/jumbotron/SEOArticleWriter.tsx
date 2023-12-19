@@ -1,6 +1,6 @@
 import { LoadingSpin } from "@/components/ui";
 import seoArticle from "@/lib/jumbotron/seoArticle";
-import { Button, Icons, Input } from "@instill-ai/design-system";
+import { Button, Icons, Input, toast } from "@instill-ai/design-system";
 import React, { useState } from "react";
 
 const defaultArticle = `
@@ -56,6 +56,13 @@ export const SEOArticleWriter = () => {
       setArticle(articleString);
     } else {
       console.error("API Error:", apiResponse.error);
+      toast({
+        title: "Error!",
+        description: apiResponse.error,
+        size: "large",
+        variant: "alert-error",
+      });
+      setArticle("");
     }
 
     setTimeout(() => {

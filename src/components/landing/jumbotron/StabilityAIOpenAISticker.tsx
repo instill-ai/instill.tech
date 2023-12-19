@@ -7,7 +7,6 @@ export const StabilityAIOpenAISticker = () => {
   const [spinner, setSpinner] = useState(false);
   const [article, setArticle] = useState<string>("");
   const [prompt, setPrompt] = useState<string>("Cat");
-  const [shape, setShape] = useState<string>("Square");
 
   const handleGenrate = async () => {
     setSpinner(true);
@@ -15,8 +14,7 @@ export const StabilityAIOpenAISticker = () => {
     const apiResponse = await stabilityAIOpenAISticker({
       inputs: [
         {
-          prompts: [prompt],
-          shape: shape,
+          sticker_prompt: prompt,
         },
       ],
     });
@@ -25,7 +23,13 @@ export const StabilityAIOpenAISticker = () => {
       const sticker: string = apiResponse.data.outputs[0].ai_gen_stickers[0];
       setArticle(sticker);
     } else {
-      console.error("API Error:", apiResponse.error);
+      toast({
+        title: "Error!",
+        description: apiResponse.error,
+        size: "large",
+        variant: "alert-error",
+      });
+      setArticle("");
     }
     setTimeout(() => {
       setSpinner(false);
@@ -38,6 +42,8 @@ export const StabilityAIOpenAISticker = () => {
         <p className="my-auto product-body-text-1-semibold">
           Stability AI + Open AI for Sticker
         </p>
+
+        {/* <ToastWithHook variant="alert-error" /> */}
       </div>
       <div className="px-3 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
@@ -56,15 +62,6 @@ export const StabilityAIOpenAISticker = () => {
                 onChange={(e) => setPrompt(e.target.value)}
               />
             </Input.Root>
-            <Input.Root className="w-full">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="Shape"
-                value={shape}
-                onChange={(e) => setShape(e.target.value)}
-              />
-            </Input.Root>
           </div>
           <div className="w-1/3">
             <Button
@@ -72,7 +69,7 @@ export const StabilityAIOpenAISticker = () => {
               size="md"
               className="my-auto w-full gap-x-2"
               onClick={() => handleGenrate()}
-              disabled={prompt && shape ? false : true}
+              disabled={prompt ? false : true}
             >
               Generate
               {spinner ? (
@@ -89,11 +86,16 @@ export const StabilityAIOpenAISticker = () => {
             <div>Generating...</div>
           ) : (
             <React.Fragment>
-              {article ? (
-                <img src={article} className="open-ai-stiker my-auto" />
-              ) : (
-                <img src="/images/cat.png" className="open-ai-stiker my-auto" />
-              )}
+              <div className="flex w-full flex-wrap">
+                {article ? (
+                  <img src={article} className="my-auto object-contain" />
+                ) : (
+                  <img
+                    src="/images/cat.png"
+                    className="open-ai-stiker mx-auto my-auto"
+                  />
+                )}
+              </div>
             </React.Fragment>
           )}
         </div>

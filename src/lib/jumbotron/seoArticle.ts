@@ -7,13 +7,14 @@ interface RequestData {
   }[];
 }
 
-const apiToken = "instill_sk_OwuGQ8RGL6ObzYsneAG9Mib1k6zi9Gmj"; // Replace with your actual API token
+const apiToken = ""; // Replace with your actual API token
 
 const seoArticle = async (
   requestData: RequestData
 ): Promise<{ status: string; data?: any; error?: string }> => {
   const apiUrl =
-    "https://api.instill.tech/vdp/v1alpha/users/namananand-instill-ai/pipelines/bloody-white-wildfowl/trigger";
+    process.env.NEXT_PUBLIC_API_URL +
+    "/vdp/v1beta/users/admin/pipelines/jumbotron-seo-article-writer/trigger";
 
   const headers = {
     "Content-Type": "application/json",
@@ -27,7 +28,17 @@ const seoArticle = async (
 
     return { status: "success", data: response.data };
   } catch (error: any) {
-    return { status: "error", error: error.message || error.toString() };
+    if (error.response && error.response.data && error.response.data.message) {
+      return {
+        status: "error",
+        error: error.response.data.message,
+      };
+    } else {
+      return {
+        status: "error",
+        error: error.toString(),
+      };
+    }
   }
 };
 

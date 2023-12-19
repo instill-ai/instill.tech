@@ -6,13 +6,14 @@ interface RequestData {
   }[];
 }
 
-const apiToken = "instill_sk_OwuGQ8RGL6ObzYsneAG9Mib1k6zi9Gmj"; // Replace with your actual API token
+const apiToken = ""; // Replace with your actual API token
 
 const yolov7 = async (
   requestData: RequestData
 ): Promise<{ status: string; data?: any; error?: string }> => {
   const apiUrl =
-    "https://api.instill.tech/vdp/v1alpha/users/namananand-instill-ai/pipelines/happy-yellow-ostrich/trigger";
+    process.env.NEXT_PUBLIC_API_URL +
+    "/vdp/v1beta/users/admin/pipelines/jumbotron-yolov7/trigger";
 
   const headers = {
     "Content-Type": "application/json",
@@ -26,7 +27,17 @@ const yolov7 = async (
 
     return { status: "success", data: response.data };
   } catch (error: any) {
-    return { status: "error", error: error.message || error.toString() };
+    if (error.response && error.response.data && error.response.data.message) {
+      return {
+        status: "error",
+        error: error.response.data.message,
+      };
+    } else {
+      return {
+        status: "error",
+        error: error.toString(),
+      };
+    }
   }
 };
 

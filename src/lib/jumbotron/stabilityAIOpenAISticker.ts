@@ -2,16 +2,16 @@ import axios, { AxiosResponse } from "axios";
 
 interface RequestData {
   inputs: {
-    prompts: string[];
-    shape: string;
+    sticker_prompt: string;
   }[];
 }
 
-const apiToken = "instill_sk_OwuGQ8RGL6ObzYsneAG9Mib1k6zi9Gmj"; // Replace with your actual API token
+const apiToken = ""; // Replace with your actual API token
 
 const stabilityAIOpenAISticker = async (requestData: RequestData) => {
   const apiUrl =
-    "https://api.instill.tech/vdp/v1alpha/users/namananand-instill-ai/pipelines/monthly-purple-swordtail/trigger";
+    process.env.NEXT_PUBLIC_API_URL +
+    "/vdp/v1beta/users/admin/pipelines/jumbotron-sticker-maker/trigger";
 
   const headers = {
     "Content-Type": "application/json",
@@ -25,7 +25,17 @@ const stabilityAIOpenAISticker = async (requestData: RequestData) => {
 
     return { status: "success", data: response.data };
   } catch (error: any) {
-    return { status: "error", error: error.message || error.toString() };
+    if (error.response && error.response.data && error.response.data.message) {
+      return {
+        status: "error",
+        error: error.response.data.message,
+      };
+    } else {
+      return {
+        status: "error",
+        error: error.toString(),
+      };
+    }
   }
 };
 

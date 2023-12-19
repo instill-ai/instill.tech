@@ -22,13 +22,6 @@ export const Jumbotron = () => {
   return (
     <div className="jumbotron">
       <Swiper
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        //   pauseOnMouseEnter: true,
-        // }}
-        // speed={500}
-        // loop={false}
         initialSlide={0}
         effect={"creative"}
         grabCursor={true}

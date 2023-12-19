@@ -156,6 +156,7 @@ table.mcnCaptionTopContent {
 
 .open-ai-stiker {
   height: 400px;
+  overflow-x: auto;
 }
 
 .jumbotron-file-uploader {
@@ -218,4 +219,8 @@ table.mcnCaptionTopContent {
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(4n) {
   top: 30px; /* Adjust the negative top value to control the stacking */
+}
+
+.object-contain {
+  object-fit: contain;
 }
