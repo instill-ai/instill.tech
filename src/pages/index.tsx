@@ -198,8 +198,8 @@ const HomePage: FC<HomePageProps> & {
           <div ref={vdpIsInViewRef} className={vdpIsInView ? "my-20" : "mb-20"}>
             {vdpIsInView ? (
               <div className="mx-auto w-full px-4 xl:px-0" ref={vdpRef}>
-                <div className="flex flex-row">
-                  <div className={cn("flex w-2/5 flex-col")}>
+                <div className="flex flex-col xl:flex-row">
+                  <div className={cn("flex w-full flex-col xl:w-2/5")}>
                     <div className="mb-10 flex flex-col">
                       <SectionLabel
                         text="VDP IN ACTION"
@@ -307,7 +307,7 @@ const HomePage: FC<HomePageProps> & {
                       </div>
                     </div>
                   </div>
-                  <div className="w-3/5">
+                  <div className="mt-10 w-full xl:mt-0 xl:w-3/5">
                     <Jumbotron />
                   </div>
                 </div>

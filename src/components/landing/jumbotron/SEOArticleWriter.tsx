@@ -64,7 +64,7 @@ export const SEOArticleWriter = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] border bg-white">
+    <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">
           SEO article writer
@@ -115,11 +115,11 @@ export const SEOArticleWriter = () => {
           </div>
         </div>
 
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="open-ai-stiker flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="h-[400px] w-full overflow-y-auto">
+            <div className="open-ai-stiker w-full overflow-y-auto">
               <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
                 {article ? article : defaultArticle}
               </pre>

@@ -41,14 +41,11 @@ export const Jumbotron = () => {
           <Button
             variant="secondaryGrey"
             size="lg"
-            className="absolute left-32 top-96 z-10 rounded-[50px] !p-3"
+            className="absolute top-96 z-10 hidden rounded-[50px] !p-3 xl:left-32 xl:block"
           >
             <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
           </Button>
         </SwiperButtonPrev>
-        {/* <SwiperSlide>
-          <Llava13B />
-        </SwiperSlide> */}
 
         <SwiperSlide className="shadow-lg">
           <StabilityAIOpenAISticker />
@@ -66,7 +63,7 @@ export const Jumbotron = () => {
           <Button
             variant="secondaryGrey"
             size="lg"
-            className="absolute right-32 top-96 z-10 rounded-[50px] !p-3"
+            className="absolute top-96 z-10 hidden rounded-[50px] !p-3 xl:right-32 xl:block"
           >
             <Icons.ChevronRight className="h-6 w-6 stroke-slate-500" />
           </Button>

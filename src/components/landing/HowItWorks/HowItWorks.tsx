@@ -128,11 +128,11 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             learnMoreLink="/docs/latest/model/ai-task"
             cubes={[]}
             icon={
-              <div className="inline-flex h-[432px] w-[570px] flex-col items-end justify-start shadow-instill-solid-20">
+              <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">
                 <div className="flex flex-col items-end justify-start gap-2">
                   <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
-                    <div className="flex h-[69px] flex-col items-start justify-start self-stretch">
-                      <div className="inline-flex w-[400px] items-center justify-start gap-4 px-6 pt-6">
+                    <div className="flex flex-col items-start justify-start self-stretch">
+                      <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
                         <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
                           <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
                             Python
@@ -141,9 +141,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                       </div>
                       <Separator className="mt-5" />
                     </div>
-                    <div className="flex h-[147px] flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
-                      <div className="flex h-[107px] flex-col items-start justify-start gap-5 self-stretch">
-                        <div className="font-sans text-4xl font-medium text-black">
+                    <div className="flex flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
+                      <div className="flex flex-col items-start justify-start gap-5 self-stretch">
+                        <div className="font-sans text-xl font-medium text-black xl:text-4xl">
                           pip install instill-sdk
                         </div>
                         <div className="inline-flex items-center justify-center gap-2 rounded py-3">
@@ -162,8 +162,8 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
-                  <div className="flex h-[69px] flex-col items-start justify-start self-stretch">
-                    <div className="inline-flex w-[400px] items-center justify-start gap-4 px-6 pt-6">
+                  <div className="flex  flex-col items-start justify-start self-stretch">
+                    <div className="inline-flex  items-center justify-start gap-4 px-6 pt-6">
                       <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
                         <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
                           Typescript
@@ -172,9 +172,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     </div>
                     <Separator className="mt-5" />
                   </div>
-                  <div className="flex w-[570px] flex-col items-start justify-start gap-5 px-6 py-5">
+                  <div className="flex flex-col items-start justify-start gap-5 px-6 py-5">
                     <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
-                      <div className="w-[522px] shrink grow basis-0 font-sans text-4xl font-medium text-black">
+                      <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-4xl">
                         npm i @instill-ai/typescript-sdk
                       </div>
                       <div className="inline-flex items-center justify-center gap-2 rounded py-3">

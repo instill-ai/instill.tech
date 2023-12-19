@@ -33,7 +33,7 @@ export const StabilityAIOpenAISticker = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] border bg-white">
+    <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <p className="my-auto product-body-text-1-semibold">
           Stability AI + Open AI for Sticker
@@ -84,15 +84,15 @@ export const StabilityAIOpenAISticker = () => {
           </div>
         </div>
 
-        <div className="flex h-[400px] items-center justify-center">
+        <div className="open-ai-stiker flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
             <React.Fragment>
               {article ? (
-                <img src={article} className="my-auto h-[400px]" />
+                <img src={article} className="open-ai-stiker my-auto" />
               ) : (
-                <img src="/images/cat.png" className="my-auto h-[400px]" />
+                <img src="/images/cat.png" className="open-ai-stiker my-auto" />
               )}
             </React.Fragment>
           )}

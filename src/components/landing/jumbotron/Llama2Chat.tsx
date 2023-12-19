@@ -64,7 +64,7 @@ export const Llama2Chat = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] border bg-white">
+    <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">Llama2-7B-chat</h3>
       </div>
@@ -120,20 +120,20 @@ export const Llama2Chat = () => {
           </div>
         </div>
 
-        <div className="flex h-[450px] items-center justify-center">
+        <div className="jumbotron-file-uploader flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
             <React.Fragment>
               {article ? (
-                <div className="min-h-[450px] w-full overflow-y-auto">
+                <div className="jumbotron-file-uploader w-full overflow-y-auto">
                   <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
                     {article}
                   </pre>
                 </div>
               ) : (
                 <div className="w-full space-y-3">
-                  <div className="my-auto h-[450px] cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
                     {imagePreview && (
                       <Icons.Trash01
                         onClick={() => handleDelete()}

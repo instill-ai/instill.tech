@@ -138,9 +138,9 @@ table.mcnCaptionTopContent {
 
 /* Swiper slider css */
 
+/* Default styles for width 800px */
 .jumbotron > .swiper {
   width: 800px !important;
-  /* padding-top: 50px !important; */
   padding-bottom: 50px !important;
 }
 
@@ -148,7 +148,52 @@ table.mcnCaptionTopContent {
   background-position: center !important;
   background-size: cover !important;
   width: 500px !important;
-  height: 660px !important;
+}
+
+.jumbotron-card {
+  height: 660px;
+}
+
+.open-ai-stiker {
+  height: 400px;
+}
+
+.jumbotron-file-uploader {
+  height: 450px;
+}
+
+/* Media query for width 600px */
+@media (max-width: 600px) {
+  .jumbotron > .swiper {
+    width: 400px !important;
+  }
+
+  .jumbotron > .swiper > .swiper-wrapper > .swiper-slide {
+    width: 400px !important;
+  }
+}
+
+/* Media query for width 400px */
+@media (max-width: 400px) {
+  .jumbotron > .swiper {
+    width: 300px !important;
+  }
+
+  .jumbotron > .swiper > .swiper-wrapper > .swiper-slide {
+    width: 300px !important; /* You can adjust the width accordingly */
+  }
+
+  .jumbotron-card {
+    height: 560px;
+  }
+
+  .open-ai-stiker {
+    height: 300px;
+  }
+
+  .jumbotron-file-uploader {
+    height: 350px;
+  }
 }
 
 /* .swiper-slide-prev {

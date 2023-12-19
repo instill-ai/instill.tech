@@ -61,7 +61,7 @@ export const YOLOv7 = () => {
   };
 
   return (
-    <div className="h-[660px] w-[500px] border bg-white">
+    <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">YOLOv7</h3>
       </div>
@@ -104,18 +104,18 @@ export const YOLOv7 = () => {
           )}
         </div>
 
-        <div className="flex h-[450px] items-center justify-center">
+        <div className="jumbotron-file-uploader flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
             <React.Fragment>
               {article ? (
-                <div className="min-h-[450px] w-full overflow-y-auto">
+                <div className="jumbotron-file-uploader w-full overflow-y-auto">
                   <pre>{JSON.stringify(article, null, 4)}</pre>
                 </div>
               ) : (
                 <div className="w-full space-y-3">
-                  <div className="my-auto h-[450px] cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
                     {imagePreview && (
                       <Icons.Trash01
                         onClick={() => handleDelete()}
