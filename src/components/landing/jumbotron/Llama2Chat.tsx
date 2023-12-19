@@ -55,11 +55,11 @@ export const Llama2Chat = () => {
   const handleDelete = () => {
     setImagePreview(null);
     // Reset file input value to allow selecting the same file again
-    const fileInput = document.getElementById(
-      "fileInput"
+    const lamaChatFileInput = document.getElementById(
+      "lamaChatFileInput"
     ) as HTMLInputElement | null;
-    if (fileInput) {
-      fileInput.value = ""; // This resets the input value
+    if (lamaChatFileInput) {
+      lamaChatFileInput.value = ""; // This resets the input value
     }
   };
 
@@ -151,7 +151,7 @@ export const Llama2Chat = () => {
                       </div>
                     ) : (
                       <label
-                        htmlFor="fileInput"
+                        htmlFor="lamaChatFileInput"
                         className="flex cursor-pointer flex-col"
                       >
                         <div className="cursor-pointer space-y-4 px-10 py-10">
@@ -166,7 +166,7 @@ export const Llama2Chat = () => {
                       type="file"
                       accept="image/*"
                       className="hidden"
-                      id="fileInput"
+                      id="lamaChatFileInput"
                       onChange={(e) => handleFileChange(e)}
                     />
                   </div>
