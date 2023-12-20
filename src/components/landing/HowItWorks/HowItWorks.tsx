@@ -48,16 +48,16 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             type="left"
             title="Instill VDP"
             description={
-              <div>
-                <li>Connect to your unstructured data effortlessly.</li>
-                <li className="mb-4">
+              <div className="space-y-4">
+                <p>Connect to your unstructured data effortlessly.</p>
+                <p>
                   Build pipelines to power versatile AI features in your
                   applications.
-                </li>
-                <li>
+                </p>
+                <p>
                   Test pipelines visually with a single click to see output at
                   each step.
-                </li>
+                </p>
               </div>
             }
             learnMoreLink="/docs/latest/vdp/data-connector"
