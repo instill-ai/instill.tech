@@ -19,3 +19,4 @@ export { FaqHeader } from "./FaqHeader";
 export type { FaqHeaderProps } from "./FaqHeader";
 export * from "./jumbotron";
 export * from "./Social";
+export * from "./VDPInAction";

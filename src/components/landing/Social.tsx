@@ -16,29 +16,104 @@ export default function Social() {
           disableOnInteraction: false,
         }}
       >
-        <SwiperSlide className="!w-full">
-          <img
-            src={"/images/social-1.svg"}
-            alt=""
-            sizes=""
-            className="w-full"
-          />
+        <SwiperSlide className="!w-full rounded bg-[#F9FAFB]">
+          <div className="py-16">
+            <div className="text-center">
+              <p className="pb-8 font-sans text-[24px] font-normal leading-9 text-gray-800 text-opacity-80">
+                Trusted by
+              </p>
+            </div>
+            <div className="flex justify-center gap-x-20">
+              <img
+                src={"/images/social/oxford.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/acadamia.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/cheng-kung-university.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+            </div>
+          </div>
         </SwiperSlide>
-        <SwiperSlide className="!w-full">
-          <img
-            src={"/images/social-2.svg"}
-            alt=""
-            sizes=""
-            className="w-full"
-          />
+        <SwiperSlide className="!w-full rounded bg-[#F9FAFB]">
+          <div className="py-16">
+            <div className="text-center">
+              <p className="pb-8 font-sans text-[24px] font-normal leading-9 text-gray-800 text-opacity-80">
+                Partnerships
+              </p>
+            </div>
+            <div className="flex justify-center gap-x-20">
+              <img
+                src={"/images/social/nvidia.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/huggingface.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/number-protocal.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/google.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+            </div>
+          </div>
         </SwiperSlide>
-        <SwiperSlide className="!w-full">
-          <img
-            src={"/images/social-3.svg"}
-            alt=""
-            sizes=""
-            className="w-full"
-          />
+        <SwiperSlide className="!w-full rounded bg-[#F9FAFB]">
+          <div className="py-16">
+            <div className="text-center">
+              <p className="pb-8 font-sans text-[24px] font-normal leading-9 text-gray-800 text-opacity-80">
+                Backed by
+              </p>
+            </div>
+            <div className="flex justify-center gap-x-20">
+              <img
+                src={"/images/social/rtp-global.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/lunar-ventures.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/hive-vertures.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+              <img
+                src={"/images/social/venture.svg"}
+                alt=""
+                sizes=""
+                className="my-auto h-16"
+              />
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>
