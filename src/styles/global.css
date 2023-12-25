@@ -207,20 +207,32 @@ table.mcnCaptionTopContent {
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(1n) {
   top: 0;
+  transform: translate3d(calc(0px), 0px, 0px) rotateZ(0deg) scale(1) !important;
 }
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(2n) {
   top: 10px; /* Adjust the negative top value to control the stacking */
+  transform: translate3d(calc(-500px), 0px, 0px) rotateZ(0deg) scale(1) !important;
 }
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(3n) {
   top: 20px; /* Adjust the negative top value to control the stacking */
+  transform: translate3d(calc(-1000px), 0px, 0px) rotateZ(0deg) scale(1) !important;
 }
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(4n) {
   top: 30px; /* Adjust the negative top value to control the stacking */
+  transform: translate3d(calc(-1500px), 0px, 0px) rotateZ(0deg) scale(1) !important;
 }
 
 .object-contain {
   object-fit: contain;
+}
+
+.jumbotron
+  > .swiper
+  > .swiper-wrapper
+  > .swiper-slide
+  > .swiper-slide-shadow-cards {
+  transition-duration: 1500ms !important;
 }

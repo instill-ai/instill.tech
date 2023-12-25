@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-creative";
 
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, EffectCards } from "swiper/modules";
 import { Button, Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
 import { SwiperButtonNext } from "./SwiperButtonNext";
@@ -16,18 +16,17 @@ import { Llama2Chat } from "./Llama2Chat";
 import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 import { YOLOv7 } from "./YOLOv7";
 import { SEOArticleWriter } from "./SEOArticleWriter";
-import { EffectCreative } from "swiper/modules";
 
 export const Jumbotron = () => {
   return (
     <div className="jumbotron">
       <Swiper
         initialSlide={0}
-        effect={"creative"}
+        effect={"cards"}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        modules={[EffectCreative, Pagination, Navigation]}
+        modules={[EffectCards, Pagination, Navigation]}
         className="mySwiper"
       >
         <SwiperButtonPrev>
