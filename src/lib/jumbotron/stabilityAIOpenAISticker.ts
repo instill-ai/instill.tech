@@ -6,7 +6,7 @@ interface RequestData {
   }[];
 }
 
-const apiToken = "instill_sk_lHvdxR1kt7znbaYmJbIxckTBEvZEFBQk"; // Replace with your actual API token
+const apiToken = ""; // Replace with your actual API token
 
 const stabilityAIOpenAISticker = async (requestData: RequestData) => {
   const apiUrl =
