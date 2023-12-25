@@ -8,14 +8,12 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
   return (
     <div
       className={cn(
-        "text-left font-sans text-lg font-light text-instillGrey90",
+        "mb-10 text-left font-sans text-lg font-light text-instillGrey90",
         marginBottom
       )}
     >
-      Meet Versatile Data Pipeline (VDP), the future for unstructured data
-      infrastructure, where developers won’t need to build their own data
-      connectors, high-maintenance model serving platform or data pipeline
-      automation tool.
+      Meet Instill Cloud, a no-code/low-code platform to build AI workflows for
+      unstructured data 10x faster.
     </div>
   );
 };

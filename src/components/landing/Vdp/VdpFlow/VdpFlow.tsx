@@ -62,8 +62,9 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
       ref={containerRef}
     >
       <VdpArrowBlock
-        title="Extract"
-        description="Extract unstructured data from pre-built data sources"
+        title="Chatbots"
+        titleClass="text-[#DEC800]"
+        description="Knowledge Chatbots, Personal Assistants, RAG, and more"
         icon={
           <Image
             src="/images/vdp-flow-source.svg"
@@ -77,10 +78,12 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         arrowWidth={arrowWidth}
         color="#FFFCE3"
         zIndex={20}
+        padding="bg-[#FFFCE3]"
       />
       <VdpArrowBlock
-        title="Transform"
-        description="Transform it into meaningful data representations by AI"
+        title="Vision + LLM Apps"
+        titleClass="text-[#02D12F]"
+        description="Vision Assistants, Text to Image, OCR, Classification, and more"
         icon={
           <Image
             src="/images/vdp-flow-kernel.svg"
@@ -94,11 +97,12 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         arrowWidth={arrowWidth}
         color="#ECFFF0"
         zIndex={10}
-        padding="xl:pl-[85px]"
+        padding="bg-[#F3FFF8]"
       />
       <VdpArrowBlock
-        title="load"
-        description="Load the transformed data into wherever you want"
+        title="Audio + LLM Apps"
+        titleClass="text-[#0268B5]"
+        description="Text Generation, Speech Recognition, Text to Speech, and more"
         icon={
           <Image
             src="/images/vdp-flow-destination.svg"
@@ -111,7 +115,7 @@ export const VdpFlow = ({ marginBottom }: VdpFlowProps) => {
         arrowWidth={arrowWidth}
         color="#F4FBFF"
         zIndex={5}
-        padding="xl:pl-[85px]"
+        padding="bg-[#F4FBFF]"
       />
     </div>
   );

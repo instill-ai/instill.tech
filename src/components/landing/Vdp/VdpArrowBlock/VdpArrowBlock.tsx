@@ -12,6 +12,7 @@ export type VdpArrowBlockProps = {
   zIndex: number;
   width: number;
   arrowWidth: number;
+  titleClass: string;
 };
 
 export const VdpArrowBlock = ({
@@ -23,10 +24,11 @@ export const VdpArrowBlock = ({
   zIndex,
   width,
   arrowWidth,
+  titleClass,
 }: VdpArrowBlockProps) => {
   return (
     <React.Fragment>
-      <style jsx>
+      {/* <style jsx>
         {`
           .arrow-block-${title} {
             position: relative;
@@ -47,19 +49,26 @@ export const VdpArrowBlock = ({
             z-index: ${zIndex};
         
         `}
-      </style>
+      </style> */}
       <div
         className={cn(
-          `arrow-block-${title} flex flex-row gap-x-[30px] py-5 pl-5`,
+          `arrow-block-${title} flex flex-row gap-x-[30px] px-7 py-5`,
           padding
         )}
       >
         {icon}
         <div className="my-auto flex flex-col">
-          <div className="font-instill text-2xl font-normal uppercase">
+          <div
+            className={cn(
+              "font-['Roboto'] text-2xl font-normal uppercase leading-normal",
+              titleClass
+            )}
+          >
             {title}
           </div>
-          <div className="font-sans text-lg font-normal">{description}</div>
+          <div className="font-['IBM Plex Sans'] text-[18px] leading-normal text-[#2B2B2B]">
+            {description}
+          </div>
         </div>
       </div>
     </React.Fragment>

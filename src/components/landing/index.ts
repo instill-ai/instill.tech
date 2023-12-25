@@ -1,6 +1,7 @@
 export { Hero } from "./Hero";
 export type { HeroProps } from "./Hero";
 export { InstillCloud } from "./InstillCloud";
+export { InstillHero } from "./InstillHero";
 export { Community } from "./Community";
 export { Faq } from "./Faq/Faq";
 export type { FaqProps } from "./Faq/Faq";
@@ -16,3 +17,6 @@ export { CaseStudy } from "./CaseStudy";
 export type { CaseStudyProps } from "./CaseStudy";
 export { FaqHeader } from "./FaqHeader";
 export type { FaqHeaderProps } from "./FaqHeader";
+export * from "./jumbotron";
+export * from "./Social";
+export * from "./VDPInAction";
