@@ -2,6 +2,7 @@ import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import cn from "clsx";
 import {
+  BuildAppsInAction,
   CaseStudyProps,
   FaqHeaderProps,
   FaqProps,
@@ -16,6 +17,7 @@ import {
   PageHead,
   SectionHeader,
   SectionLabel,
+  StayInTheLoop,
 } from "@/components/ui";
 import { Icons, Tag, getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
@@ -24,33 +26,17 @@ import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
 import { ExploreInstillHub } from "@/components/landing/ExploreInstillHub";
 import Social from "@/components/landing/Social";
-import VDPInAction from "@/components/landing/VDPInAction";
-// to detect language and automatically redirect to the approprate/[locale] page
 
 const FaqHeader = dynamic<FaqHeaderProps>(() =>
   import("@/components/landing").then((mod) => mod.FaqHeader)
-);
-
-const CaseStudy = dynamic<CaseStudyProps>(
-  () => import("@/components/landing").then((mod) => mod.CaseStudy),
-  { ssr: false }
 );
 
 const Faq = dynamic<FaqProps>(() =>
   import("@/components/landing").then((mod) => mod.Faq)
 );
 
-const NoCodeInterface = dynamic<NoCodeInterfaceProps>(() =>
-  import("@/components/landing").then((mod) => mod.NoCodeInterface)
-);
-
 const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
-);
-
-/* eslint-disable-next-line @typescript-eslint/ban-types */
-const InstillCloud = dynamic<{}>(() =>
-  import("@/components/landing").then((mod) => mod.InstillCloud)
 );
 
 /* eslint-disable-next-line @typescript-eslint/ban-types */
@@ -145,31 +131,6 @@ const HomePage: FC<HomePageProps> & {
   // Implement Lazy load
   const rootMargin = "100px 0px 0px 0px";
 
-  const [vdpIsInViewRef, vdpIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
-  const [howItWorksIsInViewRef, howItWorksIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
-  const [noCodeInterfaceIsInViewRef, noCodeInterfaceIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
-  const [communityIsInViewRef, communityIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin: "0px",
-  });
-
-  const [caseStudyIsInViewRef, caseStudyIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
   const [codeShowcaseIsInViewRef, codeShowcaseIsInView] = useInView({
     triggerOnce: true,
     rootMargin,
@@ -195,38 +156,18 @@ const HomePage: FC<HomePageProps> & {
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
+          <Social />
+        </div>
 
-          <div ref={vdpIsInViewRef} className={vdpIsInView ? "my-20" : "mb-20"}>
-            {vdpIsInView ? <VDPInAction ref={vdpRef} /> : null}
-          </div>
-
-          <NoCodeInterface />
-
-          <div>
-            <HowItWorks />
-          </div>
-
-          <div className="my-10 flex flex-col space-y-10">
-            <div className="mx-auto">
-              <p className="font-mono text-[36px] font-semibold">
-                Want to self-host?
-              </p>
-            </div>
-            <div className="mx-auto">
-              <p>
-                You can self-host Instill VDP and Instill model via Instill
-                Core. It provides an open-source AI infrastructure tailored for
-                unstructured data, enabling versatile AI application
-                development.
-              </p>
-            </div>
-
-            <div className="mx-auto">
-              <CommonCtaButton withArrow={true} link={"/"} text="Learn more" />
-            </div>
+        <div className="bg-instillGrey90">
+          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}>
+            <BuildAppsInAction />
           </div>
         </div>
 
+        <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
+          <HowItWorks />
+        </div>
         <div className="bg-instillGrey90">
           <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}>
             <Community />
@@ -234,20 +175,35 @@ const HomePage: FC<HomePageProps> & {
         </div>
 
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          <Social />
-        </div>
-        <div
-          ref={faqIsInViewRef}
-          className="-mt-0.5 mb-20 flex w-full flex-col"
-        >
-          {codeShowcaseIsInView ? (
-            <>
-              <FaqHeader />
-              <div className="mx-auto flex max-w-[1127px] flex-col px-4 xl:px-0">
-                <Faq />
+          <div className="my-10 flex flex-row">
+            <div className="w-[45%]">
+              <img src={"/images/self-host-cube.svg"} alt="" />
+            </div>
+
+            <div className="w-[55%] space-y-10">
+              <div className="mx-auto">
+                <p className="font-mono text-[36px] font-semibold">
+                  Want to self-host?
+                </p>
               </div>
-            </>
-          ) : null}
+              <div className="mx-auto">
+                <p>
+                  You can self-host Instill VDP and Instill model via Instill
+                  Core. It provides an open-source AI infrastructure tailored
+                  for unstructured data, enabling versatile AI application
+                  development.
+                </p>
+              </div>
+
+              <div className="mx-auto">
+                <CommonCtaButton
+                  withArrow={true}
+                  link={"/"}
+                  text="Self-host Instill Core"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

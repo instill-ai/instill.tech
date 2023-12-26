@@ -1,8 +1,10 @@
 import cn from "clsx";
 import {
   AirbyteIcon,
+  ArrowRightIcon,
   AsyncArrowsIcon,
   AsyncIcon,
+  GitHubIcon,
   GrpcIcon,
   HttpIcon,
   Icons,
@@ -15,6 +17,7 @@ import {
   PythonIcon,
   PyTorchIcon,
   Separator,
+  SolidButton,
   SyncArrowsIcon,
   SyncIcon,
   TensorFlowIcon,
@@ -23,8 +26,9 @@ import {
 
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 
 export type HowItWorksProps = {
   marginBottom?: string;
@@ -32,11 +36,12 @@ export type HowItWorksProps = {
 
 export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
+    const router = useRouter();
     const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
         <div className="mb-20 flex flex-col gap-y-2.5">
-          <SectionLabel text="Open to integrations" position="mr-auto" />
+          <SectionLabel text="What makes us different" position="mr-auto" />
           <SectionHeader
             header="Designed for Flexibility and Scale."
             headerWidth="w-full"
@@ -46,83 +51,122 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         <div className="flex flex-col gap-y-20">
           <HowItWorksRow
             type="left"
-            title="Instill VDP"
+            title="Drag-and-Drop Assembly with Pre-Built Components"
             description={
               <div className="space-y-4">
-                <p>Connect to your unstructured data effortlessly.</p>
                 <p>
-                  Build pipelines to power versatile AI features in your
-                  applications.
-                </p>
-                <p>
-                  Test pipelines visually with a single click to see output at
-                  each step.
+                  We offer open-source, pre-built components for data
+                  extraction, AI transformation, third-party app integration,
+                  and flexible data manipulation. Assemble customized pipelines
+                  for your use case with a drag-and-drop interface.
                 </p>
               </div>
             }
-            learnMoreLink="/docs/latest/vdp/data-connector"
-            icon={<img src={"./images/console-flow.svg"} />}
+            learnMoreLink={null}
+            icon={<img src={"./images/drag-and-drop-component.svg"} />}
             cubes={[]}
+            buttons={
+              <SolidButton
+                type="button"
+                color="primaryLight"
+                startIcon={
+                  <GitHubIcon
+                    width="w-[28px]"
+                    height="h-[28px]"
+                    color="fill-instillNeonBlue"
+                    position="my-auto"
+                  />
+                }
+                padding="px-5 py-2.5"
+                itemGapX="gap-x-5"
+                onClickHandler={() =>
+                  router.push("/", undefined, { scroll: false })
+                }
+                hoveredShadow="hover:shadow-instill-solid-5"
+                position="mt-auto"
+              >
+                <p className="text-lg font-normal">Star Instill VDP</p>
+              </SolidButton>
+            }
           />
           <HowItWorksRow
             type="right"
-            title="Pre-built Connectors and Operators"
+            title="Transform your apps with open-source or your own AI models"
             description={
               <div className="space-y-4">
                 <p>
-                  To extract and load data: Pinecone, BigQuery, Postgres, Google
-                  Drive, Google Sheets, RESP API connectors and more.
-                </p>
-                <p>
-                  To transform data: Text Operator to parse unstructured data in
-                  various document types, and many more.
+                  Import and deploy AI models with ease, dynamically generating
+                  inference API endpoints that seamlessly integrate into your
+                  pipelines. Customize LLMs, Diffusion and other models to match
+                  your data and use cases, ensuring exceptional results with
+                  precision.
                 </p>
               </div>
             }
-            learnMoreLink="/docs/latest/vdp/data-connector"
+            learnMoreLink={null}
             cubes={[]}
-            icon={<img src={"/images/connectors.svg"} alt="" sizes="" />}
+            icon={<img src={"/images/models.svg"} alt="" sizes="" />}
+            buttons={
+              <div className="flex flex-row gap-x-1">
+                <SolidButton
+                  type="button"
+                  color="primaryLight"
+                  startIcon={
+                    <GitHubIcon
+                      width="w-[28px]"
+                      height="h-[28px]"
+                      color="fill-instillNeonBlue"
+                      position="my-auto"
+                    />
+                  }
+                  padding="px-5 py-2.5"
+                  itemGapX="gap-x-5"
+                  onClickHandler={() =>
+                    router.push("/", undefined, { scroll: false })
+                  }
+                  hoveredShadow="hover:shadow-instill-solid-5"
+                  position="mt-auto mr-auto"
+                >
+                  <p className="text-lg font-normal">Star Instill VDP</p>
+                </SolidButton>
+                <SolidButton
+                  type="button"
+                  color="primaryLight"
+                  endIcon={
+                    <ArrowRightIcon
+                      width="w-[28px]"
+                      height="h-[28px]"
+                      color="fill-instillNeonBlue"
+                      position="my-auto"
+                    />
+                  }
+                  padding="px-5 py-2.5 !bg-white"
+                  itemGapX="gap-x-5"
+                  onClickHandler={() =>
+                    router.push("/", undefined, { scroll: false })
+                  }
+                  hoveredShadow="hover:shadow-instill-solid-5"
+                  position="mt-auto mr-auto"
+                >
+                  <p className="text-lg font-normal">Access on Instill Cloud</p>
+                </SolidButton>
+              </div>
+            }
           />
+
           <HowItWorksRow
             type="left"
-            sectionTitle="Instill Model"
-            title=" Open-source models or deploy your own"
-            description={
-              <div>
-                <div className="flex h-[300px] items-center">
-                  <div className="my-auto space-y-4">
-                    <p>
-                      Model Deployment: Stable Diffusion, GPT, Llama 2, MPT,
-                      Falcon, CLIP, Mask RCNN, YOLOv7, YOLOv7 Pose, and more.
-                    </p>
-                    <p>
-                      AI Tasks: Text Generation, Text to Image, Audio
-                      Recognition, Image Classification, Object Detection,
-                      Keypoint Detection, OCR, Instance Segmentation, and
-                      Semantic Segmentation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            }
-            learnMoreLink="/docs/latest/model/import"
-            cubes={[]}
-            icon={
-              <div className="space-y-8">
-                <img src={"/images/models.svg"} alt="" sizes="" />
-              </div>
-            }
-          />
-          <HowItWorksRow
-            type="right"
-            title="Ready to use in Production"
+            title="Forget about Infrastructure"
             description={
               <div className="space-y-4">
                 <p>
-                  All the pipelines and models actually work and have
-                  production-ready APIs.
+                  Pipelines and models are production-ready with Instill Cloud
+                  managing servers, dependencies, GPUs, and more.
                 </p>
-                <p>Integrate with your system via Instill SDKs.</p>
+                <p>
+                  Our Instill SDKs offer seamless integration for enhanced
+                  performance in your systems.
+                </p>
               </div>
             }
             learnMoreLink="/docs/latest/model/ai-task"
@@ -192,23 +236,6 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </div>
               </div>
             }
-          />
-          <div className="my-10"></div>
-          <HowItWorksRow
-            type="left"
-            title="Leave the Infrastructure Worries Behind with Instill Cloud"
-            description={
-              <div className="space-y-4">
-                <p>
-                  With Instill Cloud, We handle the servers, dependencies, GPUs,
-                  batching, and everything else so you can focus on getting
-                  things done.
-                </p>
-              </div>
-            }
-            learnMoreLink="/docs/latest/model/ai-task"
-            cubes={[]}
-            icon={<img src="/images/instill-cloud.svg" alt="" />}
           />
         </div>
       </div>

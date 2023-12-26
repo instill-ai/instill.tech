@@ -12,7 +12,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
         marginBottom
       )}
     >
-      The backbone for all your ai needs
+      The backbone for Versatile ai
     </h1>
   );
 };

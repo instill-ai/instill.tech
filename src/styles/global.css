@@ -140,7 +140,7 @@ table.mcnCaptionTopContent {
 
 /* Default styles for width 800px */
 .jumbotron > .swiper {
-  width: 800px !important;
+  width: 600px !important;
   padding-bottom: 50px !important;
 }
 

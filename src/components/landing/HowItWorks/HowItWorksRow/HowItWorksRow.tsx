@@ -3,11 +3,13 @@ import { ReactElement } from "react";
 
 import { CommonCtaButton, NumberCube, SectionLabel } from "@/components/ui";
 import { IconsCubeProps, IconsCube } from "../IconsCube";
+import { Nullable } from "vitest";
 
 export type HowItWorksRowProps = {
   title: string;
   description: ReactElement | string;
-  learnMoreLink: string;
+  buttons?: ReactElement | string;
+  learnMoreLink: Nullable<string>;
   cubes: IconsCubeProps["cubes"];
   type: "right" | "left";
   icon?: ReactElement;
@@ -22,6 +24,7 @@ export const HowItWorksRow = ({
   cubes,
   icon,
   sectionTitle,
+  buttons,
 }: HowItWorksRowProps) => {
   return (
     <div
@@ -51,12 +54,16 @@ export const HowItWorksRow = ({
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
             {description}
           </div>
-          <CommonCtaButton
-            withArrow={true}
-            link={learnMoreLink}
-            position="mt-auto mr-auto"
-            text="Learn more"
-          />
+          {learnMoreLink ? (
+            <CommonCtaButton
+              withArrow={true}
+              link={learnMoreLink}
+              position="mt-auto mr-auto"
+              text="Learn more"
+            />
+          ) : null}
+
+          {buttons ? buttons : null}
         </div>
       </div>
 
