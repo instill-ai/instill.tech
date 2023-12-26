@@ -207,7 +207,7 @@ table.mcnCaptionTopContent {
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(1n) {
   top: 0;
-  transform: translate3d(calc(0px), 0px, 0px) rotateZ(0deg) scale(1) !important;
+  /* transform: translate3d(calc(0px), 0px, 0px) rotateZ(0deg) scale(1) !important; */
 }
 
 .jumbotron > .swiper > .swiper-wrapper > .swiper-slide:nth-child(2n) {

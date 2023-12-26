@@ -83,7 +83,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   router.push("/", undefined, { scroll: false })
                 }
                 hoveredShadow="hover:shadow-instill-solid-5"
-                position="mt-auto"
+                position="mt-auto mr-auto"
               >
                 <p className="text-lg font-normal">Star Instill VDP</p>
               </SolidButton>
