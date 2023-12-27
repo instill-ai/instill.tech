@@ -83,3 +83,4 @@ export { MdxQuoteBlock } from "./MdxQuoteBlock";
 export type { MdxQuoteBlockProps } from "./MdxQuoteBlock";
 export { LoadingSpin } from "./LoadingSpin";
 export type { LoadingSpinProps } from "./LoadingSpin";
+export { PricingInfoCard } from "./PricingInfoCard";
