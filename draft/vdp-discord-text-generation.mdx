@@ -1,0 +1,367 @@
+---
+title: "Build a Text Generation Discord app with VDP"
+lang: "en-US"
+draft: false
+description: "In this tutorial, we build a Discord app that takes text a user provides as input and automatically fill in what it thinks comes next. The backbone of the app is a Text Generation pipeline on VDP."
+aiTask: "TextGeneration"
+sourceConnector: "Null"
+destinationConnector: "Null"
+publishedOn: "2023-03-07T14:26:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-discord-text-generation/text-generation-cover-A.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-discord-text-generation/text-generation-cover-A.png"
+useCase: "Application"
+author: "Po-Yu Chen"
+authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
+authorGitHubUrl: "https://github.com/bryan107"
+keywords:
+  [
+    "text generation",
+    "vdp",
+    "discord",
+    "gpt-2",
+    "llm",
+    "data pipeline",
+    "large language model",
+    "language model",
+    "gpt",
+    "generative model",
+    "sync pipeline",
+    "discord app",
+    "discord bot",
+  ]
+---
+
+Text generation is one of the most popular AI tasks at the moment. The goal of Text Generation is to generate paragraphs of text that is indistinguishable to human-written text.
+In this tutorial, we will build a Text Generator Discord app that takes text a user provides as input and automatically fill in what it thinks comes next.
+Under the hood, the app is powered by triggering a VDP pipeline with state-of-the-art Text Generation models.
+
+## Prerequisites
+
+Before starting this tutorial, make sure you have the prerequisites set up:
+
+- **A machine with GPUs** - To run the GPT model in this tutorial, you will needs a local machine with GPUs.
+- **Versatile Data Pipeline (VDP)** - VDP works on macOS or Linux. See [VDP 101[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart) for installation instructions.
+- **NVIDIA Container Toolkit** - To enable support in VDP, please refer to [NVIDIA Cloud Native Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install NVIDIA Container Toolkit. If you'd like to specifically allot GPUs to VDP, you can set the environment variable [NVIDIA_VISIBLE_DEVICES](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#gpu-enumeration) in the VDP [.env](https://github.com/instill-ai/vdp/blob/main/.env) file.
+- **NodeJS** - The Discord app is built with [discord-interation](https://github.com/discord/discord-interactions-js), an npm package based on Javacsript. See [download NodeJS](https://nodejs.org/en/download/) for installation instructions.
+
+## Build Text Generation pipelines
+
+Text Generation tasks focus on generating text according to user text inputs. State-of-the-art models are typically gigantic.
+For example, [GPT3.5](https://en.wikipedia.org/wiki/GPT-3), the backbone of ChatGPT, consists of 175 billion parameters, which is almost impossible to run on a standalone desktop or laptop.
+Therefore, we use [Megatron GPT-2 Medium (345m)](https://github.com/NVIDIA/Megatron-LM) as an example to showcase in this tutorial.
+
+### Build via no-code console
+
+To build a `SYNC` pipeline that supports Discord apps with GTP-2, please follow [VDP 101 [3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline) with a few alterations:
+
+1. add an HTTP source,
+2. import and deploy the **Metatron GPT-2 Medium model (345m)** model from a specific tag of GitHub repository [`instill-ai/model-gpt2-megatron-dvc`](https://github.com/instill-ai/model-gpt2-megatron-dvc) with ID **gpt2**.
+The model only supports GPU deployment. By default, VDP can access all your GPUs. Assume that you have **N** GPUs, please pick the corresponding Git tag named with **fp32-345m-N-gpu** to deploy. we use `fp32-345m-2-gpu` as an example here.
+
+
+3. add an HTTP destination, and
+4. set up a pipeline with ID `gpt2`.
+
+<InfoBlock type="info" title="info">
+
+Depending on your internet speed, importing [Megatron GPT2 Medium model (345m)](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
+
+</InfoBlock>
+
+### Build via low-code
+
+In addition to the no-code console, you can also build the pipeline via REST API.
+
+<InfoBlock type="info" title="info">
+VDP is implemented with [API-first](/docs/latest/core/concepts?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation) design principle. It enables seamless integration to your data stack at any scale.
+
+</InfoBlock>
+
+<CH.Scrollycoding>
+
+Programmatically build a `SYNC` pipeline via REST API:
+
+```shellscript
+
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models -d '{
+  "id": "gpt2",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-gpt2-megatron-dvc",
+    "tag": "fp32-345m-2-gpu"
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models/gpt2/deploy
+
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
+  "id": "destination-http",
+  "destination_connector_definition": "destination-connector-definitions/destination-http",
+  "connector": {
+      "configuration": {}
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
+  "id": "gpt2",
+  "recipe": {
+    "version": "v1alpha",
+    "components": [
+      {
+        "id": "source",
+        "resource_name": "source-connectors/source-http"
+      },
+      {
+        "id": "model",
+        "resource_name": "models/gpt2"
+      },
+      {
+        "id": "source",
+        "resource_name": "destination-connectors/destination-http"
+      }
+    ]
+  }
+}'
+
+```
+
+---
+
+**Step 1**:
+
+Add an HTTP data source
+
+```shellscript focus=1:8
+
+```
+
+---
+
+**Step 2**:
+
+Import a model from the GitHub repository [instill-ai/model-gpt2-megatron-dvc](https://github.com/instill-ai/model-gpt2-megatron-dvc).
+Please choose the one that is compatible with your machine. We use `fp32-345m-2-gpu` as an example here.
+
+```shellscript focus=10:17
+
+```
+
+---
+
+**Step 3**:
+
+Deploy the created model.
+
+```shellscript focus=19:19
+
+```
+
+---
+
+**Step 4**:
+
+Add an HTTP data destination
+
+```shellscript focus=21:27
+
+```
+
+---
+
+**Step 5**:
+
+Set up a pipeline with ID `gpt2`
+
+```shellscript focus=28:39
+
+```
+
+</CH.Scrollycoding>
+
+Now you should see a pipeline called `gpt2` in the console. You can trigger the pipeline using the cURL command at the bottom of the page.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-discord-text-generation/gpt2-pipeline-page.png"
+  alt="Text generation (e.g., GPT-2) pipeline page on the VDP Console."
+/>
+
+## Build the Discord app
+
+Discord app is a versatile tool for developers to create interactive interfaces triggering VDP pipelines within Discord channels. Before building the app, you need to
+
+1. install [NodeJS](https://nodejs.org/en/download/) and,
+2. [create a Discord app](https://discord.com/developers/docs/getting-started#creating-an-app) with proper permissions:
+   - `applications.commands`
+   - `bot` (with `Send Messages` and `Use Slash Commands`enabled)
+
+See [Adding scopes and permissions](https://discord.com/developers/docs/getting-started#adding-scopes-and-permissions) for detailed instructions.
+
+### 1. Set up your project
+
+We built this tutorial using a customised discord app. Clone the GitHub project with the shell command below:
+
+```shellscript
+# clone vdp-discord-demo repository to local
+git clone https://github.com/instill-ai/vdp-discord-demo && cd vdp-discord-demo
+# install NODEJS depensencies
+npm install
+```
+
+Before running the Discord app, you must set up a few variables in `vdp.js`. These variables indicate your VDP service and the Text Generation pipeline to trigger.
+
+```javascript
+// VDP Text Generation pipeline ID
+const pipelineID = "gpt2";
+
+// Set up vdp service endpoint
+const vdpConsole = `http://localhost:3000/pipelines/${pipelineID}`;
+const triggerPipelineEndpoint = `http://locallhost:8080/${pipelineID}/triggerSync`;
+```
+
+### 2. Get app credentials
+
+To connect the service with your Discord app, fetch the credentials from your app's settings and add them to a .env file (see `.env.sample` for an example). You'll need your app ID (`APP_ID`), server ID (`GUILD_ID`), bot token (`DISCORD_TOKEN`), and public key (`PUBLIC_KEY`).
+
+Most of the information can be found in your application listed on the [Developer Portal/Application page](https://discord.com/developers/applications).
+Fetching credentials is also covered in detail in [Discord Getting Started](https://discord.com/developers/docs/getting-started).
+
+- `APP_ID`: under Developer Portal/Application/General Information.
+- `PUBLIC_KEY`: under Developer Portal/Application/General Information.
+- `DISCORD_TOKEN`: under Developer Portal/Application/Bot.
+- `GUILD_ID` in Discord, right-click on the server you wish to connect to the Discord app and select **Copy ID**.
+
+<InfoBlock type="warning" title="warning">
+These credentials are added in `.env` for local development. Please keep them safe!
+
+</InfoBlock>
+
+<Gallery
+  images={[
+    {
+      alt: "Pipeline is empty view",
+      src: "/tutorial-assets/vdp-discord-text-generation/credential-general-info.png",
+    },
+    {
+      alt: "Add sync http source",
+      src: "/tutorial-assets/vdp-discord-text-generation/credential-bot.png",
+    },
+    {
+      alt: "Add yolov4 model",
+      src: "/tutorial-assets/vdp-discord-text-generation/credential-guild-id.png",
+    },
+  ]}
+  caption="Where to find the credentials and set the service endpoint URL."
+/>
+
+### 3. Run the Discord app
+
+After your credentials are set, go ahead and run it:
+
+```shellscript
+# run the app
+node app.js
+```
+
+### 4. Set up interactivity
+
+The project needs a public endpoint where Discord can send requests. In this tutorial, we use [**ngrok**](https://ngrok.com/) to tunnel HTTP traffic. Use the command below to install or follow the [installation guide](https://ngrok.com/download).
+
+<CH.Code>
+
+```bash macOS
+# install ngrok locally on macOS
+brew install ngrok/ngrok/ngrok
+```
+
+```bash Linux
+# install ngrok locally on Linux
+snap install ngrok
+```
+
+</CH.Code>
+
+Once installed, run **ngork** service with the shell command below:
+
+```bash
+# run ngrok using HTTP port 3069
+ngrok http 3069
+```
+
+And you should see an active ngrok session:
+
+```bash
+ngrok                                                                                                                                                    (Ctrl+C to quit)
+
+Join us in the ngrok community @ https://ngrok.com/slack
+
+Session Status                online
+Session Expires               1 hour, 59 minutes
+Terms of Service              https://ngrok.com/tos
+Version                       3.1.1
+Region                        Europe (eu)
+Latency                       -
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    https://ac2e-2a01-4b00-8066-4700-6c3c-765-9d9-f69f.eu.ngrok.io -> http://localhost:3069
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              0       0       0.00    0.00    0.00    0.00
+```
+
+<InfoBlock type="info" title="info">
+Free version **ngrok** can only be active for two hours. Ensure you update the endpoint setting under the **General information** page. Otherwise, you can consider hosting your server or using online services such as [Glitch](https://glitch.com/). Please see [Running your app on Discord](https://glitch.com/) for further details.
+
+</InfoBlock>
+
+Finally, go to your application under the **Discord Developer Portal**, copy the endpoint address, the **forwarding address** provided by **ngrok**, and paste it in the `INTERACTION ENDPOINT URL` below the **PUBLIC KEY** in the General Information page.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-discord-text-generation/endpoint-url.png"
+  alt="Set up the interaction endpoint URL on the General information page."
+/>
+
+You should now see a Discord bot being added to your Discord server as a user! Your bot is now a user who can access your Discord channels with default permissions. You can update its access permission by assigning a role or setting up channel permissions. Please read [See Setting up Permission F&Q](https://support.discord.com/hc/en-us/articles/206029707-Setting-Up-Permissions-FAQ) for further details.
+
+## Type some words and have fun
+
+The bot should support the **Text Generation** Slash commands `/tg` consisting of three fields:
+
+- `prompt`: text input for the generation
+- `output_len`: the length of the text to generate (optional, default: 100)
+- `seed`: a random seed between 0 and 65535 (optional, default: random generated seed)
+
+Under the hood, the Discord bot wraps the above Slash command into a HTTP request payload and send the HTTP request to trigger the VDP pipeline `gpt2`.
+
+Now, type some words as the `prompt` and have fun! Write a story or even a poetry and share with your friend 🎉.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-discord-text-generation/discord-app-demo.gif"
+  alt="Use Slash command /tg in Discord channel and provide some words as prompt"
+/>
+
+## Conclusion
+
+Congratulations! You've built a versatile Discord app to showcase a text generator using a pipeline powered by VDP.
+
+Don't have the resource to run the Text Generation task with VDP on your local machine? Why not try out the Discord app on our [Discord channel](https://discord.com/channels/928991293856681984/929150081729433651)? We are going to release more AI task demos on Discord. Stay tuned!
+
+If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
+
+- Painless setup
+- Maintenance-free infrastructure
+- Start for free, pay as you grow
+
+<CtaButton
+  text="🚀 Try Instill Cloud Free"
+  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation?utm_source=blog&utm_medium=link&utm_campaign=vdp-discord-text-generation"
+/>
+
+We also invite you to join our [Discord community](https://discord.gg/sevxWsqpGh) to share your use cases and showcase your work with Data/AI practitioners.

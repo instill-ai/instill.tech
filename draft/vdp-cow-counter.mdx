@@ -1,0 +1,526 @@
+---
+title: "Build a Cow Counter dashboard using VDP, Postgres and Metabase"
+lang: "en-US"
+draft: false
+description: "In this tutorial, we showcase how to build an Object Detection ETL pipeline using VDP and create a Cow Counter dashboard with Metabase to provide farm cattle insights."
+aiTask: "ObjectDetection"
+sourceConnector: "Null"
+destinationConnector: "Null"
+publishedOn: "2022-09-22T14:26:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-cow-counter/cover-animation.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-cow-counter/cover-static.png"
+useCase: "Application"
+author: "Xiaofei Du"
+authorAvatarSrc: "/author-avatar/xiaofei-du.png"
+authorGitHubUrl: "https://github.com/xiaofei-du"
+keywords:
+  [
+    "metabase",
+    "postgres",
+    "vdp",
+    "unstructured data",
+    "unstructured data pipeline",
+  ]
+---
+
+## Herd cattle with drones?
+
+In the recent documentary series _Clarkson's Farm (2021)_, Jeremy Clarkson took us on his journey and showed us how he herded sheep with a barking drone successfully - or maybe not 🤣.
+
+<Tweet tweetId="1400027716573872128" />
+
+Joking aside, apparently [sheep can follow drone pretty well with the right training](https://www.youtube.com/watch?v=ZC1ZuYjsUZU&t=19s) and [using drones emitting certain sounds was able to reduce the stress on the sheep](https://www.unsw.adfa.edu.au/newsroom/news/sky-shepherding-using-drones-ethically-herd-sheep).
+
+Over the last few years, drone-based smart agriculture solutions have become increasingly popular due to numerous benefits, including deeper insights into farming assets and data-driven decision-making process for better efficiency and reduced operational cost.
+
+To explain the solutions on a high level, it usually includes the following processes:
+
+- Deploy drones and sensors to collect livestock data
+- Use AI technology to process and analyse the data for locating, counting or monitoring cattle
+- Provide easy-to-understand insights and takeaways to enable ranchers to make data-driven decisions or take immediate actions when issues arise
+
+To showcase the above processes, read on or watch our video to see how to build an Object Detection ETL pipeline using [VDP](http://go.instill.tech/4en2fm) to analyse a drone video of a cattle farm, and create a Cow Counter dashboard with [Metabase](https://www.metabase.com/) that provides insights about cattle in the video footage.
+
+<InfoBlock type="warning" title="warning">
+  Where there are discrepancies between tutorial and video, please follow the
+  tutorial.
+</InfoBlock>
+
+<Youtube id="0Rdv8oqqxfw" />
+
+## Prerequisites
+
+- Docker and Docker compose
+- Python 3.8+ with an environment-management tool such [Conda](https://www.anaconda.com/)
+
+## Build Object Detection pipelines
+
+In the [Build a shareable Object Detection application with VDP and Streamlit](/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter) tutorial, we built a `SYNC` Object Detection pipeline that responds to HTTP requests synchronously with VDP. This time, we are going to use the same model YOLOv7 to build an Object Detection pipeline but in `ASYNC` mode. Unlike a `SYNC` pipeline, this pipeline
+
+- accepts HTTP requests with image payload,
+- transforms the images in the payload into structured insights, and
+- sends the structured insights into a PostgreSQL database.
+
+<CtaButton text="⭐️ Star VDP on GitHub" link="http://go.instill.tech/4en2fm" />
+
+### Run VDP locally
+
+```bash
+git clone https://github.com/instill-ai/vdp.git && cd vdp
+make all
+```
+
+Once all the services are up, go to the Console at http://localhost:3000.
+
+### Build an ASYNC pipeline
+
+After onboarding, you will be redirected to the **Pipeline** page. Please follow the steps of [VDP 101 [7/7] Create, Trigger, and Parse an ASYNC Pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
+
+1. add a HTTP source,
+2. import and deploy a model from the `v1.0-cpu` tag of the GitHub repository [instill-ai/model-yolov7-dvc](https://github.com/instill-ai/model-yolov7-dvc) with ID **yolov7**,
+
+
+3. add a PostgreSQL destination, with ID `postgres-db`,
+4. set up a pipeline with ID `detection`.
+
+<Gallery
+  images={[
+    {
+      alt: "Pipeline is empty view",
+      src: "/tutorial-assets/vdp-cow-counter/pipeline-list-empty.png",
+    },
+    {
+      alt: "Add async http source",
+      src: "/tutorial-assets/vdp-cow-counter/add-an-async-source-http.png",
+    },
+    {
+      alt: "Add yolov7 model",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-yolov7-model.png",
+    },
+    {
+      alt: "Add postgres destination",
+      src: "/tutorial-assets/vdp-cow-counter/add-a-destination-postgres.png",
+    },
+    {
+      alt: "Add async pipeline",
+      src: "/tutorial-assets/vdp-cow-counter/set-up-an-async-det-pipeline.png",
+    },
+  ]}
+  caption="Build an ASYNC Object Detection pipeline with YOLOv7 via no-code Console"
+/>
+
+Alternatively, you could build this pipeline programmatically via REST API.
+
+<CH.Scrollycoding>
+
+You can programmatically build a `ASYNC` pipeline via REST API.
+
+```shellscript
+
+curl -X POST http://localhost:8080/v1alpha/source-connectors -d '{
+    "id": "source-http",
+    "source_connector_definition": "source-connector-definitions/source-http",
+    "connector": {
+        "configuration": {}
+    }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models -d '{
+  "id": "yolov7",
+  "model_definition": "model-definitions/github",
+  "configuration": {
+    "repository": "instill-ai/model-yolov7-dvc",
+    "tag": "v1.0-cpu"
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/models/yolov7/deploy
+
+curl -X POST http://localhost:8080/v1alpha/destination-connectors -d '{
+  "id": "postgres-db",
+  "destination_connector_definition": "destination-connector-definitions/destination-postgres",
+  "connector": {
+    "description": "The PostgreSQL database in my basement",
+    "configuration": {
+      "host": "100.113.68.102",
+      "port": 5432,
+      "database": "tutorial",
+      "schema": "public",
+      "username": "postgres",
+      "password": "password",
+      "ssl": false
+    }
+  }
+}'
+
+curl -X POST http://localhost:8080/v1alpha/pipelines -d '{
+  "id": "detection",
+  "description": "A magic pipeline to detect objects in images",
+  "recipe": {
+    "version": "v1alpha",
+    "components": [
+      {
+        "id": "source",
+        "resource_name": "source-connectors/source-http"
+      },
+      {
+        "id": "model",
+        "resource_name": "models/yolov7"
+      },
+      {
+        "id": "source",
+        "resource_name": "destination-connectors/postgres-db"
+      }
+    ]
+  }
+}'
+
+```
+
+---
+
+**Step 1: Add a HTTP source**
+
+```shellscript focus=1:8
+
+```
+
+---
+
+**Step 2: Import a model from GitHub**
+
+```shellscript focus=10:17
+
+```
+
+---
+
+**Step 3: Deploy the model**
+
+```shellscript focus=19:19
+
+```
+
+---
+
+**Step 4: Add a PostgreSQL destination**
+
+```shellscript focus=21:36
+
+```
+
+---
+
+**Step 5: Set up your first pipeline**
+
+```shellscript focus=37:49
+
+```
+
+</CH.Scrollycoding>
+
+Now you should see the pipeline `detection` in the Console.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/pipeline-list-async-det.png"
+  alt="Pipeline page on the VDP Console"
+/>
+
+## Trigger the pipeline
+
+### 1. Create a virtual environment and install dependencies
+
+We'll use Conda as the package management system like we did it in the last [tutorial](/tutorials/vdp-streamlit-yolov7/?utm_source=tutorial&utm_medium=link&utm_campaign=cow-counter).
+
+First, create and activate an environment named `vdp-dashboard` with Python 3.8:
+
+```bash
+conda create --name vdp-dashboard python=3.8
+conda activate vdp-dashboard
+```
+
+Then, go to `/examples/metabase-object-detection-async-http-postgres` directory of the VDP project to install all dependencies.
+
+```bash
+cd examples/metabase-object-detection-async-http-postgres
+pip install -r requirements.txt
+```
+
+### 2. Trigger the pipeline to analyse a drone video
+
+The directory of the project should look like the following
+
+```bash
+├── Dockerfile-metabase-m1
+├── README.md
+├── main.py
+├── requirements.txt
+└── utils.py
+```
+
+To run the demo for processing the video, we simply do
+
+```bash
+python main.py --api-gateway-url=http://localhost:8080 --pipeline-id=detection --pq-host=< database host > --pq-port=5432 --pq-database=tutorial --pq-username=postgres --pq-password=password
+```
+
+<InfoBlock type="warning" title="warning">
+  When setting `--pq-host`, users may need to indicate with **actual** IP
+  address instead of **localhost** to access the Postgres database running in a
+  docker container.
+</InfoBlock>
+
+You could skip to the next section to create the dashboard. But if you're interested, here we dive into the demo details.
+
+First, the script will download a 1-minute drone video of a cattle farm `cows_dornick.mp4` from a public Google storage bucket.
+
+```python
+def download_data(bucket_name: str, blob_filename: str, dst_filename: str) -> bool:
+    r""" Download a file from a GCS bucket into a local file
+
+    Args:
+        bucket_name (str): GCS bucket name
+        blob_filename (str): file name to be downloaded from the in the GCS bucket
+        dst_filename (str): the file name used to save the downloaded file
+
+    Returns: bool
+        a flag to indicate whether the downloading is successful
+
+    """
+    print("\n===== Download video {} from GCS bucket {} to {} ...".format(blob_filename, bucket_name, dst_filename))
+
+    client = storage.Client.create_anonymous_client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(blob_filename)
+    try:
+        blob.download_to_filename(dst_filename)
+    except Exception as e:
+        print(e)
+        os.remove(dst_filename)
+        return False
+    print("Done!")
+    return True
+```
+
+<InfoBlock type="info" title="info">
+  The video used in the demo is sampled from a public video `cows dornick.mp4`
+  from
+  [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YFDJRO).
+</InfoBlock>
+
+<Youtube id="bIQF2O3Z_xU" />
+
+After finishing downloading the video, `extract_frames_from_video` function will extract frames from the video into a folder `inputs` at 30 frames per second.
+
+```python
+def extract_frames_from_video(image_dir: str, filename: str, framerate: int=30) -> bool:
+    r""" Extract frames from a video file at constant frames per second
+
+    Args:
+        image_dir (str): the directory where the extracted frames will be stored
+        filename (str): name of the video file
+        framerate (int): frames per second (fps) to extract the video. By default set to 30 fps.
+
+    Returns: bool
+        a flag to indicate whether the extraction is successful
+
+    """
+    if os.path.exists(image_dir) and os.path.isdir(image_dir):
+        shutil.rmtree(image_dir)
+
+    print("\n===== Extract frames from the video {} into {} ...".format(filename, image_dir))
+
+    pathlib.Path(image_dir).mkdir(parents=True, exist_ok=True)
+    try:
+        (
+            ffmpeg.input(filename)
+                .filter('fps', fps=framerate)
+                .output(join(image_dir, 'frame%5d.png'),
+                        start_number=0)
+                .run(capture_stdout=True, capture_stderr=True)
+        )
+        print("Done!\n")
+        return True
+    except ffmpeg.Error as error:
+        print('stdout:', error.stdout.decode('utf8'))
+        print('stderr:', error.stderr.decode('utf8'))
+        shutil.rmtree(image_dir)
+        return False
+```
+
+Then, we trigger the pipeline `detection` to analyse the video by sending HTTP requests to process all frames in the `input` folder.
+
+```python
+###############################################################################
+# Trigger pipeline to process video frames
+###############################################################################
+
+batch_size = 1
+img_files = [filename for filename in sorted(listdir(image_dir)) if isfile(
+    join(image_dir, filename)) and not filename.startswith(".")]
+img_batch = [img_files[i:i+batch_size]  for i in range(0, len(img_files), batch_size)]
+filenames = [file for files in img_batch for file in files]
+data_mapping_indices = []
+
+print("\n=====Trigger {} pipeline to process images in '{}'\n".format(opt.pipeline_id, image_dir))
+for files in tqdm(img_batch):
+    resp = requests.post(f'{opt.api_gateway_url}/v1alpha/pipelines/{opt.pipeline_id}/triggerAsyncMultipart',
+                    files=[("file", (filename, open(join(image_dir, filename), 'rb'))) for filename in files])
+    if resp.status_code == 200:
+        data_mapping_indices += resp.json()['data_mapping_indices']
+    else:
+        sys.exit(1)
+```
+
+Each triggering pipeline operation will send the analysed result to the configured PostgreSQL database and return a list of unique indexes corresponding to all processed image frames in the payload.
+
+It may take a while to analyse the full video. Meanwhile, we can connect to the Postgres database to check whether it is working as expected. You should see the tutorial database is already populated with some data 🚀.
+
+```bash
+tutorial> \pset border 2
+Border style is 2
+tutorial> \pset format wrapped
+Output format is wrapped
+tutorial> SELECT * FROM _airbyte_raw_vdp;
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+|            _airbyte_ab_id            |                                                                                 _airbyte_data                                                                                 |    _airbyte_emitted_at     |
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| a0f2ce3e-f539-467a-8b24-6ef9c63ed712 | {"index": "01H1CAXA2R64V1X947CSEECR31", "model": "models/yolov7", "pipeline": {"name": "pipelines/detection", "recipe": {"version": "v1alpha", "components": [{"id": "fc0b264.| 2023-05-26 15:30:26.938+00 |
+|                                      |.f-4d2a-4016-b8f5-5f5bb07b683c", "metadata": null, "dependencies": {}, "resource_name": "source-connectors/source-http", "resource_detail": {}}, {"id": "93edf60f-f182-4c45-b6.|                            |
+|                                      |.66-7cf16eb68926", "metadata": null, "dependencies": {}, "resource_name": "models/yolov7", "resource_detail": {}}, {"id": "8327f4cd-6582-48d5-bf9e-963cce30f9c2", "metadata": .|                            |
+|                                      |.null, "dependencies": {}, "resource_name": "destination-connectors/postgres-db", "resource_detail": {}}]}}, "detection": {"objects": [{"score": 0.9524831, "category": "cow",.|                            |
+|                                      |. "bounding_box": {"top": 328, "left": 481, "width": 515, "height": 389}}, {"score": 0.9065536, "category": "cow", "bounding_box": {"top": 133, "left": 1, "width": 405, "heig.|                            |
+|                                      |.ht": 273}}, {"score": 0.9017271, "category": "cow", "bounding_box": {"top": 288, "left": 857, "width": 422, "height": 407}}, {"score": 0.89512527, "category": "person", "bou.|                            |
+|                                      |.nding_box": {"top": 1, "left": 474, "width": 112, "height": 197}}, {"score": 0.8950028, "category": "cow", "bounding_box": {"top": 3, "left": 775, "width": 405, "height": 13.|                            |
+|                                      |.3}}, {"score": 0.8828889, "category": "cow", "bounding_box": {"top": 99, "left": 795, "width": 483, "height": 237}}, {"score": 0.75729924, "category": "person", "bounding_bo.|                            |
+|                                      |.x": {"top": 0, "left": 627, "width": 48, "height": 75}}, {"score": 0.73897225, "category": "cow", "bounding_box": {"top": 0, "left": 0, "width": 172, "height": 131}}, {"scor.|                            |
+|                                      |.e": 0.72232157, "category": "dog", "bounding_box": {"top": 535, "left": 131, "width": 412, "height": 184}}, {"score": 0.59892243, "category": "cow", "bounding_box": {"top": .|                            |
+|                                      |.0, "left": 937, "width": 342, "height": 158}}, {"score": 0.35217348, "category": "cow", "bounding_box": {"top": 1, "left": 940, "width": 131, "height": 53}}]}}               |                            |
+| d2a9fa98-ecb8-421b-bf14-bb1de5be6483 | {"index": "01H1CAXA52QRMQ0VGH9T1S5GDX", "model": "models/yolov7", "pipeline": {"name": "pipelines/detection", "recipe": {"version": "v1alpha", "components": [{"id": "fc0b264.| 2023-05-26 15:30:34.149+00 |
+|                                      |.f-4d2a-4016-b8f5-5f5bb07b683c", "metadata": null, "dependencies": {}, "resource_name": "source-connectors/source-http", "resource_detail": {}}, {"id": "93edf60f-f182-4c45-b6.|                            |
+|                                      |.66-7cf16eb68926", "metadata": null, "dependencies": {}, "resource_name": "models/yolov7", "resource_detail": {}}, {"id": "8327f4cd-6582-48d5-bf9e-963cce30f9c2", "metadata": .|                            |
+|                                      |.null, "dependencies": {}, "resource_name": "destination-connectors/postgres-db", "resource_detail": {}}]}}, "detection": {"objects": [{"score": 0.95135015, "category": "cow".|                            |
+|                                      |., "bounding_box": {"top": 321, "left": 483, "width": 511, "height": 396}}, {"score": 0.92246056, "category": "cow", "bounding_box": {"top": 131, "left": 1, "width": 410, "he.|                            |
+|                                      |.ight": 279}}, {"score": 0.9212451, "category": "cow", "bounding_box": {"top": 163, "left": 767, "width": 491, "height": 282}}, {"score": 0.9055302, "category": "cow", "bound.|                            |
+|                                      |.ing_box": {"top": 92, "left": 868, "width": 410, "height": 246}}, {"score": 0.89693654, "category": "person", "bounding_box": {"top": 0, "left": 474, "width": 113, "height":.|                            |
+|                                      |. 195}}, {"score": 0.88276064, "category": "cow", "bounding_box": {"top": 290, "left": 857, "width": 423, "height": 404}}, {"score": 0.8695851, "category": "cow", "bounding_b.|                            |
+|                                      |.ox": {"top": 3, "left": 771, "width": 403, "height": 137}}, {"score": 0.8235585, "category": "person", "bounding_box": {"top": 0, "left": 626, "width": 49, "height": 79}}, {.|                            |
+|                                      |."score": 0.80706304, "category": "cow", "bounding_box": {"top": 528, "left": 126, "width": 340, "height": 190}}, {"score": 0.75044984, "category": "cow", "bounding_box": {"t.|                            |
+|                                      |.op": 0, "left": 940, "width": 338, "height": 163}}, {"score": 0.65243214, "category": "cow", "bounding_box": {"top": 1, "left": 1, "width": 284, "height": 140}}, {"score": 0.|                            |
+|                                      |..25453186, "category": "dog", "bounding_box": {"top": 132, "left": 0, "width": 412, "height": 269}}]}}                                                                        |                            |
+| ...                                  |                                                                                                                                                                               |                            |
++--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+```
+
+In the next section, we will setup Metabase to connect to the data in the destination PostgreSQL database and build a dashboard based on the analysis results.
+
+## Create a Cow Counter dashboard
+
+Metabase is an open-source business intelligence (BI) tool that helps you uncover the data insights like an analyst. Just connect to your database, you can dig deeper into your data, easily build interactive dashboards and share them with stakeholders.
+
+### 1. Run Metabase locally
+
+In this tutorial, we [run Metabase on Docker](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker). If you prefer, check out [alternative ways](https://www.metabase.com/docs/latest/installation-and-operation/installing-metabase) to install Metabase.
+
+```bash
+docker pull metabase/metabase:latest
+docker run -d -p 3100:3000 --name metabase metabase/metabase
+```
+
+Note: If the official Metabase docker image doesn't work on M1 (apple silicon) mac, try to build an image with the `Dockerfile-metabase-m1` file.
+
+```bash
+docker build -f Dockerfile-metabase-m1 -t metabase/metabase-m1 .
+docker run -d -p 3100:3000 --name metabase metabase/metabase-m1
+```
+
+Once the Metabase startup completes, you can access it at http://localhost:3100.
+
+### 2. Create the dashboard
+
+During onboarding, add your PostgreSQL database.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/add-your-data.png"
+  alt="Add your PostgreSQL database during Metabase onboarding"
+/>
+
+Then, click **Browse data** on the left sidebar, choose **vdp-postgres ➝ Airbyte Raw Vdp**:
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/browse-data.png"
+  alt="Browse data in the PostgreSQL database"
+/>
+
+As you can see, the pipeline outputs are stored in the `Airbyte Data ➝ Detection ➝ Objects` field with JSON blob format.
+
+### 3. Convert raw detections into multiple records
+
+To flatten the raw detections (JSON blob) into multiple records for further analysis, Click **+New** on the top right corner, choose **SQL query ➝ Select a database** vdp-postgres, then copy and paste the following SQL query and press **Run query**:
+
+```sql
+-- Cow counter
+SELECT "public"."_airbyte_raw_vdp"."_airbyte_ab_id" AS "id", "public"."_airbyte_raw_vdp"."_airbyte_data"->'index' AS "index", "public"."_airbyte_raw_vdp"."_airbyte_emitted_at" AS "processed_at", ceil(x.score) AS "count", x.category
+FROM "public"."_airbyte_raw_vdp" CROSS JOIN LATERAL jsonb_to_recordset("public"."_airbyte_raw_vdp"."_airbyte_data"->'detection'->'objects') AS x(score numeric, category text)
+WHERE x.category = 'cow'
+ORDER BY "processed_at" ASC
+LIMIT 1048575
+```
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/transform-json-blob-to-records.png"
+  alt="Convert raw detections in the database into multiple records for future analysis"
+/>
+
+The transformed data counts every time a cow appeared in the video footage.
+
+### 4. Visualise the data
+
+Click on **Visualization** to open the visualization sidebar and choose **Area**. For **Data** tab, select the fields `processed_at` and `category` for **X-axis**, and select the field `Count` for **Y-axis**. You can customise the area chart as you want. Here we just enabled **Show values on data points** in the **Display** tab.
+
+<InfoBlock type="info" title="info">
+  Metabase has a hard limitation 2,000 to the number of rows displayed for a
+  table. Therefore, the dashboard won't show all the detections.
+</InfoBlock>
+
+To make the dashboard accessible, you can save this question into the **Our analytics** collection by clicking **Save** on the top right and give it a name cow counter.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/save-question.png"
+  alt="Visualise video analysis results on Metabase"
+/>
+
+🎉 Congrats! You've built a simple yet intuitive dashboard to count cows in a drone video footage. To validate the dashboard, the demo script `main.py` also generates a video `output.mp4` with detections drawn on frames by the end of the demo.
+
+<Youtube id="jokydabr70M" />
+
+We use [YOLOv7](https://arxiv.org/abs/2207.02696) in the ETL pipeline, since it is the state-of-the-art object detector that surpasses all known ones in both speed and accuracy. The above video showed that it worked fairly well considering it was only trained on the public [MS COCO dataset](https://cocodataset.org) without any fine-tuning.
+
+### 5. Limitation
+
+However, if you want to improve the performance, as you can spot that some cows were wrongly detected as "dogs" on a few frames, it is highly recommended to fine-tune the model on labelled drone data collected from the same domain.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-cow-counter/frame00000.png"
+  alt="Cows were wrong detected as dogs on some frames. This can be improved by fine-tuning the model on more drone data from the same domain."
+/>
+
+We are working closely with our early users to deploy customised models for their use cases. If you're interested, please [book a meeting](https://calendly.com/instill-ai/chat-with-us) to tell us about yourself and your project, we will be in touch 👐.
+
+## Conclusion
+
+In this tutorial, you've built an ASYNC Object Detection pipeline using VDP to process a video and sent the analysis result to a Postgres database. Also by using Metabase, you've turned the analysis result into an intuitive and interactive dashboard that you can share with stakeholders.
+
+If you enjoyed VDP, we're building a fully managed service for VDP - **Instill Cloud (Alpha)**:
+
+- Painless setup
+- Maintenance-free infrastructure
+- Start for free, pay as you grow
+
+<CtaButton
+  text="🚀 Try Instill Cloud Free"
+  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-7-create-trigger-parse-an-async-pipeline"
+/>
+
+We also invite you to join our [Discord community](http://go.instill.tech/4fajhm) to share your use cases and showcase your work with Data/AI practitioners.

@@ -1,0 +1,124 @@
+---
+title: "VDP 101 [2/7] Launch VDP on your local machine"
+lang: "en-US"
+draft: false
+description: "We've made it easy to get started with VDP on your local machines and Kubernetes clusters. "
+aiTask: "Null"
+sourceConnector: "Null"
+destinationConnector: "Null"
+publishedOn: "2023-03-06T15:27:00"
+placeholderColor: "bg-instillYellow50"
+themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
+themeImgThumbnailSrc: "/tutorial-assets/vdp-101/cover-static.png"
+useCase: "Quickstart"
+author: "Po-Yu Chen"
+authorAvatarSrc: "/author-avatar/po-yu-chen.jpg"
+authorGitHubUrl: "https://github.com/bryan107"
+---
+
+In [VDP 101 [1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction/?utm_source=blog&utm_medium=link&utm_campaign=vdp-101-2-quickstart), we briefly introduce the high-level concept of VDP.
+We've made it easy to get started with VDP on your local machines and Kubernetes clusters.
+
+## Prerequisites
+
+Before installing VDP, Make sure you have the prerequisites set up:
+
+- **macOS or Linux** - VDP works on macOS or Linux. It does not currently support Windows, but it is coming soon!
+- **Git** - You need Git to download VDP and manage your code.
+- **Docker and Docker Compose** - VDP uses Docker Compose to run all services locally.
+- **(Optional) NVIDIA Container Toolkit** - To enable GPU support in VDP, this must be installed for Docker to recognise the GPUs.
+
+### Install Git
+
+**Git** is a [distributed version control](https://en.wikipedia.org/wiki/Distributed_version_control "Distributed version control") system: tracking changes in any set of files, usually used for coordinating work among programmers when developing source code. There are many ways to Install Git. Git provides different [installation options](https://git-scm.com/downloads) for all three OS. Use the one you like the most. You can also [install Git via Conda](https://www.anaconda.com/products/distribution).
+
+### Install Docker and Docker Compose
+
+**Docker** is a set of [platform as a service](https://en.wikipedia.org/wiki/Platform_as_a_service "Platform as a service") (PaaS) products that use [OS-level virtualisation](https://en.wikipedia.org/wiki/OS-level_virtualization "OS-level virtualisation") to deliver software in packages called [containers](<https://en.wikipedia.org/wiki/Container_(virtualization)> "Container (virtualisation)"). Users won't need to set up their environment before running services.
+
+VDP uses Docker Compose (specifically, `Compose V2` and `Compose specification`) to run all services locally.
+
+Install Docker Desktop:
+
+- [on Mac](https://docs.docker.com/desktop/install/mac-install/) - Be aware of your Mac model. It could come with an **Intel chip** or **Apple silicon**.
+- [on Linux](https://docs.docker.com/desktop/install/linux-install/) - Make sure your platform is supported.
+- [on Windows](https://docs.docker.com/desktop/install/windows-install/) - VDP does not support Windows yet. Stay tuned!
+
+To enable GPU support in VDP, please refer to the installation guides of the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide).
+
+## Download and launch VDP
+
+VDP is currently maintained on our [Github repository](https://github.com/instill-ai/vdp). Don't worry if you are not familiar with it. We have set up everything for you.
+
+Execute the following `bash` commands to start pre-built images with all the dependencies:
+
+```bash
+# clone VDP repository to local
+git clone https://github.com/instill-ai/vdp.git && cd vdp
+# start VDP service
+make all
+```
+
+The installation may take a while. Have a cup of tea 🍵. Once the services are up, Voilà, the Console UI is ready to go at [http://localhost:3000](http://localhost:3000/).
+
+<InfoBlock type="warning" title="warning">
+  ⚠︎ Don't panic if you don't see the Console UI right after `make all`.
+  Downloading the model-backend and Triton Inference Server image will take a
+  while, but it should be a one-time effort.
+</InfoBlock>
+
+↓↓ You should see the onboarding page. Enter your email, and you are all set! ↓↓
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-101/2-installation/onboarding.png"
+  alt="Please fill in the onboarding information so we can keep you posted with our latest news!"
+/>
+
+You can also check if VDP is running on your machine by listing the running compose project
+
+```bash
+docker compose ls --filter name=instill-vdp
+
+NAME            STATUS          CONFIG FILES
+instill-vdp     running         < VDP Docker Compose file paths >
+```
+
+or by checking whether the `instill-vdp` Docker Compose is running correctly in your **Docker Desktop**.
+
+<ZoomableImg
+  src="/tutorial-assets/vdp-101/2-installation/docker-desktop.png"
+  alt='VDP should run as a compose project named as "instill-vdp"'
+/>
+
+<InfoBlock type="info" title="info">
+  We highly recommend you allocate at least **32GB** memory and **256GB** disk
+  space to Docker for better stability. Go to `Settings > Resources` of **Docker
+  Desktop** to set it up.
+</InfoBlock>
+
+## Shut down VDP
+
+If you want to **shut down** VDP, please run the `bash` command below:
+
+```bash
+# shut down VDP services
+make down
+```
+
+We love to hear your feedback and comments on VDP. Join us in our community on [Discord](https://discord.gg/sevxWsqpGh) or create an issue on [Github](https://github.com/instill-ai/community/issues).
+
+## What's next?
+
+Okay, now you have VDP running on your machine. Let's create the first pipeline following our next tutorial → [VDP 101 [3/7] Create Your First Pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline).
+
+<br />
+<br />
+**↓↓↓ VDP 101 - Get familiar with the basics ↓↓↓**
+
+- [[1/7] Introduction to VDP](/tutorials/vdp-101-1-introduction)
+- [[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart)
+- [[3/7] Create your first pipeline on VDP](/tutorials/vdp-101-3-create-your-first-pipeline)
+- [[4/7] How to trigger a SYNC pipeline?](/tutorials/vdp-101-4-how-to-trigger-a-sync-pipeline)
+- [[5/7] How to parse responses from SYNC pipelines](/tutorials/vdp-101-5-how-to-parse-vdp-responses)
+- [[6/7] Pipeline modes: SYNC, ASYNC, and PULL](/tutorials/vdp-101-6-pipeline-modes)
+- [[7/7] Create, trigger, and parse an ASYNC pipeline](/tutorials/vdp-101-7-create-trigger-parse-an-async-pipeline)
