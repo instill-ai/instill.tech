@@ -65,7 +65,7 @@ const AboutPage: FC<AboutPageProps> & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
-        <div className="mb-[100px] p-4 xl:mb-40 xl:p-0">
+        <div className="mb-0 p-4 xl:mb-40 xl:p-0">
           <AboutHero />
         </div>
 

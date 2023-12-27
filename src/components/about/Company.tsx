@@ -2,7 +2,7 @@ import React from "react";
 
 export const Company = () => {
   return (
-    <div className="my-10 w-full">
+    <div className="my-10 w-full text-center xl:text-left">
       <p className="mb-5 font-mono text-[48px] font-medium text-black">
         Company
       </p>

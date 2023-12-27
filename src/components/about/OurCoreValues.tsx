@@ -2,13 +2,13 @@ import React from "react";
 
 export const OurCoreValues = () => {
   return (
-    <div className="my-10 w-full">
-      <p className="mb-5 font-mono text-[48px] font-medium text-black">
+    <div className="my-10 w-full text-center xl:text-left">
+      <p className="mb-5 font-mono text-[24px] font-medium text-black xl:text-[48px]">
         Our Core Values
       </p>
 
-      <div className="grid grid-cols-2 gap-5">
-        <div className="p-12">
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+        <div className="p-2 xl:p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🤩 User obsession
           </p>
@@ -20,7 +20,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="p-12">
+        <div className="p-2 xl:p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🚛 Deliver more than expected
           </p>
@@ -31,7 +31,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="p-12">
+        <div className="p-2 xl:p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🤝 Communication x 3
           </p>
@@ -43,7 +43,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="p-12">
+        <div className="p-2 xl:p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             👊🏻 Be proactive and accountable
           </p>

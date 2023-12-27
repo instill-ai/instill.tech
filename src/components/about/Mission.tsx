@@ -2,8 +2,8 @@ import React from "react";
 
 export const Mission = () => {
   return (
-    <div className="my-10 flex w-full">
-      <div className="w-3/5">
+    <div className="my-10 flex w-full flex-col-reverse space-y-10 xl:flex-row">
+      <div className="mt-10 w-full text-center xl:w-3/5 xl:text-left">
         <p className="mb-5 font-mono text-[48px] font-medium text-black">
           Mission
         </p>
@@ -16,7 +16,7 @@ export const Mission = () => {
           everyone can reap its benefits with ease.
         </p>
       </div>
-      <div className="w-2/5">
+      <div className="mt-10 w-full justify-center xl:w-2/5">
         <img
           src={"/images/about-us-mission.svg"}
           alt=""
