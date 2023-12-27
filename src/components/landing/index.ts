@@ -20,3 +20,4 @@ export type { FaqHeaderProps } from "./FaqHeader";
 export * from "./jumbotron";
 export * from "./Social";
 export * from "./VDPInAction";
+export * from "./BuildAppsInAction";

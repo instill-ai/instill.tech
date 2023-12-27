@@ -12,8 +12,10 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
         marginBottom
       )}
     >
-      Meet Instill Cloud, a no-code/low-code platform to build AI workflows for
-      unstructured data 10x faster.
+      Meet Instill Cloud, a no-code/low-code platform that accelerates AI
+      application development by 10x. Effortlessly connect to diverse data
+      sources, seamlessly integrate AI models, and deploy customized logic for
+      your projects, no matter how complex, with lightning speed.
     </div>
   );
 };
