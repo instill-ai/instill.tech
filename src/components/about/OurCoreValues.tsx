@@ -8,7 +8,7 @@ export const OurCoreValues = () => {
       </p>
 
       <div className="grid grid-cols-2 gap-5">
-        <div className="border-2 border-zinc-900 bg-[#F6F6F6] p-12">
+        <div className="p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🤩 User obsession
           </p>
@@ -20,7 +20,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="border-2 border-zinc-900 bg-[#F6F6F6] p-12">
+        <div className="p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🚛 Deliver more than expected
           </p>
@@ -31,7 +31,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="border-2 border-zinc-900 bg-[#F6F6F6] p-12">
+        <div className="p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             🤝 Communication x 3
           </p>
@@ -43,7 +43,7 @@ export const OurCoreValues = () => {
           </p>
         </div>
 
-        <div className="border-2 border-zinc-900 bg-[#F6F6F6] p-12">
+        <div className="p-12">
           <p className="mb-2 font-sans text-[24px] font-medium text-zinc-900">
             👊🏻 Be proactive and accountable
           </p>

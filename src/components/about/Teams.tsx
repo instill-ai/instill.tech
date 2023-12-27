@@ -16,7 +16,10 @@ export const Teams = () => {
       </p>
 
       <div className="mt-5 grid grid-cols-2 gap-5">
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
+          <div className="flex h-auto w-auto items-center justify-center bg-[#40A8F5] p-4">
+            <img src={"images/teams/wombat.svg"} alt="" />
+          </div>
           <div className="h-auto w-auto">
             <img src={"images/teams/ping-lin-chang.svg"} alt="" />
           </div>
@@ -58,7 +61,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/xiaofei-du.svg"} alt="" />
           </div>
@@ -100,7 +103,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/shih-chun-huang.svg"} alt="" />
           </div>
@@ -142,7 +145,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/harsh-soni.svg"} alt="" />
           </div>
@@ -184,7 +187,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/dani-sosa.svg"} alt="" />
           </div>
@@ -226,7 +229,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/po-chun-chiu.svg"} alt="" />
           </div>
@@ -268,7 +271,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/naman-anand.svg"} alt="" />
           </div>
@@ -310,7 +313,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/heiru-wu.svg"} alt="" />
           </div>
@@ -352,7 +355,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/chun-hao-wang.svg"} alt="" />
           </div>
@@ -394,7 +397,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/leo-chen.svg"} alt="" />
           </div>
@@ -436,7 +439,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/hui-tang-chang.svg"} alt="" />
           </div>
@@ -478,7 +481,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/juan-valles.svg"} alt="" />
           </div>
@@ -516,7 +519,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/sarthak-gupta.svg"} alt="" />
           </div>
@@ -558,7 +561,7 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full border-2 border-zinc-900 bg-[#F6F6F6]">
+        <div className="flex w-full bg-[#40A8F51A]">
           <div className="h-auto w-auto">
             <img src={"images/teams/minji-kim.svg"} alt="" />
           </div>
