@@ -17,10 +17,18 @@ export const Company = () => {
         in capability is precisely where Instill AI comes in, as many companies
         lack the knowledge or resources to effectively manage unstructured data.
         In August 2022, Instill AI achieved a significant milestone by
-        introducing the Versatile Data Pipeline (VDP), an open-source,
-        modularized ETL infrastructure specifically designed to address the
-        challenges of unstructured data. This launch reinforced the
-        company&apos;s dedication to democratizing AI access and exemplified
+        introducing the{" "}
+        <a
+          href="https://github.com/instill-ai/vdp"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500"
+        >
+          Versatile Data Pipeline (VDP)
+        </a>
+        , an open-source, modularized ETL infrastructure specifically designed
+        to address the challenges of unstructured data. This launch reinforced
+        the company&apos;s dedication to democratizing AI access and exemplified
         their ongoing commitment to overcoming obstacles in AI development for
         the benefit of all.
       </p>

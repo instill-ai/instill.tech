@@ -11,18 +11,28 @@ export const Teams = () => {
       <p className="font-sans text-base font-normal leading-7 text-zinc-900">
         If our core values resonate with you and you thrive in a dynamic,
         passionate team of dedicated engineers, researchers, designers, and
-        product enthusiasts, we encourage you to delve into our open roles.
-        Together, let&apos;s make a meaningful impact on the world!
+        product enthusiasts, we encourage you to delve into our{" "}
+        <a href={"/career"} rel="noopener noreferrer" className="text-blue-500">
+          open roles
+        </a>
+        . Together, let&apos;s make a meaningful impact on the world!
       </p>
 
       <div className="mt-5 grid grid-cols-2 gap-5">
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="flex h-auto w-auto items-center justify-center bg-[#40A8F5] p-4">
-            <img src={"images/teams/wombat.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#40A8F51A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#40A8F5] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img
+                src="images/teams/ping-lin-chang.svg"
+                alt="Ping Lin Chang Image"
+              />
+            </div>
           </div>
-          <div className="h-auto w-auto">
-            <img src={"images/teams/ping-lin-chang.svg"} alt="" />
-          </div>
+
           <div className="my-auto w-3/4">
             <div className="ml-10">
               <p className="font-sans text-[24px] font-medium text-zinc-900">
@@ -61,9 +71,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/xiaofei-du.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#40A8F51A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#40A8F5] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/xiaofei-du.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -103,9 +119,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/shih-chun-huang.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FFDF3A1A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/shih-chun-huang.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -145,9 +167,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/harsh-soni.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FFDF3A1A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/harsh-soni.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -187,9 +215,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/dani-sosa.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FFDF3A1A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/dani-sosa.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -229,9 +263,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/po-chun-chiu.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/po-chun-chiu.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -271,9 +311,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/naman-anand.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/naman-anand.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -313,9 +359,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/heiru-wu.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/heiru-wu.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -355,9 +407,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/chun-hao-wang.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/chun-hao-wang.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -397,9 +455,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/leo-chen.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/leo-chen.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -439,9 +503,15 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/hui-tang-chang.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/hui-tang-chang.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -481,9 +551,14 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/juan-valles.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/juan-valles.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -519,9 +594,14 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/sarthak-gupta.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#FF53531A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/sarthak-gupta.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
@@ -561,9 +641,14 @@ export const Teams = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full bg-[#40A8F51A]">
-          <div className="h-auto w-auto">
-            <img src={"images/teams/minji-kim.svg"} alt="" />
+        <div className="flex h-[160px] w-full bg-[#1A1A1A1A]">
+          <div className="group relative inline-block cursor-pointer overflow-hidden">
+            <div className="flex h-[160px] w-[160px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0">
+              <img src="images/teams/wombat.svg" alt="Wombat Image" />
+            </div>
+            <div className="absolute inset-0 h-[160px] w-[160px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+              <img src="images/teams/minji-kim.svg" />
+            </div>
           </div>
           <div className="my-auto w-3/4">
             <div className="ml-10">
