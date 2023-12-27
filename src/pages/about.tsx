@@ -42,7 +42,6 @@ export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
     props: {
       members,
     },
-
     // This page is using ISR
     revalidate: 10,
   };
