@@ -11,7 +11,12 @@ export default function Social() {
           </p>
         </div>
         <div className="flex justify-center gap-x-8 xl:gap-x-20">
-          <a href="" target="_blank" rel="noopener noreferrer">
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden xl:block"
+          >
             <img
               src={"/images/social/ubitus.svg"}
               alt=""
@@ -61,19 +66,14 @@ export default function Social() {
             />
           </a>
 
-          <a
-            href="http://
-"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <img
+              src={"/images/social/cheng-kung-university.svg"}
+              alt=""
+              sizes=""
+              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+            />
           </a>
-          <img
-            src={"/images/social/cheng-kung-university.svg"}
-            alt=""
-            sizes=""
-            className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
-          />
         </div>
       </div>
     </div>

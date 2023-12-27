@@ -39,7 +39,7 @@ export const HowItWorksRow = ({
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col text-center xl:text-left">
           {sectionTitle ? (
             <SectionLabel
               text={sectionTitle}
@@ -58,7 +58,7 @@ export const HowItWorksRow = ({
             <CommonCtaButton
               withArrow={true}
               link={learnMoreLink}
-              position="mt-auto mr-auto"
+              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
               text="Learn more"
             />
           ) : null}

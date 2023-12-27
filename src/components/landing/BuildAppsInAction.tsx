@@ -17,7 +17,7 @@ export const BuildAppsInAction = () => {
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
-        <p className="text-lg font-normal text-white xl:w-7/12">
+        <p className="text-[16px] font-normal  text-white xl:w-7/12">
           Empower your applications with AI pipelines that seamlessly connect to
           a variety of unstructured data types. Effortlessly Transform your data
           using ready-to-use AI models, and ensure the reliability of your
@@ -25,35 +25,53 @@ export const BuildAppsInAction = () => {
         </p>
 
         <div className="my-6 xl:w-3/12">
-          <CommonCtaButton withArrow={true} link={"/"} text="Learn more" />
+          <CommonCtaButton
+            withArrow={true}
+            link={"/"}
+            text="Learn more"
+            position="w-full justify-center"
+          />
         </div>
       </div>
       <div>
         <img src={"/images/vdp-in-action.svg"} alt="" />
       </div>
 
-      <div className="my-20 flex flex-row gap-x-10">
-        <div className="w-1/2">
-          <img src={"/images/vdp-in-action-2.svg"} alt="" />
+      <div className="mt-20 flex flex-col-reverse gap-x-10 xl:flex-row">
+        <div className="w-full xl:w-1/2">
+          <img
+            src={"/images/vdp-in-action-2.svg"}
+            alt=""
+            className="my-10 xl:my-0"
+          />
+
+          <CommonCtaButton
+            withArrow={true}
+            link={"/"}
+            text="Explore Instill Hub"
+            position="xl:hidden block my-10 mx-auto w-full justify-center"
+          />
         </div>
 
-        <div className="w-1/2 space-y-6">
-          <p className="font-sans text-[36px] font-semibold text-white">
+        <div className="w-full space-y-6 text-center xl:w-1/2 xl:text-left">
+          <p className="font-sans text-[24px] font-semibold text-white xl:text-[36px]">
             The home for AI builders
           </p>
 
-          <p className="font-sans text-lg font-normal text-white">
+          <p className="font-sans  text-[16px] font-normal text-white">
             Welcome to Instill Hub, your destination for creating, sharing, and
             exploring a wide range of versatile AI pipelines. Share crafted
             pipelines with the community, providing a platform to showcase your
             work to a wider audience and stimulate collaborative innovation.
           </p>
 
-          <CommonCtaButton
-            withArrow={true}
-            link={"/"}
-            text="Explore Instill Hub"
-          />
+          <div className="hidden xl:block">
+            <CommonCtaButton
+              withArrow={true}
+              link={"/"}
+              text="Explore Instill Hub"
+            />
+          </div>
         </div>
       </div>
     </div>

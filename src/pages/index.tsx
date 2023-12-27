@@ -175,12 +175,20 @@ const HomePage: FC<HomePageProps> & {
         </div>
 
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          <div className="my-10 flex flex-row">
-            <div className="w-[45%]">
+          <div className="my-10 flex flex-col-reverse xl:flex-row">
+            <div>
+              <CommonCtaButton
+                withArrow={true}
+                link={"/"}
+                text="Self-host Instill Core"
+                position="xl:hidden block w-full justify-center"
+              />
+            </div>
+            <div className="w-full xl:w-[45%]">
               <img src={"/images/self-host-cube.svg"} alt="" />
             </div>
 
-            <div className="w-[55%] space-y-10">
+            <div className="w-full space-y-10 xl:w-[55%]">
               <div className="mx-auto">
                 <p className="font-mono text-[36px] font-semibold">
                   Want to self-host?
@@ -195,7 +203,7 @@ const HomePage: FC<HomePageProps> & {
                 </p>
               </div>
 
-              <div className="mx-auto">
+              <div className="mx-auto hidden xl:block">
                 <CommonCtaButton
                   withArrow={true}
                   link={"/"}

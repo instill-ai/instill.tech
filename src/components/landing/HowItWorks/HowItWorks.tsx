@@ -1,34 +1,16 @@
 import cn from "clsx";
 import {
-  AirbyteIcon,
   ArrowRightIcon,
-  AsyncArrowsIcon,
-  AsyncIcon,
   GitHubIcon,
-  GrpcIcon,
-  HttpIcon,
   Icons,
-  ImageClassificationIcon,
-  KeypointDetectionIcon,
-  ObjectDetectionIcon,
-  OnnxIcon,
-  OpticalCharacterRecognitionIcon,
-  PlusIcon,
-  PythonIcon,
-  PyTorchIcon,
   Separator,
   SolidButton,
-  SyncArrowsIcon,
-  SyncIcon,
-  TensorFlowIcon,
-  VdpLogo,
 } from "@instill-ai/design-system";
-
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
 import React, { forwardRef } from "react";
 import Link from "next/link";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export type HowItWorksProps = {
   marginBottom?: string;
@@ -44,7 +26,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           <SectionLabel text="What makes us different" position="mr-auto" />
           <SectionHeader
             header="Designed for Flexibility and Scale."
-            headerWidth="w-full"
+            headerWidth="w-full xl:text-left text-center hidden xl:block"
             headerTextColor="text-[#2B2B2B]"
           />
         </div>
@@ -83,7 +65,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   router.push("/", undefined, { scroll: false })
                 }
                 hoveredShadow="hover:shadow-instill-solid-5"
-                position="mt-auto mr-auto"
+                position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
               >
                 <p className="text-lg font-normal">Star Instill VDP</p>
               </SolidButton>
@@ -107,7 +89,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             cubes={[]}
             icon={<img src={"/images/models.svg"} alt="" sizes="" />}
             buttons={
-              <div className="flex flex-row gap-x-1">
+              <div className="flex flex-col gap-x-2 xl:flex-row">
                 <SolidButton
                   type="button"
                   color="primaryLight"
@@ -125,7 +107,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     router.push("/", undefined, { scroll: false })
                   }
                   hoveredShadow="hover:shadow-instill-solid-5"
-                  position="mt-auto mr-auto"
+                  position="mt-auto w-full justify-center xl:w-auto"
                 >
                   <p className="text-lg font-normal">Star Instill VDP</p>
                 </SolidButton>
@@ -146,7 +128,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     router.push("/", undefined, { scroll: false })
                   }
                   hoveredShadow="hover:shadow-instill-solid-5"
-                  position="mt-auto mr-auto"
+                  position="xl:mt-auto xl:mr-auto mt-5 w-full justify-center xl:w-auto"
                 >
                   <p className="text-lg font-normal">Access on Instill Cloud</p>
                 </SolidButton>
