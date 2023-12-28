@@ -1,11 +1,11 @@
+import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { Button, Icons, Input } from "@instill-ai/design-system";
-import React, { useState } from "react";
 
 export const StabilityAIOpenAISticker = () => {
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = React.useState(false);
 
-  const handleGenrate = () => {
+  const handleGenerate = () => {
     setSpinner(true);
     setTimeout(() => {
       setSpinner(false);
@@ -18,7 +18,7 @@ export const StabilityAIOpenAISticker = () => {
         Stability AI + Open AI for Sticker
       </h3>
       <p className="text-sm text-zinc-500 dark:text-zinc-600">
-        Create and inspire using the worlds fastest growing open source AI
+        Create and inspire using the worlds fastest-growing open-source AI
         platform
       </p>
 
@@ -35,9 +35,9 @@ export const StabilityAIOpenAISticker = () => {
           variant="primary"
           size="lg"
           className="gap-x-2"
-          onClick={() => handleGenrate()}
+          onClick={() => handleGenerate()}
         >
-          Genrate
+          Generate
           {spinner ? (
             <LoadingSpin />
           ) : (
@@ -50,7 +50,10 @@ export const StabilityAIOpenAISticker = () => {
         {spinner ? (
           <div>Generating...</div>
         ) : (
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-4.jpg"
+            alt="Nature"
+          />
         )}
       </div>
     </div>

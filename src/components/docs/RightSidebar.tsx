@@ -4,7 +4,7 @@ import {
   ContributeLinks,
   ContributeLinksProps,
 } from "@/components/ui";
-import React from "react";
+import * as React from "react";
 
 export type RightSidebarProps = {
   headers: TableOfContentProps["headers"];

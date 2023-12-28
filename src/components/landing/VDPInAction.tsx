@@ -1,4 +1,4 @@
-import React, { ForwardedRef } from "react";
+import * as React from "react";
 import { SectionHeader, SectionLabel } from "../ui";
 import { Icons, Tag } from "@instill-ai/design-system";
 import { Jumbotron } from "./jumbotron";
@@ -7,7 +7,7 @@ import cn from "clsx";
 export default function VDPInAction({
   ref,
 }: {
-  ref: ForwardedRef<HTMLDivElement>;
+  ref: React.ForwardedRef<HTMLDivElement>;
 }) {
   return (
     <div className="mx-auto w-full px-4 xl:px-0" ref={ref}>

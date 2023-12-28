@@ -2,7 +2,7 @@ import { Section } from "./Section";
 import { Sidebar } from "@/types/docs";
 import { DocSearch } from "@docsearch/react";
 import { ScrollArea } from "@instill-ai/design-system";
-import React from "react";
+import * as React from "react";
 
 export type LeftSidebarProps = {
   leftSidebar: Sidebar["leftSidebar"];

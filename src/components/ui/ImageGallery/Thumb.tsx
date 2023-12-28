@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import cn from "clsx";
-import React from "react";
+import * as React from "react";
 
 export type ThumbProps = {
   selected: boolean;

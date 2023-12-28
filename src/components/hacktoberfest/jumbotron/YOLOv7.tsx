@@ -1,11 +1,11 @@
+import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { Button, Icons, Input } from "@instill-ai/design-system";
-import React, { useState } from "react";
 
 export const YOLOv7 = () => {
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = React.useState(false);
 
-  const handleGenrate = () => {
+  const handleGenerate = () => {
     setSpinner(true);
     setTimeout(() => {
       setSpinner(false);
@@ -16,7 +16,7 @@ export const YOLOv7 = () => {
     <div className="h-[660px] w-[500px] rounded-sm border-md border-semantic-accent-default bg-white p-6">
       <h3 className="mb-3 font-semibold leading-none">YOLOv7</h3>
       <p className="text-sm text-zinc-500 dark:text-zinc-600">
-        Create and inspire using the worlds fastest growing open source AI
+        Create and inspire using the world&apos;s fastest-growing open-source AI
         platform
       </p>
 
@@ -33,9 +33,9 @@ export const YOLOv7 = () => {
           variant="primary"
           size="lg"
           className="gap-x-2"
-          onClick={() => handleGenrate()}
+          onClick={() => handleGenerate()}
         >
-          Genrate
+          Generate
           {spinner ? (
             <LoadingSpin />
           ) : (
@@ -48,7 +48,10 @@ export const YOLOv7 = () => {
         {spinner ? (
           <div>Generating...</div>
         ) : (
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-5.jpg"
+            alt="Nature"
+          />
         )}
       </div>
     </div>

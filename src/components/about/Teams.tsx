@@ -1,5 +1,5 @@
 import { GitHubIcon, LinkedInIcon } from "@instill-ai/design-system";
-import React from "react";
+import * as React from "react";
 
 export const Teams = () => {
   return (

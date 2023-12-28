@@ -4,7 +4,7 @@
  * could find more information here https://github.com/remarkjs/react-markdown/issues/635
  */
 
-import React from "react";
+import * as React from "react";
 
 function ReactMarkdown({ children }) {
   return <React.Fragment>{children}</React.Fragment>;

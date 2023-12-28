@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { CommonCtaButton, SectionHeader, SectionLabel } from "../ui";
 import { CommunityBlock } from "./Community/CommunityBlock";
 
