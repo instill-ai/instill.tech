@@ -12,7 +12,7 @@ export default function Social() {
         </div>
         <div className="flex justify-center gap-x-8 xl:gap-x-20">
           <a
-            href=""
+            href="https://ubitus.net/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden xl:block"
@@ -25,7 +25,11 @@ export default function Social() {
             />
           </a>
 
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.rybit.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={"/images/social/rybit.svg"}
               alt=""
@@ -34,7 +38,11 @@ export default function Social() {
             />
           </a>
 
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.no8.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={"/images/social/super8.svg"}
               alt=""
@@ -44,8 +52,7 @@ export default function Social() {
           </a>
 
           <a
-            href="http://
-              "
+            href="https://www.ox.ac.uk/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -57,7 +64,11 @@ export default function Social() {
             />
           </a>
 
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.sinica.edu.tw/en"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={"/images/social/acadamia.svg"}
               alt=""
@@ -66,7 +77,11 @@ export default function Social() {
             />
           </a>
 
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.ncku.edu.tw/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={"/images/social/cheng-kung-university.svg"}
               alt=""

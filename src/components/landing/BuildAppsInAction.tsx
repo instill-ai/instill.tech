@@ -27,7 +27,7 @@ export const BuildAppsInAction = () => {
         <div className="my-6 xl:w-3/12">
           <CommonCtaButton
             withArrow={true}
-            link={"/"}
+            link={"/docs/v0.6.0-alpha/quickstart"}
             text="Learn more"
             position="w-full justify-center"
           />
@@ -68,7 +68,7 @@ export const BuildAppsInAction = () => {
           <div className="hidden xl:block">
             <CommonCtaButton
               withArrow={true}
-              link={"/"}
+              link={"https://console.instill.tech/hub"}
               text="Explore Instill Hub"
             />
           </div>

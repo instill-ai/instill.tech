@@ -206,7 +206,7 @@ const HomePage: FC<HomePageProps> & {
               <div className="mx-auto hidden xl:block">
                 <CommonCtaButton
                   withArrow={true}
-                  link={"/"}
+                  link={"/docs/v0.6.0-alpha/core/deployment"}
                   text="Self-host Instill Core"
                 />
               </div>
