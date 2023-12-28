@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end(`Method ${method} Not Allowed`);
   }
 
-  console.log(process.env.NEXT_SERVER_INSTILL_API_TOKEN);
+  // console.log(process.env.NEXT_SERVER_INSTILL_API_TOKEN);
 
   if (!body) {
     return res.status(500).end("Body not provided");

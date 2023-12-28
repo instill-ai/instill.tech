@@ -2,7 +2,13 @@ import * as React from "react";
 
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import { Button, Icons, Input, toast } from "@instill-ai/design-system";
+import {
+  Button,
+  Icons,
+  Input,
+  SolidButton,
+  toast,
+} from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 
 export const YOLOv7 = () => {
@@ -40,8 +46,26 @@ export const YOLOv7 = () => {
     }, 2000);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
+  ) => {
+    let file: File | null | undefined = null;
+
+    if ("dataTransfer" in e) {
+      // Handle drag-and-drop
+      const dataTransfer = e.dataTransfer;
+      if (dataTransfer.items) {
+        // Use DataTransferItemList interface for modern browsers
+        file = dataTransfer.items[0].getAsFile();
+      } else {
+        // Use legacy DataTransfer interface for older browsers
+        file = dataTransfer.files[0];
+      }
+    } else {
+      // Handle regular file input change
+      const fileInput = e.target as HTMLInputElement;
+      file = fileInput.files?.[0];
+    }
 
     if (file) {
       const reader = new FileReader();
@@ -68,47 +92,57 @@ export const YOLOv7 = () => {
     }
   };
 
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    handleFileChange(e);
+  };
+
   return (
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
-        <h3 className="my-auto product-body-text-1-semibold">YOLOv7</h3>
+        <h3 className="my-auto product-body-text-1-semibold">
+          Object Detection
+        </h3>
       </div>
-      <div className="px-3 pt-3">
+      <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Create and inspire using the worlds fastest growing open source AI
-          platform
+          Upload an image and YOLOv7 will detect objects and Instill AI’s Image
+          Operator will draw bounding boxes around the detected objects.
         </p>
 
         <div className="my-6 flex gap-x-4">
           {article ? (
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => {
+            <SolidButton
+              color="primary"
+              position="my-auto w-full gap-x-2 justify-center"
+              type="button"
+              onClickHandler={() => {
                 setArticle("");
                 handleDelete();
               }}
             >
               Reset
-            </Button>
+            </SolidButton>
           ) : (
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => {
-                handleGenrate();
+            <SolidButton
+              position="my-auto w-full gap-x-2 justify-center item-center"
+              color="primary"
+              onClickHandler={() => {
+                if (imagePreview) {
+                  handleGenrate();
+                }
               }}
-              disabled={imagePreview ? false : true}
+              type="button"
             >
               Generate
               {spinner ? (
-                <LoadingSpin />
+                <div className="my-auto h-4 w-4">
+                  <LoadingSpin className="!h-4 !w-4" />
+                </div>
               ) : (
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
-            </Button>
+            </SolidButton>
           )}
         </div>
 
@@ -118,11 +152,15 @@ export const YOLOv7 = () => {
           ) : (
             <React.Fragment>
               {article ? (
-                <div className="flex w-full flex-wrap">
+                <div className="flex w-full flex-wrap overflow-auto">
                   <img src={article} className="my-auto object-contain" />
                 </div>
               ) : (
-                <div className="w-full space-y-3">
+                <div
+                  className="w-full space-y-3"
+                  onDrop={handleDrop}
+                  onDragOver={(e) => e.preventDefault()}
+                >
                   <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
                     {imagePreview && (
                       <Icons.Trash01
@@ -132,11 +170,10 @@ export const YOLOv7 = () => {
                     )}
 
                     {imagePreview ? (
-                      <div className="p-5">
+                      <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
                         <img
                           src={imagePreview}
-                          alt="Image Preview"
-                          className="mx-auto h-[370px]"
+                          className="my-auto object-contain"
                         />
                       </div>
                     ) : (
@@ -147,7 +184,10 @@ export const YOLOv7 = () => {
                         <div className="cursor-pointer space-y-4 px-10 py-10">
                           <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
                           <p className="mx-auto product-body-text-4-regular">
-                            Drag-and-drop file, or browse computer
+                            Drag-and-drop file, or{" "}
+                            <span className="text-instillBlue50">
+                              browse computer
+                            </span>
                           </p>
                         </div>
                       </label>

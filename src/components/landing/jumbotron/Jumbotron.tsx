@@ -37,7 +37,6 @@ export const Jumbotron = () => {
             <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
           </Button>
         </SwiperButtonPrev>
-
         <SwiperSlide className="shadow-lg">
           <StabilityAIOpenAISticker />
         </SwiperSlide>

@@ -2,7 +2,13 @@ import * as React from "react";
 
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import { Button, Icons, Input, toast } from "@instill-ai/design-system";
+import {
+  Button,
+  Icons,
+  Input,
+  SolidButton,
+  toast,
+} from "@instill-ai/design-system";
 
 const defaultArticle = `
       # SEO: Boost Your Website's Ranking with These Top Strategies
@@ -36,6 +42,7 @@ const defaultArticle = `
 export const SEOArticleWriter = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
+  const [articleImage, setArticleImage] = React.useState<string>("");
   const [input, setInput] = React.useState<string>("");
   const [sectionNumber, setSectionNumber] = React.useState<string>("");
 
@@ -54,6 +61,9 @@ export const SEOArticleWriter = () => {
       const articleString: string =
         apiResponse.data.outputs[0].article.join("\n");
 
+      const articleImage: string = apiResponse.data.outputs[0].article_img[0];
+
+      setArticleImage(articleImage);
       setArticle(articleString);
     } else {
       console.error("API Error:", apiResponse.error);
@@ -78,48 +88,42 @@ export const SEOArticleWriter = () => {
           SEO article writer
         </h3>
       </div>
-      <div className="px-3 pt-3">
+      <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Create and inspire using the worlds fastest growing open source AI
-          platform
+          Provide a few SEO keywords that you’d like to generate an article and
+          related cover image will be generated using OpenAI and Stability AI.
         </p>
 
-        <div className="my-6 flex gap-x-4">
-          <div className="w-2/3 space-y-2">
-            <Input.Root className="w-full">
+        <div className="my-6 flex flex-row gap-x-2">
+          <div className="w-2/5 space-y-2">
+            <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="Tell me a short story"
+                placeholder="training, dogs, jokes"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
             </Input.Root>
-            <Input.Root className="w-full">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="Section number"
-                value={sectionNumber}
-                onChange={(e) => setSectionNumber(e.target.value)}
-              />
-            </Input.Root>
           </div>
-          <div className="w-1/3">
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => handleGenrate()}
-              disabled={input && sectionNumber ? false : true}
+          <div className="w-3/5">
+            <SolidButton
+              color="primary"
+              position="my-auto w-full gap-x-2 justify-center py-[9px]"
+              onClickHandler={() => {
+                if (input) {
+                  handleGenrate();
+                }
+              }}
+              type="button"
             >
-              Generate
+              Generate Article and Image
               {spinner ? (
-                <LoadingSpin />
+                <LoadingSpin className="!h-4 !w-4" />
               ) : (
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
-            </Button>
+            </SolidButton>
           </div>
         </div>
 
@@ -127,10 +131,22 @@ export const SEOArticleWriter = () => {
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="open-ai-stiker w-full overflow-y-auto">
-              <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-                {article ? article : defaultArticle}
-              </pre>
+            <div className="space-y-4">
+              <div className="seo-box w-full overflow-y-auto">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                  {article ? article : defaultArticle}
+                </pre>
+              </div>
+              <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+                {articleImage ? (
+                  <img src={articleImage} className="my-auto object-contain" />
+                ) : (
+                  <img
+                    src={"/images/seo.png"}
+                    className="my-auto object-contain"
+                  />
+                )}
+              </div>
             </div>
           )}
         </div>

@@ -155,12 +155,19 @@ table.mcnCaptionTopContent {
 }
 
 .open-ai-stiker {
-  height: 400px;
-  overflow-x: auto;
+  height: 440px;
 }
 
 .jumbotron-file-uploader {
-  height: 450px;
+  height: 440px;
+}
+
+.seo-box {
+  height: 220px;
+}
+
+.seo-image-box {
+  height: 200px;
 }
 
 /* Media query for width 600px */
@@ -190,6 +197,13 @@ table.mcnCaptionTopContent {
 
   .open-ai-stiker {
     height: 300px;
+  }
+  .seo-box {
+    height: 300px;
+  }
+
+  .seo-image-box {
+    display: none;
   }
 
   .jumbotron-file-uploader {

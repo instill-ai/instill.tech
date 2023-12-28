@@ -1,6 +1,12 @@
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import { Button, Icons, Input, toast } from "@instill-ai/design-system";
+import {
+  Button,
+  Icons,
+  Input,
+  SolidButton,
+  toast,
+} from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import * as React from "react";
 
@@ -71,21 +77,23 @@ export const Llama2Chat = () => {
   return (
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
-        <h3 className="my-auto product-body-text-1-semibold">Llama2-7B-chat</h3>
+        <h3 className="my-auto product-body-text-1-semibold">
+          Object Detection
+        </h3>
       </div>
-      <div className="px-3 pt-3">
+      <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Create and inspire using the worlds fastest growing open source AI
-          platform
+          Upload an image and ask a question about it and then see how LLaVa-7B
+          magically answers you.
         </p>
 
         <div className="my-6 flex gap-x-4">
           <div className="w-2/3 space-y-2">
-            <Input.Root className="my-auto w-full">
+            <Input.Root className="my-auto w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="Question"
+                placeholder="What is unusual about this image?"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
@@ -93,34 +101,33 @@ export const Llama2Chat = () => {
           </div>
           <div className="w-1/3">
             {article ? (
-              <Button
-                variant="primary"
-                size="md"
-                className="my-auto w-full gap-x-2"
-                onClick={() => {
+              <SolidButton
+                color="primary"
+                type="button"
+                position="my-auto w-full gap-x-2"
+                onClickHandler={() => {
                   setArticle("");
                   handleDelete();
                 }}
               >
                 Reset
-              </Button>
+              </SolidButton>
             ) : (
-              <Button
-                variant="primary"
-                size="md"
-                className="my-auto w-full gap-x-2"
-                onClick={() => {
+              <SolidButton
+                color="primary"
+                type="button"
+                position="my-auto w-full gap-x-2 py-[9px]"
+                onClickHandler={() => {
                   handleGenrate();
                 }}
-                disabled={imagePreview && question ? false : true}
               >
                 Generate
                 {spinner ? (
                   <LoadingSpin />
                 ) : (
-                  <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                  <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
                 )}
-              </Button>
+              </SolidButton>
             )}
           </div>
         </div>
@@ -147,11 +154,10 @@ export const Llama2Chat = () => {
                     )}
 
                     {imagePreview ? (
-                      <div className="p-5">
+                      <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
                         <img
                           src={imagePreview}
-                          alt="Image Preview"
-                          className="mx-auto h-[370px]"
+                          className="my-auto object-contain"
                         />
                       </div>
                     ) : (
@@ -162,7 +168,10 @@ export const Llama2Chat = () => {
                         <div className="cursor-pointer space-y-4 px-10 py-10">
                           <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
                           <p className="mx-auto product-body-text-4-regular">
-                            Drag-and-drop file, or browse computer
+                            Drag-and-drop file, or{" "}
+                            <span className="text-instillBlue50">
+                              browse computer
+                            </span>
                           </p>
                         </div>
                       </label>

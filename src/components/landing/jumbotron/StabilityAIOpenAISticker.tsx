@@ -2,12 +2,18 @@ import * as React from "react";
 
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import { Button, Icons, Input, toast } from "@instill-ai/design-system";
+import {
+  Button,
+  Icons,
+  Input,
+  SolidButton,
+  toast,
+} from "@instill-ai/design-system";
 
 export const StabilityAIOpenAISticker = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
-  const [prompt, setPrompt] = React.useState<string>("Cat");
+  const [prompt, setPrompt] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
@@ -41,44 +47,47 @@ export const StabilityAIOpenAISticker = () => {
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <p className="my-auto product-body-text-1-semibold">
-          Stability AI + Open AI for Sticker
+          Make digital stickers using keywords
         </p>
 
         {/* <ToastWithHook variant="alert-error" /> */}
       </div>
-      <div className="px-3 pt-3">
+      <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Create and inspire using the worlds fastest growing open source AI
-          platform
+          Enter simple keyword(s) describing the sticker, OpenAI will then make
+          the prompt more descriptive and StabilityAI will generate the sticker.
         </p>
 
         <div className="my-6 flex gap-x-4">
           <div className="w-2/3 space-y-2">
-            <Input.Root className="w-full">
+            <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="Prompt"
+                placeholder="Wombat coding"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
               />
             </Input.Root>
           </div>
           <div className="w-1/3">
-            <Button
-              variant="primary"
-              size="md"
-              className="my-auto w-full gap-x-2"
-              onClick={() => handleGenrate()}
-              disabled={prompt ? false : true}
+            <SolidButton
+              position="my-auto w-full gap-x-2 py-[9px]"
+              color="primary"
+              onClickHandler={() => {
+                if (prompt) {
+                  handleGenrate();
+                }
+              }}
+              type="button"
             >
               Generate
               {spinner ? (
                 <LoadingSpin />
               ) : (
-                <Icons.Play className="h-5 w-5 stroke-semantic-bg-primary" />
+                <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
-            </Button>
+            </SolidButton>
           </div>
         </div>
 
@@ -87,13 +96,13 @@ export const StabilityAIOpenAISticker = () => {
             <div>Generating...</div>
           ) : (
             <React.Fragment>
-              <div className="flex w-full flex-wrap">
+              <div className="flex w-full flex-wrap overflow-auto">
                 {article ? (
                   <img src={article} className="my-auto object-contain" />
                 ) : (
                   <img
-                    src="/images/cat.png"
-                    className="open-ai-stiker mx-auto my-auto"
+                    src="/images/wombat.png"
+                    className="mx-auto my-auto object-contain"
                   />
                 )}
               </div>
