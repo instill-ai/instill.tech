@@ -46,8 +46,26 @@ export const Llama2Chat = () => {
     }, 2000);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
+  ) => {
+    let file: File | null | undefined = null;
+
+    if ("dataTransfer" in e) {
+      // Handle drag-and-drop
+      const dataTransfer = e.dataTransfer;
+      if (dataTransfer.items) {
+        // Use DataTransferItemList interface for modern browsers
+        file = dataTransfer.items[0].getAsFile();
+      } else {
+        // Use legacy DataTransfer interface for older browsers
+        file = dataTransfer.files[0];
+      }
+    } else {
+      // Handle regular file input change
+      const fileInput = e.target as HTMLInputElement;
+      file = fileInput.files?.[0];
+    }
 
     if (file) {
       const reader = new FileReader();
@@ -72,6 +90,11 @@ export const Llama2Chat = () => {
     if (lamaChatFileInput) {
       lamaChatFileInput.value = ""; // This resets the input value
     }
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    handleFileChange(e);
   };
 
   return (
@@ -144,7 +167,11 @@ export const Llama2Chat = () => {
                   </pre>
                 </div>
               ) : (
-                <div className="w-full space-y-3">
+                <div
+                  className="w-full space-y-3"
+                  onDrop={handleDrop}
+                  onDragOver={(e) => e.preventDefault()}
+                >
                   <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
                     {imagePreview && (
                       <Icons.Trash01
