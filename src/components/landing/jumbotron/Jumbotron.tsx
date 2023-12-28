@@ -15,8 +15,29 @@ import { Llama2Chat } from "./Llama2Chat";
 import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 import { YOLOv7 } from "./YOLOv7";
 import { SEOArticleWriter } from "./SEOArticleWriter";
+import * as React from "react";
 
 export const Jumbotron = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(1);
+
+  React.useEffect(() => {
+    console.log(currentSlide);
+    const isBeginning = currentSlide === 1 ? 1 : 0;
+    const isEnd = currentSlide === 4 ? 1 : 0;
+
+    //   // Show/hide buttons based on whether it's the first or last card
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+
+    if (prevButton) {
+      prevButton.style.display = isBeginning ? "none" : "block";
+    }
+
+    if (nextButton) {
+      nextButton.style.display = isEnd ? "none" : "block";
+    }
+  }, [currentSlide]);
+
   return (
     <div className="jumbotron">
       <Swiper
@@ -28,7 +49,9 @@ export const Jumbotron = () => {
         modules={[EffectCards, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperButtonPrev>
+        <SwiperButtonPrev
+          onClickHandler={() => setCurrentSlide(currentSlide - 1)}
+        >
           <Button
             variant="secondaryGrey"
             size="lg"
@@ -49,7 +72,9 @@ export const Jumbotron = () => {
         <SwiperSlide className="shadow-lg">
           <Llama2Chat />
         </SwiperSlide>
-        <SwiperButtonNext>
+        <SwiperButtonNext
+          onClickHandler={() => setCurrentSlide(currentSlide + 1)}
+        >
           <Button
             variant="secondaryGrey"
             size="lg"
