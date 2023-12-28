@@ -1,17 +1,18 @@
+import * as React from "react";
+
 import { LoadingSpin } from "@/components/ui";
-import stabilityAIOpenAISticker from "@/lib/jumbotron/stabilityAIOpenAISticker";
+import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import { Button, Icons, Input, toast } from "@instill-ai/design-system";
-import React, { useState } from "react";
 
 export const StabilityAIOpenAISticker = () => {
-  const [spinner, setSpinner] = useState(false);
-  const [article, setArticle] = useState<string>("");
-  const [prompt, setPrompt] = useState<string>("Cat");
+  const [spinner, setSpinner] = React.useState(false);
+  const [article, setArticle] = React.useState<string>("");
+  const [prompt, setPrompt] = React.useState<string>("Cat");
 
   const handleGenrate = async () => {
     setSpinner(true);
 
-    const apiResponse = await stabilityAIOpenAISticker({
+    const apiResponse = await JumbotronSDK.stabilityAIOpenAISticker({
       inputs: [
         {
           sticker_prompt: prompt,

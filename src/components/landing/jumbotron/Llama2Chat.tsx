@@ -1,21 +1,20 @@
 import { LoadingSpin } from "@/components/ui";
-import llava7b from "@/lib/jumbotron/llava7b";
+import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import { Button, Icons, Input, toast } from "@instill-ai/design-system";
-import { Nullable, useInstillForm } from "@instill-ai/toolkit";
-import { ImageField } from "@instill-ai/toolkit/dist/lib/use-instill-form/components/start-operator-free-form-fields/ImageField";
-import React, { useState } from "react";
+import { Nullable } from "@instill-ai/toolkit";
+import * as React from "react";
 
 export const Llama2Chat = () => {
-  const [spinner, setSpinner] = useState(false);
-  const [article, setArticle] = useState<string>("");
-  const [question, setQuestion] = useState<string>("");
+  const [spinner, setSpinner] = React.useState(false);
+  const [article, setArticle] = React.useState<string>("");
+  const [question, setQuestion] = React.useState<string>("");
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
   const handleGenrate = async () => {
     setSpinner(true);
 
-    const apiResponse = await llava7b({
+    const apiResponse = await JumbotronSDK.llava7b({
       inputs: [
         {
           image: imagePreview ? imagePreview : "",

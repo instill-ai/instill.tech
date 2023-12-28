@@ -1,7 +1,8 @@
+import * as React from "react";
+
 import { LoadingSpin } from "@/components/ui";
-import seoArticle from "@/lib/jumbotron/seoArticle";
+import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import { Button, Icons, Input, toast } from "@instill-ai/design-system";
-import React, { useState } from "react";
 
 const defaultArticle = `
       # SEO: Boost Your Website's Ranking with These Top Strategies
@@ -33,14 +34,14 @@ const defaultArticle = `
       SEO is a long-term investment that requires ongoing effort and strategies to reap its benefits. By conducting thorough keyword research, creating high-quality content, and optimizing your website's on-page elements, you can significantly improve your website's search engine ranking. Remember, SEO is ever-evolving, so stay up-to-date with the latest trends and algorithms to ensure your website remains competitive and visible in the vast digital landscape." 
 `;
 export const SEOArticleWriter = () => {
-  const [spinner, setSpinner] = useState(false);
-  const [article, setArticle] = useState<string>("");
-  const [input, setInput] = useState<string>("");
-  const [sectionNumber, setSectionNumber] = useState<string>("");
+  const [spinner, setSpinner] = React.useState(false);
+  const [article, setArticle] = React.useState<string>("");
+  const [input, setInput] = React.useState<string>("");
+  const [sectionNumber, setSectionNumber] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
-    const apiResponse = await seoArticle({
+    const apiResponse = await JumbotronSDK.seoArticle({
       inputs: [
         {
           keywords: input,
