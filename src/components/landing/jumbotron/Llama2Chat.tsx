@@ -156,65 +156,65 @@ export const Llama2Chat = () => {
         </div>
 
         <div className="jumbotron-file-uploader flex items-center justify-center">
-          {spinner ? (
+          {/* {spinner ? (
             <div>Generating...</div>
-          ) : (
-            <React.Fragment>
-              {article ? (
-                <div className="jumbotron-file-uploader w-full overflow-y-auto">
-                  <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-                    {article}
-                  </pre>
-                </div>
-              ) : (
-                <div
-                  className="w-full space-y-3"
-                  onDrop={handleDrop}
-                  onDragOver={(e) => e.preventDefault()}
-                >
-                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
-                    {imagePreview && (
-                      <Icons.Trash01
-                        onClick={() => handleDelete()}
-                        className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
-                      />
-                    )}
-
-                    {imagePreview ? (
-                      <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
-                        <img
-                          src={imagePreview}
-                          className="my-auto object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <label
-                        htmlFor="lamaChatFileInput"
-                        className="flex cursor-pointer flex-col"
-                      >
-                        <div className="cursor-pointer space-y-4 px-10 py-10">
-                          <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
-                          <p className="mx-auto product-body-text-4-regular">
-                            Drag-and-drop file, or{" "}
-                            <span className="text-instillBlue50">
-                              browse computer
-                            </span>
-                          </p>
-                        </div>
-                      </label>
-                    )}
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      id="lamaChatFileInput"
-                      onChange={(e) => handleFileChange(e)}
+          ) : ( */}
+          <React.Fragment>
+            {article ? (
+              <div className="jumbotron-file-uploader w-full overflow-y-auto">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                  {article}
+                </pre>
+              </div>
+            ) : (
+              <div
+                className="w-full space-y-3"
+                onDrop={handleDrop}
+                onDragOver={(e) => e.preventDefault()}
+              >
+                <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                  {imagePreview && (
+                    <Icons.Trash01
+                      onClick={() => handleDelete()}
+                      className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
                     />
-                  </div>
+                  )}
+
+                  {imagePreview ? (
+                    <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
+                      <img
+                        src={imagePreview}
+                        className="my-auto object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <label
+                      htmlFor="lamaChatFileInput"
+                      className="flex cursor-pointer flex-col"
+                    >
+                      <div className="cursor-pointer space-y-4 px-10 py-10">
+                        <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
+                        <p className="mx-auto product-body-text-4-regular">
+                          Drag-and-drop file, or{" "}
+                          <span className="text-instillBlue50">
+                            browse computer
+                          </span>
+                        </p>
+                      </div>
+                    </label>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    id="lamaChatFileInput"
+                    onChange={(e) => handleFileChange(e)}
+                  />
                 </div>
-              )}
-            </React.Fragment>
-          )}
+              </div>
+            )}
+          </React.Fragment>
+          {/* )} */}
         </div>
         <div className="mt-5 flex justify-end">
           <a

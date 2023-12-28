@@ -46,10 +46,10 @@ const PricingPage: FC & {
         <div className="mx-auto flex flex-col">
           <div className="mx-auto mb-8 flex flex-row gap-x-8">
             <PricingInfoCard
-              price="Free"
-              tier="free cloud"
+              price="$0"
+              tier="free"
               className="w-[263px]"
-              planDescription={null}
+              planDescription="The basics for individuals and organizations"
               features={[
                 "Unlimited public/private pipelines*",
                 "Rate-limited runs**",
@@ -58,15 +58,14 @@ const PricingPage: FC & {
               ]}
               featureDescription={null}
               cta={{
-                title: "Free forever",
-                disabled: true,
+                title: "Start building",
               }}
             />
             <PricingInfoCard
-              price="$19"
+              price="$9"
               tier="pro"
               className="w-[263px]"
-              planDescription={null}
+              planDescription="For professionals to experience runs without any restrictions"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
@@ -76,14 +75,14 @@ const PricingPage: FC & {
               ]}
               featureDescription={null}
               cta={{
-                title: "Manage subscription",
+                title: "choose pro",
               }}
             />
             <PricingInfoCard
-              price="$119"
+              price="$14"
               tier="team"
               className="w-[263px]"
-              planDescription={null}
+              planDescription="For small teams with advanced collaboration and no organization restrictions"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
@@ -95,14 +94,14 @@ const PricingPage: FC & {
               ]}
               featureDescription={null}
               cta={{
-                title: "Choose team plan",
+                title: "Choose team",
               }}
             />
             <PricingInfoCard
               price="Custom"
               tier="enterprise"
               className="w-[263px]"
-              planDescription={null}
+              planDescription="Security, support, and flexible deployment that meets performance needs"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
@@ -119,7 +118,7 @@ const PricingPage: FC & {
               ]}
               featureDescription={null}
               cta={{
-                title: "Contact us",
+                title: "Book a meeting",
               }}
             />
           </div>

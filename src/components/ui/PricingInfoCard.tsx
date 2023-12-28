@@ -3,7 +3,7 @@ import * as React from "react";
 import { Nullable } from "@instill-ai/toolkit";
 import { Button, Icons } from "@instill-ai/design-system";
 
-export type InstillPricingTier = "free cloud" | "pro" | "team" | "enterprise";
+export type InstillPricingTier = "free" | "pro" | "team" | "enterprise";
 export type InstillBillingPeriod = "monthly" | "yearly";
 
 export const PricingInfoCard = ({
@@ -35,11 +35,12 @@ export const PricingInfoCard = ({
 }) => {
   return (
     <React.Fragment>
-      <style jsx>{`
-        .highlighted {
-          box-shadow: 0px 4px 12px 0px rgba(190, 211, 254, 1);
-        }
-      `}
+      <style jsx>
+        {`
+          .highlighted {
+            box-shadow: 0px 4px 12px 0px rgba(190, 211, 254, 1);
+          }
+        `}
       </style>
       <div
         className={cn(
@@ -68,9 +69,19 @@ export const PricingInfoCard = ({
               <h2 className="text-semantic-fg-primary product-headings-heading-1">
                 {price}
               </h2>
-              {tier === "pro" || tier === "team" ? (
+              {tier === "free" ? (
+                <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
+                  forever
+                </p>
+              ) : null}
+              {tier === "pro" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
                   per month
+                </p>
+              ) : null}
+              {tier === "team" ? (
+                <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
+                  per seat/month
                 </p>
               ) : null}
             </div>
@@ -84,19 +95,35 @@ export const PricingInfoCard = ({
           {/* CTA */}
 
           <div className="flex flex-col gap-y-4">
-            <Button
-              type="button"
-              variant="primary"
-              size="md"
-              onClick={async () => {
-                if (cta.onClick) {
-                  cta.onClick();
-                }
-              }}
-              disabled={disabled || cta.disabled}
-            >
-              {cta.title}
-            </Button>
+            {tier === "free" ? (
+              <Button
+                type="button"
+                variant="secondaryGrey"
+                size="md"
+                onClick={async () => {
+                  if (cta.onClick) {
+                    cta.onClick();
+                  }
+                }}
+                disabled={disabled || cta.disabled}
+              >
+                {cta.title}
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                variant="primary"
+                size="md"
+                onClick={async () => {
+                  if (cta.onClick) {
+                    cta.onClick();
+                  }
+                }}
+                disabled={disabled || cta.disabled}
+              >
+                {cta.title}
+              </Button>
+            )}
           </div>
         </div>
 

@@ -8,6 +8,7 @@ import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { BlogPageLink } from "./BlogPageLink";
+import { AboutPageLink } from "./AboutPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -41,6 +42,7 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
+      <AboutPageLink />
       <BlogPageLink />
       <DocsPageLink />
       <GithubTextLink />
