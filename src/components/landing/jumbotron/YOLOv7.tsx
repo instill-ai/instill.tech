@@ -1,19 +1,20 @@
+import * as React from "react";
+
 import { LoadingSpin } from "@/components/ui";
-import yolov7 from "@/lib/jumbotron/yolov7";
+import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import { Button, Icons, Input, toast } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
-import React, { useState } from "react";
 
 export const YOLOv7 = () => {
-  const [spinner, setSpinner] = useState(false);
-  const [article, setArticle] = useState<string>("");
+  const [spinner, setSpinner] = React.useState(false);
+  const [article, setArticle] = React.useState<string>("");
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
   const handleGenrate = async () => {
     setSpinner(true);
 
-    const apiResponse = await yolov7({
+    const apiResponse = await JumbotronSDK.yolov7({
       inputs: [
         {
           image: imagePreview ? imagePreview : "",
