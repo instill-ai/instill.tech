@@ -101,7 +101,7 @@ export const Footer = () => {
     ],
     company: [
       {
-        text: "About Us",
+        text: "About",
         href: "/about",
       },
       {

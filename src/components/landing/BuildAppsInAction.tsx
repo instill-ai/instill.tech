@@ -53,7 +53,7 @@ export const BuildAppsInAction = () => {
           />
         </div>
 
-        <div className="w-full space-y-6 text-center xl:w-1/2 xl:text-left">
+        <div className="w-full space-y-6 xl:w-1/2 xl:text-left">
           <p className="font-sans text-[24px] font-semibold text-white xl:text-[36px]">
             The home for AI builders
           </p>

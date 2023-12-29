@@ -21,7 +21,7 @@ export default function Social() {
               src={"/images/social/ubitus.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -34,7 +34,7 @@ export default function Social() {
               src={"/images/social/rybit.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -47,7 +47,7 @@ export default function Social() {
               src={"/images/social/super8.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -60,7 +60,7 @@ export default function Social() {
               src={"/images/social/oxford.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -73,7 +73,7 @@ export default function Social() {
               src={"/images/social/acadamia.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -86,7 +86,7 @@ export default function Social() {
               src={"/images/social/cheng-kung-university.svg"}
               alt=""
               sizes=""
-              className="my-auto h-8 grayscale transition duration-300 hover:grayscale-0 xl:h-16"
+              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
         </div>

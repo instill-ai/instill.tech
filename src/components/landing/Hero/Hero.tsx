@@ -23,7 +23,7 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
           <Headline marginBottom="mb-5" />
           <SubHeadline marginBottom="mb-0" />
           <div className="my-7 flex flex-col">
-            <div className="mb-2 flex w-full flex-wrap justify-center gap-x-3 gap-y-2 xl:justify-start">
+            <div className="mb-2 flex w-full flex-wrap justify-start gap-x-3 gap-y-2">
               <Tag
                 variant="darkYellow"
                 className="gap-x-1 !rounded-none border-none !bg-[#FDCF72] !text-instillGrey95"

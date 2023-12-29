@@ -39,7 +39,7 @@ export const HowItWorksRow = ({
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >
-        <div className="flex flex-col text-center xl:text-left">
+        <div className="flex flex-col text-left">
           {sectionTitle ? (
             <SectionLabel
               text={sectionTitle}
@@ -67,7 +67,7 @@ export const HowItWorksRow = ({
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex justify-center">
         {icon ? (
           icon
         ) : (
