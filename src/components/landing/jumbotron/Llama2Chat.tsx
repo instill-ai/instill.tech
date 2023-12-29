@@ -168,7 +168,7 @@ export const Llama2Chat = () => {
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">
-          Object Detection
+          Visual Assistant
         </h3>
       </div>
       <div className="px-6 pt-3">
