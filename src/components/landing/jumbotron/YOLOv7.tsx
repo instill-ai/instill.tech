@@ -147,10 +147,6 @@ export const YOLOv7 = () => {
         </div>
 
         <div className="jumbotron-file-uploader flex flex-col items-center justify-center">
-          {/* {spinner ? <div className="mb-4">Generating...</div> : null} */}
-          {/* {spinner ? (
-            <div>Generating...</div>
-          ) : ( */}
           <React.Fragment>
             {article ? (
               <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
@@ -162,26 +158,26 @@ export const YOLOv7 = () => {
                 onDrop={handleDrop}
                 onDragOver={(e) => e.preventDefault()}
               >
-                <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
-                  {imagePreview && (
-                    <Icons.Trash01
-                      onClick={() => handleDelete()}
-                      className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
-                    />
-                  )}
-
-                  {imagePreview ? (
-                    <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
-                      <img
-                        src={imagePreview}
-                        className="my-auto object-contain"
+                <label htmlFor="fileInput" className="block">
+                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                    {imagePreview && (
+                      <Icons.Trash01
+                        onClick={(e) => {
+                          e.preventDefault(); // Stop the event from bubbling up
+                          handleDelete();
+                        }}
+                        className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
                       />
-                    </div>
-                  ) : (
-                    <label
-                      htmlFor="fileInput"
-                      className="flex cursor-pointer flex-col"
-                    >
+                    )}
+
+                    {imagePreview ? (
+                      <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
+                        <img
+                          src={imagePreview}
+                          className="my-auto object-contain"
+                        />
+                      </div>
+                    ) : (
                       <div className="cursor-pointer space-y-4 px-10 py-10">
                         <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
                         <p className="mx-auto product-body-text-4-regular">
@@ -191,20 +187,19 @@ export const YOLOv7 = () => {
                           </span>
                         </p>
                       </div>
-                    </label>
-                  )}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    id="fileInput"
-                    onChange={(e) => handleFileChange(e)}
-                  />
-                </div>
+                    )}
+                  </div>
+                </label>
               </div>
             )}
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              id="fileInput"
+              onChange={(e) => handleFileChange(e)}
+            />
           </React.Fragment>
-          {/* )} */}
         </div>
         <div className="mt-5 flex justify-end">
           <a
