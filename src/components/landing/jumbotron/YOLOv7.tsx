@@ -134,7 +134,7 @@ export const YOLOv7 = () => {
               }}
               type="button"
             >
-              Generate
+              Run
               {spinner ? (
                 <div className="my-auto h-4 w-4">
                   <LoadingSpin className="!h-4 !w-4" />

@@ -59,7 +59,7 @@ export const StabilityAIOpenAISticker = () => {
         </p>
 
         <div className="my-6 flex gap-x-4">
-          <div className="w-2/3 space-y-2">
+          <div className="w-4/5 space-y-2">
             <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
@@ -70,7 +70,7 @@ export const StabilityAIOpenAISticker = () => {
               />
             </Input.Root>
           </div>
-          <div className="w-1/3">
+          <div className="w-1/5">
             <SolidButton
               position="my-auto w-full gap-x-2 py-[9px]"
               color="primary"
@@ -81,7 +81,7 @@ export const StabilityAIOpenAISticker = () => {
               }}
               type="button"
             >
-              Generate
+              Run
               {spinner ? (
                 <LoadingSpin />
               ) : (

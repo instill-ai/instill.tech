@@ -111,7 +111,7 @@ export const Llama2Chat = () => {
         </p>
 
         <div className="my-6 flex gap-x-4">
-          <div className="w-2/3 space-y-2">
+          <div className="w-4/5 space-y-2">
             <Input.Root className="my-auto w-full !rounded-none">
               <Input.Core
                 disabled={false}
@@ -122,7 +122,7 @@ export const Llama2Chat = () => {
               />
             </Input.Root>
           </div>
-          <div className="w-1/3">
+          <div className="w-1/5">
             {article ? (
               <SolidButton
                 color="primary"
@@ -144,7 +144,7 @@ export const Llama2Chat = () => {
                   handleGenrate();
                 }}
               >
-                Generate
+                Run
                 {spinner ? (
                   <LoadingSpin />
                 ) : (
