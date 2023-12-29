@@ -6,7 +6,7 @@ import { handleInstillError } from "./utility";
 export type Llaba7bRequestData = {
   inputs: {
     image: string;
-    question: string;
+    prompt: string;
   }[];
 };
 

@@ -24,7 +24,7 @@ export const Llama2Chat = () => {
       inputs: [
         {
           image: imagePreview ? imagePreview : "",
-          question: question,
+          prompt: question,
         },
       ],
     });
@@ -90,6 +90,8 @@ export const Llama2Chat = () => {
     if (lamaChatFileInput) {
       lamaChatFileInput.value = ""; // This resets the input value
     }
+    setArticle("");
+    setQuestion("");
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -159,7 +161,9 @@ export const Llama2Chat = () => {
           <React.Fragment>
             {article ? (
               <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                <img src={article} className="my-auto object-contain" />
+                <pre className="flex w-full flex-1 whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                  {article ? article : null}
+                </pre>
               </div>
             ) : (
               <div
