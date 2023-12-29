@@ -113,8 +113,8 @@ export const YOLOv7 = () => {
       </div>
       <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Upload an image and YOLOv7 will detect objects and Instill AI’s Image
-          Operator will draw bounding boxes around the detected objects.
+          Upload an image, and YOLOv7 will perform object detection, with the
+          Image Operator drawing bounding boxes around the detected objects.
         </p>
 
         <div className="my-6 flex flex-row gap-x-2">

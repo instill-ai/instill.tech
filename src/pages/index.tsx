@@ -131,7 +131,7 @@ const HomePage: FC & {
       />
 
       <div className="flex flex-col">
-        <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
+        <div className="mx-auto flex w-full max-w-[1327px] flex-col px-4 xl:px-0">
           <Hero scrollHandler={scrollHandler} />
           <Social />
         </div>

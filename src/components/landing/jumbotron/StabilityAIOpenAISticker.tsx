@@ -55,7 +55,8 @@ export const StabilityAIOpenAISticker = () => {
       <div className="px-6 pt-3">
         <p className="text-sm text-zinc-500 dark:text-zinc-600">
           Enter simple keyword(s) describing the sticker, OpenAI will then make
-          the prompt more descriptive and StabilityAI will generate the sticker.
+          the prompt more descriptive and Stability AI will generate the
+          sticker.
         </p>
 
         <div className="my-6 flex gap-x-4">
