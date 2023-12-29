@@ -5,7 +5,7 @@ export const OurPartner = () => {
     <div className="w-full] my-10 flex flex-col space-y-20">
       <div className="flex flex-col p-2 xl:flex-row xl:p-0">
         <div className="mb-10 w-full text-center xl:mb-0 xl:w-1/2 xl:text-left">
-          <p className="font-mono text-[48px] font-medium leading-9 text-gray-950">
+          <p className="font-mono text-[24px] font-medium  leading-9 text-gray-950 xl:text-[48px]">
             Partnerships
           </p>
         </div>
@@ -114,7 +114,7 @@ export const OurPartner = () => {
       </div>
       <div className="flex flex-col p-2 xl:flex-row xl:p-0">
         <div className="mb-10 w-full text-center xl:mb-0 xl:w-1/2 xl:text-left">
-          <p className="font-mono text-[48px] font-medium leading-9 text-gray-950">
+          <p className="font-mono text-[24px] font-medium leading-9 text-gray-950 xl:text-[48px]">
             Investors
           </p>
         </div>
