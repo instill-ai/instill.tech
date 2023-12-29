@@ -14,6 +14,7 @@ import { resizeImage } from "./Llama2Chat";
 
 export const YOLOv7 = () => {
   const [spinner, setSpinner] = React.useState(false);
+  const [input, setInput] = React.useState<string>("");
   const [article, setArticle] = React.useState<string>("");
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
@@ -111,21 +112,28 @@ export const YOLOv7 = () => {
           Object Detection
         </h3>
       </div>
-      <div className="px-6 pt-3">
-        <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Upload an image, and YOLOv7 will perform object detection, with the
-          Image Operator drawing bounding boxes around the detected objects.
+      <div className="px-6">
+        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+          Share an image URL for object detection.
         </p>
 
-        <div className="my-6 flex flex-row gap-x-2">
+        <div className="my-[18px] flex flex-row gap-x-2">
           <div className="w-3/5 xl:w-4/5">
-            <div className="w-full"></div>
+            <Input.Root className="w-full !rounded-none">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Enter image URL"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </Input.Root>
           </div>
           <div className="w-2/5 xl:w-1/5">
             {article ? (
               <SolidButton
                 color="primary"
-                position="my-auto w-full gap-x-2 justify-center"
+                position="my-auto w-full gap-x-2 justify-center !py-[9px]"
                 type="button"
                 onClickHandler={() => {
                   setArticle("");
@@ -136,7 +144,7 @@ export const YOLOv7 = () => {
               </SolidButton>
             ) : (
               <SolidButton
-                position="my-auto w-full gap-x-2 justify-center item-center"
+                position="my-auto w-full gap-x-2 justify-center item-center py-[9px]"
                 color="primary"
                 onClickHandler={() => {
                   if (imagePreview) {
@@ -171,7 +179,7 @@ export const YOLOv7 = () => {
                 onDragOver={(e) => e.preventDefault()}
               >
                 <label htmlFor="fileInput" className="block">
-                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
+                  <div className="jumbotron-file-uploader my-auto cursor-pointer bg-slate-50 text-center">
                     {/* {imagePreview && (
                       <Icons.Trash01
                         onClick={(e) => {
@@ -182,15 +190,19 @@ export const YOLOv7 = () => {
                       />
                     )} */}
 
-                    {imagePreview ? (
-                      <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                        <img
-                          src={imagePreview}
-                          className="my-auto object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <div className="cursor-pointer space-y-4 px-10 py-10">
+                    {/* {imagePreview ? ( */}
+                    <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
+                      <img
+                        src={
+                          imagePreview
+                            ? imagePreview
+                            : "/images/yolo-default.png"
+                        }
+                        className="my-auto object-contain"
+                      />
+                    </div>
+                    {/* ) : ( */}
+                    {/* <div className="cursor-pointer space-y-4 px-10 py-10">
                         <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
                         <p className="mx-auto product-body-text-4-regular">
                           Drag-and-drop file, or{" "}
@@ -198,8 +210,8 @@ export const YOLOv7 = () => {
                             browse computer
                           </span>
                         </p>
-                      </div>
-                    )}
+                      </div> */}
+                    {/* )} */}
                   </div>
                 </label>
               </div>

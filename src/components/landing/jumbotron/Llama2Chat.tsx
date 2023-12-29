@@ -69,6 +69,10 @@ export function resizeImage(file: File): Promise<Blob> {
   });
 }
 
+const defaultAnswer = `
+The unusual aspect of this image is that a man is standing on a folding table that is strapped to the back of a yellow taxi, ironing clothes. It is not common to see someone doing laundry in such an unconventional setting, especially while in traffic. The presence of a taxi and the man's position on the table make the scene quite peculiar and eye-catching, as it is not a typical scenario one would expect to see in everyday life.
+`;
+
 export const Llama2Chat = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
@@ -171,13 +175,12 @@ export const Llama2Chat = () => {
           Visual Assistant
         </h3>
       </div>
-      <div className="px-6 pt-3">
-        <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Upload an image and ask a question about it and then see how LLaVa-7B
-          magically answers you.
+      <div className="px-6">
+        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+          Upload an image, ask a question, and watch it provide magical answers.
         </p>
 
-        <div className="my-6 flex gap-x-4">
+        <div className="my-[18px] flex gap-x-4">
           <div className="w-3/5 space-y-2 xl:w-4/5">
             <Input.Root className="my-auto w-full !rounded-none">
               <Input.Core
@@ -222,35 +225,45 @@ export const Llama2Chat = () => {
           </div>
         </div>
 
-        <div className="jumbotron-file-uploader flex items-center justify-center">
-          <React.Fragment>
-            {article ? (
-              <React.Fragment>
-                <div className="space-y-4">
-                  <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+        <div className="jumbotron-file-uploader flex flex-col items-center justify-center space-y-5">
+          {/* <React.Fragment> */}
+
+          {/* <React.Fragment> */}
+          <div className="space-y-4">
+            <div className="seo-box w-full overflow-y-auto border">
+              <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                {article ? article : defaultAnswer}
+              </pre>
+            </div>
+            {/* <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                     {imagePreview ? (
                       <img
                         src={imagePreview}
                         className="my-auto object-contain"
                       />
                     ) : null}
+                  </div> */}
+          </div>
+          {/* </React.Fragment> */}
+          {/* ) : null} */}
+          {/* ( */}
+          <div
+            className="w-full space-y-3"
+            onDrop={handleDrop}
+            onDragOver={(e) => e.preventDefault()}
+          >
+            <label htmlFor="lamaChatFileInput" className="block">
+              {/* {imagePreview ? (
+                  <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
+                    <img
+                      src={imagePreview}
+                      className="my-auto object-contain"
+                    />
                   </div>
-                  <div className="seo-box w-full overflow-y-auto">
-                    <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-                      {article ? article : null}
-                    </pre>
-                  </div>
-                </div>
-              </React.Fragment>
-            ) : (
-              <div
-                className="w-full space-y-3"
-                onDrop={handleDrop}
-                onDragOver={(e) => e.preventDefault()}
-              >
-                <label htmlFor="lamaChatFileInput" className="block">
-                  <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
-                    {/* {imagePreview && (
+                ) : null} */}
+
+              <div className="seo-image-box my-auto cursor-pointer text-center">
+                {/* {imagePreview && (
                       <Icons.Trash01
                         onClick={(e) => {
                           e.preventDefault(); // Stop the event from bubbling up
@@ -260,36 +273,41 @@ export const Llama2Chat = () => {
                       />
                     )} */}
 
-                    {imagePreview ? (
-                      <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                        <img
-                          src={imagePreview}
-                          className="my-auto object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <div className="cursor-pointer space-y-4 px-10 py-10">
-                        <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
-                        <p className="mx-auto product-body-text-4-regular">
-                          Drag-and-drop file, or{" "}
-                          <span className="text-instillBlue50">
-                            browse computer
-                          </span>
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </label>
+                {/* {imagePreview ? ( */}
+                <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+                  <img
+                    src={
+                      imagePreview
+                        ? imagePreview
+                        : "/images/llama-chat-default.svg"
+                    }
+                    alt="SEO Image"
+                    className="my-auto object-contain"
+                  />
+                </div>
+                {/* ) : ( */}
+                {/* <div className="cursor-pointer space-y-4 px-10 py-10">
+                      <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
+                      <p className="mx-auto product-body-text-4-regular">
+                        Drag-and-drop file, or{" "}
+                        <span className="text-instillBlue50">
+                          browse computer
+                        </span>
+                      </p>
+                    </div> */}
+                {/* )} */}
               </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              id="lamaChatFileInput"
-              onChange={(e) => handleFileChange(e)}
-            />
-          </React.Fragment>
+            </label>
+          </div>
+          {/* )} */}
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            id="lamaChatFileInput"
+            onChange={(e) => handleFileChange(e)}
+          />
+          {/* </React.Fragment> */}
         </div>
         <div className="mt-5 flex justify-end">
           <a

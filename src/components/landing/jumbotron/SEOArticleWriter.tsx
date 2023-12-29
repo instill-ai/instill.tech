@@ -11,33 +11,37 @@ import {
 } from "@instill-ai/design-system";
 
 const defaultArticle = `
-      # SEO: Boost Your Website's Ranking with These Top Strategies
+      # AI: Building a Flourishing Community through Open Source
+
+      ![AI Community](https://example.com/images/ai_community.jpg)
 
       ## Introduction
-      In today's digital world, having a strong online presence is crucial for businesses to succeed. One of the key ways to ensure your website gets noticed by search engines is by implementing effective SEO strategies. SEO, or Search Engine Optimization, is the practice of optimizing your website so that it ranks higher in search engine results pages (SERPs). This article will explore some of the top SEO strategies that can help boost your website's ranking and drive more organic traffic to your site.
 
-      ## 1. Keyword Research
-      One of the fundamental aspects of SEO is keyword research. By identifying the keywords and phrases that your target audience is searching for, you can optimize your website's content to match their search intent. Use keyword research tools, such as Google Keyword Planner or SEMrush, to find relevant keywords with a high search volume and relatively low competition.
+      In today's fast-paced technological landscape, Artificial Intelligence (AI) has emerged as a dominant force. AI is transforming industries and revolutionizing the way we live, work, and interact with technology. One of the key elements that is propelling AI forward is the power of an Open Source community. This article explores the significance of open source in building a flourishing AI community.
 
-      Once you have a list of keywords, strategically incorporate them into your website's meta titles, meta descriptions, headers, and content. However, remember to use keywords naturally and avoid keyword stuffing, as search engines increasingly prioritize user experience and quality content.
+      ## The Power of Open Source
 
-      ## 2. High-Quality Content
-      Content is king in the world of SEO. Search engines prioritize websites with valuable, well-written, and engaging content. To enhance your website's ranking, focus on creating high-quality, informative, and unique content that provides value to your audience. Use relevant keywords throughout your content, but do so in a way that feels organic and natural.
+      Open Source is a collaborative approach where software and code are made freely available and can be modified, enhanced, and distributed by anyone. This philosophy has revolutionized the world of AI. By opening up AI frameworks, libraries, and tools, developers can collectively contribute to the advancement of AI. This fosters innovation, accelerates development, and enables the community to address complex challenges together.
 
-      Additionally, consider using various content formats, such as blog posts, videos, infographics, and podcasts, to diversify your content strategy. This will not only attract different types of viewers but also help improve your website's visibility in different search engine result formats.
+      ## Building a Thriving AI Community
 
-      ## 3. On-Page Optimization
-      On-page optimization refers to optimizing various elements within your website to improve its visibility and ranking. Some key on-page optimization techniques include:
+      Open Source has played a pivotal role in building a thriving AI community. Developers, researchers, and enthusiasts from all over the world can collaborate and exchange ideas freely. This promotes knowledge sharing, fosters diversity of perspectives, and encourages continuous learning. The AI community benefits from the collective intelligence, valuable insights, and novel solutions that emerge from this collaboration.
 
-      - **Title Tags and Meta Descriptions:** Craft compelling and keyword-rich title tags and meta descriptions for each page of your website. These snippets are often displayed in search results, so make them enticing and relevant to increase click-through rates.
-      - **URL Structure:** Implement descriptive and keyword-rich URLs for your webpages. Use hyphens to separate words and keep them concise and reader-friendly.
-      - **Image Optimization:** Optimize your images by reducing file sizes, using descriptive filenames, and utilizing alt tags. This enables search engines to understand what your images are about and helps improve overall SEO.
-      - **Internal Linking:** Link relevant pages within your website to create a cohesive and easy-to-navigate structure. This not only improves user experience but also helps search engines crawl and index your webpages more effectively.
+      ## Advantages of an Open Source AI Community
 
-      By implementing these on-page optimization techniques, you can enhance your website's visibility, user experience, and ultimately its search engine ranking.
+      1. **Accelerated Innovation:** Open Source fuels innovation by allowing collaborative experimentation and iteration, leading to rapid advancements in AI. The community can build on each other's work, improving existing technologies and fostering the creation of new tools.
+
+      2. **Accessibility and Affordability:** Open Source democratizes AI by making state-of-the-art algorithms and models accessible to a wider audience. This promotes inclusivity, enabling individuals and organizations with limited resources to leverage AI capabilities.
+
+      3. **Transparency and Trust:** In an open source community, the transparency of code fosters trust. Users can audit, review, and contribute to the codebase, ensuring that AI systems are built ethically, securely, and responsibly.
+
+      4. **Collaboration with Industry and Academia:** Open Source encourages cross-collaboration between industry and academia. Researchers can share their findings, validate their work, and bridge the gap between theoretical advancements and real-world applications. This synergy accelerates the adoption of AI technologies.
 
       ## Conclusion
-      SEO is a long-term investment that requires ongoing effort and strategies to reap its benefits. By conducting thorough keyword research, creating high-quality content, and optimizing your website's on-page elements, you can significantly improve your website's search engine ranking. Remember, SEO is ever-evolving, so stay up-to-date with the latest trends and algorithms to ensure your website remains competitive and visible in the vast digital landscape." 
+
+      Open Source has revolutionized the AI landscape, empowering a global community to collectively advance the field. By fostering collaboration, innovation, and accessibility, open source has become an essential driving force behind AI's success. As AI continues to evolve, the power of open source remains instrumental in building a flourishing AI community. Let us embrace the spirit of collaboration, contribute to open source projects, and continue pushing the boundaries of AI together.
+
+      *Keywords: AI, community, open source*
 `;
 export const SEOArticleWriter = () => {
   const [spinner, setSpinner] = React.useState(false);
@@ -85,16 +89,15 @@ export const SEOArticleWriter = () => {
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">
-          SEO article writer
+          SEO Article Writer
         </h3>
       </div>
-      <div className="px-6 pt-3">
-        <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Provide a few SEO keywords that you’d like to generate an article and
-          related cover image will be generated using OpenAI and Stability AI.
+      <div className="px-6">
+        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+          Generate an article and cover image by providing SEO keywords.
         </p>
 
-        <div className="my-6 flex flex-row gap-x-2">
+        <div className="my-[18px] flex flex-row gap-x-2">
           <div className="w-3/5 space-y-2 xl:w-4/5">
             <Input.Root className="w-full !rounded-none">
               <Input.Core
@@ -132,12 +135,12 @@ export const SEOArticleWriter = () => {
             <div>Generating...</div>
           ) : (
             <div className="space-y-4">
-              <div className="seo-box w-full overflow-y-auto">
+              <div className="seo-box w-full overflow-y-auto border">
                 <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
                   {article ? article : defaultArticle}
                 </pre>
               </div>
-              <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+              <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                 {articleImage ? (
                   <img src={articleImage} className="my-auto object-contain" />
                 ) : (

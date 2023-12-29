@@ -46,26 +46,21 @@ export const StabilityAIOpenAISticker = () => {
   return (
     <div className="jumbotron-card border bg-white">
       <div className="bg-[#F8F9FC] p-3">
-        <p className="my-auto product-body-text-1-semibold">
-          Make digital stickers using keywords
-        </p>
-
+        <p className="my-auto product-body-text-1-semibold">Sticker Maker</p>
         {/* <ToastWithHook variant="alert-error" /> */}
       </div>
-      <div className="px-6 pt-3">
-        <p className="text-sm text-zinc-500 dark:text-zinc-600">
-          Enter simple keyword(s) describing the sticker, OpenAI will then make
-          the prompt more descriptive and Stability AI will generate the
-          sticker.
+      <div className="px-6">
+        <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-600">
+          Create a sticker by entering keywords that describe it.
         </p>
 
-        <div className="my-6 flex gap-x-4">
+        <div className="my-[18px] flex gap-x-4">
           <div className="w-3/5 space-y-2 xl:w-4/5">
             <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="Wombat coding"
+                placeholder="A wombat wearing sun glasses digging a hole"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
               />
@@ -103,7 +98,7 @@ export const StabilityAIOpenAISticker = () => {
                 ) : (
                   <img
                     src="/images/wombat.png"
-                    className="open-ai-stiker mx-auto my-auto object-contain"
+                    className="open-ai-stiker mx-auto my-auto xl:object-contain"
                   />
                 )}
               </div>

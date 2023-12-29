@@ -151,15 +151,15 @@ table.mcnCaptionTopContent {
 }
 
 .jumbotron-card {
-  height: 660px;
+  height: 640px;
 }
 
 .open-ai-stiker {
-  height: 440px;
+  height: 450px;
 }
 
 .jumbotron-file-uploader {
-  height: 440px;
+  height: 450px;
 }
 
 .seo-box {
@@ -181,15 +181,18 @@ table.mcnCaptionTopContent {
   }
 
   .seo-image-box {
-    display: none;
+    height: 200px;
   }
 
   .seo-box {
-    height: 350px;
+    height: 200px;
   }
 
   .jumbotron-file-uploader {
-    height: 400px;
+    height: 450px;
+  }
+  .open-ai-stiker {
+    height: 430px;
   }
 }
 
@@ -208,18 +211,18 @@ table.mcnCaptionTopContent {
   }
 
   .open-ai-stiker {
-    height: 300px;
+    height: 350px;
   }
   .seo-box {
-    height: 250px;
+    height: 150px;
   }
 
   .seo-image-box {
-    display: none;
+    height: 150px;
   }
 
   .jumbotron-file-uploader {
-    height: 300px;
+    height: 350px;
   }
 }
 
