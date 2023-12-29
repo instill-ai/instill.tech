@@ -15,7 +15,7 @@ export default function Social() {
             href="https://ubitus.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden xl:block"
+            className="hidden xl:block xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/ubitus.svg"}
@@ -29,6 +29,7 @@ export default function Social() {
             href="https://www.rybit.io/"
             target="_blank"
             rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/rybit.svg"}
@@ -42,6 +43,7 @@ export default function Social() {
             href="https://www.no8.io/"
             target="_blank"
             rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/super8.svg"}
@@ -55,6 +57,7 @@ export default function Social() {
             href="https://www.ox.ac.uk/"
             target="_blank"
             rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/oxford.svg"}
@@ -68,6 +71,7 @@ export default function Social() {
             href="https://www.sinica.edu.tw/en"
             target="_blank"
             rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/acadamia.svg"}
@@ -81,6 +85,7 @@ export default function Social() {
             href="https://www.ncku.edu.tw/"
             target="_blank"
             rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
           >
             <img
               src={"/images/social/cheng-kung-university.svg"}
