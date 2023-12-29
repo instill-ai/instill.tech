@@ -2,10 +2,10 @@ import * as React from "react";
 
 export const OurPartner = () => {
   return (
-    <div className="w-full] my-10 flex flex-col">
-      <div className="flex flex-col p-2 xl:flex-row xl:p-16">
+    <div className="w-full] my-10 flex flex-col space-y-20">
+      <div className="flex flex-col p-2 xl:flex-row xl:p-0">
         <div className="mb-10 w-full text-center xl:mb-0 xl:w-1/2 xl:text-left">
-          <p className="font-sans text-[24px] font-normal leading-9 text-gray-950">
+          <p className="font-mono text-[48px] font-medium leading-9 text-gray-950">
             Partnerships
           </p>
         </div>
@@ -112,9 +112,9 @@ export const OurPartner = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col p-2 xl:flex-row xl:p-16">
+      <div className="flex flex-col p-2 xl:flex-row xl:p-0">
         <div className="mb-10 w-full text-center xl:mb-0 xl:w-1/2 xl:text-left">
-          <p className="font-sans text-[24px] font-normal leading-9 text-gray-950">
+          <p className="font-mono text-[48px] font-medium leading-9 text-gray-950">
             Investors
           </p>
         </div>
