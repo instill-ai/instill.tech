@@ -95,7 +95,7 @@ export const SEOArticleWriter = () => {
         </p>
 
         <div className="my-6 flex flex-row gap-x-2">
-          <div className="w-2/5 space-y-2">
+          <div className="w-3/5 space-y-2 xl:w-4/5">
             <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
@@ -106,7 +106,7 @@ export const SEOArticleWriter = () => {
               />
             </Input.Root>
           </div>
-          <div className="w-3/5">
+          <div className="w-2/5 xl:w-1/5">
             <SolidButton
               color="primary"
               position="my-auto w-full gap-x-2 justify-center py-[9px]"
@@ -117,7 +117,7 @@ export const SEOArticleWriter = () => {
               }}
               type="button"
             >
-              Generate Article and Image
+              Run
               {spinner ? (
                 <LoadingSpin className="!h-4 !w-4" />
               ) : (

@@ -110,40 +110,45 @@ export const YOLOv7 = () => {
           Operator will draw bounding boxes around the detected objects.
         </p>
 
-        <div className="my-6 flex gap-x-4">
-          {article ? (
-            <SolidButton
-              color="primary"
-              position="my-auto w-full gap-x-2 justify-center"
-              type="button"
-              onClickHandler={() => {
-                setArticle("");
-                handleDelete();
-              }}
-            >
-              Reset
-            </SolidButton>
-          ) : (
-            <SolidButton
-              position="my-auto w-full gap-x-2 justify-center item-center"
-              color="primary"
-              onClickHandler={() => {
-                if (imagePreview) {
-                  handleGenrate();
-                }
-              }}
-              type="button"
-            >
-              Run
-              {spinner ? (
-                <div className="my-auto h-4 w-4">
-                  <LoadingSpin className="!h-4 !w-4" />
-                </div>
-              ) : (
-                <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
-              )}
-            </SolidButton>
-          )}
+        <div className="my-6 flex flex-row gap-x-2">
+          <div className="w-3/5 xl:w-4/5">
+            <div className="w-full"></div>
+          </div>
+          <div className="w-2/5 xl:w-1/5">
+            {article ? (
+              <SolidButton
+                color="primary"
+                position="my-auto w-full gap-x-2 justify-center"
+                type="button"
+                onClickHandler={() => {
+                  setArticle("");
+                  handleDelete();
+                }}
+              >
+                Reset
+              </SolidButton>
+            ) : (
+              <SolidButton
+                position="my-auto w-full gap-x-2 justify-center item-center"
+                color="primary"
+                onClickHandler={() => {
+                  if (imagePreview) {
+                    handleGenrate();
+                  }
+                }}
+                type="button"
+              >
+                Run
+                {spinner ? (
+                  <div className="my-auto h-4 w-4">
+                    <LoadingSpin className="!h-4 !w-4" />
+                  </div>
+                ) : (
+                  <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
+                )}
+              </SolidButton>
+            )}
+          </div>
         </div>
 
         <div className="jumbotron-file-uploader flex flex-col items-center justify-center">
