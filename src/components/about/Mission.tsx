@@ -3,7 +3,7 @@ import * as React from "react";
 export const Mission = () => {
   return (
     <div className="my-10 flex w-full flex-col-reverse space-y-10 xl:flex-row">
-      <div className="mt-10 w-full text-center xl:w-3/5 xl:text-left">
+      <div className="mt-10 w-full text-left xl:w-3/5">
         <p className="mb-5 font-mono text-[48px] font-medium text-black">
           Mission
         </p>

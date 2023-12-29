@@ -2,8 +2,8 @@ import * as React from "react";
 
 export const OurCoreValues = () => {
   return (
-    <div className="my-10 w-full text-center xl:text-left">
-      <p className="mb-5 font-mono text-[24px] font-medium text-black xl:text-[48px]">
+    <div className="my-10 w-full text-left">
+      <p className="mb-5 pl-2 font-mono text-[24px] font-medium text-black xl:text-[48px]">
         Our Core Values
       </p>
 
