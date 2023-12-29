@@ -172,8 +172,14 @@ export const Teams = () => {
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
-                  src="images/teams/ping-lin-chang.svg"
+                  src="images/teams/ping-lin-chang.png"
                   alt="Ping Lin Chang Image"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/ping-lin-chang-mobile.png"
+                  alt="Ping Lin Chang Image"
+                  className="block xl:hidden"
                 />
               </div>
             </div>
@@ -226,7 +232,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/xiaofei-du.svg" />
+                <img
+                  src="images/teams/xiaofei-du.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/xiaofei-du-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -277,7 +290,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/shih-chun-huang.svg" />
+                <img
+                  src="images/teams/shih-chun-huang.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/shih-chun-huang-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -328,7 +348,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/harsh-soni.svg" />
+                <img
+                  src="images/teams/harsh-soni.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/harsh-soni-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -379,7 +406,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/dani-sosa.svg" />
+                <img
+                  src="images/teams/dani-sosa.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/dani-sosa-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -430,7 +464,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/po-chun-chiu.svg" />
+                <img
+                  src="images/teams/po-chun-chiu.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/po-chun-chiu-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -481,7 +522,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/naman-anand.svg" />
+                <img
+                  src="images/teams/naman-anand.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/naman-anand-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -532,7 +580,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/heiru-wu.svg" />
+                <img
+                  src="images/teams/heiru-wu.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/heiru-wu-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -583,7 +638,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/chun-hao-wang.svg" />
+                <img
+                  src="images/teams/chun-hao-wang.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/chun-hao-wang-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -634,7 +696,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/leo-chen.svg" />
+                <img
+                  src="images/teams/leo-chen.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/leo-chen-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -685,7 +754,14 @@ export const Teams = () => {
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/hui-tang-chang.svg" />
+                <img
+                  src="images/teams/hui-tang-chang.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/hui-tang-chang-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -735,7 +811,14 @@ export const Teams = () => {
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/juan-valles.svg" />
+                <img
+                  src="images/teams/juan-valles.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/juan-valles-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -781,7 +864,14 @@ export const Teams = () => {
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/sarthak-gupta.svg" />
+                <img
+                  src="images/teams/sarthak-gupta.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/sarthak-gupta-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
@@ -831,7 +921,14 @@ export const Teams = () => {
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/minji-kim.svg" />
+                <img
+                  src="images/teams/minji-kim.png"
+                  className="hidden xl:block"
+                />
+                <img
+                  src="images/teams/minji-kim-mobile.png"
+                  className="block xl:hidden"
+                />
               </div>
             </div>
             <div className="my-auto w-3/4">
