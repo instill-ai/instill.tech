@@ -48,6 +48,30 @@ export const Jumbotron = () => {
         slidesPerView={"auto"}
         modules={[EffectCards, Pagination, Navigation]}
         className="mySwiper"
+        onReachBeginning={() => {
+          const prevButton = document.getElementById("prevButton");
+          if (prevButton) {
+            prevButton.style.display = "none";
+          }
+          setCurrentSlide(1);
+        }}
+        onReachEnd={() => {
+          const nextButton = document.getElementById("nextButton");
+          if (nextButton) {
+            nextButton.style.display = "none";
+          }
+          setCurrentSlide(4);
+        }}
+        onSlideChange={() => {
+          const prevButton = document.getElementById("prevButton");
+          const nextButton = document.getElementById("nextButton");
+          if (prevButton) {
+            prevButton.style.display = "block";
+          }
+          if (nextButton) {
+            nextButton.style.display = "block";
+          }
+        }}
       >
         <SwiperButtonPrev
           onClickHandler={() => setCurrentSlide(currentSlide - 1)}
