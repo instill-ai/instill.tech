@@ -10,6 +10,7 @@ import {
   toast,
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
+import { resizeImage } from "./Llama2Chat";
 
 export const YOLOv7 = () => {
   const [spinner, setSpinner] = React.useState(false);
@@ -46,7 +47,7 @@ export const YOLOv7 = () => {
     }, 2000);
   };
 
-  const handleFileChange = (
+  const handleFileChange = async (
     e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
   ) => {
     let file: File | null | undefined = null;
@@ -68,16 +69,22 @@ export const YOLOv7 = () => {
     }
 
     if (file) {
-      const reader = new FileReader();
+      try {
+        const resizedBlob = await resizeImage(file);
 
-      reader.onload = () => {
-        const result = reader.result;
-        if (typeof result === "string") {
-          setImagePreview(result);
-        }
-      };
+        const reader = new FileReader();
 
-      reader.readAsDataURL(file);
+        reader.onload = () => {
+          const result = reader.result;
+          if (typeof result === "string") {
+            setImagePreview(result);
+          }
+        };
+
+        reader.readAsDataURL(resizedBlob); // Use the resizedBlob here instead of the original file
+      } catch (error) {
+        console.error("Error resizing image:", error);
+      }
     }
   };
 

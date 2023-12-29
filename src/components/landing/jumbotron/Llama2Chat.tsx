@@ -10,6 +10,65 @@ import {
 import { Nullable } from "@instill-ai/toolkit";
 import * as React from "react";
 
+export function resizeImage(file: File): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target?.result as string;
+
+      img.onload = () => {
+        const maxWidth = 600;
+        const maxHeight = 600;
+
+        let newWidth = img.width;
+        let newHeight = img.height;
+
+        // Calculate new dimensions while maintaining aspect ratio
+        if (img.width > maxWidth) {
+          newWidth = maxWidth;
+          newHeight = (img.height * maxWidth) / img.width;
+        }
+
+        if (img.height > maxHeight) {
+          newHeight = maxHeight;
+          newWidth = (img.width * maxHeight) / img.height;
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        const ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0, newWidth, newHeight);
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error("Error creating blob"));
+            }
+          },
+          file.type,
+          1
+        );
+      };
+
+      img.onerror = () => {
+        reject(new Error("Error loading image"));
+      };
+    };
+
+    reader.onerror = () => {
+      reject(new Error("Error reading file"));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
 export const Llama2Chat = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
@@ -46,7 +105,7 @@ export const Llama2Chat = () => {
     }, 2000);
   };
 
-  const handleFileChange = (
+  const handleFileChange = async (
     e: React.ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
   ) => {
     let file: File | null | undefined = null;
@@ -68,16 +127,22 @@ export const Llama2Chat = () => {
     }
 
     if (file) {
-      const reader = new FileReader();
+      try {
+        const resizedBlob = await resizeImage(file);
 
-      reader.onload = () => {
-        const result = reader.result;
-        if (typeof result === "string") {
-          setImagePreview(result);
-        }
-      };
+        const reader = new FileReader();
 
-      reader.readAsDataURL(file);
+        reader.onload = () => {
+          const result = reader.result;
+          if (typeof result === "string") {
+            setImagePreview(result);
+          }
+        };
+
+        reader.readAsDataURL(resizedBlob); // Use the resizedBlob here instead of the original file
+      } catch (error) {
+        console.error("Error resizing image:", error);
+      }
     }
   };
 
@@ -160,11 +225,23 @@ export const Llama2Chat = () => {
         <div className="jumbotron-file-uploader flex items-center justify-center">
           <React.Fragment>
             {article ? (
-              <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                <pre className="flex w-full flex-1 whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
-                  {article ? article : null}
-                </pre>
-              </div>
+              <React.Fragment>
+                <div className="space-y-4">
+                  <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+                    {imagePreview ? (
+                      <img
+                        src={imagePreview}
+                        className="my-auto object-contain"
+                      />
+                    ) : null}
+                  </div>
+                  <div className="seo-box w-full overflow-y-auto">
+                    <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                      {article ? article : null}
+                    </pre>
+                  </div>
+                </div>
+              </React.Fragment>
             ) : (
               <div
                 className="w-full space-y-3"

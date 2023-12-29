@@ -88,13 +88,13 @@ export const Jumbotron = () => {
           <StabilityAIOpenAISticker />
         </SwiperSlide>
         <SwiperSlide className="shadow-lg">
-          <YOLOv7 />
+          <Llama2Chat />
         </SwiperSlide>
         <SwiperSlide className="shadow-lg">
           <SEOArticleWriter />
         </SwiperSlide>
         <SwiperSlide className="shadow-lg">
-          <Llama2Chat />
+          <YOLOv7 />
         </SwiperSlide>
         <SwiperButtonNext
           onClickHandler={() => setCurrentSlide(currentSlide + 1)}
