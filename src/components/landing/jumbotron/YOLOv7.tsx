@@ -160,7 +160,7 @@ export const YOLOv7 = () => {
               >
                 <label htmlFor="fileInput" className="block">
                   <div className="jumbotron-file-uploader my-auto cursor-pointer rounded border border-dashed bg-slate-50 text-center">
-                    {imagePreview && (
+                    {/* {imagePreview && (
                       <Icons.Trash01
                         onClick={(e) => {
                           e.preventDefault(); // Stop the event from bubbling up
@@ -168,10 +168,10 @@ export const YOLOv7 = () => {
                         }}
                         className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
                       />
-                    )}
+                    )} */}
 
                     {imagePreview ? (
-                      <div className="mt-2 flex h-[350px] w-full flex-wrap overflow-auto">
+                      <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
                         <img
                           src={imagePreview}
                           className="my-auto object-contain"
