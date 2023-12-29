@@ -1,4 +1,4 @@
-import { Dropdown } from "@instill-ai/design-system";
+import { DropdownMenu } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -19,23 +19,23 @@ export default function LocaleSwitcher() {
   );
 
   return (
-    <Dropdown.Menu open={isOpen}>
-      <Dropdown.MenuTrigger className="flex flex-row gap-x-2 focus:outline-none">
+    <DropdownMenu.Root open={isOpen}>
+      <DropdownMenu.Trigger className="flex flex-row gap-x-2 focus:outline-none">
         <p
           className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
           onClick={() => setIsOpen(!isOpen)}
         >
           {locale ? languages[locale] : ""}
         </p>
-      </Dropdown.MenuTrigger>
-      <Dropdown.MenuContent
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content
         className="dark:bg-instillGrey90"
         onPointerDownOutside={() => setIsOpen(!isOpen)}
       >
         {otherLocales.map((locale, index) => {
           const { pathname, query, asPath } = router;
           return (
-            <Dropdown.MenuItem key={`${index}-lang`}>
+            <DropdownMenu.Item key={`${index}-lang`}>
               <Link
                 href={{ pathname, query }}
                 as={asPath}
@@ -50,10 +50,10 @@ export default function LocaleSwitcher() {
                   {languages[locale]}
                 </p>
               </Link>
-            </Dropdown.MenuItem>
+            </DropdownMenu.Item>
           );
         })}
-      </Dropdown.MenuContent>
-    </Dropdown.Menu>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 }

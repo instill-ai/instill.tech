@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Item } from "./Item";
 import { NavConfig, NavbarItem } from "@/types/docs";
 import { SubNav } from "./SubNav";
-import { CrossIcon, MenuIcon, Dropdown } from "@instill-ai/design-system";
+import { CrossIcon, MenuIcon, DropdownMenu } from "@instill-ai/design-system";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useRouter } from "next/router";
 import { getApplicationType } from "@/lib/instill";
@@ -22,7 +22,7 @@ export type NavProps = {
   setLeftSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const DropdownMenu = ({
+const DropdownMenuList = ({
   item,
   isMobile,
 }: {
@@ -44,8 +44,8 @@ const DropdownMenu = ({
   }
 
   return (
-    <Dropdown.Menu key={item.key} open={isOpen}>
-      <Dropdown.MenuTrigger className="flex flex-row gap-x-1 focus:outline-none">
+    <DropdownMenu.Root key={item.key} open={isOpen}>
+      <DropdownMenu.Trigger className="flex flex-row gap-x-1 focus:outline-none">
         <p
           onClick={() => setIsOpen(!isOpen)}
           className="navbar-dropdown-menu my-auto flex flex-row gap-x-1 text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
@@ -53,8 +53,8 @@ const DropdownMenu = ({
           {item.label}
           {item.iconElement ? item.iconElement : null}
         </p>
-      </Dropdown.MenuTrigger>
-      <Dropdown.MenuContent
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content
         className="dark:bg-instillGrey90"
         side="bottom"
         align="start"
@@ -65,31 +65,31 @@ const DropdownMenu = ({
           const subItemKey = subItem.key;
           if (subItem.border) {
             return (
-              <Dropdown.MenuLabel
+              <DropdownMenu.Label
                 className="dark:text-instillGrey15"
                 key={subItemKey}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {t(subItem.label)}
-              </Dropdown.MenuLabel>
+              </DropdownMenu.Label>
             );
           }
           if (subItem.border === false) {
-            return <Dropdown.MenuSeparator key={item.key} />;
+            return <DropdownMenu.Separator key={item.key} />;
           } else {
             return (
-              <Dropdown.MenuItem
+              <DropdownMenu.Item
                 key={subItemKey}
                 onClick={() => setIsOpen(!isOpen)}
                 className="dark:focus:bg-instillBlue50"
               >
                 <Item key={subItemKey} item={subItem} isDropdownItem={true} />
-              </Dropdown.MenuItem>
+              </DropdownMenu.Item>
             );
           }
         })}
-      </Dropdown.MenuContent>
-    </Dropdown.Menu>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 };
 
@@ -99,7 +99,9 @@ const ItemList = ({
 }: NavConfig & { isMobile: boolean }): ReactElement => {
   const renderedItems = items.map((item) => {
     if (item.items) {
-      return <DropdownMenu item={item} isMobile={isMobile} key={item.key} />;
+      return (
+        <DropdownMenuList item={item} isMobile={isMobile} key={item.key} />
+      );
     } else {
       if (isMobile) {
         return (

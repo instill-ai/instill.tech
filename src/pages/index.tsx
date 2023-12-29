@@ -3,37 +3,18 @@ import dynamic from "next/dynamic";
 import cn from "clsx";
 import {
   BuildAppsInAction,
-  CaseStudyProps,
   FaqHeaderProps,
   FaqProps,
   Hero,
   HowItWorksProps,
-  Jumbotron,
-  NoCodeInterfaceProps,
 } from "@/components/landing";
-import {
-  CommonCtaButton,
-  PageBase,
-  PageHead,
-  SectionHeader,
-  SectionLabel,
-  StayInTheLoop,
-} from "@/components/ui";
-import { Icons, Tag, getElementPosition } from "@instill-ai/design-system";
+import { CommonCtaButton, PageBase, PageHead } from "@/components/ui";
+import { getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
-import { ExploreInstillHub } from "@/components/landing/ExploreInstillHub";
 import Social from "@/components/landing/Social";
-
-const FaqHeader = dynamic<FaqHeaderProps>(() =>
-  import("@/components/landing").then((mod) => mod.FaqHeader)
-);
-
-const Faq = dynamic<FaqProps>(() =>
-  import("@/components/landing").then((mod) => mod.Faq)
-);
 
 const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
@@ -44,7 +25,7 @@ const Community = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const destinationDefinitions = await getRepoFileContent(
     "instill-ai",
     "connector-destination",
@@ -69,17 +50,13 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   };
 };
 
-type HomePageProps = {
-  destinations: CaseStudyProps["destinations"];
-};
-
 interface GetLayOutProps {
   page: ReactElement;
 }
 
-const HomePage: FC<HomePageProps> & {
+const HomePage: FC & {
   getLayout?: FC<GetLayOutProps>;
-} = ({ destinations }) => {
+} = () => {
   const vdpRef = useRef<HTMLDivElement>(null);
   const { enableAnnouncementBar } = useInstillAICtx();
 
