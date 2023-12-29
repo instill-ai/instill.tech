@@ -102,7 +102,7 @@ export const StabilityAIOpenAISticker = () => {
                 ) : (
                   <img
                     src="/images/wombat.png"
-                    className="mx-auto my-auto object-contain"
+                    className="open-ai-stiker mx-auto my-auto object-contain"
                   />
                 )}
               </div>
