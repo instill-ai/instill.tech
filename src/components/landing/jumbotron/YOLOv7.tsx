@@ -140,7 +140,7 @@ export const YOLOv7 = () => {
                   <LoadingSpin className="!h-4 !w-4" />
                 </div>
               ) : (
-                <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
+                <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
             </SolidButton>
           )}

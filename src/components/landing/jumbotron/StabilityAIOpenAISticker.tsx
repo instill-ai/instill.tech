@@ -85,7 +85,7 @@ export const StabilityAIOpenAISticker = () => {
               {spinner ? (
                 <LoadingSpin />
               ) : (
-                <Icons.Play className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
+                <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
             </SolidButton>
           </div>
