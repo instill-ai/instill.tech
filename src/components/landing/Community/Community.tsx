@@ -5,7 +5,7 @@ import { StayInTheLoop } from "./StayInTheLoop";
 export const Community = () => {
   return (
     <div className="flex flex-col bg-instillGrey90 py-20">
-      <div className="mb-10 flex flex-col xl:mb-[200px]">
+      <div className="mb-10 flex flex-col xl:mb-[100px]">
         <SectionLabel
           text="follow us"
           position="mr-auto"
