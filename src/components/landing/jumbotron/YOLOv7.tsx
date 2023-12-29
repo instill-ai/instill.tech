@@ -208,7 +208,7 @@ export const YOLOv7 = () => {
         </div>
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/admin/pipelines/jumbotron-yolov7/builder"
+            href="https://console.instill.tech/admin/pipelines/jumbotron-yolov7"
             target="_blank"
             className="absolute bottom-8 right-8 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
           >
