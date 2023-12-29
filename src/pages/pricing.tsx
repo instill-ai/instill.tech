@@ -1,13 +1,11 @@
 import React, { FC, ReactElement } from "react";
-
 import {
   ContentContainer,
   PageBase,
   PageHead,
   PricingInfoCard,
-  PricingPlan,
-  PricingPlanLayout,
 } from "@/components/ui";
+import { useRouter } from "next/router";
 
 type GetLayOutProps = {
   page: ReactElement;
@@ -16,6 +14,7 @@ type GetLayOutProps = {
 const PricingPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
+  const router = useRouter();
   return (
     <React.Fragment>
       <PageHead
@@ -59,6 +58,9 @@ const PricingPage: FC & {
               featureDescription={null}
               cta={{
                 title: "Start building",
+                onClick: () => {
+                  router.push("https://github.com/instill-ai/vdp");
+                },
               }}
             />
             <PricingInfoCard
@@ -76,6 +78,9 @@ const PricingPage: FC & {
               featureDescription={null}
               cta={{
                 title: "choose pro",
+                onClick: () => {
+                  router.push("https://console.instill.tech/settings/billing");
+                },
               }}
             />
             <PricingInfoCard
@@ -95,6 +100,9 @@ const PricingPage: FC & {
               featureDescription={null}
               cta={{
                 title: "Choose team",
+                onClick: () => {
+                  router.push("https://console.instill.tech/settings/billing");
+                },
               }}
             />
             <PricingInfoCard
@@ -119,6 +127,9 @@ const PricingPage: FC & {
               featureDescription={null}
               cta={{
                 title: "Book a meeting",
+                onClick: () => {
+                  router.push("mailto:support@instill.tech");
+                },
               }}
             />
           </div>
