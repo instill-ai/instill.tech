@@ -33,8 +33,17 @@ export const BuildAppsInAction = () => {
           />
         </div>
       </div>
-      <div>
-        <img src={"/images/vdp-in-action.svg"} alt="" />
+      <div className="flex justify-center">
+        <img
+          src={"/images/vdp-in-action.svg"}
+          alt=""
+          className="hidden xl:block"
+        />
+        <img
+          src={"/images/vdp-in-action-mobile.svg"}
+          alt=""
+          className="block w-full xl:hidden"
+        />
       </div>
 
       <div className="mt-20 flex flex-col-reverse gap-x-10 xl:flex-row">
