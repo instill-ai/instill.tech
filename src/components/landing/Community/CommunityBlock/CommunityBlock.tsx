@@ -136,9 +136,9 @@ export const CommunityBlock = ({
       <div className="z-10 mb-auto flex w-1/2 flex-col gap-y-2.5">
         <div className="flex flex-col gap-x-2">
           {icon}
-          <div className="my-auto text-base font-normal uppercase text-white">
+          {/* <div className="my-auto text-base font-normal uppercase text-white">
             {name}
-          </div>
+          </div> */}
         </div>
         <h3 className="font-mono text-2xl font-medium text-white">{title}</h3>
       </div>
