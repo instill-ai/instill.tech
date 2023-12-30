@@ -6,6 +6,10 @@ export type InstillAPIProxyRequestBody = {
   data: any;
 };
 
+export const config = {
+  maxDuration: 5,
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 

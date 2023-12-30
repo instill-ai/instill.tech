@@ -6,7 +6,7 @@ import { handleInstillError } from "./utility";
 export type SEOArticleRequestData = {
   inputs: {
     keywords: string;
-    section_number: number;
+    number_of_section: number;
   }[];
 };
 

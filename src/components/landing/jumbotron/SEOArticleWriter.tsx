@@ -55,7 +55,7 @@ export const SEOArticleWriter = () => {
       inputs: [
         {
           keywords: input,
-          section_number: Number(sectionNumber),
+          number_of_section: Number(sectionNumber),
         },
       ],
     });
