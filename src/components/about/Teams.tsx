@@ -847,15 +847,6 @@ export const Teams = () => {
                       position="my-auto"
                     />
                   </a>
-
-                  <a href="#!" target="_blank" rel="noopener noreferrer">
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
                 </div>
               </div>
             </div>
@@ -944,25 +935,7 @@ export const Teams = () => {
                 <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
                   Office Administrator
                 </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a href="" target="_blank" rel="noopener noreferrer">
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a href="" target="_blank" rel="noopener noreferrer">
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
+                <div className="mt-1 flex gap-x-5 xl:mt-10"></div>
               </div>
             </div>
           </div>
@@ -984,31 +957,34 @@ export const Teams = () => {
               {currentTeamMember?.role}
             </p>
             <div className="mt-1 flex gap-x-5">
-              <a
-                href={currentTeamMember?.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon
-                  width="w-[24px]"
-                  height="h-[24px]"
-                  color="fill-instillGrey95 cursor-pointer"
-                  position="my-auto"
-                />
-              </a>
-
-              <a
-                href={currentTeamMember?.linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon
-                  width="w-[24px]"
-                  height="h-[24px]"
-                  color="fill-instillGrey95 cursor-pointer"
-                  position="my-auto"
-                />
-              </a>
+              {currentTeamMember?.github ? (
+                <a
+                  href={currentTeamMember?.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon
+                    width="w-[24px]"
+                    height="h-[24px]"
+                    color="fill-instillGrey95 cursor-pointer"
+                    position="my-auto"
+                  />
+                </a>
+              ) : null}
+              {currentTeamMember?.linkedIn ? (
+                <a
+                  href={currentTeamMember?.linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon
+                    width="w-[24px]"
+                    height="h-[24px]"
+                    color="fill-instillGrey95 cursor-pointer"
+                    position="my-auto"
+                  />
+                </a>
+              ) : null}
             </div>
 
             <p className="mt-5 font-sans text-[16px] font-normal leading-7 text-zinc-900">
