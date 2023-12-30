@@ -33,6 +33,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_SERVER_INSTILL_API_TOKEN}`,
       "Content-Type": "application/json",
+      "CF-Access-Client-Id": process.env.CF_ACCESS_CLIENT_ID ?? undefined,
+      "CF-Access-Client-Secret":
+        process.env.CF_ACCESS_CLIENT_SECRET ?? undefined,
     },
   });
 
