@@ -969,7 +969,12 @@ export const Teams = () => {
         </div>
       </div>
 
-      <Dialog.Root open={open}>
+      <Dialog.Root
+        open={open}
+        onOpenChange={(e) => {
+          setOpen(false);
+        }}
+      >
         <Dialog.Content className="!gap-1 overflow-y-auto rounded-none bg-[#F6F6F6] !p-10">
           <ScrollArea.Root className="h-[500px] p-6">
             <p className="!mb-0 !pb-0 font-sans text-[24px] font-medium text-[#1A1A1A]">
