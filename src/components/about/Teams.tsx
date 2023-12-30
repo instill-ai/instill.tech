@@ -1011,7 +1011,7 @@ export const Teams = () => {
               </a>
             </div>
 
-            <p className="mt-5 font-sans text-[22px] font-normal leading-7 text-zinc-900">
+            <p className="mt-5 font-sans text-[16px] font-normal leading-7 text-zinc-900">
               {currentTeamMember?.bio}
             </p>
           </ScrollArea.Root>
