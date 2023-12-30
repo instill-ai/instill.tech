@@ -14,7 +14,7 @@ export const OurCoreValues = () => {
           </p>
           <p className="font-sans text-base font-normal leading-7 text-zinc-900">
             At the core of our company, we&apos;re driven by the success of our
-            users We thrive when we deeply understand their needs and go the
+            users. We thrive when we deeply understand their needs and go the
             extra mile to provide them with exceptional value, making their
             success our top priority.
           </p>

@@ -1,5 +1,10 @@
 import { Nullable } from "@/types/instill";
-import { Dialog, GitHubIcon, LinkedInIcon } from "@instill-ai/design-system";
+import {
+  Dialog,
+  GitHubIcon,
+  LinkedInIcon,
+  ScrollArea,
+} from "@instill-ai/design-system";
 import * as React from "react";
 
 type Team = {
@@ -965,44 +970,46 @@ export const Teams = () => {
       </div>
 
       <Dialog.Root open={open}>
-        <Dialog.Content className="!gap-1 rounded-none bg-[#F6F6F6] !p-10">
-          <p className="!mb-0 !pb-0 font-sans text-[24px] font-medium text-[#1A1A1A]">
-            {currentTeamMember?.name}
-          </p>
-          <p className="font-sans text-[16px] font-normal leading-7 text-[#1A1A1A]">
-            {currentTeamMember?.role}
-          </p>
-          <div className="mt-1 flex gap-x-5">
-            <a
-              href={currentTeamMember?.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon
-                width="w-[24px]"
-                height="h-[24px]"
-                color="fill-instillGrey95 cursor-pointer"
-                position="my-auto"
-              />
-            </a>
+        <Dialog.Content className="!gap-1 overflow-y-auto rounded-none bg-[#F6F6F6] !p-10">
+          <ScrollArea.Root className="h-[500px] p-6">
+            <p className="!mb-0 !pb-0 font-sans text-[24px] font-medium text-[#1A1A1A]">
+              {currentTeamMember?.name}
+            </p>
+            <p className="font-sans text-[16px] font-normal leading-7 text-[#1A1A1A]">
+              {currentTeamMember?.role}
+            </p>
+            <div className="mt-1 flex gap-x-5">
+              <a
+                href={currentTeamMember?.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon
+                  width="w-[24px]"
+                  height="h-[24px]"
+                  color="fill-instillGrey95 cursor-pointer"
+                  position="my-auto"
+                />
+              </a>
 
-            <a
-              href={currentTeamMember?.linkedIn}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedInIcon
-                width="w-[24px]"
-                height="h-[24px]"
-                color="fill-instillGrey95 cursor-pointer"
-                position="my-auto"
-              />
-            </a>
-          </div>
+              <a
+                href={currentTeamMember?.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon
+                  width="w-[24px]"
+                  height="h-[24px]"
+                  color="fill-instillGrey95 cursor-pointer"
+                  position="my-auto"
+                />
+              </a>
+            </div>
 
-          <p className="mt-5 font-sans text-[22px] font-normal leading-7 text-zinc-900">
-            {currentTeamMember?.bio}
-          </p>
+            <p className="mt-5 font-sans text-[22px] font-normal leading-7 text-zinc-900">
+              {currentTeamMember?.bio}
+            </p>
+          </ScrollArea.Root>
           <Dialog.Close onClick={() => setOpen(false)} />
         </Dialog.Content>
       </Dialog.Root>

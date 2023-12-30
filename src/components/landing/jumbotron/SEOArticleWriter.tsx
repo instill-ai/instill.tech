@@ -102,7 +102,7 @@ export const SEOArticleWriter = () => {
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="training, dogs, jokes"
+                placeholder="AI, community, open source"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />

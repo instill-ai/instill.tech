@@ -5,6 +5,8 @@ import {
   ArrowRightIcon,
   DiscordIcon,
   GitHubIcon,
+  Icons,
+  Logos,
   TextButton,
   TwitterIcon,
 } from "@instill-ai/design-system";
@@ -103,7 +105,7 @@ export const CommunityBlock = ({
       break;
     default:
       blockColor = "bg-[#1DA1F2]";
-      icon = <TwitterIcon {...iconProp} />;
+      icon = <Logos.TwitterLight className="my-auto h-4 w-4" />;
       croppedIcon = (
         <svg
           viewBox="-12 0 30 30"

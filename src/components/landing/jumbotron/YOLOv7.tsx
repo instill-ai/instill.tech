@@ -119,7 +119,7 @@ export const YOLOv7 = () => {
 
         <div className="my-[18px] flex flex-row gap-x-2">
           <div className="w-3/5 xl:w-4/5">
-            <Input.Root className="w-full !rounded-none">
+            {/* <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
@@ -127,7 +127,7 @@ export const YOLOv7 = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
-            </Input.Root>
+            </Input.Root> */}
           </div>
           <div className="w-2/5 xl:w-1/5">
             {/* {article ? ( */}
