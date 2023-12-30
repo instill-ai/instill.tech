@@ -68,7 +68,7 @@ export const StabilityAIOpenAISticker = () => {
           </div>
           <div className="w-2/5 xl:w-1/5">
             <SolidButton
-              position="my-auto w-full gap-x-2 py-[9px]"
+              position="my-auto w-full gap-x-2 py-[9px] flex justify-center"
               color="primary"
               onClickHandler={() => {
                 if (prompt) {
@@ -96,10 +96,16 @@ export const StabilityAIOpenAISticker = () => {
                 {article ? (
                   <img src={article} className="my-auto object-contain" />
                 ) : (
-                  <img
-                    src="/images/wombat.png"
-                    className="open-ai-stiker mx-auto my-auto xl:object-contain"
-                  />
+                  <React.Fragment>
+                    <img
+                      src="/images/wombat.png"
+                      className="open-ai-stiker mx-auto my-auto hidden object-contain xl:block"
+                    />
+                    <img
+                      src="/images/wombat-mobile.png"
+                      className="open-ai-stiker mx-auto my-auto block object-contain xl:hidden"
+                    />
+                  </React.Fragment>
                 )}
               </div>
             </React.Fragment>
@@ -109,7 +115,7 @@ export const StabilityAIOpenAISticker = () => {
           <a
             href="https://console.instill.tech/admin/pipelines/jumbotron-sticker-maker"
             target="_blank"
-            className="absolute bottom-8 right-8 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
           >
             <svg
               focusable="false"

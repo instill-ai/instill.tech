@@ -111,7 +111,7 @@ export const SEOArticleWriter = () => {
           <div className="w-2/5 xl:w-1/5">
             <SolidButton
               color="primary"
-              position="my-auto w-full gap-x-2 justify-center py-[9px]"
+              position="my-auto w-full gap-x-2 flex justify-center py-[9px]"
               onClickHandler={() => {
                 if (input) {
                   handleGenrate();
@@ -159,7 +159,7 @@ export const SEOArticleWriter = () => {
           <a
             href="https://console.instill.tech/admin/pipelines/jumbotron-seo-article-writer"
             target="_blank"
-            className="absolute bottom-8 right-8 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
           >
             <svg
               focusable="false"

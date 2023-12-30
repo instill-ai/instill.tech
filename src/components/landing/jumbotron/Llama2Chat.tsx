@@ -209,7 +209,7 @@ export const Llama2Chat = () => {
             <SolidButton
               color="primary"
               type="button"
-              position="my-auto w-full gap-x-2 py-[9px]"
+              position="my-auto w-full gap-x-2 py-[9px] flex justify-center"
               onClickHandler={() => {
                 handleGenrate();
               }}
@@ -279,7 +279,7 @@ export const Llama2Chat = () => {
                     src={
                       imagePreview
                         ? imagePreview
-                        : "/images/llama-chat-default.svg"
+                        : "/images/llama-chat-default.png"
                     }
                     alt="SEO Image"
                     className="my-auto object-contain"
@@ -313,7 +313,7 @@ export const Llama2Chat = () => {
           <a
             href="https://console.instill.tech/admin/pipelines/jumbotron-visual-understanding"
             target="_blank"
-            className="absolute bottom-8 right-8 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
+            className="absolute bottom-4 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
           >
             <svg
               focusable="false"
