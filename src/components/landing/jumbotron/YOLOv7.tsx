@@ -130,8 +130,8 @@ export const YOLOv7 = () => {
             </Input.Root>
           </div>
           <div className="w-2/5 xl:w-1/5">
-            {article ? (
-              <SolidButton
+            {/* {article ? ( */}
+            {/* <SolidButton
                 color="primary"
                 position="my-auto w-full gap-x-2 justify-center !py-[9px]"
                 type="button"
@@ -141,28 +141,28 @@ export const YOLOv7 = () => {
                 }}
               >
                 Reset
-              </SolidButton>
-            ) : (
-              <SolidButton
-                position="my-auto w-full gap-x-2 justify-center item-center py-[9px]"
-                color="primary"
-                onClickHandler={() => {
-                  if (imagePreview) {
-                    handleGenrate();
-                  }
-                }}
-                type="button"
-              >
-                Run
-                {spinner ? (
-                  <div className="my-auto h-4 w-4">
-                    <LoadingSpin className="!h-4 !w-4" />
-                  </div>
-                ) : (
-                  <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
-                )}
-              </SolidButton>
-            )}
+              </SolidButton> */}
+            {/* ) : ( */}
+            <SolidButton
+              position="my-auto w-full gap-x-2 justify-center item-center py-[9px]"
+              color="primary"
+              onClickHandler={() => {
+                if (imagePreview) {
+                  handleGenrate();
+                }
+              }}
+              type="button"
+            >
+              Run
+              {spinner ? (
+                <div className="my-auto h-4 w-4">
+                  <LoadingSpin className="!h-4 !w-4" />
+                </div>
+              ) : (
+                <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
+              )}
+            </SolidButton>
+            {/* )} */}
           </div>
         </div>
 

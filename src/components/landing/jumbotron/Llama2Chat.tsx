@@ -193,8 +193,8 @@ export const Llama2Chat = () => {
             </Input.Root>
           </div>
           <div className="w-2/5 xl:w-1/5">
-            {article ? (
-              <SolidButton
+            {/* {article ? ( */}
+            {/* <SolidButton
                 color="primary"
                 type="button"
                 position="my-auto w-full gap-x-2"
@@ -204,24 +204,24 @@ export const Llama2Chat = () => {
                 }}
               >
                 Reset
-              </SolidButton>
-            ) : (
-              <SolidButton
-                color="primary"
-                type="button"
-                position="my-auto w-full gap-x-2 py-[9px]"
-                onClickHandler={() => {
-                  handleGenrate();
-                }}
-              >
-                Run
-                {spinner ? (
-                  <LoadingSpin />
-                ) : (
-                  <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
-                )}
-              </SolidButton>
-            )}
+              </SolidButton> */}
+            {/* ) : ( */}
+            <SolidButton
+              color="primary"
+              type="button"
+              position="my-auto w-full gap-x-2 py-[9px]"
+              onClickHandler={() => {
+                handleGenrate();
+              }}
+            >
+              Run
+              {spinner ? (
+                <LoadingSpin />
+              ) : (
+                <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
+              )}
+            </SolidButton>
+            {/* )} */}
           </div>
         </div>
 
