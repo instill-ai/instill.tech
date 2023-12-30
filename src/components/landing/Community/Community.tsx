@@ -25,9 +25,9 @@ export const Community = () => {
       <div className="grid-col-1 grid gap-y-5 xl:grid-cols-3 xl:gap-x-6 xl:gap-y-0">
         <CommunityBlock
           name="GitHub"
-          title="Star VDP on GitHub"
-          linkText="Star VDP"
-          link="https://github.com/instill-ai"
+          title="Follow Instill AI on GitHub"
+          linkText="Go to Community"
+          link="https://github.com/instill-ai/community"
         />
         <CommunityBlock
           name="Discord"

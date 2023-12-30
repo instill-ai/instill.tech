@@ -44,7 +44,7 @@ export const StabilityAIOpenAISticker = () => {
   };
 
   return (
-    <div className="jumbotron-card border bg-white">
+    <div className="jumbotron-card border bg-white xl:!border-none">
       <div className="bg-[#F8F9FC] p-3">
         <p className="my-auto product-body-text-1-semibold">Sticker Maker</p>
         {/* <ToastWithHook variant="alert-error" /> */}

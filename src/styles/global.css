@@ -166,8 +166,16 @@ table.mcnCaptionTopContent {
   height: 220px;
 }
 
+.llama-chat-box {
+  height: 150px;
+}
+
 .seo-image-box {
   height: 200px;
+}
+
+.llama-chat-image-box {
+  height: 270px;
 }
 
 /* Media query for width 600px */
@@ -184,8 +192,16 @@ table.mcnCaptionTopContent {
     height: 200px;
   }
 
+  .llama-chat-image-box {
+    height: 240px;
+  }
+
   .seo-box {
     height: 200px;
+  }
+
+  .llama-chat-box {
+    height: 170px;
   }
 
   .jumbotron-file-uploader {
@@ -217,7 +233,15 @@ table.mcnCaptionTopContent {
     height: 160px;
   }
 
+  .llama-chat-box {
+    height: 160px;
+  }
+
   .seo-image-box {
+    height: 160px;
+  }
+
+  .llama-chat-image-box {
     height: 160px;
   }
 

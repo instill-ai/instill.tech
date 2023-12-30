@@ -2,7 +2,7 @@ import * as React from "react";
 
 export default function Social() {
   return (
-    <div className="mb-20 !w-full rounded bg-[#F9FAFB]">
+    <div className="mb-20 !w-full rounded">
       <div className="p-6 xl:p-16">
         <div className="text-center">
           <p className="pb-8 font-sans text-[16px] font-normal leading-9 text-gray-800 text-opacity-80 xl:text-[24px]">
@@ -10,18 +10,18 @@ export default function Social() {
             applications
           </p>
         </div>
-        <div className="flex justify-center gap-x-8 xl:gap-x-20">
+        <div className="hidden justify-center gap-x-8 xl:flex xl:flex-row xl:gap-x-20">
           <a
             href="https://ubitus.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden xl:block xl:bg-white xl:p-2"
+            className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/ubitus.svg"}
+              src={"/images/social/ubitus.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -32,10 +32,10 @@ export default function Social() {
             className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/rybit.svg"}
+              src={"/images/social/rybit.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -46,10 +46,10 @@ export default function Social() {
             className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/super8.svg"}
+              src={"/images/social/super8.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -60,10 +60,10 @@ export default function Social() {
             className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/oxford.svg"}
+              src={"/images/social/oxford.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -74,10 +74,10 @@ export default function Social() {
             className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/acadamia.svg"}
+              src={"/images/social/acadamia.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
 
@@ -88,10 +88,96 @@ export default function Social() {
             className="xl:bg-white xl:p-2"
           >
             <img
-              src={"/images/social/cheng-kung-university.svg"}
+              src={"/images/social/cheng-kung-university.png"}
               alt=""
               sizes=""
-              className="my-auto h-8 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+        </div>
+        <div className="flex justify-center gap-x-12 xl:hidden xl:gap-x-20">
+          <a
+            href="https://ubitus.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/ubitus.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+
+          <a
+            href="https://www.rybit.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/rybit.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+
+          <a
+            href="https://www.no8.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/super8.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+        </div>
+        <div className="mt-5 flex justify-center gap-x-12 xl:hidden">
+          <a
+            href="https://www.ox.ac.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/oxford.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+
+          <a
+            href="https://www.sinica.edu.tw/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/acadamia.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+
+          <a
+            href="https://www.ncku.edu.tw/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/cheng-kung-university.png"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
             />
           </a>
         </div>

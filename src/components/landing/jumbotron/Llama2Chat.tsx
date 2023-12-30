@@ -215,7 +215,7 @@ export const Llama2Chat = () => {
   };
 
   return (
-    <div className="jumbotron-card border bg-white">
+    <div className="jumbotron-card border bg-white xl:border-none">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">
           Visual Assistant
@@ -271,12 +271,12 @@ export const Llama2Chat = () => {
           </div>
         </div>
 
-        <div className="jumbotron-file-uploader flex flex-col items-center justify-center space-y-5">
+        <div className="jumbotron-file-uploader flex flex-col space-y-5">
           {/* <React.Fragment> */}
 
           {/* <React.Fragment> */}
           <div className="space-y-4">
-            <div className="seo-box w-full overflow-y-auto border">
+            <div className="llama-chat-box w-full overflow-y-auto border">
               <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
                 {article ? article : defaultAnswer}
               </pre>
@@ -308,7 +308,7 @@ export const Llama2Chat = () => {
                   </div>
                 ) : null} */}
 
-              <div className="seo-image-box my-auto cursor-pointer text-center">
+              <div className="llama-chat-image-box my-auto cursor-pointer text-center">
                 {/* {imagePreview && (
                       <Icons.Trash01
                         onClick={(e) => {
@@ -320,7 +320,7 @@ export const Llama2Chat = () => {
                     )} */}
 
                 {/* {imagePreview ? ( */}
-                <div className="seo-image-box flex w-full flex-wrap overflow-auto">
+                <div className="llama-chat-image-box flex w-full flex-wrap overflow-auto">
                   <img
                     src={
                       imagePreview
@@ -359,7 +359,7 @@ export const Llama2Chat = () => {
           <a
             href="https://console.instill.tech/admin/pipelines/jumbotron-visual-understanding"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
+            className="absolute bottom-4 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
           >
             <svg
               focusable="false"

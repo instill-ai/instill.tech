@@ -55,8 +55,9 @@ const teams: Team[] = [
     role: "Product Designer",
     linkedIn: "https://www.linkedin.com/in/sosadaniel/",
     github: "https://github.com/dloopy",
-    bio: "Daniel Sosa, the Product Designer of Instill AI, is a versatile creative professional. With a background in art direction, game design, and digital creativity, he excels in crafting vibrant illustrations, dynamic animations, impactful identities, and intuitive user interfaces. In addition to their role, they passionately pursue personal projects spanning music and game development.",
+    bio: "Daniel Sosa, is a creative professional with over a decade's experience designing digital products and experiences. Leveraging cross-functional skills in UX, art direction, multimedia and a background in Audiovisual Sciences and Photography, and a Master's Degree in Game Design and Development, he adapts seamlessly to new trends. His focus spans strategy, innovation and leadership plus hands-on design execution.",
   },
+
   {
     id: 6,
     name: "Po-Chun Chiu",
@@ -87,7 +88,7 @@ const teams: Team[] = [
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/chun-hao-wang-tony/",
     github: "https://github.com/tonywang10101",
-    bio: "Hey Im Tony",
+    bio: "",
   },
   {
     id: 10,
@@ -127,7 +128,7 @@ const teams: Team[] = [
     role: "Office Administrator",
     linkedIn: "",
     github: "",
-    bio: "",
+    bio: "Minji is an administrator based in London, UK. She enjoys supporting all members of the general issues such as accounting, payroll and legal matters etc. She likes drawing, listening to classical music, and caring about family, especially cooking for them as well. She holds an economic and accounting degree.",
   },
 ];
 

@@ -85,7 +85,7 @@ export const SEOArticleWriter = () => {
   };
 
   return (
-    <div className="jumbotron-card border bg-white">
+    <div className="jumbotron-card border bg-white xl:!border-none">
       <div className="bg-[#F8F9FC] p-3">
         <h3 className="my-auto product-body-text-1-semibold">
           SEO Article Writer
