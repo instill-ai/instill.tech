@@ -107,7 +107,7 @@ export const CommunityBlock = ({
       blockColor = "bg-[#1DA1F2]";
       icon = <Logos.TwitterLight className="my-auto h-[25px] w-[25px] p-1" />;
       croppedIcon = (
-        <div className="absolute left-[185px] top-0 h-[250px] w-[250px] xl:left-[163px]">
+        <div className="twitter-icon-comunity absolute top-0 h-[250px] xl:left-[163px]">
           <svg
             width="196"
             height="241"
@@ -115,14 +115,16 @@ export const CommunityBlock = ({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clipPath="url(#clip0_4982_101727)">
-              <path
-                d="M158.897 100.049L258.291 -15.488H234.738L148.434 84.8316L79.5033 -15.488H0L104.237 136.213L0 257.372H23.5545L114.694 151.431L187.489 257.372H266.993L158.891 100.049H158.897ZM126.636 137.549L116.074 122.443L32.0416 2.24348H68.2199L136.035 99.2487L146.597 114.355L234.749 240.447H198.57L126.636 137.555V137.549Z"
-                fill="white"
-              />
+            <g opacity="0.6">
+              <g clipPath="url(#clip0_4982_101726)">
+                <path
+                  d="M158.897 100.049L258.291 -15.488H234.738L148.434 84.8316L79.5033 -15.488H0L104.237 136.213L0 257.372H23.5545L114.694 151.431L187.489 257.372H266.993L158.891 100.049H158.897ZM126.636 137.549L116.074 122.443L32.0416 2.24348H68.2199L136.035 99.2487L146.597 114.355L234.749 240.447H198.57L126.636 137.555V137.549Z"
+                  fill="white"
+                />
+              </g>
             </g>
             <defs>
-              <clipPath id="clip0_4982_101727">
+              <clipPath id="clip0_4982_101726">
                 <rect
                   width="266.993"
                   height="273"

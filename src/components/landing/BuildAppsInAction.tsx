@@ -40,7 +40,7 @@ export const BuildAppsInAction = () => {
           className="hidden xl:block"
         />
         <img
-          src={"/images/vdp-in-action-mobile.svg"}
+          src={"/images/vdp-in-action-mobile.png"}
           alt=""
           className="block w-full xl:hidden"
         />
@@ -49,9 +49,14 @@ export const BuildAppsInAction = () => {
       <div className="mt-20 flex flex-col-reverse gap-x-10 xl:flex-row">
         <div className="w-full xl:w-1/2">
           <img
+            src={"/images/vdp-in-action-2.png"}
+            alt=""
+            className="my-10 block xl:my-0 xl:hidden"
+          />
+          <img
             src={"/images/vdp-in-action-2.svg"}
             alt=""
-            className="my-10 xl:my-0"
+            className="my-10 hidden xl:my-0 xl:block"
           />
 
           <CommonCtaButton

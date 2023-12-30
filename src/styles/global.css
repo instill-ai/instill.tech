@@ -210,6 +210,10 @@ table.mcnCaptionTopContent {
   .open-ai-stiker {
     height: 430px;
   }
+
+  .twitter-icon-comunity {
+    left: 185px;
+  }
 }
 
 /* Media query for width 400px */
@@ -248,6 +252,16 @@ table.mcnCaptionTopContent {
   .jumbotron-file-uploader {
     height: 350px;
   }
+
+  .twitter-icon-comunity {
+    left: 146px;
+  }
+}
+
+@media (max-width: 800px) {
+  /* .twitter-icon-comunity {
+    left: 747px;
+  } */
 }
 
 /* .swiper-slide-prev {
