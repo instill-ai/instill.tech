@@ -1,10 +1,7 @@
 {
   "functions": {
-    "api/instill-api-proxy.ts": {
-      "maxDuration": 30
-    },
-    "api/*.js": {
-      "maxDuration": 15
+    "pages/api/**/*": {
+      "maxDuration": 300
     }
   }
 }
