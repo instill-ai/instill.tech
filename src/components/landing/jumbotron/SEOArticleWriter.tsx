@@ -47,7 +47,7 @@ export const SEOArticleWriter = () => {
   const [article, setArticle] = React.useState<string>("");
   const [articleImage, setArticleImage] = React.useState<string>("");
   const [input, setInput] = React.useState<string>("");
-  const [sectionNumber, setSectionNumber] = React.useState<string>("");
+  const [sectionNumber, setSectionNumber] = React.useState<string>("4");
 
   const handleGenrate = async () => {
     setSpinner(true);
