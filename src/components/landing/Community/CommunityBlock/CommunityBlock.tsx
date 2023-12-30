@@ -105,7 +105,7 @@ export const CommunityBlock = ({
       break;
     default:
       blockColor = "bg-[#1DA1F2]";
-      icon = <Logos.TwitterLight className="my-auto h-4 w-4" />;
+      icon = <Logos.TwitterLight className="my-auto h-[25px] w-[25px] p-1" />;
       croppedIcon = (
         <svg
           viewBox="-12 0 30 30"
@@ -134,7 +134,7 @@ export const CommunityBlock = ({
       onClick={() => router.push(link)}
     >
       <div className="z-10 mb-auto flex w-1/2 flex-col gap-y-2.5">
-        <div className="flex flex-row gap-x-2">
+        <div className="flex flex-col gap-x-2">
           {icon}
           <div className="my-auto text-base font-normal uppercase text-white">
             {name}
