@@ -99,12 +99,12 @@ export const StabilityAIOpenAISticker = () => {
                   <React.Fragment>
                     <img
                       src="/images/wombat.png"
-                      className="open-ai-stiker mx-auto my-auto hidden object-contain xl:block"
+                      className="open-ai-stiker mx-auto my-auto object-contain"
                     />
-                    <img
+                    {/* <img
                       src="/images/wombat-mobile.png"
                       className="open-ai-stiker mx-auto my-auto block object-contain xl:hidden"
-                    />
+                    /> */}
                   </React.Fragment>
                 )}
               </div>
