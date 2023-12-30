@@ -34,7 +34,7 @@ export const YOLOv7 = () => {
 
     if (apiResponse.status === "success") {
       const result: string = apiResponse.data.outputs[0].draw;
-      setArticle(result);
+      setImagePreview(result);
     } else {
       console.error("API Error:", apiResponse.error);
       toast({
