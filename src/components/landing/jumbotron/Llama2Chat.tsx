@@ -82,7 +82,9 @@ export const loadImageAndSetState = async (
     const resolvedUrlPath = await imageUrlPath;
 
     // Fetch the image as a blob
-    const response = await fetch(process.env.NEXT_PUBLIC_URL + resolvedUrlPath);
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_BASE_URL + resolvedUrlPath
+    );
     const blob = await response.blob();
     // Convert the blob to a data URL
     const dataUrl = await convertBlobToDataUrl(blob);
