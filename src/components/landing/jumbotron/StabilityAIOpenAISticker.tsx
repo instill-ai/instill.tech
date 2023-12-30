@@ -92,7 +92,7 @@ export const StabilityAIOpenAISticker = () => {
             <div>Generating...</div>
           ) : (
             <React.Fragment>
-              <div className="flex w-full flex-wrap overflow-auto">
+              <div className="open-ai-stiker flex w-full flex-wrap overflow-auto bg-[#F8F9FC]">
                 {article ? (
                   <img src={article} className="my-auto object-contain" />
                 ) : (
