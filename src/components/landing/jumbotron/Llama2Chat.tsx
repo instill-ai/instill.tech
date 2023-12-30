@@ -69,6 +69,46 @@ export function resizeImage(file: File): Promise<Blob> {
   });
 }
 
+export const loadImageAndSetState = async (
+  imageUrlPath: string
+): Promise<string> => {
+  try {
+    // If imageUrlPath is already a string, return it directly
+    // if (typeof imageUrlPath === "string") {
+    //   return imageUrlPath;
+    // }
+
+    // If imageUrlPath is a Promise, wait for it to resolve
+    const resolvedUrlPath = await imageUrlPath;
+
+    // Fetch the image as a blob
+    const response = await fetch(process.env.NEXT_PUBLIC_URL + resolvedUrlPath);
+    const blob = await response.blob();
+    // Convert the blob to a data URL
+    const dataUrl = await convertBlobToDataUrl(blob);
+
+    return dataUrl;
+  } catch (error) {
+    console.error("Error loading image:", error);
+    return ""; // Return an empty string in case of an error
+  }
+};
+
+export const convertBlobToDataUrl = (blob: Blob): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if (typeof result === "string") {
+        resolve(result);
+      } else {
+        reject(new Error("Failed to convert blob to data URL."));
+      }
+    };
+    reader.readAsDataURL(blob);
+  });
+};
+
 const defaultAnswer = `
 The unusual aspect of this image is that a man is standing on a folding table that is strapped to the back of a yellow taxi, ironing clothes. It is not common to see someone doing laundry in such an unconventional setting, especially while in traffic. The presence of a taxi and the man's position on the table make the scene quite peculiar and eye-catching, as it is not a typical scenario one would expect to see in everyday life.
 `;
@@ -83,10 +123,14 @@ export const Llama2Chat = () => {
   const handleGenrate = async () => {
     setSpinner(true);
 
+    const defaultImage = await loadImageAndSetState(
+      "/images/llama-chat-default.png"
+    );
+
     const apiResponse = await JumbotronSDK.llava7b({
       inputs: [
         {
-          image: imagePreview ? imagePreview : "",
+          image: imagePreview ? imagePreview : defaultImage || "",
           prompt: question,
         },
       ],

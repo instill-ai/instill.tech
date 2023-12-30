@@ -10,7 +10,7 @@ import {
   toast,
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
-import { resizeImage } from "./Llama2Chat";
+import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
 
 export const YOLOv7 = () => {
   const [spinner, setSpinner] = React.useState(false);
@@ -22,10 +22,12 @@ export const YOLOv7 = () => {
   const handleGenrate = async () => {
     setSpinner(true);
 
+    const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
+
     const apiResponse = await JumbotronSDK.yolov7({
       inputs: [
         {
-          image: imagePreview ? imagePreview : "",
+          image: imagePreview ? imagePreview : defaultImage || "",
         },
       ],
     });
@@ -147,9 +149,9 @@ export const YOLOv7 = () => {
               position="my-auto w-full gap-x-2 flex justify-center item-center py-[9px]"
               color="primary"
               onClickHandler={() => {
-                if (imagePreview) {
-                  handleGenrate();
-                }
+                // if (imagePreview) {
+                handleGenrate();
+                // }
               }}
               type="button"
             >
