@@ -14,7 +14,7 @@ export async function llava7b(
   requestData: Llaba7bRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "/vdp/v1beta/users/admin/pipelines/jumbotron-visual-understanding/trigger",
+    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-visual-understanding/trigger",
     data: requestData,
   };
 

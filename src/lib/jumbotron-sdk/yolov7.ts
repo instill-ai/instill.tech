@@ -13,7 +13,7 @@ export async function yolov7(
   requestData: Yolov7RequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "/vdp/v1beta/users/admin/pipelines/jumbotron-yolov7/trigger",
+    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-yolov7/trigger",
     data: requestData,
   };
 

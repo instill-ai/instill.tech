@@ -13,7 +13,7 @@ export async function stabilityAIOpenAISticker(
   requestData: StabilityAIOpenAISticketRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "/vdp/v1beta/users/admin/pipelines/jumbotron-sticker-maker/trigger",
+    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-sticker-maker/trigger",
     data: requestData,
   };
 
