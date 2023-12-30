@@ -6,6 +6,7 @@ import { ReactElement, ReactNode } from "react";
 import "../styles/global.css";
 import "@/style/codeHike.css";
 import "../styles/docs.css";
+import "../styles/github-markdown.css";
 import "@docsearch/css";
 import "@/components/ui/Footer/AnimateSlogan.css";
 import { MDXProvider } from "@mdx-js/react";

@@ -73,6 +73,9 @@ dependencies:
   intersection-observer:
     specifier: ^0.12.2
     version: 0.12.2
+  markdown-to-jsx:
+    specifier: ^7.3.2
+    version: 7.3.2(react@18.2.0)
   next:
     specifier: ^13.2.4
     version: 13.2.4(@babel/core@7.18.9)(react-dom@18.2.0)(react@18.2.0)
