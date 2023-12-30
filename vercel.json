@@ -1,6 +1,6 @@
 {
   "functions": {
-    "./src/pages/api/instill-api-proxy.ts": {
+    "pages/api/**/*": {
       "maxDuration": 300
     }
   }
