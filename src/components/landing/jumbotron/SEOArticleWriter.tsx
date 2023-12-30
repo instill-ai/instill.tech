@@ -134,7 +134,7 @@ export const SEOArticleWriter = () => {
             <div>Generating...</div>
           ) : (
             <div className="space-y-4">
-              <div className="seo-box w-[250px] overflow-y-auto border xl:w-[450px]">
+              <div className="seo-box w-auto overflow-y-auto border">
                 <div className="markdown-body px-2">
                   <Markdown>{article ? article : defaultArticle}</Markdown>
                 </div>
