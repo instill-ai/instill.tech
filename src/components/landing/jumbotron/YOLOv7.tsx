@@ -11,7 +11,68 @@ import {
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
-import axios from "axios";
+
+async function resizeBase64Image(
+  base64: string,
+  maxWidth = 600,
+  maxHeight = 600
+): Promise<string> {
+  return new Promise<string>((resolve, reject) => {
+    const img = new Image();
+
+    // Set the source of the image to the base64 string
+    img.src = base64;
+
+    // When the image has loaded
+    img.onload = () => {
+      // Calculate the new dimensions
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth || height > maxHeight) {
+        const aspectRatio = width / height;
+
+        if (width > maxWidth) {
+          width = maxWidth;
+          height = width / aspectRatio;
+        }
+
+        if (height > maxHeight) {
+          height = maxHeight;
+          width = height * aspectRatio;
+        }
+      }
+
+      // Create a canvas element
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Check if context is available
+      if (!ctx) {
+        reject(new Error("Unable to get 2D context"));
+        return;
+      }
+
+      // Set the canvas dimensions
+      canvas.width = width;
+      canvas.height = height;
+
+      // Draw the image on the canvas
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Get the resized image as a base64 string
+      const resizedBase64 = canvas.toDataURL("image/jpeg");
+
+      // Resolve with the resized base64 string
+      resolve(resizedBase64);
+    };
+
+    // If there's an error loading the image, reject the promise
+    img.onerror = () => {
+      reject(new Error("Error loading image"));
+    };
+  });
+}
 
 export const YOLOv7 = () => {
   const [spinner, setSpinner] = React.useState(false);
@@ -97,11 +158,12 @@ export const YOLOv7 = () => {
     } else {
       imgString = await getBase64ImageFromUrl("/images/yolo-default.png");
     }
+    const resizeImage = await resizeBase64Image(imgString);
 
     const apiResponse = await JumbotronSDK.yolov7({
       inputs: [
         {
-          image: imgString || "",
+          image: resizeImage || "",
         },
       ],
     });
