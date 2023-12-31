@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.41.10](https://github.com/instill-ai/instill.tech/compare/v1.41.9...v1.41.10) (2023-12-31)
+
+
+### Miscellaneous
+
+* **docs:** update the core version ([#667](https://github.com/instill-ai/instill.tech/issues/667)) ([1ad97a4](https://github.com/instill-ai/instill.tech/commit/1ad97a4230ce742bbb8c3792a3e031156602f3e0))
+* namananand/ins 2903 update landing page ([#666](https://github.com/instill-ai/instill.tech/issues/666)) ([1e4cdb3](https://github.com/instill-ai/instill.tech/commit/1e4cdb38b4782b74a98d0a2853b3c518d9d98565))
+* **tutorial:** hide old tutorial ([#668](https://github.com/instill-ai/instill.tech/issues/668)) ([017dc93](https://github.com/instill-ai/instill.tech/commit/017dc9307eb2ba7035be7478a83d38070b55e37b))
+* update &lt;&gt; --> <React.Fragment> ([#663](https://github.com/instill-ai/instill.tech/issues/663)) ([bff6384](https://github.com/instill-ai/instill.tech/commit/bff638448f9333390d730907d25bbefc3c985462))
+* update quickstart guide to current UI ([#665](https://github.com/instill-ai/instill.tech/issues/665)) ([9df1e1c](https://github.com/instill-ai/instill.tech/commit/9df1e1c35fcd690a5f8a3062bbe9bf7f7dce3112))
+
 ## [1.41.9](https://github.com/instill-ai/instill.tech/compare/v1.41.8...v1.41.9) (2023-11-13)
 
 
