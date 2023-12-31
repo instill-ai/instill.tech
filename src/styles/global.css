@@ -254,7 +254,7 @@ table.mcnCaptionTopContent {
   }
 
   .twitter-icon-comunity {
-    left: 146px;
+    right: 0px !important;
   }
 }
 

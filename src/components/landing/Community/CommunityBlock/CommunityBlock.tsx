@@ -107,7 +107,7 @@ export const CommunityBlock = ({
       blockColor = "bg-[#1DA1F2]";
       icon = <Logos.TwitterLight className="my-auto h-[25px] w-[25px] p-1" />;
       croppedIcon = (
-        <div className="twitter-icon-comunity absolute top-0 h-[250px] xl:left-[163px]">
+        <div className="absolute right-0 top-0 h-[250px]">
           <svg
             width="196"
             height="241"
