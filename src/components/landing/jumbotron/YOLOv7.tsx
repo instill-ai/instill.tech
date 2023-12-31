@@ -20,21 +20,72 @@ export const YOLOv7 = () => {
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
-  async function imageUrlToBase64(imageUrl: string): Promise<string | null> {
-    try {
-      // Fetch the image using axios
-      const response = await axios.get(imageUrl, {
-        responseType: "arraybuffer",
-      });
+  // async function imageUrlToBase64(imageUrl: string): Promise<string | null> {
+  //   try {
+  //     let imgSrc: string | undefined;
 
-      // Convert the image buffer to a base64 string
-      const base64 = Buffer.from(response.data, "binary").toString("base64");
+  //     // Check if the provided URL is a direct image link
+  //     if (imageUrl.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+  //       imgSrc = imageUrl;
+  //     } else {
+  //       // Fetch the content of the URL
+  //       const response = await axios.get(imageUrl);
 
-      return base64;
-    } catch (error: any) {
-      console.error("Error fetching or converting image:", error.message);
-      return null;
-    }
+  //       // Parse HTML content using cheerio
+  //       const $ = cheerio.load(response.data);
+
+  //       // Find the image tag and extract the source URL
+  //       imgSrc = $("img").attr("src");
+
+  //       if (!imgSrc) {
+  //         console.error("No image source found on the page.");
+  //         return null;
+  //       }
+  //     }
+
+  //     // Fetch the image using axios
+  //     const imageResponse = await axios.get(imgSrc, {
+  //       responseType: "arraybuffer",
+  //     });
+
+  //     // Convert the image buffer to a base64 string
+  //     const base64 = Buffer.from(imageResponse.data, "binary").toString(
+  //       "base64"
+  //     );
+
+  //     return base64;
+  //   } catch (error: any) {
+  //     console.error("Error:", error.message);
+  //     return null;
+  //   }
+  // }
+
+  async function getBase64ImageFromUrl(imageUrl: string): Promise<string> {
+    // try { // no-useless-catch
+    const res = await fetch(imageUrl);
+    const blob = await res.blob();
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.addEventListener(
+        "load",
+        function () {
+          resolve(reader.result as string);
+        },
+        false
+      );
+
+      reader.onerror = () => {
+        reject(reader.error);
+      };
+
+      reader.readAsDataURL(blob);
+    });
+    // } catch (error: any) {
+    // Handle fetch or other errors here
+    // throw error;
+    // }
   }
 
   const handleGenrate = async () => {
@@ -42,9 +93,9 @@ export const YOLOv7 = () => {
     let imgString: string | null = "";
     // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
     if (input) {
-      imgString = await imageUrlToBase64(input);
+      imgString = await getBase64ImageFromUrl(input);
     } else {
-      imgString = await imageUrlToBase64("/images/yolo-default.png");
+      imgString = await getBase64ImageFromUrl("/images/yolo-default.png");
     }
 
     const apiResponse = await JumbotronSDK.yolov7({
