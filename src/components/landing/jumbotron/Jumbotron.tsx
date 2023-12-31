@@ -21,7 +21,6 @@ export const Jumbotron = () => {
   const [currentSlide, setCurrentSlide] = React.useState(1);
 
   React.useEffect(() => {
-    console.log(currentSlide);
     const isBeginning = currentSlide === 1 ? 1 : 0;
     const isEnd = currentSlide === 4 ? 1 : 0;
 
