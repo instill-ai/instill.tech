@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/instill-api-proxy.ts": { 
+      "maxDuration": 300
+    }
+  }
+}
