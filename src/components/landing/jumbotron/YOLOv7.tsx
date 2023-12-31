@@ -11,6 +11,7 @@ import {
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
+import axios from "axios";
 
 export const YOLOv7 = () => {
   const [spinner, setSpinner] = React.useState(false);
@@ -19,15 +20,37 @@ export const YOLOv7 = () => {
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
+  async function imageUrlToBase64(imageUrl: string): Promise<string | null> {
+    try {
+      // Fetch the image using axios
+      const response = await axios.get(imageUrl, {
+        responseType: "arraybuffer",
+      });
+
+      // Convert the image buffer to a base64 string
+      const base64 = Buffer.from(response.data, "binary").toString("base64");
+
+      return base64;
+    } catch (error: any) {
+      console.error("Error fetching or converting image:", error.message);
+      return null;
+    }
+  }
+
   const handleGenrate = async () => {
     setSpinner(true);
-
-    const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
+    let imgString: string | null = "";
+    // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
+    if (input) {
+      imgString = await imageUrlToBase64(input);
+    } else {
+      imgString = await imageUrlToBase64("/images/yolo-default.png");
+    }
 
     const apiResponse = await JumbotronSDK.yolov7({
       inputs: [
         {
-          image: imagePreview ? imagePreview : defaultImage || "",
+          image: imgString || "",
         },
       ],
     });
@@ -121,7 +144,7 @@ export const YOLOv7 = () => {
 
         <div className="my-[18px] flex flex-row gap-x-2">
           <div className="w-3/5 xl:w-4/5">
-            {/* <Input.Root className="w-full !rounded-none">
+            <Input.Root className="w-full !rounded-none">
               <Input.Core
                 disabled={false}
                 type="text"
@@ -129,7 +152,7 @@ export const YOLOv7 = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
-            </Input.Root> */}
+            </Input.Root>
           </div>
           <div className="w-2/5 xl:w-1/5">
             {/* {article ? ( */}
@@ -170,30 +193,23 @@ export const YOLOv7 = () => {
 
         <div className="jumbotron-file-uploader flex flex-col items-center justify-center">
           <React.Fragment>
-            {article ? (
-              <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                <img src={article} className="my-auto object-contain" />
-              </div>
-            ) : (
-              <div
-                className="w-full space-y-3"
-                onDrop={handleDrop}
-                onDragOver={(e) => e.preventDefault()}
-              >
-                <label htmlFor="fileInput" className="block">
-                  <div className="jumbotron-file-uploader my-auto cursor-pointer bg-slate-50 text-center">
-                    {/* {imagePreview && (
-                      <Icons.Trash01
-                        onClick={(e) => {
-                          e.preventDefault(); // Stop the event from bubbling up
-                          handleDelete();
-                        }}
-                        className="relative top-1 h-10 w-10 stroke-red-500 p-2 text-white"
-                      />
-                    )} */}
-
-                    {/* {imagePreview ? ( */}
-                    <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
+            {/* {article ? ( */}
+            <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
+              <img
+                src={imagePreview ? imagePreview : "/images/yolo-default.png"}
+                className="my-auto object-contain"
+              />
+            </div>
+            {/* ) : ( */}
+            {/* <div */}
+            {/* className="w-full space-y-3" */}
+            {/* onDrop={handleDrop} */}
+            {/* onDragOver={(e) => e.preventDefault()} */}
+            {/* > */}
+            {/* <label htmlFor="fileInput" className="block"> */}
+            {/* <div className="jumbotron-file-uploader my-auto cursor-pointer bg-slate-50 text-center"> */}
+            {/* {imagePreview ? ( */}
+            {/* <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
                       <img
                         src={
                           imagePreview
@@ -202,9 +218,9 @@ export const YOLOv7 = () => {
                         }
                         className="my-auto object-contain"
                       />
-                    </div>
-                    {/* ) : ( */}
-                    {/* <div className="cursor-pointer space-y-4 px-10 py-10">
+                    </div> */}
+            {/* ) : ( */}
+            {/* <div className="cursor-pointer space-y-4 px-10 py-10">
                         <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
                         <p className="mx-auto product-body-text-4-regular">
                           Drag-and-drop file, or{" "}
@@ -213,11 +229,11 @@ export const YOLOv7 = () => {
                           </span>
                         </p>
                       </div> */}
-                    {/* )} */}
-                  </div>
-                </label>
-              </div>
-            )}
+            {/* )} */}
+            {/* </div> */}
+            {/* </label> */}
+            {/* </div> */}
+            {/* )} */}
             <input
               type="file"
               accept="image/*"
