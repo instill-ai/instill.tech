@@ -43,16 +43,34 @@ export function resizeImage(file: File): Promise<Blob> {
         const ctx = canvas.getContext("2d");
         ctx?.drawImage(img, 0, 0, newWidth, newHeight);
 
+        // Compress the image by adjusting the quality
+        const quality = 0.8; // You can adjust this value as needed
         canvas.toBlob(
           (blob) => {
             if (blob) {
-              resolve(blob);
+              // Check if the blob size is less than or equal to 800 KB
+              if (blob.size <= 800 * 1024) {
+                resolve(blob);
+              } else {
+                // Compress the image further if it exceeds 800 KB
+                canvas.toBlob(
+                  (compressedBlob) => {
+                    if (compressedBlob) {
+                      resolve(compressedBlob);
+                    } else {
+                      reject(new Error("Error compressing image"));
+                    }
+                  },
+                  file.type,
+                  quality
+                );
+              }
             } else {
               reject(new Error("Error creating blob"));
             }
           },
           file.type,
-          1
+          quality
         );
       };
 
