@@ -37,7 +37,7 @@ export const Community = () => {
         />
         <CommunityBlock
           name="Twitter"
-          title="Keep updated on Twitter"
+          title="Keep updated on X"
           linkText="Follow us"
           link="https://twitter.com/instill_tech"
         />
