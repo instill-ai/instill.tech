@@ -151,6 +151,7 @@ export const YOLOv7 = () => {
         size: "large",
         variant: "alert-error",
       });
+      return "";
     }
     // } catch (error: any) {
     // Handle fetch or other errors here
