@@ -1,26 +1,16 @@
 import cn from "clsx";
 import {
-  AirbyteIcon,
-  AsyncArrowsIcon,
-  AsyncIcon,
-  GrpcIcon,
-  HttpIcon,
-  ImageClassificationIcon,
-  KeypointDetectionIcon,
-  ObjectDetectionIcon,
-  OnnxIcon,
-  OpticalCharacterRecognitionIcon,
-  PlusIcon,
-  PythonIcon,
-  PyTorchIcon,
-  SyncArrowsIcon,
-  SyncIcon,
-  TensorFlowIcon,
+  ArrowRightIcon,
+  GitHubIcon,
+  Icons,
+  Separator,
+  SolidButton,
 } from "@instill-ai/design-system";
-
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export type HowItWorksProps = {
   marginBottom?: string;
@@ -28,182 +18,214 @@ export type HowItWorksProps = {
 
 export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
+    const router = useRouter();
     const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
         <div className="mb-20 flex flex-col gap-y-2.5">
-          <SectionLabel text="Open to integrations" position="mr-auto" />
+          <SectionLabel text="What makes us different" position="mr-auto" />
           <SectionHeader
-            header="How it works?"
-            headerWidth="w-full"
-            headerTextColor="text-instillGrey90"
+            header="Designed for Flexibility and Scale."
+            headerWidth="w-full xl:text-left text-center hidden xl:block"
+            headerTextColor="text-[#2B2B2B]"
           />
         </div>
         <div className="flex flex-col gap-y-20">
           <HowItWorksRow
             type="left"
-            title="Pre-built ETL data connectors for extensive data access"
-            description="By leveraging ready-to-use data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors."
-            learnMoreLink="/docs/latest/vdp/data-connector"
-            number={1}
-            cubes={[
-              {
-                id: "httpIcon",
-                icon: (
-                  <HttpIcon
-                    {...iconProps}
-                    color="fill-instillBlue50"
-                    position="m-auto"
-                  />
-                ),
-                color: "bg-instillBlue10",
-              },
-              {
-                id: "grpcIcon",
-                icon: (
-                  <GrpcIcon {...iconProps} color="fill-instillWarmOrange50" />
-                ),
-                color: "bg-instillWarmOrange05",
-              },
-              {
-                id: "airbyteIcon",
-                icon: <AirbyteIcon {...iconProps} />,
-                color: "bg-[#ECEBFF]",
-              },
-              {
-                id: "plusIcon",
-                icon: <PlusIcon {...iconProps} color="fill-instillGrey50" />,
-                color: "bg-instillGrey05",
-              },
-            ]}
-          />
-          <HowItWorksRow
-            type="right"
-            title="One-click import and deploy AI models across vendors and frameworks"
-            description="VDP integrates with the best ML tools and platforms to make importing models super easy. Get access to state-of-the-art models across vendors and your own models without changing your workflow. It supports frameworks including TensorRT, PyTorch, TensorFlow, ONNX, Python and more."
-            learnMoreLink="/docs/latest/model/import"
-            number={2}
-            cubes={[
-              {
-                id: "tensorflowIcon",
-                icon: <TensorFlowIcon {...iconProps} />,
-                color: "bg-instillWarmOrange05",
-              },
-              {
-                id: "pythonIcon",
-                icon: <PythonIcon {...iconProps} />,
-                color: "bg-instillBlue10",
-              },
-              {
-                id: "onnxIcon",
-                icon: <OnnxIcon {...iconProps} />,
-                color: "bg-instillGrey05",
-              },
-              {
-                id: "pytorchIcon",
-                icon: <PyTorchIcon {...iconProps} />,
-                color: "bg-instillRed10",
-              },
-            ]}
-          />
-          <HowItWorksRow
-            type="left"
-            title="Standardise AI tasks for ETL pipelines, data and application integration"
-            description="VDP solves popular AI tasks including Image Classification, Object Detection, Keypoint Detection, OCR and more, out of the box. It produces data from models with standardised format for use in ETL pipelines, data and application integration."
-            learnMoreLink="/docs/latest/model/ai-task"
-            number={3}
-            cubes={[
-              {
-                id: "imageClassificationIcon",
-                icon: (
-                  <ImageClassificationIcon
-                    {...iconProps}
-                    color="fill-instillBlue50"
-                  />
-                ),
-                color: "bg-instillBlue10",
-              },
-              {
-                id: "keypointDetectionIcon",
-                icon: (
-                  <KeypointDetectionIcon
-                    {...iconProps}
-                    color="fill-instillLemonYellow50"
-                  />
-                ),
-                color: "bg-instillLemonYellow05",
-              },
-              {
-                id: "opticalCharacterRecognitionIcon",
-                icon: (
-                  <OpticalCharacterRecognitionIcon
-                    {...iconProps}
-                    color="fill-instillWarmOrange50"
-                  />
-                ),
-                color: "bg-instillWarmOrange05",
-              },
-              {
-                id: "objectDetectionIcon",
-                icon: (
-                  <ObjectDetectionIcon
-                    {...iconProps}
-                    color="fill-instillNeonGreen"
-                  />
-                ),
-                color: "bg-instillNeonGreen10",
-              },
-            ]}
-          />
-          <HowItWorksRow
-            type="right"
-            title="Build end-to-end unstructured data pipelines 10x faster"
+            title="Drag-and-Drop Assembly with Pre-Built Components"
             description={
-              <div className="flex flex-col gap-y-5">
+              <div className="space-y-4">
                 <p>
-                  ⚡ SYNC mode for real-time tasks: process your data with HTTP
-                  or gRPC APIs to get results immediately, suitable for tasks
-                  that have low-latency requirements.
-                </p>
-                <p>
-                  🕓 ASYNC mode for on-demand workload: set up your data
-                  pipeline to process data on demand or schedule, so it
-                  processes data only when the trigger criteria are met.
+                  We offer open-source, pre-built components for data
+                  extraction, AI transformation, third-party app integration,
+                  and flexible data manipulation. Assemble customized pipelines
+                  for your use case with a drag-and-drop interface.
                 </p>
               </div>
             }
-            learnMoreLink="/docs/latest/core/concepts/pipeline"
-            number={4}
-            cubes={[
-              {
-                id: "syncIcon",
-                icon: (
-                  <SyncIcon {...iconProps} color="fill-instillNeonBlue50" />
-                ),
-                color: "bg-instillNeonBlue05",
-              },
-              {
-                id: "syncArrowsIcon",
-                icon: (
-                  <SyncArrowsIcon {...iconProps} color="fill-instillGrey50" />
-                ),
-                color: "bg-instillGrey05",
-              },
-              {
-                id: "asyncArrowsIcon",
-                icon: (
-                  <AsyncArrowsIcon {...iconProps} color="fill-instillGrey50" />
-                ),
-                color: "bg-instillGrey05",
-              },
-              {
-                id: "asyncIcon",
-                icon: (
-                  <AsyncIcon {...iconProps} color="fill-instillWarmOrange50" />
-                ),
-                color: "bg-instillWarmOrange05",
-              },
-            ]}
+            learnMoreLink={null}
+            icon={<img src={"./images/drag-and-drop-component.svg"} />}
+            cubes={[]}
+            buttons={
+              <SolidButton
+                type="button"
+                color="primaryLight"
+                startIcon={
+                  <GitHubIcon
+                    width="w-[28px]"
+                    height="h-[28px]"
+                    color="fill-instillNeonBlue"
+                    position="my-auto"
+                  />
+                }
+                padding="px-5 py-2.5"
+                itemGapX="gap-x-5"
+                onClickHandler={() =>
+                  router.push("https://github.com/instill-ai/vdp", undefined, {
+                    scroll: false,
+                  })
+                }
+                hoveredShadow="hover:shadow-instill-solid-5"
+                position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+              >
+                <p className="text-lg font-normal">Star Instill VDP</p>
+              </SolidButton>
+            }
+          />
+          <HowItWorksRow
+            type="right"
+            title="Transform your apps with open-source or your own AI models"
+            description={
+              <div className="space-y-4">
+                <p>
+                  Import and deploy AI models with ease, dynamically generating
+                  inference API endpoints that seamlessly integrate into your
+                  pipelines. Customize LLMs, Diffusion and other models to match
+                  your data and use cases, ensuring exceptional results with
+                  precision.
+                </p>
+              </div>
+            }
+            learnMoreLink={null}
+            cubes={[]}
+            icon={<img src={"/images/models.svg"} alt="" sizes="" />}
+            buttons={
+              <div className="flex flex-col gap-x-2 xl:flex-row">
+                <SolidButton
+                  type="button"
+                  color="primaryLight"
+                  startIcon={
+                    <GitHubIcon
+                      width="w-[28px]"
+                      height="h-[28px]"
+                      color="fill-instillNeonBlue"
+                      position="my-auto"
+                    />
+                  }
+                  padding="px-5 py-2.5"
+                  itemGapX="gap-x-5"
+                  onClickHandler={() =>
+                    router.push(
+                      "https://github.com/instill-ai/model",
+                      undefined,
+                      { scroll: false }
+                    )
+                  }
+                  hoveredShadow="hover:shadow-instill-solid-5"
+                  position="mt-auto w-full justify-center xl:w-auto"
+                >
+                  <p className="text-lg font-normal">Star Instill VDP</p>
+                </SolidButton>
+                <SolidButton
+                  type="button"
+                  color="primaryLight"
+                  endIcon={
+                    <ArrowRightIcon
+                      width="w-[28px]"
+                      height="h-[28px]"
+                      color="fill-instillNeonBlue"
+                      position="my-auto"
+                    />
+                  }
+                  padding="px-5 py-2.5 !bg-white"
+                  itemGapX="gap-x-5"
+                  onClickHandler={() =>
+                    router.push("https://console.instill.tech/hub", undefined, {
+                      scroll: false,
+                    })
+                  }
+                  hoveredShadow="hover:shadow-instill-solid-5"
+                  position="xl:mt-auto xl:mr-auto mt-5 w-full justify-center xl:w-auto"
+                >
+                  <p className="text-lg font-normal">Access on Instill Cloud</p>
+                </SolidButton>
+              </div>
+            }
+          />
+
+          <HowItWorksRow
+            type="left"
+            title="Forget about Infrastructure"
+            description={
+              <div className="space-y-4">
+                <p>
+                  Pipelines and models are production-ready with Instill Cloud
+                  managing servers, dependencies, GPUs, and more.
+                </p>
+                <p>
+                  Our Instill SDKs offer seamless integration for enhanced
+                  performance in your systems.
+                </p>
+              </div>
+            }
+            learnMoreLink="/docs/v0.6.0-alpha/sdk/python"
+            cubes={[]}
+            icon={
+              <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">
+                <div className="flex flex-col items-end justify-start gap-2">
+                  <div className="flex flex-col items-center justify-start border border-b-0 border-neutral-400 bg-white ">
+                    <div className="flex flex-col items-start justify-start self-stretch">
+                      <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
+                        <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                          <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                            Python
+                          </div>
+                        </div>
+                      </div>
+                      <Separator className="mt-5" />
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
+                      <div className="flex flex-col items-start justify-start gap-5 self-stretch">
+                        <div className="font-sans text-xl font-medium text-black xl:text-4xl">
+                          pip install instill-sdk
+                        </div>
+                        <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                          <Link
+                            href={"https://github.com/instill-ai/python-sdk"}
+                          >
+                            <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                              Go to library
+                              <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                            </div>
+                          </Link>
+                          <div className="relative h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
+                  <div className="flex  flex-col items-start justify-start self-stretch">
+                    <div className="inline-flex  items-center justify-start gap-4 px-6 pt-6">
+                      <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                        <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                          Typescript
+                        </div>
+                      </div>
+                    </div>
+                    <Separator className="mt-5" />
+                  </div>
+                  <div className="flex flex-col items-start justify-start gap-5 px-6 py-5">
+                    <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
+                      <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-4xl">
+                        npm i @instill-ai/typescript-sdk
+                      </div>
+                      <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                        <Link
+                          href={"https://github.com/instill-ai/typescript-sdk"}
+                        >
+                          <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                            <p className="my-auto">Go to library</p>
+                            <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
           />
         </div>
       </div>

@@ -30,13 +30,13 @@ export const ExploreMoreScrollButton = ({
       onClick={scrollHandler}
       className="group mx-auto flex flex-col gap-y-5"
     >
-      <p className="mx-auto text-instillBlue50 group-hover:text-[#236698]">
+      <p className="mx-auto uppercase text-instillGrey70 group-hover:text-instillGrey80">
         Explore
       </p>
       <ArrowDownIcon
-        width="w-8"
-        height="h-8"
-        color="fill-instillBlue50 group-hover:fill-[#236698]"
+        width="w-15"
+        height="h-15"
+        color="fill-instillGrey70 group-hover:fill-instillGrey80"
         position="mx-auto"
       />
     </button>

@@ -28,7 +28,7 @@ Playground.args = {
   description:
     "By leveraging ready-to-use ETL data connectors, VDP is the single point of unstructured data integration, where you can sync unstructured data from anywhere into data warehouses or applications. Focus on gaining insights across all your data, instead of maintaining connectors.",
   learnMoreLink: "",
-  number: 1,
+  // number: 1,
   cubes: [
     {
       id: "httpIcon",

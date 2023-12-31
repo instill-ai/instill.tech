@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import * as React from "react";
 import cn from "clsx";
 import { LeftSidebar } from "./LeftSidebar";
 import { docsConfig } from "../../../content.config";
@@ -8,7 +8,7 @@ import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 
 export type DocsLayoutProps = {
-  children?: ReactNode;
+  children?: React.ReactNode;
   hasSidebar: boolean;
 };
 
@@ -16,7 +16,7 @@ export const DocsLayout = ({ children, hasSidebar }: DocsLayoutProps) => {
   const router = useRouter();
 
   const { isDark } = useInstillAICtx();
-  const [leftSidebarIsOpen, setLeftSidebarIsOpen] = useState(false);
+  const [leftSidebarIsOpen, setLeftSidebarIsOpen] = React.useState(false);
 
   const appType = getApplicationType(router.asPath);
 

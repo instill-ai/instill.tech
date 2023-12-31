@@ -1,16 +1,19 @@
 import cn from "clsx";
 import { ReactElement } from "react";
 
-import { CommonCtaButton, NumberCube } from "@/components/ui";
+import { CommonCtaButton, NumberCube, SectionLabel } from "@/components/ui";
 import { IconsCubeProps, IconsCube } from "../IconsCube";
+import { Nullable } from "vitest";
 
 export type HowItWorksRowProps = {
   title: string;
   description: ReactElement | string;
-  learnMoreLink: string;
+  buttons?: ReactElement | string;
+  learnMoreLink: Nullable<string>;
   cubes: IconsCubeProps["cubes"];
-  number: number;
   type: "right" | "left";
+  icon?: ReactElement;
+  sectionTitle?: string;
 };
 
 export const HowItWorksRow = ({
@@ -19,7 +22,9 @@ export const HowItWorksRow = ({
   description,
   learnMoreLink,
   cubes,
-  number,
+  icon,
+  sectionTitle,
+  buttons,
 }: HowItWorksRowProps) => {
   return (
     <div
@@ -30,38 +35,49 @@ export const HowItWorksRow = ({
     >
       <div
         className={cn(
-          "mt-10 flex flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
+          "mt-10 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >
-        <NumberCube
-          number={number}
-          color="bg-instillNeonBlue"
-          width="w-20"
-          height="h-20"
-        />
-        <div className="flex flex-col">
-          <h3 className="mb-7 text-2xl font-medium text-instillGrey90">
-            {title}
-          </h3>
+        <div className="flex flex-col text-left">
+          {sectionTitle ? (
+            <SectionLabel
+              text={sectionTitle}
+              position="mr-auto"
+              marginBottom="mb-2.5"
+            />
+          ) : (
+            <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
+              {title}
+            </h3>
+          )}
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
             {description}
           </div>
-          <CommonCtaButton
-            withArrow={true}
-            link={learnMoreLink}
-            position="mt-auto mr-auto"
-            text="Learn more"
-          />
+          {learnMoreLink ? (
+            <CommonCtaButton
+              withArrow={true}
+              link={learnMoreLink}
+              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+              text="Learn more"
+            />
+          ) : null}
+
+          {buttons ? buttons : null}
         </div>
       </div>
-      <div className="flex">
-        <IconsCube
-          cubes={cubes}
-          position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
-          width="xl:w-[360px]"
-          height="xl:h-[360px]"
-        />
+
+      <div className="flex justify-center">
+        {icon ? (
+          icon
+        ) : (
+          <IconsCube
+            cubes={cubes}
+            position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
+            width="xl:w-[360px]"
+            height="xl:h-[360px]"
+          />
+        )}
       </div>
     </div>
   );

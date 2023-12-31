@@ -583,7 +583,7 @@ export function getNavbar(
             appType: "core",
           },
           {
-            key: "docs-nav-dropdown-version-core-latest",
+            key: "docs-nav-dropdown-version-core-v0.5.0-alpha",
             to: `/docs/v0.5.0-alpha/welcome`,
             className: "",
             position: "right",
@@ -591,7 +591,7 @@ export function getNavbar(
             appType: "core",
           },
           {
-            key: "docs-nav-dropdown-version-core-latest",
+            key: "docs-nav-dropdown-version-core-v0.4.1-alpha",
             to: `/docs/v0.4.1-alpha/welcome`,
             className: "",
             position: "right",

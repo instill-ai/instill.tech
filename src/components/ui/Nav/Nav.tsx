@@ -3,15 +3,12 @@ import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
 import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
-
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
-import { CareerPageLink } from "./CareerPageLink";
-import { TutorialPageLink } from "./TutorialPageLink";
 import { BlogPageLink } from "./BlogPageLink";
-import { PricingPageLink } from "./PricingPageLink";
+import { AboutPageLink } from "./AboutPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -45,16 +42,14 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
-      <DocsPageLink />
+      <AboutPageLink />
       <BlogPageLink />
-      <TutorialPageLink />
-      <CareerPageLink hiring={true} />
+      <DocsPageLink />
       <GithubTextLink />
-      <PricingPageLink />
       <CommonCtaButton
         position="mr-auto"
         withArrow={false}
-        text="Try Instill Cloud Free"
+        text="Instill Hub"
         link="https://console.instill.tech"
       />
     </React.Fragment>
@@ -63,7 +58,7 @@ export const Nav = () => {
   const desktopView = (
     <React.Fragment>
       {enableAnnouncementBar && announcementBar}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-row px-[30px] py-5">
+      <div className="mx-auto flex w-full flex-row px-[30px] py-2.5">
         <Link href="/" className="my-auto mr-auto flex">
           <Logo variant="ColourLogomarkBlackType" width={158} />
         </Link>

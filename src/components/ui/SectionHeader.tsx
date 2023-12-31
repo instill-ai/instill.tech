@@ -33,7 +33,7 @@ export const SectionHeader = ({
       >
         {header}
       </h2>
-      <div className="flex flex-1">{subElement}</div>
+      <div className="flex flex-1 ">{subElement}</div>
     </div>
   );
 };

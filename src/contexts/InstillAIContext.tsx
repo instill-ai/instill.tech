@@ -16,7 +16,7 @@ type InstillAICtxValue = {
 };
 
 const defaultInstillAICtxValue: InstillAICtxValue = {
-  enableAnnouncementBar: true,
+  enableAnnouncementBar: false,
   setEnableAnnouncementBar: null,
   isDark: false,
   setIsDark: null,
@@ -33,7 +33,7 @@ type InstillAICtxProviderProps = {
 export const InstillAICtxProvider = ({
   children,
 }: InstillAICtxProviderProps) => {
-  const [enableAnnouncementBar, setEnableAnnouncementBar] = useState(true);
+  const [enableAnnouncementBar, setEnableAnnouncementBar] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   return (

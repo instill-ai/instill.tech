@@ -4,6 +4,7 @@ import {
   GitHubIcon,
   LinkedInIcon,
   Logo,
+  Logos,
   MediumIcon,
   TwitterIcon,
 } from "@instill-ai/design-system";
@@ -32,7 +33,7 @@ export const Footer = () => {
         href: process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/",
       },
       {
-        icon: <TwitterIcon {...socialIconStyle} />,
+        icon: <Logos.TwitterLight className="h-5 w-5" />,
         href: "https://twitter.com/instill_tech",
       },
       {
@@ -93,10 +94,14 @@ export const Footer = () => {
         text: "Contact",
         href: "mailto:hello@instill.tech",
       },
+      {
+        text: "Pricing",
+        href: "/pricing",
+      },
     ],
     company: [
       {
-        text: "About Us",
+        text: "About",
         href: "/about",
       },
       {

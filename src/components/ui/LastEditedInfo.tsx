@@ -1,6 +1,6 @@
 import cn from "clsx";
 import { CommitMeta } from "@/lib/github/type";
-import React from "react";
+import * as React from "react";
 
 export type LastEditedInfoProps = {
   meta: CommitMeta;

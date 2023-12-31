@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getMarkdownVideoMeta } from "get-markdown-video-meta";
 import Head from "next/head";
-import React from "react";
+import * as React from "react";
 
 export type VideoPageProps = {
   title: string;
