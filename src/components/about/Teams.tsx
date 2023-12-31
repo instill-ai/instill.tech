@@ -88,7 +88,7 @@ const teams: Team[] = [
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/chun-hao-wang-tony/",
     github: "https://github.com/tonywang10101",
-    bio: "",
+    bio: "Tony is an experienced Applied Data Scientist and MLOps specialist, passionate about crafting data-driven solutions. He brings years of expertise to the table, along with a natural inclination for continuous learning and initiative. Tony excels in teamwork, seamlessly collaborating with developers, researchers, and business leaders. At Insill AI, his goal is to seamlessly integrate AI into our daily lives, fostering innovation and practical advancements.",
   },
   {
     id: 10,
