@@ -123,26 +123,35 @@ export const YOLOv7 = () => {
 
   async function getBase64ImageFromUrl(imageUrl: string): Promise<string> {
     // try { // no-useless-catch
-    const res = await fetch(imageUrl);
-    const blob = await res.blob();
+    try {
+      const res = await fetch(imageUrl);
+      const blob = await res.blob();
 
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
 
-      reader.addEventListener(
-        "load",
-        function () {
-          resolve(reader.result as string);
-        },
-        false
-      );
+        reader.addEventListener(
+          "load",
+          function () {
+            resolve(reader.result as string);
+          },
+          false
+        );
 
-      reader.onerror = () => {
-        reject(reader.error);
-      };
+        reader.onerror = () => {
+          reject(reader.error);
+        };
 
-      reader.readAsDataURL(blob);
-    });
+        reader.readAsDataURL(blob);
+      });
+    } catch (error) {
+      toast({
+        title: "Error!",
+        description: "Not able to parse image",
+        size: "large",
+        variant: "alert-error",
+      });
+    }
     // } catch (error: any) {
     // Handle fetch or other errors here
     // throw error;
