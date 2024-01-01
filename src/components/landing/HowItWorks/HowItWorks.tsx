@@ -170,7 +170,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     <div className="flex flex-col items-start justify-start self-stretch">
                       <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
                         <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
-                          <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                          <div className="self-stretch font-sans text-[16px] font-bold leading-normal text-gray-800">
                             Python
                           </div>
                         </div>
@@ -179,14 +179,14 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     </div>
                     <div className="flex flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
                       <div className="flex flex-col items-start justify-start gap-5 self-stretch">
-                        <div className="font-sans text-xl font-medium text-black xl:text-4xl">
+                        <div className="font-sans text-xl font-medium text-black xl:text-[30px]">
                           pip install instill-sdk
                         </div>
                         <div className="inline-flex items-center justify-center gap-2 rounded py-3">
                           <Link
                             href={"https://github.com/instill-ai/python-sdk"}
                           >
-                            <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                            <div className="flex gap-x-2 text-center font-sans text-[13px] font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
                               Go to library
                               <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
                             </div>
@@ -201,7 +201,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   <div className="flex  flex-col items-start justify-start self-stretch">
                     <div className="inline-flex  items-center justify-start gap-4 px-6 pt-6">
                       <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
-                        <div className="self-stretch font-sans text-xl font-bold leading-normal text-gray-800">
+                        <div className="self-stretch font-sans text-[16px] font-bold leading-normal text-gray-800">
                           Typescript
                         </div>
                       </div>
@@ -210,14 +210,14 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   </div>
                   <div className="flex flex-col items-start justify-start gap-5 px-6 py-5">
                     <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
-                      <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-4xl">
+                      <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-[30px]">
                         npm i @instill-ai/typescript-sdk
                       </div>
                       <div className="inline-flex items-center justify-center gap-2 rounded py-3">
                         <Link
                           href={"https://github.com/instill-ai/typescript-sdk"}
                         >
-                          <div className="flex gap-x-2 text-center font-sans text-base font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                          <div className="flex gap-x-2 text-center font-sans text-[13px] font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
                             <p className="my-auto">Go to library</p>
                             <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
                           </div>
