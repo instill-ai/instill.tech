@@ -1,10 +1,13 @@
 import cn from "clsx";
 import {
   ArrowRightIcon,
+  BigQueryIcon,
   GitHubIcon,
   Icons,
+  Logos,
   Separator,
   SolidButton,
+  VdpLogo,
 } from "@instill-ai/design-system";
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { HowItWorksRow } from "./HowItWorksRow";
@@ -45,7 +48,44 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
               </div>
             }
             learnMoreLink={null}
-            icon={<img src={"./images/drag-and-drop-component.svg"} />}
+            // icon={<img src={"./images/drag-and-drop-component.svg"} />}
+            icon={
+              <div className="relative h-[345.38px] w-[345.38px]">
+                <div className="absolute left-0 top-[0.22px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#FFF3E4]">
+                  <Logos.Pinecode className="h-[100px] w-[100px]" />
+                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    Pinecone
+                  </div>
+                </div>
+                <div className="absolute left-[230.06px] top-[230.11px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#ECEBFF] py-2.5">
+                  <Logos.Cohere className="h-[70px] w-[70px]" />
+                  <div className="pt-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    cohere
+                  </div>
+                </div>
+                <div className="absolute left-[-0px] top-[230.11px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#F6F6F6]">
+                  <Logos.OpenAI className="h-[75px] w-[75px]" />
+                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    OpenAI
+                  </div>
+                </div>
+                <div className="absolute left-[230.06px] top-0 inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#F4FBFF]">
+                  <BigQueryIcon
+                    height="h-[80px]"
+                    position="my-auto"
+                    width="w-[80px]"
+                  />
+                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    BigQuery
+                  </div>
+                </div>
+                <div className="absolute left-[105px] top-[100px] inline-flex  items-center justify-center pb-[13.27px] pl-[13px] pr-[13.31px] pt-3.5">
+                  <div className="relative flex flex-col items-start justify-start">
+                    <VdpLogo variant="square" width={120} />
+                  </div>
+                </div>
+              </div>
+            }
             cubes={[]}
             buttons={
               <SolidButton
