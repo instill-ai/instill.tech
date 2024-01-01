@@ -30,7 +30,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             headerTextColor="text-[#2B2B2B]"
           />
         </div>
-        <div className="flex flex-col gap-y-20">
+        <div className="flex flex-col xl:gap-y-20">
           <HowItWorksRow
             type="left"
             title="Drag-and-Drop Assembly with Pre-Built Components"

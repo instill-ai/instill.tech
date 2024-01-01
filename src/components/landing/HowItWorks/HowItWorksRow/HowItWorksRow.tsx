@@ -54,11 +54,25 @@ export const HowItWorksRow = ({
           <div className="mb-[30px] text-lg font-normal text-instillGrey95 xl:mb-auto">
             {description}
           </div>
+          <div className="mb-5 block xl:hidden">
+            <div className="flex justify-center">
+              {icon ? (
+                icon
+              ) : (
+                <IconsCube
+                  cubes={cubes}
+                  position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
+                  width="xl:w-[360px]"
+                  height="xl:h-[360px]"
+                />
+              )}
+            </div>
+          </div>
           {learnMoreLink ? (
             <CommonCtaButton
               withArrow={true}
               link={learnMoreLink}
-              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto !mt-5 xl:!mt-0"
               text="Learn more"
             />
           ) : null}
@@ -67,17 +81,19 @@ export const HowItWorksRow = ({
         </div>
       </div>
 
-      <div className="flex justify-center">
-        {icon ? (
-          icon
-        ) : (
-          <IconsCube
-            cubes={cubes}
-            position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
-            width="xl:w-[360px]"
-            height="xl:h-[360px]"
-          />
-        )}
+      <div className="hidden xl:block">
+        <div className="flex justify-center">
+          {icon ? (
+            icon
+          ) : (
+            <IconsCube
+              cubes={cubes}
+              position={type === "left" ? "xl:ml-auto" : "xl:mr-auto"}
+              width="xl:w-[360px]"
+              height="xl:h-[360px]"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
