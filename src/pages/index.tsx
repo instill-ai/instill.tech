@@ -146,7 +146,7 @@ const HomePage: FC & {
           <HowItWorks />
         </div>
         <div className="bg-instillGrey90">
-          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}>
+          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0")}>
             <Community />
           </div>
         </div>
