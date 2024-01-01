@@ -147,7 +147,7 @@ export const CommunityBlock = ({
       )}
       onClick={() => router.push(link)}
     >
-      <div className="z-10 mb-auto flex w-1/2 flex-col gap-y-2.5">
+      <div className="z-10 mb-auto flex w-3/5 flex-col gap-y-2.5">
         <div className="flex flex-col gap-x-2">
           {icon}
           {/* <div className="my-auto text-base font-normal uppercase text-white">
