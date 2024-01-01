@@ -5,6 +5,8 @@ import {
   GitHubIcon,
   Icons,
   Logos,
+  ModelIcon,
+  ModelLogo,
   Separator,
   SolidButton,
   VdpLogo,
@@ -50,7 +52,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             learnMoreLink={null}
             // icon={<img src={"./images/drag-and-drop-component.svg"} />}
             icon={
-              <div className="relative h-[345.38px] w-[345.38px]">
+              <div className="relative h-[350px] w-[350px]">
                 <div className="absolute left-0 top-[0.22px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#FFF3E4]">
                   <Logos.Pinecode className="h-[100px] w-[100px]" />
                   <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
@@ -70,12 +72,12 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   </div>
                 </div>
                 <div className="absolute left-[230.06px] top-0 inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#F4FBFF]">
-                  <BigQueryIcon
-                    height="h-[80px]"
-                    position="my-auto"
-                    width="w-[80px]"
+                  <img
+                    src={"/icons/airbyte/bigquery.svg"}
+                    alt=""
+                    className="h-[75px] w-[75px]"
                   />
-                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                  <div className="px-2.5 font-sans text-xl font-normal leading-tight text-[#1D2433]">
                     BigQuery
                   </div>
                 </div>
@@ -129,7 +131,40 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             }
             learnMoreLink={null}
             cubes={[]}
-            icon={<img src={"/images/models.svg"} alt="" sizes="" />}
+            // icon={<img src={"/images/models.svg"} alt="" sizes="" />}
+            icon={
+              <div className="relative h-[350px] w-[350px]">
+                <div className="absolute left-0 top-[0.22px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#FFF1F1]">
+                  <img src={"/icons/airbyte/llava.svg"} alt="" />
+                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    LLaVA-7b
+                  </div>
+                </div>
+                <div className="absolute left-[230.06px] top-[230.11px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#FFF1F1] py-2.5">
+                  <img src={"/icons/airbyte/mistral-7b.svg"} alt="" />
+                  <div className="pt-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    Mistral-7b
+                  </div>
+                </div>
+                <div className="absolute left-[-0px] top-[230.11px] inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#F6F6F6]">
+                  <img src={"/icons/airbyte/mosaicML.svg"} alt="" />
+                  <div className="px-2.5 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    MPT-7b
+                  </div>
+                </div>
+                <div className="absolute left-[230.06px] top-0 inline-flex h-[120px] w-[120px] flex-col items-center justify-center bg-[#F4FBFF]">
+                  <img src={"/icons/airbyte/meta.svg"} alt="" />
+                  <div className="px-1 pb-2 font-sans text-xl font-normal leading-tight text-[#1D2433]">
+                    LLaMA2-7b
+                  </div>
+                </div>
+                <div className="absolute left-[105px] top-[100px] inline-flex  items-center justify-center pb-[13.27px] pl-[13px] pr-[13.31px] pt-3.5">
+                  <div className="relative flex flex-col items-start justify-start">
+                    <ModelLogo variant="square" width={120} />
+                  </div>
+                </div>
+              </div>
+            }
             buttons={
               <div className="flex flex-col gap-x-2 xl:flex-row">
                 <SolidButton
