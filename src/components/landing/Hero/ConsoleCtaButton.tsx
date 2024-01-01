@@ -19,7 +19,7 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
     >
       <div className="flex flex-col space-y-4">
         <div className="flex flex-row gap-x-3 text-left">
-          <p className="my-auto font-sans text-[18px] font-normal leading-7">
+          <p className="my-auto font-sans text-[20px] font-normal leading-7">
             Start Building
           </p>
           <div className="ml-auto">

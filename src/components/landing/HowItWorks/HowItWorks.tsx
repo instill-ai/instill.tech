@@ -69,7 +69,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 hoveredShadow="hover:shadow-instill-solid-5"
                 position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
               >
-                <p className="text-lg font-normal">Star Instill VDP</p>
+                <p className="text-[20px] font-normal">Star Instill VDP</p>
               </SolidButton>
             }
           />
@@ -115,7 +115,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   hoveredShadow="hover:shadow-instill-solid-5"
                   position="mt-auto w-full justify-center xl:w-auto"
                 >
-                  <p className="text-lg font-normal">Star Instill VDP</p>
+                  <p className="text-[20px] font-normal">Star Instill VDP</p>
                 </SolidButton>
                 <SolidButton
                   type="button"
@@ -138,7 +138,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   hoveredShadow="hover:shadow-instill-solid-5"
                   position="xl:mt-auto xl:mr-auto mt-5 w-full justify-center xl:w-auto"
                 >
-                  <p className="text-lg font-normal">Access on Instill Cloud</p>
+                  <p className="text-[20px] font-normal">
+                    Access on Instill Cloud
+                  </p>
                 </SolidButton>
               </div>
             }
