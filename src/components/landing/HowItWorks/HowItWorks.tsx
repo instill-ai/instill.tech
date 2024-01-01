@@ -25,7 +25,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         <div className="mb-20 flex flex-col gap-y-2.5">
           <SectionLabel text="What makes us different" position="mr-auto" />
           <SectionHeader
-            header="Designed for Flexibility and Scale."
+            header="Designed for Flexibility and Scale"
             headerWidth="w-full xl:text-left text-center hidden xl:block"
             headerTextColor="text-[#2B2B2B]"
           />
