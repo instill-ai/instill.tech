@@ -36,7 +36,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             title="Drag-and-Drop Assembly with Pre-Built Components"
             description={
               <div className="space-y-4">
-                <p>
+                <p className="font-sans text-[20px] font-normal">
                   We offer open-source, pre-built components for data
                   extraction, AI transformation, third-party app integration,
                   and flexible data manipulation. Assemble customized pipelines
@@ -78,7 +78,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             title="Transform your apps with open-source or your own AI models"
             description={
               <div className="space-y-4">
-                <p>
+                <p className="font-sans text-[20px] font-normal">
                   Import and deploy AI models with ease, dynamically generating
                   inference API endpoints that seamlessly integrate into your
                   pipelines. Customize LLMs, Diffusion and other models to match
@@ -149,11 +149,11 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             title="Forget about Infrastructure"
             description={
               <div className="space-y-4">
-                <p>
+                <p className="font-sans text-[20px] font-normal">
                   Pipelines and models are production-ready with Instill Cloud
                   managing servers, dependencies, GPUs, and more.
                 </p>
-                <p>
+                <p className="font-sans text-[20px] font-normal">
                   Our Instill SDKs offer seamless integration for enhanced
                   performance in your systems.
                 </p>

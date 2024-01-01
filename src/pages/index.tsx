@@ -165,18 +165,17 @@ const HomePage: FC & {
               <img src={"/images/self-host-cube.svg"} alt="" />
             </div>
 
-            <div className="w-full space-y-10 xl:w-[55%]">
+            <div className="my-auto w-full space-y-10 xl:w-[55%]">
               <div className="mx-auto">
-                <p className="font-mono text-[36px] font-semibold">
+                <p className="font-sans text-[36px] font-semibold">
                   Want to self-host?
                 </p>
               </div>
               <div className="mx-auto">
-                <p>
-                  You can self-host Instill VDP and Instill model via Instill
+                <p className="font-sans text-[20px] font-normal">
+                  You can self-host Instill VDP and Instill Model via Instill
                   Core. It provides an open-source AI infrastructure tailored
-                  for unstructured data, enabling versatile AI application
-                  development.
+                  for unstructured data.
                 </p>
               </div>
 
