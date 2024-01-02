@@ -35,7 +35,7 @@ export const HowItWorksRow = ({
     >
       <div
         className={cn(
-          "mt-10 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mt-0 xl:w-7/12 xs:gap-x-10",
+          "mb-20 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mb-0 xl:mt-0 xl:mt-10 xl:w-7/12 xs:gap-x-10",
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >

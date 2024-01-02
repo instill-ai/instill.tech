@@ -27,7 +27,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
     const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
-        <div className="mb-20 flex flex-col gap-y-2.5">
+        <div className="flex flex-col gap-y-2.5 xl:mb-20">
           <SectionLabel text="What makes us different" position="mr-auto" />
           <SectionHeader
             header="Designed for Flexibility and Scale"
