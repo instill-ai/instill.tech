@@ -152,7 +152,7 @@ const HomePage: FC & {
         </div>
 
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          <div className="my-10 flex flex-col-reverse xl:flex-row">
+          <div className="my-20 flex flex-col-reverse xl:my-10 xl:flex-row">
             <div>
               <CommonCtaButton
                 withArrow={true}
