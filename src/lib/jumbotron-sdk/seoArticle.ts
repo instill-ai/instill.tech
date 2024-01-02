@@ -14,7 +14,7 @@ export async function seoArticle(
   requestData: SEOArticleRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-seo-article-writer/trigger",
+    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-seo-article-writer/releases/v1.0.0/trigger",
     data: requestData,
   };
 
