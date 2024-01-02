@@ -145,7 +145,7 @@ export const Teams = () => {
 
   return (
     <React.Fragment>
-      <div className="my-10 xl:text-left">
+      <div className="my-10 px-2 xl:text-left">
         <div className="text-left">
           <p className="mb-5 font-mono text-[24px]  font-medium text-black xl:text-[48px]">
             Who we are
