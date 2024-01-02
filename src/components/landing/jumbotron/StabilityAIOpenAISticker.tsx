@@ -113,7 +113,7 @@ export const StabilityAIOpenAISticker = () => {
         </div>
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/admin/pipelines/jumbotron-sticker-maker"
+            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-sticker-maker"
             target="_blank"
             className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
           >

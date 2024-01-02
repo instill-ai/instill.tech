@@ -43,7 +43,7 @@ const PricingPage: FC & {
         </div>
 
         <div className="mx-auto flex flex-col">
-          <div className="mx-auto mb-8 flex flex-row gap-x-8">
+          <div className="mx-auto mb-8 flex flex-col space-y-4 xl:flex-row xl:gap-x-8">
             <PricingInfoCard
               price="$0"
               tier="free"
@@ -133,11 +133,11 @@ const PricingPage: FC & {
               }}
             />
           </div>
-          <p className="mx-auto flex w-[1148px] text-semantic-fg-disabled product-body-text-3-regular">
+          <p className="mx-auto flex w-auto text-semantic-fg-disabled product-body-text-3-regular xl:w-[1148px]">
             * When a pipeline is made public, it becomes visible on Instill Hub
             and can be run by any user with an Instill Cloud account.
           </p>
-          <p className="mx-auto flex w-[1148px] text-semantic-fg-disabled product-body-text-3-regular">
+          <p className="mx-auto flex w-auto text-semantic-fg-disabled product-body-text-3-regular xl:w-[1148px]">
             ** A run refers to the execution of a pipeline. To ensure fair
             usage, there is a rate limit of 10 runs per minute on the Free plan,
             also applicable to the owner of the pipeline.

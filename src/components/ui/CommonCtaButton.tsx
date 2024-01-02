@@ -35,7 +35,7 @@ export const CommonCtaButton = ({
       onClickHandler={() => router.push(link, undefined, { scroll: false })}
       hoveredShadow="hover:shadow-instill-solid-5"
     >
-      <p className="text-lg font-normal">{text}</p>
+      <p className="text-[20px] font-normal">{text}</p>
     </SolidButton>
   );
 };

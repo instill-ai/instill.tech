@@ -17,7 +17,7 @@ export const BuildAppsInAction = () => {
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
-        <p className="text-[16px] font-normal  text-white xl:w-7/12">
+        <p className="text-[18px] font-normal  text-white xl:w-7/12">
           Empower your applications with AI pipelines that seamlessly connect to
           a variety of unstructured data types. Effortlessly Transform your data
           using ready-to-use AI models, and ensure the reliability of your
@@ -47,15 +47,15 @@ export const BuildAppsInAction = () => {
       </div>
       <div className="mt-20 flex flex-col-reverse gap-x-10 xl:flex-row">
         <div className="w-full xl:w-1/2">
-          <img
+          {/* <img
             src={"/images/vdp-in-action-2.svg"}
             alt=""
             className="my-10 hidden xl:my-0 xl:block"
-          />
+          /> */}
           <img
             src={"/images/vdp-in-action-2-mobile.svg"}
             alt=""
-            className="my-10 block xl:my-0 xl:hidden"
+            className="my-10 xl:my-0"
           />
           <CommonCtaButton
             withArrow={true}
@@ -70,7 +70,7 @@ export const BuildAppsInAction = () => {
             The home for AI builders
           </p>
 
-          <p className="font-sans  text-[16px] font-normal text-white">
+          <p className="font-sans text-[20px] font-normal text-white">
             Welcome to Instill Hub, your destination for creating, sharing, and
             exploring a wide range of versatile AI pipelines. Share crafted
             pipelines with the community, providing a platform to showcase your

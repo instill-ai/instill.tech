@@ -18,7 +18,7 @@ export function getApplicationType(
 }
 
 export function isRouterActive(currentPath: string, routerPath: string) {
-  if (currentPath === routerPath) {
+  if (currentPath.includes(routerPath.replace("/welcome", ""))) {
     return true;
   }
   return false;

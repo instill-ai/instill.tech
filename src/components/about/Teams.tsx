@@ -145,7 +145,7 @@ export const Teams = () => {
 
   return (
     <React.Fragment>
-      <div className="my-10 xl:text-left">
+      <div className="my-10 px-2 xl:text-left">
         <div className="text-left">
           <p className="mb-5 font-mono text-[24px]  font-medium text-black xl:text-[48px]">
             Who we are
@@ -976,7 +976,7 @@ export const Teams = () => {
         }}
       >
         <Dialog.Content className="!gap-1 overflow-y-auto rounded-none bg-[#F6F6F6] !p-10">
-          <ScrollArea.Root className="h-[500px] p-6">
+          <div className="h-[500px] overflow-auto p-6">
             <p className="!mb-0 !pb-0 font-sans text-[24px] font-medium text-[#1A1A1A]">
               {currentTeamMember?.name}
             </p>
@@ -1017,7 +1017,7 @@ export const Teams = () => {
             <p className="mt-5 font-sans text-[16px] font-normal leading-7 text-zinc-900">
               {currentTeamMember?.bio}
             </p>
-          </ScrollArea.Root>
+          </div>
           <Dialog.Close onClick={() => setOpen(false)} />
         </Dialog.Content>
       </Dialog.Root>

@@ -137,7 +137,7 @@ const HomePage: FC & {
         </div>
 
         <div className="bg-instillGrey90">
-          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}>
+          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0")}>
             <BuildAppsInAction />
           </div>
         </div>
@@ -146,13 +146,13 @@ const HomePage: FC & {
           <HowItWorks />
         </div>
         <div className="bg-instillGrey90">
-          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0", "mb-20")}>
+          <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0")}>
             <Community />
           </div>
         </div>
 
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          <div className="my-10 flex flex-col-reverse xl:flex-row">
+          <div className="my-20 flex flex-col-reverse xl:my-10 xl:flex-row">
             <div>
               <CommonCtaButton
                 withArrow={true}
@@ -165,18 +165,17 @@ const HomePage: FC & {
               <img src={"/images/self-host-cube.svg"} alt="" />
             </div>
 
-            <div className="w-full space-y-10 xl:w-[55%]">
+            <div className="my-auto w-full space-y-10 xl:w-[55%]">
               <div className="mx-auto">
-                <p className="font-mono text-[36px] font-semibold">
+                <p className="font-sans text-[36px] font-semibold">
                   Want to self-host?
                 </p>
               </div>
               <div className="mx-auto">
-                <p>
-                  You can self-host Instill VDP and Instill model via Instill
+                <p className="font-sans text-[20px] font-normal">
+                  You can self-host Instill VDP and Instill Model via Instill
                   Core. It provides an open-source AI infrastructure tailored
-                  for unstructured data, enabling versatile AI application
-                  development.
+                  for unstructured data.
                 </p>
               </div>
 
