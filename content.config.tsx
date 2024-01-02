@@ -575,7 +575,7 @@ export function getNavbar(
             appType: "core",
           },
           {
-            key: "docs-nav-dropdown-version-core-latest",
+            key: "docs-nav-dropdown-version-core-v0.6.0-alpha",
             to: `/docs/v0.6.0-alpha/welcome`,
             className: "",
             position: "right",
