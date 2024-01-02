@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.11](https://github.com/instill-ai/instill.tech/compare/v1.41.10...v1.41.11) (2024-01-02)
+
+
+### Bug Fixes
+
+* bug fixes ([#675](https://github.com/instill-ai/instill.tech/issues/675)) ([ead1a3a](https://github.com/instill-ai/instill.tech/commit/ead1a3a78de6e38c59eefefd94b9054e2489550e))
+
 ## [1.41.10](https://github.com/instill-ai/instill.tech/compare/v1.41.9...v1.41.10) (2023-12-31)
 
 
