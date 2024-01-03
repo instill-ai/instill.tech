@@ -43,7 +43,7 @@ const PricingPage: FC & {
         </div>
 
         <div className="mx-auto flex flex-col">
-          <div className="mx-auto mb-8 flex flex-col space-y-4 xl:flex-row xl:gap-x-8">
+          <div className="mx-auto mb-8 flex flex-col space-y-4 xl:flex-row xl:gap-x-8 xl:space-y-0">
             <PricingInfoCard
               price="$0"
               tier="free"

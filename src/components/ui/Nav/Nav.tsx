@@ -42,6 +42,12 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
+      <Link
+        href="/changelog"
+        className="instill-text-body flex text-instillGrey80 hover:text-instillBlue50"
+      >
+        <p className="my-auto">Changelog</p>
+      </Link>
       <AboutPageLink />
       <BlogPageLink />
       <DocsPageLink />

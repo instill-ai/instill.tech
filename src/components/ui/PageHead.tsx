@@ -12,7 +12,7 @@ import { CommitMeta } from "@/lib/github/type";
 export type PageHeadProps = {
   pageTitle: string;
   pageDescription: Nullable<string>;
-  pageType: "main" | "docs" | "tutorial" | "blog";
+  pageType: "main" | "docs" | "tutorial" | "blog" | "changelog";
   additionMeta: Nullable<ReactElement>;
   currentArticleMeta: Nullable<TutorialMeta | BlogArticleMeta>;
   commitMeta: Nullable<CommitMeta>;
@@ -69,7 +69,8 @@ export const PageHead = ({
   let openGraph: Nullable<ReactElement> = null;
 
   switch (pageType) {
-    case "main": {
+    case "main":
+    case "changelog": {
       openGraph = (
         <React.Fragment>
           <meta property="og:type" content="website" />
