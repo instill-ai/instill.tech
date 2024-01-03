@@ -14,11 +14,15 @@ const useDarkTheme = () => {
   }, [setIsDark]);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     const html = document.querySelector("html");
     if (!html) return;
     if (setIsDark) {
       //  Add or Remove "dark" classname
       setIsDark((prevIsDark) => {
+        // Add dark mode transition
+        html.classList.add("dark-transition");
+
         if (prevIsDark) {
           html.classList.add("dark");
           //  Set value on localstorage true
@@ -28,9 +32,19 @@ const useDarkTheme = () => {
           //  Set value on localstorage false
           localStorage.setItem("dark", "false");
         }
+        timeout = setTimeout(() => {
+          // Remove dark mode transition
+          html.classList.remove("dark-transition");
+          clearTimeout(timeout);
+        }, 500);
         return prevIsDark;
       });
     }
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
   }, [isDark, setIsDark]);
 
   return [isDark, setIsDark] as const;
