@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.41.12](https://github.com/instill-ai/instill.tech/compare/v1.41.11...v1.41.12) (2024-01-04)
+
+
+### Bug Fixes
+
+* remove button inside button ([#678](https://github.com/instill-ai/instill.tech/issues/678)) ([db9bc09](https://github.com/instill-ai/instill.tech/commit/db9bc09f0502cff23e1769f0c530b9a771f23eb2))
+
+
+### Miscellaneous
+
+* add changelog link ([#680](https://github.com/instill-ai/instill.tech/issues/680)) ([d57b14d](https://github.com/instill-ai/instill.tech/commit/d57b14d091af14ba12bd9add10407719bf30b4da))
+
 ## [1.41.11](https://github.com/instill-ai/instill.tech/compare/v1.41.10...v1.41.11) (2024-01-02)
 
 
