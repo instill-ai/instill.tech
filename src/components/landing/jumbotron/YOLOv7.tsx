@@ -261,7 +261,7 @@ export const YOLOv7 = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+        <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
           Share an image URL for object detection.
         </p>
 

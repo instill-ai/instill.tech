@@ -92,7 +92,7 @@ export const SEOArticleWriter = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+        <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
           Generate an article and cover image by providing SEO keywords.
         </p>
 

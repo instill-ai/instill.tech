@@ -3,18 +3,17 @@ import dynamic from "next/dynamic";
 import cn from "clsx";
 import {
   BuildAppsInAction,
-  FaqHeaderProps,
-  FaqProps,
   Hero,
   HowItWorksProps,
+  SelfHost,
+  Social,
 } from "@/components/landing";
-import { CommonCtaButton, PageBase, PageHead } from "@/components/ui";
+import { PageBase, PageHead } from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import { useInView } from "react-intersection-observer";
-import Social from "@/components/landing/Social";
 
 const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
@@ -152,42 +151,7 @@ const HomePage: FC & {
         </div>
 
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
-          <div className="my-20 flex flex-col-reverse xl:my-10 xl:flex-row">
-            <div>
-              <CommonCtaButton
-                withArrow={true}
-                link={"/"}
-                text="Self-host Instill Core"
-                position="xl:hidden block w-full justify-center"
-              />
-            </div>
-            <div className="w-full xl:w-[45%]">
-              <img src={"/images/self-host-cube.svg"} alt="" />
-            </div>
-
-            <div className="my-auto w-full space-y-10 xl:w-[55%]">
-              <div className="mx-auto">
-                <p className="font-sans text-[36px] font-semibold">
-                  Want to self-host?
-                </p>
-              </div>
-              <div className="mx-auto">
-                <p className="font-sans text-[20px] font-normal">
-                  You can self-host Instill VDP and Instill Model via Instill
-                  Core. It provides an open-source AI infrastructure tailored
-                  for unstructured data.
-                </p>
-              </div>
-
-              <div className="mx-auto hidden xl:block">
-                <CommonCtaButton
-                  withArrow={true}
-                  link={"/docs/v0.6.0-alpha/core/deployment"}
-                  text="Self-host Instill Core"
-                />
-              </div>
-            </div>
-          </div>
+          <SelfHost />
         </div>
       </div>
     </>

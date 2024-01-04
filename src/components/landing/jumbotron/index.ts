@@ -7,3 +7,4 @@ export { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 export { YOLOv7 } from "./YOLOv7";
 export { SEOArticleWriter } from "./SEOArticleWriter";
 export { Llava13B } from "./Llava13B";
+export { WebpageSummarization } from "./WebpageSummarization";

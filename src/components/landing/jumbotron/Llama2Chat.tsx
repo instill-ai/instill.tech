@@ -240,7 +240,7 @@ export const Llama2Chat = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
+        <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
           Upload an image, ask a question, and watch it provide magical answers.
         </p>
 
@@ -377,7 +377,7 @@ export const Llama2Chat = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-visual-understanding"
             target="_blank"
-            className="absolute bottom-4 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
+            className="absolute bottom-4 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
           >
             <svg
               focusable="false"

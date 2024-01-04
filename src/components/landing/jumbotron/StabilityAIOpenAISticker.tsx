@@ -50,7 +50,7 @@ export const StabilityAIOpenAISticker = () => {
         {/* <ToastWithHook variant="alert-error" /> */}
       </div>
       <div className="px-6">
-        <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-600">
+        <p className="mt-4 text-sm font-medium text-black dark:text-zinc-600">
           Create a sticker by entering keywords that describe it.
         </p>
 
