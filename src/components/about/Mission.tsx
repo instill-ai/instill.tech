@@ -4,7 +4,7 @@ export const Mission = () => {
   return (
     <div className="my-10 flex w-full flex-col-reverse space-y-10 px-2 xl:flex-row">
       <div className="mt-10 w-full text-left xl:w-3/5">
-        <p className="mb-5 font-mono text-[48px] font-medium text-black">
+        <p className="mb-5 font-mono text-[24px] font-medium text-black xl:text-[48px]">
           Mission
         </p>
         <p className="font-sans text-base font-normal leading-7 text-zinc-900">

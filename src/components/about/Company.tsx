@@ -3,7 +3,7 @@ import * as React from "react";
 export const Company = () => {
   return (
     <div className="my-10 w-full px-2 text-left">
-      <p className="mb-5 font-mono text-[48px] font-medium text-black">
+      <p className="mb-5 font-mono text-[24px] font-medium text-black xl:text-[48px]">
         Company
       </p>
       <p className="font-sans text-base font-normal leading-7 text-zinc-900">
