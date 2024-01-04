@@ -44,6 +44,12 @@ export const Nav = () => {
     <React.Fragment>
       <AboutPageLink />
       <BlogPageLink />
+      <Link
+        href="/changelog"
+        className="instill-text-body flex text-instillGrey80 hover:text-instillBlue50"
+      >
+        <p className="my-auto">Changelog</p>
+      </Link>
       <DocsPageLink />
       <GithubTextLink />
       <CommonCtaButton

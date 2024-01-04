@@ -13,8 +13,14 @@ export function middleware(request: NextRequest) {
     const redirectUrl = request.url.replace("latest", LATEST_VERSIONS["core"]);
     return NextResponse.redirect(new URL(redirectUrl, request.url));
   }
+  // Additional redirect for "/changelog"
+  if (request.nextUrl.pathname === "/changelog") {
+    return NextResponse.redirect(
+      "https://instill-ai.productlane.com/changelog"
+    );
+  }
 }
 
 export const config = {
-  matcher: "/docs/:path*",
+  matcher: ["/docs/:path*", "/changelog"],
 };
