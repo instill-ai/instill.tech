@@ -9,6 +9,7 @@ import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { BlogPageLink } from "./BlogPageLink";
 import { AboutPageLink } from "./AboutPageLink";
+import { ChangelogLink } from "./ChangelogLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -44,6 +45,7 @@ export const Nav = () => {
     <React.Fragment>
       <AboutPageLink />
       <BlogPageLink />
+      <ChangelogLink />
       <DocsPageLink />
       <GithubTextLink />
       <CommonCtaButton
