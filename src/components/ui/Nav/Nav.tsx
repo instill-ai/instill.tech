@@ -9,6 +9,7 @@ import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";
 import { BlogPageLink } from "./BlogPageLink";
 import { AboutPageLink } from "./AboutPageLink";
+import { ChangelogLink } from "./ChangelogLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -44,12 +45,7 @@ export const Nav = () => {
     <React.Fragment>
       <AboutPageLink />
       <BlogPageLink />
-      <Link
-        href="/changelog"
-        className="instill-text-body flex text-instillGrey80 hover:text-instillBlue50"
-      >
-        <p className="my-auto">Changelog</p>
-      </Link>
+      <ChangelogLink />
       <DocsPageLink />
       <GithubTextLink />
       <CommonCtaButton
