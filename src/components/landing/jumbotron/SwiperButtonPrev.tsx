@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { useSwiper } from "swiper/react";
+import { Button } from "@instill-ai/design-system";
 
 export type SwiperButtonProps = {
   children: ReactElement | string;
@@ -13,14 +14,17 @@ export const SwiperButtonPrev = ({
   const swiper = useSwiper();
 
   return (
-    <button
+    <Button
       id="prevButton"
       onClick={() => {
         swiper.slidePrev();
         onClickHandler();
       }}
+      variant="secondaryGrey"
+      size="lg"
+      className="absolute top-96 z-10 hidden rounded-[50px] !p-3 xl:left-7 xl:block"
     >
       {children}
-    </button>
+    </Button>
   );
 };
