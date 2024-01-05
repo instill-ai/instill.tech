@@ -31,11 +31,23 @@ export const Jumbotron = () => {
     const nextButton = document.getElementById("nextButton");
 
     if (prevButton) {
-      prevButton.style.display = isBeginning ? "none" : "block";
+      if (isBeginning) {
+        prevButton.classList.add("xl:hidden");
+        prevButton.classList.remove("xl:block");
+      } else {
+        prevButton.classList.add("xl:block");
+        prevButton.classList.remove("xl:hidden");
+      }
     }
 
     if (nextButton) {
-      nextButton.style.display = isEnd ? "none" : "block";
+      if (isEnd) {
+        nextButton.classList.add("xl:hidden");
+        nextButton.classList.remove("xl:block");
+      } else {
+        nextButton.classList.add("xl:block");
+        nextButton.classList.remove("xl:hidden");
+      }
     }
   }, [currentSlide]);
 
@@ -52,25 +64,29 @@ export const Jumbotron = () => {
         onReachBeginning={() => {
           const prevButton = document.getElementById("prevButton");
           if (prevButton) {
-            prevButton.style.display = "none";
+            prevButton.classList.add("xl:hidden");
+            prevButton.classList.remove("xl:block");
           }
           setCurrentSlide(1);
         }}
         onReachEnd={() => {
           const nextButton = document.getElementById("nextButton");
           if (nextButton) {
-            nextButton.style.display = "none";
+            nextButton.classList.add("xl:hidden");
+            nextButton.classList.remove("xl:block");
           }
-          setCurrentSlide(4);
+          setCurrentSlide(6);
         }}
         onSlideChange={() => {
           const prevButton = document.getElementById("prevButton");
           const nextButton = document.getElementById("nextButton");
           if (prevButton) {
-            prevButton.style.display = "block";
+            prevButton.classList.add("xl:block");
+            prevButton.classList.remove("xl:hidden");
           }
           if (nextButton) {
-            nextButton.style.display = "block";
+            nextButton.classList.add("xl:block");
+            nextButton.classList.remove("xl:hidden");
           }
         }}
       >

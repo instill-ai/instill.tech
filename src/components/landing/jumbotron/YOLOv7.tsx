@@ -262,8 +262,8 @@ export const YOLOv7 = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
-            <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
+          <div className="my-auto w-3/5 pr-1 xl:w-4/5">
+            <p className="text-sm font-medium text-black dark:text-zinc-600">
               Share an image URL for object detection.
             </p>
           </div>
