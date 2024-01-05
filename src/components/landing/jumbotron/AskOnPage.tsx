@@ -134,13 +134,11 @@ export const AskOnPage = () => {
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="space-y-4">
-              <div className="ask-on-page-box w-auto overflow-y-auto border">
-                <div className="p-2">
-                  <p className="text-sm text-black">
-                    {summaryList ? summaryList : defaultSummary}
-                  </p>
-                </div>
+            <div className="ask-on-page-box w-auto overflow-y-auto border">
+              <div className="p-2">
+                <p className="text-sm text-black">
+                  {summaryList ? summaryList : defaultSummary}
+                </p>
               </div>
             </div>
           )}

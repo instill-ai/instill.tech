@@ -163,8 +163,8 @@ export const WebpageSummarization = () => {
               <div className="summary-box w-auto overflow-y-auto border">
                 <div className="p-2">
                   <p className="text-sm text-black">
-                    Detailed guide on hiking the Seven Sisters Cliffs Walk in
-                    the UK
+                    {summaryList?.summary ||
+                      "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK"}
                   </p>
 
                   {summaryList
