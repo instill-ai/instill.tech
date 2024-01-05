@@ -9,41 +9,10 @@ import {
   toast,
 } from "@instill-ai/design-system";
 
-const defaultSummary: Summary = {
-  summary: "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK",
-  previews: [
-    {
-      keyword: "Trail Overview",
-      content:
-        "20 km walk, Seaford to Eastbourne, great views, no maps needed.",
-      emoji: "🚶",
-    },
-    {
-      keyword: "Directions & Tips",
-      content:
-        "Accessible by train, check tides, avoid bad weather, bring good shoes.",
-      emoji: "🚉",
-    },
-    {
-      keyword: "Trail Highlights",
-      content:
-        "Scenic cliffs, iconic Cuckmere Haven beach, perfect for photography.",
-      emoji: "📷",
-    },
-    {
-      keyword: "Personal Experience",
-      content:
-        "Great for soul searching and bonding with friends during tough times.",
-      emoji: "❤️",
-    },
-    {
-      keyword: "End of Trail",
-      content:
-        "Ends in Eastbourne with amenities, food, and opportunities to relax.",
-      emoji: "🍦",
-    },
-  ],
-};
+const defaultSummary = `
+        The product is a no-code/low-code platform for building AI workflows.
+        Reference on page → "Meet Instill Cloud, a no-code/low-code platform to build AI workflows for unstructured data 10x faster."
+`;
 
 type Preview = {
   keyword: string;
@@ -66,26 +35,26 @@ export const SummaryCard = ({ summary }: { summary: Preview }) => {
   );
 };
 
-export const WebpageSummarization = () => {
+export const AskOnPage = () => {
   const [spinner, setSpinner] = React.useState(false);
-  const [summaryList, setSummaryList] = React.useState<Nullable<Summary>>(null);
+  const [summaryList, setSummaryList] = React.useState<string>("");
   const [summaryImage, setSummaryImage] = React.useState<string>("");
   const [input, setInput] = React.useState<string>("");
+  const [question, setQuestion] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
-    const apiResponse = await JumbotronSDK.webpageSummarization({
+    const apiResponse = await JumbotronSDK.askOnPage({
       inputs: [
         {
           webpage: input,
+          question: question,
         },
       ],
     });
 
     if (apiResponse.status === "success") {
-      const summaryString: Summary = JSON.parse(
-        apiResponse.data.outputs[0].summary[0]
-      );
+      const summaryString: string = apiResponse.data.outputs[0].answer[0];
       setSummaryImage(summaryImage);
       setSummaryList(summaryString);
     } else {
@@ -96,7 +65,7 @@ export const WebpageSummarization = () => {
         size: "large",
         variant: "alert-error",
       });
-      setSummaryList(null);
+      setSummaryList("");
     }
 
     setTimeout(() => {
@@ -107,19 +76,16 @@ export const WebpageSummarization = () => {
   return (
     <div className="jumbotron-card border bg-white xl:!border-none">
       <div className="bg-[#F8F9FC] p-3">
-        <h3 className="my-auto product-body-text-1-semibold">
-          Webpage Summary
-        </h3>
+        <h3 className="my-auto product-body-text-1-semibold">Ask on Page</h3>
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-3/5 pr-1 xl:w-4/5">
             <p className="text-sm font-medium text-black">
-              Enter a webpage, summarize like Arc Max&apos;s &quot;5 Second
-              Previews&quot;.
+              Enter a webpage, answer questions related to its content, like Arc
+              Max&apos;s &quot;Ask on Page&quot;.
             </p>
           </div>
-
           <div className="w-2/5 xl:w-1/5">
             <SolidButton
               color="primary"
@@ -147,33 +113,33 @@ export const WebpageSummarization = () => {
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="https://www.letstrekit.com/seven-sisters-cliffs-walk"
+                placeholder="https://www.instill.tech"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+              />
+            </Input.Root>
+            <Input.Root className="w-full !rounded-none">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="What’s the product?"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
               />
             </Input.Root>
           </div>
         </div>
 
-        <div className="summary-box flex items-center justify-center">
+        <div className="ask-on-page-box flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
             <div className="space-y-4">
-              <div className="summary-box w-auto overflow-y-auto border">
+              <div className="ask-on-page-box w-auto overflow-y-auto border">
                 <div className="p-2">
                   <p className="text-sm text-black">
-                    Detailed guide on hiking the Seven Sisters Cliffs Walk in
-                    the UK
+                    {summaryList ? summaryList : defaultSummary}
                   </p>
-
-                  {summaryList
-                    ? summaryList.previews.map((summary) => (
-                        <SummaryCard summary={summary} key={summary.keyword} />
-                      ))
-                    : defaultSummary.previews.map((summary) => (
-                        <SummaryCard summary={summary} key={summary.keyword} />
-                      ))}
                 </div>
               </div>
             </div>
@@ -182,7 +148,7 @@ export const WebpageSummarization = () => {
 
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews"
+            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page"
             target="_blank"
             className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
           >

@@ -240,40 +240,19 @@ export const Llama2Chat = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
-          Upload an image, ask a question, and watch it provide magical answers.
-        </p>
-
-        <div className="my-[18px] flex gap-x-4">
-          <div className="w-3/5 space-y-2 xl:w-4/5">
-            <Input.Root className="my-auto w-full !rounded-none">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="What is unusual about this image?"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-              />
-            </Input.Root>
+        <div className="flex flex-row pt-4">
+          <div className="w-3/5 pr-1 xl:w-4/5">
+            <p className="text-sm font-medium text-black dark:text-zinc-600">
+              Upload an image, ask a question, and watch it provide magical
+              answers.
+            </p>
           </div>
+
           <div className="w-2/5 xl:w-1/5">
-            {/* {article ? ( */}
-            {/* <SolidButton
-                color="primary"
-                type="button"
-                position="my-auto w-full gap-x-2"
-                onClickHandler={() => {
-                  setArticle("");
-                  handleDelete();
-                }}
-              >
-                Reset
-              </SolidButton> */}
-            {/* ) : ( */}
             <SolidButton
               color="primary"
               type="button"
-              position="my-auto w-full gap-x-2 py-[9px] flex justify-center"
+              position="w-full gap-x-2 py-[9px] flex justify-center"
               onClickHandler={() => {
                 handleGenrate();
               }}
@@ -285,7 +264,20 @@ export const Llama2Chat = () => {
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
             </SolidButton>
-            {/* )} */}
+          </div>
+        </div>
+
+        <div className="my-[18px] flex gap-x-4">
+          <div className="w-full space-y-2">
+            <Input.Root className="my-auto w-full !rounded-none">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="What is unusual about this image?"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+              />
+            </Input.Root>
           </div>
         </div>
 

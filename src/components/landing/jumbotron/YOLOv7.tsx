@@ -261,43 +261,18 @@ export const YOLOv7 = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
-          Share an image URL for object detection.
-        </p>
-
-        <div className="my-[18px] flex flex-row gap-x-2">
-          <div className="w-3/5 xl:w-4/5">
-            <Input.Root className="w-full !rounded-none">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="Enter image URL"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </Input.Root>
+        <div className="flex flex-row pt-4">
+          <div className="w-3/5 pr-1 xl:w-4/5">
+            <p className="pt-4 text-sm font-medium text-black dark:text-zinc-600">
+              Share an image URL for object detection.
+            </p>
           </div>
           <div className="w-2/5 xl:w-1/5">
-            {/* {article ? ( */}
-            {/* <SolidButton
-                color="primary"
-                position="my-auto w-full gap-x-2 justify-center !py-[9px]"
-                type="button"
-                onClickHandler={() => {
-                  setArticle("");
-                  handleDelete();
-                }}
-              >
-                Reset
-              </SolidButton> */}
-            {/* ) : ( */}
             <SolidButton
               position="my-auto w-full gap-x-2 flex justify-center item-center py-[9px]"
               color="primary"
               onClickHandler={() => {
-                // if (imagePreview) {
                 handleGenrate();
-                // }
               }}
               type="button"
             >
@@ -310,7 +285,20 @@ export const YOLOv7 = () => {
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
             </SolidButton>
-            {/* )} */}
+          </div>
+        </div>
+
+        <div className="my-[18px] flex flex-row gap-x-2">
+          <div className="w-full">
+            <Input.Root className="w-full !rounded-none">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="Enter image URL"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </Input.Root>
           </div>
         </div>
 
