@@ -26,7 +26,7 @@ export const Jumbotron = () => {
     const isBeginning = currentSlide === 1 ? 1 : 0;
     const isEnd = currentSlide === 6 ? 1 : 0;
 
-    //   // Show/hide buttons based on whether it's the first or last card
+    // Show/hide buttons based on whether it's the first or last card
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
 
