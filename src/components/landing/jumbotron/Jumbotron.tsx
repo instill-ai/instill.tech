@@ -86,7 +86,7 @@ export const Jumbotron = () => {
           }
           setCurrentSlide(6);
         }}
-        onSlideChange={(swiper) => {
+        onSlideChange={(swiper: any) => {
           setCurrentSlide(swiper.activeIndex);
           const prevButton = document.getElementById("prevButton");
           const nextButton = document.getElementById("nextButton");
