@@ -84,7 +84,7 @@ const PricingPage: FC & {
               }}
             />
             <PricingInfoCard
-              price="$14"
+              price="$70"
               tier="team"
               className="w-[263px]"
               planDescription="For small teams with advanced collaboration and no organization restrictions"

@@ -17,7 +17,7 @@ export const SwiperButtonNext = ({
       }}
       variant="secondaryGrey"
       size="lg"
-      className="absolute top-96 z-10 hidden rounded-[50px] !p-3 xl:right-7 xl:block"
+      className="absolute top-96 z-10 hidden rounded-[50px] !p-3 xl:right-6 xl:block"
     >
       {children}
     </Button>

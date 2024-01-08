@@ -92,21 +92,11 @@ export const SEOArticleWriter = () => {
         </h3>
       </div>
       <div className="px-6">
-        <p className="pt-4 text-sm text-zinc-500 dark:text-zinc-600">
-          Generate an article and cover image by providing SEO keywords.
-        </p>
-
-        <div className="my-[18px] flex flex-row gap-x-2">
-          <div className="w-3/5 space-y-2 xl:w-4/5">
-            <Input.Root className="w-full !rounded-none">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="AI, community, open source"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </Input.Root>
+        <div className="flex flex-row pt-4">
+          <div className="w-3/5 pr-1 xl:w-4/5">
+            <p className="text-sm font-medium text-black dark:text-zinc-600">
+              Generate an article and cover image by providing SEO keywords.
+            </p>
           </div>
           <div className="w-2/5 xl:w-1/5">
             <SolidButton
@@ -126,6 +116,20 @@ export const SEOArticleWriter = () => {
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
             </SolidButton>
+          </div>
+        </div>
+
+        <div className="my-[18px] flex flex-row gap-x-2">
+          <div className="w-full space-y-2">
+            <Input.Root className="w-full !rounded-none">
+              <Input.Core
+                disabled={false}
+                type="text"
+                placeholder="AI, community, open source"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </Input.Root>
           </div>
         </div>
 

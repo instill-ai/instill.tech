@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Social() {
+export const Social = () => {
   return (
     <div className="mb-20 !w-full rounded">
       <div className="p-6 xl:p-16">
@@ -184,4 +184,4 @@ export default function Social() {
       </div>
     </div>
   );
-}
+};
