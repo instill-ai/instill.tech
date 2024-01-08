@@ -54,7 +54,10 @@ export const StabilityAIOpenAISticker = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-3/5 pr-2 xl:w-4/5">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+            <p className="block text-sm font-medium text-black sm:hidden">
+              Create a sticker by entering keywords ...
+            </p>
+            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block">
               Create a sticker by entering keywords that describe it.
             </p>
           </div>

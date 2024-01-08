@@ -55,6 +55,35 @@ export const Jumbotron = () => {
     }
   }, [currentSlide]);
 
+  const [windowWidth, setWindowWidth] = React.useState<number | undefined>(
+    typeof window !== "undefined" ? window.innerWidth : undefined
+  );
+
+  const handleResize = () => {
+    setWindowWidth(
+      typeof window !== "undefined" ? window.innerWidth : undefined
+    );
+  };
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Add event listener to track window resize
+      window.addEventListener("resize", handleResize);
+
+      // Initial window width
+      setWindowWidth(window.innerWidth);
+    }
+
+    return () => {
+      // Remove event listener on component unmount
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
+  // console.log(windowWidth);
+
   return (
     <div className="jumbotron">
       <Swiper
@@ -65,11 +94,15 @@ export const Jumbotron = () => {
         slidesPerView={"auto"}
         modules={[EffectCards, Pagination, Navigation, Autoplay]}
         className="mySwiper"
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
+        autoplay={
+          windowWidth !== undefined && windowWidth < 600
+            ? false
+            : {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }
+        }
         onReachBeginning={() => {
           const prevButton = document.getElementById("prevButton");
           if (prevButton) {
