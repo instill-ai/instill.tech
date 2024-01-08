@@ -38,7 +38,7 @@ To create a Google Search connector effortlessly, follow these steps:
 <CH.Code>
 
 ```shellscript cURL(Instill-Cloud)
-curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user-id>/connector-resources \
+curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user-id>/connectors \
 --header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
 --data '{
   "id": "my-google-search-engine",
@@ -51,7 +51,7 @@ curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user-id>/connector-reso
 ```
 
 ```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connector-resources \
+curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors \
 --data '{
   "id": "my-google-search-engine",
   "connector_definition_name": "connector-definitions/data-google-search",

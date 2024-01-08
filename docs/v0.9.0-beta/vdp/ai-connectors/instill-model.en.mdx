@@ -69,7 +69,7 @@ and
 <CH.Code>
 
 ```shellscript cURL(Instill-Cloud)
-curl -X POST https://api.instill.tech/v1alpha/users/<user-id>/connector-resources \
+curl -X POST https://api.instill.tech/v1alpha/users/<user-id>/connectors \
 --header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
 --data '{
   "id": "my-instill-model",
@@ -82,7 +82,7 @@ curl -X POST https://api.instill.tech/v1alpha/users/<user-id>/connector-resource
 ```
 
 ```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/v1alpha/users/<user-id>/connector-resources \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/connectors \
 --data '{
   "id": "my-instill-model",
   "connector_definition_name": "connector-definitions/ai-instill-model",
