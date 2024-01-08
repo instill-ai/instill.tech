@@ -86,7 +86,6 @@ GRAFANA_VERSION=<grafana-version>
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
 - [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend/blob/main/config/config.yaml)(`localhost:8081`): a service to build and manage unstructured data pipelines
-- [`connector-backend`](https://github.com/instill-ai/connector-backend/blob/main/config/config.yaml)(`localhost:8082`): a service to create and manage connectors for composing data pipelines
 - [`controller-vdp`](https://github.com/instill-ai/controller-vdp/blob/main/config/config.yaml): a non-public service to monitor the states of pipeline and connector resources
 
 ### Configuring VDP Service Version
@@ -98,7 +97,6 @@ Set the environment variable for a specific service to determine which version t
 INSTILL_CORE_VERSION=<core-version>
 API_GATEWAY_VDP_VERSION=<api-gateway-vdp-version>
 PIPELINE_BACKEND_VERSION=<pipeline-backend-version>
-CONNECTOR_BACKEND_VERSION=<connector-backend-version>
 CONTROLLER_VDP_VERSION=<controller-version>
 ```
 
@@ -117,11 +115,11 @@ To help us better understand how VDP is used and can be improved, VDP collects a
   how to improve VDP without being invasive.
 </InfoBlock>
 
-When a new VDP is running, the usage client in services including `pipeline-backend`, `connector-backend`, and `mgmt-backend` in VDP will ask for a new session, respectively.
+When a new VDP is running, the usage client in services including `pipeline-backend` and `mgmt-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
 For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
 
-- name of the service to collect data from, e.g., `SERVICE_CONNECTOR` for `connector-backend`
+- name of the service to collect data from, e.g., `SERVICE_PIPELINE` for `pipeline-backend`
 - edition of the service to identify the deployment, e.g., `local-ce` for local community edition deployment
 - version of the service, e.g., `0.5.0-alpha`
 - architecture of the system the service is running on, e.g., `amd64`
@@ -133,12 +131,6 @@ Then, each session will collect and send its own [`SessionReport`](https://githu
 
 - [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
   - information of the [onboarded User](../../quickstart#Authorisation)
-- [`ConnectorUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L74-L103) reports data for `connector-backend` session of the onboarded User
-  - UUID of the onboarded User
-  - number of _connected_ or _disconnected_ Sources
-  - number of _connected_ or _disconnected_ Destinations
-  - an array of `SourceConnectorDefinition` of the Sources
-  - an array of `DestinationConnectorDefinition` of the Destinations
 - [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
   - number of _active_ and _inactive_ Pipelines

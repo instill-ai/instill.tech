@@ -80,7 +80,7 @@ This is a sample `configuration` in the pipeline recipe.
 To enable Airbyte destination connectors and inject data, VDP utilizes the [AirbyteRecordMessage](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#airbyterecordmessage) JSON object.
 This facilitates triggering the container's [`write`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#write) operation for the Airbyte destination connector.
 
-For this purpose, `connector-backend` assembles the [ConfiguredAirbyteCatalog](https://docs.airbyte.com/understanding-airbyte/beginners-guide-to-catalog/#configuredairbytecatalog) on-the-fly,
+For this purpose, `connector` assembles the [ConfiguredAirbyteCatalog](https://docs.airbyte.com/understanding-airbyte/beginners-guide-to-catalog/#configuredairbytecatalog) on-the-fly,
 utilizing the corresponding connector configuration JSON object used in the [`check`](https://docs.airbyte.com/understanding-airbyte/airbyte-protocol/#check) operation.
 This initiates a Temporal workflow to write the structured data to the destination.
 

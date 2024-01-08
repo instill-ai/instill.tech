@@ -9,10 +9,7 @@ A **Pipeline** is an end-to-end workflow that automates a sequence of pipeline c
 
 ## Pipeline Component
 
-A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of components: **Connectors** and **Operators**.
-
-Connector is served by the [`connector-backend`](https://github.com/instill-ai/connector-backend), [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend) will communicate with [`connector-backend`](https://github.com/instill-ai/connector-backend) via gRPC.
-Operator is directly served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
+A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of components: **Connectors** and **Operators**.A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has two types of components: **Connectors** and **Operators**. Connector and Operator are served by the [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend).
 
 VDP uses [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1alpha/connector_definition.proto) and [`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto)
 to define the basic properties and detailed configuration of a connector or a operator.
