@@ -27,7 +27,7 @@ export const BuildAppsInAction = () => {
         <div className="my-6 xl:w-3/12">
           <CommonCtaButton
             withArrow={true}
-            link={"/docs/v0.6.0-alpha/quickstart"}
+            link={"/docs"}
             text="Learn more"
             position="w-full justify-center"
           />

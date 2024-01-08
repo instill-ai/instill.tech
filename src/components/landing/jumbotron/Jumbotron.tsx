@@ -18,13 +18,14 @@ import { SEOArticleWriter } from "./SEOArticleWriter";
 import * as React from "react";
 import { WebpageSummarization } from "./WebpageSummarization";
 import { AskOnPage } from "./AskOnPage";
+import { ResponderWithSpeech } from "./ResponderWithSpeech";
 
 export const Jumbotron = () => {
   const [currentSlide, setCurrentSlide] = React.useState(1);
 
   React.useEffect(() => {
     const isBeginning = currentSlide === 1 ? 1 : 0;
-    const isEnd = currentSlide === 6 ? 1 : 0;
+    const isEnd = currentSlide === 7 ? 1 : 0;
 
     // Show/hide buttons based on whether it's the first or last card
     const prevButton = document.getElementById("prevButton");
@@ -95,22 +96,25 @@ export const Jumbotron = () => {
         >
           <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
         </SwiperButtonPrev>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
+          <ResponderWithSpeech />
+        </SwiperSlide>
+        <SwiperSlide className="shadow-sm">
           <AskOnPage />
         </SwiperSlide>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
           <WebpageSummarization />
         </SwiperSlide>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
           <StabilityAIOpenAISticker />
         </SwiperSlide>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
           <Llama2Chat />
         </SwiperSlide>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
           <SEOArticleWriter />
         </SwiperSlide>
-        <SwiperSlide className="shadow-lg">
+        <SwiperSlide className="shadow-sm">
           <YOLOv7 />
         </SwiperSlide>
         <SwiperButtonNext
