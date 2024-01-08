@@ -1,3 +1,3 @@
 export const LATEST_VERSIONS = {
-  core: "v0.8.0-beta",
+  core: "v0.9.0-beta",
 };

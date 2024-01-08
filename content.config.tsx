@@ -568,10 +568,18 @@ export function getNavbar(
         items: [
           {
             key: "docs-nav-dropdown-version-core-latest",
+            to: `/docs/v0.9.0-beta/welcome`,
+            className: "",
+            position: "right",
+            label: "v0.9.0-beta (latest)",
+            appType: "core",
+          },
+          {
+            key: "docs-nav-dropdown-version-core-v0.8.0-beta",
             to: `/docs/v0.8.0-beta/welcome`,
             className: "",
             position: "right",
-            label: "v0.8.0-beta (latest)",
+            label: "v0.8.0-beta",
             appType: "core",
           },
           {
