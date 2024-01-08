@@ -13,7 +13,7 @@ export async function responderWithSpeech(
   requestData: ResponderWithSpeechRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "vdp/v1beta/users/instill-wombat/pipelines/jumbotron-lifelike-speech/releases/v1.0.0/trigger",
+    path: "vdp/v1beta/users/instill-wombat/pipelines/jumbotron-lifelike-speech/releases/v1.1.0/trigger",
     data: requestData,
   };
 

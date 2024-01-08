@@ -241,7 +241,7 @@ export const Llama2Chat = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
+          <div className="w-3/5 pr-2 xl:w-4/5">
             <p className="text-sm font-medium text-black dark:text-zinc-600">
               Upload an image, ask a question, and watch it provide magical
               answers.

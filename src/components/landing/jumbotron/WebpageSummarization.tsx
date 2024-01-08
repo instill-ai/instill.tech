@@ -113,7 +113,7 @@ export const WebpageSummarization = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
+          <div className="w-3/5 pr-2 xl:w-4/5">
             <p className="text-sm font-medium text-black">
               Enter a webpage, summarize like Arc Max&apos;s &quot;5 Second
               Previews&quot;.

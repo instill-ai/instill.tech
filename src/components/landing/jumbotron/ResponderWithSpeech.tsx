@@ -12,6 +12,7 @@ import {
 export const ResponderWithSpeech = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<Nullable<string>>("");
+  const [transcript, setTranscript] = React.useState<Nullable<string>>("");
   const [input, setInput] = React.useState<string>("");
 
   const handleGenrate = async () => {
@@ -26,8 +27,9 @@ export const ResponderWithSpeech = () => {
 
     if (apiResponse.status === "success") {
       const summaryString: string = apiResponse.data.outputs[0].audio;
-
+      const transcriptResult: string = apiResponse.data.outputs[0].transcript;
       setSummaryList(summaryString);
+      setTranscript(transcriptResult);
     } else {
       console.error("API Error:", apiResponse.error);
       toast({
@@ -37,11 +39,12 @@ export const ResponderWithSpeech = () => {
         variant: "alert-error",
       });
       setSummaryList("");
+      setTranscript("");
     }
 
     setTimeout(() => {
       setSpinner(false);
-    }, 2000);
+    }, 5000);
   };
 
   return (
@@ -53,7 +56,7 @@ export const ResponderWithSpeech = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="my-auto w-3/5 pr-1 xl:w-4/5">
+          <div className="my-auto w-3/5 pr-2 xl:w-4/5">
             <p className="text-sm font-medium text-black">
               Provide a prompt and listen for a response in speech
             </p>
@@ -72,7 +75,7 @@ export const ResponderWithSpeech = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="!h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4 stroke-semantic-bg-primary" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -98,30 +101,39 @@ export const ResponderWithSpeech = () => {
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="summary-box flex h-full w-full items-center justify-center overflow-y-auto border p-2">
+            <div className="summary-box flex h-full w-full overflow-y-auto border p-2">
               {summaryList ? (
-                <audio
-                  src={summaryList || ""}
-                  className="w-full"
-                  controls
-                >
-                </audio>
+                <div className="w-full space-y-4">
+                  <audio
+                    src={summaryList || ""}
+                    className="w-full"
+                    controls
+                  >
+                  </audio>
+                  <div className="p-2">
+                    {transcript ? (
+                      <p className="text-sm text-black">{transcript}</p>
+                    ) : null}
+                  </div>
+                </div>
               ) : (
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.5 19L1.5 29M12.75 21.5V26.5M24 9V39M35.25 1.5V46.5M46.5 19V29"
-                    stroke="black"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <div className="flex w-full items-center justify-center">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.5 19L1.5 29M12.75 21.5V26.5M24 9V39M35.25 1.5V46.5M46.5 19V29"
+                      stroke="black"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
               )}
             </div>
           )}
