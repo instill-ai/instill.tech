@@ -9,10 +9,8 @@ import {
   toast,
 } from "@instill-ai/design-system";
 
-const defaultSummary = `
-        The product is a no-code/low-code platform for building AI workflows.
-        Reference on page → "Meet Instill Cloud, a no-code/low-code platform to build AI workflows for unstructured data 10x faster."
-`;
+const defaultSummary =
+  'The product is Instill Cloud, a no-code/low-code AI platform.\n\nReference on page → "Meet Instill Cloud, a no-code/low-code platform that accelerates AI application development by 10x."';
 
 type Preview = {
   keyword: string;
@@ -134,11 +132,13 @@ export const AskOnPage = () => {
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="ask-on-page-box w-auto overflow-y-auto border">
+            <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="p-2">
-                <p className="text-sm text-black">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
                   {summaryList ? summaryList : defaultSummary}
-                </p>
+                </pre>
+
+                <p className="text-sm text-black"></p>
               </div>
             </div>
           )}
