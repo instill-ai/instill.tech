@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-creative";
 
 // import required modules
-import { Pagination, Navigation, EffectCards } from "swiper/modules";
+import { Pagination, Navigation, EffectCards, Autoplay } from "swiper/modules";
 import { Button, Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
 import { SwiperButtonNext } from "./SwiperButtonNext";
@@ -19,9 +19,12 @@ import * as React from "react";
 import { WebpageSummarization } from "./WebpageSummarization";
 import { AskOnPage } from "./AskOnPage";
 import { ResponderWithSpeech } from "./ResponderWithSpeech";
++1;
 
 export const Jumbotron = () => {
-  const [currentSlide, setCurrentSlide] = React.useState(1);
+  const [currentSlide, setCurrentSlide] = React.useState(
+    Math.floor(Math.random() * 7) + 1
+  );
 
   React.useEffect(() => {
     const isBeginning = currentSlide === 1 ? 1 : 0;
@@ -55,13 +58,18 @@ export const Jumbotron = () => {
   return (
     <div className="jumbotron">
       <Swiper
-        initialSlide={0}
+        initialSlide={currentSlide - 1}
         effect={"cards"}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        modules={[EffectCards, Pagination, Navigation]}
+        modules={[EffectCards, Pagination, Navigation, Autoplay]}
         className="mySwiper"
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         onReachBeginning={() => {
           const prevButton = document.getElementById("prevButton");
           if (prevButton) {
@@ -76,7 +84,7 @@ export const Jumbotron = () => {
             nextButton.classList.add("xl:hidden");
             nextButton.classList.remove("xl:block");
           }
-          setCurrentSlide(6);
+          setCurrentSlide(7);
         }}
         onSlideChange={() => {
           const prevButton = document.getElementById("prevButton");
