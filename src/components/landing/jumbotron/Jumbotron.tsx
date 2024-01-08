@@ -8,7 +8,7 @@ import "swiper/css/effect-creative";
 
 // import required modules
 import { Pagination, Navigation, EffectCards, Autoplay } from "swiper/modules";
-import { Button, Icons } from "@instill-ai/design-system";
+import { Icons } from "@instill-ai/design-system";
 import { SwiperButtonPrev } from "./SwiperButtonPrev";
 import { SwiperButtonNext } from "./SwiperButtonNext";
 import { Llama2Chat } from "./Llama2Chat";
@@ -23,12 +23,12 @@ import { ResponderWithSpeech } from "./ResponderWithSpeech";
 
 export const Jumbotron = () => {
   const [currentSlide, setCurrentSlide] = React.useState(
-    Math.floor(Math.random() * 7) + 1
+    Math.floor(Math.random() * 7)
   );
 
   React.useEffect(() => {
-    const isBeginning = currentSlide === 1 ? 1 : 0;
-    const isEnd = currentSlide === 7 ? 1 : 0;
+    const isBeginning = currentSlide === 0 ? true : false;
+    const isEnd = currentSlide === 6 ? true : false;
 
     // Show/hide buttons based on whether it's the first or last card
     const prevButton = document.getElementById("prevButton");
@@ -58,7 +58,7 @@ export const Jumbotron = () => {
   return (
     <div className="jumbotron">
       <Swiper
-        initialSlide={currentSlide - 1}
+        initialSlide={currentSlide}
         effect={"cards"}
         grabCursor={true}
         centeredSlides={true}
@@ -76,7 +76,7 @@ export const Jumbotron = () => {
             prevButton.classList.add("xl:hidden");
             prevButton.classList.remove("xl:block");
           }
-          setCurrentSlide(1);
+          setCurrentSlide(0);
         }}
         onReachEnd={() => {
           const nextButton = document.getElementById("nextButton");
@@ -84,9 +84,10 @@ export const Jumbotron = () => {
             nextButton.classList.add("xl:hidden");
             nextButton.classList.remove("xl:block");
           }
-          setCurrentSlide(7);
+          setCurrentSlide(6);
         }}
-        onSlideChange={() => {
+        onSlideChange={(swiper) => {
+          setCurrentSlide(swiper.activeIndex);
           const prevButton = document.getElementById("prevButton");
           const nextButton = document.getElementById("nextButton");
           if (prevButton) {

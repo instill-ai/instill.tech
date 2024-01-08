@@ -11,6 +11,7 @@ import {
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
+import { useSwiper } from "swiper/react";
 
 async function resizeBase64Image(
   base64: string,
@@ -75,6 +76,7 @@ async function resizeBase64Image(
 }
 
 export const YOLOv7 = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [input, setInput] = React.useState<string>("");
   const [article, setArticle] = React.useState<string>("");
@@ -161,6 +163,7 @@ export const YOLOv7 = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     let imgString: string | null = "";
     // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
     if (input) {

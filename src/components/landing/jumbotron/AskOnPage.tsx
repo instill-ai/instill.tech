@@ -8,6 +8,7 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 const defaultSummary =
   'The product is Instill Cloud, a no-code/low-code AI platform.\n\nReference on page → "Meet Instill Cloud, a no-code/low-code platform that accelerates AI application development by 10x."';
@@ -34,6 +35,7 @@ export const SummaryCard = ({ summary }: { summary: Preview }) => {
 };
 
 export const AskOnPage = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<string>("");
   const [summaryImage, setSummaryImage] = React.useState<string>("");
@@ -42,6 +44,7 @@ export const AskOnPage = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.askOnPage({
       inputs: [
         {
@@ -133,12 +136,10 @@ export const AskOnPage = () => {
             <div>Generating...</div>
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
-              <div className="p-2">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line py-1 text-semantic-fg-primary product-body-text-4-regular">
+              <div className="px-2 py-3">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-4-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
-
-                <p className="text-sm text-black"></p>
               </div>
             </div>
           )}

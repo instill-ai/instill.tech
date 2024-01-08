@@ -8,10 +8,13 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 const defaultTranscript = `GenAI has the potential to lead mankind towards advancements in various sectors such as healthcare, education, and technology. It may enhance personalized medicine, transform learning experiences, and aid in solving complex problems. However, ethical considerations and responsible development must be prioritized to ensure a beneficial and equitable future for all.`;
 
 export const ResponderWithSpeech = () => {
+  const swiper = useSwiper();
+
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<Nullable<string>>("");
   const [transcript, setTranscript] = React.useState<Nullable<string>>("");
@@ -19,6 +22,7 @@ export const ResponderWithSpeech = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.responderWithSpeech({
       inputs: [
         {
@@ -113,6 +117,7 @@ export const ResponderWithSpeech = () => {
                     }
                     className="w-full"
                     controls
+                    autoPlay={summaryList ? true : false}
                   >
                   </audio>
                 </div>

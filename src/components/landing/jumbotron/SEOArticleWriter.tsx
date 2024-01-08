@@ -10,6 +10,7 @@ import {
   toast,
 } from "@instill-ai/design-system";
 import Markdown from "markdown-to-jsx";
+import { useSwiper } from "swiper/react";
 
 const defaultArticle = `
 # AI: Building a Flourishing Community through Open Source
@@ -43,6 +44,7 @@ Open Source has revolutionized the AI landscape, empowering a global community t
 *Keywords: AI, community, open source*
 `;
 export const SEOArticleWriter = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
   const [articleImage, setArticleImage] = React.useState<string>("");
@@ -51,6 +53,7 @@ export const SEOArticleWriter = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.seoArticle({
       inputs: [
         {

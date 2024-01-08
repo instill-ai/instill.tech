@@ -9,15 +9,17 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 export const StabilityAIOpenAISticker = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
   const [prompt, setPrompt] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
-
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.stabilityAIOpenAISticker({
       inputs: [
         {

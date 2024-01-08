@@ -8,6 +8,7 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 const defaultSummary: Summary = {
   summary: "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK",
@@ -67,6 +68,7 @@ export const SummaryCard = ({ summary }: { summary: Preview }) => {
 };
 
 export const WebpageSummarization = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<Nullable<Summary>>(null);
   const [summaryImage, setSummaryImage] = React.useState<string>("");
@@ -74,6 +76,7 @@ export const WebpageSummarization = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.webpageSummarization({
       inputs: [
         {
@@ -161,7 +164,7 @@ export const WebpageSummarization = () => {
           ) : (
             <div className="space-y-4">
               <div className="summary-box w-auto overflow-y-auto border">
-                <div className="p-2">
+                <div className="px-2 py-3">
                   <p className="text-sm text-black">
                     {summaryList?.summary ||
                       "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK"}
