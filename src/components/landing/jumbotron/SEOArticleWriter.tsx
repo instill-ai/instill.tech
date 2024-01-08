@@ -111,7 +111,7 @@ export const SEOArticleWriter = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="!h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}

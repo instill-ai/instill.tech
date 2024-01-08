@@ -9,6 +9,8 @@ import {
   toast,
 } from "@instill-ai/design-system";
 
+const defaultTranscript = `GenAI has the potential to lead mankind towards advancements in various sectors such as healthcare, education, and technology. It may enhance personalized medicine, transform learning experiences, and aid in solving complex problems. However, ethical considerations and responsible development must be prioritized to ensure a beneficial and equitable future for all.`;
+
 export const ResponderWithSpeech = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<Nullable<string>>("");
@@ -101,40 +103,25 @@ export const ResponderWithSpeech = () => {
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="summary-box flex h-full w-full overflow-y-auto border p-2">
-              {summaryList ? (
-                <div className="w-full space-y-4">
+            <div className="summary-box flex h-full w-full">
+              <div className="w-full space-y-4">
+                <div className="llama-chat-box flex items-center border p-2">
                   <audio
-                    src={summaryList || ""}
+                    src={
+                      summaryList ||
+                      "/audio/jumbotron-lifelike-speech-default-audio.wav"
+                    }
                     className="w-full"
                     controls
                   >
                   </audio>
-                  <div className="p-2">
-                    {transcript ? (
-                      <p className="text-sm text-black">{transcript}</p>
-                    ) : null}
-                  </div>
                 </div>
-              ) : (
-                <div className="flex w-full items-center justify-center">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.5 19L1.5 29M12.75 21.5V26.5M24 9V39M35.25 1.5V46.5M46.5 19V29"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <div className="llama-chat-image-box overflow-y-auto border px-2 py-3">
+                  <p className="text-sm text-black">
+                    {transcript ? transcript : defaultTranscript}
+                  </p>
                 </div>
-              )}
+              </div>
             </div>
           )}
         </div>

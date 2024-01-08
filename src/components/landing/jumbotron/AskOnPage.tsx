@@ -97,7 +97,7 @@ export const AskOnPage = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="!h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -134,7 +134,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="p-2">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line py-1 text-semantic-fg-primary product-body-text-4-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
 
