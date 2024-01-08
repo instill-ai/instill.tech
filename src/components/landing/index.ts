@@ -17,3 +17,4 @@ export * from "./jumbotron";
 export * from "./Social";
 export * from "./VDPInAction";
 export * from "./BuildAppsInAction";
+export * from "./SelfHost";

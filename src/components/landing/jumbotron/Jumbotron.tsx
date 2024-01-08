@@ -16,24 +16,38 @@ import { StabilityAIOpenAISticker } from "./StabilityAIOpenAISticker";
 import { YOLOv7 } from "./YOLOv7";
 import { SEOArticleWriter } from "./SEOArticleWriter";
 import * as React from "react";
+import { WebpageSummarization } from "./WebpageSummarization";
+import { AskOnPage } from "./AskOnPage";
 
 export const Jumbotron = () => {
   const [currentSlide, setCurrentSlide] = React.useState(1);
 
   React.useEffect(() => {
     const isBeginning = currentSlide === 1 ? 1 : 0;
-    const isEnd = currentSlide === 4 ? 1 : 0;
+    const isEnd = currentSlide === 6 ? 1 : 0;
 
-    //   // Show/hide buttons based on whether it's the first or last card
+    // Show/hide buttons based on whether it's the first or last card
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
 
     if (prevButton) {
-      prevButton.style.display = isBeginning ? "none" : "block";
+      if (isBeginning) {
+        prevButton.classList.add("xl:hidden");
+        prevButton.classList.remove("xl:block");
+      } else {
+        prevButton.classList.add("xl:block");
+        prevButton.classList.remove("xl:hidden");
+      }
     }
 
     if (nextButton) {
-      nextButton.style.display = isEnd ? "none" : "block";
+      if (isEnd) {
+        nextButton.classList.add("xl:hidden");
+        nextButton.classList.remove("xl:block");
+      } else {
+        nextButton.classList.add("xl:block");
+        nextButton.classList.remove("xl:hidden");
+      }
     }
   }, [currentSlide]);
 
@@ -50,25 +64,29 @@ export const Jumbotron = () => {
         onReachBeginning={() => {
           const prevButton = document.getElementById("prevButton");
           if (prevButton) {
-            prevButton.style.display = "none";
+            prevButton.classList.add("xl:hidden");
+            prevButton.classList.remove("xl:block");
           }
           setCurrentSlide(1);
         }}
         onReachEnd={() => {
           const nextButton = document.getElementById("nextButton");
           if (nextButton) {
-            nextButton.style.display = "none";
+            nextButton.classList.add("xl:hidden");
+            nextButton.classList.remove("xl:block");
           }
-          setCurrentSlide(4);
+          setCurrentSlide(6);
         }}
         onSlideChange={() => {
           const prevButton = document.getElementById("prevButton");
           const nextButton = document.getElementById("nextButton");
           if (prevButton) {
-            prevButton.style.display = "block";
+            prevButton.classList.add("xl:block");
+            prevButton.classList.remove("xl:hidden");
           }
           if (nextButton) {
-            nextButton.style.display = "block";
+            nextButton.classList.add("xl:block");
+            nextButton.classList.remove("xl:hidden");
           }
         }}
       >
@@ -77,6 +95,12 @@ export const Jumbotron = () => {
         >
           <Icons.ChevronLeft className="h-6 w-6 stroke-slate-500" />
         </SwiperButtonPrev>
+        <SwiperSlide className="shadow-lg">
+          <AskOnPage />
+        </SwiperSlide>
+        <SwiperSlide className="shadow-lg">
+          <WebpageSummarization />
+        </SwiperSlide>
         <SwiperSlide className="shadow-lg">
           <StabilityAIOpenAISticker />
         </SwiperSlide>

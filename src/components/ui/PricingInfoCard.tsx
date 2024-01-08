@@ -81,7 +81,7 @@ export const PricingInfoCard = ({
               ) : null}
               {tier === "team" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
-                  per seat/month
+                  per month
                 </p>
               ) : null}
             </div>
