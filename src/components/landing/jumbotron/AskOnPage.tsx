@@ -26,9 +26,11 @@ type Summary = {
 
 export const SummaryCard = ({ summary }: { summary: Preview }) => {
   return (
-    <p className="my-2 text-sm text-zinc-500">
+    <p className="my-2 text-[16px] text-zinc-500">
       {summary.emoji}{" "}
-      <span className="text-sm font-medium text-black">{summary.keyword}:</span>{" "}
+      <span className="text-[16px] font-medium text-black">
+        {summary.keyword}:
+      </span>{" "}
       {summary.content}{" "}
     </p>
   );
@@ -82,7 +84,7 @@ export const AskOnPage = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-full pr-1">
-            <p className="text-sm font-medium text-black">
+            <p className="text-[16px] font-medium text-black">
               Enter a webpage, answer questions related to its content, like Arc
               Max&apos;s &quot;Ask on Page&quot;.
             </p>
@@ -137,7 +139,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="px-2 py-3">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-2-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
               </div>
@@ -149,7 +151,7 @@ export const AskOnPage = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
           >
             <svg
               focusable="false"

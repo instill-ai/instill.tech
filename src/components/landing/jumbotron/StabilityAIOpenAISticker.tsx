@@ -54,10 +54,10 @@ export const StabilityAIOpenAISticker = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-full pr-2">
-            <p className="block text-sm font-medium text-black sm:hidden">
+            <p className="block text-[16px] font-medium text-black sm:hidden">
               Create a sticker by entering keywords ...
             </p>
-            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block">
+            <p className="hidden text-[16px] font-medium text-black dark:text-zinc-600 sm:block">
               Create a sticker by entering keywords that describe it.
             </p>
           </div>
@@ -124,7 +124,7 @@ export const StabilityAIOpenAISticker = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-sticker-maker"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

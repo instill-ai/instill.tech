@@ -266,7 +266,7 @@ export const YOLOv7 = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-full pr-1">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+            <p className="text-[16px] font-medium text-black dark:text-zinc-600">
               Share an image URL for object detection.
             </p>
           </div>
@@ -361,7 +361,7 @@ export const YOLOv7 = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-yolov7"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

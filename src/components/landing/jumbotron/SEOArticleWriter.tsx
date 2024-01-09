@@ -97,10 +97,10 @@ export const SEOArticleWriter = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-full pr-2">
-            <p className="block text-sm font-medium text-black sm:hidden">
+            <p className="block text-[16px] font-medium text-black sm:hidden">
               Generate an article and cover image ...
             </p>
-            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block">
+            <p className="hidden text-[16px] font-medium text-black dark:text-zinc-600 sm:block">
               Generate an article and cover image by providing SEO keywords.
             </p>
           </div>
@@ -139,9 +139,11 @@ export const SEOArticleWriter = () => {
           </div>
         </div>
 
-        <div className="open-ai-stiker flex items-center justify-center">
+        <div className="open-ai-stiker">
           {spinner ? (
-            <div>Generating...</div>
+            <div className="flex h-full items-center justify-center">
+              Generating...
+            </div>
           ) : (
             <div className="space-y-4">
               <div className="seo-box w-auto overflow-y-auto border">
@@ -169,7 +171,7 @@ export const SEOArticleWriter = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-seo-article-writer"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"
