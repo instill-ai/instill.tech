@@ -122,7 +122,7 @@ export const ResponderWithSpeech = () => {
                   </audio>
                 </div>
                 <div className="llama-chat-image-box overflow-y-auto border px-2 py-3">
-                  <p className="text-sm text-black xl:text-[16px]">
+                  <p className="text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
                     {transcript ? transcript : defaultTranscript}
                   </p>
                 </div>
