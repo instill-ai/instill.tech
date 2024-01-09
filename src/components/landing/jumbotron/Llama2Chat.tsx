@@ -291,7 +291,7 @@ export const Llama2Chat = () => {
           {/* <React.Fragment> */}
           <div className="space-y-4">
             <div className="llama-chat-box w-full overflow-y-auto border px-2 py-3">
-              <pre className="xl:product-body-text-2-regula flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
+              <pre className="xl:product-body-text-2-regula flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
                 {article ? article : defaultAnswer}
               </pre>
             </div>

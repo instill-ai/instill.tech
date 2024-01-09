@@ -139,7 +139,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="px-2 py-3">
-                <pre className="xl:product-body-text-2-regula flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
+                <pre className="xl:product-body-text-2-regula flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
               </div>
