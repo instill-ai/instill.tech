@@ -11,6 +11,7 @@ import {
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
+import { useSwiper } from "swiper/react";
 
 async function resizeBase64Image(
   base64: string,
@@ -75,6 +76,7 @@ async function resizeBase64Image(
 }
 
 export const YOLOv7 = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [input, setInput] = React.useState<string>("");
   const [article, setArticle] = React.useState<string>("");
@@ -161,6 +163,7 @@ export const YOLOv7 = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     let imgString: string | null = "";
     // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
     if (input) {
@@ -262,14 +265,14 @@ export const YOLOv7 = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="my-auto w-3/5 pr-1 xl:w-4/5">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+          <div className="my-auto w-full pr-1">
+            <p className="text-sm font-medium text-black dark:text-zinc-600 xl:text-[16px]">
               Share an image URL for object detection.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
-              position="my-auto w-full gap-x-2 flex justify-center item-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center item-center py-[9px]"
               color="primary"
               onClickHandler={() => {
                 handleGenrate();
@@ -358,7 +361,7 @@ export const YOLOv7 = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-yolov7"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

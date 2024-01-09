@@ -9,6 +9,7 @@ import {
 } from "@instill-ai/design-system";
 import { Nullable } from "@instill-ai/toolkit";
 import * as React from "react";
+import { useSwiper } from "swiper/react";
 
 export function resizeImage(file: File): Promise<Blob> {
   return new Promise((resolve, reject) => {
@@ -129,11 +130,11 @@ export const convertBlobToDataUrl = (blob: Blob): Promise<string> => {
   });
 };
 
-const defaultAnswer = `
-The unusual aspect of this image is that a man is standing on a folding table that is strapped to the back of a yellow taxi, ironing clothes. It is not common to see someone doing laundry in such an unconventional setting, especially while in traffic. The presence of a taxi and the man's position on the table make the scene quite peculiar and eye-catching, as it is not a typical scenario one would expect to see in everyday life.
+const defaultAnswer = `The unusual aspect of this image is that a man is standing on a folding table that is strapped to the back of a yellow taxi, ironing clothes. It is not common to see someone doing laundry in such an unconventional setting, especially while in traffic. The presence of a taxi and the man's position on the table make the scene quite peculiar and eye-catching, as it is not a typical scenario one would expect to see in everyday life.
 `;
 
 export const Llama2Chat = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
   const [question, setQuestion] = React.useState<string>("");
@@ -142,7 +143,7 @@ export const Llama2Chat = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-
+    swiper.autoplay.stop();
     const defaultImage = await loadImageAndSetState(
       "/images/llama-chat-default.png"
     );
@@ -241,14 +242,17 @@ export const Llama2Chat = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+          <div className="w-full pr-2">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+              Upload an image, ask a question, and ....
+            </p>
+            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
               Upload an image, ask a question, and watch it provide magical
               answers.
             </p>
           </div>
 
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
               type="button"
@@ -259,7 +263,7 @@ export const Llama2Chat = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -286,11 +290,12 @@ export const Llama2Chat = () => {
 
           {/* <React.Fragment> */}
           <div className="space-y-4">
-            <div className="llama-chat-box w-full overflow-y-auto border">
-              <pre className="flex w-full flex-1 items-center whitespace-pre-line  px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular">
+            <div className="llama-chat-box w-full overflow-y-auto border px-2 py-3">
+              <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
                 {article ? article : defaultAnswer}
               </pre>
             </div>
+
             {/* <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                     {imagePreview ? (
                       <img
@@ -369,7 +374,7 @@ export const Llama2Chat = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-visual-understanding"
             target="_blank"
-            className="absolute bottom-4 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

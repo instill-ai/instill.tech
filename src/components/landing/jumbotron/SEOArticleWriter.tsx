@@ -10,6 +10,7 @@ import {
   toast,
 } from "@instill-ai/design-system";
 import Markdown from "markdown-to-jsx";
+import { useSwiper } from "swiper/react";
 
 const defaultArticle = `
 # AI: Building a Flourishing Community through Open Source
@@ -43,6 +44,7 @@ Open Source has revolutionized the AI landscape, empowering a global community t
 *Keywords: AI, community, open source*
 `;
 export const SEOArticleWriter = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
   const [articleImage, setArticleImage] = React.useState<string>("");
@@ -51,6 +53,7 @@ export const SEOArticleWriter = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.seoArticle({
       inputs: [
         {
@@ -93,15 +96,18 @@ export const SEOArticleWriter = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+          <div className="w-full pr-2">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+              Generate an article and cover image ...
+            </p>
+            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
               Generate an article and cover image by providing SEO keywords.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
-              position="my-auto w-full gap-x-2 flex justify-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center py-[9px]"
               onClickHandler={() => {
                 if (input) {
                   handleGenrate();
@@ -111,7 +117,7 @@ export const SEOArticleWriter = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="!h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -133,17 +139,17 @@ export const SEOArticleWriter = () => {
           </div>
         </div>
 
-        <div className="open-ai-stiker flex items-center justify-center">
+        <div className="open-ai-stiker">
           {spinner ? (
-            <div>Generating...</div>
+            <div className="flex h-full items-center justify-center">
+              Generating...
+            </div>
           ) : (
             <div className="space-y-4">
               <div className="seo-box w-auto overflow-y-auto border">
                 <div className="markdown-body px-2">
                   <Markdown>{article ? article : defaultArticle}</Markdown>
                 </div>
-                {/* <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular"> */}
-                {/* </pre> */}
               </div>
               <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                 {articleImage ? (
@@ -163,7 +169,7 @@ export const SEOArticleWriter = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-seo-article-writer"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-6"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

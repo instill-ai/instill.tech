@@ -175,15 +175,15 @@ table.mcnCaptionTopContent {
 }
 
 .llama-chat-box {
-  height: 160px;
+  height: 170px;
 }
 
 .seo-image-box {
-  height: 200px;
+  height: 210px;
 }
 
 .llama-chat-image-box {
-  height: 270px;
+  height: 260px;
 }
 
 @media (max-width: 800px) {

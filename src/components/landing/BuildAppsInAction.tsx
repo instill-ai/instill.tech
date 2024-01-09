@@ -12,22 +12,23 @@ export const BuildAppsInAction = () => {
           marginBottom="mb-2.5"
         />
         <SectionHeader
-          header="Power your apps with AI pipelines"
+          header="Power your apps with versatile AI pipelines"
           headerWidth="w-full"
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
         <p className="text-[18px] font-normal  text-white xl:w-7/12">
-          Empower your applications with AI pipelines that seamlessly connect to
-          a variety of unstructured data types. Effortlessly Transform your data
-          using ready-to-use AI models, and ensure the reliability of your
-          pipelines with a single click, tracking output at every step.
+          Empower your applications by integrating AI pipelines created through
+          Instill Versatile Data Pipeline (VDP), which effortlessly links to
+          various unstructured data types. Easily convert your data with
+          pre-designed AI models, while ensuring reliability through a single
+          run and tracking outputs at every stage.
         </p>
 
         <div className="my-6 xl:w-3/12">
           <CommonCtaButton
             withArrow={true}
-            link={"/docs/v0.6.0-alpha/quickstart"}
+            link={"/docs"}
             text="Learn more"
             position="w-full justify-center"
           />

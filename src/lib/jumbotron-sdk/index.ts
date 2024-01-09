@@ -2,6 +2,7 @@ import { llava7b } from "./llava7b";
 import { seoArticle } from "./seoArticle";
 import { stabilityAIOpenAISticker } from "./stabilityAIOpenAISticker";
 import { yolov7 } from "./yolov7";
+import { responderWithSpeech } from "./responderWithSpeech";
 import { webpageSummarization } from "./webpageSummarization";
 import { askOnPage } from "./askOnPage";
 
@@ -10,6 +11,7 @@ export const JumbotronSDK = {
   seoArticle,
   stabilityAIOpenAISticker,
   yolov7,
+  responderWithSpeech,
   webpageSummarization,
   askOnPage,
 };

@@ -9,15 +9,17 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 export const StabilityAIOpenAISticker = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [article, setArticle] = React.useState<string>("");
   const [prompt, setPrompt] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
-
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.stabilityAIOpenAISticker({
       inputs: [
         {
@@ -51,12 +53,15 @@ export const StabilityAIOpenAISticker = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="my-auto w-3/5 pr-1 xl:w-4/5">
-            <p className="text-sm font-medium text-black dark:text-zinc-600">
+          <div className="my-auto w-full pr-2">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+              Create a sticker by entering keywords ...
+            </p>
+            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
               Create a sticker by entering keywords that describe it.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               position="my-auto w-full gap-x-2 py-[9px] flex justify-center"
               color="primary"
@@ -69,7 +74,7 @@ export const StabilityAIOpenAISticker = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -119,7 +124,7 @@ export const StabilityAIOpenAISticker = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-sticker-maker"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

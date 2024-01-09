@@ -10,56 +10,32 @@ import {
 } from "@instill-ai/design-system";
 import { useSwiper } from "swiper/react";
 
-const defaultSummary =
-  'The product is Instill Cloud, a no-code/low-code AI platform.\n\nReference on page → "Meet Instill Cloud, a no-code/low-code platform that accelerates AI application development by 10x."';
+const defaultTranscript = `GenAI has the potential to lead mankind towards advancements in various sectors such as healthcare, education, and technology. It may enhance personalized medicine, transform learning experiences, and aid in solving complex problems. However, ethical considerations and responsible development must be prioritized to ensure a beneficial and equitable future for all.`;
 
-type Preview = {
-  keyword: string;
-  content: string;
-  emoji: string;
-};
-
-type Summary = {
-  summary: string;
-  previews: Preview[];
-};
-
-export const SummaryCard = ({ summary }: { summary: Preview }) => {
-  return (
-    <p className="my-2 text-sm text-zinc-500 xl:text-[16px]">
-      {summary.emoji}{" "}
-      <span className="text-sm font-medium text-black xl:text-[16px]">
-        {summary.keyword}:
-      </span>{" "}
-      {summary.content}{" "}
-    </p>
-  );
-};
-
-export const AskOnPage = () => {
+export const ResponderWithSpeech = () => {
   const swiper = useSwiper();
+
   const [spinner, setSpinner] = React.useState(false);
-  const [summaryList, setSummaryList] = React.useState<string>("");
-  const [summaryImage, setSummaryImage] = React.useState<string>("");
+  const [summaryList, setSummaryList] = React.useState<Nullable<string>>("");
+  const [transcript, setTranscript] = React.useState<Nullable<string>>("");
   const [input, setInput] = React.useState<string>("");
-  const [question, setQuestion] = React.useState<string>("");
 
   const handleGenrate = async () => {
     setSpinner(true);
     swiper.autoplay.stop();
-    const apiResponse = await JumbotronSDK.askOnPage({
+    const apiResponse = await JumbotronSDK.responderWithSpeech({
       inputs: [
         {
-          webpage: input,
-          question: question,
+          prompt: input,
         },
       ],
     });
 
     if (apiResponse.status === "success") {
-      const summaryString: string = apiResponse.data.outputs[0].answer[0];
-      setSummaryImage(summaryImage);
+      const summaryString: string = apiResponse.data.outputs[0].audio;
+      const transcriptResult: string = apiResponse.data.outputs[0].transcript;
       setSummaryList(summaryString);
+      setTranscript(transcriptResult);
     } else {
       console.error("API Error:", apiResponse.error);
       toast({
@@ -69,26 +45,29 @@ export const AskOnPage = () => {
         variant: "alert-error",
       });
       setSummaryList("");
+      setTranscript("");
     }
 
     setTimeout(() => {
       setSpinner(false);
-    }, 2000);
+    }, 5000);
   };
 
   return (
     <div className="jumbotron-card border bg-white xl:!border-none">
       <div className="bg-[#F8F9FC] p-3">
-        <h3 className="my-auto product-body-text-1-semibold">Ask on Page</h3>
+        <h3 className="my-auto product-body-text-1-semibold">
+          Likelife Speech
+        </h3>
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-full pr-1">
+          <div className="my-auto w-full pr-2">
             <p className="text-sm font-medium text-black xl:text-[16px]">
-              Enter a webpage, answer questions related to its content, like Arc
-              Max&apos;s &quot;Ask on Page&quot;.
+              Provide a prompt and listen for a response in speech
             </p>
           </div>
+
           <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
@@ -102,7 +81,7 @@ export const AskOnPage = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="my-auto !h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4 stroke-semantic-bg-primary" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -116,32 +95,37 @@ export const AskOnPage = () => {
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="https://www.instill.tech"
+                placeholder="Where will GenAI lead mankind?"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-              />
-            </Input.Root>
-            <Input.Root className="w-full !rounded-none">
-              <Input.Core
-                disabled={false}
-                type="text"
-                placeholder="What’s the product?"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
               />
             </Input.Root>
           </div>
         </div>
 
-        <div className="ask-on-page-box flex items-center justify-center">
+        <div className="summary-box flex items-center justify-center">
           {spinner ? (
             <div>Generating...</div>
           ) : (
-            <div className="ask-on-page-box w-full overflow-y-auto border">
-              <div className="px-2 py-3">
-                <pre className="xl:product-body-text-2-regula flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
-                  {summaryList ? summaryList : defaultSummary}
-                </pre>
+            <div className="summary-box flex h-full w-full">
+              <div className="w-full space-y-4">
+                <div className="llama-chat-box flex items-center border p-2">
+                  <audio
+                    src={
+                      summaryList ||
+                      "/audio/jumbotron-lifelike-speech-default-audio.wav"
+                    }
+                    className="w-full"
+                    controls
+                    autoPlay={summaryList ? true : false}
+                  >
+                  </audio>
+                </div>
+                <div className="llama-chat-image-box overflow-y-auto border px-2 py-3">
+                  <p className="text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
+                    {transcript ? transcript : defaultTranscript}
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -149,9 +133,9 @@ export const AskOnPage = () => {
 
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page"
+            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-lifelike-speech"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"

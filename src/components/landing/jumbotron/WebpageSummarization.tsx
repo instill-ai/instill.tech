@@ -8,6 +8,7 @@ import {
   SolidButton,
   toast,
 } from "@instill-ai/design-system";
+import { useSwiper } from "swiper/react";
 
 const defaultSummary: Summary = {
   summary: "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK",
@@ -58,15 +59,18 @@ type Summary = {
 
 export const SummaryCard = ({ summary }: { summary: Preview }) => {
   return (
-    <p className="my-2 text-sm text-zinc-500">
+    <p className="my-2 text-sm text-zinc-500 xl:text-[16px]">
       {summary.emoji}{" "}
-      <span className="text-sm font-medium text-black">{summary.keyword}:</span>{" "}
+      <span className="text-sm font-medium text-black xl:text-[16px]">
+        {summary.keyword}:
+      </span>{" "}
       {summary.content}{" "}
     </p>
   );
 };
 
 export const WebpageSummarization = () => {
+  const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [summaryList, setSummaryList] = React.useState<Nullable<Summary>>(null);
   const [summaryImage, setSummaryImage] = React.useState<string>("");
@@ -74,6 +78,7 @@ export const WebpageSummarization = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
+    swiper.autoplay.stop();
     const apiResponse = await JumbotronSDK.webpageSummarization({
       inputs: [
         {
@@ -113,17 +118,20 @@ export const WebpageSummarization = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
-            <p className="text-sm font-medium text-black">
+          <div className="w-full pr-2">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+              Enter a webpage, summarize like Arc ...
+            </p>
+            <p className="hidden text-sm font-medium text-black sm:block xl:text-[16px]">
               Enter a webpage, summarize like Arc Max&apos;s &quot;5 Second
               Previews&quot;.
             </p>
           </div>
 
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
-              position="my-auto w-full gap-x-2 flex justify-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center py-[9px]"
               onClickHandler={() => {
                 if (input) {
                   handleGenrate();
@@ -133,7 +141,7 @@ export const WebpageSummarization = () => {
             >
               Run
               {spinner ? (
-                <LoadingSpin className="!h-4 !w-4" />
+                <LoadingSpin className="my-auto !h-4 !w-4" />
               ) : (
                 <Icons.PlayCircle className="my-auto h-4 w-4 stroke-semantic-bg-primary" />
               )}
@@ -161,8 +169,8 @@ export const WebpageSummarization = () => {
           ) : (
             <div className="space-y-4">
               <div className="summary-box w-auto overflow-y-auto border">
-                <div className="p-2">
-                  <p className="text-sm text-black">
+                <div className="px-2 py-3">
+                  <p className="text-sm text-black xl:text-[16px]">
                     {summaryList?.summary ||
                       "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK"}
                   </p>
@@ -184,7 +192,7 @@ export const WebpageSummarization = () => {
           <a
             href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 xl:bottom-4"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
             <svg
               focusable="false"
