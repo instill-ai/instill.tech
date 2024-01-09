@@ -265,14 +265,14 @@ export const YOLOv7 = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="my-auto w-3/5 pr-1 xl:w-4/5">
+          <div className="my-auto w-full pr-1">
             <p className="text-sm font-medium text-black dark:text-zinc-600">
               Share an image URL for object detection.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
-              position="my-auto w-full gap-x-2 flex justify-center item-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center item-center py-[9px]"
               color="primary"
               onClickHandler={() => {
                 handleGenrate();

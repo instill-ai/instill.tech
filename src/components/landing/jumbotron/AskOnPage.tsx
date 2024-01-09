@@ -81,16 +81,16 @@ export const AskOnPage = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-1 xl:w-4/5">
+          <div className="w-full pr-1">
             <p className="text-sm font-medium text-black">
               Enter a webpage, answer questions related to its content, like Arc
               Max&apos;s &quot;Ask on Page&quot;.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
-              position="my-auto w-full gap-x-2 flex justify-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center py-[9px]"
               onClickHandler={() => {
                 if (input) {
                   handleGenrate();
@@ -137,7 +137,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="px-2 py-3">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-4-regular">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
               </div>

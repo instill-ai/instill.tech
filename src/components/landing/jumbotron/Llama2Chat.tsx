@@ -242,7 +242,7 @@ export const Llama2Chat = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-2 xl:w-4/5">
+          <div className="w-full pr-2">
             <p className="block text-sm font-medium text-black sm:hidden">
               Upload an image, ask a question, and ....
             </p>
@@ -252,7 +252,7 @@ export const Llama2Chat = () => {
             </p>
           </div>
 
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
               type="button"
@@ -291,7 +291,7 @@ export const Llama2Chat = () => {
           {/* <React.Fragment> */}
           <div className="space-y-4">
             <div className="llama-chat-box w-full overflow-y-auto border px-2 py-3">
-              <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-4-regular">
+              <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
                 {article ? article : defaultAnswer}
               </pre>
             </div>

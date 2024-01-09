@@ -175,7 +175,7 @@ table.mcnCaptionTopContent {
 }
 
 .llama-chat-box {
-  height: 160px;
+  height: 170px;
 }
 
 .seo-image-box {
@@ -183,7 +183,7 @@ table.mcnCaptionTopContent {
 }
 
 .llama-chat-image-box {
-  height: 270px;
+  height: 260px;
 }
 
 @media (max-width: 800px) {

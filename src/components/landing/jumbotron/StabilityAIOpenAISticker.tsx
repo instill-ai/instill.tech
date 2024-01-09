@@ -53,7 +53,7 @@ export const StabilityAIOpenAISticker = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="my-auto w-3/5 pr-2 xl:w-4/5">
+          <div className="my-auto w-full pr-2">
             <p className="block text-sm font-medium text-black sm:hidden">
               Create a sticker by entering keywords ...
             </p>
@@ -61,7 +61,7 @@ export const StabilityAIOpenAISticker = () => {
               Create a sticker by entering keywords that describe it.
             </p>
           </div>
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               position="my-auto w-full gap-x-2 py-[9px] flex justify-center"
               color="primary"

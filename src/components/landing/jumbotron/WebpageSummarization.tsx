@@ -116,7 +116,7 @@ export const WebpageSummarization = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-3/5 pr-2 xl:w-4/5">
+          <div className="w-full pr-2">
             <p className="block text-sm font-medium text-black sm:hidden">
               Enter a webpage, summarize like Arc ...
             </p>
@@ -126,10 +126,10 @@ export const WebpageSummarization = () => {
             </p>
           </div>
 
-          <div className="w-2/5 xl:w-1/5">
+          <div className="flex items-start justify-end">
             <SolidButton
               color="primary"
-              position="my-auto w-full gap-x-2 flex justify-center py-[9px]"
+              position="w-full gap-x-2 flex justify-center py-[9px]"
               onClickHandler={() => {
                 if (input) {
                   handleGenrate();
