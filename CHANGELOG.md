@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.41.13](https://github.com/instill-ai/instill.tech/compare/v1.41.12...v1.41.13) (2024-01-09)
+
+
+### Miscellaneous
+
+* Namananand/ins 3193 webpage summarization and ask on page ([#682](https://github.com/instill-ai/instill.tech/issues/682)) ([5892b91](https://github.com/instill-ai/instill.tech/commit/5892b91194bfd552ee4095e3ef9be8b5883764ed))
+* namananand/ins 3270 jumbotron new audio related card ([#685](https://github.com/instill-ai/instill.tech/issues/685)) ([00c2033](https://github.com/instill-ai/instill.tech/commit/00c203376b6bcd5117db0d458818b3fe7d967e05))
+
+
+### Documentation
+
+* add doc for v0.9.0-beta ([#683](https://github.com/instill-ai/instill.tech/issues/683)) ([17a1a78](https://github.com/instill-ai/instill.tech/commit/17a1a78395c29069f43280ec7320c59fd8d257dd))
+
 ## [1.41.12](https://github.com/instill-ai/instill.tech/compare/v1.41.11...v1.41.12) (2024-01-04)
 
 
