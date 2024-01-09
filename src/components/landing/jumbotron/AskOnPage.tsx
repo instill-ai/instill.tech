@@ -26,9 +26,9 @@ type Summary = {
 
 export const SummaryCard = ({ summary }: { summary: Preview }) => {
   return (
-    <p className="my-2 text-[16px] text-zinc-500">
+    <p className="my-2 text-sm text-zinc-500 xl:text-[16px]">
       {summary.emoji}{" "}
-      <span className="text-[16px] font-medium text-black">
+      <span className="text-sm font-medium text-black xl:text-[16px]">
         {summary.keyword}:
       </span>{" "}
       {summary.content}{" "}
@@ -84,7 +84,7 @@ export const AskOnPage = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-full pr-1">
-            <p className="text-[16px] font-medium text-black">
+            <p className="text-sm font-medium text-black xl:text-[16px]">
               Enter a webpage, answer questions related to its content, like Arc
               Max&apos;s &quot;Ask on Page&quot;.
             </p>
@@ -139,7 +139,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="px-2 py-3">
-                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-2-regular">
+                <pre className="xl:product-body-text-2-regula flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
               </div>

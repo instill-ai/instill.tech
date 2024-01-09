@@ -59,9 +59,9 @@ type Summary = {
 
 export const SummaryCard = ({ summary }: { summary: Preview }) => {
   return (
-    <p className="my-2 text-[16px] text-zinc-500">
+    <p className="my-2 text-sm text-zinc-500 xl:text-[16px]">
       {summary.emoji}{" "}
-      <span className="text-[16px] font-medium text-black">
+      <span className="text-sm font-medium text-black xl:text-[16px]">
         {summary.keyword}:
       </span>{" "}
       {summary.content}{" "}
@@ -119,10 +119,10 @@ export const WebpageSummarization = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-full pr-2">
-            <p className="block text-[16px] font-medium text-black sm:hidden">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
               Enter a webpage, summarize like Arc ...
             </p>
-            <p className="hidden text-[16px] font-medium text-black sm:block">
+            <p className="hidden text-sm font-medium text-black sm:block xl:text-[16px]">
               Enter a webpage, summarize like Arc Max&apos;s &quot;5 Second
               Previews&quot;.
             </p>
@@ -170,7 +170,7 @@ export const WebpageSummarization = () => {
             <div className="space-y-4">
               <div className="summary-box w-auto overflow-y-auto border">
                 <div className="px-2 py-3">
-                  <p className="text-[16px] text-black">
+                  <p className="text-sm text-black xl:text-[16px]">
                     {summaryList?.summary ||
                       "Detailed guide on hiking the Seven Sisters Cliffs Walk in the UK"}
                   </p>

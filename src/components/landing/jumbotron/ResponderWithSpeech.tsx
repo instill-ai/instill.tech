@@ -63,7 +63,7 @@ export const ResponderWithSpeech = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-full pr-2">
-            <p className="text-[16px] font-medium text-black">
+            <p className="text-sm font-medium text-black xl:text-[16px]">
               Provide a prompt and listen for a response in speech
             </p>
           </div>
@@ -122,7 +122,7 @@ export const ResponderWithSpeech = () => {
                   </audio>
                 </div>
                 <div className="llama-chat-image-box overflow-y-auto border px-2 py-3">
-                  <p className="text-[16px] text-black">
+                  <p className="text-sm text-black xl:text-[16px]">
                     {transcript ? transcript : defaultTranscript}
                   </p>
                 </div>

@@ -97,10 +97,10 @@ export const SEOArticleWriter = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="w-full pr-2">
-            <p className="block text-[16px] font-medium text-black sm:hidden">
+            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
               Generate an article and cover image ...
             </p>
-            <p className="hidden text-[16px] font-medium text-black dark:text-zinc-600 sm:block">
+            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
               Generate an article and cover image by providing SEO keywords.
             </p>
           </div>
