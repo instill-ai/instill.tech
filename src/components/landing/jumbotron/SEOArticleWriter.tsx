@@ -150,8 +150,6 @@ export const SEOArticleWriter = () => {
                 <div className="markdown-body px-2">
                   <Markdown>{article ? article : defaultArticle}</Markdown>
                 </div>
-                {/* <pre className="flex w-full flex-1 items-center whitespace-pre-line break-all px-1.5 py-1 text-semantic-fg-primary product-body-text-4-regular"> */}
-                {/* </pre> */}
               </div>
               <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                 {articleImage ? (
