@@ -244,7 +244,7 @@ export const Llama2Chat = () => {
         <div className="flex flex-row pt-4">
           <div className="w-full pr-2">
             <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
-              Upload an image, ask a question, and ....
+              Ask about an image, get magical answers.
             </p>
             <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
               Upload an image, ask a question, and watch it provide magical

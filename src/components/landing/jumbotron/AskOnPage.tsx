@@ -85,7 +85,7 @@ export const AskOnPage = () => {
         <div className="flex flex-row pt-4">
           <div className="w-full pr-1">
             <p className="block text-sm font-medium text-black xl:hidden xl:text-[16px]">
-              Enter a webpage, answer questions ...
+              Answer questions related to a webpage.
             </p>
             <p className="hidden text-sm font-medium text-black xl:block xl:text-[16px]">
               Enter a webpage, answer questions related to its content, like Arc
