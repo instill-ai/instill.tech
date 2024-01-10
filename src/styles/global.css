@@ -314,3 +314,12 @@ table.mcnCaptionTopContent {
   > .swiper-slide-shadow-cards {
   transition-duration: 1500ms !important;
 }
+
+/* Additional styles for Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .llama-chat-box {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+  }
+}
