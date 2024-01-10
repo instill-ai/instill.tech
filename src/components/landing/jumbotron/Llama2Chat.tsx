@@ -285,18 +285,18 @@ export const Llama2Chat = () => {
           </div>
         </div>
 
-        <div className="jumbotron-file-uploader flex flex-col space-y-5">
+        <div className="flex flex-col space-y-4">
           {/* <React.Fragment> */}
 
           {/* <React.Fragment> */}
-          <div className="space-y-4">
-            <div className="llama-chat-box w-full overflow-y-auto border px-2 py-3">
-              <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
-                {article ? article : defaultAnswer}
-              </pre>
-            </div>
 
-            {/* <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
+          <div className="llama-chat-box w-full overflow-y-auto border px-2 py-3">
+            <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
+              {article ? article : defaultAnswer}
+            </pre>
+          </div>
+
+          {/* <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                     {imagePreview ? (
                       <img
                         src={imagePreview}
@@ -304,7 +304,7 @@ export const Llama2Chat = () => {
                       />
                     ) : null}
                   </div> */}
-          </div>
+
           {/* </React.Fragment> */}
           {/* ) : null} */}
           {/* ( */}

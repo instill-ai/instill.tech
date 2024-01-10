@@ -63,7 +63,10 @@ export const ResponderWithSpeech = () => {
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-full pr-2">
-            <p className="text-sm font-medium text-black xl:text-[16px]">
+            <p className="block text-sm font-medium text-black xl:hidden xl:text-[16px]">
+              Provide a prompt and listen for a response ...
+            </p>
+            <p className="hidden text-sm font-medium text-black xl:block xl:text-[16px]">
               Provide a prompt and listen for a response in speech
             </p>
           </div>
