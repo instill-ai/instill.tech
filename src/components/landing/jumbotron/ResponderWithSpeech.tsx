@@ -112,7 +112,7 @@ export const ResponderWithSpeech = () => {
           ) : (
             <div className="summary-box flex h-full w-full">
               <div className="w-full space-y-4">
-                <div className="llama-chat-box flex items-center justify-center border p-2">
+                <div className="speech-chat-box flex items-center justify-center border p-2">
                   <audio
                     src={
                       summaryList ||

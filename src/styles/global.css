@@ -178,6 +178,10 @@ table.mcnCaptionTopContent {
   height: 170px;
 }
 
+.speech-chat-box {
+  height: 170px;
+}
+
 .seo-image-box {
   height: 210px;
 }
@@ -215,6 +219,10 @@ table.mcnCaptionTopContent {
   }
 
   .llama-chat-box {
+    height: 170px;
+  }
+
+  .speech-chat-box {
     height: 170px;
   }
 
@@ -260,7 +268,7 @@ table.mcnCaptionTopContent {
     height: 160px;
   }
 
-  .llama-chat-box {
+  .speech-chat-box {
     height: 160px;
   }
 
@@ -317,7 +325,7 @@ table.mcnCaptionTopContent {
 
 /* Additional styles for Safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .llama-chat-box {
+  .speech-chat-box {
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
