@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.14](https://github.com/instill-ai/instill.tech/compare/v1.41.13...v1.41.14) (2024-01-10)
+
+
+### Miscellaneous
+
+* namananand/ins 3353 object detection card allows image uploading ([#686](https://github.com/instill-ai/instill.tech/issues/686)) ([16b40c0](https://github.com/instill-ai/instill.tech/commit/16b40c0a8d56ac0130634695e2f48275e9770853))
+
 ## [1.41.13](https://github.com/instill-ai/instill.tech/compare/v1.41.12...v1.41.13) (2024-01-09)
 
 
