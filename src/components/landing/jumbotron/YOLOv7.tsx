@@ -168,6 +168,8 @@ export const YOLOv7 = () => {
     // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
     if (input) {
       imgString = await getBase64ImageFromUrl(input);
+    } else if (imagePreview) {
+      imgString = imagePreview;
     } else {
       imgString = await getBase64ImageFromUrl("/images/yolo-default.png");
     }
@@ -230,6 +232,7 @@ export const YOLOv7 = () => {
           const result = reader.result;
           if (typeof result === "string") {
             setImagePreview(result);
+            setInput("");
           }
         };
 
@@ -307,47 +310,24 @@ export const YOLOv7 = () => {
 
         <div className="jumbotron-file-uploader flex flex-col items-center justify-center">
           <React.Fragment>
-            {/* {article ? ( */}
-            <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-              <img
-                src={imagePreview ? imagePreview : "/images/yolo-default.png"}
-                className="my-auto object-contain"
-              />
+            <div
+              className="w-full space-y-3"
+              onDrop={handleDrop}
+              onDragOver={(e) => e.preventDefault()}
+            >
+              <label htmlFor="fileInput" className="block">
+                <div className="jumbotron-file-uploader my-auto cursor-pointer bg-slate-50">
+                  <div className="jumbotron-file-uploader flex w-full flex-wrap items-center justify-center overflow-auto">
+                    <img
+                      src={
+                        imagePreview ? imagePreview : "/images/yolo-default.png"
+                      }
+                      className="my-auto object-contain"
+                    />
+                  </div>
+                </div>
+              </label>
             </div>
-            {/* ) : ( */}
-            {/* <div */}
-            {/* className="w-full space-y-3" */}
-            {/* onDrop={handleDrop} */}
-            {/* onDragOver={(e) => e.preventDefault()} */}
-            {/* > */}
-            {/* <label htmlFor="fileInput" className="block"> */}
-            {/* <div className="jumbotron-file-uploader my-auto cursor-pointer bg-slate-50 text-center"> */}
-            {/* {imagePreview ? ( */}
-            {/* <div className="jumbotron-file-uploader flex w-full flex-wrap overflow-auto">
-                      <img
-                        src={
-                          imagePreview
-                            ? imagePreview
-                            : "/images/yolo-default.png"
-                        }
-                        className="my-auto object-contain"
-                      />
-                    </div> */}
-            {/* ) : ( */}
-            {/* <div className="cursor-pointer space-y-4 px-10 py-10">
-                        <Icons.Upload01 className="mx-auto h-8 w-8 stroke-slate-500" />
-                        <p className="mx-auto product-body-text-4-regular">
-                          Drag-and-drop file, or{" "}
-                          <span className="text-instillBlue50">
-                            browse computer
-                          </span>
-                        </p>
-                      </div> */}
-            {/* )} */}
-            {/* </div> */}
-            {/* </label> */}
-            {/* </div> */}
-            {/* )} */}
             <input
               type="file"
               accept="image/*"
