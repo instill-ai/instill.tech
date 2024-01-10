@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.15](https://github.com/instill-ai/instill.tech/compare/v1.41.14...v1.41.15) (2024-01-10)
+
+
+### Bug Fixes
+
+* llama chatbox ([#688](https://github.com/instill-ai/instill.tech/issues/688)) ([6ac70dd](https://github.com/instill-ai/instill.tech/commit/6ac70dda5bf58481956d792f315b9e194cadf439))
+
 ## [1.41.14](https://github.com/instill-ai/instill.tech/compare/v1.41.13...v1.41.14) (2024-01-10)
 
 
