@@ -52,7 +52,7 @@ export const Nav = () => {
         position="mr-auto"
         withArrow={false}
         text="Instill Hub"
-        link="https://console.instill.tech"
+        link="https://instill.tech/login"
       />
     </React.Fragment>
   );
