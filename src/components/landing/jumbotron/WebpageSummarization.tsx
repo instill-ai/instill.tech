@@ -118,13 +118,9 @@ export const WebpageSummarization = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-full pr-2">
-            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+          <div className="my-auto w-full pr-2">
+            <p className="text-sm font-medium text-black xl:text-[16px]">
               Enter a webpage, generate a preview.
-            </p>
-            <p className="hidden text-sm font-medium text-black sm:block xl:text-[16px]">
-              Enter a webpage, summarize like Arc Max&apos;s &quot;5 Second
-              Previews&quot;.
             </p>
           </div>
 

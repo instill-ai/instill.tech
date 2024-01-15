@@ -83,13 +83,9 @@ export const AskOnPage = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-full pr-1">
-            <p className="block text-sm font-medium text-black xl:hidden xl:text-[16px]">
+          <div className="my-auto w-full pr-1">
+            <p className="text-sm font-medium text-black xl:text-[16px]">
               Answer questions related to a webpage.
-            </p>
-            <p className="hidden text-sm font-medium text-black xl:block xl:text-[16px]">
-              Enter a webpage, answer questions related to its content, like Arc
-              Max&apos;s &quot;Ask on Page&quot;.
             </p>
           </div>
           <div className="flex items-start justify-end">

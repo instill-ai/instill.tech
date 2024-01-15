@@ -392,6 +392,14 @@ export function getNavbar(
     title: appType,
     items: [
       {
+        key: "docs-nav-item-border-api-reference",
+        href: "https://openapi.instill.tech",
+        className: "api-reference-link",
+        position: "left",
+        label: "API Reference",
+        appType: null,
+      },
+      {
         key: "docs-nav-dropdown-menu",
         href: "/",
         className: "",
