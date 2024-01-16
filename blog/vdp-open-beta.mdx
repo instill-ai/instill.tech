@@ -1,0 +1,189 @@
+---
+title: "Instill VDP is now Open Beta"
+lang: "en-US"
+draft: false
+description: " Instill VDP is now in Open Beta, offering a robust ETL infrastructure for versatile data processing, with plans for General Availability (GA) and a comprehensive solution for developers to securely harness AI and unstructured data."
+slug: "vdp-open-beta"
+publishedOn: "2024-01-16T18:40:00"
+themeImgSrc: "/blog-assets/vdp-open-beta/overview.png"
+themeImgAlt: "VDP is open beta"
+themeImgThumbnailSrc: "/blog-assets/vdp-open-beta/overview.png"
+placeholderColor: "bg-instillYellow50"
+author: "Ping-Lin Chang"
+authorAvatarSrc: "/author-avatar/pinglin.jpeg"
+authorGitHubUrl: "https://github.com/pinglin"
+category: "Product Updates"
+---
+
+We’re thrilled to announce that Instill VDP is in Open Beta.
+This means that we have pinned down the fundamental functionalities and the API, and are ready to welcome more data and AI enthusiasts to try out this ETL infrastructure for processing versatile data. 
+
+<CtaButton
+  text="🎉 Check out VDP on GitHub "
+  link="http://go.instill.tech/4em2l4"
+/>
+
+The Instill VDP platform has had the privilege of engaging over a thousand users, including those using self-hosting and Instill Cloud services.
+We've seen our pipelines utilized in excess of 100,000 times, a testament to the interest and utility our platform offers.
+Drawing on invaluable feedback from our initial users, we've made thoughtful revisions to the alpha version across various aspects.
+Our open-source codebase has been refined for greater clarity, the system's architecture has been streamlined for simplicity, and our no-code UI has undergone multiple redesigns for enhanced user-friendliness.
+Additionally, the ease of use for our Python and TypeScript interfaces has been significantly improved.
+
+It's been a year marked by relentless effort and dedication, and it brings us great joy to share that Instill VDP is now entering its Open Beta phase.
+We're deeply grateful for the journey thus far and excited about what lies ahead.
+This article aims to reflect on our journey in developing this open-source unstructured data ETL platform and to give a glimpse into what lies ahead in our forward-looking plan.
+
+## From Alpha to Beta
+
+Our journey began with a focus on unstructured data ETL challenges, leading to the Open Alpha launch of Instill Versatile Data Pipeline (VDP) in August 2022.
+Instill VDP aims to unify versatile data integration, allowing users to consolidate diverse data sources into centralized warehouses or applications for comprehensive insights, akin to handling structured data.
+The platform is crafted to obviate the need for custom data connectors, high-maintenance model serving platforms, and ELT pipeline automation tools.
+
+Over a year since Instill VDP's debut, we've stayed true to our core mission while advancing towards a more adaptable and robust framework.
+We're excited to outline our progress and focus areas for the Beta phase of Instill VDP, emphasizing:
+
+- Opinionated design
+  - Refined protocol standards
+  - Enhanced extensibility
+  - Greater flexibility
+- Ease of access
+  - No-code UI
+  - Low-code SDK and CLI
+  - Deployment options and Instill Cloud
+
+### Opinionated design
+
+Instill VDP has been crafted with a focus on robust engineering principles, ensuring that its system architecture and API protocol are future-proof and adaptable to rapid evolution in data and AI fields.
+Emphasizing open-source, modularity, and collaborative implementations, the beta version lays down fundamental principles for Instill VDP's long-term direction.
+
+### Great extensibility and flexibility
+
+Instill VDP is engineered to manage various data types, including unstructured, semi-structured, and structured data.
+This adaptability is rooted in an elastic foundation that allows the Directed Acyclic Graph (DAG) pipeline to easily extend and flexibly manage different data types and structures.
+
+In the beta release, we defined specific connectors and operators for IO-bound and CPU-bound units within the ETL pipeline.
+This design simplifies the extension of Instill VDP's capabilities; adding new features involves creating new connectors and operators.
+
+Flexibility in Instill VDP is achieved by allowing dynamic data structure definition in the Start component, enabling users to tailor the input data payload for various ETL tasks.
+This dynamic approach, where input data structures are converted into JSON Schema for backend processing, came from insights gained during the alpha phase, where we recognized the limitations of fixed API data payloads in addressing diverse ETL use cases.
+
+### Refined protocol standards
+
+In integrating with third-party solutions, including data sources, AI vendors, and blockchains, a unified protocol is essential.
+Our goal isn't to create a new industrial standard, but rather to adopt popular and common protocols to facilitate integration.
+
+For external connectors, we use JSON Schema and, when applicable, leverage the OpenAPI provided by vendors to auto-generate UI forms and backend codes.
+Internally, within the Instill Core projects, we've established [Instill Protocol](https://github.com/instill-ai/component/blob/main/schema.json), standardizing the input and output for AI tasks.
+This approach enables seamless integration with third-party solutions and allows external stakeholders to integrate with Instill Core components using the Instill Protocol.
+
+## Ease of access
+
+Our goal with Instill VDP is to simplify unstructured data ETL for everyone, focusing on user-friendly interfaces (no-code and low-code) and effortless deployment.
+
+### No-code UI
+
+Initially, our no-code pipeline builder simply connected components linearly, but we quickly realized this approach was too simplistic.
+Complex AI models with varied input parameters and modalities led to cluttered, hard-to-maintain pipeline visuals.
+Additionally, the initial user experience of dragging lines to connect components was not optimal due to the intricate dependencies between parameters.
+
+Responding to these challenges and user feedback, we've reimagined the pipeline builder.
+Our new design merges building and running modes, providing a unified canvas view for all pipeline configurations.
+This approach clarifies component connectivity through variable references, enhancing observability and simplifying maintenance.
+Users can now easily experiment and interact with the pipeline, enjoying a seamless experience from build to run time.
+
+### Low-code SDK and CLI
+
+While our no-code UI broadens Instill VDP's accessibility, the low-code SDK, leveraging Python and TypeScript, opens up even more possibilities.
+It allows seamless integration with various tech stacks, thanks to the auto-generated client stub from our API's Protobuf.
+The Open Beta version introduces additional syntax enhancements for easier pipeline construction and manipulation.
+The beta release also comes along with a CLI tool to help access Instill Core and Instill Cloud in a local terminal.
+
+### Deployment options and Instill Cloud
+
+Our main objective in creating Instill VDP is to make it easily accessible.
+To achieve this, users can quickly launch it on local machines using just a single line of code via Docker Compose or Kubernetes Helm charts, simplifying the traditionally complex process of deploying, scaling, and managing unstructured data pipelines.
+
+In May 2023, we introduced Instill Cloud, a fully managed cloud service that simplifies the user experience by offering Instill VDP's full capabilities without the need for managing infrastructure.
+This service focuses on scalability and efficiency, allowing users to concentrate on core development tasks without worrying about infrastructure complexities.
+
+To further our commitment to accessible AI, we introduced a Freemium plan for Instill Cloud, with rate-limited feature access.
+For unrestricted use, individuals can choose the Pro tier at $9 per month, while organizations can opt for the Team plan at $14 per seat per month for more team features.
+This initial pricing structure is open to user feedback for future refinements.
+
+<CtaButton
+  text="🚀 Try Instill Cloud Free"
+  link="https://console.instill.tech/?utm_source=blog&utm_medium=link&utm_campaign=vdp-open-beta"
+/>
+
+## Toward General Availability (GA)
+
+Even though we just announced Instill VDP entering its beta phase today, we're already strategizing towards reaching General Availability (GA).
+We are dedicated to continuously refining and improving the tool, ensuring it aligns with the dynamic demands of unstructured data processing and ETL.
+
+### Implementing robust pipeline - failover and persistency
+
+In the realm of complex production pipelines, developers often encounter a multitude of potential failure points including API glitches, downtime of integrated services, and similar issues.
+The implementation of a failover mechanism is crucial in addressing these challenges.
+It ensures that, despite the occurrence of such failures, the pipeline maintains its functionality and continues to operate seamlessly.
+This failover strategy is designed to provide resilience and reliability, ensuring that the pipeline delivers consistent performance and minimizes downtime or data loss.
+
+### Enhancing pipelines with scheduled and event-Driven triggers
+
+Instill VDP currently enables pipeline runs through user API call triggers.
+To broaden its capabilities, we are introducing support for additional pipeline triggering mechanisms: user-defined schedules and event-based triggers.
+This enhancement is particularly beneficial for executing background tasks. For example, in Retrieval Augmented Generation (RAG) applications, it allows for the automatic synchronization of documents to ensure they remain current and relevant.
+Furthermore, it enables the automation of data processing, ensuring that data is processed automatically in response to a predefined event, without the need for manual intervention.
+This expansion in triggering options significantly enhances the versatility and effectiveness of Instill VDP in managing diverse workflow requirements.
+
+### Enhancing data transformation in pipelines
+
+In every release, we're expanding our support for new connectors and operators to enhance the flexibility of VDP.
+These components are evolving as fast as Instill VDP itself. To ensure robustness in these integrations, we're introducing a framework.
+Within this framework, we'll introduce standardized data formats and simplify the overall developer experience when it comes to contributing connectors and operators.
+With minimal effort, this framework will ensure that any new component comes with a unified no-code UI and a low-code experience, streamlining the process for developers.
+
+<Tweet tweetId="741089564329054208" />
+
+In addition to connectors and operators, we're rolling out a new component in our pipeline architecture: iterators.
+These are designed to enable fine-grained data transformations during the ETL process.
+Leveraging the fun illustration from [Steven Luscher’s tweet](https://x.com/steveluscher/status/741089564329054208?s=20), our Map/Filter/Reduce iterators will operate on data arrays, performing transformations essential for efficient data handling.
+These iterators are particularly valuable in scenarios like constructing a QA bot capable of processing multiple or lengthy documents.
+They enable the bot to efficiently assimilate and analyze the content, forming a contextually rich base to deliver accurate and relevant answers.
+This enhancement in Instill VDP not only simplifies complex data handling but also opens up new possibilities for sophisticated data-driven applications.
+
+### VDP-in-VDP: enhancing modularity and efficiency
+
+At its core, VDP is crafted as a versatile and modular ETL framework for unstructured data.
+Emphasizing a modular architecture, Instill VDP is engineered to enhance its functionality by supporting the integration of one pipeline within another.
+This nested pipeline approach offers significant advantages in data ETL, such as increased flexibility in pipeline design, enhanced scalability, and the ability to streamline complex data processes by breaking them down into more manageable, interconnected components.
+
+### Focusing on performance optimization
+
+To optimize performance in Instill VDP, we're focusing on several crucial improvements:
+
+- _Binary Streaming Over Base64 Encoding_: Currently, input files are converted to Base64 format, resulting in increased memory usage, which can slow down pipeline runs. To address this, we plan to implement binary streaming,reducing memory overhead and enhancing processing speed.
+- _Enhanced Streaming for Large Language Model (LLM) Pipelines_: Prioritizing UX, we aim to support streaming in LLM pipelines. This feature is crucial particularly in scenarios involving continuous data flow or real-time processing.
+- _Streaming Intermediate Steps in Long-Running Pipelines_: For pipelines that have prolonged execution times, introducing streaming at intermediate stages is a strategic enhancement. This approach not only improves pipeline efficiency but also increases observability, allowing for better monitoring and management of long-running processes.
+- _Expanding Instill Cloud's Global Footprint_: At present, our fully-managed public cloud service, Instill Cloud, operates from a single cluster in Europe. Plans are underway to expand this infrastructure to include additional clusters in the US and Asia. This expansion will significantly enhance the service by reducing latency for users in these regions, offering better data sovereignty compliance, and providing a more resilient and distributed architecture for global users.
+
+These enhancements are targeted to elevate the performance and usability of Instill VDP, making it an even more powerful tool for developers in handling diverse and complex data processing tasks.
+
+### Coordinate with Instill Model and Instill Artifact
+
+Instill VDP forms a key component of our turn-key solution designed to address unstructured data ETL challenges, catering to both Bring Your Own Cloud (BYOC) and on-premises deployment scenarios.
+
+- [**💧Instill VDP (Beta)**](https://github.com/instill-ai/vdp) - no-code/low-code pipeline builder that allows you to build, test, release and share custom AI pipelines for processing unstructured data.
+- [**⚗️Instill Model (Alpha)**](https://github.com/instill-ai/model) - A ModelOps platform facilitating the seamless import, training, and serving of AI models at scale. It streamlines AI model lifecycle management, enhancing efficiency and scalability for developers.
+- **💾 Instill Artifact (Coming soon)** - A data management platform designed to integrate effortlessly with Instill VDP and Instill Model. It ensures data is readily accessible and in the right format for AI model training and pipeline execution.
+
+Looking ahead to this year, we will roll out beta versions of Instill Model and Artifact.
+Together with Instill VDP, they make up what we call **"The Triad of Excellence"** within Instill Core, representing a powerful synergy for workflow/pipeline creation, model ops, and data management.
+
+It's an ideal framework for organizations seeking to lead in AI innovation while retaining full control over their technology environments.
+For developers, this integrated ecosystem is a gateway to leverage AI and unstructured data securely and effectively, tailored to their specific needs.
+
+## Conclusion
+
+Instill VDP Open Beta represents a significant milestone in our journey to empower developers with powerful tools for unstructured data ETL.
+We're incredibly thankful to our [community](https://discord.gg/sevxWsqpGh) and dedicated users who've played a vital role in shaping our tools.
+As data and AI continue to evolve, we welcome your valuable feedback to keep improving together.
