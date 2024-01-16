@@ -242,13 +242,9 @@ export const Llama2Chat = () => {
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
-          <div className="w-full pr-2">
-            <p className="block text-sm font-medium text-black sm:hidden xl:text-[16px]">
+          <div className="my-auto w-full pr-2">
+            <p className="text-sm font-medium text-black xl:text-[16px]">
               Ask about an image, get magical answers.
-            </p>
-            <p className="hidden text-sm font-medium text-black dark:text-zinc-600 sm:block xl:text-[16px]">
-              Upload an image, ask a question, and watch it provide magical
-              answers.
             </p>
           </div>
 
