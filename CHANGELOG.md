@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.41.16](https://github.com/instill-ai/instill.tech/compare/v1.41.15...v1.41.16) (2024-01-16)
+
+
+### Miscellaneous
+
+* update jumbotron text and add API reference ([#692](https://github.com/instill-ai/instill.tech/issues/692)) ([f435c49](https://github.com/instill-ai/instill.tech/commit/f435c492413713956e00cfec34aecfe3c8aeb76e))
+
+
+### Documentation
+
+* add doc for v0.10.0-beta ([#690](https://github.com/instill-ai/instill.tech/issues/690)) ([b035606](https://github.com/instill-ai/instill.tech/commit/b035606ab555e088a19544de0779764f62a54d94))
+
 ## [1.41.15](https://github.com/instill-ai/instill.tech/compare/v1.41.14...v1.41.15) (2024-01-10)
 
 
