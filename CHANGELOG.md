@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.41.17](https://github.com/instill-ai/instill.tech/compare/v1.41.16...v1.41.17) (2024-01-17)
+
+
+### Miscellaneous
+
+* add producthunt link ([#693](https://github.com/instill-ai/instill.tech/issues/693)) ([ee2b76f](https://github.com/instill-ai/instill.tech/commit/ee2b76fcb23ef251891883fe37ce181cf6975387))
+* update jumbotron-visual-understanding card on website since the Model task has been changed ([#695](https://github.com/instill-ai/instill.tech/issues/695)) ([a460f4e](https://github.com/instill-ai/instill.tech/commit/a460f4eebb4470ba6febfc1ab45be081f42c901e))
+
+
+### Documentation
+
+* **blog:** add blog article for Instill VDP Open Beta ([#694](https://github.com/instill-ai/instill.tech/issues/694)) ([0f37d87](https://github.com/instill-ai/instill.tech/commit/0f37d874b64552435d33f831041fb79eb5047e24))
+
 ## [1.41.16](https://github.com/instill-ai/instill.tech/compare/v1.41.15...v1.41.16) (2024-01-16)
 
 
