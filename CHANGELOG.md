@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.19](https://github.com/instill-ai/instill.tech/compare/v1.41.18...v1.41.19) (2024-01-17)
+
+
+### Documentation
+
+* **blog:** add no-code section in GA ([#699](https://github.com/instill-ai/instill.tech/issues/699)) ([0603ddb](https://github.com/instill-ai/instill.tech/commit/0603ddb485bf97e5d5d61f0ec45efee6123e2078))
+
 ## [1.41.18](https://github.com/instill-ai/instill.tech/compare/v1.41.17...v1.41.18) (2024-01-17)
 
 
