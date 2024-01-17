@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.18](https://github.com/instill-ai/instill.tech/compare/v1.41.17...v1.41.18) (2024-01-17)
+
+
+### Bug Fixes
+
+* fix team pricing ([#697](https://github.com/instill-ai/instill.tech/issues/697)) ([151431f](https://github.com/instill-ai/instill.tech/commit/151431fa9f602be5f5d24eb3b0807d363b7f6ec6))
+
 ## [1.41.17](https://github.com/instill-ai/instill.tech/compare/v1.41.16...v1.41.17) (2024-01-17)
 
 
