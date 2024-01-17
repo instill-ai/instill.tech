@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.41.20](https://github.com/instill-ai/instill.tech/compare/v1.41.19...v1.41.20) (2024-01-17)
+
+
+### Bug Fixes
+
+* console url ([#701](https://github.com/instill-ai/instill.tech/issues/701)) ([91a4790](https://github.com/instill-ai/instill.tech/commit/91a4790cae4c0c8c31959d808cdd52a179d7cccf))
+
 ## [1.41.19](https://github.com/instill-ai/instill.tech/compare/v1.41.18...v1.41.19) (2024-01-17)
 
 
