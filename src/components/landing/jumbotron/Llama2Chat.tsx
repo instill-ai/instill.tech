@@ -151,7 +151,7 @@ export const Llama2Chat = () => {
     const apiResponse = await JumbotronSDK.llava7b({
       inputs: [
         {
-          image: imagePreview ? imagePreview : defaultImage || "",
+          images: [imagePreview ? imagePreview : defaultImage || ""],
           prompt: question,
         },
       ],
