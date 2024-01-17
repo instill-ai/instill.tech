@@ -79,19 +79,18 @@ const PricingPage: FC & {
               cta={{
                 title: "choose pro",
                 onClick: () => {
-                  router.push("https://console.instill.tech/settings/billing");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
             <PricingInfoCard
-              price="$70"
+              price="$14"
               tier="team"
               className="w-[263px]"
               planDescription="For small teams with advanced collaboration and no organization restrictions"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
-                "Up to 5 users",
                 "Dedicated Slack Channel and up to 1 hour of weekly dedicated support",
                 "Version Control",
                 "User permissions",
@@ -101,7 +100,7 @@ const PricingPage: FC & {
               cta={{
                 title: "Choose team",
                 onClick: () => {
-                  router.push("https://console.instill.tech/settings/billing");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
