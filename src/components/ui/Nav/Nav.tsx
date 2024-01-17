@@ -33,7 +33,7 @@ export const Nav = () => {
           className="text-base text-instillGrey95 underline hover:text-instillBlue50"
           target="_blank"
           rel="noreferrer noopener"
-          href="https://console.instill.tech"
+          href="https://instill.tech"
         >
           Instill Cloud
         </a>
@@ -52,7 +52,7 @@ export const Nav = () => {
         position="mr-auto"
         withArrow={false}
         text="Instill Hub"
-        link="https://instill.tech/login"
+        link="https://instill.tech"
       />
     </React.Fragment>
   );
