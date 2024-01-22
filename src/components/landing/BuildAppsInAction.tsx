@@ -13,7 +13,7 @@ export const BuildAppsInAction = () => {
         />
         <SectionHeader
           header="Power your apps with versatile AI pipelines"
-          headerWidth="w-full"
+          headerWidth="w-full !leading-[60px]"
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
