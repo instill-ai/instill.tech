@@ -127,7 +127,7 @@ const PricingPage: FC & {
               cta={{
                 title: "Book a meeting",
                 onClick: () => {
-                  router.push("mailto:support@instill.tech");
+                  router.push("https://calendly.com/instill-ai/chat-with-us");
                 },
               }}
             />
