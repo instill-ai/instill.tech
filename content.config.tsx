@@ -652,7 +652,7 @@ export function docsConfig(
 export const BlogCategories = [
   "Home",
   "Insights",
-  "Our Story",
+  "Story",
   "Events",
   "Product Updates",
 ] as const;
