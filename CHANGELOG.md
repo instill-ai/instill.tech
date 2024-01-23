@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.41.21](https://github.com/instill-ai/instill.tech/compare/v1.41.20...v1.41.21) (2024-01-23)
+
+
+### Bug Fixes
+
+* remove unused blog ([#706](https://github.com/instill-ai/instill.tech/issues/706)) ([bd2e905](https://github.com/instill-ai/instill.tech/commit/bd2e9053673d4460cde569c1542f37cd02e88736))
+* text alignment fixes ([#705](https://github.com/instill-ai/instill.tech/issues/705)) ([482854d](https://github.com/instill-ai/instill.tech/commit/482854df3830ffcfb7e8b015c15f70da12427ae8))
+* update book meeting link ([#703](https://github.com/instill-ai/instill.tech/issues/703)) ([5cd11bd](https://github.com/instill-ai/instill.tech/commit/5cd11bd9591e20963bac7360447f79b995a76a05))
+
+
+### Miscellaneous
+
+* our story --&gt; story ([#707](https://github.com/instill-ai/instill.tech/issues/707)) ([beb20c3](https://github.com/instill-ai/instill.tech/commit/beb20c32ba49d54634e6e82472836974610f1ae5))
+
+
+### Documentation
+
+* fix section order ([00a6394](https://github.com/instill-ai/instill.tech/commit/00a639478d615a55a840875bc75343deb1121dae))
+
 ## [1.41.20](https://github.com/instill-ai/instill.tech/compare/v1.41.19...v1.41.20) (2024-01-17)
 
 
