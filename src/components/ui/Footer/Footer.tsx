@@ -80,6 +80,10 @@ export const Footer = () => {
         text: "Media Kit",
         href: "https://artifacts.instill.tech/instill-ai-media-kit.zip",
       },
+      {
+        text: "Changelog",
+        href: "/changelog",
+      },
     ],
     support: [
       {
