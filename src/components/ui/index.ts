@@ -69,6 +69,7 @@ export { MdxImageGallery } from "./MdxImageGallery";
 export type { MdxImageGalleryProps } from "./MdxImageGallery";
 export { MdxYoutubeEmbed } from "./MdxYoutubeEmbed";
 export type { MdxYoutubeEmbedProps } from "./MdxYoutubeEmbed";
+export { MdxJumbotron } from "./MdxJumbotron";
 export { ArticlePublishInfo } from "./ArticlePublishInfo";
 export type { ArticlePublishInfoProps } from "./ArticlePublishInfo";
 export { ArticleThemeImage } from "./ArticleThemeImage";

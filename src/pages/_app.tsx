@@ -22,6 +22,7 @@ import {
   MdxYoutubeEmbed,
   MdxQuoteBlock,
   MdxQuoteBlockProps,
+  MdxJumbotron,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -92,6 +93,7 @@ const components = {
       position={props.position}
     />
   ),
+  Jumbotron: (props: any) => <MdxJumbotron />,
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

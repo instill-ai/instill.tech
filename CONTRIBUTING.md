@@ -203,6 +203,14 @@ You can embed Youtube video by using this component.
 <Youtube id="0Rdv8oqqxfw" width="800" height="450" />
 ```
 
+#### Jumbotron
+
+You can embed Jumbotron by using this component.
+
+```mdx
+<Jumbotron />
+```
+
 ## How to contribute to the Docs.
 
 ### Add content to the right location
