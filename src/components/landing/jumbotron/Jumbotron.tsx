@@ -70,11 +70,11 @@ export const Jumbotron = () => {
         slidesPerView={"auto"}
         modules={[EffectCards, Pagination, Navigation, Autoplay]}
         className="mySwiper"
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: true,
-        //   pauseOnMouseEnter: true,
-        // }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: true,
+          pauseOnMouseEnter: true,
+        }}
         onReachBeginning={() => {
           const prevButton = document.getElementById("prevButton");
           if (prevButton) {

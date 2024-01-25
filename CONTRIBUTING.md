@@ -209,6 +209,13 @@ You can embed Jumbotron by using this component.
 
 ```mdx
 <Jumbotron />
+<ResponderWithSpeech />
+<AskOnPage />
+<WebpageSummarization />
+<StabilityAIOpenAISticker />
+<Llama2Chat />
+<SEOArticleWriter />
+<YOLOv7 />
 ```
 
 ## How to contribute to the Docs.
