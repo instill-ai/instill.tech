@@ -331,3 +331,22 @@ table.mcnCaptionTopContent {
     -webkit-box-align: center;
   }
 }
+
+#content .jumbotron p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#content .jumbotron .summary-box p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+#content .jumbotron pre {
+  background-color: #fff;
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
