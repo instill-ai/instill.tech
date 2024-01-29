@@ -22,6 +22,14 @@ import {
   MdxYoutubeEmbed,
   MdxQuoteBlock,
   MdxQuoteBlockProps,
+  MdxJumbotron,
+  MdxResponderWithSpeech,
+  MdxAskOnPage,
+  MdxWebpageSummarization,
+  MdxStabilityAIOpenAISticker,
+  MdxLlama2Chat,
+  MdxSEOArticleWriter,
+  MdxYOLOv7,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -92,6 +100,14 @@ const components = {
       position={props.position}
     />
   ),
+  Jumbotron: (props: any) => <MdxJumbotron />,
+  ResponderWithSpeech: (props: any) => <MdxResponderWithSpeech />,
+  AskOnPage: (props: any) => <MdxAskOnPage />,
+  WebpageSummarization: (props: any) => <MdxWebpageSummarization />,
+  StabilityAIOpenAISticker: (props: any) => <MdxStabilityAIOpenAISticker />,
+  Llama2Chat: (props: any) => <MdxLlama2Chat />,
+  SEOArticleWriter: (props: any) => <MdxSEOArticleWriter />,
+  YOLOv7: (props: any) => <MdxYOLOv7 />,
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
