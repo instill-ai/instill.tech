@@ -111,14 +111,14 @@ To configure an OpenAI connector:
 4. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
 
 ```
-Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut {{start.sticker_shape}} sticker with white border".
+Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border".
 Only return the output content.
 
 Prompt: a bear
-Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut {{start.sticker_shape}} sticker with white border
+Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
 Prompt: a dog writes code
-Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut {{start.sticker_shape}} sticker with white border
-Prompt: {{start.prompt}}
+Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
+Prompt: ${start.prompt}
 Output:
 ```
 
@@ -133,14 +133,14 @@ You are a prompt engineer to generate Stable Diffusion prompts to generate stick
 8. Set **n** to in the _1_ to indicate only one chat completion.
 
 The OpenAI connector will automatically link to the Start operator
-since we have used `{{start.sticker_shape}}` and `{{start.prompt}}` in the OpenAI connector configuration.
-The `{{}}` placeholders represent **string values** to be filled during pipeline triggering.
+since we have used `${start.sticker_shape}` and `${start.prompt}` in the OpenAI connector configuration.
+The `${}` placeholders represent **string values** to be filled during pipeline triggering.
 
 To set up an Stability AI connector:
 
 1. Click **+ Add Component** and choose **stability-ai** from existing resource. This will add a OpenAI connector `stability_0` to the canvas.
 2. Select _TASK_TEXT_TO_IMAGE_ from the dropdown of the **Stability AI Component** field.
-3. In the **Prompts** field, specify the generated text array from the OpenAI connector output `{openai_0.output.texts}`.
+3. In the **Prompts** field, specify the generated text array from the OpenAI connector output `${openai_0.output.texts}`.
 4. Click the **Advanced configuration** link on the `stability_0` component to open configuration right panel.
 5. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
 6. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
@@ -149,11 +149,11 @@ To set up an Stability AI connector:
 9. Fill **Steps** to _30_ to indicate the number of diffusion steps to run.
 
 You will see that the Stability AI connector is automatically linked to the OpenAI connector
-since we have used `{openai_0.output.texts}` in the Stability AI connector configuration.
+since we have used `${openai_0.output.texts}` in the Stability AI connector configuration.
 
 <InfoBlock type="tip" title="Tip">
-  The `{}` placeholders are used to reference values from previous connectors.
-  Unlike the `{{}}` placeholders, `{}` retains the type of the referenced value.
+  The `${}` placeholders are used to reference values from previous connectors.
+  Unlike the `${}` placeholders, `${}` retains the type of the referenced value.
 </InfoBlock>
 
 The End Operator is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
@@ -161,10 +161,10 @@ The End Operator is used at the end of a VDP pipeline to receive the output as a
 To set up an End operator:
 
 1. Find the **end** operator on canvas.
-2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, **Key** with _my_original_prompt_ and **Value** with `{start.prompt}`. Click **Save**.
-3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, **Key** with _sticker_shape_ and **Value** with `{start.sticker_shape}`. Click **Save**.
-4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, **Key** with _llm_powered_prompt_ and **Value** with `{openai_0.output.texts}`. Click **Save**.
-5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, **Key** with _digital_sticker_ and **Value** with `{stability_0.output.images}`. Click **Save**.
+2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, **Key** with _my_original_prompt_ and **Value** with `${start.prompt}`. Click **Save**.
+3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, **Key** with _sticker_shape_ and **Value** with `${start.sticker_shape}`. Click **Save**.
+4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, **Key** with _llm_powered_prompt_ and **Value** with `${openai_0.output.texts}`. Click **Save**.
+5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, **Key** with _digital_sticker_ and **Value** with `${stability_0.output.images}`. Click **Save**.
 
 You will see that the End operator is automatically linked to multiple components: `start`, `openai_0` and `stability_0`.
 
