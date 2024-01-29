@@ -76,10 +76,10 @@ Let's begin with an example of a **configuration**:
   "input": {
     "field_1_primitive_value": "this is a book",
     "field_2_primitive_value": 1.0,
-    "field_3_reference": "{ start.a_string_field }",
-    "field_4_reference": "{ componentA.output.a_string_field }",
-    "field_5_reference": "{ componentA.output.a_number_array }",
-    "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
+    "field_3_reference": "${ start.a_string_field }",
+    "field_4_reference": "${ componentA.output.a_string_field }",
+    "field_5_reference": "${ componentA.output.a_number_array }",
+    "field_6_template": "${ componentA.output.a_string_field } and we have ${ componentB.output.a_number_field }"
   }
 }
 ```
@@ -125,7 +125,7 @@ When utilizing batch triggering in VDP, where each component processes an array 
 
 ### Reference
 
-- A Reference employs special syntax enclosed in single curly brackets, e.g., `{ start.a_string_field }`.
+- A Reference employs special syntax enclosed in single curly brackets, e.g., `${ start.a_string_field }`.
 - It functions as a variable reference, copying the value from an upstream component to the data input while preserving the original data type.
 
 **Example:**
@@ -136,9 +136,9 @@ Suppose we have the following component configuration:
 // Component configuration
 {
   "input": {
-    "field_3_reference": "{ start.a_string_field }",
-    "field_4_reference": "{ componentA.output.a_string_field }",
-    "field_5_reference": "{ componentA.output.a_number_array }"
+    "field_3_reference": "${ start.a_string_field }",
+    "field_4_reference": "${ componentA.output.a_string_field }",
+    "field_5_reference": "${ componentA.output.a_number_array }"
   }
 }
 ```
@@ -165,7 +165,7 @@ Given the provided upstream component data, the rendered data input for this com
 
 ### Template
 
-- A **Template** is a string comprising one or more **String Literals**, enclosed in double curly brackets, e.g., `{{ componentA.output.a_string_field }}`.
+- A **Template** is a string comprising one or more **String Literals**, enclosed in double curly brackets, e.g., `${ componentA.output.a_string_field }`.
 - It retrieves values from upstream components and converts them to string type for the data input.
 
 **Example:**
@@ -176,7 +176,7 @@ Consider the following component configuration:
 // Component configuration
 {
   "input": {
-    "field_6_template": "{{ componentA.output.a_string_field }} and we have {{ componentB.output.a_number_field }}"
+    "field_6_template": "${ componentA.output.a_string_field } and we have ${ componentB.output.a_number_field }"
   }
 }
 ```

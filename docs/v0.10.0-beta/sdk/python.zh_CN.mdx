@@ -405,7 +405,7 @@ Now we can create a `model` `component`. From the already defined `instill Model
 instill_model_input = instill_task_detection_input.Input(
   model_namespace="admin",
   model_id="yolov7",
-  image_base64="{start.input_image}",
+  image_base64="${start.input_image}",
 )
 # create model connector component from the connector resource we had created previously
 instill_model_connector_component = instill_model.create_component(
@@ -419,7 +419,7 @@ Finally, we create an end operator.
 ```python
 # define end operator input and metadata spec
 end_operator_inp = {}
-end_operator_inp.update({"inference_result": "{yolov7.output.objects}"})
+end_operator_inp.update({"inference_result": "${yolov7.output.objects}"})
 
 end_operator_metadata = {}
 end_operator_metadata.update(
