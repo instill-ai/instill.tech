@@ -39,11 +39,11 @@ pnpm add @instill-ai/typescript-sdk
 <CH.Code>
 
 ```typescript next.js
-import InstillClient from "@instill-ai/typescript-sdk";
+import InstillClient from "instill-sdk";
 ```
 
 ```typescript node.js
-const InstillClient = require("@instill-ai/typescript-sdk").default;
+const InstillClient = require("instill-sdk").default;
 ```
 
 </CH.Code>
@@ -88,7 +88,7 @@ const client = new InstillClient(
 
 ```typescript
 import { useEffect, useState } from "react";
-import InstillClient, { User } from "@instill-ai/typescript-sdk";
+import InstillClient, { User } from "instill-sdk";
 
 export default function TypescriptSdkDemo() {
   const [user, setUser] = useState<User[]>([]);
@@ -131,7 +131,7 @@ export default function TypescriptSdkDemo() {
 
 ```typescript
 import { useEffect, useState } from "react";
-import InstillClient, { User } from "@instill-ai/typescript-sdk";
+import InstillClient, { User } from "instill-sdk";
 
 export default function TypescriptSdkDemo() {
   const [user, setUser] = useState<User[]>([]);
