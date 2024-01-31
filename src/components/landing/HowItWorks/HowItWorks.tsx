@@ -283,10 +283,10 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     </div>
                     <Separator className="mt-5" />
                   </div>
-                  <div className="flex flex-col items-start justify-start gap-5 px-6 py-5">
+                  <div className="flex min-w-[320px] flex-col items-start justify-start gap-5 px-6 py-5 xl:min-w-[480px]">
                     <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
                       <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-[30px]">
-                        npm i @instill-ai/typescript-sdk
+                        npm i instill-sdk
                       </div>
                       <div className="inline-flex items-center justify-center gap-2 rounded py-3">
                         <Link
