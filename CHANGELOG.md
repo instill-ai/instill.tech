@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.42.0](https://github.com/instill-ai/instill.tech/compare/v1.41.21...v1.42.0) (2024-02-01)
+
+
+### Features
+
+* add &lt;MdxJumbotron /&gt; component ([#711](https://github.com/instill-ai/instill.tech/issues/711)) ([c403721](https://github.com/instill-ai/instill.tech/commit/c403721966c01f9c3f349647f5fbe00a9bc3dd44))
+
+
+### Bug Fixes
+
+* update redirect link ([#714](https://github.com/instill-ai/instill.tech/issues/714)) ([e25ac28](https://github.com/instill-ai/instill.tech/commit/e25ac28ef9897559c8ecf911eafbe5292f57bb31))
+* update version url jumbotron ([#717](https://github.com/instill-ai/instill.tech/issues/717)) ([caa2f43](https://github.com/instill-ai/instill.tech/commit/caa2f43adb105aa79e2cf9fad7e3748de4f62083))
+
+
+### Miscellaneous
+
+* add changelog link into footer ([#708](https://github.com/instill-ai/instill.tech/issues/708)) ([e5aeaa3](https://github.com/instill-ai/instill.tech/commit/e5aeaa38edf3d98228555898c73b5870218feb98))
+
+
+### Documentation
+
+* namananand/ins 3306 use new namespace from @instill-ai/typescript-sdk to instill-sdk ([#716](https://github.com/instill-ai/instill.tech/issues/716)) ([448f2c8](https://github.com/instill-ai/instill.tech/commit/448f2c873cd4ea40fb68ccd52996caf0203ff7a1))
+* update @instill-ai/typescript-sdk to instill-sdk ([#715](https://github.com/instill-ai/instill.tech/issues/715)) ([ce5977c](https://github.com/instill-ai/instill.tech/commit/ce5977c75543578be985b8793adbf33734571b42))
+* update reference syntax in v0.10.0-beta document ([#713](https://github.com/instill-ai/instill.tech/issues/713)) ([b6440d9](https://github.com/instill-ai/instill.tech/commit/b6440d9361cac3d48e7b8b6d5862788d8744d5ac))
+
 ## [1.41.21](https://github.com/instill-ai/instill.tech/compare/v1.41.20...v1.41.21) (2024-01-23)
 
 
