@@ -84,6 +84,10 @@ export const Footer = () => {
         text: "Changelog",
         href: "/changelog",
       },
+      {
+        text: "API Reference",
+        href: "https://openapi.instill.tech",
+      },
     ],
     support: [
       {
