@@ -1,0 +1,179 @@
+---
+title: "Numbers Protocol"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a Numbers Protocol blockchain connector for the unstructured data pipeline tool VDP https://github.com/instill-ai/vdp"
+---
+
+The [Numbers Protocol](https://numbersprotocol.io/) is a groundbreaking asset-centric cross-network protocol that has gained trust and usage in various domains such as art, music, NFT platforms, and the metaverse.
+It is also venturing into applications for AI companies to trace digital media provenance.
+With the Numbers Protocol blockchain connector integrated into VDP, developers can seamlessly integrate third-party blockchain services.
+This integration brings data verifiability and traceability, marking a significant advancement in secure data management.
+
+The Numbers Protocol blockchain connector allows users to convert a wide range of data into Web3 assets.
+By utilizing this connector, your data file will be pinned on the IPFS network with on-chain records through the [Numbers Gateway](https://ipfs-pin.numbersprotocol.io/ipfs/), ensuring permanent storage.
+Additionally, the assets generated can be easily accessed and explored using the [Numbers Search Engine](https://nftsearch.site).
+To see an example of a Web3 asset created using this connector, click [here](https://nftsearch.site/asset-profile?cid=bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte).
+
+<ZoomableImg
+  src="/docs-assets/vdp/numbers-web3-asset-example.png"
+  alt="Generated Web3 asset sample using Stability AI AI connector (Stable Diffusion XL) on Numbers Search Engine using Numbers blockchain connector"
+/>
+
+## Release Stage
+
+`Alpha`
+
+## Resource Configuration
+
+The resource configuration is used for setting up the connection to NumbersProtocol.
+For the up-to-date configuration, refer to [here](https://github.com/instill-ai/connector/blob/main/pkg/numbers/config/definitions.json).
+
+| Field           | Type   | Note                                                                                                                                                                                                    |
+| :-------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| capture_token\* | string | Fill your Capture token in the [Capture App](https://captureapp.xyz/). To access your tokens, you need a Capture App account, and you can sign in with an email or wallet to acquire the Capture Token. |
+
+### No-code Setup
+
+<InfoBlock type="info" title="Prerequisites">
+
+To create a Numbers Protocol blockchain connector, you'll first need to create a [Capture Account](https://captureapp.xyz/).
+Then, check the documentation about [how to aquire Capture Token](https://docs.captureapp.xyz/about-capture/capture-account-and-wallet/capture-token).
+
+New accounts are granted 3 [NUM](https://num.numbersprotocol.io/) credits, the native token of the decentralized photo network.
+NUM tokens are used in the process of converting data into Web3 assets, and new users can register up to 120 assets at no cost.
+
+</InfoBlock>
+
+To create a Numbers Protocol blockchain connector on VDP:
+
+1. Go to the **Resource** page and click **Add Resource**
+2. Select **Numbers Protocol**
+3. In the configuration page, fill an ID for Numbers connecotor resource, this will be the unique identifier of this connector
+4. [Optional] Give a short description of your connector in the **Description** field
+5. Fill the following information and click **Set up**
+   - Fill **Capture token**. Follow the Capture App [documentation](https://docs.captureapp.xyz/about-capture/capture-account-and-wallet/capture-token) to aquire your capture token
+
+### Low-code Setup
+
+1. Create a Numbers Protocol blockchain connector:
+
+```shellscript cURL
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user-id>/connecotor-resources'
+     --header 'Authorization: Bearer <Your-API-Token>'
+     --data '{
+       "id": "my-numbers",
+       "connector_definition_name": "connector-definitions/blockchain-numbers",
+       "configuration": {
+         "capture_token": "<capture-token>"
+       }
+     }'
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+
+## Connector Configuration
+
+The connector configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+
+| Field                            | Type          | Note                                                                                                                                                                                                                                                                                                        |
+| :------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| input.images\*                   | array[string] | The images you want to upload to blockchain in base64 format                                                                                                                                                                                                                                                |
+| input.asset_creator              | string        | Name of the asset creator.                                                                                                                                                                                                                                                                                  |
+| input.abstract                   | string        | A summary or abstract of the asset.                                                                                                                                                                                                                                                                         |
+| input.custom.digital_source_type | string        | Specify the type of the source. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/digitalsourcetype)                                                                                                                                     |
+| input.custom.mining_preference   | string        | Designates the selection made by the asset creators or licensed owners to decide if the asset is suitable for inclusion in a data mining or AI/ML training workflow. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/miningpreference) |
+| input.custom.generated_through   | string        | URL of the service that is used to generate the content.                                                                                                                                                                                                                                                    |
+| input.custom.generated_by        | string        | The AI model used to generate the content.                                                                                                                                                                                                                                                                  |
+| input.custom.creator_wallet      | string        | The Wallet address of the asset creator.                                                                                                                                                                                                                                                                    |
+| input.custom.license.name        | string        | License of the asset file.                                                                                                                                                                                                                                                                                  |
+| input.custom.license.document    | string        | URL of the asset file.                                                                                                                                                                                                                                                                                      |
+
+When using the Numbers Protocol blockchain connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
+Here are the expected input and output data fields for the Numbers Protocol blockchain connector.
+
+### No-code Setup
+
+### Low-code Setup
+
+This is a sample `configuration` in the pipeline recipe.
+
+```json
+{
+  "configuration": {
+    "input": {
+      "images": ["${ start.image }", "/9j/xxxx"],
+      "asset_creator": "Xiaofei Du",
+      "abstract": "Xiaofei's Web3 creation",
+      "custom": {
+        "digital_source_type": "trainedAlgorithmicMedia",
+        "mining_preference": "notAllowed",
+        "generated_by": "Stability AI's Stable Diffusion XL 1.0",
+        "license": {
+          "name": "CC BY-SA",
+          "document": "https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      }
+    }
+  }
+}
+```
+
+### Expected Input Data Fields
+
+The expected input data fields has similar strucutre as `input` fields of [connector configuration](#connector-configuration).
+
+| Field                                  | Type          | Note                                                                                                                                                                                                                                                                                                        |
+| :------------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| inputs[idx].images\*                   | array[string] | The images you want to upload to blockchain in base64 format                                                                                                                                                                                                                                                |
+| inputs[idx].asset_creator              | string        | Name of the asset creator.                                                                                                                                                                                                                                                                                  |
+| inputs[idx].abstract                   | string        | A summary or abstract of the asset.                                                                                                                                                                                                                                                                         |
+| inputs[idx].custom.digital_source_type | string        | Specify the type of the source. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/digitalsourcetype)                                                                                                                                     |
+| inputs[idx].custom.mining_preference   | string        | Designates the selection made by the asset creators or licensed owners to decide if the asset is suitable for inclusion in a data mining or AI/ML training workflow. More details see [here](https://docs.numbersprotocol.io/introduction/numbers-protocol/defining-web3-assets/assettree/miningpreference) |
+| inputs[idx].custom.generated_through   | string        | URL of the service that is used to generate the content.                                                                                                                                                                                                                                                    |
+| inputs[idx].custom.generated_by        | string        | The AI model used to generate the content.                                                                                                                                                                                                                                                                  |
+| inputs[idx].custom.creator_wallet      | string        | The Wallet address of the asset creator.                                                                                                                                                                                                                                                                    |
+| inputs[idx].custom.license.name        | string        | License of the asset file.                                                                                                                                                                                                                                                                                  |
+| inputs[idx].custom.license.document    | string        | URL of the asset file.                                                                                                                                                                                                                                                                                      |
+
+```json
+{
+  "inputs": [
+    {
+      "images": ["/9j/xxxx", "/9j/xxxx"],
+      "asset_creator": "Xiaofei Du",
+      "abstract": "Xiaofei's Web3 creation",
+      "custom": {
+        "digital_source_type": "trainedAlgorithmicMedia",
+        "mining_preference": "notAllowed",
+        "generated_by": "Stability AI's Stable Diffusion XL 1.0",
+        "license": {
+          "name": "CC BY-SA",
+          "document": "https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      }
+    }
+  ]
+}
+```
+
+### Expected Output Data Fields
+
+| Output data field | Type          | Description                                  |
+| :---------------- | ------------- | -------------------------------------------- |
+| asset_urls\*      | array[string] | Asset profile links on Numbers Search Engine |
+
+```json
+{
+  "outputs": [
+    {
+      "asset_urls": [
+        "https://nftsearch.site/asset-profile?cid=bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte",
+        "https://nftsearch.site/asset-profile?cid=bafybeih2hysv22xywwsuodt5dnjjizvnywvf66mlqs3anq7d7ja7f6ywte"
+      ]
+    }
+  ]
+}
+```
+
+By following the guideline, you can effectively integrate with the Numbers Protocol to register your assets on the blockchain.
