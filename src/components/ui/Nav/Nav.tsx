@@ -10,6 +10,7 @@ import { DocsPageLink } from "./DocsPageLink";
 import { BlogPageLink } from "./BlogPageLink";
 import { AboutPageLink } from "./AboutPageLink";
 import { ChangelogLink } from "./ChangelogLink";
+import { LoginPageLink } from "./LoginPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -48,10 +49,11 @@ export const Nav = () => {
       <ChangelogLink />
       <DocsPageLink />
       <GithubTextLink />
+      <LoginPageLink />
       <CommonCtaButton
         position="mr-auto"
         withArrow={false}
-        text="Instill Hub"
+        text="Sign Up"
         link="https://instill.tech"
       />
     </React.Fragment>
