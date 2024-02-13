@@ -1,15 +1,8 @@
-import {
-  ExploreMoreScrollButton,
-  ExploreMoreScrollButtonProps,
-} from "./ExploreMoreScrollButton";
-import { HeroAnimation } from "./HeroAnimation";
+import { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
 import { Headline } from "./Headline";
 import { SubHeadline } from "./SubHeadline";
-import { GitHubCtaButton } from "./GitHubCtaButton";
 import { ConsoleCtaButton } from "./ConsoleCtaButton";
-import { InstillHero } from "../InstillHero";
 import { Jumbotron } from "../jumbotron";
-import { Icons, Tag } from "@instill-ai/design-system";
 import { Frameworks } from "./Frameworks";
 
 export type HeroProps = {

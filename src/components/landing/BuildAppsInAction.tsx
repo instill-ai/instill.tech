@@ -5,19 +5,20 @@ import { CommunityBlock } from "./Community/CommunityBlock";
 export const BuildAppsInAction = () => {
   return (
     <div className="flex flex-col bg-instillGrey90 py-20">
-      <div className="mb-10 flex flex-col">
+      <div className="mb-2 flex flex-col">
         <SectionLabel
           text="Build apps in action"
           position="mr-auto"
-          marginBottom="mb-2.5"
+          marginBottom="mb-8"
+          textClass="!text-white"
         />
         <SectionHeader
           header="Power your apps with versatile AI pipelines"
-          headerWidth="w-full !leading-[60px]"
+          headerWidth="w-full !leading-[60px] !text-[56px] !font-sans word-spacing-normal"
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
-        <p className="text-[18px] font-normal  text-white xl:w-7/12">
+        <p className="text-[24px] font-light text-white">
           Empower your applications by integrating AI pipelines created through
           Instill Versatile Data Pipeline (VDP), which effortlessly links to
           various unstructured data types. Easily convert your data with
@@ -25,13 +26,8 @@ export const BuildAppsInAction = () => {
           run and tracking outputs at every stage.
         </p>
 
-        <div className="my-6 xl:w-3/12">
-          <CommonCtaButton
-            withArrow={true}
-            link={"/docs"}
-            text="Learn more"
-            position="w-full justify-center"
-          />
+        <div className="my-8">
+          <CommonCtaButton withArrow={true} link={"/docs"} text="Learn more" />
         </div>
       </div>
       <div className="flex justify-center">
@@ -66,12 +62,12 @@ export const BuildAppsInAction = () => {
           />
         </div>
 
-        <div className="w-full space-y-6 xl:w-1/2 xl:text-left">
-          <p className="font-sans text-[24px] font-semibold text-white xl:text-[36px]">
+        <div className="w-full space-y-5 xl:w-1/2 xl:text-left">
+          <p className="font-sans text-[24px] font-semibold text-white xl:text-[42px]">
             The home for AI builders
           </p>
 
-          <p className="font-sans text-[20px] font-normal text-white">
+          <p className="font-sans text-[24px] font-light text-white">
             Welcome to Instill Hub, your destination for creating, sharing, and
             exploring a wide range of versatile AI pipelines. Share crafted
             pipelines with the community, providing a platform to showcase your
