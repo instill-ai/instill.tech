@@ -63,13 +63,13 @@ Within the recipe, we have four essential fields:
 
 4. **configuration**: This field is used to set up the input data and parameters for the component. Detailed information can be found in the section below.
 
-## Data Flow and Configuration in Pipeline Components
+## Data Flow and Input Configuration in Pipeline Components
 
-Within pipeline components, data flow is facilitated through a JSON field called **configuration**, which serves as the means to configure both parameters and data input for the component. Understanding this field is essential for customizing the behavior of each component in a pipeline.
+Within pipeline components, data flow is facilitated through a JSON field called **configuration.input**, which serves as the means to configure both parameters and data input for the component. Understanding this field is essential for customizing the behavior of each component in a pipeline.
 
 **Example Configuration**
 
-Let's begin with an example of a **configuration**:
+Let's begin with an example of a **configuration.condition**:
 
 ```json
 {
@@ -197,7 +197,104 @@ Based on the provided upstream component data, the rendered data input for this 
 }
 ```
 
-For a more detailed understanding of the **String Literal** syntax, you can refer to [Liquid](https://shopify.github.io/liquid/).
+## Control Flow and Condition Configuration in Pipeline Components
+
+Within pipeline components, control flow is facilitated through a JSON field called **configuration.condition**, which serves as the means to specify the condition determining whether this component will be executed or not. Understanding this field is essential for setting up the control flow of a pipeline.
+
+**Example Configuration**
+
+Let's begin with an example of a **configuration**:
+
+```json
+{
+  "condition": "${start.a_condition_str} == \"TARGET_CONDITION_STR\"",
+  "input": {
+    ...
+  }
+}
+```
+
+This `configuration.condition` field allows us to define the condition setting. The VDP will interpret and use this configuration to decide whether this component will be executed or not. We have two types of conditions: "condition on value" and "condition on status".
+
+### Condition on Value
+
+We support the following syntax for the condition:
+
+- Logic
+  - `&&`
+  - `||`
+- Comparison
+  - `<`
+  - `>`
+  - `<=`
+  - `>=`
+  - `==`
+  - `!=`
+- Not
+  - `!`
+- Parentheses
+  - `()`
+
+**Examples:**
+
+Here are some examples for the condition field:
+
+- Condition on string value
+    ```json
+    {
+      "condition": "${start.a_condition_str} == \"TARGET_CONDITION_STR\""
+    }
+    ```
+
+- Condition on number value
+    ```json
+    {
+      "condition": "${start.a_condition_num} > 1"
+    }
+    ```
+
+- Condition on boolean value
+    ```json
+    {
+      "condition": "${start.a_condition_bool}"
+    }
+    ```
+
+- Complex condition
+    ```json
+    {
+      "condition": "(${start.a_condition_bool} && ${compA.output.x} == 1) || ${compB.output.y} < 1"
+    }
+    ```
+
+- Always false
+    ```json
+    {
+      "condition": "false"
+    }
+    ```
+
+### Condition on Status
+
+Besides "condition on value," we also support condition on status. We provide a boolean value called `status.completed`, which allows you to condition on whether a component's execution is completed or not.
+
+**Examples:**
+
+Here are some examples for the condition field:
+
+- The component will be executed after component `compA` is completed; you can use this to control the execution order of components. 
+    ```json
+    {
+      "condition": "${compA.status.completed}"
+    }
+    ```
+
+- You can also combine it with the value condition.
+    ```json
+    {
+      "condition": "${start.a_condition_bool} || ${compA.status.completed}"
+    }
+    ```
 
 ## Trigger Pipeline
 
