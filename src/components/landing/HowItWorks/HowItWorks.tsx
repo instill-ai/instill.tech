@@ -33,8 +33,6 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
       fetchData(); // Call the asynchronous function
     }, []);
 
-    console.log("connetor", connectors);
-
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
         <div className="flex flex-col gap-y-2.5">
@@ -67,7 +65,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             <div className="flex justify-end">
               <CommonCtaButton
                 withArrow={true}
-                link={"/"}
+                link={"/connector"}
                 text="Learn more"
                 position="my-auto"
               />
@@ -78,7 +76,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         {/* Component 1 */}
         <div className="grid grid-cols-3 gap-5">
           {connectors &&
-            connectors?.map((connector) => (
+            connectors.slice(0, 6)?.map((connector) => (
               <div
                 className="flex flex-col border border-[#CBD2E1]"
                 key={connector.uid}

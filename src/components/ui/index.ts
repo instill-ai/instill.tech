@@ -11,6 +11,8 @@ export type { ContentContainerProps } from "./ContentContainer";
 export { Footer } from "./Footer";
 export { PageBase } from "./PageBase";
 export type { PageBaseProps } from "./PageBase";
+export { ConnectorPageBase } from "./ConnectorPageBase";
+export type { ConnectorPageBaseProps } from "./ConnectorPageBase";
 export { PageHead } from "./PageHead";
 export type { PageHeadProps } from "./PageHead";
 export { PageHero } from "./PageHero";
