@@ -91,7 +91,7 @@ const PricingPage: FC & {
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
-                "Dedicated Slack Channel and up to 1 hour of weekly dedicated support",
+                "Community-based support on Discord",
                 "Version Control",
                 "User permissions",
                 "Upload and use your own custom models",
