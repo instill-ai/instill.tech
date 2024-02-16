@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.42.1](https://github.com/instill-ai/instill.tech/compare/v1.42.0...v1.42.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* fix pricing plan typo ([#724](https://github.com/instill-ai/instill.tech/issues/724)) ([336523b](https://github.com/instill-ai/instill.tech/commit/336523bb2215d4134f67c35c5c8d20b81ef609e4))
+
+
+### Miscellaneous
+
+* add https://www.wistron.com/ to customer list on landing page ([#722](https://github.com/instill-ai/instill.tech/issues/722)) ([993ccfb](https://github.com/instill-ai/instill.tech/commit/993ccfbed0a11699147ac1100cd689519f9ad911))
+* add login and signup link navbar ([#721](https://github.com/instill-ai/instill.tech/issues/721)) ([ad2e8be](https://github.com/instill-ai/instill.tech/commit/ad2e8bec30c884d441c4e60db851367abd57c2f7))
+* Namananand/ins 3585 add glass effect to navbar and api reference link ([#718](https://github.com/instill-ai/instill.tech/issues/718)) ([1ed9fd2](https://github.com/instill-ai/instill.tech/commit/1ed9fd2b3d4818254ae1d0c9f17615f4f1ba0e5e))
+
+
+### Documentation
+
+* add v0.11.0-beta doc ([#720](https://github.com/instill-ai/instill.tech/issues/720)) ([e95031b](https://github.com/instill-ai/instill.tech/commit/e95031beddb0236d825298667c5a3c827db6e76b))
+* add v0.12.0 document and section for "conditional component" ([#723](https://github.com/instill-ai/instill.tech/issues/723)) ([2a6e5da](https://github.com/instill-ai/instill.tech/commit/2a6e5da248984dc5c533671e969c2b95f190a265))
+
 ## [1.42.0](https://github.com/instill-ai/instill.tech/compare/v1.41.21...v1.42.0) (2024-02-01)
 
 
