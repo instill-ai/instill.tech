@@ -17,7 +17,7 @@ import {
   Tag,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
-import { ConnectorDefinition, Visibility } from "@instill-ai/toolkit";
+import { ConnectorDefinition } from "@instill-ai/toolkit";
 import cn from "clsx";
 
 type GetLayOutProps = {
