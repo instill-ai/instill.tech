@@ -404,12 +404,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(6)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -464,12 +464,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(7)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -524,12 +524,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(8)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -584,12 +584,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(9)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -644,12 +644,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(10)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -704,12 +704,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(11)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -764,12 +764,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(12)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
@@ -809,12 +809,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(13)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
@@ -867,12 +867,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(14)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
