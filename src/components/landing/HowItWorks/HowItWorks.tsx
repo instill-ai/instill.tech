@@ -5,14 +5,19 @@ import { useRouter } from "next/router";
 import {
   Button,
   GitHubIcon,
+  Icons,
   Logo,
   Logos,
+  Separator,
   SolidButton,
   Tag,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
 import { ConnectorDefinition, Model } from "@instill-ai/toolkit";
 import { Nullable } from "@instill-ai/design-system";
+import { Connector, Task, VersionType } from "@/pages/connector";
+import { HowItWorksRow } from "./HowItWorksRow";
+import Link from "next/link";
 
 export type HowItWorksProps = {
   marginBottom?: string;
@@ -27,17 +32,24 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
     const router = useRouter();
     const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
 
-    const [connectors, setConnectors] =
-      React.useState<Nullable<ConnectorDefinition[]>>(null);
+    const [connectors, setConnectors] = React.useState<Nullable<any[]>>(null);
     const [models, setModels] =
       React.useState<Nullable<ModelDefinition[]>>(null);
 
     React.useEffect(() => {
       const fetchConnectors = async () => {
         try {
+          const connectorList: any = [];
           const response = await InstillSDK.connector();
           if (response.status === "success") {
-            setConnectors(response.data.connector_definitions);
+            response.data.connector_definitions.forEach(
+              (connector: Connector) => {
+                connector.tasks.forEach((task: Task) => {
+                  connectorList.push({ ...connector, task: task });
+                });
+              }
+            );
+            setConnectors(connectorList);
           }
         } catch (error) {
           console.error(error); // Handle errors here
@@ -98,7 +110,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         </div>
 
         {/* Connector Cards */}
-        <div className="grid grid-cols-3 gap-5">
+        <div className="mb-5 grid grid-cols-3 gap-5">
           {connectors &&
             connectors.slice(0, 6)?.map((connector) => (
               <div
@@ -112,21 +124,18 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   <div className="flex flex-row gap-x-2">
                     <div className="rounded-[6px] border p-1 shadow">
                       <img
-                        src={`/icons/${connector.icon}`}
+                        src={`/${connector.icon}`}
                         alt=""
-                        className="mx-auto my-auto h-6 w-6"
+                        className="mx-auto my-auto h-5 w-6"
                       />
                     </div>
                     <span className="my-auto w-full font-sans text-[18px] font-semibold">
                       {connector.title}
                     </span>
                     <div className="my-auto py-0.5">
-                      <Tag
-                        variant="lightGreen"
-                        className="rounded-sm border-[#63D9B2] !py-0.5"
-                      >
-                        GA
-                      </Tag>
+                      <VersionType
+                        version={connector.version ? connector.version : ""}
+                      />
                     </div>
                   </div>
 
@@ -136,7 +145,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                       size="lg"
                       className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
                     >
-                      Task name
+                      {connector.task.title}
                     </Button>
                   </div>
                   <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
@@ -176,6 +185,42 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                       <span className="my-auto text-[16px] text-semantic-fg-secondary">
                         Github
                       </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+          {!connectors &&
+            [...new Array(6)].map((e) => (
+              <div
+                className="flex flex-col border border-[#CBD2E1]"
+                key={`connector-key-${e}`}
+              >
+                <div className="h-8 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                <div className="px-5 py-2.5">
+                  <div className="flex flex-row gap-x-2">
+                    <div className="h-6 w-8 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    <span className="my-auto w-full font-sans text-[18px] font-semibold"></span>
+                    <div className="my-auto py-0.5">
+                      <div className="h-6 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                  </div>
+                  <div className="mt-2.5">
+                    <div className="h-6 w-24 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                  </div>
+                  <div className="mt-2.5 space-y-2 text-[16px] font-normal text-semantic-fg-secondary">
+                    <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                  </div>
+                  <div className="mt-5 flex flex-row items-end space-x-5 text-semantic-fg-secondary">
+                    <div className="flex flex-row space-x-2">
+                      <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                    <div className="flex flex-row space-x-1">
+                      <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
                     </div>
                   </div>
                 </div>
@@ -232,7 +277,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           </div>
         </div>
 
-        {/* Connector Cards */}
+        {/* Model Cards */}
         <div className="grid grid-cols-3 gap-5">
           {models &&
             models.slice(0, 6)?.map((model) => (
@@ -323,6 +368,133 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </div>
               </div>
             ))}
+
+          {!models &&
+            [...new Array(6)].map((e) => (
+              <div
+                className="inline-flex items-start justify-start border border-[#CBD2E1]"
+                key={`model-key-${e}`}
+              >
+                <div className="relative h-full w-8 bg-[#FFF1D6]" />
+                <div className="inline-flex shrink grow basis-0 flex-col items-start justify-between self-stretch px-5 py-2.5">
+                  <div className="flex flex-col items-start justify-start gap-2.5 self-stretch">
+                    <div className="inline-flex items-center justify-start gap-2">
+                      <div className="my-auto flex items-center justify-center border-[#E1E6EF]">
+                        <div className="h-6 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      </div>
+
+                      <div className="h-6 w-40 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                    <div className="inline-flex items-center justify-start py-1">
+                      <div className="h-6 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                    <div className="space-y-2 self-stretch font-sans text-base font-normal leading-7 text-semantic-fg-secondary">
+                      <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                  </div>
+                  <div className="mt-5 inline-flex items-end justify-end gap-x-5 self-stretch">
+                    <div className="flex items-center justify-start gap-5 bg-white bg-opacity-0 p-1 opacity-80">
+                      <div className="flex items-center justify-start gap-x-2">
+                        <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                        <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-start gap-5 bg-white bg-opacity-0 p-1 opacity-80">
+                      <div className="flex items-center justify-start gap-x-2">
+                        <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                        <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="mt-14">
+          <HowItWorksRow
+            type="left"
+            title="Forget about Infrastructure"
+            description={
+              <div className="space-y-4">
+                <p className="font-sans text-[21px] font-normal">
+                  Pipelines and models are production-ready with Instill Cloud
+                  managing servers, dependencies, GPUs, and more.
+                </p>
+                <p className="font-sans text-[21px] font-normal">
+                  Our Instill SDKs offer seamless integration for enhanced
+                  performance in your systems.
+                </p>
+              </div>
+            }
+            learnMoreLink="/docs/v0.6.0-alpha/sdk/python"
+            cubes={[]}
+            icon={
+              <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">
+                <div className="flex flex-col items-end justify-start gap-2">
+                  <div className="flex flex-col items-center justify-start border border-b-0 border-neutral-400 bg-white ">
+                    <div className="flex flex-col items-start justify-start self-stretch">
+                      <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
+                        <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                          <div className="self-stretch font-sans text-[16px] font-bold leading-normal text-gray-800">
+                            Python
+                          </div>
+                        </div>
+                      </div>
+                      <Separator className="mt-5" />
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-5 self-stretch px-6 py-5">
+                      <div className="flex flex-col items-start justify-start gap-5 self-stretch">
+                        <div className="font-sans text-xl font-medium text-black xl:text-[30px]">
+                          pip install instill-sdk
+                        </div>
+                        <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                          <Link
+                            href={"https://github.com/instill-ai/python-sdk"}
+                          >
+                            <div className="flex gap-x-2 text-center font-sans text-[13px] font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                              Go to library
+                              <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                            </div>
+                          </Link>
+                          <div className="relative h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
+                  <div className="flex  flex-col items-start justify-start self-stretch">
+                    <div className="inline-flex  items-center justify-start gap-4 px-6 pt-6">
+                      <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
+                        <div className="self-stretch font-sans text-[16px] font-bold leading-normal text-gray-800">
+                          Typescript
+                        </div>
+                      </div>
+                    </div>
+                    <Separator className="mt-5" />
+                  </div>
+                  <div className="flex min-w-[320px] flex-col items-start justify-start gap-5 px-6 py-5 xl:min-w-[480px]">
+                    <div className="flex shrink grow basis-0 flex-col items-start justify-start gap-5 self-stretch">
+                      <div className="shrink grow basis-0 font-sans text-xl font-medium text-black xl:text-[30px]">
+                        npm i instill-sdk
+                      </div>
+                      <div className="inline-flex items-center justify-center gap-2 rounded py-3">
+                        <Link
+                          href={"https://github.com/instill-ai/typescript-sdk"}
+                        >
+                          <div className="flex gap-x-2 text-center font-sans text-[13px] font-semibold capitalize leading-none tracking-tight text-semantic-accent-default">
+                            <p className="my-auto">Go to library</p>
+                            <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          />
         </div>
       </div>
     );

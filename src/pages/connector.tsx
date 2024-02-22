@@ -3,7 +3,6 @@ import {
   CommonCtaButton,
   ConnectorPageBase,
   ContentContainer,
-  PageBase,
   PageHead,
 } from "@/components/ui";
 import { useRouter } from "next/router";
@@ -17,39 +16,122 @@ import {
   Tag,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
-import { ConnectorDefinition } from "@instill-ai/toolkit";
+import { ConnectorDefinition, ConnectorType } from "@instill-ai/toolkit";
 import cn from "clsx";
 
 type GetLayOutProps = {
   page: ReactElement;
 };
 
-const PricingPage: FC & {
+export type Task = {
+  name: string;
+  description: string;
+  title: string;
+};
+
+export type Connector = ConnectorDefinition & {
+  tasks: Task[];
+  version?: string;
+};
+
+export const ConnectorCategory = {
+  CONNECTOR_TYPE_AI: "AI Connector",
+  CONNECTOR_TYPE_BLOCKCHAIN: "Application Connector",
+  CONNECTOR_TYPE_DATA: "Data Connector",
+  CONNECTOR_TYPE_UNSPECIFIED: "Unspecified Connector",
+  CONNECTOR_TYPE_OPERATOR: "Operator",
+};
+
+export const getHeaderColorClass = (type: ConnectorType) => {
+  switch (type) {
+    case "CONNECTOR_TYPE_AI":
+    case "CONNECTOR_TYPE_DATA":
+      return "bg-semantic-accent-bg text-semantic-accent-on-bg";
+    case "CONNECTOR_TYPE_BLOCKCHAIN":
+      return "bg-semantic-warning-bg text-semantic-warning-on-bg";
+    case "CONNECTOR_TYPE_OPERATOR":
+      return "bg-semantic-success-bg text-semantic-success-on-bg";
+    case "CONNECTOR_TYPE_UNSPECIFIED":
+      return "bg-semantic-bg-secondary text-semantic-fg-secondary";
+  }
+};
+
+export function VersionType({ version }: { version: string }) {
+  const parsedVersion = version.split("-")[1];
+
+  switch (parsedVersion) {
+    case "alpha":
+      return (
+        <Tag
+          variant="lightPurple"
+          className="rounded-sm border-semantic-secondary-default !py-0.5 !uppercase"
+        >
+          {parsedVersion}
+        </Tag>
+      );
+    case "beta":
+      return (
+        <Tag
+          variant="lightBlue"
+          className="rounded-sm border-semantic-accent-default !py-0.5 !uppercase"
+        >
+          {parsedVersion}
+        </Tag>
+      );
+    case "contribute":
+      return (
+        <Tag
+          variant="lightYellow"
+          className="rounded-sm border-semantic-warning-default !py-0.5 !uppercase"
+        >
+          {parsedVersion}
+        </Tag>
+      );
+    default:
+      return (
+        <Tag
+          variant="lightGreen"
+          className="rounded-sm border-semantic-success-default !py-0.5 !uppercase"
+        >
+          {parsedVersion}
+        </Tag>
+      );
+  }
+}
+
+const ConnectorPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const router = useRouter();
 
   const [connectors, setConnectors] =
-    React.useState<Nullable<ConnectorDefinition[]>>(null);
+    React.useState<Nullable<Connector[]>>(null);
   const [category, setCategory] = React.useState<string>("All");
-  const [task, setTask] = React.useState<string>("All");
   const [stage, setStage] = React.useState<string>("All");
 
   const [searchCode, setSearchCode] = React.useState<Nullable<string>>(null);
 
   React.useEffect(() => {
     const fetchData = async () => {
+      let filter = "";
       try {
-        const response = await InstillSDK.connector();
+        if (category !== "All") {
+          filter = "&filter=connector_type=" + category;
+          setConnectors(null);
+        } else {
+          filter = "";
+          setConnectors(null);
+        }
+        const response = await InstillSDK.connector(filter);
         if (response.status === "success") {
-          setConnectors(response.data.connector_definitions);
+          setConnectors(response.data);
         }
       } catch (error) {
         console.error(error); // Handle errors here
       }
     };
     fetchData(); // Call the asynchronous function
-  }, []);
+  }, [category, stage]);
 
   return (
     <React.Fragment>
@@ -91,8 +173,8 @@ const PricingPage: FC & {
             />
           </div>
           <div className="mb-5">
-            <div className="grid grid-flow-row grid-cols-4 gap-x-3">
-              <div className="flex flex-col gap-y-2.5">
+            <div className="flex grid-cols-3 flex-row gap-x-5">
+              <div className="flex w-full flex-col gap-y-2.5">
                 <p className="text-semantic-fg-primary product-body-text-3-semibold">
                   Search Pipelines
                 </p>
@@ -109,7 +191,7 @@ const PricingPage: FC & {
                   </Input.Root>
                 </div>
               </div>
-              <div className="flex flex-col gap-y-2.5">
+              <div className="flex w-full flex-col gap-y-2.5">
                 <p className="text-semantic-fg-primary product-body-text-3-semibold">
                   Category
                 </p>
@@ -125,31 +207,23 @@ const PricingPage: FC & {
                   <Select.Content>
                     <Select.Group>
                       <Select.Item value="All">All</Select.Item>
+                      <Select.Item value="CONNECTOR_TYPE_AI">
+                        AI Connector
+                      </Select.Item>
+                      <Select.Item value="CONNECTOR_TYPE_BLOCKCHAIN">
+                        Application Connector
+                      </Select.Item>
+                      <Select.Item value="CONNECTOR_TYPE_DATA">
+                        Data Connector
+                      </Select.Item>
+                      <Select.Item value="CONNECTOR_TYPE_OPERATOR">
+                        Operator
+                      </Select.Item>
                     </Select.Group>
                   </Select.Content>
                 </Select.Root>
               </div>
-              <div className="flex flex-col gap-y-2.5">
-                <p className="text-semantic-fg-primary product-body-text-3-semibold">
-                  Task
-                </p>
-                <Select.Root
-                  value={task}
-                  onValueChange={(value) => {
-                    setTask(value);
-                  }}
-                >
-                  <Select.Trigger className="mt-auto w-full">
-                    <Select.Value />
-                  </Select.Trigger>
-                  <Select.Content>
-                    <Select.Group>
-                      <Select.Item value="All">All</Select.Item>
-                    </Select.Group>
-                  </Select.Content>
-                </Select.Root>
-              </div>
-              <div className="flex flex-col gap-y-2.5">
+              <div className="flex w-full flex-col gap-y-2.5">
                 <p className="text-semantic-fg-primary product-body-text-3-semibold">
                   Stage
                 </p>
@@ -165,6 +239,11 @@ const PricingPage: FC & {
                   <Select.Content>
                     <Select.Group>
                       <Select.Item value="All">All</Select.Item>
+                      <Select.Item value="alpha">Alpha</Select.Item>
+                      <Select.Item value="beta">Beta</Select.Item>
+                      <Select.Item value="ga">GA</Select.Item>
+                      <Select.Item value="contribute">Contribute</Select.Item>
+                      <Select.Item value="coming_soon">Coming Soon</Select.Item>
                     </Select.Group>
                   </Select.Content>
                 </Select.Root>
@@ -177,42 +256,57 @@ const PricingPage: FC & {
           {connectors &&
             connectors?.map((connector) => (
               <div
-                className="flex flex-col border border-[#CBD2E1]"
+                className={cn(`flex flex-col border border-[#CBD2E1]`)}
                 key={connector.uid}
               >
-                <div className="bg-semantic-accent-bg px-5 py-2.5 font-sans font-normal tracking-[0.65px] text-semantic-accent-on-bg">
-                  {connector.vendor}
+                <div
+                  className={cn(
+                    "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+                    getHeaderColorClass(connector.type)
+                  )}
+                >
+                  {ConnectorCategory[connector.type]}
                 </div>
                 <div className="px-5 py-2.5">
                   <div className="flex flex-row gap-x-2">
                     <div className="rounded-[6px] border p-1 shadow">
                       <img
-                        src={`/icons/${connector.icon}`}
+                        src={`/${connector.icon}`}
                         alt=""
-                        className="mx-auto my-auto h-6 w-6"
+                        className="mx-auto my-auto h-5 w-6"
                       />
                     </div>
                     <span className="my-auto w-full font-sans text-[18px] font-semibold">
                       {connector.title}
                     </span>
                     <div className="my-auto py-0.5">
-                      <Tag
-                        variant="lightGreen"
-                        className="rounded-sm border-[#63D9B2] !py-0.5"
-                      >
-                        GA
-                      </Tag>
+                      <VersionType
+                        version={connector.version ? connector.version : ""}
+                      />
                     </div>
                   </div>
 
-                  <div className="mt-2.5">
-                    <Button
-                      variant="secondaryGrey"
-                      size="lg"
-                      className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                    >
-                      Task name
-                    </Button>
+                  <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
+                    {connector.tasks.slice(0, 2).map((task) => (
+                      <Button
+                        variant="secondaryGrey"
+                        size="lg"
+                        key={task.name}
+                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                      >
+                        {task.title}
+                      </Button>
+                    ))}
+                    {connector.tasks.length > 2 && (
+                      <Button
+                        variant="secondaryGrey"
+                        size="lg"
+                        key={"task-button"}
+                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                      >
+                        + {connector.tasks.length - 2}
+                      </Button>
+                    )}
                   </div>
                   <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
                     One liner to describe what the component is aimed for for
@@ -248,7 +342,45 @@ const PricingPage: FC & {
                         position="my-auto my-auto"
                         width="w-[24px]"
                       />
-                      <span className="my-auto">Github</span>
+                      <span className="my-auto">
+                        <a href={connector.documentation_url}>Github</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+          {!connectors &&
+            [...new Array(9)].map((e, index) => (
+              <div
+                className="flex flex-col border border-[#CBD2E1]"
+                key={`connector-key-${index}`}
+              >
+                <div className="h-8 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                <div className="px-5 py-2.5">
+                  <div className="flex flex-row gap-x-2">
+                    <div className="h-6 w-8 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    <span className="my-auto w-full font-sans text-[18px] font-semibold"></span>
+                    <div className="my-auto py-0.5">
+                      <div className="h-6 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                  </div>
+                  <div className="mt-2.5">
+                    <div className="h-6 w-24 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                  </div>
+                  <div className="mt-2.5 space-y-2 text-[16px] font-normal text-semantic-fg-secondary">
+                    <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    <div className="h-4 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                  </div>
+                  <div className="mt-5 flex flex-row items-end space-x-5 text-semantic-fg-secondary">
+                    <div className="flex flex-row space-x-2">
+                      <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                    </div>
+                    <div className="flex flex-row space-x-1">
+                      <div className="h-5 w-6 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
+                      <div className="h-5 w-12 animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
                     </div>
                   </div>
                 </div>
@@ -260,8 +392,8 @@ const PricingPage: FC & {
   );
 };
 
-PricingPage.getLayout = (page) => {
+ConnectorPage.getLayout = (page) => {
   return <ConnectorPageBase>{page}</ConnectorPageBase>;
 };
 
-export default PricingPage;
+export default ConnectorPage;
