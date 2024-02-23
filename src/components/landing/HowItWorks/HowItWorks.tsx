@@ -81,17 +81,17 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           <SectionHeader
             header="Designed for Flexibility and Scale"
             headerWidth="!font-sans !font-bold !word-spacing-normal !text-[56px]"
-            headerTextColor="text-instillNeonBlue"
+            headerTextColor="text-instillNeonBlue hidden xl:block"
           />
         </div>
-        <div className="mb-10 mt-8 flex flex-col">
-          <div className={cn("mb-20 flex flex-1 flex-col gap-y-6 xl:mb-0")}>
-            <h3 className="text-[42px] font-medium text-instillGrey90">
+        <div className="mb-6 flex flex-col xl:mb-10 xl:mt-8">
+          <div className={cn("flex flex-1 flex-col gap-y-6 xl:mb-0")}>
+            <h3 className="text-[24px] font-medium text-instillGrey90 xl:text-[42px]">
               Drag-and-Drop Assembly with Pre-Built Components
             </h3>
-            <div className="mb-[30px] text-lg font-normal text-semantic-fg-secondary xl:mb-auto">
+            <div className="text-lg font-normal text-semantic-fg-secondary xl:mb-[30px]">
               <div className="space-y-4">
-                <p className="font-sans text-[24px] font-normal leading-9">
+                <p className="font-sans text-[14px] font-normal leading-6 xl:text-[24px] xl:leading-9">
                   We offer open-source, pre-built components for data
                   extraction, AI transformation, third-party app integration,
                   and flexible data manipulation. Assemble customized pipelines
@@ -99,13 +99,15 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </p>
               </div>
             </div>
-            <div className="flex justify-end">
-              <CommonCtaButton
-                withArrow={true}
-                link={"/connector"}
-                text="Learn more"
-                position="my-auto"
-              />
+            <div className="hidden xl:block">
+              <div className="flex justify-end">
+                <CommonCtaButton
+                  withArrow={true}
+                  link={"/connector"}
+                  text="Learn more"
+                  position="my-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -274,14 +276,25 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             ))}
         </div>
 
-        <div className="mb-10 mt-8 flex flex-col">
-          <div className={cn("mb-20 flex flex-1 flex-col gap-y-6 xl:mb-0")}>
-            <h3 className="text-[42px] font-medium text-instillGrey90">
+        <div className="block xl:hidden">
+          <div className="flex justify-center">
+            <CommonCtaButton
+              withArrow={true}
+              link={"/connector"}
+              text="Learn more"
+              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+            />
+          </div>
+        </div>
+
+        <div className="mb-6 mt-8 flex flex-col xl:mb-10">
+          <div className={cn("mb-0 flex flex-1 flex-col gap-y-3 xl:gap-y-6")}>
+            <h3 className="text-[24px] font-medium text-instillGrey90 xl:text-[42px]">
               Transform your apps with open-source or your own AI models
             </h3>
-            <div className="mb-[30px] text-lg font-normal text-semantic-fg-secondary xl:mb-auto">
+            <div className="mb-2.5 font-normal text-semantic-fg-secondary xl:mb-[30px] xl:text-lg">
               <div className="space-y-4">
-                <p className="font-sans text-[24px] font-normal leading-9">
+                <p className="font-sans text-[14px] font-normal leading-6 xl:text-[24px] xl:leading-9">
                   Import and deploy AI models with ease, dynamically generating
                   inference API endpoints that seamlessly integrate into your
                   pipelines. Customize LLMs, Diffusion and other models to match
@@ -290,35 +303,41 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </p>
               </div>
             </div>
-            <div className="flex justify-end gap-x-5">
-              <SolidButton
-                type="button"
-                color="primaryLight"
-                startIcon={
-                  <GitHubIcon
-                    width="w-[28px]"
-                    height="h-[28px]"
-                    color="fill-instillNeonBlue"
-                    position="my-auto"
-                  />
-                }
-                padding="px-5 py-2.5"
-                itemGapX="gap-x-5"
-                onClickHandler={() =>
-                  router.push("https://github.com/instill-ai/vdp", undefined, {
-                    scroll: false,
-                  })
-                }
-                hoveredShadow="hover:shadow-instill-solid-5"
-              >
-                <p className="text-[20px] font-normal">Star Instill VDP</p>
-              </SolidButton>
-              <CommonCtaButton
-                withArrow={true}
-                link={"https://instill.tech"}
-                text="Try Free on Instill Cloud"
-                position="my-auto"
-              />
+            <div className="hidden xl:block">
+              <div className="flex justify-end gap-x-5">
+                <SolidButton
+                  type="button"
+                  color="primaryLight"
+                  startIcon={
+                    <GitHubIcon
+                      width="w-[28px]"
+                      height="h-[28px]"
+                      color="fill-instillNeonBlue"
+                      position="my-auto"
+                    />
+                  }
+                  padding="px-5 py-2.5"
+                  itemGapX="gap-x-5"
+                  onClickHandler={() =>
+                    router.push(
+                      "https://github.com/instill-ai/vdp",
+                      undefined,
+                      {
+                        scroll: false,
+                      }
+                    )
+                  }
+                  hoveredShadow="hover:shadow-instill-solid-5"
+                >
+                  <p className="text-[20px] font-normal">Star Instill VDP</p>
+                </SolidButton>
+                <CommonCtaButton
+                  withArrow={true}
+                  link={"https://instill.tech"}
+                  text="Try Free on Instill Cloud"
+                  position="my-auto w-full flex justify-center xl:w-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -457,6 +476,41 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
               </div>
             ))}
         </div>
+
+        <div className="block xl:hidden">
+          <div className="flex flex-col justify-start gap-y-5">
+            <SolidButton
+              type="button"
+              color="primaryLight"
+              startIcon={
+                <GitHubIcon
+                  width="w-[28px]"
+                  height="h-[28px]"
+                  color="fill-instillNeonBlue"
+                  position="my-auto"
+                />
+              }
+              padding="px-5 py-2.5 mt-5 xl:mr-auto w-full justify-center xl:w-auto"
+              itemGapX="gap-x-5"
+              onClickHandler={() =>
+                router.push("https://github.com/instill-ai/vdp", undefined, {
+                  scroll: false,
+                })
+              }
+              hoveredShadow="hover:shadow-instill-solid-5"
+            >
+              <p className="text-[20px] font-normal">Star Instill VDP</p>
+            </SolidButton>
+
+            <CommonCtaButton
+              withArrow={true}
+              link={"https://instill.tech"}
+              position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+              text="Try Free on Instill Cloud"
+            />
+          </div>
+        </div>
+
         <div className="mt-14">
           <HowItWorksRow
             type="left"

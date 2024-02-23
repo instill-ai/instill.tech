@@ -25,7 +25,7 @@ export const SectionHeader = ({
           "font-mono font-medium word-spacing-tighter ",
           headerFontSize
             ? headerFontSize
-            : "text-3xl xl:leading-[48px] xl:text-instill-h2",
+            : "text-3xl leading-[64px] xl:text-instill-h2",
           headerWidth,
           headerTextColor,
           subElement ? "mb-4 xl:mb-0" : ""
