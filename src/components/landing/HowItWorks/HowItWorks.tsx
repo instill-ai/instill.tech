@@ -11,11 +11,18 @@ import {
   Separator,
   SolidButton,
   Tag,
+  Tooltip,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
 import { ConnectorDefinition, Model } from "@instill-ai/toolkit";
 import { Nullable } from "@instill-ai/design-system";
-import { Connector, Task, VersionType } from "@/pages/connector";
+import {
+  Connector,
+  ConnectorCategory,
+  Task,
+  VersionType,
+  getHeaderColorClass,
+} from "@/pages/connector";
 import { HowItWorksRow } from "./HowItWorksRow";
 import Link from "next/link";
 
@@ -32,7 +39,8 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
     const router = useRouter();
     const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
 
-    const [connectors, setConnectors] = React.useState<Nullable<any[]>>(null);
+    const [connectors, setConnectors] =
+      React.useState<Nullable<Connector[]>>(null);
     const [models, setModels] =
       React.useState<Nullable<ModelDefinition[]>>(null);
 
@@ -40,16 +48,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
       const fetchConnectors = async () => {
         try {
           const connectorList: any = [];
-          const response = await InstillSDK.connector();
+          const response = await InstillSDK.connector(null);
           if (response.status === "success") {
-            response.data.connector_definitions.forEach(
-              (connector: Connector) => {
-                connector.tasks.forEach((task: Task) => {
-                  connectorList.push({ ...connector, task: task });
-                });
-              }
-            );
-            setConnectors(connectorList);
+            setConnectors(response.data);
           }
         } catch (error) {
           console.error(error); // Handle errors here
@@ -110,15 +111,20 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         </div>
 
         {/* Connector Cards */}
-        <div className="mb-5 grid grid-cols-3 gap-5">
+        <div className="mb-9 grid grid-cols-1 gap-5 xl:grid-cols-3">
           {connectors &&
-            connectors.slice(0, 6)?.map((connector) => (
+            connectors?.slice(0, 6).map((connector) => (
               <div
-                className="flex flex-col border border-[#CBD2E1]"
+                className={cn(`flex flex-col border border-[#CBD2E1]`)}
                 key={connector.uid}
               >
-                <div className="bg-semantic-accent-bg px-5 py-2.5 font-sans font-normal tracking-[0.65px] text-semantic-accent-on-bg">
-                  {connector.vendor}
+                <div
+                  className={cn(
+                    "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+                    getHeaderColorClass(connector.type)
+                  )}
+                >
+                  {ConnectorCategory[connector.type]}
                 </div>
                 <div className="px-5 py-2.5">
                   <div className="flex flex-row gap-x-2">
@@ -139,14 +145,54 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     </div>
                   </div>
 
-                  <div className="mt-2.5">
-                    <Button
-                      variant="secondaryGrey"
-                      size="lg"
-                      className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                    >
-                      {connector.task.title}
-                    </Button>
+                  <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
+                    {connector.tasks.slice(0, 2).map((task) => (
+                      <Button
+                        variant="secondaryGrey"
+                        size="lg"
+                        key={task.name}
+                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                      >
+                        {task.title}
+                      </Button>
+                    ))}
+                    {connector.tasks.length > 2 && (
+                      <Tooltip.Provider>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <Button
+                              variant="secondaryGrey"
+                              size="lg"
+                              key={"task-button"}
+                              className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                            >
+                              +{connector.tasks.length - 2}
+                            </Button>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="TooltipContent"
+                              sideOffset={5}
+                            >
+                              <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
+                                {connector.tasks
+                                  .slice(2, connector.tasks.length)
+                                  .map((task) => (
+                                    <Button
+                                      variant="secondaryGrey"
+                                      size="lg"
+                                      key={task.name}
+                                      className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                    >
+                                      {task.title}
+                                    </Button>
+                                  ))}
+                              </div>
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
+                      </Tooltip.Provider>
+                    )}
                   </div>
                   <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
                     One liner to describe what the component is aimed for for
@@ -171,7 +217,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                           />
                         </svg>
                       </div>
-                      <span className="my-auto text-[16px] text-semantic-fg-secondary">
+                      <span className="my-auto">
                         <a href={connector.documentation_url}>Docs</a>
                       </span>
                     </div>
@@ -182,8 +228,8 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                         position="my-auto my-auto"
                         width="w-[24px]"
                       />
-                      <span className="my-auto text-[16px] text-semantic-fg-secondary">
-                        Github
+                      <span className="my-auto">
+                        <a href={connector.documentation_url}>Github</a>
                       </span>
                     </div>
                   </div>
@@ -192,10 +238,10 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             ))}
 
           {!connectors &&
-            [...new Array(6)].map((e) => (
+            [...new Array(6)].map((e, index) => (
               <div
                 className="flex flex-col border border-[#CBD2E1]"
-                key={`connector-key-${e}`}
+                key={`connector-key-${index}`}
               >
                 <div className="h-8 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
                 <div className="px-5 py-2.5">
@@ -278,7 +324,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         </div>
 
         {/* Model Cards */}
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
           {models &&
             models.slice(0, 6)?.map((model) => (
               <div
