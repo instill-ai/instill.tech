@@ -14,6 +14,7 @@ import {
   Nullable,
   Select,
   Tag,
+  Tooltip,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
 import { ConnectorDefinition, ConnectorType } from "@instill-ai/toolkit";
@@ -172,87 +173,86 @@ const ConnectorPage: FC & {
               position="my-auto"
             />
           </div>
-          <div className="mb-5">
-            <div className="flex grid-cols-3 flex-row gap-x-5">
-              <div className="flex w-full flex-col gap-y-2.5">
-                <p className="text-semantic-fg-primary product-body-text-3-semibold">
-                  Search Pipelines
-                </p>
-                <div className="mt-auto flex flex-row gap-x-4">
-                  <Input.Root className="flex-1">
-                    <Input.LeftIcon>
-                      <Icons.SearchSm className="my-auto h-4 w-4 stroke-semantic-fg-primary" />
-                    </Input.LeftIcon>
-                    <Input.Core
-                      value={searchCode ?? ""}
-                      placeholder="Search..."
-                      onChange={(event) => setSearchCode(event.target.value)}
-                    />
-                  </Input.Root>
-                </div>
-              </div>
-              <div className="flex w-full flex-col gap-y-2.5">
-                <p className="text-semantic-fg-primary product-body-text-3-semibold">
-                  Category
-                </p>
-                <Select.Root
-                  value={category}
-                  onValueChange={(value) => {
-                    setCategory(value);
-                  }}
-                >
-                  <Select.Trigger className="mt-auto w-full">
-                    <Select.Value />
-                  </Select.Trigger>
-                  <Select.Content>
-                    <Select.Group>
-                      <Select.Item value="All">All</Select.Item>
-                      <Select.Item value="CONNECTOR_TYPE_AI">
-                        AI Connector
-                      </Select.Item>
-                      <Select.Item value="CONNECTOR_TYPE_BLOCKCHAIN">
-                        Application Connector
-                      </Select.Item>
-                      <Select.Item value="CONNECTOR_TYPE_DATA">
-                        Data Connector
-                      </Select.Item>
-                      <Select.Item value="CONNECTOR_TYPE_OPERATOR">
-                        Operator
-                      </Select.Item>
-                    </Select.Group>
-                  </Select.Content>
-                </Select.Root>
-              </div>
-              <div className="flex w-full flex-col gap-y-2.5">
-                <p className="text-semantic-fg-primary product-body-text-3-semibold">
-                  Stage
-                </p>
-                <Select.Root
-                  value={stage}
-                  onValueChange={(value) => {
-                    setStage(value);
-                  }}
-                >
-                  <Select.Trigger className="mt-auto w-full">
-                    <Select.Value />
-                  </Select.Trigger>
-                  <Select.Content>
-                    <Select.Group>
-                      <Select.Item value="All">All</Select.Item>
-                      <Select.Item value="alpha">Alpha</Select.Item>
-                      <Select.Item value="beta">Beta</Select.Item>
-                      <Select.Item value="ga">GA</Select.Item>
-                      <Select.Item value="contribute">Contribute</Select.Item>
-                      <Select.Item value="coming_soon">Coming Soon</Select.Item>
-                    </Select.Group>
-                  </Select.Content>
-                </Select.Root>
-              </div>
+        </div>
+
+        <div className="mb-5 grid grid-cols-1 gap-x-5 gap-y-2 xl:grid-cols-3">
+          <div className="flex w-full flex-col gap-y-2.5">
+            <p className="text-semantic-fg-primary product-body-text-3-semibold">
+              Search Pipelines
+            </p>
+            <div className="mt-auto flex flex-row gap-x-4">
+              <Input.Root className="flex-1">
+                <Input.LeftIcon>
+                  <Icons.SearchSm className="my-auto h-4 w-4 stroke-semantic-fg-primary" />
+                </Input.LeftIcon>
+                <Input.Core
+                  value={searchCode ?? ""}
+                  placeholder="Search..."
+                  onChange={(event) => setSearchCode(event.target.value)}
+                />
+              </Input.Root>
             </div>
+          </div>
+          <div className="flex w-full flex-col gap-y-2.5">
+            <p className="text-semantic-fg-primary product-body-text-3-semibold">
+              Category
+            </p>
+            <Select.Root
+              value={category}
+              onValueChange={(value) => {
+                setCategory(value);
+              }}
+            >
+              <Select.Trigger className="mt-auto w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item value="All">All</Select.Item>
+                  <Select.Item value="CONNECTOR_TYPE_AI">
+                    AI Connector
+                  </Select.Item>
+                  <Select.Item value="CONNECTOR_TYPE_BLOCKCHAIN">
+                    Application Connector
+                  </Select.Item>
+                  <Select.Item value="CONNECTOR_TYPE_DATA">
+                    Data Connector
+                  </Select.Item>
+                  <Select.Item value="CONNECTOR_TYPE_OPERATOR">
+                    Operator
+                  </Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select.Root>
+          </div>
+          <div className="flex w-full flex-col gap-y-2.5">
+            <p className="text-semantic-fg-primary product-body-text-3-semibold">
+              Stage
+            </p>
+            <Select.Root
+              value={stage}
+              onValueChange={(value) => {
+                setStage(value);
+              }}
+            >
+              <Select.Trigger className="mt-auto w-full">
+                <Select.Value />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Group>
+                  <Select.Item value="All">All</Select.Item>
+                  <Select.Item value="alpha">Alpha</Select.Item>
+                  <Select.Item value="beta">Beta</Select.Item>
+                  <Select.Item value="ga">GA</Select.Item>
+                  <Select.Item value="contribute">Contribute</Select.Item>
+                  <Select.Item value="coming_soon">Coming Soon</Select.Item>
+                </Select.Group>
+              </Select.Content>
+            </Select.Root>
           </div>
         </div>
 
-        <div className="mb-9 grid grid-cols-3 gap-5">
+        <div className="mb-9 grid grid-cols-1 gap-5 xl:grid-cols-3">
           {connectors &&
             connectors?.map((connector) => (
               <div
@@ -298,14 +298,41 @@ const ConnectorPage: FC & {
                       </Button>
                     ))}
                     {connector.tasks.length > 2 && (
-                      <Button
-                        variant="secondaryGrey"
-                        size="lg"
-                        key={"task-button"}
-                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                      >
-                        + {connector.tasks.length - 2}
-                      </Button>
+                      <Tooltip.Provider>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <Button
+                              variant="secondaryGrey"
+                              size="lg"
+                              key={"task-button"}
+                              className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                            >
+                              +{connector.tasks.length - 2}
+                            </Button>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="TooltipContent"
+                              sideOffset={5}
+                            >
+                              <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
+                                {connector.tasks
+                                  .slice(2, connector.tasks.length)
+                                  .map((task) => (
+                                    <Button
+                                      variant="secondaryGrey"
+                                      size="lg"
+                                      key={task.name}
+                                      className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                    >
+                                      {task.title}
+                                    </Button>
+                                  ))}
+                              </div>
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
+                      </Tooltip.Provider>
                     )}
                   </div>
                   <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
