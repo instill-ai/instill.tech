@@ -13,11 +13,11 @@ export const BuildAppsInAction = () => {
         />
         <SectionHeader
           header="Power your apps with versatile AI pipelines"
-          headerWidth="w-full !leading-[60px] !text-[56px] !font-sans word-spacing-normal"
+          headerWidth="w-full xl:!leading-[60px] !leading-normal xl:!text-[56px] !text-[24px] !font-sans word-spacing-normal"
           headerTextColor="text-white"
           marginBottom="mb-4"
         />
-        <p className="text-[24px] font-light text-white">
+        <p className="text-[14px] font-light leading-6 text-white xl:text-[24px] xl:leading-9">
           Empower your applications by integrating AI pipelines created through
           Instill Versatile Data Pipeline (VDP), which effortlessly links to
           various unstructured data types. Easily convert your data with
@@ -66,7 +66,7 @@ export const BuildAppsInAction = () => {
             The home for AI builders
           </p>
 
-          <p className="font-sans text-[24px] font-light text-white">
+          <p className="font-sans text-[14px] font-light leading-6 text-white xl:text-[24px] xl:leading-9">
             Welcome to Instill Hub, your destination for creating, sharing, and
             exploring a wide range of versatile AI pipelines. Share crafted
             pipelines with the community, providing a platform to showcase your

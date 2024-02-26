@@ -47,7 +47,7 @@ export const HowItWorksRow = ({
               marginBottom="mb-2.5"
             />
           ) : (
-            <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
+            <h3 className="mb-7 text-[24px] font-medium text-instillGrey90 xl:text-[42px]">
               {title}
             </h3>
           )}
