@@ -516,12 +516,12 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             type="left"
             title="Forget about Infrastructure"
             description={
-              <div className="space-y-4">
-                <p className="font-sans text-[14px] font-light leading-6 xl:text-[22px] xl:leading-9">
+              <div className="space-y-4 text-semantic-fg-secondary">
+                <p className="font-sans text-[14px] font-normal leading-6 xl:text-[22px] xl:leading-9">
                   Pipelines and models are production-ready with Instill Cloud
                   managing servers, dependencies, GPUs, and more.
                 </p>
-                <p className="font-sans text-[14px] font-light leading-6 xl:text-[22px] xl:leading-9">
+                <p className="font-sans text-[14px] font-normal leading-6 xl:text-[22px] xl:leading-9">
                   Our Instill SDKs offer seamless integration for enhanced
                   performance in your systems.
                 </p>

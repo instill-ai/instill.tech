@@ -112,6 +112,16 @@ const ConnectorPage: FC & {
 
   const [searchCode, setSearchCode] = React.useState<Nullable<string>>(null);
 
+  // Introduce state variables for pagination
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPage, setTotalPage] = React.useState(0);
+
+  const itemsPerPage = 9;
+
+  // Calculate the start and end index based on the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
   React.useEffect(() => {
     const fetchData = async () => {
       let filter = "";
@@ -126,6 +136,10 @@ const ConnectorPage: FC & {
         const response = await InstillSDK.connector(filter);
         if (response.status === "success") {
           setConnectors(response.data);
+          setCurrentPage(1);
+          if (response.data.length) {
+            setTotalPage(Math.ceil(response.data.length / itemsPerPage));
+          }
         }
       } catch (error) {
         console.error(error); // Handle errors here
@@ -133,6 +147,32 @@ const ConnectorPage: FC & {
     };
     fetchData(); // Call the asynchronous function
   }, [category, stage]);
+
+  const pagesToShow = 5; // Number of pages to show in the pagination
+
+  const getPageRange = (currentPage: number) => {
+    const halfPagesToShow = Math.floor(pagesToShow / 2);
+    let startPage = Math.max(1, currentPage - halfPagesToShow);
+    const endPage = Math.min(totalPage, startPage + pagesToShow - 1);
+
+    // If there are more pages before the displayed range, add ellipsis and adjust startPage
+    const prefix = startPage > 1 ? [1, "..."] : [];
+
+    // If there are more pages after the displayed range, add ellipsis and adjust endPage
+    const suffix = endPage < totalPage ? ["...", totalPage] : [];
+
+    // Adjust startPage if endPage is at the maximum limit
+    startPage = Math.max(1, endPage - pagesToShow + 1);
+
+    return [
+      ...prefix,
+      ...Array.from(
+        { length: endPage - startPage + 1 },
+        (_, index) => startPage + index
+      ),
+      ...suffix,
+    ];
+  };
 
   return (
     <React.Fragment>
@@ -252,9 +292,9 @@ const ConnectorPage: FC & {
           </div>
         </div>
 
-        <div className="mb-9 grid grid-cols-1 gap-5 xl:grid-cols-3">
+        <div className="mb-5 grid grid-cols-1 gap-5 xl:grid-cols-3">
           {connectors &&
-            connectors?.map((connector) => (
+            connectors?.slice(startIndex, endIndex).map((connector) => (
               <div
                 className={cn(`flex flex-col border border-[#CBD2E1]`)}
                 key={connector.uid}
@@ -414,6 +454,52 @@ const ConnectorPage: FC & {
               </div>
             ))}
         </div>
+
+        {connectors && (
+          <div className="flex flex-row justify-between">
+            <Button
+              variant="secondaryGrey"
+              size="sm"
+              className="gap-x-2"
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <Icons.ArrowLeft className="h-4 w-4 stroke-semantic-fg-primary" />
+              Previous
+            </Button>
+            <div className="flex gap-x-1">
+              {getPageRange(currentPage).map((elem, index) => (
+                <Button
+                  variant="tertiaryGrey"
+                  key={`page-${index}`}
+                  size="md"
+                  className={cn(
+                    "gap-x-2",
+                    currentPage == index + 1 ? "!bg-semantic-bg-base-bg" : ""
+                  )}
+                  onClick={() =>
+                    setCurrentPage(
+                      typeof elem === "number" ? elem : currentPage
+                    )
+                  }
+                >
+                  {elem}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="secondaryGrey"
+              size="sm"
+              className="gap-x-2"
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPage}
+            >
+              Next
+              <Icons.ArrowRight className="h-4 w-4 stroke-semantic-fg-primary" />
+            </Button>
+          </div>
+        )}
       </ContentContainer>
     </React.Fragment>
   );
