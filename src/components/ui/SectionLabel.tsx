@@ -16,14 +16,14 @@ export const SectionLabel = ({
   return (
     <div
       className={cn(
-        "flex flex-shrink bg-[#02D085] px-2.5 py-[5px]",
+        "flex flex-shrink bg-[#23956F] px-2.5 py-[5px]",
         position,
         marginBottom
       )}
     >
       <div
         className={cn(
-          "my-auto text-base font-normal uppercase text-instillGrey90",
+          "my-auto text-[18px] font-normal uppercase text-instillGrey90",
           textClass
         )}
       >

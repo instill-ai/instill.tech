@@ -24,7 +24,7 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
                 Free, until you’re ready to upgrade
               </p>
             </div>
-            <div className="mt-10">
+            <div className="mt-4">
               <a
                 href="https://www.producthunt.com/posts/instill-vdp?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-instill-vdp"
                 target="_blank"
@@ -33,9 +33,9 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=434600&theme=light"
                   alt="Instill VDP - Open-Source Unstructured Data ETL for AI-first applications | Product Hunt"
-                  style={{ width: "194px", height: "42px" }}
-                  width="194"
-                  height="42"
+                  style={{ width: "205px", height: "52px" }}
+                  width="205"
+                  height="52"
                 />
               </a>
             </div>

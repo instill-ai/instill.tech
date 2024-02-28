@@ -72,11 +72,11 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
 
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
-        <div className="flex flex-col gap-y-2.5">
+        <div className="flex flex-col gap-y-8">
           <SectionLabel
             text="What makes us different"
             position="mr-auto"
-            textClass="!text-white"
+            textClass="!text-semantic-success-bg"
           />
           <SectionHeader
             header="Designed for Flexibility and Scale"
@@ -85,7 +85,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           />
         </div>
         <div className="mb-6 flex flex-col xl:mb-10 xl:mt-8">
-          <div className={cn("flex flex-1 flex-col gap-y-6 xl:mb-0")}>
+          <div className={cn("flex flex-1 flex-col gap-y-5 xl:mb-0")}>
             <h3 className="text-[24px] font-medium text-instillGrey90 xl:text-[42px]">
               Drag-and-Drop Assembly with Pre-Built Components
             </h3>
@@ -317,7 +317,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     />
                   }
                   padding="px-5 py-2.5"
-                  itemGapX="gap-x-5"
+                  itemGapX="gap-x-2"
                   onClickHandler={() =>
                     router.push(
                       "https://github.com/instill-ai/vdp",
@@ -329,7 +329,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   }
                   hoveredShadow="hover:shadow-instill-solid-5"
                 >
-                  <p className="text-[20px] font-normal">Star Instill VDP</p>
+                  <p className="text-[24px] font-normal leading-7">
+                    Star Instill VDP
+                  </p>
                 </SolidButton>
                 <CommonCtaButton
                   withArrow={true}

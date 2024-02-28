@@ -8,7 +8,7 @@ import {
   SelfHost,
   Social,
 } from "@/components/landing";
-import { PageBase, PageHead } from "@/components/ui";
+import { LandingPageBase, PageBase, PageHead } from "@/components/ui";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GetStaticProps } from "next";
@@ -159,7 +159,7 @@ const HomePage: FC & {
 };
 
 HomePage.getLayout = (page) => {
-  return <PageBase>{page}</PageBase>;
+  return <LandingPageBase>{page}</LandingPageBase>;
 };
 
 export default HomePage;

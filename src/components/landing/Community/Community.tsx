@@ -9,15 +9,16 @@ export const Community = () => {
         <SectionLabel
           text="follow us"
           position="mr-auto"
-          marginBottom="mb-2.5"
+          marginBottom="mb-8"
+          textClass="!text-semantic-success-bg"
         />
         <SectionHeader
           header="Built by and for the community"
           headerWidth="w-full"
           headerTextColor="text-white"
-          marginBottom="mb-4"
+          marginBottom="mb-6"
         />
-        <p className="text-lg font-normal text-white xl:w-7/12">
+        <p className="text-lg font-normal text-white xl:w-full">
           Join 300+ Data/AI practitioners discussing Instill AI in action and
           help build the modern backbone for all AI needs.
         </p>
@@ -31,7 +32,7 @@ export const Community = () => {
         />
         <CommunityBlock
           name="Discord"
-          title="Join the discussion on Dicord"
+          title="Join the thread on Dicord"
           linkText="Join the community"
           link={process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/"}
         />

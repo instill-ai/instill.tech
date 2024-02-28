@@ -12,24 +12,19 @@ export const SelfHost = () => {
           position="xl:hidden block w-full justify-center"
         />
       </div>
-      <div className="w-full xl:w-[45%]">
+      <div className="w-full xl:w-[42%]">
         <img src={"/images/self-host-cube.svg"} alt="" />
       </div>
 
-      <div className="my-auto w-full space-y-10 xl:w-[55%]">
-        <div className="mx-auto">
-          <p className="font-sans text-[36px] font-semibold">
-            Want to self-host?
-          </p>
-        </div>
-        <div className="mx-auto">
-          <p className="font-sans text-[20px] font-normal">
-            You can self-host Instill VDP and Instill Model via Instill Core. It
-            provides an open-source AI infrastructure tailored for unstructured
-            data.
-          </p>
-        </div>
-
+      <div className="my-auto w-full space-y-6 xl:w-[58%]">
+        <p className="font-sans text-[42px] font-semibold">
+          Want to self-host?
+        </p>
+        <p className="font-sans text-[24px] font-normal text-semantic-fg-secondary">
+          You can self-host Instill VDP and Instill Model via Instill Core. It
+          provides an open-source AI infrastructure tailored for unstructured
+          data.
+        </p>
         <div className="mx-auto hidden xl:block">
           <CommonCtaButton
             withArrow={true}

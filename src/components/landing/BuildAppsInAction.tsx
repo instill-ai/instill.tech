@@ -9,7 +9,7 @@ export const BuildAppsInAction = () => {
           text="Build apps in action"
           position="mr-auto"
           marginBottom="mb-8"
-          textClass="!text-white"
+          textClass="!text-semantic-success-bg"
         />
         <SectionHeader
           header="Power your apps with versatile AI pipelines"
