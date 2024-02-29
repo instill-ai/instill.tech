@@ -17,7 +17,12 @@ import {
   Tooltip,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
-import { ConnectorDefinition, ConnectorType } from "@instill-ai/toolkit";
+import {
+  ConnectorDefinition,
+  ConnectorType,
+  OperatorDefinition,
+  PipelineComponentType,
+} from "@instill-ai/toolkit";
 import cn from "clsx";
 
 type GetLayOutProps = {
@@ -30,9 +35,16 @@ export type Task = {
   title: string;
 };
 
-export type Connector = ConnectorDefinition & {
-  tasks: Task[];
-  version?: string;
+export type Connector = {
+  type: PipelineComponentType;
+  connector_definition?: ConnectorDefinition & {
+    tasks: Task[];
+    version?: string;
+  };
+  operator_definition?: OperatorDefinition & {
+    tasks: Task[];
+    version?: string;
+  };
 };
 
 export const ConnectorCategory = {
@@ -105,6 +117,8 @@ const ConnectorPage: FC & {
 } = () => {
   const router = useRouter();
 
+  const page_size = 9;
+
   const [connectors, setConnectors] =
     React.useState<Nullable<Connector[]>>(null);
   const [category, setCategory] = React.useState<string>("All");
@@ -116,37 +130,35 @@ const ConnectorPage: FC & {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPage, setTotalPage] = React.useState(0);
 
-  const itemsPerPage = 9;
-
-  // Calculate the start and end index based on the current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
   React.useEffect(() => {
     const fetchData = async () => {
       let filter = "";
       try {
         if (category !== "All") {
-          filter = "&filter=connector_type=" + category;
+          filter = `&filter=component_type=${category}`;
           setConnectors(null);
         } else {
           filter = "";
           setConnectors(null);
         }
-        const response = await InstillSDK.connector(filter);
+        const response = await InstillSDK.connector(
+          filter,
+          currentPage - 1,
+          page_size
+        );
         if (response.status === "success") {
-          setConnectors(response.data);
-          setCurrentPage(1);
-          if (response.data.length) {
-            setTotalPage(Math.ceil(response.data.length / itemsPerPage));
-          }
+          setConnectors(response.data.component_definitions);
+          setCurrentPage(response.data.page + 1);
+          setTotalPage(
+            Math.ceil(response.data.total_size / response.data.page_size)
+          );
         }
       } catch (error) {
         console.error(error); // Handle errors here
       }
     };
     fetchData(); // Call the asynchronous function
-  }, [category, stage]);
+  }, [category, stage, currentPage]);
 
   const pagesToShow = 5; // Number of pages to show in the pagination
 
@@ -173,6 +185,8 @@ const ConnectorPage: FC & {
       ...suffix,
     ];
   };
+
+  console.log("connector_definition", connectors, totalPage, currentPage);
 
   return (
     <React.Fragment>
@@ -249,16 +263,16 @@ const ConnectorPage: FC & {
               <Select.Content>
                 <Select.Group>
                   <Select.Item value="All">All</Select.Item>
-                  <Select.Item value="CONNECTOR_TYPE_AI">
+                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_AI">
                     AI Connector
                   </Select.Item>
-                  <Select.Item value="CONNECTOR_TYPE_BLOCKCHAIN">
+                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_APPLICATION">
                     Application Connector
                   </Select.Item>
-                  <Select.Item value="CONNECTOR_TYPE_DATA">
+                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_DATA">
                     Data Connector
                   </Select.Item>
-                  <Select.Item value="CONNECTOR_TYPE_OPERATOR">
+                  <Select.Item value="COMPONENT_TYPE_OPERATOR">
                     Operator
                   </Select.Item>
                 </Select.Group>
@@ -294,129 +308,306 @@ const ConnectorPage: FC & {
 
         <div className="mb-5 grid grid-cols-1 gap-5 xl:grid-cols-3">
           {connectors &&
-            connectors?.slice(startIndex, endIndex).map((connector) => (
-              <div
-                className={cn(`flex flex-col border border-[#CBD2E1]`)}
-                key={connector.uid}
-              >
-                <div
-                  className={cn(
-                    "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
-                    getHeaderColorClass(connector.type)
-                  )}
-                >
-                  {ConnectorCategory[connector.type]}
-                </div>
-                <div className="px-5 py-2.5">
-                  <div className="flex flex-row gap-x-2">
-                    <div className="rounded-[6px] border p-1 shadow">
-                      <img
-                        src={`/${connector.icon}`}
-                        alt=""
-                        className="mx-auto my-auto h-5 w-6"
-                      />
+            connectors?.map((connector) => {
+              if (connector.connector_definition) {
+                return (
+                  <div
+                    className={cn(`flex flex-col border border-[#CBD2E1]`)}
+                    key={connector.connector_definition.uid}
+                  >
+                    <div
+                      className={cn(
+                        "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+                        getHeaderColorClass(connector.connector_definition.type)
+                      )}
+                    >
+                      {ConnectorCategory[connector.connector_definition.type]}
                     </div>
-                    <span className="my-auto w-full font-sans text-[18px] font-semibold">
-                      {connector.title}
-                    </span>
-                    <div className="my-auto py-0.5">
-                      <VersionType
-                        version={connector.version ? connector.version : ""}
-                      />
-                    </div>
-                  </div>
+                    <div className="px-5 py-2.5">
+                      <div className="flex flex-row gap-x-2">
+                        <div className="rounded-[6px] border p-1 shadow">
+                          <img
+                            src={`/${connector.connector_definition.icon}`}
+                            alt=""
+                            className="mx-auto my-auto h-5 w-6"
+                          />
+                        </div>
+                        <span className="my-auto w-full font-sans text-[18px] font-semibold">
+                          {connector.connector_definition.title}
+                        </span>
+                        <div className="my-auto py-0.5">
+                          <VersionType
+                            version={
+                              connector.connector_definition.version
+                                ? connector.connector_definition.version
+                                : ""
+                            }
+                          />
+                        </div>
+                      </div>
 
-                  <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
-                    {connector.tasks.slice(0, 2).map((task) => (
-                      <Button
-                        variant="secondaryGrey"
-                        size="lg"
-                        key={task.name}
-                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                      >
-                        {task.title}
-                      </Button>
-                    ))}
-                    {connector.tasks.length > 2 && (
-                      <Tooltip.Provider>
-                        <Tooltip.Root>
-                          <Tooltip.Trigger asChild>
+                      <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
+                        {connector.connector_definition.tasks
+                          .slice(0, 2)
+                          .map((task) => (
                             <Button
                               variant="secondaryGrey"
                               size="lg"
-                              key={"task-button"}
+                              key={task.name}
                               className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
                             >
-                              +{connector.tasks.length - 2}
+                              {task.title}
                             </Button>
-                          </Tooltip.Trigger>
-                          <Tooltip.Portal>
-                            <Tooltip.Content
-                              className="TooltipContent"
-                              sideOffset={5}
-                            >
-                              <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
-                                {connector.tasks
-                                  .slice(2, connector.tasks.length)
-                                  .map((task) => (
-                                    <Button
-                                      variant="secondaryGrey"
-                                      size="lg"
-                                      key={task.name}
-                                      className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                                    >
-                                      {task.title}
-                                    </Button>
-                                  ))}
-                              </div>
-                            </Tooltip.Content>
-                          </Tooltip.Portal>
-                        </Tooltip.Root>
-                      </Tooltip.Provider>
-                    )}
-                  </div>
-                  <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
-                    One liner to describe what the component is aimed for for
-                    this task.
-                  </div>
-                  <div className="mt-5 flex flex-row space-x-5 text-semantic-fg-secondary">
-                    <div className="flex flex-row space-x-2">
-                      <div className="my-auto">
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M9 15.75L8.92496 15.6374C8.40398 14.856 8.14349 14.4652 7.79933 14.1824C7.49464 13.9319 7.14357 13.7441 6.7662 13.6295C6.33994 13.5 5.87033 13.5 4.93112 13.5H3.9C3.05992 13.5 2.63988 13.5 2.31901 13.3365C2.03677 13.1927 1.8073 12.9632 1.66349 12.681C1.5 12.3601 1.5 11.9401 1.5 11.1V4.65C1.5 3.80992 1.5 3.38988 1.66349 3.06901C1.8073 2.78677 2.03677 2.5573 2.31901 2.41349C2.63988 2.25 3.05992 2.25 3.9 2.25H4.2C5.88016 2.25 6.72024 2.25 7.36197 2.57698C7.92646 2.8646 8.3854 3.32354 8.67302 3.88803C9 4.52976 9 5.36984 9 7.05M9 15.75V7.05M9 15.75L9.07504 15.6374C9.59602 14.856 9.85651 14.4652 10.2007 14.1824C10.5054 13.9319 10.8564 13.7441 11.2338 13.6295C11.6601 13.5 12.1297 13.5 13.0689 13.5H14.1C14.9401 13.5 15.3601 13.5 15.681 13.3365C15.9632 13.1927 16.1927 12.9632 16.3365 12.681C16.5 12.3601 16.5 11.9401 16.5 11.1V4.65C16.5 3.80992 16.5 3.38988 16.3365 3.06901C16.1927 2.78677 15.9632 2.5573 15.681 2.41349C15.3601 2.25 14.9401 2.25 14.1 2.25H13.8C12.1198 2.25 11.2798 2.25 10.638 2.57698C10.0735 2.8646 9.6146 3.32354 9.32698 3.88803C9 4.52976 9 5.36984 9 7.05"
-                            stroke="#1D2433"
-                            strokeWidth="1.33333"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                          ))}
+                        {connector.connector_definition.tasks.length > 2 && (
+                          <Tooltip.Provider>
+                            <Tooltip.Root>
+                              <Tooltip.Trigger asChild>
+                                <Button
+                                  variant="secondaryGrey"
+                                  size="lg"
+                                  key={"task-button"}
+                                  className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                >
+                                  +
+                                  {connector.connector_definition.tasks.length -
+                                    2}
+                                </Button>
+                              </Tooltip.Trigger>
+                              <Tooltip.Portal>
+                                <Tooltip.Content
+                                  className="TooltipContent"
+                                  sideOffset={5}
+                                >
+                                  <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
+                                    {connector.connector_definition.tasks
+                                      .slice(
+                                        2,
+                                        connector.connector_definition.tasks
+                                          .length
+                                      )
+                                      .map((task) => (
+                                        <Button
+                                          variant="secondaryGrey"
+                                          size="lg"
+                                          key={task.name}
+                                          className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                        >
+                                          {task.title}
+                                        </Button>
+                                      ))}
+                                  </div>
+                                </Tooltip.Content>
+                              </Tooltip.Portal>
+                            </Tooltip.Root>
+                          </Tooltip.Provider>
+                        )}
                       </div>
-                      <span className="my-auto">
-                        <a href={connector.documentation_url}>Docs</a>
-                      </span>
-                    </div>
-                    <div className="flex flex-row space-x-1">
-                      <GitHubIcon
-                        color="fill-[#1D2433]"
-                        height="h-[24px]"
-                        position="my-auto my-auto"
-                        width="w-[24px]"
-                      />
-                      <span className="my-auto">
-                        <a href={connector.documentation_url}>Github</a>
-                      </span>
+                      <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
+                        One liner to describe what the component is aimed for
+                        for this task.
+                      </div>
+                      <div className="mt-5 flex flex-row space-x-5 text-semantic-fg-secondary">
+                        <div className="flex flex-row space-x-2">
+                          <div className="my-auto">
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M9 15.75L8.92496 15.6374C8.40398 14.856 8.14349 14.4652 7.79933 14.1824C7.49464 13.9319 7.14357 13.7441 6.7662 13.6295C6.33994 13.5 5.87033 13.5 4.93112 13.5H3.9C3.05992 13.5 2.63988 13.5 2.31901 13.3365C2.03677 13.1927 1.8073 12.9632 1.66349 12.681C1.5 12.3601 1.5 11.9401 1.5 11.1V4.65C1.5 3.80992 1.5 3.38988 1.66349 3.06901C1.8073 2.78677 2.03677 2.5573 2.31901 2.41349C2.63988 2.25 3.05992 2.25 3.9 2.25H4.2C5.88016 2.25 6.72024 2.25 7.36197 2.57698C7.92646 2.8646 8.3854 3.32354 8.67302 3.88803C9 4.52976 9 5.36984 9 7.05M9 15.75V7.05M9 15.75L9.07504 15.6374C9.59602 14.856 9.85651 14.4652 10.2007 14.1824C10.5054 13.9319 10.8564 13.7441 11.2338 13.6295C11.6601 13.5 12.1297 13.5 13.0689 13.5H14.1C14.9401 13.5 15.3601 13.5 15.681 13.3365C15.9632 13.1927 16.1927 12.9632 16.3365 12.681C16.5 12.3601 16.5 11.9401 16.5 11.1V4.65C16.5 3.80992 16.5 3.38988 16.3365 3.06901C16.1927 2.78677 15.9632 2.5573 15.681 2.41349C15.3601 2.25 14.9401 2.25 14.1 2.25H13.8C12.1198 2.25 11.2798 2.25 10.638 2.57698C10.0735 2.8646 9.6146 3.32354 9.32698 3.88803C9 4.52976 9 5.36984 9 7.05"
+                                stroke="#1D2433"
+                                strokeWidth="1.33333"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <span className="my-auto">
+                            <a
+                              href={
+                                connector.connector_definition.documentation_url
+                              }
+                            >
+                              Docs
+                            </a>
+                          </span>
+                        </div>
+                        <div className="flex flex-row space-x-1">
+                          <GitHubIcon
+                            color="fill-[#1D2433]"
+                            height="h-[24px]"
+                            position="my-auto my-auto"
+                            width="w-[24px]"
+                          />
+                          <span className="my-auto">
+                            <a
+                              href={
+                                connector.connector_definition.documentation_url
+                              }
+                            >
+                              Github
+                            </a>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                );
+              }
+              if (connector.operator_definition) {
+                return (
+                  <div
+                    className={cn(`flex flex-col border border-[#CBD2E1]`)}
+                    key={connector.operator_definition.uid}
+                  >
+                    <div
+                      className={cn(
+                        "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+                        getHeaderColorClass("CONNECTOR_TYPE_OPERATOR")
+                      )}
+                    >
+                      {ConnectorCategory["CONNECTOR_TYPE_OPERATOR"]}
+                    </div>
+                    <div className="px-5 py-2.5">
+                      <div className="flex flex-row gap-x-2">
+                        <div className="rounded-[6px] border p-1 shadow">
+                          <img
+                            src={`/${connector.operator_definition.icon}`}
+                            alt=""
+                            className="mx-auto my-auto h-5 w-6"
+                          />
+                        </div>
+                        <span className="my-auto w-full font-sans text-[18px] font-semibold">
+                          {connector.operator_definition.title}
+                        </span>
+                        <div className="my-auto py-0.5">
+                          <VersionType
+                            version={
+                              connector.operator_definition.version
+                                ? connector.operator_definition.version
+                                : ""
+                            }
+                          />
+                        </div>
+                      </div>
+
+                      <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
+                        {connector.operator_definition.tasks
+                          .slice(0, 2)
+                          .map((task) => (
+                            <Button
+                              variant="secondaryGrey"
+                              size="lg"
+                              key={task.name}
+                              className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                            >
+                              {task.title}
+                            </Button>
+                          ))}
+                        {connector.operator_definition.tasks.length > 2 && (
+                          <Tooltip.Provider>
+                            <Tooltip.Root>
+                              <Tooltip.Trigger asChild>
+                                <Button
+                                  variant="secondaryGrey"
+                                  size="lg"
+                                  key={"task-button"}
+                                  className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                >
+                                  +
+                                  {connector.operator_definition.tasks.length -
+                                    2}
+                                </Button>
+                              </Tooltip.Trigger>
+                              <Tooltip.Portal>
+                                <Tooltip.Content
+                                  className="TooltipContent"
+                                  sideOffset={5}
+                                >
+                                  <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
+                                    {connector.operator_definition.tasks
+                                      .slice(
+                                        2,
+                                        connector.operator_definition.tasks
+                                          .length
+                                      )
+                                      .map((task) => (
+                                        <Button
+                                          variant="secondaryGrey"
+                                          size="lg"
+                                          key={task.name}
+                                          className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                                        >
+                                          {task.title}
+                                        </Button>
+                                      ))}
+                                  </div>
+                                </Tooltip.Content>
+                              </Tooltip.Portal>
+                            </Tooltip.Root>
+                          </Tooltip.Provider>
+                        )}
+                      </div>
+                      <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
+                        One liner to describe what the component is aimed for
+                        for this task.
+                      </div>
+                      <div className="mt-5 flex flex-row space-x-5 text-semantic-fg-secondary">
+                        <div className="flex flex-row space-x-2">
+                          <div className="my-auto">
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M9 15.75L8.92496 15.6374C8.40398 14.856 8.14349 14.4652 7.79933 14.1824C7.49464 13.9319 7.14357 13.7441 6.7662 13.6295C6.33994 13.5 5.87033 13.5 4.93112 13.5H3.9C3.05992 13.5 2.63988 13.5 2.31901 13.3365C2.03677 13.1927 1.8073 12.9632 1.66349 12.681C1.5 12.3601 1.5 11.9401 1.5 11.1V4.65C1.5 3.80992 1.5 3.38988 1.66349 3.06901C1.8073 2.78677 2.03677 2.5573 2.31901 2.41349C2.63988 2.25 3.05992 2.25 3.9 2.25H4.2C5.88016 2.25 6.72024 2.25 7.36197 2.57698C7.92646 2.8646 8.3854 3.32354 8.67302 3.88803C9 4.52976 9 5.36984 9 7.05M9 15.75V7.05M9 15.75L9.07504 15.6374C9.59602 14.856 9.85651 14.4652 10.2007 14.1824C10.5054 13.9319 10.8564 13.7441 11.2338 13.6295C11.6601 13.5 12.1297 13.5 13.0689 13.5H14.1C14.9401 13.5 15.3601 13.5 15.681 13.3365C15.9632 13.1927 16.1927 12.9632 16.3365 12.681C16.5 12.3601 16.5 11.9401 16.5 11.1V4.65C16.5 3.80992 16.5 3.38988 16.3365 3.06901C16.1927 2.78677 15.9632 2.5573 15.681 2.41349C15.3601 2.25 14.9401 2.25 14.1 2.25H13.8C12.1198 2.25 11.2798 2.25 10.638 2.57698C10.0735 2.8646 9.6146 3.32354 9.32698 3.88803C9 4.52976 9 5.36984 9 7.05"
+                                stroke="#1D2433"
+                                strokeWidth="1.33333"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <span className="my-auto">
+                            <a
+                              href={
+                                connector.operator_definition.documentation_url
+                              }
+                            >
+                              Docs
+                            </a>
+                          </span>
+                        </div>
+                        <div className="flex flex-row space-x-1">
+                          <GitHubIcon
+                            color="fill-[#1D2433]"
+                            height="h-[24px]"
+                            position="my-auto my-auto"
+                            width="w-[24px]"
+                          />
+                          <span className="my-auto">
+                            <a
+                              href={
+                                connector.operator_definition.documentation_url
+                              }
+                            >
+                              Github
+                            </a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+            })}
 
           {!connectors &&
             [...new Array(9)].map((e, index) => (
@@ -475,7 +666,7 @@ const ConnectorPage: FC & {
                   size="md"
                   className={cn(
                     "gap-x-2",
-                    currentPage == index + 1 ? "!bg-semantic-bg-base-bg" : ""
+                    currentPage === elem ? "!bg-semantic-bg-base-bg" : ""
                   )}
                   onClick={() =>
                     setCurrentPage(

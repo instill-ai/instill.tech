@@ -10,9 +10,9 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const client = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_SERVER_INSTILL_API_TOKEN}`,
-    },
+    // headers: {
+    //   Authorization: `Bearer ${process.env.NEXT_SERVER_INSTILL_API_TOKEN}`,
+    // },
   });
 
   try {
