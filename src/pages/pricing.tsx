@@ -6,6 +6,7 @@ import {
   PricingInfoCard,
 } from "@/components/ui";
 import { useRouter } from "next/router";
+import { Separator } from "@instill-ai/design-system";
 
 type GetLayOutProps = {
   page: ReactElement;
@@ -28,9 +29,9 @@ const PricingPage: FC & {
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[1127px]"
+        contentMaxWidth="max-w-[1215px]"
       >
-        <div className="mb-[88px] flex flex-col space-y-5">
+        <div className="mb-[29px] flex flex-col space-y-5">
           <h3 className="text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[2%] text-[#1D5BD7]">
             Pricing
           </h3>
@@ -42,17 +43,21 @@ const PricingPage: FC & {
           </p>
         </div>
 
+        <div>
+          <Separator className="mb-[13px]" />
+          <Separator className="mb-2" />
+        </div>
+
         <div className="mx-auto flex flex-col">
-          <div className="mx-auto mb-8 flex flex-col space-y-4 xl:flex-row xl:gap-x-8 xl:space-y-0">
+          <div className="mx-auto mb-16 flex flex-col space-y-4 xl:flex-row xl:gap-x-8 xl:space-y-0">
             <PricingInfoCard
               price="$0"
               tier="free"
-              className="w-[263px]"
+              className="h-[928px] w-[263px]"
               planDescription="The basics for individuals and organizations"
               features={[
                 "Unlimited public/private pipelines*",
                 "Rate-limited runs**",
-                "1 user",
                 "Community-based support on Discord",
               ]}
               featureDescription={null}
@@ -66,12 +71,11 @@ const PricingPage: FC & {
             <PricingInfoCard
               price="$9"
               tier="pro"
-              className="w-[263px]"
+              className="h-[928px] w-[263px]"
               planDescription="For professionals to experience runs without any restrictions"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
-                "1 user",
                 "Community-based support on Discord",
                 "Version Control",
               ]}
@@ -86,7 +90,8 @@ const PricingPage: FC & {
             <PricingInfoCard
               price="$14"
               tier="team"
-              className="w-[263px] !border-semantic-accent-default !shadow-[#BED3FE]"
+              className="h-[928px] w-[263px]"
+              highlighted={true}
               planDescription="For small teams with advanced collaboration and no organization restrictions"
               features={[
                 "Unlimited public/private pipelines",
@@ -107,12 +112,12 @@ const PricingPage: FC & {
             <PricingInfoCard
               price="Custom"
               tier="enterprise"
-              className="w-[263px]"
+              className="h-[928px] w-[263px]"
               planDescription="Security, support, and flexible deployment that meets performance needs"
               features={[
                 "Unlimited public/private pipelines",
                 "Non rate-limited runs",
-                "Dedicated Slack Channel and up to 1 hour of weekly dedicated support",
+                "Slack Channel with weekly support up to 1 hour",
                 "Version Control",
                 "User permissions",
                 "Upload and use your own custom models",
