@@ -143,7 +143,7 @@ export const PricingInfoCard = ({
             {features.map((feature) => (
               <div key={feature} className="flex flex-row gap-x-3">
                 <div className="flex-shrink-0">
-                  <Icons.CheckCircle className="h-4 w-4 stroke-semantic-success-default" />
+                  <Icons.CheckCircle className="h-4 w-4 stroke-semantic-accent-default" />
                 </div>
                 <p className="text-semantic-fg-secondary product-body-text-4-regular">
                   {feature}

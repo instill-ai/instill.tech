@@ -30,15 +30,15 @@ const PricingPage: FC & {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1127px]"
       >
-        <div className="mb-[88px] flex flex-col">
-          <h3 className="mb-3 text-center font-sans text-[32px] font-bold leading-[48px] -tracking-[2%] text-[#1D5BD7]">
+        <div className="mb-[88px] flex flex-col space-y-5">
+          <h3 className="text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[2%] text-[#1D5BD7]">
             Pricing
           </h3>
-          <h2 className="mb-5 text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[1.75%] text-[#101828]">
-            Plans that fit your scale
+          <h2 className="text-center font-sans text-[56px] font-bold leading-[60px] -tracking-[1.75%] text-[#101828]">
+            Plans for all levels of AI needs
           </h2>
-          <p className="text-center font-sans text-2xl font-normal leading-9 -tracking-[1.5%] text-[#475467]">
-            Simple pricing to build your unstructured data infrastructure
+          <p className="text-center font-sans text-[32px] font-normal leading-[48px] -tracking-[1.5%] text-[#475467]">
+            Simple pricing to to build your AI backbone
           </p>
         </div>
 
@@ -86,7 +86,7 @@ const PricingPage: FC & {
             <PricingInfoCard
               price="$14"
               tier="team"
-              className="w-[263px]"
+              className="w-[263px] !border-semantic-accent-default !shadow-[#BED3FE]"
               planDescription="For small teams with advanced collaboration and no organization restrictions"
               features={[
                 "Unlimited public/private pipelines",
