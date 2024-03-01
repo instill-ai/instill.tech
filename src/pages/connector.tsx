@@ -457,7 +457,7 @@ const ConnectorPage: FC & {
                           <Tag
                             variant="lightBlue"
                             size="sm"
-                            className="!border-0"
+                            className="!border-0 !py-0.5"
                           >
                             V
                             {
@@ -615,6 +615,20 @@ const ConnectorPage: FC & {
                               Github
                             </a>
                           </span>
+                        </div>
+                        <div className="w-full text-right">
+                          <Tag
+                            variant="lightBlue"
+                            size="sm"
+                            className="!border-0 !py-0.5"
+                          >
+                            V
+                            {
+                              connector.operator_definition.version?.split(
+                                "-"
+                              )[0]
+                            }
+                          </Tag>
                         </div>
                       </div>
                     </div>
