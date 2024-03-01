@@ -453,6 +453,20 @@ const ConnectorPage: FC & {
                             </a>
                           </span>
                         </div>
+                        <div className="w-full text-right">
+                          <Tag
+                            variant="lightBlue"
+                            size="sm"
+                            className="!border-0"
+                          >
+                            V
+                            {
+                              connector.connector_definition.version?.split(
+                                "-"
+                              )[0]
+                            }
+                          </Tag>
+                        </div>
                       </div>
                     </div>
                   </div>
