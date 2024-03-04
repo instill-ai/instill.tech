@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.42.2](https://github.com/instill-ai/instill.tech/compare/v1.42.1...v1.42.2) (2024-03-04)
+
+
+### Miscellaneous
+
+* **about:** update member list ([#725](https://github.com/instill-ai/instill.tech/issues/725)) ([e3ccdb4](https://github.com/instill-ai/instill.tech/commit/e3ccdb4836eb4989f61d023447253d9c8fff4e28))
+* update pricing page ([#728](https://github.com/instill-ai/instill.tech/issues/728)) ([e22dc48](https://github.com/instill-ai/instill.tech/commit/e22dc4888719f54246d9451196cc12fb813d5d1e))
+* update version number for docker component deployment ([#729](https://github.com/instill-ai/instill.tech/issues/729)) ([fdda80f](https://github.com/instill-ai/instill.tech/commit/fdda80fb4cf72791518fc037ffd0091f277b312c))
+
 ## [1.42.1](https://github.com/instill-ai/instill.tech/compare/v1.42.0...v1.42.1) (2024-02-16)
 
 
