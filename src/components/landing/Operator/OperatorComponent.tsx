@@ -26,7 +26,7 @@ function OperatorComponent({
       >
         {ConnectorCategory["CONNECTOR_TYPE_OPERATOR"]}
       </div>
-      <div className="min-h-[200px] px-5 py-2.5">
+      <div className="min-h-[200px] bg-white px-5 py-2.5">
         <div className="flex flex-row gap-x-2">
           <div className="rounded-[6px] border p-1 shadow">
             <img
@@ -130,7 +130,7 @@ function OperatorComponent({
               <a href={operator_definition.documentation_url}>Github</a>
             </span>
           </div>
-          <div className="w-full text-right">
+          {/* <div className="w-full text-right">
             <Tag
               variant="lightBlue"
               size="sm"
@@ -138,7 +138,7 @@ function OperatorComponent({
             >
               V{operator_definition.version?.split("-")[0]}
             </Tag>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

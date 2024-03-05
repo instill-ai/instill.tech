@@ -5,7 +5,7 @@ function ModelDefault({ count }: { count: number }) {
     <React.Fragment>
       {[...new Array(count)].map((e) => (
         <div
-          className="inline-flex items-start justify-start border border-[#CBD2E1]"
+          className="inline-flex min-h-[200px] items-start justify-start border border-[#CBD2E1]"
           key={`model-key-${e}`}
         >
           <div className="relative h-full w-8 bg-[#FFF1D6]" />

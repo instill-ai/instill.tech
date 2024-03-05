@@ -5,7 +5,7 @@ import { Button, Logos } from "@instill-ai/design-system";
 function ModelComponent({ model }: { model: ModelDefinition }) {
   return (
     <div
-      className="inline-flex items-start justify-start border border-[#CBD2E1]"
+      className="inline-flex min-h-[200px] items-start justify-start border border-[#CBD2E1]"
       key={model.uid}
     >
       <div className="relative h-full w-8 bg-[#FFF1D6]" />
@@ -38,7 +38,7 @@ function ModelComponent({ model }: { model: ModelDefinition }) {
             {model.description}
           </div>
         </div>
-        <div className="mt-5 inline-flex items-end justify-end gap-x-5 self-stretch">
+        {/* <div className="mt-5 inline-flex items-end justify-end gap-x-5 self-stretch">
           <div className="flex items-center justify-start gap-5 bg-white bg-opacity-0 p-1 opacity-80">
             <div className="flex items-center justify-start gap-x-2">
               <div className="my-auto">
@@ -87,7 +87,7 @@ function ModelComponent({ model }: { model: ModelDefinition }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
