@@ -39,6 +39,7 @@
     "d3": "^7.6.1",
     "embla-carousel": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
+    "framer-motion": "^11.0.8",
     "fs": "0.0.1-security",
     "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",

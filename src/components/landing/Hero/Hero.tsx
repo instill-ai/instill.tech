@@ -4,14 +4,16 @@ import { SubHeadline } from "./SubHeadline";
 import { ConsoleCtaButton } from "./ConsoleCtaButton";
 import { Jumbotron } from "../jumbotron";
 import { Frameworks } from "./Frameworks";
+import Slide from "../Slide";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];
 };
 
-export const Hero = ({ scrollHandler }: HeroProps) => {
+export const Hero = () => {
   return (
     <div className="flex min-h-[90vh] flex-col justify-center px-4 xl:px-0">
+      {/* <Slide> */}
       <div className="flex flex-col xl:mb-[40px] xl:flex-row xl:gap-x-12 xl:gap-y-0">
         <div className="mt-10 flex flex-col xl:mt-0 xl:w-[50%]">
           <Headline marginBottom="mb-5" />
@@ -45,6 +47,7 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
           <Jumbotron />
         </div>
       </div>
+      {/* </Slide> */}
     </div>
   );
 };

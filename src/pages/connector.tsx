@@ -55,17 +55,20 @@ export type Connector = {
 export const ConnectorCategory = {
   CONNECTOR_TYPE_AI: "AI Connector",
   CONNECTOR_TYPE_BLOCKCHAIN: "Application Connector",
+  CONNECTOR_TYPE_APPLICATION: "Application Connector",
   CONNECTOR_TYPE_DATA: "Data Connector",
   CONNECTOR_TYPE_UNSPECIFIED: "Unspecified Connector",
   CONNECTOR_TYPE_OPERATOR: "Operator",
 };
 
-export const getHeaderColorClass = (type: ConnectorType) => {
+export const getHeaderColorClass = (
+  type: ConnectorType | "CONNECTOR_TYPE_APPLICATION"
+) => {
   switch (type) {
     case "CONNECTOR_TYPE_AI":
     case "CONNECTOR_TYPE_DATA":
       return "bg-semantic-accent-bg text-semantic-accent-on-bg";
-    case "CONNECTOR_TYPE_BLOCKCHAIN":
+    case "CONNECTOR_TYPE_APPLICATION":
       return "bg-semantic-warning-bg text-semantic-warning-on-bg";
     case "CONNECTOR_TYPE_OPERATOR":
       return "bg-semantic-success-bg text-semantic-success-on-bg";
@@ -128,6 +131,7 @@ const ConnectorPage: FC & {
     React.useState<Nullable<Connector[]>>(null);
   const [category, setCategory] = React.useState<string>("All");
   const [stage, setStage] = React.useState<string>("All");
+  const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const [searchCode, setSearchCode] = React.useState<Nullable<string>>(null);
 
@@ -137,6 +141,7 @@ const ConnectorPage: FC & {
 
   React.useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       let filter = "";
       try {
         if (category !== "All") {
@@ -157,9 +162,11 @@ const ConnectorPage: FC & {
           setTotalPage(
             Math.ceil(response.data.total_size / response.data.page_size)
           );
+          setLoading(false);
         }
       } catch (error) {
         console.error(error); // Handle errors here
+        setLoading(false);
       }
     };
     fetchData(); // Call the asynchronous function
@@ -190,8 +197,6 @@ const ConnectorPage: FC & {
       ...suffix,
     ];
   };
-
-  console.log("connector_definition", connectors, totalPage, currentPage);
 
   return (
     <React.Fragment>
@@ -332,7 +337,7 @@ const ConnectorPage: FC & {
               }
             })}
 
-          {!connectors && <ConnectorDefault count={9} />}
+          {isLoading && <ConnectorDefault count={9} />}
         </div>
 
         {connectors && (
@@ -378,6 +383,16 @@ const ConnectorPage: FC & {
               Next
               <Icons.ArrowRight className="h-4 w-4 stroke-semantic-fg-primary" />
             </Button>
+          </div>
+        )}
+
+        {!connectors?.length && (
+          <div className="flex h-[600px] flex-col items-center justify-center">
+            <img src="/images/no-component-found.svg" alt="" />
+            <p className="mt-4 text-[18px]">
+              no components matching{" "}
+              <span className="font-bold">search query</span>
+            </p>
           </div>
         )}
       </ContentContainer>
