@@ -65,20 +65,6 @@ export const validateTutorialMeta = (
     );
   }
 
-  // Validate whether tutorial have necessary fields - sourceConnector
-  if (!Object.prototype.hasOwnProperty.call(data, "sourceConnector")) {
-    throw new Error(
-      `Error occurred when validate tutorial meta - missing sourceConnector field at ${path}`
-    );
-  }
-
-  // Validate whether tutorial have necessary fields - destinationConnector
-  if (!Object.prototype.hasOwnProperty.call(data, "destinationConnector")) {
-    throw new Error(
-      `Error occurred when validate tutorial meta - missing destinationConnector field at ${path}`
-    );
-  }
-
   // Validate whether tutorial have necessary fields - publishedOn
   if (!Object.prototype.hasOwnProperty.call(data, "publishedOn")) {
     throw new Error(
