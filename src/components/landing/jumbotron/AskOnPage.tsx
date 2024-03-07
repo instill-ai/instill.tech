@@ -46,7 +46,9 @@ export const AskOnPage = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const apiResponse = await JumbotronSDK.askOnPage({
       inputs: [
         {
