@@ -2,6 +2,7 @@
 
 import { AiTask, Nullable } from "@/types/instill";
 import { ReactElement } from "react";
+import cn from "clsx";
 import {
   ImageClassificationIcon,
   InstanceSegmentationIcon,
@@ -13,8 +14,6 @@ import {
   TextGenerationIcon,
   Icons,
 } from "@instill-ai/design-system";
-
-import cn from "clsx";
 
 type IconStyle = {
   color: string;
