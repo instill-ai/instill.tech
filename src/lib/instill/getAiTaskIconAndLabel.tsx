@@ -11,6 +11,7 @@ import {
   SemanticSegmentationIcon,
   TextToImageIcon,
   TextGenerationIcon,
+  Icons,
 } from "@instill-ai/design-system";
 
 import cn from "clsx";
@@ -80,7 +81,14 @@ export const getAiTaskIconAndLabel = ({
       break;
     case "VisualQuestionAnswering":
       icon = (iconStyle: IconStyle) => (
-        <ImageClassificationIcon {...iconStyle} />
+        <Icons.VisualQuestionAnswering
+          className={cn(
+            "my-auto h-4 w-4",
+            iconStyle.color === "fill-instillGrey80"
+              ? "stroke-semantic-fg-disabled"
+              : "stroke-semantic-fg-on-default"
+          )}
+        />
       );
       label = "Visual Question Answering";
       break;
