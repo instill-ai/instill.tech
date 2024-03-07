@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.43.3](https://github.com/instill-ai/instill.tech/compare/v1.43.2...v1.43.3) (2024-03-07)
+
+
+### Miscellaneous
+
+* remove remove startConnector -&gt; endConnector from tutorial page ([#738](https://github.com/instill-ai/instill.tech/issues/738)) ([b842541](https://github.com/instill-ai/instill.tech/commit/b842541a30591850fe8316eba8702bd48276992f))
+
 ## [1.43.2](https://github.com/instill-ai/instill.tech/compare/v1.43.1...v1.43.2) (2024-03-07)
 
 
