@@ -17,8 +17,6 @@ describe("Should validate tutorial meta", () => {
       authorAvatarSrc: "/author-avatar/xiaofei-du.png",
       authorGitHubUrl: "https://github.com/xiaofei-du",
       aiTask: "ObjectDetection",
-      sourceConnector: "HTTP",
-      destinationConnector: "HTTP",
       useCase: "prototype",
     };
 
@@ -385,62 +383,6 @@ describe("Should validate tutorial meta", () => {
 
     expect(testFunction).toThrow(
       "Error occurred when validate tutorial meta - missing aiTask field at path"
-    );
-  });
-
-  test("should throw sourceConnector not found", () => {
-    const testFunction = () => {
-      const meta = {
-        title: "test article",
-        lang: "en-US",
-        draft: false,
-        description: "test",
-        publishedOn: "2022-09-22T14:26:00",
-        themeImgSrc: "",
-        themeImgAlt: "",
-        themeImgThumbnailSrc: "",
-        placeholderColor: "bg-instillYellow50",
-        author: "Xiaofei Du",
-        authorAvatarSrc: "/author-avatar/xiaofei-du.png",
-        authorGitHubUrl: "https://github.com/xiaofei-du",
-        aiTask: "ObjectDetection",
-        destinationConnector: "HTTP",
-        useCase: "prototype",
-      };
-
-      validateTutorialMeta("path", meta);
-    };
-
-    expect(testFunction).toThrow(
-      "Error occurred when validate tutorial meta - missing sourceConnector field at path"
-    );
-  });
-
-  test("should throw destinationConnector not found", () => {
-    const testFunction = () => {
-      const meta = {
-        title: "test article",
-        lang: "en-US",
-        draft: false,
-        description: "test",
-        publishedOn: "2022-09-22T14:26:00",
-        themeImgSrc: "",
-        themeImgAlt: "",
-        themeImgThumbnailSrc: "",
-        placeholderColor: "bg-instillYellow50",
-        author: "Xiaofei Du",
-        authorAvatarSrc: "/author-avatar/xiaofei-du.png",
-        authorGitHubUrl: "https://github.com/xiaofei-du",
-        aiTask: "ObjectDetection",
-        sourceConnector: "HTTP",
-        useCase: "prototype",
-      };
-
-      validateTutorialMeta("path", meta);
-    };
-
-    expect(testFunction).toThrow(
-      "Error occurred when validate tutorial meta - missing destinationConnector field at path"
     );
   });
 
