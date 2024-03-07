@@ -78,7 +78,9 @@ export const WebpageSummarization = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const apiResponse = await JumbotronSDK.webpageSummarization({
       inputs: [
         {
