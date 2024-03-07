@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.43.0](https://github.com/instill-ai/instill.tech/compare/v1.42.2...v1.43.0) (2024-03-07)
+
+
+### Features
+
+* **tutorial:** add tutorial about llaba-v1.6-7b ([#731](https://github.com/instill-ai/instill.tech/issues/731)) ([6309254](https://github.com/instill-ai/instill.tech/commit/6309254359f1ca3024280616fcef7236f2082cfa))
+
+
+### Miscellaneous
+
+* unify the metadata with updated one ([#732](https://github.com/instill-ai/instill.tech/issues/732)) ([77fb1bb](https://github.com/instill-ai/instill.tech/commit/77fb1bbc9c95c741c482bfb5432b49fce75b321a))
+
 ## [1.42.2](https://github.com/instill-ai/instill.tech/compare/v1.42.1...v1.42.2) (2024-03-04)
 
 
