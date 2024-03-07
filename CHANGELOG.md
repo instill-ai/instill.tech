@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.43.1](https://github.com/instill-ai/instill.tech/compare/v1.43.0...v1.43.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* connector key missing fix ([#735](https://github.com/instill-ai/instill.tech/issues/735)) ([0d58c2a](https://github.com/instill-ai/instill.tech/commit/0d58c2af6599651e6f6ed9934e85e3f7572e46f6))
+
+
+### Documentation
+
+* fix left searchbox alignment for dark & light mode ([#712](https://github.com/instill-ai/instill.tech/issues/712)) ([9c6b0e8](https://github.com/instill-ai/instill.tech/commit/9c6b0e8b209ac7b828ca1e14b40e4f5039b64636))
+
 ## [1.43.0](https://github.com/instill-ai/instill.tech/compare/v1.42.2...v1.43.0) (2024-03-07)
 
 
