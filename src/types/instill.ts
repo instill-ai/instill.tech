@@ -98,6 +98,7 @@ export type BlogArticleJsonLD = {
 export type AiTask =
   | "ObjectDetection"
   | "Ocr"
+  | "VisualQuestionAnswering"
   | "ImageClassification"
   | "InstanceSegmentation"
   | "KeypointDetection"

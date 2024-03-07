@@ -149,6 +149,10 @@ export const TutorialFilters = ({
               value: "Ocr",
             },
             {
+              label: "Visual Question Answering",
+              value: "VisualQuestionAnswering",
+            },
+            {
               label: "Semantic Segmentation",
               value: "SemanticSegmentation",
             },
