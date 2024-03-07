@@ -13,6 +13,8 @@ import {
   TextGenerationIcon,
 } from "@instill-ai/design-system";
 
+import cn from "clsx";
+
 type IconStyle = {
   color: string;
   width: string;
@@ -75,6 +77,12 @@ export const getAiTaskIconAndLabel = ({
     case "TextToImage":
       icon = (iconStyle: IconStyle) => <TextToImageIcon {...iconStyle} />;
       label = "Text to Image";
+      break;
+    case "VisualQuestionAnswering":
+      icon = (iconStyle: IconStyle) => (
+        <ImageClassificationIcon {...iconStyle} />
+      );
+      label = "Visual Question Answering";
       break;
     case "Null":
       icon = null;
