@@ -7,8 +7,8 @@ import { TutorialLabel } from "./TutorialLabel";
 export type TutorialPipelineLabelProps = {
   aiTask: Nullable<AiTask>;
   label: string;
-  sourceConnector: Nullable<string>;
-  destinationConnector: Nullable<string>;
+  sourceConnector?: Nullable<string>;
+  destinationConnector?: Nullable<string>;
   marginBottom?: string;
   icon?: getAiTaskIconAndLabelReturn["icon"];
 };

@@ -20,8 +20,6 @@ Playground.args = {
     title: "Build a SYNC classification pipeline",
     description:
       "Build a SYNC classification pipeline with the unstructured data ETL tool VDP https://github.com/instill-ai/vdp",
-    sourceConnector: "http",
-    destinationConnector: "http",
     lang: "en-US",
     commit: {
       author: "Summerbud",
