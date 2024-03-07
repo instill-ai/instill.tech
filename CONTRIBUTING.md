@@ -336,12 +336,7 @@ type TutorialMeta = {
 
   // Please reference the type below.
   aiTask: AiTask;
-
-  // Connectors will be display as is on the page. For example, if you have a
-  // sourceConnector named HTTP, we will display the connector name as HTTP.
-  sourceConnector: string;
-  destinationConnector: string;
-
+  
   // Slug should be as same as the name of the filename of the article. It
   // will be the URL fragment of the article too. For example if you have
   // a article at /tutorials/vdp-101, the slug should be vdp-101 and the

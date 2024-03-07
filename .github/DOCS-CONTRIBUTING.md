@@ -322,11 +322,6 @@ type TutorialMeta = {
   // Please reference the type below.
   aiTask: AiTask;
 
-  // Connectors will be display as is on the page. For example, if you have a
-  // sourceConnector named HTTP, we will display the connector name as HTTP.
-  sourceConnector: string;
-  destinationConnector: string;
-
   // Slug should be as same as the name of the filename of the article. It
   // will be the URL fragment of the article too. For example if you have
   // a article at /tutorials/vdp-101, the slug should be vdp-101 and the
@@ -477,7 +472,7 @@ next-i18next
 i18next
 ```
 
-### Folder Structure 
+### Folder Structure
 
 ```
 ├── docs
@@ -495,6 +490,7 @@ i18next
         ├── [...path].tsx
         └── index.tsx
 ```
+
 ### Want to add new langauge
 
 add your langauge
@@ -513,7 +509,7 @@ const { t } = useTranslation();
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   locale
 }) => {
-  
+
   return {
     props: {
       ...(await serverSideTranslations(locale ?? "en", ["common"]))
@@ -522,10 +518,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 };
 
 ```
- ### Example used in project
- - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L76
- - https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
 
+### Example used in project
+
+- https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L76
+- https://github.com/instill-ai/instill.tech/blob/21426630ae7f24e99c39054f2beaded39c2b194c/src/pages/docs/%5B...path%5D.tsx#L49
 
 ### Version in documentation
 
@@ -552,7 +549,7 @@ export const LATEST_VERSIONS = {
 │   │      └── core  // appType as folder
 │   │            ├── welcome.en.mdx
 │   │            └── welcome.zh_CN.mdx
-│   │ 
+│   │
 │   └── v0.0.1-alpha // version as folder
 │        └── vdp  // appType as folder
 │        │     ├── welcome.en.mdx
@@ -567,7 +564,6 @@ export const LATEST_VERSIONS = {
 - update the dropdown items for versions [here](https://github.com/instill-ai/instill.tech/blob/fa31d955d704b1a02fb9405e91019a38e0387ed1/content.config.tsx#L564)
 
 - update the version parser values [here](https://github.com/instill-ai/instill.tech/blob/fa31d955d704b1a02fb9405e91019a38e0387ed1/src/lib/instill/applicationVersion.ts#L8)
-
 
 - Now you will have 2 version in the version dropdown `v0.4.1-alpha` and `v0.0.1-alpha` and the `latest` version is `v0.4.1-alpha`
 
