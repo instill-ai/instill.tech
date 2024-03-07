@@ -143,7 +143,9 @@ export const Llama2Chat = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const defaultImage = await loadImageAndSetState(
       "/images/llama-chat-default.png"
     );

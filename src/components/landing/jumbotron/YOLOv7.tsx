@@ -163,7 +163,9 @@ export const YOLOv7 = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     let imgString: string | null = "";
     // const defaultImage = await loadImageAndSetState("/images/yolo-default.png");
     if (input) {

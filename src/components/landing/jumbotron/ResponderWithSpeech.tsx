@@ -22,7 +22,9 @@ export const ResponderWithSpeech = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const apiResponse = await JumbotronSDK.responderWithSpeech({
       inputs: [
         {
