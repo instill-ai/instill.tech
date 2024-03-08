@@ -153,5 +153,5 @@
       "eslint --fix"
     ]
   },
-  "version": "1.43.3"
+  "version": "1.44.0"
 }
