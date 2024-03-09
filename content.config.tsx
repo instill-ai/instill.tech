@@ -576,10 +576,10 @@ export function getNavbar(
         items: [
           {
             key: "docs-nav-dropdown-version-core-latest",
-            to: `/docs/v0.12.0-beta/welcome`,
+            to: `/docs/v0.25.0-beta/welcome`,
             className: "",
             position: "right",
-            label: "v0.12.0-beta (latest)",
+            label: "v0.25.0-beta (latest)",
             appType: "core",
           },
         ],
