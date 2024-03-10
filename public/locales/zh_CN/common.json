@@ -37,7 +37,7 @@
     "base64": "Base64",
     "json": "JSON",
     "rest": "REST",
-    "textextraction": "Text Extraction",
+    "text": "文本 (Text)",
     "connector": "连接组件 (Connector)",
     "connectors": "连接组件 (Connectors)",
     "aiConnector": "AI 连接组件",

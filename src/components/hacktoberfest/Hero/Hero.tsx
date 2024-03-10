@@ -31,7 +31,7 @@ export const Hero = () => {
             className="w-full xl:w-auto"
           >
             <a
-              href="https://console.instill.tech"
+              href="https://www.instill.tech"
               target="_blank"
               rel="noopener noreferrer"
             >

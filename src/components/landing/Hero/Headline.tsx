@@ -12,7 +12,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
         marginBottom
       )}
     >
-      The backbone for Versatile ai
+      Orchestrate Data, Models, Pipelines for Generative AI
     </h1>
   );
 };

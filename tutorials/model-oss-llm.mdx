@@ -29,13 +29,13 @@ However, people have begun to recognize that these proprietary LLMs can impose r
 To get started, follow the [quick start guide](/docs/latest/quickstart#authorisation?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm) to set up your Instill Cloud account.
 
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm"
 />
 
 ## Access Pre-trained LLMs in Instill Cloud
 
-To access pre-trained AI models hosted in Instill Cloud, log in to the [Console](https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm) and navigate to the **Model Hub** page.
+To access pre-trained AI models hosted in Instill Cloud, log in to the [Console](https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm) and navigate to the **Model Hub** page.
 Here, you'll find a collection of pre-trained AI models under the `instill-ai` account, ready for use in your applications.
 During the Open Alpha phase, accessing to these models are entirely free.
 
@@ -46,9 +46,9 @@ Below is a list of available LLMs, along with their details and links in Instill
 
 | LLMs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Params/[B] | Instill Model Links&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Notes                                                                                                                                                                                                         | License&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                          | Commercial Usage | Release Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 | ---------------------------------------------------------------------------------------------------- | ---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
-| [MPT-7B Base](https://www.mosaicml.com/blog/mpt-7b)                                                  |        6.7 | [instill-ai/mpt-7b](https://console.instill.tech/instill-ai/model-hub/mpt-7b)                                                                                                   | Trained from scratch on 1T tokens of text and code. It matches the quality of LLaMA-7B. MPT-7B was trained on the MosaicML platform in 9.5 days with zero human intervention.                                 | Apache-2.0                                                                       | ✅               | May 5, 2023                                                                                                  |
-| [LLaMA-2 7B](https://ai.meta.com/llama/)                                                             |          7 | [instill-ai/llama2-7b](https://console.instill.tech/instill-ai/model-hub/llama2-7b)                                                                                             | Meta AI released LLaMA-2, pre-trained over 2 trillion tokens with a 4096 context length. Some benchmark graphs shows it roughly ties with GPT-3.5 and performs noticeably better than Falcon, MPT and Vicuna. | [LLaMA-2](https://blog.opensource.org/metas-llama-2-license-is-not-open-source/) | ✅               | July 18, 2023                                                                                                |
-| [Mistral 7B](https://mistral.ai/news/announcing-mistral-7b/)                                         |        7.3 | [instill-ai/mistral-7b](https://console.instill.tech/instill-ai/model-hub/mistral-7b)                                                                                           | Mistral AI team released Mistral 7B, the most powerful language model for its size to date. It outperforms LLaMA-2 13B on all benchmarks.                                                                     | Apache-2.0                                                                       | ✅               | Sep 27, 2023                                                                                                 |
+| [MPT-7B Base](https://www.mosaicml.com/blog/mpt-7b)                                                  |        6.7 | [instill-ai/mpt-7b](https://www.instill.tech/instill-ai/model-hub/mpt-7b)                                                                                                   | Trained from scratch on 1T tokens of text and code. It matches the quality of LLaMA-7B. MPT-7B was trained on the MosaicML platform in 9.5 days with zero human intervention.                                 | Apache-2.0                                                                       | ✅               | May 5, 2023                                                                                                  |
+| [LLaMA-2 7B](https://ai.meta.com/llama/)                                                             |          7 | [instill-ai/llama2-7b](https://www.instill.tech/instill-ai/model-hub/llama2-7b)                                                                                             | Meta AI released LLaMA-2, pre-trained over 2 trillion tokens with a 4096 context length. Some benchmark graphs shows it roughly ties with GPT-3.5 and performs noticeably better than Falcon, MPT and Vicuna. | [LLaMA-2](https://blog.opensource.org/metas-llama-2-license-is-not-open-source/) | ✅               | July 18, 2023                                                                                                |
+| [Mistral 7B](https://mistral.ai/news/announcing-mistral-7b/)                                         |        7.3 | [instill-ai/mistral-7b](https://www.instill.tech/instill-ai/model-hub/mistral-7b)                                                                                           | Mistral AI team released Mistral 7B, the most powerful language model for its size to date. It outperforms LLaMA-2 13B on all benchmarks.                                                                     | Apache-2.0                                                                       | ✅               | Sep 27, 2023                                                                                                 |
 
 The [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) ranks Mistral 7B as a strong candidate for practical commercial usage among models below 13B parameters.
 
@@ -58,7 +58,7 @@ In this section, we will build an AI pipeline to compare the outputs of the LLMs
 
 **Step 1: Add the Instill Model connector resource**
 
-[Instill VDP](http://localhost:3010/docs/v0.4.1-alpha/welcome#instill-vdp) supports an AI connector to [Instill Model](/docs/latest/vdp/ai-connectors/instill-model) where the user can import and serve custom models.
+[Instill VDP](/docs/latest/welcome#instill-vdp) supports an AI connector to [Instill Model](/docs/latest/vdp/ai-connectors/instill-model) where the user can import and serve custom models.
 
 To set up Instill Model connector resource in the Console, follow these steps:
 
@@ -70,18 +70,18 @@ To set up Instill Model connector resource in the Console, follow these steps:
 6. Click **Save**.
 
 Now, head to the **Pipelines** page on the left sidebar.
-To create your pipeline through the Console, click on **+ Add Pipeline**.
+To create your pipeline through the Console, click on **+ Create Pipeline**.
 This will redirect you to the no-code pipeline builder.
 The pipeline will be assigned a randomly generated unique ID. You can change it on the right, for example, _test-oss-llms_.
 On the canvas, you can drag and drop connectors and operators to construct your pipeline.
 
 **Step 2: Build a VDP pipeline using the no-code pipeline builder**
 
-The Start operator serves as the starting point of a VDP pipeline, where you can define the input data for your applications.
+The Start component serves as the starting point of a VDP pipeline, where you can define the input data for your applications.
 
-To set up a Start operator:
+To set up a Start component:
 
-1. Locate the **start** operator on canvas
+1. Locate the **start** component on canvas
 2. Click **Add Field +** and select **Text**. Fill in the **Title** with _Prompt_ and **Key** with _prompt_.
 3. Click **Save**.
 
@@ -89,7 +89,7 @@ This configuration requires one input: a text prompt for all the open-source LLM
 
 To configure an Instill Model connector:
 
-1. Click **Add Connector +** and choose **ins-model** from existing resource. This will add a OpenAI connector `ai_0` to the canvas.
+1. Click **+ Create Connector** and choose **ins-model** from existing resource. This will add a OpenAI connector `ai_0` to the canvas.
 2. Click the ⚙️ icon on the `ai_0` to open the configuration panel on the right-hand side.
 3. Select _TASK_TEXT_GENERATION_ from the dropdown of the **Task** field.
 4. Set **Model ID** to choose the model to use, e.g., _mpt-7b_.
@@ -98,7 +98,7 @@ To configure an Instill Model connector:
 7. Specify a **Seed** with _0_ for a randomization.
 8. Click **Save**.
 
-The Instill Model connector will automatically link to the Start operator
+The Instill Model connector will automatically link to the Start component
 since we have used `{start.prompt}` in the Instill Model connector configuration.
 
 <InfoBlock type="tip" title="Tip">
@@ -116,17 +116,17 @@ With the above steps, we have set up the **MPT 7B** model. To set up the other t
 
 You can repeat the same process to duplicate another component, `ai_2`, and update the Model ID to _mistral-7b_ to set up **Mistral 7B**.
 
-The End Operator is used at the end of a VDP pipeline to receive the output of the pipeline being triggered.
+The End Component is used at the end of a VDP pipeline to receive the output of the pipeline being triggered.
 
-To set up an End operator:
+To set up an End component:
 
-1. Find the **end** operator on canvas.
+1. Find the **end** component on canvas.
 2. Click **Add Field +** and fill in the **Title** with _MPT-7B Result_, **Key** with _mpt_7b_result_ and **Value** with `{ai_0.output.text}`.
 3. Click **Add Field +** and fill in the **Title** with _Llama2-7B Result_, **Key** with _llama2_7b_result_ and **Value** with `{ai_1.output.text}`.
 4. Click **Add Field +** and fill in the **Title** with _Mistral-7B Result_, **Key** with _mistral_7b_result_ and **Value** with `{ai_2.output.text}`.
 5. Click **Save**.
 
-You will see that the End operator is automatically linked to multiple components: `ai_0`, `ai_1` and `ai_2`.
+You will see that the End component is automatically linked to multiple components: `ai_0`, `ai_1` and `ai_2`.
 
 Click **Save** on the top right corner.
 
@@ -145,7 +145,7 @@ Click **Run**.
   alt="Test the pipeline with real data"
 />
 
-The End operator will show the text generation result of each LLM:
+The End component will show the text generation result of each LLM:
 
 <CH.Code>
 
@@ -271,5 +271,5 @@ We have exciting plans on our roadmap, including the continuous deployment of cu
 Our next target is to provide features for fine-tuning these open-source models on specific tasks with custom data.
 Stay tuned for more updates!
 
-If you're interested in a quick demo, please feel free to [book a meeting](https://calendly.com/instill-ai/chat-with-us) with us. Or, please join our [Discord](https://discord.gg/sevxWsqpGh) to chat online.
+If you're interested in a quick demo, please feel free to [book a meeting](https://cal.com/instill-ai/30min-talk) with us. Or, please join our [Discord](https://discord.gg/sevxWsqpGh) to chat online.
 We'd love to hear from you! 👐

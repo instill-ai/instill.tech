@@ -104,14 +104,18 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 padding="px-5 py-2.5"
                 itemGapX="gap-x-5"
                 onClickHandler={() =>
-                  router.push("https://github.com/instill-ai/vdp", undefined, {
-                    scroll: false,
-                  })
+                  router.push(
+                    "https://github.com/instill-ai/instill-core",
+                    undefined,
+                    {
+                      scroll: false,
+                    }
+                  )
                 }
                 hoveredShadow="hover:shadow-instill-solid-5"
                 position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
               >
-                <p className="text-[20px] font-normal">Star Instill VDP</p>
+                <p className="text-[20px] font-normal">Star on GitHub</p>
               </SolidButton>
             }
           />
@@ -166,58 +170,31 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
               </div>
             }
             buttons={
-              <div className="flex flex-col gap-x-2 xl:flex-row">
-                <SolidButton
-                  type="button"
-                  color="primaryLight"
-                  startIcon={
-                    <GitHubIcon
-                      width="w-[28px]"
-                      height="h-[28px]"
-                      color="fill-instillNeonBlue"
-                      position="my-auto"
-                    />
-                  }
-                  padding="px-5 py-2.5"
-                  itemGapX="gap-x-5"
-                  onClickHandler={() =>
-                    router.push(
-                      "https://github.com/instill-ai/model",
-                      undefined,
-                      { scroll: false }
-                    )
-                  }
-                  hoveredShadow="hover:shadow-instill-solid-5"
-                  position="mt-auto w-full justify-center xl:w-auto"
-                >
-                  <p className="text-[20px] font-normal">Star Instill VDP</p>
-                </SolidButton>
-                <SolidButton
-                  type="button"
-                  color="primaryLight"
-                  endIcon={
-                    <ArrowRightIcon
-                      width="w-[28px]"
-                      height="h-[28px]"
-                      color="fill-instillNeonBlue"
-                      position="my-auto"
-                    />
-                  }
-                  padding="px-5 py-2.5 !bg-white"
-                  itemGapX="gap-x-5"
-                  onClickHandler={() =>
-                    router.push("https://console.instill.tech/hub", undefined, {
-                      scroll: false,
-                    })
-                  }
-                  hoveredShadow="hover:shadow-instill-solid-5"
-                  position="xl:mt-auto xl:mr-auto mt-5 w-full justify-center xl:w-auto"
-                >
-                  <p className="text-[20px] font-normal">
-                    Access on Instill Cloud
-                  </p>
-                </SolidButton>
-              </div>
+              <SolidButton
+                type="button"
+                color="primaryLight"
+                endIcon={
+                  <ArrowRightIcon
+                    width="w-[28px]"
+                    height="h-[28px]"
+                    color="fill-instillNeonBlue"
+                    position="my-auto"
+                  />
+                }
+                padding="px-5 py-2.5"
+                itemGapX="gap-x-5"
+                onClickHandler={() =>
+                  router.push("https://instill.tech/hub", undefined, {
+                    scroll: false,
+                  })
+                }
+                hoveredShadow="hover:shadow-instill-solid-5"
+                position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
+              >
+                <p className="text-[20px] font-normal">
+                  Access on Instill Cloud
+                </p>
+              </SolidButton>
             }
           />
 
@@ -236,7 +213,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </p>
               </div>
             }
-            learnMoreLink="/docs/v0.6.0-alpha/sdk/python"
+            learnMoreLink="/docs/latest/sdk/python"
             cubes={[]}
             icon={
               <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">

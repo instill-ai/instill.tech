@@ -104,7 +104,7 @@ Please follow markdown details syntax like below
 
 ```md
 <details>
-  <summary>**Is VDP free?**</summary>
+  <summary>**Is Instill Core free?**</summary>
 
 Content
 
@@ -188,8 +188,8 @@ You can use this component to implement instill-ai's call to action button.
 
 ```mdx
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
