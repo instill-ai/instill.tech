@@ -60,7 +60,7 @@ const InstillClient = require("instill-sdk").default;
     - username: `admin`
     - password: `password` // This is the initial password, once they login for the first time, they will need to change it to other password
   - production
-    - go the setting page and create a api token. `https://console.instill.tech/settings`
+    - go the setting page and create a api token. `https://www.instill.tech/settings`
 
 ### Connect with Instill Cloud
 
@@ -68,7 +68,7 @@ const InstillClient = require("instill-sdk").default;
 const client = new InstillClient(
   "https://api.instill.tech", // baseUrl
   "v1alpha", // appVersion
-  "<your_api_token>" // get console API token from `https://console.instill.tech/settings`
+  "<your_api_token>" // get console API token from `https://www.instill.tech/settings`
 );
 ```
 
@@ -96,7 +96,7 @@ export default function TypescriptSdkDemo() {
   const client = new InstillClient(
     "https://api.instill.tech",
     "v1alpha",
-    "<your_api_token>" // get console API token from `https://console.instill.tech/settings`
+    "<your_api_token>" // get console API token from `https://www.instill.tech/settings`
   );
 
   useEffect(() => {

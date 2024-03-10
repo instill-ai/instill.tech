@@ -203,12 +203,16 @@ export const getSections = (
           link: `/docs/${appVersion}/vdp/data-connectors/gcs`,
         },
         {
+          text: "common:sidebarSections.pinecone",
+          link: `/docs/${appVersion}/vdp/data-connectors/pinecone`,
+        },
+        {
           text: "common:sidebarSections.googlesearch",
           link: `/docs/${appVersion}/vdp/data-connectors/google-search`,
         },
         {
-          text: "common:sidebarSections.pinecone",
-          link: `/docs/${appVersion}/vdp/data-connectors/pinecone`,
+          text: "common:sidebarSections.rest",
+          link: `/docs/${appVersion}/vdp/data-connectors/rest`,
         },
       ],
       appType: "core",
@@ -249,12 +253,8 @@ export const getSections = (
           link: `/docs/${appVersion}/vdp/operators/json`,
         },
         {
-          text: "common:sidebarSections.rest",
-          link: `/docs/${appVersion}/vdp/operators/rest`,
-        },
-        {
-          text: "common:sidebarSections.textextraction",
-          link: `/docs/${appVersion}/vdp/operators/textextraction`,
+          text: "common:sidebarSections.text",
+          link: `/docs/${appVersion}/vdp/operators/text`,
         },
       ],
       appType: "core",

@@ -132,7 +132,7 @@ const PricingPage: FC & {
               cta={{
                 title: "Book a meeting",
                 onClick: () => {
-                  router.push("https://calendly.com/instill-ai/chat-with-us");
+                  router.push("https://cal.com/instill-ai/30min-talk");
                 },
               }}
             />

@@ -366,7 +366,7 @@ from instill.resources import (
 To Form a pipeine, it required a `start` operator and a `end` operator, we have helper functions to create both
 
 ```python
-# define start operator input spec
+# define start component input spec
 # each key you put inside the metadata dict represents a desire input field
 start_metadata = {}
 start_metadata.update(
@@ -378,11 +378,11 @@ start_metadata.update(
     )
   }
 )
-# create start operator
+# create start component
 start_operator_component = create_start_operator(start_metadata)
 ```
 
-If you wish to define multiple input fields in the start operator, simply add more `"key"` and `"start_task_start_metadata.Model1"` pair by
+If you wish to define multiple input fields in the start component, simply add more `"key"` and `"start_task_start_metadata.Model1"` pair by
 
 ```python
 start_metadata.update(
@@ -414,10 +414,10 @@ instill_model_connector_component = instill_model.create_component(
 )
 ```
 
-Finally, we create an end operator.
+Finally, we create an end component.
 
 ```python
-# define end operator input and metadata spec
+# define end component input and metadata spec
 end_operator_inp = {}
 end_operator_inp.update({"inference_result": "${yolov7.output.objects}"})
 
@@ -425,7 +425,7 @@ end_operator_metadata = {}
 end_operator_metadata.update(
   {"inference_result": end_task_end_metadata.Model1(title="result")}
 )
-# create end operator
+# create end component
 end_operator_component = create_end_operator(end_operator_inp, end_operator_metadata)
 ```
 

@@ -7,7 +7,7 @@ description: "Concepts of Instill Core"
 
 ## Console
 
-**Console** is a web-based UI application, designed to provide convenient access to Base, VDP and Model.
+**Console** is a web-based UI application, designed to provide convenient access to Instill Core.
 One of its key features is a _no-code_ drag-and-drop pipeline builder.
 This means that even non-technical users can effortlessly build flexible VDP pipelines by simply dragging and dropping components.
 By emphasizing simplicity and ease of use, the goal is to provide a unified and intuitive user experience.
@@ -16,9 +16,9 @@ Console is maintained in [console](https://github.com/instill-ai/console).
 
 ## API
 
-VDP is implemented with **API-first** design principle. It enables seamless integration to your data stack at any scale.
+Instill Core is implemented with **API-first** design principle. It enables seamless integration to your data stack at any scale.
 
-VDP uses [Protocol Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
+Instill Core uses [Protocol Buffers version 3 (proto3)](https://developers.google.com/protocol-buffers) as the Interface Definition Language (IDL) to define the API interface and the structure of the payload messages.
 The same interface definitions are used for both REST (via [gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC. This enables the access to the API over different protocols:
 
 - JSON over HTTP
@@ -29,7 +29,7 @@ The genuine protobuf documentation can be found in our [Buf Scheme Registry (BSR
 
 ## Pipeline
 
-The foundation of VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
+The foundation of Instill VDP lies in the concept of a **Pipeline**, which comprises connectors and operators, all defined within a `recipe`.
 A pipeline can be triggered using either SYNC APIs (for synchronous responses) or ASYNC APIs (ideal for long-running workloads).
 More detailed information about pipelines can be found in the [Pipeline](pipeline) section.
 
@@ -37,9 +37,9 @@ The implementation of the Pipeline concept is managed in the [pipeline-backend](
 
 ## Component
 
-A **Component** is a fundamental building block used to construct a pipeline in VDP.
+A **Component** is a fundamental building block used to construct a pipeline in Instill VDP.
 The system offers various types of components, each catering to specific functionalities.
-Components empower VDP pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
+Components empower pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
 
 ### Connector
 
@@ -59,7 +59,7 @@ A **Model** in Instill Model is a piece of ML algorithm run on data to solve a c
 
 ## Release stage
 
-For Instill AI developed and maintained vdp connectors, operators and model sources, we use release stage defined as below to indicate their readiness:
+For Instill AI developed and maintained VDP components, we use release stage defined as below to indicate their readiness:
 
 | Stage                   | Description                                                                                                                                                                                                                                                                  |
 | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

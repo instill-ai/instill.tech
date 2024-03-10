@@ -110,7 +110,7 @@ We believe it's time to apply our experiences to make AI more accessible to ever
 
 We are adding new features every day and we need your feedback to help shape the future of the service and build Instill Cloud the best it can be.
 
-👉 [Try Instill Cloud free](https://console.instill.tech/?utm_source=documentation&utm_medium=link)`}
+👉 [Try Instill Cloud free](https://www.instill.tech/?utm_source=documentation&utm_medium=link)`}
                   </FaqContent>
                 ),
               },

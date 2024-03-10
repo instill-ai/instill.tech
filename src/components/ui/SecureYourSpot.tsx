@@ -12,7 +12,7 @@ export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
     <div className={cn("flex flex-col py-20", marginBottom)}>
       <div
         className={cn(
-          "mb-10 grid grid-cols-1 gap-y-10 gap-x-6 xl:mb-[100px] xl:grid-cols-2 xl:gap-y-0"
+          "mb-10 grid grid-cols-1 gap-x-6 gap-y-10 xl:mb-[100px] xl:grid-cols-2 xl:gap-y-0"
         )}
       >
         <div className="mx-auto flex xl:col-start-2 xl:mx-0">
@@ -41,7 +41,7 @@ export const SecureYourSpot = ({ marginBottom }: SecureYourSpotProps) => {
         position="mr-auto"
         withArrow={false}
         text="Try Instill Cloud Free"
-        link="https://console.instill.tech"
+        link="https://www.instill.tech"
       />
     </div>
   );

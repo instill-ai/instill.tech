@@ -2,7 +2,7 @@
 title: "Quickstart Guide"
 lang: "en-US"
 draft: false
-description: "Try Instill Cloud for free at https://console.instill.tech. Start building, testing and sharing your AI applications in minutes."
+description: "Try Instill Cloud for free at https://www.instill.tech. Start building, testing and sharing your AI applications in minutes."
 ---
 
 ## Authorisation
@@ -13,8 +13,8 @@ To get started with Instill Cloud, you'll need to create an account if you haven
 Experience the power of Instill Cloud by clicking the link below:
 
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=documentation&utm_medium=link"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=documentation&utm_medium=link"
 />
 
 When signing up, you have three options:
@@ -32,22 +32,22 @@ When signing up, you have three options:
 
 ### Self-hosted Instill Core
 
-If you're configuring Instill Core for the first time, please visit the Console (http://localhost:3000) and use the following initial login details to initiate the password reset process for onboarding:
+To get started with Instill Core, you'll need to follow the [deployment guide](./core/deployment) to launch Instill Core on your local machine.
+After the deployment, you can access the Console at [http://localhost:3000](http://localhost:3000).
+If you're configuring Instill Core for the first time, please use the following initial login details to initiate the password reset process for onboarding:
 
 - Username: `admin`
 - Password: `password`
 
-This protects Instill Core from being acceesible by anyone when deployed.
+This protects Instill Core from being accessible by anyone when deployed.
 
 <ZoomableImg
   src="/docs-assets/core/onboarding.png"
   alt="Provide the initial username `admin` and password `password` to reset the password for onboarding"
-  width="600px"
 />
 
-Instill Cloud empowers you to build pipelines tailored for processing unstructured data using Versatile Data Pipeline (VDP).
-The central concept in VDP is the Pipeline, which automates a sequence of sub-components to process unstructured data.
-A pipeline comprises different types of Connectors and Operators.
+Instill Core or Instill Cloud empowers you to build pipelines tailored for processing unstructured data using Versatile Data Pipeline (VDP).
+The central concept in VDP is the Pipeline, which automates a sequence of components to process unstructured data.
 
 ## Build Your First AI Workflow
 
@@ -65,14 +65,14 @@ To get started with this tutorial, you'll need both an OpenAI account and a Stab
 In this guide, we'll walk you through creating your first AI pipeline,
 specifically focusing on a generative pipeline using the [OpenAI](./vdp/ai-connectors/openai) and [Stability AI](./vdp/ai-connectors/stability-ai) Connectors to generate digital stickers.
 
-**Step1: Add Connector Resources**
+**Step 1: Create Connector**
 
-Begin by navigating to the **Resources** page on the left sidebar.
+Begin by navigating to the **Connectors** page on the navbar.
 Since you haven't set up any pipelines yet, this page will be empty.
 
 To set up an OpenAI connector resource, follow these steps:
 
-1. Click on **+ Add Resource**, add select **OpenAI** on the Modal.
+1. Click on **+ Create Connector**, add select **OpenAI** on the Modal.
 2. Provide a unique ID for the resource. Here we use _openai_. Optionally, you can add a description.
 3. Fill in the **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key.
 4. Optionally, specify which organization is used for the request.
@@ -80,102 +80,107 @@ To set up an OpenAI connector resource, follow these steps:
 
 Next, set up a Stability AI connector resource:
 
-1. Click on **+ Add Resource**, add select **Stability AI** on the Modal.
-2. Assign a unique ID for the resource. Here we use _stability-ai_, and you can Optionally add a description.
+1. Click on **+ Create Connector**, add select **Stability AI** on the Modal.
+2. Assign a unique ID for the resource. Here we use _stability-ai_, and you can optionally add a description.
 3. Provide the **API Key**. Follow the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key.
 4. Click **Save**.
 
-Now, head to the Pipelines page on the left sidebar.
-To create your first pipeline through the Console, click on **+ Add Pipeline**.
-This will redirect you to the no-code pipeline builder.
-The pipeline will be assigned a randomly generated unique ID. You can change it on the right, for example, _digital-sticker-maker_.
-On the canvas, you can drag and drop connectors and operators to construct your pipeline.
-
 **Step 2: Build the Pipeline in the No-code Pipeline Builder**
 
-The Start Operator serves as the starting point of a VDP pipeline, where you can define the input data for your application.
+Now, head to the **Pipelines** page on the navbar.
+To create your first pipeline through the Console:
 
-To set up a Start operator:
+1. Click on **+ Create Pipeline**.
+2. Assign a unique ID for the pipeline. Here we use _digital-sticker-maker_, and you can optionally add a description. By default, the owner of the pipeline is your account. But you can also assign it to an organization that you are a member of.
+3. Choose the visibility of the pipeline. By default, the pipeline is private, but you can also make it public, so that it can be seen by anyone.
+4. Click **Create**. 
 
-1. Locate the **start** operator on canvas
-2. Click **Add Field +** and select **Text**. Fill in the **Title** with _Prompt_ and **Key** with _prompt_.
-3. Click **Add Field +** and select **Text**, Fill in the **Title** with _Sticker Shape_ and **Key** with _shape_.
-4. Click **Save**.
+This will redirect you to the no-code pipeline builder.
+On the canvas, you can drag and drop connectors and operators to construct your pipeline.
+
+By default, the Start Component and End Component are already added to the canvas.
+The Start Component serves as the starting point of a VDP pipeline, where you can define the input data for your application.
+
+To set up a Start component:
+
+1. Locate the **start** component on canvas
+2. Click **Add Field +** and select **Text**. Fill in the **Title** with _Prompt_. The reference key for this field will be _prompt_. Click **Save**.
+3. Click **Add Field +** and select **Text**, Fill in the **Title** with _Sticker Shape_. Similarly, the reference key for this field will be _sticker_shape_. Click **Save**.
 
 This configuration requires two inputs: a prompt to generate the idea for the sticker and a shape parameter to control the sticker's appearance.
 
 To configure an OpenAI connector:
 
-1. Click **Add Connector +** and choose **openai** from existing resource. This will add a OpenAI connector `ai_0` to the canvas.
-2. Click the ⚙️ icon on the `ai_0` to open configuration right panel.
-3. Select _TASK_TEXT_GENERATION_ from the dropdown of the **Task** field.
-4. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_.
-5. Set **N** to in the _1_ to indicate only one chat completion.
-6. Fill **System Message** to set the behavior of the model. Here we set the value to:
+1. Click **+ Add Component** and choose **openai** from the **Existing Connectors**. This will add a OpenAI connector `openai_0` to the canvas.
+2. Select _TASK_TEXT_GENERATION_ from the dropdown of the **OpenAI Component** field.
+3. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_.
+4. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
+
+<InfoBlock type="tip" title="Pipeline Component Reference">
+  When establishing connections between components, referencing a component field is as simple as using `${}`.
+  When you enter `${` into an input field, the smart hint feature intelligently filters and presents only the relevant hints that are compatible with the field.
+</InfoBlock>
 
 ```
-You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images
-```
-
-7. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
-
-```
-Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${start.shape} sticker with white border".
+Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border".
+Only return the output content.
 
 Prompt: a bear
-Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${start.shape} sticker with white border
+Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
 Prompt: a dog writes code
-Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${start.shape} sticker with white border
+Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
 Prompt: ${start.prompt}
 Output:
 ```
 
-8. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
-9. Click **Save**.
 
-The OpenAI connector will automatically link to the Start operator
-since we have used `${start.shape}` and `${start.prompt}` in the OpenAI connector configuration.
+5. Click the **More** link on the `openai_0` connector to open configuration right panel.
+6. Fill **System Message** to set the behavior of the model. Here we set the value to:
+
+```
+You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images.
+```
+
+7. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
+8. Set **n** to in the _1_ to indicate only one chat completion.
+
+The OpenAI connector will automatically link to the Start component
+since we have used `${start.sticker_shape}` and `${start.prompt}` in the OpenAI connector configuration.
 The `${}` placeholders represent **string values** to be filled during pipeline triggering.
 
 To set up an Stability AI connector:
 
-1. Click **+ Add Resource** and choose **stability-ai** from existing resource. This will add a OpenAI connector `ai_1` to the canvas.
-2. Click the ⚙️ icon on the `ai_1` to open configuration right panel.
-3. Select _TASK_TEXT_TO_IMAGE_ from the dropdown of the **Task** field.
-4. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
-5. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
-6. In the **Prompts** field, specify the generated text array from the OpenAI connector output `${ai_0.output.texts}`.
+1. Click **+ Add Component** and choose **stability-ai** from existing resource. This will add a OpenAI connector `stability_0` to the canvas.
+2. Select _TASK_TEXT_TO_IMAGE_ from the dropdown of the **Stability AI Component** field.
+3. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
+4. In the **Prompts** field, specify the generated text array from the OpenAI connector output `${openai_0.output.texts}`.
+5. Click the **More** link on the `stability_0` component to open configuration right panel.
+6. Update the **width** to _1024_ and the **height** to _1024_ to set the resolution of the generated image.
+6. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
 7. Set **Samples** to _1_ to indicate generating only one image.
 8. Specify a **Seed** with _0_ for a randomization.
 9. Fill **Steps** to _30_ to indicate the number of diffusion steps to run.
-10. Click **Save**.
 
 You will see that the Stability AI connector is automatically linked to the OpenAI connector
-since we have used `${ai_0.output.texts}` in the Stability AI connector configuration.
+since we have used `${openai_0.output.texts}` in the Stability AI connector configuration.
 
-<InfoBlock type="tip" title="Tip">
-  The `${}` placeholders are used to reference values from previous connectors.
-  Unlike the `${}` placeholders, `${}` retains the type of the referenced value.
-</InfoBlock>
+The End Component is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
 
-The End Operator is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
+To set up an End component:
 
-To set up an End operator:
+1. Find the **end** component on canvas.
+2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, the reference key for this field will be _my_original_prompt_, and **Value** with `${start.prompt}`. Click **Save**.
+3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, the reference key for this field will be _sticker_shape_, and **Value** with `${start.sticker_shape}`. Click **Save**.
+4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, the reference key for this field will be _llm_powered_prompt_, and **Value** with `${openai_0.output.texts}`. Click **Save**.
+5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, the reference key for this field will be _digital_sticker_, and **Value** with `${stability_0.output.images}`. Click **Save**.
 
-1. Find the **end** operator on canvas.
-2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, **Key** with _my_original_prompt_ and **Value** with `${start.prompt}`.
-3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, **Key** with _sticker_shape_ and **Value** with `${start.shape}`.
-4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, **Key** with _llm_powered_prompt_ and **Value** with `${ai_0.output.texts}`.
-5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, **Key** with _digital_sticker_ and **Value** with `${ai_0.output.images}`.
-6. Click **Save**.
-
-You will see that the End operator is automatically linked to multiple components: `start`, `ai_0` and `ai_1`.
+You will see that the End component is automatically linked to multiple components: `start`, `openai_0` and `stability_0`.
 
 Click **Save** on the top right corner, and your pipeline is ready to be tested.
 
 ### Test the Pipeline via No-Code
 
-🎉 Congratulations! Your first VDP pipeline is all set up and ready to go. Now, simply click on the **Test** button located in the top right corner.
+🎉 Congratulations! Your first VDP pipeline is all set up and ready to go.
 
 You can now put your pipeline to the test using real data. For instance, let's create a sticker featuring a yellow plane in the sky.
 
@@ -184,29 +189,30 @@ Prompt: yellow plane on the sky
 Shape: round
 ```
 
-Click **Run**.
+Now, simply click on the **Run** button located in the top right corner.
 
 <ZoomableImg
   src="/docs-assets/core/test-pipeline.png"
   alt="Test the pipeline with real data"
 />
 
+Click the Output tab of the `openai_0` component to view the generated output.
 As you can see, the OpenAI ChatGPT model has expanded our initial prompt, turning it into:
 
 ```
-a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border
+a bright yellow vintage plane flying through a fluffy white cloud-filled sky, sticker style, flat icon, vector, die-cut round sticker with white border
 ```
 
 Give it a try!
 
 ### Use the Pipeline via Low-Code
 
-To triggering the pipeline, you need a valid API token.
+In order to trigger the pipeline, you need a valid API token.
 If you don't have one yet, follow these steps:
 
-1. Click on **Settings** on the left sidebar
-2. Navigate to the **API Tokens** page
-3. Click **Create Token** and give it an ID
+1. Click on the profile icon on the top right corner of the main page in the console and select **Settings**.
+2. Navigate to the **API Tokens** page.
+3. Click **Create Token** and give it an ID.
 
 The API tokens do not expire, so keep them safe.
 If a token is compromised, select it and click **Delete**.
@@ -215,7 +221,7 @@ Be cautious, as this operation cannot be undone, and apps using the token will s
 VDP automatically generates a dedicated trigger endpoint for each pipeline to process data.
 To trigger the pipeline, follow these steps:
 
-1. Click the bottom right icon to display the Pipeline toolkit
+1. Click the **Toolkit* button on the top right corner of the pipeline canvas.
 2. Copy the cURL request in the **Trigger Snippet** section and pass your API token as a Bearer token in the Authorization header
 3. Adjust and ingest your data accordingly in the example request
 
@@ -223,13 +229,14 @@ Here is an example trigger request for the pipeline:
 
 ```shellscript
 
-curl -X POST 'https://api.instill.tech/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
--H 'Authorization: Bearer <api_token>' \
+curl -X POST 'https://api.instill.tech/vdp/v1beta/users/<user-id>/pipelines/<pipeline-id>/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
 --data  '{
 	"inputs": [
 		{
 			"prompt": "yellow plane on the sky",
-			"shape": "round"
+			"sticker_shape": "round"
 		}
 	]
 }'
@@ -248,14 +255,14 @@ You should receive the following response:
                 "iVBORw0KGgo...SUVORK5CYII="
             ],
             "llm_powered_prompt": [
-                "a yellow plane flying gracefully in a clear blue sky, leaving behind fluffy white clouds, sticker style, flat icon, vector, die-cut round sticker with white border"
+                "a bright yellow vintage plane flying through a fluffy white cloud-filled sky, sticker style, flat icon, vector, die-cut round sticker with white border"
             ],
             "prompt": "yellow plane on the sky",
-            "shape": "round"
+            "sticker_shape": "round"
         }
     ],
     "metadata": {
-        "traces": {}
+        "traces": {...}
     }
 }
 ```
@@ -280,38 +287,22 @@ Shape: round
 ```
 
 <ZoomableImg
-  src="/docs-assets/core/batched-sticker-pipeline.png"
+  src="/docs-assets/core/batched-sticker-pipeline.gif"
   alt="Generate four stickers in a batch"
 />
 
-## Create Pipelines from Templates
+## Clone Pipelines from Instill Hub
 
-No need to start from scratch! Take advantage of our pre-made templates available in the Console.
-We've curated a selection of templates for various common use cases. Simply choose the one that suits your needs and start building pipelines effortlessly.
-
-<ZoomableImg
-  src="/docs-assets/core/use-pipeline-templates-dark-720p.gif"
-  alt="You don't have to reinvent the wheel; explore the Templates and pick the ones that pique your interest."
-/>
+No need to start from scratch! Take advantage of the [Instill Hub](https://instill.tech/hub), a platform designed for exploring and sharing a wide range of pipelines within the community.
+Simply select the one that suits your needs and clone it to your Instill Cloud account.
 
 ## Use Models on Instill Cloud
-
-We deploy our source available product [Model](https://github.com/instill-ai/model) on Instill Cloud.
-
-<InfoBlock type="info" title="Notice">
-
-You may notice that _importing your own models_ is currently disabled in the Model Hub of Instill Cloud.
-We are actively working on refining the Model service to offer a more stable user experience.
-
-</InfoBlock>
-
-### Access Pre-trained ML Models
 
 Deploying and maintaining ML models in a production environment can be challenging.
 To simplify this process, we have deployed a list of pre-trained ML models on Instill Cloud.
 These models are ready for use and are entirely free during Open Alpha.
 
-To explore the available pre-deployed ML models for different AI tasks, navigate to the **Model Hub** on the Instill Cloud console.
+To explore the available pre-deployed ML models for different AI tasks, navigate to the **Models** on the Instill Cloud console.
 Each model in the Model Hub is designed to handle a specific [AI task](./model/ai-task).
 
 For detailed information about a specific model, click on its ID and review the Description and Setting sections.

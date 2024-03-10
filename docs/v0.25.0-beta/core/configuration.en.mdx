@@ -49,10 +49,10 @@ Unless you are debugging and testing, updating the default versions in the `.env
 
 ### Configuring the Console
 
-To access Core via Console, set the hosts by overriding the environment variables:
+To access Core via Console, set the host by overriding the environment variables:
 
 ```shellscript .env
-CONSOLE_PUBLIC_API_GATEWAY_HOST=<hostname-to-access-core>
+INSTILL_CORE_HOST=<hostname-to-access-core>
 ```
 
 By default they are set to `localhost`.
@@ -66,7 +66,7 @@ The observability stack is disabled by default. You can enable the stack setting
 The following telemetry tools are supported now:
 
 - [**Jaeger**](https://www.jaegertracing.io/) (`localhost:16686`): OpenTelemetry allows us to export spans to Jaeger. Use Jaeger when you want to debug the complete flow of a request through the VDP services.
-- [**InfluxDB**](https://www.influxdata.com/) (`localhost: 8086`, username:`admin`, password:`password`): detailed metrics are sent to InfluxDB for monitoring, and are imported into the Grafana dashboard
+- [**InfluxDB**](https://www.influxdata.com/) (`localhost:8086`, username:`admin`, password:`password`): detailed metrics are sent to InfluxDB for monitoring, and are imported into the Grafana dashboard
 - [**Grafana**](https://grafana.com/) (`localhost:3002`, username:`admin`, password:`admin`): the Grafana dashboard visualises the metrics to monitor the performance and anomalies of VDP services
 - [**Prometheus**](https://prometheus.io/) (`localhost:9090`): VDP exports metrics like `vdp_pipeline_sync_trigger_counter_total` (total number of triggers from SYNC pipelines) and `vdp_pipeline_async_trigger_counter_total` (total number of triggers from ASYNC pipelines) to Prometheus.
 
@@ -86,7 +86,6 @@ GRAFANA_VERSION=<grafana-version>
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
 - [`pipeline-backend`](https://github.com/instill-ai/pipeline-backend/blob/main/config/config.yaml)(`localhost:8081`): a service to build and manage unstructured data pipelines
-- [`controller-vdp`](https://github.com/instill-ai/controller-vdp/blob/main/config/config.yaml): a non-public service to monitor the states of pipeline and connector resources
 
 ### Configuring VDP Service Version
 
