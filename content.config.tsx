@@ -531,7 +531,7 @@ export function getNavbar(
       },
       {
         key: "docs-nav-item--github-link",
-        href: "https://github.com/instill-ai/vdp",
+        href: "https://github.com/instill-ai/instill-core",
         className: "github-social-link",
         iconElement: (
           <GitHubIcon

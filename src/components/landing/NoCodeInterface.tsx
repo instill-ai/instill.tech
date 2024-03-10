@@ -45,7 +45,7 @@ export const NoCodeInterface = ({ marginBottom }: NoCodeInterfaceProps) => {
             width={containerDimension ? containerDimension.width : 0}
             height={containerDimension ? containerDimension.width * 0.54 : 0}
             sizes="100vw"
-            alt="The console screenshot of VDP"
+            alt="The console screenshot of Instill Core"
           />
         </div>
       </div>

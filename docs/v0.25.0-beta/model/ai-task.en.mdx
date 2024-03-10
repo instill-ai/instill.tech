@@ -232,9 +232,9 @@ The above image shows examples of encoding masks into RLEs and decoding masks en
 
 <InfoBlock type="info" title="info">
   Check out functions to [encode masks into
-  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
+  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
   and [decode masks encoded via
-  RLEs](https://github.com/instill-ai/vdp/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
+  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
 </InfoBlock>
 
 ```json
@@ -458,16 +458,6 @@ VDP will
 
 ## Suggest a New Task
 
-<InfoBlock type="info" title="info">
-  The
-  [Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml)
-  is still under development. Stay tuned on how the protocol will evolve.
-</InfoBlock>
-
 Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
-
-Additionally, the [VDP Protocol](https://github.com/instill-ai/vdp/blob/main/protocol/vdp_protocol.yaml) describes the data schema of AI task output in order to standardise an ETL pipeline for unstructured data.
-The data produced by the model component and passed to destination component of a pipeline is done via serialized JSON messages for inter-process communication.
-To be more specific, the above protocol defines the AI task output for one input image in a batch produced by the corresponding model.
 
 If you'd like to **support for a new task**, you can create an [issue](https://github.com/instill-ai/community/issues) or request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).

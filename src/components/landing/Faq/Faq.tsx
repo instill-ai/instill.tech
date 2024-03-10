@@ -46,18 +46,18 @@ export const Faq = ({ marginBottom }: FaqProps) => {
             items={[
               {
                 ...accordionHeaderStyle,
-                header: "Is VDP open source?",
+                header: "Is Instill Core open source?",
                 content: (
                   <FaqContent>
-                    {`VDP uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
-                  Our mission is to make AI accessible to everyone. The best way to achieve this is to make VDP free to use and source available to everyone, while ensuring we safely create a sustainable business.
-                  Please check the [VDP License](../docs/latest/license) in detail.`}
+                    {`Instill Core uses multiple licenses, including Elastic License 2.0 (ELv2) and open-source MIT License.
+                  Our mission is to make AI accessible to everyone. The best way to achieve this is to make Instill Core free to use and source available to everyone, while ensuring we safely create a sustainable business.
+                  Please check the [Instill Core License](../docs/latest/license) in detail.`}
                   </FaqContent>
                 ),
               },
               {
                 ...accordionHeaderStyle,
-                header: "Why do you build VDP?",
+                header: "Why do you build Instill Core?",
                 content: (
                   <FaqContent>
                     {`Modern data stack misses unstructured data processing.
@@ -66,7 +66,7 @@ It is non-trivial to process unstructured data though.
 We used to suffer enough in devising our own deep learning models, putting the models in production, running the day-to-day operation, and endlessly building the peripheral MLOps tools to keep the production AI performance consistent.
 All these happened in-house and were non-scalable.
 
-There must be a better way, and **Versatile Data Pipeline (VDP)** is the answer.
+There must be a better way, and **Instill Core** is the answer.
 
 To prevail AI and to make it accessible to everyone, the point is not merely the algorithms (i.e., the AI models) but the infrastructure tooling to connect the value of the algorithms end-to-end with the modern data stack.
 
@@ -76,13 +76,13 @@ You can find more detailed narrative in our blog article [Why Instill AI exists]
               },
               {
                 ...accordionHeaderStyle,
-                header: "Who are behind VDP?",
+                header: "Who are behind Instill Core?",
                 content: (
                   <FaqContent>
                     {`We are a nimble team formed by members working for years in Computer Vision, Machine Learning, Deep Learning, large-scale database, and cloud-native applications/infrastructure.
 We have in-depth experiences in developing and maintaining sophisticated AI systems.
 
-Before we started to build VDP, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
+Before we started to build Instill Core, we had fought with streaming large volume data (billions of images a day!) to automate Vision tasks using deep learning models, sweating blood to build everything from scratch.
                   
 We have learned that model serving for an effective end-to-end data flow concerns not only **high throughput** and **low latency** but also **cost effectiveness**. These criteria are non-trivial to achieve altogether.
 In the end, we had successfully built a battle-proven AI system in-house and have the system run in production for years.
@@ -94,10 +94,10 @@ We believe it's time to apply our experiences to make AI more accessible to ever
               },
               {
                 ...accordionHeaderStyle,
-                header: "Is VDP free?",
+                header: "Is Instill Core free?",
                 content: (
                   <FaqContent>
-                    {`Yes. VDP is source available so you can self-host it in your basement for free.`}
+                    {`Yes. Instill Core is source available so you can self-host it in your basement for free.`}
                   </FaqContent>
                 ),
               },
@@ -106,7 +106,7 @@ We believe it's time to apply our experiences to make AI more accessible to ever
                 header: "How do you make money?",
                 content: (
                   <FaqContent>
-                    {`We offer fully managed VDP service on **Instill Cloud** to users who want to get all the power of VDP without any hassle. It is currently in **Open Alpha** testing phase - with all features **FREE**. For more information, see the [Pricing](/pricing) page. Rest assured that we will never charge you without your consent.
+                    {`We offer fully managed cloud service on **Instill Cloud** to users who want to get all the power of Instill Core without any hassle. It is currently in **Open Alpha** testing phase - with all features **FREE**. For more information, see the [Pricing](/pricing) page. Rest assured that we will never charge you without your consent.
 
 We are adding new features every day and we need your feedback to help shape the future of the service and build Instill Cloud the best it can be.
 

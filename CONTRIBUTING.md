@@ -104,7 +104,7 @@ Please follow markdown details syntax like below
 
 ```md
 <details>
-  <summary>**Is VDP free?**</summary>
+  <summary>**Is Instill Core free?**</summary>
 
 Content
 

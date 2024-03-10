@@ -64,7 +64,7 @@ const PricingPage: FC & {
               cta={{
                 title: "Start building",
                 onClick: () => {
-                  router.push("https://github.com/instill-ai/vdp");
+                  router.push("https://github.com/instill-ai/instill-core");
                 },
               }}
             />

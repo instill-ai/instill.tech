@@ -2,20 +2,20 @@
 title: "Configuration"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up the unstructured data ETL tool VDP https://github.com/instill-ai/vdp"
+description: "Learn about how to set up the unstructured data ETL tool Instill Core https://github.com/instill-ai/instill-core"
 ---
 
 <InfoBlock type="info" title="info">
-  [**Core**](https://github.com/instill-ai/core) runs essential services like a
+  [**Core**](https://github.com/instill-ai/instill-core) runs essential services like a
   user management server, databases, and third-party observability tools
   necessary for launching VDP.
 </InfoBlock>
 
-Instill Core automatically load a [`.env`](https://github.com/instill-ai/core/blob/main/.env) file that contains key/value pairs defining required environment variables.
+Instill Core automatically load a [`.env`](https://github.com/instill-ai/instill-core/blob/main/.env) file that contains key/value pairs defining required environment variables.
 You can customize the file based on your configuration.
 
 Besides, they use [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and makes it available to the service.
-To override the default configuration file, you can set the corresponding environment variable in the compose file in [core](https://github.com/instill-ai/core/blob/main/docker-compose.yml).
+To override the default configuration file, you can set the corresponding environment variable in the compose file in [core](https://github.com/instill-ai/instill-core/blob/main/docker-compose.yml).
 All configuration environment variables for each service are prefixed with `CFG_`.
 
 ## Configuring Core Services
@@ -62,7 +62,7 @@ By default they are set to `localhost`.
 Observability is critical for distributed microservice architecture.
 Through [OpenTelemetry](https://opentelemetry.io/), we can generate, collect and export metrics, logs and traces to help analyse the performance and behaviour of VDP services.
 
-The observability stack is disabled by default. You can enable the stack setting `OBSERVE_ENABLED=true` in the [`.env`](https://github.com/instill-ai/core/blob/main/.env) file.
+The observability stack is disabled by default. You can enable the stack setting `OBSERVE_ENABLED=true` in the [`.env`](https://github.com/instill-ai/instill-core/blob/main/.env) file.
 The following telemetry tools are supported now:
 
 - [**Jaeger**](https://www.jaegertracing.io/) (`localhost:16686`): OpenTelemetry allows us to export spans to Jaeger. Use Jaeger when you want to debug the complete flow of a request through the VDP services.
