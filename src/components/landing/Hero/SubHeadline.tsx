@@ -12,8 +12,8 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
         marginBottom
       )}
     >
-      Instill Cloud empowers your team to spend less time building, debugging,
-      deploying and managing infrastructure, and focus on your AI use cases.
+      Empower your team with Instill Cloud to spend less time on Generative AI
+      infrastructure and more on iterating your AI use cases.
     </div>
   );
 };
