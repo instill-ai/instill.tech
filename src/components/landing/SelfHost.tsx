@@ -26,7 +26,7 @@ export const SelfHost = () => {
           <p className="font-sans text-[20px] font-normal">
             You have the option to self-host Instill Core locally using Instill
             CLI, Docker Compose, Kubernetes with Helm, and more. It serves as a
-            turnkey solution for developing your AI application on your own
+            turnkey solution for developing your AI applications on your own
             infrastructure.
           </p>
         </div>
