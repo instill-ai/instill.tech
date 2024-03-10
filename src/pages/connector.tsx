@@ -143,17 +143,39 @@ const ConnectorPage: FC & {
     const fetchData = async () => {
       setLoading(true);
       let filter = "";
+
+      let page_number = currentPage - 1;
+
       try {
         if (category !== "All") {
           filter = `&filter=component_type=${category}`;
           setConnectors(null);
+          setStage("All");
+          setSearchCode(null);
+          page_number = 0;
+        } else if (stage != "All") {
+          filter = `&filter=release_stage=${stage}`;
+          setConnectors(null);
+          setCategory("All");
+          setSearchCode(null);
+          page_number = 0;
+        } else if (searchCode) {
+          filter = `&filter=q_title='${searchCode}'`;
+          setConnectors(null);
+          setCategory("All");
+          setStage("All");
+          page_number = 0;
         } else {
           filter = "";
           setConnectors(null);
+          // setCategory("All");
+          // setStage("All");
+          // setSearchCode(null);
+          page_number = 0;
         }
         const response = await InstillSDK.connector(
           filter,
-          currentPage - 1,
+          page_number,
           page_size
         );
         if (response.status === "success") {
@@ -163,6 +185,8 @@ const ConnectorPage: FC & {
             Math.ceil(response.data.total_size / response.data.page_size)
           );
           setLoading(false);
+        } else {
+          setLoading(false);
         }
       } catch (error) {
         console.error(error); // Handle errors here
@@ -170,7 +194,7 @@ const ConnectorPage: FC & {
       }
     };
     fetchData(); // Call the asynchronous function
-  }, [category, stage, currentPage]);
+  }, [category, stage, currentPage, searchCode]);
 
   const pagesToShow = 5; // Number of pages to show in the pagination
 
@@ -252,7 +276,11 @@ const ConnectorPage: FC & {
                 <Input.Core
                   value={searchCode ?? ""}
                   placeholder="Search..."
-                  onChange={(event) => setSearchCode(event.target.value)}
+                  onChange={(event) => {
+                    setSearchCode(event.target.value);
+                    setCategory("All");
+                    setStage("All");
+                  }}
                 />
               </Input.Root>
             </div>
@@ -265,6 +293,7 @@ const ConnectorPage: FC & {
               value={category}
               onValueChange={(value) => {
                 setCategory(value);
+                setStage("All");
               }}
             >
               <Select.Trigger className="mt-auto w-full">
@@ -297,6 +326,7 @@ const ConnectorPage: FC & {
               value={stage}
               onValueChange={(value) => {
                 setStage(value);
+                setCategory("All");
               }}
             >
               <Select.Trigger className="mt-auto w-full">
@@ -305,11 +335,18 @@ const ConnectorPage: FC & {
               <Select.Content>
                 <Select.Group>
                   <Select.Item value="All">All</Select.Item>
-                  <Select.Item value="alpha">Alpha</Select.Item>
-                  <Select.Item value="beta">Beta</Select.Item>
-                  <Select.Item value="ga">GA</Select.Item>
-                  <Select.Item value="contribute">Contribute</Select.Item>
-                  <Select.Item value="coming_soon">Coming Soon</Select.Item>
+                  <Select.Item value="RELEASE_STAGE_ALPHA">Alpha</Select.Item>
+                  <Select.Item value="RELEASE_STAGE_BETA">Beta</Select.Item>
+                  <Select.Item value="RELEASE_STAGE_GA">GA</Select.Item>
+                  <Select.Item value="RELEASE_STAGE_OPEN_FOR_CONTRIBUTION">
+                    Contribute
+                  </Select.Item>
+                  <Select.Item value="RELEASE_STAGE_COMING_SOON">
+                    Coming Soon
+                  </Select.Item>
+                  <Select.Item value="RELEASE_STAGE_UNSPECIFIED">
+                    Unspecified
+                  </Select.Item>
                 </Select.Group>
               </Select.Content>
             </Select.Root>
@@ -340,7 +377,7 @@ const ConnectorPage: FC & {
           {isLoading && <ConnectorDefault count={9} />}
         </div>
 
-        {connectors && (
+        {connectors && connectors.length !== 0 && (
           <div className="flex flex-row justify-between">
             <Button
               variant="secondaryGrey"
@@ -386,7 +423,7 @@ const ConnectorPage: FC & {
           </div>
         )}
 
-        {!connectors?.length && (
+        {!connectors?.length && !isLoading && (
           <div className="flex h-[600px] flex-col items-center justify-center">
             <img src="/images/no-component-found.svg" alt="" />
             <p className="mt-4 text-[18px]">
