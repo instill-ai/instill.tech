@@ -12,10 +12,8 @@ export const SubHeadline = ({ marginBottom }: SubHeadlineProps) => {
         marginBottom
       )}
     >
-      Meet Instill Cloud, a no-code/low-code platform that accelerates AI
-      application development by 10x. Effortlessly connect to diverse data
-      sources, seamlessly integrate AI models, and deploy customized logic for
-      your projects, no matter how complex, with lightning speed.
+      Instill Cloud empowers your team to spend less time building, debugging,
+      deploying and managing infrastructure, and focus on your AI use cases.
     </div>
   );
 };
