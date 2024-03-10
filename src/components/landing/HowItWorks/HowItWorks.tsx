@@ -184,7 +184,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 padding="px-5 py-2.5"
                 itemGapX="gap-x-5"
                 onClickHandler={() =>
-                  router.push("https://www.instill.tech/hub", undefined, {
+                  router.push("https://instill.tech/hub", undefined, {
                     scroll: false,
                   })
                 }
@@ -213,7 +213,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 </p>
               </div>
             }
-            learnMoreLink="/docs/v0.6.0-alpha/sdk/python"
+            learnMoreLink="/docs/latest/sdk/python"
             cubes={[]}
             icon={
               <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">
