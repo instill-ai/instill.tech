@@ -350,3 +350,20 @@ table.mcnCaptionTopContent {
   padding-left: 4px;
   padding-right: 4px;
 }
+
+.underline-animation::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3490dc; /* Change this to your desired underline color */
+  transition: width 0.3s ease;
+  transform-origin: left;
+}
+
+.underline-animation:hover::before {
+  width: 100%;
+}

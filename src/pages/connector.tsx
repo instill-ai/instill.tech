@@ -168,10 +168,6 @@ const ConnectorPage: FC & {
         } else {
           filter = "";
           setConnectors(null);
-          // setCategory("All");
-          // setStage("All");
-          // setSearchCode(null);
-          // page_number = 0;
         }
         const response = await InstillSDK.connector(
           filter,
