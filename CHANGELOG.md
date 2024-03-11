@@ -1,5 +1,90 @@
 # Changelog
 
+## [1.44.0](https://github.com/instill-ai/instill.tech/compare/v1.43.3...v1.44.0) (2024-03-07)
+
+
+### Features
+
+* add new aiType VisualQuestionAnswering ([#743](https://github.com/instill-ai/instill.tech/issues/743)) ([5103ec2](https://github.com/instill-ai/instill.tech/commit/5103ec2f690c0303c9babad771d1c9e7f052aa17))
+
+
+### Bug Fixes
+
+* fix icon ([#744](https://github.com/instill-ai/instill.tech/issues/744)) ([a2dc356](https://github.com/instill-ai/instill.tech/commit/a2dc356808d2cdb2f2611af5b82dd16baae655e3))
+* swiper autoplay stop if when under jumbotron ([#742](https://github.com/instill-ai/instill.tech/issues/742)) ([45557ee](https://github.com/instill-ai/instill.tech/commit/45557ee854ed63c5aaa199fed7429c2c4f0b6937))
+
+
+### Documentation
+
+* **tutorial:** update llava-v1.6-7b tutorial ([#740](https://github.com/instill-ai/instill.tech/issues/740)) ([0fe078f](https://github.com/instill-ai/instill.tech/commit/0fe078ff4d1aced908d91473b2f06500694bc32e))
+
+## [1.43.3](https://github.com/instill-ai/instill.tech/compare/v1.43.2...v1.43.3) (2024-03-07)
+
+
+### Miscellaneous
+
+* remove remove startConnector -&gt; endConnector from tutorial page ([#738](https://github.com/instill-ai/instill.tech/issues/738)) ([b842541](https://github.com/instill-ai/instill.tech/commit/b842541a30591850fe8316eba8702bd48276992f))
+
+## [1.43.2](https://github.com/instill-ai/instill.tech/compare/v1.43.1...v1.43.2) (2024-03-07)
+
+
+### Bug Fixes
+
+* build fix ([#736](https://github.com/instill-ai/instill.tech/issues/736)) ([13468ba](https://github.com/instill-ai/instill.tech/commit/13468ba548b6a61b13d21b4833963b841d6bd083))
+
+## [1.43.1](https://github.com/instill-ai/instill.tech/compare/v1.43.0...v1.43.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* connector key missing fix ([#735](https://github.com/instill-ai/instill.tech/issues/735)) ([0d58c2a](https://github.com/instill-ai/instill.tech/commit/0d58c2af6599651e6f6ed9934e85e3f7572e46f6))
+
+
+### Documentation
+
+* fix left searchbox alignment for dark & light mode ([#712](https://github.com/instill-ai/instill.tech/issues/712)) ([9c6b0e8](https://github.com/instill-ai/instill.tech/commit/9c6b0e8b209ac7b828ca1e14b40e4f5039b64636))
+
+## [1.43.0](https://github.com/instill-ai/instill.tech/compare/v1.42.2...v1.43.0) (2024-03-07)
+
+
+### Features
+
+* **tutorial:** add tutorial about llaba-v1.6-7b ([#731](https://github.com/instill-ai/instill.tech/issues/731)) ([6309254](https://github.com/instill-ai/instill.tech/commit/6309254359f1ca3024280616fcef7236f2082cfa))
+
+
+### Miscellaneous
+
+* unify the metadata with updated one ([#732](https://github.com/instill-ai/instill.tech/issues/732)) ([77fb1bb](https://github.com/instill-ai/instill.tech/commit/77fb1bbc9c95c741c482bfb5432b49fce75b321a))
+
+## [1.42.2](https://github.com/instill-ai/instill.tech/compare/v1.42.1...v1.42.2) (2024-03-04)
+
+
+### Miscellaneous
+
+* **about:** update member list ([#725](https://github.com/instill-ai/instill.tech/issues/725)) ([e3ccdb4](https://github.com/instill-ai/instill.tech/commit/e3ccdb4836eb4989f61d023447253d9c8fff4e28))
+* update pricing page ([#728](https://github.com/instill-ai/instill.tech/issues/728)) ([e22dc48](https://github.com/instill-ai/instill.tech/commit/e22dc4888719f54246d9451196cc12fb813d5d1e))
+* update version number for docker component deployment ([#729](https://github.com/instill-ai/instill.tech/issues/729)) ([fdda80f](https://github.com/instill-ai/instill.tech/commit/fdda80fb4cf72791518fc037ffd0091f277b312c))
+
+## [1.42.1](https://github.com/instill-ai/instill.tech/compare/v1.42.0...v1.42.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* fix pricing plan typo ([#724](https://github.com/instill-ai/instill.tech/issues/724)) ([336523b](https://github.com/instill-ai/instill.tech/commit/336523bb2215d4134f67c35c5c8d20b81ef609e4))
+
+
+### Miscellaneous
+
+* add https://www.wistron.com/ to customer list on landing page ([#722](https://github.com/instill-ai/instill.tech/issues/722)) ([993ccfb](https://github.com/instill-ai/instill.tech/commit/993ccfbed0a11699147ac1100cd689519f9ad911))
+* add login and signup link navbar ([#721](https://github.com/instill-ai/instill.tech/issues/721)) ([ad2e8be](https://github.com/instill-ai/instill.tech/commit/ad2e8bec30c884d441c4e60db851367abd57c2f7))
+* Namananand/ins 3585 add glass effect to navbar and api reference link ([#718](https://github.com/instill-ai/instill.tech/issues/718)) ([1ed9fd2](https://github.com/instill-ai/instill.tech/commit/1ed9fd2b3d4818254ae1d0c9f17615f4f1ba0e5e))
+
+
+### Documentation
+
+* add v0.11.0-beta doc ([#720](https://github.com/instill-ai/instill.tech/issues/720)) ([e95031b](https://github.com/instill-ai/instill.tech/commit/e95031beddb0236d825298667c5a3c827db6e76b))
+* add v0.12.0 document and section for "conditional component" ([#723](https://github.com/instill-ai/instill.tech/issues/723)) ([2a6e5da](https://github.com/instill-ai/instill.tech/commit/2a6e5da248984dc5c533671e969c2b95f190a265))
+
 ## [1.42.0](https://github.com/instill-ai/instill.tech/compare/v1.41.21...v1.42.0) (2024-02-01)
 
 

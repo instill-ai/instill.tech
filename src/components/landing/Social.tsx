@@ -180,6 +180,21 @@ export const Social = () => {
             </a>
           </div>
         </div>
+        <div className="mt-5 flex justify-center gap-x-12 xl:hidden">
+          <a
+            href="https://www.wistron.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="xl:bg-white xl:p-2"
+          >
+            <img
+              src={"/images/social/wistron.svg"}
+              alt=""
+              sizes=""
+              className="my-auto h-12 w-24 transition duration-300 hover:grayscale-0 xl:h-16 xl:grayscale"
+            />
+          </a>
+        </div>
       </div>
     </React.Fragment>
   );

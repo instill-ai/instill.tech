@@ -14,21 +14,20 @@
 */
 
 .DocSearch-Button {
-  border-radius: 2px !important;
   background-color: #f6f6f6 !important;
   column-gap: 20px !important;
   margin: 0px !important;
-  padding: 0px 12px !important;
+  padding: 0px 16px !important;
   border-radius: 5px !important;
   width: 100%;
 }
 
 .dark .DocSearch-Button {
-  border-radius: 2px !important;
+  border-radius: 5px !important;
   background-color: #5c5c5c !important;
   column-gap: 20px !important;
   margin: 0px !important;
-  padding: 0px 12px !important;
+  padding: 0px 16px !important;
 }
 
 .dark .DocSearch-Button:hover {

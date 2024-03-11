@@ -28,7 +28,9 @@ export const GitHubCtaButton = ({ position }: GitHubCtaButtonProps) => {
       }
     >
       <div className="flex flex-col">
-        <div className="mr-auto text-left uppercase">Self-hosted VDP</div>
+        <div className="mr-auto text-left uppercase">
+          Self-hosted Instill Core
+        </div>
         <div className="mr-auto text-left text-xs font-normal">Deploy now</div>
       </div>
     </OutlineButton>

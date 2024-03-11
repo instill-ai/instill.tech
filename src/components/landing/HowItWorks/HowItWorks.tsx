@@ -260,13 +260,17 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 padding="px-5 py-2.5 mt-5 xl:mr-auto w-full justify-center xl:w-auto"
                 itemGapX="gap-x-5"
                 onClickHandler={() =>
-                  router.push("https://github.com/instill-ai/vdp", undefined, {
-                    scroll: false,
-                  })
+                  router.push(
+                    "https://github.com/instill-ai/instill-core",
+                    undefined,
+                    {
+                      scroll: false,
+                    }
+                  )
                 }
                 hoveredShadow="hover:shadow-instill-solid-5"
               >
-                <p className="text-[20px] font-normal">Star Instill VDP</p>
+                <p className="text-[20px] font-normal">Star on GitHub</p>
               </SolidButton>
 
               <CommonCtaButton

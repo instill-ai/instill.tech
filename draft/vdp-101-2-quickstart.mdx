@@ -4,8 +4,8 @@ lang: "en-US"
 draft: false
 description: "We've made it easy to get started with VDP on your local machines and Kubernetes clusters. "
 aiTask: "Null"
-sourceConnector: "Null"
-destinationConnector: "Null"
+
+
 publishedOn: "2023-03-06T15:27:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-101/cover-animation.gif"
@@ -48,13 +48,13 @@ To enable GPU support in VDP, please refer to the installation guides of the [NV
 
 ## Download and launch VDP
 
-VDP is currently maintained on our [Github repository](https://github.com/instill-ai/vdp). Don't worry if you are not familiar with it. We have set up everything for you.
+VDP is currently maintained on our [Github repository](https://github.com/instill-ai/instill-core). Don't worry if you are not familiar with it. We have set up everything for you.
 
 Execute the following `bash` commands to start pre-built images with all the dependencies:
 
 ```bash
 # clone VDP repository to local
-git clone https://github.com/instill-ai/vdp.git && cd vdp
+git clone https://github.com/instill-ai/instill-core.git && cd instill-core
 # start VDP service
 make all
 ```
@@ -63,8 +63,7 @@ The installation may take a while. Have a cup of tea 🍵. Once the services are
 
 <InfoBlock type="warning" title="warning">
   ⚠︎ Don't panic if you don't see the Console UI right after `make all`.
-  Downloading the model-backend and Triton Inference Server image will take a
-  while, but it should be a one-time effort.
+  Downloading the images will take a while, but it should be a one-time effort.
 </InfoBlock>
 
 ↓↓ You should see the onboarding page. Enter your email, and you are all set! ↓↓

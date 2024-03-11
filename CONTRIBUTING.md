@@ -104,7 +104,7 @@ Please follow markdown details syntax like below
 
 ```md
 <details>
-  <summary>**Is VDP free?**</summary>
+  <summary>**Is Instill Core free?**</summary>
 
 Content
 
@@ -188,8 +188,8 @@ You can use this component to implement instill-ai's call to action button.
 
 ```mdx
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
@@ -336,12 +336,7 @@ type TutorialMeta = {
 
   // Please reference the type below.
   aiTask: AiTask;
-
-  // Connectors will be display as is on the page. For example, if you have a
-  // sourceConnector named HTTP, we will display the connector name as HTTP.
-  sourceConnector: string;
-  destinationConnector: string;
-
+  
   // Slug should be as same as the name of the filename of the article. It
   // will be the URL fragment of the article too. For example if you have
   // a article at /tutorials/vdp-101, the slug should be vdp-101 and the

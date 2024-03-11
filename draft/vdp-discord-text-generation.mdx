@@ -4,8 +4,8 @@ lang: "en-US"
 draft: false
 description: "In this tutorial, we build a Discord app that takes text a user provides as input and automatically fill in what it thinks comes next. The backbone of the app is a Text Generation pipeline on VDP."
 aiTask: "TextGeneration"
-sourceConnector: "Null"
-destinationConnector: "Null"
+
+
 publishedOn: "2023-03-07T14:26:00"
 placeholderColor: "bg-instillYellow50"
 themeImgSrc: "/tutorial-assets/vdp-discord-text-generation/text-generation-cover-A.gif"
@@ -42,7 +42,7 @@ Before starting this tutorial, make sure you have the prerequisites set up:
 
 - **A machine with GPUs** - To run the GPT model in this tutorial, you will needs a local machine with GPUs.
 - **Versatile Data Pipeline (VDP)** - VDP works on macOS or Linux. See [VDP 101[2/7] Launch VDP on your local machine](/tutorials/vdp-101-2-quickstart) for installation instructions.
-- **NVIDIA Container Toolkit** - To enable support in VDP, please refer to [NVIDIA Cloud Native Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install NVIDIA Container Toolkit. If you'd like to specifically allot GPUs to VDP, you can set the environment variable [NVIDIA_VISIBLE_DEVICES](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#gpu-enumeration) in the VDP [.env](https://github.com/instill-ai/vdp/blob/main/.env) file.
+- **NVIDIA Container Toolkit** - To enable support in VDP, please refer to [NVIDIA Cloud Native Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install NVIDIA Container Toolkit. If you'd like to specifically allot GPUs to VDP, you can set the environment variable [NVIDIA_VISIBLE_DEVICES](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#gpu-enumeration) in the Instill Core [.env](https://github.com/instill-ai/instill-core/blob/main/.env) file.
 - **NodeJS** - The Discord app is built with [discord-interation](https://github.com/discord/discord-interactions-js), an npm package based on Javacsript. See [download NodeJS](https://nodejs.org/en/download/) for installation instructions.
 
 ## Build Text Generation pipelines
@@ -360,8 +360,8 @@ If you enjoyed VDP, we're building a fully managed service for VDP - **Instill C
 - Start for free, pay as you grow
 
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation?utm_source=blog&utm_medium=link&utm_campaign=vdp-discord-text-generation"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-discord-text-generation?utm_source=blog&utm_medium=link&utm_campaign=vdp-discord-text-generation"
 />
 
 We also invite you to join our [Discord community](https://discord.gg/sevxWsqpGh) to share your use cases and showcase your work with Data/AI practitioners.

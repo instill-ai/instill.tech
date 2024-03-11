@@ -47,6 +47,7 @@ export const validateTutorialMeta = (
   const supportAiTasks: AiTask[] = [
     "ObjectDetection",
     "Ocr",
+    "VisualQuestionAnswering",
     "ImageClassification",
     "InstanceSegmentation",
     "KeypointDetection",
@@ -62,20 +63,6 @@ export const validateTutorialMeta = (
       `Error occurred when validate tutorial meta - wrong aiTask at ${path}, expect ${supportAiTasks.join(
         ", "
       )}. Found ${data.aiTask}`
-    );
-  }
-
-  // Validate whether tutorial have necessary fields - sourceConnector
-  if (!Object.prototype.hasOwnProperty.call(data, "sourceConnector")) {
-    throw new Error(
-      `Error occurred when validate tutorial meta - missing sourceConnector field at ${path}`
-    );
-  }
-
-  // Validate whether tutorial have necessary fields - destinationConnector
-  if (!Object.prototype.hasOwnProperty.call(data, "destinationConnector")) {
-    throw new Error(
-      `Error occurred when validate tutorial meta - missing destinationConnector field at ${path}`
     );
   }
 

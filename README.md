@@ -1,6 +1,6 @@
 # instill.tech
 
-This repository maintains the Instill AI product website and VDP documentation.
+This repository maintains the Instill AI product website and documentation.
 
 ## Contributing
 

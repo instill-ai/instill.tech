@@ -2,6 +2,7 @@
 
 import { AiTask, Nullable } from "@/types/instill";
 import { ReactElement } from "react";
+import cn from "clsx";
 import {
   ImageClassificationIcon,
   InstanceSegmentationIcon,
@@ -11,6 +12,7 @@ import {
   SemanticSegmentationIcon,
   TextToImageIcon,
   TextGenerationIcon,
+  Icons,
 } from "@instill-ai/design-system";
 
 type IconStyle = {
@@ -75,6 +77,19 @@ export const getAiTaskIconAndLabel = ({
     case "TextToImage":
       icon = (iconStyle: IconStyle) => <TextToImageIcon {...iconStyle} />;
       label = "Text to Image";
+      break;
+    case "VisualQuestionAnswering":
+      icon = (iconStyle: IconStyle) => (
+        <Icons.VisualQuestionAnswering
+          className={cn(
+            "my-auto h-4 w-4",
+            iconStyle.color === "fill-instillGrey80"
+              ? "stroke-semantic-fg-disabled"
+              : "stroke-semantic-fg-on-default"
+          )}
+        />
+      );
+      label = "Visual Question Answering";
       break;
     case "Null":
       icon = null;

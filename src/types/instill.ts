@@ -40,8 +40,6 @@ export type TutorialMeta = {
   draft: boolean;
   description: string;
   aiTask: AiTask;
-  sourceConnector: string;
-  destinationConnector: string;
   commit: CommitMeta;
   slug: string;
   publishedOn: string;
@@ -100,6 +98,7 @@ export type BlogArticleJsonLD = {
 export type AiTask =
   | "ObjectDetection"
   | "Ocr"
+  | "VisualQuestionAnswering"
   | "ImageClassification"
   | "InstanceSegmentation"
   | "KeypointDetection"
