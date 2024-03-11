@@ -18,6 +18,9 @@ const imageList = [
     src: "/images/social/cheng-kung-university.png",
     href: "https://www.ncku.edu.tw/",
   },
+  { id: 7, src: "/images/social/ubitus.png", href: "https://ubitus.net/" },
+  { id: 8, src: "/images/social/rybit.png", href: "https://www.rybit.io/" },
+  { id: 9, src: "/images/social/super8.png", href: "https://www.no8.io/" },
 ];
 
 export const Social = () => {
