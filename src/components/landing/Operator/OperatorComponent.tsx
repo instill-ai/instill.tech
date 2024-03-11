@@ -127,7 +127,7 @@ function OperatorComponent({
               width="w-[24px]"
             />
             <span className="my-auto">
-              <a href={operator_definition.documentation_url}>Github</a>
+              <a href={operator_definition.documentation_url}>GitHub</a>
             </span>
           </div>
           {/* <div className="w-full text-right">
