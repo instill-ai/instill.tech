@@ -29,8 +29,8 @@ export const CommonCtaButton = ({
           />
         ) : undefined
       }
-      padding="px-5 py-2.5"
-      itemGapX="gap-x-5"
+      padding="px-5 py-2.5 transition-all duration-300 ease-in-out"
+      itemGapX="gap-x-5 transition-all duration-300 ease-in-out hover:gap-x-7"
       position={position}
       onClickHandler={() => router.push(link, undefined, { scroll: false })}
       hoveredShadow="hover:shadow-instill-solid-5"

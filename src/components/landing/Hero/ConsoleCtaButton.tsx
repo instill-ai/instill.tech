@@ -12,13 +12,13 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       type="button"
       color="primaryLight"
       itemGapX="gap-x-2.5"
-      padding="pl-[15px] pr-[15px] py-[7px]"
+      padding="pl-[15px] pr-[15px] py-[7px] transition-all duration-300 ease-in-out"
       position={position}
       hoveredShadow="hover:shadow-instill-solid-5"
       onClickHandler={() => router.push("https://console.instill.tech")}
     >
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-row gap-x-3 text-left">
+        <div className="flex flex-row gap-x-3 text-left transition-all duration-300 ease-in-out hover:!gap-x-5">
           <p className="my-auto font-sans text-[20px] font-normal leading-7">
             Start Building
           </p>

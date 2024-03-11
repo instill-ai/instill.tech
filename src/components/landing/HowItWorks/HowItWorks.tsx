@@ -199,7 +199,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                         position="my-auto"
                       />
                     }
-                    padding="px-5 py-2.5"
+                    padding="px-5 py-2.5 transition-all duration-300 ease-in-out"
                     itemGapX="gap-x-2"
                     onClickHandler={() =>
                       router.push(

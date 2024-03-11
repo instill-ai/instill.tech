@@ -367,3 +367,22 @@ table.mcnCaptionTopContent {
 .underline-animation:hover::before {
   width: 100%;
 }
+
+.hover-animation::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 42px;
+  background-color: #236598; /* Change this to your desired underline color */
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-animation:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}

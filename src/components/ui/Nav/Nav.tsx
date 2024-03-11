@@ -58,17 +58,19 @@ export const Nav = () => {
       <GithubTextLink />
       <LoginPageLink />
 
-      <SolidButton
-        type="button"
-        color={"primary"}
-        padding="px-[17px] py-[7px]"
-        itemGapX="gap-x-5"
-        onClickHandler={() =>
-          router.push("https://instill.tech", undefined, { scroll: false })
-        }
-      >
-        <p className={cn("text-[16px] font-normal leading-7")}>Sign Up</p>
-      </SolidButton>
+      <div className="relative my-auto">
+        <SolidButton
+          type="button"
+          color={"primary"}
+          padding="px-[17px] py-[7px] transition duration-700 ease-in-out hover-animation"
+          itemGapX="gap-x-5"
+          onClickHandler={() =>
+            router.push("https://instill.tech", undefined, { scroll: false })
+          }
+        >
+          <p className={cn("text-[16px] font-normal leading-7")}>Sign Up</p>
+        </SolidButton>
+      </div>
     </React.Fragment>
   );
 
