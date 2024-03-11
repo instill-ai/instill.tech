@@ -233,10 +233,7 @@ const ConnectorPage: FC & {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer
-        margin="my-[120px] xl:my-6"
-        contentMaxWidth="max-w-[1127px]"
-      >
+      <ContentContainer margin="my-[120px]" contentMaxWidth="max-w-[1127px]">
         <div className="flex flex-col">
           <div className="flex justify-center">
             <h1
