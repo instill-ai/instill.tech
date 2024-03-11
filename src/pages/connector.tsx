@@ -171,7 +171,7 @@ const ConnectorPage: FC & {
           // setCategory("All");
           // setStage("All");
           // setSearchCode(null);
-          page_number = 0;
+          // page_number = 0;
         }
         const response = await InstillSDK.connector(
           filter,
