@@ -368,21 +368,43 @@ table.mcnCaptionTopContent {
   width: 100%;
 }
 
+/* .hover-animation {
+  position: relative;
+  overflow: hidden;
+} */
+
 .hover-animation::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset -90px 0 0 #40a8f5; /* Adjust the color and size as needed */
+  transition: box-shadow 0.7s ease;
+  opacity: 0.7;
+  /* z-index: -1; */
+}
+
+.hover-animation:hover::before {
+  box-shadow: inset 0 0 0 #40a8f5; /* Adjust the color as needed */
+}
+
+.hover-connector-header::before {
   content: "";
   display: block;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 0;
-  height: 42px;
-  background-color: #236598; /* Change this to your desired underline color */
+  height: 44px;
+  background-color: #bed3fe;
   transition: width 0.7s ease;
   transform-origin: left;
   opacity: 0.3;
 }
 
-.hover-animation:hover::before {
+.hover-connector-header:hover::before {
   width: 100%;
   opacity: 0.3;
 }

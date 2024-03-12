@@ -39,11 +39,13 @@ export type Task = {
 export type ConnectorDef = ConnectorDefinition & {
   tasks: Task[];
   version?: string;
+  description?: string;
 };
 
 export type OperatorDef = OperatorDefinition & {
   tasks: Task[];
   version?: string;
+  description?: string;
 };
 
 export type Connector = {
@@ -59,19 +61,23 @@ export const ConnectorCategory = {
   CONNECTOR_TYPE_DATA: "Data Connector",
   CONNECTOR_TYPE_UNSPECIFIED: "Unspecified Connector",
   CONNECTOR_TYPE_OPERATOR: "Operator",
+  CONNECTOR_TYPE_ITERATOR: "Iterator",
 };
 
 export const getHeaderColorClass = (
-  type: ConnectorType | "CONNECTOR_TYPE_APPLICATION"
+  type: ConnectorType | "CONNECTOR_TYPE_APPLICATION" | "CONNECTOR_TYPE_ITERATOR"
 ) => {
   switch (type) {
     case "CONNECTOR_TYPE_AI":
-    case "CONNECTOR_TYPE_DATA":
       return "bg-semantic-accent-bg text-semantic-accent-on-bg";
+    case "CONNECTOR_TYPE_DATA":
+      return "bg-semantic-error-bg text-semantic-error-on-bg";
     case "CONNECTOR_TYPE_APPLICATION":
       return "bg-semantic-warning-bg text-semantic-warning-on-bg";
     case "CONNECTOR_TYPE_OPERATOR":
       return "bg-semantic-success-bg text-semantic-success-on-bg";
+    case "CONNECTOR_TYPE_ITERATOR":
+      return "bg-semantic-secondary-bg text-semantic-secondary-default";
     case "CONNECTOR_TYPE_UNSPECIFIED":
       return "bg-semantic-bg-secondary text-semantic-fg-secondary";
   }

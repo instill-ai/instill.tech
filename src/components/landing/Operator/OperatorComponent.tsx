@@ -20,13 +20,13 @@ function OperatorComponent({
     >
       <div
         className={cn(
-          "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+          "hover-connector-header px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
           getHeaderColorClass("CONNECTOR_TYPE_OPERATOR")
         )}
       >
         {ConnectorCategory["CONNECTOR_TYPE_OPERATOR"]}
       </div>
-      <div className="min-h-[200px] bg-white px-5 py-2.5">
+      <div className="min-h-[230px] bg-white px-5 py-2.5">
         <div className="flex flex-row gap-x-2">
           <div className="rounded-[6px] border p-1 shadow">
             <img
@@ -94,7 +94,7 @@ function OperatorComponent({
           )}
         </div>
         <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
-          One liner to describe what the component is aimed for for this task.
+          {operator_definition.description}
         </div>
         <div className="absolute bottom-2 mt-5 flex w-full flex-row space-x-5 text-semantic-fg-secondary">
           <div className="flex flex-row space-x-2">

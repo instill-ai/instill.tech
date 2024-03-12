@@ -68,7 +68,9 @@ export const Nav = () => {
             router.push("https://instill.tech", undefined, { scroll: false })
           }
         >
-          <p className={cn("text-[16px] font-normal leading-7")}>Sign Up</p>
+          <p className={cn("z-10 text-[16px] font-normal leading-7")}>
+            Sign Up
+          </p>
         </SolidButton>
       </div>
     </React.Fragment>

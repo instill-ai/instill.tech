@@ -220,7 +220,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     withArrow={true}
                     link={"https://instill.tech"}
                     text="Try Free on Instill Cloud"
-                    position="my-auto w-full flex justify-center xl:w-auto"
+                    position="my-auto w-full flex justify-center xl:w-auto !bg-white hover:!shadow-instill-solid-5-white"
                   />
                 </div>
               </div>

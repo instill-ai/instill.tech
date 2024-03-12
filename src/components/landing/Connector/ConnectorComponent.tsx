@@ -13,20 +13,31 @@ function ConnectorComponent({
 }: {
   connector_definition: ConnectorDef;
 }) {
+  const [onMouseEnter, setOnMouseEnter] = React.useState(false);
+
+  console.log({ onMouseEnter });
+
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
       key={connector_definition.uid}
+      onMouseEnter={() => {
+        setOnMouseEnter(!onMouseEnter);
+      }}
+      onMouseLeave={() => {
+        setOnMouseEnter(!onMouseEnter);
+      }}
     >
       <div
         className={cn(
-          "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+          "hover-connector-header px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
           getHeaderColorClass(connector_definition.type)
         )}
       >
         {ConnectorCategory[connector_definition.type]}
       </div>
-      <div className="min-h-[200px] bg-white px-5 py-2.5">
+
+      <div className="min-h-[230px] bg-white px-5 py-2.5">
         <div className="flex flex-row gap-x-2">
           <div className="rounded-[6px] border p-1 shadow">
             <img
@@ -94,15 +105,15 @@ function ConnectorComponent({
           )}
         </div>
         <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
-          One liner to describe what the component is aimed for for this task.
+          {connector_definition.description}
         </div>
         <div className="absolute bottom-2 mt-5 flex w-full flex-row space-x-5 text-semantic-fg-secondary">
           <div className="flex flex-row space-x-2">
             <div className="my-auto">
               <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
+                width={onMouseEnter ? "20" : "18"}
+                height={onMouseEnter ? "20" : "18"}
+                viewBox={"0 0 18 18"}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -122,9 +133,9 @@ function ConnectorComponent({
           <div className="flex flex-row space-x-1">
             <GitHubIcon
               color="fill-[#1D2433]"
-              height="h-[24px]"
-              position="my-auto my-auto"
-              width="w-[24px]"
+              height={onMouseEnter ? "h-[30px]" : `h-[24px]`}
+              position="my-auto my-auto transition duration-300 ease-in-out"
+              width={onMouseEnter ? "w-[30px]" : "w-[24px]"}
             />
             <span className="my-auto">
               <a href={connector_definition.documentation_url}>GitHub</a>
