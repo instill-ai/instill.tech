@@ -13,26 +13,30 @@ function ConnectorComponent({
 }: {
   connector_definition: ConnectorDef;
 }) {
+  const [onMouseEnterGithub, setOnMouseEnterGithub] = React.useState(false);
+  const [onMouseEnterDocs, setOnMouseEnterDocs] = React.useState(false);
   const [onMouseEnter, setOnMouseEnter] = React.useState(false);
 
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
       key={connector_definition.uid}
-      // onMouseEnter={() => {
-      //   setOnMouseEnter(!onMouseEnter);
-      // }}
-      // onMouseLeave={() => {
-      //   setOnMouseEnter(!onMouseEnter);
-      // }}
+      onMouseEnter={() => {
+        setOnMouseEnter(!onMouseEnter);
+      }}
+      onMouseLeave={() => {
+        setOnMouseEnter(!onMouseEnter);
+      }}
     >
       <div
         className={cn(
-          "hover-connector-header px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+          "z-10 px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
           getHeaderColorClass(connector_definition.type)
         )}
       >
-        {ConnectorCategory[connector_definition.type]}
+        <span className="relative z-10">
+          {ConnectorCategory[connector_definition.type]}
+        </span>
       </div>
 
       <div className="min-h-[230px] bg-white px-5 py-2.5">
@@ -52,6 +56,7 @@ function ConnectorComponent({
               version={
                 connector_definition.version ? connector_definition.version : ""
               }
+              onMouseEnter={onMouseEnter}
             />
           </div>
         </div>
@@ -109,8 +114,8 @@ function ConnectorComponent({
           <div className="flex flex-row space-x-2">
             <div className="my-auto">
               <svg
-                width={onMouseEnter ? "20" : "18"}
-                height={onMouseEnter ? "20" : "18"}
+                width={"18"}
+                height={"18"}
                 viewBox={"0 0 18 18"}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,19 +129,49 @@ function ConnectorComponent({
                 />
               </svg>
             </div>
-            <span className="my-auto">
-              <a href={connector_definition.documentation_url}>Docs</a>
+            <span className={cn("my-auto")}>
+              <a
+                href={connector_definition.documentation_url}
+                onMouseEnter={() => {
+                  setOnMouseEnterDocs(!onMouseEnterDocs);
+                }}
+                onMouseLeave={() => {
+                  setOnMouseEnterDocs(!onMouseEnterDocs);
+                }}
+                className={cn(
+                  onMouseEnterDocs
+                    ? "animate__animated animate__flipInX animate__slow"
+                    : ""
+                )}
+              >
+                Docs
+              </a>
             </span>
           </div>
           <div className="flex flex-row space-x-1">
             <GitHubIcon
               color="fill-[#1D2433]"
-              height={onMouseEnter ? "h-[30px]" : `h-[24px]`}
+              height={"h-[24px]"}
               position="my-auto my-auto transition duration-300 ease-in-out"
-              width={onMouseEnter ? "w-[30px]" : "w-[24px]"}
+              width={"w-[24px]"}
             />
-            <span className="my-auto">
-              <a href={connector_definition.documentation_url}>GitHub</a>
+            <span className={cn("my-auto")}>
+              <a
+                href={connector_definition.documentation_url}
+                onMouseEnter={() => {
+                  setOnMouseEnterGithub(!onMouseEnterGithub);
+                }}
+                onMouseLeave={() => {
+                  setOnMouseEnterGithub(!onMouseEnterGithub);
+                }}
+                className={cn(
+                  onMouseEnterGithub
+                    ? "animate__animated animate__flipInX animate__slow"
+                    : ""
+                )}
+              >
+                GitHub
+              </a>
             </span>
           </div>
           {/* <div className="w-full text-right">

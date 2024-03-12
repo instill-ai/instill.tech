@@ -83,7 +83,13 @@ export const getHeaderColorClass = (
   }
 };
 
-export function VersionType({ version }: { version: string }) {
+export function VersionType({
+  version,
+  onMouseEnter,
+}: {
+  version: string;
+  onMouseEnter?: boolean;
+}) {
   const parsedVersion = version.split("-")[1];
 
   switch (parsedVersion) {
@@ -91,7 +97,10 @@ export function VersionType({ version }: { version: string }) {
       return (
         <Tag
           variant="lightPurple"
-          className="rounded-sm border-semantic-secondary-default !py-0.5 !uppercase"
+          className={cn(
+            "rounded-sm border-semantic-secondary-default !py-0.5 !uppercase shadow",
+            onMouseEnter ? "shadow shadow-semantic-secondary-default" : ""
+          )}
         >
           {parsedVersion}
         </Tag>
@@ -100,7 +109,10 @@ export function VersionType({ version }: { version: string }) {
       return (
         <Tag
           variant="lightBlue"
-          className="rounded-sm border-semantic-accent-default !py-0.5 !uppercase"
+          className={cn(
+            "rounded-sm border-semantic-accent-default !py-0.5 !uppercase",
+            onMouseEnter ? "shadow shadow-semantic-accent-default" : ""
+          )}
         >
           {parsedVersion}
         </Tag>
@@ -109,7 +121,10 @@ export function VersionType({ version }: { version: string }) {
       return (
         <Tag
           variant="lightYellow"
-          className="rounded-sm border-semantic-warning-default !py-0.5 !uppercase"
+          className={cn(
+            "rounded-sm border-semantic-warning-default !py-0.5 !uppercase",
+            onMouseEnter ? "shadow shadow-semantic-warning-default" : ""
+          )}
         >
           {parsedVersion}
         </Tag>
@@ -118,7 +133,10 @@ export function VersionType({ version }: { version: string }) {
       return (
         <Tag
           variant="lightGreen"
-          className="rounded-sm border-semantic-success-default !py-0.5 !uppercase"
+          className={cn(
+            "rounded-sm border-semantic-success-default !py-0.5 !uppercase",
+            onMouseEnter ? "shadow shadow-semantic-success-default" : ""
+          )}
         >
           {parsedVersion}
         </Tag>
