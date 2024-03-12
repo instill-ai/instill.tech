@@ -21,10 +21,22 @@ const imageList = [
   { id: 7, src: "/images/social/ubitus.png", href: "https://ubitus.net/" },
   { id: 8, src: "/images/social/rybit.png", href: "https://www.rybit.io/" },
   { id: 9, src: "/images/social/super8.png", href: "https://www.no8.io/" },
+  { id: 10, src: "/images/social/oxford.png", href: "https://www.ox.ac.uk/" },
+  {
+    id: 11,
+    src: "/images/social/acadamia.png",
+    href: "https://www.sinica.edu.tw/en",
+  },
+  {
+    id: 12,
+    src: "/images/social/cheng-kung-university.png",
+    href: "https://www.ncku.edu.tw/",
+  },
+  { id: 13, src: "/images/social/ubitus.png", href: "https://ubitus.net/" },
 ];
 
 export const Social = () => {
-  const FAST_DURATION = 10;
+  const FAST_DURATION = 20;
   const SLOW_DURATION = 60;
 
   const [duration, setDuration] = React.useState(FAST_DURATION);
@@ -72,7 +84,7 @@ export const Social = () => {
             </p>
           </div>
           <div className="hidden justify-center gap-x-8 xl:flex xl:flex-row xl:gap-x-20">
-            <div className="max-w-[800px] overflow-hidden">
+            <div className="blur-background relative flex max-w-[800px] flex-row overflow-hidden">
               <motion.div
                 className="flex xl:flex-row xl:gap-x-20"
                 style={{ x: xTranslation }}

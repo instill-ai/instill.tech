@@ -69,17 +69,17 @@ export const getHeaderColorClass = (
 ) => {
   switch (type) {
     case "CONNECTOR_TYPE_AI":
-      return "bg-semantic-accent-bg text-semantic-accent-on-bg";
+      return "bg-semantic-accent-bg text-semantic-accent-on-bg hover-connector-ai";
     case "CONNECTOR_TYPE_DATA":
-      return "bg-semantic-error-bg text-semantic-error-on-bg";
+      return "bg-semantic-error-bg text-semantic-error-on-bg hover-connector-data";
     case "CONNECTOR_TYPE_APPLICATION":
-      return "bg-semantic-warning-bg text-semantic-warning-on-bg";
+      return "bg-semantic-warning-bg text-semantic-warning-on-bg hover-connector-application";
     case "CONNECTOR_TYPE_OPERATOR":
-      return "bg-semantic-success-bg text-semantic-success-on-bg";
+      return "bg-semantic-success-bg text-semantic-success-on-bg hover-connector-operator";
     case "CONNECTOR_TYPE_ITERATOR":
-      return "bg-semantic-secondary-bg text-semantic-secondary-default";
+      return "bg-semantic-secondary-bg text-semantic-secondary-default hover-connector-iterator";
     case "CONNECTOR_TYPE_UNSPECIFIED":
-      return "bg-semantic-bg-secondary text-semantic-fg-secondary";
+      return "bg-semantic-bg-secondary text-semantic-fg-secondary hover-connector-unspecified";
   }
 };
 

@@ -390,7 +390,7 @@ table.mcnCaptionTopContent {
   box-shadow: inset 0 0 0 #40a8f5; /* Adjust the color as needed */
 }
 
-.hover-connector-header::before {
+.hover-connector-ai::before {
   content: "";
   display: block;
   position: absolute;
@@ -404,7 +404,112 @@ table.mcnCaptionTopContent {
   opacity: 0.3;
 }
 
-.hover-connector-header:hover::before {
+.hover-connector-ai:hover::before {
   width: 100%;
   opacity: 0.3;
+}
+
+.hover-connector-data::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 44px;
+  background-color: #fee1e3;
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-connector-data:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.hover-connector-application::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 44px;
+  background-color: #fff1d6;
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-connector-application:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.hover-connector-operator::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 44px;
+  background-color: #d1faed;
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-connector-operator:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.hover-connector-iterator::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 44px;
+  background-color: #efe7fe;
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-connector-iterator:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.hover-connector-unspecified::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 44px;
+  background-color: #bed3fe;
+  transition: width 0.7s ease;
+  transform-origin: left;
+  opacity: 0.3;
+}
+
+.hover-connector-unspecified:hover::before {
+  width: 100%;
+  opacity: 0.3;
+}
+
+.blur-background {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }

@@ -15,18 +15,16 @@ function ConnectorComponent({
 }) {
   const [onMouseEnter, setOnMouseEnter] = React.useState(false);
 
-  console.log({ onMouseEnter });
-
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
       key={connector_definition.uid}
-      onMouseEnter={() => {
-        setOnMouseEnter(!onMouseEnter);
-      }}
-      onMouseLeave={() => {
-        setOnMouseEnter(!onMouseEnter);
-      }}
+      // onMouseEnter={() => {
+      //   setOnMouseEnter(!onMouseEnter);
+      // }}
+      // onMouseLeave={() => {
+      //   setOnMouseEnter(!onMouseEnter);
+      // }}
     >
       <div
         className={cn(
@@ -39,11 +37,11 @@ function ConnectorComponent({
 
       <div className="min-h-[230px] bg-white px-5 py-2.5">
         <div className="flex flex-row gap-x-2">
-          <div className="rounded-[6px] border p-1 shadow">
+          <div className="my-auto rounded-[6px] border px-1 py-0.5 shadow">
             <img
               src={`/${connector_definition.icon}`}
               alt=""
-              className="mx-auto my-auto h-5 w-6"
+              className="mx-auto my-auto h-6 w-8"
             />
           </div>
           <span className="my-auto w-full font-sans text-[18px] font-semibold">
