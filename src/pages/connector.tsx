@@ -273,7 +273,9 @@ const ConnectorPage: FC & {
           <div className="mb-7 flex justify-center">
             <CommonCtaButton
               withArrow={true}
-              link={"/connector"}
+              link={
+                "https://github.com/instill-ai/community/issues/new?assignees=&labels=feature%2Cneed-triage&projects=&template=feature_request.yaml&title=%5BFeature%5D+%3Ctitle%3E"
+              }
               text="Request a Component"
               position="my-auto"
             />
