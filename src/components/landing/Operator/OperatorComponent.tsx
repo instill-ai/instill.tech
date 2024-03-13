@@ -2,9 +2,16 @@ import {
   ConnectorCategory,
   OperatorDef,
   VersionType,
+  docsLinks,
   getHeaderColorClass,
 } from "@/pages/connector";
-import { Button, GitHubIcon, Tag, Tooltip } from "@instill-ai/design-system";
+import {
+  Button,
+  DropdownMenu,
+  GitHubIcon,
+  Tag,
+  Tooltip,
+} from "@instill-ai/design-system";
 import React from "react";
 import cn from "clsx";
 
@@ -16,6 +23,7 @@ function OperatorComponent({
   const [onMouseEnterGithub, setOnMouseEnterGithub] = React.useState(false);
   const [onMouseEnterDocs, setOnMouseEnterDocs] = React.useState(false);
   const [onMouseEnter, setOnMouseEnter] = React.useState(false);
+  const [openTooltip, setOpenTooltip] = React.useState(false);
 
   return (
     <div
@@ -44,7 +52,7 @@ function OperatorComponent({
             <img
               src={`/${operator_definition.icon}`}
               alt=""
-              className="mx-auto my-auto h-6 w-6"
+              className="mx-auto my-auto h-6 w-6 shrink-0"
             />
           </div>
           <span className="my-auto w-full font-sans text-[18px] font-semibold">
@@ -72,38 +80,39 @@ function OperatorComponent({
             </Button>
           ))}
           {operator_definition.tasks.length > 2 && (
-            <Tooltip.Provider>
-              <Tooltip.Root>
-                <Tooltip.Trigger asChild>
-                  <Button
-                    variant="secondaryGrey"
-                    size="lg"
-                    key={"task-button"}
-                    className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                  >
-                    +{operator_definition.tasks.length - 2}
-                  </Button>
-                </Tooltip.Trigger>
-                <Tooltip.Portal>
-                  <Tooltip.Content className="TooltipContent" sideOffset={5}>
-                    <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
-                      {operator_definition.tasks
-                        .slice(2, operator_definition.tasks.length)
-                        .map((task) => (
-                          <Button
-                            variant="secondaryGrey"
-                            size="lg"
-                            key={task.name}
-                            className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
-                          >
-                            {task.title}
-                          </Button>
-                        ))}
-                    </div>
-                  </Tooltip.Content>
-                </Tooltip.Portal>
-              </Tooltip.Root>
-            </Tooltip.Provider>
+            // <Tooltip.Provider>
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger asChild>
+                <Button
+                  // onClick={() => setOpenTooltip(!openTooltip)}
+                  variant="secondaryGrey"
+                  size="lg"
+                  key={"task-button"}
+                  className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                >
+                  +{operator_definition.tasks.length - 2}
+                </Button>
+              </DropdownMenu.Trigger>
+              {/* <Tooltip.Portal> */}
+              <DropdownMenu.Content className="TooltipContent" sideOffset={5}>
+                <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
+                  {operator_definition.tasks
+                    .slice(2, operator_definition.tasks.length)
+                    .map((task) => (
+                      <Button
+                        variant="secondaryGrey"
+                        size="lg"
+                        key={task.name}
+                        className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
+                      >
+                        {task.title}
+                      </Button>
+                    ))}
+                </div>
+              </DropdownMenu.Content>
+              {/* </Tooltip.Portal> */}
+            </DropdownMenu.Root>
+            // </Tooltip.Provider>
           )}
         </div>
         <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
@@ -130,18 +139,21 @@ function OperatorComponent({
             </div>
             <span className={cn("my-auto")}>
               <a
-                href={operator_definition.documentation_url}
+                href={
+                  docsLinks[operator_definition.id] ||
+                  operator_definition.documentation_url
+                }
                 onMouseEnter={() => {
                   setOnMouseEnterDocs(!onMouseEnterDocs);
                 }}
                 onMouseLeave={() => {
                   setOnMouseEnterDocs(!onMouseEnterDocs);
                 }}
-                className={cn(
-                  onMouseEnterDocs
-                    ? "animate__animated animate__flipInX animate__slow"
-                    : ""
-                )}
+                // className={cn(
+                //   onMouseEnterDocs
+                //     ? "animate__animated animate__flipInX animate__slow"
+                //     : ""
+                // )}
               >
                 Docs
               </a>
@@ -156,18 +168,18 @@ function OperatorComponent({
             />
             <span className={cn("my-auto")}>
               <a
-                href={operator_definition.documentation_url}
+                href={operator_definition.source_url}
                 onMouseEnter={() => {
                   setOnMouseEnterGithub(!onMouseEnterGithub);
                 }}
                 onMouseLeave={() => {
                   setOnMouseEnterGithub(!onMouseEnterGithub);
                 }}
-                className={cn(
-                  onMouseEnterGithub
-                    ? "animate__animated animate__flipInX animate__slow"
-                    : ""
-                )}
+                // className={cn(
+                //   onMouseEnterGithub
+                //     ? "animate__animated animate__flipInX animate__slow"
+                //     : ""
+                // )}
               >
                 GitHub
               </a>

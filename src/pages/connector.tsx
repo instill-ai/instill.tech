@@ -25,6 +25,7 @@ import cn from "clsx";
 import OperatorComponent from "@/components/landing/Operator/OperatorComponent";
 import ConnectorComponent from "@/components/landing/Connector/ConnectorComponent";
 import ConnectorDefault from "@/components/landing/Connector/ConnectorDefault";
+import { LATEST_VERSIONS } from "../../version.mjs";
 
 type GetLayOutProps = {
   page: ReactElement;
@@ -40,12 +41,14 @@ export type ConnectorDef = ConnectorDefinition & {
   tasks: Task[];
   version?: string;
   description?: string;
+  source_url?: string;
 };
 
 export type OperatorDef = OperatorDefinition & {
   tasks: Task[];
   version?: string;
   description?: string;
+  source_url?: string;
 };
 
 export type Connector = {
@@ -62,6 +65,16 @@ export const ConnectorCategory = {
   CONNECTOR_TYPE_UNSPECIFIED: "Unspecified Connector",
   CONNECTOR_TYPE_OPERATOR: "Operator",
   CONNECTOR_TYPE_ITERATOR: "Iterator",
+};
+
+export const docsLinks: any = {
+  "hugging-face": `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/model/import/huggingface`,
+  "archetype-ai": `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/ai-connectors/archetype-ai`,
+  redis: `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/airbyte`,
+  start: `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/operators/start`,
+  end: `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/operators/end`,
+  image: `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/operators/base64`,
+  text: `https://www.instill.tech/docs/${LATEST_VERSIONS["core"]}/vdp/operators/textextraction`,
 };
 
 export const getHeaderColorClass = (
