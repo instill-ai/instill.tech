@@ -70,11 +70,11 @@ export const ConnectorCategory = {
 export const docsLinks: any = {
   "hugging-face": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/model/import/huggingface`,
   "archetype-ai": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/ai-connectors/archetype-ai`,
-  redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/airbyte`,
+  redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/redis`,
   start: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/start`,
   end: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/end`,
   image: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/base64`,
-  text: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/textextraction`,
+  text: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/text`,
 };
 
 export const getHeaderColorClass = (
