@@ -6,8 +6,8 @@ import { Nullable } from "@instill-ai/design-system";
 
 export async function connector(
   filter: Nullable<string>,
-  page: Nullable<number>,
-  page_size: Nullable<number>
+  page: number,
+  page_size: number
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIGetRequestBody = {
     path: `vdp/v1beta/component-definitions?page_size=${page_size}&page=${page}`,
