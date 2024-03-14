@@ -78,7 +78,9 @@ export const WebpageSummarization = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const apiResponse = await JumbotronSDK.webpageSummarization({
       inputs: [
         {
@@ -186,7 +188,7 @@ export const WebpageSummarization = () => {
 
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews"
+            href="https://instill.tech/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews"
             target="_blank"
             className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm font-normal text-white no-underline drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >

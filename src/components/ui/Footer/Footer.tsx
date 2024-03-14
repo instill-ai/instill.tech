@@ -51,16 +51,12 @@ export const Footer = () => {
     ],
     products: [
       {
-        text: "Instill VDP",
-        href: "https://github.com/instill-ai/vdp",
-      },
-      {
-        text: "Instill Model",
-        href: "https://github.com/instill-ai/model",
-      },
-      {
         text: "Instill Cloud",
-        href: "https://console.instill.tech",
+        href: "https://www.instill.tech",
+      },
+      {
+        text: "Instill Core",
+        href: "https://github.com/instill-ai/instill-core",
       },
     ],
     resources: [

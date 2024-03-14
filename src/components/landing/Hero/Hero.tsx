@@ -1,15 +1,8 @@
-import {
-  ExploreMoreScrollButton,
-  ExploreMoreScrollButtonProps,
-} from "./ExploreMoreScrollButton";
-import { HeroAnimation } from "./HeroAnimation";
+import { ExploreMoreScrollButtonProps } from "./ExploreMoreScrollButton";
 import { Headline } from "./Headline";
 import { SubHeadline } from "./SubHeadline";
-import { GitHubCtaButton } from "./GitHubCtaButton";
 import { ConsoleCtaButton } from "./ConsoleCtaButton";
-import { InstillHero } from "../InstillHero";
 import { Jumbotron } from "../jumbotron";
-import { Icons, Tag } from "@instill-ai/design-system";
 import { Frameworks } from "./Frameworks";
 
 export type HeroProps = {
@@ -30,21 +23,6 @@ export const Hero = ({ scrollHandler }: HeroProps) => {
               <p className="my-auto font-mono text-[14px] text-instillNeonBlue">
                 Free, until you’re ready to upgrade
               </p>
-            </div>
-            <div className="mt-10">
-              <a
-                href="https://www.producthunt.com/posts/instill-vdp?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-instill-vdp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=434600&theme=light"
-                  alt="Instill VDP - Open-Source Unstructured Data ETL for AI-first applications | Product Hunt"
-                  style={{ width: "194px", height: "42px" }}
-                  width="194"
-                  height="42"
-                />
-              </a>
             </div>
           </div>
         </div>

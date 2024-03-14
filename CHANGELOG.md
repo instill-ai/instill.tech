@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.44.0](https://github.com/instill-ai/instill.tech/compare/v1.43.3...v1.44.0) (2024-03-07)
+
+
+### Features
+
+* add new aiType VisualQuestionAnswering ([#743](https://github.com/instill-ai/instill.tech/issues/743)) ([5103ec2](https://github.com/instill-ai/instill.tech/commit/5103ec2f690c0303c9babad771d1c9e7f052aa17))
+
+
+### Bug Fixes
+
+* fix icon ([#744](https://github.com/instill-ai/instill.tech/issues/744)) ([a2dc356](https://github.com/instill-ai/instill.tech/commit/a2dc356808d2cdb2f2611af5b82dd16baae655e3))
+* swiper autoplay stop if when under jumbotron ([#742](https://github.com/instill-ai/instill.tech/issues/742)) ([45557ee](https://github.com/instill-ai/instill.tech/commit/45557ee854ed63c5aaa199fed7429c2c4f0b6937))
+
+
+### Documentation
+
+* **tutorial:** update llava-v1.6-7b tutorial ([#740](https://github.com/instill-ai/instill.tech/issues/740)) ([0fe078f](https://github.com/instill-ai/instill.tech/commit/0fe078ff4d1aced908d91473b2f06500694bc32e))
+
 ## [1.43.3](https://github.com/instill-ai/instill.tech/compare/v1.43.2...v1.43.3) (2024-03-07)
 
 

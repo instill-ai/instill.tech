@@ -15,12 +15,12 @@ export const ConsoleCtaButton = ({ position }: ConsoleCtaButtonProps) => {
       padding="pl-[15px] pr-[15px] py-[7px]"
       position={position}
       hoveredShadow="hover:shadow-instill-solid-5"
-      onClickHandler={() => router.push("https://console.instill.tech")}
+      onClickHandler={() => router.push("https://instill.tech/login")}
     >
       <div className="flex flex-col space-y-4">
         <div className="flex flex-row gap-x-3 text-left">
           <p className="my-auto font-sans text-[20px] font-normal leading-7">
-            Start Building
+            Get Started
           </p>
           <div className="ml-auto">
             <Icons.ArrowRight className="my-auto h-7 w-7 stroke-instillNeonBlue" />

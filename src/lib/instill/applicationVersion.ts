@@ -8,20 +8,5 @@ export function getApplicationVersion(
   if (path.includes(LATEST_VERSIONS[appType])) {
     return LATEST_VERSIONS[appType];
   }
-  if (path.includes("v0.9.0-beta")) {
-    return "v0.9.0-beta";
-  }
-  if (path.includes("v0.8.0-beta")) {
-    return "v0.8.0-beta";
-  }
-  if (path.includes("v0.6.0-alpha")) {
-    return "v0.6.0-alpha";
-  }
-  if (path.includes("v0.5.0-alpha")) {
-    return "v0.5.0-alpha";
-  }
-  if (path.includes("v0.4.1-alpha")) {
-    return "v0.4.1-alpha";
-  }
   return LATEST_VERSIONS[appType];
 }

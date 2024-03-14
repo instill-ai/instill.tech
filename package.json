@@ -23,7 +23,7 @@
     "@algolia/client-search": "^4.14.2",
     "@code-hike/mdx": "^0.8.0",
     "@docsearch/react": "^3.3.0",
-    "@instill-ai/design-system": "^0.60.0",
+    "@instill-ai/design-system": "^0.64.0",
     "@instill-ai/design-tokens": "^0.3.2",
     "@instill-ai/toolkit": "0.75.0-rc.60",
     "@mailchimp/mailchimp_marketing": "^3.0.75",
@@ -153,5 +153,5 @@
       "eslint --fix"
     ]
   },
-  "version": "1.43.3"
+  "version": "1.44.0"
 }

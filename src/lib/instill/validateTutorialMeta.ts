@@ -47,6 +47,7 @@ export const validateTutorialMeta = (
   const supportAiTasks: AiTask[] = [
     "ObjectDetection",
     "Ocr",
+    "VisualQuestionAnswering",
     "ImageClassification",
     "InstanceSegmentation",
     "KeypointDetection",

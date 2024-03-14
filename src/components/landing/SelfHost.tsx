@@ -24,9 +24,10 @@ export const SelfHost = () => {
         </div>
         <div className="mx-auto">
           <p className="font-sans text-[20px] font-normal">
-            You can self-host Instill VDP and Instill Model via Instill Core. It
-            provides an open-source AI infrastructure tailored for unstructured
-            data.
+            You have the option to self-host Instill Core locally using Instill
+            CLI, Docker Compose, Kubernetes with Helm, and more. It serves as a
+            turnkey solution for developing your AI applications on your own
+            infrastructure.
           </p>
         </div>
 

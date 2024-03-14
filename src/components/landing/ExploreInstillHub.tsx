@@ -15,7 +15,7 @@ export const ExploreInstillHub = ({ position }: ExploreInstillHubProps) => {
       padding="pl-[15px] pr-[15px] py-[7px]"
       position={position}
       hoveredShadow="hover:shadow-instill-solid-5"
-      onClickHandler={() => router.push("https://console.instill.tech")}
+      onClickHandler={() => router.push("https://www.instill.tech")}
     >
       <div className="flex flex-col space-y-4">
         <div className="flex flex-row gap-x-3 text-left">
