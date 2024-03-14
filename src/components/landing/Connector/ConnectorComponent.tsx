@@ -70,7 +70,7 @@ function ConnectorComponent({
         </div>
 
         <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
-          {connector_definition.tasks.slice(0, 2).map((task) => (
+          {connector_definition.tasks.slice(0, 1).map((task) => (
             <Button
               variant="secondaryGrey"
               size="lg"
@@ -80,7 +80,7 @@ function ConnectorComponent({
               {task.title}
             </Button>
           ))}
-          {connector_definition.tasks.length > 2 && (
+          {connector_definition.tasks.length > 1 && (
             // <Tooltip.Provider>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
@@ -90,14 +90,14 @@ function ConnectorComponent({
                   key={"task-button"}
                   className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
                 >
-                  +{connector_definition.tasks.length - 2}
+                  +{connector_definition.tasks.length - 1}
                 </Button>
               </DropdownMenu.Trigger>
               {/* <Tooltip.Portal> */}
               <DropdownMenu.Content className="TooltipContent" sideOffset={5}>
                 <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
                   {connector_definition.tasks
-                    .slice(2, connector_definition.tasks.length)
+                    .slice(1, connector_definition.tasks.length)
                     .map((task) => (
                       <Button
                         variant="secondaryGrey"
