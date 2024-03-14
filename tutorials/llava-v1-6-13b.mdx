@@ -8,8 +8,8 @@ destinationConnector: "Null"
 aiTask: "VisualQuestionAnswering"
 publishedOn: "2024-03-06T09:30:00"
 placeholderColor: "bg-instillRed90"
-themeImgSrc: "/tutorial-assets/llava-v1.6-7b/LLaVA Blog post.png"
-themeImgThumbnailSrc: "/tutorial-assets/llava-v1.6-7b/LLaVA Blog post.png"
+themeImgSrc: "/tutorial-assets/llava-v1.6-13b/LLaVA Blog post.png"
+themeImgThumbnailSrc: "/tutorial-assets/llava-v1.6-13b/LLaVA Blog post.png"
 useCase: "Model"
 author: "Shih-Chun Huang"
 authorAvatarSrc: "/author-avatar/Shih-Chun.jpg"
@@ -24,16 +24,16 @@ keywords: ["LLaVA", "LLaVA-v1.6", "Open Source"]
 
 LLaVA features a straightforward network structure and low fine-tuning costs. It allows any research group, enterprise, or individual to construct their own multimodal model.
 
-LLaVA has three versions: 1.0, 1.5, and 1.6 (LLaVA-NeXT). The most recent and powerful version, **LLaVA1.6-7B**, is currently available for free on Instill Model.
+LLaVA has three versions: 1.0, 1.5, and 1.6 (LLaVA-NeXT). The most recent and powerful version, **LLaVA-v1.6-13B**, is currently available for free on Instill Model.
 
 <br />
 
-# **New in LLaVA-v1.6**
+# **New in LLaVA-v1.6:**
 
-Citing from the [original blog](https://llava-vl.github.io/blog/2024-01-30-llava-next/), LLaVA-v1.6 has several improvements in comparison to LLaVA-v1.5:
+According to the [original blog](https://llava-vl.github.io/blog/2024-01-30-llava-next/), LLaVA-v1.6 has several improvements in comparison to LLaVA-v1.5:
 
 - Increasing the input image resolution to 4x more pixels. This allows it to grasp more visual details. It supports three aspect ratios, up to 672x672, 336x1344, 1344x336 resolution.
-- Better visual reasoning and OCR capability with an improved visual instruction tuning data mixture.
+- Better visual reasoning and Optical Character Recognition(OCR) capability with an improved visual instruction tuning data mixture.
 - Better visual conversation for more scenarios, covering different applications. Better world knowledge and logical reasoning.
 - Efficient deployment and inference with [SGLang](https://github.com/sgl-project/sglang).
 
@@ -41,9 +41,9 @@ Along with performance improvements, LLaVA-v1.6 maintains the minimalist design 
 
 <br />
 
-# **How to Use LLaVA-v1.6-7B Model with Instill AI**
+# **Implementing LLaVA with the Instill Model: A Step-by-Step Tutorial**
 
-In this tutorial, you'll learn how to utilize the LLaVA-v1.6-7B model through both Instill Cloud and Instill Core. We'll guide you through the process of making API calls to trigger model inferences and how to set up the model locally for more advanced uses. Whether you're a developer looking to integrate AI capabilities into your project or just interested in exploring what AI can do, this tutorial is designed to provide you with a straightforward path to success.
+In this tutorial, you'll learn how to utilize the LLaVA-v1.6-13B model through both Instill Cloud and Instill Core. We'll guide you through the process of making API calls to trigger model inferences and how to set up the model locally for more advanced uses. Whether you're a developer looking to integrate AI capabilities into your project or just interested in exploring what AI can do, this tutorial is designed to provide you with a straightforward path to success.
 
 ## **Using Instill Cloud**
 
@@ -55,7 +55,7 @@ Instill Cloud offers an easy way to try out models via API calls. Here's how you
 - Click on **API Tokens** and **generate a new token**. Make sure to copy this token for later use.
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/API-Token.png"
+  src="/tutorial-assets/llava-v1.6-13b/API-Token.png"
   alt="Where to get API Token"
 />
 
@@ -64,7 +64,7 @@ Instill Cloud offers an easy way to try out models via API calls. Here's how you
 On the [API Reference Page](https://openapi.instill.tech/reference/modelpublicservice_triggerorganizationmodel), select the **"Trigger model inference"** option. This tutorial uses Shell as an example, but instructions are available for various programming languages.
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/API.png"
+  src="/tutorial-assets/llava-v1.6-13b/API-reference.png"
   alt="Trigger Model Inference"
 />
 
@@ -72,8 +72,9 @@ On the [API Reference Page](https://openapi.instill.tech/reference/modelpublicse
 
 You'll need to provide specific information to make the API call:
 
+- **Authorization**: Enter the token with the **`Bearer`** prefix, e.g. **`Bearer`** + **`'YOUR_API_TOKEN'`**(attained from [Instill Cloud](https://instill.tech/)).
 - **PATH PARAMS**
-    - **organization_model_name**: Use **`organizations/instill-ai/models/llava-1-6-7b`** for the LLaVA-v1.6-7B model.
+    - **organization_model_name**: Use **`organizations/instill-ai/models/llava-1-6-13b`** for the LLaVA-v1.6-13B model.
 - **BODY PARAMS**
     - **task_inputs**: Select **`VISUAL_QUESTION_ANSWERING OBJECT`**.
         - **prompt**: Enter your question for the model.
@@ -87,7 +88,7 @@ After filling in the fields, click **`Try It!`**. You'll receive a **`curl`** co
 
 ```shellscript
 curl --request POST \
-     --url https://api.instill.tech/model/v1alpha/organizations%2Finstill-ai%2Fmodels%2Fllava-1-6-7b/trigger \
+     --url https://api.instill.tech/model/v1alpha/organizations%2Finstill-ai%2Fmodels%2Fllava-1-6-13b/trigger \
      --header 'Authorization: Bearer YOUR_API_TOKEN' \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
@@ -144,7 +145,7 @@ You can add models either through the console at http://localhost:3000/ or via A
 - Navigate to "Model" > "Add Model" and enter the model details as found on the [GitHub repository](https://github.com/instill-ai/deprecated-model).
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/Add-Model.png"
+  src="/tutorial-assets/llava-v1.6-13b/Add-Model.png"
   alt="How to add model on Console"
 />
 
@@ -153,22 +154,22 @@ You can add models either through the console at http://localhost:3000/ or via A
 - Obtain an API token from the console by navigating to http://localhost:3000/ > **Settings** > **API Tokens**.
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/API-Token_core.png"
+  src="/tutorial-assets/llava-v1.6-13b/API-Token_core.png"
   alt="Where to get API Token"
 />
 
 - Go to the [API Reference Page](https://openapi.instill.tech/reference/modelpublicservice_createusermodel-1) to create a new model with the following details:
-    - **API token**: Your token attained from http://localhost:3000/.
-    - **PATH PARAMS**:
+    - **Authorization**: Enter the token with the **`Bearer`** prefix, e.g. **`Bearer`** + **`'YOUR_API_TOKEN'`**(attained from http://localhost:3000/).
+    - **PATH PARAMS**
         - **user_name**: Use **`users/admin`**.
-    - **BODY PARAMS**:
+    - **BODY PARAMS**
         - **id**: Enter an ID for your model.
         - **task**: Select **`TASK_VISUAL_QUESTION_ANSWERING`**.
         - **model_definition**: Use **`model-definitions/github`**.
         - **configuration**: Provide the model's repository and tag details.
         In this case, it would be
             
-            **`repository`**: **`instill-ai/model-llava-7b-dvc`**
+            **`repository`**: **`instill-ai/model-llava-13b-dvc`**
             
             **`tag`**: **`f16-gpuAuto-transformer-ray-v0.8.16`**
             
@@ -178,7 +179,7 @@ You can add models either through the console at http://localhost:3000/ or via A
 With your model added, you can now trigger model inferences. Here's a **`curl`** command example for model inference:
 
 ```shellscript
-curl --location 'http://localhost:8080/model/v1alpha/users/admin/models/llava-1-6-7b/trigger' \
+curl --location 'http://localhost:8080/model/v1alpha/users/admin/models/llava-1-6-13b/trigger' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer YOUR_API_TOKEN' \
 --data '
@@ -198,9 +199,12 @@ curl --location 'http://localhost:8080/model/v1alpha/users/admin/models/llava-1-
 }'
 ```
 
-By following these steps, you can easily use the LLaVA-v1.6-7B model through Instill Cloud for simple API calls or set it up locally using Instill Core for more extensive testing and development.
+By following these steps, you can easily use the LLaVA-v1.6-13B model through Instill Cloud for simple API calls or set it up locally using Instill Core for more extensive testing and development.
 
-Example Pipeline: https://instill.tech/instill-wombat/pipelines/jumbotron-visual-understanding
+<CtaButton
+  text="Access Example Pipeline"
+  link="https://instill.tech/instill-wombat/pipelines/jumbotron-visual-understanding"
+/>
 
 <br />
 
@@ -212,8 +216,8 @@ Example Pipeline: https://instill.tech/instill-wombat/pipelines/jumbotron-visual
 <br />
 
 
-# Examples
-Let's compare the results generated by LLaVA-v1.5-13B and LLaVA-v1.6-7B!
+# Showcases
+Let's compare the results generated by LLaVA-v1.5-13B and LLaVA-v1.6-13B!
 
 ***
 
@@ -222,7 +226,7 @@ Let's compare the results generated by LLaVA-v1.5-13B and LLaVA-v1.6-7B!
 We’re going to ask models to come up with a caption for the following image:
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/arrow.png"
+  src="/tutorial-assets/llava-v1.6-13b/arrow.png"
   alt="An arrow on wall"
 />
 
@@ -232,9 +236,9 @@ Prompt = `Create a caption for this image`
 
 > A yellow plank of wood with a red arrow pointing upwards.
 
-**LLaVA-v1.6-7B OUTPUT**
+**LLaVA-v1.6-13B OUTPUT**
 
-> Arrowing upwards: The journey to success is often paved with small steps.
+> Explore new horizons: Your next adventure is just a few steps away.
 
 ***
 
@@ -243,7 +247,7 @@ Prompt = `Create a caption for this image`
 Next up, let’s see if the models can read the text from an image.
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/An-image-with-words.jpg"
+  src="/tutorial-assets/llava-v1.6-13b/An-image-with-words.jpg"
   alt="An image with words"
 />
 
@@ -253,9 +257,9 @@ Prompt = `What text is written on this image?`
 
 > The text written on this image is "Difficult Roads Lead to Beautiful Destinations.
 
-**LLaVA-v1.6-7B OUTPUT**
+**LLaVA-v1.6-13B OUTPUT**
 
-> The text on the image reads: "DIFFICULT ROADS LEAD TO BE A BEAUTIFUL DESTINATION A TIONS.
+> The text on the image reads, "DIFFICULT ROADS LEAD TO BEAUTIFUL DESTINATIONS."
 
 ***
 
@@ -264,7 +268,7 @@ Prompt = `What text is written on this image?`
 Can it extract code from an image? Nowadays, many people post code snippets as images on social media, making it difficult to reuse the code. Perhaps LLaVA can be a solution to this problem.
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/Python-code.png"
+  src="/tutorial-assets/llava-v1.6-13b/Python-code.png"
   alt="Python code for a window function"
 />
 
@@ -274,7 +278,7 @@ Prompt = `Extract the code from this image`
 
 > The image shows a computer screen displaying a code in a programming language. The code consists of multiple lines, with some of them highlighted in yellow. The code appears to be related to a chat application, as it includes phrases such as "instill client" and "text generation chat input." The code also contains information about a company's holiday policy.
 
-**LLaVA-v1.6-7B OUTPUT**
+**LLaVA-v1.6-13B OUTPUT**
 
 > Here's the text from the image:
 > 
@@ -320,7 +324,7 @@ Prompt = `Extract the code from this image`
 Let’s see if it can explain this diagram
 
 <ZoomableImg
-  src="/tutorial-assets/llava-v1.6-7b/Business-plan-diagram.png"
+  src="/tutorial-assets/llava-v1.6-13b/Business-plan-diagram.png"
   alt="Business Plan Diagram"
 />
 
@@ -330,13 +334,23 @@ Prompt = `Describe the meaning of the diagram`
 
 > The diagram is a flowchart that represents a business plan. It consists of several arrows and questions, which are meant to guide the reader through the process of creating a business plan. The flowchart starts with a question, "Does it work?", followed by a series of arrows pointing to different directions, indicating various aspects of the business plan. The questions and arrows are intended to help the reader think critically about the plan and make informed decisions. The flowchart is designed to be a visual representation of the business planning process, making it easier to understand and follow.
 
-**LLaVA-v1.6-7B OUTPUT**
+**LLaVA-v1.6-13B OUTPUT**
 
-> The diagram depicts a decision-making process that involves evaluating the feasibility of an idea or project based on its potential effectiveness and practicality. It begins with a light bulb, symbolizing the idea or concept, and then leads to two questions: "DOES IT WORK?" and "DOES IT WORK?" These questions are meant to assess whether the idea will achieve its intended goals or not. If the idea passes both tests, the answer to "DOES IT WORK?" is "YES," and the light bulb represents that the idea has been validated as a viable solution. If the idea does not pass either test, the light bulb is removed, indicating that the answer to "DOES IT WORK?" is "NO."
-> 
-> The arrows between the questions indicate a yes/no decision point, suggesting that once an idea has been assessed in this manner, it either proceeds to the next phase or is rejected. This type of process is commonly used in business planning, innovation, and problem-solving to determine whether new ideas should be pursued further or discarded.
+> The diagram depicts a simple decision-making or problem-solving process using a question format that is often associated with the "light bulb" moment of sudden insight. It shows a three-step sequence with a light bulb icon, which represents an idea, and three branches leading from it.
+>
+> 1. The first step asks, "Does it work?", which suggests testing a new idea or approach.
+> 2. If the answer to this question is negative, the second branch leads to the question, "Does it work?", indicating that the same process is repeated if the initial idea does not prove effective.
+> 3. If the answer to the second question is no, the third branch leads to "No" and the process ends. This suggests that if the idea does not work after two attempts, it may be concluded that the idea is not viable or effective.
+> 4. If the answer to the first question is positive, meaning the initial idea is deemed to work, the process moves to the second step, which asks, "Does it work?" again. This implies that the idea is tested again, perhaps to confirm the result or to refine the idea further.
+> 5. If the answer to the second question is still positive, the process leads to the third step, "Yes", and the process ends, indicating that the idea is considered to be effective or successful.
+>
+> The diagram uses a minimalist approach to convey the concept of iterative problem-solving and the importance of testing and confirming the effectiveness of an idea or approach before implementing it.
 
 
+<CtaButton
+  text="🚀 Try LLaVA-v1.6-13B"
+  link="https://instill.tech/instill-wombat/pipelines/jumbotron-visual-understanding"
+/>
 
 ## Acknowledgements
 
@@ -347,7 +361,7 @@ We'd like to extend our special thanks to [**Replicate**](https://replicate.com/
 
 # Conclusion
 
-LLaVA's remarkable image understanding and visual problem-solving capabilities indicate its potential for wide-ranging applications. However, Vision Language Model (VLM) outputs can be uncertain and their accuracy fluctuates based on the complexity and specificity of the task. This highlights the need for stable use, particularly in critical applications where precision is vital.
+LLaVA's remarkable image understanding and visual problem-solving capabilities indicate its potential for wide-ranging applications. However, VLM model outputs can be uncertain and their accuracy fluctuates based on the complexity and specificity of the task. This highlights the need for stable use, particularly in critical applications where precision is vital.
 
 LLaVA can significantly contribute to fields like media content creation by generating descriptions and explanations, potentially enhancing accessibility and user engagement. Its OCR capabilities can also be employed in document processing and data extraction tasks, potentially revolutionizing administrative workflows. Plus, its code extraction function could be a valuable educational tool, aiding learners in understanding code snippets shared as images.
 
