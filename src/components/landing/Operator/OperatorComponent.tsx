@@ -29,12 +29,12 @@ function OperatorComponent({
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
       key={operator_definition.uid}
-      onMouseEnter={() => {
-        setOnMouseEnter(!onMouseEnter);
-      }}
-      onMouseLeave={() => {
-        setOnMouseEnter(!onMouseEnter);
-      }}
+      // onMouseEnter={() => {
+      //   setOnMouseEnter(!onMouseEnter);
+      // }}
+      // onMouseLeave={() => {
+      //   setOnMouseEnter(!onMouseEnter);
+      // }}
     >
       <div
         className={cn(
@@ -63,7 +63,7 @@ function OperatorComponent({
               version={
                 operator_definition.version ? operator_definition.version : ""
               }
-              onMouseEnter={onMouseEnter}
+              // onMouseEnter={onMouseEnter}
             />
           </div>
         </div>
@@ -143,12 +143,12 @@ function OperatorComponent({
                   docsLinks[operator_definition.id] ||
                   operator_definition.documentation_url
                 }
-                onMouseEnter={() => {
-                  setOnMouseEnterDocs(!onMouseEnterDocs);
-                }}
-                onMouseLeave={() => {
-                  setOnMouseEnterDocs(!onMouseEnterDocs);
-                }}
+                // onMouseEnter={() => {
+                //   setOnMouseEnterDocs(!onMouseEnterDocs);
+                // }}
+                // onMouseLeave={() => {
+                //   setOnMouseEnterDocs(!onMouseEnterDocs);
+                // }}
                 // className={cn(
                 //   onMouseEnterDocs
                 //     ? "animate__animated animate__flipInX animate__slow"
@@ -169,12 +169,12 @@ function OperatorComponent({
             <span className={cn("my-auto")}>
               <a
                 href={operator_definition.source_url}
-                onMouseEnter={() => {
-                  setOnMouseEnterGithub(!onMouseEnterGithub);
-                }}
-                onMouseLeave={() => {
-                  setOnMouseEnterGithub(!onMouseEnterGithub);
-                }}
+                // onMouseEnter={() => {
+                //   setOnMouseEnterGithub(!onMouseEnterGithub);
+                // }}
+                // onMouseLeave={() => {
+                //   setOnMouseEnterGithub(!onMouseEnterGithub);
+                // }}
                 // className={cn(
                 //   onMouseEnterGithub
                 //     ? "animate__animated animate__flipInX animate__slow"
