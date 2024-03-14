@@ -298,7 +298,7 @@ const ConnectorPage: FC & {
         <div className="mb-5 grid grid-cols-1 gap-x-5 gap-y-2 xl:grid-cols-3">
           <div className="flex w-full flex-col gap-y-2.5">
             <p className="text-semantic-fg-primary product-body-text-3-semibold">
-              Search Pipelines
+              Search
             </p>
             <div className="mt-auto flex flex-row gap-x-4">
               <Input.Root className="flex-1">
