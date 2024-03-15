@@ -3,6 +3,7 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
+import "animate.css";
 import "../styles/global.css";
 import "@/style/codeHike.css";
 import "../styles/docs.css";

@@ -67,7 +67,7 @@ export const SubscribeNewsletterForm = ({
                 placeholder="Your email..."
                 type="email"
                 ref={email}
-                className="h-full w-full rounded-[1px] bg-instillNeonBlue05 px-5 text-instillGrey90 instill-input-no-highlight"
+                className="h-full w-full rounded-[1px] px-5 text-instillGrey90 placeholder-instillBlue50 instill-input-no-highlight"
               />
             </div>
 

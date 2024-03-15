@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
-import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
+import {
+  CrossIcon,
+  Logo,
+  MenuIcon,
+  SolidButton,
+} from "@instill-ai/design-system";
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
@@ -11,6 +16,7 @@ import { BlogPageLink } from "./BlogPageLink";
 import { AboutPageLink } from "./AboutPageLink";
 import { ChangelogLink } from "./ChangelogLink";
 import { LoginPageLink } from "./LoginPageLink";
+import { HubPageLink } from "./HubPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -44,18 +50,29 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
+      <HubPageLink />
       <AboutPageLink />
       <BlogPageLink />
       <ChangelogLink />
       <DocsPageLink />
       <GithubTextLink />
       <LoginPageLink />
-      <CommonCtaButton
-        position="mr-auto"
-        withArrow={false}
-        text="Sign Up"
-        link="https://instill.tech"
-      />
+
+      <div className="relative my-auto">
+        <SolidButton
+          type="button"
+          color={"primary"}
+          padding="px-[17px] py-[7px] transition duration-700 ease-in-out hover-animation"
+          itemGapX="gap-x-5"
+          onClickHandler={() =>
+            router.push("https://instill.tech", undefined, { scroll: false })
+          }
+        >
+          <p className={cn("z-10 text-[16px] font-normal leading-7")}>
+            Sign Up
+          </p>
+        </SolidButton>
+      </div>
     </React.Fragment>
   );
 
