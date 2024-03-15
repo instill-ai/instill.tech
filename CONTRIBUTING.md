@@ -214,6 +214,7 @@ You can embed Jumbotron by using this component.
 <WebpageSummarization />
 <StabilityAIOpenAISticker />
 <Llama2Chat />
+<Llama27bVsLlama27bChat />
 <SEOArticleWriter />
 <YOLOv7 />
 ```
@@ -336,7 +337,7 @@ type TutorialMeta = {
 
   // Please reference the type below.
   aiTask: AiTask;
-  
+
   // Slug should be as same as the name of the filename of the article. It
   // will be the URL fragment of the article too. For example if you have
   // a article at /tutorials/vdp-101, the slug should be vdp-101 and the
