@@ -73,8 +73,9 @@ export const docsLinks: any = {
   redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/redis`,
   start: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/start`,
   end: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/end`,
-  image: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/base64`,
+  image: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/image`,
   text: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/text`,
+  "airbyte-destination": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/airbyte`,
 };
 
 export const getHeaderColorClass = (
