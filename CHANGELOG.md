@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.45.0](https://github.com/instill-ai/instill.tech/compare/v1.44.0...v1.45.0) (2024-03-15)
+
+
+### Features
+
+* connector and operator component implementation ([#730](https://github.com/instill-ai/instill.tech/issues/730)) ([259d2f9](https://github.com/instill-ai/instill.tech/commit/259d2f9185310f145bda00996f2564ef08cd91da))
+
+
+### Bug Fixes
+
+* remove image ([#750](https://github.com/instill-ai/instill.tech/issues/750)) ([39952ed](https://github.com/instill-ai/instill.tech/commit/39952ed61459752b6f7144c5b7b1352d376972d2))
+* **src:** fix jumbotron pipeline links ([#751](https://github.com/instill-ai/instill.tech/issues/751)) ([5a6ed42](https://github.com/instill-ai/instill.tech/commit/5a6ed42366876fe641b1d1bfbaddbfd7ee0533a6))
+
+
+### Miscellaneous
+
+* **documentation,blog,website:** remove old docs and update documentation to `v0.25.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
+* update API link ([#753](https://github.com/instill-ai/instill.tech/issues/753)) ([3000b99](https://github.com/instill-ai/instill.tech/commit/3000b993146e9f43b5e101f5855b75c30e3f9cc6))
+
+
+### Documentation
+
+* **deployment:** increase minimal memory requirement ([#745](https://github.com/instill-ai/instill.tech/issues/745)) ([35d2d40](https://github.com/instill-ai/instill.tech/commit/35d2d4020918bec23e1337116080242404235424))
+* **tutorial:** add llava-v1.6-13b tutorial ([#754](https://github.com/instill-ai/instill.tech/issues/754)) ([744990e](https://github.com/instill-ai/instill.tech/commit/744990e436f3e280723849c8e21cab11c64c540e))
+* **tutorial:** update llava-v1.6-13b tutorial  ([#752](https://github.com/instill-ai/instill.tech/issues/752)) ([a8e9959](https://github.com/instill-ai/instill.tech/commit/a8e9959602863041ff8e5cb8530fe6e08b62b64a))
+
 ## [1.44.0](https://github.com/instill-ai/instill.tech/compare/v1.43.3...v1.44.0) (2024-03-07)
 
 
