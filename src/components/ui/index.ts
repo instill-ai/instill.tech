@@ -75,6 +75,7 @@ export { MdxAskOnPage } from "./MdxAskOnPage";
 export { MdxWebpageSummarization } from "./MdxWebpageSummarization";
 export { MdxStabilityAIOpenAISticker } from "./MdxStabilityAIOpenAISticker";
 export { MdxLlama2Chat } from "./MdxLlama2Chat";
+export { MdxLlama27bVsLlama27bChat } from "./MdxLlama27bVsLlama27bChat";
 export { MdxSEOArticleWriter } from "./MdxSEOArticleWriter";
 export { MdxYOLOv7 } from "./MdxYOLOv7";
 export { ArticlePublishInfo } from "./ArticlePublishInfo";

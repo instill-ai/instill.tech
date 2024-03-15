@@ -30,6 +30,7 @@ import {
   MdxLlama2Chat,
   MdxSEOArticleWriter,
   MdxYOLOv7,
+  MdxLlama27bVsLlama27bChat,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -43,6 +44,7 @@ import "@instill-ai/design-tokens/dist/theme/light.css";
 import "@instill-ai/design-tokens/dist/theme/dark.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@instill-ai/design-system";
+import { Llama27bVsLlama27bChat } from "@/components/landing";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -106,6 +108,7 @@ const components = {
   WebpageSummarization: (props: any) => <MdxWebpageSummarization />,
   StabilityAIOpenAISticker: (props: any) => <MdxStabilityAIOpenAISticker />,
   Llama2Chat: (props: any) => <MdxLlama2Chat />,
+  Llama27bVsLlama27bChat: (props: any) => <MdxLlama27bVsLlama27bChat />,
   SEOArticleWriter: (props: any) => <MdxSEOArticleWriter />,
   YOLOv7: (props: any) => <MdxYOLOv7 />,
 };
