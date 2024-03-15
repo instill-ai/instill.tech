@@ -44,7 +44,6 @@ import "@instill-ai/design-tokens/dist/theme/light.css";
 import "@instill-ai/design-tokens/dist/theme/dark.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@instill-ai/design-system";
-import { Llama27bVsLlama27bChat } from "@/components/landing";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
