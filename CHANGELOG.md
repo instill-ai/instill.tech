@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.46.0](https://github.com/instill-ai/instill.tech/compare/v1.45.0...v1.46.0) (2024-03-18)
+
+
+### Features
+
+* add Llama27bVsLlama27bChat ([#755](https://github.com/instill-ai/instill.tech/issues/755)) ([4d7e2f3](https://github.com/instill-ai/instill.tech/commit/4d7e2f30be882ec94576f6f3a6c45e63c7ebb142))
+
+
+### Miscellaneous
+
+* task name toLowerCase ([#758](https://github.com/instill-ai/instill.tech/issues/758)) ([a37e4de](https://github.com/instill-ai/instill.tech/commit/a37e4de443bdc04cf431507a08c14d5ed4d4440b))
+
 ## [1.45.0](https://github.com/instill-ai/instill.tech/compare/v1.44.0...v1.45.0) (2024-03-15)
 
 
