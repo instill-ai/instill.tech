@@ -4,7 +4,7 @@ import {
   VersionType,
   docsLinks,
   getHeaderColorClass,
-} from "@/pages/connector";
+} from "@/pages/component";
 import React from "react";
 import cn from "clsx";
 import {
@@ -20,11 +20,6 @@ function ConnectorComponent({
 }: {
   connector_definition: ConnectorDef;
 }) {
-  const [onMouseEnterGithub, setOnMouseEnterGithub] = React.useState(false);
-  const [onMouseEnterDocs, setOnMouseEnterDocs] = React.useState(false);
-  const [onMouseEnter, setOnMouseEnter] = React.useState(false);
-  const [openTooltip, setOpenTooltip] = React.useState(false);
-
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}

@@ -13,7 +13,7 @@ import {
 import { InstillSDK } from "@/lib/instill-sdk";
 import { Model } from "@instill-ai/toolkit";
 import { Nullable } from "@instill-ai/design-system";
-import { Connector } from "@/pages/connector";
+import { Connector } from "@/pages/component";
 import { HowItWorksRow } from "./HowItWorksRow";
 import Link from "next/link";
 import ConnectorComponent from "../Connector/ConnectorComponent";
@@ -44,7 +44,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
     React.useEffect(() => {
       const fetchConnectors = async () => {
         try {
-          const response = await InstillSDK.connector(null, 0, 6);
+          const response = await InstillSDK.component(null, 0, 6);
           if (response.status === "success") {
             setConnectors(response.data.component_definitions);
           }
@@ -112,7 +112,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   <div className="flex justify-end">
                     <CommonCtaButton
                       withArrow={true}
-                      link={"/connector"}
+                      link={"/component?page=1"}
                       text="Learn more"
                       position="my-auto"
                     />
@@ -156,7 +156,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             <div className="flex justify-center">
               <CommonCtaButton
                 withArrow={true}
-                link={"/connector"}
+                link={"/component"}
                 text="Learn more"
                 position="mt-auto xl:mr-auto w-full justify-center xl:w-auto"
               />

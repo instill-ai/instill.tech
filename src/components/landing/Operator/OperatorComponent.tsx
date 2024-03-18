@@ -4,7 +4,7 @@ import {
   VersionType,
   docsLinks,
   getHeaderColorClass,
-} from "@/pages/connector";
+} from "@/pages/component";
 import {
   Button,
   DropdownMenu,

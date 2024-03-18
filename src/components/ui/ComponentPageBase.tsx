@@ -9,11 +9,11 @@ const Footer = dynamic<{}>(() =>
   import("@/components/ui").then((mod) => mod.Footer)
 );
 
-export type ConnectorPageBaseProps = {
+export type ComponentPageBaseProps = {
   children?: ReactNode;
 };
 
-export const ConnectorPageBase = ({ children }: ConnectorPageBaseProps) => {
+export const ComponentPageBase = ({ children }: ComponentPageBaseProps) => {
   const [contentRef, contentIsInView] = useInView({
     triggerOnce: true,
   });
