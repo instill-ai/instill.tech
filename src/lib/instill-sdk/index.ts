@@ -1,7 +1,7 @@
-import { connector } from "./connector";
+import { component } from "./component";
 import { model } from "./model";
 
 export const InstillSDK = {
-  connector,
+  component,
   model,
 };

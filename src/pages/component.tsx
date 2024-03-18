@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import {
   CommonCtaButton,
-  ConnectorPageBase,
+  ComponentPageBase,
   ContentContainer,
   PageHead,
 } from "@/components/ui";
@@ -158,10 +158,11 @@ export function VersionType({
   }
 }
 
-const ConnectorPage: FC & {
+const ComponentPage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
   const router = useRouter();
+  const { page } = router.query;
 
   const page_size = 9;
 
@@ -174,7 +175,7 @@ const ConnectorPage: FC & {
   const [searchCode, setSearchCode] = React.useState<Nullable<string>>(null);
 
   // Introduce state variables for pagination
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const currentPage = Number(page || 0);
   const [totalPage, setTotalPage] = React.useState(0);
 
   React.useEffect(() => {
@@ -207,14 +208,13 @@ const ConnectorPage: FC & {
           filter = "";
           setConnectors(null);
         }
-        const response = await InstillSDK.connector(
+        const response = await InstillSDK.component(
           filter,
           page_number,
           page_size
         );
         if (response.status === "success") {
           setConnectors(response.data.component_definitions);
-          setCurrentPage(response.data.page + 1);
           setTotalPage(
             Math.ceil(response.data.total_size / response.data.page_size)
           );
@@ -416,7 +416,7 @@ const ConnectorPage: FC & {
               variant="secondaryGrey"
               size="sm"
               className="gap-x-2"
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => router.push(`/component?page=${currentPage - 1}`)}
               disabled={currentPage === 1}
             >
               <Icons.ArrowLeft className="h-4 w-4 stroke-semantic-fg-primary" />
@@ -433,8 +433,10 @@ const ConnectorPage: FC & {
                     currentPage === elem ? "!bg-semantic-bg-base-bg" : ""
                   )}
                   onClick={() =>
-                    setCurrentPage(
-                      typeof elem === "number" ? elem : currentPage
+                    router.push(
+                      `/component?page=${
+                        typeof elem === "number" ? elem : currentPage
+                      }`
                     )
                   }
                 >
@@ -447,7 +449,7 @@ const ConnectorPage: FC & {
               variant="secondaryGrey"
               size="sm"
               className="gap-x-2"
-              onClick={() => setCurrentPage(currentPage + 1)}
+              onClick={() => router.push(`/component?page=${currentPage + 1}`)}
               disabled={currentPage === totalPage}
             >
               Next
@@ -470,8 +472,8 @@ const ConnectorPage: FC & {
   );
 };
 
-ConnectorPage.getLayout = (page) => {
-  return <ConnectorPageBase>{page}</ConnectorPageBase>;
+ComponentPage.getLayout = (page) => {
+  return <ComponentPageBase>{page}</ComponentPageBase>;
 };
 
-export default ConnectorPage;
+export default ComponentPage;
