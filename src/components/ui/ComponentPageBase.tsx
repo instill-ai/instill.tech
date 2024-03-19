@@ -22,6 +22,7 @@ export const ComponentPageBase = ({ children }: ComponentPageBaseProps) => {
     <div
       className="flex min-h-screen flex-col bg-top bg-no-repeat"
       style={{ backgroundImage: 'url("/background.svg")' }}
+      id="component"
     >
       <Nav />
       <div ref={contentRef} className="flex flex-1 flex-col">

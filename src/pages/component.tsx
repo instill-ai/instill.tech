@@ -260,8 +260,8 @@ const ComponentPage: FC & {
     <React.Fragment>
       <PageHead
         pageType="main"
-        pageTitle="Connector | Instill AI"
-        pageDescription="Instill AI Connector"
+        pageTitle="Component | Instill AI"
+        pageDescription="Instill AI Component"
         additionMeta={null}
         commitMeta={null}
         currentArticleMeta={null}
