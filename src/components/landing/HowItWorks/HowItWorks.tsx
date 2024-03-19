@@ -112,7 +112,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   <div className="flex justify-end">
                     <CommonCtaButton
                       withArrow={true}
-                      link={"/component?page=1"}
+                      link={"/component?page=1#component"}
                       text="Learn more"
                       position="my-auto"
                     />
