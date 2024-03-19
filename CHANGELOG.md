@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.46.1](https://github.com/instill-ai/instill.tech/compare/v1.46.0...v1.46.1) (2024-03-19)
+
+
+### Miscellaneous
+
+* improvement ([#759](https://github.com/instill-ai/instill.tech/issues/759)) ([3a0103a](https://github.com/instill-ai/instill.tech/commit/3a0103ac75152fad321b48def893220d61263037))
+
 ## [1.46.0](https://github.com/instill-ai/instill.tech/compare/v1.45.0...v1.46.0) (2024-03-18)
 
 
