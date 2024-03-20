@@ -579,22 +579,12 @@ export function getNavbar(
       },
       {
         key: "docs-nav-dropdown-version-menu",
-        href: "/",
+        href: "/docs/v0.26.0-beta/welcome",
         className: "navbar-dropdown-menu",
         position: "right",
         label: `${appVersion} ${
           appVersion === LATEST_VERSIONS[appType] ? "(latest)" : ""
         }`,
-        items: [
-          {
-            key: "docs-nav-dropdown-version-core-latest",
-            to: `/docs/v0.25.0-beta/welcome`,
-            className: "",
-            position: "right",
-            label: "v0.25.0-beta (latest)",
-            appType: "core",
-          },
-        ],
         appType: null,
       },
       {

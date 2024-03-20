@@ -35,7 +35,7 @@
 
 ### Miscellaneous
 
-* **documentation,blog,website:** remove old docs and update documentation to `v0.25.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
+* **documentation,blog,website:** remove old docs and update documentation to `v0.26.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
 * update API link ([#753](https://github.com/instill-ai/instill.tech/issues/753)) ([3000b99](https://github.com/instill-ai/instill.tech/commit/3000b993146e9f43b5e101f5855b75c30e3f9cc6))
 
 
