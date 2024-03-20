@@ -26,21 +26,6 @@ export const Hero = () => {
                 Free, until you’re ready to upgrade
               </p>
             </div>
-            <div className="mt-4">
-              <a
-                href="https://www.producthunt.com/posts/instill-vdp?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-instill-vdp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=434600&theme=light"
-                  alt="Instill VDP - Open-Source Unstructured Data ETL for AI-first applications | Product Hunt"
-                  style={{ width: "205px", height: "52px" }}
-                  width="205"
-                  height="52"
-                />
-              </a>
-            </div>
           </div>
         </div>
         <div className="mb-20 mt-14 xl:my-auto xl:mt-0 xl:w-[50%]">
