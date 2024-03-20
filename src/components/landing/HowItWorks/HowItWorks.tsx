@@ -203,7 +203,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     itemGapX="gap-x-2"
                     onClickHandler={() =>
                       router.push(
-                        "https://github.com/instill-ai/vdp",
+                        "https://github.com/instill-ai/instill-core",
                         undefined,
                         {
                           scroll: false,
@@ -213,7 +213,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                     hoveredShadow="hover:shadow-instill-solid-5"
                   >
                     <p className="text-[24px] font-normal leading-7">
-                      Star Instill VDP
+                      Star Instill Core
                     </p>
                   </SolidButton>
                   <CommonCtaButton
@@ -302,7 +302,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                   </div>
                 </Slide>
               }
-              learnMoreLink="/docs/v0.6.0-alpha/sdk/python"
+              learnMoreLink="/docs/latest/sdk/python"
               cubes={[]}
               icon={
                 <Slide>
