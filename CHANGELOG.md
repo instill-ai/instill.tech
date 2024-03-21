@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.46.2](https://github.com/instill-ai/instill.tech/compare/v1.46.1...v1.46.2) (2024-03-21)
+
+
+### Miscellaneous
+
+* **website:** fix jumbotron grammar mistake and remove product hunt badge ([#761](https://github.com/instill-ai/instill.tech/issues/761)) ([c4d9d43](https://github.com/instill-ai/instill.tech/commit/c4d9d43362ef3ca02c4a42d2c5227111b58bf802))
+
+
+### Documentation
+
+* **core:** remove outdated figure ([#749](https://github.com/instill-ai/instill.tech/issues/749)) ([634a79c](https://github.com/instill-ai/instill.tech/commit/634a79c60987e052539ba5e725e26d90592a73c4))
+
 ## [1.46.1](https://github.com/instill-ai/instill.tech/compare/v1.46.0...v1.46.1) (2024-03-19)
 
 
