@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.46.3](https://github.com/instill-ai/instill.tech/compare/v1.46.2...v1.46.3) (2024-03-26)
+
+
+### Bug Fixes
+
+* middleware redirection ([#765](https://github.com/instill-ai/instill.tech/issues/765)) ([82efaba](https://github.com/instill-ai/instill.tech/commit/82efaba81243778a65ed7d4a7d30277543313015))
+
 ## [1.46.2](https://github.com/instill-ai/instill.tech/compare/v1.46.1...v1.46.2) (2024-03-21)
 
 
