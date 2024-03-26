@@ -52,7 +52,7 @@ function OperatorComponent({
             <img
               src={`/${operator_definition.icon}`}
               alt=""
-              className="mx-auto my-auto h-6 w-6 shrink-0"
+              className="mx-auto my-auto h-6 w-8 shrink-0"
             />
           </div>
           <span className="my-auto w-full font-sans text-[18px] font-semibold">
