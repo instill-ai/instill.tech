@@ -9,6 +9,10 @@
   --docs-content-max-width: 1140px;
 }
 
+html.dark-transition * {
+  @apply transition-colors duration-200;
+}
+
 /*
   DocSearch styles
 */
