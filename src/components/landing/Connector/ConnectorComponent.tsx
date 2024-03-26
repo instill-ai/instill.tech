@@ -7,13 +7,7 @@ import {
 } from "@/pages/component";
 import React from "react";
 import cn from "clsx";
-import {
-  Button,
-  DropdownMenu,
-  GitHubIcon,
-  Tag,
-  Tooltip,
-} from "@instill-ai/design-system";
+import { Button, DropdownMenu, GitHubIcon } from "@instill-ai/design-system";
 
 function ConnectorComponent({
   connector_definition,
