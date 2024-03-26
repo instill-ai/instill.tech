@@ -67,7 +67,7 @@ export const SubscribeNewsletterForm = ({
                 placeholder="Your email..."
                 type="email"
                 ref={email}
-                className="h-full w-full rounded-[1px] px-5 text-instillGrey90 placeholder-instillBlue50 instill-input-no-highlight"
+                className="h-full w-full rounded-[1px] px-5 text-instillGrey90 placeholder-instillNeonBlue instill-input-no-highlight"
               />
             </div>
 
@@ -80,7 +80,7 @@ export const SubscribeNewsletterForm = ({
                   width="w-4"
                   height="h-4"
                   position="my-auto"
-                  color="fill-instillBlue50 group-hover:fill-instillBlue80"
+                  color="fill-instillBlue50 group-hover:fill-instillNeonBlue"
                 />
               }
               hoveredShadow="hover:shadow-instill-solid-5"

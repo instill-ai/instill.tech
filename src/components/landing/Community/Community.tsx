@@ -56,7 +56,7 @@ export const Community = () => {
       </Slide>
       <Slide>
         <div>
-          <StayInTheLoop />
+          <StayInTheLoop isDark={true} />
         </div>
       </Slide>
     </div>
