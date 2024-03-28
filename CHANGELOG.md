@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.46.4](https://github.com/instill-ai/instill.tech/compare/v1.46.3...v1.46.4) (2024-03-28)
+
+
+### Bug Fixes
+
+* json-ld parsing ([#767](https://github.com/instill-ai/instill.tech/issues/767)) ([34a3416](https://github.com/instill-ai/instill.tech/commit/34a34160fdb2925a008219fc87f5f449a49cd64e))
+
 ## [1.46.3](https://github.com/instill-ai/instill.tech/compare/v1.46.2...v1.46.3) (2024-03-26)
 
 
