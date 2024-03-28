@@ -3,6 +3,7 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
+import "animate.css";
 import "../styles/global.css";
 import "@/style/codeHike.css";
 import "../styles/docs.css";
@@ -22,6 +23,15 @@ import {
   MdxYoutubeEmbed,
   MdxQuoteBlock,
   MdxQuoteBlockProps,
+  MdxJumbotron,
+  MdxResponderWithSpeech,
+  MdxAskOnPage,
+  MdxWebpageSummarization,
+  MdxStabilityAIOpenAISticker,
+  MdxLlama2Chat,
+  MdxSEOArticleWriter,
+  MdxYOLOv7,
+  MdxLlama27bVsLlama27bChat,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -92,6 +102,15 @@ const components = {
       position={props.position}
     />
   ),
+  Jumbotron: (props: any) => <MdxJumbotron />,
+  ResponderWithSpeech: (props: any) => <MdxResponderWithSpeech />,
+  AskOnPage: (props: any) => <MdxAskOnPage />,
+  WebpageSummarization: (props: any) => <MdxWebpageSummarization />,
+  StabilityAIOpenAISticker: (props: any) => <MdxStabilityAIOpenAISticker />,
+  Llama2Chat: (props: any) => <MdxLlama2Chat />,
+  Llama27bVsLlama27bChat: (props: any) => <MdxLlama27bVsLlama27bChat />,
+  SEOArticleWriter: (props: any) => <MdxSEOArticleWriter />,
+  YOLOv7: (props: any) => <MdxYOLOv7 />,
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

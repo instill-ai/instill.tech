@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useEffect, useRef } from "react";
+import { FC, ReactElement } from "react";
 import dynamic from "next/dynamic";
 import cn from "clsx";
 import {
@@ -8,12 +8,10 @@ import {
   SelfHost,
   Social,
 } from "@/components/landing";
-import { PageBase, PageHead } from "@/components/ui";
-import { getElementPosition } from "@instill-ai/design-system";
-import { useInstillAICtx } from "@/contexts/InstillAIContext";
+import { LandingPageBase, PageHead } from "@/components/ui";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
-import { useInView } from "react-intersection-observer";
+import Slide from "@/components/landing/Slide";
 
 const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
@@ -56,67 +54,6 @@ interface GetLayOutProps {
 const HomePage: FC & {
   getLayout?: FC<GetLayOutProps>;
 } = () => {
-  const vdpRef = useRef<HTMLDivElement>(null);
-  const { enableAnnouncementBar } = useInstillAICtx();
-
-  useEffect(() => {
-    // The CaseStudy component can't correctly calculate the element
-    // position when user scroll to the CaseStudy section and directly
-    // refresh the page. So we need to enforce the page to go back to
-    // top to enforce the experience.
-
-    // The issue is centered at ControlPanel component:
-
-    // The problem is, The ControlPanel will work corretly if user start
-    // navigate before the CaseStudy is displayed. But if they refresh
-    // the page directly on top of CaseStudy section. The page will only
-    // load Hero section and CaseStudySection and some component below it
-    // because we dynamic load these element when they are in view.
-
-    // In this way, the ControlPanel will have the wrong dimension and cause
-    // some weird behavior
-
-    // At the first glance, the solution seems to be using the CaseStudy
-    // activeIndex props to update the dimension state of every component
-    // in Control Panel(Because upon the first draw, the line is correct,
-    // The issue will only happen when user switch active CaseStudy item).
-
-    // But in this way we can not use useElementDimension hook which is
-    // troublesome. Even We use ref and get element dimension in the useEffect
-    // that calculate the line stat. The time activeIndex change didn't mean
-    // it's the time DOM had been updated and every component had been drew.
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-  }, []);
-
-  const scrollHandler = useCallback(() => {
-    if (!window || !vdpRef.current) {
-      return;
-    }
-    const vdpDimension = getElementPosition(vdpRef.current);
-    const navbarHeight = enableAnnouncementBar ? 128 : 84;
-
-    window.scrollTo({
-      top: vdpDimension.y - navbarHeight,
-      behavior: "smooth",
-    });
-  }, [enableAnnouncementBar]);
-
-  // Implement Lazy load
-  const rootMargin = "100px 0px 0px 0px";
-
-  const [codeShowcaseIsInViewRef, codeShowcaseIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
-  const [faqIsInViewRef, faqIsInView] = useInView({
-    triggerOnce: true,
-    rootMargin,
-  });
-
   return (
     <>
       <PageHead
@@ -131,8 +68,12 @@ const HomePage: FC & {
 
       <div className="flex flex-col">
         <div className="mx-auto flex w-full max-w-[1327px] flex-col px-4 xl:px-0">
-          <Hero scrollHandler={scrollHandler} />
-          <Social />
+          <Slide>
+            <Hero />
+          </Slide>
+          <Slide>
+            <Social />
+          </Slide>
         </div>
 
         <div className="bg-instillGrey90">
@@ -144,6 +85,7 @@ const HomePage: FC & {
         <div className="mx-auto flex w-full max-w-[1127px] flex-col px-4 xl:px-0">
           <HowItWorks />
         </div>
+
         <div className="bg-instillGrey90">
           <div className={cn("mx-auto max-w-[1127px] px-4 xl:px-0")}>
             <Community />
@@ -159,7 +101,7 @@ const HomePage: FC & {
 };
 
 HomePage.getLayout = (page) => {
-  return <PageBase>{page}</PageBase>;
+  return <LandingPageBase>{page}</LandingPageBase>;
 };
 
 export default HomePage;

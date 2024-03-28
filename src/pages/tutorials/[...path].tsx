@@ -197,8 +197,6 @@ const TutorialPage: FC<TutorialPageProps> & {
             aiTask={tutorialMeta?.aiTask || null}
             icon={icon}
             label={label}
-            sourceConnector={tutorialMeta?.sourceConnector || null}
-            destinationConnector={tutorialMeta?.destinationConnector || null}
             marginBottom="mb-2"
           />
           <PageHero

@@ -43,14 +43,6 @@ const teams: Team[] = [
   },
   {
     id: 4,
-    name: "Harsh Soni",
-    role: "Product Manager",
-    linkedIn: "http://linkedin.com/in/soniharsh",
-    github: "https://github.com/harshsoni7",
-    bio: "Harsh comes with experience in Product and enjoys working on the latest tech while blending in growth & strategic insights. He enjoys meditating, backpacking, staying active, and spending time with friends and family. He holds an engineering degree from University of Toronto and an MBA from Ivey Business School.",
-  },
-  {
-    id: 5,
     name: "Dani Sosa",
     role: "Product Designer",
     linkedIn: "https://www.linkedin.com/in/sosadaniel/",
@@ -59,7 +51,7 @@ const teams: Team[] = [
   },
 
   {
-    id: 6,
+    id: 5,
     name: "Po-Chun Chiu",
     role: "Frontend Engineer",
     linkedIn: "https://www.linkedin.com/in/po-chun-chiu-05103285/",
@@ -67,7 +59,7 @@ const teams: Team[] = [
     bio: "A person consistently seeking solutions toward fundamental problems in this century. include Information overloaded, Polarized society, listing structure issues.",
   },
   {
-    id: 7,
+    id: 6,
     name: "Naman Anand",
     role: "Frontend Engineer",
     linkedIn: "https://www.linkedin.com/in/naman-anand-033a39150/",
@@ -75,7 +67,7 @@ const teams: Team[] = [
     bio: "Naman is a front-end engineer, with experience working at startups. He is passionate about bringing the best user and developer experience to software in the real-world. Hold a bachelor's degree in Computer Science, and love to contribute to open source projects",
   },
   {
-    id: 8,
+    id: 7,
     name: "Heiru Wu",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/heiruwu/",
@@ -83,7 +75,7 @@ const teams: Team[] = [
     bio: "Hei Ru is an enthusiastic and self-driven learner with an unwavering passion for the dynamic realm of software engineering and machine learning, currently serving as a Senior AI Engineer at Instill AI",
   },
   {
-    id: 9,
+    id: 8,
     name: "Chun Hao Wang",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/chun-hao-wang-tony/",
@@ -91,7 +83,7 @@ const teams: Team[] = [
     bio: "Tony is an experienced Applied Data Scientist and MLOps specialist, passionate about crafting data-driven solutions. He brings years of expertise to the table, along with a natural inclination for continuous learning and initiative. Tony excels in teamwork, seamlessly collaborating with developers, researchers, and business leaders. At Insill AI, his goal is to seamlessly integrate AI into our daily lives, fostering innovation and practical advancements.",
   },
   {
-    id: 10,
+    id: 9,
     name: "Leo Chen",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/tychen5/",
@@ -99,7 +91,7 @@ const teams: Team[] = [
     bio: "Ting-Yi, holds an MS in Information Management from National Taiwan University, excels in applying cutting-edge AI and LLM technologies to complex real-world applications. Specializing in NLP and data science, he is passionate about developing AI module pipelines and innovating in areas like RAG, agent bot, and information retrieval.",
   },
   {
-    id: 11,
+    id: 10,
     name: "Hui-Tang Chang",
     role: "Backend Engineer",
     linkedIn: "https://www.linkedin.com/in/changhuitang/",
@@ -107,7 +99,7 @@ const teams: Team[] = [
     bio: "Hui Tang has a background in computer vision, deep learning, and backend engineering, with experience working at several AI startups. He currently serves as a Senior Backend Engineer at Instill AI. His goal is to bring AI products to real-world implementation. He holds B.S. and M.S. degrees in Electrical Engineering from National Taiwan University.",
   },
   {
-    id: 12,
+    id: 11,
     name: "Juan Vallés",
     role: "Backend Engineer",
     linkedIn: "",
@@ -115,7 +107,7 @@ const teams: Team[] = [
     bio: "Juan is a software engineer based in Zaragoza, Spain. With more than 10 years of experience building apps, he enjoys solving engineering challenges with a product-centric vision. He likes bouldering, playing Caribbean music and is a proud cat and plant parent. He holds a telecommunications engineering degree and has interned at CERN.",
   },
   {
-    id: 13,
+    id: 12,
     name: "Sarthak Gupta",
     role: "DevOps Engineer",
     linkedIn: "https://www.linkedin.com/in/sarthak-kg-bb887b239/",
@@ -123,7 +115,7 @@ const teams: Team[] = [
     bio: "Sarthak Gupta, a versatile DevOps Engineer from India at Instill AI, excels in architecting secure, scalable infrastructures. His experience across diverse startups enriches his expertise in cloud security and operational efficiency. At Instill AI, Sarthak is pivotal in harmonising development with operations, fueling AI innovations.",
   },
   {
-    id: 14,
+    id: 13,
     name: "Minji Kim",
     role: "Office Administrator",
     linkedIn: "",
@@ -355,66 +347,6 @@ export const Teams = () => {
           <div className="group flex h-[100px] w-full bg-[#FFDF3A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(4)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/harsh-soni.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/harsh-soni-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Harsh Soni
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Product Manager
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/harshsoni7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="http://linkedin.com/in/soniharsh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#FFDF3A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(5)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
@@ -472,12 +404,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(6)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -532,12 +464,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(7)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -592,12 +524,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(8)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -652,12 +584,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(9)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -712,12 +644,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(10)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -772,12 +704,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(11)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
 
@@ -832,12 +764,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(12)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
@@ -877,12 +809,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(13)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
@@ -935,12 +867,12 @@ export const Teams = () => {
             </div>
           </div>
 
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
+          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
             <div
               className="relative inline-block cursor-pointer overflow-hidden"
               onClick={() => handleTemaDilog(14)}
             >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
+              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
                 <img src="images/teams/wombat.svg" alt="Wombat Image" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">

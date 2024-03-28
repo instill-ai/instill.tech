@@ -1,0 +1,61 @@
+---
+title: "REST"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP REST operator https://github.com/instill-ai/instill-core"
+---
+
+The REST Operator enables users to make requests to http endpoints.
+
+## Release Stage
+
+`Alpha`
+
+## Operator Configuration
+
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+
+| Field        | Type                  | Note                                     |
+| :----------- | :-------------------- | :--------------------------------------- |
+| task\*       | string                | TASK_CALL_ENDPOINT                       |
+| url\*        | string                | URL or endpoint to call                  |
+| method\*     | string                | HTTP Request Method (GET, POST, PUT etc) |
+| headers      | map\<string, string\> | Key-value pair map for Request Headers   |
+| request_body | string                | The HTTP request body                    |
+
+### No-code Setup
+
+### Low-code Setup
+
+This is a sample `configuration` in the pipeline recipe.
+
+```json
+{
+  "configuration": {
+    "task": "TASK_CALL_ENDPOINT",
+    "url": "${ start.url }",
+    "method": "${ start.method }",
+    "request_body": "${ start.body}"
+  }
+}
+```
+
+When you send the request, you can use this request format
+
+```shell
+curl --location 'http://localhost:8080/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data '{
+    "inputs": [
+      {
+        "task": "TASK_CALL_ENDPOINT",
+        "url": "https://ipwho.is",
+        "method": "GET",
+        "body": ""
+      }
+    ]
+}'
+```
+
+For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).

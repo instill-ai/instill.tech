@@ -1,0 +1,110 @@
+---
+title: "Text"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Text operator https://github.com/instill-ai/instill-core"
+---
+
+The Text Operator enables users to extract text from base64 encoded file contents. It supports formats like - doc, docx, odt, pages, pdf, pptx, rtf, xml, html, txt, and manipulate text data, and more.
+
+## Release Stage
+
+`Alpha`
+
+## Operator Configuration
+
+The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+
+### Convert to Text
+
+| Input      | Type   | Note                                              |
+| :--------- | ------ | ------------------------------------------------- |
+| task\*     | string | TASK_CONVERT_TO_TEXT                              |
+| document\* | json   | Base64 encoded file to be converted to plain text |
+
+| Output | Type   | Description                     |
+| :----- | ------ | ------------------------------- |
+| body   | string | Extracted text                  |
+| meta   | object | File meta data                  |
+| msecs  | number | Conversion time in milliseconds |
+| error  | string | Error message if any            |
+
+### Split by Token
+
+| Input            | Type   | Note                                           |
+| :--------------- | ------ | ---------------------------------------------- |
+| task\*           | string | TASK_SPLIT_BY_TOKEN                            |
+| text\*           | string | Text to be split                               |
+| model\*          | string | Model to be used for tokenization              |
+| chunk_token_size | number | Number of tokens per chunk. Default set to 500 |
+
+| Output      | Type          | Description                       |
+| :---------- | ------------- | --------------------------------- |
+| text_chunks | array[string] | Splited text chunks               |
+| chunk_num   | number        | Splited chunk count               | 
+| token_count | number        | The token count of the input text |
+
+## Example
+
+Example input and output data for each task:
+
+<CH.Code>
+
+```json TASK_MARSHAL
+// Input
+{
+  "task": "TASK_CONVERT_TO_TEXT",
+  "doc": "data:application/pdf;base64,JVBERi0...RU9GCg==",
+}
+// Output
+{
+  "body": "London, the vibrant capital of England and the United Kingdom,\nstands as a global epicenter of culture, history, and diversity.\nNestled along the banks of the iconic River Thames, this sprawling\nmetropolis seamlessly blends centuries-old landmarks with modern\nmarvels. From the majestic Tower of London to the architectural\nmasterpiece of St. Paul's Cathedral, the city boasts a rich tapestry\nof heritage. Renowned for its world-class museums, theaters, and\ngalleries, London offers endless opportunities for exploration and\nenlightenment. With its bustling streets, diverse neighborhoods, and\nculinary delights from around the globe, London captivates visitors\nwith its unparalleled energy and charm.",
+  "error": "",
+  "meta": {
+    "CreatedDate": "1710086081",
+    "CreationDate": "Sun Mar 10 15:54:41 2024 UTC",
+    "Creator": "TextEdit",
+    "Custom Metadata": "no",
+    "Encrypted": "no",
+    "File size": "15892 bytes",
+    "Form": "none",
+    "JavaScript": "no",
+    "Metadata Stream": "no",
+    "ModDate": "Sun Mar 10 15:54:41 2024 UTC",
+    "ModifiedDate": "1710086081",
+    "Optimized": "no",
+    "PDF version": "1.3",
+    "Page rot": "0",
+    "Page size": "595 x 842 pts (A4)",
+    "Pages": "1",
+    "Producer": "macOS Version 13.5.1 (Build 22G90) Quartz PDFContext",
+    "Suspects": "no",
+    "Tagged": "no",
+    "Title": "London",
+    "UserProperties": "no"
+  },
+  "msecs": 24
+}
+```
+
+```json TASK_SPLIT_BY_TOKEN
+// Input
+{
+  "task": "TASK_SPLIT_BY_TOKEN",
+  "text": "London, the vibrant capital of England and the United Kingdom, stands as a global epicenter of culture, history, and diversity. Nestled along the banks of the iconic River Thames, this sprawling metropolis seamlessly blends centuries-old landmarks with modern marvels. From the majestic Tower of London to the architectural masterpiece of St. Paul's Cathedral, the city boasts a rich tapestry of heritage. Renowned for its world-class museums, theaters, and galleries, London offers endless opportunities for exploration and enlightenment. With its bustling streets, diverse neighborhoods, and culinary delights from around the globe, London captivates visitors with its unparalleled energy and charm.",
+  "model": "gpt-4",
+  "chunk_token_size": 50
+}
+// Output
+{
+  "chunk_num": 3,
+  "text_chunks": [
+      "London, the vibrant capital of England and the United Kingdom, stands as a global epicenter of culture, history, and diversity. Nestled along the banks of the iconic River Thames, this sprawling metropolis seamlessly blends centuries-old landmarks with modern marvels",
+      ". From the majestic Tower of London to the architectural masterpiece of St. Paul's Cathedral, the city boasts a rich tapestry of heritage. Renowned for its world-class museums, theaters, and galleries, London offers endless opportunities for exploration and enlightenment.",
+      " With its bustling streets, diverse neighborhoods, and culinary delights from around the globe, London captivates visitors with its unparalleled energy and charm."
+  ],
+  "token_count": 128
+}
+```
+
+</ CH.Code>

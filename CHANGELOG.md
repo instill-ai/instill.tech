@@ -1,5 +1,179 @@
 # Changelog
 
+## [1.46.3](https://github.com/instill-ai/instill.tech/compare/v1.46.2...v1.46.3) (2024-03-26)
+
+
+### Bug Fixes
+
+* middleware redirection ([#765](https://github.com/instill-ai/instill.tech/issues/765)) ([82efaba](https://github.com/instill-ai/instill.tech/commit/82efaba81243778a65ed7d4a7d30277543313015))
+
+## [1.46.2](https://github.com/instill-ai/instill.tech/compare/v1.46.1...v1.46.2) (2024-03-21)
+
+
+### Miscellaneous
+
+* **website:** fix jumbotron grammar mistake and remove product hunt badge ([#761](https://github.com/instill-ai/instill.tech/issues/761)) ([c4d9d43](https://github.com/instill-ai/instill.tech/commit/c4d9d43362ef3ca02c4a42d2c5227111b58bf802))
+
+
+### Documentation
+
+* **core:** remove outdated figure ([#749](https://github.com/instill-ai/instill.tech/issues/749)) ([634a79c](https://github.com/instill-ai/instill.tech/commit/634a79c60987e052539ba5e725e26d90592a73c4))
+
+## [1.46.1](https://github.com/instill-ai/instill.tech/compare/v1.46.0...v1.46.1) (2024-03-19)
+
+
+### Miscellaneous
+
+* improvement ([#759](https://github.com/instill-ai/instill.tech/issues/759)) ([3a0103a](https://github.com/instill-ai/instill.tech/commit/3a0103ac75152fad321b48def893220d61263037))
+
+## [1.46.0](https://github.com/instill-ai/instill.tech/compare/v1.45.0...v1.46.0) (2024-03-18)
+
+
+### Features
+
+* add Llama27bVsLlama27bChat ([#755](https://github.com/instill-ai/instill.tech/issues/755)) ([4d7e2f3](https://github.com/instill-ai/instill.tech/commit/4d7e2f30be882ec94576f6f3a6c45e63c7ebb142))
+
+
+### Miscellaneous
+
+* task name toLowerCase ([#758](https://github.com/instill-ai/instill.tech/issues/758)) ([a37e4de](https://github.com/instill-ai/instill.tech/commit/a37e4de443bdc04cf431507a08c14d5ed4d4440b))
+
+## [1.45.0](https://github.com/instill-ai/instill.tech/compare/v1.44.0...v1.45.0) (2024-03-15)
+
+
+### Features
+
+* connector and operator component implementation ([#730](https://github.com/instill-ai/instill.tech/issues/730)) ([259d2f9](https://github.com/instill-ai/instill.tech/commit/259d2f9185310f145bda00996f2564ef08cd91da))
+
+
+### Bug Fixes
+
+* remove image ([#750](https://github.com/instill-ai/instill.tech/issues/750)) ([39952ed](https://github.com/instill-ai/instill.tech/commit/39952ed61459752b6f7144c5b7b1352d376972d2))
+* **src:** fix jumbotron pipeline links ([#751](https://github.com/instill-ai/instill.tech/issues/751)) ([5a6ed42](https://github.com/instill-ai/instill.tech/commit/5a6ed42366876fe641b1d1bfbaddbfd7ee0533a6))
+
+
+### Miscellaneous
+
+* **documentation,blog,website:** remove old docs and update documentation to `v0.26.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
+* update API link ([#753](https://github.com/instill-ai/instill.tech/issues/753)) ([3000b99](https://github.com/instill-ai/instill.tech/commit/3000b993146e9f43b5e101f5855b75c30e3f9cc6))
+
+
+### Documentation
+
+* **deployment:** increase minimal memory requirement ([#745](https://github.com/instill-ai/instill.tech/issues/745)) ([35d2d40](https://github.com/instill-ai/instill.tech/commit/35d2d4020918bec23e1337116080242404235424))
+* **tutorial:** add llava-v1.6-13b tutorial ([#754](https://github.com/instill-ai/instill.tech/issues/754)) ([744990e](https://github.com/instill-ai/instill.tech/commit/744990e436f3e280723849c8e21cab11c64c540e))
+* **tutorial:** update llava-v1.6-13b tutorial  ([#752](https://github.com/instill-ai/instill.tech/issues/752)) ([a8e9959](https://github.com/instill-ai/instill.tech/commit/a8e9959602863041ff8e5cb8530fe6e08b62b64a))
+
+## [1.44.0](https://github.com/instill-ai/instill.tech/compare/v1.43.3...v1.44.0) (2024-03-07)
+
+
+### Features
+
+* add new aiType VisualQuestionAnswering ([#743](https://github.com/instill-ai/instill.tech/issues/743)) ([5103ec2](https://github.com/instill-ai/instill.tech/commit/5103ec2f690c0303c9babad771d1c9e7f052aa17))
+
+
+### Bug Fixes
+
+* fix icon ([#744](https://github.com/instill-ai/instill.tech/issues/744)) ([a2dc356](https://github.com/instill-ai/instill.tech/commit/a2dc356808d2cdb2f2611af5b82dd16baae655e3))
+* swiper autoplay stop if when under jumbotron ([#742](https://github.com/instill-ai/instill.tech/issues/742)) ([45557ee](https://github.com/instill-ai/instill.tech/commit/45557ee854ed63c5aaa199fed7429c2c4f0b6937))
+
+
+### Documentation
+
+* **tutorial:** update llava-v1.6-7b tutorial ([#740](https://github.com/instill-ai/instill.tech/issues/740)) ([0fe078f](https://github.com/instill-ai/instill.tech/commit/0fe078ff4d1aced908d91473b2f06500694bc32e))
+
+## [1.43.3](https://github.com/instill-ai/instill.tech/compare/v1.43.2...v1.43.3) (2024-03-07)
+
+
+### Miscellaneous
+
+* remove remove startConnector -&gt; endConnector from tutorial page ([#738](https://github.com/instill-ai/instill.tech/issues/738)) ([b842541](https://github.com/instill-ai/instill.tech/commit/b842541a30591850fe8316eba8702bd48276992f))
+
+## [1.43.2](https://github.com/instill-ai/instill.tech/compare/v1.43.1...v1.43.2) (2024-03-07)
+
+
+### Bug Fixes
+
+* build fix ([#736](https://github.com/instill-ai/instill.tech/issues/736)) ([13468ba](https://github.com/instill-ai/instill.tech/commit/13468ba548b6a61b13d21b4833963b841d6bd083))
+
+## [1.43.1](https://github.com/instill-ai/instill.tech/compare/v1.43.0...v1.43.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* connector key missing fix ([#735](https://github.com/instill-ai/instill.tech/issues/735)) ([0d58c2a](https://github.com/instill-ai/instill.tech/commit/0d58c2af6599651e6f6ed9934e85e3f7572e46f6))
+
+
+### Documentation
+
+* fix left searchbox alignment for dark & light mode ([#712](https://github.com/instill-ai/instill.tech/issues/712)) ([9c6b0e8](https://github.com/instill-ai/instill.tech/commit/9c6b0e8b209ac7b828ca1e14b40e4f5039b64636))
+
+## [1.43.0](https://github.com/instill-ai/instill.tech/compare/v1.42.2...v1.43.0) (2024-03-07)
+
+
+### Features
+
+* **tutorial:** add tutorial about llaba-v1.6-7b ([#731](https://github.com/instill-ai/instill.tech/issues/731)) ([6309254](https://github.com/instill-ai/instill.tech/commit/6309254359f1ca3024280616fcef7236f2082cfa))
+
+
+### Miscellaneous
+
+* unify the metadata with updated one ([#732](https://github.com/instill-ai/instill.tech/issues/732)) ([77fb1bb](https://github.com/instill-ai/instill.tech/commit/77fb1bbc9c95c741c482bfb5432b49fce75b321a))
+
+## [1.42.2](https://github.com/instill-ai/instill.tech/compare/v1.42.1...v1.42.2) (2024-03-04)
+
+
+### Miscellaneous
+
+* **about:** update member list ([#725](https://github.com/instill-ai/instill.tech/issues/725)) ([e3ccdb4](https://github.com/instill-ai/instill.tech/commit/e3ccdb4836eb4989f61d023447253d9c8fff4e28))
+* update pricing page ([#728](https://github.com/instill-ai/instill.tech/issues/728)) ([e22dc48](https://github.com/instill-ai/instill.tech/commit/e22dc4888719f54246d9451196cc12fb813d5d1e))
+* update version number for docker component deployment ([#729](https://github.com/instill-ai/instill.tech/issues/729)) ([fdda80f](https://github.com/instill-ai/instill.tech/commit/fdda80fb4cf72791518fc037ffd0091f277b312c))
+
+## [1.42.1](https://github.com/instill-ai/instill.tech/compare/v1.42.0...v1.42.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* fix pricing plan typo ([#724](https://github.com/instill-ai/instill.tech/issues/724)) ([336523b](https://github.com/instill-ai/instill.tech/commit/336523bb2215d4134f67c35c5c8d20b81ef609e4))
+
+
+### Miscellaneous
+
+* add https://www.wistron.com/ to customer list on landing page ([#722](https://github.com/instill-ai/instill.tech/issues/722)) ([993ccfb](https://github.com/instill-ai/instill.tech/commit/993ccfbed0a11699147ac1100cd689519f9ad911))
+* add login and signup link navbar ([#721](https://github.com/instill-ai/instill.tech/issues/721)) ([ad2e8be](https://github.com/instill-ai/instill.tech/commit/ad2e8bec30c884d441c4e60db851367abd57c2f7))
+* Namananand/ins 3585 add glass effect to navbar and api reference link ([#718](https://github.com/instill-ai/instill.tech/issues/718)) ([1ed9fd2](https://github.com/instill-ai/instill.tech/commit/1ed9fd2b3d4818254ae1d0c9f17615f4f1ba0e5e))
+
+
+### Documentation
+
+* add v0.11.0-beta doc ([#720](https://github.com/instill-ai/instill.tech/issues/720)) ([e95031b](https://github.com/instill-ai/instill.tech/commit/e95031beddb0236d825298667c5a3c827db6e76b))
+* add v0.12.0 document and section for "conditional component" ([#723](https://github.com/instill-ai/instill.tech/issues/723)) ([2a6e5da](https://github.com/instill-ai/instill.tech/commit/2a6e5da248984dc5c533671e969c2b95f190a265))
+
+## [1.42.0](https://github.com/instill-ai/instill.tech/compare/v1.41.21...v1.42.0) (2024-02-01)
+
+
+### Features
+
+* add &lt;MdxJumbotron /&gt; component ([#711](https://github.com/instill-ai/instill.tech/issues/711)) ([c403721](https://github.com/instill-ai/instill.tech/commit/c403721966c01f9c3f349647f5fbe00a9bc3dd44))
+
+
+### Bug Fixes
+
+* update redirect link ([#714](https://github.com/instill-ai/instill.tech/issues/714)) ([e25ac28](https://github.com/instill-ai/instill.tech/commit/e25ac28ef9897559c8ecf911eafbe5292f57bb31))
+* update version url jumbotron ([#717](https://github.com/instill-ai/instill.tech/issues/717)) ([caa2f43](https://github.com/instill-ai/instill.tech/commit/caa2f43adb105aa79e2cf9fad7e3748de4f62083))
+
+
+### Miscellaneous
+
+* add changelog link into footer ([#708](https://github.com/instill-ai/instill.tech/issues/708)) ([e5aeaa3](https://github.com/instill-ai/instill.tech/commit/e5aeaa38edf3d98228555898c73b5870218feb98))
+
+
+### Documentation
+
+* namananand/ins 3306 use new namespace from @instill-ai/typescript-sdk to instill-sdk ([#716](https://github.com/instill-ai/instill.tech/issues/716)) ([448f2c8](https://github.com/instill-ai/instill.tech/commit/448f2c873cd4ea40fb68ccd52996caf0203ff7a1))
+* update @instill-ai/typescript-sdk to instill-sdk ([#715](https://github.com/instill-ai/instill.tech/issues/715)) ([ce5977c](https://github.com/instill-ai/instill.tech/commit/ce5977c75543578be985b8793adbf33734571b42))
+* update reference syntax in v0.10.0-beta document ([#713](https://github.com/instill-ai/instill.tech/issues/713)) ([b6440d9](https://github.com/instill-ai/instill.tech/commit/b6440d9361cac3d48e7b8b6d5862788d8744d5ac))
+
 ## [1.41.21](https://github.com/instill-ai/instill.tech/compare/v1.41.20...v1.41.21) (2024-01-23)
 
 

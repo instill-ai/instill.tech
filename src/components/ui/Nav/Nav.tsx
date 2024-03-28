@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
-import { CrossIcon, Logo, MenuIcon } from "@instill-ai/design-system";
+import {
+  CrossIcon,
+  Logo,
+  MenuIcon,
+  SolidButton,
+} from "@instill-ai/design-system";
 import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
@@ -10,6 +15,8 @@ import { DocsPageLink } from "./DocsPageLink";
 import { BlogPageLink } from "./BlogPageLink";
 import { AboutPageLink } from "./AboutPageLink";
 import { ChangelogLink } from "./ChangelogLink";
+import { LoginPageLink } from "./LoginPageLink";
+import { HubPageLink } from "./HubPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -43,17 +50,29 @@ export const Nav = () => {
 
   const navbarLinkGroup = (
     <React.Fragment>
+      <HubPageLink />
       <AboutPageLink />
       <BlogPageLink />
       <ChangelogLink />
       <DocsPageLink />
       <GithubTextLink />
-      <CommonCtaButton
-        position="mr-auto"
-        withArrow={false}
-        text="Instill Hub"
-        link="https://instill.tech"
-      />
+      <LoginPageLink />
+
+      <div className="relative my-auto">
+        <SolidButton
+          type="button"
+          color={"primary"}
+          padding="px-[17px] py-[7px] transition duration-700 ease-in-out xl:hover-animation"
+          itemGapX="gap-x-5"
+          onClickHandler={() =>
+            router.push("https://instill.tech", undefined, { scroll: false })
+          }
+        >
+          <p className={cn("z-10 text-[16px] font-normal leading-7")}>
+            Sign Up
+          </p>
+        </SolidButton>
+      </div>
     </React.Fragment>
   );
 
@@ -113,7 +132,7 @@ export const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-white lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-white bg-opacity-80 backdrop-blur-sm lg:sticky lg:top-0 lg:z-50"
     >
       <div className="flex w-full flex-col">
         <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>

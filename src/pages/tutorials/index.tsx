@@ -70,14 +70,7 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
       if (filters.connector === "All" || filters.connector === "Null") {
         return true;
       } else {
-        if (
-          filters.connector === item.sourceConnector ||
-          filters.connector === item.destinationConnector
-        ) {
-          return true;
-        } else {
-          return false;
-        }
+        return false;
       }
     };
 

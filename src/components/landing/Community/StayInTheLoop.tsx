@@ -4,27 +4,49 @@ import { Icons } from "@instill-ai/design-system";
 
 export type StayInTheLoopProps = {
   marginBottom?: string;
+  isDark?: boolean;
 };
 
-export const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
+export const StayInTheLoop = ({ marginBottom, isDark }: StayInTheLoopProps) => {
   return (
     <div
       className={cn(
-        "my-10 grid w-full grid-cols-1 gap-y-[30px] bg-[#333333] p-5 xl:grid-cols-2",
+        "my-10 grid w-full grid-cols-1 gap-y-[30px]  p-5 xl:grid-cols-2",
+        isDark ? "bg-[#333333]" : "bg-[#F6F6F6]",
         marginBottom
       )}
     >
       <div className="mr-auto flex flex-col">
         <div className="flex flex-row gap-x-2">
-          <Icons.Mail01 className="h-7 w-7 stroke-white" />
-          <p className="text-center font-sans text-base font-normal uppercase leading-7 text-white">
+          <Icons.Mail01
+            className={cn(
+              "h-7 w-7",
+              isDark ? "stroke-white" : "stroke-semantic-fg-secondary"
+            )}
+          />
+          <p
+            className={cn(
+              "text-center font-sans text-base font-normal uppercase leading-7",
+              isDark ? "text-white" : "text-semantic-fg-secondary"
+            )}
+          >
             Newsletter
           </p>
         </div>
-        <h3 className="font-sans text-[24px] font-medium text-white">
+        <h3
+          className={cn(
+            "font-sans text-[24px] font-medium",
+            isDark ? "text-white" : "text-semantic-fg-secondary"
+          )}
+        >
           Stay in the Loop
         </h3>
-        <p className="font-sans text-base font-normal leading-7 text-white">
+        <p
+          className={cn(
+            "font-sans text-base font-normal leading-7",
+            isDark ? "text-white" : "text-semantic-fg-secondary"
+          )}
+        >
           Subcribe for the latest updates
         </p>
       </div>

@@ -16,7 +16,7 @@ export const Playground: ComponentStory<typeof CommunityBlock> = Template.bind(
 
 Playground.args = {
   name: "GitHub",
-  title: "Star VDP on GitHub",
+  title: "Star Instill Core on GitHub",
   link: "",
-  linkText: "Check out VDP",
+  linkText: "Check out Instill Core",
 };

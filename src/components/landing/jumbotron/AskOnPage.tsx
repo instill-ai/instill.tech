@@ -46,7 +46,9 @@ export const AskOnPage = () => {
 
   const handleGenrate = async () => {
     setSpinner(true);
-    swiper.autoplay.stop();
+    if (swiper) {
+      swiper.autoplay.stop();
+    }
     const apiResponse = await JumbotronSDK.askOnPage({
       inputs: [
         {
@@ -138,7 +140,7 @@ export const AskOnPage = () => {
           ) : (
             <div className="ask-on-page-box w-full overflow-y-auto border">
               <div className="px-2 py-3">
-                <pre className="xl:product-body-text-2-regula flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
+                <pre className="flex w-full flex-1 items-center whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
                   {summaryList ? summaryList : defaultSummary}
                 </pre>
               </div>
@@ -148,9 +150,9 @@ export const AskOnPage = () => {
 
         <div className="mt-5 flex justify-end">
           <a
-            href="https://console.instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page"
+            href="https://instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page"
             target="_blank"
-            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm text-white drop-shadow-2xl backdrop-blur hover:text-blue-500"
+            className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm font-normal text-white no-underline drop-shadow-2xl backdrop-blur hover:text-blue-500"
           >
             <svg
               focusable="false"

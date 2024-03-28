@@ -3,13 +3,14 @@ import { SubscribeNewsletterForm } from "@/components/ui";
 
 export type StayInTheLoopProps = {
   marginBottom?: string;
+  isDark?: boolean;
 };
 
 export const StayInTheLoop = ({ marginBottom }: StayInTheLoopProps) => {
   return (
     <div
       className={cn(
-        "grid w-full grid-cols-1 gap-y-[30px] py-6 xl:grid-cols-2 xl:gap-y-0 xl:gap-x-28 xl:py-[60px]",
+        "grid w-full grid-cols-1 gap-y-[30px] py-6 xl:grid-cols-2 xl:gap-x-28 xl:gap-y-0 xl:py-[60px]",
         marginBottom
       )}
     >

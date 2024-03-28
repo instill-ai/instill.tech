@@ -42,7 +42,7 @@ export const Nav = () => {
       <GithubTextLink />
       <Button asChild variant="primary" size="lg">
         <a
-          href="https://console.instill.tech"
+          href="https://www.instill.tech"
           target="_blank"
           rel="noopener noreferrer"
         >

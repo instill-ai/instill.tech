@@ -19,12 +19,12 @@ export const Company = () => {
         In August 2022, Instill AI achieved a significant milestone by
         introducing the{" "}
         <a
-          href="https://github.com/instill-ai/vdp"
+          href="https://github.com/instill-ai/instill-core"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-500"
         >
-          Versatile Data Pipeline (VDP)
+          Instill Core
         </a>
         , an open-source, modularized ETL infrastructure specifically designed
         to address the challenges of unstructured data. This launch reinforced

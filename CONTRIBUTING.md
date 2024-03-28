@@ -104,7 +104,7 @@ Please follow markdown details syntax like below
 
 ```md
 <details>
-  <summary>**Is VDP free?**</summary>
+  <summary>**Is Instill Core free?**</summary>
 
 Content
 
@@ -188,8 +188,8 @@ You can use this component to implement instill-ai's call to action button.
 
 ```mdx
 <CtaButton
-  text="🚀 Try Instill Cloud Free"
-  link="https://console.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
+  text="☁️ Try Instill Cloud Free"
+  link="https://www.instill.tech/?utm_source=tutorial&utm_medium=link&utm_campaign=vdp-streamlit-yolov7"
 />
 ```
 
@@ -201,6 +201,22 @@ You can embed Youtube video by using this component.
 
 ```mdx
 <Youtube id="0Rdv8oqqxfw" width="800" height="450" />
+```
+
+#### Jumbotron
+
+You can embed Jumbotron by using this component.
+
+```mdx
+<Jumbotron />
+<ResponderWithSpeech />
+<AskOnPage />
+<WebpageSummarization />
+<StabilityAIOpenAISticker />
+<Llama2Chat />
+<Llama27bVsLlama27bChat />
+<SEOArticleWriter />
+<YOLOv7 />
 ```
 
 ## How to contribute to the Docs.
@@ -321,11 +337,6 @@ type TutorialMeta = {
 
   // Please reference the type below.
   aiTask: AiTask;
-
-  // Connectors will be display as is on the page. For example, if you have a
-  // sourceConnector named HTTP, we will display the connector name as HTTP.
-  sourceConnector: string;
-  destinationConnector: string;
 
   // Slug should be as same as the name of the filename of the article. It
   // will be the URL fragment of the article too. For example if you have

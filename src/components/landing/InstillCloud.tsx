@@ -6526,7 +6526,7 @@ export const InstillCloud = () => {
       <div className="flex w-full bg-instillGrey05 pb-20">
         <div className="mx-auto flex max-w-[889px] flex-col px-10 md:mx-auto md:w-10/12">
           <SecureYourSpot />
-          <StayInTheLoop />
+          <StayInTheLoop isDark={true} />
         </div>
       </div>
     </div>

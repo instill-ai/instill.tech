@@ -35,7 +35,7 @@ export const HowItWorksRow = ({
     >
       <div
         className={cn(
-          "mb-20 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mb-0 xl:mt-0 xl:mt-10 xl:w-7/12 xs:gap-x-10",
+          "mb-20 flex min-h-[300px] flex-1 flex-col gap-y-10 xl:mb-0 xl:mt-10 xl:w-7/12 xs:gap-x-10",
           type === "right" ? "xl:flex-row-reverse" : "xl:flex-row"
         )}
       >
@@ -47,7 +47,7 @@ export const HowItWorksRow = ({
               marginBottom="mb-2.5"
             />
           ) : (
-            <h3 className="mb-7 text-[36px] font-medium text-instillGrey90">
+            <h3 className="mb-7 text-[24px] font-medium text-instillGrey90 xl:text-[42px]">
               {title}
             </h3>
           )}

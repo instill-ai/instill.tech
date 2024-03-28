@@ -40,35 +40,6 @@ export const TutorialFilters = ({
       { label: "All", value: "All" },
     ];
 
-    for (const tutorial of tutorials) {
-      const existSourceIndex = options.findIndex(
-        (e) => e.value === tutorial.sourceConnector
-      );
-
-      // We don't want our connector filters have Null option
-
-      if (existSourceIndex === -1 && tutorial.sourceConnector !== "Null") {
-        options.push({
-          label: tutorial.sourceConnector,
-          value: tutorial.sourceConnector,
-        });
-      }
-
-      const existDestinationIndex = options.findIndex(
-        (e) => e.value === tutorial.destinationConnector
-      );
-
-      if (
-        existDestinationIndex === -1 &&
-        tutorial.destinationConnector !== "Null"
-      ) {
-        options.push({
-          label: tutorial.destinationConnector,
-          value: tutorial.destinationConnector,
-        });
-      }
-    }
-
     return options;
   }, [tutorials]);
 
@@ -176,6 +147,10 @@ export const TutorialFilters = ({
             {
               label: "OCR (Optical Character Recognition)",
               value: "Ocr",
+            },
+            {
+              label: "Visual Question Answering",
+              value: "VisualQuestionAnswering",
             },
             {
               label: "Semantic Segmentation",

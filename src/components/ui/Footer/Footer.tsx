@@ -51,22 +51,18 @@ export const Footer = () => {
     ],
     products: [
       {
-        text: "Instill VDP",
-        href: "https://github.com/instill-ai/vdp",
-      },
-      {
-        text: "Instill Model",
-        href: "https://github.com/instill-ai/model",
-      },
-      {
         text: "Instill Cloud",
-        href: "https://console.instill.tech",
+        href: "https://www.instill.tech",
+      },
+      {
+        text: "Instill Core",
+        href: "https://github.com/instill-ai/instill-core",
       },
     ],
     resources: [
       {
         text: "Documentation",
-        href: `/docs/${LATEST_VERSIONS["core"]}/welcome`,
+        href: `/docs/welcome`,
       },
       {
         text: "Tutorial",
@@ -83,6 +79,10 @@ export const Footer = () => {
       {
         text: "Changelog",
         href: "/changelog",
+      },
+      {
+        text: "API Reference",
+        href: "https://openapi.instill.tech",
       },
     ],
     support: [

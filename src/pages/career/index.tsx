@@ -28,7 +28,7 @@ const PositionList = dynamic<PositionListProps>(() =>
 );
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/ui").then((mod) => mod.StayInTheLoop)
+  import("@/components/landing/Community").then((mod) => mod.StayInTheLoop)
 );
 
 type CareerPageProps = {
