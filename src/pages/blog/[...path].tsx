@@ -187,15 +187,6 @@ const BlogPage: FC<BlogPageProps> & {
         url: process.env.NEXT_PUBLIC_BASE_URL || "",
       },
     };
-    // {
-    //   "contributor" : {},
-    //   "editor" : {},
-    //   "thumbnailUrl" : "string",
-    //   "video" : "string",
-    //   "version" : "string | number",
-    //   "description" : "string",
-    //   "sponsor" : {},
-    // }
   };
 
   return (
