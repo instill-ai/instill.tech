@@ -12,42 +12,34 @@ find component/pkg/operator -name README.mdx -type f -exec rm {} \; -print
 find component/pkg/connector -name README.mdx -type f -exec rm {} \; -print
 
 echo "Running go generate..."
-# cd component && go generate ./...
 
-# operator
+# Function to process each component type (connector or operator)
 
-compogen readme component/pkg/operator/base64/v0/config/ component/pkg/operator/base64/v0/base64.en.mdx --operator
-cp component/pkg/operator/base64/v0/base64.en.mdx docs/vdp/operators/base64.en.mdx
-compogen readme component/pkg/operator/base64/v0/config/ component/pkg/operator/base64/v0/base64.zh_CN.mdx --operator
-cp component/pkg/operator/base64/v0/base64.zh_CN.mdx docs/vdp/operators/base64.zh_CN.mdx
+# <----- OPERATOR ------->
 
-# compogen readme component/pkg/operator/end/v0/config/ component/pkg/operator/end/v0/end.en.mdx --operator
-# cp component/pkg/operator/end/v0/end.en.mdx docs/vdp/operators/end.en.mdx
-# compogen readme component/pkg/operator/end/v0/config/ component/pkg/operator/end/v0/end.zh_CN.mdx --operator
-# cp component/pkg/operator/end/v0/end.zh_CN.mdx docs/vdp/operators/end.zh_CN.mdx
+process_component_type() {
+    local component_type=$1
+    local lang=$2
 
+    # Find all config directories for the given component type
+    local component_dirs=$(find component/pkg/${component_type} -type d -name "config")
 
-# compogen readme component/pkg/operator/image/v0/config/ component/pkg/operator/image/v0/image.em.mdx --operator
-# cp component/pkg/operator/image/v0/image.en.mdx docs/vdp/operators/image.en.mdx
-# compogen readme component/pkg/operator/image/v0/config/ component/pkg/operator/image/v0/image.zh_CN.mdx --operator
-# cp component/pkg/operator/image/v0/image.zh_CN.mdx docs/vdp/operators/image.zh_CN.mdx
+    for component_dir in $component_dirs; do
+        local component_name=$(basename $(dirname $(dirname ${component_dir})))
 
-compogen readme component/pkg/operator/json/v0/config/ component/pkg/operator/json/v0/json.en.mdx --operator
-cp component/pkg/operator/json/v0/json.en.mdx docs/vdp/operators/json.en.mdx
-compogen readme component/pkg/operator/json/v0/config/ component/pkg/operator/json/v0/json.zh_CN.mdx --operator
-cp component/pkg/operator/json/v0/json.zh_CN.mdx docs/vdp/operators/json.zh_CN.mdx
+        # Generate README and copy files for English
+        echo compogen readme ${component_dir} component/pkg/${component_type}/${component_name}/v0/${component_name}.$lang.mdx --${component_type}
+        compogen readme ${component_dir} component/pkg/${component_type}/${component_name}/v0/${component_name}.$lang.mdx --${component_type}
+        echo cp component/pkg/${component_type}/${component_name}/v0/${component_name}.$lang.mdx docs/vdp/${component_type}s/${component_name}.$lang.mdx
+        cp component/pkg/${component_type}/${component_name}/v0/${component_name}.$lang.mdx docs/vdp/${component_type}s/${component_name}.$lang.mdx
+    done
+}
 
-# compogen readme component/pkg/operator/start/v0/config/ component/pkg/operator/start/v0/start.en.mdx --operator
-# cp component/pkg/operator/start/v0/start.en.mdx docs/vdp/operators/start.en.mdx
-# compogen readme component/pkg/operator/start/v0/config/ component/pkg/operator/start/v0/start.zh_CN.mdx --operator
-# cp component/pkg/operator/start/v0/start.zh_CN.mdx docs/vdp/operators/start.zh_CN.mdx
+# Process operators for English and Chinese
+process_component_type "operator" "en"
+process_component_type "operator" "zh_CN"
 
-compogen readme component/pkg/operator/text/v0/config/ component/pkg/operator/text/v0/text.en.mdx --operator
-cp component/pkg/operator/text/v0/text.en.mdx docs/vdp/operators/text.en.mdx
-compogen readme component/pkg/operator/text/v0/config/ component/pkg/operator/text/v0/text.zh_CN.mdx --operator
-cp component/pkg/operator/text/v0/text.zh_CN.mdx docs/vdp/operators/text.zh_CN.mdx
-
-# connector
+# <----- CONNECTOR ------>
 
 # compogen readme component/pkg/connector/airbyte/v0/config/ component/pkg/connector/airbyte/v0/airbyte.en.mdx --connector
 # cp component/pkg/operator/airbyte/v0/airbyte.en.mdx docs/vdp/operators/airbyte.en.mdx
@@ -69,7 +61,6 @@ cp component/pkg/connector/googlecloudstorage/v0/gcs.en.mdx docs/vdp/data-connec
 compogen readme component/pkg/connector/googlecloudstorage/v0/config/ component/pkg/connector/googlecloudstorage/v0/gcs.zh_CN.mdx --connector
 cp component/pkg/connector/googlecloudstorage/v0/gcs.zh_CN.mdx docs/vdp/data-connectors/gcs.zh_CN.mdx
 
-
 compogen readme component/pkg/connector/googlesearch/v0/config/ component/pkg/connector/googlesearch/v0/google-search.en.mdx --connector
 cp component/pkg/connector/googlesearch/v0/google-search.en.mdx docs/vdp/data-connectors/google-search.en.mdx
 compogen readme component/pkg/connector/googlesearch/v0/config/ component/pkg/connector/googlesearch/v0/google-search.zh_CN.mdx --connector
@@ -79,6 +70,8 @@ cp component/pkg/connector/googlesearch/v0/google-search.zh_CN.mdx docs/vdp/data
 # cp component/pkg/connector/googlecloudstorage/v0/huggingface.en.mdx docs/vdp/data-connectors/huggingface.en.mdx
 # compogen readme component/pkg/connector/huggingface/v0/config/ component/pkg/connector/huggingface/v0/huggingface.zh_CN.mdx --connector
 # cp component/pkg/connector/googlesearch/v0/huggingface.zh_CN.mdx docs/vdp/data-connectors/huggingface.zh_CN.mdx
+
+
 
 # compogen readme component/pkg/connector/instill/v0/config/ component/pkg/connector/instill/v0/instill.en.mdx --connector
 # cp component/pkg/connector/instill/v0/huggingface.en.mdx docs/vdp/data-connectors/instill.en.mdx
@@ -115,5 +108,6 @@ cp component/pkg/connector/pinecone/v0/pinecone.zh_CN.mdx docs/vdp/data-connecto
 # compogen readme component/pkg/connector/stabilityai/v0/config/ component/pkg/connector/stabilityai/v0/stabilityai.zh_CN.mdx --connector
 # cp component/pkg/connector/stabilityai/v0/stabilityai.zh_CN.mdx docs/vdp/data-connectors/stabilityai.zh_CN.mdx
 
-# remome component folder
+
+# remove component folder
 rm -rf component

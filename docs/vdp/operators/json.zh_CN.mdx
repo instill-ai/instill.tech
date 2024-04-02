@@ -5,105 +5,59 @@ draft: false
 description: "Learn about how to set up a VDP JSON operator https://github.com/instill-ai/instill-core"
 ---
 
-The JSON Operator enables users to manipulate a JSON value.
+The JSON component is an operator that allows users to manipulate and convert JSON objects.
+It can carry out the following tasks:
+
+- [Marshal](#marshal)
+- [Unmarshal](#unmarshal)
+- [jq](#jq)
 
 ## Release Stage
 
 `Alpha`
 
-## Operator Configuration
+## Configuration
 
-The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/operator/json/v0/config/definition.json).
 
+## Supported Tasks
 
 ### Marshal
 
-| Input         | Type   | Note                       |
-| :------------ | ------ | -------------------------- |
-| task\*        | string | TASK_MARSHAL               |
-| json\*        | json   | JSON input to be marshaled |
+Convert JSON to a string
 
-| Output    | Type          | Description      |
-| :-------- | ------------- | ---------------- |
-| string    | string | Marshaled JSON string   |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_MARSHAL` |
+| JSON (required) | `json` | any | JSON input to be marshaled |
 
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| JSON string | `string` | string | String representation of the JSON input |
 
 ### Unmarshal
 
-| Input         | Type   | Note                          |
-| :------------ | ------ | ----------------------------- |
-| task\*        | string | TASK_UNMARSHAL                |
-| string\*      | string | JSON string to be unmarshaled |
+Convert a string to JSON
 
-| Output    | Type | Description             |
-| :-------- | ---- | ----------------------- |
-| json      | json | Unmarshaled JSON object |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_UNMARSHAL` |
+| String (required) | `string` | string | JSON string to be unmarshaled |
 
-### JQ
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| JSON | `json` | any | JSON object extracted from the string input |
 
-| Input         | Type   | Note                             |
-| :------------ | ------ | -------------------------------- |
-| task\*        | string | TASK_JQ                          |            
-| json input\*  | string | JSON string to be processed      |
-| filter\*      | string | jq syntax to apply to JSON input |
+### jq
 
-| Output    | Type          | Description          |
-| :-------- | ------------- | -------------------- |
-| results   | array[json] | Processed JSON outputs |
+Process JSON through a `jq` command
 
-## Example
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_JQ` |
+| JSON input (required) | `jsonInput` | string | JSON string to be processed |
+| Filter (required) | `jqFilter` | string | Filter, in `jq` syntax, that will be applied to the JSON input |
 
-Example input and output data for each task:
-
-<CH.Code>
-
-```json TASK_MARSHAL
-// Input
-{
-  "task": "TASK_MARSHAL",
-  "json": {
-    "fruit": {
-      "name": "apple",
-      "color": "green",
-      "price": 1.2
-    }
-  }
-}
-// Output
-{
-  "string": "{\"fruit\":{\"color\":\"green\", \"name\":\"apple\", \"price\":1.2}}"
-}
-```
-
-```json TASK_UNMARSHAL
-// Input
-{
-  "task": "TASK_UNMARSHAL",
-  "string": "{\"fruit\":{\"color\":\"green\", \"name\":\"apple\", \"price\":1.2}}"
-}
-// Output
-{
-  "json": {
-    "fruit": {
-      "name": "apple",
-      "color": "green",
-      "price": 1.2
-    }
-  }
-}
-```
-
-```json TASK_JQ
-// Input
-{
-  "task": "TASK_JQ",
-  "json_input": "{\"fruit\":{\"name\":\"apple\",\"color\":\"green\",\"price\":1.20}}",
-  "filter": ".fruit.price"
-}
-// Output
-{
-  "results": [1.2] 
-}
-```
-
-</ CH.Code>
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Results | `results` | array | The `jq` command results. Depending on the filter and the input JSON the type of each element may vary. |

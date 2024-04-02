@@ -1,63 +1,89 @@
 ---
-title: "Google Cloud Storage (GCS)"
+title: "Google Cloud Storage"
 lang: "en-US"
-draft: true
-description: "Learn about how to set up a Google Cloud Storage (GCS) data connector for VDP https://github.com/instill-ai/instill-core"
+draft: false
+description: "Learn about how to set up a VDP Google Cloud Storage connector https://github.com/instill-ai/instill-core"
 ---
 
-The Google Cloud Storage (GCS) Data Connector allows users to upload data to Google's Cloud Storage.
+The Google Cloud Storage component is a data connector that allows users to upload data to Google's Cloud Storage.
+It can carry out the following tasks:
+
+- [Upload](#upload)
+
+## Release Stage
+
+`Alpha`
 
 ## Configuration
 
-Latest configuration is maintained [here](https://github.com/instill-ai/connector/blob/main/pkg/googlecloudstorage/config/definitions.json)
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/googlecloudstorage/v0/config/definition.json).
 
-There are two things needed to configure a GCS connector: Bucket name and JSON Key (for auth).
-To get these details, visit https://console.cloud.google.com/storage/browser and navigate to your bucket.
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| Bucket Name (required) | `bucket_name` | string | Name of the bucket to be used for object storage. |
+| JSON Key File contents (required) | `json_key` | string | Contents of the JSON key file with access to the bucket. |
+
+Google Cloud Storage connector resources can be created in two ways:
 
 ### No-code Setup
 
-To create a GCS data connector effortlessly, follow these steps:
-
-1. Go to the **Data** page and click **Set up new data connector**
-2. Click the **Data connector type** ▾ drop-down and choose **Google Cloud Storage**
-3. Fill in the required fields
-4. Optionally, give a short description in the **Description** field
-
-Now go to the **Data** page, the corresponding GCS data connector should be connected.
+1. Go to the **Connectors** page and click **+ Create Connector**.
+1. Select **Google Cloud Storage**.
+1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
+1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
 
 ### Low-code Setup
 
-For advanced users who prefer a more hands-on approach, you can create a GCS data connector using the following cURL commands:
+<CH.Code>
 
-1. Create a GCS data connector:
-
-```shellscript cURL
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "gcs-connector",
-        "connector_definition_name": "connector-definitions/data-gcs",
-        "description": "GCS connector",
-        "configuration": {
-          "json_key": "<JSON key file contents here>"
-          "bucket_name": "<bucket name>"
-        }
-      }'
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-gcs",
+  "connector_definition_name": "connector-definitions/gcs",
+  "description": "Optional description",
+  "configuration": {
+    "bucket_name": <bucket-name>,
+    "json_key": <json-key>
+  }
+}'
 ```
 
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Core-API-Token>' \
+--data '{
+  "id": "my-gcs",
+  "connector_definition_name": "connector-definitions/gcs",
+  "description": "Optional description",
+  "configuration": {
+    "bucket_name": <bucket-name>,
+    "json_key": <json-key>
+  }
+}'
+```
+
+</CH.Code>
+
+For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
 
 ## Supported Tasks
 
-The GCS connector supports these tasks: **Upload**.
+### Upload
 
-1. **Upload** - use this to upload the contents to the given bucket. The input should look something like -
+Upload data to Google Cloud Storage.
 
-```json
-{
-  "object_name": "<name of the object/file>",
-  "data": "<data to be saved>"
-}
-```
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_UPLOAD` |
+| Object Name (required) | `object_name` | string | The name of the object to be created |
+| Data (required) | `data` | string | The data to be saved in the object |
 
-Ref: https://console.cloud.google.com/storage
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Authenticated URL (optional) | `authenticated_url` | string | Only users granted permission can access the object with this link |
+| Gsutil URI (optional) | `gsutil_uri` | string | File path to this resource in Cloud Storage |
+| Public Access (optional) | `public_access` | boolean | Whether the object is publicly accessible |
+| Public URL (optional) | `public_url` | string | Anyone with this link can access the object on the public Internet |
+| Upload Status | `status` | string | Status of the upload operation |
