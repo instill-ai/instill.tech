@@ -176,45 +176,45 @@ export default function TypescriptSdkDemo() {
 
 ### Pipelines
 
-| Function                                | Params                                          |
-| :-------------------------------------- | :---------------------------------------------- |
-| `listPipelinesQuery`                    | pageSize, nextPageToken                         |
-| `listUserPipelinesQuery`                | pageSize, nextPageToken, userName               |
-| `getUserPipelineQuery`                  | pipelineName                                    |
-| `ListUserPipelineReleasesQuery`         | userName, pipelineName, pageSize, nextPageToken |
-| `getUserPipelineReleaseQuery`           | pipelineReleaseName                             |
-| `watchUserPipelineReleaseQuery`         | pipelineReleaseName                             |
-| `createUserPipelineMutation`            | userName, payload                               |
-| `updateUserPipelineMutation`            | payload                                         |
-| `deleteUserPipelineMutation`            | pipelineName                                    |
-| `renameUserPipelineMutation`            | payload                                         |
-| `createUserPipelineReleaseMutation`     | pipelineName, payload                           |
-| `updateUserPipelineReleaseMutation`     | pipelineReleaseName, payload                    |
-| `deleteUserPipelineReleaseMutation`     | pipelineReleaseName                             |
-| `triggerUserPipelineAction`             | pipelineName, payload, returnTraces             |
-| `triggerAsyncUserPipelineAction`        | pipelineName, payload, returnTraces             |
-| `setDefaultUserPipelineReleaseMutation` | pipelineReleaseName                             |
-| `restoreUserPipelineReleaseMutation`    | pipelineReleaseName                             |
-| `triggerUserPipelineReleaseAction`      | pipelineReleaseName, payload, returnTraces      |
-| `triggerAsyncUserPipelineReleaseAction` | pipelineReleaseName, payload, returnTraces      |
+| Function                                | Params                                              |
+| :-------------------------------------- | :-------------------------------------------------- |
+| `listPipelinesQuery`                    | pageSize, nextPageToken, enablePagination           |
+| `listUserPipelinesQuery`                | pageSize, nextPageToken, userName, enablePagination |
+| `getUserPipelineQuery`                  | pipelineName                                        |
+| `ListUserPipelineReleasesQuery`         | userName, pipelineName, pageSize, nextPageToken     |
+| `getUserPipelineReleaseQuery`           | pipelineReleaseName                                 |
+| `watchUserPipelineReleaseQuery`         | pipelineReleaseName                                 |
+| `createUserPipelineMutation`            | userName, payload                                   |
+| `updateUserPipelineMutation`            | payload                                             |
+| `deleteUserPipelineMutation`            | pipelineName                                        |
+| `renameUserPipelineMutation`            | payload                                             |
+| `createUserPipelineReleaseMutation`     | pipelineName, payload                               |
+| `updateUserPipelineReleaseMutation`     | pipelineReleaseName, payload                        |
+| `deleteUserPipelineReleaseMutation`     | pipelineReleaseName                                 |
+| `triggerUserPipelineAction`             | pipelineName, payload, returnTraces, shareCode      |
+| `triggerAsyncUserPipelineAction`        | pipelineName, payload, returnTraces                 |
+| `setDefaultUserPipelineReleaseMutation` | pipelineReleaseName                                 |
+| `restoreUserPipelineReleaseMutation`    | pipelineReleaseName                                 |
+| `triggerUserPipelineReleaseAction`      | pipelineReleaseName, payload, returnTraces          |
+| `triggerAsyncUserPipelineReleaseAction` | pipelineReleaseName, payload, returnTraces          |
 
 ### Connector
 
-| Function                                    | Params                                    |
-| :------------------------------------------ | :---------------------------------------- |
-| `listConnectorsQuery`                       | userName, pageSize, nextPageToken, filter |
-| `listUserConnectorsQuery`                   | pageSize, nextPageToken, filter           |
-| `listConnectorDefinitionsQuery`             | connectorDefinitionName                   |
-| `getConnectorDefinitionQuery`               | connectorDefinitionName                   |
-| `getUserConnectorQuery`                     | connectorDefinitionName                   |
-| `watchUserConnector`                        | userName, payload                         |
-| `createUserConnectorMutation`               | connectorDefinitionName                   |
-| `deleteUserConnectorMutation`               | payload                                   |
-| `updateUserConnectorMutation`               | payload                                   |
-| `renameUserConnector`                       | payload                                   |
-| `testUserConnectorConnectionAction`         | connectorDefinitionName                   |
-| `connectUserConnectorAction`                | connectorDefinitionName                   |
-| `disconnectUserConnectorAction`             | connectorDefinitionName                   |
+| Function                            | Params                                    |
+| :---------------------------------- | :---------------------------------------- |
+| `listConnectorsQuery`               | pageSize, nextPageToken, filter           |
+| `listUserConnectorsQuery`           | userName, pageSize, nextPageToken, filter |
+| `listConnectorDefinitionsQuery`     | connectorDefinitionName                   |
+| `getConnectorDefinitionQuery`       | connectorDefinitionName                   |
+| `getUserConnectorQuery`             | connectorName                             |
+| `watchUserConnector`                | connectorName                             |
+| `createUserConnectorMutation`       | entityName, payload                       |
+| `deleteUserConnectorMutation`       | connectorName                             |
+| `updateUserConnectorMutation`       | payload                                   |
+| `renameUserConnector`               | payload                                   |
+| `testUserConnectorConnectionAction` | connectorName                             |
+| `connectUserConnectorAction`        | connectorName                             |
+| `disconnectUserConnectorAction`     | connectorName                             |
 
 ### Metric
 
@@ -223,8 +223,6 @@ export default function TypescriptSdkDemo() {
 | `listPipelineTriggerRecordsQuery` | pageSize, nextPageToken, filter |
 | `listTriggeredPipelineQuery`      | pageSize, nextPageToken, filter |
 | `listTriggeredPipelineChartQuery` | pageSize, nextPageToken, filter |
-
-modelDefinitionName,
 
 ### Model
 
@@ -252,15 +250,33 @@ modelDefinitionName,
 
 ### Mgmt
 
-| Function                 | Params                  |
-| :----------------------- | :---------------------- |
-| `getUserQuery`           | apiToken                |
-| `checkUserIdExist`       | id                      |
-| `getApiTokenQuery`       | tokenName               |
-| `listApiTokensQuery`     | pageSize, nextPageToken |
-| `updateUserMutation`     | payload                 |
-| `createApiTokenMutation` | payload                 |
-| `deleteApiTokenMutation` | tokenName               |
+| Function                          |         params          |
+| :------------------------------   | :---------------------: |
+| `getUserQuery`                    | userName                |
+| `getAuthenticatedUserQuery`       |                         |
+| `checkUserIdExist`                | id                      |
+| `getApiTokenQuery`                | tokenName               |
+| `listApiTokensQuery`              | pageSize, nextPageToken |
+| `updateAuthenticatedUserMutation` | payload                 |
+| `createApiTokenMutation`          | payload                 |   
+| `deleteApiTokenMutation`          | tokenName               |
+| `checkNamespace`                  | id                      |
+
+### Oraganization
+
+| Function                               |             params               |
+| :------------------------------------- | :------------------------------: |
+| `getOrganizationMembershipQuery`       | organizationID, userID           |
+| `getOrganizationQuery`                 | organizationID                   |  
+| `getUserMembershipQuery`               | organizationID, userID           |
+| `getUserMembershipsQuery`              | userID                           |
+| `listOrganizationsQuery`               | pageSize, nextPageToken, filter  |
+| `createOrganizationMutation`           | payload                          |
+| `deleteOrganizationMutation`           | organizationName                 |
+| `deleteUserMembershipMutation`         | organizationID,userID            |
+| `updateOrganizationMembershipMutation` | payload                          |
+| `updateOrganizationMutation`           | payload                          |
+| `updateUserMembershipMutation`         | payload                          |
 
 ## Generate proto-ts
 
