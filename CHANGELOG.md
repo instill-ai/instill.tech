@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.46.5](https://github.com/instill-ai/instill.tech/compare/v1.46.4...v1.46.5) (2024-04-03)
+
+
+### Bug Fixes
+
+* instill Cloud footer link fix ([#774](https://github.com/instill-ai/instill.tech/issues/774)) ([79324a8](https://github.com/instill-ai/instill.tech/commit/79324a82d78030ad5155edd2bc80ca6b65c89c44))
+* update logo size ([#770](https://github.com/instill-ai/instill.tech/issues/770)) ([b0abca7](https://github.com/instill-ai/instill.tech/commit/b0abca707112a10cc5281543e426af2320995425))
+
+
+### Miscellaneous
+
+* update typescript docs ([#772](https://github.com/instill-ai/instill.tech/issues/772)) ([35052fd](https://github.com/instill-ai/instill.tech/commit/35052fd8a46fd98deb6f0b5295b1963998829a93))
+
 ## [1.46.4](https://github.com/instill-ai/instill.tech/compare/v1.46.3...v1.46.4) (2024-03-28)
 
 
