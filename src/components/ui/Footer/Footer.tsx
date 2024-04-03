@@ -52,7 +52,7 @@ export const Footer = () => {
     products: [
       {
         text: "Instill Cloud",
-        href: "https://www.instill.tech",
+        href: "https://instill.tech",
       },
       {
         text: "Instill Core",
