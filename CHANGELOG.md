@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.46.6](https://github.com/instill-ai/instill.tech/compare/v1.46.5...v1.46.6) (2024-04-03)
+
+
+### Miscellaneous
+
+* Namananand/ins 3864 typescript sdk ([#775](https://github.com/instill-ai/instill.tech/issues/775)) ([a39371c](https://github.com/instill-ai/instill.tech/commit/a39371cf2384dbc09476c202aff3ae0c7143f2b8))
+
 ## [1.46.5](https://github.com/instill-ai/instill.tech/compare/v1.46.4...v1.46.5) (2024-04-03)
 
 
