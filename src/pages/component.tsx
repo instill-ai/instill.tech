@@ -42,6 +42,7 @@ export type ConnectorDef = ConnectorDefinition & {
   version?: string;
   description?: string;
   source_url?: string;
+  release_stage?: string;
 };
 
 export type OperatorDef = OperatorDefinition & {
@@ -49,6 +50,7 @@ export type OperatorDef = OperatorDefinition & {
   version?: string;
   description?: string;
   source_url?: string;
+  release_stage?: string;
 };
 
 export type Connector = {
@@ -104,7 +106,7 @@ export function VersionType({
   version: string;
   onMouseEnter?: boolean;
 }) {
-  const parsedVersion = version.split("-")[1];
+  const parsedVersion = version.split("_")[2]?.toLowerCase();
 
   switch (parsedVersion) {
     case "alpha":
