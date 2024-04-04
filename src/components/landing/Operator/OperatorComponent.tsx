@@ -61,7 +61,9 @@ function OperatorComponent({
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                operator_definition.version ? operator_definition.version : ""
+                operator_definition.release_stage
+                  ? operator_definition.release_stage
+                  : ""
               }
               // onMouseEnter={onMouseEnter}
             />

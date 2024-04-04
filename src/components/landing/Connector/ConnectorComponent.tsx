@@ -51,7 +51,9 @@ function ConnectorComponent({
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                connector_definition.version ? connector_definition.version : ""
+                connector_definition.release_stage
+                  ? connector_definition.release_stage
+                  : ""
               }
               // onMouseEnter={onMouseEnter}
             />
