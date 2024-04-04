@@ -6,11 +6,6 @@ cd component && go install component/tools/compogen@latest
 echo "Cloning the repository..."
 git clone https://github.com/instill-ai/component component
 
-# Remove README.mdx files
-# echo "Removing README.mdx files..."
-# find component/pkg/operator -name README.mdx -type f -exec rm {} \; -print
-# find component/pkg/connector -name README.mdx -type f -exec rm {} \; -print
-
 echo "Running go generate..."
 
 # Define a function to map component_name to the target directory
