@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.46.7](https://github.com/instill-ai/instill.tech/compare/v1.46.6...v1.46.7) (2024-04-04)
+
+
+### Bug Fixes
+
+* fix version to release_stage  ([#779](https://github.com/instill-ai/instill.tech/issues/779)) ([28a8659](https://github.com/instill-ai/instill.tech/commit/28a865926fe579556900cdca05f5edb25c209b7b))
+
+
+### Documentation
+
+* **blog:** update introducing-vdp cover image ([#777](https://github.com/instill-ai/instill.tech/issues/777)) ([9b8232e](https://github.com/instill-ai/instill.tech/commit/9b8232ee33c45622d37cd59912a5b1ddb26d9078))
+
 ## [1.46.6](https://github.com/instill-ai/instill.tech/compare/v1.46.5...v1.46.6) (2024-04-03)
 
 
