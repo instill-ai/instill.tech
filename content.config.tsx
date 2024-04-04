@@ -222,6 +222,10 @@ export const getSections = (
           text: "common:sidebarSections.redis",
           link: `/docs/vdp/data-connectors/redis`,
         },
+        {
+          text: "common:sidebarSections.website",
+          link: `/docs/vdp/data-connectors/website`,
+        },
       ],
       appType: "core",
       versions: [],

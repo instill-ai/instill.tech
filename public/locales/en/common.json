@@ -38,6 +38,7 @@
     "json": "JSON",
     "rest": "REST",
     "text": "Text",
+    "website": "Website",
     "connector": "Connector",
     "connectors": "Connectors",
     "aiConnector": "AI Connector",

@@ -69,7 +69,7 @@ export const ConnectorCategory = {
 
 export const docsLinks: any = {
   "hugging-face": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/model/import/huggingface`,
-  "archetype-ai": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/ai-connectors/archetype-ai`,
+  "archetype-ai": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/ai-connectors/archetypeai`,
   redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/data-connectors/redis`,
   start: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/start`,
   end: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/end`,
