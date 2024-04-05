@@ -105,6 +105,10 @@ export const getSections = (
           text: "common:sidebarSections.kubernetesUsingHelm",
           link: `/docs/core/deployment/kubernetes-using-helm`,
         },
+        {
+          text: "common:sidebarSections.k8s",
+          link: `/docs/core/deployment/k8s`,
+        },
       ],
       appType: "core",
       versions: [],
