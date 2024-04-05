@@ -5,4 +5,83 @@ draft: false
 description: "Learn about how to deploy Instill Core in K8S"
 ---
 
+### Login to Terraform vault
 
+```bash
+vault login -method=oidc
+```
+### Download service account access file
+
+```bash
+vault kv get -format=json -field=data secret/devops/gcp/org-terraform@cft-seed-8314.iam.gserviceaccount.com > cft-seed-org-terraform.json
+```
+
+### Copy service account file to specific location
+
+```bash
+cp cft-seed-org-terraform.json ~/.config/gcloud/
+```
+### Manually set environment variables
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/cft-seed-org-terraform.json
+export VAULT_ADDR=https://vault.instill.tech
+```
+
+### Login to Terraform Cloud
+
+```bash
+terraform login
+```
+
+### Login to Temporal Cloud
+
+```bash
+tcld login
+```
+
+### Clone the repo
+
+```bash
+git clone https://github.com/instill-ai/terraform-cloud-gcp && cd terraform-cloud-gcp
+```
+
+### Check and set the terraform environment
+
+```bash
+terraform workspace list
+terraform workspace select `<workspace>`
+```
+
+### Initialize the terraform environment
+
+```bash
+terraform init
+```
+
+### Connect to bastion host
+
+```bash
+gcloud compute ssh bastion-<zone> --quiet --ssh-flag=-fN --tunnel-through-iap --project prj-c-bastion-212b --zone <zone> -- -4 L8888:127.0.0.1:8888
+```
+- For example: For `asia` region, update `zone=ap-south1-a`
+
+### Apply the terraform code to create the kubernetes cluster
+
+```bash
+terraform apply -target=module.cloud_gcp_infra.module.prj_vdp
+terraform apply -target=module.cloud_gcp_infra.module.gke_safer_multi_zonal_cluster
+terraform apply -target=module.cloud_gcp_infra
+```
+
+### Connect to the Kubernetes cluster
+
+```bash
+gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_id>
+```
+
+### Apply the terraform code to create the services
+
+```bash
+HTTPS_PROXY=localhost:8888 terraform apply -target=module.cloud_gcp_services
+```
