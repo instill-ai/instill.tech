@@ -1,0 +1,87 @@
+---
+title: "Google Search"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Google Search connector https://github.com/instill-ai/instill-core"
+---
+
+The Google Search component is a data connector that allows users to leverage the Google Search engine.
+It can carry out the following tasks:
+
+- [Search](#search)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/googlesearch/v0/config/definition.json).
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | API Key for the Google Custom Search API. You can create one here: https://developers.google.com/custom-search/v1/overview#api_key |
+| Search Engine ID (required) | `cse_id` | string | ID of the Search Engine to use. Before using the Custom Search JSON API you will first need to create and configure your Programmable Search Engine. If you have not already created a Programmable Search Engine, you can start by visiting the Programmable Search Engine control panel https://programmablesearchengine.google.com/controlpanel/all. You can find this in the URL of your Search Engine. For example, if the URL of your search engine is https://cse.google.com/cse.js?cx=012345678910, the ID value is: 012345678910 |
+
+Google Search connector resources can be created in two ways:
+
+### No-code Setup
+
+1. Go to the **Connectors** page and click **+ Create Connector**.
+1. Select **Google Search**.
+1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
+1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
+
+### Low-code Setup
+
+<CH.Code>
+
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-google-search",
+  "connector_definition_name": "connector-definitions/google-search",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "cse_id": <cse-id>
+  }
+}'
+```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Core-API-Token>' \
+--data '{
+  "id": "my-google-search",
+  "connector_definition_name": "connector-definitions/google-search",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "cse_id": <cse-id>
+  }
+}'
+```
+
+</CH.Code>
+
+For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
+
+## Supported Tasks
+
+### Search
+
+Search data via Google Search Engine.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SEARCH` |
+| Query (required) | `query` | string | The search query for Google |
+| Top K | `top_k` | integer | The number of results to return for each query |
+| Include Link Text | `include_link_text` | boolean | Indicate whether to scrape the link and include the text of the link associated with this search result in the 'link_text' field |
+| Include Link HTML | `include_link_html` | boolean | Indicate whether to scrape the link and include the raw HTML of the link associated with this search result in the 'link_html' field |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Results | `results` | array | The returned search results from Google |

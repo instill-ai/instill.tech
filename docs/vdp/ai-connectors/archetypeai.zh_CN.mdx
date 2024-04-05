@@ -1,0 +1,111 @@
+---
+title: "Archetype AI"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Archetype AI connector https://github.com/instill-ai/instill-core"
+---
+
+The Archetype AI component is an AI connector that allows users to connect the AI models served on the Archetype AI Platform.
+It can carry out the following tasks:
+
+- [Describe](#describe)
+- [Summarize](#summarize)
+- [Upload File](#upload-file)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/archetypeai/v0/config/definition.json).
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your Archetype AI API key |
+
+Archetype AI connector resources can be created in two ways:
+
+### No-code Setup
+
+1. Go to the **Connectors** page and click **+ Create Connector**.
+1. Select **Archetype AI**.
+1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
+1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
+
+### Low-code Setup
+
+<CH.Code>
+
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-archetype-ai",
+  "connector_definition_name": "connector-definitions/archetype-ai",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>
+  }
+}'
+```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Core-API-Token>' \
+--data '{
+  "id": "my-archetype-ai",
+  "connector_definition_name": "connector-definitions/archetype-ai",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>
+  }
+}'
+```
+
+</CH.Code>
+
+For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
+
+## Supported Tasks
+
+### Describe
+
+Describe a video.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DESCRIBE` |
+| Query (required) | `query` | string | A guide to describe the video |
+| File IDs (required) | `file_ids` | array[string] | The IDs of the videos to describe. These must have been previously uploaded via TASK_UPLOAD_FILE. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Descriptions | `descriptions` | array[object] | A set of descriptions corresponding to different moments in the video |
+
+### Summarize
+
+Summarize the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SUMMARIZE` |
+| Query (required) | `query` | string | A guide to summarize the image |
+| File IDs (required) | `file_ids` | array[string] | The IDs of the images to summarize. These must have been previously uploaded via TASK_UPLOAD_FILE. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Response | `response` | string | A text responding to the query |
+
+### Upload File
+
+Upload file.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_UPLOAD_FILE` |
+| File (required) | `file` | string | The file to upload. Accepted formats are JPEG and PNG for images or MP4 for videos |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| File ID | `file_id` | string | The ID to reference the file in queries |

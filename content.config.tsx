@@ -171,11 +171,11 @@ export const getSections = (
       items: [
         {
           text: "common:sidebarSections.archetypeAi",
-          link: `/docs/vdp/ai-connectors/archetype-ai`,
+          link: `/docs/vdp/ai-connectors/archetypeai`,
         },
         {
           text: "common:sidebarSections.instillModel",
-          link: `/docs/vdp/ai-connectors/instill-model`,
+          link: `/docs/vdp/ai-connectors/instill`,
         },
         {
           text: "common:sidebarSections.openAI",
@@ -183,7 +183,7 @@ export const getSections = (
         },
         {
           text: "common:sidebarSections.stabilityAI",
-          link: `/docs/vdp/ai-connectors/stability-ai`,
+          link: `/docs/vdp/ai-connectors/stabilityai`,
         },
       ],
       appType: "core",
@@ -204,7 +204,7 @@ export const getSections = (
         },
         {
           text: "common:sidebarSections.gcs",
-          link: `/docs/vdp/data-connectors/gcs`,
+          link: `/docs/vdp/data-connectors/googlecloudstorage`,
         },
         {
           text: "common:sidebarSections.pinecone",
@@ -212,15 +212,19 @@ export const getSections = (
         },
         {
           text: "common:sidebarSections.googlesearch",
-          link: `/docs/vdp/data-connectors/google-search`,
+          link: `/docs/vdp/data-connectors/googlesearch`,
         },
         {
           text: "common:sidebarSections.rest",
-          link: `/docs/vdp/data-connectors/rest`,
+          link: `/docs/vdp/data-connectors/restapi`,
         },
         {
           text: "common:sidebarSections.redis",
           link: `/docs/vdp/data-connectors/redis`,
+        },
+        {
+          text: "common:sidebarSections.website",
+          link: `/docs/vdp/data-connectors/website`,
         },
       ],
       appType: "core",
@@ -233,7 +237,7 @@ export const getSections = (
       items: [
         {
           text: "common:sidebarSections.numbersProtocol",
-          link: `/docs/vdp/app-connectors/numbers-protocol`,
+          link: `/docs/vdp/app-connectors/numbers`,
         },
       ],
       appType: "core",
