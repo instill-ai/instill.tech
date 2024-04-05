@@ -67,8 +67,7 @@ There have three content folders and their corresponding page, assets folder.
 
 To be documented...
 
-
-### Auto genrate connector and operator docs
+### Auto generate connector and operator docs
 
 ```
 $ update_connector_operator.sh
