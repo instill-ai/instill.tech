@@ -1,79 +1,109 @@
 ---
 title: "Pinecone"
 lang: "en-US"
-draft: true
-description: "Learn about how to set up a Pinecone data connector for VDP https://github.com/instill-ai/instill-core"
+draft: false
+description: "Learn about how to set up a VDP Pinecone connector https://github.com/instill-ai/instill-core"
 ---
 
-The Pinecone Data Connector allows users to store and query text embeddings as vectors. Users can then perform similarity search operations on stored vectors.
+The Pinecone component is a data connector that allows users to build and search vector datasets.
+It can carry out the following tasks:
 
-## Release stage
+- [Query](#query)
+- [Upsert](#upsert)
+
+## Release Stage
 
 `Alpha`
 
 ## Configuration
 
-There are two things needed to configure a Pinecone connector: Pinecone URL (corresponding to your index) and an API key. Firstly, users need to create an index on https://www.pinecone.io. Once an index is created, the URL and API key can be used to configure a connector as mentioned below -
-For the up-to-date configuration, refer to [here](https://github.com/instill-ai/connector/blob/main/pkg/pinecone/config/definitions.json).
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/pinecone/v0/config/definition.json).
 
-| Field     | Type   | Note                            |
-| :-------- | :----- | :------------------------------ |
-| url\*     | string | Fill your Pinecone url here     |
-| api_key\* | string | Fill your Pinecone api_key here |
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your Pinecone AI API key. You can create a api key in [Pinecone Console](https://app.pinecone.io/) |
+| Pinecone Base URL (required) | `url` | string | Fill in your Pinecone base URL. It is in the form [https://index_name-project_id.svc.environment.pinecone.io] |
+
+Pinecone connector resources can be created in two ways:
 
 ### No-code Setup
 
-To create a Pinecone data connector effortlessly, follow these steps:
-
-1. Go to the **Resource** page and click **Add Resource**
-2. Select **Pinecone**
-3. Fill in the required fields
-4. Optionally, give a short description in the **Description** field
+1. Go to the **Connectors** page and click **+ Create Connector**.
+1. Select **Pinecone**.
+1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
+1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
 
 ### Low-code Setup
 
-For advanced users who prefer a more hands-on approach, you can create a Pinecone data connector using the following cURL commands:
+<CH.Code>
 
-1. Create a Pinecone data connector:
-
-```shellscript cURL
-curl  --location http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors
-      --header 'Authorization: Bearer <Your-API-Token>' \
-      --data '{
-        "id": "pinecone",
-        "connector_definition_name": "connector-definitions/data-pinecone",
-        "description": "The Pinecone vector database",
-        "configuration": {
-          "url": <Pinecone host address>,
-          "api_key": <api key>
-        }
-      }'
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-pinecone",
+  "connector_definition_name": "connector-definitions/pinecone",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "url": <url>
+  }
+}'
 ```
 
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Core-API-Token>' \
+--data '{
+  "id": "my-pinecone",
+  "connector_definition_name": "connector-definitions/pinecone",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "url": <url>
+  }
+}'
+```
+
+</CH.Code>
+
+For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
 
 ## Supported Tasks
 
-The Pinecone connector supports two tasks: **Upsert** and **Query**.
+### Query
 
-1. **Upsert** - use this to insert a new vector embedding or modify existing ones. It accepts an array of vectors `values` as a required parameter. Where each vector is an object with an `id` and an array of floating point numbers.
+Retrieve the ids of the most similar items in a namespace, along with their similarity scores.
 
-   Ref: https://docs.pinecone.io/reference/upsert
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_QUERY` |
+| ID | `id` | string | The unique ID of the vector to be used as a query vector. If present, the vector parameter will be ignored. |
+| Vector (required) | `vector` | array[number] | An array of dimensions for the query vector. |
+| Top K (required) | `top_k` | integer | The number of results to return for each query |
+| Namespace | `namespace` | string | The namespace to query |
+| Filter | `filter` | object | The filter to apply. You can use vector metadata to limit your search. See https://www.pinecone.io/docs/metadata-filtering/. |
+| Minimum Score | `min_score` | number | Exclude results whose score is below this value |
+| Include Metadata | `include_metadata` | boolean | Indicates whether metadata is included in the response as well as the IDs |
+| Include Values | `include_values` | boolean | Indicates whether vector values are included in the response |
 
-```json
-{
-    "id": 1,
-    "values": [1.35, -1.3, 1.356, 0.356, ...]
-}
-```
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Namespace | `namespace` | string | The namespace of the query |
+| Matches | `matches` | array[object] | The matches returned for the query |
 
-2. **Query** - use this to perform a similarity search on stored vectors. It requires 2 parameters: `top_k` - the number of matches to return, and `vector` - the query vector which is an array of floating point numbers.
+### Upsert
 
-   Ref: https://docs.pinecone.io/reference/query
+Writes vectors into a namespace. If a new value is upserted for an existing vector id, it will overwrite the previous value.
 
-```json
-{
-  "top_k": 5,
-  "vector": [1.35, -1.3, 1.356, 0.356, ...]
-}
-```
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_UPSERT` |
+| ID (required) | `id` | string | This is the vector's unique id |
+| Values (required) | `values` | array[number] | An array of dimensions for the vector to be saved |
+| Namespace | `namespace` | string | The namespace to query |
+| Metadata | `metadata` | object | The vector metadata |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Upserted Count | `upserted_count` | integer | Number of records modified or added |

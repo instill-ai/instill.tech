@@ -5,66 +5,44 @@ draft: false
 description: "Learn about how to set up a VDP Base64 operator https://github.com/instill-ai/instill-core"
 ---
 
-The Base64 Operator enables users to encode or decode a string in Base64 format.
+The Base64 component is an operator that allows users to encode or decode a string in Base64 format.
+It can carry out the following tasks:
+
+- [Encode](#encode)
+- [Decode](#decode)
 
 ## Release Stage
 
 `Alpha`
 
-## Operator Configuration
+## Configuration
 
-The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/operator/base64/v0/config/definition.json).
+
+## Supported Tasks
 
 ### Encode
 
-| Input  | Type   | Note                      |
-| :----- | ------ | ------------------------- |
-| task\* | string | TASK_ENCODE               |
-| data\* | string | String data to be encoded |
+Encode data into base64 string
 
-| Output | Type   | Description           |
-| :----- | ------ | --------------------- |
-| data   | string | Encoded Base64 string |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_ENCODE` |
+| Data (required) | `data` | string | Data to be encoded |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Data | `data` | string | Data |
 
 ### Decode
 
-| Input  | Type   | Note                        |
-| :----- | ------ | --------------------------- |
-| task\* | string | TASK_DECODE                 |
-| data\* | string | Base64 string to be decoded |
+Decode the base64 string.
 
-| Output | Type   | Description    |
-| :----- | ------ | -------------- |
-| data   | string | Decoded string |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DECODE` |
+| Data (required) | `data` | string | Base64 string to be decoded |
 
-## Example
-
-Example input and output data for each task:
-
-<CH.Code>
-
-```json TASK_ENCODE
-// Input
-{
-  "task": "TASK_MARSHAL",
-  "data": "I love VDP"
-}
-// Output
-{
-  "data": "SSBsb3ZlIFZEUA=="
-}
-```
-
-```json TASK_DECODE
-// Input
-{
-  "task": "TASK_MARSHAL",
-  "data": "SSBsb3ZlIFZEUA=="
-}
-// Output
-{
-  "data": "I love VDP"
-}
-```
-
-</ CH.Code>
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Data | `data` | string | Data |

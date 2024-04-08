@@ -39,6 +39,7 @@
     "json": "JSON",
     "rest": "REST",
     "text": "文本 (Text)",
+    "website": "Website",
     "connector": "连接组件 (Connector)",
     "connectors": "连接组件 (Connectors)",
     "aiConnector": "AI 连接组件",
