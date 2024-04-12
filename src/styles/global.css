@@ -117,6 +117,10 @@ table.mcnCaptionTopContent {
   background: transparent !important;
 }
 
+.mceWrapperOuter {
+  background-color: rgb(246, 246, 246) !important;
+}
+
 .mceText a {
   color: rgb(0, 0, 0);
   font-style: normal;

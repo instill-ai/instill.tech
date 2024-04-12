@@ -125,7 +125,9 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
             Get the latest news from Instill AI: product updates, community
             highlights, blog posts, useful tutorials and more!
           </h3>
-          <SubscribeNewsletterForm width="w-full" position="mx-auto" />
+          <div className="bg-[#F6F6F6] px-3 pb-2 pt-3">
+            <SubscribeNewsletterForm width="w-full" position="mx-auto" />
+          </div>
         </div>
         <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
