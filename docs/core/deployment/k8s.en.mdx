@@ -5,11 +5,19 @@ draft: false
 description: "Learn about how to deploy Instill Core in Kubernetes"
 ---
 
+### Manually set environment variables for vault
+
+```bash
+export VAULT_ADDR=https://vault.instill.tech
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/cft-seed-org-terraform.json
+```
+
 ### Login to Terraform vault
 
 ```bash
 vault login -method=oidc
 ```
+
 ### Download service account access file
 
 ```bash
@@ -21,67 +29,89 @@ vault kv get -format=json -field=data secret/devops/gcp/org-terraform@cft-seed-8
 ```bash
 cp cft-seed-org-terraform.json ~/.config/gcloud/
 ```
-### Manually set environment variables
-
-```bash
-export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/cft-seed-org-terraform.json
-export VAULT_ADDR=https://vault.instill.tech
-```
-
 ### Login to Terraform Cloud
 
 ```bash
 terraform login
 ```
-
-### Login to Temporal Cloud
-
-```bash
-tcld login
-```
-
 ### Clone the repo
 
 ```bash
 git clone https://github.com/instill-ai/terraform-cloud-gcp && cd terraform-cloud-gcp
 ```
 
-### Check and set the terraform environment
-
-```bash
-terraform workspace list
-terraform workspace select `<workspace>`
-```
-
 ### Initialize the terraform environment
 
 ```bash
 terraform init
+Select the env, for dev environment select from 1 8 according to the env, for production select 10 and for staging select 9
 ```
 
-### Connect to bastion host
+### Check and set the terraform environment
 
 ```bash
-gcloud compute ssh bastion-<zone> --quiet --ssh-flag=-fN --tunnel-through-iap --project prj-c-bastion-212b --zone <zone> -- -4 L8888:127.0.0.1:8888
+terraform workspace list
+terraform workspace select <workspace>
 ```
-- For example: For `asia` region, update `zone=ap-south1-a`
+
+### Apply the terraform code to create the project, cloudsql and gcp buckets
+
+```bash
+terraform apply -target=module.cloud_gcp_project
+```
 
 ### Apply the terraform code to create the kubernetes cluster
 
 ```bash
-terraform apply -target=module.cloud_gcp_infra.module.prj_vdp
-terraform apply -target=module.cloud_gcp_infra.module.gke_safer_multi_zonal_cluster
 terraform apply -target=module.cloud_gcp_infra
 ```
 
-### Connect to the Kubernetes cluster
+### Apply the terraform code to deploy the services
+
+#### For europe region :
+
+- Connect to bastion host
 
 ```bash
-gcloud container clusters get-credentials <cluster_name> --zone <zone> --project <project_id>
+gcloud compute ssh bastion-europe-west4-a --quiet --ssh-flag=-fN --tunnel-through-iap --project prj-c-bastion-212b --zone europe-west4-a --4 L8888:127.0.0.1:8888
+```
+- Connect to the Kubernetes cluster
+
+```bash
+gcloud container clusters get-credentials <cluster_name> --zone <cluster_zone> --project <project_id>
 ```
 
-### Apply the terraform code to create the services
+- Apply the services
 
 ```bash
-HTTPS_PROXY=localhost:8888 terraform apply -target=module.cloud_gcp_services
+HTTPS_PROXY=localhost:8888 terraform apply -target=module.cloud_gcp_services_euw4
+```
+#### For asia region :
+
+- Connect to bastion host
+
+```bash
+gcloud compute ssh bastion-asia-southeast1-a --quiet --ssh-flag=-fN --tunnel-through-iap --project prj-c-bastion-212b --zone asia-southeast1-a --4 L8888:127.0.0.1:8888
+```
+
+- Connect to the Kubernetes cluster
+
+```bash
+gcloud container clusters get-credentials <cluster_name> --zone <cluster_zone> --project <project_id>
+```
+
+- Apply the services
+
+```bash
+HTTPS_PROXY=localhost:8888 terraform apply -target=module.cloud_gcp_services_ase1
+```
+
+### Apply the terraform code to create the load balancer and bypass Cloudflare
+
+```bash
+terraform apply -target=null_resource.default
+terraform apply -target=null_resource.model
+terraform apply -target=google_compute_global_forwarding_rule.default
+terraform apply -target=google_compute_global_forwarding_rule.http
+terraform apply -target=cloudflare_access_policy.service_token
 ```
