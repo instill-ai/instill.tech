@@ -2,6 +2,7 @@ import cn from "clsx";
 import { Nullable, TutorialMeta } from "@/types/instill";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Fuse from "fuse.js";
+import { Icons, Input } from "@instill-ai/design-system";
 
 export type TutorialSearchProps = {
   tutorials: TutorialMeta[];
@@ -37,34 +38,26 @@ export const TutorialSearch = ({
 
   return (
     <div
-      className={cn("flex w-full flex-col xl:mx-auto xl:w-8/12", marginBottom)}
+      className={cn(
+        "flex w-full flex-col xl:mx-auto xl:w-[458px]",
+        marginBottom
+      )}
     >
-      <input
-        placeholder="Search"
-        className="mb-2.5 w-full bg-instillNeonBlue bg-opacity-10 px-4 py-3 text-instill-body-normal focus:outline-instillSkyBlue"
-        onChange={async (e) => {
-          const { value } = e.currentTarget;
-          setSearchTerm(value);
-        }}
-      />
-      <div className="flex w-full flex-row">
-        <a
-          href="https://github.com/instill-ai/community/issues/new?labels=tutorial%2Cdocumentation%2Cneed-triage&template=tutorial_request.yaml&title=%5BTutorial%5D+%3Ctitle%3E"
-          className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
-        >
-          Request a tutorial
-        </a>
-        <div className="grid w-10 grid-cols-2 py-2">
-          <div className="block w-full border-r border-instillGrey30" />
-          <div className="block w-full" />
-        </div>
-        <a
-          href="https://github.com/instill-ai/community/issues/new?assignees=xiaofei-du,EiffelFly&labels=submit+a+tutorial"
-          className="px-2.5 py-[5px] font-sans text-lg font-normal text-instillGrey70 hover:text-instillSkyBlue"
-        >
-          Submit a tutorial
-        </a>
-      </div>
+      <Input.Root>
+        <Input.LeftIcon>
+          <Icons.SearchSm className="my-auto h-5 w-5 cursor-pointer !stroke-semantic-fg-secondary" />
+        </Input.LeftIcon>
+        <Input.Core
+          disabled={false}
+          type="text"
+          className="!placeholder-semantic-fg-secondary"
+          placeholder="Search"
+          onChange={async (e) => {
+            const { value } = e.currentTarget;
+            setSearchTerm(value);
+          }}
+        />
+      </Input.Root>
     </div>
   );
 };

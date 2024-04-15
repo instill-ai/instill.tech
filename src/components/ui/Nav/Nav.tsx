@@ -121,7 +121,7 @@ export const Nav = () => {
       </div>
       <div className="relative w-full">
         {open && (
-          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-white px-4 py-[50px]">
+          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-[#F7F6F8] px-4 py-[50px]">
             {navbarLinkGroup}
           </div>
         )}
@@ -132,7 +132,7 @@ export const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-white bg-opacity-80 backdrop-blur-sm lg:sticky lg:top-0 lg:z-50"
+      className="flex w-full flex-col bg-[#F7F6F8] bg-opacity-80 backdrop-blur-sm lg:sticky lg:top-0 lg:z-50"
     >
       <div className="flex w-full flex-col">
         <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>

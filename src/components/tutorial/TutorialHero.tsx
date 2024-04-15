@@ -1,4 +1,4 @@
-import { PageHero } from "../ui";
+import cn from "clsx";
 
 export type TutorialHeroProps = {
   marginBottom?: string;
@@ -6,16 +6,13 @@ export type TutorialHeroProps = {
 
 export const TutorialHero = ({ marginBottom }: TutorialHeroProps) => {
   return (
-    <PageHero
-      headline="EXPLORE INNOVATIVE USE CASES FOR UNSTRUCTURED DATA PIPELINE"
-      subHeadline={
-        <p>
-          Instill Cloud streamlines end-to-end unstructured data processing to
-          empower your team and solve your business problems.
-        </p>
-      }
-      marginBottom={marginBottom}
-      headerUppercase={true}
-    />
+    <div className={cn("flex flex-col space-y-2 text-center", marginBottom)}>
+      <h1 className="font-sans text-[56px] font-bold leading-[60px] tracking-[-1.12px]">
+        Insights and Updates
+      </h1>
+      <p className="font-sans text-[18px] font-normal leading-[26px] tracking-[-0.18px] text-[#000000B2]">
+        Share updates, stories, learnings and insights along our journey
+      </p>
+    </div>
   );
 };

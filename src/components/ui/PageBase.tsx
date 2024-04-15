@@ -19,7 +19,7 @@ export const PageBase = ({ children }: PageBaseProps) => {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-[#F7F6F8]">
       <Nav />
       <div ref={contentRef} className="flex flex-1 flex-col">
         {children}

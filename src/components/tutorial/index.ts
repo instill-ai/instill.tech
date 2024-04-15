@@ -11,3 +11,4 @@ export type { TutorialSearchProps } from "./TutorialSearch";
 export { TutorialPipelineLabel } from "./TutorialPipelineLabel";
 export type { TutorialPipelineLabelProps } from "./TutorialPipelineLabel";
 export { TutorialImagePlaceholder } from "./TutorialImagePlaceholder";
+export { TutorialAndBlogType } from "./TutorialAndBlogType";
