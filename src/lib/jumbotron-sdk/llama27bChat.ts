@@ -3,17 +3,17 @@ import axios from "axios";
 import { JumbotronRequestResponse } from "./type";
 import { handleInstillError } from "./utility";
 
-export type Llama27bVsLlama27bChatRequestData = {
+export type Llama27bChatRequestData = {
   inputs: {
     prompt: string;
   }[];
 };
 
-export async function llama27bVsLlama27bChat(
-  requestData: Llama27bVsLlama27bChatRequestData
+export async function llama27bChat(
+  requestData: Llama27bChatRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "vdp/v1beta/users/instill-wombat/pipelines/llama2-7b_vs_llama2-7b-chat/trigger",
+    path: "vdp/v1beta/users/instill-wombat/pipelines/llama2-7b-chat/releases/v3.0.0/trigger",
     data: requestData,
   };
 

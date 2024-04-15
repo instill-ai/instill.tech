@@ -5,11 +5,11 @@ import { yolov7 } from "./yolov7";
 import { responderWithSpeech } from "./responderWithSpeech";
 import { webpageSummarization } from "./webpageSummarization";
 import { askOnPage } from "./askOnPage";
-import { llama27bVsLlama27bChat } from "./llama27bVsllama27bChat";
+import { llama27bChat } from "./llama27bChat";
 
 export const JumbotronSDK = {
   llava7b,
-  llama27bVsLlama27bChat,
+  llama27bChat,
   seoArticle,
   stabilityAIOpenAISticker,
   yolov7,

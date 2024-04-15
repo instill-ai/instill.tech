@@ -220,7 +220,7 @@ You can embed Jumbotron by using this component.
 <WebpageSummarization />
 <StabilityAIOpenAISticker />
 <Llama2Chat />
-<Llama27bVsLlama27bChat />
+<Llama27bChat />
 <SEOArticleWriter />
 <YOLOv7 />
 ```
