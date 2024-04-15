@@ -17,7 +17,6 @@ export const Llama27bChat = () => {
   const [spinner, setSpinner] = React.useState(false);
   const [llama2_7b_chat, setLlama2_7b_chat] =
     React.useState<Nullable<string>>("");
-  // const [llama2_7b, setLlama2_7b] = React.useState<Nullable<string>>("");
   const [question, setQuestion] = React.useState<string>("");
 
   const handleGenrate = async () => {
@@ -36,9 +35,7 @@ export const Llama27bChat = () => {
 
     if (apiResponse.status === "success") {
       const llama2_7b_chat: string = apiResponse.data.outputs[0].llama2_7b_chat;
-      // const llama2_7b: string = apiResponse.data.outputs[0].llama2_7b_output;
       setLlama2_7b_chat(llama2_7b_chat);
-      // setLlama2_7b(llama2_7b);
     } else {
       toast({
         title: "Error!",
