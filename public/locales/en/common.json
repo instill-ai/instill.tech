@@ -23,6 +23,7 @@
     "overview": "Overview",
     "dockerCompose": "Docker Compose",
     "kubernetesUsingHelm": "Kubernetes",
+    "k8s": "K8s",
     "coreConcepts": "Core Concepts",
     "pipeline": "Pipeline",
     "buildPipeline": "Build Pipelines",

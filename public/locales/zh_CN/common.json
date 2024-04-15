@@ -23,6 +23,7 @@
     "overview": "概览",
     "dockerCompose": "Docker Compose",
     "kubernetesUsingHelm": "Kubernetes",
+    "k8s": "K8s",
     "coreConcepts": "核心概念",
     "pipeline": "管道 (Pipeline)",
     "buildPipeline": "创建管道",
