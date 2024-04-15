@@ -12,6 +12,7 @@ import { TutorialMeta } from "@/types/instill";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { Button, Logo } from "@instill-ai/design-system";
+import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -121,16 +122,32 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
             marginBottom="mb-4"
           />
         </div>
-        <div className="mt-5 flex flex-col xl:flex-row xl:gap-x-10">
-          <div className="flex xl:w-full">
-            <TutorialList tutorials={searchedTutorials} />
+      </ContentContainer>
+      <div
+        className="bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/images/tutorials/blur-3.svg")',
+          backgroundPosition: "bottom left",
+          zIndex: "10",
+        }}
+      >
+        <ContentContainer margin="py-0" contentMaxWidth="max-w-[1127px]">
+          <div className="flex flex-col xl:flex-row xl:gap-x-10">
+            <div className="flex xl:w-full">
+              <TutorialList tutorials={searchedTutorials} />
+            </div>
           </div>
-        </div>
-        <div
-          style={{ backgroundImage: 'url("/images/tutorials/glow.png")' }}
-          className="mb-16 rounded-b-sm pt-5"
+        </ContentContainer>
+      </div>
+      <div
+        style={{ backgroundImage: 'url("/images/tutorials/glow.png")' }}
+        className="rounded-b-sm bg-cover bg-no-repeat pb-16 pt-5"
+      >
+        <ContentContainer
+          margin="my-[120px] xl:my-[18px]"
+          contentMaxWidth="max-w-[1127px]"
         >
-          <div className="flex flex-col gap-y-5 rounded-sm p-7 text-center shadow-lg">
+          <div className="flex flex-col gap-y-5 rounded-sm bg-[#FFFFFF99] p-7 text-center shadow-lg">
             <div className="flex justify-center">
               <Logo variant="colourLogomark" width={32} />
             </div>
@@ -146,8 +163,8 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
               </Button>
             </div>
           </div>
-        </div>
-      </ContentContainer>
+        </ContentContainer>
+      </div>
     </React.Fragment>
   );
 };

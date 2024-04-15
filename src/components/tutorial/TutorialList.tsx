@@ -21,7 +21,6 @@ export const TutorialList = ({ tutorials }: TutorialListProps) => {
           )
         )}
       </div>
-
       <div className="mt-5 grid w-full grid-flow-row auto-rows-fr grid-cols-1 gap-x-5 gap-y-5 md:grid-cols-3">
         {tutorials.slice(2, tutorials.length).map((e) =>
           tutorials.length <= 2 ? (
