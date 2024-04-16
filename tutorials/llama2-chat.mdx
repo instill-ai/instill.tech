@@ -1,8 +1,8 @@
 ---
-title: "Run Llama2-7b-Chat locally in Instill Core"
+title: "Run Llama2-7b-Chat Locally in Instill Core"
 lang: "en-US"
 draft: false
-description: "Step-by-step guidance to implementing LLama2-7B-Chat"
+description: "Step-by-step guidance to implementing Llama2-7B-Chat"
 sourceConnector: "Null"
 destinationConnector: "Null"
 aiTask: "TextGeneration"
@@ -20,7 +20,7 @@ keywords: ["Llama", "Open Source", "Artificial Intelligence", "Generative AI", "
 
 # **Llama2-Chat**
 
-Llama2's finely tuned variant, Llama2-Chat is optimized for dialogue use cases. To ensure safety and helpfulness, Llama2-Chat employs Reinforcement Learning from Human Feedback (RLHF) with over 1 million human annotations, which involves learning from human interactions to improve the model's responses. In this tutorial, you'll discover the process of locally running the 7B variation, Llama2-7B-Chat, using Instill Core.
+Llama2's finely tuned variant, Llama2-Chat is optimized for dialogue use cases. To ensure safety and helpfulness, Llama2-Chat employs Reinforcement Learning from Human Feedback (RLHF) with over 1 million human annotations, which involves learning from human interactions to improve the model's responses. In this tutorial, you'll discover the process of locally running the 7B variation, Llama2-7B-Chat, using [Instill Core](https://github.com/instill-ai/instill-core).
 <br />
 
 # **Prerequisites**
@@ -48,6 +48,8 @@ $ make all
 Once all the services are up, the no-code console is available at **[http://localhost:3000](http://localhost:3000/)**. Log in with username **admin** and the default password **password** (you can change this later).
 
 ## **Step 2: Create the model via no-code or low-code methods**
+
+There are two main ways to create the Llama2-7B-Chat model in Instill Core: no-code and low-code. No-code offers a user-friendly interface, while low-code provides more control through API calls.
 
 ### **Create the model via no-code**
 
@@ -150,7 +152,7 @@ The Llama2-7B-Chat model is available on Instill Cloud. Simply [register an Inst
 
 <ZoomableImg
 src="/tutorial-assets/llama2-chat/API-Token.png"
-alt="Where to get API Token"
+alt="Where to get Instill Cloud API Token in Settings"
 />
 
 ## **Step 2: Run the model on Instill Cloud**
@@ -176,7 +178,10 @@ curl --location 'https://api.instill.tech/model/v1alpha/organizations/instill-ai
 ```
 <br />
 
-# **Use the model within a VDP pipeline**
+**max_new_tokens: 1024** specifies the maximum number of tokens the model should generate in the response.
+<br />
+
+# **Use the model within a Versatile Data Pipeline (VDP)**
 
 Models deployed on Instill Core can be seamlessly integrated into a VDP pipeline for practical use. Take a look at this pre-built pipeline featuring the Llama2-7B-Chat model.
 
@@ -185,7 +190,7 @@ text="🚀 Try Llama2-7B-Chat"
 link="https://instill.tech/instill-wombat/pipelines/llama2-7b-chat"
 />
 
-The web demo card below is driven by the mentioned VDP pipeline. Behind the scenes, the web demo sends requests to the VDP pipeline and showcases the responses on the UI. In essence, VDP pipelines serve as the backbone of any AI application, enabling you to construct your own AI applications leveraging these pipelines.
+The web demo card you see below is powered by the VDP pipeline we mentioned earlier. This pipeline processes user input and sends it to the Llama2-7B-Chat model for chat interaction. In essence, VDP pipelines serve as the backbone of any AI application, enabling you to construct your own AI applications leveraging these pipelines.
 
 <Llama27bChat />
 
