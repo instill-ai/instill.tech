@@ -6,10 +6,14 @@ import {
   TutorialList,
   TutorialFilters,
   TutorialFiltersProps,
+  TutorialAndBlogType,
+  StartBuildingBlock,
 } from "@/components/tutorial";
 import { TutorialMeta } from "@/types/instill";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
+import { Button, Logo } from "@instill-ai/design-system";
+import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -104,28 +108,39 @@ const TutorialIndexPage: FC<TutorialIndexPageProps> & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="my-[120px] xl:my-40"
+        margin="my-[120px] xl:my-[18px]"
         contentMaxWidth="max-w-[1127px]"
       >
-        <TutorialHero marginBottom="mb-10 xl:mb-[60px]" />
-        <TutorialSearch
-          tutorials={filteredTutorials}
-          setResult={setSearchedTutorials}
-          marginBottom="mb-10 xl:mb-[120px]"
-        />
-        <div className="flex flex-col xl:flex-row xl:gap-x-10">
-          <div className="xl:flex xl:w-3/12">
-            <TutorialFilters
-              tutorials={tutorials}
-              filters={filters}
-              setFilters={setFilters}
-            />
-          </div>
-          <div className="flex xl:w-9/12">
-            <TutorialList tutorials={searchedTutorials} />
-          </div>
+        <div
+          className="bg-cover bg-no-repeat pt-10"
+          style={{ backgroundImage: 'url("/images/tutorials/list-bg-1.svg")' }}
+        >
+          <TutorialHero />
+          <TutorialAndBlogType />
+          <TutorialSearch
+            tutorials={filteredTutorials}
+            setResult={setSearchedTutorials}
+            marginBottom="mb-4"
+          />
         </div>
       </ContentContainer>
+      <div
+        className="bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/images/tutorials/blur-3.svg")',
+          backgroundPosition: "bottom left",
+          zIndex: "10",
+        }}
+      >
+        <ContentContainer margin="py-0" contentMaxWidth="max-w-[1127px]">
+          <div className="flex flex-col xl:flex-row xl:gap-x-10">
+            <div className="flex xl:w-full">
+              <TutorialList tutorials={searchedTutorials} />
+            </div>
+          </div>
+        </ContentContainer>
+      </div>
+      <StartBuildingBlock />
     </React.Fragment>
   );
 };

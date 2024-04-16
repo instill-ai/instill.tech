@@ -22,7 +22,10 @@ import {
   ArticleRightSidebar,
   ArticleSimilarPosts,
 } from "@/components/ui";
-import { TutorialPipelineLabel } from "@/components/tutorial";
+import {
+  StartBuildingBlock,
+  TutorialPipelineLabel,
+} from "@/components/tutorial";
 
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
@@ -185,18 +188,27 @@ const TutorialPage: FC<TutorialPageProps> & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="mt-[60px] mb-[120px] xl:my-40"
+        margin="mt-[60px] mb-0"
         contentMaxWidth="max-w-[1127px]"
       >
+        <BackToPreviousPageLink
+          url="/tutorials"
+          marginBottom="mb-5 xl:mb-10"
+          label="Tutorial"
+        />
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
-          <BackToPreviousPageLink
-            url="/tutorials"
-            marginBottom="mb-5 xl:mb-10"
+          <ArticleThemeImage
+            imgSrc={tutorialMeta?.themeImgSrc || null}
+            placeholderColor={
+              tutorialMeta?.placeholderColor || "bg-instillBlue50"
+            }
+            marginBottom="mb-5"
           />
-          <TutorialPipelineLabel
-            aiTask={tutorialMeta?.aiTask || null}
-            icon={icon}
-            label={label}
+          <ArticlePublishInfo
+            author={tutorialMeta ? tutorialMeta.author : ""}
+            authorAvatarSrc={tutorialMeta ? tutorialMeta.authorAvatarSrc : ""}
+            publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
+            authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
             marginBottom="mb-2"
           />
           <PageHero
@@ -205,24 +217,10 @@ const TutorialPage: FC<TutorialPageProps> & {
             headerFontFamily="font-sans"
             marginBottom="mb-3"
             width="max-w-[1127px]"
-            position="mr-auto"
+            position="mx-auto"
             headerColor="text-instillGrey95"
-            gapY="gap-y-[30px]"
+            gapY="gap-y-[10px]"
             headerUppercase={false}
-          />
-          <ArticlePublishInfo
-            author={tutorialMeta ? tutorialMeta.author : ""}
-            authorAvatarSrc={tutorialMeta ? tutorialMeta.authorAvatarSrc : ""}
-            publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
-            authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
-            marginBottom="mb-10"
-          />
-          <ArticleThemeImage
-            imgSrc={tutorialMeta?.themeImgSrc || null}
-            placeholderColor={
-              tutorialMeta?.placeholderColor || "bg-instillBlue50"
-            }
-            marginBottom="mb-20 xl:mb-40"
           />
           <div
             ref={articleContainerRef}
@@ -238,27 +236,30 @@ const TutorialPage: FC<TutorialPageProps> & {
           {commitMeta ? (
             <React.Fragment>
               <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
-              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
+              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-5" />
             </React.Fragment>
           ) : null}
-        </div>
 
-        {/* 
+          {/* 
           The section for Similar use cases
         */}
 
-        <div>
-          {tutorialMeta?.useCase ? (
-            <ArticleSimilarPosts
-              sectionTitle="Similar Articles"
-              similarArticles={similarTutorials}
-              getCardElement={(source, key) => {
-                return (
-                  <TutorialBlock key={key} tutorial={source as TutorialMeta} />
-                );
-              }}
-            />
-          ) : null}
+          <div>
+            {tutorialMeta?.useCase ? (
+              <ArticleSimilarPosts
+                sectionTitle="Similar Articles"
+                similarArticles={similarTutorials}
+                getCardElement={(source, key) => {
+                  return (
+                    <TutorialBlock
+                      key={key}
+                      tutorial={source as TutorialMeta}
+                    />
+                  );
+                }}
+              />
+            ) : null}
+          </div>
         </div>
 
         {/* 
@@ -279,6 +280,7 @@ const TutorialPage: FC<TutorialPageProps> & {
           <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
         </div>
       </ContentContainer>
+      <StartBuildingBlock />
     </React.Fragment>
   );
 };

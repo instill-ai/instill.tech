@@ -19,9 +19,19 @@ export const PageBase = ({ children }: PageBaseProps) => {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div
+      className="flex min-h-screen flex-col bg-[#F7F6F8] bg-no-repeat"
+      style={{
+        backgroundImage: 'url("/images/tutorials/blur-2.svg")',
+        backgroundPosition: "top right",
+      }}
+    >
       <Nav />
-      <div ref={contentRef} className="flex flex-1 flex-col">
+      <div
+        ref={contentRef}
+        className="flex flex-1 flex-col bg-no-repeat"
+        style={{ backgroundImage: 'url("/images/tutorials/blur.svg")' }}
+      >
         {children}
       </div>
       <div>{contentIsInView ? <Footer /> : null}</div>
