@@ -76,10 +76,12 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
                   : "text-instillGrey50"
               )}
               href={`#${header.slug}`}
-              style={{ paddingLeft: `${(header.depth - 2) * 12}px` }}
+              style={{ paddingLeft: `${header.depth * 12 - 12}px` }}
               onClick={() => setCurrentHash(header.slug)}
             >
               {header.text}
+              <br />
+              {/* {`${(header.depth - 2) * 12}px`} */}
             </a>
           </li>
         ))}
