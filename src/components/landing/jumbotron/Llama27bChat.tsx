@@ -88,7 +88,7 @@ export const Llama27bChat = () => {
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="I don't feel good today"
+                placeholder="I do not feel good today"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
