@@ -27,29 +27,31 @@ export const PageHero = ({
   headerFontFamily,
 }: PageHeroProps) => {
   return (
-    <div
-      className={cn(
-        "flex flex-col",
-        marginBottom,
-        width ? width : "w-full xl:w-8/12",
-        position ? position : "mx-auto",
-        gapY ? gapY : "gap-y-10"
-      )}
-    >
-      <h1
+    <div className="flex justify-center">
+      <div
         className={cn(
-          "w-full text-left text-[42px] font-semibold leading-[42px] xl:text-[64px] xl:leading-[64px]",
-          headerColor ? headerColor : "text-instillSkyBlue",
-          headerUppercase ? "uppercase" : "",
-          headerFontFamily ? headerFontFamily : "font-mono"
+          "flex flex-col",
+          marginBottom,
+          width ? width : "w-full xl:w-8/12",
+          position ? position : "mx-auto",
+          gapY ? gapY : "gap-y-2.5"
         )}
       >
-        {headline}
-      </h1>
-      <div className="font-sans text-lg font-light text-instillGrey70 xl:text-2xl">
-        {subHeadline}
+        <h1
+          className={cn(
+            "w-full text-center text-[24px] font-semibold leading-[28px]",
+            headerColor ? headerColor : "text-instillSkyBlue",
+            headerUppercase ? "uppercase" : "",
+            headerFontFamily ? headerFontFamily : "font-sans"
+          )}
+        >
+          {headline}
+        </h1>
+        <div className="text-center font-sans text-[16px] text-lg font-light text-instillGrey70">
+          {subHeadline}
+        </div>
+        {ctaButton}
       </div>
-      {ctaButton}
     </div>
   );
 };
