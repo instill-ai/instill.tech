@@ -1,5 +1,63 @@
 # Changelog
 
+## [1.46.7](https://github.com/instill-ai/instill.tech/compare/v1.46.6...v1.46.7) (2024-04-04)
+
+
+### Bug Fixes
+
+* fix version to release_stage  ([#779](https://github.com/instill-ai/instill.tech/issues/779)) ([28a8659](https://github.com/instill-ai/instill.tech/commit/28a865926fe579556900cdca05f5edb25c209b7b))
+
+
+### Documentation
+
+* **blog:** update introducing-vdp cover image ([#777](https://github.com/instill-ai/instill.tech/issues/777)) ([9b8232e](https://github.com/instill-ai/instill.tech/commit/9b8232ee33c45622d37cd59912a5b1ddb26d9078))
+
+## [1.46.6](https://github.com/instill-ai/instill.tech/compare/v1.46.5...v1.46.6) (2024-04-03)
+
+
+### Miscellaneous
+
+* Namananand/ins 3864 typescript sdk ([#775](https://github.com/instill-ai/instill.tech/issues/775)) ([a39371c](https://github.com/instill-ai/instill.tech/commit/a39371cf2384dbc09476c202aff3ae0c7143f2b8))
+
+## [1.46.5](https://github.com/instill-ai/instill.tech/compare/v1.46.4...v1.46.5) (2024-04-03)
+
+
+### Bug Fixes
+
+* instill Cloud footer link fix ([#774](https://github.com/instill-ai/instill.tech/issues/774)) ([79324a8](https://github.com/instill-ai/instill.tech/commit/79324a82d78030ad5155edd2bc80ca6b65c89c44))
+* update logo size ([#770](https://github.com/instill-ai/instill.tech/issues/770)) ([b0abca7](https://github.com/instill-ai/instill.tech/commit/b0abca707112a10cc5281543e426af2320995425))
+
+
+### Miscellaneous
+
+* update typescript docs ([#772](https://github.com/instill-ai/instill.tech/issues/772)) ([35052fd](https://github.com/instill-ai/instill.tech/commit/35052fd8a46fd98deb6f0b5295b1963998829a93))
+
+## [1.46.4](https://github.com/instill-ai/instill.tech/compare/v1.46.3...v1.46.4) (2024-03-28)
+
+
+### Bug Fixes
+
+* json-ld parsing ([#767](https://github.com/instill-ai/instill.tech/issues/767)) ([34a3416](https://github.com/instill-ai/instill.tech/commit/34a34160fdb2925a008219fc87f5f449a49cd64e))
+
+## [1.46.3](https://github.com/instill-ai/instill.tech/compare/v1.46.2...v1.46.3) (2024-03-26)
+
+
+### Bug Fixes
+
+* middleware redirection ([#765](https://github.com/instill-ai/instill.tech/issues/765)) ([82efaba](https://github.com/instill-ai/instill.tech/commit/82efaba81243778a65ed7d4a7d30277543313015))
+
+## [1.46.2](https://github.com/instill-ai/instill.tech/compare/v1.46.1...v1.46.2) (2024-03-21)
+
+
+### Miscellaneous
+
+* **website:** fix jumbotron grammar mistake and remove product hunt badge ([#761](https://github.com/instill-ai/instill.tech/issues/761)) ([c4d9d43](https://github.com/instill-ai/instill.tech/commit/c4d9d43362ef3ca02c4a42d2c5227111b58bf802))
+
+
+### Documentation
+
+* **core:** remove outdated figure ([#749](https://github.com/instill-ai/instill.tech/issues/749)) ([634a79c](https://github.com/instill-ai/instill.tech/commit/634a79c60987e052539ba5e725e26d90592a73c4))
+
 ## [1.46.1](https://github.com/instill-ai/instill.tech/compare/v1.46.0...v1.46.1) (2024-03-19)
 
 
@@ -35,7 +93,7 @@
 
 ### Miscellaneous
 
-* **documentation,blog,website:** remove old docs and update documentation to `v0.25.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
+* **documentation,blog,website:** remove old docs and update documentation to `v0.26.0-beta` ([#748](https://github.com/instill-ai/instill.tech/issues/748)) ([bb463f8](https://github.com/instill-ai/instill.tech/commit/bb463f8e6b9e58a221428719da399d6f0892784a))
 * update API link ([#753](https://github.com/instill-ai/instill.tech/issues/753)) ([3000b99](https://github.com/instill-ai/instill.tech/commit/3000b993146e9f43b5e101f5855b75c30e3f9cc6))
 
 

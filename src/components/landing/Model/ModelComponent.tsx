@@ -31,7 +31,8 @@ function ModelComponent({ model }: { model: ModelDefinition }) {
               size="lg"
               className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
             >
-              {model.task.split("_").join(" ").toLowerCase()}
+              {/* Trim the first 5 characters "Task " */}
+              {model.task.split("_").join(" ").toLowerCase().slice(5)}
             </Button>
           </div>
           <div className="self-stretch font-sans text-base font-normal leading-7 text-semantic-fg-secondary">

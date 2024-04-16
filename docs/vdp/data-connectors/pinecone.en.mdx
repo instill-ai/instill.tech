@@ -1,0 +1,109 @@
+---
+title: "Pinecone"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Pinecone connector https://github.com/instill-ai/instill-core"
+---
+
+The Pinecone component is a data connector that allows users to build and search vector datasets.
+It can carry out the following tasks:
+
+- [Query](#query)
+- [Upsert](#upsert)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/pinecone/v0/config/definition.json).
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your Pinecone AI API key. You can create a api key in [Pinecone Console](https://app.pinecone.io/) |
+| Pinecone Base URL (required) | `url` | string | Fill in your Pinecone base URL. It is in the form [https://index_name-project_id.svc.environment.pinecone.io] |
+
+Pinecone connector resources can be created in two ways:
+
+### No-code Setup
+
+1. Go to the **Connectors** page and click **+ Create Connector**.
+1. Select **Pinecone**.
+1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
+1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
+
+### Low-code Setup
+
+<CH.Code>
+
+```shellscript cURL(Instill-Cloud)
+curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
+--data '{
+  "id": "my-pinecone",
+  "connector_definition_name": "connector-definitions/pinecone",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "url": <url>
+  }
+}'
+```
+
+```shellscript cURL(Instill-Core)
+curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
+--header 'Authorization: Bearer <Instill-Core-API-Token>' \
+--data '{
+  "id": "my-pinecone",
+  "connector_definition_name": "connector-definitions/pinecone",
+  "description": "Optional description",
+  "configuration": {
+    "api_key": <api-key>,
+    "url": <url>
+  }
+}'
+```
+
+</CH.Code>
+
+For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
+
+## Supported Tasks
+
+### Query
+
+Retrieve the ids of the most similar items in a namespace, along with their similarity scores.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_QUERY` |
+| ID | `id` | string | The unique ID of the vector to be used as a query vector. If present, the vector parameter will be ignored. |
+| Vector (required) | `vector` | array[number] | An array of dimensions for the query vector. |
+| Top K (required) | `top_k` | integer | The number of results to return for each query |
+| Namespace | `namespace` | string | The namespace to query |
+| Filter | `filter` | object | The filter to apply. You can use vector metadata to limit your search. See https://www.pinecone.io/docs/metadata-filtering/. |
+| Minimum Score | `min_score` | number | Exclude results whose score is below this value |
+| Include Metadata | `include_metadata` | boolean | Indicates whether metadata is included in the response as well as the IDs |
+| Include Values | `include_values` | boolean | Indicates whether vector values are included in the response |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Namespace | `namespace` | string | The namespace of the query |
+| Matches | `matches` | array[object] | The matches returned for the query |
+
+### Upsert
+
+Writes vectors into a namespace. If a new value is upserted for an existing vector id, it will overwrite the previous value.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_UPSERT` |
+| ID (required) | `id` | string | This is the vector's unique id |
+| Values (required) | `values` | array[number] | An array of dimensions for the vector to be saved |
+| Namespace | `namespace` | string | The namespace to query |
+| Metadata | `metadata` | object | The vector metadata |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Upserted Count | `upserted_count` | integer | Number of records modified or added |

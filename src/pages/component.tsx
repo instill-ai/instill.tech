@@ -42,6 +42,7 @@ export type ConnectorDef = ConnectorDefinition & {
   version?: string;
   description?: string;
   source_url?: string;
+  release_stage?: string;
 };
 
 export type OperatorDef = OperatorDefinition & {
@@ -49,6 +50,7 @@ export type OperatorDef = OperatorDefinition & {
   version?: string;
   description?: string;
   source_url?: string;
+  release_stage?: string;
 };
 
 export type Connector = {
@@ -68,14 +70,14 @@ export const ConnectorCategory = {
 };
 
 export const docsLinks: any = {
-  "hugging-face": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/model/import/huggingface`,
-  "archetype-ai": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/ai-connectors/archetype-ai`,
-  redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/redis`,
-  start: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/start`,
-  end: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/end`,
-  image: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/image`,
-  text: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/operators/text`,
-  "airbyte-destination": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/${LATEST_VERSIONS["core"]}/vdp/data-connectors/airbyte`,
+  "hugging-face": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/model/import/huggingface`,
+  "archetype-ai": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/ai-connectors/archetypeai`,
+  redis: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/data-connectors/redis`,
+  start: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/start`,
+  end: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/end`,
+  image: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/image`,
+  text: `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/operators/text`,
+  "airbyte-destination": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/data-connectors/airbyte`,
 };
 
 export const getHeaderColorClass = (
@@ -104,7 +106,7 @@ export function VersionType({
   version: string;
   onMouseEnter?: boolean;
 }) {
-  const parsedVersion = version.split("-")[1];
+  const parsedVersion = version.split("_")[2]?.toLowerCase();
 
   switch (parsedVersion) {
     case "alpha":

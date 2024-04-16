@@ -199,7 +199,10 @@ export const PageHead = ({
         <link rel="shortcut icon" href="/instill-ai-favicon.ico" />
 
         {pageType === "blog" && jsonLd && (
-          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
         )}
       </Head>
     </React.Fragment>

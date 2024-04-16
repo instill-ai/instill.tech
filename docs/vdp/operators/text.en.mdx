@@ -1,0 +1,55 @@
+---
+title: "Text"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Text operator https://github.com/instill-ai/instill-core"
+---
+
+The Text component is an operator that allows users to extract and manipulate text from different sources.
+It can carry out the following tasks:
+
+- [Convert To Text](#convert-to-text)
+- [Split By Token](#split-by-token)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/operator/text/v0/config/definition.json).
+
+## Supported Tasks
+
+### Convert To Text
+
+Convert document to text.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CONVERT_TO_TEXT` |
+| Document (required) | `doc` | string | Base64 encoded document (PDF, DOC, DOCX, XML, HTML, RTF, etc.) to be converted to plain text |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Body | `body` | string | Plain text converted from the document |
+| Meta | `meta` | object | Metadata extracted from the document |
+| MSecs | `msecs` | number | Time taken to convert the document |
+| Error | `error` | string | Error message if any during the conversion process |
+
+### Split By Token
+
+Split text by token.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SPLIT_BY_TOKEN` |
+| Text (required) | `text` | string | Text to be split |
+| Model (required) | `model` | string | ID of the model to use for tokenization |
+| Chunk Token Size | `chunk_token_size` | integer | Number of tokens per text chunk |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Token Count | `token_count` | integer | Total count of tokens in the input text |
+| Text Chunks | `text_chunks` | array[string] | Text chunks after splitting |
+| Number of Text Chunks | `chunk_num` | integer | Total number of output text chunks |

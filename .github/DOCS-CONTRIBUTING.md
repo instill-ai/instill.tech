@@ -67,6 +67,12 @@ There have three content folders and their corresponding page, assets folder.
 
 To be documented...
 
+### Auto generate connector and operator docs
+
+```
+$ update_connector_operator.sh
+```
+
 ### Support extended markdown syntax
 
 #### Info-block
@@ -214,7 +220,7 @@ You can embed Jumbotron by using this component.
 <WebpageSummarization />
 <StabilityAIOpenAISticker />
 <Llama2Chat />
-<Llama27bVsLlama27bChat />
+<Llama27bChat />
 <SEOArticleWriter />
 <YOLOv7 />
 ```

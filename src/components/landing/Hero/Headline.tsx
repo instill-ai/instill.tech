@@ -12,7 +12,7 @@ export const Headline = ({ marginBottom }: HeadlineProps) => {
         marginBottom
       )}
     >
-      Orchestrate Data, Models, Pipelines for Generative AI
+      Orchestrate Data, Models and Pipelines for Generative AI
     </h1>
   );
 };

@@ -62,7 +62,7 @@ export const Nav = () => {
         <SolidButton
           type="button"
           color={"primary"}
-          padding="px-[17px] py-[7px] transition duration-700 ease-in-out hover-animation"
+          padding="px-[17px] py-[7px] transition duration-700 ease-in-out xl:hover-animation"
           itemGapX="gap-x-5"
           onClickHandler={() =>
             router.push("https://instill.tech", undefined, { scroll: false })

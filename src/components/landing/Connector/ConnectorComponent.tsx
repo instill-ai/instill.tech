@@ -7,13 +7,7 @@ import {
 } from "@/pages/component";
 import React from "react";
 import cn from "clsx";
-import {
-  Button,
-  DropdownMenu,
-  GitHubIcon,
-  Tag,
-  Tooltip,
-} from "@instill-ai/design-system";
+import { Button, DropdownMenu, GitHubIcon } from "@instill-ai/design-system";
 
 function ConnectorComponent({
   connector_definition,
@@ -57,7 +51,9 @@ function ConnectorComponent({
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                connector_definition.version ? connector_definition.version : ""
+                connector_definition.release_stage
+                  ? connector_definition.release_stage
+                  : ""
               }
               // onMouseEnter={onMouseEnter}
             />
