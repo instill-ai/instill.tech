@@ -3,6 +3,7 @@ import { GitHubIcon } from "@instill-ai/design-system";
 import { useState } from "react";
 import { TutorialMeta } from "@/types/instill";
 import { Nullable } from "vitest";
+import { CommitMeta } from "@/lib/github/type";
 
 export type ArticlePublishInfoProps = {
   author: string;
@@ -10,7 +11,6 @@ export type ArticlePublishInfoProps = {
   authorGitHubUrl: string;
   publishedOn: string;
   marginBottom?: string;
-  tutorialMeta: Nullable<TutorialMeta>;
 };
 
 export const ArticlePublishInfo = ({
@@ -19,11 +19,8 @@ export const ArticlePublishInfo = ({
   authorGitHubUrl,
   publishedOn,
   marginBottom,
-  tutorialMeta,
 }: ArticlePublishInfoProps) => {
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
-
-  console.log({ tutorialMeta });
 
   return (
     <div className="flex justify-center">
@@ -55,15 +52,12 @@ export const ArticlePublishInfo = ({
         </div>
         <div className="mb-2 flex gap-x-2">
           <p className="my-auto pt-[3px] font-sans text-[14px] font-normal text-instillGrey50">
-            {tutorialMeta?.publishedOn
-              ? new Date(tutorialMeta?.publishedOn).toLocaleDateString(
-                  "en-US",
-                  {
-                    month: "long",
-                    day: "2-digit",
-                    year: "numeric",
-                  }
-                )
+            {publishedOn
+              ? new Date(publishedOn).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "2-digit",
+                  year: "numeric",
+                })
               : ""}
           </p>
           <div className="flex pt-0.5">

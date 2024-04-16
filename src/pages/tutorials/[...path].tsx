@@ -210,7 +210,6 @@ const TutorialPage: FC<TutorialPageProps> & {
             publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
             authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
             marginBottom="mb-2"
-            tutorialMeta={tutorialMeta ?? tutorialMeta}
           />
           <PageHero
             headline={tutorialMeta ? tutorialMeta.title : ""}
