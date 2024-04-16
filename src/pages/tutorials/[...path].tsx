@@ -276,7 +276,11 @@ const TutorialPage: FC<TutorialPageProps> & {
             height: articleContainerDimension.height - 100,
           }}
         >
-          <ArticleRightSidebar headers={headers} maxWidth="max-w-[300px]" />
+          <ArticleRightSidebar
+            headers={headers}
+            maxWidth="max-w-[300px]"
+            type="tutorial"
+          />
         </div>
       </ContentContainer>
     </React.Fragment>

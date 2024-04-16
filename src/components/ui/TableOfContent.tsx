@@ -4,6 +4,7 @@ import { Nullable } from "@/types/instill";
 import { useRouter } from "next/router";
 
 export type TableOfContentProps = {
+  type?: "blog" | "tutorial" | "blog";
   headers: {
     slug: string;
     text: string;
@@ -11,7 +12,7 @@ export type TableOfContentProps = {
   }[];
 };
 
-export const TableOfContent = ({ headers }: TableOfContentProps) => {
+export const TableOfContent = ({ headers, type }: TableOfContentProps) => {
   const router = useRouter();
   const onThisPageID = "on-this-page-heading";
   const [currentHash, setCurrentHash] = useState<Nullable<string>>(null);
@@ -76,12 +77,16 @@ export const TableOfContent = ({ headers }: TableOfContentProps) => {
                   : "text-instillGrey50"
               )}
               href={`#${header.slug}`}
-              style={{ paddingLeft: `${header.depth * 12 - 12}px` }}
+              style={{
+                paddingLeft: `${
+                  type === "tutorial" || type === "blog"
+                    ? (header.depth - 1) * 12 + "px"
+                    : (header.depth - 2) * 12 + "px"
+                }`,
+              }}
               onClick={() => setCurrentHash(header.slug)}
             >
               {header.text}
-              <br />
-              {/* {`${(header.depth - 2) * 12}px`} */}
             </a>
           </li>
         ))}
