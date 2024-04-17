@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.1](https://github.com/instill-ai/instill.tech/compare/v1.47.0...v1.47.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* team member details ([#788](https://github.com/instill-ai/instill.tech/issues/788)) ([ef16512](https://github.com/instill-ai/instill.tech/commit/ef165122f8bd4730b77e8ac6e29d698983756d8c))
+
 ## [1.47.0](https://github.com/instill-ai/instill.tech/compare/v1.46.7...v1.47.0) (2024-04-16)
 
 
