@@ -22,10 +22,7 @@ import {
   ArticleRightSidebar,
   ArticleSimilarPosts,
 } from "@/components/ui";
-import {
-  StartBuildingBlock,
-  TutorialPipelineLabel,
-} from "@/components/tutorial";
+import { StartBuildingBlock } from "@/components/tutorial";
 
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
@@ -153,10 +150,6 @@ type GetLayOutProps = {
 const TutorialPage: FC<TutorialPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ mdxSource, commitMeta, headers, tutorials, tutorialMeta }) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: tutorialMeta?.aiTask || null,
-  });
-
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 

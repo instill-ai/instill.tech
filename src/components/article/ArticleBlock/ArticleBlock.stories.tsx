@@ -1,21 +1,21 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { TutorialBlock } from "./TutorialBlock";
+import { ArticleBlock } from "./ArticleBlock";
 
 export default {
-  title: "Components/Tutorial/TutorialBlock",
-  component: TutorialBlock,
-} as ComponentMeta<typeof TutorialBlock>;
+  title: "Components/Article/ArticleBlock",
+  component: ArticleBlock,
+} as ComponentMeta<typeof ArticleBlock>;
 
-const Template: ComponentStory<typeof TutorialBlock> = (args) => (
-  <TutorialBlock {...args} />
+const Template: ComponentStory<typeof ArticleBlock> = (args) => (
+  <ArticleBlock {...args} />
 );
 
-export const Playground: ComponentStory<typeof TutorialBlock> = Template.bind(
+export const Playground: ComponentStory<typeof ArticleBlock> = Template.bind(
   {}
 );
 
 Playground.args = {
-  tutorial: {
+  article: {
     aiTask: "Ocr",
     title: "Build a SYNC classification pipeline",
     description:
@@ -31,7 +31,7 @@ Playground.args = {
     slug: "build-a-sync-pipeline",
     publishedOn: "2022-10-21T08:00:00",
     placeholderColor: "bg-instillWarmOrange50",
-    themeImgSrc: "/tutorial-assets/tutorial-test-img.png",
+    themeImgSrc: "/article-assets/article-test-img.png",
     themeImgThumbnailSrc: "",
     useCase: "Use case 1",
     author: "Xiaofei Du",

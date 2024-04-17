@@ -24,7 +24,7 @@ export const BackToPreviousPageLink = ({
         onClick={() => router.push(url)}
       >
         <Icons.ChevronLeft className="my-auto h-4 w-4 stroke-semantic-accent-default" />
-        <span className="my-auto">Tutorials</span>
+        <span className="my-auto">{label || "Tutorials"}</span>
       </Button>
     </div>
   );

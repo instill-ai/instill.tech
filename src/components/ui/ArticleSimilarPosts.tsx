@@ -1,13 +1,10 @@
-import { BlogArticleMeta, TutorialMeta } from "@/types/instill";
+import { ArticleMeta, BlogArticleMeta, TutorialMeta } from "@/types/instill";
 import React, { ReactElement } from "react";
 
 export type ArticleSimilarPostsProps = {
   sectionTitle: string;
-  similarArticles: TutorialMeta[] | BlogArticleMeta[];
-  getCardElement: (
-    source: TutorialMeta | BlogArticleMeta,
-    key: string
-  ) => ReactElement;
+  similarArticles: ArticleMeta[];
+  getCardElement: (source: ArticleMeta, key: string) => ReactElement;
 };
 
 export const ArticleSimilarPosts = ({

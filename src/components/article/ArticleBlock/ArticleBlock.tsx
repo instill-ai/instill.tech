@@ -1,20 +1,17 @@
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { getAiTaskIconAndLabel } from "@/lib/instill";
-import { TutorialMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useState } from "react";
-import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
-import { TutorialLabel } from "../TutorialLabel";
+import { ArticleImagePlaceholder } from "../ArticleImagePlaceholder";
+import { ArticleLabel } from "../ArticleLabel";
 
-export type TutorialBlockProps = {
-  tutorial: TutorialMeta;
+export type ArticleBlockProps = {
+  article: ArticleMeta;
 };
 
-export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: tutorial.aiTask,
-  });
+export const ArticleBlock = ({ article }: ArticleBlockProps) => {
   const [themeImageThumbnailIsError, setThemeImageThumbnailIsError] =
     useState(false);
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
@@ -25,7 +22,7 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
   return (
     <div className="rounded-sm p-4 shadow-lg">
       <Link
-        href={`${tutorial.slug}`}
+        href={`${article.slug}`}
         ref={blockContainerRef}
         className="flex w-full flex-col"
       >
@@ -34,21 +31,21 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             className="w-full"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
           >
-            <TutorialImagePlaceholder
+            <ArticleImagePlaceholder
               width="w-full"
               height="h-full"
-              color={tutorial.placeholderColor}
+              color={article.placeholderColor}
             />
           </div>
         ) : (
           // The reason we use img not next/Image is because we don't know the
           // given image's size and we need to adjust it according to the width
-          // of the TutorialBlock
+          // of the ArticleBlock
 
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={tutorial.themeImgThumbnailSrc}
-            alt="The theme of this tutorial"
+            src={article.themeImgThumbnailSrc}
+            alt="The theme of this article"
             style={{ height: `${(blockContainerDimension.width * 9) / 16}px` }}
             className="w-full object-cover"
             onError={() => {
@@ -75,8 +72,8 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={tutorial.authorAvatarSrc}
-                    alt={`${tutorial.title}'s author's github avatar`}
+                    src={article.authorAvatarSrc}
+                    alt={`${article.title}'s author's github avatar`}
                     className="h-8 w-8 rounded-full object-cover"
                     onError={() => {
                       setAuthorAvatarIsError(true);
@@ -85,14 +82,14 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                 )}
               </div>
               <p className="my-auto pt-[3px] font-sans text-[14px] font-normal text-instillGrey50">
-                {tutorial.author}
+                {article.author}
               </p>
             </div>
           </div>
           <div className="mb-2 flex gap-x-2">
             <p className="my-auto pt-[3px] font-sans text-[14px] font-normal text-instillGrey50">
-              {tutorial.publishedOn
-                ? new Date(tutorial.publishedOn).toLocaleDateString("en-US", {
+              {article.publishedOn
+                ? new Date(article.publishedOn).toLocaleDateString("en-US", {
                     month: "long",
                     day: "2-digit",
                     year: "numeric",
@@ -105,15 +102,15 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
             <div className="flex pt-0.5">
               <p className="font-sans text-[14px] font-normal text-instillGrey50">
                 {" "}
-                Tutorial
+                {article.type}
               </p>
             </div>
           </div>
           <h3 className="mb-2 break-words font-sans text-[16px] font-medium leading-6">
-            {tutorial.title}
+            {article.title}
           </h3>
           <p className="mb-2 w-full text-ellipsis font-sans text-[14px] font-normal text-[#605A57]">
-            {tutorial.description}
+            {article.description}
           </p>
         </div>
       </Link>

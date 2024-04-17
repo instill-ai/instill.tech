@@ -22,7 +22,7 @@ export const PageBase = ({ children }: PageBaseProps) => {
     <div
       className="flex min-h-screen flex-col bg-[#F7F6F8] bg-no-repeat"
       style={{
-        backgroundImage: 'url("/images/tutorials/blur-2.svg")',
+        backgroundImage: 'url("/images/articles/blur-2.svg")',
         backgroundPosition: "top right",
       }}
     >
@@ -30,7 +30,7 @@ export const PageBase = ({ children }: PageBaseProps) => {
       <div
         ref={contentRef}
         className="flex flex-1 flex-col bg-no-repeat"
-        style={{ backgroundImage: 'url("/images/tutorials/blur.svg")' }}
+        style={{ backgroundImage: 'url("/images/articles/blur.svg")' }}
       >
         {children}
       </div>
