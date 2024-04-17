@@ -12,8 +12,6 @@ export type TutorialBlockProps = {
 };
 
 export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
-  console.log({ tutorial });
-
   const { icon, label } = getAiTaskIconAndLabel({
     aiTask: tutorial.aiTask,
   });

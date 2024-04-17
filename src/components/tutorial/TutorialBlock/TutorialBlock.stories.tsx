@@ -37,5 +37,6 @@ Playground.args = {
     author: "Xiaofei Du",
     authorAvatarSrc: "",
     authorGitHubUrl: "",
+    type: "Tutorial",
   },
 };

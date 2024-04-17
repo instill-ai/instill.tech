@@ -43,7 +43,7 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
   getLayout?: FC<GetLayOutProps>;
 } = ({ articles }) => {
   const [searchedArticles, setSearchedArticles] = useState<ArticleMeta[]>([]);
-  const [filters, setFilters] = useState<string>("all");
+  const [filters, setFilters] = useState<string>("All");
 
   // We don't need to complicate thing at this stage, once
   // we have many condition to filter we can find a lib to
@@ -57,8 +57,6 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
     }
     return articles;
   }, [filters, articles]);
-
-  console.log({ filteredArticles, articles, searchedArticles, filters });
 
   return (
     <React.Fragment>

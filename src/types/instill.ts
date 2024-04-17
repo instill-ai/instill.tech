@@ -39,7 +39,7 @@ export type TutorialMeta = {
   lang: string;
   draft: boolean;
   description: string;
-  aiTask?: AiTask;
+  aiTask: AiTask;
   commit: CommitMeta;
   slug: string;
   publishedOn: string;
