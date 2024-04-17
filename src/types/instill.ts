@@ -39,7 +39,7 @@ export type TutorialMeta = {
   lang: string;
   draft: boolean;
   description: string;
-  aiTask: AiTask;
+  aiTask?: AiTask;
   commit: CommitMeta;
   slug: string;
   publishedOn: string;
@@ -51,6 +51,7 @@ export type TutorialMeta = {
   author: string;
   authorAvatarSrc: string;
   authorGitHubUrl: string;
+  type: string;
 };
 
 export type BlogArticleMeta = {
@@ -69,6 +70,27 @@ export type BlogArticleMeta = {
   authorAvatarSrc: string;
   authorGitHubUrl: string;
   category: string;
+  type: string;
+};
+
+export type ArticleMeta = {
+  title: string;
+  lang: string;
+  draft: boolean;
+  description: string;
+  aiTask?: Nullable<AiTask>;
+  commit: CommitMeta;
+  slug: string;
+  publishedOn: string;
+  placeholderColor: TutorialPlaceholderColor;
+  themeImgSrc: string;
+  themeImgAlt?: string;
+  themeImgThumbnailSrc: string;
+  useCase?: string;
+  author: string;
+  authorAvatarSrc: string;
+  authorGitHubUrl: string;
+  type: string;
 };
 
 export type BlogArticleJsonLD = {

@@ -4,8 +4,8 @@ import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useState } from "react";
-import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
-import { TutorialLabel } from "../TutorialLabel";
+import { TutorialImagePlaceholder } from "../ArticleImagePlaceholder";
+import { TutorialLabel } from "../ArticleLabel";
 
 export type TutorialBlockProps = {
   tutorial: TutorialMeta;
