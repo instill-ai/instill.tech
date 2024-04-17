@@ -62,7 +62,7 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
     <React.Fragment>
       <PageHead
         pageType="main"
-        pageTitle="Article | Instill AI"
+        pageTitle="Articles | Instill AI"
         pageDescription={null}
         commitMeta={null}
         currentArticleMeta={null}
@@ -95,11 +95,7 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
         }}
       >
         <ContentContainer margin="py-0" contentMaxWidth="max-w-[1127px]">
-          <div className="flex flex-col xl:flex-row xl:gap-x-10">
-            <div className="flex xl:w-full">
-              <ArticleList articles={searchedArticles} />
-            </div>
-          </div>
+          <ArticleList articles={searchedArticles} />
         </ContentContainer>
       </div>
       <StartBuildingBlock />
