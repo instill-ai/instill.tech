@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import cn from "clsx";
-import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
+import { ArrowRightIcon, Button, SolidButton } from "@instill-ai/design-system";
 
 import { ReactMarkdownWrapper } from "@/components/ui";
 
@@ -41,23 +41,17 @@ export const PositionDescription = ({
         additionalClassname="career-position-description"
         marginBottom="mb-[60px]"
       />
-      <SolidButton
-        position="mx-auto"
-        type="button"
-        color="primaryLight"
-        onClickHandler={handleClick}
-        itemGapX="gap-x-6"
-        endIcon={
-          <ArrowRightIcon
-            width="w-5 xl:w-[28px]"
-            height="h-5 xl:h-[28px]"
-            color="fill-instillNeonBlue"
-            position="my-auto"
-          />
-        }
-      >
-        <p className="text-lg xl:text-2xl">Start applying</p>
-      </SolidButton>
+
+      <div className="flex justify-center">
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={handleClick}
+          className="mx-auto"
+        >
+          Apply now
+        </Button>
+      </div>
     </div>
   );
 };

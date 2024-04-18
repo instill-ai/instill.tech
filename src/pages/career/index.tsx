@@ -23,6 +23,7 @@ import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import {
   Button,
   Icons,
+  PinIcon,
   Separator,
   getElementPosition,
 } from "@instill-ai/design-system";
@@ -113,28 +114,44 @@ const CareerPage: FC<CareerPageProps> & {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer margin="my-[56px]" contentMaxWidth="max-w-[1127px]">
+      <ContentContainer margin="mt-[56px]" contentMaxWidth="max-w-[1127px]">
         <CareerHero />
-        {/* <CareerGeneralIntro marginBottom="mb-20 xl:mb-40" /> */}
-        <div className="mb-10 mt-12 rounded-sm p-[30px] shadow-lg">
-          <p className="mb-5 font-mono text-[16px] font-normal leading-6">
-            We&apos;re looking for passionate and dedicated early members to
-            build open-source and highest-quality products for solving a
-            challenging issue in the modern data stack. You&apos;ll be joining
-            the founding team to establish its strong foundation from the very
-            beginning.
-          </p>
-          <p className="font-mono text-[16px] font-normal leading-6">
-            This is a great opportunity for those who want to build their career
-            with a fast-growing startup at zero to one stage. It is also a
-            position for those who value learning for the long term above
-            earning in the short term. Your colleagues are a bunch of super
-            self-motivated AI missionaries and data tooling practitioners. You
-            will impact the company direction and help Instill AI build its
-            strong foundation and shape its open-source community.
+
+        <div className="mt-[48px] flex justify-center">
+          <p className="font-sans text-[36px] font-semibold leading-[30px] tracking-[-0.5px] text-[#001354]">
+            Mission
           </p>
         </div>
-        <div className="mt-6 flex flex-col gap-y-4">
+      </ContentContainer>
+      <div style={{ backgroundImage: 'url("/images/career/glow.png")' }}>
+        <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
+          <div className="mb-10 mt-6 rounded-sm p-[30px] shadow-lg">
+            <p className="mb-5 font-mono text-[16px] font-normal leading-6">
+              We&apos;re looking for passionate and dedicated early members to
+              build open-source and highest-quality products for solving a
+              challenging issue in the modern data stack. You&apos;ll be joining
+              the founding team to establish its strong foundation from the very
+              beginning.
+            </p>
+            <p className="font-mono text-[16px] font-normal leading-6">
+              This is a great opportunity for those who want to build their
+              career with a fast-growing startup at zero to one stage. It is
+              also a position for those who value learning for the long term
+              above earning in the short term. Your colleagues are a bunch of
+              super self-motivated AI missionaries and data tooling
+              practitioners. You will impact the company direction and help
+              Instill AI build its strong foundation and shape its open-source
+              community.
+            </p>
+          </div>
+        </ContentContainer>
+      </div>
+
+      <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
+        <div
+          className="mt-6 flex flex-col gap-y-4"
+          // style={{ backgroundImage: 'url("/images/career/grid.svg")' }}
+        >
           <div className="flex justify-center">
             <Button
               variant="secondaryGrey"
@@ -157,13 +174,22 @@ const CareerPage: FC<CareerPageProps> & {
               </p>
             </div>
           </div>
+        </div>
+      </ContentContainer>
+      <div
+        style={{
+          backgroundImage: 'url("/images/career/bg.svg")',
+          backgroundPosition: "right",
+          backgroundSize: 415,
+        }}
+        className="bg-cover bg-no-repeat"
+      >
+        <ContentContainer margin="mb-[56px]" contentMaxWidth="max-w-[1127px]">
           <div className="mt-8 rounded-sm bg-[#FFFFFF99] px-4 pt-5 shadow-lg">
             <p className="px-4 font-sans text-[18px] font-semibold leading-[28px]">
               Openings
             </p>
             <Separator orientation="horizontal" className="mb-2 mt-5" />
-
-            {console.log({ positions })}
 
             {positions.map((position, index) => (
               <React.Fragment key={position.slug}>
@@ -180,28 +206,12 @@ const CareerPage: FC<CareerPageProps> & {
                     </Link>
                   </div>
                   <div className="my-auto flex w-[25%] flex-row gap-x-3 px-6 py-4">
-                    <svg
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 13.3496C13.6569 13.3496 15 12.0065 15 10.3496C15 8.69276 13.6569 7.34961 12 7.34961C10.3431 7.34961 9 8.69276 9 10.3496C9 12.0065 10.3431 13.3496 12 13.3496Z"
-                        stroke="black"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M12 22.3496C16 18.3496 20 14.7679 20 10.3496C20 5.93133 16.4183 2.34961 12 2.34961C7.58172 2.34961 4 5.93133 4 10.3496C4 14.7679 8 18.3496 12 22.3496Z"
-                        stroke="black"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <PinIcon
+                      width="w-6"
+                      height="h-6"
+                      color="fill-instillGrey90"
+                      position="my-auto"
+                    />
 
                     <p className="my-auto font-sans text-[14px] font-normal text-[#475467]">
                       {position.location}
@@ -237,8 +247,8 @@ const CareerPage: FC<CareerPageProps> & {
               </React.Fragment>
             ))}
           </div>
-        </div>
-      </ContentContainer>
+        </ContentContainer>
+      </div>
     </React.Fragment>
   );
 };
