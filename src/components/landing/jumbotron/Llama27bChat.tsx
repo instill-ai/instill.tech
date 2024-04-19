@@ -10,14 +10,13 @@ import {
 import * as React from "react";
 import { useSwiper } from "swiper/react";
 
-const defaultAnswer = `The unusual aspect of this image is that a man is standing on a folding table that is strapped to the back of a yellow taxi, ironing clothes. It is not common to see someone doing laundry in such an unconventional setting, especially while in traffic. The presence of a taxi and the man's position on the table make the scene quite peculiar and eye-catching, as it is not a typical scenario one would expect to see in everyday life.`;
+const defaultAnswer = `Oh no, sorry to hear that you're not feeling good today! 😔 Can you tell me more about how you're feeling? Sometimes talking about it can help. 🤗 Is there anything in particular that's bothering you, or do you just feel generally unwell?`;
 
-export const Llama27bVsLlama27bChat = () => {
+export const Llama27bChat = () => {
   const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [llama2_7b_chat, setLlama2_7b_chat] =
     React.useState<Nullable<string>>("");
-  const [llama2_7b, setLlama2_7b] = React.useState<Nullable<string>>("");
   const [question, setQuestion] = React.useState<string>("");
 
   const handleGenrate = async () => {
@@ -26,7 +25,7 @@ export const Llama27bVsLlama27bChat = () => {
       swiper.autoplay.stop();
     }
 
-    const apiResponse = await JumbotronSDK.llama27bVsLlama27bChat({
+    const apiResponse = await JumbotronSDK.llama27bChat({
       inputs: [
         {
           prompt: question,
@@ -36,9 +35,7 @@ export const Llama27bVsLlama27bChat = () => {
 
     if (apiResponse.status === "success") {
       const llama2_7b_chat: string = apiResponse.data.outputs[0].llama2_7b_chat;
-      const llama2_7b: string = apiResponse.data.outputs[0].llama2_7b_output;
       setLlama2_7b_chat(llama2_7b_chat);
-      setLlama2_7b(llama2_7b);
     } else {
       toast({
         title: "Error!",
@@ -54,18 +51,15 @@ export const Llama27bVsLlama27bChat = () => {
   };
 
   return (
-    <div className="jumbotron-card border bg-white xl:border-none">
+    <div className="jumbotron-card bg-white xl:border-none">
       <div className="bg-[#F8F9FC] p-3">
-        <h3 className="my-auto product-body-text-1-semibold">
-          Llama2-7b vs Llama2-7b Chat
-        </h3>
+        <h3 className="my-auto product-body-text-1-semibold">AI compananion</h3>
       </div>
       <div className="px-6">
         <div className="flex flex-row pt-4">
           <div className="my-auto w-full pr-2">
             <p className="text-sm font-medium text-black xl:text-[16px]">
-              Enter a prompt, see how differently Llama2-7B and Llama2-7B-Chat
-              respond.
+              Start a conversation with AI model
             </p>
           </div>
 
@@ -94,7 +88,7 @@ export const Llama27bVsLlama27bChat = () => {
               <Input.Core
                 disabled={false}
                 type="text"
-                placeholder="Where will GenAI lead mankind?"
+                placeholder="I do not feel good today"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
@@ -103,18 +97,7 @@ export const Llama27bVsLlama27bChat = () => {
         </div>
 
         <div className="flex flex-col gap-y-4">
-          <p className="text-sm font-medium text-black xl:text-[16px]">
-            Llama2-7B
-          </p>
-          <div className="h-[180px] w-full overflow-y-auto border px-2 py-3 xl:h-[205px]">
-            <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
-              {llama2_7b ? llama2_7b : defaultAnswer}
-            </pre>
-          </div>
-          <p className="text-sm font-medium text-black xl:text-[16px]">
-            Llama2-7B-Chat
-          </p>
-          <div className="h-[180px] w-full overflow-y-auto border px-2 py-3 xl:h-[205px]">
+          <div className="h-[500px] w-full overflow-y-auto border px-2 py-3 xl:h-[500px]">
             <pre className="flex w-full whitespace-pre-line text-semantic-fg-primary product-body-text-3-regular xl:product-body-text-2-regular">
               {llama2_7b_chat ? llama2_7b_chat : defaultAnswer}
             </pre>
@@ -122,7 +105,7 @@ export const Llama27bVsLlama27bChat = () => {
         </div>
         <div className="mt-5 flex justify-end">
           <a
-            href="https://instill.tech/instill-wombat/pipelines/llama2-7b_vs_llama2-7b-chat"
+            href="https://instill.tech/instill-wombat/pipelines/llama2-7b-chat"
             target="_blank"
             className="absolute bottom-3 right-6 z-30 inline-flex items-center gap-x-2 divide-x divide-zinc-100/10 rounded bg-zinc-800/80 p-0 px-2 text-sm font-normal text-white no-underline drop-shadow-2xl backdrop-blur hover:text-blue-500 "
           >
