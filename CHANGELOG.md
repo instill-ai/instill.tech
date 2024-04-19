@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.3](https://github.com/instill-ai/instill.tech/compare/v1.47.2...v1.47.3) (2024-04-19)
+
+
+### Documentation
+
+* remove k8s ([#795](https://github.com/instill-ai/instill.tech/issues/795)) ([1dbe708](https://github.com/instill-ai/instill.tech/commit/1dbe708815b67c7b5b56ead38e884d336c9a1c67))
+
 ## [1.47.2](https://github.com/instill-ai/instill.tech/compare/v1.47.1...v1.47.2) (2024-04-19)
 
 
