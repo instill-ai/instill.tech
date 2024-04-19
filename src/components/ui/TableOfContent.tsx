@@ -80,7 +80,7 @@ export const TableOfContent = ({ headers, type }: TableOfContentProps) => {
               style={{
                 paddingLeft: `${
                   type === "tutorial" || type === "blog"
-                    ? (header.depth - 1) * 16 + "px"
+                    ? (header.depth - 1) * 20 + "px"
                     : (header.depth - 2) * 12 + "px"
                 }`,
               }}
