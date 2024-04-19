@@ -24,13 +24,20 @@ export const PositionDescription = ({
   }, []);
 
   return (
-    <div className={cn("bg-instillGrey05 p-10", padding, width)}>
+    <div className={cn("bg-[#FFFFFF99] p-[30px]", padding, width)}>
       <style jsx global>
         {`
           .career-position-description > ul {
-            list-style: url("${process.env
-              .NEXT_PUBLIC_BASE_URL}/images/arrow-right.svg") !important;
-            padding-left: 50px !important;
+            font-family: "IBM Plex Mono";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+            color: #000000b2;
+            list-style: ;
+          }
+          .career-position-description > h3 {
+            color: #000000b2;
           }
         `}
       </style>

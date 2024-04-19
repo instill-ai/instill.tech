@@ -196,7 +196,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
             </div>
             <div className="w-1/4"></div>
           </div>
-          <div className="mb-[48px] flex flex-row gap-x-5">
+          <div className="flex flex-row gap-x-5">
             <div className="w-1/4"></div>
             <div className="w-1/4 space-y-2">
               <div className="flex justify-center">
@@ -261,16 +261,25 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
             </div>
             <div className="w-1/4"></div>
           </div>
-
-          <div className="mb-16 rounded-sm shadow-lg">
-            <PositionDescription
-              padding="px-4 xl:px-10"
-              width="xl:w-full"
-              description={position.description}
-            />
-          </div>
         </div>
       </ContentContainer>
+
+      <div
+        style={{
+          backgroundImage: 'url("/images/career/bg-2.svg")',
+          backgroundPosition: "top right",
+          // backgroundSize: 415,
+        }}
+        className="bg-no-repeat pt-[56px]"
+      >
+        <ContentContainer margin="mt-0" contentMaxWidth="max-w-[1127px]">
+          <PositionDescription
+            padding="px-4 mb-16 shadow-lg rounded-sm"
+            width="xl:w-full"
+            description={position.description}
+          />
+        </ContentContainer>
+      </div>
     </React.Fragment>
   );
 };
