@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.47.1](https://github.com/instill-ai/instill.tech/compare/v1.47.0...v1.47.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* team member details ([#788](https://github.com/instill-ai/instill.tech/issues/788)) ([ef16512](https://github.com/instill-ai/instill.tech/commit/ef165122f8bd4730b77e8ac6e29d698983756d8c))
+
+## [1.47.0](https://github.com/instill-ai/instill.tech/compare/v1.46.7...v1.47.0) (2024-04-16)
+
+
+### Features
+
+* namananand/ins 3273 automation of connector and operator docs ([#771](https://github.com/instill-ai/instill.tech/issues/771)) ([f8ff2d4](https://github.com/instill-ai/instill.tech/commit/f8ff2d4121619d1cfcc506277bee56072a16aadb))
+
+
+### Bug Fixes
+
+* type and bg fix ([#782](https://github.com/instill-ai/instill.tech/issues/782)) ([2a29e86](https://github.com/instill-ai/instill.tech/commit/2a29e863cb3c671a5c884f1f99091c9dc45c901a))
+
+
+### Miscellaneous
+
+* update doc version ([#783](https://github.com/instill-ai/instill.tech/issues/783)) ([8f454f7](https://github.com/instill-ai/instill.tech/commit/8f454f7b0123b2ef953ec442ce6f0a60d3e716bf))
+* update Llama27bVsLlama27bChat --&gt; Llama27bChat ([#784](https://github.com/instill-ai/instill.tech/issues/784)) ([6a4a277](https://github.com/instill-ai/instill.tech/commit/6a4a2776777e00b86fbb0ffa91ebef069f44ab69))
+
+
+### Documentation
+
+* namananand/ins 3868 deployment k8s ([#780](https://github.com/instill-ai/instill.tech/issues/780)) ([f6b9350](https://github.com/instill-ai/instill.tech/commit/f6b93506ec5b8d069c669a1ee81c5e9f707a745a))
+* **tutorial:** publish llama-7b-chat tutorial ([#785](https://github.com/instill-ai/instill.tech/issues/785)) ([eb4276f](https://github.com/instill-ai/instill.tech/commit/eb4276fd5152b3828b65a59b927a2264b6e9cd59))
+
 ## [1.46.7](https://github.com/instill-ai/instill.tech/compare/v1.46.6...v1.46.7) (2024-04-04)
 
 
