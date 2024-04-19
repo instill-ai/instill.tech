@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.47.2](https://github.com/instill-ai/instill.tech/compare/v1.47.1...v1.47.2) (2024-04-19)
+
+
+### Miscellaneous
+
+* remove K8s link ([#794](https://github.com/instill-ai/instill.tech/issues/794)) ([04e42a6](https://github.com/instill-ai/instill.tech/commit/04e42a691519c49f38be8fb322fe9b5620540e1e))
+* update sidebar hierarchy ([#791](https://github.com/instill-ai/instill.tech/issues/791)) ([ce678dc](https://github.com/instill-ai/instill.tech/commit/ce678dce77ce2d351de415d9bf0a0be3f1eaef8d))
+
 ## [1.47.1](https://github.com/instill-ai/instill.tech/compare/v1.47.0...v1.47.1) (2024-04-17)
 
 
