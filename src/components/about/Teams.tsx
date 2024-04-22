@@ -1,9 +1,11 @@
 import { Nullable } from "@/types/instill";
 import {
+  Button,
   Dialog,
   GitHubIcon,
   LinkedInIcon,
   ScrollArea,
+  Separator,
 } from "@instill-ai/design-system";
 import * as React from "react";
 
@@ -14,6 +16,7 @@ type Team = {
   linkedIn?: string;
   github?: string;
   bio?: string;
+  imgSrc: string;
 };
 
 const teams: Team[] = [
@@ -21,6 +24,7 @@ const teams: Team[] = [
     id: 1,
     name: "Ping-Lin Chang",
     role: "Founder and CEO",
+    imgSrc: "images/teams/ping-lin-chang.png",
     linkedIn: "https://www.linkedin.com/in/pinglin/",
     github: "https://github.com/pinglin",
     bio: "Ping-Lin, a PhD graduate in Robotic Vision from Imperial College London, specialized in Visual Simultaneous Localisation and Mapping (VSLAM) and Machine Learning (ML) for Augmented Reality (AR) in image-guided surgery, with his work featured in esteemed conferences and journals like MICCAI, TMI, RAL, and MRR. Leveraging his expertise, he co-founded Umbo Computer Vision in 2015, serving as CTO and spearheading the development of AI-first products for autonomous video security, notably enhancing business efficiency and scalability in the US, EU, and Asia. His entrepreneurial journey continued in 2020 with the co-founding of Instill AI alongside Xiaofei Du, aiming to revolutionize unstructured data ETL infrastructure, thereby broadening AI's accessibility and application across various industry sectors.",
@@ -28,6 +32,7 @@ const teams: Team[] = [
   {
     id: 2,
     name: "Xiaofei Du",
+    imgSrc: "images/teams/xiaofei-du.png",
     role: "Founder and COO",
     linkedIn: "https://www.linkedin.com/in/xiaofeidu/",
     github: "https://github.com/xiaofei-du",
@@ -36,6 +41,7 @@ const teams: Team[] = [
   {
     id: 3,
     name: "Shih-Chun Huang",
+    imgSrc: "images/teams/shih-chun-huang.png",
     role: "Developer Advocate",
     linkedIn: "https://www.linkedin.com/in/shih-chun-huang/",
     github: "https://github.com/ShihChun-H",
@@ -45,6 +51,7 @@ const teams: Team[] = [
     id: 4,
     name: "Dani Sosa",
     role: "Product Designer",
+    imgSrc: "images/teams/dani-sosa.png",
     linkedIn: "https://www.linkedin.com/in/sosadaniel/",
     github: "https://github.com/dloopy",
     bio: "Daniel Sosa, is a creative professional with over a decade's experience designing digital products and experiences. Leveraging cross-functional skills in UX, art direction, multimedia and a background in Audiovisual Sciences and Photography, and a Master's Degree in Game Design and Development, he adapts seamlessly to new trends. His focus spans strategy, innovation and leadership plus hands-on design execution.",
@@ -53,6 +60,7 @@ const teams: Team[] = [
   {
     id: 5,
     name: "Po-Chun Chiu",
+    imgSrc: "images/teams/po-chun-chiu.png",
     role: "Frontend Engineer",
     linkedIn: "https://www.linkedin.com/in/po-chun-chiu-05103285/",
     github: "https://github.com/EiffelFly",
@@ -61,6 +69,7 @@ const teams: Team[] = [
   {
     id: 6,
     name: "Naman Anand",
+    imgSrc: "images/teams/naman-anand.png",
     role: "Frontend Engineer",
     linkedIn: "https://www.linkedin.com/in/naman-anand-033a39150/",
     github: "https://github.com/iamnamananand996",
@@ -69,6 +78,7 @@ const teams: Team[] = [
   {
     id: 7,
     name: "Heiru Wu",
+    imgSrc: "images/teams/heiru-wu.png",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/heiruwu/",
     github: "https://github.com/heiruwu",
@@ -77,6 +87,7 @@ const teams: Team[] = [
   {
     id: 8,
     name: "Chun Hao Wang",
+    imgSrc: "images/teams/chun-hao-wang.png",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/chun-hao-wang-tony/",
     github: "https://github.com/tonywang10101",
@@ -85,6 +96,7 @@ const teams: Team[] = [
   {
     id: 9,
     name: "Leo Chen",
+    imgSrc: "images/teams/leo-chen.png",
     role: "AI Engineer",
     linkedIn: "https://www.linkedin.com/in/tychen5/",
     github: "https://github.com/tychen5",
@@ -93,6 +105,7 @@ const teams: Team[] = [
   {
     id: 10,
     name: "Hui-Tang Chang",
+    imgSrc: "images/teams/hui-tang-chang.png",
     role: "Backend Engineer",
     linkedIn: "https://www.linkedin.com/in/changhuitang/",
     github: "https://github.com/donch1989",
@@ -101,6 +114,7 @@ const teams: Team[] = [
   {
     id: 11,
     name: "Juan Vallés",
+    imgSrc: "images/teams/juan-valles.png",
     role: "Backend Engineer",
     linkedIn: "",
     github: "https://github.com/jvallesm",
@@ -109,6 +123,7 @@ const teams: Team[] = [
   {
     id: 12,
     name: "Sarthak Gupta",
+    imgSrc: "images/teams/sarthak-gupta.png",
     role: "DevOps Engineer",
     linkedIn: "https://www.linkedin.com/in/sarthak-kg-bb887b239/",
     github: "https://github.com/Sarthak-instill",
@@ -117,6 +132,7 @@ const teams: Team[] = [
   {
     id: 13,
     name: "Minji Kim",
+    imgSrc: "images/teams/minji-kim.png",
     role: "Office Administrator",
     linkedIn: "",
     github: "",
@@ -137,767 +153,111 @@ export const Teams = () => {
 
   return (
     <React.Fragment>
-      <div className="my-10 px-2 xl:text-left">
-        <div className="text-left">
-          <p className="mb-5 font-mono text-[24px] font-medium text-black xl:text-[48px]">
+      <div className="mb-10 px-2 xl:text-left">
+        <div className="text-center">
+          <Button
+            variant="secondaryGrey"
+            size="lg"
+            className="mb-2 rounded-sm !px-3 !py-1 !text-[13px]"
+          >
+            Values-Driven Passion
+          </Button>
+
+          <p className="my-4 font-sans text-[32px] font-medium text-black">
             Who we are
           </p>
-
-          <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-            If our core values resonate with you and you thrive in a dynamic,
-            passionate team of dedicated engineers, researchers, designers, and
-            product enthusiasts, we encourage you to delve into our{" "}
-            <a
-              href={"/career"}
-              rel="noopener noreferrer"
-              className="text-blue-500"
-            >
-              open roles
-            </a>
-            . Together, let&apos;s make a meaningful impact on the world!
-          </p>
+          <div className="flex justify-center text-center">
+            <div className="w-full">
+              <p className="font-sans text-[20px] font-normal leading-[30px] text-[#010D3E] xl:text-base">
+                If our core values resonate with you and you thrive in a
+                dynamic, passionate team of dedicated engineers, researchers,
+                designers, and product enthusiasts, we encourage you to delve
+                into our{" "}
+                <a
+                  href={"/career"}
+                  rel="noopener noreferrer"
+                  className="text-blue-500"
+                >
+                  open roles
+                </a>
+                . Together, let&apos;s make a meaningful impact on the world!
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
-          <div className="group flex h-[100px] w-full bg-[#40A8F51A] xl:h-[160px]">
+        <div className="mt-8 grid grid-cols-1 gap-2 xl:grid-cols-3">
+          {teams.map((team) => (
             <div
-              className="relative inline-block h-[100px] w-[100px] cursor-pointer overflow-hidden transition-transform duration-500 ease-in-out xl:h-[160px] xl:w-[160px]"
-              onClick={() => handleTemaDilog(1)}
+              className="w-full rounded-sm bg-[#FFFFFF1A] p-2 shadow-lg"
+              key={team.id}
             >
-              <div className="flex h-full w-full items-center justify-center bg-[#40A8F5] p-5">
-                <img
-                  src="images/teams/wombat.svg"
-                  alt="Wombat Image"
-                  className="h-full w-full"
-                />
-              </div>
-
-              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-                <img
-                  src="images/teams/ping-lin-chang.png"
-                  alt="Ping Lin Chang Image"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/ping-lin-chang-mobile.png"
-                  alt="Ping Lin Chang Image"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Ping-Lin Chang
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Founder and CEO
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/pinglin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
+              <div className="flex flex-row">
+                <div
+                  className="relative inline-block cursor-pointer overflow-hidden transition-transform duration-500 ease-in-out"
+                  onClick={() => handleTemaDilog(team.id)}
+                >
+                  <div className="flex items-center justify-center">
+                    <img
+                      src={team.imgSrc}
+                      alt="Wombat Image"
+                      className="h-[56px] w-[56px] rounded-full shadow-sm"
                     />
-                  </a>
+                  </div>
+                </div>
+                <div className="ml-5">
+                  <p className="font-sans text-[18px] font-medium text-[#1D2433] xl:text-[24px]">
+                    {team.name}
+                  </p>
+                  <p className="font-sans text-[14px] font-normal leading-5 text-[#1D2433CC] xl:text-base">
+                    {team.role}
+                  </p>
+                </div>
+              </div>
+              <Separator className="my-2" />
+              <div>
+                <div className="flex justify-center gap-x-5 py-3">
+                  {team.github && (
+                    <a
+                      href={team.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-row gap-x-2"
+                    >
+                      <GitHubIcon
+                        width="w-[24px]"
+                        height="h-[24px]"
+                        color="fill-instillGrey95 cursor-pointer"
+                        position="my-auto"
+                      />
 
-                  <a
-                    href="https://www.linkedin.com/in/pinglin/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
+                      <span>Github</span>
+                    </a>
+                  )}
+
+                  <Separator className="my-3" orientation="vertical" />
+
+                  {team.linkedIn && (
+                    <a
+                      href={team.linkedIn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-row gap-2"
+                    >
+                      <LinkedInIcon
+                        width="w-[24px]"
+                        height="h-[24px]"
+                        color="fill-instillGrey95 cursor-pointer"
+                        position="my-auto"
+                      />
+                      LinkedIn
+                      <span></span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#40A8F51A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(2)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#40A8F5] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/xiaofei-du.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/xiaofei-du-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Xiaofei Du
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Founder and COO
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/xiaofei-du"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/xiaofeidu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#FFDF3A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(3)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/shih-chun-huang.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/shih-chun-huang-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Shih-Chun Huang
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Developer Advocate
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/ShihChun-H"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/shih-chun-huang/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#FFDF3A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(4)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/dani-sosa.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/dani-sosa-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Dani Sosa
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Product Designer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/dloopy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/sosadaniel/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(5)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/po-chun-chiu.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/po-chun-chiu-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Po-Chun Chiu
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Frontend Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/EiffelFly"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/po-chun-chiu-05103285/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(6)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/naman-anand.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/naman-anand-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Naman Anand
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Frontend Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/iamnamananand996"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/naman-anand-033a39150/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(7)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/heiru-wu.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/heiru-wu-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Heiru Wu
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  AI Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/heiruwu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/heiruwu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(8)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/chun-hao-wang.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/chun-hao-wang-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Chun Hao Wang
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  AI Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/tonywang10101"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/chun-hao-wang-tony/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(9)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/leo-chen.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/leo-chen-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Leo Chen
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  AI Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/tychen5"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/tychen5/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(10)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/hui-tang-chang.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/hui-tang-chang-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Hui-Tang Chang
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Backend Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/donch1989"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/changhuitang/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(11)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/juan-valles.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/juan-valles-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Juan Vallés
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Backend Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/jvallesm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#1A1A1A1A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(12)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/sarthak-gupta.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/sarthak-gupta-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Sarthak Gupta
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  DevOps Engineer
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10">
-                  <a
-                    href="https://github.com/Sarthak-instill"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GitHubIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/sarthak-kg-bb887b239/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedInIcon
-                      width="w-[24px]"
-                      height="h-[24px]"
-                      color="fill-instillGrey95 cursor-pointer"
-                      position="my-auto"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group flex h-[100px] w-full bg-[#FF53531A] xl:h-[160px]">
-            <div
-              className="relative inline-block cursor-pointer overflow-hidden"
-              onClick={() => handleTemaDilog(13)}
-            >
-              <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
-              </div>
-              <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
-                <img
-                  src="images/teams/minji-kim.png"
-                  className="hidden h-full w-full xl:block"
-                />
-                <img
-                  src="images/teams/minji-kim-mobile.png"
-                  className="block h-full w-full xl:hidden"
-                />
-              </div>
-            </div>
-            <div className="my-auto w-3/4">
-              <div className="ml-10">
-                <p className="font-sans text-[18px] font-medium text-zinc-900 xl:text-[24px]">
-                  Minji Kim
-                </p>
-                <p className="font-sans text-[14px] font-normal leading-7 text-zinc-900 xl:text-base">
-                  Office Administrator
-                </p>
-                <div className="mt-1 flex gap-x-5 xl:mt-10"></div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

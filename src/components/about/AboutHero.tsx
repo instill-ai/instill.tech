@@ -6,10 +6,10 @@ export type AboutHeroProps = {
 
 export const AboutHero = ({ marginBottom }: AboutHeroProps) => {
   return (
-    <PageHero
-      marginBottom={marginBottom}
-      headline="Make AI Accessible to Everyone"
-      headerUppercase={true}
-    />
+    <div className="text-center">
+      <h1 className="font-sans text-[56px] font-bold leading-[60px] tracking-[-1.12px]">
+        Make AI Accessible to Everyone
+      </h1>
+    </div>
   );
 };
