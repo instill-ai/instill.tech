@@ -5,7 +5,7 @@ import { Button, Logo } from "@instill-ai/design-system";
 export const StartBuildingBlock = () => {
   return (
     <div
-      style={{ backgroundImage: 'url("/images/tutorials/glow.png")' }}
+      style={{ backgroundImage: 'url("/images/articles/glow.png")' }}
       className="rounded-b-sm bg-cover bg-no-repeat pb-16"
     >
       <ContentContainer
