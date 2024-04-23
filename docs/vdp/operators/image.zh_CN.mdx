@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to set up a VDP Image operator https://github.com/instill-ai/instill-core"
 ---
 
-The Image component is an operator that tODO.
+The Image component is an operator that allows users to manipulate image files.
 It can carry out the following tasks:
 
 - [Draw Classification](#draw-classification)
@@ -27,36 +27,91 @@ The component configuration is defined and maintained [here](https://github.com/
 
 ### Draw Classification
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_CLASSIFICATION` |
+Draw classification result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_CLASSIFICATION` |
+| Category (required) | `category` | string | The predicted category of the input. |
+| Image (required) | `image` | string | Input image |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Score (required) | `score` | number | The confidence score of the predicted category of the input. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
 
 ### Draw Detection
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_DETECTION` |
+Draw detection result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_DETECTION` |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected objects. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
 
 ### Draw Keypoint
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_KEYPOINT` |
+Draw keypoint result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_KEYPOINT` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
 
 ### Draw Ocr
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_OCR` |
+Draw OCR result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_OCR` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected bounding boxes. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
 
 ### Draw Instance Segmentation
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_INSTANCE_SEGMENTATION` |
+Draw instance segmentation result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_INSTANCE_SEGMENTATION` |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected instance bounding boxes. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
 
 ### Draw Semantic Segmentation
 
-| Input | Type | Description |
-| :--- | --- | --- |
-| task | string | `TASK_DRAW_SEMANTIC_SEGMENTATION` |
+Draw semantic segmentation result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_SEMANTIC_SEGMENTATION` |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Stuffs (required) | `stuffs` | array[object] | A list of RLE binary masks. |
+| Image (required) | `image` | string | Input image |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |

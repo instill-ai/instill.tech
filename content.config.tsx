@@ -170,12 +170,12 @@ export const getSections = (
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.archetypeAi",
-          link: `/docs/vdp/ai-connectors/archetypeai`,
-        },
-        {
           text: "common:sidebarSections.instillModel",
           link: `/docs/vdp/ai-connectors/instill`,
+        },
+        {
+          text: "common:sidebarSections.archetypeAi",
+          link: `/docs/vdp/ai-connectors/archetypeai`,
         },
         {
           text: "common:sidebarSections.openAI",
@@ -184,6 +184,10 @@ export const getSections = (
         {
           text: "common:sidebarSections.stabilityAI",
           link: `/docs/vdp/ai-connectors/stabilityai`,
+        },
+        {
+          text: "common:sidebarSections.huggingFace",
+          link: `/docs/vdp/ai-connectors/huggingface`,
         },
       ],
       appType: "core",

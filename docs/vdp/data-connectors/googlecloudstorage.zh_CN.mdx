@@ -18,55 +18,13 @@ It can carry out the following tasks:
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/googlecloudstorage/v0/config/definition.json).
 
+## Connection
+
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
 | Bucket Name (required) | `bucket_name` | string | Name of the bucket to be used for object storage. |
 | JSON Key File contents (required) | `json_key` | string | Contents of the JSON key file with access to the bucket. |
 
-Google Cloud Storage connector resources can be created in two ways:
-
-### No-code Setup
-
-1. Go to the **Connectors** page and click **+ Create Connector**.
-1. Select **Google Cloud Storage**.
-1. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field.
-1. Fill in the required fields described in [Resource Configuration](#resource-configuration).
-
-### Low-code Setup
-
-<CH.Code>
-
-```shellscript cURL(Instill-Cloud)
-curl -X POST https://api.instill.tech/vdp/v1beta/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
---data '{
-  "id": "my-gcs",
-  "connector_definition_name": "connector-definitions/gcs",
-  "description": "Optional description",
-  "configuration": {
-    "bucket_name": <bucket-name>,
-    "json_key": <json-key>
-  }
-}'
-```
-
-```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/vdp/v1beta/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Core-API-Token>' \
---data '{
-  "id": "my-gcs",
-  "connector_definition_name": "connector-definitions/gcs",
-  "description": "Optional description",
-  "configuration": {
-    "bucket_name": <bucket-name>,
-    "json_key": <json-key>
-  }
-}'
-```
-
-</CH.Code>
-
-For other component operations, please refer to the [API reference](https://openapi.instill.tech/reference/pipelinepublicservice).
 
 ## Supported Tasks
 

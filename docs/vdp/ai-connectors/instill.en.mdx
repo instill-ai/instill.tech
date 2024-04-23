@@ -2,216 +2,223 @@
 title: "Instill Model"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up an Instill Model AI connector for the unstructured data pipeline tool Instill Core https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up a VDP Instill Model connector https://github.com/instill-ai/instill-core"
 ---
 
-The Instill Model AI Connector enables you to connect the AI models served on the Instill Model Platform for various AI tasks:
+The Instill Model component is an AI connector that allows users to connect the AI models served on the Instill Model Platform.
+It can carry out the following tasks:
 
 - [Classification](#classification)
-- [Object Detection](#object-detection)
-- [Semantic Segmentation](#semantic-segmentation)
 - [Instance Segmentation](#instance-segmentation)
-- [OCR](#ocr)
 - [Keypoint](#keypoint)
+- [Detection](#detection)
+- [Ocr](#ocr)
+- [Semantic Segmentation](#semantic-segmentation)
 - [Text Generation](#text-generation)
-- [Text to Image](#text-to-image)
+- [Text Generation Chat](#text-generation-chat)
+- [Text To Image](#text-to-image)
+- [Visual Question Answering](#visual-question-answering)
+- [Image To Image](#image-to-image)
 
 ## Release Stage
 
 `Alpha`
 
-## Resource Configuration
+## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector/blob/main/pkg/instill/config/definitions.json).
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/instill/v0/config/definition.json).
 
-| Field        | Type   | Note                                                                                                                                                                                                                                      |
-| :----------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| api_token    | string | To access models on **Instill Cloud**, enter your Instill Cloud API Token. You can find your tokens by visiting your **Instill Cloud's Settings > API Tokens** page. Leave this field empty to access models on your local Instill Model. |
-| server_url\* | string | Base URL for the Instill Model API. To access models on Instill Cloud, use the base URL `https://api.instill.tech`. To access models on your local Instill Model, use the base URL `http://localhost:9080`.                               |
+## Connection
 
-### No-code Setup
 
-<InfoBlock type="info" title="info">
-  
-Comparing to launching a local Instill Model, **Instill Cloud** is the fastest way to create an Instill Model AI Connector.
-  
-👉 You can try out [Instill Cloud](https://www.instill.tech) to use our pre-created Instill Model AI connector for FREE during Open Alpha.
-
-</InfoBlock>
-
-To create an Instill Model AI connector from [Instill Cloud](https://www.instill.tech),
-you'll first need to create an Instill Cloud account by visiting [www.instill.tech](https://www.instill.tech).
-
-1. Visit [Model Hub](https://www.instill.tech/model-hub) on Instill Cloud to explore available models
-2. Go to the **Resource** page and click **Add Resource**
-3. Select **Instill Model**
-4. Fill an ID, this will be the unique identifier of this connector
-5. [Optional] Give a short description of your connector in the **Description** field
-6. Fill in the following information and click **Save**
-
-   - Enter **API Token**. You can find your Instill Cloud API tokens by visiting your [**Settings**](https://www.instill.tech/settings) > **API Tokens** page.
-   - Set the the Server URL https://api.instill.tech to access models on Instill Cloud
-
-To create an Instill Model AI connector from local Instill Model, follow the same steps, follow the same steps as above, but with the following difference in step 1 and 6:
-
-1. Visit local Instill Model from local Console](http://localhost:3000/model-hub) to create and deploy your models
-
-and
-
-6. Fill the following information and click **Set up**
-
-   - Leave the **API Key** field empty to access models on your local Instill Model
-   - Set the Server URL to http://localhost:9080 to access models on your local Instill Model.
-   - Enter the ID of the model served on your local Instill Model that you want to use
-
-### Low-code Setup
-
-<CH.Code>
-
-```shellscript cURL(Instill-Cloud)
-curl -X POST https://api.instill.tech/v1alpha/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
---data '{
-  "id": "my-instill-model",
-  "connector_definition_name": "connector-definitions/ai-instill-model",
-  "configuration": {
-    "api_token": "<instill-cloud-api-token>",
-    "server_url": "https://api.instill.tech"
-  }
-}'
-```
-
-```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/v1alpha/users/<user-id>/connectors \
---data '{
-  "id": "my-instill-model",
-  "connector_definition_name": "connector-definitions/ai-instill-model",
-  "configuration": {
-    "api_token": "",
-    "server_url": "http://localhost:9080"
-  }
-}'
-```
-
-</ CH.Code>
-
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
-
-## Connector Configuration
-
-When using the Instill Model AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
-Here are the expected input and output data fields for the Instill Model AI connector.
+## Supported Tasks
 
 ### Classification
 
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_CLASSIFICATION`                                       |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
+Classify images into predefined categories.
 
-| Output   | Type   | Description                                                 |
-| :------- | ------ | ----------------------------------------------------------- |
-| category | string | The predicted category of the input                         |
-| score    | number | The confidence score of the predicted category of the input |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CLASSIFICATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
 
-### Object Detection
-
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_OBJECT_DETECTION`                                     |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
-
-| Output  | Type          | Description                                |
-| :------ | ------------- | ------------------------------------------ |
-| objects | array[object] | A list of detected instance bounding boxes |
-
-### Semantic Segmentation
-
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_SEMANTIC_SEGMENTATION`                                |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
-
-| Output | Type          | Description                |
-| :----- | ------------- | -------------------------- |
-| stuffs | array[object] | A list of RLE binary masks |
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Category | `category` | string | The predicted category of the input. |
+| Score | `score` | number | The confidence score of the predicted category of the input. |
 
 ### Instance Segmentation
 
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_INSTANCE_SEGMENTATION`                                |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
+Detect, localize and delineate multiple objects in images.
 
-| Output  | Type          | Description                                |
-| :------ | ------------- | ------------------------------------------ |
-| objects | array[object] | A list of detected instance bounding boxes |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_INSTANCE_SEGMENTATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
 
-### OCR
-
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_OCR`                                                  |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
-
-| Output  | Type          | Description                       |
-| :------ | ------------- | --------------------------------- |
-| objects | array[object] | A list of detected bounding boxes |
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected instance bounding boxes. |
 
 ### Keypoint
 
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_KEYPOINT`                                             |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| image_base64    | string | Image as base64 encoded string                              |
+Detect and localize multiple keypoints of objects in images.
 
-| Output  | Type          | Description                                                                                               |
-| :------ | ------------- | --------------------------------------------------------------------------------------------------------- |
-| objects | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_KEYPOINT` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object. |
+
+### Detection
+
+Detect and localize multiple objects in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DETECTION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected objects. |
+
+### Ocr
+
+Detect and recognize text in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_OCR` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected bounding boxes. |
+
+### Semantic Segmentation
+
+Classify image pixels into predefined categories.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SEMANTIC_SEGMENTATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Stuffs | `stuffs` | array[object] | A list of RLE binary masks. |
 
 ### Text Generation
 
-| Input           | Type   | Description                                                 |
-| :-------------- | ------ | ----------------------------------------------------------- |
-| task            | string | `TASK_TEXT_GENERATION`                                      |
-| model_namespace | string | The namespace of the model to be used from Instill Model    |
-| model_id        | string | The ID of the model that you want to use from Instill Model |
-| prompt          | string | Text prompt                                                 |
-| output_len      | int    | Output length                                               |
-| bad_words_list  | string | Bad words formatted in a string                             |
-| stop_words_list | string | Stop words formatted in a string                            |
-| top_k           | int    | Top K                                                       |
-| seed            | int    | Random noise seed                                           |
+Generate texts from input text prompts.
 
-| Output | Type   | Description    |
-| :----- | ------ | -------------- |
-| text   | string | Generated text |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Prompt Images | `prompt_images` | array[string] | The prompt images |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Seed | `seed` | integer | The seed |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Top K | `top_k` | integer | Top k for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
 
-### Text to Image
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
 
-| Input           | Type   | Description                                                   |
-| :-------------- | ------ | ------------------------------------------------------------- |
-| task            | string | `TASK_TEXT_TO_IMAGE`                                          |
-| model_namespace | string | The namespace of the model to be used from Instill Model      |
-| model_id        | string | The ID of the model that you want to use from Instill Model   |
-| prompt          | string | Text prompt                                                   |
-| cfg_scale       | float  | How strictly the diffusion process adheres to the prompt text |
-| steps           | int    | Number of diffusion steps to run                              |
-| samples         | int    | Number of images to generate                                  |
-| seed            | int    | Random noise seed                                             |
+### Text Generation Chat
 
-| Output | Type         | Description                                         |
-| :----- | ------------ | --------------------------------------------------- |
-| images | array[image] | A list of generated images as base64 encoded string |
+Generate texts from input text prompts and chat history.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION_CHAT` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Prompt Images | `prompt_images` | array[string] | The prompt images |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Seed | `seed` | integer | The seed |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Top K | `top_k` | integer | Top k for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
+
+### Text To Image
+
+Generate images from input text prompts.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_IMAGE` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| CFG Scale | `cfg_scale` | number | The guidance scale, default is 7.5 |
+| Samples | `samples` | integer | The number of generated samples, default is 1 |
+| Seed | `seed` | integer | The seed, default is 0 |
+| Steps | `steps` | integer | The steps, default is 5 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Images |
+
+### Visual Question Answering
+
+Answer questions based on a prompt and an image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_VISUAL_QUESTION_ANSWERING` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Prompt (required) | `prompt` | string | The prompt text |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Images (required) | `prompt_images` | array[string] | The prompt images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Seed | `seed` | integer | The seed |
+| Top K | `top_k` | integer | Top k for sampling |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
+
+### Image To Image
+
+Generate image from input text prompt and image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_IMAGE_TO_IMAGE` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Image (required) | `image_base64` | string | The prompt image |
+| Seed | `seed` | integer | The seed |
+| CFG Scale | `cfg_scale` | number | The guidance scale, default is 7.5 |
+| Samples | `samples` | integer | The number of generated samples, default is 1 |
+| Top K | `top_k` | integer | Top k for sampling |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Images |

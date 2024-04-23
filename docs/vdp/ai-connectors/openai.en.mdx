@@ -2,218 +2,144 @@
 title: "OpenAI"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a OpenAI AI connector for the unstructured data pipeline tool Instill Core https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up a VDP OpenAI connector https://github.com/instill-ai/instill-core"
 ---
 
-The OpenAI AI connector enables you to connect the AI models served on the OpenAI Platform for the following tasks:
+The OpenAI component is an AI connector that allows users to connect the AI models served on the OpenAI Platform.
+It can carry out the following tasks:
 
 - [Text Generation](#text-generation)
 - [Text Embeddings](#text-embeddings)
 - [Speech Recognition](#speech-recognition)
-- [Text to Image](#text-to-image)
+- [Text To Speech](#text-to-speech)
+- [Text To Image](#text-to-image)
 
 ## Release Stage
 
 `Alpha`
 
-## Resource Configuration
+## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector/blob/main/pkg/openai/config/definitions.json).
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/openai/v0/config/definition.json).
 
-| Field     | Type   | Note                                                                            |
-| :-------- | :----- | :------------------------------------------------------------------------------ |
-| api_key\* | string | Enter your OpenAI API key. To find your keys, go to your OpenAI's Account page. |
+## Connection
 
-### No-code Setup
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your OpenAI API key. To find your keys, visit your OpenAI's API Keys page. |
+| Organization ID | `organization` | string | Specify which organization is used for the requests. Usage will count against the specified organization's subscription quota. |
 
-<InfoBlock type="info" title="Prerequisites">
 
-To create a OpenAI AI connector, you'll first need to create a
-OpenAI account by visiting [openai.com](https://openai.com).
-Access to your API keys can then be managed through OpenAI's Account
-page.
-
-</InfoBlock>
-
-To create a OpenAI AI connector:
-
-1. Go to the **Resource** page and click **Add Resource**
-2. Select **OpenAI**
-3. Fill in a unique ID for the resource. Optionally, give a short description in the **Description** field
-4. Fill in the required fields.
-   - Fill **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key
-   - Optionally, fill **Orgnization ID** that specify which organization is used for the requests. Usage will count against the specified organization's subscription quota.
-
-### Low-code Setup
-
-<CH.Code>
-
-```shellscript cURL(Instill-Cloud)
-curl -X POST https://api.instill.tech/vdp/v1alpha/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
---data '{
-  "id": "my-openai",
-  "connector_definition_name": "connector-definitions/ai-openai",
-  "configuration": {
-    "api_key": "<open-ai-api-key>"
-  }
-}'
-```
-
-```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Core-API-Token>' \
---data '{
-  "id": "my-openai",
-  "connector_definition_name": "connector-definitions/ai-openai",
-  "configuration": {
-    "api_key": "<open-ai-api-key>"
-  }
-}'
-```
-
-</ CH.Code>
-
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
-
-## Connector Configuration
-
-When using the OpenAI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
-Here are the expected input and output data fields for the OpenAI AI connector.
+## Supported Tasks
 
 ### Text Generation
 
-If `task` is set to **TASK_TEXT_GENERATION**
+Provide text outputs in response to their inputs.
 
-| Input                | Type   | Description                                                                                                                                                                                                                                                                                                                                                |
-| :------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| task                 | string | `TASK_TEXT_GENERATION`                                                                                                                                                                                                                                                                                                                                     |
-| prompt               | string | Text prompt                                                                                                                                                                                                                                                                                                                                                |
-| model                | string | The model that you want to use. eg., `gpt-4` and `gpt-3.5-turbo `.                                                                                                                                                                                                                                                                                         |
-| system_message       | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model's behavior is using a generic message as "You are a helpful assistant."                                            |
-| temperature          | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  |
-| n                    | int    | How many chat completion choices to generate for each input message.                                                                                                                                                                                                                                                                                       |
-| max_tokens           | int    | The maximum number of [tokens](https://platform.openai.com/tokenizer) to generate in the chat completion. The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens. |
-| top_p                | float  | An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.                                            |
-| presence_penalty     | float  | Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics. [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)                                                                           |
-| frequency_penalty    | float  | Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim. [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)                                                              |
-| response_format.type | string | Setting to `json_object` enables JSON mode.                                                                                                                                                                                                                                                                                                                |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION` |
+| Model (required) | `model` | string | ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Image | `images` | array[string] | The images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Temperature | `temperature` | number | What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 
-| Output | Type          | Description          |
-| :----- | ------------- | -------------------- |
-| texts  | array[string] | Generated text array |
+We generally recommend altering this or `top_p` but not both.
+ |
+| N | `n` | integer | How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs. |
+| Max Tokens | `max_tokens` | integer | The maximum number of [tokens](/tokenizer) that can be generated in the chat completion.
+
+The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.
+ |
+| Response Format | `response_format` | object | An object specifying the format that the model must output. Used to enable JSON mode. |
+| Top P | `top_p` | number | An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+
+We generally recommend altering this or `temperature` but not both.
+ |
+| Presence Penalty | `presence_penalty` | number | Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
+
+[See more information about frequency and presence penalties.](/docs/guides/text-generation/parameter-details)
+ |
+| Frequency Penalty | `frequency_penalty` | number | Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
+
+[See more information about frequency and presence penalties.](/docs/guides/text-generation/parameter-details)
+ |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Texts | `texts` | array[string] | Texts |
 
 ### Text Embeddings
 
-| Input | Type   | Description                                                  |
-| :---- | ------ | ------------------------------------------------------------ |
-| task  | string | `TASK_TEXT_EMBEDDINGS`                                       |
-| text  | string | Text to be converted to dense vector                         |
-| model | string | The model that you want to use. eg. `text-embedding-ada-002` |
+Turn text into numbers, unlocking use cases like search.
 
-| Output    | Type         | Description         |
-| :-------- | ------------ | ------------------- |
-| embedding | array[float] | A vector embeddings |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_EMBEDDINGS` |
+| Model (required) | `model` | string | ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them.
+ |
+| Text (required) | `text` | string | The text |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Embedding | `embedding` | array[number] | Embedding of the input text |
 
 ### Speech Recognition
 
-| Input       | Type   | Description                                                                                                                                                                                                                                                                                                                                               |
-| :---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| task        | string | `TASK_SPEECH_RECOGNITION`                                                                                                                                                                                                                                                                                                                                 |
-| model       | string | The model that you want to use, e.g., `whisper-1`.                                                                                                                                                                                                                                                                                                        |
-| audio       | string | Base64 encoded audio recording to transcribe                                                                                                                                                                                                                                                                                                              |
-| temperature | float  | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit. |
-| language    | string | The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.                                                                                                                                                                             |
-| prompt      | string | An optional text to guide the model's style or continue a previous audio segment. The [prompt](https://platform.openai.com/docs/guides/speech-to-text/prompting) should match the audio language.                                                                                                                                                         |
+Turn audio into text.
 
-| Output | Type   | Description      |
-| :----- | ------ | ---------------- |
-| text   | string | Transcribed text |
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SPEECH_RECOGNITION` |
+| Model (required) | `model` | string | ID of the model to use. Only `whisper-1` is currently available.
+ |
+| Audio (required) | `audio` | string | The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
+ |
+| Prompt | `prompt` | string | An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+ |
+| Language | `language` | string | The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
+ |
+| Temperature | `temperature` | number | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+ |
 
-### Text to Image
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Generated text |
 
-| Input       | Type   | Description                                                                                              |
-| :---------- | ------ | ---------------------------------------------------------------------------------------------------------|
-| task        | string | `TASK_TEXT_TO_IMAGE`                                                                                     |
-| model       | string | ID of the model to use                                                                                   |
-| prompt      | string | A text description of the desired image(s).                                                              |
-| n           | float  | The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported.     |
-| size        | string | The size of the generated images.                                                                        |
-| style       | string | The style of the generated images.                                                                       |
+### Text To Speech
 
-| Output    | Type          | Description      |
-| :-------- | ------------- | ---------------- |
-| results   | array[object] | Generated images |
+Turn text into lifelike spoken audio
 
-## Example
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_SPEECH` |
+| Model (required) | `model` | string | One of the available [TTS models](/docs/models/tts): `tts-1` or `tts-1-hd`
+ |
+| Text (required) | `text` | string | The text to generate audio for. The maximum length is 4096 characters. |
+| Voice (required) | `voice` | string | The voice to use when generating the audio. Supported voices are `alloy`, `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech/voice-options). |
+| Response Format | `response_format` | string | The format to audio in. Supported formats are `mp3`, `opus`, `aac`, and `flac`. |
+| Speed | `speed` | number | The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default. |
 
-Example input and output data for each task:
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Audio (optional) | `audio` | string | AI generated audio |
 
-<CH.Code>
+### Text To Image
 
-```json TASK_TEXT_GENERATION
-// Input
-{
-  "task": "TASK_TEXT_GENERATION",
-  "model": "gpt-3.5-turbo",
-  "prompt": "Write me a story about London"
-}
-// Output
-{
-  "texts": [
-    "Once upon a time, in the heart of England, there stood a vibrant city named London. It was a place of rich history, diverse culture, and endless possibilities. From its iconic landmarks to its bustling streets, the city had a unique charm that drew people from all walks of life..."
-  ]
-}
-```
+Generate or manipulate images with DALL·E.
 
-```json TASK_TEXT_EMBEDDINGS
-// Input
-{
-  "task": "TASK_TEXT_EMBEDDINGS",
-  "model": "text-embedding-ada-002",
-  "text": ["I love programming"]
-}
-// Output A 1536-length vector example
-{
-  "embedding": [
-    0.0023064255,
-    -0.009327292,
-    ...
-    -0.0028842222,
-  ],
-  "index": 0
-}
-```
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_IMAGE` |
+| Model (required) | `model` | string | The model to use for image generation. |
+| Prompt (required) | `prompt` | string | A text description of the desired image(s). The maximum length is 1000 characters for `dall-e-2` and 4000 characters for `dall-e-3`. |
+| N | `n` | integer | The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported. |
+| Quality | `quality` | string | The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`. |
+| Size | `size` | string | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models. |
+| N | `style` | string | The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`. |
 
-```json TASK_SPEECH_RECOGNITION
-// Input
-{
-  "task": "TASK_SPEECH_RECOGNITION",
-  "model": "whisper-1",
-  "audio": "<base64 value>"
-}
-// Output
-{
-  "text": "Can you transcribe what I am saying?"
-}
-```
-
-```json TASK_TEXT_TO_IMAGE
-// Input
-{
-  "task": "TEXT_TEXT_TO_IMAGE",
-  "model": "dall-e-3",
-  "prompt": "A dog is running after a cat"
-}
-// Output
-{
-  "results": [
-    {
-      "image": "<base64 value>",
-      "revised_prompt": "A playful scene unfolds in an expansive field of vibrant green grass, under a clear, cerulean sky. A brown, shaggy dog, its ears flapped backwards with the speed, and tongue lolling out to the side, sprints across the field with a joyous energy. It's behind, but clearly attempting to catch up with a quick, nimble orange tabby cat running ahead. The cat, with its golden eyes wide and tail puffed up, darts forward as swiftly as the wind, leaving little paws of dust behind. Despite their chase, both display an essence of playful camaraderie in this lively image."
-    }
-  ]
-}
-```
-
-</ CH.Code>
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `results` | array[object] | Generated results |
