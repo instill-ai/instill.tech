@@ -39,7 +39,7 @@ The implementation of the Pipeline concept is managed in the [pipeline-backend](
 
 A **Component** is a fundamental building block used to construct a pipeline in Instill VDP.
 The system offers various types of components, each catering to specific functionalities.
-Components empower pipelines to perform unstructured data ETL (Extract, Transform, Load). We have two types of component: **Connector** and **Operator**.
+Components empower pipelines to perform unstructured data ETL (Extract, Transform, Load). We have three types of component: **Connector**, **Operator** and **Iterator**
 
 ### Connector
 
@@ -52,6 +52,12 @@ These tasks encompass data extraction, transformation using AI models, and uploa
 To facilitate more flexible and fine-grained data injection and manipulation, **Operator** is introduced.
 Operators allow users to run customized code without the need for server management or pre-provisioning.
 This enables code execution whenever the pipeline is triggered and data flows into the connector.
+
+### Iterator
+
+To enable VDP to process batch data, we introduce the **Iterator**.
+The Iterator allows users to process items in a data array and then merge the results back into an array. It is similar to the well-known `map` function.
+
 
 ## Model
 
