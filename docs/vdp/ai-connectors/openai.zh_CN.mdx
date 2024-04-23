@@ -43,7 +43,7 @@ Provide text outputs in response to their inputs.
 | Prompt (required) | `prompt` | string | The prompt text |
 | System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
 | Image | `images` | array[string] | The images |
-| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : `{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}`. |
 | Temperature | `temperature` | number | What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 
 We generally recommend altering this or `top_p` but not both.

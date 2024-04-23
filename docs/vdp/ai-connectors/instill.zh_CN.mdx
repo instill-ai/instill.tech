@@ -130,7 +130,7 @@ Generate texts from input text prompts.
 | System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
 | Prompt Images | `prompt_images` | array[string] | The prompt images |
 | Extra Parameters | `extra_params` | object | Extra Parameters |
-| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : `{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}.` |
 | Seed | `seed` | integer | The seed |
 | Temperature | `temperature` | number | The temperature for sampling |
 | Top K | `top_k` | integer | Top k for sampling |
@@ -153,7 +153,7 @@ Generate texts from input text prompts and chat history.
 | Prompt Images | `prompt_images` | array[string] | The prompt images |
 | Extra Parameters | `extra_params` | object | Extra Parameters |
 | Seed | `seed` | integer | The seed |
-| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : `{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}`. |
 | Temperature | `temperature` | number | The temperature for sampling |
 | Top K | `top_k` | integer | Top k for sampling |
 | Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
@@ -193,7 +193,7 @@ Answer questions based on a prompt and an image.
 | Prompt (required) | `prompt` | string | The prompt text |
 | Extra Parameters | `extra_params` | object | Extra Parameters |
 | Prompt Images (required) | `prompt_images` | array[string] | The prompt images |
-| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : {"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}. |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : `{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"}`. |
 | Seed | `seed` | integer | The seed |
 | Top K | `top_k` | integer | Top k for sampling |
 | Temperature | `temperature` | number | The temperature for sampling |
