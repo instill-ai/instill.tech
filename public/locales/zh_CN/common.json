@@ -86,7 +86,8 @@
     "embeddings": "嵌入文本",
     "speechRecognition": "语音识别",
     "pythonSdk": "Python SDK",
-    "typescriptSdk": "TypeScript SDK"
+    "typescriptSdk": "TypeScript SDK",
+    "introduction": "介紹"
   },
   "navbar": {
     "documentation": "文档",

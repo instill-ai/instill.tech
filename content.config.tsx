@@ -78,13 +78,8 @@ export const getSections = (
     {
       text: "common:sidebarSections.coreConcepts",
       link: `/docs/core/concepts`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.pipeline",
-          link: `/docs/core/concepts/pipeline`,
-        },
-      ],
+      collapsible: false,
+      items: [],
       appType: "core",
       versions: ["latest"],
     },
@@ -135,6 +130,13 @@ export const getSections = (
       appType: "core",
       versions: [],
       isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/vdp/introduction`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.buildPipeline",
