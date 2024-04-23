@@ -195,10 +195,6 @@ export const getSections = (
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.airbyte",
-          link: `/docs/vdp/data-connectors/airbyte`,
-        },
-        {
           text: "common:sidebarSections.bigquery",
           link: `/docs/vdp/data-connectors/bigquery`,
         },
@@ -248,14 +244,6 @@ export const getSections = (
       link: `/docs/vdp/operator`,
       collapsible: true,
       items: [
-        {
-          text: "common:sidebarSections.start",
-          link: `/docs/vdp/operators/start`,
-        },
-        {
-          text: "common:sidebarSections.end",
-          link: `/docs/vdp/operators/end`,
-        },
         {
           text: "common:sidebarSections.base64",
           link: `/docs/vdp/operators/base64`,
