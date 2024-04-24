@@ -48,9 +48,9 @@ Draw detection result on the image.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_DRAW_DETECTION` |
-| Show Score | `showScore` | boolean | Show model confidence score on each instance |
 | Image (required) | `image` | string | Input image |
 | Objects (required) | `objects` | array[object] | A list of detected objects. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -93,9 +93,9 @@ Draw instance segmentation result on the image.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_DRAW_INSTANCE_SEGMENTATION` |
-| Show Score | `showScore` | boolean | Show model confidence score on each instance |
 | Image (required) | `image` | string | Input image |
 | Objects (required) | `objects` | array[object] | A list of detected instance bounding boxes. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -108,9 +108,9 @@ Draw semantic segmentation result on the image.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_DRAW_SEMANTIC_SEGMENTATION` |
+| Image (required) | `image` | string | Input image |
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 | Stuffs (required) | `stuffs` | array[object] | A list of RLE binary masks. |
-| Image (required) | `image` | string | Input image |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |

@@ -40,14 +40,13 @@ Generate a new image from a text prompt.
 | Weights | `weights` | array[number] | An array of weights to use for generation. |
 | CFG Scale | `cfg_scale` | number | How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt) |
 | Clip Guidance Preset | `clip_guidance_preset` | string | Clip guidance preset |
-| Width | `width` | integer | The image width |
 | Height | `height` | integer | The image height |
+| Width | `width` | integer | The image width |
 | Sampler | `sampler` | string | Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you. |
 | Samples | `samples` | integer | Number of images to generate |
 | Seed | `seed` | integer | Random noise seed (omit this option or use `0` for a random seed) |
 | Steps | `steps` | integer | Number of diffusion steps to run. |
-| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style.
-This list of style presets is subject to change. |
+| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -63,11 +62,10 @@ Modify an image based on a text prompt.
 | Task ID (required) | `task` | string | `TASK_IMAGE_TO_IMAGE` |
 | Engine (required) | `engine` | string | Stability AI Engine (model) to be used. |
 | Prompts (required) | `prompts` | array[string] | An array of prompts to use for generation. |
-| Weights | `weights` | array[number] | An array of weights to use for generation. If unspecified, the model will automatically assign a default weight of 1.0 to each prompt. |
 | Init Image | `init_image` | string | Image used to initialize the diffusion process, in lieu of random noise. |
+| Weights | `weights` | array[number] | An array of weights to use for generation. If unspecified, the model will automatically assign a default weight of 1.0 to each prompt. |
 | Clip Guidance Preset | `clip_guidance_preset` | string | Clip guidance preset |
-| Image Strength | `image_strength` | number | How much influence the `init_image` has on the diffusion process. Values close to `1` will yield images very similar to the `init_image` while values close to `0` will yield images wildly different than the `init_image`. The behavior of this is meant to mirror DreamStudio's "Image Strength" slider.  <br/> <br/> This parameter is just an alternate way to set `step_schedule_start`, which is done via the calculation `1 - image_strength`. For example, passing in an Image Strength of 35% (`0.35`) would result in a `step_schedule_start` of `0.65`.
- |
+| Image Strength | `image_strength` | number | How much influence the `init_image` has on the diffusion process. Values close to `1` will yield images very similar to the `init_image` while values close to `0` will yield images wildly different than the `init_image`. The behavior of this is meant to mirror DreamStudio's "Image Strength" slider.  <br/> <br/> This parameter is just an alternate way to set `step_schedule_start`, which is done via the calculation `1 - image_strength`. For example, passing in an Image Strength of 35% (`0.35`) would result in a `step_schedule_start` of `0.65`.  |
 | Cfg Scale | `cfg_scale` | number | How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt) |
 | Init Image Mode | `init_image_mode` | string | Whether to use `image_strength` or `step_schedule_*` to control how much influence the `init_image` has on the result. |
 | Sampler | `sampler` | string | Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you. |
@@ -76,8 +74,7 @@ Modify an image based on a text prompt.
 | Step Schedule Start | `step_schedule_start` | number | Skips a proportion of the start of the diffusion steps, allowing the init_image to influence the final generated image.  Lower values will result in more influence from the init_image, while higher values will result in more influence from the diffusion steps.  (e.g. a value of `0` would simply return you the init_image, where a value of `1` would return you a completely different image.) |
 | Step Schedule End | `step_schedule_end` | number | Skips a proportion of the end of the diffusion steps, allowing the init_image to influence the final generated image.  Lower values will result in more influence from the init_image, while higher values will result in more influence from the diffusion steps. |
 | Steps | `steps` | integer | Number of diffusion steps to run. |
-| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style.
-This list of style presets is subject to change. |
+| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
