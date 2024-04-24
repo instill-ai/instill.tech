@@ -151,6 +151,13 @@ export const getSections = (
       versions: ["latest"],
     },
     {
+      text: "common:sidebarSections.clonePipeline",
+      link: `/docs/vdp/clone`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.releasePipeline",
       link: `/docs/vdp/release`,
       items: [],
@@ -164,13 +171,7 @@ export const getSections = (
       appType: "core",
       versions: ["latest"],
     },
-    {
-      text: "common:sidebarSections.clonePipeline",
-      link: `/docs/vdp/clone`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
+
     {
       text: "common:sidebarSections.aiConnectors",
       link: `/docs/vdp/ai-connector`,
