@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.6](https://github.com/instill-ai/instill.tech/compare/v1.47.5...v1.47.6) (2024-04-25)
+
+
+### Documentation
+
+* **blog:** update Innovate uk blog cover image ([#805](https://github.com/instill-ai/instill.tech/issues/805)) ([693f4f2](https://github.com/instill-ai/instill.tech/commit/693f4f294b0d0f16b5299dc481b4a9e54d6fbf28))
+
 ## [1.47.5](https://github.com/instill-ai/instill.tech/compare/v1.47.4...v1.47.5) (2024-04-25)
 
 
