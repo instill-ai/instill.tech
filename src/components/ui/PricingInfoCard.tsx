@@ -65,7 +65,7 @@ export const PricingInfoCard = ({
           <div className="mb-0 flex flex-col gap-y-4">
             <div className="flex flex-row justify-center gap-x-1">
               <h2 className="flex flex-row text-[60px] font-semibold text-semantic-fg-primary">
-                {tier !== "starter" ? (
+                {tier !== "free" ? (
                   <p className="my-auto text-[30px] text-[#000000B2]">$</p>
                 ) : (
                   ""
