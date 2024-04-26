@@ -189,7 +189,7 @@ export const Teams = () => {
         <div className="mt-8 grid grid-cols-1 gap-2 xl:grid-cols-3">
           {teams.map((team) => (
             <div
-              className="w-full rounded-sm bg-[#FFFFFF1A] p-2 shadow-lg"
+              className="w-full rounded-sm bg-[#FFFFFF1A] bg-opacity-80 p-2 shadow-lg backdrop-blur-sm"
               key={team.id}
             >
               <div className="flex flex-row">

@@ -3,12 +3,11 @@ import * as React from "react";
 import { Nullable } from "@instill-ai/toolkit";
 import { Button, Icons } from "@instill-ai/design-system";
 
-export type InstillPricingTier = "free" | "pro" | "team" | "enterprise";
+export type InstillPricingTier = "free" | "starter" | "team" | "team pro";
 export type InstillBillingPeriod = "monthly" | "yearly";
 
 export const PricingInfoCard = ({
   tier,
-  planDescription,
   features,
   featureDescription,
   headLable,
@@ -19,7 +18,6 @@ export const PricingInfoCard = ({
   price,
 }: {
   tier: InstillPricingTier;
-  planDescription: Nullable<string>;
   features: string[];
   featureDescription: Nullable<React.ReactElement>;
   headLable?: React.ReactElement;
@@ -44,7 +42,7 @@ export const PricingInfoCard = ({
       </style>
       <div
         className={cn(
-          "flex flex-col rounded-md border bg-semantic-bg-primary",
+          "flex flex-col rounded-md shadow-md",
           highlighted
             ? "highlighted border-semantic-accent-default"
             : "border-semantic-bg-line shadow",
@@ -52,11 +50,11 @@ export const PricingInfoCard = ({
           disabled ? "opacity-50" : ""
         )}
       >
-        <div className="flex flex-col border-b border-semantic-bg-line p-8">
+        <div className="mt-2.5 flex flex-col border-b border-semantic-bg-line p-5">
           {/* Pricing Head */}
 
-          <div className="mb-4 flex flex-row justify-between">
-            <p className="!capitalize text-semantic-fg-secondary product-body-text-2-semibold">
+          <div className="flex flex-row justify-center">
+            <p className="font-sans text-[14px] font-normal !capitalize leading-5 text-semantic-fg-secondary">
               {tier}
             </p>
             {headLable}
@@ -64,93 +62,86 @@ export const PricingInfoCard = ({
 
           {/* Pricing Body */}
 
-          <div className="mb-8 flex flex-col gap-y-4">
-            <div className="flex flex-row gap-x-1">
-              <h2 className="text-semantic-fg-primary product-headings-heading-1">
+          <div className="mb-0 flex flex-col gap-y-4">
+            <div className="flex flex-row justify-center gap-x-1">
+              <h2 className="flex flex-row text-[60px] font-semibold text-semantic-fg-primary">
+                {tier !== "starter" ? (
+                  <p className="my-auto text-[30px] text-[#000000B2]">$</p>
+                ) : (
+                  ""
+                )}
                 {price}
               </h2>
-              {tier === "free" ? (
+
+              {tier === "starter" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
-                  forever
-                </p>
-              ) : null}
-              {tier === "pro" ? (
-                <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
-                  per month
+                  monthty
                 </p>
               ) : null}
               {tier === "team" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
-                  per seat/month
+                  monthty
+                </p>
+              ) : null}
+              {tier === "team pro" ? (
+                <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
+                  monthty
                 </p>
               ) : null}
             </div>
-            {planDescription ? (
-              <p className="h-[60px] text-semantic-fg-disabled product-body-text-3-regular">
-                {planDescription}
-              </p>
-            ) : null}
           </div>
 
           {/* CTA */}
-
-          <div className="flex flex-col gap-y-4">
-            {tier === "free" ? (
-              <Button
-                type="button"
-                variant="secondaryGrey"
-                size="md"
-                onClick={async () => {
-                  if (cta.onClick) {
-                    cta.onClick();
-                  }
-                }}
-                disabled={disabled || cta.disabled}
-              >
-                {cta.title}
-              </Button>
-            ) : (
-              <Button
-                type="button"
-                variant="primary"
-                size="md"
-                onClick={async () => {
-                  if (cta.onClick) {
-                    cta.onClick();
-                  }
-                }}
-                disabled={disabled || cta.disabled}
-              >
-                {cta.title}
-              </Button>
-            )}
-          </div>
         </div>
 
-        <div className="flex flex-col p-8">
-          {/* Feature Head */}
-
-          <div className="mb-6 flex flex-col">
-            <p className="h-10 text-semantic-fg-primary product-body-text-3-semibold">
-              FEATURES
-            </p>
-            {featureDescription}
-          </div>
-
+        <div className="flex flex-col border-b p-5">
           {/* Feature Body */}
 
-          <div className="flex flex-col gap-y-4">
+          <div className="flex flex-col gap-y-5">
             {features.map((feature) => (
-              <div key={feature} className="flex flex-row gap-x-3">
-                <div className="flex-shrink-0">
-                  <Icons.CheckCircle className="h-4 w-4 stroke-semantic-accent-default" />
+              <div key={feature} className="flex flex-row gap-x-2">
+                <div className="my-auto flex-shrink-0">
+                  <Icons.Check className="h-4 w-4 stroke-[#000000]" />
                 </div>
-                <p className="text-semantic-fg-secondary product-body-text-4-regular">
+                <p className="font-sans text-[13px] font-normal leading-5 text-semantic-fg-secondary">
                   {feature}
                 </p>
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col gap-y-4 p-5">
+          {tier === "free" || tier === "team pro" ? (
+            <Button
+              type="button"
+              className="mx-auto"
+              variant="secondaryColour"
+              size="md"
+              onClick={async () => {
+                if (cta.onClick) {
+                  cta.onClick();
+                }
+              }}
+              disabled={disabled || cta.disabled}
+            >
+              {cta.title}
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              variant="primary"
+              className="mx-auto"
+              size="md"
+              onClick={async () => {
+                if (cta.onClick) {
+                  cta.onClick();
+                }
+              }}
+              disabled={disabled || cta.disabled}
+            >
+              {cta.title}
+            </Button>
+          )}
         </div>
       </div>
     </React.Fragment>
