@@ -89,6 +89,7 @@ const PricingPage: FC & {
           <div
             style={{
               backgroundImage: 'url("/images/pricing/glow-5.png")',
+              borderRadius: "16px",
             }}
           >
             <PricingInfoCard
@@ -145,7 +146,10 @@ const PricingPage: FC & {
 
       <ContentContainer margin="mt-[20px]" contentMaxWidth="max-w-[1127px]">
         <div
-          style={{ backgroundImage: 'url("/images/articles/glow.png")' }}
+          style={{
+            backgroundImage: 'url("/images/articles/glow.png")',
+            borderRadius: "8px",
+          }}
           className="bg-opacity-80 bg-cover bg-no-repeat backdrop-blur-sm"
         >
           <div className="flex flex-row gap-x-3 rounded-sm bg-[#FFFFFF99] px-4 py-[60px] shadow-lg">

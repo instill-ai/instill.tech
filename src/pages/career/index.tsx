@@ -123,9 +123,15 @@ const CareerPage: FC<CareerPageProps> & {
           </p>
         </div>
       </ContentContainer>
-      <div style={{ backgroundImage: 'url("/images/career/glow.png")' }}>
-        <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
-          <div className="mb-10 mt-6 rounded-sm p-[30px] shadow-lg">
+      <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
+        <div
+          style={{
+            backgroundImage: 'url("/images/career/glow.png")',
+            borderRadius: "8px",
+          }}
+          className="mb-10"
+        >
+          <div className="mt-6 rounded-sm p-[30px] shadow-lg">
             <p className="mb-5 font-mono text-[16px] font-normal leading-6">
               We&apos;re looking for passionate and dedicated early members to
               build open-source and highest-quality products for solving a
@@ -144,14 +150,11 @@ const CareerPage: FC<CareerPageProps> & {
               community.
             </p>
           </div>
-        </ContentContainer>
-      </div>
+        </div>
+      </ContentContainer>
 
       <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
-        <div
-          className="mt-6 flex flex-col gap-y-4"
-          // style={{ backgroundImage: 'url("/images/career/grid.svg")' }}
-        >
+        <div className="mt-6 flex flex-col gap-y-4">
           <div className="flex justify-center">
             <Button
               variant="secondaryGrey"

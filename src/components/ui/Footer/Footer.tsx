@@ -2,6 +2,8 @@ import {
   DiscordIcon,
   FacebookIcon,
   GitHubIcon,
+  Icons,
+  Input,
   LinkedInIcon,
   Logo,
   Logos,
@@ -132,12 +134,31 @@ export const Footer = () => {
   };
 
   return (
-    <div className="flex w-full bg-instillGrey90">
+    <div className="mx-4 flex w-auto rounded-sm bg-instillGrey90">
       <div className="mt-auto flex w-full max-w-[1440px] flex-col p-10 xl:mx-auto max:w-10/12 max:px-0">
         <div className="mb-[120px] flex flex-col gap-x-10 xl:mb-[180px] xl:flex-row">
           <div className="mb-[120px] flex flex-col space-y-5 xl:mb-0">
-            <AnimateSlogan />
-            <Logo variant="whiteLogomark" width={30} />
+            <div>
+              <p className="mb-5 text-[18px] font-semibold leading-[28px] text-white">
+                SIGN UP FOR OUR NEWSLETTER
+              </p>
+              <Input.Root>
+                <Input.Core
+                  disabled={false}
+                  type="text"
+                  placeholder="Enter Email"
+                  className="!placeholder-semantic-fg-secondary"
+                />
+                <Input.LeftIcon
+                  onClick={() => {
+                    alert("hi");
+                  }}
+                >
+                  <Icons.ArrowRight className="my-auto h-5 w-5 cursor-pointer stroke-slate-800" />
+                </Input.LeftIcon>
+              </Input.Root>
+              ;
+            </div>
           </div>
           <div className="grid flex-1 gap-x-5 gap-y-20 xl:grid-cols-5 xl:gap-y-0">
             <Tab type="social" header="socials" links={tabs.socialLinks} />
@@ -147,7 +168,10 @@ export const Footer = () => {
             <Tab type="others" header="company" links={tabs.company} />
           </div>
         </div>
-        <CopyRightText />
+        <div className="flex flex-row gap-x-5">
+          <Logo variant="whiteLogomark" width={30} />
+          <CopyRightText />
+        </div>
       </div>
     </div>
   );
