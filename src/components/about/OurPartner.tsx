@@ -3,7 +3,7 @@ import * as React from "react";
 export const OurPartner = () => {
   return (
     <div className="w-full] mt-4 flex flex-col space-y-[48px]">
-      <div className="flex flex-col rounded-sm bg-[#FFFFFF99] p-4 shadow-lg">
+      <div className="flex flex-col rounded-sm bg-[#FFFFFF99] bg-opacity-80 p-4 shadow-lg backdrop-blur-sm">
         <div className="mb-6 w-full text-center">
           <p className="font-sans text-[24px] font-normal leading-9 text-semantic-fg-secondary">
             Partnerships
@@ -112,7 +112,7 @@ export const OurPartner = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col rounded-sm bg-[#FFFFFF99] p-4 shadow-lg">
+      <div className="flex flex-col rounded-sm bg-[#FFFFFF99] bg-opacity-80 p-4 shadow-lg backdrop-blur-sm">
         <div className="mb-6 w-full text-center">
           <p className="font-sans text-[24px] font-normal leading-9 text-semantic-fg-secondary">
             Backed by

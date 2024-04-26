@@ -185,7 +185,7 @@ const CareerPage: FC<CareerPageProps> & {
         className="bg-cover bg-no-repeat"
       >
         <ContentContainer margin="mb-[56px]" contentMaxWidth="max-w-[1127px]">
-          <div className="mt-8 rounded-sm bg-[#FFFFFF99] px-4 pt-5 shadow-lg">
+          <div className="mt-8 rounded-sm bg-[#FFFFFF99] bg-opacity-80 px-4 pt-5 shadow-lg backdrop-blur-sm">
             <p className="px-4 font-sans text-[18px] font-semibold leading-[28px]">
               Openings
             </p>

@@ -36,7 +36,7 @@ function ConnectorComponent({
         </span>
       </div>
 
-      <div className="min-h-[230px] bg-[#FFFFFF99] px-5 py-2.5">
+      <div className="min-h-[230px] bg-[#FFFFFF99] bg-opacity-80 px-5 py-2.5 backdrop-blur-sm">
         <div className="flex flex-row gap-x-2">
           <div className="my-auto rounded-[6px] border px-1 py-0.5 shadow">
             <img

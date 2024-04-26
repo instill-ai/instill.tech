@@ -24,7 +24,13 @@ export const PositionDescription = ({
   }, []);
 
   return (
-    <div className={cn("bg-[#FFFFFF99] p-[30px]", padding, width)}>
+    <div
+      className={cn(
+        "bg-[#FFFFFF99] bg-opacity-80 p-[30px] backdrop-blur-sm",
+        padding,
+        width
+      )}
+    >
       <style jsx global>
         {`
           .career-position-description > ul {
