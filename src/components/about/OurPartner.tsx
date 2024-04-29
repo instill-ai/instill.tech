@@ -39,15 +39,15 @@ export const OurPartner = () => {
             </a>
 
             <a
-              href="https://unify.ai/"
+              href="https://ukri.frontify.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="my-auto flex h-[180px] w-auto items-center justify-center border border-b-0 p-4">
                 <img
-                  src="images/social/unify.svg"
+                  src="images/social/innovate_UK_horizontal.png"
                   alt=""
-                  className="h-[180px]"
+                  className="h-12"
                 />
               </div>
             </a>
