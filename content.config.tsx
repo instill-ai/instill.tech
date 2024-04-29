@@ -145,7 +145,14 @@ export const getSections = (
     },
     {
       text: "common:sidebarSections.testPipeline",
-      link: `/docs/vdp/test`,
+      link: `/docs/vdp/run`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.clonePipeline",
+      link: `/docs/vdp/clone`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -164,6 +171,7 @@ export const getSections = (
       appType: "core",
       versions: ["latest"],
     },
+
     {
       text: "common:sidebarSections.aiConnectors",
       link: `/docs/vdp/ai-connector`,
