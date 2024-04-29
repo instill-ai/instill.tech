@@ -8,9 +8,7 @@ description: "Learn about how to prepare your models for the MLOps tool Instill 
 To prepare a model for Instill Model:
 
 - Create a [model card](#model-card) `README.md` to describe your model
-- Write a [pre-processing model](#pre-processing-model) and a [post-processing model](#post-processing-model) that are compatible with the Triton Python Backend
-- Prepare the model configuration file for your inference model
-- Set up an [ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to encapsulate a `pre-processing model → inference model → post-processing model` procedure
+- Write a `model.py` file that defined the model class which will be decorated into servable model with Instill's `python-sdk`
 - Organise the model files into [valid Instill Model model layout](#model-layout)
 
 ## Model Card
@@ -92,424 +90,131 @@ If you include valid AI task metadata, they will show on the Model page of the C
 
 ## Model Layout
 
-Leveraging the [Triton Inference server](https://github.com/triton-inference-server/server) for model serving, Instill Model extends its support to multiple deep learning frameworks such as [TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org/), [TensorRT](https://developer.nvidia.com/tensorrt), and [ONNX](https://onnx.ai).
-Furthermore, the [Python Backend](https://github.com/triton-inference-server/python_backend) empowers Instill Model to accommodate any Python-written model with ease.
-
-To deploy a model on Instill Model, we suggest you to prepare the model files following the layout:
+With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning frameworks the user desires.
+To deploy a model on Instill Model, we suggest you to prepare the model files similar to the following layout:
 
 ```shellscript
+.
 ├── README.md
-├── <pre-model>
-│   ├── 1
-│   │   └── model.py
-│   └── config.pbtxt
-├── <infer-model>
-│   ├── 1
-│   │   └── <model-file>
-│   └── config.pbtxt
-├── <post-model>
-│   ├── 1
-│   │   └── model.py 
-│   └── config.pbtxt
-└── <ensemble-model>
-    ├── 1
-    │   └── .keep
-    └── config.pbtxt
+├── model.py
+└── <weights>
+    ├── <weight_file_1>
+    ├── <weight_file_2>
+    ├── ...
+    └── <weight_file_n>
 ```
 
 The above layout displays a typical Instill Model model consisting of
 
 - `README.md` - model card to embed the metadata in front matter and descriptions in Markdown format
-- `<pre-model>` - Python model to pre-process input images
-- `<infer-model>` - Model to convert the unstructured data into structured data output, usually a Deep Learning (DL) / Machine Learning (ML) model
-- `<post-model>` - Python model to post-process the output of the `infer-model` into desired formats
-- `<ensemble-model>` - [Triton ensemble model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) to connect the input and output tensors between the pre-processing, inference and post-processing models.
-- `config.pbtxt` - [Model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) for each sub model
+- `model.py` - this is where you defined the decorated model class that contains custom inference logic
+- `<weights>` - the directory that holds the necessary weight fiels
 
-You can name `<pre-model>`, `<infer-model>`, `<post-model>` and `<ensemble-model>` folders freely provided that the folder names are clear and semantic. All these models bundle into a deployable model for Instill Model.
+You can name the `<weights>` folder freely provided that the folder name are clear and semantic.
 
 <InfoBlock type="info" title="info">
-  As long as your model fulfils the required [Triton model repository
-  layout](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html),
-  it can be safely imported into Instill Model and deployed online.
+  As long as the model class in your `model.py` implemented the necessary functions, it can be safely imported into Instill Model and deployed online.
+  Check out this [guide](https://github.com/instill-ai/python-sdk/blob/main/notebooks/serve_custom_chat_model.ipynb) for more detail
 </InfoBlock>
 
-## Serve Models Written in Python
+## Prepare model.py
 
-To deploy your pre-processing and post-processing models with Python code, use [Triton Python Backend](https://github.com/triton-inference-server/python_backend) that supports `conda-pack` to deploy Python models with dependencies.
-We have prepared a [custom Conda environment](https://github.com/instill-ai/triton-python-model) with pre-installed libraries including
-[scikit-learn](https://github.com/scikit-learn/scikit-learn), [Pillow](https://github.com/python-pillow/Pillow), [PyTorch](https://github.com/pytorch/pytorch), [torchvision](https://pytorch.org/vision/stable/index.html), [Transformers](https://github.com/huggingface/transformers) and [triton_python_model](https://github.com/instill-ai/triton-python-model).
-It is shipped with the [NVIDIA GPU Cloud](https://ngc.nvidia.com/) containers using Python 3.8.
+To implement a custom model that can be imported and served on `Instill Model`, you only need to implement a simple model class within the `model.py` file
 
-If your model is not compatible with Python 3.8 or if it requires additional dependencies, you could [create your own Conda environment](https://github.com/triton-inference-server/python_backend#2-packaging-the-conda-environment) and configure the `config.pbtext` to point to the custom conda-pack tar file accordingly.
+The custom model class will need to implement the following methods
+- `__init__`
+  - within the `__init__` function, this is where to define the model loading process, allowing the weights to be store in memory and allow faster auto-scaling behavior
+- `ModelMetadata`
+  - `ModelMetadata` method tells the backend service what is the expected input/output shape the model is expecting, if you are using our predefined [AI Tasks](/docs/model/ai-task.en.mdx), you can simply import construct_\{task\}_metadata_reponse and use it as return
+- `__call__`
+  - `__call__` is the inference request entrypoint, this is where you implement your model inference logic.
 
-## Prepare Pre-processing Model
+Following is a simple implementation of [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model with explanations.
 
-🙌 After preparing your model to be Instill Model compatible, check out [Import Models](import) to learn about how to import the model into Instill Model from different sources.
+```python
+# import neccessary packages
+import torch
+from transformers import pipeline
 
-To prepare pre-processing model in Python, create a Python file with a [structure](https://github.com/triton-inference-server/python_backend#usage) similar to below:
+# import SDK helper functions
+# const package hosts the standard Datatypes and Input class for each standard Instill AI Tasks
+from instill.helpers.const import TextGenerationChatInput
 
-```python model.py
-import triton_python_backend_utils as pb_utils
-from abc import ABC, abstractmethod
+# ray_io package hosts the parsers to easily convert request payload into input paramaters, and model outputs to response
+from instill.helpers.ray_io import StandardTaskIO
 
-class TritonPythonModel(ABC):
-    """Your Python model must use the same class name.
-    Every Python model that is created must have "TritonPythonModel" as the class name.
-    """
-
-    def initialize(self, args):
-        """`initialize` is called only once when the model is being loaded.
-        Implementing `initialize` function is optional. This function allows
-        the model to initialize any state associated with this model.
-
-        Parameters
-        ----------
-        args : dict
-          Both keys and values are strings. The dictionary keys and values are:
-          * model_config: A JSON string containing the model configuration
-          * model_instance_kind: A string containing model instance kind
-          * model_instance_device_id: A string containing model instance device ID
-          * model_repository: Model repository path
-          * model_version: Model version
-          * model_name: Model name
-        """
-        print('Initialized...')
-
-    def execute(self, requests):
-        """`execute` must be implemented in every Python model. `execute`
-        function receives a list of pb_utils.InferenceRequest as the only
-        argument. This function is called when an inference is requested
-        for this model.
-
-        Parameters
-        ----------
-        requests : list
-          A list of pb_utils.InferenceRequest
-
-        Returns
-        -------
-        list
-          A list of pb_utils.InferenceResponse. The length of this list must
-          be the same as `requests`
-        """
-
-        responses = []
-
-        # Every Python backend must iterate through list of requests and create
-        # an instance of pb_utils.InferenceResponse class for each of them. You
-        # should avoid storing any of the input Tensors in the class attributes
-        # as they will be overridden in subsequent inference requests. You can
-        # make a copy of the underlying NumPy array and store it if it is
-        # required.
-        for request in requests:
-            # Perform inference on the request and append it to responses list...
-            response = self.pre_process_batch_request(request)
-            responses.append(response)
-
-        # You must return a list of pb_utils.InferenceResponse. Length
-        # of this list must match the length of `requests` list.
-        return responses
-
-    def finalize(self):
-        """`finalize` is called only once when the model is being unloaded.
-        Implementing `finalize` function is optional. This function allows
-        the model to perform any necessary clean ups before exit.
-        """
-        print('Cleaning up...')
-
-    @abstractmethod
-    def pre_process_batch_request(self, request):
-        """`pre_process_batch_request` pre-processes a Triton Inference request
-        and outputs a Triton Inference response
-
-        Parameters
-        ----------
-        request : pb_utils.InferenceRequest
-          A Triton Inference Request
-
-        Returns
-        -------
-        pb_utils.InferenceResponse
-          A Triton Inference Response
-        """
-
-        raise NotImplementedError(
-            f'Implement pre-process function for a Triton Inference request')
-
-```
-
-Follow the above structure and implement the abstract method `pre_process_batch_request` to pre-process the input images in a batch request.
-
-## Prepare Post-processing Model
-
-You can prepare the post-processing model the same way as the [pre-processing model](#pre-processing-model).
-However, to get the model inference output in a standarised format you can
-
-- specify a [supported AI task](ai-task) when creating the [model card](#model-card)
-- create a Python model that inherits the corresponding post-processing task class in [triton_python_model](https://github.com/instill-ai/triton-python-model).
-
-If no task is specified when creating a model, the output will the raw model output in a [serialized JSON message](ai-task#unspecified-task).
-
-### Image Classification
-
-<InfoBlock type="info" title="info">
-  Learn more about [Image Classification task](ai-task#image-classification)
-</InfoBlock>
-
-Assume we have a "cat vs. dog" model to infer whether an image is a cat image or dog image. Create a `labels.txt` file to list all the pre-defined categories, with one category label per line. Add the file to the folder of inference model.
-
-**`labels.txt` example**
-
-```
-cat
-dog
-```
-
-Include the label file `labels.txt` in the model configuration of the inference model.
-
-**`config.pbtxt` example**
-
-```
-...
-output [
-  {
-    ...
-    label_filename: "labels.txt"
-  }
-]
-...
-```
-
-Check the [standarised output for Image Classification](ai-task#image-classification), here shows an output example:
-
-```json
-{
-  "task": "TASK_CLASSIFICATION",
-  "task_outputs": [
-    {
-      "classification": {
-        "category": "dog",
-        "score": 0.9
-      }
-    }
-  ]
-}
-```
-
-### Object Detection
-
-<InfoBlock type="info" title="info">
-  Learn more about [Object Detection task](ai-task#object-detection)
-</InfoBlock>
-
-Create a Python file with a structure similar to below. The file inherits the `PostDetectionModel` class and implement the `post_process_per_image` abstract method.
-Then, add the file in the post-processing model folder:
-
-```python model.py
-import numpy as np
-from triton_python_model.task.detection import PostDetectionModel
+# ray_config package hosts the decorators and deployment object for model class
+from instill.helpers.ray_config import instill_deployment, InstillDeployable
+from instill.helpers import (
+    construct_text_generation_chat_infer_response,
+    construct_text_generation_chat_metadata_response,
+)
 
 
-class TritonPythonModel(PostDetectionModel):
-    """Your Python model must use the same class name.
-    Every Python model that is created must have "TritonPythonModel" as the class name.
-    """
+# use instill_deployment decorator to convert the model class to servable model
+@instill_deployment
+class TinyLlama:
+    # within the __init__ function, setup the model instance with the desired framework, in this
+    # case is the pipeline from transformers
     def __init__(self):
-        """ Constructor function must be implemented in every model.
-        This function initializes the names of the input and output
-        variables in the model configuration.
-        """
-        # super().__init__(input_names=[...], output_names=[...])
-        # ...
+        self.pipeline = pipeline(
+            "text-generation",
+            model="tinyllama",
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+        )
 
-    def post_process_per_image(self, inputs):
-        """`post_process_per_image` must be implemented in every Python model.
-        This function detects objects in one image of a batch.
+    # ModelMetadata tells the server what inputs and outputs the model is expecting
+    def ModelMetadata(self, req):
+        return construct_text_generation_chat_metadata_response(req=req)
 
-        Args:
-            inputs (Tuple[np.ndarray]): a sequence of model input array for one image
+    # ModelInfer is the method handling the trigger request from Instill Model
+    async def __call__(self, request):
+        # use StandardTaskIO package to parse the request and get the corresponding input
+        # for text-generation-chat task
+        task_text_generation_chat_input: TextGenerationChatInput = (
+            StandardTaskIO.parse_task_text_generation_chat_input(request=request)
+        )
 
-        Raises:
-            NotImplementedError: all subclasses must implement this function of per-image post-processing for `DETECTION` task.
+        # prepare prompt with chat template
+        prompt = self.pipeline.tokenizer.apply_chat_template(
+            task_text_generation_chat_input.chat_history,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
 
-        Returns:
-            Tuple[np.ndarray, np.ndarray]: a tuple of bounding box with label array: (`bboxes`, `labels`).
-                - `bboxes`: the bounding boxes detected in this image with shape (n,5) or (0,). The bounding box format is [x1, y1, x2, y2, score] in the original image. `n` is the number of bounding boxes detected in this image.
-                - `labels`: the labels corresponding to the bounding boxes with shape (n,) or (0,).
-                The length of `bboxes` must be the same as that of `labels`.
-        """
-        # return np.array([[324, 102, 532, 507, 0.98]]), np.array(["dog"]) # Dummy detection example
+        # inference
+        sequences = self.pipeline(
+            prompt,
+            max_new_tokens=task_text_generation_chat_input.max_new_tokens,
+            do_sample=True,
+            temperature=task_text_generation_chat_input.temperature,
+            top_k=task_text_generation_chat_input.top_k,
+            top_p=0.95,
+        )
 
-```
+        # convert the output into response output with again the StandardTaskIO
+        task_text_generation_chat_output = (
+            StandardTaskIO.parse_task_text_generation_chat_output(sequences=sequences)
+        )
 
-Check the [standardised output for Object Detection](ai-task#object-detection), here shows an output example:
-
-```json
-{
-  "task": "TASK_DETECTION",
-  "task_outputs": [
-    {
-      "detection": {
-        "objects": [
-          {
-            "category": "dog",
-            "score": 0.98,
-            "bounding_box": {
-              "top": 102,
-              "left": 324,
-              "width": 208,
-              "height": 405
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-### Keypoint Detection
-
-<InfoBlock type="info" title="info">
-  Learn more about [Keypoint Detection task](ai-task#keypoint-detection)
-</InfoBlock>
-
-Create a Python file with a structure similar to below and add the file in the post-processing model folder:
-
-```python model.py
-import numpy as np
-from triton_python_model.task.keypoint import PostKeypointDetectionModel
+        return construct_text_generation_chat_infer_response(
+            req=request,
+            # specify the output dimension
+            shape=[1, len(sequences)],
+            raw_outputs=[task_text_generation_chat_output],
+        )
 
 
-class TritonPythonModel(PostKeypointDetectionModel):
-    """Your Python model must use the same class name.
-    Every Python model that is created must have "TritonPythonModel" as the class name.
-    """
-    def __init__(self):
-        """ Constructor function must be implemented in every model.
-        This function initializes the names of the input and output
-        variables in the model configuration.
-        """
-        # super().__init__(input_names=[...], output_names=[...])
-        # ...
+# now simply declare a global deployable instance with model weight name or model file name
+# and specify if this model is going to use GPU or not
+deployable = InstillDeployable(
+    TinyLlama, model_weight_or_folder_name="tinyllama", use_gpu=True
+)
 
-    def post_process_per_image(self, inputs):
-        """`post_process_per_image` must be implemented in every Python model.
-        This function detects keypoints of objects in one image of a batch.
+# you can also have a fine-grained control of the min/max replica numbers
+deployable.update_max_replicas(2)
+deployable.update_min_replicas(0)
 
-        Args:
-            inputs (Tuple[np.ndarray]): a sequence of model input array for one image
-
-        Raises:
-            NotImplementedError: all subclasses must implement this function of per-image post-processing for `KEYPOINT` task.
-
-        Returns:
-            np.ndarray: Keypoint Detection score array `scores` for this image. The shape of `scores` should be (n,), where n is the number of categories.
-        """
-
-```
-
-Check the [standardised output for Keypoint Detection](ai-task#keypoint-detection), here shows an output example:
-
-```json
-{
-  "task": "TASK_KEYPOINT",
-  "task_outputs": [
-    {
-      "keypoint": {
-        "objects": [
-          {
-            "keypoints": [
-              {
-                "x": 1052.8419,
-                "y": 610.0058,
-                "v": 0.84
-              },
-              {
-                "x": 1047.5118,
-                "y": 514.04474,
-                "v": 0.81
-              },
-              ...
-            ],
-            "score": 0.99,
-            "bounding_box": {
-              "top": 299,
-              "left": 185,
-              "width": 1130,
-              "height": 1210
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-### Instance Segmentation
-
-<InfoBlock type="info" title="info">
-  Learn more about [Instance Segmentation task](ai-task#instance-segmentation)
-</InfoBlock>
-
-Check the [standardised output for Instance Segmentation task](ai-task#instance-segmentation), here shows an output example:
-
-```json
-{
-  "task": "TASK_INSTANCE_SEGMENTATION",
-  "task_outputs": [
-    {
-      "instance_segmentation": {
-        "objects": [
-          {
-            "rle": "2918,12,382,33,...",
-            "score": 0.99,
-            "bounding_box": {
-              "top": 95,
-              "left": 320,
-              "width": 215,
-              "height": 406
-            },
-            "category": "dog"
-          },
-          ...
-        ]
-      }
-    }
-  ]
-}
-```
-
-### Unspecified
-
-<InfoBlock type="info" title="info">
-  Learn more about [Unspecified AI task](ai-task#unspecified-ai-task)
-</InfoBlock>
-
-If your model is imported without specifying any task metadata, the model will be recognised to solve an `Unspecified` task.
-There is no need to prepare your model outputs to fit any format.
-
-Check the [standardised output for Unspecified AI task](ai-task#unspecified-task).
-Assume we import the above ["cat vs. dog"](#image-classification) model without specifying the AI task metadata, here shows an output example:
-
-```json
-{
-  "task": "TASK_UNSPECIFIED",
-  "task_outputs": [
-    {
-      "unspecified": {
-        "raw_outputs": [
-          {
-            "data": [0, 1],
-            "data_type": "FP32",
-            "name": "output",
-            "shape": [2]
-          }
-        ]
-      }
-    }
-  ]
-}
+# we plan to open up more detailed resource control in the future
 ```

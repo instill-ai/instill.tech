@@ -5,6 +5,11 @@ draft: false
 description: "Learn about how to import models into the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
+<InfoBlock type="info" title="info">
+  Instill Model currently is in a transition state of adopting containerized model serving feature,
+  which brings the benefit of isolated dependencies environment for each model. Stay tuned for more updates!
+</InfoBlock>
+
 No matter where your model stores, we want to keep your models in the same place without changes and make the process of importing the models into Instill Model very easy.
 That's why Instill Model has integrated many model platforms and tools as _model sources_. We strive to support as many popular _model sources_ as possible.
 
@@ -12,6 +17,8 @@ A _model source_ in Instill Model is defined by [`ModelDefinition`](https://gith
 The JSON Schema of a `ModelDefinition` defines how to configure and import a _model source_.
 Different approaches can provide different features. For example, some approaches support version control but some do not.
 It is up to the users to adopt approach they are already familiar with.
+
+We have currently deprecated `Hugging Face` and `ArtiVC` as model input source, but keeping `Github` and `Local` at the moment, we will fully move to `Container` format in a near future.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/model-import-and-deployment.svg"

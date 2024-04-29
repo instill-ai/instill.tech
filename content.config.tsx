@@ -312,14 +312,6 @@ export const getSections = (
           text: "common:sidebarSections.github",
           link: `/docs/model/import/github`,
         },
-        {
-          text: "common:sidebarSections.artivc",
-          link: `/docs/model/import/artivc`,
-        },
-        {
-          text: "common:sidebarSections.huggingFace",
-          link: `/docs/model/import/huggingface`,
-        },
       ],
       appType: "core",
       versions: [],
