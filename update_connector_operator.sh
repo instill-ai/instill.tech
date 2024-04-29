@@ -12,16 +12,16 @@ echo "Running go generate..."
 map_component_to_directory() {
     # echo "1:  $1"
     case $1 in
-        archetypeai|instill|openai|stabilityai)
+        instill|archetypeai|huggingface|openai|stabilityai)
             echo "ai-connectors"
             ;;
-        googlecloudservice|googlesearch|airbyte|bigquery|pinecone|redis|restapi)
+        googlecloudstorage|googlesearch|bigquery|pinecone|redis|restapi|website)
             echo "data-connectors"
             ;;
         numbers)
             echo "app-connectors"
             ;;
-        base64|end|image|json|start|text)
+        base64|image|json|text)
             echo "operators"
             ;;
     esac

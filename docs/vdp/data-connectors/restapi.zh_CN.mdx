@@ -1,61 +1,150 @@
 ---
-title: "REST"
+title: "REST API"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a VDP REST operator https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up a VDP REST API connector https://github.com/instill-ai/instill-core"
 ---
 
-The REST Operator enables users to make requests to http endpoints.
+The REST API component is a data connector that allows users to make requests to external REST APIs.
+It can carry out the following tasks:
+
+- [Get](#get)
+- [Post](#post)
+- [Patch](#patch)
+- [Put](#put)
+- [Delete](#delete)
+- [Head](#head)
+- [Options](#options)
 
 ## Release Stage
 
 `Alpha`
 
-## Operator Configuration
+## Configuration
 
-The operator configuration is used for setting up the input data and parameters of this component. The configuration is configured in pipeline recipe, please refer to [pipeline](../../core/concepts/pipeline) for more details.
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/restapi/v0/config/definition.json).
 
-| Field        | Type                  | Note                                     |
-| :----------- | :-------------------- | :--------------------------------------- |
-| task\*       | string                | TASK_CALL_ENDPOINT                       |
-| url\*        | string                | URL or endpoint to call                  |
-| method\*     | string                | HTTP Request Method (GET, POST, PUT etc) |
-| headers      | map\<string, string\> | Key-value pair map for Request Headers   |
-| request_body | string                | The HTTP request body                    |
+## Connection
 
-### No-code Setup
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| Authentication (required) | `authentication` | object | Authentication method to use for the REST API |
 
-### Low-code Setup
+## Supported Tasks
 
-This is a sample `configuration` in the pipeline recipe.
+### Get
 
-```json
-{
-  "configuration": {
-    "task": "TASK_CALL_ENDPOINT",
-    "url": "${ start.url }",
-    "method": "${ start.method }",
-    "request_body": "${ start.body}"
-  }
-}
-```
+Send a HTTP GET request.
 
-When you send the request, you can use this request format
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_GET` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `output_body_schema` | string | The request body |
 
-```shell
-curl --location 'http://localhost:8080/vdp/v1alpha/users/<user-id>/pipelines/<pipeline-id>/trigger' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer <api_token>' \
---data '{
-    "inputs": [
-      {
-        "task": "TASK_CALL_ENDPOINT",
-        "url": "https://ipwho.is",
-        "method": "GET",
-        "body": ""
-      }
-    ]
-}'
-```
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
 
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
+### Post
+
+Send a HTTP POST request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_POST` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `body` | any | The request body |
+| Body | `output_body_schema` | string | The JSON schema of output body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
+
+### Patch
+
+Send a HTTP PATCH request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_PATCH` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `body` | any | The request body |
+| Body | `output_body_schema` | string | The JSON schema of output body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
+
+### Put
+
+Send a HTTP PUT request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_PUT` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `body` | any | The request body |
+| Body | `output_body_schema` | string | The JSON schema of output body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
+
+### Delete
+
+Send a HTTP DELETE request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DELETE` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `body` | any | The request body |
+| Body | `output_body_schema` | string | The JSON schema of output body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
+
+### Head
+
+Send a HTTP HEAD request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_HEAD` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `output_body_schema` | string | The request body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |
+
+### Options
+
+Send a HTTP OPTIONS request.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_OPTIONS` |
+| Endpoint Url (required) | `endpoint_url` | string | The API endpoint url |
+| Body | `body` | any | The request body |
+| Body | `output_body_schema` | string | The JSON schema of output body |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status Code | `status_code` | integer | The HTTP status code of the response |
+| Body | `body` | any | The body of the response |
+| Header | `header` | object | The HTTP header of the response |

@@ -87,7 +87,8 @@
     "embeddings": "Embeddings",
     "speechRecognition": "Speech Recognition",
     "pythonSdk": "Python SDK",
-    "typescriptSdk": "TypeScript SDK"
+    "typescriptSdk": "TypeScript SDK",
+    "introduction": "Introduction"
   },
   "navbar": {
     "documentation": "Documentation",

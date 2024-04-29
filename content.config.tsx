@@ -78,13 +78,8 @@ export const getSections = (
     {
       text: "common:sidebarSections.coreConcepts",
       link: `/docs/core/concepts`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.pipeline",
-          link: `/docs/core/concepts/pipeline`,
-        },
-      ],
+      collapsible: false,
+      items: [],
       appType: "core",
       versions: ["latest"],
     },
@@ -137,6 +132,13 @@ export const getSections = (
       isHeader: true,
     },
     {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/vdp/introduction`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.buildPipeline",
       link: `/docs/vdp/build`,
       items: [],
@@ -178,12 +180,12 @@ export const getSections = (
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.archetypeAi",
-          link: `/docs/vdp/ai-connectors/archetypeai`,
-        },
-        {
           text: "common:sidebarSections.instillModel",
           link: `/docs/vdp/ai-connectors/instill`,
+        },
+        {
+          text: "common:sidebarSections.archetypeAi",
+          link: `/docs/vdp/ai-connectors/archetypeai`,
         },
         {
           text: "common:sidebarSections.openAI",
@@ -192,6 +194,10 @@ export const getSections = (
         {
           text: "common:sidebarSections.stabilityAI",
           link: `/docs/vdp/ai-connectors/stabilityai`,
+        },
+        {
+          text: "common:sidebarSections.huggingFace",
+          link: `/docs/vdp/ai-connectors/huggingface`,
         },
       ],
       appType: "core",
@@ -202,10 +208,6 @@ export const getSections = (
       link: `/docs/vdp/data-connector`,
       collapsible: true,
       items: [
-        {
-          text: "common:sidebarSections.airbyte",
-          link: `/docs/vdp/data-connectors/airbyte`,
-        },
         {
           text: "common:sidebarSections.bigquery",
           link: `/docs/vdp/data-connectors/bigquery`,
@@ -256,14 +258,6 @@ export const getSections = (
       link: `/docs/vdp/operator`,
       collapsible: true,
       items: [
-        {
-          text: "common:sidebarSections.start",
-          link: `/docs/vdp/operators/start`,
-        },
-        {
-          text: "common:sidebarSections.end",
-          link: `/docs/vdp/operators/end`,
-        },
         {
           text: "common:sidebarSections.base64",
           link: `/docs/vdp/operators/base64`,

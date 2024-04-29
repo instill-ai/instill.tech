@@ -2,178 +2,80 @@
 title: "Stability AI"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a Stability AI AI connector for the unstructured data pipeline tool Instill Core https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up a VDP Stability AI connector https://github.com/instill-ai/instill-core"
 ---
 
-The Stability AI AI connector enables you to connect the AI models served on the Stability AI Platform for the following tasks:
+The Stability AI component is an AI connector that allows users to connect the AI models served on the Stability AI Platform.
+It can carry out the following tasks:
 
-- [Text to Image](#text-to-image)
-- [Image to Image](#image-to-image)
+- [Text To Image](#text-to-image)
+- [Image To Image](#image-to-image)
 
 ## Release Stage
 
 `Alpha`
 
-## Resource Configuration
+## Configuration
 
-The up-to-date configuration is maintained [here](https://github.com/instill-ai/connector/blob/main/pkg/stabilityai/config/definitions.json).
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/stabilityai/v0/config/definition.json).
 
-| Field     | Type   | Note                                                                                       |
-| :-------- | :----- | :----------------------------------------------------------------------------------------- |
-| api_key\* | string | Enter your Stability AI API key. To find your keys, go to your DreamStudio's Account page. |
+## Connection
 
-### No-code Setup
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your Stability AI API key. To find your keys, visit - https://platform.stability.ai/account/keys |
 
-<InfoBlock type="info" title="Prerequisites">
+## Supported Tasks
 
-To create a Stability AI AI connector, you'll first need to create a
-Stability AI account by visiting [dreamstudio.ai](https://dreamstudio.ai).
-Access to your API keys can then be managed through DreamStudio's Account
-page. All new users are granted 25 free credits upon creating an account.
+### Text To Image
 
-</InfoBlock>
+Generate a new image from a text prompt.
 
-To create a Stability AI AI connector:
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_IMAGE` |
+| Engine (required) | `engine` | string | Stability AI Engine (model) to be used. |
+| Prompts (required) | `prompts` | array[string] | An array of prompts to use for generation. |
+| Weights | `weights` | array[number] | An array of weights to use for generation. |
+| CFG Scale | `cfg_scale` | number | How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt) |
+| Clip Guidance Preset | `clip_guidance_preset` | string | Clip guidance preset |
+| Height | `height` | integer | The image height |
+| Width | `width` | integer | The image width |
+| Sampler | `sampler` | string | Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you. |
+| Samples | `samples` | integer | Number of images to generate |
+| Seed | `seed` | integer | Random noise seed (omit this option or use `0` for a random seed) |
+| Steps | `steps` | integer | Number of diffusion steps to run. |
+| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
-1. Go to the **AI** page and click **Set up new AI**
-2. In the **Set Up New AI Connector** page, fill an ID for your model, this will be the unique identifier of this connector
-3. [Optional] Give a short description of your connector in the **Description** field
-4. Click the **AI Connector Type** ▾ drop-down and choose **Stability AI**
-5. Fill the following information and click **Set up**
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Generated images |
+| Seeds | `seeds` | array[number] | Seeds of generated images |
 
-   - Fill **API Key**. Follow the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key
+### Image To Image
 
-6. By default, the connector is disconnected. To connect and use AI connector, go to the connector page and click **Connect**.
+Modify an image based on a text prompt.
 
-### Low-code Setup
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_IMAGE_TO_IMAGE` |
+| Engine (required) | `engine` | string | Stability AI Engine (model) to be used. |
+| Prompts (required) | `prompts` | array[string] | An array of prompts to use for generation. |
+| Init Image | `init_image` | string | Image used to initialize the diffusion process, in lieu of random noise. |
+| Weights | `weights` | array[number] | An array of weights to use for generation. If unspecified, the model will automatically assign a default weight of 1.0 to each prompt. |
+| Clip Guidance Preset | `clip_guidance_preset` | string | Clip guidance preset |
+| Image Strength | `image_strength` | number | How much influence the `init_image` has on the diffusion process. Values close to `1` will yield images very similar to the `init_image` while values close to `0` will yield images wildly different than the `init_image`. The behavior of this is meant to mirror DreamStudio's "Image Strength" slider.  <br/> <br/> This parameter is just an alternate way to set `step_schedule_start`, which is done via the calculation `1 - image_strength`. For example, passing in an Image Strength of 35% (`0.35`) would result in a `step_schedule_start` of `0.65`.  |
+| Cfg Scale | `cfg_scale` | number | How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt) |
+| Init Image Mode | `init_image_mode` | string | Whether to use `image_strength` or `step_schedule_*` to control how much influence the `init_image` has on the result. |
+| Sampler | `sampler` | string | Which sampler to use for the diffusion process. If this value is omitted we'll automatically select an appropriate sampler for you. |
+| Samples | `samples` | integer | Number of images to generate |
+| Seed | `seed` | integer | Random noise seed (omit this option or use `0` for a random seed) |
+| Step Schedule Start | `step_schedule_start` | number | Skips a proportion of the start of the diffusion steps, allowing the init_image to influence the final generated image.  Lower values will result in more influence from the init_image, while higher values will result in more influence from the diffusion steps.  (e.g. a value of `0` would simply return you the init_image, where a value of `1` would return you a completely different image.) |
+| Step Schedule End | `step_schedule_end` | number | Skips a proportion of the end of the diffusion steps, allowing the init_image to influence the final generated image.  Lower values will result in more influence from the init_image, while higher values will result in more influence from the diffusion steps. |
+| Steps | `steps` | integer | Number of diffusion steps to run. |
+| Style Preset | `style_preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
-<CH.Code>
-
-```shellscript cURL(Instill-Cloud)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors \
---header 'Authorization: Bearer <Instill-Cloud-API-Token>' \
---data '{
-  "id": "my-stable-diffusion",
-  "connector_definition_name": "connector-definitions/ai-stability-ai",
-  "configuration": {
-    "api_key": "<stability-ai-api-key>"
-  }
-}'
-```
-
-```shellscript cURL(Instill-Core)
-curl -X POST http://localhost:8080/vdp/v1alpha/users/<user-id>/connectors \
---data '{
-  "id": "my-stable-diffusion",
-  "connector_definition_name": "connector-definitions/ai-stability-ai",
-  "configuration": {
-    "api_key": "<stability-ai-api-key>"
-  }
-}'
-```
-
-</ CH.Code>
-
-For other operations, please refer to the [VDP Protobufs](https://buf.build/instill-ai/protobufs).
-
-## Connector Configuration
-
-When using the Stability AI AI connector in your pipeline, certain fields of the input data need to be filled to trigger the pipeline effectively.
-Here are the expected input and output data fields for the Stability AI AI connector.
-
-### Text to Image
-
-| Input                | Type          | Description                                                                                    |
-| :------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
-| task                 | string        | `TASK_TEXT_TO_IMAGE`                                                                           |
-| engine               | string        | Stability AI Engine (model) to be used. eg. stable-diffusion-xl-1024-v1-0, stable-diffusion-v1 |
-| prompts              | array[string] | This has the text prompt, required for all tasks.                                              |
-| cfg_scale            | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.         |
-| clip_guidance_preset | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.  |
-| sampler              | string        | Which sampler to use for the diffusion process, optional for all tasks.                        |
-| samples              | integer       | Number of images to generate, optional for all tasks.                                          |
-| seed                 | integer       | Random noise seed, optional for all tasks.                                                     |
-| steps                | integer       | Number of diffusion steps to run, optional for all tasks.                                      |
-| style_preset         | string        | To guide the image model towards a particular style, optional for all tasks.                   |
-| weights              | array[number] | Weights for each of the prompts in texts, optional for all tasks.                              |
-| height               | integer       | Height of the output image, optional.                                                          |
-| width                | integer       | Width of the output image, optional.                                                           |
-
-| Output | Type           | Description                             |
-| :----- | -------------- | --------------------------------------- |
-| images | array[image]   | Output images as base64 encoded string. |
-| seeds  | array[integer] | Seeds for output images.                |
-
-### Image to Image
-
-| Input                | Type          | Description                                                                                    |
-| :------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
-| task                 | string        | `TASK_IMAGE_TO_IMAGE`                                                                          |
-| engine               | string        | Stability AI Engine (model) to be used. eg. stable-diffusion-xl-1024-v1-0, stable-diffusion-v1 |
-| init_image           | string        | Specify initial image                                                                          |
-| prompts              | array[string] | This has the text prompt                                                                       |
-| cfg_scale            | number        | How strictly the diffusion process adheres to the prompt text, optional for all tasks.         |
-| clip_guidance_preset | string        | One from: FAST_BLUE, FAST_GREEN, NONE, SIMPLE, SLOW, SLOWER, SLOWEST, optional for all tasks.  |
-| sampler              | string        | Which sampler to use for the diffusion process, optional for all tasks.                        |
-| samples              | integer       | Number of images to generate, optional for all tasks.                                          |
-| seed                 | integer       | Random noise seed, optional for all tasks.                                                     |
-| steps                | integer       | Number of diffusion steps to run, optional for all tasks.                                      |
-| style_preset         | string        | To guide the image model towards a particular style, optional for all tasks.                   |
-| weights              | array[number] | Weights for each of the prompts in texts, optional for all tasks.                              |
-| height               | integer       | Height of the output image, optional.                                                          |
-| width                | integer       | Width of the output image, optional.                                                           |
-| init_image_mode      | string        | Whether to use image_strength or step_schedule, optional.                                      |
-| image_strength       | number        | How much influence the init_image has on the diffusion process, optional.                      |
-
-| Output | Type           | Description                                                   |
-| :----- | -------------- | ------------------------------------------------------------- |
-| images | array[image]   | This will contain the output images as base64 encoded string. |
-| seeds  | array[integer] | This will contain the seeds for output images.                |
-
-## Example
-
-Example input and output data for each task:
-
-<CH.Code>
-```json TASK_TEXT_TO_IMAGE
-// Input
-{
-  "prompts": ["A blue cat bakes a birthday cake"],
-  "cfg_scale": 7.0,
-  "clip_guidance_preset": "SLOWER",
-  "samples": 3,
-  "style_preset": "cinematic",
-  "weights": [0.5, 0.7],
-  "height": 512,
-  "width": 512
-}
-// Output
-{
-  "images": ["<base64-encoded image>"],
-  "seeds": [1769541116]
-}
-````
-
-```json TASK_IMAGE_TO_IMAGE
-// Input
-{
-  "prompts": ["crayon drawing of dogs sit in the snow"],
-  "init_image": "<base64 encode string>",
-  "steps": 50,
-  "cfg_scale": 7.0,
-  "clip_guidance_preset": "SIMPLE",
-  "style_preset": "anime",
-  "init_image_mode": "IMAGE_STRENGTH",
-  "seed": 16258,
-  "samples": 1,
-  "image_strength": 0.35,
-  "weights": [0.65]
-}
-// Output
-{
-  "images": ["<base64-encoded image>"],
-  "seeds": [16258]
-}
-```
-
-</ CH.Code>
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Generated images |
+| Seeds | `seeds` | array[number] | Seeds of generated images |
