@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.47.9](https://github.com/instill-ai/instill.tech/compare/v1.47.8...v1.47.9) (2024-04-29)
+
+
+### Bug Fixes
+
+* 404 page error on docs page ([#812](https://github.com/instill-ai/instill.tech/issues/812)) ([af9f2f2](https://github.com/instill-ai/instill.tech/commit/af9f2f250c69fcf66526ee58d43841d1b32bfc24))
+
+
+### Miscellaneous
+
+* update Partnerships ([#810](https://github.com/instill-ai/instill.tech/issues/810)) ([b1b2e2e](https://github.com/instill-ai/instill.tech/commit/b1b2e2ebb019a88cf506e0ffc86504cdc3c0eff2))
+
 ## [1.47.8](https://github.com/instill-ai/instill.tech/compare/v1.47.7...v1.47.8) (2024-04-29)
 
 
