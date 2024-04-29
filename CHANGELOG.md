@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.47.7](https://github.com/instill-ai/instill.tech/compare/v1.47.6...v1.47.7) (2024-04-29)
+
+
+### Documentation
+
+* update pipeline action docs ([#802](https://github.com/instill-ai/instill.tech/issues/802)) ([49f1ebe](https://github.com/instill-ai/instill.tech/commit/49f1ebe7008ea3fdf0518f98aac07b581de3a910))
+* **vdp:** update document ([#801](https://github.com/instill-ai/instill.tech/issues/801)) ([622d558](https://github.com/instill-ai/instill.tech/commit/622d558b3e269618ddc056f4422e6cea466d483b))
+
 ## [1.47.6](https://github.com/instill-ai/instill.tech/compare/v1.47.5...v1.47.6) (2024-04-25)
 
 
