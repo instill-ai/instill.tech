@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.8](https://github.com/instill-ai/instill.tech/compare/v1.47.7...v1.47.8) (2024-04-29)
+
+
+### Miscellaneous
+
+* update webpage summary link ([#809](https://github.com/instill-ai/instill.tech/issues/809)) ([f9acf1b](https://github.com/instill-ai/instill.tech/commit/f9acf1b2de8dc74e813b594c6ba6018ec549a1c1))
+
 ## [1.47.7](https://github.com/instill-ai/instill.tech/compare/v1.47.6...v1.47.7) (2024-04-29)
 
 
