@@ -73,7 +73,9 @@ h3.null {
 }
 
 .mcnButtonContent {
-  background-color: #23c4e7 !important;
+  padding: 17px 29px 17px 29px !important;
+  border-radius: 4px;
+  background-color: #316fed !important;
 }
 
 td.mcnTextContent > ul,
@@ -118,7 +120,7 @@ table.mcnCaptionTopContent {
 }
 
 .mceWrapperOuter {
-  background-color: rgb(246, 246, 246) !important;
+  background-color: #f0f0f0 !important;
 }
 
 .mceText a {
