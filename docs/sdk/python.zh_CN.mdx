@@ -60,13 +60,13 @@ Before we can start using this SDK, you will need to properly config your target
 
 #### Config file
 
-create a config file under this path `${HOME}/.config/instill/sdk/python/config.yml`, and within that path you will need to fill in some basic parameters for your desired host.[^1]
+create a config file under this path `${HOME}/.config/instill/sdk/python/config.yml`, and within the file you will need to fill in some basic parameters for your desired host.[^1]
 
 [^1]: You can obtain an `api_token`, by simply going to Settings > API Tokens page from the console, no matter it is `Instill Core` or `Instill Cloud`.
 
 Within the config file, you can define multiple instances with the `alias` of your liking, later in the SDK you can refer to this `alias` to switch between instances.[^2]
 
-[^2]: SDK will load the configs for `alias` named `default` when start up. So it is required to have at least one instance named `default`.
+[^2]: SDK will look for alias `default` first. If it is not found, it will load the config for the first alias in the config file.
 
 ```yaml
 hosts:
@@ -112,7 +112,11 @@ global_config.set_default(
 
 ## Usage
 
-**You can find a complete pipeline setup example with python-sdk on our [**GitHub repo**](https://github.com/instill-ai/python-sdk/blob/main/notebooks/create_pipeline.ipynb)**
+<InfoBlock type="info" title="info">
+  Python SDK is currently under some refactoring jobs, the section will be populated soon.
+</InfoBlock>
+
+{/* **You can find a complete pipeline setup example with python-sdk on our [**GitHub repo**](https://github.com/instill-ai/python-sdk/blob/main/notebooks/create_pipeline.ipynb)**
 
 ### Create Client
 
@@ -459,4 +463,4 @@ i.update(
 )
 # verify the output
 instill_model_pipeline([i])[0][0]["inference_result"][0]["category"] == "dog"
-```
+``` */}

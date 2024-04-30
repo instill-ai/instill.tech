@@ -15,59 +15,69 @@ description: "Learn about how to use Models served on Instill Model https://gith
 </InfoBlock>
 
 _Instill Model provides an automated model inference server._
+
+## Inference with Dedicated Model API Endpoint
+
 After importing a model from a supported source, such as GitHub or Hugging Face, and deploying it online,
-it dynamically generates dedicated API endpoints for model inference.
+it dynamically generates a dedicated API endpoint for model inference `/users/<user-id>/models/<model-id>/trigger`.
 
-```shellscript
-/users/<user-id>/models/<model-id>
-```
-
-```shellscript
-/users/<user-id>/models/<model-id>
-```
-
-You can build VDP pipelines for your AI workflows using the [Instill Model AI Connector](../../vdp/ai-connectors/instill-model).
-
-After deploying a model, you can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
+You can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
 Check the examples below. The API accepts batched images
 
-- Sent by remote URL and Base64 or
-- Uploaded by multipart.
+- sent by remote URL and Base64 or
+- uploaded by multipart.
 
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/test -d '{
-  "inputs": [
-    {
-      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
-    },
-    {
-      "image_url": "https://artifacts.instill.tech/imgs/horse.jpg"
-    }
-  ]
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+            }
+        },
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/test -d '{
-  "inputs": [
-    {
-      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-    },
-    {
-      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
-    }
-  ]
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        },
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/test-multipart \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger-multipart \
+--header 'Authorization: Bearer instill_sk_***' \
 --form 'file=@"dog.jpg"' \
---form 'file=@"horse.jpg"'
+--form 'file=@"bear.jpg"'
 ```
 
 </CH.Code>
 
 in which `<user-id>` and `<model-id>` corresponds to the namespace and ID of a model.
+
+## Using Models in VDP
+
+To build VDP pipelines for your AI workflows with models served on Instill Model platform,
+you can utilize the [Instill Model AI Connector](../../vdp/ai-connectors/instill-model).

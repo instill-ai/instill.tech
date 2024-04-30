@@ -21,7 +21,10 @@ At the moment, Instill Model defines the data interface for popular tasks:
 - **Instance Segmentation** - detect, localise and delineate multiple objects in images
 - **Semantic Segmentation** - classify image pixels into predefined categories
 - **Text to Image** - generate images from input text prompts
+- **Image to Image** - generate images from input image promtps
 - **Text Generation** - generate texts from input text prompts
+- **Text Generation Chat** - generate chat style texts from input text prompts
+- **Visual Question Answering** - generate chat style texts from input text and image prompts
 - The list is growing ... 🌱
 
 The above tasks focus on analysing and understanding the content of data in the same way as human does.
@@ -369,6 +372,7 @@ f.write(image)
 | 🔮 Model                                                                  | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
 | [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local-CPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip), [Local-GPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp16-gpu.zip) | ONNX      | ✅  | ✅  |
+| [Stable Diffusion XL](https://huggingface.co/papers/2307.01952)           | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-xl-dvc)                                                                                                                                                                                           | PyTorch   | ❌  | ✅  |
 
 <InfoBlock type="tip" title="tip">
 Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
@@ -409,15 +413,92 @@ The task can fill in incomplete sentences or even generate full stories given th
 
 **Available models**
 
-| 🔮 Model                                                                            | Sources                                                             | Framework         | CPU | GPU |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------- | --- | --- |
-| [Megatron GPT2](https://catalog.ngc.nvidia.com/orgs/nvidia/models/megatron_lm_345m) | [GitHub-DVC](https://github.com/instill-ai/model-gpt2-megatron-dvc) | FasterTransformer | ❌  | ✅  |
+| 🔮 Model                                                                            | Sources                                                                 | Framework         | CPU | GPU |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------- | --- | --- |
+| [Llama2](https://huggingface.co/meta-llama/Llama-2-7b)                              | [GitHub-DVC](https://github.com/instill-ai/model-llama2-7b-dvc)         | Transformer       | ❌  | ✅  |
+| [Code Llama](https://github.com/facebookresearch/codellama)                         | [GitHub-DVC](https://github.com/instill-ai/model-codellama-7b-dvc)      | Transformer       | ❌  | ✅  |
+| [Llama3-instruct](https://llama.meta.com/llama3)                                    | [GitHub-DVC](https://github.com/instill-ai/model-llama3-8b-instruct-dvc)| Transformer       | ❌  | ✅  |
 
 <InfoBlock type="tip" title="tip">
-Depending on your internet speed, importing [Megatron-GPT2-345m](https://github.com/instill-ai/model-gpt2-megatron-dvc) will take a while.
+Depending on your internet speed, importing LLM models will take a while.
 
-The model only supports GPU deployment. By default, VDP can access all your GPUs.
-Assume that you have **N** GPUs, please pick the corresponding tag named with `fp32-345m-N-gpu` to import and deploy.
+Some models only supports GPU deployment. By default, VDP can access all your GPUs.
+
+</InfoBlock>
+
+## Text Generation Chat
+
+Text Generation Chat is a Generative AI task to generate new text from text inputs in chat style.
+Generally, the task takes a series of conversation as the input, and produces new response on the prompts.
+The task can perform conversation and even answer question based on previous context.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-text-generation.svg"
+  alt="Text Generation Chat task"
+/>
+
+```json
+{
+  "task": "TASK_TEXT_GENERATION_CHAT",
+  "task_outputs": [
+    {
+      "text_generation_chat": {
+        "text": "What a delicate situation!\n\nI must advise that it's generally not a good idea to..."
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                            | Sources                                                              | Framework   | CPU | GPU |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------- | --- | --- |
+| [Llama2 Chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) | [GitHub-DVC](https://github.com/instill-ai/model-llama2-7b-chat-dvc) | Transformer | ❌  | ✅  |
+| [MosaicML MPT](https://huggingface.co/mosaicml/mpt-7b)              | [GitHub-DVC](https://github.com/instill-ai/model-mpt-7b-dvc)         | Transformer | ❌  | ✅  |
+| [Mistral](https://huggingface.co/mistralai/Mistral-7B-v0.1)         | [GitHub-DVC](https://github.com/instill-ai/model-mistral-7b-dvc)     | Transformer | ❌  | ✅  |
+| [Zephyr-7b](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha)   | [GitHub-DVC](https://github.com/instill-ai/model-zephyr-7b-dvc)      | Transformer | ✅  | ✅  |
+
+<InfoBlock type="tip" title="tip">
+Depending on your internet speed, importing LLM models will take a while.
+
+Some models only supports GPU deployment. By default, VDP can access all your GPUs.
+
+</InfoBlock>
+
+## Visual Question Answering
+
+Visual Question Answering (VQA) is a task in computer vision that involves answering questions about an image.
+The goal of VQA is to teach machines to understand the content of an image and answer questions about it in natural language.
+
+<ZoomableImg
+  src="/docs-assets/core-concepts/ai-task-text-generation.svg"
+  alt="Visual Question Answering"
+/>
+
+```json
+{
+  "task": "TASK_VISUAL_QUESTION_ANSWERING",
+  "task_outputs": [
+    {
+      "visual_question_answering": {
+        "text": "The image appears to show a close-up view of a plant's leaf or a similar plant part."
+      }
+    }
+  ]
+}
+```
+
+**Available models**
+
+| 🔮 Model                                                            | Sources                                                         | Framework   | CPU | GPU |
+| ------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- | --- | --- |
+| [Llava-1-6](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)| [GitHub-DVC](https://github.com/instill-ai/model-llava-13b-dvc) | Transformer | ❌  | ✅  |
+
+<InfoBlock type="tip" title="tip">
+Depending on your internet speed, importing LLM models will take a while.
+
+Some models only supports GPU deployment. By default, VDP can access all your GPUs.
 
 </InfoBlock>
 

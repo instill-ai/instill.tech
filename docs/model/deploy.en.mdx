@@ -23,11 +23,11 @@ Upon successful model import, the state of a model can be `UNSPECIFIED`, `OFFLIN
 <CH.Code>
 
 ```shellscript deploy
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/deploy
+curl -X POST http://localhost:8080/model/v1alpha/users/<user-id>/models/<model-id>/deploy
 ```
 
 ```shellscript undeploy
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/undeploy
+curl -X POST http://localhost:8080/model/v1alpha/users/<user-id>/models/<model-id>/undeploy
 ```
 
 </CH.Code>

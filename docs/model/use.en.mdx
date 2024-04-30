@@ -30,35 +30,47 @@ Check the examples below. The API accepts batched images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/trigger -d '{
-  "inputs": [
-    {
-      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
-    },
-    {
-      "image_url": "https://artifacts.instill.tech/imgs/horse.jpg"
-    }
-  ]
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+            }
+        },
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/trigger -d '{
-  "inputs": [
-    {
-      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-    },
-    {
-      "image_base64": "/9j/4QBLRXh...UR5+f/2Q=="
-    }
-  ]
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        },
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:9080/v1alpha/users/<user-id>/models/<model-id>/trigger-multipart \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger-multipart \
+--header 'Authorization: Bearer instill_sk_***' \
 --form 'file=@"dog.jpg"' \
---form 'file=@"horse.jpg"'
+--form 'file=@"bear.jpg"'
 ```
 
 </CH.Code>

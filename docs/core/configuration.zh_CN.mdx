@@ -8,7 +8,7 @@ description: "Learn about how to set up the unstructured data ETL tool Instill C
 <InfoBlock type="info" title="info">
   [**Core**](https://github.com/instill-ai/instill-core) runs essential services like a
   user management server, databases, and third-party observability tools
-  necessary for launching VDP.
+  necessary for launching VDP and Model.
 </InfoBlock>
 
 Instill Core automatically load a [`.env`](https://github.com/instill-ai/instill-core/blob/main/.env) file that contains key/value pairs defining required environment variables.
@@ -42,6 +42,7 @@ TEMPORAL_VERSION=<temporal-version>
 TEMPORAL_UI_VERSION=<temporal-ui-version>
 ELASTICSEARCH_VERSION=<elasticsearch-version>
 ETCD_VERSION=<etcd-version>
+REGISTRY_VERSION=<registry-version>
 ```
 
 The combination of default versions in `.env` file is fully tested for compatibility.
@@ -93,10 +94,23 @@ Set the environment variable for a specific service to determine which version t
 
 ```shellscript .env
 # Set the version of individual VDP service
-INSTILL_CORE_VERSION=<core-version>
-API_GATEWAY_VDP_VERSION=<api-gateway-vdp-version>
 PIPELINE_BACKEND_VERSION=<pipeline-backend-version>
-CONTROLLER_VDP_VERSION=<controller-version>
+```
+
+## Configuring Model Services
+
+Read the default configuration files for a full overview of all supported configuration options of each service:
+
+- [`model-backend`](https://github.com/instill-ai/model-backend/blob/main/config/config.yaml)(`localhost:8083`): a service to import and serve ML models
+
+### Configuring Model Service Version
+
+Set the environment variable for a specific service to determine which version to use in VDP.
+
+```shellscript .env
+# Set the version of individual VDP service
+MODEL_BACKEND_VERSION=<model-backend-version>
+CONTROLLER_MODEL_VERSION=<controller-model-version>
 ```
 
 The combination of default versions in `.env` file is fully tested for compatibility.
@@ -104,19 +118,19 @@ Unless you are debugging and testing, updating the default versions in the `.env
 
 ## Anonymised Usage Collection
 
-To help us better understand how VDP is used and can be improved, VDP collects and reports _anonymised_ usage statistics.
+To help us better understand how VDP and Model is used and can be improved, VDP and Model collects and reports _anonymised_ usage statistics.
 
 ### What Data is Collected
 
 <InfoBlock type="info" title="info">
   We value your privacy. So, we went for the anonymous data and selected a set
   of details to share from your VDP instance that would give us insights about
-  how to improve VDP without being invasive.
+  how to improve VDP and Model without being invasive.
 </InfoBlock>
 
-When a new VDP is running, the usage client in services including `pipeline-backend` and `mgmt-backend` in VDP will ask for a new session, respectively.
+When a new VDP and Model is running, the usage client in services including `pipeline-backend`, `model-backend` and `mgmt-backend` in VDP will ask for a new session, respectively.
 Our usage server returns a token used for future reporting.
-For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L15-L66) data including some basic information about the service and the system details the service is running on:
+For each session, we collect [`Session`](https://github.com/instill-ai/protobufs/blob/main/core/usage/v1beta/usage.proto#L42-L91) data including some basic information about the service and the system details the service is running on:
 
 - name of the service to collect data from, e.g., `SERVICE_PIPELINE` for `pipeline-backend`
 - edition of the service to identify the deployment, e.g., `local-ce` for local community edition deployment
@@ -126,15 +140,16 @@ For each session, we collect [`Session`](https://github.com/instill-ai/protobufs
 - uptime in seconds to identify the rough life span of the service
 
 Each session is assigned a random UUID for tracking and identification.
-Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L153-L175) data every 10 minutes:
+Then, each session will collect and send its own [`SessionReport`](https://github.com/instill-ai/protobufs/blob/main/core/usage/v1beta/usage.proto#L220-L242) data every 10 minutes:
 
-- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L68-L72) reports data for `mgmt-backend` session
+- [`MgmtUsageData`](https://github.com/instill-ai/protobufs/blob/main/core/usage/v1beta/usage.proto#L94-L99) reports data for `mgmt-backend` session
   - information of the [onboarded User](../../quickstart#Authorisation)
-- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto#L131-L153) reports data for `pipeline-backend` session of the onboarded User
+- [`PipelineUsageData`](https://github.com/instill-ai/protobufs/blob/main/core/usage/v1beta/usage.proto#L168-L203) reports data for `pipeline-backend` session of the onboarded User
   - UUID of the onboarded User
-  - number of _active_ and _inactive_ Pipelines
-  - number of `SYNC` and `ASYNC` Pipelines
-  - number of images processed by the Pipelines
+  - a list of pipeline trigger metadata
+- [`ModelUsageData`](https://github.com/instill-ai/protobufs/blob/main/core/usage/v1beta/usage.proto#L134-L165) reports data for `model-backend` session of the onboarded User
+  - UUID of the onboarded User
+  - a list of model trigger metadata
 
 You can check the full usage data structs in [protobufs](https://github.com/instill-ai/protobufs/blob/main/vdp/usage/v1alpha/usage.proto).
 These data do not allow us to track Personal Data but enable us to measure session counts and usage statistics.
@@ -156,7 +171,7 @@ However, if you want to opt out, you can disable it by overriding the `.env` fil
 USAGE_ENABLED=false
 ```
 
-This will disable the VDP usage collection for the entire project.
+This will disable the VDP and Model usage collection for the entire project.
 
 ### Acknowledgements
 

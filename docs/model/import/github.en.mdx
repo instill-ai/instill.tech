@@ -22,7 +22,7 @@ Currently, Instill Model supports importing models from
 
 | Field          | Type   | Note                                                                |
 | :------------- | :----- | :------------------------------------------------------------------ |
-| `repository`\* | string | Name of a public GitHub repository, e.g., `instill-ai/model-yolov4` |
+| `repository`\* | string | Name of a public GitHub repository, e.g., `instill-ai/model-yolov7` |
 
 ## Getting Started
 
@@ -50,8 +50,8 @@ Go to [GitHub](https://github.com/new) and create a new _public_ repository and 
 
 ```shellscript
 # Create a folder
-mkdir model-yolov4
-cd model-yolov4
+mkdir model-yolov7
+cd model-yolov7
 
 # Set a new remote
 git init
@@ -67,36 +67,21 @@ Having initialized the project, let's download the sample model files
 
 ```shellscript
 # Download sample model
-curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
-tar -xvf yolov4-onnx-cpu.zip
-rm yolov4-onnx-cpu.zip
+curl -o yolov7.zip https://artifacts.instill.tech/vdp/sample-models/yolov7.zip
+tar -xvf yolov7.zip
+rm yolov7.zip
 ```
 
 The extracted model files should look like:
 
 ```shellscript
+.
 ├── README.md
-├── post
-│   ├── 1
-│   │   ├── labels.py
-│   │   ├── model.py
-│   │   └── yolov4_anchors.txt
-│   └── config.pbtxt
-├── pre
-│   ├── 1
-│   │   └── model.py
-│   └── config.pbtxt
-├── yolov4
-│   ├── 1
-│   │   └── .keep
-│   └── config.pbtxt
-└── yolov4-infer
-    ├── 1
-    │   └── model.onnx      // <--- large model file
-    └── config.pbtxt
+├── model.onnx    // <--- large model file
+└── model.py
 ```
 
-In this case, we use the Object Detection model [YOLOv4](https://github.com/AlexeyAB/darknet) as sample data. Among all model files, the size of `yolov-infer/1/model.onnx` is 257 MB that beyonds the GitHub file uploading limit.
+In this case, we use the Object Detection model [YOLOv7](https://github.com/WongKinYiu/yolov7) as sample data. Among all model files, the size of `model.onnx` is 141 MB that beyonds the GitHub file uploading limit.
 
 **Step 3: Track large files with Git LFS**
 
@@ -133,7 +118,7 @@ git commit -m "feat: add model files"
 # List Git LFS tracked paths
 git lfs ls-files
 # Output
-1881fe9c50 * yolov4-infer/1/model.onnx
+1881fe9c50 * model.onnx
 
 # Update remote
 git push -u origin main
@@ -162,7 +147,7 @@ git tag <tagname>
 git push origin --tags
 ```
 
-🎉 This repository is ready. Follow the [setup guide](#setup-guide) and import the repository to Instill Model.
+🎉 This repository is ready. Follow the [Import](#import) and import the repository to Instill Model.
 
 ### Prepare a GitHub Repository and Manage Large Model Files by DVC
 
@@ -186,8 +171,8 @@ Go to [GitHub](https://github.com/new) and create a new _public_ repository and 
 
 ```shellscript
 # Create a folder
-mkdir model-yolov4
-cd model-yolov4
+mkdir model-yolov7
+cd model-yolov7
 
 # Set a new remote
 git init
@@ -203,9 +188,9 @@ Having initialized the project, let's download the sample model files
 
 ```shellscript
 # Download sample model
-curl -o yolov4-onnx-cpu.zip https://artifacts.instill.tech/vdp/sample-models/yolov4-onnx-cpu.zip
-tar -xvf yolov4-onnx-cpu.zip
-rm yolov4-onnx-cpu.zip
+curl -o yolov7.zip https://artifacts.instill.tech/vdp/sample-models/yolov7.zip
+tar -xvf yolov7.zip
+rm yolov7.zip
 ```
 
 **Step 3: Initialize DVC in the repository**
@@ -235,33 +220,33 @@ git commit -m "chore: initialize DVC"
 Let's use `dvc add` to track the ONNX model file:
 
 ```shellscript
-dvc add yolov4-infer/1/model.onnx
+dvc add model.onnx
 
 # Output
 To track the changes with git, run:
 
-  git add yolov4-infer/1/model.onnx.dvc yolov4-infer/1/.gitignore
+  git add model.onnx.dvc .gitignore
   ...
 ```
 
 DVC stores the model file information in a `.dvc` metadata file and lists it in `.gitignore`. The `.dvc` file is a placeholder for the original large file.
 
 ```shellscript
-cat yolov4-infer/1/model.onnx.dvc
+cat model.onnx.dvc
 
 # Output
 outs:
-  - md5: 2e0eeb4de8da2a0663ae3eb4a0dabbce
-    size: 257470589
-    path: model.onnx
+- md5: 304ebe08d8a00e9cb03147b756e26d3a
+  size: 147727196
+  path: model.onnx
 ```
 
 `dvc add` moves the large file into `.dvc/cache`:
 
 ```shellscript
 .dvc/cache
-└── 2e
-    └── 0eeb4de8da2a0663ae3eb4a0dabbce
+└── 30
+    └── 4ebe08d8a00e9cb03147b756e26d3a
 ```
 
 The hash value of the ONNX file we just added (`2e0eeb4...`) determines the above cache path.
@@ -269,7 +254,7 @@ The hash value of the ONNX file we just added (`2e0eeb4...`) determines the abov
 Follow the instruction and track these files with Git
 
 ```shellscript
-git add yolov4-infer/1/model.onnx.dvc yolov4-infer/1/.gitignore
+git add model.onnx.dvc .gitignore
 git commit -m "feat: add model file"
 ```
 
@@ -288,7 +273,7 @@ Prepare the GCS bucket:
 
 ```shellscript
 # Create a new data remote
-dvc remote add -d myremote gs://my-public-bucket/yolov4
+dvc remote add -d myremote gs://my-public-bucket/yolov7
 
 # Record changes
 git add .dvc/config
@@ -304,9 +289,9 @@ dvc push
 dvc push copies the local cached data to the remote storage we set up earlier. The remote bucket directory should look like:
 
 ```shellscript
-.../yolov4
-└── 2e
-    └── 0eeb4de8da2a0663ae3eb4a0dabbce
+.../yolov7
+└── 30
+    └── 4ebe08d8a00e9cb03147b756e26d3a
 ```
 
 Let's push all files including dvc files to GitHub
@@ -334,6 +319,8 @@ git push origin --tags
   more information.
 </InfoBlock>
 
+## Import
+
 ### No-code Setup
 
 To import a model from GitHub in the Console, do the following:
@@ -350,20 +337,23 @@ To import a model from GitHub in the Console, do the following:
 1. Send a HTTP request to the Instill Model `model-backend` to import a model from a GitHub repository.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models -d '{
-  "id": "yolov4-v1-cpu",
+curl -X POST http://localhost:8080/model/v1alpha/users/admin/models \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+  "id": "yolov7-v1-cpu",
   "model_definition": "model-definitions/github",
   "configuration": {
-    "repository": "instill-ai/model-yolov4-dvc",
+    "repository": "instill-ai/model-yolov7-dvc",
     "tag": "v1.0-cpu"
   }
 }'
 ```
 
-2. Deploy the imported model `yolov4-v1-cpu`.
+2. Deploy the imported model `yolov7-v1-cpu`.
 
 ```shellscript cURL
-curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/deploy
+curl -X POST http://localhost:8080/model/v1alpha/users/admin/models/yolov7-v1-cpu/deploy \
+--header 'Authorization: Bearer instill_sk_***'
 ```
 
 3. Perform an inference to test the model
@@ -371,27 +361,41 @@ curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/deploy
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
-  "inputs": [
-    {
-      "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
-    }
-  ]
+curl -X POST http://localhost:8080/model/v1alpha/users/admin/models/yolov7-v1-cpu/trigger \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+            }
+        },
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test -d '{
-  "inputs": [
-    {
-      "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-    }
-  ]
+curl -X POST http://localhost:8080/model/v1alpha/users/admin/models/yolov7-v1-cpu/trigger \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        }
+    ]
 }'
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/models/yolov4-v1-cpu/test-multipart \
+curl -X POST http://localhost:8080/model/v1alpha/users/admin/models/yolov7-v1-cpu/trigger-multipart \
+--header 'Authorization: Bearer instill_sk_***' \
 --form 'file=@"dog.jpg"'
 ```
 
