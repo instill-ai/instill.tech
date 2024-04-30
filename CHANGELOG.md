@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.10](https://github.com/instill-ai/instill.tech/compare/v1.47.9...v1.47.10) (2024-04-30)
+
+
+### Documentation
+
+* **model:** update outdated Instill Model related docs ([#814](https://github.com/instill-ai/instill.tech/issues/814)) ([9048935](https://github.com/instill-ai/instill.tech/commit/9048935c339d28e6e361176e91eee56e0e9b6599))
+
 ## [1.47.9](https://github.com/instill-ai/instill.tech/compare/v1.47.8...v1.47.9) (2024-04-29)
 
 
