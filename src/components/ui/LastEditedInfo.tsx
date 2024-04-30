@@ -20,7 +20,7 @@ export const LastEditedInfo = ({ meta, marginBottom }: LastEditedInfoProps) => {
           <div className="flex flex-row gap-x-1 text-sm ">
             <p className="text-instillGrey70">by</p>
             <a
-              className="text-instillBlue50 underline"
+              className="text-semantic-accent-on-bg underline"
               href={authorGithubUrl || "/"}
               target="_blank"
               rel="noopener noreferrer"

@@ -63,17 +63,17 @@ export const TableOfContent = ({ headers, type }: TableOfContentProps) => {
           <li
             key={header.slug}
             className={cn(
-              "group my-1.5 border-l-2 py-0.5 pl-[15px] text-sm hover:border-instillBlue50",
+              "group my-1.5 border-l-2 py-0.5 pl-[15px] text-sm hover:border-semantic-accent-on-bg",
               currentHash === header.slug
-                ? "border-instillBlue50"
+                ? "border-semantic-accent-on-bg"
                 : "border-instillGrey50"
             )}
           >
             <a
               className={cn(
-                "block truncate group-hover:text-instillBlue50",
+                "block truncate group-hover:text-semantic-accent-on-bg",
                 currentHash === header.slug
-                  ? "text-instillBlue50"
+                  ? "text-semantic-accent-on-bg"
                   : "text-instillGrey50"
               )}
               href={`#${header.slug}`}

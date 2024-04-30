@@ -37,10 +37,10 @@ export const Item = ({ item, isDropdownItem }: ItemProps) => {
               className={cn(
                 "my-auto text-sm font-normal ",
                 !isDropdownItem
-                  ? "hover:text-instillBlue50 dark:hover:text-instillBlue50"
+                  ? "hover:text-semantic-accent-on-bg dark:hover:text-semantic-accent-on-bg"
                   : "",
                 isRouterActive(router.asPath, item.to)
-                  ? "text-instillBlue50"
+                  ? "text-semantic-accent-on-bg"
                   : "text-black dark:text-instillGrey15"
               )}
             >
@@ -77,7 +77,7 @@ export const Item = ({ item, isDropdownItem }: ItemProps) => {
                 className={cn(
                   "my-auto text-sm font-normal text-black  dark:text-instillGrey15",
                   !isDropdownItem
-                    ? "hover:text-instillBlue50 dark:hover:text-instillBlue50"
+                    ? "hover:text-semantic-accent-on-bg dark:hover:text-semantic-accent-on-bg"
                     : ""
                 )}
               >
@@ -92,7 +92,7 @@ export const Item = ({ item, isDropdownItem }: ItemProps) => {
             className={cn(
               "my-auto text-sm font-normal text-black dark:text-instillGrey15",
               !isDropdownItem
-                ? "hover:text-instillBlue50 dark:hover:text-instillBlue50"
+                ? "hover:text-semantic-accent-on-bg dark:hover:text-semantic-accent-on-bg"
                 : ""
             )}
           >
