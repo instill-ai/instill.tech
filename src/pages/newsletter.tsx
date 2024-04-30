@@ -113,26 +113,42 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer
-        margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[800px]"
-      >
-        <div className="mb-[120px] flex w-full flex-col xl:mb-40 xl:px-0">
-          <h1 className="mb-10 w-full text-left font-mono text-5xl font-semibold uppercase text-instillSkyBlue xl:text-instill-h1">
+      <ContentContainer margin="my-[100px]" contentMaxWidth="max-w-[800px]">
+        <div className="mb-[100px] flex w-full flex-col xl:px-0">
+          <h1 className="mb-6 w-full text-left font-sans text-[64px] font-semibold leading-[60px] tracking-[-1.28px] text-[#101828]">
             Newsletter
           </h1>
-          <h3 className="mb-10 font-sans text-lg font-light text-instillGrey70 xl:text-2xl">
+          <h3 className="mb-10 font-sans text-[20px] font-light text-[#475467]">
             Get the latest news from Instill AI: product updates, community
             highlights, blog posts, useful tutorials and more!
           </h3>
-          <div className="bg-[#F6F6F6] px-3 pb-2 pt-3">
-            <SubscribeNewsletterForm width="w-full" position="mx-auto" />
+          <div
+            style={{
+              backgroundImage: 'url("/images/articles/glow.png")',
+              borderRadius: "8px",
+            }}
+          >
+            <div className="flex flex-row rounded-sm bg-[#FFFFFF99] bg-opacity-80 p-[30px] shadow-sm backdrop-blur-sm">
+              <div className="w-1/2">
+                <p className="mb-2 font-sans text-[24px] font-semibold leading-[36px] text-[#101828]">
+                  Join our newsletter
+                </p>
+                <p className="font-sans text-[14px] font-normal text-[#475467]">
+                  Sign up for the very best tutorials and the latest news.
+                </p>
+              </div>
+
+              <div className="w-1/2">
+                <SubscribeNewsletterForm width="w-full" position="mx-auto" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
             <Fragment key={campaign.id}>
-              <div className="mb-5 mr-auto bg-instillNatureGreen px-2.5 py-[5px]">
+              <div className="mb-5 mr-auto rounded-sm bg-white px-3 py-[5px] font-mono text-[13px] font-medium leading-5 shadow-sm">
+                Published{" "}
                 {`${new Date(campaign.sendTime)
                   .toDateString()
                   .split(" ")
@@ -140,7 +156,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
                   .join(" ")}`}
               </div>
               <div
-                className="mb-[120px] w-full bg-instillGrey05 px-4 py-10 shadow-instill-solid-10 xl:px-10 xl:shadow-instill-solid-20"
+                className="mb-[120px] w-full bg-[#F0F0F0] px-4 py-10 xl:px-10"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
             </Fragment>
