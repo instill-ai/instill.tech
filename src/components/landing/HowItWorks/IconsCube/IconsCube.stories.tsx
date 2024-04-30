@@ -25,7 +25,11 @@ Playground.args = {
     {
       id: "httpIcon",
       icon: (
-        <HttpIcon {...iconProps} color="fill-instillBlue50" position="m-auto" />
+        <HttpIcon
+          {...iconProps}
+          color="fill-semantic-accent-on-bg"
+          position="m-auto"
+        />
       ),
       color: "bg-instillBlue10",
     },

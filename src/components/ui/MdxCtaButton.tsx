@@ -1,5 +1,6 @@
 import { MdxComponentPosition } from "@/lib/markdown";
 import { MdxComponentBase } from "./MdxComponentBase";
+import { Button } from "@instill-ai/design-system";
 
 export type MdxCtaButtonProps = {
   text: string;
@@ -17,9 +18,12 @@ export const MdxCtaButton = ({ text, link, position }: MdxCtaButtonProps) => {
           rel="noopener noreferrer"
           className="flex no-underline"
         >
-          <p className="rounded-[1px] bg-instillNeonBlue bg-opacity-10 px-5 py-2.5 text-instillNeonBlue hover:bg-instillNeonBlue hover:bg-opacity-20 hover:text-instillNeonBlue hover:shadow-instill-solid-5">
+          {/* <p className="rounded-[1px] bg-semantic-accent-on-bg bg-opacity-10 px-5 py-2.5 text-semantic-accent-on-bg hover:bg-semantic-accent-on-bg hover:bg-opacity-20 hover:text-semantic-accent-on-bg">
             {text}
-          </p>
+          </p> */}
+          <Button variant="primary" size="lg">
+            {text}
+          </Button>
         </a>
       </div>
     </MdxComponentBase>

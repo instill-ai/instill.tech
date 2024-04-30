@@ -56,7 +56,7 @@ export const Section = ({
           "flex flex-row px-1 py-1.5 hover:rounded hover:bg-instillGrey05 dark:text-instillGrey05 dark:hover:bg-instillGrey80",
           { "mb-1": !collapsed },
           link === router.asPath && !isHeader
-            ? "rounded bg-instillBlue10 !font-bold !text-instillBlue50 hover:!bg-instillBlue10"
+            ? "rounded bg-semantic-accent-bg !font-bold !text-semantic-accent-on-bg hover:!bg-semantic-accent-bg"
             : ""
         )}
       >
@@ -73,7 +73,7 @@ export const Section = ({
             className={cn(
               "my-auto",
               link === router.asPath
-                ? "bg-instillBlue10 hover:bg-instillBlue10"
+                ? "bg-semantic-accent-bg hover:bg-semantic-accent-bg"
                 : " hover:bg-instillGrey05 dark:hover:bg-instillGrey80"
             )}
           >
@@ -82,7 +82,7 @@ export const Section = ({
                 className={cn(
                   "h-5 w-5 ",
                   link === router.asPath
-                    ? "stroke-instillBlue50"
+                    ? "stroke-semantic-accent-on-bg"
                     : "stroke-slate-500"
                 )}
                 onClick={toggle}
@@ -92,7 +92,7 @@ export const Section = ({
                 className={cn(
                   "h-5 w-5 stroke-slate-500",
                   link === router.asPath
-                    ? "stroke-instillBlue50"
+                    ? "stroke-semantic-accent-on-bg"
                     : "stroke-slate-500"
                 )}
                 onClick={toggle}
@@ -116,7 +116,7 @@ export const Section = ({
             className={cn(
               "ml-2 py-1.5 pl-2 text-sm font-normal transition duration-300 ease-in-out hover:rounded hover:bg-instillGrey05 dark:text-instillGrey05 dark:hover:bg-instillGrey80",
               item.link === router.asPath.split("#")[0]
-                ? "rounded bg-instillBlue10 !font-bold !text-instillBlue50 hover:!bg-instillBlue10"
+                ? "rounded bg-semantic-accent-bg !font-bold !text-semantic-accent-on-bg hover:!bg-semantic-accent-bg"
                 : ""
             )}
           >
