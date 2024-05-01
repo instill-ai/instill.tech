@@ -56,13 +56,13 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                   </Link>
                 </div>
 
-                <div className="my-auto w-1/4 p-6">
+                <div className="my-auto hidden w-1/4 p-6 xl:block">
                   <p className="font-sans text-[14px] font-normal leading-5 text-[#475467]">
                     {article.type}
                   </p>
                 </div>
 
-                <div className="my-auto w-1/6 p-6">
+                <div className="my-auto hidden w-1/6 p-6 xl:block">
                   <p className="font-sans text-[14px] font-normal leading-5 text-[#475467]">
                     {article.publishedOn
                       ? new Date(article.publishedOn).toLocaleDateString(
@@ -77,7 +77,7 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                   </p>
                 </div>
 
-                <div className="my-auto flex w-1/6 justify-end p-6">
+                <div className="my-auto flex w-1/2 justify-end p-6 xl:w-1/6">
                   {!article.authorAvatarSrc ? (
                     <GitHubIcon
                       color="fill-instillGrey50"

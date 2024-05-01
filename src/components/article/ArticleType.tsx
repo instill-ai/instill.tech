@@ -9,7 +9,7 @@ type ArticleTypeProps = {
 
 export const ArticleType = ({ setFilters, filterType }: ArticleTypeProps) => {
   return (
-    <div className="my-4 flex flex-row justify-center">
+    <div className="my-6 flex flex-row justify-center xl:my-4">
       <div className="space-x-1 rounded-sm border bg-white p-0.5">
         <Button
           variant="secondaryGrey"

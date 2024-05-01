@@ -39,15 +39,15 @@ export const PageHero = ({
       >
         <h1
           className={cn(
-            "w-full text-center text-[24px] font-semibold leading-[28px]",
-            headerColor ? headerColor : "text-instillSkyBlue",
+            "w-full text-center text-[18px] font-semibold leading-5 xl:text-[24px] xl:leading-[28px]",
+            headerColor ? headerColor : "text-semantic-accent-on-bg",
             headerUppercase ? "uppercase" : "",
             headerFontFamily ? headerFontFamily : "font-sans"
           )}
         >
           {headline}
         </h1>
-        <div className="text-center font-sans text-[16px] text-lg font-light text-instillGrey70">
+        <div className="text-center font-sans text-[14px] font-light text-instillGrey70 xl:text-[16px]">
           {subHeadline}
         </div>
         {ctaButton}

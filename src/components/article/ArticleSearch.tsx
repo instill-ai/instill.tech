@@ -39,7 +39,7 @@ export const ArticleSearch = ({
   return (
     <div
       className={cn(
-        "flex w-full flex-col xl:mx-auto xl:w-[458px]",
+        "mx-auto flex w-[321px] flex-col pt-4 xl:w-[458px] xl:pt-0",
         marginBottom
       )}
     >
