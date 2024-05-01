@@ -276,7 +276,7 @@ const ComponentPage: FC & {
           <div className="flex justify-center">
             <h1
               className={cn(
-                "mb-5 w-[480px] text-left font-mono text-[56px] font-semibold"
+                "mb-5 w-[480px] text-left text-center font-mono text-[42px] font-semibold xl:text-[56px]"
               )}
             >
               VDP Components
