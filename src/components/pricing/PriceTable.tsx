@@ -4,7 +4,10 @@ import { Button, Separator } from "@instill-ai/design-system";
 
 export const PriceTable = () => {
   return (
-    <ContentContainer margin="my-[20px]" contentMaxWidth="max-w-[1127px]">
+    <ContentContainer
+      margin="my-[20px]"
+      contentMaxWidth="max-w-[1127px] xl:block hidden"
+    >
       <div
         className="rounded-sm rounded-b-sm bg-cover bg-no-repeat shadow-md"
         style={{
