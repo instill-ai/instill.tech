@@ -149,13 +149,13 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
         <BackToPreviousPageLink url="/career" label="Back" />
         <div className="flex flex-col gap-y-6">
           <div className="flex justify-center">
-            <h1 className="font-sans text-[56px] font-bold tracking-[-1.12px] text-black">
+            <h1 className="text-center font-sans text-[42px] font-bold tracking-[-1.12px] text-black xl:text-[56px]">
               {position.name}
             </h1>
           </div>
           <div className="flex flex-row gap-x-5">
-            <div className="w-1/4"></div>
-            <div className="w-1/4 space-y-2">
+            <div className="xl:w-1/4"></div>
+            <div className="w-1/2 space-y-2 xl:w-1/4">
               <div className="flex justify-center">
                 <PinIcon
                   width="w-6"
@@ -170,7 +170,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
                 </p>
               </div>
             </div>
-            <div className="w-1/4 space-y-2">
+            <div className="w-1/2 space-y-2 xl:w-1/4">
               <div className="flex justify-center">
                 <svg
                   width="25"
@@ -194,11 +194,11 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
                 </p>
               </div>
             </div>
-            <div className="w-1/4"></div>
+            <div className="xl:w-1/4"></div>
           </div>
           <div className="flex flex-row gap-x-5">
-            <div className="w-1/4"></div>
-            <div className="w-1/4 space-y-2">
+            <div className="xl:w-1/4"></div>
+            <div className="w-1/2 space-y-2 xl:w-1/4">
               <div className="flex justify-center">
                 <svg
                   width="25"
@@ -217,18 +217,18 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
                 </svg>
               </div>
               <div className="flex justify-center">
-                <p className="font-sans text-[16px] font-normal leading-5 text-[#475467]">
+                <p className="text-center font-sans text-[16px] font-normal leading-5 text-[#475467]">
                   {position.packageUK}
                 </p>
               </div>
               <div className="text-center">
-                <p className="font-sans text-[16px] font-normal leading-5 text-[#8C8C8C]">
+                <p className="text-center font-sans text-[16px] font-normal leading-5 text-[#8C8C8C]">
                   {position.packageTW}, or other locations based on the local
                   living cost
                 </p>
               </div>
             </div>
-            <div className="w-1/4 space-y-2">
+            <div className="w-1/2 space-y-2 xl:w-1/4">
               <div className="flex flex-col">
                 <div className="flex justify-center">
                   <svg
@@ -259,7 +259,7 @@ const CareerPositionPage: FC<CareerPositionPageProps> & {
                 </div>
               </div>
             </div>
-            <div className="w-1/4"></div>
+            <div className="xl:w-1/4"></div>
           </div>
         </div>
       </ContentContainer>
