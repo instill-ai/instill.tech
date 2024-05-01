@@ -208,7 +208,7 @@ const BlogPage: FC<BlogPageProps> & {
         jsonLd={getJsonLd(blogMeta)}
       />
       <ContentContainer
-        margin="mt-[60px] mb-0"
+        margin="xl:mt-[60px] mb-0 mt-[48px]"
         contentMaxWidth="xl:max-w-[1127px]"
       >
         <BackToPreviousPageLink
@@ -248,7 +248,7 @@ const BlogPage: FC<BlogPageProps> & {
             width="max-w-[1127px]"
             position="mr-auto"
             headerColor="text-instillGrey95"
-            gapY="gap-y-[10px]"
+            gapY="gap-y-[9px]"
             headerUppercase={false}
           />
 

@@ -181,11 +181,11 @@ const TutorialPage: FC<TutorialPageProps> & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="mt-[60px] mb-0"
+        margin="xl:mt-[60px] mb-0 mt-[48px]"
         contentMaxWidth="max-w-[1127px]"
       >
         <BackToPreviousPageLink
-          url="/tutorials"
+          url="/articles"
           marginBottom="mb-5 xl:mb-10"
           label="Tutorial"
         />
@@ -212,7 +212,7 @@ const TutorialPage: FC<TutorialPageProps> & {
             width="max-w-[1127px]"
             position="mx-auto"
             headerColor="text-instillGrey95"
-            gapY="gap-y-[10px]"
+            gapY="gap-y-[9px]"
             headerUppercase={false}
           />
           <div

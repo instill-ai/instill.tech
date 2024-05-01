@@ -70,7 +70,7 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="my-[120px] xl:my-[18px]"
+        margin="my-2 xl:my-[18px]"
         contentMaxWidth="max-w-[1127px]"
       >
         <div
