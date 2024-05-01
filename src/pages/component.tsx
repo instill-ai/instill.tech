@@ -269,14 +269,14 @@ const ComponentPage: FC & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="mt-[350px] mb-[20px]"
+        margin="mt-[350px] xl:mb-[20px] mb-0"
         contentMaxWidth="max-w-[1127px]"
       >
         <div className="mt flex flex-col">
           <div className="flex justify-center">
             <h1
               className={cn(
-                "mb-5 w-[480px] text-left font-mono text-[56px] font-semibold"
+                "mb-2 text-center font-mono text-[42px] font-semibold leading-[45px] xl:mb-5 xl:w-[480px] xl:text-left xl:text-[56px] "
               )}
             >
               VDP Components
@@ -284,7 +284,7 @@ const ComponentPage: FC & {
           </div>
           <div className="mb-12 flex justify-center">
             <div className="w-[480px] text-center">
-              <p className="mx-auto font-sans text-[18px] font-light text-[#8C8A8A]">
+              <p className="mx-auto font-sans text-[16px] font-light text-[#8C8A8A] xl:text-[18px]">
                 Open-source, out-of-the-box and managed pipeline components for
                 Instill Versatile Data Pipeline (VDP)
               </p>
@@ -390,7 +390,7 @@ const ComponentPage: FC & {
             </div>
           </div>
 
-          <div className="mb-7 mt-6 flex justify-center">
+          <div className="mb-5 mt-6 flex justify-center xl:mb-7">
             <Button
               variant="secondaryColour"
               size="lg"
