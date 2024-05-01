@@ -116,14 +116,8 @@ const CareerPage: FC<CareerPageProps> & {
       />
       <ContentContainer margin="mt-[56px]" contentMaxWidth="max-w-[1127px]">
         <CareerHero />
-
-        <div className="mt-[48px] flex justify-center">
-          <p className="font-sans text-[36px] font-semibold leading-[30px] tracking-[-0.5px] text-[#001354]">
-            Mission
-          </p>
-        </div>
       </ContentContainer>
-      <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
+      <ContentContainer margin="mt-[48px]" contentMaxWidth="max-w-[1127px]">
         <div
           style={{
             backgroundImage: 'url("/images/career/glow.png")',
@@ -165,13 +159,13 @@ const CareerPage: FC<CareerPageProps> & {
             </Button>
           </div>
           <div className="flex justify-center">
-            <p className="font-sans text-[36px] font-semibold leading-[30px] tracking-[-0.5px] text-[#001354]">
+            <p className="font-sans text-[32px] font-semibold leading-[30px] tracking-[-0.5px] text-[#001354] xl:text-[36px]">
               Open Roles
             </p>
           </div>
           <div className="flex justify-center">
             <div className="w-[990px]">
-              <p className="font-sans text-[20px] font-normal leading-[30px] text-[#010D3E]">
+              <p className="text-center font-sans text-[18px] font-normal leading-[30px] text-[#010D3E] xl:text-[20px]">
                 We&apos;re on a mission to make Al highly accessible to
                 everyone. Join us and make a dent in the universe!
               </p>
@@ -197,7 +191,7 @@ const CareerPage: FC<CareerPageProps> & {
             {positions.map((position, index) => (
               <React.Fragment key={position.slug}>
                 <div className="flex flex-row">
-                  <div className="w-[60%] px-6 py-4">
+                  <div className="xl:full px-6 py-4 xl:w-[60%]">
                     <Link
                       href={`/career/${position.id}-${position.slug}`}
                       className="flex flex-row gap-x-2"
@@ -208,39 +202,43 @@ const CareerPage: FC<CareerPageProps> & {
                       <Icons.ArrowRight className="my-auto h-4 w-4 stroke-semantic-accent-default" />
                     </Link>
                   </div>
-                  <div className="my-auto flex w-[25%] flex-row gap-x-3 px-6 py-4">
-                    <PinIcon
-                      width="w-6"
-                      height="h-6"
-                      color="fill-instillGrey90"
-                      position="my-auto"
-                    />
+                  <div className="hidden xl:block xl:w-[25%]">
+                    <div className="my-auto flex flex-row gap-x-3 px-6 py-4">
+                      <PinIcon
+                        width="w-6"
+                        height="h-6"
+                        color="fill-instillGrey90"
+                        position="my-auto"
+                      />
 
-                    <p className="my-auto font-sans text-[14px] font-normal text-[#475467]">
-                      {position.location}
-                    </p>
+                      <p className="my-auto font-sans text-[14px] font-normal text-[#475467]">
+                        {position.location}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="my-auto flex w-[15%] flex-row gap-x-3 px-6 py-4">
-                    <svg
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M21 10.3496H3M16 2.34961V6.34961M8 2.34961V6.34961M9 16.3496L11 18.3496L15.5 13.8496M7.8 22.3496H16.2C17.8802 22.3496 18.7202 22.3496 19.362 22.0226C19.9265 21.735 20.3854 21.2761 20.673 20.7116C21 20.0698 21 19.2298 21 17.5496V9.14961C21 7.46945 21 6.62937 20.673 5.98764C20.3854 5.42315 19.9265 4.96421 19.362 4.67659C18.7202 4.34961 17.8802 4.34961 16.2 4.34961H7.8C6.11984 4.34961 5.27976 4.34961 4.63803 4.67659C4.07354 4.96421 3.6146 5.42315 3.32698 5.98764C3 6.62937 3 7.46945 3 9.14961V17.5496C3 19.2298 3 20.0698 3.32698 20.7116C3.6146 21.2761 4.07354 21.735 4.63803 22.0226C5.27976 22.3496 6.11984 22.3496 7.8 22.3496Z"
-                        stroke="black"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                  <div className="hidden w-[15%] xl:block">
+                    <div className="my-auto flex flex-row gap-x-3 px-6 py-4">
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M21 10.3496H3M16 2.34961V6.34961M8 2.34961V6.34961M9 16.3496L11 18.3496L15.5 13.8496M7.8 22.3496H16.2C17.8802 22.3496 18.7202 22.3496 19.362 22.0226C19.9265 21.735 20.3854 21.2761 20.673 20.7116C21 20.0698 21 19.2298 21 17.5496V9.14961C21 7.46945 21 6.62937 20.673 5.98764C20.3854 5.42315 19.9265 4.96421 19.362 4.67659C18.7202 4.34961 17.8802 4.34961 16.2 4.34961H7.8C6.11984 4.34961 5.27976 4.34961 4.63803 4.67659C4.07354 4.96421 3.6146 5.42315 3.32698 5.98764C3 6.62937 3 7.46945 3 9.14961V17.5496C3 19.2298 3 20.0698 3.32698 20.7116C3.6146 21.2761 4.07354 21.735 4.63803 22.0226C5.27976 22.3496 6.11984 22.3496 7.8 22.3496Z"
+                          stroke="black"
+                          strokeWidth="1.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
 
-                    <p className="my-auto font-sans text-[14px] font-normal text-[#475467]">
-                      {position.workType}
-                    </p>
+                      <p className="my-auto font-sans text-[14px] font-normal text-[#475467]">
+                        {position.workType}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
