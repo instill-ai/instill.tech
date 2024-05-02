@@ -21,12 +21,9 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer
-        margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[1127px]"
-      >
+      <ContentContainer margin="my-[60px]" contentMaxWidth="max-w-[1127px]">
         <div className="xl:grid xl:w-10/12 xl:grid-cols-3">
-          <article className="prose mx-5 mt-[180px] mb-[60px] max-w-none xl:col-span-2 xl:mx-0">
+          <article className="prose mx-5 mb-[60px] mt-[180px] max-w-none xl:col-span-2 xl:mx-0">
             {children}
           </article>
           <div className="relative xl:col-span-1 xl:mt-[180px]">
@@ -35,7 +32,7 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
                 We&apos;re happy to hear from you. Get in touch at
               </p>
               <a
-                className="flex text-instillSkyBlue"
+                className="flex text-semantic-accent-on-bg"
                 href="mailto:hello@instill.tech"
               >
                 hello@instill.tech
