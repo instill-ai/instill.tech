@@ -21,9 +21,9 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer margin="my-[60px]" contentMaxWidth="max-w-[1127px]">
+      <ContentContainer margin="my-0" contentMaxWidth="max-w-[1127px]">
         <div className="xl:grid xl:w-10/12 xl:grid-cols-3">
-          <article className="prose mx-5 mb-[60px] mt-[180px] max-w-none xl:col-span-2 xl:mx-0">
+          <article className="prose mx-5 mb-[60px] mt-10 max-w-none xl:col-span-2 xl:mx-0 xl:mt-[180px]">
             {children}
           </article>
           <div className="relative xl:col-span-1 xl:mt-[180px]">
