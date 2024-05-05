@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.47.11](https://github.com/instill-ai/instill.tech/compare/v1.47.10...v1.47.11) (2024-05-05)
+
+
+### Bug Fixes
+
+* navbar mobile version fix ([#826](https://github.com/instill-ai/instill.tech/issues/826)) ([1c35d32](https://github.com/instill-ai/instill.tech/commit/1c35d32e98338b9e7f51d813aaca2e1e2db06939))
+
+
+### Documentation
+
+* **blog:** publish hackathon blog ([#824](https://github.com/instill-ai/instill.tech/issues/824)) ([de2dd41](https://github.com/instill-ai/instill.tech/commit/de2dd417f09c2e9954c5b13f916f155cce16340b))
+
 ## [1.47.10](https://github.com/instill-ai/instill.tech/compare/v1.47.9...v1.47.10) (2024-04-30)
 
 
