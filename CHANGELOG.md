@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.47.12](https://github.com/instill-ai/instill.tech/compare/v1.47.11...v1.47.12) (2024-05-08)
+
+
+### Documentation
+
+* **blog:** update hackathon blog  ([#828](https://github.com/instill-ai/instill.tech/issues/828)) ([5d9ffdf](https://github.com/instill-ai/instill.tech/commit/5d9ffdf6a2e86b393cd23f634bdb603363cc77cf))
+
 ## [1.47.11](https://github.com/instill-ai/instill.tech/compare/v1.47.10...v1.47.11) (2024-05-05)
 
 
