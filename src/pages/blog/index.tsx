@@ -1,11 +1,12 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import React, { FC, ReactElement, useMemo, useState } from "react";
+import * as React from "react";
 import { BlogArticleMeta } from "@/types/instill";
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleList, BlogHero } from "@/components/blog";
 import { BlogCategoryNav } from "@/components/blog/BlogCategoryNav/BlogCategoryNav";
 import { BlogCategory } from "../../../content.config";
+import { NextPageWithLayout } from "../_app";
 
 export const getStaticProps: GetStaticProps<BlogIndexPageProps> = async () => {
   const articles = await prepareBlogArticles();
@@ -21,25 +22,21 @@ export const getStaticProps: GetStaticProps<BlogIndexPageProps> = async () => {
   };
 };
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
 type BlogIndexPageProps = {
   articles: BlogArticleMeta[];
 };
 
-const BlogIndexPage: FC<BlogIndexPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ articles }) => {
-  const [searchedBlogArticles, setSearchedBlogArticles] = useState<
+const BlogIndexPage: NextPageWithLayout<BlogIndexPageProps> = ({
+  articles,
+}) => {
+  const [searchedBlogArticles, setSearchedBlogArticles] = React.useState<
     BlogArticleMeta[]
   >([]);
 
   const [selectedCategory, setSelectedCategory] =
-    useState<BlogCategory>("Home");
+    React.useState<BlogCategory>("Home");
 
-  const selectedArticles = useMemo(() => {
+  const selectedArticles = React.useMemo(() => {
     if (selectedCategory === "Home") {
       return articles;
     } else {

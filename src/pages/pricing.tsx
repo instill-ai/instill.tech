@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import * as React from "react";
 import {
   ContentContainer,
   PageBase,
@@ -7,14 +7,9 @@ import {
 } from "@/components/ui";
 import { useRouter } from "next/router";
 import { Separator } from "@instill-ai/design-system";
+import { NextPageWithLayout } from "./_app";
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-const PricingPage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const PricingPage: NextPageWithLayout = () => {
   const router = useRouter();
   return (
     <React.Fragment>

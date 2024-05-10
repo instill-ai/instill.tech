@@ -1,5 +1,4 @@
 import { InstillAppType } from "@/types/instill";
-import { getApplicationVersion } from "./applicationVersion";
 
 export const applicationName = {
   vdp: "Instill VDP",

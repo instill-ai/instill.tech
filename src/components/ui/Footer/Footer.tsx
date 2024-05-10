@@ -6,13 +6,11 @@ import {
   Logo,
   Logos,
   MediumIcon,
-  TwitterIcon,
 } from "@instill-ai/design-system";
 import { CopyRightText } from "..";
 import { AnimateSlogan } from "./AnimateSlogan";
 import { Tab } from "./Tab";
 import { TabLinks } from "./Tab";
-import { LATEST_VERSIONS } from "../../../../version.mjs";
 
 export const Footer = () => {
   const socialIconStyle = {

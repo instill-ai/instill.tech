@@ -1,14 +1,13 @@
+import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import {
-  Button,
   Icons,
   Input,
   SolidButton,
   toast,
+  Nullable,
 } from "@instill-ai/design-system";
-import { Nullable } from "@instill-ai/toolkit";
-import * as React from "react";
 import { useSwiper } from "swiper/react";
 
 export function resizeImage(file: File): Promise<Blob> {

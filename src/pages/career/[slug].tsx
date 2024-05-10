@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import React, { FC, ReactElement } from "react";
+import * as React from "react";
 import dynamic from "next/dynamic";
 
 import { PositionDetails } from "@/components/career";
@@ -21,6 +21,7 @@ import {
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
 import { useInView } from "react-intersection-observer";
+import { NextPageWithLayout } from "../_app";
 
 const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
   import("@/components/ui").then((mod) => mod.StayInTheLoop)
@@ -114,13 +115,9 @@ export type CareerPositionPageProps = {
   position: PositionInfo;
 };
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-const CareerPositionPage: FC<CareerPositionPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ position }) => {
+const CareerPositionPage: NextPageWithLayout<CareerPositionPageProps> = ({
+  position,
+}) => {
   const router = useRouter();
 
   if (!position) {

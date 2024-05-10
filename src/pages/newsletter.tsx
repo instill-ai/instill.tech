@@ -1,4 +1,4 @@
-import React, { FC, Fragment, ReactElement } from "react";
+import * as React from "react";
 import { GetStaticProps } from "next";
 import matter from "gray-matter";
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
@@ -18,13 +18,10 @@ import {
   removeMailchimpStyleAndMeta,
   removePlaceholderAndFooterWords,
 } from "@/lib/mailchimp";
+import { NextPageWithLayout } from "./_app";
 
 type NewsletterArchivePageProps = {
   campaigns: NewsletterPublicCampaign[];
-};
-
-type GetLayOutProps = {
-  page: ReactElement;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -99,9 +96,9 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ campaigns }) => {
+const NewsletterArchivePage: NextPageWithLayout<NewsletterArchivePageProps> = ({
+  campaigns,
+}) => {
   return (
     <React.Fragment>
       <PageHead
@@ -131,7 +128,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
         </div>
         <div className="flex w-full flex-col">
           {campaigns.map((campaign) => (
-            <Fragment key={campaign.id}>
+            <React.Fragment key={campaign.id}>
               <div className="mb-5 mr-auto bg-instillNatureGreen px-2.5 py-[5px]">
                 {`${new Date(campaign.sendTime)
                   .toDateString()
@@ -143,7 +140,7 @@ const NewsletterArchivePage: FC<NewsletterArchivePageProps> & {
                 className="mb-[120px] w-full bg-instillGrey05 px-4 py-10 shadow-instill-solid-10 xl:px-10 xl:shadow-instill-solid-20"
                 dangerouslySetInnerHTML={{ __html: campaign.html }}
               />
-            </Fragment>
+            </React.Fragment>
           ))}
         </div>
       </ContentContainer>

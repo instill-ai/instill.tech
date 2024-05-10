@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import React, { FC, ReactElement, useCallback, useRef } from "react";
+import * as React from "react";
 
 import {
   ContentContainer,
@@ -22,6 +22,7 @@ import {
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { getElementPosition } from "@instill-ai/design-system";
 import { useInView } from "react-intersection-observer";
+import { NextPageWithLayout } from "../_app";
 
 const PositionList = dynamic<PositionListProps>(() =>
   import("@/components/career").then((mod) => mod.PositionList)
@@ -33,10 +34,6 @@ const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
 
 type CareerPageProps = {
   positions: PositionInfo[];
-};
-
-type GetLayOutProps = {
-  page: ReactElement;
 };
 
 export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
@@ -68,11 +65,9 @@ export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
   };
 };
 
-const CareerPage: FC<CareerPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ positions }) => {
+const CareerPage: NextPageWithLayout<CareerPageProps> = ({ positions }) => {
   // lazy load openPositionList
-  const positionListRef = useRef<Nullable<HTMLDivElement>>(null);
+  const positionListRef = React.useRef<Nullable<HTMLDivElement>>(null);
   const [positionListInViewRef, positionListInView] = useInView({
     triggerOnce: true,
   });
@@ -84,7 +79,7 @@ const CareerPage: FC<CareerPageProps> & {
 
   const { enableAnnouncementBar } = useInstillAICtx();
 
-  const scrollHandler = useCallback(() => {
+  const scrollHandler = React.useCallback(() => {
     if (!window || !positionListRef.current) return;
 
     const positionListDimension = getElementPosition(positionListRef.current);

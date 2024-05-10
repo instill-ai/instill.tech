@@ -1,4 +1,3 @@
-import { FC, ReactElement } from "react";
 import dynamic from "next/dynamic";
 import cn from "clsx";
 import {
@@ -12,6 +11,7 @@ import { LandingPageBase, PageHead } from "@/components/ui";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import Slide from "@/components/landing/Slide";
+import { NextPageWithLayout } from "./_app";
 
 const HowItWorks = dynamic<HowItWorksProps>(() =>
   import("@/components/landing").then((mod) => mod.HowItWorks)
@@ -47,13 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-interface GetLayOutProps {
-  page: ReactElement;
-}
-
-const HomePage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const HomePage: NextPageWithLayout = () => {
   return (
     <>
       <PageHead

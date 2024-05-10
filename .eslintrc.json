@@ -44,9 +44,6 @@
     // eslint-plugin-react-hooks
     "plugin:react-hooks/recommended",
 
-    // eslint-plugin-storybook
-    "plugin:storybook/recommended",
-
     // nextjs
     "next/core-web-vitals"
   ],
