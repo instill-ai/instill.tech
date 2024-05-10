@@ -135,5 +135,9 @@
       "eslint --fix"
     ]
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@8.8.0",
   "version": "1.47.14"
 }
