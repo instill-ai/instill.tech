@@ -1,6 +1,4 @@
-import React, { FC, ReactElement } from "react";
-import { GetStaticProps } from "next";
-import { MemberDetails } from "@/types/instill";
+import * as React from "react";
 import {
   AboutHero,
   Company,
@@ -10,46 +8,9 @@ import {
   Teams,
 } from "@/components/about";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import {
-  ClickUpTask,
-  listClickUpTasksInListQuery,
-  transformClickUpTaskToMemberDetails,
-} from "@/lib/click-up";
+import { NextPageWithLayout } from "./_app";
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-type AboutPageProps = {
-  members: MemberDetails[];
-};
-
-export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
-  let tasks: ClickUpTask[];
-  let members: MemberDetails[] = [];
-
-  try {
-    tasks = await listClickUpTasksInListQuery("181513244");
-    tasks.forEach((task) => {
-      members.push(transformClickUpTaskToMemberDetails(task));
-    });
-    members = members.sort((a, b) => a.order - b.order);
-  } catch (err) {
-    console.error("Something went wrong when retrieve member on Clickup", err);
-  }
-
-  return {
-    props: {
-      members,
-    },
-    // This page is using ISR
-    revalidate: 10,
-  };
-};
-
-const AboutPage: FC<AboutPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ members }) => {
+const AboutPage: NextPageWithLayout = () => {
   return (
     <React.Fragment>
       <PageHead

@@ -1,16 +1,9 @@
-import React, { FC, ReactElement } from "react";
+import * as React from "react";
 import { GetStaticProps } from "next";
 import { PageHead } from "@/components/ui";
 import { DocsLayout } from "@/components/docs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-type Props = {
-  locales: string[];
-};
-
-type GetLayOutProps = {
-  page: ReactElement;
-};
+import { NextPageWithLayout } from "../_app";
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -20,9 +13,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-const OverviewPage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const OverviewPage: NextPageWithLayout = () => {
   return (
     <React.Fragment>
       <PageHead

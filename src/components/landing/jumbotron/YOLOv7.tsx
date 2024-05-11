@@ -3,14 +3,13 @@ import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import {
-  Button,
   Icons,
   Input,
   SolidButton,
   toast,
+  Nullable,
 } from "@instill-ai/design-system";
-import { Nullable } from "@instill-ai/toolkit";
-import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
+import { resizeImage } from "./Llama2Chat";
 import { useSwiper } from "swiper/react";
 
 async function resizeBase64Image(

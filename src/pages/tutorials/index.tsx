@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import React, { FC, ReactElement, useMemo, useState } from "react";
+import * as React from "react";
 import {
   TutorialHero,
   TutorialList,
@@ -10,6 +10,7 @@ import {
 import { TutorialMeta } from "@/types/instill";
 import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
+import { NextPageWithLayout } from "../_app";
 
 export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
   async () => {
@@ -27,31 +28,29 @@ export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
     };
   };
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
 type TutorialIndexPageProps = {
   tutorials: TutorialMeta[];
 };
 
-const TutorialIndexPage: FC<TutorialIndexPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ tutorials }) => {
-  const [searchedTutorials, setSearchedTutorials] = useState<TutorialMeta[]>(
-    []
+const TutorialIndexPage: NextPageWithLayout<TutorialIndexPageProps> = ({
+  tutorials,
+}) => {
+  const [searchedTutorials, setSearchedTutorials] = React.useState<
+    TutorialMeta[]
+  >([]);
+  const [filters, setFilters] = React.useState<TutorialFiltersProps["filters"]>(
+    {
+      aiTask: "All",
+      connector: "All",
+      useCase: "All",
+    }
   );
-  const [filters, setFilters] = useState<TutorialFiltersProps["filters"]>({
-    aiTask: "All",
-    connector: "All",
-    useCase: "All",
-  });
 
   // We don't need to complicate thing at this stage, once
   // we have many condition to filter we can find a lib to
   // handle it for us.
 
-  const filteredTutorials = useMemo(() => {
+  const filteredTutorials = React.useMemo(() => {
     const filterAiTask = (
       item: TutorialMeta,
       filters: TutorialFiltersProps["filters"]

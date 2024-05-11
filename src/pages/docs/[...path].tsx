@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -9,17 +9,18 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig, getSections } from "../../../content.config";
+import { getSections } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
-import { getApplicationType, getApplicationVersion } from "@/lib/instill";
+import { getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCommitMeta } from "@/lib/github";
 import { readFile } from "fs/promises";
+import { NextPageWithLayout } from "../_app";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -160,13 +161,13 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   };
 };
 
-type GetLayOutProps = {
-  page: FC;
-};
-
-const DocsPage: FC<DocsPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, nextArticle, prevArticle, commitMeta, headers }) => {
+const DocsPage: NextPageWithLayout<DocsPageProps> = ({
+  mdxSource,
+  nextArticle,
+  prevArticle,
+  commitMeta,
+  headers,
+}) => {
   const router = useRouter();
 
   return (

@@ -1,5 +1,4 @@
 import { SEOArticleWriter } from "../landing";
-import { ResponderWithSpeech } from "../landing/jumbotron/ResponderWithSpeech";
 
 export const MdxSEOArticleWriter = () => {
   return (

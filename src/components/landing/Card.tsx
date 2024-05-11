@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ image }) => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [, setShowOverlay] = useState(false);
 
   return (
     <motion.div

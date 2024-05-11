@@ -5,10 +5,8 @@ import {
   ArrowRightIcon,
   DiscordIcon,
   GitHubIcon,
-  Icons,
   Logos,
   TextButton,
-  TwitterIcon,
 } from "@instill-ai/design-system";
 
 import { Nullable } from "@/types/instill";
