@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.47.15](https://github.com/instill-ai/instill.tech/compare/v1.47.14...v1.47.15) (2024-05-11)
+
+
+### Bug Fixes
+
+* fix eslint, build and deps issues ([#832](https://github.com/instill-ai/instill.tech/issues/832)) ([3b7ff0c](https://github.com/instill-ai/instill.tech/commit/3b7ff0c37cac95e72d732ba22922c2c3833bc383))
+* fix webpack-diff wrong pnpm version ([#836](https://github.com/instill-ai/instill.tech/issues/836)) ([e40c90f](https://github.com/instill-ai/instill.tech/commit/e40c90f6b5deb96634e211df9a15b406cdab2395))
+
 ## [1.47.14](https://github.com/instill-ai/instill.tech/compare/v1.47.13...v1.47.14) (2024-05-10)
 
 
