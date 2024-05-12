@@ -216,19 +216,6 @@ export const Llama2Chat = () => {
     }
   };
 
-  const handleDelete = () => {
-    setImagePreview(null);
-    // Reset file input value to allow selecting the same file again
-    const lamaChatFileInput = document.getElementById(
-      "lamaChatFileInput"
-    ) as HTMLInputElement | null;
-    if (lamaChatFileInput) {
-      lamaChatFileInput.value = ""; // This resets the input value
-    }
-    setArticle("");
-    setQuestion("");
-  };
-
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleFileChange(e);

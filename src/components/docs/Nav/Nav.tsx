@@ -24,7 +24,6 @@ export type NavProps = {
 
 const DropdownMenuList = ({
   item,
-  isMobile,
 }: {
   item: NavbarItem;
   isMobile: boolean;

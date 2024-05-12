@@ -1,11 +1,8 @@
 import { forwardRef } from "react";
 import cn from "clsx";
-import Image from "next/image";
 import { VdpLogo } from "@instill-ai/design-system";
-
 import { SectionHeader, SectionLabel } from "@/components/ui";
 import { VdpFlow } from "./VdpFlow";
-import { VdpAnimation } from "./VdpAnimation";
 import { useElementDimension } from "@/hooks/useElementDimension";
 
 export type VdpProps = {

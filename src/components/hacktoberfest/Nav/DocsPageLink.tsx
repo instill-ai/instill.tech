@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { LATEST_VERSIONS } from "../../../../version.mjs";
 
 export const DocsPageLink = () => {
   return (

@@ -78,7 +78,7 @@ export const YOLOv7 = () => {
   const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [input, setInput] = React.useState<string>("");
-  const [article, setArticle] = React.useState<string>("");
+  const [, setArticle] = React.useState<string>("");
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
@@ -244,17 +244,6 @@ export const YOLOv7 = () => {
     }
   };
 
-  const handleDelete = () => {
-    setImagePreview(null);
-    // Reset file input value to allow selecting the same file again
-    const fileInput = document.getElementById(
-      "fileInput"
-    ) as HTMLInputElement | null;
-    if (fileInput) {
-      fileInput.value = ""; // This resets the input value
-    }
-  };
-
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleFileChange(e);
@@ -324,6 +313,7 @@ export const YOLOv7 = () => {
                         imagePreview ? imagePreview : "/images/yolo-default.png"
                       }
                       className="my-auto object-contain"
+                      alt=""
                     />
                   </div>
                 </div>

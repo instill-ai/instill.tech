@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { CH } from "@code-hike/mdx/components";
