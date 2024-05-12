@@ -4,7 +4,6 @@ import { SubHeadline } from "./SubHeadline";
 import { ConsoleCtaButton } from "./ConsoleCtaButton";
 import { Jumbotron } from "../jumbotron";
 import { Frameworks } from "./Frameworks";
-import Slide from "../Slide";
 
 export type HeroProps = {
   scrollHandler: ExploreMoreScrollButtonProps["scrollHandler"];

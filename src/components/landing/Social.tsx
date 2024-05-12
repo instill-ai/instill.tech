@@ -71,7 +71,7 @@ export const Social = () => {
     }
 
     return controls?.stop;
-  }, [rerender, xTranslation, duration, width]);
+  }, [rerender, xTranslation, duration, width, mustFinish]);
 
   return (
     <React.Fragment>

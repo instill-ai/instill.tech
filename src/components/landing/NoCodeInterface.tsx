@@ -1,7 +1,7 @@
 import cn from "clsx";
 import Image from "next/image";
 
-import { CommonCtaButton, SectionHeader } from "@/components/ui";
+import { SectionHeader } from "@/components/ui";
 import { SectionLabel } from "@/components/ui";
 import { useElementDimension } from "@/hooks/useElementDimension";
 

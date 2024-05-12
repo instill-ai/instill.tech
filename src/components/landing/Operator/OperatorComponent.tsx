@@ -5,13 +5,7 @@ import {
   docsLinks,
   getHeaderColorClass,
 } from "@/pages/component";
-import {
-  Button,
-  DropdownMenu,
-  GitHubIcon,
-  Tag,
-  Tooltip,
-} from "@instill-ai/design-system";
+import { Button, DropdownMenu, GitHubIcon } from "@instill-ai/design-system";
 import React from "react";
 import cn from "clsx";
 
@@ -20,11 +14,6 @@ function OperatorComponent({
 }: {
   operator_definition: OperatorDef;
 }) {
-  const [onMouseEnterGithub, setOnMouseEnterGithub] = React.useState(false);
-  const [onMouseEnterDocs, setOnMouseEnterDocs] = React.useState(false);
-  const [onMouseEnter, setOnMouseEnter] = React.useState(false);
-  const [openTooltip, setOpenTooltip] = React.useState(false);
-
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}

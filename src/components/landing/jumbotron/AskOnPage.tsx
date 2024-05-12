@@ -1,13 +1,7 @@
 import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import {
-  Icons,
-  Input,
-  Nullable,
-  SolidButton,
-  toast,
-} from "@instill-ai/design-system";
+import { Icons, Input, SolidButton, toast } from "@instill-ai/design-system";
 import { useSwiper } from "swiper/react";
 
 const defaultSummary =
@@ -17,11 +11,6 @@ type Preview = {
   keyword: string;
   content: string;
   emoji: string;
-};
-
-type Summary = {
-  summary: string;
-  previews: Preview[];
 };
 
 export const SummaryCard = ({ summary }: { summary: Preview }) => {

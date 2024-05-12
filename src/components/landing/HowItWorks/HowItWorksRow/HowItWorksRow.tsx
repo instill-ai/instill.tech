@@ -1,7 +1,7 @@
 import cn from "clsx";
 import { ReactElement } from "react";
 
-import { CommonCtaButton, NumberCube, SectionLabel } from "@/components/ui";
+import { CommonCtaButton, SectionLabel } from "@/components/ui";
 import { IconsCubeProps, IconsCube } from "../IconsCube";
 import { Nullable } from "vitest";
 

@@ -1,10 +1,5 @@
 import { Nullable } from "@/types/instill";
-import {
-  Dialog,
-  GitHubIcon,
-  LinkedInIcon,
-  ScrollArea,
-} from "@instill-ai/design-system";
+import { Dialog, GitHubIcon, LinkedInIcon } from "@instill-ai/design-system";
 import * as React from "react";
 
 type Team = {
@@ -167,7 +162,7 @@ export const Teams = () => {
               <div className="flex h-full w-full items-center justify-center bg-[#40A8F5] p-5">
                 <img
                   src="images/teams/wombat.svg"
-                  alt="Wombat Image"
+                  alt=""
                   className="h-full w-full"
                 />
               </div>
@@ -231,17 +226,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(2)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#40A8F5] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/xiaofei-du.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/xiaofei-du-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -290,17 +287,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(3)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/shih-chun-huang.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/shih-chun-huang-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -350,17 +349,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(4)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FFDF3A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/dani-sosa.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/dani-sosa-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -410,17 +411,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(5)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/po-chun-chiu.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/po-chun-chiu-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -470,17 +473,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(6)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/naman-anand.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/naman-anand-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -530,17 +535,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(7)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/heiru-wu.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/heiru-wu-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -590,17 +597,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(8)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/chun-hao-wang.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/chun-hao-wang-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -650,17 +659,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(9)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/leo-chen.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/leo-chen-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -710,17 +721,19 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(10)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
 
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/hui-tang-chang.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/hui-tang-chang-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -770,16 +783,18 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(11)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/juan-valles.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/juan-valles-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -815,16 +830,18 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(12)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#1A1A1A] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/sarthak-gupta.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/sarthak-gupta-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
@@ -873,16 +890,18 @@ export const Teams = () => {
               onClick={() => handleTemaDilog(13)}
             >
               <div className="flex h-[100px] w-[100px] items-center justify-center bg-[#FF5353] p-5 transition-transform duration-500 ease-in-out hover:scale-0 xl:h-[160px] xl:w-[160px]">
-                <img src="images/teams/wombat.svg" alt="Wombat Image" />
+                <img src="images/teams/wombat.svg" alt="" />
               </div>
               <div className="absolute inset-0 h-[100px] w-[100px] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 xl:h-[160px] xl:w-[160px]">
                 <img
                   src="images/teams/minji-kim.png"
                   className="hidden h-full w-full xl:block"
+                  alt=""
                 />
                 <img
                   src="images/teams/minji-kim-mobile.png"
                   className="block h-full w-full xl:hidden"
+                  alt=""
                 />
               </div>
             </div>
