@@ -20,8 +20,8 @@ dependencies:
     specifier: 0.75.0-rc.60
     version: 0.75.0-rc.60(@babel/runtime@7.22.11)(@codemirror/autocomplete@6.11.1)(@codemirror/language@6.9.3)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.5)(@codemirror/state@6.3.3)(@codemirror/theme-one-dark@6.1.2)(@instill-ai/design-system@0.64.0)(@instill-ai/design-tokens@0.3.2)(@tiptap/core@2.1.13)(@types/react-dom@18.3.0)(@types/react@18.3.1)(codemirror@6.0.1)(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
   '@mailchimp/mailchimp_marketing':
-    specifier: ^3.0.75
-    version: 3.0.75
+    specifier: ^3.0.80
+    version: 3.0.80
   '@octokit/core':
     specifier: ^4.1.0
     version: 4.1.0
@@ -38,8 +38,8 @@ dependencies:
     specifier: ^3.2.1
     version: 3.2.1
   axios:
-    specifier: ^1.6.3
-    version: 1.6.3
+    specifier: ^1.6.8
+    version: 1.6.8
   classnames:
     specifier: ^2.3.1
     version: 2.3.1
@@ -149,7 +149,7 @@ devDependencies:
     version: 13.2.0
   '@mdx-js/loader':
     specifier: ^2.1.2
-    version: 2.1.2(webpack@5.74.0)
+    version: 2.3.0(webpack@5.74.0)
   '@mdx-js/react':
     specifier: ^2.1.2
     version: 2.1.2(react@18.2.0)
@@ -158,7 +158,7 @@ devDependencies:
     version: 12.2.3
   '@next/mdx':
     specifier: ^12.2.3
-    version: 12.2.3(@mdx-js/loader@2.1.2)(@mdx-js/react@2.1.2)
+    version: 12.2.3(@mdx-js/loader@2.3.0)(@mdx-js/react@2.1.2)
   '@tailwindcss/line-clamp':
     specifier: ^0.4.2
     version: 0.4.2(tailwindcss@3.3.2)
@@ -205,8 +205,8 @@ devDependencies:
     specifier: ^4.1.1
     version: 4.1.1
   autoprefixer:
-    specifier: ^10.4.7
-    version: 10.4.7(postcss@8.4.38)
+    specifier: ^10.4.19
+    version: 10.4.19(postcss@8.4.38)
   eslint:
     specifier: 7.32.0
     version: 7.32.0
@@ -1508,6 +1508,14 @@ packages:
       react-hook-form: 7.49.2(react@18.2.0)
     dev: false
 
+  /@hookform/resolvers@3.3.4(react-hook-form@7.51.4):
+    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.51.4(react@18.2.0)
+    dev: false
+
   /@humanwhocodes/config-array@0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
     engines: {node: '>=10.10.0'}
@@ -1528,7 +1536,7 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@hookform/resolvers': 3.1.1(react-hook-form@7.49.2)
+      '@hookform/resolvers': 3.3.4(react-hook-form@7.51.4)
       '@instill-ai/design-tokens': 0.5.0(tailwindcss@3.3.2)
       '@radix-ui/react-checkbox': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-dialog': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.2.0)(react@18.2.0)
@@ -1551,8 +1559,8 @@ packages:
       cmdk: 0.2.0(@types/react@18.3.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.49.2(react@18.2.0)
-      sanitize-html: 2.11.0
+      react-hook-form: 7.51.4(react@18.2.0)
+      sanitize-html: 2.13.0
       tailwindcss-animate: 1.0.6(tailwindcss@3.3.2)
       zod: 3.21.4
     transitivePeerDependencies:
@@ -1629,7 +1637,7 @@ packages:
       '@types/lodash.isequal': 4.5.8
       '@uiw/codemirror-theme-github': 4.21.21(@codemirror/language@6.9.3)(@codemirror/state@6.3.3)(@codemirror/view@6.22.3)
       '@uiw/react-codemirror': 4.21.21(@babel/runtime@7.22.11)(@codemirror/autocomplete@6.11.1)(@codemirror/language@6.9.3)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.5)(@codemirror/state@6.3.3)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.22.3)(codemirror@6.0.1)(react-dom@18.2.0)(react@18.2.0)
-      axios: 1.6.3
+      axios: 1.6.8
       clsx: 1.2.1
       cookie: 0.5.0
       echarts: 5.4.3
@@ -1800,8 +1808,8 @@ packages:
       '@lezer/highlight': 1.2.0
     dev: false
 
-  /@mailchimp/mailchimp_marketing@3.0.75:
-    resolution: {integrity: sha512-UWg3zHd1XMIbXEWlhZpuJiUi1jQ5z3MumJwa5RKjf9/iKboz39X8v4Goq4isi2/mFf07dgftkt/zOSChY32eqg==}
+  /@mailchimp/mailchimp_marketing@3.0.80:
+    resolution: {integrity: sha512-Cgz0xPb+1DUjmrl5whAsmqfAChBko+Wf4/PLQE4RvwfPlcq2agfHr1QFiXEhZ8e+GQwQ3hZQn9iLGXwIXwxUCg==}
     engines: {node: '>=10.0.0'}
     dependencies:
       dotenv: 8.6.0
@@ -1810,8 +1818,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/loader@2.1.2(webpack@5.74.0):
-    resolution: {integrity: sha512-P7CWhrqE5rZ3ewBngZ9t/zQPbSq42iuty78K3zJ8Bl518qnOX1d106c+n7I/zHODPAmw9JfYMQdbv9WrrHa0DA==}
+  /@mdx-js/loader@2.3.0(webpack@5.74.0):
+    resolution: {integrity: sha512-IqsscXh7Q3Rzb+f5DXYk0HU71PK+WuFsEhf+mSV3fOhpLcEpgsHvTQ2h0T6TlZ5gHOaBeFjkXwB52by7ypMyNg==}
     peerDependencies:
       webpack: '>=4'
     dependencies:
@@ -1867,13 +1875,13 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx@12.2.3(@mdx-js/loader@2.1.2)(@mdx-js/react@2.1.2):
+  /@next/mdx@12.2.3(@mdx-js/loader@2.3.0)(@mdx-js/react@2.1.2):
     resolution: {integrity: sha512-ALZ6F8A/YtIHxPV02R/y2nTdudyWrZjgftlNhP9o96V6llX45X7mnv7mHERd7b4ByrbXDmaWeD9Lbpljmzycvg==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '*'
     dependencies:
-      '@mdx-js/loader': 2.1.2(webpack@5.74.0)
+      '@mdx-js/loader': 2.3.0(webpack@5.74.0)
       '@mdx-js/react': 2.1.2(react@18.2.0)
     dev: true
 
@@ -5002,16 +5010,16 @@ packages:
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  /autoprefixer@10.4.7(postcss@8.4.38):
-    resolution: {integrity: sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA==}
+  /autoprefixer@10.4.19(postcss@8.4.38):
+    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.21.3
-      caniuse-lite: 1.0.30001452
-      fraction.js: 4.2.0
+      browserslist: 4.23.0
+      caniuse-lite: 1.0.30001617
+      fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
       postcss: 8.4.38
@@ -5035,10 +5043,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.3:
-    resolution: {integrity: sha512-fWyNdeawGam70jXSVlKl+SUNVcL6j6W79CuSIPfi6HnDUmSCH6gyUys/HrqHeA/wU0Az41rRgean494d0Jb+ww==}
+  /axios@1.6.8:
+    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
     dependencies:
-      follow-redirects: 1.15.1
+      follow-redirects: 1.15.6
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -5517,8 +5525,8 @@ packages:
       dot-prop: 5.3.0
     dev: true
 
-  /component-emitter@1.3.0:
-    resolution: {integrity: sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==}
+  /component-emitter@1.3.1:
+    resolution: {integrity: sha512-T0+barUSQRTUQASh8bx02dl+DhF54GtIDY13Y3m9oWTklKbb3Wv974meRpeZ3lp1JpLVECWWNHC4vaG2XHXouQ==}
     dev: false
 
   /concat-map@0.0.1:
@@ -5580,8 +5588,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /cookiejar@2.1.3:
-    resolution: {integrity: sha512-JxbCBUdrfr6AQjOXrxoTvAMJO4HBTUIlBzslcJPAz+/KT8yk53fXun51u+RenNYvad/+Vc2DIz5o9UxlCDymFQ==}
+  /cookiejar@2.1.4:
+    resolution: {integrity: sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==}
     dev: false
 
   /copy-anything@3.0.5:
@@ -7012,8 +7020,8 @@ packages:
   /flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  /follow-redirects@1.15.1:
-    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
+  /follow-redirects@1.15.6:
+    resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -7054,8 +7062,8 @@ packages:
     deprecated: 'Please upgrade to latest, formidable@v2 or formidable@v3! Check these notes: https://bit.ly/2ZEqIau'
     dev: false
 
-  /fraction.js@4.2.0:
-    resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
+  /fraction.js@4.3.7:
+    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
 
   /framer-motion@11.0.8(react-dom@18.2.0)(react@18.2.0):
@@ -9363,10 +9371,10 @@ packages:
 
   /object-inspect@1.12.2:
     resolution: {integrity: sha512-z+cPxW0QGUp0mcqcsgQyLVRDoXFQbXOwBaqyF7VIgI4TWNQsDHrBpUQslRmIfAoYWdYzs6UlKJtB2XJpTaNSpQ==}
+    dev: true
 
   /object-inspect@1.13.1:
     resolution: {integrity: sha512-5qoj1RUiKOMsCCNLV1CBiPYE10sziTsnmNxkAI/rZhiD63CF7IqdFGC/XzjWjpSgLf0LxXX3bDFIh0E18f6UhQ==}
-    dev: true
 
   /object-is@1.1.5:
     resolution: {integrity: sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==}
@@ -10036,11 +10044,11 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: true
 
-  /qs@6.11.0:
-    resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
+  /qs@6.12.1:
+    resolution: {integrity: sha512-zWmv4RSuB9r2mYQw3zxQuHWeU+42aKi1wWig/j4ele4ygELZ7PEO6MM7rim9oAQH2A5MWfsAVf/jPvTPgCbvUQ==}
     engines: {node: '>=0.6'}
     dependencies:
-      side-channel: 1.0.4
+      side-channel: 1.0.6
     dev: false
 
   /querystringify@2.2.0:
@@ -10095,6 +10103,15 @@ packages:
   /react-hook-form@7.49.2(react@18.2.0):
     resolution: {integrity: sha512-TZcnSc17+LPPVpMRIDNVITY6w20deMdNi6iehTFLV1x8SqThXGwu93HjlUVU09pzFgZH7qZOvLMM7UYf2ShAHA==}
     engines: {node: '>=18', pnpm: '8'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-hook-form@7.51.4(react@18.2.0):
+    resolution: {integrity: sha512-V14i8SEkh+V1gs6YtD0hdHYnoL4tp/HX/A45wWQN15CYr9bFRmmRdYStSO5L65lCCZRF+kYiSKhm9alqbcdiVA==}
+    engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
@@ -10361,8 +10378,8 @@ packages:
       type-fest: 0.6.0
     dev: true
 
-  /readable-stream@2.3.7:
-    resolution: {integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==}
+  /readable-stream@2.3.8:
+    resolution: {integrity: sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==}
     dependencies:
       core-util-is: 1.0.3
       inherits: 2.0.4
@@ -10732,8 +10749,8 @@ packages:
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  /sanitize-html@2.11.0:
-    resolution: {integrity: sha512-BG68EDHRaGKqlsNjJ2xUB7gpInPA8gVx/mvjO743hZaeMCZ2DwzW7xvsqZ+KNU4QKwj86HJ3uu2liISf2qBBUA==}
+  /sanitize-html@2.13.0:
+    resolution: {integrity: sha512-Xff91Z+4Mz5QiNSLdLWwjgBDm5b1RU6xBT0+12rapjiaR7SwfRdjw8f+6Rir2MXKLrDicRFHdb51hGOAxmsUIA==}
     dependencies:
       deepmerge: 4.3.1
       escape-string-regexp: 4.0.0
@@ -10892,6 +10909,7 @@ packages:
       call-bind: 1.0.7
       get-intrinsic: 1.2.4
       object-inspect: 1.12.2
+    dev: true
 
   /side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -10901,7 +10919,6 @@ packages:
       es-errors: 1.3.0
       get-intrinsic: 1.2.4
       object-inspect: 1.13.1
-    dev: true
 
   /siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
@@ -11259,16 +11276,16 @@ packages:
     engines: {node: '>= 4.0'}
     deprecated: Please upgrade to v7.0.2+ of superagent.  We have fixed numerous issues with streams, form-data, attach(), filesystem errors not bubbling up (ENOENT on attach()), and all tests are now passing.  See the releases tab for more information at <https://github.com/visionmedia/superagent/releases>.
     dependencies:
-      component-emitter: 1.3.0
-      cookiejar: 2.1.3
+      component-emitter: 1.3.1
+      cookiejar: 2.1.4
       debug: 3.2.7
       extend: 3.0.2
       form-data: 2.5.1
       formidable: 1.2.6
       methods: 1.1.2
       mime: 1.6.0
-      qs: 6.11.0
-      readable-stream: 2.3.7
+      qs: 6.12.1
+      readable-stream: 2.3.8
     transitivePeerDependencies:
       - supports-color
     dev: false
