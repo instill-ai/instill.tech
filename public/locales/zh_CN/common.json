@@ -51,6 +51,7 @@
     "numbersProtocol": "Numbers Protocol",
     "redis": "Redis",
     "image": "Image",
+    "slack": "Slack",
     "dataConnector": "数据连接组件",
     "dataConnectors": "数据连接组件",
     "vectordatabaseConnector": "矢量数据库",

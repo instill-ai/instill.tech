@@ -249,6 +249,10 @@ export const getSections = (
           text: "common:sidebarSections.numbersProtocol",
           link: `/docs/vdp/app-connectors/numbers`,
         },
+        {
+          text: "common:sidebarSections.slack",
+          link: `/docs/vdp/app-connectors/slack`,
+        },
       ],
       appType: "core",
       versions: [],

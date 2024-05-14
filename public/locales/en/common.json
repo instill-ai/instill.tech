@@ -54,6 +54,7 @@
     "dataConnectors": "Data Connectors",
     "redis": "Redis",
     "image": "Image",
+    "slack": "Slack",
     "vectordatabaseConnector": "Vector Database",
     "vectordatabaseConnectors": "Vector Databases",
     "appConnector": "App Connector",
