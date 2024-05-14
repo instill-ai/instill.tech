@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.47.16](https://github.com/instill-ai/instill.tech/compare/v1.47.15...v1.47.16) (2024-05-14)
+
+
+### Bug Fixes
+
+* dependabot alerts ([#837](https://github.com/instill-ai/instill.tech/issues/837)) ([52c7784](https://github.com/instill-ai/instill.tech/commit/52c77846aa8572f55e037d9429d92ef23559dbda))
+* dependabot alerts ([#839](https://github.com/instill-ai/instill.tech/issues/839)) ([9ccae55](https://github.com/instill-ai/instill.tech/commit/9ccae555de18fb57d22aebea9b61d5b2f461b61d))
+* dependabot alerts ([#840](https://github.com/instill-ai/instill.tech/issues/840)) ([bd3c552](https://github.com/instill-ai/instill.tech/commit/bd3c5523558f0a88a8b7acd41fc239b6ff05cdd4))
+* lint warning ([#841](https://github.com/instill-ai/instill.tech/issues/841)) ([16fbf22](https://github.com/instill-ai/instill.tech/commit/16fbf22cc10cf7aa4db3ddccdfc2b6a9ea3e6f4f))
+
+
+### Miscellaneous
+
+* **policy:** add customer data retention policy ([#842](https://github.com/instill-ai/instill.tech/issues/842)) ([db254ee](https://github.com/instill-ai/instill.tech/commit/db254eef975bf5fe8d308e1462a91c38f54c0b15))
+
+
+### Documentation
+
+* **vdp:** Add slack component ([#843](https://github.com/instill-ai/instill.tech/issues/843)) ([6327adf](https://github.com/instill-ai/instill.tech/commit/6327adf6b9b3718f89bb1a7a09cb67e311ca552f))
+
 ## [1.47.15](https://github.com/instill-ai/instill.tech/compare/v1.47.14...v1.47.15) (2024-05-11)
 
 
