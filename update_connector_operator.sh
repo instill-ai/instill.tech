@@ -18,7 +18,7 @@ map_component_to_directory() {
         googlecloudstorage|googlesearch|bigquery|pinecone|redis|restapi|website)
             echo "data-connectors"
             ;;
-        numbers)
+        numbers|slack)
             echo "app-connectors"
             ;;
         base64|image|json|text)

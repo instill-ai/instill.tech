@@ -1,0 +1,58 @@
+---
+title: "Slack"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Slack connector https://github.com/instill-ai/instill-core"
+---
+
+The Slack component is a application connector that allows users to get and send message on Slack.
+It can carry out the following tasks:
+
+- [Read Message](#read-message)
+- [Send Message](#send-message)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/slack/v0/config/definition.json).
+
+## Connection
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| token | `token` | string | Fill your token |
+
+## Supported Tasks
+
+### Read Message
+
+Get the latest message since specific date
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_READ_MESSAGE` |
+| Channel Name (required) | `channel_name` | string | A channel name display in Slack |
+| Start to read date | `start_to_read_date` | string | earliest date in all read messages |
+| Public channel | `is_public_channel` | boolean | Whether all members can read the channel |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Conversations | `conversations` | array[object] | An array of conversations with thread messages |
+
+### Send Message
+
+send message to a specific channel
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_WRITE_MESSAGE` |
+| Channel Name (required) | `channel_name` | string | A channel name display in Slack |
+| Message (required) | `message` | string | message to be sent to the target channel |
+| Public channel | `is_public_channel` | boolean | Whether all members can read the channel |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Result | `result` | string | result for sending message |
