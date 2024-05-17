@@ -74,7 +74,9 @@
     "speechRecognition": "语音识别",
     "pythonSDK": "Python SDK",
     "typescriptSDK": "TypeScript SDK",
-    "introduction": "介绍"
+    "introduction": "介绍",
+    "generic": "Generic",
+    "iterator": "Iterator"
   },
   "navbar": {
     "documentation": "文档",
