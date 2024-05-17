@@ -115,7 +115,7 @@ alt="Step 3 : Add Components"
 
 ## 4. **Configure Output in Response Component**
     - **General Output**:
-        - To extract content scraped from the webpage by Website Component, add **'Webpage Text Content'** field with Title **`Webpage Content`**, Key **`webpage_content`** and Value **`${web_scraper.output.pages[0].link_text}`**.
+        - To extract content scraped from the webpage by the Website component, add **'Webpage Text Content'** field with Title **`Webpage Content`**, Key **`webpage_content`** and Value **`${web_scraper.output.pages[0].link_text}`**.
     - **Specific Outputs:**
         - **Ask on Page**: To reference the output from the OpenAI Component, add **'Answer'** field with Title **`Answer`**, Key **`answer`** and Value **`${ask.output.texts}`**.
         - **5 Second Preview**: To reference the output from the OpenAI Component, add **'Summary'** field with Title **`Summary`**, Key **`summary`** and Value **`${summarizer.output.texts}`**.
