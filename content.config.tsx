@@ -184,7 +184,12 @@ export const getSections = (
       text: "common:sidebarSections.genericComponent",
       link: `/docs/component/generic`,
       collapsible: true,
-      items: [],
+      items: [
+        {
+          text: "common:sidebarSections.iterator",
+          link: `/docs/component/generics/iterator`,
+        },
+      ],
       appType: "core",
       versions: [],
     },
@@ -291,19 +296,6 @@ export const getSections = (
         {
           text: "common:sidebarSections.image",
           link: `/docs/component/operators/image`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.generic",
-      link: `/docs/component/generic`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.iterator",
-          link: `/docs/component/generics/iterator`,
         },
       ],
       appType: "core",
