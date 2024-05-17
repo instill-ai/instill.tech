@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.47.17](https://github.com/instill-ai/instill.tech/compare/v1.47.16...v1.47.17) (2024-05-17)
+
+
+### Documentation
+
+* **cloud:** add Instill Credit documentation ([#847](https://github.com/instill-ai/instill.tech/issues/847)) ([e608a87](https://github.com/instill-ai/instill.tech/commit/e608a87b857793a8851441ad4663053022d3ba91))
+* **tutorial:** publish webpage interaction tutorial ([#844](https://github.com/instill-ai/instill.tech/issues/844)) ([972114d](https://github.com/instill-ai/instill.tech/commit/972114da65a5f4c4b3204f3db0899e2f889b4f8f))
+* **vdp:** add iterator component ([#848](https://github.com/instill-ai/instill.tech/issues/848)) ([9d2e732](https://github.com/instill-ai/instill.tech/commit/9d2e732be6fd6ada0f5786b502b3dd4a804d31da))
+
 ## [1.47.16](https://github.com/instill-ai/instill.tech/compare/v1.47.15...v1.47.16) (2024-05-14)
 
 
