@@ -28,6 +28,7 @@
     "clonePipeline": "克隆管道",
     "releasePipeline": "发布管道",
     "sharePipeline": "共享管道",
+    "useCredit": "使用 Instill Credit",
     "genericComponent": "通用组件",
     "aiComponent": "AI 组件",
     "instill": "Instill Model",

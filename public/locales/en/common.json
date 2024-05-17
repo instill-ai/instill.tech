@@ -28,6 +28,7 @@
     "clonePipeline": "Clone a Pipeline",
     "releasePipeline": "Release a Pipeline",
     "sharePipeline": "Share a Pipeline",
+    "useCredit": "Use Instill Credit",
     "genericComponent": "Generic",
     "aiComponent": "AI",
     "instill": "Instill Model",

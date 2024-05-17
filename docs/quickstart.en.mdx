@@ -51,87 +51,74 @@ The central concept in VDP is the Pipeline, which automates a sequence of compon
 
 ## Build Your First AI Workflow
 
-<InfoBlock type="info" title="Prerequisites">
+<InfoBlock type="info" title="Third-party vendors">
 
-To get started with this tutorial, you'll need both an OpenAI account and a Stability AI account. Here's how to set them up:
+  This tutorial uses AI components to connect to **OpenAI** and **Stability AI**.
 
-- Create an OpenAI account by visiting [openai.com](https://openai.com). Access to your API keys can then be managed through OpenAI's Account page.
-- Create a Stability AI account by visiting [dreamstudio.ai](https://dreamstudio.ai). Access to your API keys can then be managed through DreamStudio's Account page. All new users are granted 25 free credits upon creating an account.
+  With your Instill Cloud account, you'll receive **10,000 monthly Instill Credits**, which will allow you to use such components without needing to set up an account in these services.
 
 </InfoBlock>
 
 ### Build the Pipeline
 
 In this guide, we'll walk you through creating your first AI pipeline,
-specifically focusing on a generative pipeline using the [OpenAI](./vdp/ai-connectors/openai) and [Stability AI](./vdp/ai-connectors/stability-ai) Connectors to generate digital stickers.
+specifically focusing on a generative pipeline using the [OpenAI](./component/ai/openai) and [Stability AI](./component/ai/stabilityai) components to generate digital stickers.
 
-**Step 1: Create Connector**
+#### Create the pipeline
 
-Begin by navigating to the **Connectors** page on the navbar.
-Since you haven't set up any pipelines yet, this page will be empty.
-
-To set up an OpenAI connector resource, follow these steps:
-
-1. Click on **+ Create Connector**, add select **OpenAI** on the Modal.
-2. Provide a unique ID for the resource. Here we use _openai_. Optionally, you can add a description.
-3. Fill in the **API Key**. Follow the OpenAI [documentation](https://platform.openai.com/docs/api-reference/authentication) to find your API key.
-4. Optionally, specify which organization is used for the request.
-5. Click **Save**.
-
-Next, set up a Stability AI connector resource:
-
-1. Click on **+ Create Connector**, add select **Stability AI** on the Modal.
-2. Assign a unique ID for the resource. Here we use _stability-ai_, and you can optionally add a description.
-3. Provide the **API Key**. Follow the Stability AI [documentation](https://platform.stability.ai/docs/getting-started/authentication) to find your API key.
-4. Click **Save**.
-
-**Step 2: Build the Pipeline in the No-code Pipeline Builder**
-
-Now, head to the **Pipelines** page on the navbar.
+Head to the **Pipelines** page on the navbar.
 To create your first pipeline through the Console:
 
 1. Click on **+ Create Pipeline**.
 2. Assign a unique ID for the pipeline. Here we use _digital-sticker-maker_, and you can optionally add a description. By default, the owner of the pipeline is your account. But you can also assign it to an organization that you are a member of.
 3. Choose the visibility of the pipeline. By default, the pipeline is private, but you can also make it public, so that it can be seen by anyone.
-4. Click **Create**. 
+4. Click **Create**.
 
 This will redirect you to the no-code pipeline builder.
 On the canvas, you can drag and drop connectors and operators to construct your pipeline.
 
-By default, the Start Component and End Component are already added to the canvas.
-The Start Component serves as the starting point of a VDP pipeline, where you can define the input data for your application.
+A blank canvas contains two components that serve as the pipeline input and output interface:
+- **Trigger** is used to set the pipeline parameters when triggering a pipeline.
+- **Response** is used to collect the results of a trigger.
 
-To set up a Start component:
+To set up the Trigger component:
 
-1. Locate the **start** component on canvas
-2. Click **Add Field +** and select **Text**. Fill in the **Title** with _Prompt_. The reference key for this field will be _prompt_. Click **Save**.
-3. Click **Add Field +** and select **Text**, Fill in the **Title** with _Sticker Shape_. Similarly, the reference key for this field will be _sticker_shape_. Click **Save**.
+1. Locate the **trigger** component on the canvas.
+2. Click **Add Field +** and select **Short Text**. Fill in the **Title** with _Prompt_. The reference key for this field will be _prompt_. Click **Save**.
+3. Click **Add Field +** and select **Short Text**, Fill in the **Title** with _Sticker Shape_. Similarly, the reference key for this field will be _sticker_shape_. Click **Save**.
 
 This configuration requires two inputs: a prompt to generate the idea for the sticker and a shape parameter to control the sticker's appearance.
 
-To configure an OpenAI connector:
+#### Create the OpenAI component
 
-1. Click **+ Add Component** and choose **openai** from the **Existing Connectors**. This will add a OpenAI connector `openai_0` to the canvas.
-2. Select _TASK_TEXT_GENERATION_ from the dropdown of the **OpenAI Component** field.
-3. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_.
-4. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
+1. Click **Component +** and choose **OpenAI** from **Connectors**. This will add a OpenAI component `openai_0` to the canvas.
+2. Select **Text Generation** from the dropdown of the **OpenAI Component** field.
+3. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_. You can identify the models that support default credentials from the icon next to them, displaying stack of tokens.
 
-<InfoBlock type="tip" title="Pipeline Component Reference">
-  When establishing connections between components, referencing a component field is as simple as using `${}`.
-  When you enter `${` into an input field, the smart hint feature intelligently filters and presents only the relevant hints that are compatible with the field.
+<InfoBlock type="info" title="Bring Your Own Key">
+  You can always use your own API Keys on the components in this tutorial by introducing them in the component's **Connection** configuration.
 </InfoBlock>
 
+4. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
+
 ```
-Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border".
+Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border".
 Only return the output content.
 
 Prompt: a bear
-Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
+Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border
 Prompt: a dog writes code
-Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${start.sticker_shape} sticker with white border
-Prompt: ${start.prompt}
+Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border
+Prompt: ${trigger.prompt}
 Output:
 ```
+
+<InfoBlock type="tip" title="Pipeline Component Reference">
+  This prompt references the input fields in the Trigger component, providing extra context to OpenAI in order to generate a more robust and complete image prompt.
+
+  When establishing connections between components, referencing a component field is as simple as using `${}`.
+  When you enter `${` into an input field, the smart hint feature intelligently filters and presents only the relevant hints that are compatible with the field.
+</InfoBlock>
 
 
 5. Click the **More** link on the `openai_0` connector to open configuration right panel.
@@ -142,16 +129,16 @@ You are a prompt engineer to generate Stable Diffusion prompts to generate stick
 ```
 
 7. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
-8. Set **n** to in the _1_ to indicate only one chat completion.
+8. Set **n** to _1_ to indicate only one chat completion.
 
-The OpenAI connector will automatically link to the Start component
-since we have used `${start.sticker_shape}` and `${start.prompt}` in the OpenAI connector configuration.
+The OpenAI connector will automatically link to the Trigger component
+since we have used `${trigger.sticker_shape}` and `${trigger.prompt}` in the OpenAI connector configuration.
 The `${}` placeholders represent **string values** to be filled during pipeline triggering.
 
-To set up an Stability AI connector:
+#### Create the Stability AI component
 
-1. Click **+ Add Component** and choose **stability-ai** from existing resource. This will add a OpenAI connector `stability_0` to the canvas.
-2. Select _TASK_TEXT_TO_IMAGE_ from the dropdown of the **Stability AI Component** field.
+1. Click **Component +** and choose **Stability AI** from **Connectors**. This will add a Stability AI component `stability_0` to the canvas.
+2. Select **Text To Image** from the dropdown of the **Stability AI Component** field.
 3. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
 4. In the **Prompts** field, specify the generated text array from the OpenAI connector output `${openai_0.output.texts}`.
 5. Click the **More** link on the `stability_0` component to open configuration right panel.
@@ -164,25 +151,25 @@ To set up an Stability AI connector:
 You will see that the Stability AI connector is automatically linked to the OpenAI connector
 since we have used `${openai_0.output.texts}` in the Stability AI connector configuration.
 
-The End Component is used at the end of a VDP pipeline to receive the output as a response when triggering the pipeline.
+#### Configure the Response component
 
-To set up an End component:
+The Response Component is used at the end of a VDP pipeline to return the pipeline trigger outputs.
 
-1. Find the **end** component on canvas.
-2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, the reference key for this field will be _my_original_prompt_, and **Value** with `${start.prompt}`. Click **Save**.
-3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, the reference key for this field will be _sticker_shape_, and **Value** with `${start.sticker_shape}`. Click **Save**.
+1. Find the **response** component on the canvas.
+2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, the reference key for this field will be _my_original_prompt_, and **Value** with `${trigger.prompt}`. Click **Save**.
+3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, the reference key for this field will be _sticker_shape_, and **Value** with `${trigger.sticker_shape}`. Click **Save**.
 4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, the reference key for this field will be _llm_powered_prompt_, and **Value** with `${openai_0.output.texts}`. Click **Save**.
 5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, the reference key for this field will be _digital_sticker_, and **Value** with `${stability_0.output.images}`. Click **Save**.
 
-You will see that the End component is automatically linked to multiple components: `start`, `openai_0` and `stability_0`.
+You will see that the End component is automatically linked to multiple components: `trigger`, `openai_0` and `stability_0`.
 
-Click **Save** on the top right corner, and your pipeline is ready to be tested.
+Click **Save** on the top right corner, your pipeline is ready to be tested!
 
 ### Test the Pipeline via No-Code
 
 🎉 Congratulations! Your first VDP pipeline is all set up and ready to go.
 
-You can now put your pipeline to the test using real data. For instance, let's create a sticker featuring a yellow plane in the sky.
+You can now test your pipeline using real data. Let's create, for instance, a sticker featuring a yellow plane in the sky.
 
 ```
 Prompt: yellow plane on the sky
@@ -200,7 +187,8 @@ Click the Output tab of the `openai_0` component to view the generated output.
 As you can see, the OpenAI ChatGPT model has expanded our initial prompt, turning it into:
 
 ```
-a bright yellow vintage plane flying through a fluffy white cloud-filled sky, sticker style, flat icon, vector, die-cut round sticker with white border
+a yellow plane soaring through a clear blue sky, sticker style, flat icon,
+vector, die-cut round sticker with white border
 ```
 
 Give it a try!
@@ -221,9 +209,9 @@ Be cautious, as this operation cannot be undone, and apps using the token will s
 VDP automatically generates a dedicated trigger endpoint for each pipeline to process data.
 To trigger the pipeline, follow these steps:
 
-1. Click the **Toolkit* button on the top right corner of the pipeline canvas.
-2. Copy the cURL request in the **Trigger Snippet** section and pass your API token as a Bearer token in the Authorization header
-3. Adjust and ingest your data accordingly in the example request
+1. Click the **Toolkit** button on the top right corner of the pipeline canvas.
+2. Copy the _cURL_ request in the **Trigger Snippet** section and pass your API token as a Bearer token in the Authorization header.
+3. Adjust and ingest your data accordingly in the example request.
 
 Here is an example trigger request for the pipeline:
 
@@ -267,7 +255,7 @@ You should receive the following response:
 }
 ```
 
-To obtain the generated image, decode the "digital_sticker" field of the response from Base64 format.
+To obtain the generated image, decode the `digital_sticker` field of the response from Base64 format.
 
 <ZoomableImg
   src="/docs-assets/core/decoded-digital-sticker.png"

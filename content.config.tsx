@@ -174,6 +174,13 @@ export const getSections = (
       versions: ["latest"],
     },
     {
+      text: "common:sidebarSections.useCredit",
+      link: `/docs/vdp/credit`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.instillComponent",
       items: [],
       appType: "core",
