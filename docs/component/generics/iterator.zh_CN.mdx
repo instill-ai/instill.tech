@@ -13,26 +13,26 @@ The Iterator component is a generic connector that allows users to iterate over 
 
 ## Configuration
 
-To configure a iterator, you need to provide three data
+To configure an Iterator, you need to specify three pieces of information
 
 
 | Name | Key | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Input (required) | `input` | string | The data you want to iterate over |
 | Components (required) | `components` | array[object] | Array of components |
-| Output Elements (required) | `output_elements` | object | Output of the iterator|
+| Output Elements (required) | `output_elements` | object | Output of the Iterator|
 
 
 
 
 #### Input
-The `input` data is the data you want to iterate over. For example, if a component `comp-splits` outputs an array of text, then we can use `"input": "${comp-splits.output.texts}"` for the iterator configuration.
+The `input` data is the data you want to iterate over. For example, if a component named `comp-splits` outputs an array of text, then we can use `"input": "${comp-splits.output.texts}"` for the iterator configuration.
 
 #### Components
-The array of components shares exactly the same structure as the component array in the pipeline recipe. You can put multiple components inside the iterator. The only difference is that the belonging components can use the `element` of the itartor as input by using the syntax `${iterator.element}`.
+The `components` array shares exactly the same structure as the component array in the pipeline recipe. You can put multiple components inside the Iterator. The only difference is that the `components` within the Iterator can use the `element` of the Iterator as input by using the syntax `${iterator.element}`.
 
 #### Output Elements
-The `output_element` is a string-to-string map. You can specify the output of the iterator, and the iterator will concatenate all the data into an array. For example, in the following recipe example, if we configure the output as `"output_elements": { "result": "${base64.output.data}"}`, the iterator will collect the `${base64.output.data}` data from each iteration and merge them into an array.
+The `output_element` is a string-to-string map. You can specify the output of the Iterator, and the Iterator will concatenate all the data into an array. For instance, in the following recipe example, if we configure the output as `"output_elements": { "result": "${base64.output.data}"}`, the Iterator will collect the `${base64.output.data}` data from each iteration and merge them into an array.
 
 
 ## Example Recipe
