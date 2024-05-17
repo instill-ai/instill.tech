@@ -184,7 +184,12 @@ export const getSections = (
       text: "common:sidebarSections.genericComponent",
       link: `/docs/component/generic`,
       collapsible: true,
-      items: [],
+      items: [
+        {
+          text: "common:sidebarSections.iterator",
+          link: `/docs/component/generics/iterator`,
+        },
+      ],
       appType: "core",
       versions: [],
     },

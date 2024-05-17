@@ -74,7 +74,9 @@
     "speechRecognition": "Speech Recognition",
     "pythonSDK": "Python SDK",
     "typescriptSDK": "TypeScript SDK",
-    "introduction": "Introduction"
+    "introduction": "Introduction",
+    "generic": "Generic",
+    "iterator": "Iterator"
   },
   "navbar": {
     "documentation": "Documentation",
