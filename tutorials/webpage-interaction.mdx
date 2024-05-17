@@ -1,0 +1,147 @@
+---
+title: "Empowering Webpage Interaction: A Step-by-Step Tutorial for Summarizing and Asking Questions on Webpages"
+lang: "en-US"
+draft: false
+description: "A Step-by-Step Tutorial for Summarizing and Asking Questions on Webpages"
+sourceConnector: "Null"
+destinationConnector: "Null"
+aiTask: "TextGeneration"
+publishedOn: "2024-05-15T09:30:00"
+placeholderColor: "bg-instillRed90"
+themeImgSrc: "/tutorial-assets/webpage/Tutorial_Cover_Webpage.png"
+themeImgThumbnailSrc: "/tutorial-assets/webpage/Tutorial_Cover_Webpage.png"
+useCase: "Application"
+author: "Shih-Chun Huang"
+authorAvatarSrc: "/author-avatar/Shih-Chun.jpg"
+authorGitHubUrl: "https://github.com/ShihChun-H"
+keywords: ["Webpage scraping", "Open Source", "Artificial Intelligence", "Generative AI", "AI Application", "Large Language Model", "Text generation"]
+---
+
+# Introduction
+
+This tutorial explores two powerful use cases of Instill Cloud pipelines that mimic the functionality of [Arc Max](https://arc.net/max)'s webpage interaction tools: **"Ask on Page"** and **"5 Second Previews"**. Both pipelines utilize the same components to enhance webpage interactivity and provide instant information retrieval.
+
+# **Overview of Pipelines**
+
+Both **"Ask on Page"** and **"5 Second Previews"** pipelines are designed to scrape webpages and extract valuable data tailored to specific needs:
+
+1. **[Ask on Page](https://instill.tech/instill-wombat/pipelines/jumbotron-ask-on-page)**: This pipeline fetches webpage content and processes inquiries about that content, delivering concise answers.
+
+2. **[5 Second Previews](https://instill.tech/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews)**: This pipeline generates brief summaries of webpage content, highlighting key information in a matter of seconds.
+
+## **How to Use the Pipelines**
+
+To use these pipelines, simply provide a URL of a webpage you want to explore. Here’s how you can leverage each pipeline effectively:
+
+- **Ask on Page**: Input a URL along with a specific question you have about the page's content. For example, input [https://www.instill.tech](https://www.instill.tech/) and ask, `What's the product?` Click **'Run'** to receive an answer directly derived from the page.
+
+<center>Try it out:</center>
+<br />
+
+<AskOnPage />
+
+<br />
+
+- **5 Second Previews**: Provide a URL, such as https://www.letstrekit.com/seven-sisters-cliffs-walk, and click **'Run'** to get a summarized preview of the webpage, highlighting essential aspects like hike overview, travel directions, and trail descriptions.
+
+<center>Try it out:</center>
+<br />
+
+<WebpageSummarization />
+
+## **Outputs Explained**
+
+- **Ask on Page** Output:
+    - **Webpage Content**: Excerpts from the webpage.
+    - **Answer**: Direct answers to your questions, with references to specific parts of the page.
+- **5 Second Previews** Output:
+    - **Webpage Content**: Brief content snippets.
+    - **Summary**: A comprehensive guide or overview of the main content.
+    - **Previews**: Key points from the page, summarized with relevant keywords and emojis for a quick scan.
+
+# **Steps to Build the Pipeline**
+
+## 1. **Create a New Pipeline**
+    - **Owner**: Choose the owner (individual or organization).
+    - **Name**: Enter the pipeline name in lowercase.
+    - **Description**: Provide an optional description.
+    - **Visibility**: Choose public or private visibility.
+    - **Action**: Click **'Create'**.
+
+<ZoomableImg
+src="/tutorial-assets/webpage/T1.png"
+alt="Step 1 : Create a New Pipeline"
+/>
+
+## 2. **Configure Trigger Component**
+    - **Webpage URL Field** (For both use cases):
+        - Click **'Add field'** in the Trigger Component.
+        - Select **'Short text'**.
+        - **Title:** Enter **`Website URL`**, edit the automatically generated Key if necessary (lowercase required).
+        - Click **'Save'** to save the configuration.
+    - **Question Field** (For **Ask on Page** use case):
+        - Repeat the process used for the Webpage URL, using the Title **`Question`**.
+
+<ZoomableImg
+src="/tutorial-assets/webpage/T2.png"
+alt="Step 2 : Configure Trigger Component"
+/>
+
+## 3. **Add Components**
+    - **Website Scraper**:
+        - **Task:** Choose **'Scrape Website'**.
+        - **Query:** Reference the URL from the Trigger Component by typing **`${trigger.webpage}`**.
+        - **Max Number of Pages:** Enter **`1`** for example or reference this setting to another input field if needed.
+        - **Configuration:** Ensure **'Include Link Text'** is enabled.
+    - **OpenAI for Text Generation**:
+        - **Task:** Select **'Text Generation'**.
+        - **Model:** Choose the model to be used, such as **'gpt-4-1106-preview'**.
+        - **Prompt:** Use references to integrate scraped content. For example:
+            - Input for **Ask on Page** use case: <br />
+            **`Question: ${trigger.question}`** <br />
+            **`Title: ${web_scraper.output.pages[0].title}`** <br />
+            **`Link: ${web_scraper.output.pages[0].link}`** <br />
+            **`Text content: ${web_scraper.output.pages[0].link_text}`**
+            - Input for **5 Second Preview** use case: <br />
+            **`${web_scraper.output.pages[0].link_text}`**
+        - **Response Format:** Select **'text'**.
+        - **Additional Configuration:** Set system messages specific to the task.
+        - **API Key:** Reference the OpenAI API key previously set under **"Settings"** → **"Secrets"** as **`${secrets.openai-instill-api-key}`**.
+
+<ZoomableImg
+src="/tutorial-assets/webpage/T3.png"
+alt="Step 3 : Add Components"
+/>
+
+## 4. **Configure Output in Response Component**
+    - **General Output**:
+        - To extract content scraped from the webpage by the Website component, add **'Webpage Text Content'** field with Title **`Webpage Content`**, Key **`webpage_content`** and Value **`${web_scraper.output.pages[0].link_text}`**.
+    - **Specific Outputs:**
+        - **Ask on Page**: To reference the output from the OpenAI Component, add **'Answer'** field with Title **`Answer`**, Key **`answer`** and Value **`${ask.output.texts}`**.
+        - **5 Second Preview**: To reference the output from the OpenAI Component, add **'Summary'** field with Title **`Summary`**, Key **`summary`** and Value **`${summarizer.output.texts}`**.
+
+<ZoomableImg
+src="/tutorial-assets/webpage/T4.png"
+alt="Step 4 : Configure Output in Response Component"
+/>
+
+## 5. **Finalization and Usage**
+    - **Save**: Confirm all entries and save the pipeline.
+    - **Test**: Fill in required inputs and run the pipeline to test.
+    - **Share**: Share the pipeline URL or publish it to Instill Hub for broader access.
+    - **Version Control**: Use the release function for version control.
+    - **Integration**: Integrate the pipeline into your applications using the API endpoint, accessible via Toolkit or Python SDK.
+
+<ZoomableImg
+src="/tutorial-assets/webpage/T5.png"
+alt="Step 5 : Finalization and Usage"
+/>
+
+The components used in both pipelines play a critical role in extracting and processing the data from webpages to deliver precise and useful information to the user.
+
+Feel free to experiment with these pipelines on Instill Cloud to see how they can transform your interaction with web content, making information retrieval both efficient and enjoyable.
+
+<CtaButton
+  text="☁️ Try Instill Cloud Yourself"
+  link="https://instill.tech/"
+/>
