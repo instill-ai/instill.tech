@@ -530,11 +530,11 @@ export function getNavbar(
             appType: null,
           },
           {
-            key: "docs-nav-dropdown-github-disussions",
+            key: "docs-nav-dropdown-github-discussions",
             href: "https://github.com/orgs/instill-ai/discussions",
             className: "",
             position: "right",
-            label: "common:navbar.gitHubDisussions",
+            label: "common:navbar.gitHubDiscussions",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
