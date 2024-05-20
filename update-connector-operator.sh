@@ -40,7 +40,7 @@ for doc in $(find component -name README.mdx); do
     target_directory=$(map_component_to_directory "${component_name}")
     if [[ "${target_directory}" != "unknown" ]]; then
         target_en=docs/component/${target_directory}/${component_name}.en.mdx
-        target_cn=docs/component/${target_directory}/${component_name}.zh_CN.mdx
+        target_cn=docs/component/${target_directory}/${component_name}.zh-CN.mdx
         cp "${doc}" "${target_en}"
         cp "${doc}" "${target_cn}"
     else
