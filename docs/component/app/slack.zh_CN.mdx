@@ -25,6 +25,19 @@ The component configuration is defined and maintained [here](https://github.com/
 | :--- | :--- | :--- | :--- |
 | token | `token` | string | Fill your token |
 
+### Get Token
+1. Go to [Slack API](https://api.slack.com/apps) and create a new app.
+2. After creating a new app, go to the OAuth & Permissions page by clicking the app name.
+3. Set the scope for the App.
+  - For reading messages, you need to set the scope to `channels:history` and `channels:read`.
+  - For sending messages, you need to set the scope to `chat:write`.
+4. After setting the scope of App, you need to do "Reinstall to Workspace".
+5. Go to the OAuth & Permissions page and copy the token.
+  - You will have 2 tokens, one for Bot User OAuth Token and another for User OAuth Token. You can use either of them.
+    - If you want to send a message to a channel by a bot, you should use Bot User OAuth Token, which is the token with the prefix of `xoxb-`.
+    - If you want to send a message to a channel by a user, you should use User OAuth Token, which is the token with the prefix of `xoxp-`.
+    - If you use Bot User OAuth Token, you need to invite the bot to the channel you want to read a message.
+
 ## Supported Tasks
 
 ### Read Message
