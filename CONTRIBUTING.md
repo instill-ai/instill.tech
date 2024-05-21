@@ -493,13 +493,13 @@ i18next
 ```
 ├── docs
 │   ├── welcome.en.mdx
-│   └── welcome.zh_CN.mdx
+│   └── welcome.zh-CN.mdx
 ├── content.config.tsx
 ├── public
 │   └── locales
 │        ├── en
 │              └── common.json
-│        └── zh_CN
+│        └── zh-CN
 │             └── common.json
 └── pages
     └── docs
@@ -561,18 +561,18 @@ export const LATEST_VERSIONS = {
 │   └── v0.4.1-alpha // version as folder
 │   │      └── vdp  // appType as folder
 │   │      │     ├── welcome.en.mdx
-│   │      │     └── welcome.zh_CN.mdx
+│   │      │     └── welcome.zh-CN.mdx
 │   │      └── core  // appType as folder
 │   │            ├── welcome.en.mdx
-│   │            └── welcome.zh_CN.mdx
+│   │            └── welcome.zh-CN.mdx
 │   │
 │   └── v0.0.1-alpha // version as folder
 │        └── vdp  // appType as folder
 │        │     ├── welcome.en.mdx
-│        │     └── welcome.zh_CN.mdx
+│        │     └── welcome.zh-CN.mdx
 │        └── core  // appType as folder
 │               ├── welcome.en.mdx
-│               └── welcome.zh_CN.mdx
+│               └── welcome.zh-CN.mdx
 │
 └── version.mjs
 ```

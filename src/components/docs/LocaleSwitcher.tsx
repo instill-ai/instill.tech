@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const languages: { [key: string]: string } = {
   en: "English",
-  zh_CN: "Chinese",
+  "zh-CN": "Chinese",
 };
 
 export default function LocaleSwitcher() {
