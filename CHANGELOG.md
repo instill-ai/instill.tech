@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.47.18](https://github.com/instill-ai/instill.tech/compare/v1.47.17...v1.47.18) (2024-05-22)
+
+
+### Bug Fixes
+
+* correct broken link in the documentation ([#858](https://github.com/instill-ai/instill.tech/issues/858)) ([83493e7](https://github.com/instill-ai/instill.tech/commit/83493e7c46cbdc96710a325b9b437357da1dbf19))
+* **docs:** fix navbar typo ([#854](https://github.com/instill-ai/instill.tech/issues/854)) ([68afb86](https://github.com/instill-ai/instill.tech/commit/68afb86abf8d418ea2b45dd912177e5546e8ce28))
+
+
+### Documentation
+
+* **document:** update Instill Core version ([#853](https://github.com/instill-ai/instill.tech/issues/853)) ([a8c0eb5](https://github.com/instill-ai/instill.tech/commit/a8c0eb5efa76f699c509523dea9061286c8a9a90))
+* **vdp:** fix formatting convention for component names ([#851](https://github.com/instill-ai/instill.tech/issues/851)) ([4ecd29f](https://github.com/instill-ai/instill.tech/commit/4ecd29ffc432441b939e12e606f07a7e1b7fa80e))
+
 ## [1.47.17](https://github.com/instill-ai/instill.tech/compare/v1.47.16...v1.47.17) (2024-05-17)
 
 
