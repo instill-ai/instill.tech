@@ -32,6 +32,8 @@ import {
   MdxSEOArticleWriter,
   MdxYOLOv7,
   MdxLlama27bChat,
+  MdxVersionCore,
+  MdxVersionCoreProps,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -112,6 +114,9 @@ const components = {
   Llama27bChat: () => <MdxLlama27bChat />,
   SEOArticleWriter: () => <MdxSEOArticleWriter />,
   YOLOv7: () => <MdxYOLOv7 />,
+  VersionCore: (props: MdxVersionCoreProps) => (
+    <MdxVersionCore>{props.children}</MdxVersionCore>
+  ),
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

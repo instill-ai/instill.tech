@@ -219,6 +219,19 @@ You can embed Jumbotron by using this component.
 <YOLOv7 />
 ```
 
+#### VersionCore
+You can embed Instill Core version by using this component
+
+```
+<VersionCore>
+  git clone -b -version- https://github.com/instill-ai/instill-core.git && cd instill-core 
+  make all 
+</VersionCore>
+```
+
+Important: To add version need embed this `-version-`, and it will automatically parse the currect instill-core version for you.
+
+
 ## How to contribute to the Docs.
 
 ### Add content to the right location
