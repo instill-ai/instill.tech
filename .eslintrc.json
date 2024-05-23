@@ -44,13 +44,13 @@
     // eslint-plugin-react-hooks
     "plugin:react-hooks/recommended",
 
-    // eslint-plugin-storybook
-    "plugin:storybook/recommended",
-
     // nextjs
     "next/core-web-vitals"
   ],
   "rules": {
+    // Disable the linting rule for <img> element from next.js
+    "@next/next/no-img-element": "off",
+
     // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     "react/react-in-jsx-scope": "off",
 

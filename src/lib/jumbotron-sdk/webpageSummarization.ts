@@ -13,7 +13,7 @@ export async function webpageSummarization(
   requestData: WebpageSummarizationRequestData
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIProxyRequestBody = {
-    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews/releases/v1.0.0/trigger",
+    path: "/vdp/v1beta/users/instill-wombat/pipelines/jumbotron-webpage-5-sec-previews/releases/v1.0.1/trigger",
     data: requestData,
   };
 

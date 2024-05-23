@@ -12,7 +12,7 @@ import {
   Separator,
   SolidButton,
 } from "@instill-ai/design-system";
-import { AnnouncementBar, CommonCtaButton } from "@/components/ui";
+import { AnnouncementBar } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
 import { GithubTextLink } from "./GithubTextLink";
 import { DocsPageLink } from "./DocsPageLink";

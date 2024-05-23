@@ -1,0 +1,43 @@
+---
+title: "BigQuery"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP BigQuery connector https://github.com/instill-ai/instill-core"
+---
+
+The BigQuery component is a data connector that allows users to insert data to BigQuery tables.
+It can carry out the following tasks:
+
+- [Insert](#insert)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/bigquery/v0/config/definition.json).
+
+## Connection
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| JSON Key File contents (required) | `json_key` | string | Contents of the JSON key file with access to the bucket. |
+| BigQuery Project ID (required) | `project_id` | string | Fill in your BigQuery Project ID. |
+| BigQuery Dataset ID (required) | `dataset_id` | string | Fill in your BigQuery Dataset ID. |
+| BigQuery Table Name (required) | `table_name` | string | Fill in your BigQuery Table Name. |
+
+## Supported Tasks
+
+### Insert
+
+Insert data to BigQuery.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_INSERT` |
+| Data (required) | `data` | object | The data to be inserted to BigQuery |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Status | `status` | string | Status of the upload operation |

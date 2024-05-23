@@ -14,14 +14,20 @@ useCase: "Model"
 author: "Shih-Chun Huang"
 authorAvatarSrc: "/author-avatar/Shih-Chun.jpg"
 authorGitHubUrl: "https://github.com/ShihChun-H"
-keywords: ["Llama", "Open Source", "Artificial Intelligence", "Generative AI", "Natural Language Processing", "Large Language Model"]
+keywords:
+  [
+    "Llama",
+    "Open Source",
+    "Artificial Intelligence",
+    "Generative AI",
+    "Natural Language Processing",
+    "Large Language Model",
+  ]
 ---
-
 
 # **Llama2-Chat**
 
 Llama2's finely tuned variant, Llama2-Chat is optimized for dialogue use cases. To ensure safety and helpfulness, Llama2-Chat employs Reinforcement Learning from Human Feedback (RLHF) with over 1 million human annotations, which involves learning from human interactions to improve the model's responses. In this tutorial, you'll discover the process of locally running the 7B variation, Llama2-7B-Chat, using [Instill Core](https://github.com/instill-ai/instill-core).
-<br />
 
 # **Prerequisites**
 
@@ -32,7 +38,6 @@ To launch [Instill Core](https://github.com/instill-ai/instill-core), please mak
 - **`yq`** > **`v4.x`**. Please follow the installation **[guide](https://github.com/mikefarah/yq/#install)**.
 
 Note that running the Llama2-7B-Chat model locally necessitates GPU support. To run Llama2-7B-Chat locally, you will need a Nvidia GPU with at least 16GB of VRAM. If you don't have access to a GPU, please proceed to the **Run Llama2-7B-Chat on Instill Cloud** section.
-<br />
 
 # **Launch Llama2-7B-Chat locally**
 
@@ -40,10 +45,12 @@ Note that running the Llama2-7B-Chat model locally necessitates GPU support. To 
 
 Open your terminal and run the following commands to set up Instill Core with Docker Compose:
 
+<VersionCore>
+```shellscript
+git clone -b -version- https://github.com/instill-ai/instill-core.git && cd instill-core 
+make all 
 ```
-$ git clone -b v0.29.0-beta https://github.com/instill-ai/instill-core.git && cd instill-core
-$ make all
-```
+</VersionCore>
 
 Once all the services are up, the no-code Console is available at **[http://localhost:3000](http://localhost:3000/)**. Log in with username **admin** and the default password **password** (you can change this later).
 
@@ -53,11 +60,11 @@ There are two main ways to create the Llama2-7B-Chat model in Instill Core: no-c
 
 ### **Create the model via no-code**
 
-After onboarding, you can navigate to the **Models** page and  click **+ Add Model** and enter the model details as found on the [GitHub repository](https://github.com/instill-ai/deprecated-model).
+After onboarding, you can navigate to the **Models** page and click **+ Add Model** and enter the model details as found on the [GitHub repository](https://github.com/instill-ai/deprecated-model).
 
 <ZoomableImg
-src="/tutorial-assets/llama2-chat/Add-Model.png"
-alt="How to create a model on Console"
+  src="/tutorial-assets/llama2-chat/Add-Model.png"
+  alt="How to create a model on Console"
 />
 
 <br />
@@ -69,13 +76,13 @@ Alternatively, you can create the model via API.
 Go to the **Settings > API Tokens** section, then click on **Create Token**. Be sure to copy the token for future use.
 
 <ZoomableImg
-src="/tutorial-assets/llama2-chat/API-Token_core.png"
-alt="Where to get Instill Core API Token"
+  src="/tutorial-assets/llama2-chat/API-Token_core.png"
+  alt="Where to get Instill Core API Token"
 />
 
 ### **Create the model via low-code**
 
-Run the following command to create and deploy the model 
+Run the following command to create and deploy the model
 
 ```bash
 curl --location 'http://localhost:8080/model/v1alpha/users/admin/models' \
@@ -150,8 +157,8 @@ The Llama2-7B-Chat model is available on Instill Cloud. Simply [register an Inst
 - Click on **Create Token** and copy the token for later use.
 
 <ZoomableImg
-src="/tutorial-assets/llama2-chat/API-Token.png"
-alt="Where to get Instill Cloud API Token in Settings"
+  src="/tutorial-assets/llama2-chat/API-Token.png"
+  alt="Where to get Instill Cloud API Token in Settings"
 />
 
 ## **Step 2: Run the model on Instill Cloud**
@@ -176,8 +183,8 @@ curl --location 'https://api.instill.tech/model/v1alpha/organizations/instill-ai
 '
 ```
 
-
 **max_new_tokens: 1024** specifies the maximum number of tokens the model should generate in the response.
+
 <br />
 
 # **Use the model in Versatile Data Pipeline (VDP)**
@@ -185,8 +192,8 @@ curl --location 'https://api.instill.tech/model/v1alpha/organizations/instill-ai
 Models deployed on Instill Core can be seamlessly integrated into a VDP pipeline for practical use. Take a look at this pre-built pipeline featuring the Llama2-7B-Chat model.
 
 <CtaButton
-text="🚀 Try Llama2-7B-Chat"
-link="https://instill.tech/instill-wombat/pipelines/llama2-7b-chat"
+  text="🚀 Try Llama2-7B-Chat"
+  link="https://instill.tech/instill-wombat/pipelines/llama2-7b-chat"
 />
 
 The web demo card you see below is powered by the VDP pipeline we mentioned earlier. This pipeline processes user input and sends it to the Llama2-7B-Chat model for chat interaction. In essence, VDP pipelines serve as the backbone of any AI application, enabling you to construct your own AI applications leveraging these pipelines.
@@ -203,7 +210,7 @@ Prompt = `I don't feel good today`
 **Llama2-7B-Chat OUTPUT**
 
 > Oh no, I'm so sorry to hear that you're not feeling well today! 😔 Can you tell me more about how you're feeling? Sometimes talking about it can help. Is there anything in particular that's bothering you, or is it just a general feeling of not being well?
-> 
+
 <br />
 
 # **Conclusion**

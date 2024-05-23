@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import * as React from "react";
 import {
   CommonCtaButton,
   ComponentPageBase,
@@ -26,9 +26,7 @@ import OperatorComponent from "@/components/landing/Operator/OperatorComponent";
 import ConnectorComponent from "@/components/landing/Connector/ConnectorComponent";
 import ConnectorDefault from "@/components/landing/Connector/ConnectorDefault";
 import { StartBuildingBlock } from "@/components/tutorial";
-type GetLayOutProps = {
-  page: ReactElement;
-};
+import { NextPageWithLayout } from "./_app";
 
 export type Task = {
   name: string;
@@ -159,9 +157,7 @@ export function VersionType({
   }
 }
 
-const ComponentPage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const ComponentPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { page } = router.query;
 

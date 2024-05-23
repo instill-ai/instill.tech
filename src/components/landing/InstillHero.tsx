@@ -2,10 +2,6 @@ import { useEffect, useRef } from "react";
 import cn from "clsx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Image from "next/image";
-
-import { SectionHeader, SectionLabel } from "@/components/ui";
-import { SecureYourSpot, StayInTheLoop } from "../ui";
 import { Nullable } from "@/types/instill";
 
 export const InstillHero = () => {

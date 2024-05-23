@@ -2,13 +2,7 @@ import * as React from "react";
 
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import {
-  Button,
-  Icons,
-  Input,
-  SolidButton,
-  toast,
-} from "@instill-ai/design-system";
+import { Icons, Input, SolidButton, toast } from "@instill-ai/design-system";
 import { useSwiper } from "swiper/react";
 
 export const StabilityAIOpenAISticker = () => {
@@ -102,12 +96,17 @@ export const StabilityAIOpenAISticker = () => {
             <React.Fragment>
               <div className="open-ai-stiker flex w-full flex-wrap overflow-auto bg-[#F8F9FC]">
                 {article ? (
-                  <img src={article} className="my-auto object-contain" />
+                  <img
+                    src={article}
+                    className="my-auto object-contain"
+                    alt=""
+                  />
                 ) : (
                   <React.Fragment>
                     <img
                       src="/images/wombat.png"
                       className="open-ai-stiker mx-auto my-auto object-contain"
+                      alt=""
                     />
                     {/* <img
                       src="/images/wombat-mobile.png"

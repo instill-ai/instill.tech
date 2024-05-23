@@ -1,14 +1,13 @@
+import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import {
-  Button,
   Icons,
   Input,
   SolidButton,
   toast,
+  Nullable,
 } from "@instill-ai/design-system";
-import { Nullable } from "@instill-ai/toolkit";
-import * as React from "react";
 import { useSwiper } from "swiper/react";
 
 export function resizeImage(file: File): Promise<Blob> {
@@ -215,19 +214,6 @@ export const Llama2Chat = () => {
         console.error("Error resizing image:", error);
       }
     }
-  };
-
-  const handleDelete = () => {
-    setImagePreview(null);
-    // Reset file input value to allow selecting the same file again
-    const lamaChatFileInput = document.getElementById(
-      "lamaChatFileInput"
-    ) as HTMLInputElement | null;
-    if (lamaChatFileInput) {
-      lamaChatFileInput.value = ""; // This resets the input value
-    }
-    setArticle("");
-    setQuestion("");
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {

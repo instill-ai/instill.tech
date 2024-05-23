@@ -20,10 +20,6 @@ export const VdpArrowBlock = ({
   icon,
   title,
   description,
-  color,
-  zIndex,
-  width,
-  arrowWidth,
   titleClass,
 }: VdpArrowBlockProps) => {
   return (

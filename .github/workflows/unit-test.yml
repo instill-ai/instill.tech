@@ -46,7 +46,7 @@ jobs:
         run: rm -rf node_modules && pnpm i --frozen-lockfile
 
       - name: Run linter
-        run: yarn lint
+        run: pnpm lint
 
       - name: Run tests
-        run: npm run test
+        run: pnpm run test

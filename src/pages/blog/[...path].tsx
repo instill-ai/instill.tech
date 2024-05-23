@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useMemo } from "react";
+import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -32,6 +32,8 @@ import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleCard } from "@/components/blog/BlogArticleCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { StartBuildingBlock } from "@/components/tutorial";
+import { NextPageWithLayout } from "../_app";
+import { GeneralRecord } from "@instill-ai/toolkit";
 
 export type BlogPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -46,7 +48,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const blogDir = join(process.cwd(), "blog");
   const blogRelativePaths = glob.sync("**/*.mdx", { cwd: blogDir });
 
-  const paths: any = [];
+  const paths: { params: GeneralRecord }[] = [];
 
   blogRelativePaths.forEach((path) =>
     locales?.forEach((locale) => {
@@ -70,7 +72,6 @@ export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
 export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   params,
   locale,
-  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -141,17 +142,18 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async ({
   };
 };
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-const BlogPage: FC<BlogPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, articles, blogMeta, source }) => {
+const BlogPage: NextPageWithLayout<BlogPageProps> = ({
+  mdxSource,
+  commitMeta,
+  headers,
+  articles,
+  blogMeta,
+  source,
+}) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
-  const similarArticles = useMemo(() => {
+  const similarArticles = React.useMemo(() => {
     if (!blogMeta) return [];
 
     return articles.filter(

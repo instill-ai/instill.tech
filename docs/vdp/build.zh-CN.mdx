@@ -1,0 +1,30 @@
+---
+title: "Build a Pipeline"
+lang: "en-US"
+draft: false
+description: "Build a Pipeline in Instill VDP"
+---
+
+Instill VDP enables seamless integration of unstructured data into your applications, bolstering them with a range of AI capabilities. Here’s how to create a pipeline:
+
+1. Start by clicking on `+ Create Pipeline` on your pipeline page.
+2. Configure Settings:
+
+   - **Owner**: Select whether the cloned pipeline will be under your personal account or your organization's account.
+   - **Pipeline Name**: Enter a name for your new pipeline.
+   - **Description**: Optionally, add a description to give more context about the pipeline.
+   - **Visibility**: Choose if you want your pipeline to be public or private.
+
+3. Add necessary components by selecting `Component +` and then choosing from the list. For each component, set up connectors by entering required details, such as an "API Token".
+4. In the component, define the "Task" and "Model" your pipeline will utilize. This will vary depending on the chosen components.
+5. To tailor the prompt, click "Add Field", select the Input Type, input a Title (the Key will be generated automatically but can be altered), and add a description if needed.
+6. Reference prompts or fields within the pipeline by typing `${`. A smart hint will display available references for selection. Linked components will be visually connected.
+7. Repeat steps 3-6 until your pipeline is fully constructed.
+8. Save your work to preserve the pipeline.
+
+With these straightforward steps, you can efficiently build a pipeline that complements your app’s functionality.
+
+<ZoomableImg
+  src="/docs-assets/vdp/build-a-pipeline.gif"
+  alt="Build a pipeline"
+/>

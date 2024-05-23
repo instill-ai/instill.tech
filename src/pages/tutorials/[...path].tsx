@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useMemo } from "react";
+import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -35,6 +35,8 @@ import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { NextPageWithLayout } from "../_app";
+import { GeneralRecord } from "@instill-ai/toolkit";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -48,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
   const tutorialDir = join(process.cwd(), "tutorials");
   const tutorialRelativePaths = glob.sync("**/*.mdx", { cwd: tutorialDir });
 
-  const paths: any = [];
+  const paths: { params: GeneralRecord }[] = [];
 
   tutorialRelativePaths.forEach((path) =>
     locales?.forEach((locale) => {
@@ -72,7 +74,6 @@ export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
 export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   params,
   locale,
-  locales,
 }) => {
   if (!params || !params.path) {
     return {
@@ -143,17 +144,17 @@ export const getStaticProps: GetStaticProps<TutorialPageProps> = async ({
   };
 };
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-const TutorialPage: FC<TutorialPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, commitMeta, headers, tutorials, tutorialMeta }) => {
+const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
+  mdxSource,
+  commitMeta,
+  headers,
+  tutorials,
+  tutorialMeta,
+}) => {
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
-  const similarTutorials = useMemo(() => {
+  const similarTutorials = React.useMemo(() => {
     if (!tutorialMeta) return [];
 
     return tutorials

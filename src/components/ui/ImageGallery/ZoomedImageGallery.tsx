@@ -23,7 +23,7 @@ export const ZoomedImageGallery = ({
   });
 
   const scrollTo = useCallback(
-    (index) => embla && embla.scrollTo(index),
+    (index: number) => embla && embla.scrollTo(index),
     [embla]
   );
 

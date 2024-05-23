@@ -2,13 +2,7 @@ import * as React from "react";
 
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
-import {
-  Button,
-  Icons,
-  Input,
-  SolidButton,
-  toast,
-} from "@instill-ai/design-system";
+import { Icons, Input, SolidButton, toast } from "@instill-ai/design-system";
 import Markdown from "markdown-to-jsx";
 import { useSwiper } from "swiper/react";
 
@@ -49,7 +43,7 @@ export const SEOArticleWriter = () => {
   const [article, setArticle] = React.useState<string>("");
   const [articleImage, setArticleImage] = React.useState<string>("");
   const [input, setInput] = React.useState<string>("");
-  const [sectionNumber, setSectionNumber] = React.useState<string>("4");
+  const sectionNumber = "4";
 
   const handleGenrate = async () => {
     setSpinner(true);
@@ -152,11 +146,16 @@ export const SEOArticleWriter = () => {
               </div>
               <div className="seo-image-box flex w-full flex-wrap overflow-auto border">
                 {articleImage ? (
-                  <img src={articleImage} className="my-auto object-contain" />
+                  <img
+                    src={articleImage}
+                    className="my-auto object-contain"
+                    alt=""
+                  />
                 ) : (
                   <img
                     src={"/images/seo.png"}
                     className="my-auto object-contain"
+                    alt=""
                   />
                 )}
               </div>
