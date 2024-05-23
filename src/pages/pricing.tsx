@@ -47,50 +47,32 @@ const PricingPage: NextPageWithLayout = () => {
           <div className="mx-auto mb-16 flex flex-col space-y-4 xl:flex-row xl:gap-x-8 xl:space-y-0">
             <PricingInfoCard
               price="$0"
-              tier="free"
+              tier="free cloud"
               className="h-[928px] w-[263px]"
-              planDescription="The basics for individuals and organizations"
+              planDescription="For everyone"
               features={[
-                "Unlimited public/private pipelines*",
-                "Rate-limited runs**",
+                "Monthly credit: 10,000",
+                "Unlimited pipelines",
+                "1 user",
                 "Community-based support on Discord",
               ]}
               featureDescription={null}
               cta={{
-                title: "Start building",
+                title: "Free Forever",
                 onClick: () => {
                   router.push("https://github.com/instill-ai/instill-core");
                 },
               }}
             />
             <PricingInfoCard
-              price="$9"
-              tier="pro"
-              className="h-[928px] w-[263px]"
-              planDescription="For professionals to experience runs without any restrictions"
-              features={[
-                "Unlimited public/private pipelines",
-                "Non rate-limited runs",
-                "Community-based support on Discord",
-                "Version Control",
-              ]}
-              featureDescription={null}
-              cta={{
-                title: "choose pro",
-                onClick: () => {
-                  router.push("https://instill.tech/login");
-                },
-              }}
-            />
-            <PricingInfoCard
-              price="$14"
+              price="$199"
               tier="team"
               className="h-[928px] w-[263px]"
-              highlighted={true}
-              planDescription="For small teams with advanced collaboration and no organization restrictions"
+              planDescription="For small teams"
               features={[
-                "Unlimited public/private pipelines",
-                "Non rate-limited runs",
+                "Monthly credit: 200,000",
+                "Unlimited pipelines",
+                "3 users",
                 "Community-based support on Discord",
                 "Version Control",
                 "User permissions",
@@ -98,9 +80,32 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Choose team",
+                title: "Contact Us",
                 onClick: () => {
-                  router.push("https://instill.tech/login");
+                  router.push("https://cal.com/instill-ai/30min-talk");
+                },
+              }}
+            />
+            <PricingInfoCard
+              price="$499"
+              tier="team pro"
+              className="h-[928px] w-[263px]"
+              highlighted={true}
+              planDescription="For teams with advanced collaboration"
+              features={[
+                "Monthly credit: 1,000,000",
+                "Unlimited pipelines",
+                "Unlimited users",
+                "Community-based support on Discord",
+                "Version Control",
+                "User permissions",
+                "Upload and use your own custom models",
+              ]}
+              featureDescription={null}
+              cta={{
+                title: "Contact Us",
+                onClick: () => {
+                  router.push("https://cal.com/instill-ai/30min-talk");
                 },
               }}
             />
@@ -110,9 +115,10 @@ const PricingPage: NextPageWithLayout = () => {
               className="h-[928px] w-[263px]"
               planDescription="Security, support, and flexible deployment that meets performance needs"
               features={[
-                "Unlimited public/private pipelines",
-                "Non rate-limited runs",
-                "Slack Channel with weekly support up to 1 hour",
+                "Monthly credit: Custom",
+                "Unlimited pipelines",
+                "Unlimited users",
+                "Dedicated Slack Channel and up to 1 hour of weekly dedicated support",
                 "Version Control",
                 "User permissions",
                 "Upload and use your own custom models",
@@ -125,7 +131,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Book a meeting",
+                title: "Contact Us",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
