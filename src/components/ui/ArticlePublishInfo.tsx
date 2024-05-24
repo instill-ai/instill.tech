@@ -29,7 +29,6 @@ export const ArticlePublishInfo = ({
           position="my-auto"
         />
       ) : (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={authorAvatarSrc}
           alt={`${author}'s github avatar`}

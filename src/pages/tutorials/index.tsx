@@ -12,21 +12,21 @@ import { TutorialSearch } from "@/components/tutorial/TutorialSearch";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { NextPageWithLayout } from "../_app";
 
-export const getStaticProps: GetStaticProps<TutorialIndexPageProps> =
-  async () => {
-    const tutorials = await prepareTutorials();
+export const getStaticProps: GetStaticProps<
+  TutorialIndexPageProps
+> = async () => {
+  const tutorials = await prepareTutorials();
 
-    return {
-      props: {
-        tutorials: tutorials.sort((a, b) => {
-          return (
-            new Date(b.publishedOn).getTime() -
-            new Date(a.publishedOn).getTime()
-          );
-        }),
-      },
-    };
+  return {
+    props: {
+      tutorials: tutorials.sort((a, b) => {
+        return (
+          new Date(b.publishedOn).getTime() - new Date(a.publishedOn).getTime()
+        );
+      }),
+    },
   };
+};
 
 type TutorialIndexPageProps = {
   tutorials: TutorialMeta[];
@@ -62,10 +62,7 @@ const TutorialIndexPage: NextPageWithLayout<TutorialIndexPageProps> = ({
       }
     };
 
-    const filterConnector = (
-      item: TutorialMeta,
-      filters: TutorialFiltersProps["filters"]
-    ) => {
+    const filterConnector = (filters: TutorialFiltersProps["filters"]) => {
       if (filters.connector === "All" || filters.connector === "Null") {
         return true;
       } else {
@@ -88,7 +85,7 @@ const TutorialIndexPage: NextPageWithLayout<TutorialIndexPageProps> = ({
     filteredTutorials = filteredTutorials.filter((e) =>
       filterUseCase(e, filters)
     );
-    return filteredTutorials.filter((e) => filterConnector(e, filters));
+    return filteredTutorials.filter(() => filterConnector(filters));
   }, [filters, tutorials]);
 
   return (

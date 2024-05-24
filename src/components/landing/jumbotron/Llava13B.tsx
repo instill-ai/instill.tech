@@ -48,7 +48,10 @@ export const Llava13B = () => {
         {spinner ? (
           <div>Generating...</div>
         ) : (
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img
+            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            alt="llaba-13b-placeholder-img"
+          />
         )}
       </div>
     </div>

@@ -170,12 +170,12 @@ export const Teams = () => {
               <div className="absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                 <img
                   src="images/teams/ping-lin-chang.png"
-                  alt="Ping Lin Chang Image"
+                  alt="Ping Lin Chang"
                   className="hidden h-full w-full xl:block"
                 />
                 <img
                   src="images/teams/ping-lin-chang-mobile.png"
-                  alt="Ping Lin Chang Image"
+                  alt="Ping Lin Chang mobile"
                   className="block h-full w-full xl:hidden"
                 />
               </div>
@@ -922,7 +922,7 @@ export const Teams = () => {
 
       <Dialog.Root
         open={open}
-        onOpenChange={(e) => {
+        onOpenChange={() => {
           setOpen(false);
         }}
       >
