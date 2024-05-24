@@ -24,7 +24,7 @@ const PricingPage: NextPageWithLayout = () => {
       />
       <ContentContainer
         margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[1215px]"
+        contentMaxWidth="max-w-[1500px]"
       >
         <div className="mb-[29px] flex flex-col space-y-5">
           <h3 className="text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[2%] text-[#1D5BD7]">
@@ -65,6 +65,26 @@ const PricingPage: NextPageWithLayout = () => {
               }}
             />
             <PricingInfoCard
+              price="$19"
+              tier="pro"
+              className="h-[928px] w-[263px]"
+              planDescription="For professional individuals"
+              features={[
+                "Monthly credit: 20,000",
+                "Unlimited pipelines",
+                "1 user",
+                "Community-based support on Discord",
+                "Version Control",
+              ]}
+              featureDescription={null}
+              cta={{
+                title: "Contact Us",
+                onClick: () => {
+                  router.push("https://cal.com/instill-ai/30min-talk");
+                },
+              }}
+            />
+            <PricingInfoCard
               price="$199"
               tier="team"
               className="h-[928px] w-[263px]"
@@ -90,7 +110,7 @@ const PricingPage: NextPageWithLayout = () => {
               price="$499"
               tier="team pro"
               className="h-[928px] w-[263px]"
-              highlighted={true}
+              highlighted={false}
               planDescription="For teams with advanced collaboration"
               features={[
                 "Monthly credit: 1,000,000",
