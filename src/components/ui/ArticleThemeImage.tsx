@@ -37,7 +37,6 @@ export const ArticleThemeImage = ({
               color={placeholderColor}
             />
           ) : (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={imgSrc}
               alt="The theme of this tutorial"

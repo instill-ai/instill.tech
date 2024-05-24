@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import cn from "clsx";
 import * as React from "react";
 

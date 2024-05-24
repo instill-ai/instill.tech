@@ -3,7 +3,7 @@ import React from "react";
 function ConnectorDefault({ count }: { count: number }) {
   return (
     <React.Fragment>
-      {[...new Array(count)].map((e, index) => (
+      {[...new Array(count)].map((_, index) => (
         <div
           className="flex flex-col border border-[#CBD2E1]"
           key={`connector-key-${index}`}

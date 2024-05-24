@@ -87,6 +87,7 @@ const VideoPage = ({ title, html, id }: VideoPageProps) => {
           <h1>{title}</h1>
           {id ? (
             <iframe
+              title="YouTube video player"
               id="ytplayer"
               width="800"
               height="500"

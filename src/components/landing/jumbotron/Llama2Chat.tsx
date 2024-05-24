@@ -326,7 +326,7 @@ export const Llama2Chat = () => {
                         ? imagePreview
                         : "/images/llama-chat-default.png"
                     }
-                    alt="SEO Image"
+                    alt="llama-2-chat-placeholder-img"
                     className="my-auto object-contain"
                   />
                 </div>
