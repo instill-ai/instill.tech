@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing compogen..."
-cd component && go install component/tools/compogen@latest
+go install github.com/instill-ai/component/tools/compogen@latest
 
 echo "Cloning the repository..."
 git clone https://github.com/instill-ai/component component
@@ -15,10 +15,10 @@ map_component_to_directory() {
     instill | archetypeai | huggingface | openai | stabilityai)
         echo "ai"
         ;;
-    googlecloudstorage | googlesearch | bigquery | pinecone | redis | restapi | website)
+    googlecloudstorage | bigquery | pinecone )
         echo "data"
         ;;
-    numbers | slack)
+    numbers | slack | googlesearch | redis | restapi | website)
         echo "app"
         ;;
     base64 | image | json | text)
@@ -36,7 +36,7 @@ go generate -run compogen ./component/...
 
 # Iterate over README files
 for doc in $(find component -name README.mdx); do
-    component_name=$(echo "${doc}" | cut -d'/' -f 4)
+    component_name=$(echo "${doc}" | cut -d'/' -f 3)
     target_directory=$(map_component_to_directory "${component_name}")
     if [[ "${target_directory}" != "unknown" ]]; then
         target_en=docs/component/${target_directory}/${component_name}.en.mdx
