@@ -244,22 +244,6 @@ export const getSections = (): SidebarSections[] => {
           text: "common:sidebarSections.pinecone",
           link: `/docs/component/data/pinecone`,
         },
-        {
-          text: "common:sidebarSections.googlesearch",
-          link: `/docs/component/data/googlesearch`,
-        },
-        {
-          text: "common:sidebarSections.rest",
-          link: `/docs/component/data/restapi`,
-        },
-        {
-          text: "common:sidebarSections.redis",
-          link: `/docs/component/data/redis`,
-        },
-        {
-          text: "common:sidebarSections.website",
-          link: `/docs/component/data/website`,
-        },
       ],
       appType: "core",
       versions: [],
@@ -276,6 +260,22 @@ export const getSections = (): SidebarSections[] => {
         {
           text: "common:sidebarSections.slack",
           link: `/docs/component/app/slack`,
+        },
+        {
+          text: "common:sidebarSections.googlesearch",
+          link: `/docs/component/app/googlesearch`,
+        },
+        {
+          text: "common:sidebarSections.rest",
+          link: `/docs/component/app/restapi`,
+        },
+        {
+          text: "common:sidebarSections.redis",
+          link: `/docs/component/app/redis`,
+        },
+        {
+          text: "common:sidebarSections.website",
+          link: `/docs/component/app/website`,
         },
       ],
       appType: "core",
