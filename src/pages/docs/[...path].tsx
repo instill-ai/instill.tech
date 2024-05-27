@@ -16,7 +16,6 @@ import { ArticleNavigationButton } from "@/components/docs";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
-import { getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCommitMeta } from "@/lib/github";
 import { readFile } from "fs/promises";
@@ -106,7 +105,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Get prev and next links from sidebar config
-  const sidebars = getSections(getApplicationVersion(params.path, "core"));
+  const sidebars = getSections();
 
   const sidebarLinks: SidebarItem[] = [];
   sidebars.forEach((e) => {

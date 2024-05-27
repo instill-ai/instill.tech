@@ -4,7 +4,6 @@ import {
   Dialog,
   GitHubIcon,
   LinkedInIcon,
-  ScrollArea,
   Separator,
 } from "@instill-ai/design-system";
 import * as React from "react";
@@ -200,7 +199,7 @@ export const Teams = () => {
                   <div className="flex items-center justify-center">
                     <img
                       src={team.imgSrc}
-                      alt="Wombat Image"
+                      alt={team.name}
                       className="h-[56px] w-[56px] rounded-full shadow-sm"
                     />
                   </div>
@@ -263,7 +262,7 @@ export const Teams = () => {
 
       <Dialog.Root
         open={open}
-        onOpenChange={(e) => {
+        onOpenChange={() => {
           setOpen(false);
         }}
       >

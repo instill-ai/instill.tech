@@ -22,9 +22,7 @@ const SITE = {
  *
  */
 
-export const getSections = (
-  appVersion: InstillAppVersion
-): SidebarSections[] => {
+export const getSections = (): SidebarSections[] => {
   return [
     {
       text: "common:sidebarSections.getStarted",
@@ -389,35 +387,24 @@ export const getSections = (
 };
 
 // Parse logo a/c to appType
-export function getLogoConfig(
-  appType: InstillAppType,
-  isDark: boolean
-): LogoConfig {
+export function getLogoConfig(): LogoConfig {
   return {
     element: <Logos.InstillSquare className="h-12 w-12" />,
     href: "/",
   };
-  throw new Error("Invalid appType");
 }
 
 // Parse menu items a/c to appType
-export function getSidebarSections(
-  appType: InstillAppType,
-  appVersion: InstillAppVersion
-) {
-  return getSections(appVersion);
+export function getSidebarSections() {
+  return getSections();
 }
 
 // Construct the sidebar items
-export function getSideBar(
-  appType: InstillAppType,
-  appVersion: InstillAppVersion,
-  isDark: boolean
-): Sidebar {
+export function getSideBar(): Sidebar {
   return {
     leftSidebar: {
-      logo: getLogoConfig(appType, isDark),
-      sections: getSidebarSections(appType, appVersion),
+      logo: getLogoConfig(),
+      sections: getSidebarSections(),
     },
     rightSidebar: {
       tableOfContentHeaders: ["h1", "h2", "h3"],
@@ -432,7 +419,7 @@ export function getNavbar(
   isDark: boolean
 ): NavConfig {
   return {
-    logo: getLogoConfig(appType, isDark),
+    logo: getLogoConfig(),
     title: appType,
     items: [
       {
@@ -639,7 +626,7 @@ export function docsConfig(
   return {
     site: SITE,
     nav: getNavbar(appType, appVersion, isDark),
-    sidebar: getSideBar(appType, appVersion, isDark),
+    sidebar: getSideBar(),
   };
 }
 
@@ -651,4 +638,4 @@ export const BlogCategories = [
   "Product Updates",
 ] as const;
 
-export type BlogCategory = typeof BlogCategories[number];
+export type BlogCategory = (typeof BlogCategories)[number];

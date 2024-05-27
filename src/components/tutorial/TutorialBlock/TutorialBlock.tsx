@@ -1,20 +1,15 @@
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { TutorialMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useState } from "react";
 import { TutorialImagePlaceholder } from "../TutorialImagePlaceholder";
-import { TutorialLabel } from "../TutorialLabel";
 
 export type TutorialBlockProps = {
   tutorial: TutorialMeta;
 };
 
 export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: tutorial.aiTask,
-  });
   const [themeImageThumbnailIsError, setThemeImageThumbnailIsError] =
     useState(false);
   const [authorAvatarIsError, setAuthorAvatarIsError] = useState(false);
@@ -45,7 +40,6 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
           // given image's size and we need to adjust it according to the width
           // of the TutorialBlock
 
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={tutorial.themeImgThumbnailSrc}
             alt="The theme of this tutorial"
@@ -73,7 +67,6 @@ export const TutorialBlock = ({ tutorial }: TutorialBlockProps) => {
                     position="my-auto"
                   />
                 ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={tutorial.authorAvatarSrc}
                     alt={`${tutorial.title}'s author's github avatar`}

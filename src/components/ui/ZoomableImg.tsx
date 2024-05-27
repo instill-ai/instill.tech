@@ -66,7 +66,6 @@ export const ZoomableImg = ({
       */}
 
       <div className="group relative flex h-full w-full flex-col gap-y-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           onClick={() => {
             if (zoomWithButton || disable) return;
@@ -130,7 +129,6 @@ export const ZoomableImg = ({
         {customZoomElement ? (
           customZoomElement
         ) : (
-          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={src}
             className={cn("w-full cursor-pointer object-contain")}

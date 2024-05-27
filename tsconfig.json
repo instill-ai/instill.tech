@@ -1,20 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/types/*": ["types/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/utils/*": ["utils/*"],
-      "@/style/*": ["styles/*"],
-      "@/lib/*": ["lib/*"],
-      "@/pages/*": ["pages/*"],
-      "@/contexts/*": ["contexts/*"],
-      "@/mocks/*": ["mocks/*"]
-    },
-    "target": "es5",
+    "target": "ES2022",
+    "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
+    "module": "ESNext",
     "jsx": "preserve",
     "strict": true,
     "useUnknownInCatchVariables": true,
@@ -23,10 +13,46 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "plugins": [
+      {
+        "name": "next",
+      },
+    ],
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/style/*": [
+        "styles/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/contexts/*": [
+        "contexts/*"
+      ],
+      "@/mocks/*": [
+        "mocks/*"
+      ]
+    },
   },
   "include": [
     "next-env.d.ts",
@@ -37,5 +63,9 @@
     "**/*.mjs",
     "**/*.json"
   ],
-  "exclude": ["**/node_modules", "**/.*/", ".next"]
+  "exclude": [
+    "**/node_modules",
+    "**/.*/",
+    ".next"
+  ]
 }
