@@ -22,9 +22,7 @@ const SITE = {
  *
  */
 
-export const getSections = (
-  appVersion: InstillAppVersion
-): SidebarSections[] => {
+export const getSections = (): SidebarSections[] => {
   return [
     {
       text: "common:sidebarSections.getStarted",
@@ -69,7 +67,7 @@ export const getSections = (
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.selfhostInstillCore",
+      text: "common:sidebarSections.instillCore",
       items: [],
       appType: "core",
       versions: [],
@@ -78,13 +76,8 @@ export const getSections = (
     {
       text: "common:sidebarSections.coreConcepts",
       link: `/docs/core/concepts`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.pipeline",
-          link: `/docs/core/concepts/pipeline`,
-        },
-      ],
+      collapsible: false,
+      items: [],
       appType: "core",
       versions: ["latest"],
     },
@@ -134,11 +127,18 @@ export const getSections = (
       versions: [],
     },
     {
-      text: "common:sidebarSections.buildAiWorkflows",
+      text: "common:sidebarSections.instillVDP",
       items: [],
       appType: "core",
       versions: [],
       isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/vdp/introduction`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.buildPipeline",
@@ -149,7 +149,14 @@ export const getSections = (
     },
     {
       text: "common:sidebarSections.testPipeline",
-      link: `/docs/vdp/test`,
+      link: `/docs/vdp/run`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.clonePipeline",
+      link: `/docs/vdp/clone`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -169,119 +176,142 @@ export const getSections = (
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.aiConnectors",
-      link: `/docs/vdp/ai-connector`,
+      text: "common:sidebarSections.useCredit",
+      link: `/docs/vdp/credit`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillComponent",
+      items: [],
+      appType: "core",
+      versions: [],
+      isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.genericComponent",
+      link: `/docs/component/generic`,
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.archetypeAi",
-          link: `/docs/vdp/ai-connectors/archetypeai`,
+          text: "common:sidebarSections.iterator",
+          link: `/docs/component/generics/iterator`,
+        },
+      ],
+      appType: "core",
+      versions: [],
+    },
+    {
+      text: "common:sidebarSections.aiComponent",
+      link: `/docs/component/ai`,
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.instill",
+          link: `/docs/component/ai/instill`,
         },
         {
-          text: "common:sidebarSections.instillModel",
-          link: `/docs/vdp/ai-connectors/instill`,
+          text: "common:sidebarSections.archetypeAI",
+          link: `/docs/component/ai/archetypeai`,
         },
         {
           text: "common:sidebarSections.openAI",
-          link: `/docs/vdp/ai-connectors/openai`,
+          link: `/docs/component/ai/openai`,
         },
         {
           text: "common:sidebarSections.stabilityAI",
-          link: `/docs/vdp/ai-connectors/stabilityai`,
+          link: `/docs/component/ai/stabilityai`,
+        },
+        {
+          text: "common:sidebarSections.huggingFace",
+          link: `/docs/component/ai/huggingface`,
         },
       ],
       appType: "core",
       versions: [],
     },
     {
-      text: "common:sidebarSections.dataConnectors",
-      link: `/docs/vdp/data-connector`,
+      text: "common:sidebarSections.dataComponent",
+      link: `/docs/component/data`,
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.airbyte",
-          link: `/docs/vdp/data-connectors/airbyte`,
-        },
-        {
           text: "common:sidebarSections.bigquery",
-          link: `/docs/vdp/data-connectors/bigquery`,
+          link: `/docs/component/data/bigquery`,
         },
         {
           text: "common:sidebarSections.gcs",
-          link: `/docs/vdp/data-connectors/googlecloudstorage`,
+          link: `/docs/component/data/googlecloudstorage`,
         },
         {
           text: "common:sidebarSections.pinecone",
-          link: `/docs/vdp/data-connectors/pinecone`,
+          link: `/docs/component/data/pinecone`,
         },
         {
           text: "common:sidebarSections.googlesearch",
-          link: `/docs/vdp/data-connectors/googlesearch`,
+          link: `/docs/component/data/googlesearch`,
         },
         {
           text: "common:sidebarSections.rest",
-          link: `/docs/vdp/data-connectors/restapi`,
+          link: `/docs/component/data/restapi`,
         },
         {
           text: "common:sidebarSections.redis",
-          link: `/docs/vdp/data-connectors/redis`,
+          link: `/docs/component/data/redis`,
         },
         {
           text: "common:sidebarSections.website",
-          link: `/docs/vdp/data-connectors/website`,
+          link: `/docs/component/data/website`,
         },
       ],
       appType: "core",
       versions: [],
     },
     {
-      text: "common:sidebarSections.appConnectors",
-      link: `/docs/vdp/app-connector`,
+      text: "common:sidebarSections.applicationComponent",
+      link: `/docs/component/app`,
       collapsible: true,
       items: [
         {
           text: "common:sidebarSections.numbersProtocol",
-          link: `/docs/vdp/app-connectors/numbers`,
+          link: `/docs/component/app/numbers`,
+        },
+        {
+          text: "common:sidebarSections.slack",
+          link: `/docs/component/app/slack`,
         },
       ],
       appType: "core",
       versions: [],
     },
     {
-      text: "common:sidebarSections.operators",
-      link: `/docs/vdp/operator`,
+      text: "common:sidebarSections.operator",
+      link: `/docs/component/operator`,
       collapsible: true,
       items: [
         {
-          text: "common:sidebarSections.start",
-          link: `/docs/vdp/operators/start`,
-        },
-        {
-          text: "common:sidebarSections.end",
-          link: `/docs/vdp/operators/end`,
-        },
-        {
           text: "common:sidebarSections.base64",
-          link: `/docs/vdp/operators/base64`,
+          link: `/docs/component/operators/base64`,
         },
         {
           text: "common:sidebarSections.json",
-          link: `/docs/vdp/operators/json`,
+          link: `/docs/component/operators/json`,
         },
         {
           text: "common:sidebarSections.text",
-          link: `/docs/vdp/operators/text`,
+          link: `/docs/component/operators/text`,
         },
         {
           text: "common:sidebarSections.image",
-          link: `/docs/vdp/operators/image`,
+          link: `/docs/component/operators/image`,
         },
       ],
       appType: "core",
       versions: [],
     },
     {
-      text: "common:sidebarSections.buildAiModels",
+      text: "common:sidebarSections.instillModel",
       items: [],
       appType: "core",
       versions: [],
@@ -314,14 +344,6 @@ export const getSections = (
           text: "common:sidebarSections.github",
           link: `/docs/model/import/github`,
         },
-        {
-          text: "common:sidebarSections.artivc",
-          link: `/docs/model/import/artivc`,
-        },
-        {
-          text: "common:sidebarSections.huggingFace",
-          link: `/docs/model/import/huggingface`,
-        },
       ],
       appType: "core",
       versions: [],
@@ -341,21 +363,21 @@ export const getSections = (
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.instillSdk",
+      text: "common:sidebarSections.instillSDK",
       items: [],
       appType: "core",
       versions: ["latest"],
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.pythonSdk",
+      text: "common:sidebarSections.pythonSDK",
       link: `/docs/sdk/python`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.typescriptSdk",
+      text: "common:sidebarSections.typescriptSDK",
       link: `/docs/sdk/typescript`,
       items: [],
       appType: "core",
@@ -365,35 +387,24 @@ export const getSections = (
 };
 
 // Parse logo a/c to appType
-export function getLogoConfig(
-  appType: InstillAppType,
-  isDark: boolean
-): LogoConfig {
+export function getLogoConfig(): LogoConfig {
   return {
     element: <Logos.InstillSquare className="h-12 w-12" />,
     href: "/",
   };
-  throw new Error("Invalid appType");
 }
 
 // Parse menu items a/c to appType
-export function getSidebarSections(
-  appType: InstillAppType,
-  appVersion: InstillAppVersion
-) {
-  return getSections(appVersion);
+export function getSidebarSections() {
+  return getSections();
 }
 
 // Construct the sidebar items
-export function getSideBar(
-  appType: InstillAppType,
-  appVersion: InstillAppVersion,
-  isDark: boolean
-): Sidebar {
+export function getSideBar(): Sidebar {
   return {
     leftSidebar: {
-      logo: getLogoConfig(appType, isDark),
-      sections: getSidebarSections(appType, appVersion),
+      logo: getLogoConfig(),
+      sections: getSidebarSections(),
     },
     rightSidebar: {
       tableOfContentHeaders: ["h1", "h2", "h3"],
@@ -408,7 +419,7 @@ export function getNavbar(
   isDark: boolean
 ): NavConfig {
   return {
-    logo: getLogoConfig(appType, isDark),
+    logo: getLogoConfig(),
     title: appType,
     items: [
       {
@@ -510,11 +521,11 @@ export function getNavbar(
             appType: null,
           },
           {
-            key: "docs-nav-dropdown-github-disussions",
+            key: "docs-nav-dropdown-github-discussions",
             href: "https://github.com/orgs/instill-ai/discussions",
             className: "",
             position: "right",
-            label: "common:navbar.gitHubDisussions",
+            label: "common:navbar.gitHubDiscussions",
             iconElement: (
               <Icons.ArrowUpRight className="my-auto h-4 w-4 stroke-instillGrey95 dark:stroke-instillGrey15 " />
             ),
@@ -615,7 +626,7 @@ export function docsConfig(
   return {
     site: SITE,
     nav: getNavbar(appType, appVersion, isDark),
-    sidebar: getSideBar(appType, appVersion, isDark),
+    sidebar: getSideBar(),
   };
 }
 
@@ -627,4 +638,4 @@ export const BlogCategories = [
   "Product Updates",
 ] as const;
 
-export type BlogCategory = typeof BlogCategories[number];
+export type BlogCategory = (typeof BlogCategories)[number];

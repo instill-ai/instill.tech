@@ -3,14 +3,13 @@ import * as React from "react";
 import { LoadingSpin } from "@/components/ui";
 import { JumbotronSDK } from "@/lib/jumbotron-sdk";
 import {
-  Button,
   Icons,
   Input,
   SolidButton,
   toast,
+  Nullable,
 } from "@instill-ai/design-system";
-import { Nullable } from "@instill-ai/toolkit";
-import { loadImageAndSetState, resizeImage } from "./Llama2Chat";
+import { resizeImage } from "./Llama2Chat";
 import { useSwiper } from "swiper/react";
 
 async function resizeBase64Image(
@@ -79,7 +78,7 @@ export const YOLOv7 = () => {
   const swiper = useSwiper();
   const [spinner, setSpinner] = React.useState(false);
   const [input, setInput] = React.useState<string>("");
-  const [article, setArticle] = React.useState<string>("");
+  const [, setArticle] = React.useState<string>("");
   const [imagePreview, setImagePreview] =
     React.useState<Nullable<string>>(null);
 
@@ -245,17 +244,6 @@ export const YOLOv7 = () => {
     }
   };
 
-  const handleDelete = () => {
-    setImagePreview(null);
-    // Reset file input value to allow selecting the same file again
-    const fileInput = document.getElementById(
-      "fileInput"
-    ) as HTMLInputElement | null;
-    if (fileInput) {
-      fileInput.value = ""; // This resets the input value
-    }
-  };
-
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleFileChange(e);
@@ -325,6 +313,7 @@ export const YOLOv7 = () => {
                         imagePreview ? imagePreview : "/images/yolo-default.png"
                       }
                       className="my-auto object-contain"
+                      alt=""
                     />
                   </div>
                 </div>

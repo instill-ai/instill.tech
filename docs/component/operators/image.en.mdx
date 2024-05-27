@@ -1,0 +1,117 @@
+---
+title: "Image"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Image operator https://github.com/instill-ai/instill-core"
+---
+
+The Image component is an operator that allows users to manipulate image files.
+It can carry out the following tasks:
+
+- [Draw Classification](#draw-classification)
+- [Draw Detection](#draw-detection)
+- [Draw Keypoint](#draw-keypoint)
+- [Draw Ocr](#draw-ocr)
+- [Draw Instance Segmentation](#draw-instance-segmentation)
+- [Draw Semantic Segmentation](#draw-semantic-segmentation)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/operator/image/v0/config/definition.json).
+
+## Supported Tasks
+
+### Draw Classification
+
+Draw classification result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_CLASSIFICATION` |
+| Category (required) | `category` | string | The predicted category of the input. |
+| Image (required) | `image` | string | Input image |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Score (required) | `score` | number | The confidence score of the predicted category of the input. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
+
+### Draw Detection
+
+Draw detection result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_DETECTION` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected objects. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
+
+### Draw Keypoint
+
+Draw keypoint result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_KEYPOINT` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
+
+### Draw Ocr
+
+Draw OCR result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_OCR` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected bounding boxes. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
+
+### Draw Instance Segmentation
+
+Draw instance segmentation result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_INSTANCE_SEGMENTATION` |
+| Image (required) | `image` | string | Input image |
+| Objects (required) | `objects` | array[object] | A list of detected instance bounding boxes. |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |
+
+### Draw Semantic Segmentation
+
+Draw semantic segmentation result on the image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DRAW_SEMANTIC_SEGMENTATION` |
+| Image (required) | `image` | string | Input image |
+| Show Score | `showScore` | boolean | Show model confidence score on each instance |
+| Stuffs (required) | `stuffs` | array[object] | A list of RLE binary masks. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Image | `image` | string | Output image |

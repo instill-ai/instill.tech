@@ -3,10 +3,8 @@ import { CommonCtaButton, SectionHeader, SectionLabel } from "@/components/ui";
 import React, { forwardRef } from "react";
 import { useRouter } from "next/router";
 import {
-  Button,
   GitHubIcon,
   Icons,
-  Logos,
   Separator,
   SolidButton,
 } from "@instill-ai/design-system";
@@ -34,7 +32,6 @@ export type ModelDefinition = Model & {
 export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
     const router = useRouter();
-    const iconProps = { width: "w-full", height: "h-full", position: "m-auto" };
 
     const [connectors, setConnectors] =
       React.useState<Nullable<Connector[]>>(null);

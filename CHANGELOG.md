@@ -1,5 +1,137 @@
 # Changelog
 
+## [1.47.18](https://github.com/instill-ai/instill.tech/compare/v1.47.17...v1.47.18) (2024-05-22)
+
+
+### Bug Fixes
+
+* correct broken link in the documentation ([#858](https://github.com/instill-ai/instill.tech/issues/858)) ([83493e7](https://github.com/instill-ai/instill.tech/commit/83493e7c46cbdc96710a325b9b437357da1dbf19))
+* **docs:** fix navbar typo ([#854](https://github.com/instill-ai/instill.tech/issues/854)) ([68afb86](https://github.com/instill-ai/instill.tech/commit/68afb86abf8d418ea2b45dd912177e5546e8ce28))
+
+
+### Documentation
+
+* **document:** update Instill Core version ([#853](https://github.com/instill-ai/instill.tech/issues/853)) ([a8c0eb5](https://github.com/instill-ai/instill.tech/commit/a8c0eb5efa76f699c509523dea9061286c8a9a90))
+* **vdp:** fix formatting convention for component names ([#851](https://github.com/instill-ai/instill.tech/issues/851)) ([4ecd29f](https://github.com/instill-ai/instill.tech/commit/4ecd29ffc432441b939e12e606f07a7e1b7fa80e))
+
+## [1.47.17](https://github.com/instill-ai/instill.tech/compare/v1.47.16...v1.47.17) (2024-05-17)
+
+
+### Documentation
+
+* **cloud:** add Instill Credit documentation ([#847](https://github.com/instill-ai/instill.tech/issues/847)) ([e608a87](https://github.com/instill-ai/instill.tech/commit/e608a87b857793a8851441ad4663053022d3ba91))
+* **tutorial:** publish webpage interaction tutorial ([#844](https://github.com/instill-ai/instill.tech/issues/844)) ([972114d](https://github.com/instill-ai/instill.tech/commit/972114da65a5f4c4b3204f3db0899e2f889b4f8f))
+* **vdp:** add iterator component ([#848](https://github.com/instill-ai/instill.tech/issues/848)) ([9d2e732](https://github.com/instill-ai/instill.tech/commit/9d2e732be6fd6ada0f5786b502b3dd4a804d31da))
+
+## [1.47.16](https://github.com/instill-ai/instill.tech/compare/v1.47.15...v1.47.16) (2024-05-14)
+
+
+### Bug Fixes
+
+* dependabot alerts ([#837](https://github.com/instill-ai/instill.tech/issues/837)) ([52c7784](https://github.com/instill-ai/instill.tech/commit/52c77846aa8572f55e037d9429d92ef23559dbda))
+* dependabot alerts ([#839](https://github.com/instill-ai/instill.tech/issues/839)) ([9ccae55](https://github.com/instill-ai/instill.tech/commit/9ccae555de18fb57d22aebea9b61d5b2f461b61d))
+* dependabot alerts ([#840](https://github.com/instill-ai/instill.tech/issues/840)) ([bd3c552](https://github.com/instill-ai/instill.tech/commit/bd3c5523558f0a88a8b7acd41fc239b6ff05cdd4))
+* lint warning ([#841](https://github.com/instill-ai/instill.tech/issues/841)) ([16fbf22](https://github.com/instill-ai/instill.tech/commit/16fbf22cc10cf7aa4db3ddccdfc2b6a9ea3e6f4f))
+
+
+### Miscellaneous
+
+* **policy:** add customer data retention policy ([#842](https://github.com/instill-ai/instill.tech/issues/842)) ([db254ee](https://github.com/instill-ai/instill.tech/commit/db254eef975bf5fe8d308e1462a91c38f54c0b15))
+
+
+### Documentation
+
+* **vdp:** Add slack component ([#843](https://github.com/instill-ai/instill.tech/issues/843)) ([6327adf](https://github.com/instill-ai/instill.tech/commit/6327adf6b9b3718f89bb1a7a09cb67e311ca552f))
+
+## [1.47.15](https://github.com/instill-ai/instill.tech/compare/v1.47.14...v1.47.15) (2024-05-11)
+
+
+### Bug Fixes
+
+* fix eslint, build and deps issues ([#832](https://github.com/instill-ai/instill.tech/issues/832)) ([3b7ff0c](https://github.com/instill-ai/instill.tech/commit/3b7ff0c37cac95e72d732ba22922c2c3833bc383))
+* fix webpack-diff wrong pnpm version ([#836](https://github.com/instill-ai/instill.tech/issues/836)) ([e40c90f](https://github.com/instill-ai/instill.tech/commit/e40c90f6b5deb96634e211df9a15b406cdab2395))
+
+## [1.47.14](https://github.com/instill-ai/instill.tech/compare/v1.47.13...v1.47.14) (2024-05-10)
+
+
+### Documentation
+
+* **blog:** update hackathon blog ([#833](https://github.com/instill-ai/instill.tech/issues/833)) ([30a4378](https://github.com/instill-ai/instill.tech/commit/30a437856713f7991f529cfa6a4abf4bcac39980))
+
+## [1.47.13](https://github.com/instill-ai/instill.tech/compare/v1.47.12...v1.47.13) (2024-05-08)
+
+
+### Miscellaneous
+
+* **blog:** hackathon ([#830](https://github.com/instill-ai/instill.tech/issues/830)) ([d4b9bb0](https://github.com/instill-ai/instill.tech/commit/d4b9bb0d581a0ce952f2d0000b1024861f76f3ec))
+
+## [1.47.12](https://github.com/instill-ai/instill.tech/compare/v1.47.11...v1.47.12) (2024-05-08)
+
+
+### Documentation
+
+* **blog:** update hackathon blog  ([#828](https://github.com/instill-ai/instill.tech/issues/828)) ([5d9ffdf](https://github.com/instill-ai/instill.tech/commit/5d9ffdf6a2e86b393cd23f634bdb603363cc77cf))
+
+## [1.47.11](https://github.com/instill-ai/instill.tech/compare/v1.47.10...v1.47.11) (2024-05-05)
+
+
+### Bug Fixes
+
+* navbar mobile version fix ([#826](https://github.com/instill-ai/instill.tech/issues/826)) ([1c35d32](https://github.com/instill-ai/instill.tech/commit/1c35d32e98338b9e7f51d813aaca2e1e2db06939))
+
+
+### Documentation
+
+* **blog:** publish hackathon blog ([#824](https://github.com/instill-ai/instill.tech/issues/824)) ([de2dd41](https://github.com/instill-ai/instill.tech/commit/de2dd417f09c2e9954c5b13f916f155cce16340b))
+
+## [1.47.10](https://github.com/instill-ai/instill.tech/compare/v1.47.9...v1.47.10) (2024-04-30)
+
+
+### Documentation
+
+* **model:** update outdated Instill Model related docs ([#814](https://github.com/instill-ai/instill.tech/issues/814)) ([9048935](https://github.com/instill-ai/instill.tech/commit/9048935c339d28e6e361176e91eee56e0e9b6599))
+
+## [1.47.9](https://github.com/instill-ai/instill.tech/compare/v1.47.8...v1.47.9) (2024-04-29)
+
+
+### Bug Fixes
+
+* 404 page error on docs page ([#812](https://github.com/instill-ai/instill.tech/issues/812)) ([af9f2f2](https://github.com/instill-ai/instill.tech/commit/af9f2f250c69fcf66526ee58d43841d1b32bfc24))
+
+
+### Miscellaneous
+
+* update Partnerships ([#810](https://github.com/instill-ai/instill.tech/issues/810)) ([b1b2e2e](https://github.com/instill-ai/instill.tech/commit/b1b2e2ebb019a88cf506e0ffc86504cdc3c0eff2))
+
+## [1.47.8](https://github.com/instill-ai/instill.tech/compare/v1.47.7...v1.47.8) (2024-04-29)
+
+
+### Miscellaneous
+
+* update webpage summary link ([#809](https://github.com/instill-ai/instill.tech/issues/809)) ([f9acf1b](https://github.com/instill-ai/instill.tech/commit/f9acf1b2de8dc74e813b594c6ba6018ec549a1c1))
+
+## [1.47.7](https://github.com/instill-ai/instill.tech/compare/v1.47.6...v1.47.7) (2024-04-29)
+
+
+### Documentation
+
+* update pipeline action docs ([#802](https://github.com/instill-ai/instill.tech/issues/802)) ([49f1ebe](https://github.com/instill-ai/instill.tech/commit/49f1ebe7008ea3fdf0518f98aac07b581de3a910))
+* **vdp:** update document ([#801](https://github.com/instill-ai/instill.tech/issues/801)) ([622d558](https://github.com/instill-ai/instill.tech/commit/622d558b3e269618ddc056f4422e6cea466d483b))
+
+## [1.47.6](https://github.com/instill-ai/instill.tech/compare/v1.47.5...v1.47.6) (2024-04-25)
+
+
+### Documentation
+
+* **blog:** update Innovate uk blog cover image ([#805](https://github.com/instill-ai/instill.tech/issues/805)) ([693f4f2](https://github.com/instill-ai/instill.tech/commit/693f4f294b0d0f16b5299dc481b4a9e54d6fbf28))
+
+## [1.47.5](https://github.com/instill-ai/instill.tech/compare/v1.47.4...v1.47.5) (2024-04-25)
+
+
+### Documentation
+
+* **blog:** publish innovate-uk blog ([#803](https://github.com/instill-ai/instill.tech/issues/803)) ([21c8fb7](https://github.com/instill-ai/instill.tech/commit/21c8fb7d72b101544fca5a1a691e6989d7706804))
+
 ## [1.47.4](https://github.com/instill-ai/instill.tech/compare/v1.47.3...v1.47.4) (2024-04-21)
 
 

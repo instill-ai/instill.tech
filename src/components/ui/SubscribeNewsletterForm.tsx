@@ -1,11 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
-import {
-  ArrowRightIcon,
-  Button,
-  Icons,
-  Input,
-  SolidButton,
-} from "@instill-ai/design-system";
+import { Button, Icons, Input } from "@instill-ai/design-system";
 import cn from "clsx";
 
 export type SubscribeNewsletterFormProps = {

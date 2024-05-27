@@ -86,7 +86,6 @@ export const ArticleList = ({ articles }: ArticleListProps) => {
                       position="my-auto"
                     />
                   ) : (
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={article.authorAvatarSrc}
                       alt={`${article.title}'s author's github avatar`}

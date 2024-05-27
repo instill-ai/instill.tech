@@ -1,7 +1,6 @@
 import cn from "clsx";
 import * as React from "react";
-import { Nullable } from "@instill-ai/toolkit";
-import { Button, Icons } from "@instill-ai/design-system";
+import { Button, Icons, Nullable } from "@instill-ai/design-system";
 
 export type InstillPricingTier = "free" | "starter" | "team" | "team pro";
 export type InstillBillingPeriod = "monthly" | "yearly";
@@ -9,7 +8,6 @@ export type InstillBillingPeriod = "monthly" | "yearly";
 export const PricingInfoCard = ({
   tier,
   features,
-  featureDescription,
   headLable,
   cta,
   className,

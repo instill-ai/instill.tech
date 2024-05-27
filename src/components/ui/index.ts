@@ -73,6 +73,8 @@ export { MdxImageGallery } from "./MdxImageGallery";
 export type { MdxImageGalleryProps } from "./MdxImageGallery";
 export { MdxYoutubeEmbed } from "./MdxYoutubeEmbed";
 export type { MdxYoutubeEmbedProps } from "./MdxYoutubeEmbed";
+export { MdxVersionCore } from "./MdxVersion";
+export type { MdxVersionCoreProps } from "./MdxVersion";
 export { MdxJumbotron } from "./MdxJumbotron";
 export { MdxResponderWithSpeech } from "./MdxResponderWithSpeech";
 export { MdxAskOnPage } from "./MdxAskOnPage";

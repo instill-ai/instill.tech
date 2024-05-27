@@ -219,6 +219,19 @@ You can embed Jumbotron by using this component.
 <YOLOv7 />
 ```
 
+#### VersionCore
+You can embed Instill Core version by using this component
+
+```
+<VersionCore>
+  git clone -b -version- https://github.com/instill-ai/instill-core.git && cd instill-core 
+  make all 
+</VersionCore>
+```
+
+Important: To add version need embed this `-version-`, and it will automatically parse the currect instill-core version for you.
+
+
 ## How to contribute to the Docs.
 
 ### Add content to the right location
@@ -493,13 +506,13 @@ i18next
 ```
 ├── docs
 │   ├── welcome.en.mdx
-│   └── welcome.zh_CN.mdx
+│   └── welcome.zh-CN.mdx
 ├── content.config.tsx
 ├── public
 │   └── locales
 │        ├── en
 │              └── common.json
-│        └── zh_CN
+│        └── zh-CN
 │             └── common.json
 └── pages
     └── docs
@@ -561,18 +574,18 @@ export const LATEST_VERSIONS = {
 │   └── v0.4.1-alpha // version as folder
 │   │      └── vdp  // appType as folder
 │   │      │     ├── welcome.en.mdx
-│   │      │     └── welcome.zh_CN.mdx
+│   │      │     └── welcome.zh-CN.mdx
 │   │      └── core  // appType as folder
 │   │            ├── welcome.en.mdx
-│   │            └── welcome.zh_CN.mdx
+│   │            └── welcome.zh-CN.mdx
 │   │
 │   └── v0.0.1-alpha // version as folder
 │        └── vdp  // appType as folder
 │        │     ├── welcome.en.mdx
-│        │     └── welcome.zh_CN.mdx
+│        │     └── welcome.zh-CN.mdx
 │        └── core  // appType as folder
 │               ├── welcome.en.mdx
-│               └── welcome.zh_CN.mdx
+│               └── welcome.zh-CN.mdx
 │
 └── version.mjs
 ```

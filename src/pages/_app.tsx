@@ -32,6 +32,8 @@ import {
   MdxSEOArticleWriter,
   MdxYOLOv7,
   MdxLlama27bChat,
+  MdxVersionCore,
+  MdxVersionCoreProps,
 } from "@/components/ui";
 import { MdxInfoBlock, MdxInfoBlockProps } from "@/components/ui/MdxInfoBlock";
 import {
@@ -39,14 +41,15 @@ import {
   MdxToggleBlockProps,
 } from "@/components/ui/MdxToggleBlock";
 import { appWithTranslation } from "next-i18next";
-import "@instill-ai/design-system/dist/index.css";
+import "@instill-ai/design-system/index.css";
 import "@instill-ai/design-tokens/dist/theme/root.css";
 import "@instill-ai/design-tokens/dist/theme/light.css";
 import "@instill-ai/design-tokens/dist/theme/dark.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@instill-ai/design-system";
 
-type NextPageWithLayout = NextPage & {
+/* eslint-disable-next-line @typescript-eslint/ban-types */
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
@@ -102,15 +105,18 @@ const components = {
       position={props.position}
     />
   ),
-  Jumbotron: (props: any) => <MdxJumbotron />,
-  ResponderWithSpeech: (props: any) => <MdxResponderWithSpeech />,
-  AskOnPage: (props: any) => <MdxAskOnPage />,
-  WebpageSummarization: (props: any) => <MdxWebpageSummarization />,
-  StabilityAIOpenAISticker: (props: any) => <MdxStabilityAIOpenAISticker />,
-  Llama2Chat: (props: any) => <MdxLlama2Chat />,
-  Llama27bChat: (props: any) => <MdxLlama27bChat />,
-  SEOArticleWriter: (props: any) => <MdxSEOArticleWriter />,
-  YOLOv7: (props: any) => <MdxYOLOv7 />,
+  Jumbotron: () => <MdxJumbotron />,
+  ResponderWithSpeech: () => <MdxResponderWithSpeech />,
+  AskOnPage: () => <MdxAskOnPage />,
+  WebpageSummarization: () => <MdxWebpageSummarization />,
+  StabilityAIOpenAISticker: () => <MdxStabilityAIOpenAISticker />,
+  Llama2Chat: () => <MdxLlama2Chat />,
+  Llama27bChat: () => <MdxLlama27bChat />,
+  SEOArticleWriter: () => <MdxSEOArticleWriter />,
+  YOLOv7: () => <MdxYOLOv7 />,
+  VersionCore: (props: MdxVersionCoreProps) => (
+    <MdxVersionCore>{props.children}</MdxVersionCore>
+  ),
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

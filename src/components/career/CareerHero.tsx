@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ViewJobsScrollButtonProps } from "./ViewJobsScrollButton";
 
 export const CareerHero = () => {
   return (

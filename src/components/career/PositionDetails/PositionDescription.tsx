@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import cn from "clsx";
-import { ArrowRightIcon, Button, SolidButton } from "@instill-ai/design-system";
+import { Button } from "@instill-ai/design-system";
 
 import { ReactMarkdownWrapper } from "@/components/ui";
 
@@ -40,7 +40,7 @@ export const PositionDescription = ({
             font-weight: 400;
             line-height: 28px;
             color: #000000b2;
-            list-style: ;
+            list-style:;
           }
           .career-position-description > h3 {
             color: #000000b2;

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import * as React from "react";
 import {
   ContentContainer,
   PageBase,
@@ -6,17 +6,12 @@ import {
   PricingInfoCard,
 } from "@/components/ui";
 import { useRouter } from "next/router";
-import { Button, Logo, Separator } from "@instill-ai/design-system";
+import { Button, Separator } from "@instill-ai/design-system";
 import { StartBuildingBlock } from "@/components/article";
 import { PriceTable } from "@/components/pricing";
+import { NextPageWithLayout } from "./_app";
 
-type GetLayOutProps = {
-  page: ReactElement;
-};
-
-const PricingPage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const PricingPage: NextPageWithLayout = () => {
   const router = useRouter();
   return (
     <React.Fragment>

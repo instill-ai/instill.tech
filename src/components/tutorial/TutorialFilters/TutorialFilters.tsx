@@ -41,7 +41,7 @@ export const TutorialFilters = ({
     ];
 
     return options;
-  }, [tutorials]);
+  }, []);
 
   const useCaseOptions = useMemo<SingleSelectCheckboxProps["options"]>(() => {
     const options: SingleSelectCheckboxProps["options"] = [

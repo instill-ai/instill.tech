@@ -1,47 +1,42 @@
 import { GetStaticProps } from "next";
 import { ContentContainer, PageBase, PageHead } from "@/components/ui";
-import React, { FC, ReactElement, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   ArticleHero,
   ArticleList,
-  // ArticleFilters,
-  ArticleFiltersProps,
   ArticleType,
   StartBuildingBlock,
 } from "@/components/article";
-import { ArticleMeta, BlogArticleMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import { ArticleSearch } from "@/components/article/ArticleSearch";
 import { prepareArticles } from "@/lib/instill/prepareArticles";
+import { NextPageWithLayout } from "../_app";
 // import { Button, Logo } from "@instill-ai/design-system";
 // import { ArticleBlock } from "@/components/tutorial/ArticleBlock";
 
-export const getStaticProps: GetStaticProps<ArticleIndexPageProps> =
-  async () => {
-    const articles = await prepareArticles();
+export const getStaticProps: GetStaticProps<
+  ArticleIndexPageProps
+> = async () => {
+  const articles = await prepareArticles();
 
-    return {
-      props: {
-        articles: articles.sort((a, b) => {
-          return (
-            new Date(b.publishedOn).getTime() -
-            new Date(a.publishedOn).getTime()
-          );
-        }),
-      },
-    };
+  return {
+    props: {
+      articles: articles.sort((a, b) => {
+        return (
+          new Date(b.publishedOn).getTime() - new Date(a.publishedOn).getTime()
+        );
+      }),
+    },
   };
-
-type GetLayOutProps = {
-  page: ReactElement;
 };
 
 type ArticleIndexPageProps = {
   articles: ArticleMeta[];
 };
 
-const ArticleIndexPage: FC<ArticleIndexPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ articles }) => {
+const ArticleIndexPage: NextPageWithLayout<ArticleIndexPageProps> = ({
+  articles,
+}) => {
   const [searchedArticles, setSearchedArticles] = useState<ArticleMeta[]>([]);
   const [filters, setFilters] = useState<string>("All");
 
@@ -70,7 +65,7 @@ const ArticleIndexPage: FC<ArticleIndexPageProps> & {
         jsonLd={null}
       />
       <ContentContainer
-        margin="my-2 xl:my-[18px]"
+        margin="my-[120px] xl:my-[18px]"
         contentMaxWidth="max-w-[1127px]"
       >
         <div

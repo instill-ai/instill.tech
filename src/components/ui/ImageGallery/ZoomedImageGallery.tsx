@@ -23,7 +23,7 @@ export const ZoomedImageGallery = ({
   });
 
   const scrollTo = useCallback(
-    (index) => embla && embla.scrollTo(index),
+    (index: number) => embla && embla.scrollTo(index),
     [embla]
   );
 
@@ -110,7 +110,6 @@ export const ZoomedImageGallery = ({
               {images.map((image) => (
                 <div className="embla__slide" key={image.src}>
                   <div className="embla__slide__inner">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={image.src}
                       className="mb-20 h-full w-full cursor-pointer object-contain"

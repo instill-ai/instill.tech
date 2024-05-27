@@ -9,16 +9,13 @@ import {
   useState,
 } from "react";
 import cn from "clsx";
-import {
-  ElementPosition,
-  getElementPosition,
-  useWindowSize,
-} from "@instill-ai/design-system";
+import { ElementPosition, getElementPosition } from "@instill-ai/design-system";
 
 import { MemberDetails, Nullable } from "@/types/instill";
 import { useRouter } from "next/router";
 import { MemberAvatarKernel } from "./MemberAvatarKernel";
 import { MemberIntro } from "./MemberIntro";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export type OurMembersProps = {
   members: MemberDetails[];

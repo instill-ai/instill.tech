@@ -1,0 +1,123 @@
+---
+title: "OpenAI"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP OpenAI connector https://github.com/instill-ai/instill-core"
+---
+
+The OpenAI component is an AI connector that allows users to connect the AI models served on the OpenAI Platform.
+It can carry out the following tasks:
+
+- [Text Generation](#text-generation)
+- [Text Embeddings](#text-embeddings)
+- [Speech Recognition](#speech-recognition)
+- [Text To Speech](#text-to-speech)
+- [Text To Image](#text-to-image)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/openai/v0/config/definition.json).
+
+## Connection
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| API Key (required) | `api_key` | string | Fill your OpenAI API key. To find your keys, visit your OpenAI's API Keys page. |
+| Organization ID | `organization` | string | Specify which organization is used for the requests. Usage will count against the specified organization's subscription quota. |
+
+## Supported Tasks
+
+### Text Generation
+
+Provide text outputs in response to their inputs.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION` |
+| Model (required) | `model` | string | ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Image | `images` | array[string] | The images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : \{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"\{. |
+| Temperature | `temperature` | number | What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.  We generally recommend altering this or `top_p` but not both.  |
+| N | `n` | integer | How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs. |
+| Max Tokens | `max_tokens` | integer | The maximum number of [tokens](/tokenizer) that can be generated in the chat completion.  The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.  |
+| Response Format | `response_format` | object | An object specifying the format that the model must output. Used to enable JSON mode. |
+| Top P | `top_p` | number | An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.  We generally recommend altering this or `temperature` but not both.  |
+| Presence Penalty | `presence_penalty` | number | Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.  [See more information about frequency and presence penalties.](/docs/guides/text-generation/parameter-details)  |
+| Frequency Penalty | `frequency_penalty` | number | Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.  [See more information about frequency and presence penalties.](/docs/guides/text-generation/parameter-details)  |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Texts | `texts` | array[string] | Texts |
+| Usage (optional) | `usage` | object | Usage statistics related to the query |
+
+### Text Embeddings
+
+Turn text into numbers, unlocking use cases like search.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_EMBEDDINGS` |
+| Model (required) | `model` | string | ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them.  |
+| Text (required) | `text` | string | The text |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Embedding | `embedding` | array[number] | Embedding of the input text |
+
+### Speech Recognition
+
+Turn audio into text.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SPEECH_RECOGNITION` |
+| Model (required) | `model` | string | ID of the model to use. Only `whisper-1` is currently available.  |
+| Audio (required) | `audio` | string | The audio file object (not file name) to transcribe, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.  |
+| Prompt | `prompt` | string | An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.  |
+| Language | `language` | string | The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  |
+| Temperature | `temperature` | number | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Generated text |
+
+### Text To Speech
+
+Turn text into lifelike spoken audio
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_SPEECH` |
+| Model (required) | `model` | string | One of the available [TTS models](/docs/models/tts): `tts-1` or `tts-1-hd`  |
+| Text (required) | `text` | string | The text to generate audio for. The maximum length is 4096 characters. |
+| Voice (required) | `voice` | string | The voice to use when generating the audio. Supported voices are `alloy`, `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech/voice-options). |
+| Response Format | `response_format` | string | The format to audio in. Supported formats are `mp3`, `opus`, `aac`, and `flac`. |
+| Speed | `speed` | number | The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Audio (optional) | `audio` | string | AI generated audio |
+
+### Text To Image
+
+Generate or manipulate images with DALL·E.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_IMAGE` |
+| Model (required) | `model` | string | The model to use for image generation. |
+| Prompt (required) | `prompt` | string | A text description of the desired image(s). The maximum length is 1000 characters for `dall-e-2` and 4000 characters for `dall-e-3`. |
+| N | `n` | integer | The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported. |
+| Quality | `quality` | string | The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`. |
+| Size | `size` | string | The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models. |
+| N | `style` | string | The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`. |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `results` | array[object] | Generated results |

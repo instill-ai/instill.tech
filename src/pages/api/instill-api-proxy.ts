@@ -9,8 +9,6 @@ export type InstillAPIProxyRequestBody = {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 
-  console.log(method, body);
-
   if (method !== "POST") {
     res.setHeader("Allow", ["POST"]);
     res.status(405).end(`Method ${method} Not Allowed`);

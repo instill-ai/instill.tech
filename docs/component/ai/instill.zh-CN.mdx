@@ -1,0 +1,221 @@
+---
+title: "Instill Model"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Instill Model connector https://github.com/instill-ai/instill-core"
+---
+
+The Instill Model component is an AI connector that allows users to connect the AI models served on the Instill Model Platform.
+It can carry out the following tasks:
+
+- [Classification](#classification)
+- [Instance Segmentation](#instance-segmentation)
+- [Keypoint](#keypoint)
+- [Detection](#detection)
+- [Ocr](#ocr)
+- [Semantic Segmentation](#semantic-segmentation)
+- [Text Generation](#text-generation)
+- [Text Generation Chat](#text-generation-chat)
+- [Text To Image](#text-to-image)
+- [Visual Question Answering](#visual-question-answering)
+- [Image To Image](#image-to-image)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/pkg/connector/instill/v0/config/definition.json).
+
+## Supported Tasks
+
+### Classification
+
+Classify images into predefined categories.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CLASSIFICATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Category | `category` | string | The predicted category of the input. |
+| Score | `score` | number | The confidence score of the predicted category of the input. |
+
+### Instance Segmentation
+
+Detect, localize and delineate multiple objects in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_INSTANCE_SEGMENTATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected instance bounding boxes. |
+
+### Keypoint
+
+Detect and localize multiple keypoints of objects in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_KEYPOINT` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object. |
+
+### Detection
+
+Detect and localize multiple objects in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_DETECTION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected objects. |
+
+### Ocr
+
+Detect and recognize text in images.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_OCR` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Objects | `objects` | array[object] | A list of detected bounding boxes. |
+
+### Semantic Segmentation
+
+Classify image pixels into predefined categories.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SEMANTIC_SEGMENTATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Image (required) | `image_base64` | string | Image base64 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Stuffs | `stuffs` | array[object] | A list of RLE binary masks. |
+
+### Text Generation
+
+Generate texts from input text prompts.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Images | `prompt_images` | array[string] | The prompt images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : \{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"\{. |
+| Seed | `seed` | integer | The seed |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Top K | `top_k` | integer | Top k for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
+
+### Text Generation Chat
+
+Generate texts from input text prompts and chat history.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_GENERATION_CHAT` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Images | `prompt_images` | array[string] | The prompt images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : \{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"\{. |
+| Seed | `seed` | integer | The seed |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Top K | `top_k` | integer | Top k for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
+
+### Text To Image
+
+Generate images from input text prompts.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_TEXT_TO_IMAGE` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| CFG Scale | `cfg_scale` | number | The guidance scale, default is 7.5 |
+| Samples | `samples` | integer | The number of generated samples, default is 1 |
+| Seed | `seed` | integer | The seed, default is 0 |
+| Steps | `steps` | integer | The steps, default is 5 |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Images |
+
+### Visual Question Answering
+
+Answer questions based on a prompt and an image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_VISUAL_QUESTION_ANSWERING` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| System message | `system_message` | string | The system message helps set the behavior of the assistant. For example, you can modify the personality of the assistant or provide specific instructions about how it should behave throughout the conversation. By default, the model’s behavior is using a generic message as "You are a helpful assistant." |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Images (required) | `prompt_images` | array[string] | The prompt images |
+| Chat history | `chat_history` | array[object] | Incorporate external chat history, specifically previous messages within the conversation. Please note that System Message will be ignored and will not have any effect when this field is populated. Each message should adhere to the format: : \{"role": "The message role, i.e. 'system', 'user' or 'assistant'", "content": "message content"\{. |
+| Seed | `seed` | integer | The seed |
+| Temperature | `temperature` | number | The temperature for sampling |
+| Top K | `top_k` | integer | Top k for sampling |
+| Max new tokens | `max_new_tokens` | integer | The maximum number of tokens for model to generate |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Text | `text` | string | Text |
+
+### Image To Image
+
+Generate image from input text prompt and image.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_IMAGE_TO_IMAGE` |
+| Model Name (required) | `model_name` | string | The Instill Model model to be used. |
+| Prompt (required) | `prompt` | string | The prompt text |
+| Extra Parameters | `extra_params` | object | Extra Parameters |
+| Prompt Image (required) | `image_base64` | string | The prompt image |
+| CFG Scale | `cfg_scale` | number | The guidance scale, default is 7.5 |
+| Seed | `seed` | integer | The seed |
+| Samples | `samples` | integer | The number of generated samples, default is 1 |
+| Top K | `top_k` | integer | Top k for sampling |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Images | `images` | array[string] | Images |

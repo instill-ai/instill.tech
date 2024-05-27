@@ -1,28 +1,11 @@
-import { FC, ReactElement } from "react";
-import dynamic from "next/dynamic";
-import cn from "clsx";
-import {
-  BuildAppsInAction,
-  Hero,
-  HowItWorksProps,
-  SelfHost,
-  Social,
-} from "@/components/landing";
+import { Social } from "@/components/landing";
 import { ContentContainer, LandingPageBase, PageHead } from "@/components/ui";
 import { GetStaticProps } from "next";
 import { getRepoFileContent } from "@/lib/github";
 import Slide from "@/components/landing/Slide";
 import { Button, Icons } from "@instill-ai/design-system";
 import { StartBuildingBlock } from "@/components/tutorial";
-
-const HowItWorks = dynamic<HowItWorksProps>(() =>
-  import("@/components/landing").then((mod) => mod.HowItWorks)
-);
-
-/* eslint-disable-next-line @typescript-eslint/ban-types */
-const Community = dynamic<{}>(() =>
-  import("@/components/landing").then((mod) => mod.Community)
-);
+import { NextPageWithLayout } from "./_app";
 
 export const getStaticProps: GetStaticProps = async () => {
   const destinationDefinitions = await getRepoFileContent(
@@ -49,13 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-interface GetLayOutProps {
-  page: ReactElement;
-}
-
-const HomePage: FC & {
-  getLayout?: FC<GetLayOutProps>;
-} = () => {
+const HomePage: NextPageWithLayout = () => {
   return (
     <>
       <PageHead
@@ -135,8 +112,7 @@ const HomePage: FC & {
               borderRadius: "8px",
             }}
             className="h-[370px]"
-          >
-          </div>
+          ></div>
           <div className="flex flex-col">
             <Button
               variant="secondaryGrey"

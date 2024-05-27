@@ -56,7 +56,7 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   i18n: {
-    locales: ["en", "zh_CN"],
+    locales: ["en", "zh-CN"],
     defaultLocale: "en",
   },
   localePath: path.resolve("./public/locales"),

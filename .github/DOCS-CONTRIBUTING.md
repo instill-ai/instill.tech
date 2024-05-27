@@ -7,7 +7,7 @@ We adapt single framework structure to serve all our content enabled by the Next
 - Make sure you have up-to-date `Node.js` [^1]
 - Please install up-to-date `pnpm`[^2]
 - Install all the dependencies with `pnpm i`
-- When develop instill.tech at local environment, please create a `./env.local` file and then put into your GitHub personal toke here with this variable name `NEXT_PUBLIC_GITHUB_TOKEN=<your_github_personal_access_token>`
+- When develop instill.tech at local environment, please create a `./.env.local` file and then put into your GitHub personal toke here with this variable name `NEXT_PUBLIC_GITHUB_TOKEN=<your_github_personal_access_token>`
 - Start the development server with `pnpm dev`
 - You should build and lint the whole app before push to origin by `pnpm lint && pnpm build`
 
@@ -499,13 +499,13 @@ i18next
 ```
 ├── docs
 │   ├── welcome.en.mdx
-│   └── welcome.zh_CN.mdx
+│   └── welcome.zh-CN.mdx
 ├── content.config.tsx
 ├── public
 │   └── locales
 │        ├── en
 │              └── common.json
-│        └── zh_CN
+│        └── zh-CN
 │             └── common.json
 └── pages
     └── docs
@@ -567,18 +567,18 @@ export const LATEST_VERSIONS = {
 │   └── v0.4.1-alpha // version as folder
 │   │      └── vdp  // appType as folder
 │   │      │     ├── welcome.en.mdx
-│   │      │     └── welcome.zh_CN.mdx
+│   │      │     └── welcome.zh-CN.mdx
 │   │      └── core  // appType as folder
 │   │            ├── welcome.en.mdx
-│   │            └── welcome.zh_CN.mdx
+│   │            └── welcome.zh-CN.mdx
 │   │
 │   └── v0.0.1-alpha // version as folder
 │        └── vdp  // appType as folder
 │        │     ├── welcome.en.mdx
-│        │     └── welcome.zh_CN.mdx
+│        │     └── welcome.zh-CN.mdx
 │        └── core  // appType as folder
 │               ├── welcome.en.mdx
-│               └── welcome.zh_CN.mdx
+│               └── welcome.zh-CN.mdx
 │
 └── version.mjs
 ```

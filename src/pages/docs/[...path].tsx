@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -9,17 +9,17 @@ import remarkFrontmatter from "remark-frontmatter";
 import { remark } from "remark";
 import { HorizontalLine, LastEditedInfo, PageHead } from "@/components/ui";
 import { DocsLayout, RightSidebar, RightSidebarProps } from "@/components/docs";
-import { docsConfig, getSections } from "../../../content.config";
+import { getSections } from "../../../content.config";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { SidebarItem } from "@/types/docs";
 import { ArticleNavigationButton } from "@/components/docs";
 import { Nullable } from "@/types/instill";
 import { serializeMdxRemote } from "@/lib/markdown";
 import { CommitMeta } from "@/lib/github/type";
-import { getApplicationType, getApplicationVersion } from "@/lib/instill";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCommitMeta } from "@/lib/github";
 import { readFile } from "fs/promises";
+import { NextPageWithLayout } from "../_app";
 
 type DocsPageProps = {
   mdxSource: MDXRemoteSerializeResult;
@@ -81,7 +81,14 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     relativePath = join(params.path);
   }
 
-  const source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
+  let source: string;
+  try {
+    source = fs.readFileSync(fullPath + "." + locale + ".mdx", "utf8");
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 
   // Prepare the codeHike theme
 
@@ -98,7 +105,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const mdxSource = await serializeMdxRemote(source, true, theme);
 
   // Get prev and next links from sidebar config
-  const sidebars = getSections(getApplicationVersion(params.path, "core"));
+  const sidebars = getSections();
 
   const sidebarLinks: SidebarItem[] = [];
   sidebars.forEach((e) => {
@@ -153,13 +160,13 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   };
 };
 
-type GetLayOutProps = {
-  page: FC;
-};
-
-const DocsPage: FC<DocsPageProps> & {
-  getLayout?: FC<GetLayOutProps>;
-} = ({ mdxSource, nextArticle, prevArticle, commitMeta, headers }) => {
+const DocsPage: NextPageWithLayout<DocsPageProps> = ({
+  mdxSource,
+  nextArticle,
+  prevArticle,
+  commitMeta,
+  headers,
+}) => {
   const router = useRouter();
 
   return (

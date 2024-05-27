@@ -40,7 +40,6 @@ export const BlogArticleCard = ({ article }: BlogArticleCardProps) => {
           // given image's size and we need to adjust it according to the width
           // of the TutorialBlock
 
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={article.themeImgThumbnailSrc}
             alt="The theme of this tutorial"
@@ -68,7 +67,6 @@ export const BlogArticleCard = ({ article }: BlogArticleCardProps) => {
                     position="my-auto"
                   />
                 ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={article.authorAvatarSrc}
                     alt={`${article.title}'s author's github avatar`}
