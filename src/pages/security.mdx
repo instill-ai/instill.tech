@@ -1,0 +1,78 @@
+import { SecurityPageLayout } from "@/components/policy";
+export const meta = {
+  title: "Security and privacy | Instill AI",
+  description: "Security and privacy at Instill AI.",
+};
+
+export default ({ children }) => (
+  <SecurityPageLayout meta={meta}>{children}</SecurityPageLayout>
+);
+
+# Ensuring a Secure Environment for Your Data
+
+At Instill AI, we prioritize the security and privacy of our customers' data. Our infrastructure is hosted on Google Cloud Platform (GCP), one of the most trusted and secure cloud providers in the industry. We adhere to stringent security practices and employ a multi-layered approach to safeguarding your sensitive information.
+
+## Access Control and Authorization
+
+Access to our systems and data is strictly controlled and granted only to individuals with a legitimate business need. We follow the principle of least privilege, ensuring that users have only the permissions necessary to perform their job responsibilities. Our security controls are consistently applied across all areas of our enterprise, with a focus on continual improvement and maturity.
+
+## Data Protection
+
+- **Data at Rest**: All customer data stored in our datastores and GCP buckets is encrypted at rest. Additionally, sensitive collections and tables utilize row-level encryption, ensuring that even if physical or logical access is compromised, the most sensitive information remains protected.
+- **Data in Transit**: We employ industry-standard encryption protocols such as HTTPS to secure data transmission between our systems and your devices. This ensures that your data remains confidential and integral during transit.
+
+## Secret Management
+
+Encryption keys are managed through GCP Key Management System (KMS), and secret management is implemented via Vault by HashiCorp. These tools ensure that application secrets are encrypted and stored securely, with access restricted to authorized personnel only.
+
+## Secure Remote Access
+
+We utilize Outline VPN, a modern VPN tool, to securely manage remote access to internal resources. Additionally, we employ malware-blocking DNS servers to protect employees and endpoints from potential threats while browsing the internet.
+
+## Identity and Access Management (IAM)
+
+Our identity and access management system is built on GCP IAM, providing granular control over user permissions and access privileges. Employees are granted access based on their roles and responsibilities, with automatic deprovisioning upon termination to mitigate any potential security risks.
+
+## Vulnerability Scanning
+
+Regular vulnerability scans are conducted via Vanta to proactively identify and address any potential security weaknesses in our systems. This helps us stay ahead of emerging threats and ensures the ongoing integrity of our infrastructure.
+
+## Multi-Factor Authentication (MFA)
+
+To add an extra layer of security, we enforce mandatory two-factor authentication (2FA) for all employees accessing our systems and applications. This helps prevent unauthorized access, even in the event of compromised credentials.
+
+## Continuous Improvement
+
+Security is an ongoing process, and we are committed to continuously enhancing our security measures. We regularly review and update our policies, procedures, and technologies to adapt to evolving threats and ensure the highest level of protection for your data.
+
+At Instill AI, safeguarding your data is our top priority. We invest heavily in security to provide you with peace of mind knowing that your information is protected against potential threats. If you have any questions or concerns about our security practices, please don't hesitate to contact us.
+
+
+## Incident Response and Management
+
+In the event of a security incident or breach, Instill AI has established protocols and procedures for swift detection, containment, and remediation. Our dedicated incident response team follows industry best practices to minimize the impact and ensure the integrity of our systems and data.
+
+## Security Awareness Training
+
+We prioritize security awareness among our employees through regular training sessions and educational materials. By fostering a culture of security awareness, we empower our workforce to recognize and mitigate potential threats, enhancing the overall security posture of our organization.
+
+## Secure Software Development Lifecycle (SDLC)
+
+Instill AI follows a secure software development lifecycle to ensure that security is integrated into every stage of the development process. This includes proactive security testing, code reviews, and adherence to secure coding practices to mitigate vulnerabilities before they reach production environments.
+
+## Security Monitoring and Logging
+
+We employ robust security monitoring tools and logging mechanisms to detect and respond to suspicious activities in real-time. By monitoring system logs and network traffic, we can identify potential threats and take proactive measures to mitigate risks to our environment.
+
+## Third-Party Security Assessments
+Regular third-party security assessments and audits are conducted to validate the effectiveness of our security controls and identify areas for improvement. This independent validation ensures transparency and Instil AIl’s confidence in our customers regarding the security of their data.
+
+## Business Continuity and Disaster Recovery
+Instill AI has comprehensive business continuity and disaster recovery plans in place to ensure the resilience of our operations in the face of unexpected disruptions. These plans include data backups, redundant infrastructure, and failover mechanisms to minimize downtime and maintain service availability.
+
+## Security Governance and Risk Management
+We maintain a robust security governance framework to oversee and manage security-related activities across the organization. This includes risk assessments, security policy development, and regular review processes to mitigate risks and ensure compliance with security objectives.
+
+## Contact on Security Concerns
+
+If you discover a security issue in Instill AI’s services or codebase, please contact us at security@instill.tech.
