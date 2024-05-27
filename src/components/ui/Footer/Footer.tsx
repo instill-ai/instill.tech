@@ -126,6 +126,10 @@ export const Footer = () => {
         text: "Cookie Policy",
         href: "/cookie",
       },
+      {
+        text: "Security",
+        href: "/security",
+      },
     ],
   };
 
