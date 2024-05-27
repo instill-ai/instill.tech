@@ -1,6 +1,5 @@
 import { getAiTaskIconAndLabelReturn } from "@/lib/instill/getAiTaskIconAndLabel";
 import { AiTask, Nullable } from "@/types/instill";
-import { ArrowRightIcon } from "@instill-ai/design-system";
 import cn from "clsx";
 import { ArticleLabel } from "./ArticleLabel";
 

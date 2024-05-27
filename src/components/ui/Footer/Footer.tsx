@@ -10,7 +10,6 @@ import {
   MediumIcon,
 } from "@instill-ai/design-system";
 import { CopyRightText } from "..";
-import { AnimateSlogan } from "./AnimateSlogan";
 import { Tab } from "./Tab";
 import { TabLinks } from "./Tab";
 

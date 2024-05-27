@@ -8,7 +8,6 @@ export type InstillBillingPeriod = "monthly" | "yearly";
 export const PricingInfoCard = ({
   tier,
   features,
-  featureDescription,
   headLable,
   cta,
   className,

@@ -1,6 +1,4 @@
-import cn from "clsx";
-import { ArrowLeftIcon, Button, Icons } from "@instill-ai/design-system";
-import Link from "next/link";
+import { Button, Icons } from "@instill-ai/design-system";
 import { useRouter } from "next/router";
 
 export type BackToPreviousPageLinkProps = {
@@ -11,7 +9,6 @@ export type BackToPreviousPageLinkProps = {
 
 export const BackToPreviousPageLink = ({
   url,
-  marginBottom,
   label,
 }: BackToPreviousPageLinkProps) => {
   const router = useRouter();

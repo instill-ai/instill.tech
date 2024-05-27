@@ -6,7 +6,7 @@ import {
   PricingInfoCard,
 } from "@/components/ui";
 import { useRouter } from "next/router";
-import { Button, Logo, Separator } from "@instill-ai/design-system";
+import { Button, Separator } from "@instill-ai/design-system";
 import { StartBuildingBlock } from "@/components/article";
 import { PriceTable } from "@/components/pricing";
 import { NextPageWithLayout } from "./_app";

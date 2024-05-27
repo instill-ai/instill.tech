@@ -1,4 +1,4 @@
-import { ArticleMeta, BlogArticleMeta, TutorialMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import React, { ReactElement } from "react";
 
 export type ArticleSimilarPostsProps = {

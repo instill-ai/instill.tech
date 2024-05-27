@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  CommonCtaButton,
-  ComponentPageBase,
-  ContentContainer,
-  PageHead,
-} from "@/components/ui";
+import { ComponentPageBase, ContentContainer, PageHead } from "@/components/ui";
 import { useRouter } from "next/router";
 import {
   Button,

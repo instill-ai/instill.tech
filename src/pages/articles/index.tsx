@@ -4,32 +4,28 @@ import React, { FC, ReactElement, useMemo, useState } from "react";
 import {
   ArticleHero,
   ArticleList,
-  // ArticleFilters,
-  ArticleFiltersProps,
   ArticleType,
   StartBuildingBlock,
 } from "@/components/article";
-import { ArticleMeta, BlogArticleMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import { ArticleSearch } from "@/components/article/ArticleSearch";
 import { prepareArticles } from "@/lib/instill/prepareArticles";
-// import { Button, Logo } from "@instill-ai/design-system";
-// import { ArticleBlock } from "@/components/tutorial/ArticleBlock";
 
-export const getStaticProps: GetStaticProps<ArticleIndexPageProps> =
-  async () => {
-    const articles = await prepareArticles();
+export const getStaticProps: GetStaticProps<
+  ArticleIndexPageProps
+> = async () => {
+  const articles = await prepareArticles();
 
-    return {
-      props: {
-        articles: articles.sort((a, b) => {
-          return (
-            new Date(b.publishedOn).getTime() -
-            new Date(a.publishedOn).getTime()
-          );
-        }),
-      },
-    };
+  return {
+    props: {
+      articles: articles.sort((a, b) => {
+        return (
+          new Date(b.publishedOn).getTime() - new Date(a.publishedOn).getTime()
+        );
+      }),
+    },
   };
+};
 
 type GetLayOutProps = {
   page: ReactElement;

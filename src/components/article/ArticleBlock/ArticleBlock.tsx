@@ -1,12 +1,9 @@
 import { useElementDimension } from "@/hooks/useElementDimension";
-import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { ArticleMeta } from "@/types/instill";
 import { GitHubIcon } from "@instill-ai/design-system";
 import Link from "next/link";
 import { useState } from "react";
 import { ArticleImagePlaceholder } from "../ArticleImagePlaceholder";
-import { ArticleLabel } from "../ArticleLabel";
-
 export type ArticleBlockProps = {
   article: ArticleMeta;
 };
@@ -42,7 +39,6 @@ export const ArticleBlock = ({ article }: ArticleBlockProps) => {
           // given image's size and we need to adjust it according to the width
           // of the ArticleBlock
 
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={article.themeImgThumbnailSrc}
             alt="The theme of this article"
@@ -70,7 +66,6 @@ export const ArticleBlock = ({ article }: ArticleBlockProps) => {
                     position="my-auto"
                   />
                 ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={article.authorAvatarSrc}
                     alt={`${article.title}'s author's github avatar`}

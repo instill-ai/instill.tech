@@ -10,17 +10,9 @@ import {
   MenuIcon,
   Menubar,
   Separator,
-  SolidButton,
 } from "@instill-ai/design-system";
 import { AnnouncementBar } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
-import { GithubTextLink } from "./GithubTextLink";
-import { DocsPageLink } from "./DocsPageLink";
-import { BlogPageLink } from "./BlogPageLink";
-import { AboutPageLink } from "./AboutPageLink";
-import { ChangelogLink } from "./ChangelogLink";
-import { LoginPageLink } from "./LoginPageLink";
-import { HubPageLink } from "./HubPageLink";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);

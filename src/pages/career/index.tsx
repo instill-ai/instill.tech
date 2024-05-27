@@ -1,43 +1,16 @@
 import { GetStaticProps } from "next";
-import dynamic from "next/dynamic";
 import * as React from "react";
-
-import {
-  ContentContainer,
-  PageBase,
-  PageHead,
-  StayInTheLoopProps,
-} from "@/components/ui";
-import {
-  CareerGeneralIntro,
-  CareerHero,
-  PositionListProps,
-} from "@/components/career";
-import { Nullable, PositionInfo } from "@/types/instill";
+import { ContentContainer, PageBase, PageHead } from "@/components/ui";
+import { CareerHero } from "@/components/career";
+import { PositionInfo } from "@/types/instill";
 import {
   ClickUpTask,
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
-import { useInstillAICtx } from "@/contexts/InstillAIContext";
-import {
-  Button,
-  Icons,
-  PinIcon,
-  Separator,
-  getElementPosition,
-} from "@instill-ai/design-system";
-import { useInView } from "react-intersection-observer";
+import { Button, Icons, PinIcon, Separator } from "@instill-ai/design-system";
 import Link from "next/link";
 import { NextPageWithLayout } from "../_app";
-
-const PositionList = dynamic<PositionListProps>(() =>
-  import("@/components/career").then((mod) => mod.PositionList)
-);
-
-const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/landing/Community").then((mod) => mod.StayInTheLoop)
-);
 
 type CareerPageProps = {
   positions: PositionInfo[];
@@ -73,31 +46,6 @@ export const getStaticProps: GetStaticProps<CareerPageProps> = async () => {
 };
 
 const CareerPage: NextPageWithLayout<CareerPageProps> = ({ positions }) => {
-  // lazy load openPositionList
-  const positionListRef = React.useRef<Nullable<HTMLDivElement>>(null);
-  const [positionListInViewRef, positionListInView] = useInView({
-    triggerOnce: true,
-  });
-
-  // lazy load stayInTheLoop
-  const [stayInTheLoopInViewRef, stayInTheLoopInView] = useInView({
-    triggerOnce: true,
-  });
-
-  const { enableAnnouncementBar } = useInstillAICtx();
-
-  const scrollHandler = React.useCallback(() => {
-    if (!window || !positionListRef.current) return;
-
-    const positionListDimension = getElementPosition(positionListRef.current);
-    const navbarHeight = enableAnnouncementBar ? 128 : 84;
-
-    window.scrollTo({
-      top: positionListDimension.y - navbarHeight,
-      behavior: "smooth",
-    });
-  }, [enableAnnouncementBar]);
-
   return (
     <React.Fragment>
       <PageHead

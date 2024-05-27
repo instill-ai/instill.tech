@@ -1,18 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import * as React from "react";
-import dynamic from "next/dynamic";
-
-import { PositionDetails } from "@/components/career";
-
 import {
   BackToPreviousPageLink,
   ContentContainer,
   PageBase,
   PageHead,
-  StayInTheLoopProps,
 } from "@/components/ui";
-
 import { PositionInfo } from "@/types/instill";
 import {
   ClickUpTask,
@@ -20,14 +14,9 @@ import {
   listClickUpTasksInListQuery,
   transformClickUpTaskToPositionDetails,
 } from "@/lib/click-up";
-import { useInView } from "react-intersection-observer";
 import { PinIcon } from "@instill-ai/design-system";
 import { PositionDescription } from "@/components/career/PositionDetails/PositionDescription";
 import { NextPageWithLayout } from "../_app";
-
-const StayInTheLoop = dynamic<StayInTheLoopProps>(() =>
-  import("@/components/ui").then((mod) => mod.StayInTheLoop)
-);
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params || !params.slug) {
@@ -125,11 +114,6 @@ const CareerPositionPage: NextPageWithLayout<CareerPositionPageProps> = ({
   if (!position) {
     router.push("/404");
   }
-
-  // lazy load stayInTheLoop
-  const [stayInTheLoopRef, stayInTheLoopIsInView] = useInView({
-    triggerOnce: true,
-  });
 
   return (
     <React.Fragment>

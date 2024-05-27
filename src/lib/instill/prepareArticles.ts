@@ -1,7 +1,7 @@
 import { join } from "path";
 import glob from "fast-glob";
 import fs from "fs";
-import { ArticleMeta, BlogArticleMeta, TutorialMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import { getCommitMeta } from "../github";
 import { validateTutorialMeta } from "./validateTutorialMeta";
 import matter from "gray-matter";

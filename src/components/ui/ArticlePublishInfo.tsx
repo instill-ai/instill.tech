@@ -1,9 +1,6 @@
 import cn from "clsx";
 import { GitHubIcon } from "@instill-ai/design-system";
 import { useState } from "react";
-import { TutorialMeta } from "@/types/instill";
-import { Nullable } from "vitest";
-import { CommitMeta } from "@/lib/github/type";
 
 export type ArticlePublishInfoProps = {
   author: string;
@@ -34,7 +31,6 @@ export const ArticlePublishInfo = ({
               position="my-auto"
             />
           ) : (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={authorAvatarSrc}
               alt={`${author}'s github avatar`}
