@@ -18,8 +18,7 @@ _Instill Model provides an automated model inference server._
 
 ## Inference with Dedicated Model API Endpoint
 
-After importing a model from a supported source, such as GitHub or Hugging Face, and deploying it online,
-it dynamically generates a dedicated API endpoint for model inference `/users/<user-id>/models/<model-id>/trigger`.
+After a pushed model version is deployed, it dynamically generates a dedicated API endpoint for model inference `/users/<user-id>/models/<model-id>/versions/<version-id>/trigger`.
 
 You can send multiple images of popular formats (PNG and JPEG) in one request to the generated model API endpoint.
 Check the examples below. The API accepts batched images
@@ -30,7 +29,7 @@ Check the examples below. The API accepts batched images
 <CH.Code>
 
 ```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/versions/<version-id>/trigger \
 --header 'Authorization: Bearer instill_sk_***' \
 --data '{
     "task_inputs": [
@@ -49,7 +48,7 @@ curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/tri
 ```
 
 ```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/versions/<version-id>/trigger \
 --data '{
     "task_inputs": [
         {
@@ -67,7 +66,7 @@ curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/tri
 ```
 
 ```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/trigger-multipart \
+curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/versions/<version-id>/trigger-multipart \
 --header 'Authorization: Bearer instill_sk_***' \
 --form 'file=@"dog.jpg"' \
 --form 'file=@"bear.jpg"'
@@ -75,7 +74,7 @@ curl -X POST http://localhost:8080/v1alpha/users/<user-id>/models/<model-id>/tri
 
 </CH.Code>
 
-in which `<user-id>` and `<model-id>` corresponds to the namespace and ID of a model.
+in which `<user-id>`, `<model-id>` and `<version-id>` corresponds to the namespace, ID and version tag of a model.
 
 ## Using Models in VDP
 

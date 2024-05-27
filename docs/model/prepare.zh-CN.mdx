@@ -1,102 +1,57 @@
 ---
-title: "Prepare Models"
+title: "Prepare a Model"
 lang: "en-US"
 draft: false
 description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
-To prepare a model for Instill Model:
+To prepare a model version to be served on **Instill Model**, you will have to follow the following steps locally on your PC:
 
-- Create a [model card](#model-card) `README.md` to describe your model
-- Write a `model.py` file that defined the model class which will be decorated into servable model with Instill's `python-sdk`
-- Organise the model files into [valid Instill Model model layout](#model-layout)
+- Create a [model config](#model-config) `instill.yaml` to describe your model's dependencies
+- Write a `model.py` file that defined the model class which will be decorated into a servable model with Instill's `python-sdk`
+- Organize the model files into valid model [layout](#model-layout)
 
-## Model Card
+## Model Config
 
-Model card is a `README.md` file that accompanies the model to describe handy information with additional model metadata. Under the hood, a Model card is associated with a specific model.
-It is an crucial for reproducibility, sharing and discoverability. We highly recommend adding a model card `README.md` file when preparing your model used in Instill Model.
+Model config is a `instill.yaml` file that accompanies the model to describe dependency information. It is crucial for reproducibility, sharing and discoverability.
 
-In a model card, you can provide information about:
+In the model config, you can provide information about:
 
-- the model itself
-- its use cases and limitations
-- the datasets used to train the model
-- the training experiments and configuration
-- benchmarking and evaluation results
-- reference materials
+- If the model requires GPU
+- Python version
+  - currently we only support python `3.11`
+- Required list of system packages
+  - the model image is based on ubuntu 20.04 LTS
+- Required list of python packages
+- your Instill Core namespace
 
-After importing a model into Instill Model, the model card will be rendered in the Console on the Model page.
-Here shows a model card example of a model imported from a GitHub repository [model-mobilenetv2](https://github.com/instill-ai/model-mobilenetv2).
-
-<ZoomableImg
-  src="/docs-assets/prepare-models/console-model-card.png"
-  alt="Model card in Console"
-/>
-
-<InfoBlock type="info" title="info">
-  Try our [Import GitHub models](./import/github) guideline to import a model
-  from GitHub
-</InfoBlock>
-
-### Model Card Metadata
-
-You can insert Front Matter in a model card to define the model metadata.
-Start with three `---` at the top, then include all the metadata and close the section with `---` like the example below.
-
-```yaml README.md
----
-Task: "any Instill Model supported AI task identifier"
-Tags:
-  - tag1
-  - tag2
-  - tag3
----
-```
-
-### Specify an AI Task
-
-When importing the model, Instill Model will detect the `Task` in the model card and verify if output of the model fulfils the AI task requirements.
-If the model is verified, Instill Model will automatically convert the model output into format of the corresponding standardised VDP AI task format whenever using the model.
-Please check the [supported AI tasks](ai-task) and the corresponding output format for each task.
+Following is an example config file for a `TinyLlama` model which is intended to be run on GPU
 
 <CH.Code>
-
-```yaml image-classification
-Task: Classification
+```yaml instill.yaml
+build:
+  gpu: true
+  python_version: "3.11"  # support only 3.11
+  python_packages:
+    - torch==2.2.1
+    - transformers==4.36.2
+    - accelerate==0.25.0
+# the format for repo is {user_id}/{model_id}
+# make sure the model id matched what you created on console
+repo: instill-ai/tinyllama
 ```
-
-```yaml object-detection
-Task: Detection
-```
-
-```yaml keypoint-detection
-Task: Keypoint
-```
-
 </CH.Code>
-
-If not specified, the model will be recognised with `Unspecified` AI task,
-and the raw model output will be wrapped in a [standard format](ai-task#unspecified-task).
-
-**❓ How to know if the AI task metadata is correctly recognised?**
-
-If you include valid AI task metadata, they will show on the Model page of the Console like this:
-
-<ZoomableImg
-  src="/docs-assets/prepare-models/console-model-ai-task-label.png"
-  alt="AI task label in Console"
-  width="600px"
-/>
 
 ## Model Layout
 
-With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning frameworks the user desires.
-To deploy a model on Instill Model, we suggest you to prepare the model files similar to the following layout:
+With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning frameworks you desires.
+To deploy a model on Instill Model, we suggest you prepare the model files similar to the following layout:
 
 ```shellscript
 .
-├── README.md
+├── instill.yaml
 ├── model.py
+├── <additional_modules>
 └── <weights>
     ├── <weight_file_1>
     ├── <weight_file_2>
@@ -106,18 +61,14 @@ To deploy a model on Instill Model, we suggest you to prepare the model files si
 
 The above layout displays a typical Instill Model model consisting of
 
-- `README.md` - model card to embed the metadata in front matter and descriptions in Markdown format
+- `instill.yaml` - [model config](#model-config) file that describe the dependencies
 - `model.py` - this is where you defined the decorated model class that contains custom inference logic
-- `<weights>` - the directory that holds the necessary weight fiels
+- `<additional_modules>` - a directory that holds the python modules files if necessary
+- `<weights>` - a directory that holds the weight files if necessary
 
-You can name the `<weights>` folder freely provided that the folder name are clear and semantic.
+You can name the `<weights>` and `<additional_modules>` folder freely provided that the folder name are clear and semantic.
 
-<InfoBlock type="info" title="info">
-  As long as the model class in your `model.py` implemented the necessary functions, it can be safely imported into Instill Model and deployed online.
-  Check out this [guide](https://github.com/instill-ai/python-sdk/blob/main/notebooks/serve_custom_chat_model.ipynb) for more detail
-</InfoBlock>
-
-## Prepare model.py
+## Prepare Model Code
 
 To implement a custom model that can be imported and served on `Instill Model`, you only need to implement a simple model class within the `model.py` file
 
@@ -164,7 +115,7 @@ class TinyLlama:
             device_map="auto",
         )
 
-    # ModelMetadata tells the server what inputs and outputs the model is expecting
+    # ModelMetadata tells the server what input and output shapes the model is expecting
     def ModelMetadata(self, req):
         return construct_text_generation_chat_metadata_response(req=req)
 
@@ -206,15 +157,8 @@ class TinyLlama:
         )
 
 
-# now simply declare a global deployable instance with model weight name or model file name
-# and specify if this model is going to use GPU or not
-deployable = InstillDeployable(
-    TinyLlama, model_weight_or_folder_name="tinyllama", use_gpu=True
-)
-
-# you can also have a fine-grained control of the min/max replica numbers
-deployable.update_max_replicas(2)
-deployable.update_min_replicas(0)
-
-# we plan to open up more detailed resource control in the future
+# now simply declare a global entrypoint for deployment
+entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 ```
+
+After all the required model files are prepared, we can now [build](build) the custom model image with verion as tag.

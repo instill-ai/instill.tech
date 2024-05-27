@@ -314,8 +314,22 @@ export const getSections = (): SidebarSections[] => {
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.prepareModels",
+      text: "common:sidebarSections.createModel",
+      link: `/docs/model/create`,
+      items: [],
+      appType: "core",
+      versions: [],
+    },
+    {
+      text: "common:sidebarSections.prepareModel",
       link: `/docs/model/prepare`,
+      items: [],
+      appType: "core",
+      versions: [],
+    },
+    {
+      text: "common:sidebarSections.buildModel",
+      link: `/docs/model/build`,
       items: [],
       appType: "core",
       versions: [],
@@ -328,25 +342,8 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.importModels",
-      link: `/docs/model/import`,
-      collapsible: true,
-      items: [
-        {
-          text: "common:sidebarSections.local",
-          link: `/docs/model/import/local`,
-        },
-        {
-          text: "common:sidebarSections.github",
-          link: `/docs/model/import/github`,
-        },
-      ],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.deployModels",
-      link: `/docs/model/deploy`,
+      text: "common:sidebarSections.modelStates",
+      link: `/docs/model/state`,
       items: [],
       appType: "core",
       versions: ["latest"],
