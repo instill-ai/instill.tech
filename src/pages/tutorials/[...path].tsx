@@ -22,13 +22,11 @@ import {
   ArticleRightSidebar,
   ArticleSimilarPosts,
 } from "@/components/ui";
-import { TutorialPipelineLabel } from "@/components/tutorial";
-
+import { StartBuildingBlock } from "@/components/tutorial";
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
 import { Nullable, TutorialMeta } from "@/types/instill";
-import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
 import { CommitMeta } from "@/lib/github/type";
@@ -151,10 +149,6 @@ const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
   tutorials,
   tutorialMeta,
 }) => {
-  const { icon, label } = getAiTaskIconAndLabel({
-    aiTask: tutorialMeta?.aiTask || null,
-  });
-
   const [articleContainerRef, articleContainerDimension] =
     useElementDimension();
 
@@ -186,18 +180,27 @@ const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
         jsonLd={null}
       />
       <ContentContainer
-        margin="mt-[60px] mb-[120px] xl:my-40"
+        margin="xl:mt-[60px] mb-0 mt-[48px]"
         contentMaxWidth="max-w-[1127px]"
       >
+        <BackToPreviousPageLink
+          url="/articles"
+          marginBottom="mb-5 xl:mb-10"
+          label="Tutorial"
+        />
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
-          <BackToPreviousPageLink
-            url="/tutorials"
-            marginBottom="mb-5 xl:mb-10"
+          <ArticleThemeImage
+            imgSrc={tutorialMeta?.themeImgSrc || null}
+            placeholderColor={
+              tutorialMeta?.placeholderColor || "bg-instillBlue50"
+            }
+            marginBottom="mb-5"
           />
-          <TutorialPipelineLabel
-            aiTask={tutorialMeta?.aiTask || null}
-            icon={icon}
-            label={label}
+          <ArticlePublishInfo
+            author={tutorialMeta ? tutorialMeta.author : ""}
+            authorAvatarSrc={tutorialMeta ? tutorialMeta.authorAvatarSrc : ""}
+            publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
+            authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
             marginBottom="mb-2"
           />
           <PageHero
@@ -206,24 +209,10 @@ const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
             headerFontFamily="font-sans"
             marginBottom="mb-3"
             width="max-w-[1127px]"
-            position="mr-auto"
+            position="mx-auto"
             headerColor="text-instillGrey95"
-            gapY="gap-y-[30px]"
+            gapY="gap-y-[9px]"
             headerUppercase={false}
-          />
-          <ArticlePublishInfo
-            author={tutorialMeta ? tutorialMeta.author : ""}
-            authorAvatarSrc={tutorialMeta ? tutorialMeta.authorAvatarSrc : ""}
-            publishedOn={tutorialMeta ? tutorialMeta.publishedOn : ""}
-            authorGitHubUrl={tutorialMeta ? tutorialMeta.authorGitHubUrl : ""}
-            marginBottom="mb-10"
-          />
-          <ArticleThemeImage
-            imgSrc={tutorialMeta?.themeImgSrc || null}
-            placeholderColor={
-              tutorialMeta?.placeholderColor || "bg-instillBlue50"
-            }
-            marginBottom="mb-20 xl:mb-40"
           />
           <div
             ref={articleContainerRef}
@@ -239,27 +228,30 @@ const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
           {commitMeta ? (
             <React.Fragment>
               <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
-              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
+              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-5" />
             </React.Fragment>
           ) : null}
-        </div>
 
-        {/* 
+          {/* 
           The section for Similar use cases
         */}
 
-        <div>
-          {tutorialMeta?.useCase ? (
-            <ArticleSimilarPosts
-              sectionTitle="Similar Articles"
-              similarArticles={similarTutorials}
-              getCardElement={(source, key) => {
-                return (
-                  <TutorialBlock key={key} tutorial={source as TutorialMeta} />
-                );
-              }}
-            />
-          ) : null}
+          <div>
+            {tutorialMeta?.useCase ? (
+              <ArticleSimilarPosts
+                sectionTitle="Similar Articles"
+                similarArticles={similarTutorials}
+                getCardElement={(source, key) => {
+                  return (
+                    <TutorialBlock
+                      key={key}
+                      tutorial={source as TutorialMeta}
+                    />
+                  );
+                }}
+              />
+            ) : null}
+          </div>
         </div>
 
         {/* 
@@ -284,6 +276,7 @@ const TutorialPage: NextPageWithLayout<TutorialPageProps> = ({
           />
         </div>
       </ContentContainer>
+      <StartBuildingBlock />
     </React.Fragment>
   );
 };

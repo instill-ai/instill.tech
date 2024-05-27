@@ -1,5 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
-import { ArrowRightIcon, SolidButton } from "@instill-ai/design-system";
+import { Button, Icons, Input } from "@instill-ai/design-system";
 import cn from "clsx";
 
 export type SubscribeNewsletterFormProps = {
@@ -60,33 +60,25 @@ export const SubscribeNewsletterForm = ({
     <form onSubmit={subscribe} className={cn(position, width)}>
       <div className="my-auto flex w-full flex-col gap-y-1 sm:ml-auto">
         <div className="flex flex-col gap-y-2 sm:gap-y-0">
-          <div className="mb-1.5 flex flex-row">
-            <div className="flex flex-1">
-              <input
+          <div className="mb-1.5 flex flex-row gap-x-2">
+            <Input.Root className="w-full">
+              <Input.Core
                 aria-label="Email for newsletter"
                 placeholder="Your email..."
                 type="email"
                 ref={email}
-                className="h-full w-full rounded-[1px] px-5 text-instillGrey90 placeholder-instillNeonBlue instill-input-no-highlight"
               />
-            </div>
+            </Input.Root>
 
-            <SolidButton
-              color="primaryLight"
+            <Button
+              variant="primary"
+              size="md"
               type="submit"
-              itemGapX="gap-x-5"
-              endIcon={
-                <ArrowRightIcon
-                  width="w-4"
-                  height="h-4"
-                  position="my-auto"
-                  color="fill-instillBlue50 group-hover:fill-instillNeonBlue"
-                />
-              }
-              hoveredShadow="hover:shadow-instill-solid-5"
+              className="gap-x-2 !px-4"
             >
-              <p className="my-auto text-lg">Subscribe</p>
-            </SolidButton>
+              Subscribe
+              <Icons.ArrowRight className="h-4 w-4 stroke-semantic-bg-primary" />
+            </Button>
           </div>
           <div className="flex">
             <p

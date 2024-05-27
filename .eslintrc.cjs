@@ -7,5 +7,6 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "warn",
     "jsx-a11y/label-has-associated-control": "warn",
     "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "@next/next/no-img-element": "off",
   },
 };

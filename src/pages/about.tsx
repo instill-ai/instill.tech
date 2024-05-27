@@ -22,20 +22,36 @@ const AboutPage: NextPageWithLayout = () => {
         currentArticleMeta={null}
         jsonLd={null}
       />
-      <ContentContainer
-        margin="my-[120px] xl:my-40"
-        contentMaxWidth="max-w-[1127px]"
-      >
-        <div className="mb-0 p-2 xl:mb-40 xl:p-0">
-          <AboutHero />
-        </div>
-
+      <ContentContainer margin="my-[56px]" contentMaxWidth="max-w-[1127px]">
+        <AboutHero />
         <Mission />
-        <Company />
-        <OurPartner />
-        <OurCoreValues />
-        <Teams />
       </ContentContainer>
+      <div
+        className="bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/images/about/bg-pipeline.svg")',
+          backgroundSize: 900,
+          backgroundPosition: "right",
+        }}
+      >
+        <ContentContainer margin="mb-0" contentMaxWidth="max-w-[1127px]">
+          <Company />
+          <OurPartner />
+          <OurCoreValues />
+        </ContentContainer>
+      </div>
+      <div
+        className="bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/images/about/bg-2.svg")',
+          backgroundSize: 400,
+          backgroundPosition: "bottom left",
+        }}
+      >
+        <ContentContainer margin="mb-[56px]" contentMaxWidth="max-w-[1127px]">
+          <Teams />
+        </ContentContainer>
+      </div>
     </React.Fragment>
   );
 };

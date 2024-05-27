@@ -123,7 +123,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <MDXProvider components={components}>
-      <NextTopLoader showSpinner={false} />
+      <NextTopLoader showSpinner={false} color="#316FED" />
       <InstillAICtxProvider>
         {getLayout(<Component {...pageProps} />)}
         <div id="zoomable-image" />

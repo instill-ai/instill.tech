@@ -98,6 +98,10 @@ export const getSections = (): SidebarSections[] => {
           text: "common:sidebarSections.kubernetesUsingHelm",
           link: `/docs/core/deployment/kubernetes-using-helm`,
         },
+        {
+          text: "common:sidebarSections.k8s",
+          link: `/docs/core/deployment/k8s`,
+        },
       ],
       appType: "core",
       versions: [],
@@ -433,7 +437,7 @@ export function getNavbar(
         position: "right",
         label: "",
         iconElement: (
-          <Icons.Menu01 className="my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+          <Icons.Menu01 className="my-auto h-5 w-5 stroke-instillGrey95 hover:stroke-semantic-accent-on-bg dark:stroke-instillGrey15 dark:hover:stroke-semantic-accent-on-bg" />
         ),
         appType: null,
         items: [
@@ -548,7 +552,7 @@ export function getNavbar(
           <DiscordIcon
             width="w-[24px]"
             height="h-[24px]"
-            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
+            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-semantic-accent-on-bg dark:hover:fill-semantic-accent-on-bg"
             position="my-auto"
           />
         ),
@@ -564,7 +568,7 @@ export function getNavbar(
           <GitHubIcon
             width="w-[24px]"
             height="h-[24px]"
-            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-instillBlue50 dark:hover:fill-instillBlue50"
+            color="fill-instillGrey95 dark:fill-instillGrey15 hover:fill-semantic-accent-on-bg dark:hover:fill-semantic-accent-on-bg"
             position="my-auto"
           />
         ),
@@ -577,9 +581,9 @@ export function getNavbar(
         href: "https://twitter.com/instill_tech",
         className: "twitter-social-link",
         iconElement: isDark ? (
-          <Logos.TwitterLight className="h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+          <Logos.TwitterLight className="h-4 w-4 stroke-instillGrey95 hover:stroke-semantic-accent-on-bg dark:stroke-instillGrey15 dark:hover:stroke-semantic-accent-on-bg" />
         ) : (
-          <Logos.TwitterDark className="h-4 w-4 stroke-instillGrey95 hover:stroke-instillBlue50 dark:stroke-instillGrey15 dark:hover:stroke-instillBlue50" />
+          <Logos.TwitterDark className="h-4 w-4 stroke-instillGrey95 hover:stroke-semantic-accent-on-bg dark:stroke-instillGrey15 dark:hover:stroke-semantic-accent-on-bg" />
         ),
         position: "right",
         label: "",

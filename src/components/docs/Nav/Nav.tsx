@@ -47,7 +47,7 @@ const DropdownMenuList = ({
       <DropdownMenu.Trigger className="flex flex-row gap-x-1 focus:outline-none">
         <p
           onClick={() => setIsOpen(!isOpen)}
-          className="navbar-dropdown-menu my-auto flex flex-row gap-x-1 text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+          className="navbar-dropdown-menu my-auto flex flex-row gap-x-1 text-sm font-normal text-black hover:text-semantic-accent-on-bg dark:text-instillGrey15 dark:hover:text-semantic-accent-on-bg"
         >
           {item.label}
           {item.iconElement ? item.iconElement : null}
@@ -80,7 +80,7 @@ const DropdownMenuList = ({
               <DropdownMenu.Item
                 key={subItemKey}
                 onClick={() => setIsOpen(!isOpen)}
-                className="dark:focus:bg-instillBlue50"
+                className="dark:focus:bg-semantic-accent-on-bg"
               >
                 <Item key={subItemKey} item={subItem} isDropdownItem={true} />
               </DropdownMenu.Item>

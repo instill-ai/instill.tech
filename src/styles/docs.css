@@ -486,15 +486,15 @@ h4:hover span.heading-anchor-hash {
 }
 
 .navbar-dropdown-menu:hover p {
-  color: #40a8f5;
+  color: #1d5bd7;
 }
 .navbar-dropdown-menu:hover svg {
-  stroke: #40a8f5;
+  stroke: #1d5bd7;
 }
 
 .dark .navbar-dropdown-menu:hover p {
-  color: #40a8f5;
+  color: #1d5bd7;
 }
 .dark .navbar-dropdown-menu:hover svg {
-  stroke: #40a8f5;
+  stroke: #1d5bd7;
 }

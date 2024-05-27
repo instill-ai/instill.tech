@@ -1,13 +1,10 @@
-import { BlogArticleMeta, TutorialMeta } from "@/types/instill";
+import { ArticleMeta } from "@/types/instill";
 import React, { ReactElement } from "react";
 
 export type ArticleSimilarPostsProps = {
   sectionTitle: string;
-  similarArticles: TutorialMeta[] | BlogArticleMeta[];
-  getCardElement: (
-    source: TutorialMeta | BlogArticleMeta,
-    key: string
-  ) => ReactElement;
+  similarArticles: ArticleMeta[];
+  getCardElement: (source: ArticleMeta, key: string) => ReactElement;
 };
 
 export const ArticleSimilarPosts = ({
@@ -17,7 +14,7 @@ export const ArticleSimilarPosts = ({
 }: ArticleSimilarPostsProps) => {
   return similarArticles.length !== 0 ? (
     <div className="flex flex-col">
-      <h3 className="mx-auto mb-20 border-b pb-5 font-mono text-3xl text-instillGrey90 ">
+      <h3 className="mx-auto mb-5 font-sans text-[24px] font-bold text-[#000000B2]">
         {sectionTitle}
       </h3>
       <div className="grid gap-x-5 xl:grid-flow-col xl:grid-cols-3">

@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import React, { ReactElement } from "react";
 import {
+  ArticleMeta,
   BlogArticleJsonLD,
   BlogArticleMeta,
   Nullable,
@@ -14,7 +15,7 @@ export type PageHeadProps = {
   pageDescription: Nullable<string>;
   pageType: "main" | "docs" | "tutorial" | "blog";
   additionMeta: Nullable<ReactElement>;
-  currentArticleMeta: Nullable<TutorialMeta | BlogArticleMeta>;
+  currentArticleMeta: Nullable<ArticleMeta>;
   commitMeta: Nullable<CommitMeta>;
   jsonLd: Nullable<BlogArticleJsonLD>;
 };

@@ -27,7 +27,7 @@ function OperatorComponent({
     >
       <div
         className={cn(
-          "px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
+          "rounded-t-sm px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
           getHeaderColorClass("CONNECTOR_TYPE_OPERATOR")
         )}
       >
@@ -35,7 +35,7 @@ function OperatorComponent({
           {ConnectorCategory["CONNECTOR_TYPE_OPERATOR"]}
         </span>
       </div>
-      <div className="min-h-[230px] bg-white px-5 py-2.5">
+      <div className="min-h-[230px] rounded-b-sm bg-[#FFFFFF99] bg-opacity-80 px-5 py-2.5 backdrop-blur-sm">
         <div className="flex flex-row gap-x-2">
           <div className="my-auto rounded-[6px] border px-1 py-0.5 shadow">
             <img

@@ -5,7 +5,7 @@ function ConnectorDefault({ count }: { count: number }) {
     <React.Fragment>
       {[...new Array(count)].map((_, index) => (
         <div
-          className="flex flex-col border border-[#CBD2E1]"
+          className="flex flex-col border border-[#CBD2E1] bg-opacity-80 backdrop-blur-sm"
           key={`connector-key-${index}`}
         >
           <div className="h-8 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />

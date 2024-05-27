@@ -31,10 +31,11 @@ import {
 import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleCard } from "@/components/blog/BlogArticleCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { StartBuildingBlock } from "@/components/tutorial";
 import { NextPageWithLayout } from "../_app";
 import { GeneralRecord } from "@instill-ai/toolkit";
 
-type BlogPageProps = {
+export type BlogPageProps = {
   mdxSource: MDXRemoteSerializeResult;
   headers: RightSidebarProps["headers"];
   articles: BlogArticleMeta[];
@@ -209,29 +210,21 @@ const BlogPage: NextPageWithLayout<BlogPageProps> = ({
         jsonLd={getJsonLd(blogMeta)}
       />
       <ContentContainer
-        margin="mt-[60px] mb-[120px] xl:my-40"
+        margin="xl:mt-[60px] mb-0 mt-[48px]"
         contentMaxWidth="xl:max-w-[1127px]"
       >
+        <BackToPreviousPageLink
+          url="/tutorials"
+          marginBottom="mb-5 xl:mb-10"
+          label="Blog"
+        />
         <div className="mx-auto flex w-full flex-col xl:max-w-[800px]">
-          <BackToPreviousPageLink url="/blog" marginBottom="mb-5 xl:mb-10" />
-          <PageHero
-            headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
-            subHeadline={
-              <div className="flex flex-col gap-y-3">
-                <p className="text-2xl font-normal text-instillGrey80">
-                  {mdxSource.frontmatter
-                    ? mdxSource.frontmatter.description
-                    : ""}
-                </p>
-              </div>
+          <ArticleThemeImage
+            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
+            placeholderColor={
+              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
             }
-            headerFontFamily="font-sans"
-            marginBottom="mb-3"
-            width="max-w-[1127px]"
-            position="mr-auto"
-            headerColor="text-instillGrey95"
-            gapY="gap-y-[30px]"
-            headerUppercase={false}
+            marginBottom="mb-5"
           />
           <ArticlePublishInfo
             author={mdxSource.frontmatter ? mdxSource.frontmatter.author : ""}
@@ -244,15 +237,23 @@ const BlogPage: NextPageWithLayout<BlogPageProps> = ({
             authorGitHubUrl={
               mdxSource.frontmatter ? mdxSource.frontmatter.authorGitHubUrl : ""
             }
-            marginBottom="mb-10"
+            marginBottom="mb-2"
           />
-          <ArticleThemeImage
-            imgSrc={mdxSource.frontmatter?.themeImgSrc || null}
-            placeholderColor={
-              mdxSource.frontmatter?.placeholderColor || "bg-instillBlue50"
+
+          <PageHero
+            headline={mdxSource.frontmatter ? mdxSource.frontmatter.title : ""}
+            subHeadline={
+              mdxSource.frontmatter ? mdxSource.frontmatter.description : ""
             }
-            marginBottom="mb-20 xl:mb-40"
+            headerFontFamily="font-sans"
+            marginBottom="mb-3"
+            width="max-w-[1127px]"
+            position="mr-auto"
+            headerColor="text-instillGrey95"
+            gapY="gap-y-[9px]"
+            headerUppercase={false}
           />
+
           <div
             ref={articleContainerRef}
             className="relative mb-20 flex h-full flex-row"
@@ -267,30 +268,30 @@ const BlogPage: NextPageWithLayout<BlogPageProps> = ({
           {commitMeta ? (
             <React.Fragment>
               <LastEditedInfo meta={commitMeta} marginBottom="mb-4" />
-              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-20" />
+              <HorizontalLine bgColor="bg-instillGrey20" marginBottom="mb-5" />
             </React.Fragment>
           ) : null}
-        </div>
 
-        {/* 
+          {/* 
           The section for Similar use cases
         */}
 
-        <div>
-          {blogMeta?.category ? (
-            <ArticleSimilarPosts
-              sectionTitle="Similar Articles"
-              similarArticles={similarArticles}
-              getCardElement={(source, key) => {
-                return (
-                  <BlogArticleCard
-                    key={key}
-                    article={source as BlogArticleMeta}
-                  />
-                );
-              }}
-            />
-          ) : null}
+          <div>
+            {blogMeta?.category ? (
+              <ArticleSimilarPosts
+                sectionTitle="Similar Articles"
+                similarArticles={similarArticles}
+                getCardElement={(source, key) => {
+                  return (
+                    <BlogArticleCard
+                      key={key}
+                      article={source as BlogArticleMeta}
+                    />
+                  );
+                }}
+              />
+            ) : null}
+          </div>
         </div>
 
         {/* 
@@ -315,6 +316,7 @@ const BlogPage: NextPageWithLayout<BlogPageProps> = ({
           />
         </div>
       </ContentContainer>
+      <StartBuildingBlock />
     </React.Fragment>
   );
 };

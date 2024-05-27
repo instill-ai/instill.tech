@@ -17,7 +17,7 @@ export const ArticleNavigationButton = ({
   return (
     <Link
       href={link}
-      className="flex flex-col gap-y-1.5 rounded-[6px] border p-2.5 transition duration-300 ease-in-out hover:border-instillBlue50"
+      className="flex flex-col gap-y-1.5 rounded-[6px] border p-2.5 transition duration-300 ease-in-out hover:border-semantic-accent-on-bg"
     >
       <p
         className={cn(
@@ -29,7 +29,7 @@ export const ArticleNavigationButton = ({
       </p>
       <p
         className={cn(
-          "text-sm text-instillBlue50",
+          "text-sm text-semantic-accent-on-bg",
           type === "prev" ? "mr-auto" : "ml-auto"
         )}
       >

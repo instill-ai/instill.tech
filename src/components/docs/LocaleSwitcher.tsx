@@ -22,7 +22,7 @@ export default function LocaleSwitcher() {
     <DropdownMenu.Root open={isOpen}>
       <DropdownMenu.Trigger className="flex flex-row gap-x-2 focus:outline-none">
         <p
-          className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+          className="my-auto cursor-pointer text-sm font-normal text-black hover:text-semantic-accent-on-bg dark:text-instillGrey15 dark:hover:text-semantic-accent-on-bg"
           onClick={() => setIsOpen(!isOpen)}
         >
           {locale ? languages[locale] : ""}
@@ -44,7 +44,7 @@ export default function LocaleSwitcher() {
                 className=""
               >
                 <p
-                  className="my-auto cursor-pointer text-sm font-normal text-black hover:text-instillBlue50 dark:text-instillGrey15 dark:hover:text-instillBlue50"
+                  className="my-auto cursor-pointer text-sm font-normal text-black hover:text-semantic-accent-on-bg dark:text-instillGrey15 dark:hover:text-semantic-accent-on-bg"
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   {languages[locale]}
