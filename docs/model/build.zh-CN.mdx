@@ -54,7 +54,8 @@ instill_push -t {your-image-tag} api.instill.tech
 2024-05-23 23:05:03,485.485 INFO     [Instill Builder] Done
 ```
 
-As the model image is pushed, **Instill Model** will automatically provision necessary resource for your model and deploy it.
-Depends on your model image size and the type of hardware you specified for the model, it could take awhile for the model to be active.
+As the model image is pushed, **Instill Model** will automatically allocate necessary resources for your model and deploy it.
+Depends on your model image size and the type of hardware you specified for the model, it could take awhile for the model to go online.
+You can go to the `Versions` tab under your model namespace to see the state.
 
 Now, you can refer to [Use a Model](use) on how to trigger an inference.

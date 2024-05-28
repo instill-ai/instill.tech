@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
-To prepare a model version to be served on **Instill Model**, you will have to follow the following steps locally on your PC:
+To prepare a model version to be served on **Instill Model**, you follow below steps locally on your PC:
 
 - Create a [model config](#model-config) `instill.yaml` to describe your model's dependencies
 - Write a `model.py` file that defined the model class which will be decorated into a servable model with Instill's `python-sdk`
@@ -17,11 +17,11 @@ Model config is a `instill.yaml` file that accompanies the model to describe dep
 
 In the model config, you can provide information about:
 
-- If the model requires GPU
+- If the model needs GPU
 - Python version
   - currently we only support python `3.11`
 - Required list of system packages
-  - the model image is based on ubuntu 20.04 LTS
+  - the model image is based on ubuntu 20.04 LTS, it will install the packages listed here from api package manager
 - Required list of python packages
 - your Instill Core namespace
 
@@ -161,4 +161,4 @@ class TinyLlama:
 entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 ```
 
-After all the required model files are prepared, we can now [build](build) the custom model image with verion as tag.
+After all the required model files are prepared, you can now [build](build) the custom model image with verion as tag.
