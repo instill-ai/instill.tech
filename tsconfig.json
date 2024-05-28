@@ -21,40 +21,23 @@
     "noUnusedParameters": true,
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/types/*": [
-        "types/*"
-      ],
-      "@/hooks/*": [
-        "hooks/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/style/*": [
-        "styles/*"
-      ],
-      "@/lib/*": [
-        "lib/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ],
-      "@/contexts/*": [
-        "contexts/*"
-      ],
-      "@/mocks/*": [
-        "mocks/*"
-      ]
-    },
+      "@/components/*": ["components/*"],
+      "@/types/*": ["types/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/utils/*": ["utils/*"],
+      "@/style/*": ["styles/*"],
+      "@/lib/*": ["lib/*"],
+      "@/pages/*": ["pages/*"],
+      "@/contexts/*": ["contexts/*"],
+      "@/mocks/*": ["mocks/*"]
+    }
   },
   "include": [
+    "video.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
@@ -63,9 +46,5 @@
     "**/*.mjs",
     "**/*.json"
   ],
-  "exclude": [
-    "**/node_modules",
-    "**/.*/",
-    ".next"
-  ]
+  "exclude": ["**/node_modules", "**/.*/", ".next"]
 }

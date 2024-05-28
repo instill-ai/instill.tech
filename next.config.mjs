@@ -16,6 +16,7 @@ import {
 } from "./src/lib/markdown/rehype-info-block-handler.mjs";
 import path from "path";
 import { LATEST_VERSIONS } from "./version.mjs";
+import { withNextVideo } from "next-video/process";
 
 const theme = JSON.parse(
   await readFile(new URL("./src/styles/rose-pine-moon.json", import.meta.url))
@@ -54,7 +55,7 @@ const withMDX = mdx({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx", "mp4", "vtt"],
   i18n: {
     locales: ["en", "zh-CN"],
     defaultLocale: "en",
@@ -86,4 +87,4 @@ const nextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+export default withNextVideo(withMDX(nextConfig));

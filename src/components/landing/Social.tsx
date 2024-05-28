@@ -76,11 +76,10 @@ export const Social = () => {
   return (
     <React.Fragment>
       <div className="mb-20 !w-full rounded">
-        <div className="p-6 xl:p-16">
+        <div className="p-6">
           <div className="text-center">
-            <p className="pb-8 font-sans text-[16px] font-normal leading-9 text-gray-800 text-opacity-80 xl:text-[24px]">
-              Customers use Instill Cloud to build the backbone of their AI
-              applications
+            <p className="pb-8 font-sans text-[14px] font-normal leading-9 text-gray-800 text-opacity-80">
+              Trusted by
             </p>
           </div>
           <div className="hidden justify-center gap-x-8 xl:flex xl:flex-row xl:gap-x-20">

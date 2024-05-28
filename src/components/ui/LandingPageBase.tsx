@@ -21,7 +21,10 @@ export const LandingPageBase = ({ children }: LandingPageBaseProps) => {
   return (
     <div
       className="flex min-h-screen flex-col bg-top bg-no-repeat"
-      style={{ backgroundImage: 'url("/images/bg-pattern.svg")' }}
+      style={{
+        backgroundImage: 'url("/images/bg-pattern.svg")',
+        backgroundPosition: "top right",
+      }}
     >
       <Nav />
       <div ref={contentRef} className="flex flex-1 flex-col">

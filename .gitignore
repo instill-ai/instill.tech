@@ -39,3 +39,10 @@ dist
 
 # local env settings
 *.local
+
+# next-video
+video/*
+!video/*.json
+!video/*.js
+!video/*.ts
+public/_next-video
