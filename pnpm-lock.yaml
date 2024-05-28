@@ -15,14 +15,14 @@ dependencies:
     specifier: ^3.3.0
     version: 3.3.0(@algolia/client-search@4.14.2)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
   '@instill-ai/design-system':
-    specifier: ^0.69.0
-    version: 0.69.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2)
+    specifier: ^0.69.2
+    version: 0.69.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2)
   '@instill-ai/design-tokens':
-    specifier: ^0.5.2
-    version: 0.5.2(tailwindcss@3.3.2)
+    specifier: ^0.5.4
+    version: 0.5.4(tailwindcss@3.3.2)
   '@instill-ai/toolkit':
-    specifier: 0.91.1
-    version: 0.91.1(@babel/core@7.24.5)(@babel/runtime@7.24.5)(@instill-ai/design-system@0.69.0)(@instill-ai/design-tokens@0.5.2)(@types/react-dom@18.3.0)(@types/react@18.3.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)
+    specifier: 0.92.0
+    version: 0.92.0(@babel/core@7.24.5)(@babel/runtime@7.24.5)(@instill-ai/design-system@0.69.2)(@instill-ai/design-tokens@0.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)
   '@mailchimp/mailchimp_marketing':
     specifier: ^3.0.80
     version: 3.0.80
@@ -1309,15 +1309,15 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: true
 
-  /@instill-ai/design-system@0.69.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-jvbpLrSVyjEI3w9pGcEmBvdtYbLaqbRRLeSCkuuMdOEIw1wxvPKF6Y0FOzreCRZCAnKp5k9thObh9LXZsiIVZg==}
+  /@instill-ai/design-system@0.69.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-nzU2ayYOFThB45aZZ+Cef4eH8TrMGY1wVv8NG7CosZxI1x7nGP+ISDs0UAIud8UEDcOIKq7hThqjULaPRwnNbg==}
     engines: {node: '>=14.6.0'}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
       '@hookform/resolvers': 3.3.4(react-hook-form@7.51.4)
-      '@instill-ai/design-tokens': 0.5.2(tailwindcss@3.3.2)
+      '@instill-ai/design-tokens': 0.5.4(tailwindcss@3.3.2)
       '@radix-ui/react-checkbox': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-collapsible': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-dialog': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
@@ -1350,8 +1350,8 @@ packages:
       - tailwindcss
     dev: false
 
-  /@instill-ai/design-tokens@0.5.2(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-Cj+18HcieQ62T+FU4pz+Vt2U/gDJR8xmGTMbtVy597sgRk7JVWLgX2rwUZ+zt36jMSJpJD/s4v9a50fXTtiSEA==}
+  /@instill-ai/design-tokens@0.5.4(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-32Stjas8OrgcR9H9gE9rHhWFI19pY7bBRbAKtBEbgVtXfAJw1gpGeIdDg5duzej2IJecicru8Pp7Vr5CF4PLrg==}
     peerDependencies:
       tailwindcss: ^3.3.0
     dependencies:
@@ -1385,11 +1385,11 @@ packages:
       - vitest
     dev: true
 
-  /@instill-ai/toolkit@0.91.1(@babel/core@7.24.5)(@babel/runtime@7.24.5)(@instill-ai/design-system@0.69.0)(@instill-ai/design-tokens@0.5.2)(@types/react-dom@18.3.0)(@types/react@18.3.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-Ohh59LYFhN6abLazmCbxlXqvK5S0OBY4jQrCzfXU2h3dM5ac+ihIA+86seuj5ClbCoewzOjrUtTLd2bcGUHntw==}
+  /@instill-ai/toolkit@0.92.0(@babel/core@7.24.5)(@babel/runtime@7.24.5)(@instill-ai/design-system@0.69.2)(@instill-ai/design-tokens@0.5.4)(@types/react-dom@18.3.0)(@types/react@18.3.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-tGoIBY8XTrxR4cIQLvdrgMPcUJ67IM+P1wn5pX8xAivRYpiynap6NlFkEkhrRp43ZeXSdWnous+DtOelEaMecQ==}
     peerDependencies:
-      '@instill-ai/design-system': 0.69.0
-      '@instill-ai/design-tokens': 0.5.2
+      '@instill-ai/design-system': 0.69.2
+      '@instill-ai/design-tokens': 0.5.4
       next: ^14.1.3
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1400,8 +1400,8 @@ packages:
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0)(react@18.3.1)
       '@dnd-kit/utilities': 3.2.2(react@18.3.1)
       '@hookform/resolvers': 3.3.4(react-hook-form@7.51.4)
-      '@instill-ai/design-system': 0.69.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2)
-      '@instill-ai/design-tokens': 0.5.2(tailwindcss@3.3.2)
+      '@instill-ai/design-system': 0.69.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)(tailwindcss@3.3.2)
+      '@instill-ai/design-tokens': 0.5.4(tailwindcss@3.3.2)
       '@radix-ui/react-label': 2.0.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-progress': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
       '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
@@ -1454,7 +1454,7 @@ packages:
       unique-names-generator: 4.7.1
       uuid: 9.0.1
       yup: 0.32.11
-      zod: 3.21.4
+      zod: 3.23.8
       zustand: 4.4.7(@types/react@18.3.1)(immer@9.0.21)(react@18.3.1)
     transitivePeerDependencies:
       - '@babel/core'
@@ -12445,10 +12445,6 @@ packages:
       nanoclone: 0.2.1
       property-expr: 2.0.6
       toposort: 2.0.2
-    dev: false
-
-  /zod@3.21.4:
-    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
   /zod@3.23.8:
