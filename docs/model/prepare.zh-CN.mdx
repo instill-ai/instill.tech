@@ -17,13 +17,13 @@ Model config is a `instill.yaml` file that accompanies the model to describe dep
 
 In the model config, you can provide information about:
 
-- If the model needs GPU
-- Python version
-  - currently we only support python `3.11`
-- Required list of system packages
-  - the model image is based on ubuntu 20.04 LTS, it will install the packages listed here from api package manager
-- Required list of python packages
-- your Instill Core namespace
+- `build`
+  - `gpu`: `required` `boolean` If the model needs GPU
+  - `python_version`: `required` `string` supports `3.9`, `3.10` and `3.11`
+  - `cuda_version`: `string` suuports `11.5`, `11.6`, `11.7`, `11.8`, `12.1`. If not specyfied, default to the latest version.
+  - `system_packages`: `list` model image is based on ubuntu 20.04 LTS, packages listed here will be installed from apt package manager
+  - `python_packages`: `required` `list` packages listed here will be installed with `pip`
+- `repo`: `required` `string` your Instill Core namespace with the format `{user_id}/{model_id}`
 
 Following is an example config file for a `TinyLlama` model which is intended to be run on GPU
 
