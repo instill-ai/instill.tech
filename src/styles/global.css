@@ -551,14 +551,9 @@ mux-player::part(center play button) {
   padding: 18px;
 }
 
-mux-player::slotted(centered-chrome) {
-  height: 200px !important;
-  width: 200px !important;
-  background: darkcyan;
-}
-
-media-loading-indicator[slot="centered-chrome"] {
-  height: 200px !important;
-  width: 200px !important;
-  background: darkcyan;
+@media (max-width: 600px) {
+  mux-player::part(center play button) {
+    --media-control-background: #1e4eae;
+    padding: 10px;
+  }
 }
