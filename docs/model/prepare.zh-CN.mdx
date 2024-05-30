@@ -5,27 +5,41 @@ draft: false
 description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
-To prepare a model version to be served on **Instill Model**, you follow below steps locally on your PC:
+To prepare a model version to be served on **Instill Model**, please follow these steps on your local system:
 
-- Create a [model config](#model-config) `instill.yaml` to describe your model's dependencies
-- Write a `model.py` file that defined the model class which will be decorated into a servable model with Instill's `python-sdk`
-- Organize the model files into valid model [layout](#model-layout)
+- Create a [model config](#model-config) `instill.yaml` file to describe your model's dependencies
+- Write a `model.py` file which defines the model class that will be decorated into a servable model with Instill's `python-sdk`
+- Organize the model files into a valid model [layout](#model-layout)
 
 ## Model Config
 
-Model config is a `instill.yaml` file that accompanies the model to describe dependency information. It is crucial for reproducibility, sharing and discoverability.
+Model configuration is handled within the `instill.yaml` file which accompanies the model and describes the necessary dependency information. It is crucial for reproducibility, sharing and discoverability.
 
-In the model config, you can provide information about:
+In the `instill.yaml` model config file, you are can specify the following details:
 
-- `build`
-  - `gpu`: `required` `boolean` If the model needs GPU
-  - `python_version`: `required` `string` supports `3.9`, `3.10` and `3.11`
-  - `cuda_version`: `string` suuports `11.5`, `11.6`, `11.7`, `11.8`, `12.1`. If not specyfied, default to the latest version.
-  - `system_packages`: `list` model image is based on ubuntu 20.04 LTS, packages listed here will be installed from apt package manager
-  - `python_packages`: `required` `list` packages listed here will be installed with `pip`
-- `repo`: `required` `string` your Instill Core namespace with the format `{user_id}/{model_id}`
+- **`build`**:
+  - **`gpu`**: 
+    - Required: `boolean`
+    - Description: Specifies if the model needs GPU support.
+  - **`python_version`**: 
+    - Required: `string`
+    - Supported Versions: `3.9`, `3.10`, `3.11`
+  - **`python_packages`**: 
+    - Required: `list`
+    - Description: Lists packages to be installed with `pip`.
+  - **`cuda_version`**: 
+    - Optional: `string`
+    - Supported Versions: `11.5`, `11.6`, `11.7`, `11.8`, `12.1`
+    - Default: Defaults to the latest version if not specified or empty.
+  - **`system_packages`**: 
+    - Optional: `list`
+    - Description: Lists packages to be installed from the `apt` package manager. The model image is based on Ubuntu 20.04 LTS.
+- **`repo`**: 
+  - Required: `string`
+  - Format: `{user_id}/{model_id}`
+  - Description: Your Instill Core namespace.
 
-Following is an example config file for a `TinyLlama` model which is intended to be run on GPU
+Below is an example config file for a `TinyLlama` model designed to utilize GPU resources.
 
 <CH.Code>
 ```yaml instill.yaml
@@ -36,15 +50,14 @@ build:
     - torch==2.2.1
     - transformers==4.36.2
     - accelerate==0.25.0
-# the format for repo is {user_id}/{model_id}
-# make sure the model id matched what you created on console
+# the repo format is {user_id}/{model_id}
+# {model_id} must match the Model ID created on the console
 repo: instill-ai/tinyllama
 ```
 </CH.Code>
 
 ## Model Layout
 
-With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning frameworks you desires.
 To deploy a model on Instill Model, we suggest you prepare the model files similar to the following layout:
 
 ```shellscript
@@ -61,26 +74,26 @@ To deploy a model on Instill Model, we suggest you prepare the model files simil
 
 The above layout displays a typical Instill Model model consisting of
 
-- `instill.yaml` - [model config](#model-config) file that describe the dependencies
-- `model.py` - this is where you defined the decorated model class that contains custom inference logic
-- `<additional_modules>` - a directory that holds the python modules files if necessary
+- `instill.yaml` - [model config](#model-config) file that describe the model dependencies
+- `model.py` - this is where you define a decorated model class that contains custom inference logic
+- `<additional_modules>` - a directory that holds supporting python modules if necessary
 - `<weights>` - a directory that holds the weight files if necessary
 
-You can name the `<weights>` and `<additional_modules>` folder freely provided that the folder name are clear and semantic.
+You can name the `<weights>` and `<additional_modules>` folder freely provided that the folder names are clear and semantic.
 
 ## Prepare Model Code
 
-To implement a custom model that can be imported and served on `Instill Model`, you only need to implement a simple model class within the `model.py` file
+With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning framework you desire. To implement a custom model that can be imported and served on `Instill Model`, you only need to construct a simple model class within the `model.py` file.
 
-The custom model class will need to implement the following methods
+The custom model class is required to contain three methods:
 - `__init__`
-  - within the `__init__` function, this is where to define the model loading process, allowing the weights to be store in memory and allow faster auto-scaling behavior
+  - This is where the model loading process is defined, allowing the weights to be stored in memory and yielding faster auto-scaling behavior.
 - `ModelMetadata`
-  - `ModelMetadata` method tells the backend service what is the expected input/output shape the model is expecting, if you are using our predefined [AI Tasks](/docs/model/ai-task.en.mdx), you can simply import construct_\{task\}_metadata_reponse and use it as return
+  - This method tells the backend service the expected input/output shape that the model is expecting. If you are using one of our predefined [AI Tasks](ai-task), you can simply `import construct_\{task\}_metadata_reponse` and use it as `return`.
 - `__call__`
-  - `__call__` is the inference request entrypoint, this is where you implement your model inference logic.
+  - This is the inference request entrypoint, and is where you implement your model inference logic.
 
-Following is a simple implementation of [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model with explanations.
+Following is a simple implementation of the [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model with explanations.
 
 ```python
 # import neccessary packages
@@ -94,7 +107,7 @@ from instill.helpers.const import TextGenerationChatInput
 # ray_io package hosts the parsers to easily convert request payload into input paramaters, and model outputs to response
 from instill.helpers.ray_io import StandardTaskIO
 
-# ray_config package hosts the decorators and deployment object for model class
+# ray_config package hosts the decorators and deployment object for the model class
 from instill.helpers.ray_config import instill_deployment, InstillDeployable
 from instill.helpers import (
     construct_text_generation_chat_infer_response,
@@ -102,11 +115,11 @@ from instill.helpers import (
 )
 
 
-# use instill_deployment decorator to convert the model class to servable model
+# use instill_deployment decorator to convert the model class to a servable model
 @instill_deployment
 class TinyLlama:
     # within the __init__ function, setup the model instance with the desired framework, in this
-    # case is the pipeline from transformers
+    # case it is a transformers pipeline
     def __init__(self):
         self.pipeline = pipeline(
             "text-generation",
@@ -119,7 +132,7 @@ class TinyLlama:
     def ModelMetadata(self, req):
         return construct_text_generation_chat_metadata_response(req=req)
 
-    # ModelInfer is the method handling the trigger request from Instill Model
+    # __call__ handles the trigger request from Instill Model
     async def __call__(self, request):
         # use StandardTaskIO package to parse the request and get the corresponding input
         # for text-generation-chat task
@@ -144,7 +157,7 @@ class TinyLlama:
             top_p=0.95,
         )
 
-        # convert the output into response output with again the StandardTaskIO
+        # convert the model output into response output using StandardTaskIO
         task_text_generation_chat_output = (
             StandardTaskIO.parse_task_text_generation_chat_output(sequences=sequences)
         )
@@ -161,4 +174,4 @@ class TinyLlama:
 entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 ```
 
-After all the required model files are prepared, you can now [build](build) the custom model image with verion as tag.
+After all the required model files are prepared, you can now [build](build) the custom model image, specifying the verion as a tag.

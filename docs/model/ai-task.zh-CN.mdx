@@ -7,10 +7,9 @@ description: "Model Overview"
 
 When you create a model on Instill Model, you need to specify which standardised AI tasks the model can be catagorized in.
 
-In a data pipeline, model is the core component designed to solve a specific AI task. By standardising the data format of model outputs into AI tasks,
-
-- model in a pipeline is modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task;
-- VDP produces a stream of data from models with standard format for use in a data integration or ETL pipeline.
+In a data pipeline, a model is the core component designed to solve a specific AI task.
+By standardising the data format of model outputs into AI tasks, models become modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task.
+This also means that the stream of data produced by models in VDP have a standard format for data integration or ETL pipelines.
 
 At the moment, Instill Model defines the data interface for popular tasks:
 
@@ -27,8 +26,8 @@ At the moment, Instill Model defines the data interface for popular tasks:
 - **Visual Question Answering** - generate chat style texts from input text and image prompts
 - The list is growing ... 🌱
 
-The above tasks focus on analysing and understanding the content of data in the same way as human does.
-The goal is to make a computer/device provide description for the data as complete and accurate as possible.
+The above tasks focus on analysing and understanding the content of data in the same way a human does.
+The goal is to make a computer/device provide a description for the data that is as complete and accurate as possible.
 These primitive tasks are the foundation for building many real-world industrial AI applications.
 Each task is described in depth in the respective section below.
 
@@ -509,7 +508,7 @@ The model will be classified as an `Unspecified` task. Send an image to the mode
 VDP will
 
 - check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file to extract the output names, datatypes and shapes of the model outputs,
-- and wrap these information along with the raw model output in a _standard_ format.
+- and wrap this information along with the raw model output in a _standard_ format.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-unspecified.svg"
@@ -541,4 +540,4 @@ VDP will
 
 Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
 
-If you'd like to **support for a new task**, you can create an [issue](https://github.com/instill-ai/community/issues) or request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).
+If you'd like to have **support for a new task**, you can request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).

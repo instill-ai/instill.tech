@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
 ---
 
-To build a servable model image for **Instill Model**, follow the steps:
+To build a servable model image for **Instill Model**, follow these steps:
 
 ## Build Image
 
@@ -25,37 +25,35 @@ instill_build -t {your-image-tag}
 
 ## Push Image
 
-1. Next, docker login to `Instill Core` instance
-  - self-host `Instill Core`
-```bash
-docker login localhost:8080
-# username: admin
-# password: {your-api-token}
-```
+1. Next, docker login to the `Instill Core` instance
   - `Instill Cloud`
 ```bash
 docker login api.instill.tech
 # username: {your-user-id}
 # password: {your-api-token}
 ```
+ - self-host `Instill Core`
+```bash
+docker login localhost:8080
+# username: admin
+# password: {your-api-token}
+```
 
 2. Now we can push the model onto `Instill Core` instance
   - self-host `Instill Core`
 ```bash
-instill_push -t {your-image-tag} localhost:8080
+instill_push -t {your-image-tag} -u localhost:8080
 ```
   - `Instill Cloud`
 ```bash
-instill_push -t {your-image-tag} api.instill.tech
+instill_push -t {your-image-tag} -u api.instill.tech
 ```
-3. After seeing this message, it means the model image is successfully pushed
+3. After seeing the following message, the model image has been successfully pushed
 ```bash
 2024-05-23 23:05:03,484.484 INFO     [Instill Builder] {instill-core-url}/{user_id}/{model_id}:{tag} pushed
 2024-05-23 23:05:03,485.485 INFO     [Instill Builder] Done
 ```
 
-As the model image is pushed, **Instill Model** will automatically allocate necessary resources for your model and deploy it.
-Depends on your model image size and the type of hardware you specified for the model, it could take awhile for the model to go online.
-You can go to the `Versions` tab under your model namespace to see the state.
+As the model image is pushed, **Instill Model** will automatically allocate the necessary resources for your model and deploy it. Depending on size of the model image, and the type of hardware specified for the model, it could take a while for the model to go online. In the console you can select the `Versions` tab under your model namespace to see the current state.
 
 Now, you can refer to [Use a Model](use) on how to trigger an inference.
