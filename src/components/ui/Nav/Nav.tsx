@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import cn from "clsx";
 import Link from "next/link";
 import {
+  Accordion,
   Button,
   CrossIcon,
   Icons,
@@ -10,6 +11,7 @@ import {
   MenuIcon,
   Menubar,
   Separator,
+  Tag,
 } from "@instill-ai/design-system";
 import { AnnouncementBar } from "@/components/ui";
 import { useInstillAICtx } from "@/contexts/InstillAIContext";
@@ -51,36 +53,149 @@ export const Nav = () => {
           href="/pricing"
           className="flex gap-x-2 text-[16px] font-semibold text-semantic-fg-secondary"
         >
-          <p className="my-auto">Products</p>
-          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-semantic-fg-secondary" />
+          <p className="my-auto">Home</p>
         </Link>
       </div>
       <div className="relative my-auto">
-        <Link
-          href="/pricing"
-          className="flex gap-x-2 text-[16px] font-semibold text-semantic-fg-secondary"
-        >
-          <p className="my-auto">For Business</p>
-          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-semantic-fg-secondary" />
-        </Link>
+        <Accordion.Root type="single" collapsible>
+          <Accordion.Item value="item-1">
+            <Accordion.Trigger className="text-[16px] font-semibold text-semantic-fg-secondary !no-underline">
+              Products
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    How it works
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Instill Hub
+                  </p>
+                  <p className="mt-1 font-sans text-[14px] font-normal text-[#000000B2]">
+                    Find a solution that suits you
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Pipeline Components
+                  </p>
+                  <p className="mt-1 font-sans text-[14px] font-normal text-[#000000B2]">
+                    Check the latest pipeline components
+                  </p>
+                </div>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
       </div>
       <div className="relative my-auto">
-        <Link
-          href="/pricing"
-          className="flex gap-x-2 text-[16px] font-semibold text-semantic-fg-secondary"
-        >
-          <p className="my-auto">For Developers</p>
-          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-semantic-fg-secondary" />
-        </Link>
+        <Accordion.Root type="single" collapsible>
+          <Accordion.Item value="item-1">
+            <Accordion.Trigger className="text-[16px] font-semibold text-semantic-fg-secondary !no-underline">
+              For Business
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Why Instill?
+                  </p>
+                  <p className="mt-1 font-sans text-[14px] font-normal text-[#000000B2]">
+                    Learn about our story and our mission statement.
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Deployment Options
+                  </p>
+                </div>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
       </div>
       <div className="relative my-auto">
-        <Link
-          href="/pricing"
-          className="flex gap-x-2 text-[16px] font-semibold text-semantic-fg-secondary"
-        >
-          <p className="my-auto">Company</p>
-          <Icons.ChevronDown className="my-auto h-4 w-4 stroke-semantic-fg-secondary" />
-        </Link>
+        <Accordion.Root type="single" collapsible>
+          <Accordion.Item value="item-1">
+            <Accordion.Trigger className="text-[16px] font-semibold text-semantic-fg-secondary !no-underline">
+              For Developers
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Documentation
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Changelog
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Tutorials
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    API Reference
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Open Source
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Discord
+                  </p>
+                  <p className="mt-1 font-sans text-[14px] font-normal text-[#000000B2]">
+                    Join our community
+                  </p>
+                </div>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
+      </div>
+      <div className="relative my-auto">
+        <Accordion.Root type="single" collapsible>
+          <Accordion.Item value="item-1">
+            <Accordion.Trigger className="text-[16px] font-semibold text-semantic-fg-secondary !no-underline">
+              Company
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    About
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Career{" "}
+                    <Tag
+                      variant="lightGreen"
+                      size="sm"
+                      className="ml-1 border-0"
+                    >
+                      We&apos;re hiring!
+                    </Tag>
+                  </p>
+                </div>
+                <div className="py-4">
+                  <p className="font-sans text-[16px] font-semibold leading-6 text-semantic-accent-default">
+                    Blog
+                  </p>
+                </div>
+              </div>
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
       </div>
       <div className="relative my-auto">
         <Link
@@ -90,16 +205,62 @@ export const Nav = () => {
           <p className="my-auto">Pricing</p>
         </Link>
       </div>
+      <Separator />
+      <div className="relative my-auto">
+        <div className="flex flex-row">
+          <p className="mb-3 w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            About
+          </p>
+          <p className="w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Blog
+          </p>
+        </div>
+        <div className="flex flex-row">
+          <p className="mb-3 w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Media Kit
+          </p>
+          <p className="w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Contact
+          </p>
+        </div>
+        <div className="flex flex-row">
+          <p className="mb-3 w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Careers
+          </p>
+          <p className="w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Changelog
+          </p>
+        </div>
+        <div className="flex flex-row">
+          <p className="mb-3 w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Terms of Service
+          </p>
+          <p className="w-1/2 font-sans text-[16px] font-semibold text-[#1D2433A6]">
+            Cookie Policy
+          </p>
+        </div>
+      </div>
 
-      <div className="relative my-auto ml-3">
+      <div className="relative my-auto">
         <Button
           variant="primary"
           size="lg"
           onClick={() =>
             router.push("https://instill.tech", undefined, { scroll: false })
           }
+          className="mb-2 w-full"
         >
           Sign Up
+        </Button>
+        <Button
+          variant="secondaryGrey"
+          size="lg"
+          onClick={() =>
+            router.push("https://instill.tech", undefined, { scroll: false })
+          }
+          className="w-full"
+        >
+          Log In
         </Button>
       </div>
     </React.Fragment>
@@ -323,7 +484,7 @@ export const Nav = () => {
   const mobileView = (
     <React.Fragment>
       {enableAnnouncementBar && announcementBar}
-      <div className="flex w-full flex-row p-4 lg:mb-[60px]">
+      <div className="flex w-full flex-row bg-white p-4 lg:mb-[60px]">
         <Link href="/" className="flex">
           <Logo variant="ColourLogomarkBlackType" width={159} />
         </Link>
@@ -350,7 +511,7 @@ export const Nav = () => {
       </div>
       <div className="relative w-full">
         {open && (
-          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[50px] bg-[#F7F6F8] px-4 py-[50px]">
+          <div className="absolute left-0 top-0 flex w-full flex-col gap-y-[40px] bg-white px-4 py-[50px]">
             {navbarLinkGroup}
           </div>
         )}
@@ -361,7 +522,7 @@ export const Nav = () => {
   return (
     <div
       id="navbar-test"
-      className="flex w-full flex-col bg-transparent bg-opacity-80 backdrop-blur-md lg:sticky lg:top-4 lg:z-50"
+      className="z-50 flex w-full flex-col bg-transparent bg-opacity-80 backdrop-blur-md lg:sticky lg:top-4"
     >
       <div className="flex w-full flex-col">
         <div className="hidden w-full lg:flex lg:flex-col">{desktopView}</div>
