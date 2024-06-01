@@ -74,8 +74,8 @@ export const getSections = (): SidebarSections[] => {
       isHeader: true,
     },
     {
-      text: "common:sidebarSections.coreConcepts",
-      link: `/docs/core/concepts`,
+      text: "common:sidebarSections.introduction",
+      link: `/docs/core/introduction`,
       collapsible: false,
       items: [],
       appType: "core",
@@ -184,6 +184,14 @@ export const getSections = (): SidebarSections[] => {
       appType: "core",
       versions: [],
       isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/component/introduction`,
+      collapsible: false,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
     },
     {
       text: "common:sidebarSections.genericComponent",
@@ -522,7 +530,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-github-discussions",
-            href: "https://github.com/orgs/instill-ai/discussions",
+            href: "https://github.com/instill-ai/instill-core/discussions",
             className: "",
             position: "right",
             label: "common:navbar.gitHubDiscussions",
@@ -533,7 +541,7 @@ export function getNavbar(
           },
           {
             key: "docs-nav-dropdown-github-issues",
-            href: "https://github.com/instill-ai/community/issues",
+            href: "https://github.com/instill-ai/instill-core/issues",
             className: "",
             position: "right",
             label: "common:navbar.gitHubIssues",

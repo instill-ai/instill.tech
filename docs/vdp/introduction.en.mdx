@@ -1,57 +1,38 @@
 ---
 title: "Introduction"
-lang: "zh-CN"
+lang: "en-US"
 draft: false
-description: "Build end-to-end unstructured data pipelines with the unstructured data ETL tool Instill Core https://github.com/instill-ai/instill-core"
+description: "Build end-to-end unstructured data pipelines with the full-stack AI solution - Instill Core https://github.com/instill-ai/instill-core"
 ---
 
-A **Pipeline** is an end-to-end workflow that automates a sequence of pipeline components to process data. A pipeline is defined by a trigger method and multiple components.
+## About the project
 
-## Component
-
-A **Component** is a fundamental building block used to construct a pipeline in VDP. VDP has three types of components: **Connectors**, **Operators**, and **Iterators**.
-
-### Connector
-
-**Connectors** are introduced to connect numerous providers of abilities worldwide.
-They enable users to connect to different types of providers and vendors, facilitating tasks such as data extraction, 
-transformation using AI models, and uploading to blockchains, third-party apps, or data warehouses. 
-Connectors primarily involve IO-bound tasks, with computation occurring on the vendor side, not inside the VDP.
-
-### Operator
-
-**Operators** are introduced to facilitate more flexible and fine-grained data injection and manipulation. 
-They allow users to run customized code without the need for server management or pre-provisioning. 
-This enables code execution whenever the pipeline is triggered, and data flows into the connector. 
-Operators primarily involve CPU-bound tasks, with computation taking place within the VDP.
-
-### Iterator
-
-**Iterators** enable VDP to process batch data. 
-They allow users to process items in a data array and then merge the results back into an array. This functionality is similar to the well-known `map` function.
-
-### Development Framework
-
-Instill provides a standardized framework to develop connectors and operators, 
-which utilizes [`ConnectorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/connector/v1beta/connector_definition.proto) and 
-[`OperatorDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1alpha/operator_definition.proto) 
-to define the basic properties and detailed configuration of a connector or an operator.
+**💧 Instill VDP** (Visual Data Pipeline) is a powerful tool designed to build
+end-to-end unstructured data pipelines. It leverages the capabilities of
+3rd-party data, AI, and applications functionalities and seamlessly connect with
+**⚗️ [Instill Model](/docs/model/introduction)** and **💾 [Instill
+Artifact](/docs/artifact/introduction)** via **⚙️ [Instill
+Component](/docs/component/introduction)** components.
 
 ## Trigger Method
 
 ### Trigger by Request
 
-VDP supports triggering a pipeline via HTTP and gRPC protocols in `SYNC` or `ASYNC` mode.
+VDP supports triggering a pipeline via HTTP and gRPC protocols in `SYNC` or
+`ASYNC` mode.
 
-- **SYNC Mode**: Responds to a request synchronously, sending back the result to the user immediately after the data is processed.
-This mode is suitable for real-time inference scenarios where low latency is crucial.
+- **SYNC Mode**: Responds to a request synchronously, sending back the result to
+  the user immediately after the data is processed. This mode is suitable for
+  real-time inference scenarios where low latency is crucial.
 
-- **ASYNC Mode**: Performs asynchronous workload. The user triggers the pipeline with an asynchronous request and only receives an acknowledgment response.
-This mode is ideal for use cases that require long-running workloads.
+- **ASYNC Mode**: Performs asynchronous workload. The user triggers the pipeline
+  with an asynchronous request and only receives an acknowledgment response.
+  This mode is ideal for use cases that require long-running workloads.
 
 ### Trigger by Scheduler (Coming Soon)
 
-A pipeline triggered by a scheduler performs scheduled workloads to regularly trigger the pipeline.
+A pipeline triggered by a scheduler performs scheduled workloads to regularly
+trigger the pipeline.
 
 ### Trigger by Event (Coming Soon)
 
@@ -63,9 +44,11 @@ A pipeline triggered by an application event.
 
 ## Pipeline Recipe
 
-A pipeline is defined by a `recipe`, which is essentially a JSON object composed of a trigger method and multiple components:
+A pipeline is defined by a `recipe`, which is essentially a JSON object composed
+of a trigger method and multiple components:
 
-Here is a sample recipe where the input is a `prompt`, and the output is a `text`.
+Here is a sample recipe where the input is a `prompt`, and the output is a
+`text`.
 
 ```json
 {
@@ -73,15 +56,15 @@ Here is a sample recipe where the input is a `prompt`, and the output is a `text
     "trigger_by_request": {
       "request_fields": {
         "prompt": {
-            "title": "input",
-            "instill_format": "string"
+          "title": "input",
+          "instill_format": "string"
         }
       },
       "response_fields": {
         "text": {
-            "title": "text",
-            "value": "${op-0.output.texts[0]}"
-        } 
+          "title": "text",
+          "value": "${op-0.output.texts[0]}"
+        }
       }
     }
   },
@@ -96,7 +79,7 @@ Here is a sample recipe where the input is a `prompt`, and the output is a `text
           "n": 2,
           "prompt": "${trigger.prompt}",
           "response_format": {
-              "type": "text"
+            "type": "text"
           },
           "system_message": "You are a helpful assistant.",
           "temperature": 1,
@@ -113,41 +96,74 @@ Here is a sample recipe where the input is a `prompt`, and the output is a `text
 
 Within the recipe, we have two essential fields:
 
-1. **trigger**: Indicates how the pipeline is triggered. We only allow a single trigger method for a pipeline. Currently, we support `trigger_by_request`.
-2. **components**: Consists of multiple components, which can be a connector, operator, or iterator.
-   - Each component must have a unique component ID, e.g., `openai-0`. This component ID should follow the [RFC1034 rule](https://datatracker.ietf.org/doc/html/rfc1034), which consists of alphabets, numbers, and hyphens.
+1. **trigger**: Indicates how the pipeline is triggered. We only allow a single
+   trigger method for a pipeline. Currently, we support `trigger_by_request`.
+2. **components**: Consists of multiple components, which can be a connector,
+   operator, or iterator.
+   - Each component must have a unique component ID, e.g., `openai-0`. This
+     component ID should follow the [RFC1034
+     rule](https://datatracker.ietf.org/doc/html/rfc1034), which consists of
+     alphabets, numbers, and hyphens.
    - For a `connector`, we need to set up these fields:
      - **definition_name**: Indicates which type of connector it is.
-     - **task**: Indicates which task of the connector. The task will be listed in the connector definition `connector_definition.tasks` field. [Example](https://api.instill.tech/vdp/v1beta/connector-definitions/openai?view=VIEW_FULL).
-     - **input**: Sets up the input data. The schema is described in the `connector_definition.component_specification` field.
-     - **connection**: Sets up how the connector is connected to the vendor. The schema is described in the `connector_definition.data_specifications` field.
-     - **condition**: (optional) Sets up the condition for whether this component will be executed or not.
+     - **task**: Indicates which task of the connector. The task will be listed
+       in the connector definition `connector_definition.tasks` field.
+       [Example](https://api.instill.tech/vdp/v1beta/connector-definitions/openai?view=VIEW_FULL).
+     - **input**: Sets up the input data. The schema is described in the
+       `connector_definition.component_specification` field.
+     - **connection**: Sets up how the connector is connected to the vendor. The
+       schema is described in the `connector_definition.data_specifications`
+       field.
+     - **condition**: (optional) Sets up the condition for whether this
+       component will be executed or not.
    - For an `operator`, we need to set up these fields:
      - **definition_name**: Indicates which type of operator it is.
-     - **task**: Indicates which task of the operator. The task will be listed in the operator definition `operator_definition.tasks` field. [Example](https://api.instill.tech/vdp/v1beta/operator-definitions/base64?view=VIEW_FULL).
-     - **input**: Sets up the input data. The schema is described in the `operator_definition.component_specification` field.
-     - **condition**: (optional) Sets up the condition for whether this component will be executed or not.
+     - **task**: Indicates which task of the operator. The task will be listed
+       in the operator definition `operator_definition.tasks` field.
+       [Example](https://api.instill.tech/vdp/v1beta/operator-definitions/base64?view=VIEW_FULL).
+     - **input**: Sets up the input data. The schema is described in the
+       `operator_definition.component_specification` field.
+     - **condition**: (optional) Sets up the condition for whether this
+       component will be executed or not.
    - For an `iterator`, we need to set up these fields:
      - **input**: The array input.
      - **output_elements**: Sets up the output of this iterator.
-     - **components**: An array of components that are executed inside the iterator.
-  - Refers to the connector resource. For more information, please refer to [AI Connectors](../../vdp/ai-connector), [Data Connectors](../../vdp/data-connector), or [App Connectors](../../vdp/app-connector).
+     - **components**: An array of components that are executed inside the
+       iterator.
+
+- Refers to the connector resource. For more information, please refer to [AI
+  Connectors](../../vdp/ai-connector), [Data
+  Connectors](../../vdp/data-connector), or [App
+  Connectors](../../vdp/app-connector).
 
 ## Data Flow
 
 ### Reference from Data
 
-Within pipeline components, we use a **reference** syntax to set up the data flow, i.e., the **input** field of each component:
-   - A Reference employs special syntax enclosed in single curly brackets. For example,
-     - Reference data from the pipeline trigger request: `${trigger.KEY}`, you can add any fields you want in the `recipe.trigger.trigger_by_request.request_fields`.
-     - Reference data from the component: `${comp-id.input.KEY}` or `${comp-id.output.KEY}`, the available data fields are described in `component_specification` of each connector or operator.
-   - It functions as a variable reference, copying the value from an upstream component to the data input while preserving the original data type.
-   
-When triggered by request, we also need to set up the response data of the request. You can add any fields you want in the `recipe.trigger.trigger_by_request.response_fields`.
+Within pipeline components, we use a **reference** syntax to set up the data
+flow, i.e., the **input** field of each component:
 
-If you don't want to use data reference, you can also set up the constant value in the recipe.
+- A Reference employs special syntax enclosed in single curly brackets. For
+  example,
+  - Reference data from the pipeline trigger request: `${trigger.KEY}`, you can
+    add any fields you want in the
+    `recipe.trigger.trigger_by_request.request_fields`.
+  - Reference data from the component: `${comp-id.input.KEY}` or
+    `${comp-id.output.KEY}`, the available data fields are described in
+    `component_specification` of each connector or operator.
+- It functions as a variable reference, copying the value from an upstream
+  component to the data input while preserving the original data type.
 
-When utilizing batch triggering in VDP, where each component processes an array of inputs, the rendered data input for this component, with batch 2 as an example, appears as follows:
+When triggered by request, we also need to set up the response data of the
+request. You can add any fields you want in the
+`recipe.trigger.trigger_by_request.response_fields`.
+
+If you don't want to use data reference, you can also set up the constant value
+in the recipe.
+
+When utilizing batch triggering in VDP, where each component processes an array
+of inputs, the rendered data input for this component, with batch 2 as an
+example, appears as follows:
 
 ```json
 {
@@ -156,22 +172,29 @@ When utilizing batch triggering in VDP, where each component processes an array 
       "prompt": "Who is the CEO of Instill AI"
     },
     {
-     "prompt": "Who is the COO of Instill AI"
+      "prompt": "Who is the COO of Instill AI"
     }
   ]
 }
 ```
 
-Please refer to the [API document](https://openapi.instill.tech/reference/pipelinepublicservice_triggeruserpipeline) for instructions on how to trigger a pipeline.
+Please refer to the [API
+document](https://openapi.instill.tech/reference/pipelinepublicservice_triggeruserpipeline)
+for instructions on how to trigger a pipeline.
 
 ### Reference from Secrets
 
-Besides reference data from the pipeline input or component setting, we can also reference secrets from the secret management system. The value of these secrets fields will be kept out of the recipe.
-So when the pipeline is shared or published, the keys will always be protected. Examples: `"api_key": "${secrets.my-openai-key}"`.
+Besides reference data from the pipeline input or component setting, we can also
+reference secrets from the secret management system. The value of these secrets
+fields will be kept out of the recipe. So when the pipeline is shared or
+published, the keys will always be protected. Examples: `"api_key":
+"${secrets.my-openai-key}"`.
 
 ## Control Flow
 
-Within pipeline components, control flow is facilitated through setting **condition** in each component, which serves as the means to specify the condition determining whether this component will be executed or not.
+Within pipeline components, control flow is facilitated through setting
+**condition** in each component, which serves as the means to specify the
+condition determining whether this component will be executed or not.
 
 **Example Configuration**
 
@@ -179,11 +202,14 @@ Let's begin with an example.
 
 ```json
 {
-  "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\"",
+  "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\""
 }
 ```
 
-This `condition` field allows us to define the condition setting. The VDP will interpret and use this configuration to decide whether this component will be executed or not. We have two types of conditions: "condition on value" and "condition on status".
+This `condition` field allows us to define the condition setting. The VDP will
+interpret and use this configuration to decide whether this component will be
+executed or not. We have two types of conditions: "condition on value" and
+"condition on status".
 
 ### Condition on Value
 
@@ -209,62 +235,66 @@ We support the following syntax for the condition:
 Here are some examples for the condition field:
 
 - Condition on string value
-    ```json
-    {
-      "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\""
-    }
-    ```
+
+  ```json
+  {
+    "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\""
+  }
+  ```
 
 - Condition on number value
-    ```json
-    {
-      "condition": "${trigger.a-condition-num} > 1"
-    }
-    ```
+
+  ```json
+  {
+    "condition": "${trigger.a-condition-num} > 1"
+  }
+  ```
 
 - Condition on boolean value
-    ```json
-    {
-      "condition": "${trigger.a-condition-bool}"
-    }
-    ```
+
+  ```json
+  {
+    "condition": "${trigger.a-condition-bool}"
+  }
+  ```
 
 - Complex condition
-    ```json
-    {
-      "condition": "(${trigger.a-condition-bool} && ${comp-a.output.x} == 1) || ${comp-b.output.y} < 1"
-    }
-    ```
+
+  ```json
+  {
+    "condition": "(${trigger.a-condition-bool} && ${comp-a.output.x} == 1) || ${comp-b.output.y} < 1"
+  }
+  ```
 
 - Always false
-    ```json
-    {
-      "condition": "false"
-    }
-    ```
+  ```json
+  {
+    "condition": "false"
+  }
+  ```
 
 ### Condition on Status
 
-Besides "condition on value," we also support the condition on status. We provide a boolean value called `status.completed`, which allows you to condition on whether a component's execution is completed or not.
+Besides "condition on value," we also support the condition on status. We
+provide a boolean value called `status.completed`, which allows you to condition
+on whether a component's execution is completed or not.
 
 **Examples:**
 
 Here are some examples for the condition field:
 
-- The component will be executed after component `compA` is completed; you can use this to control the execution order of components. 
-    ```json
-    {
-      "condition": "${comp-a.status.completed}"
-    }
-    ```
+- The component will be executed after component `compA` is completed; you can
+  use this to control the execution order of components.
+
+  ```json
+  {
+    "condition": "${comp-a.status.completed}"
+  }
+  ```
 
 - You can also combine it with the value condition.
-    ```json
-    {
-      "condition": "${trigger.a-condition-bool} || ${comp-a.status.completed}"
-    }
-    ```
-
-
-
-
+  ```json
+  {
+    "condition": "${trigger.a-condition-bool} || ${comp-a.status.completed}"
+  }
+  ```

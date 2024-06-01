@@ -284,7 +284,7 @@ const ComponentPage: NextPageWithLayout = () => {
             <CommonCtaButton
               withArrow={true}
               link={
-                "https://github.com/instill-ai/community/issues/new?assignees=&labels=feature%2Cneed-triage&projects=&template=feature_request.yaml&title=%5BFeature%5D+%3Ctitle%3E"
+                "https://github.com/instill-ai/instill-core/issues/new?assignees=&labels=feature%2Cneed-triage&projects=&template=feature_request.yaml&title=%5BFeature%5D+%3Ctitle%3E"
               }
               text="Request a Component"
               position="my-auto"

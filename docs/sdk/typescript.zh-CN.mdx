@@ -1,6 +1,6 @@
 ---
 title: "TypeScript SDK"
-lang: "en-US"
+lang: "zh-CN"
 draft: false
 description: "Welcome to Instill SDK - Where the world of AI-first applications comes alive"
 ---
@@ -8,7 +8,8 @@ description: "Welcome to Instill SDK - Where the world of AI-first applications 
 <InfoBlock type="warning" title="warning">
   **This SDK tool is still working in progress!** Currently there has yet to be
   a stable version release, please feel free to open any issue regarding this
-  `SDK` in our [community](https://github.com/instill-ai/community/issues) repo
+  `SDK` in our [community](https://github.com/instill-ai/instill-core/issues)
+  repo
 </InfoBlock>
 
 ## Requirements
@@ -124,7 +125,7 @@ export default function TypescriptSdkDemo() {
 ### Connect with Instill Core
 
 <InfoBlock type="info" title="info">
-  Make sure you have Instill Core upruning in your local machine.
+  Make sure you have Instill Core up running in your local machine.
 </InfoBlock>
 
 ```typescript
@@ -162,7 +163,7 @@ export default function TypescriptSdkDemo() {
 }
 ```
 
-## Example Templetes
+## Example Templates
 
 ### Next App
 
@@ -239,44 +240,44 @@ export default function TypescriptSdkDemo() {
 | `updateModelMutation`       | payload                           |
 | `deleteUserModelMutation`   | modelName                         |
 | `deployUserModelAction`     | modelName                         |
-| `undeployUserModeleAction`  | modelName                         |
+| `undeployUserModelAction`   | modelName                         |
 
 ### Operation
 
 | Function                    | Params        |
 | :-------------------------- | :------------ |
 | `getOperationQuery`         | operationName |
-| `checkUntilOperationIsDoen` | operationName |
+| `checkUntilOperationIsDone` | operationName |
 
 ### Mgmt
 
 | Function                          | Params                  |
-| :------------------------------   | :--------------------- |
+| :-------------------------------- | :---------------------- |
 | `getUserQuery`                    | userName                |
 | `getAuthenticatedUserQuery`       |                         |
 | `checkUserIdExist`                | id                      |
 | `getApiTokenQuery`                | tokenName               |
 | `listApiTokensQuery`              | pageSize, nextPageToken |
 | `updateAuthenticatedUserMutation` | payload                 |
-| `createApiTokenMutation`          | payload                 |   
+| `createApiTokenMutation`          | payload                 |
 | `deleteApiTokenMutation`          | tokenName               |
 | `checkNamespace`                  | id                      |
 
-### Oraganization
+### Organization
 
-| Function                               | Params                           |
+| Function                               | Params                          |
 | :------------------------------------- | :------------------------------ |
-| `getOrganizationMembershipQuery`       | organizationID, userID           |
-| `getOrganizationQuery`                 | organizationID                   |  
-| `getUserMembershipQuery`               | organizationID, userID           |
-| `getUserMembershipsQuery`              | userID                           |
-| `listOrganizationsQuery`               | pageSize, nextPageToken, filter  |
-| `createOrganizationMutation`           | payload                          |
-| `deleteOrganizationMutation`           | organizationName                 |
-| `deleteUserMembershipMutation`         | organizationID,userID            |
-| `updateOrganizationMembershipMutation` | payload                          |
-| `updateOrganizationMutation`           | payload                          |
-| `updateUserMembershipMutation`         | payload                          |
+| `getOrganizationMembershipQuery`       | organizationID, userID          |
+| `getOrganizationQuery`                 | organizationID                  |
+| `getUserMembershipQuery`               | organizationID, userID          |
+| `getUserMembershipsQuery`              | userID                          |
+| `listOrganizationsQuery`               | pageSize, nextPageToken, filter |
+| `createOrganizationMutation`           | payload                         |
+| `deleteOrganizationMutation`           | organizationName                |
+| `deleteUserMembershipMutation`         | organizationID,userID           |
+| `updateOrganizationMembershipMutation` | payload                         |
+| `updateOrganizationMutation`           | payload                         |
+| `updateUserMembershipMutation`         | payload                         |
 
 ## Generate proto-ts
 
@@ -284,4 +285,4 @@ export default function TypescriptSdkDemo() {
 ./generate_proto.sh
 ```
 
-It will genrate protobuf into `dist/protogen-ts` folder
+It will generate protobuf into `dist/protogen-ts` folder

@@ -6,9 +6,9 @@ description: "Welcome to Instill SDK - Where the world of AI-first applications 
 ---
 
 <InfoBlock type="info" title="info">
-  **This SDK tool is under active development** For any bug found or featur request,
-  feel free to open any issue regarding this SDK tool in our in our
-  [community](https://github.com/instill-ai/community/issues) repo
+  **This SDK tool is under active development** For any bug found or feature
+  request, feel free to open any issue regarding this SDK tool in our in our
+  [community](https://github.com/instill-ai/instill-core/issues) repo
 </InfoBlock>
 
 ## Requirements
@@ -113,10 +113,11 @@ global_config.set_default(
 ## Usage
 
 <InfoBlock type="info" title="info">
-  Python SDK is currently under some refactoring jobs, the section will be populated soon.
+  Python SDK is currently under some refactoring jobs, the section will be
+  populated soon.
 </InfoBlock>
 
-{/* **You can find a complete pipeline setup example with python-sdk on our [**GitHub repo**](https://github.com/instill-ai/python-sdk/blob/main/notebooks/create_pipeline.ipynb)**
+{/* You can find a complete pipeline setup example with python-sdk on our [**GitHub repo**](https://github.com/instill-ai/python-sdk/blob/main/notebooks/create_pipeline.ipynb) */}
 
 ### Create Client
 
@@ -129,8 +130,8 @@ client = get_client()
 ```
 
 <InfoBlock type="info" title="info">
-  Remember to call `client.close()` at the end of script to
-  release the channel and the underlying resources.
+  Remember to call `client.close()` at the end of script to release the channel
+  and the underlying resources.
 </InfoBlock>
 
 If you have not set up `Instill VDP` or `Instill Model`, you will get a warning like this:
@@ -318,11 +319,11 @@ Now if you `print` the outputs, you will get a list of specific `task` output, i
 
 #### Create Connector
 
-With similiar conecpt as creating `model`, below is the steps to create a `instill model connector`
+With similar concept as creating `model`, below is the steps to create a `instill model connector`
 
 First import our predefined `InstillModelConnector` and config dataclass `InstillModelConnector2`[^5]
 
-[^5]: config dataclass is auto-gen from our json schema, we will refacor the source json to make the dataclass name makes more sense
+[^5]: config dataclass is auto-gen from our json schema, we will refactor the source json to make the dataclass name makes more sense
 
 ```python
 from instill.resources.schema.instill import InstillModelConnector1
@@ -367,7 +368,7 @@ from instill.resources import (
 )
 ```
 
-To Form a pipeine, it required a `start` operator and a `end` operator, we have helper functions to create both
+To Form a pipeline, it required a `start` operator and a `end` operator, we have helper functions to create both
 
 ```python
 # define start component input spec
@@ -446,7 +447,7 @@ instill_model_pipeline = Pipeline(
 
 Then the pipeline is done, now let us test it by triggering it!
 
-```python
+````python
 # we can trigger the pipeline now
 import base64
 import requests
@@ -464,3 +465,4 @@ i.update(
 # verify the output
 instill_model_pipeline([i])[0][0]["inference_result"][0]["category"] == "dog"
 ``` */}
+````

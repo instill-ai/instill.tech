@@ -1,0 +1,167 @@
+---
+title: "Introduction"
+lang: "en-US"
+draft: false
+description: "Instill Core Introduction"
+---
+
+## About the project
+
+The modern data stack lacks unstructured data processing capabilities,
+presenting significant challenges in connecting diverse data sources, developing
+and deploying deep learning models, and maintaining resilient, high-performing
+pipelines. **🔮 Instill Core** addresses these issues by providing a scalable
+solution that integrates AI models with the modern data stack, offering
+end-to-end infrastructure tools that streamline the entire process. This makes
+AI accessible and effective for everyone, bridging the gap that previously
+required extensive in-house, non-scalable efforts.
+
+<ZoomableImg
+  src="https://raw.githubusercontent.com/instill-ai/.github/main/img/instill-core-stack-light.svg"
+  width="80%"
+/>
+
+**🔮 Instill Core** encompasses multiple subprojects that together form
+a full-stack AI solution, including
+
+- **💧 [Instill VDP](#-instill-vdp)**,
+- **⚗️ [Instill Model](#%EF%B8%8F-instill-model)**,
+- **💾 [Instill Artifact](#-instill-artifact-coming-soon)**, and
+- **⚙️ [Instill Component](#%EF%B8%8F-instill-component)**.
+
+The main project is maintained in the [instill-core](https://github.com/instill-ai/instill-core) repository.
+
+The project also comes with a web-based UI application known as **📺 [Instill
+Console](#-instill-console)**, which offers a user-friendly, no-code and
+drag-and-drop pipeline builder for effortless pipeline creation and enhanced
+real-time and historical observability of pipeline runs. Users have the option
+to interact with **🔮 Instill Core** through the **⌨️ [Instill
+CLI](#-instill-cli)** and can integrate it using the **📦 [Instill
+SDK](#-instill-sdk)**.
+
+## 💧 Instill VDP
+
+**VDP** stands for **Versatile Data Pipeline**. The foundation of **💧 Instill
+VDP** lies in the concept of a highly flexible, extensible, and versatile
+pipeline that can handle a variety of data modalities by connecting and using
+various components (see ⚙️ [Instill Component](#%EF%B8%8F-instill-component) section).
+
+The implementation is in the
+[pipeline-backend](https://github.com/instill-ai/pipeline-backend) repository.
+
+## ⚗️ Instill Model
+
+Processing unstructured data is akin to a chicken-and-egg conundrum. AI models
+require data for training, fine-tuning, and evaluation, while the data
+processing itself necessitates effective AI models. These two elements are
+mutually dependent and often interwoven in real-world applications. **⚗️ Instill
+Model** is responsible for managing MLOps/LLMOps services. Its role includes
+serving, fine-tuning, and monitoring models to ensure consistent performance in
+unstructured data ETL processes.
+
+The implementation can be found in the
+[model-backend](https://github.com/instill-ai/model-backend) repository.
+
+## 💾 Instill Artifact (coming soon)
+
+**💾 Instill Artifact** orchestrates unstructured data to transform documents
+(e.g., HTML, PDF, CSV, PPTX, DOC), images (e.g., JPG, PNG, TIFF), audio (e.g.,
+WAV, MP3 ) and video (e.g., MP4, MOV) into a unified AI-ready format. It ensures
+your data is clean, curated, and ready for extracting insights and building your
+Knowledge Base.
+
+The implementation is in the
+[artifact-backend](https://github.com/instill-ai/artifact-backend) repository.
+
+## ⚙️ Instill Component
+
+In **💧 Instill VDP**, a component serves as a basic unit for constructing a pipeline.
+The platform provides a diverse range of components, each designed for unique
+roles. These components enable pipelines to execute ETL (Extract, Transform,
+Load) operations on unstructured data. The available component types are:
+
+- [Generic](/docs/component/generic)
+- [AI](/docs/component/ai)
+- [Data](/docs/component/data)
+- [Application](/docs/component/application)
+- [Operator](/docs/component/operator)
+
+The integration framework, written in Go, is housed in the
+[component](https://github.com/instill-ai/component) repository.
+
+## 📺 Instill Console
+
+The console of **🔮 Instill Core** is a web-based user interface designed to
+facilitate easy interaction with Instill Core. It features a no-code,
+drag-and-drop pipeline builder, enabling even non-technical users to easily
+construct flexible VDP pipelines by merely dragging and dropping components. The
+emphasis is on simplicity and user-friendliness, aiming to offer a cohesive and
+intuitive user experience.
+
+The console's maintenance is handled in the
+[console](https://github.com/instill-ai/console) repository.
+
+## ⌨️ Instill CLI (coming soon)
+
+The command-line interface tool provides a direct and efficient way to interact
+with **🔮 Instill Core**. It is designed for developers who prefer working in a
+terminal environment or need to automate tasks. The CLI allows users to manage
+and control VDP pipelines, components, and other resources without the need for
+a graphical interface. It is a powerful tool for scripting and automation,
+enabling developers to integrate **🔮 Instill Core** into their existing
+development workflows.
+
+The implementation is in the [cli](https://github.com/instill-ai/cli)
+repository.
+
+## 📦 Instill SDK
+
+The project provides a set of libraries designed to facilitate the integration
+of **🔮 Instill Core** into other applications. It provides a programmatic
+interface to interact with the core services, allowing developers to build and
+manage VDP pipelines, components, and other resources directly from their code.
+
+Currently, the SDK is available in two languages:
+
+- **Python SDK**: Ideal for data scientists and AI researchers, the Python SDK
+  allows for seamless integration with popular data science tools and libraries.
+  It is maintained in the [python-sdk](https://github.com/instill-ai/python-sdk)
+  repository.
+
+- **TypeScript SDK**: Designed for web and Node.js developers, the TypeScript
+  SDK provides type safety and autocompletion, enhancing developer productivity.
+  It is maintained in the
+  [typescript-sdk](https://github.com/instill-ai/typescript-sdk) repository.
+
+## API-first
+
+**🔮 Instill Core** adopts an **API-first** design principle, enabling seamless
+integration with modern data stacks at any scale.
+
+The API foundation relies on [Protocol Buffers version 3
+(proto3)](https://developers.google.com/protocol-buffers) as the Interface
+Definition Language (IDL) to define the API interface and the structure of the
+payload messages. The same interface definitions are used for both REST (via
+[gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) and RPC,
+allowing access to the API over different protocols:
+
+- JSON over HTTP
+- Protocol Buffers over gRPC
+
+The interface definitions are maintained in
+[protobufs](https://github.com/instill-ai/protobufs) with auto-generated Go
+codes in [protogen-go](https://github.com/instill-ai/protogen-go) and Python
+code in [protogen-python](https://github.com/instill-ai/protogen-python). The
+official protobuf documentation can be found in our [Buf Scheme Registry
+(BSR)](https://buf.build/instill-ai/protobufs).
+
+## Release stage
+
+subprojects and components developed and maintained in **🔮 Instill Core** use
+release stage defined as below to indicate their readiness:
+
+| Stage                   | Description                                                                                                                                                                                                                                                                  |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alpha**               | An alpha component indicates that it is under development, and Instill AI is actively collecting early feedback and issues reported by early adopters. Alpha components are not recommended for production use.                                                              |
+| **Beta**                | A beta component is considered stable and reliable, with no further backwards incompatible changes expected. However, it may not have been tested by a large user base. Beta releases are intended to identify and fix any remaining issues before moving to the next stage. |
+| **Generally Available** | A generally available component has undergone thorough testing and is ready for use in production environments. Its documentation is considered sufficient to support widespread adoption.                                                                                   |
