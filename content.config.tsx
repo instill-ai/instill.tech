@@ -137,8 +137,8 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.buildPipeline",
-      link: `/docs/vdp/build`,
+      text: "common:sidebarSections.createPipeline",
+      link: `/docs/vdp/create`,
       items: [],
       appType: "core",
       versions: ["latest"],

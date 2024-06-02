@@ -2,17 +2,23 @@
 title: "Instill Format"
 lang: "en-US"
 draft: false
-description: "Instill Format in VDP"
+description: "Learn about Instill VDP, the pipeline orchestration platform for unstructured data ETL, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-VDP defines the Instill Format as the data type identifier, ensuring consistency and compatibility across components.
-Each input field in a component will define `instillAcceptFormats`, specifying the data types it can accept.
-Conversely, each output field will define `instillFormat`, indicating the data type it produces.
-The VDP reference system ensures that all input fields reference the correct data types, maintaining the integrity and functionality of the data pipeline.
+**💧 Instill VDP** defines the **Instill Format** as the data type identifier,
+ensuring consistency and compatibility across components. Each input field in a
+component will define `instillAcceptFormats`, specifying the data types the
+component can accept. Conversely, each output field will define `instillFormat`,
+indicating the data type the component produces. The design of **💧 Instill
+VDP** reference system ensures that all input fields reference the correct data
+types, maintaining the integrity and functionality of the data pipeline.
 
-VDP extends the Instill Format from the JSON primitive types and [MIME types (IANA media types)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+VDP extends the Instill Format from the JSON primitive types and [MIME types
+(IANA media
+types)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
 
 **JSON Primitive Types**:
+
 - `string`
 - `number`
 - `integer`
@@ -21,6 +27,7 @@ VDP extends the Instill Format from the JSON primitive types and [MIME types (IA
 - `array`
 
 **MIME Types**:
+
 - `text/*`: All kinds of text data, such as `text/html`
 - `image/*`: All kinds of image data, such as `image/jpeg`
 - `video/*`: All kinds of video data, such as `video/h264`
@@ -34,9 +41,11 @@ VDP extends the Instill Format from the JSON primitive types and [MIME types (IA
 
 **Structured Data Types**
 
-Structured data types are specifically designed for various advanced tasks, particularly in the fields of Natural Language Processing (NLP) and Computer Vision (CV).
+Structured data types are specifically designed for various advanced tasks,
+particularly in the fields of Large Language Model (LLM) and Computer Vision
+(CV).
 
-- `structured/chat_message`: Used in large language model (LLM) tasks
+- `structured/chat_message`: Used in LLM tasks
 - `structured/multi_modal_content`: Used in LLM tasks
 - `structured/bounding_box`: Used in CV tasks
 - `structured/detection_object`: Used in CV tasks
@@ -45,5 +54,8 @@ Structured data types are specifically designed for various advanced tasks, part
 - `structured/ocr_object`: Used in CV tasks
 - `structured/semantic_segmentation_stuff`: Used in CV tasks
 
-By adhering to these formats, VDP ensures that data is processed correctly and efficiently, enabling users to build robust and scalable data pipelines.
-The use of standardized data types also facilitates easier integration and interoperability between different components and systems within the VDP.
+By adhering to these formats, **💧 Instill VDP** ensures accurate and efficient
+data processing, enabling users to construct robust and scalable unstructured
+data pipelines. The utilization of standardized data types also promotes
+seamless integration and interoperability among various components and systems
+within the **💧 Instill VDP**.
