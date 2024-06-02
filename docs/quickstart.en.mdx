@@ -75,7 +75,7 @@ To create your first pipeline through the Console:
 4. Click **Create**.
 
 This will redirect you to the no-code pipeline builder.
-On the canvas, you can drag and drop connectors and operators to construct your pipeline.
+On the canvas, you can drag and drop components to construct your pipeline.
 
 A blank canvas contains two components that serve as the pipeline input and output interface:
 - **Trigger** is used to set the pipeline parameters when triggering a pipeline.
@@ -91,7 +91,7 @@ This configuration requires two inputs: a prompt to generate the idea for the st
 
 #### Create the OpenAI component
 
-1. Click **Component +** and choose **OpenAI** from **Connectors**. This will add a OpenAI component `openai_0` to the canvas.
+1. Click **Component +** and choose **OpenAI** from **Components**. This will add a OpenAI component `openai_0` to the canvas.
 2. Select **Text Generation** from the dropdown of the **OpenAI Component** field.
 3. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_. You can identify the models that support default credentials from the icon next to them, displaying stack of tokens.
 
@@ -121,7 +121,7 @@ Output:
 </InfoBlock>
 
 
-5. Click the **More** link on the `openai_0` connector to open configuration right panel.
+5. Click the **More** link on the `openai_0` component to open configuration right panel.
 6. Fill **System Message** to set the behavior of the model. Here we set the value to:
 
 ```
@@ -131,16 +131,16 @@ You are a prompt engineer to generate Stable Diffusion prompts to generate stick
 7. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
 8. Set **n** to _1_ to indicate only one chat completion.
 
-The OpenAI connector will automatically link to the Trigger component
-since we have used `${trigger.sticker_shape}` and `${trigger.prompt}` in the OpenAI connector configuration.
+The OpenAI component will automatically link to the Trigger component
+since we have used `${trigger.sticker_shape}` and `${trigger.prompt}` in the OpenAI component configuration.
 The `${}` placeholders represent **string values** to be filled during pipeline triggering.
 
 #### Create the Stability AI component
 
-1. Click **Component +** and choose **Stability AI** from **Connectors**. This will add a Stability AI component `stability_0` to the canvas.
+1. Click **Component +** and choose **Stability AI** from **Components**. This will add a Stability AI component `stability_0` to the canvas.
 2. Select **Text To Image** from the dropdown of the **Stability AI Component** field.
 3. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
-4. In the **Prompts** field, specify the generated text array from the OpenAI connector output `${openai_0.output.texts}`.
+4. In the **Prompts** field, specify the generated text array from the OpenAI component output `${openai_0.output.texts}`.
 5. Click the **More** link on the `stability_0` component to open configuration right panel.
 6. Update the **width** to _1024_ and the **height** to _1024_ to set the resolution of the generated image.
 6. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
@@ -148,8 +148,8 @@ The `${}` placeholders represent **string values** to be filled during pipeline 
 8. Specify a **Seed** with _0_ for a randomization.
 9. Fill **Steps** to _30_ to indicate the number of diffusion steps to run.
 
-You will see that the Stability AI connector is automatically linked to the OpenAI connector
-since we have used `${openai_0.output.texts}` in the Stability AI connector configuration.
+You will see that the Stability AI component is automatically linked to the OpenAI component
+since we have used `${openai_0.output.texts}` in the Stability AI component configuration.
 
 #### Configure the Response component
 
@@ -265,7 +265,7 @@ To obtain the generated image, decode the `digital_sticker` field of the respons
 
 ### Generate Stickers in Batch
 
-Interested in generating multiple stickers at once? You can do this by adjusting the Stability AI connector configuration and setting **Samples** to _4_.
+Interested in generating multiple stickers at once? You can do this by adjusting the Stability AI component configuration and setting **Samples** to _4_.
 
 Save your changes and test the pipeline again with the following prompt:
 

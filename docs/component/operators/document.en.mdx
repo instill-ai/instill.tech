@@ -1,0 +1,34 @@
+---
+title: "Document"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Document component https://github.com/instill-ai/instill-core"
+---
+
+The Document component is a  component that allows users to manipulate Document files.
+It can carry out the following tasks:
+
+- [Convert To Markdown](#convert-to-markdown)
+
+## Release Stage
+
+`Alpha`
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/operator/document/v0/config/definition.json).
+
+## Supported Tasks
+
+### Convert To Markdown
+
+Convert PDF to Markdown format.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CONVERT_TO_MARKDOWN` |
+| Document (required) | `pdf` | string | PDF file |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Body | `body` | string | Markdown text converted from the PDF document |

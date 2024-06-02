@@ -2,14 +2,15 @@
 title: "Text"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up a VDP Text operator https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up a VDP Text component https://github.com/instill-ai/instill-core"
 ---
 
-The Text component is an operator that allows users to extract and manipulate text from different sources.
+The Text component is an operator component that allows users to extract and manipulate text from different sources.
 It can carry out the following tasks:
 
 - [Convert To Text](#convert-to-text)
 - [Split By Token](#split-by-token)
+- [Chunk Text](#chunk-text)
 
 ## Release Stage
 
@@ -39,7 +40,7 @@ Convert document to text.
 
 ### Split By Token
 
-Split text by token.
+Split text by token. It will be decprecated soon. Please use Chunk Text task instead.
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -52,4 +53,20 @@ Split text by token.
 | :--- | :--- | :--- | :--- |
 | Token Count | `token_count` | integer | Total count of tokens in the input text |
 | Text Chunks | `text_chunks` | array[string] | Text chunks after splitting |
+| Number of Text Chunks | `chunk_num` | integer | Total number of output text chunks |
+
+### Chunk Text
+
+Chunk text with different strategies.
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CHUNK_TEXT` |
+| Text (required) | `text` | string | Text to be chunked |
+| Strategy (required) | `strategy` | object | Chunking strategy |
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Token Count (optional) | `token_count` | integer | Total count of tokens in the input text |
+| Text Chunks | `text_chunks` | array[object] | Text chunks after splitting |
 | Number of Text Chunks | `chunk_num` | integer | Total number of output text chunks |

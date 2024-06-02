@@ -179,6 +179,20 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
+      text: "common:sidebarSections.secret",
+      link: `/docs/vdp/secret`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillFormat",
+      link: `/docs/vdp/instill-format`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.instillComponent",
       items: [],
       appType: "core",
@@ -309,6 +323,10 @@ export const getSections = (): SidebarSections[] => {
         {
           text: "common:sidebarSections.image",
           link: `/docs/component/operators/image`,
+        },
+        {
+          text: "common:sidebarSections.document",
+          link: `/docs/component/operators/document`,
         },
       ],
       appType: "core",
