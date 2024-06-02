@@ -245,7 +245,7 @@ const DocsPage: NextPageWithLayout<DocsPageProps> = ({
                 ".mdx"
               }
               feedbackUrl={
-                "https://github.com/instill-ai/community/issues/new/choose"
+                "https://github.com/instill-ai/instill-core/issues/new/choose"
               }
               headers={headers}
             />

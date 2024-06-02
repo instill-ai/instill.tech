@@ -1,0 +1,66 @@
+---
+title: "Introduction"
+lang: "zh-CN"
+draft: false
+description: "Build end-to-end unstructured data pipelines with the full-stack AI solution - Instill Core https://github.com/instill-ai/instill-core"
+---
+
+## About the project
+
+A component serves as an essential building block in the construction of a
+pipeline within **💧 Instill VDP**. The system provides a diverse range of
+components, each designed to cater to distinct functionalities. These components
+enhance the capabilities of pipelines, enabling them to effectively perform ETL
+(Extract, Transform, Load) operations on unstructured data.
+
+## Generic
+
+**Generic** components serve as the
+fundamental elements. They provide the necessary controls and operations for
+data flow management, including but not limited to looping, failover, filtering,
+sorting, and merging. These **Generic** components form the foundation upon
+which more complex components are constructed.
+
+## AI
+
+**AI** components play a crucial role in transforming unstructured data into
+formats that are easy to interpret and analyze, thereby facilitating the
+extraction of valuable insights. These components integrate with AI models from
+various providers, whether it's the primary **⚗️ Instill Model** or those from
+third-party AI vendors.
+
+## Data
+
+**Data** components are engineered to effortlessly integrate with a wide range
+of data providers. They provide users with the essential tools to forge
+connections with numerous data providers and vendors, making the data extraction
+and loading process more straightforward. **💧 Instill VDP** utilizes these
+**Data** components to extract data, transform it using **AI** components, and
+subsequently deliver the processed data to the intended destinations.
+
+## Application
+
+**Application** components are designed to establish seamless connections with a
+wide range of applications. This includes, but is not limited to, webpages,
+Slack, Gmail, Notion, and even blockchains. By leveraging the **Application**
+component, users can easily integrate these applications into their data
+pipelines, enabling efficient data extraction, transformation, and loading. This
+facilitates the flow of data between different platforms, thereby enhancing the
+overall data management process and enabling users to derive valuable insights
+from their unstructured data.
+
+## Operator
+
+**Operator** components are designed to provide a more flexible and detailed
+approach to data handling and manipulation. It empowers users to execute custom
+code without the necessity for server management or pre-provisioning. This
+feature allows for on-demand code execution, triggered whenever data is piped
+into the connector, enhancing the adaptability and efficiency of the data
+pipeline.
+
+## Component framework
+
+Instill provides a standardized framework to develop connectors and operators,
+which utilizes
+[`ComponentDefinition`](https://github.com/instill-ai/protobufs/blob/main/vdp/pipeline/v1beta/component_definition.proto)
+to define the basic properties and detailed configuration of a component.

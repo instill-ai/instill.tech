@@ -1,6 +1,6 @@
 {
   "sidebarSections": {
-    "getStarted": "👋 Get Started",
+    "getStarted": "🤗 Get Started",
     "instillCore": "🔮 Instill Core",
     "instillVDP": "💧 Instill VDP",
     "instillComponent": "⚙️ Instill Component",
@@ -21,7 +21,6 @@
     "overview": "Overview",
     "dockerCompose": "Docker Compose",
     "kubernetesUsingHelm": "Kubernetes",
-    "coreConcepts": "Core Concepts",
     "pipeline": "Pipeline",
     "buildPipeline": "Build a Pipeline",
     "testPipeline": "Run a Pipeline",

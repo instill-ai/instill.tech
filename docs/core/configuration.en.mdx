@@ -2,28 +2,28 @@
 title: "Configuration"
 lang: "en-US"
 draft: false
-description: "Learn about how to set up the unstructured data ETL tool Instill Core https://github.com/instill-ai/instill-core"
+description: "Learn about how to set up the full-stack AI solution - Instill Core https://github.com/instill-ai/instill-core"
 ---
 
-<InfoBlock type="info" title="info">
-  [**Core**](https://github.com/instill-ai/instill-core) runs essential services like a
-  user management server, databases, and third-party observability tools
-  necessary for launching VDP and Model.
-</InfoBlock>
+🔮 **Instill Core** automatically load a
+[`.env`](https://github.com/instill-ai/instill-core/blob/main/.env) file that
+contains key/value pairs defining required environment variables. You can
+customize the file based on your configuration.
 
-Instill Core automatically load a [`.env`](https://github.com/instill-ai/instill-core/blob/main/.env) file that contains key/value pairs defining required environment variables.
-You can customize the file based on your configuration.
+Besides, they use [Koanf](https://github.com/knadh/koanf) library for
+configuration. It supports loading configuration from multiple sources and makes
+it available to the service. To override the default configuration file, you can
+set the corresponding environment variable in the compose file in
+[core](https://github.com/instill-ai/instill-core/blob/main/docker-compose.yml).
+All configuration environment variables for each service are prefixed with
+`CFG_`.
 
-Besides, they use [Koanf](https://github.com/knadh/koanf) library for configuration. It supports loading configuration from multiple sources and makes it available to the service.
-To override the default configuration file, you can set the corresponding environment variable in the compose file in [core](https://github.com/instill-ai/instill-core/blob/main/docker-compose.yml).
-All configuration environment variables for each service are prefixed with `CFG_`.
-
-## Configuring Core Services
+## Configuring 🔮 **Instill Core** Services
 
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
 - [`mgmt-backend`](https://github.com/instill-ai/mgmt-backend/blob/main/config/config.yaml)(`localhost:8084`): a service to handle user management, token management, and metrics
-- [`console`](https://github.com/instill-ai/console/blob/main/.env)(`localhost:3000`): a Web-based UI app to provide a unified, clean, and intuitive user experience of Instill VDP and Model
+- [`console`](https://github.com/instill-ai/console/blob/main/.env)(`localhost:3000`): a web-based UI app to provide a unified, clean, and intuitive user experience of Instill VDP and Model
 
 ### Configuring Service Version
 
@@ -82,7 +82,7 @@ PROMETHEUS_VERSION=<prometheus-version>
 GRAFANA_VERSION=<grafana-version>
 ```
 
-## Configuring VDP Services
+## Configuring **💧 Instill VDP** Services
 
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
@@ -97,7 +97,7 @@ Set the environment variable for a specific service to determine which version t
 PIPELINE_BACKEND_VERSION=<pipeline-backend-version>
 ```
 
-## Configuring Model Services
+## Configuring **⚗️ Instill Model** Services
 
 Read the default configuration files for a full overview of all supported configuration options of each service:
 
