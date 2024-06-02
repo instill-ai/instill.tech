@@ -1,0 +1,87 @@
+---
+title: "Model Inference"
+lang: "zh-CN"
+draft: false
+description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
+---
+
+<InfoBlock type="tip" title="tip">
+  {" "}
+  An **inference** is a prediction to a question or task. In the concept of Machine
+  Learning (ML) and Artificial Intelligence (AI), the term inference is often compared
+  with training. To put it simple, inference is where capabilities learnt during
+  training are put to analyze data to "infer" a result. Inference can be found and
+  are applied everywhere across industries from photo tagging to autonomous driving.
+</InfoBlock>
+
+**⚗️ Instill Model** provides an automated model inference server.
+
+## Inference with Dedicated Model API Endpoint
+
+Once a model version is deployed, it automatically creates a unique API endpoint
+for model inference at
+`/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger`.
+
+This endpoint allows you to send multiple images in popular formats (PNG and
+JPEG) in a single request. See the examples below for more details. The API is
+designed to accept batched images, either
+
+- sent by remote URL and Base64 or
+- uploaded by multipart.
+
+<CH.Code>
+
+```shellscript cURL(url)
+curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
+--header 'Authorization: Bearer instill_sk_***' \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+            }
+        },
+        {
+            "classification": {
+                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
+            }
+        }
+    ]
+}'
+```
+
+```shellscript cURL(base64)
+curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
+--data '{
+    "task_inputs": [
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        },
+        {
+            "classification": {
+                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+            }
+        }
+    ]
+}'
+```
+
+```shellscript cURL(multipart)
+curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger-multipart \
+--header 'Authorization: Bearer instill_sk_***' \
+--form 'file=@"dog.jpg"' \
+--form 'file=@"bear.jpg"'
+```
+
+</CH.Code>
+
+The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace, the ID
+and version tag of the model.
+
+## Connect models in **💧 Instill VDP**
+
+To build pipelines for your AI workflows with models served in **⚗️ Instill
+Model** , you can utilize the [AI component](../component/ai/instill) for **⚗️
+Instill Model**.
