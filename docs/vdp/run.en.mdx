@@ -1,31 +1,115 @@
 ---
-title: "Run a Pipeline"
+title: "Run Pipeline"
 lang: "en-US"
 draft: false
-description: "Run a Pipeline in Instill VDP"
+description: "Learn about Instill VDP, the pipeline orchestration platform for unstructured data ETL, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-You can either execute your own pipeline on Pipeline Builder or operate another's pipeline through Pipeline Preview Page
+**💧 Instill VDP** allows you to either run your own pipeline using the Pipeline
+Builder or execute someone else's pipeline via the Pipeline Preview Page.
 
-Eager to see your pipeline in action? Just follow these easy steps:
-1. Save your work by hitting the "Save" button located in the upper-right corner of the Pipeline Builder interface.
-2. Provide the necessary inputs or upload the required files to configure the pipeline.
-3. Click the Run button to execute the pipeline and view the results.
+## Run Pipeline in the Console
+
+To see your pipeline in action, follow these steps:
+
+1. Click the **Save** button in the top-right corner in the **Pipeline Builder**
+   page to save your work.
+2. Input the necessary data or upload the required files to set up the pipeline.
+3. Press the `Run` button to execute the pipeline and observe the results.
 
 <ZoomableImg
   src="/docs-assets/vdp/run-our-own-pipeline.gif"
-  alt="Run a Pipeline on builder"
+  alt="Run a pipeline in the editing page"
 />
 
-To run another user's pipeline through the Pipeline Preview page on Instill Hub, follow these steps:
+{/* Move to Instill Cloud page
+To run another user's pipeline through the Pipeline Preview page on Instill Hub,
+follow these steps:
 
 1. Navigate to Instill Hub and locate a pipeline that interests you.
 2. Click on the title of the pipeline to access the Pipeline Preview Page.
-3. Read the instructions or examples provided in the `Pipeline Description` section to understand how to use it.
-4. Provide the necessary inputs or upload the required files to configure the pipeline.
+3. Read the instructions or examples provided in the `Pipeline Description`
+   section to understand how to use it.
+4. Provide the necessary inputs or upload the required files to configure the
+   pipeline.
 5. Click the `Run` button to execute the pipeline and view the results.
 
 <ZoomableImg
   src="/docs-assets/vdp/trigger-others-pipeline.gif"
-  alt="Run a Pipeline Preview Page"
+  alt="Run a
+  Pipeline Preview Page"
 />
+*/}
+
+## Run Pipeline via API Endpoint
+
+Running a pipeline via API endpoint in **💧 Instill VDP** is straightforward. You can find the
+cURL snippet from **Pipeline Builder** > **Toolkit** > **Trigger Snippet** tab.
+
+### Steps to Run Pipeline
+
+1. Navigate to the **Pipeline Builder** interface:
+
+   - Proceed to the **Toolkit** > **Trigger Snippet** tab to locate the cURL
+     snippet.
+
+2. Set up the API Request:
+
+   - Confirm that you have the correct API endpoint, `USER_ID`, `PIPELINE_ID`,
+     and `API_TOKEN`.
+   - Arrange the data payload with the necessary fields.
+
+3. Send the API Request:
+   - Utilize the supplied cURL command to send a POST request to the API
+     endpoint.
+   - Check the response to confirm the successful triggering of the pipeline.
+
+Please make sure to correctly configure the required values:
+
+- **Authentication**: Verify that your `API_TOKEN` is valid and possesses the
+  required permissions to activate the pipeline. The API Token can be generated
+  in **Settings** > **API Token**.
+- **Data Formatting**: Comply with the standard JSON format as outlined in the
+  API documentation.
+
+By adhering to these instructions, you can incorporate pipeline
+triggering into your existing data workflows.
+
+### Example API Request
+
+Please consult the [Introduction](../vdp/introduction) for guidance on setting
+up the pipeline recipe. For example, if your pipeline specifies an input
+variable `prompt` and an output `answer`, the corresponding API request command
+would be:
+
+```bash
+curl -X POST 'https://api.instill.tech/v1beta/users/USER_ID/pipelines/PIPELINE_ID/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer API_TOKEN' \
+--data '{
+  "data": [
+    {
+      "variable": {
+        "prompt": "hello world"
+      }
+    }
+  ]
+}'
+```
+
+This command sends a POST request to trigger the pipeline, with the variable
+`prompt` set to "hello world".
+
+### Corresponding Response
+
+The corresponding response for the above API request will be:
+
+```json
+{
+  "output": [
+    {
+      "answer": "Hello user"
+    }
+  ]
+}
+```

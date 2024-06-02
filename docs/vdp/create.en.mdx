@@ -1,0 +1,39 @@
+---
+title: "Create Pipeline"
+lang: "en-US"
+draft: false
+description: "Learn about Instill VDP, the pipeline orchestration platform for unstructured data ETL, in the project Instill Core: https://github.com/instill-ai/instill-core"
+---
+
+**💧 Instill VDP** provides a platform for integrating unstructured data into
+your applications, enhancing them with various AI capabilities. The following
+steps guide you through the process of creating a pipeline:
+
+1. Initiate the process by selecting `+ Create Pipeline` in the **Pipelines** page.
+2. In **Create new pipeline** dialog, fill in the following details:
+
+   - **Owner**: Determine this pipeline to be created under your personal
+     account or organization account.
+   - **Pipeline Name**: Assign a unique name to the new pipeline.
+   - **Description**: You have the option to provide additional description
+     about the pipeline.
+   - **Visibility**: Decide whether your pipeline should be public or private.
+
+3. Add components by clicking `Component +` and select **Instill Model**.
+4. Specify the **Task** and **Model** in the **Instill Model** component.
+5. Configure necessary fields in all components.
+6. Customize the input prompt in the **trigger** component, select **Add
+   Field**, choose the **Input Type**, optionally provide a add a description.
+7. To reference prompts or fields within the pipeline, type `${`. A smart hint
+   will appear, showing available references for selection. Linked components
+   will be visually connected.
+8. Continue repeating steps 3-6 until your pipeline is completely set up.
+9. Ensure to save your progress to maintain the pipeline configuration.
+
+By following these instructions, you can effectively construct a pipeline that
+enhances your application's functionality.
+
+<ZoomableImg
+  src="/docs-assets/vdp/create-a-pipeline.gif"
+  alt="Create a pipeline"
+/>

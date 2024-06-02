@@ -21,7 +21,7 @@ map_component_to_directory() {
     numbers | slack | googlesearch | redis | restapi | website)
         echo "app"
         ;;
-    base64 | image | json | text)
+    base64 | image | json | text | document)
         echo "operators"
         ;;
     *)

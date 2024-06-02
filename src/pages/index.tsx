@@ -8,8 +8,6 @@ import {
   Social,
 } from "@/components/landing";
 import { LandingPageBase, PageHead } from "@/components/ui";
-import { GetStaticProps } from "next";
-import { getRepoFileContent } from "@/lib/github";
 import Slide from "@/components/landing/Slide";
 import { NextPageWithLayout } from "./_app";
 
@@ -21,31 +19,6 @@ const HowItWorks = dynamic<HowItWorksProps>(() =>
 const Community = dynamic<{}>(() =>
   import("@/components/landing").then((mod) => mod.Community)
 );
-
-export const getStaticProps: GetStaticProps = async () => {
-  const destinationDefinitions = await getRepoFileContent(
-    "instill-ai",
-    "connector-destination",
-    "pkg/airbyte/config/seed/definitions.json"
-  );
-
-  const buf = Buffer.from(destinationDefinitions.content, "base64").toString(
-    "utf-8"
-  );
-
-  const destinationArray: Record<string, string>[] = JSON.parse(buf);
-
-  return {
-    props: {
-      destinations: destinationArray.map((e) => {
-        return {
-          name: e.title,
-          icon: e.icon ?? null,
-        };
-      }),
-    },
-  };
-};
 
 const HomePage: NextPageWithLayout = () => {
   return (

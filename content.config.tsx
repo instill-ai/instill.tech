@@ -137,8 +137,8 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.buildPipeline",
-      link: `/docs/vdp/build`,
+      text: "common:sidebarSections.createPipeline",
+      link: `/docs/vdp/create`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -174,6 +174,20 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.useCredit",
       link: `/docs/vdp/credit`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.secret",
+      link: `/docs/vdp/secret`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillFormat",
+      link: `/docs/vdp/instill-format`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -309,6 +323,10 @@ export const getSections = (): SidebarSections[] => {
         {
           text: "common:sidebarSections.image",
           link: `/docs/component/operators/image`,
+        },
+        {
+          text: "common:sidebarSections.document",
+          link: `/docs/component/operators/document`,
         },
       ],
       appType: "core",

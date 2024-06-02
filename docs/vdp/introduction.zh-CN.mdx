@@ -13,129 +13,137 @@ end-to-end unstructured data pipelines. It leverages the capabilities of
 **⚗️ [Instill Model](/docs/model/introduction)** and **💾 [Instill
 Artifact](/docs/artifact/introduction)** via **⚙️ [Instill
 Component](/docs/component/introduction)** components.
-components.
-
-## Trigger Method
-
-### Trigger by Request
-
-VDP supports triggering a pipeline via HTTP and gRPC protocols in `SYNC` or
-`ASYNC` mode.
-
-- **SYNC Mode**: Responds to a request synchronously, sending back the result to
-  the user immediately after the data is processed. This mode is suitable for
-  real-time inference scenarios where low latency is crucial.
-
-- **ASYNC Mode**: Performs asynchronous workload. The user triggers the pipeline
-  with an asynchronous request and only receives an acknowledgment response.
-  This mode is ideal for use cases that require long-running workloads.
-
-### Trigger by Scheduler (Coming Soon)
-
-A pipeline triggered by a scheduler performs scheduled workloads to regularly
-trigger the pipeline.
-
-### Trigger by Event (Coming Soon)
-
-A pipeline triggered by a Pub-Sub or Message Queue system.
-
-### Trigger by Application (Coming Soon)
-
-A pipeline triggered by an application event.
 
 ## Pipeline Recipe
 
 A pipeline is defined by a `recipe`, which is essentially a JSON object composed
-of a trigger method and multiple components:
+of a run method, variable, output and multiple components:
 
 Here is a sample recipe where the input is a `prompt`, and the output is a
 `text`.
 
 ```json
 {
-  "trigger": {
-    "trigger_by_request": {
-      "request_fields": {
-        "prompt": {
-          "title": "input",
-          "instill_format": "string"
-        }
-      },
-      "response_fields": {
-        "text": {
-          "title": "text",
-          "value": "${op-0.output.texts[0]}"
-        }
-      }
+  "on": {},
+  "variable": {
+    "prompt": {
+      "title": "input",
+      "instillFormat": "string"
     }
   },
-  "components": [
-    {
-      "id": "op-0",
-      "connector_component": {
-        "definition_name": "connector-definitions/openai",
-        "task": "TASK_TEXT_GENERATION",
-        "input": {
-          "model": "gpt-3.5-turbo",
-          "n": 2,
-          "prompt": "${trigger.prompt}",
-          "response_format": {
-            "type": "text"
-          },
-          "system_message": "You are a helpful assistant.",
-          "temperature": 1,
-          "top_p": 1
+  "output": {
+    "text": {
+      "title": "text",
+      "value": "${op-0.output.texts[0]}"
+    }
+  },
+  "component": {
+    "op-0": {
+      "type": "openai",
+      "task": "TASK_TEXT_GENERATION",
+      "input": {
+        "model": "gpt-3.5-turbo",
+        "n": 2,
+        "prompt": "${variable.prompt}",
+        "response_format": {
+          "type": "text"
         },
-        "connection": {
-          "api_key": "${secrets.my-openai-key}"
-        }
+        "system_message": "You are a helpful assistant.",
+        "temperature": 1,
+        "top_p": 1
+      },
+      "setup": {
+        "api_key": "${secret.my-openai-key}"
       }
     }
-  ]
+  }
 }
 ```
 
-Within the recipe, we have two essential fields:
+Within the recipe, we have four essential fields, `on`, `variable`, `output` and
+`component`.
 
-1. **trigger**: Indicates how the pipeline is triggered. We only allow a single
-   trigger method for a pipeline. Currently, we support `trigger_by_request`.
-2. **components**: Consists of multiple components, which can be a connector,
-   operator, or iterator.
-   - Each component must have a unique component ID, e.g., `openai-0`. This
-     component ID should follow the [RFC1034
-     rule](https://datatracker.ietf.org/doc/html/rfc1034), which consists of
-     alphabets, numbers, and hyphens.
-   - For a `connector`, we need to set up these fields:
-     - **definition_name**: Indicates which type of connector it is.
-     - **task**: Indicates which task of the connector. The task will be listed
-       in the connector definition `connector_definition.tasks` field.
-       [Example](https://api.instill.tech/vdp/v1beta/connector-definitions/openai?view=VIEW_FULL).
-     - **input**: Sets up the input data. The schema is described in the
-       `connector_definition.component_specification` field.
-     - **connection**: Sets up how the connector is connected to the vendor. The
-       schema is described in the `connector_definition.data_specifications`
-       field.
-     - **condition**: (optional) Sets up the condition for whether this
-       component will be executed or not.
-   - For an `operator`, we need to set up these fields:
-     - **definition_name**: Indicates which type of operator it is.
-     - **task**: Indicates which task of the operator. The task will be listed
-       in the operator definition `operator_definition.tasks` field.
-       [Example](https://api.instill.tech/vdp/v1beta/operator-definitions/base64?view=VIEW_FULL).
-     - **input**: Sets up the input data. The schema is described in the
-       `operator_definition.component_specification` field.
-     - **condition**: (optional) Sets up the condition for whether this
-       component will be executed or not.
-   - For an `iterator`, we need to set up these fields:
-     - **input**: The array input.
-     - **output_elements**: Sets up the output of this iterator.
-     - **components**: An array of components that are executed inside the
-       iterator.
+### On
 
-- Refers to the connector resource. For more information, please refer to [AI
-  Connectors](../../vdp/ai-connector), [Data
-  Connectors](../../vdp/data-connector), or [App
-  Connectors](../../vdp/app-connector).
+Indicates how the pipeline is run.
+
+#### Run on Request
+
+VDP supports running a pipeline via HTTP and gRPC protocols in `SYNC` or `ASYNC`
+mode. The user doesn't need to set up the configuration in the `on` field. Every
+pipeline can run if the user provides `variable` in the request.
+
+- **SYNC Mode**: Responds to a request synchronously, sending back the result to
+  the user immediately after the data is processed. This mode is suitable for
+  real-time inference scenarios where low latency is crucial.
+
+- **ASYNC Mode**: Performs asynchronous workload. The user runs the pipeline
+  with an asynchronous request and only receives an acknowledgment response.
+  This mode is ideal for use cases that require long-running workloads.
+
+Please refer to [Run a pipeline](../vdp/run) for more details.
+
+#### Run on Scheduler (Coming Soon)
+
+A pipeline run by a scheduler performs scheduled workloads to regularly run the
+pipeline.
+
+#### Run on Event (Coming Soon)
+
+A pipeline run by a Pub-Sub or Message Queue service.
+
+#### Run on Application (Coming Soon)
+
+A pipeline run by an application event.
+
+### Variable
+
+Set up the variables of the pipeline so every component can reference the data
+from the variables:
+
+- **`title`**: The title of the variable, which can be displayed on the Console.
+- **`description`**: A description of the variable, which can be displayed on
+  the Console.
+- **`instillFormat`**: The instill format of the variable. Users can use this to
+  control the data format. Please refer to [`Instill
+Format`](../vdp/instill-format) for more details.
+
+### Output
+
+Set up ths output of the pipeline:
+
+- **`title`**: The title of the output, which can be displayed on the Console.
+- **`description`**: A description of the output, which can be displayed on the
+  Console.
+- **`value`**: The value of the output, which can be referenced from any
+  component data.
+
+### Component
+
+Consists of multiple components, which can be a generic, AI, data, application,
+or operator component.
+
+- Each component must have a unique component ID, e.g., `openai-0`. This
+  component ID should follow the [RFC1034
+  rule](https://datatracker.ietf.org/doc/html/rfc1034), which consists of
+  alphabets, numbers, and hyphens.
+- For a `AI`, `data`, `application` or `operator`, we need to set up these
+  fields:
+  - **type**: Indicates which type of component it is.
+  - **task**: Indicates which task of the component. The task will be listed in
+    the component definition `tasks` field.
+    [Example](https://api.instill.tech/vdp/v1beta/component-definitions/openai?view=VIEW_FULL).
+  - **input**: Sets up the input data. The schema is described in the
+    `spec.component_specification` field.
+  - **setup**: Sets up how the component is setup, e.g. setup a `api_key` for
+    the connection. The schema is described in the
+    `spec.component_specification` field.
+  - **condition**: (optional) Sets up the condition for whether this component
+    will be executed or not.
+- For a `generic.iterator`, we need to set up these fields:
+  - **input**: The array input.
+  - **outputElements**: Sets up the output of this iterator.
+  - **component**: An array of components that are executed inside the iterator.
 
 ## Data Flow
 
@@ -146,34 +154,32 @@ flow, i.e., the **input** field of each component:
 
 - A Reference employs special syntax enclosed in single curly brackets. For
   example,
-  - Reference data from the pipeline trigger request: `${trigger.KEY}`, you can
-    add any fields you want in the
-    `recipe.trigger.trigger_by_request.request_fields`.
+  - Reference data from the pipeline variable: `${variable.KEY}`, you can add
+    any fields you want in the `recipe.variable`.
   - Reference data from the component: `${comp-id.input.KEY}` or
     `${comp-id.output.KEY}`, the available data fields are described in
-    `component_specification` of each connector or operator.
+    `component_specification` of each component.
 - It functions as a variable reference, copying the value from an upstream
   component to the data input while preserving the original data type.
 
-When triggered by request, we also need to set up the response data of the
-request. You can add any fields you want in the
-`recipe.trigger.trigger_by_request.response_fields`.
+When run by request, we also need to set up the response data of the request.
+You can add any fields you want in the `recipe.output`.
 
 If you don't want to use data reference, you can also set up the constant value
 in the recipe.
 
-When utilizing batch triggering in VDP, where each component processes an array
-of inputs, the rendered data input for this component, with batch 2 as an
-example, appears as follows:
+When utilizing batch running in VDP, where each component processes an array of
+inputs, the rendered data input for this component, with batch 2 as an example,
+appears as follows:
 
 ```json
 {
   "inputs": [
     {
-      "prompt": "Who is the CEO of Instill AI"
+      "prompt": "What is Instill AI building?"
     },
     {
-      "prompt": "Who is the COO of Instill AI"
+      "prompt": "What is Instill Core?"
     }
   ]
 }
@@ -181,7 +187,7 @@ example, appears as follows:
 
 Please refer to the [API
 document](https://openapi.instill.tech/reference/pipelinepublicservice_triggeruserpipeline)
-for instructions on how to trigger a pipeline.
+for instructions on how to run a pipeline.
 
 ### Reference from Secrets
 
@@ -189,7 +195,8 @@ Besides reference data from the pipeline input or component setting, we can also
 reference secrets from the secret management system. The value of these secrets
 fields will be kept out of the recipe. So when the pipeline is shared or
 published, the keys will always be protected. Examples: `"api_key":
-"${secrets.my-openai-key}"`.
+"${secrets.my-openai-key}"`. Please refer to [Secret Management](../vdp/secret)
+for more details.
 
 ## Control Flow
 
@@ -203,7 +210,7 @@ Let's begin with an example.
 
 ```json
 {
-  "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\""
+  "condition": "${variable.a-condition-str} == \"TARGET_CONDITION_STR\""
 }
 ```
 
@@ -239,7 +246,7 @@ Here are some examples for the condition field:
 
   ```json
   {
-    "condition": "${trigger.a-condition-str} == \"TARGET_CONDITION_STR\""
+    "condition": "${variable.a-condition-str} == \"TARGET_CONDITION_STR\""
   }
   ```
 
@@ -247,7 +254,7 @@ Here are some examples for the condition field:
 
   ```json
   {
-    "condition": "${trigger.a-condition-num} > 1"
+    "condition": "${variable.a-condition-num} > 1"
   }
   ```
 
@@ -255,7 +262,7 @@ Here are some examples for the condition field:
 
   ```json
   {
-    "condition": "${trigger.a-condition-bool}"
+    "condition": "${variable.a-condition-bool}"
   }
   ```
 
@@ -263,7 +270,7 @@ Here are some examples for the condition field:
 
   ```json
   {
-    "condition": "(${trigger.a-condition-bool} && ${comp-a.output.x} == 1) || ${comp-b.output.y} < 1"
+    "condition": "(${variable.a-condition-bool} && ${comp-a.output.x} == 1) || ${comp-b.output.y} < 1"
   }
   ```
 
@@ -296,6 +303,6 @@ Here are some examples for the condition field:
 - You can also combine it with the value condition.
   ```json
   {
-    "condition": "${trigger.a-condition-bool} || ${comp-a.status.completed}"
+    "condition": "${variable.a-condition-bool} || ${comp-a.status.completed}"
   }
   ```
