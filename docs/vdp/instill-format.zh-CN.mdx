@@ -4,3 +4,46 @@ lang: "zh-CN"
 draft: false
 description: "Instill Format in VDP"
 ---
+
+VDP defines the Instill Format as the data type identifier, ensuring consistency and compatibility across components.
+Each input field in a component will define `instillAcceptFormats`, specifying the data types it can accept.
+Conversely, each output field will define `instillFormat`, indicating the data type it produces.
+The VDP reference system ensures that all input fields reference the correct data types, maintaining the integrity and functionality of the data pipeline.
+
+VDP extends the Instill Format from the JSON primitive types and [MIME types (IANA media types)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+
+**JSON Primitive Types**:
+- `string`
+- `number`
+- `integer`
+- `boolean`
+- `object`
+- `array`
+
+**MIME Types**:
+- `text/*`: All kinds of text data, such as `text/html`
+- `image/*`: All kinds of image data, such as `image/jpeg`
+- `video/*`: All kinds of video data, such as `video/h264`
+- `audio/*`: All kinds of audio data, such as `audio/wav`
+- `application/*`: Other types of data, such as `application/pdf`
+
+**Semi-structured Data Types**
+
+- `semi-structured/json`: JSON data, which can include any JSON primitive types
+- `semi-structured/object`
+
+**Structured Data Types**
+
+Structured data types are specifically designed for various advanced tasks, particularly in the fields of Natural Language Processing (NLP) and Computer Vision (CV).
+
+- `structured/chat_message`: Used in large language model (LLM) tasks
+- `structured/multi_modal_content`: Used in LLM tasks
+- `structured/bounding_box`: Used in CV tasks
+- `structured/detection_object`: Used in CV tasks
+- `structured/instance_segmentation_object`: Used in CV tasks
+- `structured/keypoint_object`: Used in CV tasks
+- `structured/ocr_object`: Used in CV tasks
+- `structured/semantic_segmentation_stuff`: Used in CV tasks
+
+By adhering to these formats, VDP ensures that data is processed correctly and efficiently, enabling users to build robust and scalable data pipelines.
+The use of standardized data types also facilitates easier integration and interoperability between different components and systems within the VDP.

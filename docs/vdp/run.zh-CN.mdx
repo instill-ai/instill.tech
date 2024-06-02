@@ -19,3 +19,83 @@ To run another user's pipeline through the Pipeline Preview page on Instill Hub,
   src="/docs-assets/vdp/trigger-others-pipeline.gif"
   alt="Run a Pipeline"
 />
+
+### Running a Pipeline via API
+
+Running a pipeline via API in VDP is straightforward. You can easily obtain the curl snippet from the Pipeline Builder interface under the **Toolkit -> Trigger Snippet** tab.
+
+#### Example API Request
+
+Please refer to [Introduction](../vdp/introduction) to learn how to setup the pipeline recipe.
+For instance, if your pipeline defines a variable `prompt` and an output `text`, the API request command will be as follows:
+
+```sh
+curl -X POST 'https://api.instill.tech/v1beta/users/<user-id>/pipelines/<pipeline-id>/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data '{
+  "data": [
+    {
+      "variable": {
+        "prompt": "hello world"
+      }
+    }
+  ]
+}'
+```
+
+This command sends a POST request to trigger the pipeline, with the variable `prompt` set to "hello world". 
+
+#### Corresponding Response
+
+The corresponding response for the above API request will be:
+
+```json
+{
+  "output": [
+    {
+      "answer": "Hello user"
+    }
+  ]
+}
+```
+
+### Alternative Format
+
+Previously, users could use a different format to send the request. However, this format is now deprecated and will be removed soon. It is recommended to update your API requests to the new format.
+
+#### Deprecated API Request Format
+
+```sh
+curl -X POST 'https://api.instill.tech/v1beta/users/<user-id>/pipelines/<pipeline-id>/trigger' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_token>' \
+--data '{
+  "inputs": [
+    {
+      "prompt": "hello world"
+    }
+  ]
+}'
+```
+
+### Steps to Trigger a Pipeline
+
+1. **Access the Pipeline Builder**:
+   - Open the Pipeline Builder and navigate to **Toolkit -> Trigger Snippet** tab to generate the necessary curl snippet.
+
+2. **Prepare the API Request**:
+   - Ensure you have the correct API endpoint, user ID, pipeline ID, and API token.
+   - Configure the data payload with the appropriate variables.
+
+3. **Execute the API Request**:
+   - Use the provided curl command to send a POST request to the VDP API endpoint.
+   - Verify the response to ensure the pipeline is triggered successfully.
+
+
+Please ensure you correctly setup the required values:
+- **Authentication**: Ensure your API token is valid and has the necessary permissions to trigger the pipeline. You can generate the API Token in **Settings -> API Token**
+- **Data Formatting**: Adhere to the JSON formatting standards specified in the API documentation.
+
+
+By following these guidelines, you can seamlessly integrate pipeline triggering into your workflows.
