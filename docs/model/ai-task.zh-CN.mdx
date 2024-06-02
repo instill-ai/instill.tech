@@ -19,8 +19,8 @@ Currently, **⚗️ Instill Model** outlines the data interface for popular task
 
 - `Image Classification`: Categorizing images into predefined classes
 - `Object Detection`: Identifying and localizing multiple objects in images
-- `Keypoint Detection`: Identifying and localizing multiple keypoints of
-  objects in images
+- `Keypoint Detection`: Identifying and localizing multiple keypoints of objects
+  in images
 - `OCR (Optical Character Recognition)`: Identifying and recognizing text in
   images
 - `Instance Segmentation`: Identifying, localizing, and outlining multiple
@@ -30,8 +30,8 @@ Currently, **⚗️ Instill Model** outlines the data interface for popular task
 - `Image to Image`: Generating images from input image prompts
 - `Text Generation`: Generating texts from input text prompts
 - `Text Generation Chat`: Generating chat style texts from input text prompts
-- `Visual Question Answering`: Generating chat style texts from input text
-  and image prompts
+- `Visual Question Answering`: Generating chat style texts from input text and
+  image prompts
 - The list is expanding ... 🌱
 
 The tasks listed above concentrate on analyzing and understanding the content of
@@ -262,9 +262,10 @@ encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of
 zeros.
 
 <InfoBlock type="info" title="info">
-  {" "}
-  Check out functions to [encode masks into RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
-  and [decode masks encoded via RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
+  Check out functions to [encode masks into
+  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
+  and [decode masks encoded via
+  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
 </InfoBlock>
 
 ```json
@@ -407,10 +408,9 @@ f.write(image)
 
 <InfoBlock type="tip" title="tip">
 
-Importing [Stable
-Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will
-take a while. Alternatively, you can download the model locally as a one-time
-effort.
+Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc)
+from GitHub will take a while. Alternatively, you can download the model locally
+as a one-time effort.
 
 **Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
 
@@ -459,11 +459,10 @@ generate full stories given the first words.
 
 <InfoBlock type="tip" title="tip">
 
-Depending on your internet speed, importing
-LLM models will take a while.
+Depending on your internet speed, importing LLM models will take a while.
 
-Some models only supports GPU deployment. By default, **⚗️ Instill Model** can access all your
-GPUs.
+Some models only supports GPU deployment. By default, **⚗️ Instill Model** can
+access all your GPUs.
 
 </InfoBlock>
 
@@ -503,11 +502,10 @@ conversation and even answer question based on previous context.
 
 <InfoBlock type="tip" title="tip">
 
-Depending on your internet speed, importing
-LLM models will take a while.
+Depending on your internet speed, importing LLM models will take a while.
 
-Some models only supports GPU deployment. By default, **⚗️ Instill Model** can access all your
-GPUs.
+Some models only supports GPU deployment. By default, **⚗️ Instill Model** can
+access all your GPUs.
 
 </InfoBlock>
 
@@ -544,20 +542,18 @@ language.
 
 <InfoBlock type="tip" title="tip">
 
-Depending on your internet speed, importing
-LLM models will take a while.
+Depending on your internet speed, importing LLM models will take a while.
 
-Some models support only GPU deployment. By default, **⚗️ Instill Model** can access all your
-GPUs.
+Some models support only GPU deployment. By default, **⚗️ Instill Model** can
+access all your GPUs.
 
 </InfoBlock>
 
 ## Unspecified Task
 
-**⚗️ Instill Model** is very flexible and allows models even if the task
-is not standardised yet or the output of the model can't be converted to the
-format of supported AI tasks. The model will be classified as an `Unspecified`
-task.
+**⚗️ Instill Model** is very flexible and allows models even if the task is not
+standardised yet or the output of the model can't be converted to the format of
+supported AI tasks. The model will be classified as an `Unspecified` task.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-unspecified.svg"
@@ -589,7 +585,7 @@ task.
 
 Currently, the model output is converted to standard format based on the AI task
 outputs maintained in
-[Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
+[Protobuf](https://github.com/instill-ai/protobufs/tree/main/model/model/v1alpha).
 
 If you'd like to have **support for a new task**, you can request it in the
 **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).
