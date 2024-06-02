@@ -335,6 +335,13 @@ export const getSections = (): SidebarSections[] => {
       versions: [],
     },
     {
+      text: "common:sidebarSections.pushModel",
+      link: `/docs/model/push`,
+      items: [],
+      appType: "core",
+      versions: [],
+    },
+    {
       text: "common:sidebarSections.aiTasks",
       link: `/docs/model/ai-task`,
       items: [],
@@ -342,15 +349,15 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.modelStates",
+      text: "common:sidebarSections.modelState",
       link: `/docs/model/state`,
       items: [],
       appType: "core",
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.useModels",
-      link: `/docs/model/use`,
+      text: "common:sidebarSections.modelInference",
+      link: `/docs/model/inference`,
       items: [],
       appType: "core",
       versions: ["latest"],

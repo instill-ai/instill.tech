@@ -2,65 +2,71 @@
 title: "Prepare a Model"
 lang: "en-US"
 draft: false
-description: "Learn about how to prepare your models for the MLOps tool Instill Model https://github.com/instill-ai/model"
+description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-To prepare a model version to be served on **Instill Model**, please follow these steps on your local system:
+To prepare a model version to be served in **⚗️ Instill Model**, please follow
+these steps on your local system:
 
-- Create a [model config](#model-config) `instill.yaml` file to describe your model's dependencies
-- Write a `model.py` file which defines the model class that will be decorated into a servable model with Instill's `python-sdk`
+- Create a [model config](#model-config) `instill.yaml` file to describe your
+  model's dependencies
+- Write a `model.py` file which defines the model class that will be decorated
+  into a servable model with Instill's `python-sdk`
 - Organize the model files into a valid model [layout](#model-layout)
 
-## Model Config
+## Model Configuration
 
-Model configuration is handled within the `instill.yaml` file which accompanies the model and describes the necessary dependency information. It is crucial for reproducibility, sharing and discoverability.
+Model configuration is handled within the `instill.yaml` file which accompanies
+the model and describes the necessary dependency information. It is crucial for
+reproducibility, sharing and discoverability.
 
-In the `instill.yaml` model config file, you are can specify the following details:
+In the `instill.yaml` file, you are can specify the following details:
 
-- **`build`**:
-  - **`gpu`**: 
+- **build**:
+  - **gpu**:
     - Required: `boolean`
     - Description: Specifies if the model needs GPU support.
-  - **`python_version`**: 
+  - **python_version**:
     - Required: `string`
     - Supported Versions: `3.9`, `3.10`, `3.11`
-  - **`python_packages`**: 
+  - **python_packages**:
     - Required: `list`
     - Description: Lists packages to be installed with `pip`.
-  - **`cuda_version`**: 
+  - **cuda_version**:
     - Optional: `string`
     - Supported Versions: `11.5`, `11.6`, `11.7`, `11.8`, `12.1`
     - Default: Defaults to the latest version if not specified or empty.
-  - **`system_packages`**: 
+  - **system_packages**:
     - Optional: `list`
-    - Description: Lists packages to be installed from the `apt` package manager. The model image is based on Ubuntu 20.04 LTS.
-- **`repo`**: 
+    - Description: Lists packages to be installed from the `apt` package
+      manager. The model image is based on Ubuntu 20.04 LTS.
+- **repo**:
   - Required: `string`
-  - Format: `{user_id}/{model_id}`
+  - Format: `USER_ID/MODEL_ID`
   - Description: Your Instill Core namespace.
 
-Below is an example config file for a `TinyLlama` model designed to utilize GPU resources.
+Below is an example config file for a `TinyLlama` model designed to utilize GPU
+resources:
 
-<CH.Code>
 ```yaml instill.yaml
 build:
   gpu: true
-  python_version: "3.11"  # support only 3.11
+  python_version: "3.11" # support only 3.11
   python_packages:
     - torch==2.2.1
     - transformers==4.36.2
     - accelerate==0.25.0
-# the repo format is {user_id}/{model_id}
-# {model_id} must match the Model ID created on the console
+# the repo format is USER_ID/MODEL_ID
+# where MODEL_ID must match the Model ID created in the console
 repo: instill-ai/tinyllama
 ```
-</CH.Code>
 
 ## Model Layout
 
-To deploy a model on Instill Model, we suggest you prepare the model files similar to the following layout:
+To deploy a model on in **⚗️ Instill Model**, we suggest you prepare the model
+files similar to the following layout:
 
-```shellscript
+```text
 .
 ├── instill.yaml
 ├── model.py
@@ -72,39 +78,53 @@ To deploy a model on Instill Model, we suggest you prepare the model files simil
     └── <weight_file_n>
 ```
 
-The above layout displays a typical Instill Model model consisting of
+The above layout displays a typical model in **⚗️ Instill Model** consisting of
 
-- `instill.yaml` - [model config](#model-config) file that describe the model dependencies
-- `model.py` - this is where you define a decorated model class that contains custom inference logic
-- `<additional_modules>` - a directory that holds supporting python modules if necessary
+- `instill.yaml` - [model config](#model-config) file that describe the model
+  dependencies
+- `model.py` - this is where you define a decorated model class that contains
+  custom inference logic
+- `<additional_modules>` - a directory that holds supporting python modules if
+  necessary
 - `<weights>` - a directory that holds the weight files if necessary
 
-You can name the `<weights>` and `<additional_modules>` folder freely provided that the folder names are clear and semantic.
+You can name the `<weights>` and `<additional_modules>` folder freely provided
+that the folder names are clear and semantic.
 
 ## Prepare Model Code
 
-With [Ray](https://github.com/ray-project/ray) under the hood for model serving, Instill Model extends its support to any arbitrary deep learning framework you desire. To implement a custom model that can be imported and served on `Instill Model`, you only need to construct a simple model class within the `model.py` file.
+To implement a custom model that can be deployed and served in **⚗️
+Instill Model**, you only need to construct a simple model class within the
+`model.py` file.
 
 The custom model class is required to contain three methods:
-- `__init__`
-  - This is where the model loading process is defined, allowing the weights to be stored in memory and yielding faster auto-scaling behavior.
-- `ModelMetadata`
-  - This method tells the backend service the expected input/output shape that the model is expecting. If you are using one of our predefined [AI Tasks](ai-task), you can simply `import construct_\{task\}_metadata_reponse` and use it as `return`.
-- `__call__`
-  - This is the inference request entrypoint, and is where you implement your model inference logic.
 
-Following is a simple implementation of the [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model with explanations.
+- `__init__`
+  - This is where the model loading process is defined, allowing the weights to
+    be stored in memory and yielding faster auto-scaling behavior.
+- `ModelMetadata`
+  - This method tells the backend service the expected input/output shape that
+    the model is expecting. If you are using one of our predefined [AI
+    Tasks](ai-task), you can simply `import construct_{task}_metadata_response`
+    and use it as `return`.
+- `__call__`
+  - This is the inference request entrypoint, and is where you implement your
+    model inference logic.
+
+Following is a simple implementation of the
+[TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model
+with explanations:
 
 ```python
-# import neccessary packages
+# import necessary packages
 import torch
 from transformers import pipeline
 
 # import SDK helper functions
-# const package hosts the standard Datatypes and Input class for each standard Instill AI Tasks
+# const package hosts the standard Datatypes and Input class for each standard Instill AI Task
 from instill.helpers.const import TextGenerationChatInput
 
-# ray_io package hosts the parsers to easily convert request payload into input paramaters, and model outputs to response
+# ray_io package hosts the parsers to easily convert request payload into input parameters, and model outputs to response
 from instill.helpers.ray_io import StandardTaskIO
 
 # ray_config package hosts the decorators and deployment object for the model class
@@ -169,9 +189,9 @@ class TinyLlama:
             raw_outputs=[task_text_generation_chat_output],
         )
 
-
 # now simply declare a global entrypoint for deployment
 entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 ```
 
-After all the required model files are prepared, you can now [build](build) the custom model image, specifying the verion as a tag.
+Once all the required model files are prepared, you can [build](build) the
+custom model image and specify the version as a tag.

@@ -1,17 +1,17 @@
 ---
-title: "Model States"
+title: "Model State"
 lang: "en-US"
 draft: false
 description: "Learn about model states"
 ---
 
-Upon a successful model version deployment, the state of a model version can be `UNSPECIFIED`, `OFFLINE`, `SCALING`, `IDLE` or `ACTIVE`.
+A deployed model version can be in these states:
 
-- When resources are still being initially allocated to deploy the model version, the state is `STARTING`.
-- When a model version is undergoing internal operation and is not yet deployed, the state is `UNSPECIFIED`.
-- When a model version's number of replica is scaling up or down determined by traffic, the state is `SCALING`.
-- When a model version's replica is actively processing requests, the state is `ACTIVE`.
-- When none of the model version's replica is processing requests, the state is `IDLE`, and will be in count down to scale down.
-- When there is `0` replica of this model version, the state is `OFFLINE`, and it will go through cold boot when the next request comes in.
+- `STARTING`: Resources are being provisioned.
+- `UNSPECIFIED`: The version is undergoing an internal operation.
+- `SCALING`: The replica count is adjusting to traffic.
+- `ACTIVE`: The replica is servicing requests.
+- `IDLE`: No replicas are handling requests, triggering a scale down.
+- `OFFLINE`: No active replicas, a cold start will be initiated on the next request.
 
-If a model image version is not deployable, the state is `ERROR`.
+If deployment fails, the version will be in the `ERROR` state.

@@ -1,40 +1,53 @@
 ---
-title: "Supported AI Tasks"
-lang: "en-US"
+title: "AI Task"
+lang: "zh-CN"
 draft: false
-description: "Model Overview"
+description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-When you create a model on Instill Model, you need to specify which standardised AI tasks the model can be catagorized in.
+When you create a model in **⚗️ Instill Model**, it's necessary to define the
+standardized AI task that the model falls under.
 
-In a data pipeline, a model is the core component designed to solve a specific AI task.
-By standardising the data format of model outputs into AI tasks, models become modularized: you can freely switch to use different models in a pipeline as long as the model is designed for the same task.
-This also means that the stream of data produced by models in VDP have a standard format for data integration or ETL pipelines.
+In a data pipeline, a model serves as a critical component, designed to tackle a
+specific AI task. By standardizing the data format of model outputs into AI
+tasks, models become modular: you can interchange different model sources as an
+**AI** component in a **💧 Instill VDP** pipeline as long as they're designed
+for the same AI task. **⚗️ Instill Model** also adheres to the standard format
+of AI tasks for data integration in the **💧 Instill VDP** pipelines.
 
-At the moment, Instill Model defines the data interface for popular tasks:
+Currently, **⚗️ Instill Model** outlines the data interface for popular tasks:
 
-- **Image Classification** - classify images into predefined categories
-- **Object Detection** - detect and localise multiple objects in images
-- **Keypoint Detection** - detect and localise multiple keypoints of objects in images
-- **OCR (Optical Character Recognition)** - detect and recognise text in images
-- **Instance Segmentation** - detect, localise and delineate multiple objects in images
-- **Semantic Segmentation** - classify image pixels into predefined categories
-- **Text to Image** - generate images from input text prompts
-- **Image to Image** - generate images from input image promtps
-- **Text Generation** - generate texts from input text prompts
-- **Text Generation Chat** - generate chat style texts from input text prompts
-- **Visual Question Answering** - generate chat style texts from input text and image prompts
-- The list is growing ... 🌱
+- `Image Classification`: Categorizing images into predefined classes
+- `Object Detection`: Identifying and localizing multiple objects in images
+- `Keypoint Detection`: Identifying and localizing multiple keypoints of
+  objects in images
+- `OCR (Optical Character Recognition)`: Identifying and recognizing text in
+  images
+- `Instance Segmentation`: Identifying, localizing, and outlining multiple
+  objects in images
+- `Semantic Segmentation`: Categorizing image pixels into predefined classes
+- `Text to Image`: Generating images from input text prompts
+- `Image to Image`: Generating images from input image prompts
+- `Text Generation`: Generating texts from input text prompts
+- `Text Generation Chat`: Generating chat style texts from input text prompts
+- `Visual Question Answering`: Generating chat style texts from input text
+  and image prompts
+- The list is expanding ... 🌱
 
-The above tasks focus on analysing and understanding the content of data in the same way a human does.
-The goal is to make a computer/device provide a description for the data that is as complete and accurate as possible.
-These primitive tasks are the foundation for building many real-world industrial AI applications.
-Each task is described in depth in the respective section below.
+The tasks listed above concentrate on analyzing and understanding the content of
+unstructured data in a manner similar to human cognition. The objective is to
+enable a computer/device to provide a description for the data that is as
+comprehensive and accurate as possible. These primitive tasks form the basis for
+building numerous real-world industrial AI applications. Each task is elaborated
+in the respective section below.
 
 ## Image Classification
 
-Image Classification is a Vision task to assign a single pre-defined category label to an entire input image.
-Generally, an Image Classification model takes an image as the input, and outputs a prediction about what category this image belongs to and a confidence score (usually between 0 and 1) representing the likelihood that the prediction is correct.
+Image Classification is a Vision task to assign a single pre-defined category
+label to an entire input image. Generally, an Image Classification model takes
+an image as the input, and outputs a prediction about what category this image
+belongs to and a confidence score (usually between 0 and 1) representing the
+likelihood that the prediction is correct.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-classification.svg"
@@ -57,19 +70,22 @@ Generally, an Image Classification model takes an image as the input, and output
 
 **Available models**
 
-| 🔮 Model                                                                                 | Sources                                                                                                                      | Framework | CPU | GPU |
+| Model                                                                                    | Sources                                                                                                                      | Framework | CPU | GPU |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------- | --- | --- |
 | [MobileNet v2](https://github.com/onnx/models/tree/main/vision/classification/mobilenet) | [GitHub](https://github.com/instill-ai/model-mobilenetv2), [GitHub-DVC](https://github.com/instill-ai/model-mobilenetv2-dvc) | ONNX      | ✅  | ✅  |
 | [Vision Transformer (ViT)](https://huggingface.co/google/vit-base-patch16-224)           | [Hugging Face](https://huggingface.co/google/vit-base-patch16-224)                                                           | ONNX      | ✅  | ❌  |
 
 ## Object Detection
 
-Object Detection is a Vision task to localise multiple objects of pre-defined categories in an input image.
-Generally, an Object Detection model receives an image as the input, and outputs bounding boxes with category labels and confidence scores on detected objects.
+Object Detection is a Vision task to localise multiple objects of pre-defined
+categories in an input image. Generally, an Object Detection model receives an
+image as the input, and outputs bounding boxes with category labels and
+confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-detection.svg"
-  alt="Object Detection task"
+  alt="Object
+  Detection task"
 />
 
 ```json
@@ -99,19 +115,24 @@ Generally, an Object Detection model receives an image as the input, and outputs
 
 **Available models**
 
-| 🔮 Model                                       | Sources                                                      | Framework | CPU | GPU |
+| Model                                          | Sources                                                      | Framework | CPU | GPU |
 | ---------------------------------------------- | ------------------------------------------------------------ | --------- | --- | --- |
 | [YOLOv4](https://github.com/AlexeyAB/darknet)  | [GitHub-DVC](https://github.com/instill-ai/model-yolov4-dvc) | ONNX      | ✅  | ✅  |
 | [YOLOv7](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-dvc) | ONNX      | ✅  | ✅  |
 
 ## Keypoint Detection
 
-Keypoint Detection task a Vision task to localise multiple objects by identifying their pre-defined keypoints, for example, identifying the keypoints of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and ankles.
-Normally, a Keypoint Detection task takes an image as the input, and outputs the coordinates and visibility of keypoints with bounding boxes and confidence scores on detected objects.
+Keypoint Detection task a Vision task to localise multiple objects by
+identifying their pre-defined keypoints, for example, identifying the keypoints
+of human body: nose, eyes, ears, shoulders, elbows, wrists, hips, knees and
+ankles. Normally, a Keypoint Detection task takes an image as the input, and
+outputs the coordinates and visibility of keypoints with bounding boxes and
+confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-keypoint.svg"
-  alt="Keypoint Detection task"
+  alt="Keypoint
+  Detection task"
 />
 
 ```json
@@ -153,17 +174,18 @@ Normally, a Keypoint Detection task takes an image as the input, and outputs the
 
 **Available models**
 
-| 🔮 Model                                               | Sources                                                           | Framework | CPU | GPU |
+| Model                                                  | Sources                                                           | Framework | CPU | GPU |
 | ------------------------------------------------------ | ----------------------------------------------------------------- | --------- | --- | --- |
 | [YOLOv7 W6 Pose](https://github.com/WongKinYiu/yolov7) | [GitHub-DVC](https://github.com/instill-ai/model-yolov7-pose-dvc) | ONNX      | ✅  | ✅  |
 
 ## Optical Character Recognition (OCR)
 
-OCR is a Vision task to localise and recognise text in an input image.
-The task can be done in two steps by multiple models:
-a text detection model to detect bounding boxes containing text and
-a text recognition model to process typed or handwritten text within each bounding box into machine readable text.
-Alternatively, there are deep learning models that can accomplish the task in one single step.
+OCR is a Vision task to localise and recognise text in an input image. The task
+can be done in two steps by multiple models: a text detection model to detect
+bounding boxes containing text and a text recognition model to process typed or
+handwritten text within each bounding box into machine readable text.
+Alternatively, there are deep learning models that can accomplish the task in
+one single step.
 
 <ZoomableImg src="/docs-assets/core-concepts/ai-task-ocr.svg" alt="OCR task" />
 
@@ -203,24 +225,29 @@ Alternatively, there are deep learning models that can accomplish the task in on
 
 **Available models**
 
-| 🔮 Model                                                                                                                       | Sources                                                   | Framework | CPU | GPU |
+| Model                                                                                                                          | Sources                                                   | Framework | CPU | GPU |
 | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------- | --- | --- |
 | [PSNet](https://github.com/open-mmlab/mmocr/tree/main/configs/textdet/psenet) + [EasyOCR](https://github.com/JaidedAI/EasyOCR) | [GitHub-DVC](https://github.com/instill-ai/model-ocr-dvc) | ONNX      | ✅  | ✅  |
 
 ## Instance Segmentation
 
-Instance Segmentation is a Vision task to detect and delineate multiple objects of pre-defined categories in an input image.
-Normally, the task takes an image as the input, and outputs uncompressed run-length encoding (RLE) representations (a variable-length comma-delimited string),
-with bounding boxes, category labels and confidence scores on detected objects.
+Instance Segmentation is a Vision task to detect and delineate multiple objects
+of pre-defined categories in an input image. Normally, the task takes an image
+as the input, and outputs uncompressed run-length encoding (RLE) representations
+(a variable-length comma-delimited string), with bounding boxes, category labels
+and confidence scores on detected objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-instance-segmentation.svg"
   alt="Instance Segmentation task"
 />
 
-Run-length encoding (RLE) is an efficient form to store binary masks. It is commonly used to encode the location of foreground objects in segmentation.
-We adopt [the uncompressed RLE definition used in the COCO dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
-It divides a binary mask (must in colume-major order) into a series of piecewise constant regions and for each piece simply stores the length of that piece.
+Run-length encoding (RLE) is an efficient form to store binary masks. It is
+commonly used to encode the location of foreground objects in segmentation. We
+adopt [the uncompressed RLE definition used in the COCO
+dataset](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py).
+It divides a binary mask (must in column-major order) into a series of piecewise
+constant regions and for each piece simply stores the length of that piece.
 
 <div align="center">
   <ZoomableImg
@@ -230,13 +257,14 @@ It divides a binary mask (must in colume-major order) into a series of piecewise
   />
 </div>
 
-The above image shows examples of encoding masks into RLEs and decoding masks encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of zeros.
+The above image shows examples of encoding masks into RLEs and decoding masks
+encoded via RLEs. Note that the odd counts in the RLEs are always the numbers of
+zeros.
 
 <InfoBlock type="info" title="info">
-  Check out functions to [encode masks into
-  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
-  and [decode masks encoded via
-  RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
+  {" "}
+  Check out functions to [encode masks into RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L18-L39)
+  and [decode masks encoded via RLEs](https://github.com/instill-ai/instill-core/blob/e737d0b1a6d8618b44bee24f502778d38abecc92/examples/streamlit/instance_segmentation/utils.py#L41-L59).
 </InfoBlock>
 
 ```json
@@ -277,14 +305,16 @@ The above image shows examples of encoding masks into RLEs and decoding masks en
 
 **Available models**
 
-| 🔮 Model                                                                                                                    | Sources                                                                     | Framework | CPU | GPU |
+| Model                                                                                                                       | Sources                                                                     | Framework | CPU | GPU |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
 | [Mask RCNN](https://github.com/onnx/models/blob/main/vision/object_detection_segmentation/mask-rcnn/model/MaskRCNN-10.onnx) | [GitHub-DVC](https://github.com/instill-ai/model-instance-segmentation-dvc) | PyTorch   | ✅  | ✅  |
 
 ## Semantic Segmentation
 
-Semantic Segmentation is a Vision task of assigning a class label to every pixel in the image.
-Normally, the task takes an image as the input, and outputs segmentation mask (RLE) representations (a variable-length comma-delimited string) for each group of pixel objects and category of the group objects.
+Semantic Segmentation is a Vision task of assigning a class label to every pixel
+in the image. Normally, the task takes an image as the input, and outputs
+segmentation mask (RLE) representations (a variable-length comma-delimited
+string) for each group of pixel objects and category of the group objects.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-semantic-segmentation.svg"
@@ -316,14 +346,15 @@ Normally, the task takes an image as the input, and outputs segmentation mask (R
 
 **Available models**
 
-| 🔮 Model                                                                                                                                            | Sources                                                                     | Framework | CPU | GPU |
+| Model                                                                                                                                               | Sources                                                                     | Framework | CPU | GPU |
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- | --- | --- |
 | [Lite R-ASPP based on MobileNetV3](https://github.com/open-mmlab/mmsegmentation/tree/98dfa1749bac0b5281502f4bb3832379da8feb8c/configs/mobilenet_v3) | [GitHub-DVC](https://github.com/instill-ai/model-semantic-segmentation-dvc) | ONNX      | ✅  | ✅  |
 
 ## Text to Image
 
 Text to Image is a Generative AI task to generate images from text inputs.
-Generally, the task takes descriptive text prompts as the input, and outputs generated images in Base64 format based on the text prompts.
+Generally, the task takes descriptive text prompts as the input, and outputs
+generated images in Base64 format based on the text prompts.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-text-to-image.svg"
@@ -345,7 +376,8 @@ Generally, the task takes descriptive text prompts as the input, and outputs gen
 
 <InfoBlock type="info" title="decode base64 images">
 
-In above example, the generated images is a list of Base64 encoded images. To obtain the images, we need to decode Base64 as below snippet code.
+In above example, the generated images is a list of Base64 encoded images. To
+obtain the images, we need to decode Base64 as below snippet code.
 
 ```python
 import base64
@@ -368,13 +400,17 @@ f.write(image)
 
 **Available models**
 
-| 🔮 Model                                                                  | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
+| Model                                                                     | Sources                                                                                                                                                                                                                                                      | Framework | CPU | GPU |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | --- | --- |
 | [Stable Diffusion](https://huggingface.co/runwayml/stable-diffusion-v1-5) | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-dvc), [Local-CPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip), [Local-GPU](https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-fp16-gpu.zip) | ONNX      | ✅  | ✅  |
 | [Stable Diffusion XL](https://huggingface.co/papers/2307.01952)           | [GitHub-DVC](https://github.com/instill-ai/model-diffusion-xl-dvc)                                                                                                                                                                                           | PyTorch   | ❌  | ✅  |
 
 <InfoBlock type="tip" title="tip">
-Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will take a while. Alternatively, you can download the model locally as a one-time effort.
+
+Importing [Stable
+Diffusion](https://github.com/instill-ai/model-diffusion-dvc) from GitHub will
+take a while. Alternatively, you can download the model locally as a one-time
+effort.
 
 **Step 1**: Download **Stable Diffusion v1.5 CPU** sample model.
 
@@ -382,15 +418,18 @@ Importing [Stable Diffusion](https://github.com/instill-ai/model-diffusion-dvc) 
 curl https://artifacts.instill.tech/vdp/sample-models/stable-diffusion-1-5-cpu.zip --output stable-diffusion-1-5-cpu.zip
 ```
 
-**Step2**: Refer to the guideline on **importing local models via [no-code](./import/local#no-code-setup) or [low-code](./import/local#low-code-setup)**.
+**Step2**: Refer to the guideline on **importing local models via
+[no-code](./import/local#no-code-setup) or
+[low-code](./import/local#low-code-setup)**.
 
 </InfoBlock>
 
 ## Text Generation
 
 Text Generation is a Generative AI task to generate new text from text inputs.
-Generally, the task takes incomplete text prompts as the input, and produces new text based on the prompts.
-The task can fill in incomplete sentences or even generate full stories given the first words.
+Generally, the task takes incomplete text prompts as the input, and produces new
+text based on the prompts. The task can fill in incomplete sentences or even
+generate full stories given the first words.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-text-generation.svg"
@@ -412,24 +451,28 @@ The task can fill in incomplete sentences or even generate full stories given th
 
 **Available models**
 
-| 🔮 Model                                                                            | Sources                                                                 | Framework         | CPU | GPU |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------- | --- | --- |
-| [Llama2](https://huggingface.co/meta-llama/Llama-2-7b)                              | [GitHub-DVC](https://github.com/instill-ai/model-llama2-7b-dvc)         | Transformer       | ❌  | ✅  |
-| [Code Llama](https://github.com/facebookresearch/codellama)                         | [GitHub-DVC](https://github.com/instill-ai/model-codellama-7b-dvc)      | Transformer       | ❌  | ✅  |
-| [Llama3-instruct](https://llama.meta.com/llama3)                                    | [GitHub-DVC](https://github.com/instill-ai/model-llama3-8b-instruct-dvc)| Transformer       | ❌  | ✅  |
+| Model                                                       | Sources                                                                  | Framework   | CPU | GPU |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- | --- | --- |
+| [Llama2](https://huggingface.co/meta-llama/Llama-2-7b)      | [GitHub-DVC](https://github.com/instill-ai/model-llama2-7b-dvc)          | Transformer | ❌  | ✅  |
+| [Code Llama](https://github.com/facebookresearch/codellama) | [GitHub-DVC](https://github.com/instill-ai/model-codellama-7b-dvc)       | Transformer | ❌  | ✅  |
+| [Llama3-instruct](https://llama.meta.com/llama3)            | [GitHub-DVC](https://github.com/instill-ai/model-llama3-8b-instruct-dvc) | Transformer | ❌  | ✅  |
 
 <InfoBlock type="tip" title="tip">
-Depending on your internet speed, importing LLM models will take a while.
 
-Some models only supports GPU deployment. By default, VDP can access all your GPUs.
+Depending on your internet speed, importing
+LLM models will take a while.
+
+Some models only supports GPU deployment. By default, **⚗️ Instill Model** can access all your
+GPUs.
 
 </InfoBlock>
 
 ## Text Generation Chat
 
-Text Generation Chat is a Generative AI task to generate new text from text inputs in chat style.
-Generally, the task takes a series of conversation as the input, and produces new response on the prompts.
-The task can perform conversation and even answer question based on previous context.
+Text Generation Chat is a Generative AI task to generate new text from text
+inputs in chat style. Generally, the task takes a series of conversation as the
+input, and produces new response on the prompts. The task can perform
+conversation and even answer question based on previous context.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-text-generation.svg"
@@ -451,7 +494,7 @@ The task can perform conversation and even answer question based on previous con
 
 **Available models**
 
-| 🔮 Model                                                            | Sources                                                              | Framework   | CPU | GPU |
+| Model                                                               | Sources                                                              | Framework   | CPU | GPU |
 | ------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------- | --- | --- |
 | [Llama2 Chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) | [GitHub-DVC](https://github.com/instill-ai/model-llama2-7b-chat-dvc) | Transformer | ❌  | ✅  |
 | [MosaicML MPT](https://huggingface.co/mosaicml/mpt-7b)              | [GitHub-DVC](https://github.com/instill-ai/model-mpt-7b-dvc)         | Transformer | ❌  | ✅  |
@@ -459,16 +502,21 @@ The task can perform conversation and even answer question based on previous con
 | [Zephyr-7b](https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha)   | [GitHub-DVC](https://github.com/instill-ai/model-zephyr-7b-dvc)      | Transformer | ✅  | ✅  |
 
 <InfoBlock type="tip" title="tip">
-Depending on your internet speed, importing LLM models will take a while.
 
-Some models only supports GPU deployment. By default, VDP can access all your GPUs.
+Depending on your internet speed, importing
+LLM models will take a while.
+
+Some models only supports GPU deployment. By default, **⚗️ Instill Model** can access all your
+GPUs.
 
 </InfoBlock>
 
 ## Visual Question Answering
 
-Visual Question Answering (VQA) is a task in computer vision that involves answering questions about an image.
-The goal of VQA is to teach machines to understand the content of an image and answer questions about it in natural language.
+Visual Question Answering (VQA) is a task in computer vision that involves
+answering questions about an image. The goal of VQA is to teach machines to
+understand the content of an image and answer questions about it in natural
+language.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-text-generation.svg"
@@ -490,25 +538,26 @@ The goal of VQA is to teach machines to understand the content of an image and a
 
 **Available models**
 
-| 🔮 Model                                                            | Sources                                                         | Framework   | CPU | GPU |
-| ------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- | --- | --- |
-| [Llava-1-6](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)| [GitHub-DVC](https://github.com/instill-ai/model-llava-13b-dvc) | Transformer | ❌  | ✅  |
+| Model                                                                | Sources                                                         | Framework   | CPU | GPU |
+| -------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- | --- | --- |
+| [Llava-1-6](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b) | [GitHub-DVC](https://github.com/instill-ai/model-llava-13b-dvc) | Transformer | ❌  | ✅  |
 
 <InfoBlock type="tip" title="tip">
-Depending on your internet speed, importing LLM models will take a while.
 
-Some models only supports GPU deployment. By default, VDP can access all your GPUs.
+Depending on your internet speed, importing
+LLM models will take a while.
+
+Some models support only GPU deployment. By default, **⚗️ Instill Model** can access all your
+GPUs.
 
 </InfoBlock>
 
 ## Unspecified Task
 
-Instill Model is very flexible and allows you to import models even if your task is not standardised yet or the output of the model can't be converted to the format of supported AI tasks.
-The model will be classified as an `Unspecified` task. Send an image to the model as the input,
-VDP will
-
-- check the `config.pbtxt` [model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) file to extract the output names, datatypes and shapes of the model outputs,
-- and wrap this information along with the raw model output in a _standard_ format.
+**⚗️ Instill Model** is very flexible and allows models even if the task
+is not standardised yet or the output of the model can't be converted to the
+format of supported AI tasks. The model will be classified as an `Unspecified`
+task.
 
 <ZoomableImg
   src="/docs-assets/core-concepts/ai-task-unspecified.svg"
@@ -538,6 +587,9 @@ VDP will
 
 ## Suggest a New Task
 
-Currently, the model output is converted to standard format based on the AI task outputs maintained in [Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
+Currently, the model output is converted to standard format based on the AI task
+outputs maintained in
+[Protobuf](https://github.com/instill-ai/protobufs/tree/main/vdp/model/v1alpha).
 
-If you'd like to have **support for a new task**, you can request it in the **#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).
+If you'd like to have **support for a new task**, you can request it in the
+**#give-feedback** channel on [Discord](https://discord.gg/sevxWsqpGh).
