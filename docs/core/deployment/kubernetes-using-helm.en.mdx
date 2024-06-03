@@ -5,7 +5,7 @@ draft: false
 description: "Learn about how to deploy Instill Core in Kubernetes using Helm"
 ---
 
-Kubernetes offers an elastic way of managing Instill Core to persist the services and scale resources horizontally and vertically.
+Kubernetes offers an elastic way of managing **🔮 Instill Core** to persist the services and scale resources horizontally and vertically.
 
 ## Setup
 
@@ -62,13 +62,13 @@ instill-ai/core 	<chart-version> <app-version> 	The Helm chart of Instill Core
 ```
 
 <InfoBlock type="info" title="info">
-  Instill Core and its Helm chart are still in a pre-release Alpha version, so
+  **🔮 Instill Core** and its Helm chart are still in a pre-release Alpha version, so
   the `--devel` flag is necessary for the access of Helm charts.
 </InfoBlock>
 
 ## Install
 
-Install the Instill Core chart:
+Install the **🔮 Instill Core** chart:
 
 ```bash
 helm install core instill-ai/core --devel --namespace instill-ai --create-namespace --set tags.prometheusStack=true
@@ -108,7 +108,7 @@ To uninstall the chart:
 helm uninstall core --namespace instill-ai
 ```
 
-and clean up all Instill Core related persistent volumes:
+and clean up all **🔮 Instill Core** related persistent volumes:
 
 ```bash
 kubectl delete pvc --all -n instill-ai

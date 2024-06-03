@@ -1,31 +1,36 @@
 ---
-title: "Instill CLI"
+title: "⌨️ Instill CLI"
 lang: "en-US"
 draft: false
-description: "Learn about how to deploy Instill Core using Instill CLI"
+description: "Learn about Instill CLI, the command line tool, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-📺 [Instill CLI](https://github.com/instill-ai/cli) `inst` is the official command line for Instill Core and Instill Cloud.
+The command `inst` is the official command line tool for **🔮 Instill Core** and
+**☁️ Instill Cloud**.
 
 <ZoomableImg
   src="https://github.com/instill-ai/base/assets/141675602/52ce1eef-5169-4cbf-933d-9b37901a2c4f"
-  alt="Instill CLI"
+  alt="⌨️ Instill CLI - inst"
 />
 
 ## Prerequisites
 
 Make sure you have the prerequisites set up:
 
-- **macOS or Linux** - `inst` works on macOS or Linux, but does not support Windows at the moment.
-- **Docker and Docker Compose** - Instill Core uses Docker Compose to run all services at local. See the official [instructions](https://docs.docker.com/compose/install)
-  and the [Docker Resource Requirements for Instill Core](../deployment#docker-resource-requirements).
+- **macOS or Linux** - `inst` works on macOS or Linux, but does not support
+  Windows at the moment.
+- **Docker and Docker Compose** - **🔮 Instill Core** uses Docker Compose to run
+  all services at local. See the official
+  [instructions](https://docs.docker.com/compose/install) and the [Docker
+  Resource Requirements for Instill
+  Core](../deployment#docker-resource-requirements).
 
-<InfoBlock type="tip" title="tip">
-  When you use Instill CLI, you should add current user to docker group or use
-  in root.
+<InfoBlock type="tip" title="tip">  
+  When you use **⌨️ Instill CLI**, you should add current user to docker group or
+  use in root.
 </InfoBlock>
 
-## Downloading Instill CLI
+## Downloading ⌨️ Instill CLI
 
 `inst` is available via [Homebrew](https://brew.sh/).
 
@@ -40,7 +45,9 @@ brew upgrade inst
 
 </CH.Code>
 
-Alternatively, `inst` supports cross platforms. You can just download the Instill CLI for your operating system from [the Assets of the release page](https://github.com/instill-ai/cli/releases/latest):
+Alternatively, `inst` supports cross platforms. You can just download the **⌨️
+Instill CLI** for your operating system from [the Assets of the release
+page](https://github.com/instill-ai/cli/releases/latest):
 
 - MacOS x86_64/amd64
 - Linux x86_64/amd64
@@ -48,11 +55,13 @@ Alternatively, `inst` supports cross platforms. You can just download the Instil
 - Linux arm-v6
 - Windows x86_64/amd64
 
-If you do download from the above links, the steps are slightly different compared to downloading the ILLA CLI from Homebrew.
-After downloading the CLI, you will have to make it executable. Let’s take Instill CLI on MacOS for example:
+If you do download from the above links, the steps are slightly different
+compared to downloading the CLI from Homebrew. After downloading the CLI, you
+will have to make it executable. Let's take **⌨️ Instill CLI** on MacOS for
+example:
 
 ```shellscript
-## Download Instill CLI binary file from the latest release version.
+## Download **⌨️ Instill CLI** binary file from the latest release version.
 ## Here we use `v0.1.0-alpha` as example
 wget https://github.com/instill-ai/cli/releases/download/v0.1.0-alpha/inst_Darwin_x86_64.tar.gz
 
@@ -63,7 +72,7 @@ cd bin
 
 chmod +x inst
 
-## Run the Instill CLI
+## Run the ⌨️ Instill CLI
 ./inst
 ```
 
@@ -73,20 +82,22 @@ The following command will check all available commends:
 inst help
 ```
 
-## Deploying Instill Core
+## Deploying 🔮 Instill Core
 
-Once the Instill CLI has been installed, you can deploy a local Instill Core instance:
+Once the **⌨️ Instill CLI** has been installed, you can deploy a local **🔮
+Instill Core** instance:
 
 ```shellscript
 inst local deploy
 ```
 
-Once all services are up and running,the Console UI is ready to go at [http://localhost:3000](http://localhost:3000).
-Please proceed by following the [onboarding guide](../../quickstart#Authorisation).
+Once all services are up and running,the Console UI is ready to go at
+[http://localhost:3000](http://localhost:3000). Please proceed by following the
+[onboarding guide](../../quickstart#Authorisation).
 
-## Undeploy Instill Core
+## Undeploy 🔮 Instill Core
 
-To shutdown and clean up all Instill Core resources, run
+To shutdown and clean up all **🔮 Instill Core** resources, run
 
 ```shellscript
 inst local undeploy
@@ -103,9 +114,9 @@ inst auth login
 inst api vdp/v1beta/pipelines
 ```
 
-## Uninstall Instill CLI
+## Uninstall ⌨️ Instill CLI
 
-To uninstall Instill CLI:
+To uninstall **⌨️ Instill CLI**:
 
 ```shellscript
 brew uninstall inst
