@@ -340,6 +340,13 @@ export const getSections = (): SidebarSections[] => {
       isHeader: true,
     },
     {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/model/introduction`,
+      items: [],
+      appType: "core",
+      versions: [],
+    },
+    {
       text: "common:sidebarSections.createModel",
       link: `/docs/model/create`,
       items: [],
