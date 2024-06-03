@@ -7,37 +7,47 @@ description: "Use Instill Credit in VDP"
 
 {/* Move to Instill Cloud */}
 
-The purpose of Instill Credit is easing the adoption of Instill Cloud, minimizing the time required to build and set up a pipeline.
-After setting up your account, you'll get **10,000 monthly credits for free**, which can be spent on the following actions:
+The purpose of Instill Credit is easing the adoption of Instill Cloud,
+minimizing the time required to build and set up a pipeline. After setting up
+your account, you'll get **10,000 monthly credits for free**, which can be spent
+on the following actions:
 
 - Trigger your own pipelines, or any public pipeline available on Instill Hub.
-- Execute pre-configured **AI** components without needing to create accounts or API keys on 3rd party services.
+- Execute pre-configured **AI** components without needing to create accounts or
+  API keys on 3rd party services.
 
 ## Pipeline triggers
 
-Each pipeline trigger will consume **1 credit per component** within the pipeline.
+Each pipeline trigger will consume **1 credit per component** within the
+pipeline.
 
-This excludes the **trigger** and **response** components which don't consume any credit, as they are the pipeline's input and output interfaces.
+This excludes the **trigger** and **response** components which don't consume
+any credit, as they are the pipeline's input and output interfaces.
 
 ## AI components
 
-Additionally, Instill AI facilitates out-of-the-box configuration for certain AI components.
-When such components are created, if the selected task and model are supported, the default configuration will contain the credentials to start using the component.
+Additionally, Instill AI facilitates out-of-the-box configuration for certain AI
+components. When such components are created, if the selected task and model are
+supported, the default configuration will contain the credentials to start using
+the component.
 
-<ZoomableImg
-src="/docs-assets/vdp/credit-secret.png"
-alt="Use Instill Credit to run DALL·E 3 image generation with pre-configured credentials"
-width="400px"
-/>
+<ZoomableImg src="/docs-assets/vdp/credit-secret.png" alt="Use Instill Credit to
+run DALL·E 3 image generation with pre-configured credentials" width="400px" />
 
-If you want to override the default configuration and bring your own key, you can update the **Connection** configuration in your component.
-Connection fields only take references to secrets in order to minimize the risk of leaking credentials when sharing your pipelines.
-Therefore, you'll need to create a secret with your API key in your account settings page.
+If you want to override the default configuration and bring your own key, you
+can update the **Connection** configuration in your component. Connection fields
+only take references to secrets in order to minimize the risk of leaking
+credentials when sharing your pipelines. Therefore, you'll need to create a
+secret with your API key in your account settings page.
 
-To go back to using the Instill credentials on your component, you can reference the `${secrets.INSTILL_SECRET}` in the component configuration.
-You may use this reference as well if you want to modify an existing pipeline (e.g. one you cloned from Instill Hub) and use the default credentials on any supported component.
+To go back to using the Instill credentials on your component, you can reference
+the `${secrets.INSTILL_SECRET}` in the component configuration. You may use this
+reference as well if you want to modify an existing pipeline (e.g. one you
+cloned from Instill Hub) and use the default credentials on any supported
+component.
 
-The following section details the supported AI tasks & models and their Instill Credit cost per unit.
+The following section details the supported AI tasks & models and their Instill
+Credit cost per unit.
 
 ### Supported AI tasks and models
 
@@ -85,16 +95,23 @@ The following section details the supported AI tasks & models and their Instill 
 
 #### Next additions
 
-Check our [Roadmap](../roadmap) and subscribe to our [Newsletter](/newsletter/?utm_source=documentation&utm_medium=link) to keep up to date with the latest tasks, models and vendors that are supported by Instill Credit.
+Check our [Roadmap](../roadmap) and subscribe to our
+[Newsletter](/newsletter/?utm_source=documentation&utm_medium=link) to keep up
+to date with the latest tasks, models and vendors that are supported by Instill
+Credit.
 
-We also plan to leverage Instill Credit to ease data storage and model hosting, stay tuned!
+We also plan to leverage Instill Credit to ease data storage and model hosting,
+stay tuned!
 
 ## How can I get more credit?
 
-Initially, users will get **10,000 free credits every month**.
-Soon, different pricing plans will include higher amounts of monthly Instill Credit.
+Initially, users will get **10,000 free credits every month**. Soon, different
+pricing plans will include higher amounts of monthly Instill Credit.
 
-Our roadmap includes features to cover the cases when the monthly Instill Credit isn't enough:
+Our roadmap includes features to cover the cases when the monthly Instill Credit
+isn't enough:
 
-- **Credit purchase**, for users that exhausted their Credit before the end of the month.
-- **Credit auto-billing**, which will top-up Credit before it is exhausted, keeping production environment from any potential downtime.
+- **Credit purchase**, for users that exhausted their Credit before the end of
+  the month.
+- **Credit auto-billing**, which will top-up Credit before it is exhausted,
+  keeping production environment from any potential downtime.
