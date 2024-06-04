@@ -20,26 +20,25 @@ keywords: ["model serving", "MLOps", "Instill Core"]
 # Unlock new Possibilities with ⚗️ Instill Model
 
 **⚗️ Instill Model** is a sophisticated MLOps/LLMOps platform specially designed
-to orchestrate model serving, fine-tuning, and monitoring to ensure consistent
-and reliable performance. Offering robust model orchestration capabilities, it
-allows for efficient management and deployment of deep learning models for
-unstructured data ETL. It is used to deploy and serve models locally on **🔮
-Instill Core**, and on **☁️ Instill Cloud**.
+to orchestrate model serving and monitoring to ensure consistent and reliable
+performance. It allows for efficient management and deployment of deep learning
+models for unstructured data ETL, and is used to deploy and serve models locally
+with **🔮 Instill Core**, and on the cloud with **☁️ Instill Cloud**.
 
 ## Why use ⚗️ Instill Model?
 
 1. Seamless Integration with **💧 Instill VDP**: integrate effortlessly with our
    Versatile Data Pipeline, allowing for streamlined unstructured data ETL and
    model serving workflows.
-2. No Code Console Builder: Easily utilize models defined with **⚗️ Instill
-   Model** as modularized AI components via **📺 Instill Console**, facilitating
-   the integration of models into downstream tasks without requiring any coding.
+2. No Code Console Builder: Easily utilize custom models defined with **⚗️
+   Instill Model** as modular AI components via **📺 Instill Console**, allowing
+   for seamless integration into downstream tasks.
 3. AutoML Feature (Coming Soon): With the upcoming AutoML feature, **⚗️ Instill
    Model** will soon be capable of automating model training and tuning,
    simplifying model optimization for deployment.
 
 This step-by-step tutorial will guide you through the process of setting up your
-own custom model with **Instill Model** for local deployment on **🔮 Instill
+own custom model with **Instill Model** for local deployment with **🔮 Instill
 Core**.
 
 ## Prerequisites
@@ -51,12 +50,12 @@ Core**.
    instructions](https://docs.docker.com/get-docker/), and see our [deployment
    guide](./docs/core/deployment) for recommended resource settings.
 2. **⌨️ Instill CLI**: The easiest way to launch **🔮 Instill Core** for local
-   deployment is via the **⌨️ Instill CLI**. To install **⌨️ Instill CLI**
-   please run the following in your terminal:
+   deployment is via the **⌨️ Instill CLI**. To install **⌨️ Instill CLI** using
+   Homebrew, please run the following command in your terminal:
    ```bash
    brew install instill-ai/tap/inst
    ```
-3. **Launch 🔮 Instill Core**: To launch you can run:
+3. **Launch 🔮 Instill Core**: To launch simply run:
    ```bash
    inst local deploy
    ```
@@ -75,9 +74,9 @@ For further details about launching **🔮 Instill Core**, we recommend that you
 refer to the [deployment guide](./docs/core/deployment) which covers alternative
 ways you can launch with Docker Compose or Kubernetes with Helm.
 
-Please note that this guide assumes you have a basic understanding of machine
-learning and can code in Python. If you are new to these concepts, we recommend
-that you look at our [quick start
+Finally, please note that this guide assumes you have a basic understanding of
+machine learning and can code in Python. If you are new to these concepts, we
+recommend that you look at our [quick start
 guide](/docs/latest/quickstart#authorisation?utm_source=tutorial&utm_medium=link&utm_campaign=model-oss-llm)
 which introduces our no-code **💧 Instill VDP** pipeline builder, and also take
 a look at some of our other [tutorials](https://www.instill.tech/tutorials).
@@ -375,7 +374,7 @@ entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 
 Awesome 😎, you have now defined your own custom model class for model serving
 with **⚗️ Instill Model**. In the next step, we will show you how to build and
-deploy this model locally on **🔮 Instill Core**!
+deploy this model locally with **🔮 Instill Core**!
 
 ## Step 4: Build and Deploy the Model
 
@@ -521,9 +520,10 @@ Instill Model** and **🔮 Instill Core**! 🎉
 
 By following this tutorial, you've accomplished the following:
 
-1. Set up Instill Core for local deployment.
+1. Set up **🔮 Instill Core** for local deployment.
 2. Created a model namespace and configured model settings.
-3. Defined and implemented a custom model class for the TinyLlama-1.1B-Chat
+3. Defined and implemented a custom model class for the
+   [TinyLlama-1.1B-Chat](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0)
    model.
 4. Built and deployed your model image.
 5. Tested your model's inference capabilities via the Console and API.
@@ -532,11 +532,10 @@ By following this tutorial, you've accomplished the following:
 streamlined solution for managing and deploying your own deep learning models.
 
 Excitingly, you can now connect your own custom models via the **⚗️ Instill
-Model** [**AI component**](../docs/component/ai/instill) to construct bespoke
-**💧 Instill VDP** pipelines tailored to your unstructured data ETL
-requirements. Please see the [Create a Pipeline](../docs/vdp/create) page for
-more information on building **💧 Instill VDP** pipelines with **📺 Instill
-Console**.
+Model** [AI component](../docs/component/ai/instill) to construct bespoke **💧
+Instill VDP** pipelines tailored to your unstructured data ETL requirements.
+Please see the [Create a Pipeline](../docs/vdp/create) page for more information
+on building **💧 Instill VDP** pipelines with **📺 Instill Console**.
 
 Ultimately these tools allow you the freedom and creativity to develop and
 iterate innovative AI-powered workflows to solve your real-world use cases.
