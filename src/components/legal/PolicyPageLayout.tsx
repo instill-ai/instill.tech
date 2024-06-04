@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { ContentContainer, PageBase, PageHead } from "../ui";
 
-export type SecurityPageLayoutProps = {
+export type PolicyPageLayoutProps = {
   meta: {
     title: string;
     description: string;
@@ -9,10 +9,7 @@ export type SecurityPageLayoutProps = {
   children?: ReactNode | undefined;
 };
 
-export const SecurityPageLayout = ({
-  meta,
-  children,
-}: SecurityPageLayoutProps) => {
+export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
   return (
     <PageBase>
       <PageHead
@@ -35,13 +32,13 @@ export const SecurityPageLayout = ({
           <div className="relative xl:col-span-1 xl:mt-[180px]">
             <div className="mb-40 flex flex-col gap-y-2 px-4 pt-40 xl:sticky xl:top-0 xl:mb-0 xl:px-16">
               <p className="text-instillGrey90">
-                At Instill AI, data privacy is our top priority. Contact us at
+                We&apos;re happy to hear from you. Get in touch at
               </p>
               <a
                 className="flex text-instillSkyBlue"
-                href="mailto:security@instill.tech"
+                href="mailto:hello@instill.tech"
               >
-                security@instill.tech
+                hello@instill.tech
               </a>
             </div>
           </div>
