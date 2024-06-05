@@ -2,77 +2,102 @@
 title: "License"
 lang: "en-US"
 draft: false
-description: "Instill Core license https://github.com/instill-ai/instill-core"
+description: "Licenses used at Instill AI "
 ---
 
-Instill Core uses multiple licenses.
+This page lists the license type that applies to each **🔮 Instill Core** and
+**☁️ Instill Cloud** component, including the [**Instill Enterprise
+License**](#about-instill-enterprise-license), the [**Instill Community
+License**](/instill-community-license), or the [**MIT
+License**](https://opensource.org/license/mit). For more information, see the
+[License FAQ](#license-faq).
 
-- **Protocol**: open-source and available under the MIT License
-- **Instill Components**: open-source and available under the MIT License
-- **Instill Model Sources**: open-source and available under the MIT License
-- **UI, API and services of Instill Core**: source available under the Elastic License 2.0 (ELv2)
-- **Instill Cloud** (fully-managed public cloud service for Instill Core): closed-source
+## License Types
 
-<ZoomableImg
-  src="/docs-assets/core/license.svg"
-  alt="Instill Core license overview"
-/>
+Instill AI uses multiple licenses for different components listed in the table
+below:
 
-The Instill Core project uses a polyrepo structure. The license for a piece of source code in a Core-related repository is defined with the following prioritized rules:
+|                                | **💧 VDP** | **⚗️ Model** | **💾 Artifact** | **📺 Console** | 🍎 App | **⚙️ Component** | **⌨️ CLI** | **📦 SDK** |
+| -----------------------------: | :--------: | :----------: | :-------------: | :------------: | :----: | :--------------: | :--------: | :--------: |
+|  **Instill Community License** |     ✅     |      ✅      |       ✅        |       ✅       |        |                  |            |            |
+| **Instill Enterprise License** |            |              |                 |                |   ✅   |                  |            |            |
+|                **MIT License** |            |              |                 |                |        |        ✅        |     ✅     |     ✅     |
 
-1. LICENSE present in the file
-2. LICENSE file in the same directory as the file
-3. First LICENSE file found in the parent directories up to the top level
-4. By default to the Elastic License 2.0 (ELv2)
+### About Instill Community License
 
-Please read the [FAQ](#license-faq) section below regarding the license details.
-In short, unless you want to host Instill Core and sell it as an unstructured data pipeline service, or to sell a product that directly uses the UI or API of Instill Core,
-you are all set to go to use Instill Core in your project.
-
-## About ELv2
-
-The Elastic License v2 (ELv2) is a very simple, non-copyleft license, allowing for the right to "use, copy, distribute, make available, and prepare derivative works of the software”.
-The license allows the free right to use, modify, create derivative works, and redistribute, with three simple limitations:
+The [**Instill Community License**](/instill-community-license) is a simple,
+non-copyleft license, allowing for the right to "use, copy, distribute, make
+available, and prepare derivative works of the software”. The license allows the
+free right to use, modify, create derivative works, and redistribute, with three
+simple limitations:
 
 - You may not provide the products to others as a managed service
-- You may not circumvent the license key functionality or remove/obscure features protected by license keys
+- You may not circumvent the license key functionality or remove/obscure
+  features protected by license keys
 - You may not remove or obscure any licensing, copyright, or other notices
 
-If you want to use Instill Core without these limitations, please contact us at: hello@instill.tech.
+If you want to use Instill Core without these limitations, please contact us at:
+hello@instill.tech.
+
+### About Instill Enterprise License
+
+An enterprise license, which is a paid annual subscription, unlocks all
+commercial features of Instill AI for use in a production environment. This
+license has a validity period of 365 days, after which it expires. Upon
+expiration, the software will cease to operate, necessitating a license renewal
+to resume usage.
 
 ## License FAQ
 
-### Why did Instill Core Services Adopt ELv2?
+### Why Instill Community License?
 
-Our mission is to make AI accessible to everyone. The best way to achieve this is to make Instill Core free to use and source available to everyone, while ensuring we safely create a sustainable business.
-Therefore, we chose ELv2 since it is very permissive. On one hand, this allows us to provide users with free access to our source code, the permission to modify it.
-On the other hand, we've released [Instill Cloud](https://www.instill.tech/?utm_source=documentation&utm_medium=link), a fully-managed public cloud service built upon Instill Core that offers additional features.
-With the license, we don't have to worry about our project being taken by some other companies for monetization.
+Our goal is to democratize AI, making it accessible to all. To accomplish this,
+we've made the fundamental features of **🔮 Instill Core** freely available,
+with source code accessible to everyone. This approach ensures the
+sustainability of our business while promoting openness. Hence, we've introduced
+the **Instill Community License**, which is highly permissive. This license not
+only allows us to offer users free access to our source code and the ability to
+modify it, but also safeguards our project from being exploited by other
+companies for profit. Additionally, we've launched ☁️ [**Instill
+Cloud**](https://instill.tech/?utm_source=documentation&utm_medium=link), a
+fully managed public cloud service based on **🔮 Instill Core** that provides
+extra features.
 
-### Why Are Instill Core Components Open Source?
+### Why Are the Other Components Open Source?
 
-We want to build Instill Core as an open platform that integrates with other awesome tooling and services.
-And we think the best way to build these integrations is via open source, no matter it is a data component that connects data to a warehouse, application, or database, or a AI component that connects AI models from self-hosted or 3rd party platforms.
-This also benefits the projects that want to integrate with these components.
+We want to build **🔮 Instill Core** as an open platform that integrates with
+other awesome tooling and services. We think the best way to build these
+integrations is via open source, irrespective of whether it is a data component that connects
+data to a warehouse, application, or database, or an AI component that connects
+AI models from self-hosted or 3rd party platforms. This also benefits the
+projects that want to integrate with these components.
 
-### How Do I Contribute to Instill Core?
+### How Do I Contribute to 🔮 Instill Core?
 
-Anyone can contribute to any repositories of Instill Core (including Instill Core services under ELv2). We are introducing a Contributor License Agreement that you will have to sign with your first contribution.
+Anyone can contribute to any repositories of **🔮 Instill Core** (including
+features under the **Instill Community License**). We are introducing a
+**Contributor License Agreement** that you will have to sign with your first
+contribution.
 
-### My Company Has a Policy Against Using Code that Restricts Commercial Use - Can I Still Use Instill Core?
+### My Company Has a Policy Against Using Code that Restricts Commercial Use - Can I Still Use 🔮 Instill Core?
 
-You can use any software under ELv2 for your commercial business, as long as you don't offer it as a managed service.
+You can use any software under **Instill Community License** for your commercial
+business, as long as you don't offer it as a managed service.
 
-### I'm Building an Application on Top of Instill Core, How Does It Work for Me?
+### I'm Building an Application on Top of 🔮 Instill Core, How Does It Work for Me?
 
-You can freely use Instill Core inside your SaaS and internal applications, and redistribute it with your application, as long as you follow the three limitations outlined above.
+You can freely use **🔮 Instill Core** inside your SaaS and internal
+applications, and redistribute it with your application, as long as you follow
+the three limitations outlined above.
 
-### Can You Provide Some Examples of What isn't Allowed Under the Instill Core License?
+### Can You Provide Some Examples of What isn't Allowed Under the Instill Community License?
 
-There aren't many you can't do with Instill Core that is under ELv2. Here are some examples:
+There aren't many things you can't do with **🔮 Instill Core** that is under **Instill
+Community License**. Here are some examples:
 
-- Self-host Instill Core and charge people money to access it.
-- Sell a product that directly exposes the UI or API of Instill Core.
-- White-label Instill Core and sell it as a product.
+- Self-host **🔮 Instill Core** and charge people money to access it.
+- Sell a product that directly exposes the UI or API of **🔮 Instill Core**.
+- White-label **🔮 Instill Core** and sell it as a product.
 
-If you are still not sure whether your use cases are permitted or not, please email us at hello@instill.tech.
+If you are still not sure whether your use cases are permitted or not, please
+email us at hello@instill.tech.

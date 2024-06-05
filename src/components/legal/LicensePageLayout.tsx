@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { ContentContainer, PageBase, PageHead } from "../ui";
 
-export type PolicyPageLayoutProps = {
+export type LicensePageLayoutProps = {
   meta: {
     title: string;
     description: string;
@@ -9,7 +9,10 @@ export type PolicyPageLayoutProps = {
   children?: ReactNode | undefined;
 };
 
-export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
+export const LicensePageLayout = ({
+  meta,
+  children,
+}: LicensePageLayoutProps) => {
   return (
     <PageBase>
       <PageHead
@@ -26,7 +29,7 @@ export const PolicyPageLayout = ({ meta, children }: PolicyPageLayoutProps) => {
         contentMaxWidth="max-w-[1127px]"
       >
         <div className="xl:grid xl:w-10/12 xl:grid-cols-3">
-          <article className="prose mx-5 mt-[180px] mb-[60px] max-w-none xl:col-span-2 xl:mx-0">
+          <article className="prose mx-5 mb-[60px] mt-[180px] max-w-none xl:col-span-2 xl:mx-0">
             {children}
           </article>
           <div className="relative xl:col-span-1 xl:mt-[180px]">
