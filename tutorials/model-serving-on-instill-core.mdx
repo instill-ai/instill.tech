@@ -98,7 +98,8 @@ of the
 model. To follow along, please fill in the configuration fields as per the image
 below.
 
-<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T1.png" alt="Configure Model Settings" />
+<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T1.png"
+alt="Configure Model Settings" />
 
 You have now created an empty model namespace on **⚗️ Instill Model**. In the
 next sections of this tutorial we will show you how to define your own custom
@@ -127,8 +128,8 @@ repo: USER_ID/MODEL_ID
 ```
 </CH.Code>
 
-Importantly, you must replace `USER_ID` with `admin`, and replace `MODEL_ID`
-for `tinyllama` - the same Model ID that was specified in [Step
+Importantly, you must replace `USER_ID` with `admin`, and replace `MODEL_ID` for
+`tinyllama` - the same Model ID that was specified in [Step
 1](#step-1-create-a-model-namespace).
 
 This file specifies the dependencies required to run the model. We will be
@@ -187,8 +188,10 @@ model performs.
 
 Here, we recognise that the
 [TinyLlama-1.1B-Chat](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0)
-model falls under the [Text Generation Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task, and so we will make use of
-the `construct_text_generation_chat_metadata_response` helper function.
+model falls under the [Text Generation
+Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task,
+and so we will make use of the
+`construct_text_generation_chat_metadata_response` helper function.
 
 Please refer [here](https://www.instill.tech/docs/model/ai-task) for a full list
 of the supported AI tasks.
@@ -218,9 +221,11 @@ module to parse the request payload into input parameters, and convert the model
 outputs to the appropriate response format.
 
 The `TextGenerationChatInput` class from `instill.helpers.const` is used to
-define the input format for the [Text Generation Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task, and the
-`construct_text_generation_chat_infer_response` function from `instill.helpers`
-is used to format the model output into the appropriate response format.
+define the input format for the [Text Generation
+Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task,
+and the `construct_text_generation_chat_infer_response` function from
+`instill.helpers` is used to format the model output into the appropriate
+response format.
 
 <CH.Code>
 ```python model.py
@@ -407,16 +412,19 @@ completion, you should see a similar output to the following:
 ### Push the Model Image
 
 To push the model image to the **🔮 Instill Core** instance we will need to be
-able to login to the hosted Docker registry. To do this, you first need to create an API token by:
+able to login to the hosted Docker registry. To do this, you first need to
+create an API token by:
 1. Selecting the profile icon in the top right corner of the Console window and
    choosing the Settings option.
 2. Select API Tokens from the left-hand menu.
 3. Click the **Create Token** button and give it a name, e.g. `tutorial`. Copy
    the generated API token.
 
-<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T2.png" alt="Create API Token" />
+<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T2.png"
+alt="Create API Token" />
 
-Now we can login to the Docker register in the **🔮 Instill Core** instance by running:
+Now we can login to the Docker register in the **🔮 Instill Core** instance by
+running:
 ```bash
 docker login localhost:8080
 ```
@@ -510,6 +518,16 @@ To access model inferences via the API:
       ]
    }'
    ```
+
+## Step 6. Tear Everything Down
+
+After you have finished testing and serving your model, you might want to tear
+down the local **🔮 Instill Core** instance to free up system resources. You can
+do this using the **⌨️ Instill CLI** command:
+
+```bash
+inst local undeploy
+```
 
 # Conclusion
 
