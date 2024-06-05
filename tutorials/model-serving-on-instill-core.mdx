@@ -48,7 +48,7 @@ Core**.
    reproducible environments. Please ensure that you have Docker installed and
    running by following the [official
    instructions](https://docs.docker.com/get-docker/), and see our [deployment
-   guide](./docs/core/deployment) for recommended resource settings.
+   guide](/docs/core/deployment) for recommended resource settings.
 2. **⌨️ Instill CLI**: The easiest way to launch **🔮 Instill Core** for local
    deployment is via the **⌨️ Instill CLI**. To install **⌨️ Instill CLI** using
    Homebrew, please run the following command in your terminal:
@@ -71,7 +71,7 @@ Core**.
     - Password: `password`
 
 For further details about launching **🔮 Instill Core**, we recommend that you
-refer to the [deployment guide](./docs/core/deployment) which covers alternative
+refer to the [deployment guide](/docs/core/deployment) which covers alternative
 ways you can launch with Docker Compose or Kubernetes with Helm.
 
 Finally, please note that this guide assumes you have a basic understanding of
@@ -98,8 +98,7 @@ of the
 model. To follow along, please fill in the configuration fields as per the image
 below.
 
-<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T1.png" alt="2.
-Configure Model Settings" />
+<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T1.png" alt="Configure Model Settings" />
 
 You have now created an empty model namespace on **⚗️ Instill Model**. In the
 next sections of this tutorial we will show you how to define your own custom
@@ -124,11 +123,11 @@ build:
      - torch==2.2.1
      - transformers==4.36.2
      - accelerate==0.25.0
-repo: {user_id}/{model_id}
+repo: USER_ID/MODEL_ID
 ```
 </CH.Code>
 
-Importantly, you must replace `{user_id}` with `admin`, and replace `{model_id}`
+Importantly, you must replace `USER_ID` with `admin`, and replace `MODEL_ID`
 for `tinyllama` - the same Model ID that was specified in [Step
 1](#step-1-create-a-model-namespace).
 
@@ -188,7 +187,7 @@ model performs.
 
 Here, we recognise that the
 [TinyLlama-1.1B-Chat](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0)
-model falls under the `text_generation_chat` AI task, and so we will make use of
+model falls under the [Text Generation Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task, and so we will make use of
 the `construct_text_generation_chat_metadata_response` helper function.
 
 Please refer [here](https://www.instill.tech/docs/model/ai-task) for a full list
@@ -219,7 +218,7 @@ module to parse the request payload into input parameters, and convert the model
 outputs to the appropriate response format.
 
 The `TextGenerationChatInput` class from `instill.helpers.const` is used to
-define the input format for the text generation chat AI task, and the
+define the input format for the [Text Generation Chat](https://www.instill.tech/docs/model/ai-task#text-generation-chat) AI task, and the
 `construct_text_generation_chat_infer_response` function from `instill.helpers`
 is used to format the model output into the appropriate response format.
 
@@ -408,17 +407,16 @@ completion, you should see a similar output to the following:
 ### Push the Model Image
 
 To push the model image to the **🔮 Instill Core** instance we will need to be
-able to login to Docker. To do this, you first need to create an API token by:
+able to login to the hosted Docker registry. To do this, you first need to create an API token by:
 1. Selecting the profile icon in the top right corner of the Console window and
    choosing the Settings option.
 2. Select API Tokens from the left-hand menu.
 3. Click the **Create Token** button and give it a name, e.g. `tutorial`. Copy
    the generated API token.
 
-<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T2.png" alt="2.
-Create API Token" />
+<ZoomableImg src="/tutorial-assets/model-serving-on-instill-core/T2.png" alt="Create API Token" />
 
-Now we can login to Docker on the **🔮 Instill Core** instance by running:
+Now we can login to the Docker register in the **🔮 Instill Core** instance by running:
 ```bash
 docker login localhost:8080
 ```
@@ -479,7 +477,7 @@ To access model inferences via the API:
 2. Follow the instructions by setting your own `INSTILL_API_TOKEN` as an
    environment variable:
    ```bash
-   $ export INSTILL_API_TOKEN=********
+   export INSTILL_API_TOKEN=********
    ```
    and using the provided `curl` command to send a request to the model
    endpoint:
