@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.48.0](https://github.com/instill-ai/instill.tech/compare/v1.47.18...v1.48.0) (2024-06-06)
+
+
+### Features
+
+* **docs:** namananand/ins 4682 mdx files should have ability to use global variables ([#859](https://github.com/instill-ai/instill.tech/issues/859)) ([dbe3f43](https://github.com/instill-ai/instill.tech/commit/dbe3f43a7f9d54b59b01f9726d7341af64c8490e))
+* document advanced Instill Credit subscription ([#875](https://github.com/instill-ai/instill.tech/issues/875)) ([5e057ac](https://github.com/instill-ai/instill.tech/commit/5e057ace97ffd50c28a659258d3c59c05d3de22e))
+* update nextjs version to v14 to fix deps alert ([#862](https://github.com/instill-ai/instill.tech/issues/862)) ([ac9ee92](https://github.com/instill-ai/instill.tech/commit/ac9ee92cfed6466791cec2ee2e2a51dc1eb8a483))
+* **vdp,model:** adopt latest component-definition API ([#882](https://github.com/instill-ai/instill.tech/issues/882)) ([23f1e18](https://github.com/instill-ai/instill.tech/commit/23f1e18caed878cbbe040c9675b15795188bf1a0))
+
+
+### Bug Fixes
+
+* **docs:** repair broken links and update terminology ([#863](https://github.com/instill-ai/instill.tech/issues/863)) ([225a78b](https://github.com/instill-ai/instill.tech/commit/225a78b770166f108ed21104d468a82377b0e311))
+* fix zod deps alert issue in toolkit ([#866](https://github.com/instill-ai/instill.tech/issues/866)) ([0c931bc](https://github.com/instill-ai/instill.tech/commit/0c931bc2502c59f0d39ba1cecfe3d9a776a41a40))
+
+
+### Miscellaneous
+
+* **model:** update supported python version ([#878](https://github.com/instill-ai/instill.tech/issues/878)) ([a76ece5](https://github.com/instill-ai/instill.tech/commit/a76ece5a7c4ecb0a9ee13848e01ad84492b78993))
+* **vdp:** modify slack component ([#876](https://github.com/instill-ai/instill.tech/issues/876)) ([e38dda0](https://github.com/instill-ai/instill.tech/commit/e38dda027fcd861600c8439d29b3ffc3d3954c5f))
+* **website:** add security page on product website ([#865](https://github.com/instill-ai/instill.tech/issues/865)) ([83fcfca](https://github.com/instill-ai/instill.tech/commit/83fcfca911159d2c720cf36a3e3b2514976a477a))
+
+
+### Documentation
+
+* **all:** refactor documentation website ([#871](https://github.com/instill-ai/instill.tech/issues/871)) ([a28783b](https://github.com/instill-ai/instill.tech/commit/a28783b5f04630f23ca23ab6e513c598298488b6))
+* **component:** update component folder structure ([#864](https://github.com/instill-ai/instill.tech/issues/864)) ([576ba91](https://github.com/instill-ai/instill.tech/commit/576ba914a792aab6558695b75ec571ddd3267f32))
+* **doc:** align struct and style across sections ([#873](https://github.com/instill-ai/instill.tech/issues/873)) ([9c8f366](https://github.com/instill-ai/instill.tech/commit/9c8f3663911974cebd10f9c21981a1596a6bf969))
+* **doc:** apply emoji to instill projects ([#874](https://github.com/instill-ai/instill.tech/issues/874)) ([d778320](https://github.com/instill-ai/instill.tech/commit/d77832037ce3a176d1f16d31e7ca7c82dab8370b))
+* **license:** update the latest license structure ([#879](https://github.com/instill-ai/instill.tech/issues/879)) ([9b6b608](https://github.com/instill-ai/instill.tech/commit/9b6b608184f33ebb72607946bddefac71cb0c72e))
+* **model:** update and polish Instill Model ([#870](https://github.com/instill-ai/instill.tech/issues/870)) ([1934c27](https://github.com/instill-ai/instill.tech/commit/1934c27ead85cc6bba821ba3880ed54fb88f26e2))
+* **tutorial:** add new tutorial for serving custom models in Instill Core ([#877](https://github.com/instill-ai/instill.tech/issues/877)) ([4ee5cd5](https://github.com/instill-ai/instill.tech/commit/4ee5cd526bf7fc38ef91f68290d18ecebeef64eb))
+* **vdp:** fix VDP acronym ([#880](https://github.com/instill-ai/instill.tech/issues/880)) ([f779047](https://github.com/instill-ai/instill.tech/commit/f779047472547b3cc277f8a3e2df0e12cc8c6297))
+* **vdp:** update pipeline and component docs ([#872](https://github.com/instill-ai/instill.tech/issues/872)) ([4fdf985](https://github.com/instill-ai/instill.tech/commit/4fdf985bb45cf0218ed58fb2711ad872c7b3375b))
+
 ## [1.47.18](https://github.com/instill-ai/instill.tech/compare/v1.47.17...v1.47.18) (2024-05-22)
 
 
