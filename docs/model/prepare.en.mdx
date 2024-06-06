@@ -28,14 +28,14 @@ In the `instill.yaml` file, you are can specify the following details:
     - Description: Specifies if the model needs GPU support.
   - **python_version**:
     - Required: `string`
-    - Supported Versions: `3.9`, `3.10`, `3.11`
+    - Supported Versions: `3.11`
   - **python_packages**:
     - Required: `list`
     - Description: Lists packages to be installed with `pip`.
   - **cuda_version**:
     - Optional: `string`
     - Supported Versions: `11.5`, `11.6`, `11.7`, `11.8`, `12.1`
-    - Default: Defaults to the latest version if not specified or empty.
+    - Default: Defaults to `11.8` if not specified or empty.
   - **system_packages**:
     - Optional: `list`
     - Description: Lists packages to be installed from the `apt` package
@@ -143,7 +143,7 @@ class TinyLlama:
     def __init__(self):
         self.pipeline = pipeline(
             "text-generation",
-            model="tinyllama",
+            model="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
             torch_dtype=torch.bfloat16,
             device_map="auto",
         )
@@ -161,8 +161,19 @@ class TinyLlama:
         )
 
         # prepare prompt with chat template
+        conv = [
+            {
+                "role": "system",
+                "content": "You are a friendly chatbot",
+            },
+            {
+                "role": "user",
+                "content": task_text_generation_chat_input.prompt,
+            },
+        ]
+
         prompt = self.pipeline.tokenizer.apply_chat_template(
-            task_text_generation_chat_input.chat_history,
+            conv,
             tokenize=False,
             add_generation_prompt=True,
         )

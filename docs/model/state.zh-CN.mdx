@@ -12,6 +12,10 @@ A deployed model version can be in these states:
 - `SCALING`: The replica count is adjusting to traffic.
 - `ACTIVE`: The replica is servicing requests.
 - `IDLE`: No replicas are handling requests, triggering a scale down.
-- `OFFLINE`: No active replicas, a cold start will be initiated on the next request.
+- `OFFLINE`: No active replicas, a cold start will be initiated on the next
+  request.
 
 If deployment fails, the version will be in the `ERROR` state.
+
+If the model does not receive any requests for 30 minutes a scale-down will be
+triggered, and if the replica cound falls to `0`, the model will go `OFFLINE`.
