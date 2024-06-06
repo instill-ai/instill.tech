@@ -15,16 +15,9 @@ import {
   Tag,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
-import {
-  ConnectorDefinition,
-  ConnectorType,
-  OperatorDefinition,
-  PipelineComponentType,
-} from "@instill-ai/toolkit";
 import cn from "clsx";
-import OperatorComponent from "@/components/landing/Operator/OperatorComponent";
-import ConnectorComponent from "@/components/landing/Connector/ConnectorComponent";
-import ConnectorDefault from "@/components/landing/Connector/ConnectorDefault";
+import ComponentCard from "@/components/landing/component/ComponentCard";
+import ComponentDefault from "@/components/landing/component/ComponentDefault";
 import { NextPageWithLayout } from "./_app";
 
 export type Task = {
@@ -33,7 +26,24 @@ export type Task = {
   title: string;
 };
 
-export type ConnectorDef = ConnectorDefinition & {
+export type ComponentType =
+  | "COMPONENT_TYPE_UNSPECIFIED"
+  | "COMPONENT_TYPE_OPERATOR"
+  | "COMPONENT_TYPE_DATA"
+  | "COMPONENT_TYPE_AI"
+  | "COMPONENT_TYPE_APPLICATION";
+
+export type Component = {
+  name: string;
+  uid: string;
+  id: string;
+  title: string;
+  documentation_url: string;
+  icon: string;
+  icon_url: string;
+  type: ComponentType;
+  tombstone: boolean;
+  public: boolean;
   tasks: Task[];
   version?: string;
   description?: string;
@@ -41,28 +51,13 @@ export type ConnectorDef = ConnectorDefinition & {
   release_stage?: string;
 };
 
-export type OperatorDef = OperatorDefinition & {
-  tasks: Task[];
-  version?: string;
-  description?: string;
-  source_url?: string;
-  release_stage?: string;
-};
-
-export type Connector = {
-  type: PipelineComponentType;
-  connector_definition?: ConnectorDef;
-  operator_definition?: OperatorDef;
-};
-
-export const ConnectorCategory = {
-  CONNECTOR_TYPE_AI: "AI Connector",
-  CONNECTOR_TYPE_BLOCKCHAIN: "Application Connector",
-  CONNECTOR_TYPE_APPLICATION: "Application Connector",
-  CONNECTOR_TYPE_DATA: "Data Connector",
-  CONNECTOR_TYPE_UNSPECIFIED: "Unspecified Connector",
-  CONNECTOR_TYPE_OPERATOR: "Operator",
-  CONNECTOR_TYPE_ITERATOR: "Iterator",
+export const ComponentCategory = {
+  COMPONENT_TYPE_AI: "AI Component",
+  COMPONENT_TYPE_APPLICATION: "Application Component",
+  COMPONENT_TYPE_DATA: "Data Component",
+  COMPONENT_TYPE_UNSPECIFIED: "Unspecified Component",
+  COMPONENT_TYPE_OPERATOR: "Operator Component",
+  COMPONENT_TYPE_ITERATOR: "Iterator Component",
 };
 
 export const docsLinks: any = {
@@ -76,21 +71,19 @@ export const docsLinks: any = {
   "airbyte-destination": `${process.env.NEXT_PUBLIC_BASE_URL}/docs/vdp/data-connectors/airbyte`,
 };
 
-export const getHeaderColorClass = (
-  type: ConnectorType | "CONNECTOR_TYPE_APPLICATION" | "CONNECTOR_TYPE_ITERATOR"
-) => {
+export const getHeaderColorClass = (type: string) => {
   switch (type) {
-    case "CONNECTOR_TYPE_AI":
+    case "COMPONENT_TYPE_AI":
       return "bg-semantic-accent-bg text-semantic-accent-on-bg";
-    case "CONNECTOR_TYPE_DATA":
+    case "COMPONENT_TYPE_DATA":
       return "bg-semantic-error-bg text-semantic-error-on-bg";
-    case "CONNECTOR_TYPE_APPLICATION":
+    case "COMPONENT_TYPE_APPLICATION":
       return "bg-semantic-warning-bg text-semantic-warning-on-bg";
-    case "CONNECTOR_TYPE_OPERATOR":
+    case "COMPONENT_TYPE_OPERATOR":
       return "bg-semantic-success-bg text-semantic-success-on-bg";
-    case "CONNECTOR_TYPE_ITERATOR":
+    case "COMPONENT_TYPE_ITERATOR":
       return "bg-semantic-secondary-bg text-semantic-secondary-default";
-    case "CONNECTOR_TYPE_UNSPECIFIED":
+    case "COMPONENT_TYPE_UNSPECIFIED":
       return "bg-semantic-bg-secondary text-semantic-fg-secondary";
   }
 };
@@ -162,8 +155,8 @@ const ComponentPage: NextPageWithLayout = () => {
 
   const page_size = 9;
 
-  const [connectors, setConnectors] =
-    React.useState<Nullable<Connector[]>>(null);
+  const [components, setComponents] =
+    React.useState<Nullable<Component[]>>(null);
   const [category, setCategory] = React.useState<string>("All");
   const [stage, setStage] = React.useState<string>("All");
   const [isLoading, setLoading] = React.useState<boolean>(true);
@@ -184,25 +177,25 @@ const ComponentPage: NextPageWithLayout = () => {
       try {
         if (category !== "All") {
           filter = `&filter=component_type=${category}`;
-          setConnectors(null);
+          setComponents(null);
           setStage("All");
           setSearchCode(null);
           page_number = 0;
         } else if (stage != "All") {
           filter = `&filter=release_stage=${stage}`;
-          setConnectors(null);
+          setComponents(null);
           setCategory("All");
           setSearchCode(null);
           page_number = 0;
         } else if (searchCode) {
           filter = `&filter=q_title='${searchCode}'`;
-          setConnectors(null);
+          setComponents(null);
           setCategory("All");
           setStage("All");
           page_number = 0;
         } else {
           filter = "";
-          setConnectors(null);
+          setComponents(null);
         }
         const response = await InstillSDK.component(
           filter,
@@ -210,7 +203,7 @@ const ComponentPage: NextPageWithLayout = () => {
           page_size
         );
         if (response.status === "success") {
-          setConnectors(response.data.component_definitions);
+          setComponents(response.data.component_definitions);
           setTotalPage(
             Math.ceil(response.data.total_size / response.data.page_size)
           );
@@ -331,17 +324,17 @@ const ComponentPage: NextPageWithLayout = () => {
               <Select.Content>
                 <Select.Group>
                   <Select.Item value="All">All</Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_AI">
-                    AI Connector
+                  <Select.Item value="COMPONENT_TYPE_AI">
+                    AI Component
                   </Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_APPLICATION">
-                    Application Connector
+                  <Select.Item value="COMPONENT_TYPE_APPLICATION">
+                    Application Component
                   </Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_CONNECTOR_DATA">
-                    Data Connector
+                  <Select.Item value="COMPONENT_TYPE_DATA">
+                    Data Component
                   </Select.Item>
                   <Select.Item value="COMPONENT_TYPE_OPERATOR">
-                    Operator
+                    Operator Component
                   </Select.Item>
                 </Select.Group>
               </Select.Content>
@@ -383,30 +376,20 @@ const ComponentPage: NextPageWithLayout = () => {
         </div>
 
         <div className="mb-5 grid grid-cols-1 gap-5 xl:grid-cols-3">
-          {connectors &&
-            connectors?.map((connector) => {
-              if (connector.connector_definition) {
-                return (
-                  <ConnectorComponent
-                    key={connector.connector_definition.id}
-                    connector_definition={connector.connector_definition}
-                  />
-                );
-              }
-              if (connector.operator_definition) {
-                return (
-                  <OperatorComponent
-                    key={connector.operator_definition.id}
-                    operator_definition={connector.operator_definition}
-                  />
-                );
-              }
+          {components &&
+            components?.map((component) => {
+              return (
+                <ComponentCard
+                  key={component.id}
+                  component_definition={component}
+                />
+              );
             })}
 
-          {isLoading && <ConnectorDefault count={9} />}
+          {isLoading && <ComponentDefault count={9} />}
         </div>
 
-        {connectors && connectors.length !== 0 && (
+        {components && components.length !== 0 && (
           <div className="flex flex-row justify-between">
             <Button
               variant="secondaryGrey"
@@ -454,7 +437,7 @@ const ComponentPage: NextPageWithLayout = () => {
           </div>
         )}
 
-        {!connectors?.length && !isLoading && (
+        {!components?.length && !isLoading && (
           <div className="flex h-[600px] flex-col items-center justify-center">
             <img src="/images/no-component-found.svg" alt="" />
             <p className="mt-4 text-[18px]">

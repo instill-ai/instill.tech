@@ -17,11 +17,11 @@ function ModelComponent({ model }: { model: ModelDefinition }) {
             </div>
             <div>
               <span className="font-sans font-normal">
-                {model.configuration.repository.split("/")[0]}
+                {model.name.split("/")[0]}
               </span>
               <span>/</span>
               <span className="font-sans font-bold">
-                {model.configuration.repository.split("/")[1]}
+                {model.name.split("/")[1]}
               </span>
             </div>
           </div>

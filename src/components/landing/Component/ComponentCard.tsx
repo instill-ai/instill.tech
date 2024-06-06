@@ -1,6 +1,6 @@
 import {
-  ConnectorCategory,
-  ConnectorDef,
+  ComponentCategory,
+  Component,
   VersionType,
   docsLinks,
   getHeaderColorClass,
@@ -9,15 +9,15 @@ import React from "react";
 import cn from "clsx";
 import { Button, DropdownMenu, GitHubIcon } from "@instill-ai/design-system";
 
-function ConnectorComponent({
-  connector_definition,
+function ComponentCard({
+  component_definition,
 }: {
-  connector_definition: ConnectorDef;
+  component_definition: Component;
 }) {
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
-      key={connector_definition.uid}
+      key={component_definition.uid}
       // onMouseEnter={() => {
       //   setOnMouseEnter(!onMouseEnter);
       // }}
@@ -28,11 +28,11 @@ function ConnectorComponent({
       <div
         className={cn(
           "z-10 px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
-          getHeaderColorClass(connector_definition.type)
+          getHeaderColorClass(component_definition.type)
         )}
       >
         <span className="relative z-10">
-          {ConnectorCategory[connector_definition.type]}
+          {ComponentCategory[component_definition.type]}
         </span>
       </div>
 
@@ -40,19 +40,19 @@ function ConnectorComponent({
         <div className="flex flex-row gap-x-2">
           <div className="my-auto rounded-[6px] border px-1 py-0.5 shadow">
             <img
-              src={`/${connector_definition.icon}`}
+              src={`/${component_definition.icon}`}
               alt=""
               className="mx-auto my-auto h-6 w-8 shrink-0"
             />
           </div>
           <span className="my-auto w-full font-sans text-[18px] font-semibold">
-            {connector_definition.title}
+            {component_definition.title}
           </span>
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                connector_definition.release_stage
-                  ? connector_definition.release_stage
+                component_definition.release_stage
+                  ? component_definition.release_stage
                   : ""
               }
               // onMouseEnter={onMouseEnter}
@@ -61,7 +61,7 @@ function ConnectorComponent({
         </div>
 
         <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
-          {connector_definition.tasks.slice(0, 1).map((task) => (
+          {component_definition.tasks.slice(0, 1).map((task) => (
             <Button
               variant="secondaryGrey"
               size="lg"
@@ -71,7 +71,7 @@ function ConnectorComponent({
               {task.title}
             </Button>
           ))}
-          {connector_definition.tasks.length > 1 && (
+          {component_definition.tasks.length > 1 && (
             // <Tooltip.Provider>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
@@ -81,14 +81,14 @@ function ConnectorComponent({
                   key={"task-button"}
                   className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
                 >
-                  +{connector_definition.tasks.length - 1}
+                  +{component_definition.tasks.length - 1}
                 </Button>
               </DropdownMenu.Trigger>
               {/* <Tooltip.Portal> */}
               <DropdownMenu.Content className="TooltipContent" sideOffset={5}>
                 <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
-                  {connector_definition.tasks
-                    .slice(1, connector_definition.tasks.length)
+                  {component_definition.tasks
+                    .slice(1, component_definition.tasks.length)
                     .map((task) => (
                       <Button
                         variant="secondaryGrey"
@@ -107,7 +107,7 @@ function ConnectorComponent({
           )}
         </div>
         <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
-          {connector_definition.description}
+          {component_definition.description}
         </div>
         <div className="absolute bottom-2 mt-5 flex w-full flex-row space-x-5 text-semantic-fg-secondary">
           <div className="flex flex-row space-x-2">
@@ -131,8 +131,8 @@ function ConnectorComponent({
             <span className={cn("my-auto")}>
               <a
                 href={
-                  docsLinks[connector_definition.id] ||
-                  connector_definition.documentation_url
+                  docsLinks[component_definition.id] ||
+                  component_definition.documentation_url
                 }
                 // onMouseEnter={() => {
                 //   setOnMouseEnterDocs(!onMouseEnterDocs);
@@ -159,7 +159,7 @@ function ConnectorComponent({
             />
             <span className={cn("my-auto")}>
               <a
-                href={connector_definition.source_url}
+                href={component_definition.source_url}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterGithub(!onMouseEnterGithub);
                 // }}
@@ -191,4 +191,4 @@ function ConnectorComponent({
   );
 }
 
-export default ConnectorComponent;
+export default ComponentCard;

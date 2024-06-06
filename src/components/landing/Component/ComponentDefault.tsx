@@ -1,12 +1,12 @@
 import React from "react";
 
-function ConnectorDefault({ count }: { count: number }) {
+function ComponentDefault({ count }: { count: number }) {
   return (
     <React.Fragment>
       {[...new Array(count)].map((_, index) => (
         <div
           className="flex flex-col border border-[#CBD2E1]"
-          key={`connector-key-${index}`}
+          key={`component-key-${index}`}
         >
           <div className="h-8 w-full animate-pulse bg-gradient-to-r from-[#DBDBDB]" />
           <div className="min-h-[200px] px-5 py-2.5">
@@ -41,4 +41,4 @@ function ConnectorDefault({ count }: { count: number }) {
   );
 }
 
-export default ConnectorDefault;
+export default ComponentDefault;
