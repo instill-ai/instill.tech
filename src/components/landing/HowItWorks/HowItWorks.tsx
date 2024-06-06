@@ -11,12 +11,11 @@ import {
 import { InstillSDK } from "@/lib/instill-sdk";
 import { Model } from "@instill-ai/toolkit";
 import { Nullable } from "@instill-ai/design-system";
-import { Connector } from "@/pages/component";
+import { Component } from "@/pages/component";
 import { HowItWorksRow } from "./HowItWorksRow";
 import Link from "next/link";
-import ConnectorComponent from "../Connector/ConnectorComponent";
-import OperatorComponent from "../Operator/OperatorComponent";
-import ConnectorDefault from "../Connector/ConnectorDefault";
+import ComponentCard from "../Component/ComponentCard";
+import ComponentDefault from "../Component/ComponentDefault";
 import ModelComponent from "../Model/ModelComponent";
 import ModelDefault from "../Model/ModelDefault";
 import Slide from "../Slide";
@@ -33,17 +32,17 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
     const router = useRouter();
 
-    const [connectors, setConnectors] =
-      React.useState<Nullable<Connector[]>>(null);
+    const [components, setComponents] =
+      React.useState<Nullable<Component[]>>(null);
     const [models, setModels] =
       React.useState<Nullable<ModelDefinition[]>>(null);
 
     React.useEffect(() => {
-      const fetchConnectors = async () => {
+      const fetchComponents = async () => {
         try {
           const response = await InstillSDK.component(null, 0, 6);
           if (response.status === "success") {
-            setConnectors(response.data.component_definitions);
+            setComponents(response.data.component_definitions);
           }
         } catch (error) {
           console.error(error); // Handle errors here
@@ -59,9 +58,11 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
           console.error(error); // Handle errors here
         }
       };
-      fetchConnectors(); // Call the asynchronous function
+      fetchComponents(); // Call the asynchronous function
       fetchModels(); // Call the asynchronous function
     }, []);
+
+    console.log(models);
 
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
@@ -122,32 +123,19 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
 
         {/* <Slide> */}
         <div className="mb-9 grid grid-cols-1 gap-5 xl:grid-cols-3">
-          {connectors &&
-            connectors?.map((connector) => {
-              if (connector.connector_definition) {
-                return (
-                  <Slide key={connector.connector_definition.id}>
-                    <ConnectorComponent
-                      connector_definition={connector.connector_definition}
-                    />
-                  </Slide>
-                );
-              }
-              if (connector.operator_definition) {
-                return (
-                  <Slide key={connector.operator_definition.id}>
-                    <OperatorComponent
-                      operator_definition={connector.operator_definition}
-                    />
-                  </Slide>
-                );
-              }
+          {components &&
+            components?.map((component) => {
+              return (
+                <Slide key={component.id}>
+                  <ComponentCard component_definition={component} />
+                </Slide>
+              );
             })}
 
-          {!connectors && <ConnectorDefault count={6} />}
+          {!components && <ComponentDefault count={6} />}
         </div>
         {/* </Slide> */}
-        {/* Connector Cards */}
+        {/* Component Cards */}
         <Slide>
           <div className="block xl:hidden">
             <div className="flex justify-center">
