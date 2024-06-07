@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.48.1](https://github.com/instill-ai/instill.tech/compare/v1.48.0...v1.48.1) (2024-06-07)
+
+
+### Documentation
+
+* **blog:** add Hackathon closing article ([#883](https://github.com/instill-ai/instill.tech/issues/883)) ([dbfa26f](https://github.com/instill-ai/instill.tech/commit/dbfa26f3b9642b154432db65b70bac86de617a37))
+
 ## [1.48.0](https://github.com/instill-ai/instill.tech/compare/v1.47.18...v1.48.0) (2024-06-06)
 
 
