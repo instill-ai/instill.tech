@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.48.2](https://github.com/instill-ai/instill.tech/compare/v1.48.1...v1.48.2) (2024-06-08)
+
+
+### Miscellaneous
+
+* push dummy test post ([eeffd0b](https://github.com/instill-ai/instill.tech/commit/eeffd0bcf68b8153e9d4524afcb836a9741d172a))
+
 ## [1.48.1](https://github.com/instill-ai/instill.tech/compare/v1.48.0...v1.48.1) (2024-06-07)
 
 
