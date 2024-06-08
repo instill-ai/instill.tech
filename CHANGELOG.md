@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.48.2](https://github.com/instill-ai/instill.tech/compare/v1.48.1...v1.48.2) (2024-06-08)
+
+
+### Miscellaneous
+
+* add dummy-test-blog-post ([ef4ab38](https://github.com/instill-ai/instill.tech/commit/ef4ab380ba5c742e5df8d62f3b8567dcc05ff0ff))
+
 ## [1.48.1](https://github.com/instill-ai/instill.tech/compare/v1.48.0...v1.48.1) (2024-06-07)
 
 
