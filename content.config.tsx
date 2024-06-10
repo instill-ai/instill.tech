@@ -67,6 +67,36 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
+      text: "common:sidebarSections.instillCloud",
+      items: [],
+      appType: "core",
+      versions: [],
+      isHeader: true,
+    },
+    {
+      text: "common:sidebarSections.introduction",
+      link: `/docs/cloud/introduction`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillCredit",
+      link: `/docs/cloud/credit`,
+      collapsible: false,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
+      text: "common:sidebarSections.instillHub",
+      link: `/docs/cloud/hub`,
+      collapsible: false,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.instillCore",
       items: [],
       appType: "core",
@@ -76,7 +106,6 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.introduction",
       link: `/docs/core/introduction`,
-      collapsible: false,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -144,15 +173,8 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.testPipeline",
+      text: "common:sidebarSections.runPipeline",
       link: `/docs/vdp/run`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.clonePipeline",
-      link: `/docs/vdp/clone`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -167,13 +189,6 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.sharePipeline",
       link: `/docs/vdp/share`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.useCredit",
-      link: `/docs/vdp/credit`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -202,7 +217,6 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.introduction",
       link: `/docs/component/introduction`,
-      collapsible: false,
       items: [],
       appType: "core",
       versions: ["latest"],
