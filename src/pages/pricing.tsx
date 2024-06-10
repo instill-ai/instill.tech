@@ -78,7 +78,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Contact Us",
+                title: "Subscribe",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
@@ -100,7 +100,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Contact Us",
+                title: "Subscribe",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
@@ -123,7 +123,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Contact Us",
+                title: "Subscribe",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
@@ -151,7 +151,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Contact Us",
+                title: "Subscribe",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
