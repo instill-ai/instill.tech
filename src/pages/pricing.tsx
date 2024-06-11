@@ -7,7 +7,6 @@ import {
   PricingInfoCard,
 } from "@/components/ui";
 import { useRouter } from "next/router";
-import { Separator } from "@instill-ai/design-system";
 import { NextPageWithLayout } from "./_app";
 
 const PricingPage: NextPageWithLayout = () => {
