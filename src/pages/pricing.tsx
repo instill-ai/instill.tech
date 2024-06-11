@@ -27,7 +27,7 @@ const PricingPage: NextPageWithLayout = () => {
         margin="my-[120px] xl:my-40"
         contentMaxWidth="max-w-[1500px]"
       >
-        <div className="mb-[29px] flex flex-col space-y-5">
+        <div className="mb-12 flex flex-col space-y-5">
           <h3 className="text-center font-sans text-[42px] font-semibold leading-[45px] -tracking-[2%] text-[#1D5BD7]">
             Pricing
           </h3>
@@ -37,11 +37,6 @@ const PricingPage: NextPageWithLayout = () => {
           <p className="text-center font-sans text-[32px] font-normal leading-[48px] -tracking-[1.5%] text-[#475467]">
             Simple pricing to to build your AI backbone
           </p>
-        </div>
-
-        <div>
-          <Separator className="mb-[13px]" />
-          <Separator className="mb-2" />
         </div>
 
         <div className="mx-auto flex flex-col">
