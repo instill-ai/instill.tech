@@ -174,8 +174,16 @@ const PricingPage: NextPageWithLayout = () => {
             />
           </div>
           <p className="mx-auto flex w-auto text-semantic-fg-disabled product-body-text-3-regular xl:w-[1148px]">
-            * When a pipeline is made public, it becomes visible on Instill Hub
-            and can be run by any user with an Instill Cloud account.
+            * When a pipeline is made public, it becomes visible on&nbsp;
+            <a
+              href="https://instill.tech/hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-instillBlue50"
+            >
+              Instill Hub
+            </a>
+            &nbsp;and can be run by any user with an Instill Cloud account.
           </p>
           <p className="mx-auto flex w-auto text-semantic-fg-disabled product-body-text-3-regular xl:w-[1148px]">
             ** Instill credits are used to run pipelines and models. See the

@@ -101,7 +101,7 @@ export const BuildAppsInAction = () => {
             <div className="hidden xl:block">
               <CommonCtaButton
                 withArrow={true}
-                link={"https://console.instill.tech/hub"}
+                link={"https://instill.tech/hub"}
                 text="Explore Instill Hub"
               />
             </div>
