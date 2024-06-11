@@ -4,7 +4,7 @@ import { Button, Icons, Nullable } from "@instill-ai/design-system";
 
 export type InstillPricingTier =
   | "free cloud"
-  | "pro"
+  | "starter"
   | "team"
   | "team pro"
   | "enterprise";
@@ -78,7 +78,7 @@ export const PricingInfoCard = ({
                   forever
                 </p>
               ) : null}
-              {tier === "pro" ? (
+              {tier === "starter" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
                   per month
                 </p>

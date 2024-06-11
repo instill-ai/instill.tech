@@ -62,15 +62,15 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Free Forever",
+                title: "Start Building",
                 onClick: () => {
-                  router.push("https://github.com/instill-ai/instill-core");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
             <PricingInfoCard
               price="$19"
-              tier="pro"
+              tier="starter"
               className="w-[263px]"
               planDescription="For professional individuals"
               features={[
@@ -85,9 +85,9 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Subscribe",
+                title: "Choose Starter",
                 onClick: () => {
-                  router.push("https://cal.com/instill-ai/30min-talk");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
@@ -108,9 +108,9 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Subscribe",
+                title: "Choose Team",
                 onClick: () => {
-                  router.push("https://cal.com/instill-ai/30min-talk");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
@@ -133,9 +133,9 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Subscribe",
+                title: "Choose Team Pro",
                 onClick: () => {
-                  router.push("https://cal.com/instill-ai/30min-talk");
+                  router.push("https://instill.tech/login");
                 },
               }}
             />
