@@ -5,16 +5,16 @@ draft: false
 description: "Try Instill Cloud for free at https://www.instill.tech. Start building, testing and sharing your AI applications in minutes."
 ---
 
-## Authorisation
+## Create an Account
 
-### Instill Cloud
-
-To get started with Instill Cloud, you'll need to create an account if you haven't already. If you already have an account, simply log in to begin your journey with Instill Cloud.
-Experience the power of Instill Cloud by clicking the link below:
+The fastest way to get building AI applications using **🔮 Instill Core** is
+with **☁️ Instill Cloud**. You'll need to create an account if you haven't
+already. If you already have an account, simply log in to begin your journey
+with **☁️ Instill Cloud**.
 
 <CtaButton
   text="☁️ Try Instill Cloud Free"
-  link="https://www.instill.tech/?utm_source=documentation&utm_medium=link"
+  link="https://instill.tech/?utm_source=documentation&utm_medium=link"
 />
 
 When signing up, you have three options:
@@ -30,268 +30,108 @@ When signing up, you have three options:
   it as "Not Spam".
 </InfoBlock>
 
-### Self-hosted Instill Core
+**🔮 Instill Core** or **☁️ Instill Cloud** empowers you to build pipelines
+tailored for processing unstructured data using the Versatile Data Pipeline
+(**💧 Instill VDP**). The central concept in **💧 Instill VDP** is the Pipeline,
+which automates a sequence of components to process unstructured data.
 
-To get started with Instill Core, you'll need to follow the [deployment guide](./core/deployment) to launch Instill Core on your local machine.
-After the deployment, you can access the Console at [http://localhost:3000](http://localhost:3000).
-If you're configuring Instill Core for the first time, please use the following initial login details to initiate the password reset process for onboarding:
+## Run Your First AI Workflow
 
-- Username: `admin`
-- Password: `password`
+Once you login you will automatically be taken to the Instill Hub, where you can
+explore public **💧 Instill VDP** pipelines developed by the community and the
+Instill AI team.
 
-This protects Instill Core from being accessible by anyone when deployed.
+1. Search for and select the `quickstart` pipeline.
+2. Type in a prompt in the `Sticker Prompt` field.
+3. Click the `Run` button.
+     
+Congratulations 🎉 you have successfully run your first **💧 Instill VDP**
+pipeline!
+
+As you can see, this pipeline generates stickers based on the text prompt you
+provide. The **📺 Instill Console** window on the left side of the screen
+displays all of the components within this pipeline, and how they are connected.
+You can inspect them by using the `+` icons to expand them.
 
 <ZoomableImg
-  src="/docs-assets/core/onboarding.png"
-  alt="Provide the initial username `admin` and password `password` to reset the password for onboarding"
+  src="/docs-assets/core/inspect-components.gif"
+  alt="Inspecting the Pipeline"
 />
 
-Instill Core or Instill Cloud empowers you to build pipelines tailored for processing unstructured data using Versatile Data Pipeline (VDP).
-The central concept in VDP is the Pipeline, which automates a sequence of components to process unstructured data.
+From this you can see how the pipeline takes an initial text prompt from the
+user, enhances the prompt to be more descriptive using the Llama3-8b-Instruct
+model, and then generates a sticker using Stable-Diffusion-XL. It utilises **⚗️
+Instill Model** [AI components](./component/ai/instill) to connect to a growing
+list of pretrained models that are served and ready for requests on **☁️ Instill
+Cloud**. 
 
-## Build Your First AI Workflow
-
-<InfoBlock type="info" title="Third-party vendors">
-
-  This tutorial uses AI components to connect to **OpenAI** and **Stability AI**.
-
-  With your Instill Cloud account, you'll receive **10,000 monthly Instill Credits**, which will allow you to use such components without needing to set up an account in these services.
-
+<InfoBlock type="info" title="Instill Credit">
+  With your **☁️ Instill Cloud** account, you'll receive **10,000 monthly
+  Instill Credits** which will allow you to not only use **⚗️ Instill Model**
+  components, but also connect to third party vendors such as OpenAI, all
+  without the hassle of setting up individual accounts with these services.
 </InfoBlock>
 
-### Build the Pipeline
+## Customize Your AI Workflow
 
-In this guide, we'll walk you through creating your first AI pipeline,
-specifically focusing on a generative pipeline using the [OpenAI](./component/ai/openai) and [Stability AI](./component/ai/stabilityai) components to generate digital stickers.
+You may have noticed that you are unable to edit this pipeline. To customise a
+public pipeline to suit your own requirements, you simply need to clone it.
 
-#### Create the pipeline
+### Step 1. Clone Your Pipeline
 
-Head to the **Pipelines** page on the navbar.
-To create your first pipeline through the Console:
-
-1. Click on **+ Create Pipeline**.
-2. Assign a unique ID for the pipeline. Here we use _digital-sticker-maker_, and you can optionally add a description. By default, the owner of the pipeline is your account. But you can also assign it to an organization that you are a member of.
-3. Choose the visibility of the pipeline. By default, the pipeline is private, but you can also make it public, so that it can be seen by anyone.
-4. Click **Create**.
-
-This will redirect you to the no-code pipeline builder.
-On the canvas, you can drag and drop components to construct your pipeline.
-
-A blank canvas contains two components that serve as the pipeline input and output interface:
-- **Trigger** is used to set the pipeline parameters when triggering a pipeline.
-- **Response** is used to collect the results of a trigger.
-
-To set up the Trigger component:
-
-1. Locate the **trigger** component on the canvas.
-2. Click **Add Field +** and select **Short Text**. Fill in the **Title** with _Prompt_. The reference key for this field will be _prompt_. Click **Save**.
-3. Click **Add Field +** and select **Short Text**, Fill in the **Title** with _Sticker Shape_. Similarly, the reference key for this field will be _sticker_shape_. Click **Save**.
-
-This configuration requires two inputs: a prompt to generate the idea for the sticker and a shape parameter to control the sticker's appearance.
-
-#### Create the OpenAI component
-
-1. Click **Component +** and choose **OpenAI** from **Components**. This will add a OpenAI component `openai_0` to the canvas.
-2. Select **Text Generation** from the dropdown of the **OpenAI Component** field.
-3. Choose **Model** to choose the model to use, e.g., _gpt-3.5-turbo_. You can identify the models that support default credentials from the icon next to them, displaying stack of tokens.
-
-<InfoBlock type="info" title="Bring Your Own Key">
-  You can always use your own API Keys on the components in this tutorial by introducing them in the component's **Connection** configuration.
-</InfoBlock>
-
-4. In the **Prompt** field, specify the text prompt to generate an LLM augmented prompt:
-
-```
-Augment the prompt with descriptive details for generating sticker images, and add the styles exactly at the end of the prompt "sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border".
-Only return the output content.
-
-Prompt: a bear
-Output: a brown bear dancing in a forest, sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border
-Prompt: a dog writes code
-Output: a dog writes code in front of a laptop and drinks coffee, sticker style, flat icon, vector, die-cut ${trigger.sticker_shape} sticker with white border
-Prompt: ${trigger.prompt}
-Output:
-```
-
-<InfoBlock type="tip" title="Pipeline Component Reference">
-  This prompt references the input fields in the Trigger component, providing extra context to OpenAI in order to generate a more robust and complete image prompt.
-
-  When establishing connections between components, referencing a component field is as simple as using `${}`.
-  When you enter `${` into an input field, the smart hint feature intelligently filters and presents only the relevant hints that are compatible with the field.
-</InfoBlock>
-
-
-5. Click the **More** link on the `openai_0` component to open configuration right panel.
-6. Fill **System Message** to set the behavior of the model. Here we set the value to:
-
-```
-You are a prompt engineer to generate Stable Diffusion prompts to generate sticker images.
-```
-
-7. Fill **Temperature** with a number between 0 and 2 to control how random the generation is, e.g., _1_.
-8. Set **n** to _1_ to indicate only one chat completion.
-
-The OpenAI component will automatically link to the Trigger component
-since we have used `${trigger.sticker_shape}` and `${trigger.prompt}` in the OpenAI component configuration.
-The `${}` placeholders represent **string values** to be filled during pipeline triggering.
-
-#### Create the Stability AI component
-
-1. Click **Component +** and choose **Stability AI** from **Components**. This will add a Stability AI component `stability_0` to the canvas.
-2. Select **Text To Image** from the dropdown of the **Stability AI Component** field.
-3. Choose the **Engine** to use, e.g., _stable-diffusion-xl-1024-v1-0_.
-4. In the **Prompts** field, specify the generated text array from the OpenAI component output `${openai_0.output.texts}`.
-5. Click the **More** link on the `stability_0` component to open configuration right panel.
-6. Update the **width** to _1024_ and the **height** to _1024_ to set the resolution of the generated image.
-6. Adjust **CFG Scale** to control how strictly the diffusion process adheres to the text prompt, e.g., set it to _8_.
-7. Set **Samples** to _1_ to indicate generating only one image.
-8. Specify a **Seed** with _0_ for a randomization.
-9. Fill **Steps** to _30_ to indicate the number of diffusion steps to run.
-
-You will see that the Stability AI component is automatically linked to the OpenAI component
-since we have used `${openai_0.output.texts}` in the Stability AI component configuration.
-
-#### Configure the Response component
-
-The Response Component is used at the end of a VDP pipeline to return the pipeline trigger outputs.
-
-1. Find the **response** component on the canvas.
-2. Click **Add Field +** and fill in the **Title** with _My Original Prompt_, the reference key for this field will be _my_original_prompt_, and **Value** with `${trigger.prompt}`. Click **Save**.
-3. Click **Add Field +** and fill in the **Title** with _Sticker Shape_, the reference key for this field will be _sticker_shape_, and **Value** with `${trigger.sticker_shape}`. Click **Save**.
-4. Click **Add Field +** and fill in the **Title** with _LLM Powered Prompt_, the reference key for this field will be _llm_powered_prompt_, and **Value** with `${openai_0.output.texts}`. Click **Save**.
-5. Click **Add Field +** and fill in the **Title** with _Digital Sticker_, the reference key for this field will be _digital_sticker_, and **Value** with `${stability_0.output.images}`. Click **Save**.
-
-You will see that the End component is automatically linked to multiple components: `trigger`, `openai_0` and `stability_0`.
-
-Click **Save** on the top right corner, your pipeline is ready to be tested!
-
-### Test the Pipeline via No-Code
-
-🎉 Congratulations! Your first VDP pipeline is all set up and ready to go.
-
-You can now test your pipeline using real data. Let's create, for instance, a sticker featuring a yellow plane in the sky.
-
-```
-Prompt: yellow plane on the sky
-Shape: round
-```
-
-Now, simply click on the **Run** button located in the top right corner.
+1. Select the `Clone` button.
+2. Specify a name for the pipeline and provide a short description.
+3. Ensure the pipeline has the desired visibility.
+4. Click the `Clone` button.
 
 <ZoomableImg
-  src="/docs-assets/core/test-pipeline.png"
-  alt="Test the pipeline with real data"
+  src="/docs-assets/core/clone.gif"
+  alt="Cloning the Pipeline"
 />
 
-Click the Output tab of the `openai_0` component to view the generated output.
-As you can see, the OpenAI ChatGPT model has expanded our initial prompt, turning it into:
+### Step 2. Edit with 📺 Instill Console
 
-```
-a yellow plane soaring through a clear blue sky, sticker style, flat icon,
-vector, die-cut round sticker with white border
-```
+Now you will be able to select `Edit` (next to the `Clone` button) to begin
+customising. This will bring up the **📺 Instill Console** no-code pipeline
+builder.
 
-Give it a try!
-
-### Use the Pipeline via Low-Code
-
-In order to trigger the pipeline, you need a valid API token.
-If you don't have one yet, follow these steps:
-
-1. Click on the profile icon on the top right corner of the main page in the console and select **Settings**.
-2. Navigate to the **API Tokens** page.
-3. Click **Create Token** and give it an ID.
-
-The API tokens do not expire, so keep them safe.
-If a token is compromised, select it and click **Delete**.
-Be cautious, as this operation cannot be undone, and apps using the token will stop working.
-
-VDP automatically generates a dedicated trigger endpoint for each pipeline to process data.
-To trigger the pipeline, follow these steps:
-
-1. Click the **Toolkit** button on the top right corner of the pipeline canvas.
-2. Copy the _cURL_ request in the **Trigger Snippet** section and pass your API token as a Bearer token in the Authorization header.
-3. Adjust and ingest your data accordingly in the example request.
-
-Here is an example trigger request for the pipeline:
-
-```shellscript
-
-curl -X POST 'https://api.instill.tech/vdp/v1beta/users/<user-id>/pipelines/<pipeline-id>/trigger' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer <api_token>' \
---data  '{
-	"inputs": [
-		{
-			"prompt": "yellow plane on the sky",
-			"sticker_shape": "round"
-		}
-	]
-}'
-
-```
-
-Where `<user-id>` represents your username, and `<pipeline-id>` corresponds to the pipeline ID.
-
-You should receive the following response:
-
-```shellscript
-{
-    "outputs": [
-        {
-            "digital_sticker": [
-                "iVBORw0KGgo...SUVORK5CYII="
-            ],
-            "llm_powered_prompt": [
-                "a bright yellow vintage plane flying through a fluffy white cloud-filled sky, sticker style, flat icon, vector, die-cut round sticker with white border"
-            ],
-            "prompt": "yellow plane on the sky",
-            "sticker_shape": "round"
-        }
-    ],
-    "metadata": {
-        "traces": {...}
-    }
-}
-```
-
-To obtain the generated image, decode the `digital_sticker` field of the response from Base64 format.
+To test out your cloned pipeline, simply enter a `Sticker Prompt` and hit `Run`.
 
 <ZoomableImg
-  src="/docs-assets/core/decoded-digital-sticker.png"
-  alt="Decoded digital sticker image"
-  width="600px"
+  src="/docs-assets/core/console-run.png"
+  alt="Running in the Console"
 />
 
-### Generate Stickers in Batch
+From here you can edit, add and remove components, as well as change how they
+connect together!
 
-Interested in generating multiple stickers at once? You can do this by adjusting the Stability AI component configuration and setting **Samples** to _4_.
+For instance, to edit one of the AI components in this
+**💧 Instill VDP** pipeline you could:
+- Select a different model using the `Model Name` dropdown.
+- Optimise the `Prompt` for your use case.
+- Select `More` to customise task-specific inference variables that control the
+   behaviour of the model (e.g. system message or temperature).
 
-Save your changes and test the pipeline again with the following prompt:
+## Empower Your AI Journey with 🔮 Instill Core
 
-```
-Prompt: cat reads a book
-Shape: round
-```
+Beyond the fundamental concepts covered in this Quickstart guide, get the most
+out of **🔮 Instill Core** and elevate your AI applications by exploring these
+additional features that **🔮 Instill Core** and **☁️ Instill Cloud** have to
+offer:
 
-<ZoomableImg
-  src="/docs-assets/core/batched-sticker-pipeline.gif"
-  alt="Generate four stickers in a batch"
-/>
-
-## Clone Pipelines from Instill Hub
-
-No need to start from scratch! Take advantage of the [Instill Hub](https://instill.tech/hub), a platform designed for exploring and sharing a wide range of pipelines within the community.
-Simply select the one that suits your needs and clone it to your Instill Cloud account.
-
-## Use Models on Instill Cloud
-
-Deploying and maintaining ML models in a production environment can be challenging.
-To simplify this process, we have deployed a list of pre-trained ML models on Instill Cloud.
-These models are ready for use and are entirely free during Open Alpha.
-
-To explore the available pre-deployed ML models for different AI tasks, navigate to the **Models** on the Instill Cloud console.
-Each model in the Model Hub is designed to handle a specific [AI task](./model/ai-task).
-
-For detailed information about a specific model, click on its ID and review the Description and Setting sections.
-If you want to import the model into VDP, refer to the Instill Component documentation for the [Instill Model AI component](./component/ai/instill).
+- **Pipeline Creation**: Dive into building and customising your very own **💧
+  Instill VDP** pipeline from the ground up with guidance from our [Create
+  Pipeline](./vdp/create) page.
+- **API Integration**: Discover how to activate pipelines through API calls.
+  Details are in the [Run Pipeline](./vdp/run) page.
+- **Local Deployment**: Want to self-host **🔮 Instill Core** and deploy
+  locally? Our [deployment guide](./core/deployment) walks you through this
+  process.
+- **Model Library**: Access a variety of pre-trained ML models for different [AI
+  tasks](./model/ai-task) on **☁️ Instill Cloud** through the **Models** section
+  on the console.
+- **Custom Models**: Ready to deploy your own models? Learn everything you need
+  in our [model serving tutorial](../tutorials/model-serving-on-instill-core).
+- **Tutorials**: Delve deeper into the capabilities and applications of **🔮
+  Instill Core** and **☁️ Instill Cloud** with our growing collection of
+  [Tutorials](../tutorials).
