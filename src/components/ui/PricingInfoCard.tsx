@@ -2,7 +2,12 @@ import cn from "clsx";
 import * as React from "react";
 import { Button, Icons, Nullable } from "@instill-ai/design-system";
 
-export type InstillPricingTier = "free" | "pro" | "team" | "enterprise";
+export type InstillPricingTier =
+  | "free cloud"
+  | "starter"
+  | "team"
+  | "team pro"
+  | "enterprise";
 export type InstillBillingPeriod = "monthly" | "yearly";
 
 export const PricingInfoCard = ({
@@ -68,19 +73,24 @@ export const PricingInfoCard = ({
               <h2 className="text-semantic-fg-primary product-headings-heading-1">
                 {price}
               </h2>
-              {tier === "free" ? (
+              {tier === "free cloud" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
                   forever
                 </p>
               ) : null}
-              {tier === "pro" ? (
+              {tier === "starter" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
                   per month
                 </p>
               ) : null}
               {tier === "team" ? (
                 <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
-                  per seat/month
+                  per month
+                </p>
+              ) : null}
+              {tier === "team pro" ? (
+                <p className="mb-auto text-semantic-fg-secondary product-body-text-2-medium">
+                  per month
                 </p>
               ) : null}
             </div>
@@ -94,7 +104,7 @@ export const PricingInfoCard = ({
           {/* CTA */}
 
           <div className="flex flex-col gap-y-4">
-            {tier === "free" ? (
+            {tier === "free cloud" ? (
               <Button
                 type="button"
                 variant="secondaryGrey"
@@ -142,7 +152,7 @@ export const PricingInfoCard = ({
             {features.map((feature) => (
               <div key={feature} className="flex flex-row gap-x-3">
                 <div className="flex-shrink-0">
-                  <Icons.CheckCircle className="h-4 w-4 stroke-semantic-accent-default" />
+                  <Icons.CheckCircle className="h-4 w-4 stroke-semantic-success-default" />
                 </div>
                 <p className="text-semantic-fg-secondary product-body-text-4-regular">
                   {feature}
