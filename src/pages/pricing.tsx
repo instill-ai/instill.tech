@@ -151,7 +151,7 @@ const PricingPage: NextPageWithLayout = () => {
               ]}
               featureDescription={null}
               cta={{
-                title: "Subscribe",
+                title: "Contact Us",
                 onClick: () => {
                   router.push("https://cal.com/instill-ai/30min-talk");
                 },
