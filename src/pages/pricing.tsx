@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import {
   ContentContainer,
   PageBase,
@@ -48,13 +49,16 @@ const PricingPage: NextPageWithLayout = () => {
             <PricingInfoCard
               price="$0"
               tier="free cloud"
-              className="h-[928px] w-[263px]"
+              className="w-[263px]"
               planDescription="For everyone"
               features={[
-                "Monthly credit: 10,000",
-                "Unlimited pipelines",
-                "1 user",
-                "Community-based support on Discord",
+                "10,000 Monthly Credits",
+                "1 User",
+                "Unlimited Pipelines",
+                "Bring Your Own API Key (BYO API Key)",
+                "Unlimited Models",
+                "100GB Storage for Model Image Registry",
+                "Community-based Support on Discord",
               ]}
               featureDescription={null}
               cta={{
@@ -67,13 +71,16 @@ const PricingPage: NextPageWithLayout = () => {
             <PricingInfoCard
               price="$19"
               tier="pro"
-              className="h-[928px] w-[263px]"
+              className="w-[263px]"
               planDescription="For professional individuals"
               features={[
-                "Monthly credit: 20,000",
-                "Unlimited pipelines",
-                "1 user",
-                "Community-based support on Discord",
+                "20,000 Monthly Credits",
+                "1 User",
+                "Unlimited Pipelines",
+                "Bring Your Own API Key (BYO API Key)",
+                "Unlimited Models",
+                "200GB Storage for Model Image Registry",
+                "Community-based Support on Discord",
                 "Version Control",
               ]}
               featureDescription={null}
@@ -87,16 +94,17 @@ const PricingPage: NextPageWithLayout = () => {
             <PricingInfoCard
               price="$199"
               tier="team"
-              className="h-[928px] w-[263px]"
+              className="w-[263px]"
               planDescription="For small teams"
               features={[
-                "Monthly credit: 200,000",
-                "Unlimited pipelines",
-                "3 users",
-                "Community-based support on Discord",
+                "200,000 Monthly Credits",
+                "3 Users",
+                "Unlimited Pipelines",
+                "Bring Your Own API Key (BYO API Key)",
+                "Unlimited Models",
+                "1TB Storage for Model Image Registry",
+                "Community-based Support on Discord",
                 "Version Control",
-                "User permissions",
-                "Upload and use your own custom models",
               ]}
               featureDescription={null}
               cta={{
@@ -109,17 +117,19 @@ const PricingPage: NextPageWithLayout = () => {
             <PricingInfoCard
               price="$499"
               tier="team pro"
-              className="h-[928px] w-[263px]"
+              className="w-[263px]"
               highlighted={false}
               planDescription="For teams with advanced collaboration"
               features={[
-                "Monthly credit: 600,000",
-                "Unlimited pipelines",
-                "Unlimited users",
-                "Community-based support on Discord",
+                "600,000 Monthly Credits",
+                "Unlimited Users",
+                "Unlimited Pipelines",
+                "Bring Your Own API Key (BYO API Key)",
+                "Unlimited Models",
+                "2TB Storage for Model Image Registry",
+                "Community-based Support on Discord",
                 "Version Control",
-                "User permissions",
-                "Upload and use your own custom models",
+                "Access Control",
               ]}
               featureDescription={null}
               cta={{
@@ -132,22 +142,27 @@ const PricingPage: NextPageWithLayout = () => {
             <PricingInfoCard
               price="Custom"
               tier="enterprise"
-              className="h-[928px] w-[263px]"
+              className="w-[263px]"
               planDescription="Security, support, and flexible deployment that meets performance needs"
               features={[
-                "Monthly credit: Custom",
-                "Unlimited pipelines",
-                "Unlimited users",
-                "Dedicated Slack Channel and up to 1 hour of weekly dedicated support",
+                "Custom Monthly Credits",
+                "Unlimited Users",
+                "Unlimited Pipelines",
+                "Bring Your Own API Key (BYO API Key)",
+                "Unlimited Models",
+                "Custom Storage for Model Image Registry",
+                "Community-based Support on Discord",
                 "Version Control",
-                "User permissions",
-                "Upload and use your own custom models",
-                "Enterprise-level security",
-                "Dedicated infrastructure",
-                "Private cloud deployment",
-                "On-prem deployment",
                 "Access Control",
-                "Dedicated solution engineers",
+                "Dedicated Model Serving",
+                "Model Fine-tuning",
+                "Dedicated Slack Channel and Email Support",
+                "Enterprise-level Security",
+                "Dedicated Infrastructure",
+                "Private Cloud Deployment",
+                "On-premise Deployment",
+                "Custom Pipeline Building or Component Development",
+                "Dedicated Solution Engineers",
               ]}
               featureDescription={null}
               cta={{
@@ -163,9 +178,15 @@ const PricingPage: NextPageWithLayout = () => {
             and can be run by any user with an Instill Cloud account.
           </p>
           <p className="mx-auto flex w-auto text-semantic-fg-disabled product-body-text-3-regular xl:w-[1148px]">
-            ** A run refers to the execution of a pipeline. To ensure fair
-            usage, there is a rate limit of 10 runs per minute on the Free plan,
-            also applicable to the owner of the pipeline.
+            ** Instill credits are used to run pipelines and models. See the
+            details&nbsp;
+            <Link
+              href="/docs/vdp/credit"
+              className="underline hover:text-instillBlue50"
+            >
+              here
+            </Link>
+            .
           </p>
         </div>
       </ContentContainer>
