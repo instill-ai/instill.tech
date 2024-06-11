@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.48.2](https://github.com/instill-ai/instill.tech/compare/v1.48.1...v1.48.2) (2024-06-11)
+
+
+### Miscellaneous
+
+* **pricing:** update pricing page ([#861](https://github.com/instill-ai/instill.tech/issues/861)) ([6c53271](https://github.com/instill-ai/instill.tech/commit/6c532716946b2ba20093b3442c16d886bffe57eb))
+
+
+### Documentation
+
+* **doc:** add cloud section and rectify faq ([#890](https://github.com/instill-ai/instill.tech/issues/890)) ([a199b5b](https://github.com/instill-ai/instill.tech/commit/a199b5b166c0885640001f21edebcfc8904f2370))
+* **document:** update Instill Core version ([#881](https://github.com/instill-ai/instill.tech/issues/881)) ([61f4be5](https://github.com/instill-ai/instill.tech/commit/61f4be56718867cdd9c5aa1bf23cfd4ae24f59e6))
+* **quickstart:** revamp quickstart page ([#892](https://github.com/instill-ai/instill.tech/issues/892)) ([6fae66f](https://github.com/instill-ai/instill.tech/commit/6fae66fbe57a8ad41bf1557969c51d2fab7457e9))
+
 ## [1.48.1](https://github.com/instill-ai/instill.tech/compare/v1.48.0...v1.48.1) (2024-06-07)
 
 
