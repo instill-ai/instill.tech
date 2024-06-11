@@ -156,12 +156,12 @@ const PricingPage: NextPageWithLayout = () => {
                 "Access Control",
                 "Dedicated Model Serving",
                 "Model Fine-tuning",
+                "Custom Pipeline Building or Component Development",
                 "Dedicated Slack Channel and Email Support",
                 "Enterprise-level Security",
                 "Dedicated Infrastructure",
                 "Private Cloud Deployment",
                 "On-premise Deployment",
-                "Custom Pipeline Building or Component Development",
                 "Dedicated Solution Engineers",
               ]}
               featureDescription={null}
