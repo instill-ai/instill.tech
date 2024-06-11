@@ -113,7 +113,7 @@ const PricingPage: NextPageWithLayout = () => {
               highlighted={false}
               planDescription="For teams with advanced collaboration"
               features={[
-                "Monthly credit: 1,000,000",
+                "Monthly credit: 600,000",
                 "Unlimited pipelines",
                 "Unlimited users",
                 "Community-based support on Discord",
