@@ -46,7 +46,7 @@ const PricingPage: NextPageWithLayout = () => {
               className="w-[263px]"
               planDescription="For everyone"
               features={[
-                "10,000 Monthly Credits",
+                "10,000 Monthly Credits (Upgrade for more)",
                 "1 User",
                 "Unlimited Pipelines",
                 "Bring Your Own API Key (BYO API Key)",
@@ -68,7 +68,7 @@ const PricingPage: NextPageWithLayout = () => {
               className="w-[263px]"
               planDescription="For professional individuals"
               features={[
-                "20,000 Monthly Credits",
+                "20,000 Monthly Credits ($4/10,000 additional)",
                 "1 User",
                 "Unlimited Pipelines",
                 "Bring Your Own API Key (BYO API Key)",
@@ -91,7 +91,7 @@ const PricingPage: NextPageWithLayout = () => {
               className="w-[263px]"
               planDescription="For small teams"
               features={[
-                "200,000 Monthly Credits",
+                "200,000 Monthly Credits ($4/10,000 additional)",
                 "3 Users",
                 "Unlimited Pipelines",
                 "Bring Your Own API Key (BYO API Key)",
@@ -115,7 +115,7 @@ const PricingPage: NextPageWithLayout = () => {
               highlighted={false}
               planDescription="For teams with advanced collaboration"
               features={[
-                "600,000 Monthly Credits",
+                "600,000 Monthly Credits ($2/10,000 additional)",
                 "Unlimited Users",
                 "Unlimited Pipelines",
                 "Bring Your Own API Key (BYO API Key)",
@@ -139,7 +139,7 @@ const PricingPage: NextPageWithLayout = () => {
               className="w-[263px]"
               planDescription="Security, support, and flexible deployment that meets performance needs"
               features={[
-                "Custom Monthly Credits",
+                "Custom Monthly Credits (Quote with lower rates)",
                 "Unlimited Users",
                 "Unlimited Pipelines",
                 "Bring Your Own API Key (BYO API Key)",
