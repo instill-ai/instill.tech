@@ -15,14 +15,14 @@ map_component_to_directory() {
     instill | archetypeai | huggingface | openai | stabilityai)
         echo "ai"
         ;;
-    googlecloudstorage | bigquery | pinecone )
+    googlecloudstorage | bigquery | pinecone |redis )
         echo "data"
         ;;
-    numbers | slack | googlesearch | redis | restapi | website)
-        echo "app"
+    numbers | slack | googlesearch | restapi | website)
+        echo "application"
         ;;
     base64 | image | json | text | document)
-        echo "operators"
+        echo "operator"
         ;;
     *)
         echo >&2 "Invalid choice: $1"
@@ -39,6 +39,7 @@ for doc in $(find component -name README.mdx); do
     component_name=$(echo "${doc}" | cut -d'/' -f 3)
     target_directory=$(map_component_to_directory "${component_name}")
     if [[ "${target_directory}" != "unknown" ]]; then
+        mkdir -p docs/component/${target_directory}
         target_en=docs/component/${target_directory}/${component_name}.en.mdx
         target_cn=docs/component/${target_directory}/${component_name}.zh-CN.mdx
         cp "${doc}" "${target_en}"
