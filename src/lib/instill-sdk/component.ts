@@ -10,7 +10,7 @@ export async function component(
   page_size: number
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIGetRequestBody = {
-    path: `vdp/v1beta/component-definitions?page_size=${page_size}&page=${page}`,
+    path: `/v1beta/component-definitions?page_size=${page_size}&page=${page}`,
   };
 
   try {
