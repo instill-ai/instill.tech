@@ -5,7 +5,7 @@ import { handleInstillError } from "../jumbotron-sdk/utility";
 
 export async function model(): Promise<JumbotronRequestResponse> {
   const body: InstillAPIGetRequestBody = {
-    path: "model/v1alpha/models?view=VIEW_FULL",
+    path: "/v1alpha/models?view=VIEW_FULL",
   };
 
   try {
