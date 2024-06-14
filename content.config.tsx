@@ -280,38 +280,38 @@ export const getSections = (): SidebarSections[] => {
           text: "common:sidebarSections.pinecone",
           link: `/docs/component/data/pinecone`,
         },
+        {
+          text: "common:sidebarSections.redis",
+          link: `/docs/component/data/redis`,
+        },
       ],
       appType: "core",
       versions: [],
     },
     {
       text: "common:sidebarSections.applicationComponent",
-      link: `/docs/component/app`,
+      link: `/docs/component/application`,
       collapsible: true,
       items: [
         {
           text: "common:sidebarSections.numbersProtocol",
-          link: `/docs/component/app/numbers`,
+          link: `/docs/component/application/numbers`,
         },
         {
           text: "common:sidebarSections.slack",
-          link: `/docs/component/app/slack`,
+          link: `/docs/component/application/slack`,
         },
         {
           text: "common:sidebarSections.googlesearch",
-          link: `/docs/component/app/googlesearch`,
+          link: `/docs/component/application/googlesearch`,
         },
         {
           text: "common:sidebarSections.rest",
-          link: `/docs/component/app/restapi`,
-        },
-        {
-          text: "common:sidebarSections.redis",
-          link: `/docs/component/app/redis`,
+          link: `/docs/component/application/restapi`,
         },
         {
           text: "common:sidebarSections.website",
-          link: `/docs/component/app/website`,
+          link: `/docs/component/application/website`,
         },
       ],
       appType: "core",
@@ -324,23 +324,23 @@ export const getSections = (): SidebarSections[] => {
       items: [
         {
           text: "common:sidebarSections.base64",
-          link: `/docs/component/operators/base64`,
+          link: `/docs/component/operator/base64`,
         },
         {
           text: "common:sidebarSections.json",
-          link: `/docs/component/operators/json`,
+          link: `/docs/component/operator/json`,
         },
         {
           text: "common:sidebarSections.text",
-          link: `/docs/component/operators/text`,
+          link: `/docs/component/operator/text`,
         },
         {
           text: "common:sidebarSections.image",
-          link: `/docs/component/operators/image`,
+          link: `/docs/component/operator/image`,
         },
         {
           text: "common:sidebarSections.document",
-          link: `/docs/component/operators/document`,
+          link: `/docs/component/operator/document`,
         },
       ],
       appType: "core",
