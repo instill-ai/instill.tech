@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.48.3](https://github.com/instill-ai/instill.tech/compare/v1.48.2...v1.48.3) (2024-06-13)
+
+
+### Bug Fixes
+
+* add missing icons ([#893](https://github.com/instill-ai/instill.tech/issues/893)) ([9078c8c](https://github.com/instill-ai/instill.tech/commit/9078c8c62e5328bd872e499c18fc4e9c679994ca))
+
+
+### Miscellaneous
+
+* **pricing:** add top up credit feature ([#897](https://github.com/instill-ai/instill.tech/issues/897)) ([50ad5ea](https://github.com/instill-ai/instill.tech/commit/50ad5eabbb53c271a2b0deb15ee6689f52b975d1))
+
 ## [1.48.2](https://github.com/instill-ai/instill.tech/compare/v1.48.1...v1.48.2) (2024-06-11)
 
 
