@@ -60,8 +60,6 @@ export const ComponentCategory = {
   COMPONENT_TYPE_ITERATOR: "Iterator Component",
 };
 
-export const docsLinks: any = {};
-
 export const getHeaderColorClass = (type: string) => {
   switch (type) {
     case "COMPONENT_TYPE_AI":
