@@ -6,14 +6,14 @@ description: "Learn about Instill Model, the MLOps/LLMOps platform, in the proje
 ---
 
 **⚗️ Instill Model** provides an automated model inference server. You can
-perform an inference either from the **Model Overview** page, or via an API
-Endpoint.
+perform an inference either from the **Model Overview** page, or via an **API
+Endpoint**.
 
-<InfoBlock type="tip" title="tip">  
+<InfoBlock type="info" title="info">  
   In the context of Machine Learning (ML) and Artificial Intelligence (AI), the
-  term inference is often compared with training. Specifically, **inference** is
-  where capabilities learnt during model training are used to "infer" a result,
-  typically some prediction about the input data.
+  term inference is often compared with training. An **inference** is where
+  capabilities learnt during model training are used to "infer" a result,
+  typically a prediction about the input data.
 </InfoBlock>
 
 ## Inference in the Model Overview Page
@@ -23,7 +23,7 @@ Overview** page.
 
 1. Provide the necessary data or upload files as inputs.
 2. Click the `Run` button to perform an inference from the model and receive the
-   results.
+   results in the output window.
 
 <InfoBlock type="tip" title="tip">  
   To ensure that the model version you are running is able to serve inference
@@ -34,16 +34,16 @@ Overview** page.
 
 ## Inference via API Endpoint
 
-Once a model version is deployed, it automatically creates a unique API endpoint
-for model inference at
+Once a model version is deployed, it automatically creates a unique **API
+Endpoint** for model inference at
 `/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger`.
 
-This endpoint allows you to send multiple images in popular formats (PNG and
-JPEG) in a single request. See the examples below for more details. The API is
-designed to accept batched images, either
-
-- sent by remote URL and Base64 or
-- uploaded by multipart.
+This endpoint allows you to send multiple images in popular formats (.PNG and
+.JPEG) in a single request. As shown in the examples below, the API is designed
+to accept batched images:
+1. Sent by remote URL,
+2. Sent as Base64 encoded strings,
+3. Uploaded by multipart.
 
 <CH.Code>
 
@@ -93,89 +93,8 @@ curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/version
 
 </CH.Code>
 
-The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace, the ID
-and version tag of the model.
-
-## Connect Models in **💧 Instill VDP**
-
-To build pipelines for your AI workflows with models served in **⚗️ Instill
-Model** , you can utilize the [AI component](../component/ai/instill) for **⚗️
-Instill Model** within **💧 Instill VDP**.
-
-
-**⚗️ Instill Model** provides an automated model inference server.
-
-<InfoBlock type="tip" title="tip">  
-  An **inference** is a prediction to a question or task. In the concept of Machine
-  Learning (ML) and Artificial Intelligence (AI), the term inference is often compared
-  with training. To put it simple, inference is where capabilities learnt during
-  training are put to analyze data to "infer" a result. Inference can be found and
-  are applied everywhere across industries from photo tagging to autonomous driving.
-</InfoBlock>
-
-## Inference with Dedicated Model API Endpoint
-
-Once a model version is deployed, it automatically creates a unique API endpoint
-for model inference at
-`/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger`.
-
-This endpoint allows you to send multiple images in popular formats (PNG and
-JPEG) in a single request. See the examples below for more details. The API is
-designed to accept batched images, either
-
-- sent by remote URL and Base64 or
-- uploaded by multipart.
-
-<CH.Code>
-
-```shellscript cURL(url)
-curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
---header 'Authorization: Bearer instill_sk_***' \
---data '{
-    "task_inputs": [
-        {
-            "classification": {
-                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
-            }
-        },
-        {
-            "classification": {
-                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
-            }
-        }
-    ]
-}'
-```
-
-```shellscript cURL(base64)
-curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
---data '{
-    "task_inputs": [
-        {
-            "classification": {
-                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-            }
-        },
-        {
-            "classification": {
-                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
-            }
-        }
-    ]
-}'
-```
-
-```shellscript cURL(multipart)
-curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger-multipart \
---header 'Authorization: Bearer instill_sk_***' \
---form 'file=@"dog.jpg"' \
---form 'file=@"bear.jpg"'
-```
-
-</CH.Code>
-
-The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace, the ID
-and version tag of the model.
+The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace,
+the ID of the model and the version tag of the model.
 
 ## Connect Models in **💧 Instill VDP**
 
