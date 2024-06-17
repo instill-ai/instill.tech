@@ -5,17 +5,34 @@ draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
 
-**⚗️ Instill Model** provides an automated model inference server.
+**⚗️ Instill Model** provides an automated model inference server. You can
+perform an inference either from the **Model Overview** page, or via an API
+Endpoint.
 
 <InfoBlock type="tip" title="tip">  
-  An **inference** is a prediction to a question or task. In the concept of Machine
-  Learning (ML) and Artificial Intelligence (AI), the term inference is often compared
-  with training. To put it simple, inference is where capabilities learnt during
-  training are put to analyze data to "infer" a result. Inference can be found and
-  are applied everywhere across industries from photo tagging to autonomous driving.
+  In the context of Machine Learning (ML) and Artificial Intelligence (AI), the
+  term inference is often compared with training. Specifically, **inference** is
+  where capabilities learnt during model training are used to "infer" a result,
+  typically some prediction about the input data.
 </InfoBlock>
 
-## Inference with Dedicated Model API Endpoint
+## Inference in the Model Overview Page
+
+Navigate to and select your chosen model to bring up its corresponding **Model
+Overview** page.
+
+1. Provide the necessary data or upload files as inputs.
+2. Click the `Run` button to perform an inference from the model and receive the
+   results.
+
+<InfoBlock type="tip" title="tip">  
+  To ensure that the model version you are running is able to serve inference
+  requests, you can check the status of the model version by selecting the
+  **Versions** tab. To learn more about this please refer to the [Model
+  State](model-state) page.
+</InfoBlock>
+
+## Inference via API Endpoint
 
 Once a model version is deployed, it automatically creates a unique API endpoint
 for model inference at

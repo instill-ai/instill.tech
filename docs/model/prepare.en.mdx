@@ -8,7 +8,7 @@ description: "Learn about Instill Model, the MLOps/LLMOps platform, in the proje
 To prepare a model version to be served in **⚗️ Instill Model**, please follow
 these steps on your local system:
 
-- Create a [model config](#model-config) `instill.yaml` file to describe your
+- Create a [model config](#model-configuration) `instill.yaml` file to describe your
   model's dependencies
 - Write a `model.py` file which defines the model class that will be decorated
   into a servable model with Instill's `python-sdk`
@@ -39,14 +39,15 @@ In the `instill.yaml` file, you are can specify the following details:
   - **system_packages**:
     - Optional: `list`
     - Description: Lists packages to be installed from the `apt` package
-      manager. The model image is based on Ubuntu 20.04 LTS.
+      manager. The model image is based on `Ubuntu 20.04 LTS`.
 - **repo**:
   - Required: `string`
   - Format: `USER_ID/MODEL_ID`
   - Description: The namespace.
 
-Below is an example config file for a `TinyLlama` model designed to utilize GPU
-resources:
+Below is an example config file for a
+[TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model
+designed to utilize GPU resources:
 
 ```yaml instill.yaml
 build:
@@ -80,7 +81,7 @@ files similar to the following layout:
 
 The above layout displays a typical model in **⚗️ Instill Model** consisting of
 
-- `instill.yaml` - [model config](#model-config) file that describe the model
+- `instill.yaml` - [model config](#model-configuration) file that describe the model
   dependencies
 - `model.py` - this is where you define a decorated model class that contains
   custom inference logic
