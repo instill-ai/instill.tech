@@ -2,7 +2,6 @@ import {
   ComponentCategory,
   Component,
   VersionType,
-  docsLinks,
   getHeaderColorClass,
 } from "@/pages/component";
 import React from "react";
@@ -130,10 +129,7 @@ function ComponentCard({
             </div>
             <span className={cn("my-auto")}>
               <a
-                href={
-                  docsLinks[component_definition.id] ||
-                  component_definition.documentation_url
-                }
+                href={component_definition.documentation_url}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterDocs(!onMouseEnterDocs);
                 // }}
