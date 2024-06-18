@@ -9,8 +9,8 @@ The Redis component is a data component that allows users to manage data in NoSQ
 It can carry out the following tasks:
 
 - [Retrieve Chat History](#retrieve-chat-history)
-- [Write Chat Message](#write-chat-message)
-- [Write Multi Modal Chat Message](#write-multi-modal-chat-message)
+- [Write Chat-Message](#write-chat-message)
+- [Write Multi Modal Chat-Message](#write-multi-modal-chat-message)
 
 ## Release Stage
 
@@ -29,7 +29,7 @@ The component configuration is defined and maintained [here](https://github.com/
 | Username | `username` | string | Username associated with Redis |
 | Password | `password` | string | Password associated with Redis |
 | SSL Connection | `ssl` | boolean | Indicates whether SSL encryption protocol will be used to connect to Redis. It is recommended to use SSL connection if possible. |
-| SSL Configuration | `ssl_mode` | object | SSL connection modes.    <b>verify-full</b> - This is the most secure mode. Always require encryption and verifies the identity of the source database server |
+| SSL Configuration | `ssl-mode` | object | SSL connection modes.    <b>verify-full</b> - This is the most secure mode. Always require encryption and verifies the identity of the source database server |
 
 ## Supported Tasks
 
@@ -40,22 +40,22 @@ Retrieve chat history from Redis.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_RETRIEVE_CHAT_HISTORY` |
-| Session ID (required) | `session_id` | string | A unique identifier for the chat session |
-| Latest K | `latest_k` | integer | The number of latest conversation turns to retrieve. A conversation turn typically includes one participant speaking or sending a message, and the other participant(s) responding to it. |
-| Include System Message If Exists | `include_system_message` | boolean | Include system message in the retrieved conversation turns if exists |
+| Session ID (required) | `session-id` | string | A unique identifier for the chat session |
+| Latest K | `latest-k` | integer | The number of latest conversation turns to retrieve. A conversation turn typically includes one participant speaking or sending a message, and the other participant(s) responding to it. |
+| Include System Message If Exists | `include-system-message` | boolean | Include system message in the retrieved conversation turns if exists |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Chat Message | `messages` | array[object] | Messages |
 
-### Write Chat Message
+### Write Chat-Message
 
 Write chat message into Redis.
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Task ID (required) | `task` | string | `TASK_WRITE_CHAT_MESSAGE` |
-| Session ID (required) | `session_id` | string | A unique identifier for the chat session |
+| Task ID (required) | `task` | string | `TASK_WRITE_chat-message` |
+| Session ID (required) | `session-id` | string | A unique identifier for the chat session |
 | Role (required) | `role` | string | The message role, i.e. 'system', 'user' or 'assistant' |
 | Content (required) | `content` | string | The message content |
 | Metadata | `metadata` | object | The message metadata |
@@ -64,14 +64,14 @@ Write chat message into Redis.
 | :--- | :--- | :--- | :--- |
 | Status | `status` | boolean | The status of the write operation |
 
-### Write Multi Modal Chat Message
+### Write Multi Modal Chat-Message
 
 Write multi-modal chat message into Redis.
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Task ID (required) | `task` | string | `TASK_WRITE_MULTI_MODAL_CHAT_MESSAGE` |
-| Session ID (required) | `session_id` | string | A unique identifier for the chat session |
+| Task ID (required) | `task` | string | `TASK_WRITE_MULTI_MODAL_chat-message` |
+| Session ID (required) | `session-id` | string | A unique identifier for the chat session |
 | Role (required) | `role` | string | The message role, i.e. 'system', 'user' or 'assistant' |
 | Content (required) | `content` | string | The multi-modal message content |
 | Metadata | `metadata` | object | The message metadata |

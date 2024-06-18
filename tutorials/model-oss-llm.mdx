@@ -89,8 +89,8 @@ This configuration requires one input: a text prompt for all the open-source LLM
 
 To configure an Instill Model connector:
 
-1. Click **+ Create Connector** and choose **ins-model** from existing resource. This will add a OpenAI connector `ai_0` to the canvas.
-2. Click the ⚙️ icon on the `ai_0` to open the configuration panel on the right-hand side.
+1. Click **+ Create Connector** and choose **ins-model** from existing resource. This will add a OpenAI connector `ai-0` to the canvas.
+2. Click the ⚙️ icon on the `ai-0` to open the configuration panel on the right-hand side.
 3. Select _TASK_TEXT_GENERATION_ from the dropdown of the **Task** field.
 4. Set **Model ID** to choose the model to use, e.g., _mpt-7b_.
 5. Set **Model Namespace** to _instill-ai_ for the namespace (username) of the model to use.
@@ -109,24 +109,24 @@ since we have used `{start.prompt}` in the Instill Model connector configuration
 
 With the above steps, we have set up the **MPT 7B** model. To set up the other two models, **LaMA-2 7B** and **Mistral 7B**:
 
-1. Click the `···` icon on the `ai_0` and select **Duplicate** to create another Instill Model Connector, named `ai_1`, on the canvas.
-2. Click the ⚙️ icon on the `ai_1` to open configuration right panel.
+1. Click the `···` icon on the `ai-0` and select **Duplicate** to create another Instill Model Connector, named `ai-1`, on the canvas.
+2. Click the ⚙️ icon on the `ai-1` to open configuration right panel.
 3. Update **Model ID** from _mpt-7b_ to _llama2-7b_.
 4. Click **Save**.
 
-You can repeat the same process to duplicate another component, `ai_2`, and update the Model ID to _mistral-7b_ to set up **Mistral 7B**.
+You can repeat the same process to duplicate another component, `ai-2`, and update the Model ID to _mistral-7b_ to set up **Mistral 7B**.
 
 The End Component is used at the end of a VDP pipeline to receive the output of the pipeline being triggered.
 
 To set up an End component:
 
 1. Find the **end** component on canvas.
-2. Click **Add Field +** and fill in the **Title** with _MPT-7B Result_, **Key** with _mpt_7b_result_ and **Value** with `{ai_0.output.text}`.
-3. Click **Add Field +** and fill in the **Title** with _Llama2-7B Result_, **Key** with _llama2_7b_result_ and **Value** with `{ai_1.output.text}`.
-4. Click **Add Field +** and fill in the **Title** with _Mistral-7B Result_, **Key** with _mistral_7b_result_ and **Value** with `{ai_2.output.text}`.
+2. Click **Add Field +** and fill in the **Title** with _MPT-7B Result_, **Key** with _mpt_7b_result_ and **Value** with `{ai-0.output.text}`.
+3. Click **Add Field +** and fill in the **Title** with _Llama2-7B Result_, **Key** with _llama2_7b_result_ and **Value** with `{ai-1.output.text}`.
+4. Click **Add Field +** and fill in the **Title** with _Mistral-7B Result_, **Key** with _mistral_7b_result_ and **Value** with `{ai-2.output.text}`.
 5. Click **Save**.
 
-You will see that the End component is automatically linked to multiple components: `ai_0`, `ai_1` and `ai_2`.
+You will see that the End component is automatically linked to multiple components: `ai-0`, `ai-1` and `ai-2`.
 
 Click **Save** on the top right corner.
 

@@ -22,8 +22,8 @@ The component configuration is defined and maintained [here](https://github.com/
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| Bucket Name (required) | `bucket_name` | string | Name of the bucket to be used for object storage. |
-| JSON Key File contents (required) | `json_key` | string | Contents of the JSON key file with access to the bucket. |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| JSON Key File contents (required) | `json-key` | string | Contents of the JSON key file with access to the bucket. |
 
 ## Supported Tasks
 
@@ -34,13 +34,13 @@ Upload data to Google Cloud Storage.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_UPLOAD` |
-| Object Name (required) | `object_name` | string | The name of the object to be created |
+| Object Name (required) | `object-name` | string | The name of the object to be created |
 | Data (required) | `data` | string | The data to be saved in the object |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Authenticated URL (optional) | `authenticated_url` | string | Only users granted permission can access the object with this link |
-| Gsutil URI (optional) | `gsutil_uri` | string | File path to this resource in Cloud Storage |
-| Public Access (optional) | `public_access` | boolean | Whether the object is publicly accessible |
-| Public URL (optional) | `public_url` | string | Anyone with this link can access the object on the public Internet |
+| Authenticated URL (optional) | `authenticated-url` | string | Only users granted permission can access the object with this link |
+| Gsutil URI (optional) | `gsutil-uri` | string | File path to this resource in Cloud Storage |
+| Public Access (optional) | `public-access` | boolean | Whether the object is publicly accessible |
+| Public URL (optional) | `public-url` | string | Anyone with this link can access the object on the public Internet |
 | Upload Status | `status` | string | Status of the upload operation |

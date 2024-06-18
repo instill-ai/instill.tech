@@ -99,11 +99,11 @@ alt="Step 2 : Configure Trigger Component"
         - **Prompt:** Use references to integrate scraped content. For example:
             - Input for **Ask on Page** use case: <br />
             **`Question: ${trigger.question}`** <br />
-            **`Title: ${web_scraper.output.pages[0].title}`** <br />
-            **`Link: ${web_scraper.output.pages[0].link}`** <br />
-            **`Text content: ${web_scraper.output.pages[0].link_text}`**
+            **`Title: ${web-scraper.output.pages[0].title}`** <br />
+            **`Link: ${web-scraper.output.pages[0].link}`** <br />
+            **`Text content: ${web-scraper.output.pages[0].link-text}`**
             - Input for **5 Second Preview** use case: <br />
-            **`${web_scraper.output.pages[0].link_text}`**
+            **`${web-scraper.output.pages[0].link-text}`**
         - **Response Format:** Select **'text'**.
         - **Additional Configuration:** Set system messages specific to the task.
         - **API Key:** Reference the OpenAI API key previously set under **"Settings"** → **"Secrets"** as **`${secrets.openai-instill-api-key}`**.
@@ -115,7 +115,7 @@ alt="Step 3 : Add Components"
 
 ## 4. **Configure Output in Response Component**
     - **General Output**:
-        - To extract content scraped from the webpage by the Website component, add **'Webpage Text Content'** field with Title **`Webpage Content`**, Key **`webpage_content`** and Value **`${web_scraper.output.pages[0].link_text}`**.
+        - To extract content scraped from the webpage by the Website component, add **'Webpage Text Content'** field with Title **`Webpage Content`**, Key **`webpage-content`** and Value **`${web-scraper.output.pages[0].link-text}`**.
     - **Specific Outputs:**
         - **Ask on Page**: To reference the output from the OpenAI Component, add **'Answer'** field with Title **`Answer`**, Key **`answer`** and Value **`${ask.output.texts}`**.
         - **5 Second Preview**: To reference the output from the OpenAI Component, add **'Summary'** field with Title **`Summary`**, Key **`summary`** and Value **`${summarizer.output.texts}`**.

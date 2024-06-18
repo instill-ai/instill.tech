@@ -47,13 +47,13 @@ Split text by token. It will be decprecated soon. Please use Chunk Text task ins
 | Task ID (required) | `task` | string | `TASK_SPLIT_BY_TOKEN` |
 | Text (required) | `text` | string | Text to be split |
 | Model (required) | `model` | string | ID of the model to use for tokenization |
-| Chunk Token Size | `chunk_token_size` | integer | Number of tokens per text chunk |
+| Chunk Token Size | `chunk-token-size` | integer | Number of tokens per text chunk |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Token Count | `token_count` | integer | Total count of tokens in the input text |
-| Text Chunks | `text_chunks` | array[string] | Text chunks after splitting |
-| Number of Text Chunks | `chunk_num` | integer | Total number of output text chunks |
+| Token Count | `token-count` | integer | Total count of tokens in the input text |
+| Text Chunks | `text-chunks` | array[string] | Text chunks after splitting |
+| Number of Text Chunks | `chunk-num` | integer | Total number of output text chunks |
 
 ### Chunk Text
 
@@ -67,6 +67,6 @@ Chunk text with different strategies.
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Token Count (optional) | `token_count` | integer | Total count of tokens in the input text |
-| Text Chunks | `text_chunks` | array[object] | Text chunks after splitting |
-| Number of Text Chunks | `chunk_num` | integer | Total number of output text chunks |
+| Token Count (optional) | `token-count` | integer | Total count of tokens in the input text |
+| Text Chunks | `text-chunks` | array[object] | Text chunks after splitting |
+| Number of Text Chunks | `chunk-num` | integer | Total number of output text chunks |

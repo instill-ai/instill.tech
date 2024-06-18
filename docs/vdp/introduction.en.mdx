@@ -45,15 +45,15 @@ Here is a sample recipe where the input is a `prompt`, and the output is a
         "model": "gpt-3.5-turbo",
         "n": 2,
         "prompt": "${variable.prompt}",
-        "response_format": {
+        "response-format": {
           "type": "text"
         },
-        "system_message": "You are a helpful assistant.",
+        "system-message": "You are a helpful assistant.",
         "temperature": 1,
-        "top_p": 1
+        "top-p": 1
       },
       "setup": {
-        "api_key": "${secret.my-openai-key}"
+        "api-key": "${secret.my-openai-key}"
       }
     }
   }
@@ -134,10 +134,10 @@ or operator component.
     the component definition `tasks` field.
     [Example](https://api.instill.tech/vdp/v1beta/component-definitions/openai?view=VIEW_FULL).
   - **input**: Sets up the input data. The schema is described in the
-    `spec.component_specification` field.
-  - **setup**: Sets up how the component is setup, e.g. setup a `api_key` for
+    `spec.componentSpecification` field.
+  - **setup**: Sets up how the component is setup, e.g. setup a `api-key` for
     the connection. The schema is described in the
-    `spec.component_specification` field.
+    `spec.componentSpecification` field.
   - **condition**: (optional) Sets up the condition for whether this component
     will be executed or not.
 - For a `generic.iterator`, we need to set up these fields:
@@ -158,7 +158,7 @@ flow, i.e., the **input** field of each component:
     any fields you want in the `recipe.variable`.
   - Reference data from the component: `${comp-id.input.KEY}` or
     `${comp-id.output.KEY}`, the available data fields are described in
-    `component_specification` of each component.
+    `componentSpecification` of each component.
 - It functions as a variable reference, copying the value from an upstream
   component to the data input while preserving the original data type.
 
@@ -194,7 +194,7 @@ for instructions on how to run a pipeline.
 Besides reference data from the pipeline input or component setting, we can also
 reference secrets from the secret management system. The value of these secrets
 fields will be kept out of the recipe. So when the pipeline is shared or
-published, the keys will always be protected. Examples: `"api_key":
+published, the keys will always be protected. Examples: `"api-key":
 "${secrets.my-openai-key}"`. Please refer to [Secret Management](../vdp/secret)
 for more details.
 

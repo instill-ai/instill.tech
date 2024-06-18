@@ -34,15 +34,15 @@ designed to accept batched images, either
 curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
 --header 'Authorization: Bearer instill_sk_***' \
 --data '{
-    "task_inputs": [
+    "taskInputs": [
         {
             "classification": {
-                "image_url": "https://artifacts.instill.tech/imgs/dog.jpg"
+                "imageUrl": "https://artifacts.instill.tech/imgs/dog.jpg"
             }
         },
         {
             "classification": {
-                "image_url": "https://artifacts.instill.tech/imgs/bear.jpg"
+                "imageUrl": "https://artifacts.instill.tech/imgs/bear.jpg"
             }
         }
     ]
@@ -52,15 +52,15 @@ curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/version
 ```shellscript cURL(base64)
 curl -X POST http://localhost:8080/v1alpha/users/USER_ID/models/MODEL_ID/versions/VERSION_TAG/trigger \
 --data '{
-    "task_inputs": [
+    "taskInputs": [
         {
             "classification": {
-                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+                "imageBase64": "/9j/4AAQSkZ...iiigD/2Q=="
             }
         },
         {
             "classification": {
-                "image_base64": "/9j/4AAQSkZ...iiigD/2Q=="
+                "imageBase64": "/9j/4AAQSkZ...iiigD/2Q=="
             }
         }
     ]

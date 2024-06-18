@@ -494,11 +494,11 @@ To access model inferences via the API:
    --header 'Content-Type: application/json' \
    --header 'Authorization: Bearer $INSTILL_API_TOKEN' \
    --data '{
-     "task_inputs": [
+     "taskInputs": [
        {
-         "text_generation": {
+         "textGeneration": {
            "prompt": "How is the weather today?",
-            "chat_history": [
+            "chatHistory": [
               {
                 "role": "user",
                 "content": [
@@ -509,9 +509,9 @@ To access model inferences via the API:
                 ]
               }
             ],
-            "system_message": "you are a helpful assistant",
-            "max_new_tokens": 1024,
-            "top_k": 5,
+            "systemMessage": "you are a helpful assistant",
+            "maxNewTokens": 1024,
+            "topK": 5,
             "temperature": 0.7
           }
         }
