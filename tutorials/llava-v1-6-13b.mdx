@@ -74,13 +74,13 @@ You'll need to provide specific information to make the API call:
 
 - **Authorization**: Enter the token with the **`Bearer`** prefix, e.g. **`Bearer`** + **`'YOUR_API_TOKEN'`**(attained from [Instill Cloud](https://instill.tech/)).
 - **PATH PARAMS**
-    - **organization_model_name**: Use **`organizations/instill-ai/models/llava-1-6-13b`** for the LLaVA-v1.6-13B model.
+    - **organizationModelName**: Use **`organizations/instill-ai/models/llava-1-6-13b`** for the LLaVA-v1.6-13B model.
 - **BODY PARAMS**
-    - **task_inputs**: Select **`VISUAL_QUESTION_ANSWERING OBJECT`**.
+    - **taskInputs**: Select **`VISUAL_QUESTION_ANSWERING OBJECT`**.
         - **prompt**: Enter your question for the model.
-        - **prompt_images**: Provide image data. You can use either:
-            - **prompt_image_url**: URL of the image to analyze.
-            - **prompt_image_base64**: Base64-encoded image data.
+        - **promptImages**: Provide image data. You can use either:
+            - **promptImageUrl**: URL of the image to analyze.
+            - **promptImageBase64**: Base64-encoded image data.
 
 ### **Step 4: Execute the API Call**
 
@@ -94,13 +94,13 @@ curl --request POST \
      --header 'content-type: application/json' \
      --data '
 {
-  "task_inputs": [
+  "taskInputs": [
     {
-      "visual_question_answering": {
+      "visualQuestionAnswering": {
         "prompt": "Describe the image",
-        "prompt_images": [
+        "promptImages": [
           {
-            "prompt_image_url": "https://yourimageurl.com/image.jpg"
+            "promptImageUrl": "https://yourimageurl.com/image.jpg"
           }
         ]
       }
@@ -163,11 +163,11 @@ You can add models either through the console at http://localhost:3000/ or via A
 - Go to the [API Reference Page](https://openapi.instill.tech/reference/modelpublicservice_createusermodel-1) to create a new model with the following details:
     - **Authorization**: Enter the token with the **`Bearer`** prefix, e.g. **`Bearer`** + **`'YOUR_API_TOKEN'`**(attained from http://localhost:3000/).
     - **PATH PARAMS**
-        - **user_name**: Use **`users/admin`**.
+        - **userName**: Use **`users/admin`**.
     - **BODY PARAMS**
         - **id**: Enter an ID for your model.
         - **task**: Select **`TASK_VISUAL_QUESTION_ANSWERING`**.
-        - **model_definition**: Use **`model-definitions/github`**.
+        - **modelDefinition**: Use **`model-definitions/github`**.
         - **configuration**: Provide the model's repository and tag details.
         In this case, it would be
             
@@ -186,13 +186,13 @@ curl --location 'http://localhost:8080/model/v1alpha/users/admin/models/llava-1-
 --header 'Authorization: Bearer YOUR_API_TOKEN' \
 --data '
 {
-  "task_inputs": [
+  "taskInputs": [
     {
-      "visual_question_answering": {
+      "visualQuestionAnswering": {
         "prompt": "Describe the image",
-        "prompt_images": [
+        "promptImages": [
           {
-            "prompt_image_url": "https://yourimageurl.com/image.jpg"
+            "promptImageUrl": "https://yourimageurl.com/image.jpg"
           }
         ]
       }

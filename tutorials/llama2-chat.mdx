@@ -92,7 +92,7 @@ curl --location 'http://localhost:8080/model/v1alpha/users/admin/models' \
 {
   "id": "llama2-7b-chat",
   "description": "Deploy the LLama 2 Chat model via Instill Core",
-  "model_definition": "model-definitions/github",
+  "modelDefinition": "model-definitions/github",
   "configuration": {
     "repository": "instill-ai/model-llama2-7b-chat-dvc",
     "tag": "f16-gpuAuto-transformer-ray-v0.8.0"
@@ -118,9 +118,9 @@ curl --location 'http://localhost:8080/model/v1alpha/users/admin/models/llama2-7
 --header 'Authorization: Bearer YOUR_INSTILL_CORE_API_TOKEN' \\
 --data '
 {
-  "task_inputs": [
+  "taskInputs": [
     {
-      "text_generation_chat": {
+      "textGenerationChat": {
         "prompt": "I do not feel good today"
       }
     }
@@ -133,9 +133,9 @@ You will get a response similar to this:
 ```bash
 {
   "task": "TASK_TEXT_GENERATION_CHAT",
-  "task_outputs": [
+  "taskOutputs": [
     {
-      "text_generation_chat": {
+      "textGenerationChat": {
         "text": "Oh no, I'm so sorry to hear that you're not feeling well today! 😔 Can you tell me more about how you're feeling? Sometimes talking about it can help. Is there anything in particular that's bothering you, or is it just a general feeling of not being well?"
       }
     }
@@ -171,11 +171,11 @@ curl --location 'https://api.instill.tech/model/v1alpha/organizations/instill-ai
      --header 'content-type: application/json' \
      --data '
 {
-  "task_inputs": [
+  "taskInputs": [
     {
-      "text_generation_chat": {
+      "textGenerationChat": {
         "prompt": "I do not feel good today",
-        "max_new_tokens": 1024
+        "maxNewTokens": 1024
       }
     }
   ]
@@ -183,7 +183,7 @@ curl --location 'https://api.instill.tech/model/v1alpha/organizations/instill-ai
 '
 ```
 
-**max_new_tokens: 1024** specifies the maximum number of tokens the model should generate in the response.
+**maxNewTokens: 1024** specifies the maximum number of tokens the model should generate in the response.
 
 <br />
 
