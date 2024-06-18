@@ -55,6 +55,7 @@
     "image": "Image",
     "document": "Document",
     "createModel": "Create Model",
+    "namespaceModel": "Create Namespace",
     "prepareModel": "Prepare Model",
     "buildModel": "Build Model Image",
     "pushModel": "Push Model Image",

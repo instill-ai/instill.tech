@@ -5,14 +5,17 @@ draft: false
 description: "Learn about model states"
 ---
 
-A deployed model version can assume a number of different states. To understand
-these states, we first need to introduce the concept of a replica.
+A deployed model version can assume a number of different states. To check the
+status of a model version, select the `Versions` tab from the **Model Overview**
+page in the Console and view the `Status` field.
 
-At runtime, a model version deployment consists of a number of replicas. These
-are essentially clones of the model class that are launched in separate
-processes. The number of replicas is autoscaled according to the model traffic.
-Please refer to the [Ray Serve](https://docs.ray.io/en/latest/serve/index.html)
-documentation for further information regarding replicas.
+To understand these model states, we first need to introduce the concept of a
+replica. At runtime, a model version deployment consists of a number of
+replicas. These are essentially clones of the model class that are launched in
+separate processes. The number of replicas is autoscaled according to the model
+traffic. Please refer to the [Ray
+Serve](https://docs.ray.io/en/latest/serve/index.html) documentation for further
+information regarding replicas.
 
 The model version can be in one of the following states:
 
@@ -37,7 +40,7 @@ The diagram below illustrates the full model lifecycle, showing the relationship
 and transitions between these states when a model version is deployed.
 
 <ZoomableImg
-  src="/docs-assets/model/machine_state_diagram_v4.mp4"
+  src="/docs-assets/model/machine-state-diagram-v4.mp4"
   alt="Model State Diagram"
 />
 

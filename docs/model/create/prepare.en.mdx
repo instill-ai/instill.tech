@@ -1,0 +1,209 @@
+---
+title: "Prepare Model"
+lang: "en-US"
+draft: false
+description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
+---
+
+To prepare a model version to be served in **⚗️ Instill Model**, please follow
+these steps on your local system:
+
+1. Create an [model config](#model-configuration) file (`instill.yaml`) to
+  describe your model's dependencies.
+2. Write a `model.py` file which defines the model class that will be decorated
+  into a servable model with the Python **📦 Instill SDK**.
+3. Organize the repository files into a valid [model layout](#model-layout).
+
+## Model Configuration
+
+Model configuration is handled within the `instill.yaml` file that accompanies
+the model. It describes the models necessary dependency information and is
+crucial for reproducibility, sharing and discoverability.
+
+In the `instill.yaml` file, you are can specify the following details:
+
+- **build**:
+  - **gpu**:
+    - Required: `boolean`
+    - Description: Specifies if the model needs GPU support.
+  - **python_version**:
+    - Required: `string`
+    - Supported Versions: `3.11`
+  - **python_packages**:
+    - Required: `list`
+    - Description: Lists packages to be installed with `pip`.
+  - **cuda_version**:
+    - Optional: `string`
+    - Supported Versions: `11.5`, `11.6`, `11.7`, `11.8`, `12.1`
+    - Default: Defaults to `11.8` if not specified or empty.
+  - **system_packages**:
+    - Optional: `list`
+    - Description: Lists packages to be installed from the `apt` package
+      manager. The model image is based on `Ubuntu 20.04 LTS`.
+- **repo**:
+  - Required: `string`
+  - Format: `USER_ID/MODEL_ID`
+  - Description: The namespace.
+
+Below is an example for the 
+[TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model:
+
+```yaml instill.yaml
+build:
+  gpu: true
+  python_version: "3.11" # support only 3.11
+  python_packages:
+    - torch==2.2.1
+    - transformers==4.36.2
+    - accelerate==0.25.0
+# the repo format is USER_ID/MODEL_ID
+# where MODEL_ID must match the Model ID created in the console
+repo: instill-ai/tinyllama
+```
+
+## Model Layout
+
+To deploy a model in **⚗️ Instill Model**, we suggest you prepare the model
+files similar to the following layout:
+
+```text
+.
+├── instill.yaml
+├── model.py
+├── <additional_modules>
+└── <weights>
+    ├── <weight_file_1>
+    ├── <weight_file_2>
+    ├── ...
+    └── <weight_file_n>
+```
+
+The above layout displays a typical model in **⚗️ Instill Model** consisting of
+
+- `instill.yaml` - [model config](#model-configuration) file that describe the
+  model dependencies
+- `model.py` - a decorated model class that contains custom inference logic
+- `<additional_modules>` - a directory that holds supporting python modules if
+  necessary
+- `<weights>` - a directory that holds the weight files if necessary
+
+You can name the `<weights>` and `<additional_modules>` folders freely provided
+that they can be properly loaded and used by the `model.py` file.
+
+## Prepare Model Code
+
+To implement a custom model that can be deployed and served in **⚗️
+Instill Model**, you only need to construct a simple model class within the
+`model.py` file.
+
+The custom model class is required to contain three methods:
+
+1. `__init__`  
+  This is where the model loading process is defined, allowing the weights to
+  be stored in memory and yielding faster auto-scaling behavior.
+2. `ModelMetadata`  
+  This method tells the backend service the expected input/output shape that
+  the model is expecting. If you are using one of our predefined [AI
+  Tasks](ai-task), you can simply `import construct_{task}_metadata_response`
+  and use it as `return`.
+3. `__call__`  
+  This is the inference request entrypoint, and is where you implement your
+  model inference logic.
+
+Below is a simple example implementation of the
+[TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model
+with explanations:
+
+```python
+# import necessary packages
+import torch
+from transformers import pipeline
+
+# import SDK helper functions
+# const package hosts the standard Datatypes and Input class for each standard Instill AI Task
+from instill.helpers.const import TextGenerationChatInput
+
+# ray_io package hosts the parsers to easily convert request payload into input parameters, and model outputs to response
+from instill.helpers.ray_io import StandardTaskIO
+
+# ray_config package hosts the decorators and deployment object for the model class
+from instill.helpers.ray_config import instill_deployment, InstillDeployable
+from instill.helpers import (
+    construct_text_generation_chat_infer_response,
+    construct_text_generation_chat_metadata_response,
+)
+
+
+# use instill_deployment decorator to convert the model class to a servable model
+@instill_deployment
+class TinyLlama:
+    # within the __init__ function, setup the model instance with the desired framework, in this
+    # case it is a transformers pipeline
+    def __init__(self):
+        self.pipeline = pipeline(
+            "text-generation",
+            model="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+        )
+
+    # ModelMetadata tells the server what input and output shapes the model is expecting
+    def ModelMetadata(self, req):
+        return construct_text_generation_chat_metadata_response(req=req)
+
+    # __call__ handles the trigger request from Instill Model
+    async def __call__(self, request):
+        # use StandardTaskIO package to parse the request and get the corresponding input
+        # for text-generation-chat task
+        task_text_generation_chat_input: TextGenerationChatInput = (
+            StandardTaskIO.parse_task_text_generation_chat_input(request=request)
+        )
+
+        # prepare prompt with chat template
+        conv = [
+            {
+                "role": "system",
+                "content": "You are a friendly chatbot",
+            },
+            {
+                "role": "user",
+                "content": task_text_generation_chat_input.prompt,
+            },
+        ]
+
+        prompt = self.pipeline.tokenizer.apply_chat_template(
+            conv,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+        # inference
+        sequences = self.pipeline(
+            prompt,
+            max_new_tokens=task_text_generation_chat_input.max_new_tokens,
+            do_sample=True,
+            temperature=task_text_generation_chat_input.temperature,
+            top_k=task_text_generation_chat_input.top_k,
+            top_p=0.95,
+        )
+
+        # convert the model output into response output using StandardTaskIO
+        task_text_generation_chat_output = (
+            StandardTaskIO.parse_task_text_generation_chat_output(sequences=sequences)
+        )
+
+        return construct_text_generation_chat_infer_response(
+            req=request,
+            # specify the output dimension
+            shape=[1, len(sequences)],
+            raw_outputs=[task_text_generation_chat_output],
+        )
+
+# now simply declare a global entrypoint for deployment
+entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
+```
+
+Once all the required model files are prepared, please refer to the [Build Model
+Image](build) and [Push Model Image](push) pages for futher information about
+creating and pushing your custom model image to **⚗️ Instill Model** in **🔮
+Instil Core** or on **☁️ Instill Cloud**.
