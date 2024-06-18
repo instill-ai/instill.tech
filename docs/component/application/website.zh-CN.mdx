@@ -27,11 +27,11 @@ Scrape the website contents.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_SCRAPE_WEBSITE` |
-| Query (required) | `target_url` | string | The root URL to scrape. All links on this page will be scraped, and all links on those pages, and so on. |
-| Allowed Domains | `allowed_domains` | array[string] | A list of domains that are allowed to be scraped. If empty, all domains are allowed. |
-| Max Number of Pages (required) | `max_k` | integer | The max number of pages to return. If the number is set to 0, all pages will be returned. If the number is set to a positive integer, at most max k pages will be returned. |
-| Include Link Text | `include_link_text` | boolean | Indicate whether to scrape the link and include the text of the link associated with this page in the 'link_text' field |
-| Include Link HTML | `include_link_html` | boolean | Indicate whether to scrape the link and include the raw HTML of the link associated with this page in the 'link_html' field |
+| Query (required) | `target-url` | string | The root URL to scrape. All links on this page will be scraped, and all links on those pages, and so on. |
+| Allowed Domains | `allowed-domains` | array[string] | A list of domains that are allowed to be scraped. If empty, all domains are allowed. |
+| Max Number of Pages (required) | `max-k` | integer | The max number of pages to return. If the number is set to 0, all pages will be returned. If the number is set to a positive integer, at most max k pages will be returned. |
+| Include Link Text | `include-link-text` | boolean | Indicate whether to scrape the link and include the text of the link associated with this page in the 'link-text' field |
+| Include Link HTML | `include-link-html` | boolean | Indicate whether to scrape the link and include the raw HTML of the link associated with this page in the 'link-html' field |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |

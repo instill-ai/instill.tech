@@ -23,7 +23,7 @@ The component configuration is defined and maintained [here](https://github.com/
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| API Key (required) | `api_key` | string | Fill your Pinecone AI API key. You can create a api key in Pinecone Console |
+| API Key (required) | `api-key` | string | Fill your Pinecone AI API key. You can create a api key in Pinecone Console |
 | Pinecone Base URL (required) | `url` | string | Fill in your Pinecone base URL. It is in the form |
 
 ## Supported Tasks
@@ -37,12 +37,12 @@ Retrieve the ids of the most similar items in a namespace, along with their simi
 | Task ID (required) | `task` | string | `TASK_QUERY` |
 | ID | `id` | string | The unique ID of the vector to be used as a query vector. If present, the vector parameter will be ignored. |
 | Vector (required) | `vector` | array[number] | An array of dimensions for the query vector. |
-| Top K (required) | `top_k` | integer | The number of results to return for each query |
+| Top K (required) | `top-k` | integer | The number of results to return for each query |
 | Namespace | `namespace` | string | The namespace to query |
 | Filter | `filter` | object | The filter to apply. You can use vector metadata to limit your search. See https://www.pinecone.io/docs/metadata-filtering/. |
-| Minimum Score | `min_score` | number | Exclude results whose score is below this value |
-| Include Metadata | `include_metadata` | boolean | Indicates whether metadata is included in the response as well as the IDs |
-| Include Values | `include_values` | boolean | Indicates whether vector values are included in the response |
+| Minimum Score | `min-score` | number | Exclude results whose score is below this value |
+| Include Metadata | `include-metadata` | boolean | Indicates whether metadata is included in the response as well as the IDs |
+| Include Values | `include-values` | boolean | Indicates whether vector values are included in the response |
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -63,4 +63,4 @@ Writes vectors into a namespace. If a new value is upserted for an existing vect
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Upserted Count | `upserted_count` | integer | Number of records modified or added |
+| Upserted Count | `upserted-count` | integer | Number of records modified or added |

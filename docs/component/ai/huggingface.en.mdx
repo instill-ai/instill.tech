@@ -38,9 +38,9 @@ The component configuration is defined and maintained [here](https://github.com/
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| API Key (required) | `api_key` | string | Fill your Hugging face API token. To find your token, visit https://huggingface.co/settings/tokens. |
-| Base URL (required) | `base_url` | string | Hostname for the endpoint. To use Inference API set to https://api-inference.huggingface.co, for Inference Endpoint set to your custom endpoint. |
-| Is Custom Endpoint (required) | `is_custom_endpoint` | boolean | Fill true if you are using a custom Inference Endpoint and not the Inference API. |
+| API Key (required) | `api-key` | string | Fill your Hugging face API token. To find your token, visit https://huggingface.co/settings/tokens. |
+| Base URL (required) | `base-url` | string | Hostname for the endpoint. To use Inference API set to https://api-inference.huggingface.co, for Inference Endpoint set to your custom endpoint. |
+| Is Custom Endpoint (required) | `is-custom-endpoint` | boolean | Fill true if you are using a custom Inference Endpoint and not the Inference API. |
 
 ## Supported Tasks
 
@@ -58,7 +58,7 @@ Generating text is the task of producing new text. These models can, for example
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Generated Text | `generated_text` | string | The continuated string |
+| Generated Text | `generated-text` | string | The continuated string |
 
 ### Fill Mask
 
@@ -89,7 +89,7 @@ Summarization is the task of producing a shorter version of a document while pre
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Summary Text | `summary_text` | string | The string after summarization |
+| Summary Text | `summary-text` | string | The string after summarization |
 
 ### Text Classification
 
@@ -135,7 +135,7 @@ Translation is the task of converting text from one language to another.
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
-| Translation Text | `translation_text` | string | The string after translation |
+| Translation Text | `translation-text` | string | The string after translation |
 
 ### Zero Shot Classification
 
@@ -221,7 +221,7 @@ Conversational response modelling is the task of generating conversational text 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Conversation (optional) | `conversation` | object | A facility dictionnary to send back for the next input (with the new user input addition). |
-| Generated Text | `generated_text` | string | The answer of the bot |
+| Generated Text | `generated-text` | string | The answer of the bot |
 
 ### Image Classification
 
