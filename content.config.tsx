@@ -361,6 +361,13 @@ export const getSections = (): SidebarSections[] => {
       versions: [],
     },
     {
+      text: "common:sidebarSections.modelInference",
+      link: `/docs/model/inference`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.createModel",
       link: `/docs/model/create`,
       items: [],
@@ -398,13 +405,6 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.modelState",
       link: `/docs/model/state`,
-      items: [],
-      appType: "core",
-      versions: ["latest"],
-    },
-    {
-      text: "common:sidebarSections.modelInference",
-      link: `/docs/model/inference`,
       items: [],
       appType: "core",
       versions: ["latest"],
