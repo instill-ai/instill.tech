@@ -128,5 +128,5 @@
     "node": ">=18.0.0"
   },
   "packageManager": "pnpm@9.1.4",
-  "version": "1.50.0"
+  "version": "1.50.1"
 }
