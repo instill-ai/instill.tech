@@ -1,5 +1,5 @@
 ---
-title: "Push a Model Image"
+title: "Push Model Image"
 lang: "en-US"
 draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
@@ -7,7 +7,7 @@ description: "Learn about Instill Model, the MLOps/LLMOps platform, in the proje
 
 To upload a model image to **⚗️ Instill Model**, follow these steps:
 
-1. Install the latest version of the Instill `python-sdk`:
+1. Install the latest version of the Python **📦 Instill SDK**:
 
 ```bash
 pip install instill-sdk
@@ -49,12 +49,15 @@ instill-push -t VERSION_TAG -u localhost:8080
 ```
 
 The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace,
-the ID and version tag of the model.
+the ID of the model and the version tag of the model.
 
 As the model image is uploaded, **⚗️ Instill Model** will automatically allocate
 the necessary resources for your model and deploy it. Depending on the size of
 the model image, and the type of hardware specified for the model, it could take
 some time for the model to go online. In the console, you can select the
-`Versions` tab under your model namespace to see the current state.
+`Versions` tab under your model namespace to see the current state of the model
+version. To learn more about the different states a model version can assume,
+please refer to the [Model State](../state) page.
 
-Now, you can refer to [Model Inference](inference) on how to run an inference.
+To perform an inference using your model, please see the [Model
+Inference](../inference) page.

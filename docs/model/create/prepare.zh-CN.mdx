@@ -1,6 +1,6 @@
 ---
-title: "Prepare a Model"
-lang: "en-US"
+title: "Prepare Model"
+lang: "zh-CN"
 draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
@@ -8,17 +8,17 @@ description: "Learn about Instill Model, the MLOps/LLMOps platform, in the proje
 To prepare a model version to be served in **⚗️ Instill Model**, please follow
 these steps on your local system:
 
-- Create a [model config](#model-config) `instill.yaml` file to describe your
-  model's dependencies
-- Write a `model.py` file which defines the model class that will be decorated
-  into a servable model with Instill's `python-sdk`
-- Organize the model files into a valid model [layout](#model-layout)
+1. Create an [model config](#model-configuration) file (`instill.yaml`) to
+  describe your model's dependencies.
+2. Write a `model.py` file which defines the model class that will be decorated
+  into a servable model with the Python **📦 Instill SDK**.
+3. Organize the repository files into a valid [model layout](#model-layout).
 
 ## Model Configuration
 
-Model configuration is handled within the `instill.yaml` file which accompanies
-the model and describes the necessary dependency information. It is crucial for
-reproducibility, sharing and discoverability.
+Model configuration is handled within the `instill.yaml` file that accompanies
+the model. It describes the models necessary dependency information and is
+crucial for reproducibility, sharing and discoverability.
 
 In the `instill.yaml` file, you are can specify the following details:
 
@@ -39,14 +39,14 @@ In the `instill.yaml` file, you are can specify the following details:
   - **system_packages**:
     - Optional: `list`
     - Description: Lists packages to be installed from the `apt` package
-      manager. The model image is based on Ubuntu 20.04 LTS.
+      manager. The model image is based on `Ubuntu 20.04 LTS`.
 - **repo**:
   - Required: `string`
   - Format: `USER_ID/MODEL_ID`
   - Description: The namespace.
 
-Below is an example config file for a `TinyLlama` model designed to utilize GPU
-resources:
+Below is an example for the 
+[TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model:
 
 ```yaml instill.yaml
 build:
@@ -63,7 +63,7 @@ repo: instill-ai/tinyllama
 
 ## Model Layout
 
-To deploy a model on in **⚗️ Instill Model**, we suggest you prepare the model
+To deploy a model in **⚗️ Instill Model**, we suggest you prepare the model
 files similar to the following layout:
 
 ```text
@@ -80,16 +80,15 @@ files similar to the following layout:
 
 The above layout displays a typical model in **⚗️ Instill Model** consisting of
 
-- `instill.yaml` - [model config](#model-config) file that describe the model
-  dependencies
-- `model.py` - this is where you define a decorated model class that contains
-  custom inference logic
+- `instill.yaml` - [model config](#model-configuration) file that describe the
+  model dependencies
+- `model.py` - a decorated model class that contains custom inference logic
 - `<additional_modules>` - a directory that holds supporting python modules if
   necessary
 - `<weights>` - a directory that holds the weight files if necessary
 
-You can name the `<weights>` and `<additional_modules>` folder freely provided
-that the folder names are clear and semantic.
+You can name the `<weights>` and `<additional_modules>` folders freely provided
+that they can be properly loaded and used by the `model.py` file.
 
 ## Prepare Model Code
 
@@ -99,19 +98,19 @@ Instill Model**, you only need to construct a simple model class within the
 
 The custom model class is required to contain three methods:
 
-- `__init__`
-  - This is where the model loading process is defined, allowing the weights to
-    be stored in memory and yielding faster auto-scaling behavior.
-- `ModelMetadata`
-  - This method tells the backend service the expected input/output shape that
-    the model is expecting. If you are using one of our predefined [AI
-    Tasks](ai-task), you can simply `import construct_{task}_metadata_response`
-    and use it as `return`.
-- `__call__`
-  - This is the inference request entrypoint, and is where you implement your
-    model inference logic.
+1. `__init__`  
+  This is where the model loading process is defined, allowing the weights to
+  be stored in memory and yielding faster auto-scaling behavior.
+2. `ModelMetadata`  
+  This method tells the backend service the expected input/output shape that
+  the model is expecting. If you are using one of our predefined [AI
+  Tasks](ai-task), you can simply `import construct_{task}_metadata_response`
+  and use it as `return`.
+3. `__call__`  
+  This is the inference request entrypoint, and is where you implement your
+  model inference logic.
 
-Following is a simple implementation of the
+Below is a simple example implementation of the
 [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model
 with explanations:
 
@@ -204,5 +203,7 @@ class TinyLlama:
 entrypoint = InstillDeployable(TinyLlama).get_deployment_handle()
 ```
 
-Once all the required model files are prepared, you can [build](build) the
-custom model image and specify the version as a tag.
+Once all the required model files are prepared, please refer to the [Build Model
+Image](build) and [Push Model Image](push) pages for futher information about
+creating and pushing your custom model image to **⚗️ Instill Model** in **🔮
+Instil Core** or on **☁️ Instill Cloud**.

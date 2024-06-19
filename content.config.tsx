@@ -363,34 +363,31 @@ export const getSections = (): SidebarSections[] => {
     {
       text: "common:sidebarSections.createModel",
       link: `/docs/model/create`,
-      items: [],
+      collapsible: true,
+      items: [
+        {
+          text: "common:sidebarSections.namespaceModel",
+          link: `/docs/model/create/namespace`,
+        },
+        {
+          text: "common:sidebarSections.prepareModel",
+          link: `/docs/model/create/prepare`,
+        },
+        {
+          text: "common:sidebarSections.buildModel",
+          link: `/docs/model/create/build`,
+        },
+        {
+          text: "common:sidebarSections.pushModel",
+          link: `/docs/model/create/push`,
+        },
+      ],
       appType: "core",
       versions: [],
     },
     {
-      text: "common:sidebarSections.prepareModel",
-      link: `/docs/model/prepare`,
-      items: [],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.buildModel",
-      link: `/docs/model/build`,
-      items: [],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.pushModel",
-      link: `/docs/model/push`,
-      items: [],
-      appType: "core",
-      versions: [],
-    },
-    {
-      text: "common:sidebarSections.aiTasks",
-      link: `/docs/model/ai-task`,
+      text: "common:sidebarSections.modelInference",
+      link: `/docs/model/inference`,
       items: [],
       appType: "core",
       versions: ["latest"],
@@ -403,8 +400,8 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
-      text: "common:sidebarSections.modelInference",
-      link: `/docs/model/inference`,
+      text: "common:sidebarSections.aiTasks",
+      link: `/docs/model/ai-task`,
       items: [],
       appType: "core",
       versions: ["latest"],
