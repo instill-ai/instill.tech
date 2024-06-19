@@ -13,9 +13,7 @@ To understand these model states, we first need to introduce the concept of a
 replica. At runtime, a model version deployment consists of a number of
 replicas. These are essentially clones of the model class that are launched in
 separate processes. The number of replicas is autoscaled according to the model
-traffic. Please refer to the [Ray
-Serve](https://docs.ray.io/en/latest/serve/index.html) documentation for further
-information regarding replicas.
+traffic.
 
 The model version can be in one of the following states:
 
@@ -40,7 +38,7 @@ The diagram below illustrates the full model lifecycle, showing the relationship
 and transitions between these states when a model version is deployed.
 
 <ZoomableImg
-  src="/docs-assets/model/machine-state-diagram-v4.mp4"
+  src="/docs-assets/model/machine-state-diagram-v4.gif"
   alt="Model State Diagram"
 />
 
