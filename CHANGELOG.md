@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.49.0](https://github.com/instill-ai/instill.tech/compare/v1.48.3...v1.49.0) (2024-06-19)
+
+
+### Features
+
+* **component:** update component document routes ([#896](https://github.com/instill-ai/instill.tech/issues/896)) ([376f25b](https://github.com/instill-ai/instill.tech/commit/376f25b39d0f916cd310843fc24ef0c39bab864c))
+
+
+### Bug Fixes
+
+* update the api route prefix ([#900](https://github.com/instill-ai/instill.tech/issues/900)) ([31f0cb2](https://github.com/instill-ai/instill.tech/commit/31f0cb2852db7a85428ecbe0140dd76b143cccf2))
+
+
+### Documentation
+
+* **all:** adopt latest API naming style ([#901](https://github.com/instill-ai/instill.tech/issues/901)) ([c63fd29](https://github.com/instill-ai/instill.tech/commit/c63fd29c768398fa15371ed69a9c19ecc89aac37))
+* **document:** update Instill Core version ([#902](https://github.com/instill-ai/instill.tech/issues/902)) ([ac5e56b](https://github.com/instill-ai/instill.tech/commit/ac5e56b6a5e01dba9e9a712ffc45224223858a9f))
+
 ## [1.48.3](https://github.com/instill-ai/instill.tech/compare/v1.48.2...v1.48.3) (2024-06-13)
 
 
