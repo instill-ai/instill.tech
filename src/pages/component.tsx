@@ -38,7 +38,7 @@ export type Component = {
   uid: string;
   id: string;
   title: string;
-  documentation_url: string;
+  documentationUrl: string;
   icon: string;
   icon_url: string;
   type: ComponentType;
@@ -47,8 +47,8 @@ export type Component = {
   tasks: Task[];
   version?: string;
   description?: string;
-  source_url?: string;
-  release_stage?: string;
+  sourceUrl?: string;
+  releaseStage?: string;
 };
 
 export const ComponentCategory = {

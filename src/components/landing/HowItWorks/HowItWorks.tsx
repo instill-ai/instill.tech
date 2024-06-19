@@ -42,7 +42,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
         try {
           const response = await InstillSDK.component(null, 0, 6);
           if (response.status === "success") {
-            setComponents(response.data.component_definitions);
+            setComponents(response.data.componentDefinitions);
           }
         } catch (error) {
           console.error(error); // Handle errors here
