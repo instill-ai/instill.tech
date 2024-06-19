@@ -50,8 +50,8 @@ function ComponentCard({
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                component_definition.release_stage
-                  ? component_definition.release_stage
+                component_definition.releaseStage
+                  ? component_definition.releaseStage
                   : ""
               }
               // onMouseEnter={onMouseEnter}
@@ -129,7 +129,7 @@ function ComponentCard({
             </div>
             <span className={cn("my-auto")}>
               <a
-                href={component_definition.documentation_url}
+                href={component_definition.documentationUrl}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterDocs(!onMouseEnterDocs);
                 // }}
@@ -155,7 +155,7 @@ function ComponentCard({
             />
             <span className={cn("my-auto")}>
               <a
-                href={component_definition.source_url}
+                href={component_definition.sourceUrl}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterGithub(!onMouseEnterGithub);
                 // }}
