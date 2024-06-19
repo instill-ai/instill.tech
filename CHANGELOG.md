@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.50.0](https://github.com/instill-ai/instill.tech/compare/v1.49.0...v1.50.0) (2024-06-19)
+
+
+### Features
+
+* document Instill Credit purchase ([#903](https://github.com/instill-ai/instill.tech/issues/903)) ([0b32aa7](https://github.com/instill-ai/instill.tech/commit/0b32aa7d10b97dab260e6ddfdbe4f26bd8848fdd))
+
+
+### Documentation
+
+* improve consistency and fix typos ([#895](https://github.com/instill-ai/instill.tech/issues/895)) ([1588542](https://github.com/instill-ai/instill.tech/commit/1588542f7d89275b24e8bf8082dbf45410335fbb))
+
 ## [1.49.0](https://github.com/instill-ai/instill.tech/compare/v1.48.3...v1.49.0) (2024-06-19)
 
 
