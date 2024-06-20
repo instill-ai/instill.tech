@@ -60,11 +60,11 @@ Before we can start using this SDK, you will need to properly config your target
 
 #### Config file
 
-create a config file under this path `${HOME}/.config/instill/sdk/python/config.yml`, and within the file you will need to fill in some basic parameters for your desired host.[^1]
+Create a config file under this path `${HOME}/.config/instill/sdk/python/config.yml`, and within the file you will need to fill in some basic parameters for your desired host.[^1]
 
-[^1]: You can obtain an `api_token`, by simply going to Settings > API Tokens page from the console, no matter it is `Instill Core` or `Instill Cloud`.
+[^1]: You can obtain an `api_token`, by simply going to Settings > API Tokens page from the console, no matter whether it is `Instill Core` or `Instill Cloud`.
 
-Within the config file, you can define multiple instances with the `alias` of your liking, later in the SDK you can refer to this `alias` to switch between instances.[^2]
+Within the config file, you can define multiple instances with the `alias` of your liking. Later in the SDK you can refer to this `alias` to switch between instances.[^2]
 
 [^2]: SDK will look for alias `default` first. If it is not found, it will load the config for the first alias in the config file.
 
