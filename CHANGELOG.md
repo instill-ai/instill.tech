@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.50.2](https://github.com/instill-ai/instill.tech/compare/v1.50.1...v1.50.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* **component:** fix component card page ([#907](https://github.com/instill-ai/instill.tech/issues/907)) ([e1b3f02](https://github.com/instill-ai/instill.tech/commit/e1b3f02c43789dc0afd15cba9dabf58a9390b755))
+
 ## [1.50.1](https://github.com/instill-ai/instill.tech/compare/v1.50.0...v1.50.1) (2024-06-19)
 
 
