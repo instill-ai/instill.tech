@@ -127,7 +127,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
             components?.map((component) => {
               return (
                 <Slide key={component.id}>
-                  <ComponentCard component_definition={component} />
+                  <ComponentCard componentDefinition={component} />
                 </Slide>
               );
             })}

@@ -7,10 +7,10 @@ import { Nullable } from "@instill-ai/design-system";
 export async function component(
   filter: Nullable<string>,
   page: number,
-  page_size: number
+  pageSize: number
 ): Promise<JumbotronRequestResponse> {
   const body: InstillAPIGetRequestBody = {
-    path: `/v1beta/component-definitions?page_size=${page_size}&page=${page}`,
+    path: `/v1beta/component-definitions?pageSize=${pageSize}&page=${page}`,
   };
 
   try {
