@@ -9,14 +9,14 @@ import cn from "clsx";
 import { Button, DropdownMenu, GitHubIcon } from "@instill-ai/design-system";
 
 function ComponentCard({
-  component_definition,
+  componentDefinition,
 }: {
-  component_definition: Component;
+  componentDefinition: Component;
 }) {
   return (
     <div
       className={cn(`relative flex flex-col border border-[#CBD2E1]`)}
-      key={component_definition.uid}
+      key={componentDefinition.uid}
       // onMouseEnter={() => {
       //   setOnMouseEnter(!onMouseEnter);
       // }}
@@ -27,11 +27,11 @@ function ComponentCard({
       <div
         className={cn(
           "z-10 px-5 py-2.5 font-sans font-normal tracking-[0.65px]",
-          getHeaderColorClass(component_definition.type)
+          getHeaderColorClass(componentDefinition.type)
         )}
       >
         <span className="relative z-10">
-          {ComponentCategory[component_definition.type]}
+          {ComponentCategory[componentDefinition.type]}
         </span>
       </div>
 
@@ -39,19 +39,19 @@ function ComponentCard({
         <div className="flex flex-row gap-x-2">
           <div className="my-auto rounded-[6px] border px-1 py-0.5 shadow">
             <img
-              src={`/${component_definition.icon}`}
+              src={`/${componentDefinition.icon}`}
               alt=""
               className="mx-auto my-auto h-6 w-8 shrink-0"
             />
           </div>
           <span className="my-auto w-full font-sans text-[18px] font-semibold">
-            {component_definition.title}
+            {componentDefinition.title}
           </span>
           <div className="my-auto py-0.5">
             <VersionType
               version={
-                component_definition.releaseStage
-                  ? component_definition.releaseStage
+                componentDefinition.releaseStage
+                  ? componentDefinition.releaseStage
                   : ""
               }
               // onMouseEnter={onMouseEnter}
@@ -60,7 +60,7 @@ function ComponentCard({
         </div>
 
         <div className="mt-2.5 flex w-full flex-wrap justify-start gap-x-2 gap-y-2">
-          {component_definition.tasks.slice(0, 1).map((task) => (
+          {componentDefinition.tasks.slice(0, 1).map((task) => (
             <Button
               variant="secondaryGrey"
               size="lg"
@@ -70,7 +70,7 @@ function ComponentCard({
               {task.title}
             </Button>
           ))}
-          {component_definition.tasks.length > 1 && (
+          {componentDefinition.tasks.length > 1 && (
             // <Tooltip.Provider>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
@@ -80,14 +80,14 @@ function ComponentCard({
                   key={"task-button"}
                   className="!rounded-[6px] !border-semantic-bg-line !px-2 !py-0.5 !font-sans !text-[14px] !font-medium !text-semantic-fg-secondary"
                 >
-                  +{component_definition.tasks.length - 1}
+                  +{componentDefinition.tasks.length - 1}
                 </Button>
               </DropdownMenu.Trigger>
               {/* <Tooltip.Portal> */}
               <DropdownMenu.Content className="TooltipContent" sideOffset={5}>
                 <div className="flex w-80 flex-wrap justify-start gap-x-2 gap-y-2 bg-white p-3">
-                  {component_definition.tasks
-                    .slice(1, component_definition.tasks.length)
+                  {componentDefinition.tasks
+                    .slice(1, componentDefinition.tasks.length)
                     .map((task) => (
                       <Button
                         variant="secondaryGrey"
@@ -106,7 +106,7 @@ function ComponentCard({
           )}
         </div>
         <div className="mt-2.5 text-[16px] font-normal text-semantic-fg-secondary">
-          {component_definition.description}
+          {componentDefinition.description}
         </div>
         <div className="absolute bottom-2 mt-5 flex w-full flex-row space-x-5 text-semantic-fg-secondary">
           <div className="flex flex-row space-x-2">
@@ -129,7 +129,7 @@ function ComponentCard({
             </div>
             <span className={cn("my-auto")}>
               <a
-                href={component_definition.documentationUrl}
+                href={componentDefinition.documentationUrl}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterDocs(!onMouseEnterDocs);
                 // }}
@@ -155,7 +155,7 @@ function ComponentCard({
             />
             <span className={cn("my-auto")}>
               <a
-                href={component_definition.sourceUrl}
+                href={componentDefinition.sourceUrl}
                 // onMouseEnter={() => {
                 //   setOnMouseEnterGithub(!onMouseEnterGithub);
                 // }}

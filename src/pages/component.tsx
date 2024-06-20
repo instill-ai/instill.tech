@@ -60,6 +60,23 @@ export const ComponentCategory = {
   COMPONENT_TYPE_ITERATOR: "Iterator Component",
 };
 
+const ComponentReleaseStageOptionName: { [key: string]: string } = {
+  All: "All",
+  RELEASE_STAGE_ALPHA: "Alpha",
+  RELEASE_STAGE_BETA: "Beta",
+  RELEASE_STAGE_GA: "GA",
+  RELEASE_STAGE_OPEN_FOR_CONTRIBUTION: "Contribute",
+  RELEASE_STAGE_COMING_SOON: "Coming Soon",
+};
+
+const ComponentTypeOptionName: { [key: string]: string } = {
+  All: "All",
+  COMPONENT_TYPE_AI: "AI Component",
+  COMPONENT_TYPE_APPLICATION: "Application Component",
+  COMPONENT_TYPE_DATA: "Data Component",
+  COMPONENT_TYPE_OPERATOR: "Operator Component",
+};
+
 export const getHeaderColorClass = (type: string) => {
   switch (type) {
     case "COMPONENT_TYPE_AI":
@@ -142,7 +159,7 @@ const ComponentPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { page } = router.query;
 
-  const page_size = 9;
+  const pageSize = 9;
 
   const [components, setComponents] =
     React.useState<Nullable<Component[]>>(null);
@@ -161,40 +178,40 @@ const ComponentPage: NextPageWithLayout = () => {
       setLoading(true);
       let filter = "";
 
-      let page_number = currentPage - 1;
+      let pageNumber = currentPage - 1;
 
       try {
         if (category !== "All") {
-          filter = `&filter=component_type=${category}`;
+          filter = `&filter=componentType=${category}`;
           setComponents(null);
           setStage("All");
           setSearchCode(null);
-          page_number = 0;
+          pageNumber = 0;
         } else if (stage != "All") {
-          filter = `&filter=release_stage=${stage}`;
+          filter = `&filter=releaseStage=${stage}`;
           setComponents(null);
           setCategory("All");
           setSearchCode(null);
-          page_number = 0;
+          pageNumber = 0;
         } else if (searchCode) {
-          filter = `&filter=q_title='${searchCode}'`;
+          filter = `&filter=qTitle='${searchCode}'`;
           setComponents(null);
           setCategory("All");
           setStage("All");
-          page_number = 0;
+          pageNumber = 0;
         } else {
           filter = "";
           setComponents(null);
         }
         const response = await InstillSDK.component(
           filter,
-          page_number,
-          page_size
+          pageNumber,
+          pageSize
         );
         if (response.status === "success") {
-          setComponents(response.data.component_definitions);
+          setComponents(response.data.componentDefinitions);
           setTotalPage(
-            Math.ceil(response.data.total_size / response.data.page_size)
+            Math.ceil(response.data.totalSize / response.data.pageSize)
           );
           setLoading(false);
         } else {
@@ -234,6 +251,7 @@ const ComponentPage: NextPageWithLayout = () => {
     ];
   };
 
+  console.log(stage);
   return (
     <React.Fragment>
       <PageHead
@@ -308,23 +326,15 @@ const ComponentPage: NextPageWithLayout = () => {
               }}
             >
               <Select.Trigger className="mt-auto w-full">
-                <Select.Value />
+                <Select.Value>{ComponentTypeOptionName[category]}</Select.Value>
               </Select.Trigger>
               <Select.Content>
                 <Select.Group>
-                  <Select.Item value="All">All</Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_AI">
-                    AI Component
-                  </Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_APPLICATION">
-                    Application Component
-                  </Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_DATA">
-                    Data Component
-                  </Select.Item>
-                  <Select.Item value="COMPONENT_TYPE_OPERATOR">
-                    Operator Component
-                  </Select.Item>
+                  {Object.keys(ComponentTypeOptionName).map((key) => (
+                    <Select.Item key={key} value={key}>
+                      {ComponentTypeOptionName[key]}
+                    </Select.Item>
+                  ))}
                 </Select.Group>
               </Select.Content>
             </Select.Root>
@@ -341,23 +351,17 @@ const ComponentPage: NextPageWithLayout = () => {
               }}
             >
               <Select.Trigger className="mt-auto w-full">
-                <Select.Value />
+                <Select.Value>
+                  {ComponentReleaseStageOptionName[stage]}
+                </Select.Value>
               </Select.Trigger>
               <Select.Content>
                 <Select.Group>
-                  <Select.Item value="All">All</Select.Item>
-                  <Select.Item value="RELEASE_STAGE_ALPHA">Alpha</Select.Item>
-                  <Select.Item value="RELEASE_STAGE_BETA">Beta</Select.Item>
-                  <Select.Item value="RELEASE_STAGE_GA">GA</Select.Item>
-                  <Select.Item value="RELEASE_STAGE_OPEN_FOR_CONTRIBUTION">
-                    Contribute
-                  </Select.Item>
-                  <Select.Item value="RELEASE_STAGE_COMING_SOON">
-                    Coming Soon
-                  </Select.Item>
-                  <Select.Item value="RELEASE_STAGE_UNSPECIFIED">
-                    Unspecified
-                  </Select.Item>
+                  {Object.keys(ComponentReleaseStageOptionName).map((key) => (
+                    <Select.Item key={key} value={key}>
+                      {ComponentReleaseStageOptionName[key]}
+                    </Select.Item>
+                  ))}
                 </Select.Group>
               </Select.Content>
             </Select.Root>
@@ -370,7 +374,7 @@ const ComponentPage: NextPageWithLayout = () => {
               return (
                 <ComponentCard
                   key={component.id}
-                  component_definition={component}
+                  componentDefinition={component}
                 />
               );
             })}
