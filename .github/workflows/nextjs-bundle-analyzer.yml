@@ -56,6 +56,8 @@ jobs:
 
       - name: Build Packages
         run: pnpm build
+        env:
+          NEXT_PUBLIC_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Restore next build
         uses: actions/cache@v3
