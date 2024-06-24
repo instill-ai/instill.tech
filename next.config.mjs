@@ -3,7 +3,6 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkRehype from "remark-rehype";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { remarkCodeHike } from "@code-hike/mdx";
 import { readFile } from "fs/promises";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -72,15 +71,6 @@ const nextConfig = {
     // }
 
     config.resolve.fallback = { fs: false };
-
-    if (!dev) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: "disabled",
-          generateStatsFile: true,
-        })
-      );
-    }
 
     return config;
   },

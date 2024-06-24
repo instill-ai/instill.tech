@@ -1,8 +1,15 @@
 import React from "react";
-import { ModelDefinition } from "../HowItWorks/HowItWorks";
 import { Button, Logos } from "@instill-ai/design-system";
 
-function ModelComponent({ model }: { model: ModelDefinition }) {
+export type ModelFrag = {
+  id: string;
+  uid: string;
+  name: string;
+  task: string;
+  description: string;
+};
+
+function ModelComponent({ model }: { model: ModelFrag }) {
   return (
     <div
       className="inline-flex min-h-[200px] items-start justify-start border border-[#CBD2E1]"

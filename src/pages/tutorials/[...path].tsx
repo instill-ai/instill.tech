@@ -27,7 +27,7 @@ import { TutorialPipelineLabel } from "@/components/tutorial";
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { Nullable, TutorialMeta } from "@/types/instill";
+import { GeneralRecord, Nullable, TutorialMeta } from "@/types/instill";
 import { getAiTaskIconAndLabel } from "@/lib/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { prepareTutorials } from "@/lib/instill/prepareTutorials";
@@ -36,7 +36,6 @@ import { serializeMdxRemote } from "@/lib/markdown";
 import { TutorialBlock } from "@/components/tutorial/TutorialBlock";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextPageWithLayout } from "../_app";
-import { GeneralRecord } from "@instill-ai/toolkit";
 
 type TutorialPageProps = {
   mdxSource: MDXRemoteSerializeResult;

@@ -39,3 +39,8 @@ dist
 
 # local env settings
 *.local
+
+# sitemap and robot.txt
+/public/sitemap.xml
+/public/sitemap-*.xml
+/public/robots.txt
