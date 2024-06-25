@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.instill.tech
-
-# Sitemaps
-Sitemap: https://www.instill.tech/sitemap.xml

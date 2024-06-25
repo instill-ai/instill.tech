@@ -126,3 +126,5 @@ export type PageMeta = {
 export type InstillAppType = "core";
 
 export type InstillAppVersion = "v0.6.0-alpha" | string;
+
+export type GeneralRecord = Record<string, any>;

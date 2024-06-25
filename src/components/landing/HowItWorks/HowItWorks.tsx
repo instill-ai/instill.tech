@@ -9,14 +9,13 @@ import {
   SolidButton,
 } from "@instill-ai/design-system";
 import { InstillSDK } from "@/lib/instill-sdk";
-import { Model } from "@instill-ai/toolkit";
 import { Nullable } from "@instill-ai/design-system";
 import { Component } from "@/pages/component";
 import { HowItWorksRow } from "./HowItWorksRow";
 import Link from "next/link";
 import ComponentCard from "../Component/ComponentCard";
 import ComponentDefault from "../Component/ComponentDefault";
-import ModelComponent from "../Model/ModelComponent";
+import ModelComponent, { ModelFrag } from "../Model/ModelComponent";
 import ModelDefault from "../Model/ModelDefault";
 import Slide from "../Slide";
 
@@ -24,9 +23,7 @@ export type HowItWorksProps = {
   marginBottom?: string;
 };
 
-export type ModelDefinition = Model & {
-  html_url: string;
-};
+export type ModelDefinition = ModelFrag;
 
 export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
   ({ marginBottom }, ref) => {
@@ -61,8 +58,6 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
       fetchComponents(); // Call the asynchronous function
       fetchModels(); // Call the asynchronous function
     }, []);
-
-    console.log(models);
 
     return (
       <div ref={ref} className={cn("flex flex-col py-20", marginBottom)}>
@@ -293,7 +288,7 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                 <Slide>
                   <div className="inline-flex flex-col items-end justify-start shadow-instill-solid-20">
                     <div className="flex flex-col items-end justify-start gap-2">
-                      <div className="flex flex-col items-center justify-start border border-b-0 border-neutral-400 bg-white ">
+                      <div className="flex flex-col items-center justify-start border border-b-0 border-neutral-400 bg-white">
                         <div className="flex flex-col items-start justify-start self-stretch">
                           <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
                             <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
@@ -326,9 +321,9 @@ export const HowItWorks = forwardRef<HTMLDivElement, HowItWorksProps>(
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white ">
-                      <div className="flex  flex-col items-start justify-start self-stretch">
-                        <div className="inline-flex  items-center justify-start gap-4 px-6 pt-6">
+                    <div className="flex flex-col items-center justify-start border border-neutral-400 bg-white">
+                      <div className="flex flex-col items-start justify-start self-stretch">
+                        <div className="inline-flex items-center justify-start gap-4 px-6 pt-6">
                           <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-1">
                             <div className="self-stretch font-sans text-[16px] font-bold leading-normal text-gray-800">
                               Typescript

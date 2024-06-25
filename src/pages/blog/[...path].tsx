@@ -11,7 +11,12 @@ import { CH } from "@code-hike/mdx/components";
 import { RightSidebarProps } from "@/components/docs";
 import { remarkGetHeaders } from "@/lib/markdown/remark-get-headers.mjs";
 import { getCommitMeta } from "@/lib/github";
-import { BlogArticleJsonLD, BlogArticleMeta, Nullable } from "@/types/instill";
+import {
+  BlogArticleJsonLD,
+  BlogArticleMeta,
+  GeneralRecord,
+  Nullable,
+} from "@/types/instill";
 import { useElementDimension } from "@/hooks/useElementDimension";
 import { CommitMeta } from "@/lib/github/type";
 import { serializeMdxRemote } from "@/lib/markdown";
@@ -32,7 +37,6 @@ import { prepareBlogArticles } from "@/lib/instill/prepareBlogArticles";
 import { BlogArticleCard } from "@/components/blog/BlogArticleCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextPageWithLayout } from "../_app";
-import { GeneralRecord } from "@instill-ai/toolkit";
 
 type BlogPageProps = {
   mdxSource: MDXRemoteSerializeResult;
