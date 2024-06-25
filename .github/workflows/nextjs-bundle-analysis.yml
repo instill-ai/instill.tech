@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-name: "Next.js Bundle Analysis"
+name: 'Next.js Bundle Analysis'
 
 on:
   pull_request:
@@ -9,6 +9,11 @@ on:
     branches:
       - main # change this if your default branch is named differently
   workflow_dispatch:
+
+defaults:
+  run:
+    # change this if your nextjs app does not live at the root of the repo
+    working-directory: ./
 
 permissions:
   contents: read # for checkout repository
@@ -21,43 +26,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: print tree
-        run: |
-          sudo apt-get install tree
-          tree -a
-
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-
-      - uses: pnpm/action-setup@v2.0.1
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: 18
 
       - name: Install dependencies
-        run: rm -rf node_modules && pnpm i --frozen-lockfile
+        uses: bahmutov/npm-install@v1
 
-      - name: Build Packages
-        run: pnpm build
-        env:
-          NEXT_PUBLIC_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # If pnpm is used, you need to switch the previous step with the following one. pnpm does not create a package-lock.json
+      # so the step above will fail to pull dependencies
+      # - uses: pnpm/action-setup@v2
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 7
+      #     run_install: true
 
       - name: Restore next build
         uses: actions/cache@v3
@@ -67,29 +51,32 @@ jobs:
         with:
           # if you use a custom build directory, replace all instances of `.next` in this file with your build directory
           # ex: if your app builds to `dist`, replace `.next` with `dist`
-          path: ./apps/console/.next/cache
+          path: .next/cache
           # change this if you prefer a more strict cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+      - name: Build next.js app
+        # change this if your site requires a custom build command
+        run: ./node_modules/.bin/next build
 
       # Here's the first place where next-bundle-analysis' own script is used
       # This step pulls the raw bundle stats for the current bundle
       - name: Analyze bundle
-        working-directory: ./apps/console
         run: npx -p nextjs-bundle-analysis report
 
       - name: Upload bundle
         uses: actions/upload-artifact@v3
         with:
           name: bundle
-          path: ./apps/console/.next/analyze/__bundle_analysis.json
+          path: .next/analyze/__bundle_analysis.json
 
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@v2
         if: success() && github.event.number
         with:
-          workflow: nextjs-bundle-analysis.yml
+          workflow: nextjs_bundle_analysis.yml
           branch: ${{ github.event.pull_request.base.ref }}
-          path: ./apps/console/.next/analyze/base
+          path: .next/analyze/base
 
       # And here's the second place - this runs after we have both the current and
       # base branch bundle stats, and will compare them to determine what changed.
@@ -106,13 +93,11 @@ jobs:
       # entry in your package.json file.
       - name: Compare with base branch bundle
         if: success() && github.event.number
-        working-directory: ./apps/console
         run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
 
       - name: Get Comment Body
         id: get-comment-body
         if: success() && github.event.number
-        working-directory: ./apps/console
         # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
         run: |
           echo "body<<EOF" >> $GITHUB_OUTPUT
@@ -125,7 +110,7 @@ jobs:
         id: fc
         with:
           issue-number: ${{ github.event.number }}
-          body-includes: "<!-- __NEXTJS_BUNDLE -->"
+          body-includes: '<!-- __NEXTJS_BUNDLE -->'
 
       - name: Create Comment
         uses: peter-evans/create-or-update-comment@v2

@@ -130,5 +130,11 @@
     "overrides": {
       "braces": "3.0.3"
     }
+  },
+  "nextBundleAnalysis": {
+    "budget": null,
+    "budgetPercentIncreaseRed": 40,
+    "minimumChangeThreshold": 0,
+    "showDetails": true
   }
 }
