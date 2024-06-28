@@ -259,6 +259,10 @@ export const getSections = (): SidebarSections[] => {
           text: "common:sidebarSections.huggingFace",
           link: `/docs/component/ai/huggingface`,
         },
+        {
+          text: "common:sidebarSections.anthropic",
+          link: `/docs/component/ai/anthropic`,
+        },
       ],
       appType: "core",
       versions: [],
@@ -312,6 +316,10 @@ export const getSections = (): SidebarSections[] => {
         {
           text: "common:sidebarSections.website",
           link: `/docs/component/application/website`,
+        },
+        {
+          text: "common:sidebarSections.email",
+          link: `/docs/component/application/email`,
         },
       ],
       appType: "core",
