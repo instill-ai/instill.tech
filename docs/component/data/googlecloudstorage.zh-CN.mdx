@@ -9,21 +9,33 @@ The Google Cloud Storage component is a data component that allows users to uplo
 It can carry out the following tasks:
 
 - [Upload](#upload)
+- [Read Objects](#read-objects)
+- [Create Bucket](#create-bucket)
+
+
 
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/data/googlecloudstorage/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
 | JSON Key File contents (required) | `json-key` | string | Contents of the JSON key file with access to the bucket. |
+
+
+
 
 ## Supported Tasks
 
@@ -31,11 +43,15 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Upload data to Google Cloud Storage.
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_UPLOAD` |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
 | Object Name (required) | `object-name` | string | The name of the object to be created |
 | Data (required) | `data` | string | The data to be saved in the object |
+
+
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -44,3 +60,68 @@ Upload data to Google Cloud Storage.
 | Public Access (optional) | `public-access` | boolean | Whether the object is publicly accessible |
 | Public URL (optional) | `public-url` | string | Anyone with this link can access the object on the public Internet |
 | Upload Status | `status` | string | Status of the upload operation |
+
+
+
+
+
+
+### Read Objects
+
+Read objects from Google Cloud Storage.
+
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_READ_OBJECTS` |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| Delimiter | `delimiter` | string | The delimiter to use when listing objects |
+| Prefix | `prefix` | string | The prefix to use when listing objects |
+| Versions | `versions` | boolean | Whether to list all versions of an object |
+| Start Offset | `start-offset` | string | The offset to start listing objects from |
+| End Offset | `end-offset` | string | The offset to stop listing objects at |
+| Include Trailing Delimiter | `include-trailing-delimiter` | boolean | Whether to include the delimiter in the object name |
+| Match Glob | `match-glob` | string | Whether to match objects using a glob pattern |
+| Include Folders As Prefixes | `include-folders-as-prefixes` | boolean | Whether to include folders as prefixes |
+
+
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Audio Objects (optional) | `audio-objects` | array[object] | The audio objects in the bucket |
+| Document Objects (optional) | `document-objects` | array[object] | The document objects in the bucket |
+| Image Objects (optional) | `image-objects` | array[object] | The image objects in the bucket |
+| Text Objects (optional) | `text-objects` | array[object] | The text objects in the bucket |
+| Video Objects (optional) | `video-objects` | array[object] | The video objects in the bucket |
+
+
+
+
+
+
+### Create Bucket
+
+Read objects from Google Cloud Storage.
+
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_CREATE_BUCKET` |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| Project ID (required) | `project-id` | string | The project ID to create the bucket in |
+| Location | `location` | string | The location to create the bucket in |
+
+
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Result (optional) | `result` | string | The result of the operation |
+| Bucket Name (optional) | `name` | string | The name of the bucket |
+| Location (optional) | `location` | string | The location of the bucket |
+
+
+
+
+
+
+

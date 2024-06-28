@@ -11,25 +11,37 @@ It can carry out the following tasks:
 - [Text To Image](#text-to-image)
 - [Image To Image](#image-to-image)
 
+
+
 ## Release Stage
 
 `Alpha`
+
+
 
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/ai/stabilityai/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| API Key (required) | `api-key` | string | Fill your Stability AI API key. To find your keys, visit - https://platform.stability.ai/account/keys |
+| API Key (required) | `api-key` | string | Fill in your Stability AI API key. To find your keys, visit - https://platform.stability.ai/account/keys |
+
+
+
 
 ## Supported Tasks
 
 ### Text To Image
 
 Generate a new image from a text prompt.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -47,14 +59,22 @@ Generate a new image from a text prompt.
 | Steps | `steps` | integer | Number of diffusion steps to run. |
 | Style Preset | `style-preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Images | `images` | array[string] | Generated images |
 | Seeds | `seeds` | array[number] | Seeds of generated images |
 
+
+
+
+
+
 ### Image To Image
 
 Modify an image based on a text prompt.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -75,7 +95,16 @@ Modify an image based on a text prompt.
 | Steps | `steps` | integer | Number of diffusion steps to run. |
 | Style Preset | `style-preset` | string | Pass in a style preset to guide the image model towards a particular style. This list of style presets is subject to change. |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Images | `images` | array[string] | Generated images |
 | Seeds | `seeds` | array[number] | Seeds of generated images |
+
+
+
+
+
+
+

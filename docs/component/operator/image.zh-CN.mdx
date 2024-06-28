@@ -15,19 +15,28 @@ It can carry out the following tasks:
 - [Draw Instance Segmentation](#draw-instance-segmentation)
 - [Draw Semantic Segmentation](#draw-semantic-segmentation)
 
+
+
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/operator/image/v0/config/definition.json).
+
+
+
+
 
 ## Supported Tasks
 
 ### Draw Classification
 
 Draw classification result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -37,13 +46,21 @@ Draw classification result on the image.
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 | Score (required) | `score` | number | The confidence score of the predicted category of the input. |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
 
+
+
+
+
+
 ### Draw Detection
 
 Draw detection result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -52,13 +69,21 @@ Draw detection result on the image.
 | Objects (required) | `objects` | array[object] | A list of detected objects. |
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
 
+
+
+
+
+
 ### Draw Keypoint
 
 Draw keypoint result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -67,13 +92,21 @@ Draw keypoint result on the image.
 | Objects (required) | `objects` | array[object] | A list of keypoint objects, a keypoint object includes all the pre-defined keypoints of a detected object. |
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
 
+
+
+
+
+
 ### Draw Ocr
 
 Draw OCR result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -82,13 +115,21 @@ Draw OCR result on the image.
 | Objects (required) | `objects` | array[object] | A list of detected bounding boxes. |
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
 
+
+
+
+
+
 ### Draw Instance Segmentation
 
 Draw instance segmentation result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -97,13 +138,21 @@ Draw instance segmentation result on the image.
 | Objects (required) | `objects` | array[object] | A list of detected instance bounding boxes. |
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
 
+
+
+
+
+
 ### Draw Semantic Segmentation
 
 Draw semantic segmentation result on the image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -112,6 +161,15 @@ Draw semantic segmentation result on the image.
 | Show Score | `showScore` | boolean | Show model confidence score on each instance |
 | Stuffs (required) | `stuffs` | array[object] | A list of RLE binary masks. |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Image | `image` | string | Output image |
+
+
+
+
+
+
+

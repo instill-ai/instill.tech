@@ -26,27 +26,39 @@ It can carry out the following tasks:
 - [Speech Recognition](#speech-recognition)
 - [Audio Classification](#audio-classification)
 
+
+
 ## Release Stage
 
 `Alpha`
+
+
 
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/ai/huggingface/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
-| API Key (required) | `api-key` | string | Fill your Hugging face API token. To find your token, visit https://huggingface.co/settings/tokens. |
+| API Key (required) | `api-key` | string | Fill in your Hugging face API token. To find your token, visit https://huggingface.co/settings/tokens. |
 | Base URL (required) | `base-url` | string | Hostname for the endpoint. To use Inference API set to https://api-inference.huggingface.co, for Inference Endpoint set to your custom endpoint. |
 | Is Custom Endpoint (required) | `is-custom-endpoint` | boolean | Fill true if you are using a custom Inference Endpoint and not the Inference API. |
+
+
+
 
 ## Supported Tasks
 
 ### Text Generation
 
 Generating text is the task of producing new text. These models can, for example, fill in incomplete text or paraphrase.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -56,13 +68,21 @@ Generating text is the task of producing new text. These models can, for example
 | Parameters | `parameters` | object | Parameters |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Generated Text | `generated-text` | string | The continuated string |
 
+
+
+
+
+
 ### Fill Mask
 
 Masked language modeling is the task of masking some of the words in a sentence and predicting which words should replace those masks.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -71,13 +91,21 @@ Masked language modeling is the task of masking some of the words in a sentence 
 | String Input (required) | `inputs` | string | a string to be filled from, must contain the [MASK] token (check model card for exact name of the mask) |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Results | `results` | array[object] | Results |
 
+
+
+
+
+
 ### Summarization
 
 Summarization is the task of producing a shorter version of a document while preserving its important information.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -87,13 +115,21 @@ Summarization is the task of producing a shorter version of a document while pre
 | Parameters | `parameters` | object | Parameters |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Summary Text | `summary-text` | string | The string after summarization |
 
+
+
+
+
+
 ### Text Classification
 
 Text Classification is the task of assigning a label or class to a given text.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -102,13 +138,21 @@ Text Classification is the task of assigning a label or class to a given text.
 | String Input (required) | `inputs` | string | String input |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Results | `results` | array[object] | Results |
 
+
+
+
+
+
 ### Token Classification
 
 Token classification is a natural language understanding task in which a label is assigned to some tokens in a text.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -118,13 +162,21 @@ Token classification is a natural language understanding task in which a label i
 | Parameters | `parameters` | object | Parameters |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Results | `results` | array[object] | Results |
 
+
+
+
+
+
 ### Translation
 
 Translation is the task of converting text from one language to another.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -133,13 +185,21 @@ Translation is the task of converting text from one language to another.
 | String Input (required) | `inputs` | string | String input |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Translation Text | `translation-text` | string | The string after translation |
 
+
+
+
+
+
 ### Zero Shot Classification
 
 Zero-shot text classification is a task in natural language processing where a model is trained on a set of labeled examples but is then able to classify new examples from previously unseen classes.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -149,15 +209,23 @@ Zero-shot text classification is a task in natural language processing where a m
 | Parameters | `parameters` | object | Parameters |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Scores | `scores` | array[number] | a list of floats that correspond the the probability of label, in the same order as labels. |
 | Labels | `labels` | array[string] | The list of strings for labels that you sent (in order) |
 | Sequence (optional) | `sequence` | string | The string sent as an input |
 
+
+
+
+
+
 ### Question Answering
 
 Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -166,6 +234,8 @@ Question Answering models can retrieve the answer to a question from a given tex
 | Inputs (required) | `inputs` | object | Inputs |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Answer | `answer` | string | A string that’s the answer within the text. |
@@ -173,9 +243,15 @@ Question Answering models can retrieve the answer to a question from a given tex
 | Score (optional) | `score` | number | A float that represents how likely that the answer is correct |
 | Start (optional) | `start` | integer | The index (string wise) of the start of the answer within context. |
 
+
+
+
+
+
 ### Table Question Answering
 
 Table Question Answering (Table QA) is the answering a question about an information on a given table.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -184,6 +260,8 @@ Table Question Answering (Table QA) is the answering a question about an informa
 | Inputs (required) | `inputs` | object | Inputs |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Aggregator (optional) | `aggregator` | string | The aggregator used to get the answer |
@@ -191,9 +269,15 @@ Table Question Answering (Table QA) is the answering a question about an informa
 | Cells (optional) | `cells` | array[string] | a list of coordinates of the cells contents |
 | Coordinates (optional) | `coordinates` | array[array] | a list of coordinates of the cells referenced in the answer |
 
+
+
+
+
+
 ### Sentence Similarity
 
 Sentence Similarity is the task of determining how similar two texts are.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -202,13 +286,21 @@ Sentence Similarity is the task of determining how similar two texts are.
 | Inputs (required) | `inputs` | object | Inputs |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Scores | `scores` | array[number] | The associated similarity score for each of the given strings |
 
+
+
+
+
+
 ### Conversational
 
 Conversational response modelling is the task of generating conversational text that is relevant, coherent and knowledgable given a prompt.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -218,14 +310,22 @@ Conversational response modelling is the task of generating conversational text 
 | Parameters | `parameters` | object | Parameters |
 | Options | `options` | object | Options for the model |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Conversation (optional) | `conversation` | object | A facility dictionnary to send back for the next input (with the new user input addition). |
 | Generated Text | `generated-text` | string | The answer of the bot |
 
+
+
+
+
+
 ### Image Classification
 
 Image classification is the task of assigning a label or class to an entire image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -233,13 +333,21 @@ Image classification is the task of assigning a label or class to an entire imag
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Image (required) | `image` | string | The image file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Classes | `classes` | array[object] | Classes |
 
+
+
+
+
+
 ### Image Segmentation
 
 Image Segmentation divides an image into segments where each pixel in the image is mapped to an object.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -247,13 +355,21 @@ Image Segmentation divides an image into segments where each pixel in the image 
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Image (required) | `image` | string | The image file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Segments | `segments` | array[object] | Segments |
 
+
+
+
+
+
 ### Object Detection
 
 Object Detection models allow users to identify objects of certain defined classes.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -261,13 +377,21 @@ Object Detection models allow users to identify objects of certain defined class
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Image (required) | `image` | string | The image file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Objects | `objects` | array[object] | Objects |
 
+
+
+
+
+
 ### Image To Text
 
 Image to text models output a text from a given image.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -275,13 +399,21 @@ Image to text models output a text from a given image.
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Image (required) | `image` | string | The image file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Text | `text` | string | Generated text |
 
+
+
+
+
+
 ### Speech Recognition
 
 Automatic Speech Recognition (ASR), also known as Speech to Text (STT), is the task of transcribing a given audio to text.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -289,13 +421,21 @@ Automatic Speech Recognition (ASR), also known as Speech to Text (STT), is the t
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Audio (required) | `audio` | string | The audio file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Text | `text` | string | The string that was recognized within the audio file. |
 
+
+
+
+
+
 ### Audio Classification
 
 Audio classification is the task of assigning a label or class to a given audio.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -303,6 +443,15 @@ Audio classification is the task of assigning a label or class to a given audio.
 | Model (required) | `model` | string | The Hugging Face model to be used |
 | Audio (required) | `audio` | string | The audio file |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Classes | `classes` | array[object] | Classes |
+
+
+
+
+
+
+

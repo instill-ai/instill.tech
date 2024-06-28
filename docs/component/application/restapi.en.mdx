@@ -16,19 +16,30 @@ It can carry out the following tasks:
 - [Head](#head)
 - [Options](#options)
 
+
+
 ## Release Stage
 
 `Alpha`
+
+
 
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/application/restapi/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
 | Authentication (required) | `authentication` | object | Authentication method to use for the REST API |
+
+
+
 
 ## Supported Tasks
 
@@ -36,11 +47,14 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Send a HTTP GET request.
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_GET` |
 | Endpoint Url (required) | `endpoint-url` | string | The API endpoint url |
 | Body | `output-body-schema` | string | The request body |
+
+
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -48,9 +62,15 @@ Send a HTTP GET request.
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Post
 
 Send a HTTP POST request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -59,15 +79,23 @@ Send a HTTP POST request.
 | Body | `body` | any | The request body |
 | Body | `output-body-schema` | string | The JSON schema of output body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Patch
 
 Send a HTTP PATCH request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -76,15 +104,23 @@ Send a HTTP PATCH request.
 | Body | `body` | any | The request body |
 | Body | `output-body-schema` | string | The JSON schema of output body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Put
 
 Send a HTTP PUT request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -93,15 +129,23 @@ Send a HTTP PUT request.
 | Body | `body` | any | The request body |
 | Body | `output-body-schema` | string | The JSON schema of output body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Delete
 
 Send a HTTP DELETE request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -110,15 +154,23 @@ Send a HTTP DELETE request.
 | Body | `body` | any | The request body |
 | Body | `output-body-schema` | string | The JSON schema of output body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Head
 
 Send a HTTP HEAD request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -126,15 +178,23 @@ Send a HTTP HEAD request.
 | Endpoint Url (required) | `endpoint-url` | string | The API endpoint url |
 | Body | `output-body-schema` | string | The request body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
 
+
+
+
+
+
 ### Options
 
 Send a HTTP OPTIONS request.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -143,8 +203,17 @@ Send a HTTP OPTIONS request.
 | Body | `body` | any | The request body |
 | Body | `output-body-schema` | string | The JSON schema of output body |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status Code | `status-code` | integer | The HTTP status code of the response |
 | Body | `body` | any | The body of the response |
 | Header | `header` | object | The HTTP header of the response |
+
+
+
+
+
+
+

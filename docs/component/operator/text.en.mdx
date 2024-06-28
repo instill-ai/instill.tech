@@ -12,13 +12,21 @@ It can carry out the following tasks:
 - [Split By Token](#split-by-token)
 - [Chunk Text](#chunk-text)
 
+
+
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/operator/text/v0/config/definition.json).
+
+
+
+
 
 ## Supported Tasks
 
@@ -26,10 +34,13 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Convert document to text.
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_CONVERT_TO_TEXT` |
 | Document (required) | `doc` | string | Base64 encoded document (PDF, DOC, DOCX, XML, HTML, RTF, etc.) to be converted to plain text |
+
+
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -38,9 +49,15 @@ Convert document to text.
 | MSecs | `msecs` | number | Time taken to convert the document |
 | Error | `error` | string | Error message if any during the conversion process |
 
+
+
+
+
+
 ### Split By Token
 
 Split text by token. It will be decprecated soon. Please use Chunk Text task instead.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -49,15 +66,23 @@ Split text by token. It will be decprecated soon. Please use Chunk Text task ins
 | Model (required) | `model` | string | ID of the model to use for tokenization |
 | Chunk Token Size | `chunk-token-size` | integer | Number of tokens per text chunk |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Token Count | `token-count` | integer | Total count of tokens in the input text |
 | Text Chunks | `text-chunks` | array[string] | Text chunks after splitting |
 | Number of Text Chunks | `chunk-num` | integer | Total number of output text chunks |
 
+
+
+
+
+
 ### Chunk Text
 
 Chunk text with different strategies.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -65,8 +90,17 @@ Chunk text with different strategies.
 | Text (required) | `text` | string | Text to be chunked |
 | Strategy (required) | `strategy` | object | Chunking strategy |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Token Count (optional) | `token-count` | integer | Total count of tokens in the input text |
 | Text Chunks | `text-chunks` | array[object] | Text chunks after splitting |
 | Number of Text Chunks | `chunk-num` | integer | Total number of output text chunks |
+
+
+
+
+
+
+

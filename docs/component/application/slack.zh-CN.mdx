@@ -11,19 +11,30 @@ It can carry out the following tasks:
 - [Read Message](#read-message)
 - [Send Message](#send-message)
 
+
+
 ## Release Stage
 
 `Alpha`
+
+
 
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/application/slack/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
 | Token (required) | `token` | string | Fill in your Slack app access token. For more information about how to access to create app tokens, please refer to the Slack API documentation. |
+
+
+
 
 ## Supported Tasks
 
@@ -31,19 +42,28 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Get the latest message since specific date
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_READ_MESSAGE` |
 | Channel Name (required) | `channel-name` | string | A channel name display in Slack |
 | Start to read date | `start-to-read-date` | string | earliest date in all read messages |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Conversations | `conversations` | array[object] | An array of conversations with thread messages |
 
+
+
+
+
+
 ### Send Message
 
 send message to a specific channel
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -51,6 +71,15 @@ send message to a specific channel
 | Channel Name (required) | `channel-name` | string | A channel name display in Slack |
 | Message (required) | `message` | string | message to be sent to the target channel |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Result | `result` | string | result for sending message |
+
+
+
+
+
+
+
