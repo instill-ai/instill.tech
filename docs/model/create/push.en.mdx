@@ -27,17 +27,17 @@ docker login localhost:8080
 # password: API_TOKEN
 ```
 
-The `USER_ID` and `API_TOKEN` correspond to the user namespace and the API token
-the user has generated.
+The `USER_ID`, `MODEL_ID`, `VERSION_TAG` and `API_TOKEN` correspond to the user namespace
+the ID of the model, the version tag of the model and the API token the user has generated.
 
 3. Now you can upload the model to **⚗️ Instill Model**:
 
 ```bash
 # for Instill Cloud
-instill-push -t VERSION_TAG -u api.instill.tech
+instill push USER_ID/MODEL_ID -t VERSION_TAG -u api.instill.tech
 
 # for a local Instill Core instance
-instill-push -t VERSION_TAG -u localhost:8080
+instill push USER_ID/MODEL_ID -t VERSION_TAG -u localhost:8080
 ```
 
 4. Once you see the following message, the model image has been successfully
@@ -47,9 +47,6 @@ instill-push -t VERSION_TAG -u localhost:8080
 2024-05-23 23:05:03,484.484 INFO     [Instill Builder] USER_ID/MODEL_ID:VERSION_TAG  pushed
 2024-05-23 23:05:03,485.485 INFO     [Instill Builder] Done
 ```
-
-The `USER_ID`, `MODEL_ID` and `VERSION_TAG` correspond to the user namespace,
-the ID of the model and the version tag of the model.
 
 As the model image is uploaded, **⚗️ Instill Model** will automatically allocate
 the necessary resources for your model and deploy it. Depending on the size of

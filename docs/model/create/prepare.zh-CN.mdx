@@ -1,6 +1,6 @@
 ---
 title: "Prepare Model"
-lang: "zh-CN"
+lang: "en-US"
 draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
@@ -8,11 +8,20 @@ description: "Learn about Instill Model, the MLOps/LLMOps platform, in the proje
 To prepare a model version to be served in **⚗️ Instill Model**, please follow
 these steps on your local system:
 
-1. Create an [model config](#model-configuration) file (`instill.yaml`) to
+1. Install the latest Python **📦 Instill SDK**:
+```bash
+pip install instill-sdk
+```
+2. Create an empty folder for your custom model and run the `init` command to generate required files,
+with comments and sample codes to describe what they do
+```bash
+instill init
+```
+3. Modify [model config](#model-configuration) file (`instill.yaml`) to
   describe your model's dependencies.
-2. Write a `model.py` file which defines the model class that will be decorated
+4. Modify `model.py` file which defines the model class that will be decorated
   into a servable model with the Python **📦 Instill SDK**.
-3. Organize the repository files into a valid [model layout](#model-layout).
+5. Organize the repository files into a valid [model layout](#model-layout).
 
 ## Model Configuration
 
@@ -29,36 +38,30 @@ In the `instill.yaml` file, you are can specify the following details:
   - **python_version**:
     - Required: `string`
     - Supported Versions: `3.11`
-  - **python_packages**:
-    - Required: `list`
-    - Description: Lists packages to be installed with `pip`.
   - **cuda_version**:
     - Optional: `string`
     - Supported Versions: `11.5`, `11.6`, `11.7`, `11.8`, `12.1`
     - Default: Defaults to `11.8` if not specified or empty.
+  - **python_packages**:
+    - Optional: `list`
+    - Description: Lists packages to be installed with `pip`.
   - **system_packages**:
     - Optional: `list`
     - Description: Lists packages to be installed from the `apt` package
       manager. The model image is based on `Ubuntu 20.04 LTS`.
-- **repo**:
-  - Required: `string`
-  - Format: `USER_ID/MODEL_ID`
-  - Description: The namespace.
 
-Below is an example for the 
+Below is an example for the
 [TinyLlama](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) model:
 
 ```yaml instill.yaml
 build:
   gpu: true
   python_version: "3.11" # support only 3.11
+  cuda_version: "12.1"
   python_packages:
     - torch==2.2.1
     - transformers==4.36.2
     - accelerate==0.25.0
-# the repo format is USER_ID/MODEL_ID
-# where MODEL_ID must match the Model ID created in the console
-repo: instill-ai/tinyllama
 ```
 
 ## Model Layout
@@ -98,15 +101,15 @@ Instill Model**, you only need to construct a simple model class within the
 
 The custom model class is required to contain three methods:
 
-1. `__init__`  
+1. `__init__`
   This is where the model loading process is defined, allowing the weights to
   be stored in memory and yielding faster auto-scaling behavior.
-2. `ModelMetadata`  
+2. `ModelMetadata`
   This method tells the backend service the expected input/output shape that
   the model is expecting. If you are using one of our predefined [AI
   Tasks](ai-task), you can simply `import construct_{task}_metadata_response`
   and use it as `return`.
-3. `__call__`  
+3. `__call__`
   This is the inference request entrypoint, and is where you implement your
   model inference logic.
 

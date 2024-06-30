@@ -14,10 +14,11 @@ pip install instill-sdk
 ```
 
 2. Within your custom model [directory](prepare#model-layout), run the `build`
-   command with your desired model version tag:
+   command with your user ID, model ID and optional model version tag.
+   model version tag will defaults to `latest` if not supplied:
 
 ```bash
-instill-build -t VERSION_TAG
+instill build USER_ID/MODEL_ID -t VERSION_TAG
 ```
 
 3. After you see similar outputs as below, the image building process finished
