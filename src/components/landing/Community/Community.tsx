@@ -42,7 +42,7 @@ export const Community = () => {
           />
           <CommunityBlock
             name="Discord"
-            title="Join the thread on Dicord"
+            title="Join the thread on Discord"
             linkText="Join the community"
             link={process.env.NEXT_PUBLIC_DISCORD_INVITATION_LINK || "/"}
           />
