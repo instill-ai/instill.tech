@@ -1,6 +1,6 @@
 ---
 title: "Build Model Image"
-lang: "en-US"
+lang: "zh-CN"
 draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
@@ -14,12 +14,13 @@ pip install instill-sdk
 ```
 
 2. Within your custom model [directory](prepare#model-layout), run the `build`
-   command with your user ID, model ID and optional model version tag.
-   model version tag will defaults to `latest` if not supplied:
+   command with your user ID, model ID and optional model version tag:
 
 ```bash
 instill build USER_ID/MODEL_ID -t VERSION_TAG
 ```
+
+Note that the model version tag will default to `latest` if not supplied.
 
 3. After you see similar outputs as below, the image building process finished
    successfully:

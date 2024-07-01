@@ -1,6 +1,6 @@
 ---
 title: "Prepare Model"
-lang: "en-US"
+lang: "zh-CN"
 draft: false
 description: "Learn about Instill Model, the MLOps/LLMOps platform, in the project Instill Core: https://github.com/instill-ai/instill-core"
 ---
@@ -13,13 +13,13 @@ these steps on your local system:
 pip install instill-sdk
 ```
 2. Create an empty folder for your custom model and run the `init` command to generate required files,
-with comments and sample codes to describe what they do
+with sample codes and comments that describe their function
 ```bash
 instill init
 ```
-3. Modify [model config](#model-configuration) file (`instill.yaml`) to
+3. Modify the [model config](#model-configuration) file (`instill.yaml`) to
   describe your model's dependencies.
-4. Modify `model.py` file which defines the model class that will be decorated
+4. Modify the `model.py` file which defines the model class that will be decorated
   into a servable model with the Python **📦 Instill SDK**.
 5. Organize the repository files into a valid [model layout](#model-layout).
 
