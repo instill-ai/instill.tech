@@ -12,16 +12,16 @@ echo "Running go generate..."
 map_component_to_directory() {
     # echo "1:  $1"
     case $1 in
-    instill | archetypeai | huggingface | openai | stabilityai | anthropic)
+    instill | archetypeai | huggingface | openai | stabilityai | anthropic )
         echo "ai"
         ;;
     googlecloudstorage | bigquery | pinecone |redis )
         echo "data"
         ;;
-    numbers | slack | googlesearch | restapi | website | email)
+    numbers | slack | googlesearch | restapi | website | email )
         echo "application"
         ;;
-    base64 | image | json | text | document)
+    base64 | image | json | text | document )
         echo "operator"
         ;;
     *)
