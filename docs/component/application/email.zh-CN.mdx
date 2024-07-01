@@ -5,13 +5,13 @@ draft: false
 description: "Learn about how to set up a VDP Email component https://github.com/instill-ai/instill-core"
 ---
 
-The Email component is a application component that allows users to get and send email from Mail Protocol.
+The Email component is an application component that allows users to get and send email from Mail Protocol.
 It can carry out the following tasks:
 
 - [Send Email](#send-email)
 - [Read Emails](#read-emails)
 
-You can connect different email server through Email component.
+You can connect to different email servers through the Email component.
 Emails are fetched and sent using the IMAP and SMTP protocols, respectively. You can set the server address and port for each protocol in the component configuration.
 
 
@@ -35,8 +35,8 @@ The component configuration is defined and maintained [here](https://github.com/
 | :--- | :--- | :--- | :--- |
 | Server Address (required) | `server-address` | string | The address of the email server |
 | Server Port (required) | `server-port` | integer | The port of the email server |
-| Email Address (required) | `email-address` | string | Email address of the user |
-| App Password (required) | `password` | string | Password of the App passwords in Gmail settings |
+| Email Address (required) | `email-address` | string | The email address of the user |
+| App Password (required) | `password` | string | The password of the App passwords in Gmail settings |
 
 Supported Provider Samples for Sending Email
 
@@ -101,7 +101,7 @@ Read emails from a mailbox
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_READ_EMAILS` |
-| Search | `search` | object | the search criteria for the emails |
+| Search | `search` | object | The search criteria for the emails |
 
 
 

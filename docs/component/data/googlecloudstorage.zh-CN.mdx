@@ -47,7 +47,7 @@ Upload data to Google Cloud Storage.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_UPLOAD` |
-| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage |
 | Object Name (required) | `object-name` | string | The name of the object to be created |
 | Data (required) | `data` | string | The data to be saved in the object |
 
@@ -74,7 +74,7 @@ Read objects from Google Cloud Storage.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_READ_OBJECTS` |
-| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage |
 | Delimiter | `delimiter` | string | The delimiter to use when listing objects |
 | Prefix | `prefix` | string | The prefix to use when listing objects |
 | Versions | `versions` | boolean | Whether to list all versions of an object |
@@ -107,7 +107,7 @@ Read objects from Google Cloud Storage.
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_CREATE_BUCKET` |
-| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage. |
+| Bucket Name (required) | `bucket-name` | string | Name of the bucket to be used for object storage |
 | Project ID (required) | `project-id` | string | The project ID to create the bucket in |
 | Location | `location` | string | The location to create the bucket in |
 
