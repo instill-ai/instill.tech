@@ -67,6 +67,13 @@ export const getSections = (): SidebarSections[] => {
       versions: ["latest"],
     },
     {
+      text: "common:sidebarSections.community",
+      link: `/docs/community`,
+      items: [],
+      appType: "core",
+      versions: ["latest"],
+    },
+    {
       text: "common:sidebarSections.instillCloud",
       items: [],
       appType: "core",
