@@ -1,4 +1,4 @@
-name: Check Main Lighthouse Score
+name: Lighthouse Performance
 
 on:
   pull_request:
@@ -28,8 +28,12 @@ jobs:
         run: mkdir -p ${{ github.workspace }}/tmp/artifacts
 
       - name: Audit
+        id: audit
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: ${{ steps.deployMainToVercel.outputs.preview-url }}
           budgetPath: ./lighthouse-budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
+
+      - name: Post Summary
+        run: pnpm run post-lighthouse-summary-on-ci -- ${{steps.audit.outputs.manifest}}
