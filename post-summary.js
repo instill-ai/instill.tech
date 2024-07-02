@@ -1,5 +1,5 @@
-import * as gh from "@actions/core";
-import fs from "fs";
+const gh = require("@actions/core");
+const fs = require("fs");
 
 const metrics = [
   "first-contentful-paint",
@@ -15,7 +15,7 @@ const metrics = [
  * to GitHub job summary
  * https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md#outputdir
  */
-export default function postSummary(manifest, title) {
+function postSummary(manifest, title) {
   title = title || "Lighthouse Performance";
 
   gh.summary
