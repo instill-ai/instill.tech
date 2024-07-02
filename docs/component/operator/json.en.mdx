@@ -12,13 +12,21 @@ It can carry out the following tasks:
 - [Unmarshal](#unmarshal)
 - [jq](#jq)
 
+
+
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/operator/json/v0/config/definition.json).
+
+
+
+
 
 ## Supported Tasks
 
@@ -26,31 +34,48 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Convert JSON to a string
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_MARSHAL` |
 | JSON (required) | `json` | any | JSON input to be marshaled |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | JSON string | `string` | string | String representation of the JSON input |
 
+
+
+
+
+
 ### Unmarshal
 
 Convert a string to JSON
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_UNMARSHAL` |
 | String (required) | `string` | string | JSON string to be unmarshaled |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | JSON | `json` | any | JSON object extracted from the string input |
 
+
+
+
+
+
 ### jq
 
 Process JSON through a `jq` command
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
@@ -58,6 +83,15 @@ Process JSON through a `jq` command
 | JSON input (required) | `jsonInput` | string | JSON string to be processed |
 | Filter (required) | `jqFilter` | string | Filter, in `jq` syntax, that will be applied to the JSON input |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Results | `results` | array | The `jq` command results. Depending on the filter and the input JSON the type of each element may vary. |
+
+
+
+
+
+
+

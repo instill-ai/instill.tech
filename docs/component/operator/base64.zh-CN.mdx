@@ -11,13 +11,21 @@ It can carry out the following tasks:
 - [Encode](#encode)
 - [Decode](#decode)
 
+
+
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/operator/base64/v0/config/definition.json).
+
+
+
+
 
 ## Supported Tasks
 
@@ -25,24 +33,42 @@ The component configuration is defined and maintained [here](https://github.com/
 
 Encode data into base64 string
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_ENCODE` |
 | Data (required) | `data` | string | Data to be encoded |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Data | `data` | string | Data |
 
+
+
+
+
+
 ### Decode
 
 Decode the base64 string.
+
 
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_DECODE` |
 | Data (required) | `data` | string | Base64 string to be decoded |
 
+
+
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Data | `data` | string | Data |
+
+
+
+
+
+
+

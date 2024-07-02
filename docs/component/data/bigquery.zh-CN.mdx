@@ -9,16 +9,25 @@ The BigQuery component is a data component that allows users to insert data to B
 It can carry out the following tasks:
 
 - [Insert](#insert)
+- [Read](#read)
+
+
 
 ## Release Stage
 
 `Alpha`
 
+
+
 ## Configuration
 
 The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/data/bigquery/v0/config/definition.json).
 
+
+
+
 ## Setup
+
 
 | Field | Field ID | Type | Note |
 | :--- | :--- | :--- | :--- |
@@ -27,17 +36,51 @@ The component configuration is defined and maintained [here](https://github.com/
 | BigQuery Dataset ID (required) | `dataset-id` | string | Fill in your BigQuery Dataset ID. |
 | BigQuery Table Name (required) | `table-name` | string | Fill in your BigQuery Table Name. |
 
+
+
+
 ## Supported Tasks
 
 ### Insert
 
 Insert data to BigQuery.
 
+
 | Input | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Task ID (required) | `task` | string | `TASK_INSERT` |
-| Data (required) | `data` | object | The data to be inserted to BigQuery |
+| Data | `data` | object | The data to be inserted to BigQuery |
+
+
 
 | Output | ID | Type | Description |
 | :--- | :--- | :--- | :--- |
 | Status | `status` | string | Status of the upload operation |
+
+
+
+
+
+
+### Read
+
+Read data from BigQuery.
+
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_READ` |
+| Filtering | `filtering` | string | The filter to be applied to the data with SQL syntax, which starts with WHERE clause |
+
+
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Data | `data` | array[object] | The data to be read from BigQuery |
+
+
+
+
+
+
+

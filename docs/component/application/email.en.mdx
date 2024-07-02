@@ -1,0 +1,157 @@
+---
+title: "Email"
+lang: "en-US"
+draft: false
+description: "Learn about how to set up a VDP Email component https://github.com/instill-ai/instill-core"
+---
+
+The Email component is an application component that allows users to get and send email from Mail Protocol.
+It can carry out the following tasks:
+
+- [Send Email](#send-email)
+- [Read Emails](#read-emails)
+
+You can connect to different email servers through the Email component.
+Emails are fetched and sent using the IMAP and SMTP protocols, respectively. You can set the server address and port for each protocol in the component configuration.
+
+
+## Release Stage
+
+`Alpha`
+
+
+
+## Configuration
+
+The component configuration is defined and maintained [here](https://github.com/instill-ai/component/blob/main/application/email/v0/config/definition.json).
+
+
+
+
+## Setup
+
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| Server Address (required) | `server-address` | string | The address of the email server |
+| Server Port (required) | `server-port` | integer | The port of the email server |
+| Email Address (required) | `email-address` | string | The email address of the user |
+| App Password (required) | `password` | string | The password of the App passwords in Gmail settings |
+
+Supported Provider Samples for Sending Email
+
+| Provider | SMTP Server Address | Port | Notes |
+| --- | --- | --- | --- |
+| Gmail | smtp.gmail.com | 587 (TLS) or 465 (SSL) ||
+| Outlook | smtp-mail.outlook.com | 587 ||
+| Yahoo | smtp.mail.yahoo.com | 465 or 587 ||
+| iCloud | smtp.mail.me.com | 587 | If you see an error message when using SSL, try using TLS or STARTTLS instead. |
+
+
+Supported Provider Samples for Receiving Emails
+
+| Provider | IMAP Server Address | Port |
+| --- | --- | --- |
+| Gmail | imap.gmail.com | 993 |
+| Outlook | outlook.office365.com | 993 |
+| Yahoo | imap.mail.yahoo.com | 993 |
+| iCloud | imap.mail.me.com | 993 |
+
+
+For App Password, please follow the steps below:
+ - 1. Please Sign in to your Google Account with link: https://myaccount.google.com/apppasswords
+ - 2. Create a new App Password and save it in a secure place.
+ - 3. Add App Password as a new secret in the Instill Platform by navigating to **Console** > **Settings** > **Secrets**.
+ - 4. Reference the secret in the App Password field in the component configuration.
+
+
+
+## Supported Tasks
+
+### Send Email
+
+Send an email to recipients
+
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_SEND_EMAIL` |
+| Recipient (required) | `recipients` | array[string] | The email addresses of the recipients |
+| Cc | `cc` | array[string] | The email addresses for Carbon Copy |
+| Bcc | `bcc` | array[string] | The email addresses for Blind Carbon Copy |
+| Subject | `subject` | string | The subject of the email |
+| Message (required) | `message` | string | The message to be sent |
+
+
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Result | `result` | string | The result of sending the email |
+
+
+
+
+
+
+### Read Emails
+
+Read emails from a mailbox
+
+
+| Input | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Task ID (required) | `task` | string | `TASK_READ_EMAILS` |
+| Search | `search` | object | The search criteria for the emails |
+
+
+
+| Output | ID | Type | Description |
+| :--- | :--- | :--- | :--- |
+| Emails | `emails` | array[object] | The emails that match the search criteria |
+
+
+#### Search object
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| Mailbox (required) | `mailbox` | string | The mailbox you want to fetch from email server |
+| Search Subject | `search-subject` | string | The text you want to search in the subject of the email |
+| Search From | `search-from` | string | The email address you want to search in the from field of the email |
+| Search To | `search-to` | string | The email address you want to search in the to field of the email |
+| Search Date | `search-date` | string | The date you want to search in the email |
+| Search Email Message | `search-email-message` | string | The text you want to search in the email message |
+| Limit | `limit` | integer | The maximum number of emails to search for |
+
+
+#### Mailbox
+
+You have to confirm what exactly the mailbox name is.
+Take Gmail as an example, the mailbox names are following.
+
+| Mailbox | Mailbox Name to input |
+| :--- | :--- |
+| Inbox | `INBOX` |
+| Sent | `[Gmail]/Sent Mail` |
+| Drafts | `[Gmail]/Drafts` |
+
+
+#### Search From and Search To
+You need to input the exact same email address with `<` as a prefix and `>` as a suffix as the email you want to search for.
+For example, if you want to search for the email from `email@example.com`, you need to input `<email@example.com>`.
+
+
+
+#### Emails object
+
+| Field | Field ID | Type | Note |
+| :--- | :--- | :--- | :--- |
+| Date | `date` | string | The date of the email |
+| From | `from` | string | The email address of the sender |
+| To | `to` | array[string] | The email address of the recipient |
+| Subject | `subject` | string | The subject of the email |
+| Message | `message` | string | The message of the email |
+
+
+
+
+
