@@ -63,4 +63,4 @@ jobs:
           uploadArtifacts: true # save results as an action artifacts
 
       - name: Post Summary
-        run: pnpm run post-lighthouse-summary-on-ci -- ${{steps.audit.outputs.manifest}}
+        run: echo "${{steps.audit.outputs.manifest}}" >> $GITHUB_STEP_SUMMARY
