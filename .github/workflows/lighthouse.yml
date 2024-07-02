@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -37,9 +39,6 @@ jobs:
 
       - name: Install dependencies
         run: rm -rf node_modules && pnpm i --frozen-lockfile
-
-      - name: Checkout
-        uses: actions/checkout@main
 
       - name: deploy main to vercel
         id: deployMainToVercel
