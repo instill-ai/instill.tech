@@ -7,7 +7,7 @@ export const HubPageLink = () => {
         href="https://instill.tech/hub"
         className="instill-text-body underline-animation flex text-instillGrey80 hover:text-instillBlue50"
       >
-        <p className="my-auto">Hub</p>
+        <p className="my-auto">Explore</p>
       </Link>
     </div>
   );
