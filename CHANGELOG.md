@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.50.3](https://github.com/instill-ai/instill.tech/compare/v1.50.2...v1.50.3) (2024-07-02)
+
+
+### Bug Fixes
+
+* discord typo ([#918](https://github.com/instill-ai/instill.tech/issues/918)) ([4790f97](https://github.com/instill-ai/instill.tech/commit/4790f976df972e3bd1b58eb525747822a57472ca))
+* fix lighthouse ci ([#920](https://github.com/instill-ai/instill.tech/issues/920)) ([8da9475](https://github.com/instill-ai/instill.tech/commit/8da9475bb7adf09fa93b12202943fd6921a2e020))
+* fix out-of-date deps and wrongly instill-ai/toolkit usage ([#912](https://github.com/instill-ai/instill.tech/issues/912)) ([acd04b6](https://github.com/instill-ai/instill.tech/commit/acd04b61c6ca0c3c69a3273743393dac4c92a43a))
+* rename hub to explore ([#921](https://github.com/instill-ai/instill.tech/issues/921)) ([58df458](https://github.com/instill-ai/instill.tech/commit/58df4583525adce091b6e0c17fdc9a12a7e92708))
+
+
+### Miscellaneous
+
+* doc for anthropic token to instill credit ([#917](https://github.com/instill-ai/instill.tech/issues/917)) ([d0f1a57](https://github.com/instill-ai/instill.tech/commit/d0f1a5787212b0b2229f7440302716110e32136f))
+* **model:** update model image related docs ([#915](https://github.com/instill-ai/instill.tech/issues/915)) ([302b8cb](https://github.com/instill-ai/instill.tech/commit/302b8cba3c2658cd36885226d3aea6f70af10599))
+* update doc ([#914](https://github.com/instill-ai/instill.tech/issues/914)) ([e656c86](https://github.com/instill-ai/instill.tech/commit/e656c86ae4a84495599fb5b2abfbebbe3eb99aef))
+
+
+### Documentation
+
+* remove out-of-date gifs from quickstart ([#913](https://github.com/instill-ai/instill.tech/issues/913)) ([a01e16e](https://github.com/instill-ai/instill.tech/commit/a01e16e00dfe50169243d89427565d573f371b8d))
+* **sdk:** remove out-of-date and incorrect documentation ([#909](https://github.com/instill-ai/instill.tech/issues/909)) ([8634f8f](https://github.com/instill-ai/instill.tech/commit/8634f8f4f1661ab4de5b4f2fc0a9036d8cda7dd0))
+* **sdk:** remove outdated typescript sdk documentation ([#911](https://github.com/instill-ai/instill.tech/issues/911)) ([f844610](https://github.com/instill-ai/instill.tech/commit/f8446104c59fb2c93e700ef60bbe9f654a8f22f2))
+* **tutorial:** update tutorial to reflect model and sdk changes ([#919](https://github.com/instill-ai/instill.tech/issues/919)) ([4f2a8cf](https://github.com/instill-ai/instill.tech/commit/4f2a8cf2ee5939c861572c578fc0ece06194d8f3))
+
 ## [1.50.2](https://github.com/instill-ai/instill.tech/compare/v1.50.1...v1.50.2) (2024-06-20)
 
 
